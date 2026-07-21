@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>groovesMAXXING — your friend with good taste in dance music</title>
+<meta name="description" content="house, techno & indie dance curated by your friend with good taste. new releases, live sets, hidden gems, 623 artists deep.">
+<link rel="icon" type="image/png" href="favicon.png">
+<meta property="og:title" content="groovesMAXXING — your friend with good taste in dance music">
+<meta property="og:description" content="house, techno & indie dance. new releases · live sets · hidden gems. 623 artists deep.">
+<meta property="og:image" content="https://groovesmaxxing.github.io/og-image.png">
+<meta property="og:url" content="https://groovesmaxxing.github.io/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#0B0B0D; --racing:#FF1C02; --deep:#CC1400; --day:#F2F2EF; --steel:#8A8A93;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--night);color:var(--day);font-family:'Poppins',sans-serif;line-height:1.65}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid var(--racing);outline-offset:3px}
+.mono{font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.14em;text-transform:lowercase}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+section{padding:88px 0}
+h2{font-weight:900;font-size:clamp(1.9rem,4.5vw,2.8rem);line-height:1.1;margin-bottom:14px}
+.eyebrow{color:var(--racing);display:block;margin-bottom:14px}
+.day-section{background:var(--day);color:var(--night)}
+.day-section .eyebrow{color:var(--deep)}
+
+/* hero */
+.hero{min-height:92vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;overflow:hidden;padding:60px 24px}
+.mark{width:min(46vw,240px);height:auto;margin-bottom:34px}
+.rings{transform-origin:50% 50%;animation:spin 24s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion: reduce){.rings{animation:none}}
+.wordmark{font-weight:900;font-size:clamp(2.6rem,8vw,5.4rem);line-height:1;letter-spacing:-.02em}
+.wordmark .max{color:var(--racing)}
+.tagline{font-family:'Space Mono',monospace;color:var(--steel);margin-top:18px;font-size:clamp(.85rem,2.4vw,1.05rem)}
+.hero-links{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:40px}
+.pill{font-family:'Space Mono',monospace;font-size:.8rem;letter-spacing:.1em;text-decoration:none;border:2px solid var(--racing);padding:12px 22px;border-radius:999px;transition:background .2s,color .2s}
+.pill:hover{background:var(--racing);color:var(--night)}
+.pill.solid{background:var(--racing);color:var(--night)}
+.pill.solid:hover{background:var(--deep);border-color:var(--deep);color:var(--day)}
+.icon-row{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:40px}
+.icon-btn{width:54px;height:54px;border:2px solid var(--racing);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.icon-btn svg{width:24px;height:24px;stroke:var(--day);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:stroke .2s}
+.icon-btn:hover{background:var(--racing)}
+.icon-btn:hover svg{stroke:var(--night)}
+.icon-btn .fillme{fill:var(--day);stroke:none;transition:fill .2s}
+.icon-btn:hover .fillme{fill:var(--night)}
+@media (max-width:640px){section{padding:64px 0}.hero{min-height:86vh}}
+
+/* deal */
+.manifesto{font-size:clamp(1.15rem,2.6vw,1.5rem);font-weight:600;max-width:760px}
+.manifesto em{font-style:normal;color:var(--racing)}
+.about-foot{margin-top:26px;color:var(--steel);max-width:640px}
+
+/* story */
+.story p{max-width:720px;margin-bottom:20px;font-size:1.02rem}
+.story p:last-child{margin-bottom:0}
+.story strong{font-weight:600;color:var(--deep)}
+
+/* lanes */
+.lanes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:36px}
+.lane{border-radius:18px;padding:30px 26px;display:flex;flex-direction:column;gap:10px;min-height:230px}
+.lane h3{font-weight:900;font-size:1.6rem}
+.lane p{font-size:.95rem}
+.lane .who{font-family:'Space Mono',monospace;font-size:.74rem;letter-spacing:.06em;margin-top:auto;line-height:1.8}
+.lane-vibes{background:var(--day);color:var(--night)}
+.lane-vibes h3{color:var(--deep)}
+.lane-bumpy{background:#151518;border:1px solid #26262b}
+.lane-bumpy h3{color:var(--racing)}
+.lane-nonspoty{background:var(--racing);color:var(--night)}
+.lane-nonspoty .who{color:#4d0800}
+
+/* artists */
+.canon{font-weight:900;font-size:clamp(1.15rem,3vw,1.7rem);line-height:1.5;max-width:900px;margin:26px 0 44px}
+.canon span{color:var(--deep)}
+.canon i{font-style:normal;color:#b9b9b3}
+.clusters{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px 34px}
+.cluster h3{font-family:'Space Mono',monospace;font-size:.8rem;letter-spacing:.14em;color:var(--deep);margin-bottom:8px;font-weight:700}
+.cluster p{font-size:.94rem;color:#33332f}
+
+/* listen */
+.players{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:36px}
+.player h4{font-weight:900;margin-bottom:10px;font-size:1.05rem}
+.player iframe{border-radius:14px;border:0;width:100%}
+.player .note{font-family:'Space Mono',monospace;font-size:.72rem;color:var(--steel);margin-top:8px}
+
+/* library */
+.set-card{margin-top:36px}
+.video-frame{position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#e3e3de}
+.video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.set-meta{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:12px}
+.set-meta .t{font-weight:900}
+.coming{margin-top:22px;border:2px dashed #c9c9c2;border-radius:16px;padding:26px;text-align:center;color:#6a6a66;font-family:'Space Mono',monospace;font-size:.8rem;letter-spacing:.08em}
+
+/* label wall */
+.wall{display:flex;flex-wrap:wrap;gap:10px 14px;margin-top:34px;max-width:960px}
+.wall span{font-family:'Space Mono',monospace;font-size:.82rem;letter-spacing:.06em;border:1px solid #2c2c31;border-radius:999px;padding:8px 16px;color:#cfcfc9}
+.wall span.hot{border-color:var(--racing);color:var(--racing)}
+.wall-note{margin-top:24px;color:var(--steel);font-size:.92rem;max-width:640px}
+
+/* series */
+.series{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:36px}
+.serie{border-left:4px solid var(--deep);padding:6px 0 6px 22px}
+.serie h3{font-weight:900;font-size:1.25rem;margin-bottom:6px}
+.serie p{font-size:.95rem;color:#3a3a37}
+
+/* footer */
+footer{padding:70px 0 50px;text-align:center}
+.foot-links{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;margin:22px 0 30px}
+.foot-links a{font-family:'Space Mono',monospace;font-size:.82rem;letter-spacing:.12em;text-decoration:none;border-bottom:2px solid var(--racing);padding-bottom:3px}
+.foot-links a:hover{color:var(--racing)}
+.fine{color:var(--steel);font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.08em}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <svg class="mark" viewBox="0 0 240 240" role="img" aria-label="groovesmaxxing logo: vinyl grooves crossed by a waveform">
+    <g class="rings" fill="none" stroke="#FF1C02" stroke-width="5">
+      <circle cx="120" cy="120" r="104"/>
+      <circle cx="120" cy="120" r="76"/>
+      <circle cx="120" cy="120" r="48"/>
+    </g>
+    <circle cx="120" cy="120" r="18" fill="#FF1C02"/>
+    <polyline points="6,120 30,120 48,84 68,150 88,96 108,138 120,114 132,138 152,96 172,150 192,84 210,120 234,120"
+      fill="none" stroke="#F2F2EF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <h1 class="wordmark">grooves<span class="max">MAXXING</span></h1>
+  <p class="tagline">your friend with good taste in dance music 📈</p>
+  <nav class="icon-row" aria-label="main links">
+    <a class="icon-btn" href="https://open.spotify.com/playlist/4at8EiW5d5QjpPOsoZbB7r" target="_blank" rel="noopener" aria-label="the playlist on spotify" title="the playlist">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M6.8 9.4c3.4-1 7-.6 10 .9M7.3 12.5c2.8-.8 5.7-.5 8.2.8M7.8 15.4c2.2-.6 4.4-.3 6.3.7"/></svg>
+    </a>
+    <a class="icon-btn" href="https://www.instagram.com/groovesmaxxing" target="_blank" rel="noopener" aria-label="instagram" title="instagram">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle class="fillme" cx="17.2" cy="6.8" r="1.2"/></svg>
+    </a>
+    <a class="icon-btn" href="https://soundcloud.com/user-675637809" target="_blank" rel="noopener" aria-label="soundcloud" title="soundcloud">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 14v3M5.6 12v5M8.2 10.5v6.5M10.8 9v8"/><path class="fillme" d="M13.4 17h4.6a3.3 3.3 0 0 0 .5-6.57A5 5 0 0 0 13.4 8.4Z"/></svg>
+    </a>
+  </nav>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <span class="mono eyebrow">the deal</span>
+    <h2>we listen to everything.<br>you get the good stuff.</h2>
+    <p class="manifesto">house, techno &amp; indie dance, curated like a friend texting you bangers — <em>new releases</em> every friday, <em>live sets</em> worth your hour, and <em>hidden gems</em> you can't stream anywhere else.</p>
+    <p class="about-foot">623 artists followed. 980+ tracks curated. zero skips. no ads, no sponsors, no corporate playlist politics — just taste, maxxed.</p>
+  </div>
+</section>
+
+<section class="day-section story" id="story">
+  <div class="wrap">
+    <span class="mono eyebrow">the story</span>
+    <h2>why this exists</h2>
+    <p>groovesmaxxing started the way every good obsession does: one person sending way too many songs to the group chat. the playlists got long. the follows got longer. eventually "you have to hear this" needed a bigger room than a text thread — so here we are.</p>
+    <p>the rules are simple. <strong>fun first.</strong> this page exists because sharing music you love is one of life's genuinely great feelings, and for no other reason. <strong>zero budget.</strong> everything here runs on free tools and stubbornness. <strong>no pay-to-play.</strong> no ads, no sponsors, nobody sliding into the inbox to buy a slot — if a track is here, it's because it slaps. <strong>lowercase forever.</strong> corporate never.</p>
+    <p>what that adds up to: new releases filtered down every friday so you don't have to dig, live sets that actually earn their runtime, artist deep-dives on the people who define the sound, and the nonspoty stuff — edits, bootlegs and unreleased heat that never touches a streaming service. consider this your friend with permanent aux privileges.</p>
+  </div>
+</section>
+
+<section id="lanes">
+  <div class="wrap">
+    <span class="mono eyebrow">the sound</span>
+    <h2>three lanes, one groove</h2>
+    <div class="lanes">
+      <div class="lane lane-vibes">
+        <h3>vibes ☀️</h3>
+        <p>sunny, funky, disco-leaning house — the daytime groove. french touch energy, rooftop approved.</p>
+        <p class="who">JØRD · Brunello · OMRI. · Bonafique · Mita Gami · BUJA (BR) · Toman</p>
+      </div>
+      <div class="lane lane-bumpy">
+        <h3>bumpy 🚧</h3>
+        <p>bass-driven club heaters and melodic night-shift grooves. hard hats required past midnight.</p>
+        <p class="who">Max Styler · AYYBO · Notre Dame · Adam Ten · Dansyn</p>
+      </div>
+      <div class="lane lane-nonspoty">
+        <h3>nonspoty 💎</h3>
+        <p>edits, bootlegs &amp; unreleased heat that never made it to streaming. the stuff you send your group chat.</p>
+        <p class="who">soundcloud-only · free downloads · unreleased ids</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="day-section" id="artists">
+  <div class="wrap">
+    <span class="mono eyebrow">who we follow</span>
+    <h2>623 artists deep</h2>
+    <p class="canon">the heavy rotation — the eleven that define the page: <span>Solomun · Vintage Culture · Notre Dame · Adam Ten · Mita Gami · Max Styler · AYYBO · TOBEHONEST · PAWSA · Volkoder · Misha Klein</span> <i>— everyone else orbits these.</i></p>
+    <div class="clusters">
+      <div class="cluster">
+        <h3>the gdb × nu moda pipeline</h3>
+        <p>AYYBO running GDB, Max Styler running Nu Moda — when your most-played artists also run the imprints, the algorithm didn't find them. you did.</p>
+      </div>
+      <div class="cluster">
+        <h3>the israeli wave</h3>
+        <p>Adam Ten, Mita Gami, Guy Katch, Niv Ast, Rem Siman, OMRI., Gozlan and a dozen more — the maccabi house orbit, where melodic groove got its passport renewed.</p>
+      </div>
+      <div class="cluster">
+        <h3>the uk minimal heads</h3>
+        <p>Chris Stussy, Kolter, Sidney Charles, M-High, Josh Baker, Max Dean, Toman, Beltran — rolling basslines, boutique labels, zero big-room nonsense.</p>
+      </div>
+      <div class="cluster">
+        <h3>the legends</h3>
+        <p>Green Velvet, Mike Dunn, Deep Dish, Armand Van Helden, Seth Troxler, The Martinez Brothers — and the king himself, Solomun. respect the foundation or leave the building.</p>
+      </div>
+      <div class="cluster">
+        <h3>the melodic heavyweights</h3>
+        <p>ARTBAT, Anyma, Adriatique, Bedouin, Monolink, Black Coffee — for when the night needs a narrative arc.</p>
+      </div>
+      <div class="cluster">
+        <h3>the sunshine committee</h3>
+        <p>Yuksek, The Magician, Purple Disco Machine, Horse Meat Disco, Satin Jackets, Poolside — the daytime cabinet. someone has to govern the rooftop.</p>
+      </div>
+      <div class="cluster">
+        <h3>the mainstage crossover</h3>
+        <p>Mau P, Dom Dolla, FISHER, John Summit, Chris Lake — the tech house that clawed out of the sweaty club and onto the festival main stage without losing the bounce. proof the big room can still have taste.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="listen">
+  <div class="wrap">
+    <span class="mono eyebrow">press play</span>
+    <h2>the playlists</h2>
+    <div class="players">
+      <div class="player">
+        <h4>groovesmaxxing — the flagship</h4>
+        <iframe src="https://open.spotify.com/embed/playlist/4at8EiW5d5QjpPOsoZbB7r?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="groovesmaxxing flagship playlist on Spotify"></iframe>
+        <p class="note">the best of every lane, one glass</p>
+      </div>
+      <div class="player">
+        <h4>good vibe juice 🧃</h4>
+        <iframe src="https://open.spotify.com/embed/playlist/0cJazkJ5pLBDxCJ8HRe4vx?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="good vibe juice playlist on Spotify"></iframe>
+        <p class="note">~490 tracks of sunshine</p>
+      </div>
+      <div class="player">
+        <h4>bumpy 🚧</h4>
+        <iframe src="https://open.spotify.com/embed/playlist/4DfpAcNe8ezmDJYIsF2TEE?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="bumpy playlist on Spotify"></iframe>
+        <p class="note">487 tracks for the night shift</p>
+      </div>
+      <div class="player">
+        <h4>contraband 💎</h4>
+        <iframe src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fuser-675637809%2Fsets%2Fbumpy-nonspoty&color=%23ff1c02&auto_play=false&show_teaser=false" height="352" loading="lazy" title="contraband playlist on SoundCloud"></iframe>
+        <p class="note">86 edits you can't stream anywhere else</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="day-section" id="library">
+  <div class="wrap">
+    <span class="mono eyebrow">the library</span>
+    <h2>sets worth your hour</h2>
+    <div class="set-card">
+      <div class="video-frame">
+        <iframe src="https://www.youtube-nocookie.com/embed/QHDRRxKlimY" loading="lazy" title="Solomun at Théâtre Antique d'Orange for Cercle" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="set-meta">
+        <span class="t">Solomun @ Théâtre Antique d'Orange</span>
+        <span class="mono" style="color:#6a6a66">cercle · 2018 · the one that broke the internet</span>
+      </div>
+    </div>
+    <div class="coming">more sets loading… full dj-set playlist on youtube in the works ⏳</div>
+  </div>
+</section>
+
+<section id="labels">
+  <div class="wrap">
+    <span class="mono eyebrow">the imprint radar</span>
+    <h2>labels we trust</h2>
+    <div class="wall">
+      <span class="hot">Solid Grooves</span><span class="hot">Maccabi House</span><span class="hot">GDB</span><span>Black Book</span><span>Planet X</span><span>Diynamic</span><span>Keinemusik</span><span>Afterlife</span><span>Hot Creations</span><span>Defected</span><span>Drumcode</span><span>NO ART</span><span>Hellbent</span><span>Sola</span><span>Relief</span><span>Yoshitoshi</span><span>Cuttin' Headz</span><span>Dirtybird</span><span>Innervisions</span><span>Cercle</span><span>Anjunadeep</span><span>Gudu</span><span>Ed Banger</span><span>Partyfine</span><span>Toy Tonics</span><span>Razor-N-Tape</span><span>Nervous</span><span>PIV</span><span>Up The Stuss</span><span>Hood Politics</span><span>Affairs</span><span>Nu Moda</span><span>Gozar</span><span>FFRR</span>
+    </div>
+    <p class="wall-note">the imprints that keep showing up when a track survives the skip test. label spotlights coming to the feed — the full map runs about eighty deep.</p>
+  </div>
+</section>
+
+<section class="day-section" id="series">
+  <div class="wrap">
+    <span class="mono eyebrow">on the calendar</span>
+    <h2>the series</h2>
+    <div class="series">
+      <div class="serie">
+        <h3>fresh grooves friday</h3>
+        <p>the week's best new releases, every friday. no filler — if it's in, it goes.</p>
+      </div>
+      <div class="serie">
+        <h3>nonspoty of the week</h3>
+        <p>one edit or unreleased gem you can't stream anywhere, surfaced weekly. link straight to the source.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <svg width="54" height="54" viewBox="0 0 240 240" aria-hidden="true">
+      <g fill="none" stroke="#FF1C02" stroke-width="10"><circle cx="120" cy="120" r="100"/><circle cx="120" cy="120" r="62"/></g>
+      <circle cx="120" cy="120" r="24" fill="#FF1C02"/>
+    </svg>
+    <nav class="icon-row" aria-label="social links" style="margin:26px 0 30px">
+      <a class="icon-btn" href="https://www.instagram.com/groovesmaxxing" target="_blank" rel="noopener" aria-label="instagram" title="instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle class="fillme" cx="17.2" cy="6.8" r="1.2"/></svg>
+      </a>
+      <a class="icon-btn" href="https://open.spotify.com/user/1266604545" target="_blank" rel="noopener" aria-label="spotify profile" title="spotify">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M6.8 9.4c3.4-1 7-.6 10 .9M7.3 12.5c2.8-.8 5.7-.5 8.2.8M7.8 15.4c2.2-.6 4.4-.3 6.3.7"/></svg>
+      </a>
+      <a class="icon-btn" href="https://soundcloud.com/user-675637809" target="_blank" rel="noopener" aria-label="soundcloud" title="soundcloud">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 14v3M5.6 12v5M8.2 10.5v6.5M10.8 9v8"/><path class="fillme" d="M13.4 17h4.6a3.3 3.3 0 0 0 .5-6.57A5 5 0 0 0 13.4 8.4Z"/></svg>
+      </a>
+      <a class="icon-btn" href="mailto:groovesmaxxing@gmail.com" aria-label="email groovesmaxxing" title="say hi">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="m4.5 7.5 7.5 5.5 7.5-5.5"/></svg>
+      </a>
+    </nav>
+    <p class="fine">© 2026 groovesmaxxing · vibes + grooves maxxing 📈 · made with love, zero budget</p>
+  </div>
+</footer>
+
+</body>
+</html>
