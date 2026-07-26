@@ -96,6 +96,18 @@ h2{font-weight:900;font-size:clamp(1.9rem,4.5vw,2.8rem);line-height:1.1;margin-b
 
 /* library */
 .set-card{margin-top:36px}
+.set-stage{margin-top:36px}
+.set-viewport{overflow:hidden}
+.set-rail{display:flex;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+.set-slide{flex:0 0 100%;min-width:100%}
+.set-facade{position:relative;display:block;width:100%;padding:0;padding-top:56.25%;border:0;border-radius:16px;overflow:hidden;background:#e3e3de;cursor:pointer}
+.set-facade img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.set-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:72px;height:72px;border-radius:50%;background:var(--racing);display:grid;place-items:center;box-shadow:0 10px 34px rgba(0,0,0,.32);transition:background .2s,transform .2s}
+.set-play svg{width:26px;height:26px;fill:#fff;margin-left:3px}
+.set-facade:hover .set-play{background:var(--deep);transform:translate(-50%,-50%) scale(1.07)}
+.set-dots{display:flex;gap:8px;justify-content:center;margin-top:20px}
+.set-dots button{width:8px;height:8px;padding:0;border:0;border-radius:999px;background:#c9c9c2;cursor:pointer;transition:width .25s,background .25s}
+.set-dots button[aria-current="true"]{background:var(--racing);width:24px}
 .video-frame{position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#e3e3de}
 .video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .set-meta{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:12px}
@@ -284,50 +296,62 @@ fill="none" stroke="#F2F2EF" stroke-width="7" stroke-linecap="round" stroke-line
 <div class="wrap">
 <span class="mono eyebrow">the library</span>
 <h2>sets worth your hour</h2>
-<div class="set-card">
-<div class="video-frame">
-<iframe src="https://www.youtube-nocookie.com/embed/QHDRRxKlimY" loading="lazy" title="Solomun at Théâtre Antique d'Orange for Cercle" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
+<div class="set-stage">
+<div class="set-viewport">
+<div class="set-rail">
+<div class="set-slide">
+<button class="set-facade" type="button" data-yt="QHDRRxKlimY" data-title="Solomun at Théâtre Antique d&#x27;Orange for Cercle" aria-label="play Solomun at Théâtre Antique d&#x27;Orange for Cercle">
+<img src="https://img.youtube.com/vi/QHDRRxKlimY/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/QHDRRxKlimY/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
 <div class="set-meta">
 <span class="t">Solomun @ Théâtre Antique d'Orange</span>
 <span class="mono" style="color:#6a6a66">cercle · 2018 · the one that broke the internet</span>
 </div>
 </div>
-<div class="set-card">
-<div class="video-frame">
-<iframe src="https://www.youtube-nocookie.com/embed/Ckd37fqkEoo" loading="lazy" title="Max Styler Live @ The Yuma Tent Coachella 2026" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
+<div class="set-slide">
+<button class="set-facade" type="button" data-yt="Ckd37fqkEoo" data-title="Max Styler Live @ The Yuma Tent Coachella 2026" aria-label="play Max Styler Live @ The Yuma Tent Coachella 2026">
+<img src="https://img.youtube.com/vi/Ckd37fqkEoo/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/Ckd37fqkEoo/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
 <div class="set-meta">
 <span class="t">Max Styler @ The Yuma Tent, Coachella</span>
 <span class="mono" style="color:#6a6a66">coachella · 2026 · the bumpy lane goes to the desert</span>
 </div>
 </div>
-<div class="set-card">
-<div class="video-frame">
-<iframe src="https://www.youtube-nocookie.com/embed/yjHFbsmqpSU" loading="lazy" title="AYYBO @ Knockdown Center NYC 2026" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
+<div class="set-slide">
+<button class="set-facade" type="button" data-yt="yjHFbsmqpSU" data-title="AYYBO @ Knockdown Center NYC 2026" aria-label="play AYYBO @ Knockdown Center NYC 2026">
+<img src="https://img.youtube.com/vi/yjHFbsmqpSU/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/yjHFbsmqpSU/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
 <div class="set-meta">
 <span class="t">AYYBO @ Knockdown Center, NYC</span>
 <span class="mono" style="color:#6a6a66">knockdown center · 2026 · warehouse pressure, zero filler</span>
 </div>
 </div>
-<div class="set-card">
-<div class="video-frame">
-<iframe src="https://www.youtube-nocookie.com/embed/tVkIquevWIg" loading="lazy" title="NO STATIC @ Knockdown Center, New York" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
+<div class="set-slide">
+<button class="set-facade" type="button" data-yt="tVkIquevWIg" data-title="NO STATIC @ Knockdown Center, New York" aria-label="play NO STATIC @ Knockdown Center, New York">
+<img src="https://img.youtube.com/vi/tVkIquevWIg/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/tVkIquevWIg/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
 <div class="set-meta">
 <span class="t">NO STATIC @ Knockdown Center, NYC</span>
 <span class="mono" style="color:#6a6a66">knockdown center · straight off the radar wall</span>
 </div>
 </div>
-<div class="set-card">
-<div class="video-frame">
-<iframe src="https://www.youtube-nocookie.com/embed/u1RDXV9Xcgs" loading="lazy" title="JØRD B2B Fancy Inc. @ Club 415 - Belo Horizonte, MG" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
+<div class="set-slide">
+<button class="set-facade" type="button" data-yt="u1RDXV9Xcgs" data-title="JØRD B2B Fancy Inc. @ Club 415 - Belo Horizonte, MG" aria-label="play JØRD B2B Fancy Inc. @ Club 415 - Belo Horizonte, MG">
+<img src="https://img.youtube.com/vi/u1RDXV9Xcgs/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/u1RDXV9Xcgs/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
 <div class="set-meta">
 <span class="t">JØRD b2b Fancy Inc @ Club 415, Belo Horizonte</span>
 <span class="mono" style="color:#6a6a66">club 415 · brazilian heat in b2b format</span>
 </div>
+</div>
+</div>
+</div>
+<div class="set-dots"><button type="button" aria-label="set 1 of 5" aria-current="true"></button><button type="button" aria-label="set 2 of 5"></button><button type="button" aria-label="set 3 of 5"></button><button type="button" aria-label="set 4 of 5"></button><button type="button" aria-label="set 5 of 5"></button></div>
 </div>
 <div class="coming">more sets loading… full dj-set playlist on youtube in the works ⏳</div>
 </div>
@@ -441,5 +465,35 @@ fill="none" stroke="#F2F2EF" stroke-width="7" stroke-linecap="round" stroke-line
 </div>
 </footer>
 
+<script>
+(function(){
+var stage=document.querySelector('.set-stage');if(!stage)return;
+var rail=stage.querySelector('.set-rail'),slides=stage.querySelectorAll('.set-slide'),
+dots=stage.querySelectorAll('.set-dots button'),i=0,timer=null,locked=false;
+var still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function go(n){i=(n+slides.length)%slides.length;rail.style.transform='translateX('+(-i*100)+'%)';
+for(var k=0;k<dots.length;k++){dots[k].setAttribute('aria-current',k===i?'true':'false');}}
+function pause(){clearInterval(timer);}
+function play(){pause();if(locked||still)return;timer=setInterval(function(){go(i+1);},6000);}
+function lock(){locked=true;pause();}
+for(var d=0;d<dots.length;d++){(function(k){dots[k].addEventListener('click',function(){lock();go(k);});})(d);}
+stage.addEventListener('pointerenter',pause);
+stage.addEventListener('pointerleave',play);
+stage.addEventListener('focusin',lock);
+var faces=stage.querySelectorAll('.set-facade');
+for(var f=0;f<faces.length;f++){faces[f].addEventListener('click',function(){
+lock();
+var id=this.getAttribute('data-yt');
+var fr=document.createElement('iframe');
+fr.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1';
+fr.title=this.getAttribute('data-title');
+fr.loading='lazy';fr.allowFullscreen=true;
+fr.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+var wrap=document.createElement('div');wrap.className='video-frame';wrap.appendChild(fr);
+this.parentNode.replaceChild(wrap,this);
+});}
+go(0);play();
+})();
+</script>
 </body>
 </html>
