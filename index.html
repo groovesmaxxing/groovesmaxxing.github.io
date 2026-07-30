@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>groovesMAXXING — your friend with good taste in dance music</title>
+<title>groovesMAXXING · your friend with good taste in dance music</title>
 <meta name="description" content="house, techno & indie dance curated by your friend with good taste. new releases, live sets, hidden gems, 686 artists deep.">
 <link rel="icon" type="image/png" href="favicon.png">
-<meta property="og:title" content="groovesMAXXING — your friend with good taste in dance music">
+<meta property="og:title" content="groovesMAXXING · your friend with good taste in dance music">
 <meta property="og:description" content="house, techno & indie dance. new releases · live sets · hidden gems. 686 artists deep.">
 <meta property="og:image" content="https://groovesmaxxing.github.io/og-image.png">
 <meta property="og:url" content="https://groovesmaxxing.github.io/">
@@ -135,6 +135,20 @@ h2{font-weight:900;font-size:clamp(1.9rem,4.5vw,2.8rem);line-height:1.1;margin-b
 .serie a.more{font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.1em;text-decoration:none;border-bottom:2px solid var(--racing);padding-bottom:2px;display:inline-block;margin-top:8px}
 .serie a.more:hover{color:var(--deep)}
 
+/* area nav + hover previews */
+.area-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:9px 18px;margin-top:30px;max-width:760px}
+.area-nav a{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.12em;text-decoration:none;color:var(--steel);border-bottom:1px solid transparent;padding-bottom:3px;transition:color .18s,border-color .18s}
+.area-nav a:hover,.area-nav a:focus-visible{color:var(--day);border-bottom-color:var(--racing)}
+.area-nav .off{color:var(--racing)}
+#gm-pv{position:fixed;z-index:60;width:262px;background:#141416;border:1px solid rgba(255,28,2,.45);border-radius:14px;padding:14px 16px;box-shadow:0 18px 44px rgba(0,0,0,.55);opacity:0;transform:translateY(6px);pointer-events:none;transition:opacity .16s ease,transform .16s ease}
+#gm-pv.on{opacity:1;transform:translateY(0)}
+#gm-pv .pv-eye{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.16em;color:var(--racing);display:block;margin-bottom:7px}
+#gm-pv .pv-t{font-weight:900;font-size:1rem;line-height:1.2;color:var(--day);display:block;margin-bottom:6px}
+#gm-pv .pv-d{font-size:.82rem;line-height:1.45;color:#c9c9c4;display:block}
+#gm-pv .pv-m{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.1em;color:var(--steel);display:block;margin-top:10px;border-top:1px solid rgba(255,255,255,.12);padding-top:8px}
+@media (hover:none){#gm-pv{display:none}}
+@media (max-width:620px){.area-nav{gap:7px 14px}.area-nav a{font-size:.66rem}}
+
 /* footer */
 footer{padding:70px 0 50px;text-align:center}
 .foot-links{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;margin:22px 0 30px}
@@ -159,7 +173,7 @@ fill="none" stroke="#F2F2EF" stroke-width="7" stroke-linecap="round" stroke-line
 <h1 class="wordmark">grooves<span class="max">MAXXING</span></h1>
 <p class="tagline">your friend with good taste in dance music 📈</p>
 <nav class="icon-row" aria-label="main links">
-<a class="icon-btn" href="https://open.spotify.com/playlist/4at8EiW5d5QjpPOsoZbB7r" target="_blank" rel="noopener" aria-label="the playlist on spotify" title="the playlist">
+<a class="icon-btn" href="https://open.spotify.com/user/1266604545" target="_blank" rel="noopener" aria-label="spotify profile" title="spotify">
 <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M6.8 9.4c3.4-1 7-.6 10 .9M7.3 12.5c2.8-.8 5.7-.5 8.2.8M7.8 15.4c2.2-.6 4.4-.3 6.3.7"/></svg>
 </a>
 <a class="icon-btn" href="https://www.instagram.com/groovesmaxxing" target="_blank" rel="noopener" aria-label="instagram" title="instagram">
@@ -176,7 +190,18 @@ fill="none" stroke="#F2F2EF" stroke-width="7" stroke-linecap="round" stroke-line
 </a>
 </nav>
 <nav class="hero-links" aria-label="events radar">
-<a class="pill solid" href="events.html">📡 events radar — where the grooves are</a>
+<a class="pill solid" href="events.html" data-pv-t="events radar" data-pv-d="where the grooves are. big festivals across the us, underground rooms city by city, denver deepest." data-pv-m="its own page ↗ · refreshed weekly">📡 events radar · where the grooves are</a>
+</nav>
+<nav class="area-nav" aria-label="the areas">
+<a href="#about" data-pv-t="the deal" data-pv-d="we listen to everything. you get the good stuff. house, techno and indie dance, curated like a friend texting you bangers." data-pv-m="686 artists · 1,000+ tracks · zero skips">the deal</a>
+<a href="#story" data-pv-t="the story" data-pv-d="why this exists. one person sending way too many songs to the group chat, until the group chat got too small." data-pv-m="fun first · zero budget · no pay-to-play">the story</a>
+<a href="#lanes" data-pv-t="the sound" data-pv-d="three lanes, one groove. daytime funk, night-shift bass, and the stuff that never made it to streaming." data-pv-m="vibes ☀️ · bumpy 🚧 · contraband 💎">the sound</a>
+<a href="#artists" data-pv-t="who we follow" data-pv-d="686 artists deep, sorted into the scenes they actually belong to. the israeli wave, the uk minimal heads, the legends, and more." data-pv-m="7 clusters · the heavy-rotation eleven">who we follow</a>
+<a href="#listen" data-pv-t="press play" data-pv-d="the playlists, embedded and playable right here. plus the two soundcloud mixes that refresh themselves off our taste." data-pv-m="4 players · daily drops + weekly wave">press play</a>
+<a href="#library" data-pv-t="the library" data-pv-d="sets worth your hour. solomun at orange for cercle, coachella yuma tent, knockdown center warehouse pressure." data-pv-m="7 sets · full dj-set playlist in the works">the library</a>
+<a href="#labels" data-pv-t="the imprint radar" data-pv-d="the labels that keep showing up when a track survives the skip test. hover any name on the wall to see why it earned the spot." data-pv-m="87 imprints · 4 tiers">the imprint radar</a>
+<a href="#series" data-pv-t="on the calendar" data-pv-d="the recurring stuff. what lands every week, and what lands every month." data-pv-m="fresh grooves friday · contraband of the week · events radar">on the calendar</a>
+<a href="roster.html" data-pv-t="the roster" data-pv-d="every artist and label we follow, on one page. filter it, search it, click any name to find them on instagram." data-pv-m="its own page ↗ · 686 artists · 22 labels">the roster <span class="off">↗</span></a>
 </nav>
 </header>
 
@@ -184,8 +209,8 @@ fill="none" stroke="#F2F2EF" stroke-width="7" stroke-linecap="round" stroke-line
 <div class="wrap">
 <span class="mono eyebrow">the deal</span>
 <h2>we listen to everything.<br>you get the good stuff.</h2>
-<p class="manifesto">house, techno &amp; indie dance, curated like a friend texting you bangers — <em>new releases</em> every friday, <em>live sets</em> worth your hour, and <em>hidden gems</em> you can't stream anywhere else.</p>
-<p class="about-foot">686 artists followed. 1,000+ tracks curated. zero skips. no ads, no sponsors, no corporate playlist politics — just taste, maxxed.</p>
+<p class="manifesto">house, techno &amp; indie dance, curated like a friend texting you bangers. <em>new releases</em> every friday, <em>live sets</em> worth your hour, and <em>hidden gems</em> you can't stream anywhere else.</p>
+<p class="about-foot">686 artists followed. 1,000+ tracks curated. zero skips. no ads, no sponsors, no corporate playlist politics. just taste, maxxed.</p>
 </div>
 </section>
 
@@ -193,9 +218,9 @@ fill="none" stroke="#F2F2EF" stroke-width="7" stroke-linecap="round" stroke-line
 <div class="wrap">
 <span class="mono eyebrow">the story</span>
 <h2>why this exists</h2>
-<p>groovesmaxxing started the way every good obsession does: one person sending way too many songs to the group chat. the playlists got long. the follows got longer. eventually "you have to hear this" needed a bigger room than a text thread — so here we are.</p>
-<p>the rules are simple. <strong>fun first.</strong> this page exists because sharing music you love is one of life's genuinely great feelings, and for no other reason. <strong>zero budget.</strong> everything here runs on free tools and stubbornness. <strong>no pay-to-play.</strong> no ads, no sponsors, nobody sliding into the inbox to buy a slot — if a track is here, it's because it slaps. <strong>lowercase forever.</strong> corporate never.</p>
-<p>what that adds up to: new releases filtered down every friday so you don't have to dig, live sets that actually earn their runtime, artist deep-dives on the people who define the sound, and the contraband — edits, bootlegs and unreleased heat that never touches a streaming service. consider this your friend with permanent aux privileges.</p>
+<p>groovesmaxxing started the way every good obsession does: one person sending way too many songs to the group chat. the playlists got long. the follows got longer. eventually "you have to hear this" needed a bigger room than a text thread. so here we are.</p>
+<p>the rules are simple. <strong>fun first.</strong> this page exists because sharing music you love is one of life's genuinely great feelings, and for no other reason. <strong>zero budget.</strong> everything here runs on free tools and stubbornness. <strong>no pay-to-play.</strong> no ads, no sponsors, nobody sliding into the inbox to buy a slot. if a track is here, it's because it slaps. <strong>lowercase forever.</strong> corporate never.</p>
+<p>what that adds up to: new releases filtered down every friday so you don't have to dig, live sets that actually earn their runtime, artist deep-dives on the people who define the sound, and the contraband: edits, bootlegs and unreleased heat that never touches a streaming service. consider this your friend with permanent aux privileges.</p>
 </div>
 </section>
 
@@ -206,7 +231,7 @@ fill="none" stroke="#F2F2EF" stroke-width="7" stroke-linecap="round" stroke-line
 <div class="lanes">
 <div class="lane lane-vibes">
 <h3>vibes ☀️</h3>
-<p>sunny, funky, disco-leaning house — the daytime groove. french touch energy, rooftop approved.</p>
+<p>sunny, funky, disco-leaning house. the daytime groove. french touch energy, rooftop approved.</p>
 <p class="who">JØRD · Brunello · OMRI. · Bonafique · Mita Gami · BUJA (BR) · Toman</p>
 </div>
 <div class="lane lane-bumpy">
@@ -227,36 +252,36 @@ fill="none" stroke="#F2F2EF" stroke-width="7" stroke-linecap="round" stroke-line
 <div class="wrap">
 <span class="mono eyebrow">who we follow</span>
 <h2>686 artists deep</h2>
-<p class="roster-cta"><a class="more" href="roster.html">see all 708 →</a></p>
-<p class="canon">the heavy rotation — the eleven that define the page: <span>Solomun · Vintage Culture · Notre Dame · Adam Ten · Mita Gami · Max Styler · AYYBO · TOBEHONEST · PAWSA · Volkoder · Misha Klein</span> <i>— everyone else orbits these.</i></p>
+<p class="roster-cta"><a class="more" href="roster.html" data-pv-t="the roster" data-pv-d="every artist and label we follow, on one page. filter it, search it, click any name to find them on instagram." data-pv-m="its own page ↗ · 686 artists · 22 labels">see all 686 artists + 22 labels →</a></p>
+<p class="canon">the heavy rotation, the eleven that define the page: <span>Solomun · Vintage Culture · Notre Dame · Adam Ten · Mita Gami · Max Styler · AYYBO · TOBEHONEST · PAWSA · Volkoder · Misha Klein</span> <i>· everyone else orbits these.</i></p>
 <div class="clusters">
 <div class="cluster">
 <h3>the gdb × nu moda pipeline</h3>
-<p>AYYBO running GDB, Max Styler running Nu Moda — when your most-played artists also run the imprints, the algorithm didn't find them. you did.</p>
+<p>AYYBO running GDB, Max Styler running Nu Moda. when your most-played artists also run the imprints, the algorithm didn't find them. you did.</p>
 </div>
 <div class="cluster">
 <h3>the israeli wave</h3>
-<p>Adam Ten, Mita Gami, Guy Katch, Niv Ast, Rem Siman, OMRI., Gozlan and a dozen more — the maccabi house orbit, where melodic groove got its passport renewed.</p>
+<p>Adam Ten, Mita Gami, Guy Katch, Niv Ast, Rem Siman, OMRI., Gozlan and a dozen more. the maccabi house orbit, where melodic groove got its passport renewed.</p>
 </div>
 <div class="cluster">
 <h3>the uk minimal heads</h3>
-<p>Chris Stussy, Kolter, Sidney Charles, M-High, Josh Baker, Max Dean, Toman, Beltran — rolling basslines, boutique labels, zero big-room nonsense.</p>
+<p>Chris Stussy, Kolter, Sidney Charles, M-High, Josh Baker, Max Dean, Toman, Beltran. rolling basslines, boutique labels, zero big-room nonsense.</p>
 </div>
 <div class="cluster">
 <h3>the legends</h3>
-<p>Green Velvet, Mike Dunn, Deep Dish, Armand Van Helden, Seth Troxler, The Martinez Brothers — and the king himself, Solomun. respect the foundation or leave the building.</p>
+<p>Green Velvet, Mike Dunn, Deep Dish, Armand Van Helden, Seth Troxler, The Martinez Brothers, and the king himself, Solomun. respect the foundation or leave the building.</p>
 </div>
 <div class="cluster">
 <h3>the melodic heavyweights</h3>
-<p>ARTBAT, Anyma, Adriatique, Bedouin, Monolink, Black Coffee — for when the night needs a narrative arc.</p>
+<p>ARTBAT, Anyma, Adriatique, Bedouin, Monolink, Black Coffee. for when the night needs a narrative arc.</p>
 </div>
 <div class="cluster">
 <h3>the sunshine committee</h3>
-<p>Yuksek, The Magician, Purple Disco Machine, Horse Meat Disco, Satin Jackets, Poolside — the daytime cabinet. someone has to govern the rooftop.</p>
+<p>Yuksek, The Magician, Purple Disco Machine, Horse Meat Disco, Satin Jackets, Poolside. the daytime cabinet. someone has to govern the rooftop.</p>
 </div>
 <div class="cluster">
 <h3>the mainstage crossover</h3>
-<p>Mau P, Dom Dolla, FISHER, John Summit, Chris Lake — the tech house that clawed out of the sweaty club and onto the festival main stage without losing the bounce. proof the big room can still have taste.</p>
+<p>Mau P, Dom Dolla, FISHER, John Summit, Chris Lake. the tech house that clawed out of the sweaty club and onto the festival main stage without losing the bounce. proof the big room can still have taste.</p>
 </div>
 </div>
 </div>
@@ -266,10 +291,10 @@ fill="none" stroke="#F2F2EF" stroke-width="7" stroke-linecap="round" stroke-line
 <div class="wrap">
 <span class="mono eyebrow">press play</span>
 <h2>the playlists</h2>
-<p class="note" style="margin:4px 0 20px">crate rule: grooves added weekly — the freshest adds live at the bottom of each crate ↓</p>
+<p class="note" style="margin:4px 0 20px">crate rule: grooves added weekly. the freshest adds live at the bottom of each crate ↓</p>
 <div class="players">
 <div class="player">
-<h4>groovesmaxxing — the flagship</h4>
+<h4>groovesmaxxing · the flagship</h4>
 <iframe src="https://open.spotify.com/embed/playlist/4at8EiW5d5QjpPOsoZbB7r?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="groovesmaxxing flagship playlist on Spotify"></iframe>
 <p class="note">the best of every lane, one glass</p>
 </div>
@@ -292,7 +317,7 @@ fill="none" stroke="#F2F2EF" stroke-width="7" stroke-linecap="round" stroke-line
 <div class="mix-row">
 <a class="pill" href="https://soundcloud.com/discover/sets/new-for-you::user-675637809" target="_blank" rel="noopener">daily drops ↻</a>
 <a class="pill" href="https://soundcloud.com/discover/sets/weekly::user-675637809" target="_blank" rel="noopener">weekly wave ↻</a>
-<span class="mono">auto-refreshing soundcloud mixes off our taste — new picks every week</span>
+<span class="mono">auto-refreshing soundcloud mixes off our taste. new picks every week</span>
 </div>
 </div>
 </section>
@@ -421,7 +446,7 @@ fill="none" stroke="#F2F2EF" stroke-width="7" stroke-linecap="round" stroke-line
 <div class="series">
 <div class="serie">
 <h3>fresh grooves friday</h3>
-<p>the week's best new releases, every friday. no filler — if it's in, it goes.</p>
+<p>the week's best new releases, every friday. no filler. if it's in, it goes.</p>
 </div>
 <div class="serie">
 <h3>contraband of the week</h3>
@@ -429,8 +454,8 @@ fill="none" stroke="#F2F2EF" stroke-width="7" stroke-linecap="round" stroke-line
 </div>
 <div class="serie">
 <h3>events radar</h3>
-<p>the monthly map of where the grooves are — big festivals across the us, underground rooms city by city, denver deepest. refreshed the 1st.</p>
-<a class="more" href="events.html">open the radar →</a>
+<p>the map of where the grooves are. big festivals across the us, underground rooms city by city, denver deepest. refreshed every week.</p>
+<a class="more" href="events.html" data-pv-t="events radar" data-pv-d="tier 1 is the festivals worth traveling for. tier 2 is the small rooms, denver deepest, plus nyc, la, chicago, miami and sf." data-pv-m="its own page ↗ · refreshed weekly">open the radar →</a>
 </div>
 </div>
 </div>
@@ -494,6 +519,38 @@ var wrap=document.createElement('div');wrap.className='video-frame';wrap.appendC
 this.parentNode.replaceChild(wrap,this);
 });}
 go(0);play();
+})();
+</script>
+<script>
+(function(){
+var links=document.querySelectorAll('[data-pv-t]');if(!links.length)return;
+if(!window.matchMedia('(hover:hover)').matches)return;
+var box=document.createElement('div');box.id='gm-pv';box.setAttribute('role','tooltip');
+box.innerHTML='<span class="pv-eye">preview</span><span class="pv-t"></span><span class="pv-d"></span><span class="pv-m"></span>';
+document.body.appendChild(box);
+var t=box.querySelector('.pv-t'),d=box.querySelector('.pv-d'),m=box.querySelector('.pv-m'),hide=null;
+function show(el){
+clearTimeout(hide);
+t.textContent=el.getAttribute('data-pv-t')||'';
+d.textContent=el.getAttribute('data-pv-d')||'';
+var mv=el.getAttribute('data-pv-m')||'';m.textContent=mv;m.style.display=mv?'block':'none';
+box.classList.add('on');
+var r=el.getBoundingClientRect(),w=box.offsetWidth,hh=box.offsetHeight,gap=12;
+var left=r.left+r.width/2-w/2;
+left=Math.max(12,Math.min(left,window.innerWidth-w-12));
+var top=r.bottom+gap;
+if(top+hh>window.innerHeight-12){top=r.top-hh-gap;}
+box.style.left=left+'px';box.style.top=Math.max(12,top)+'px';
+}
+function off(){hide=setTimeout(function(){box.classList.remove('on');},120);}
+for(var i=0;i<links.length;i++){
+links[i].addEventListener('mouseenter',function(){show(this);});
+links[i].addEventListener('mouseleave',off);
+links[i].addEventListener('focus',function(){show(this);});
+links[i].addEventListener('blur',off);
+}
+window.addEventListener('scroll',function(){box.classList.remove('on');},{passive:true});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){box.classList.remove('on');}});
 })();
 </script>
 </body>
