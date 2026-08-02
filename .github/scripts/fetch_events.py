@@ -27,6 +27,14 @@ OUT_FILE = "radar-events.json"
 CALL_BUDGET = 4500
 SLEEP = 0.25  # 4/sec, under the 5/sec cap
 
+# short or generic stage names collide with unrelated acts on ticketmaster, so a
+# keyword search confidently returns the wrong band. these names are decided by
+# hand instead of by search. None means never match this name to anything.
+# rewritten every run, so fixing an entry here repairs a bad cache automatically.
+OVERRIDES = {
+    "Void": None,  # ticketmaster's Void is a louisiana thrash band, not the tech house one
+}
+
 calls = 0
 
 
@@ -106,6 +114,9 @@ def main():
     # phase 1: resolve attraction ids for artists not yet cached.
     # a null id is re-checked after 30 days, a found id is permanent.
     for name in artists:
+        if name in OVERRIDES:
+            cache[name] = {"id": OVERRIDES[name], "checked": today}
+            continue
         entry = cache.get(name)
         if entry and entry.get("id"):
             continue
