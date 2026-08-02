@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>on tour · groovesmaxxing</title>
+  <meta name="description" content="where the 686 artists we follow are playing next. refreshed nightly from ticketmaster, searchable by artist and city, denver one tap away.">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --night:#0B0B0D; --racing:#FF1C02; --deep:#CC1400; --day:#F2F2EF; --steel:#8A8A93; --card:#141417; --card2:#1a1a1f; --line:#2a2a31; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background:var(--night); color:var(--day); font-family:'Poppins',sans-serif; line-height:1.6; }
+    .mono { font-family:'Space Mono',monospace; }
+    .wrap { max-width:900px; margin:0 auto; padding:0 24px; }
+    .top { padding:28px 0 0; }
+    .back { color:var(--steel); text-decoration:none; font-family:'Space Mono',monospace; font-size:.85rem; }
+    .back:hover { color:var(--racing); }
+    header.page { padding:48px 0 8px; }
+    .eyebrow { display:block; color:var(--racing); font-size:.75rem; letter-spacing:.18em; margin-bottom:10px; }
+    h1 { font-weight:900; font-size:clamp(2.2rem,6vw,3.4rem); line-height:1.05; }
+    .lede { color:#c9c9c2; max-width:640px; margin-top:14px; }
+    .lede a, .fine a { color:var(--racing); text-decoration:none; }
+    .lede a:hover, .fine a:hover { text-decoration:underline; }
+    .stamp { color:var(--steel); font-size:.75rem; margin-top:10px; }
+    .tools { display:flex; gap:10px; flex-wrap:wrap; margin:26px 0 6px; }
+    #q { flex:1; min-width:220px; background:#151518; border:1px solid #2c2c31; border-radius:999px; padding:12px 18px; color:var(--day); font-family:'Space Mono',monospace; font-size:.85rem; }
+    #q:focus { outline:none; border-color:var(--racing); }
+    .chip { background:none; border:1px solid var(--line); border-radius:999px; padding:10px 18px; color:var(--steel); font-family:'Space Mono',monospace; font-size:.78rem; cursor:pointer; }
+    .chip:hover { border-color:var(--racing); color:var(--day); }
+    .chip.on { background:var(--racing); border-color:var(--racing); color:#fff; }
+    #count { color:var(--steel); font-size:.75rem; padding:8px 0 4px; }
+    .list { padding:8px 0 40px; }
+    .ev { display:flex; gap:16px; align-items:baseline; border-bottom:1px solid var(--line); padding:12px 4px; }
+    .ev .d { font-family:'Space Mono',monospace; color:var(--racing); font-size:.78rem; white-space:nowrap; min-width:88px; }
+    .ev .a { font-weight:600; }
+    .ev .w { color:#c9c9c2; font-size:.88rem; flex:1; }
+    .ev .go { color:var(--racing); text-decoration:none; font-family:'Space Mono',monospace; font-size:.75rem; white-space:nowrap; }
+    .ev .go:hover { color:var(--day); }
+    #empty { color:var(--steel); padding:40px 0; display:none; }
+    .fine { color:#6a6a66; font-size:.75rem; padding:8px 0 24px; max-width:640px; }
+    footer { border-top:1px solid var(--line); padding:20px 0 40px; }
+    footer .mono { color:var(--steel); font-size:.75rem; }
+    footer a { color:var(--steel); text-decoration:none; }
+    footer a:hover { color:var(--racing); }
+    @media (max-width:560px){ .ev { flex-wrap:wrap; gap:6px 12px; } .ev .w { flex-basis:100%; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top"><a class="back" href="index.html">← groovesmaxxing</a></div>
+
+    <header class="page">
+      <span class="mono eyebrow">the follow list, live</span>
+      <h1>on tour</h1>
+      <p class="lede">where the artists we follow are playing next. swept nightly from ticketmaster across all 686 names on <a href="roster.html">the roster</a>, searchable by artist or city.</p>
+      <p class="stamp mono" id="stamp">loading the radar…</p>
+    </header>
+
+    <div class="tools">
+      <input id="q" type="search" placeholder="search an artist or a city" aria-label="search an artist or a city">
+      <button class="chip" id="denver" type="button">denver</button>
+    </div>
+    <p class="mono" id="count"></p>
+
+    <div class="list" id="list"></div>
+    <p id="empty">nothing matches that. try fewer letters, or clear denver.</p>
+
+    <p class="fine">ticketmaster carries most us tours and misses plenty of club rooms and european dates, so an empty result means "not on ticketmaster," not "not touring." the curated monthly picks stay on <a href="events.html">the radar</a>.</p>
+
+    <footer>
+      <p class="mono"><a href="index.html">home</a> · <a href="events.html">events</a> · <a href="venues.html">venues</a> · <a href="friday.html">the letter</a> · <a href="roster.html">roster</a> · vibes + grooves, maxxed 📈</p>
+    </footer>
+  </div>
+
+  <script>
+  (function(){
+    var list = document.getElementById('list');
+    var q = document.getElementById('q');
+    var den = document.getElementById('denver');
+    var count = document.getElementById('count');
+    var empty = document.getElementById('empty');
+    var stamp = document.getElementById('stamp');
+    var all = [];
+    var denverOn = false;
+
+    function esc(s){ var d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
+
+    function fmtDate(iso){
+      if(!iso) return 'tba';
+      var p = iso.split('-');
+      var months = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+      return months[(+p[1]||1)-1] + ' ' + (+p[2]||'') + ' ' + p[0].slice(2);
+    }
+
+    function render(){
+      var term = (q.value || '').toLowerCase().trim();
+      var rows = all.filter(function(e){
+        if(denverOn && (e.city || '').toLowerCase() !== 'denver' && (e.city || '').toLowerCase() !== 'morrison' && (e.city || '').toLowerCase() !== 'englewood') return false;
+        if(!term) return true;
+        return (e.artist || '').toLowerCase().indexOf(term) > -1 || (e.city || '').toLowerCase().indexOf(term) > -1 || (e.venue || '').toLowerCase().indexOf(term) > -1;
+      });
+      list.innerHTML = rows.slice(0, 400).map(function(e){
+        return '<div class="ev"><span class="d">' + esc(fmtDate(e.date)) + '</span><span class="a">' + esc(e.artist) + '</span><span class="w">' + esc(e.venue) + ' · ' + esc(e.city) + (e.region ? ', ' + esc(e.region) : '') + '</span>' + (e.url ? '<a class="go" href="' + esc(e.url) + '" target="_blank" rel="noopener">tickets ↗</a>' : '') + '</div>';
+      }).join('');
+      count.textContent = rows.length ? rows.length + ' shows' + (rows.length > 400 ? ', showing the first 400' : '') : '';
+      empty.style.display = rows.length ? 'none' : 'block';
+    }
+
+    q.addEventListener('input', render);
+    den.addEventListener('click', function(){ denverOn = !denverOn; den.className = 'chip' + (denverOn ? ' on' : ''); render(); });
+
+    fetch('radar-events.json').then(function(r){ return r.json(); }).then(function(data){
+      all = data.events || [];
+      if(data.generated){
+        stamp.textContent = 'swept nightly · last sweep ' + data.generated.slice(0,10) + ' · ' + (data.artists_with_events || 0) + ' of ' + (data.artist_count || 686) + ' artists have dates on ticketmaster';
+      } else {
+        stamp.textContent = 'the radar is warming up. the first nightly sweep has not run yet.';
+      }
+      render();
+    }).catch(function(){
+      stamp.textContent = 'could not load the radar data. refresh, or check back in a minute.';
+      empty.style.display = 'block';
+    });
+  })();
+  </script>
+</body>
+</html>
