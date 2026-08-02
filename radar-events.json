@@ -1,341 +1,8 @@
 {
-"generated": "2026-08-02T02:03:42+00:00",
-"artist_count": 686,
-"artists_with_events": 164,
+"generated": "2026-08-02T12:44:49+00:00",
+"artist_count": 682,
+"artists_with_events": 156,
 "events": [
-{
-"date": "2026-07-30",
-"event": "Audi Presents Wilderness 2026 - Weekend General",
-"venue": "Cornbury Park",
-"city": "Oxfordshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/audi-presents-wilderness-2026-weekend-general-oxfordshire-30-07-2026/event/1F0062E8D78B353E",
-"artist": "Eats Everything"
-},
-{
-"date": "2026-07-30",
-"event": "Audi Presents Wilderness 2026 - Sustainable Weekend General",
-"venue": "Cornbury Park",
-"city": "Oxfordshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/audi-presents-wilderness-2026-sustainable-weekend-oxfordshire-30-07-2026/event/1F0062E7A7280FAA",
-"artist": "Eats Everything"
-},
-{
-"date": "2026-07-31",
-"event": "OSHEAGA 2026 - 3-jours",
-"venue": "Parc Jean Drapeau",
-"city": "Montreal",
-"region": "QC",
-"url": "https://www.ticketmaster.ca/osheaga-2026-3jours-montreal-quebec-07-31-2026/event/310062F596CF166E",
-"artist": "Bob Moses"
-},
-{
-"date": "2026-07-31",
-"event": "All Together Now - Weekend Camping",
-"venue": "Curraghmore House",
-"city": "Portlaw",
-"region": "IE",
-"url": "https://www.ticketmaster.ie/all-together-now-weekend-camping-portlaw-31-07-2026/event/180062FE90F31DE4",
-"artist": "Disclosure"
-},
-{
-"date": "2026-07-31",
-"event": "All Together Now - Weekend Family Camping",
-"venue": "Curraghmore House",
-"city": "Portlaw",
-"region": "IE",
-"url": "https://www.ticketmaster.ie/all-together-now-weekend-family-camping-portlaw-31-07-2026/event/180062FE90F51E05",
-"artist": "Disclosure"
-},
-{
-"date": "2026-07-31",
-"event": "OSHEAGA 2026 - 3-jours",
-"venue": "Parc Jean Drapeau",
-"city": "Montreal",
-"region": "QC",
-"url": "https://www.ticketmaster.ca/osheaga-2026-3jours-montreal-quebec-07-31-2026/event/310062F596CF166E",
-"artist": "Odd Mob"
-},
-{
-"date": "2026-07-31",
-"event": "OSHEAGA 2026 - 3-jours",
-"venue": "Parc Jean Drapeau",
-"city": "Montreal",
-"region": "QC",
-"url": "https://www.ticketmaster.ca/osheaga-2026-3jours-montreal-quebec-07-31-2026/event/310062F596CF166E",
-"artist": "SG Lewis"
-},
-{
-"date": "2026-07-31",
-"event": "OSHEAGA 2026 - 3-jours",
-"venue": "Parc Jean Drapeau",
-"city": "Montreal",
-"region": "QC",
-"url": "https://www.ticketmaster.ca/osheaga-2026-3jours-montreal-quebec-07-31-2026/event/310062F596CF166E",
-"artist": "Vandelux"
-},
-{
-"date": "2026-07-31",
-"event": "OSHEAGA 2026 - 3-jours",
-"venue": "Parc Jean Drapeau",
-"city": "Montreal",
-"region": "QC",
-"url": "https://www.ticketmaster.ca/osheaga-2026-3jours-montreal-quebec-07-31-2026/event/310062F596CF166E",
-"artist": "it's murph"
-},
-{
-"date": "2026-08-01",
-"event": "Veld Music Festival",
-"venue": "Downsview Park Toronto",
-"city": "Toronto",
-"region": "ON",
-"url": "https://on.fgtix.com/trk/B4W4b",
-"artist": "ARTBAT"
-},
-{
-"date": "2026-08-01",
-"event": "Lollapalooza",
-"venue": "Grant Park",
-"city": "Chicago",
-"region": "IL",
-"url": "https://on.fgtix.com/trk/8SiN",
-"artist": "AYYBO"
-},
-{
-"date": "2026-08-01",
-"event": "Pride on the Park - Weekend",
-"venue": "Preston Park",
-"city": "Brighton",
-"region": "GB",
-"url": "https://www.universe.com/events/pride-on-the-park-weekend-tickets-M5H6K4?ref=ticketmaster",
-"artist": "Armand Van Helden"
-},
-{
-"date": "2026-08-01",
-"event": "HARD Summer Music Festival",
-"venue": "Hollywood Park Grounds",
-"city": "Inglewood",
-"region": "CA",
-"url": "https://on.fgtix.com/trk/5oHm",
-"artist": "Chris Lorenzo"
-},
-{
-"date": "2026-08-01",
-"event": "Chris Stapleton's All-American Road Show",
-"venue": "Paycor Stadium",
-"city": "Cincinnati",
-"region": "OH",
-"url": "https://www.ticketmaster.com/chris-stapletons-allamerican-road-show-cincinnati-ohio-08-01-2026/event/16006390C3A18304",
-"artist": "Chris Stapleton"
-},
-{
-"date": "2026-08-01",
-"event": "D.O.D",
-"venue": "Ocean Resort Casino - HQ2 Beachclub",
-"city": "Atlantic City",
-"region": "NJ",
-"url": "https://www.ticketweb.com/event/dod-ocean-casino-resort-tickets/14860623?REFERRAL_ID=tmfeed",
-"artist": "D.O.D"
-},
-{
-"date": "2026-08-01",
-"event": "HARD Summer Music Festival",
-"venue": "Hollywood Park Grounds",
-"city": "Inglewood",
-"region": "CA",
-"url": "https://on.fgtix.com/trk/5oHm",
-"artist": "DREYA V"
-},
-{
-"date": "2026-08-01",
-"event": "Lollapalooza",
-"venue": "Grant Park",
-"city": "Chicago",
-"region": "IL",
-"url": "https://on.fgtix.com/trk/8SiN",
-"artist": "Disco Lines"
-},
-{
-"date": "2026-08-01",
-"event": "Chasing Summer Music Festival",
-"venue": "Max Bell Centre",
-"city": "Calgary",
-"region": "AB",
-"url": "https://on.fgtix.com/trk/LWW4b",
-"artist": "Elderbrook"
-},
-{
-"date": "2026-08-01",
-"event": "Chasing Summer Music Festival",
-"venue": "Max Bell Centre",
-"city": "Calgary",
-"region": "AB",
-"url": "https://on.fgtix.com/trk/LWW4b",
-"artist": "FISHER"
-},
-{
-"date": "2026-08-01",
-"event": "Veld Music Festival",
-"venue": "Downsview Park Toronto",
-"city": "Toronto",
-"region": "ON",
-"url": "https://on.fgtix.com/trk/B4W4b",
-"artist": "GENESI"
-},
-{
-"date": "2026-08-01",
-"event": "Harry Styles: Together, Together",
-"venue": "Estadio GNP Seguros",
-"city": "Ciudad de México",
-"region": "CDMX",
-"url": "https://www.ticketmaster.com.mx/harry-styles-together-together-ciudad-de-mexico-01-08-2026/event/1400642CF26E894D",
-"artist": "Harry Styles"
-},
-{
-"date": "2026-08-01",
-"event": "Chasing Summer Music Festival",
-"venue": "Max Bell Centre",
-"city": "Calgary",
-"region": "AB",
-"url": "https://on.fgtix.com/trk/LWW4b",
-"artist": "Layton Giordani"
-},
-{
-"date": "2026-08-01",
-"event": "HARD Summer Music Festival",
-"venue": "Hollywood Park Grounds",
-"city": "Inglewood",
-"region": "CA",
-"url": "https://on.fgtix.com/trk/5oHm",
-"artist": "Mau P"
-},
-{
-"date": "2026-08-01",
-"event": "Lollapalooza",
-"venue": "Grant Park",
-"city": "Chicago",
-"region": "IL",
-"url": "https://on.fgtix.com/trk/8SiN",
-"artist": "Max Styler"
-},
-{
-"date": "2026-08-01",
-"event": "Tension Festival 2026 | Saturday | Nightsession | Notre Dame",
-"venue": "Nordstern",
-"city": "Basel",
-"region": "CH",
-"url": "https://www.ticketmaster.ch/event/tension-festival-2026-%7C-saturday-%7C-nightsession-%7C-notre-dame-tickets/699720074?language=en-us",
-"artist": "Notre Dame"
-},
-{
-"date": "2026-08-01",
-"event": "Osheaga 2026 - Samedi",
-"venue": "Parc Jean Drapeau",
-"city": "Montreal",
-"region": "QC",
-"url": "https://www.ticketmaster.ca/osheaga-2026-samedi-montreal-quebec-08-01-2026/event/3100647073D319C8",
-"artist": "Odd Mob"
-},
-{
-"date": "2026-08-01",
-"event": "L'Après OSHEAGA : Odd Mob",
-"venue": "MTELUS",
-"city": "Montreal",
-"region": "QC",
-"url": "https://www.ticketmaster.ca/lapres-osheaga-odd-mob-montreal-quebec-08-01-2026/event/310064EE9E353D24",
-"artist": "Odd Mob"
-},
-{
-"date": "2026-08-01",
-"event": "HARD Summer Music Festival",
-"venue": "Hollywood Park Grounds",
-"city": "Inglewood",
-"region": "CA",
-"url": "https://on.fgtix.com/trk/5oHm",
-"artist": "Omar+"
-},
-{
-"date": "2026-08-01",
-"event": "Lollapalooza",
-"venue": "Grant Park",
-"city": "Chicago",
-"region": "IL",
-"url": "https://on.fgtix.com/trk/8SiN",
-"artist": "Peace Control"
-},
-{
-"date": "2026-08-01",
-"event": "Pride on the Park - Weekend",
-"venue": "Preston Park",
-"city": "Brighton",
-"region": "GB",
-"url": "https://www.universe.com/events/pride-on-the-park-weekend-tickets-M5H6K4?ref=ticketmaster",
-"artist": "Purple Disco Machine"
-},
-{
-"date": "2026-08-01",
-"event": "Chasing Summer Music Festival",
-"venue": "Max Bell Centre",
-"city": "Calgary",
-"region": "AB",
-"url": "https://on.fgtix.com/trk/LWW4b",
-"artist": "San Pacho"
-},
-{
-"date": "2026-08-01",
-"event": "Chasing Summer Day 1 Ap W/ San Pacho",
-"venue": "Commonwealth Bar",
-"city": "Calgary",
-"region": "AB",
-"url": "https://www.ticketweb.ca/event/chasing-summer-day-1-ap-commonwealth-bar-stage-tickets/14274154?REFERRAL_ID=tmfeed",
-"artist": "San Pacho"
-},
-{
-"date": "2026-08-01",
-"event": "Tame Impala - The Deadbeat Tour ",
-"venue": "Spectrum Center",
-"city": "Charlotte",
-"region": "NC",
-"url": "https://www.ticketmaster.com/tame-impala-the-deadbeat-tour-charlotte-north-carolina-08-01-2026/event/2D00643695539E04",
-"artist": "Tame Impala"
-},
-{
-"date": "2026-08-01",
-"event": "Chasing Summer Music Festival",
-"venue": "Max Bell Centre",
-"city": "Calgary",
-"region": "AB",
-"url": "https://on.fgtix.com/trk/LWW4b",
-"artist": "Tiga"
-},
-{
-"date": "2026-08-01",
-"event": "Heathen, VOID",
-"venue": "Nikki Lopez Philly",
-"city": "Philadelphia",
-"region": "PA",
-"url": "https://www.ticketweb.com/event/heathen-void-nikki-lopez-philly-tickets/14198094",
-"artist": "Void"
-},
-{
-"date": "2026-08-01",
-"event": "Chasing Summer Music Festival",
-"venue": "Max Bell Centre",
-"city": "Calgary",
-"region": "AB",
-"url": "https://on.fgtix.com/trk/LWW4b",
-"artist": "it's murph"
-},
-{
-"date": "2026-08-01",
-"event": "Osheaga 2026 - Samedi",
-"venue": "Parc Jean Drapeau",
-"city": "Montreal",
-"region": "QC",
-"url": "https://www.ticketmaster.ca/osheaga-2026-samedi-montreal-quebec-08-01-2026/event/3100647073D319C8",
-"artist": "it's murph"
-},
 {
 "date": "2026-08-02",
 "event": "Pride on the Park - Sunday",
@@ -491,15 +158,6 @@
 },
 {
 "date": "2026-08-02",
-"event": "Tame Impala - The Deadbeat Tour ",
-"venue": "Spectrum Center",
-"city": "Charlotte",
-"region": "NC",
-"url": "https://www.ticketmaster.com/tame-impala-the-deadbeat-tour-charlotte-north-carolina-08-02-2026/event/2D00644CE908E9A1",
-"artist": "Tame Impala"
-},
-{
-"date": "2026-08-02",
 "event": "Veld Music Festival",
 "venue": "Downsview Park Toronto",
 "city": "Toronto",
@@ -572,48 +230,12 @@
 },
 {
 "date": "2026-08-04",
-"event": "Harry Styles: Together, Together",
-"venue": "Estadio GNP Seguros",
-"city": "Ciudad de México",
-"region": "CDMX",
-"url": "https://www.ticketmaster.com.mx/harry-styles-together-together-ciudad-de-mexico-04-08-2026/event/1400642CF26E894F",
-"artist": "Harry Styles"
-},
-{
-"date": "2026-08-04",
 "event": "Parcels (Valid government-issued photo ID is required for entry. Under 18 must be accompanied by an adult at all times)",
 "venue": "Pappy and Harriets Pioneertown Palace",
 "city": "Pioneertown",
 "region": "CA",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7xajP",
 "artist": "Parcels"
-},
-{
-"date": "2026-08-04",
-"event": "Tame Impala - The Deadbeat Tour ",
-"venue": "Bridgestone Arena",
-"city": "Nashville",
-"region": "TN",
-"url": "https://www.ticketmaster.com/tame-impala-the-deadbeat-tour-nashville-tennessee-08-04-2026/event/1B006444F3A11168",
-"artist": "Tame Impala"
-},
-{
-"date": "2026-08-05",
-"event": "Tame Impala - The Deadbeat Tour ",
-"venue": "Bridgestone Arena",
-"city": "Nashville",
-"region": "TN",
-"url": "https://www.ticketmaster.com/tame-impala-the-deadbeat-tour-nashville-tennessee-08-05-2026/event/1B00644CC4B60E9A",
-"artist": "Tame Impala"
-},
-{
-"date": "2026-08-06",
-"event": "Chris Stapleton's All-American Road Show",
-"venue": "Rogers Stadium",
-"city": "Toronto",
-"region": "ON",
-"url": "https://www.ticketmaster.ca/chris-stapletons-allamerican-road-show-toronto-ontario-08-06-2026/event/1000638C00EB9B47",
-"artist": "Chris Stapleton"
 },
 {
 "date": "2026-08-06",
@@ -625,15 +247,6 @@
 "artist": "RÜFÜS DU SOL"
 },
 {
-"date": "2026-08-06",
-"event": "Heathen, VOID, Shadow of the Talisman, War on the Horizon",
-"venue": "The Sanctuary Detroit",
-"city": "Hamtramck",
-"region": "MI",
-"url": "https://www.ticketweb.com/event/heathen-void-shadow-of-the-the-sanctuary-detroit-tickets/14192894",
-"artist": "Void"
-},
-{
 "date": "2026-08-07",
 "event": "Up in the Sky",
 "venue": "Base of Buttermilk Mountain",
@@ -641,24 +254,6 @@
 "region": "CO",
 "url": "https://on.fgtix.com/trk/w6v3b",
 "artist": "Fcukers"
-},
-{
-"date": "2026-08-07",
-"event": "Zona Vibra Harry Styles",
-"venue": "Estadio GNP Seguros",
-"city": "Ciudad de México",
-"region": "CDMX",
-"url": "https://www.ticketmaster.com.mx/zona-vibra-harry-styles-ciudad-de-mexico-07-08-2026/event/14006451E8D90A9F",
-"artist": "Harry Styles"
-},
-{
-"date": "2026-08-07",
-"event": "Harry Styles: Together, Together",
-"venue": "Estadio GNP Seguros",
-"city": "Ciudad de México",
-"region": "CDMX",
-"url": "https://www.ticketmaster.com.mx/harry-styles-together-together-ciudad-de-mexico-07-08-2026/event/1400642CF26E8951",
-"artist": "Harry Styles"
 },
 {
 "date": "2026-08-07",
@@ -685,15 +280,6 @@
 "city": "Newton-Le-Willows",
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/pete-tong-live-after-racing-county-newtonlewillows-07-08-2026/event/1F0064370AE37C7D",
-"artist": "Pete Tong"
-},
-{
-"date": "2026-08-07",
-"event": "Pete Tong Live After Racing Grandstand & Paddock",
-"venue": "Haydock Park Racecourse",
-"city": "Newton-Le-Willows",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/pete-tong-live-after-racing-grandstand-newtonlewillows-07-08-2026/event/1F00643707BB7AD6",
 "artist": "Pete Tong"
 },
 {
@@ -766,25 +352,7 @@
 "city": "Montreal",
 "region": "QC",
 "url": "https://www.ticketmaster.ca/ilesoniq-2026-2jours-montreal-quebec-08-08-2026/event/31006305D97A480A",
-"artist": "Chris Lake"
-},
-{
-"date": "2026-08-08",
-"event": "îLESONIQ 2026 - 2-jours",
-"venue": "Parc Jean Drapeau",
-"city": "Montreal",
-"region": "QC",
-"url": "https://www.ticketmaster.ca/ilesoniq-2026-2jours-montreal-quebec-08-08-2026/event/31006305D97A480A",
 "artist": "Chris Lorenzo"
-},
-{
-"date": "2026-08-08",
-"event": "Chris Stapleton's All-American Road Show",
-"venue": "Ford Field",
-"city": "Detroit",
-"region": "MI",
-"url": "https://www.ticketmaster.com/chris-stapletons-allamerican-road-show-detroit-michigan-08-08-2026/event/080063909F844B51",
-"artist": "Chris Stapleton"
 },
 {
 "date": "2026-08-08",
@@ -833,15 +401,6 @@
 },
 {
 "date": "2026-08-08",
-"event": "Harry Styles: Together, Together",
-"venue": "Estadio GNP Seguros",
-"city": "Ciudad de México",
-"region": "CDMX",
-"url": "https://www.ticketmaster.com.mx/harry-styles-together-together-ciudad-de-mexico-08-08-2026/event/1400642CF26F8954",
-"artist": "Harry Styles"
-},
-{
-"date": "2026-08-08",
 "event": "Juos",
 "venue": "Nova SD",
 "city": "San Diego",
@@ -856,15 +415,6 @@
 "city": "Montreal",
 "region": "QC",
 "url": "https://www.ticketmaster.ca/ilesoniq-2026-samedi-montreal-quebec-08-08-2026/event/3100646671AB29F9",
-"artist": "Marco Strous"
-},
-{
-"date": "2026-08-08",
-"event": "îLESONIQ 2026 - 2-jours",
-"venue": "Parc Jean Drapeau",
-"city": "Montreal",
-"region": "QC",
-"url": "https://www.ticketmaster.ca/ilesoniq-2026-2jours-montreal-quebec-08-08-2026/event/31006305D97A480A",
 "artist": "Marco Strous"
 },
 {
@@ -919,15 +469,6 @@
 "city": "Montreal",
 "region": "QC",
 "url": "https://www.ticketmaster.ca/ilesoniq-2026-samedi-montreal-quebec-08-08-2026/event/3100646671AB29F9",
-"artist": "SIDEPIECE"
-},
-{
-"date": "2026-08-08",
-"event": "îLESONIQ 2026 - 2-jours",
-"venue": "Parc Jean Drapeau",
-"city": "Montreal",
-"region": "QC",
-"url": "https://www.ticketmaster.ca/ilesoniq-2026-2jours-montreal-quebec-08-08-2026/event/31006305D97A480A",
 "artist": "SIDEPIECE"
 },
 {
@@ -1057,24 +598,6 @@
 "artist": "YOTTO"
 },
 {
-"date": "2026-08-10",
-"event": "Zona Vibra Harry Styles",
-"venue": "Estadio GNP Seguros",
-"city": "Ciudad de México",
-"region": "CDMX",
-"url": "https://www.ticketmaster.com.mx/zona-vibra-harry-styles-ciudad-de-mexico-10-08-2026/event/14006451E8DA0AA6",
-"artist": "Harry Styles"
-},
-{
-"date": "2026-08-10",
-"event": "Harry Styles: Together, Together",
-"venue": "Estadio GNP Seguros",
-"city": "Ciudad de México",
-"region": "CDMX",
-"url": "https://www.ticketmaster.com.mx/harry-styles-together-together-ciudad-de-mexico-10-08-2026/event/1400643D8ABA6E2C",
-"artist": "Harry Styles"
-},
-{
 "date": "2026-08-11",
 "event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
 "venue": "Red Rocks Amphitheatre",
@@ -1089,25 +612,7 @@
 "venue": "Red Rocks Amphitheatre",
 "city": "Morrison",
 "region": "CO",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7-Pv3",
-"artist": "Midnight Generation"
-},
-{
-"date": "2026-08-11",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "Red Rocks Amphitheatre",
-"city": "Morrison",
-"region": "CO",
 "url": "https://www.axs.com/events/1367724/empire-of-the-sun-tickets",
-"artist": "Polo & Pan"
-},
-{
-"date": "2026-08-11",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "Red Rocks Amphitheatre",
-"city": "Morrison",
-"region": "CO",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7-Pv3",
 "artist": "Polo & Pan"
 },
 {
@@ -1145,33 +650,6 @@
 "region": "CA",
 "url": "https://www.ticketmaster.com/rufus-du-sol-north-america-2026-inglewood-california-08-13-2026/event/09006455E5F7E3C2",
 "artist": "RÜFÜS DU SOL"
-},
-{
-"date": "2026-08-14",
-"event": "Chris Stapleton's All-American Road Show - Platinum Tickets",
-"venue": "Fenway Park",
-"city": "Boston",
-"region": "MA",
-"url": "https://www.ticketmaster.com/chris-stapletons-allamerican-road-show-platinum-boston-massachusetts-08-14-2026/event/01006425E329B203",
-"artist": "Chris Stapleton"
-},
-{
-"date": "2026-08-14",
-"event": "Chris Stapleton's All-American Road Show",
-"venue": "Fenway Park",
-"city": "Boston",
-"region": "MA",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7O9uI",
-"artist": "Chris Stapleton"
-},
-{
-"date": "2026-08-14",
-"event": "Chris Stapleton's All-American Road Show",
-"venue": "Fenway Park",
-"city": "Boston",
-"region": "MA",
-"url": "http://www.redsox.com/ChrisStapleton",
-"artist": "Chris Stapleton"
 },
 {
 "date": "2026-08-14",
@@ -1283,33 +761,6 @@
 },
 {
 "date": "2026-08-15",
-"event": "Chris Stapleton's All-American Road Show - Platinum Tickets",
-"venue": "Fenway Park",
-"city": "Boston",
-"region": "MA",
-"url": "https://www.ticketmaster.com/chris-stapletons-allamerican-road-show-platinum-boston-massachusetts-08-15-2026/event/01006427E0B1DC50",
-"artist": "Chris Stapleton"
-},
-{
-"date": "2026-08-15",
-"event": "Chris Stapleton's All-American Road Show",
-"venue": "Fenway Park",
-"city": "Boston",
-"region": "MA",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7O9ab",
-"artist": "Chris Stapleton"
-},
-{
-"date": "2026-08-15",
-"event": "Chris Stapleton's All-American Road Show",
-"venue": "Fenway Park",
-"city": "Boston",
-"region": "MA",
-"url": "http://www.redsox.com/ChrisStapleton",
-"artist": "Chris Stapleton"
-},
-{
-"date": "2026-08-15",
 "event": "Emmit Fenn ( 21+ )",
 "venue": "Big Night Live",
 "city": "Boston",
@@ -1363,15 +814,6 @@
 "artist": "ZHU"
 },
 {
-"date": "2026-08-15",
-"event": "ZHU",
-"venue": "Navy Pier",
-"city": "Chicago",
-"region": "IL",
-"url": "https://www.tixr.com/groups/navypiereventcenter/events/zhu-187333",
-"artist": "ZHU"
-},
-{
 "date": "2026-08-16",
 "event": "Day Trip feat. CID, ToBeHonest, Juos, Cat & Maomi",
 "venue": "Los Angeles State Historic Park: On The Promenade",
@@ -1397,15 +839,6 @@
 "region": "CA",
 "url": "https://www.ticketweb.com/event/day-trip-feat-cid-tobehonest-los-angeles-state-historic-park-tickets/14877343",
 "artist": "Juos"
-},
-{
-"date": "2026-08-16",
-"event": "Flow Festival 2026",
-"venue": "SUVILAHTI",
-"city": "Helsinki",
-"region": "FI",
-"url": "https://www.ticketmaster.fi/event/flow-festival-2026-tickets/1504032343?language=en-us",
-"artist": "Lykke Li"
 },
 {
 "date": "2026-08-16",
@@ -1463,15 +896,6 @@
 },
 {
 "date": "2026-08-18",
-"event": "Chris Stapleton's All-American Road Show",
-"venue": "Veterans United Home Loans Amphitheater at Virginia Beach",
-"city": "Virginia Beach",
-"region": "VA",
-"url": "https://www.ticketmaster.com/chris-stapletons-allamerican-road-show-virginia-beach-virginia-08-18-2026/event/0100639F9FB29234",
-"artist": "Chris Stapleton"
-},
-{
-"date": "2026-08-18",
 "event": "LUCA CARBONI – RIO ARI O LIVE",
 "venue": "Villa Bertelli - Forte dei Marmi",
 "city": "Forte dei Marmi",
@@ -1496,15 +920,6 @@
 "region": "WI",
 "url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-milwaukee-wisconsin-08-18-2026/event/07006465DEA99891",
 "artist": "Polo & Pan"
-},
-{
-"date": "2026-08-19",
-"event": "Chris Stapleton's All-American Road Show",
-"venue": "Allianz Amphitheater at Riverfront",
-"city": "Richmond",
-"region": "VA",
-"url": "https://www.ticketmaster.com/chris-stapletons-allamerican-road-show-richmond-virginia-08-19-2026/event/01006468B207A3D5",
-"artist": "Chris Stapleton"
 },
 {
 "date": "2026-08-19",
@@ -1550,15 +965,6 @@
 "region": "NM",
 "url": "https://www.ticketmaster.com/rufus-du-sol-north-america-2026-albuquerque-new-mexico-08-20-2026/event/1E00644CC5B0E5F1",
 "artist": "RÜFÜS DU SOL"
-},
-{
-"date": "2026-08-21",
-"event": "Chris Stapleton's All-American Road Show",
-"venue": "Mercedes-Benz Stadium",
-"city": "Atlanta",
-"region": "GA",
-"url": "https://www.ticketmaster.com/chris-stapletons-allamerican-road-show-atlanta-georgia-08-21-2026/event/0E00639CDD75AC85",
-"artist": "Chris Stapleton"
 },
 {
 "date": "2026-08-21",
@@ -1813,33 +1219,6 @@
 "artist": "RÜFÜS DU SOL"
 },
 {
-"date": "2026-08-25",
-"event": "Tame Impala - The Deadbeat Tour ",
-"venue": "Nationwide Arena",
-"city": "Columbus",
-"region": "OH",
-"url": "https://www.ticketmaster.com/tame-impala-the-deadbeat-tour-columbus-ohio-08-25-2026/event/05006436BA4DB367",
-"artist": "Tame Impala"
-},
-{
-"date": "2026-08-26",
-"event": "Chris Stapleton's All-American Road Show",
-"venue": "Northwell at Jones Beach Theater",
-"city": "Wantagh",
-"region": "NY",
-"url": "https://www.ticketmaster.com/chris-stapletons-allamerican-road-show-wantagh-new-york-08-26-2026/event/1D00639EAD073B5D",
-"artist": "Chris Stapleton"
-},
-{
-"date": "2026-08-26",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-08-26-2026/event/3B0064350404814E",
-"artist": "Harry Styles"
-},
-{
 "date": "2026-08-26",
 "event": "Harry Styles: Together, Together",
 "venue": "Madison Square Garden",
@@ -1864,15 +1243,6 @@
 "city": "Quebec",
 "region": "QC",
 "url": "https://lepointdevente.com/billets/poloandpan-americastour",
-"artist": "Polo & Pan"
-},
-{
-"date": "2026-08-27",
-"event": "Polo & Pan - Americas Tour 2026 - Sièges Platines Officiels",
-"venue": "Agora Port de Québec",
-"city": "Quebec",
-"region": "QC",
-"url": "https://www.ticketmaster.ca/polo-pan-americas-tour-2026-sieges-quebec-quebec-08-27-2026/event/310064B5A6277A66",
 "artist": "Polo & Pan"
 },
 {
@@ -1904,33 +1274,6 @@
 },
 {
 "date": "2026-08-28",
-"event": "Creamfields 2026 - Friday - Standard Payment Plan",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-friday-standard-payment-plan-cheshire-28-08-2026/event/37006313A4D51114",
-"artist": "Ben Sterling"
-},
-{
-"date": "2026-08-28",
-"event": "Creamfields 2026 - Friday - Standard",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-friday-standard-cheshire-28-08-2026/event/3700630ECF6269BA",
-"artist": "Ben Sterling"
-},
-{
-"date": "2026-08-28",
-"event": "Creamfields 2026 - Friday - Gold",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-friday-gold-cheshire-28-08-2026/event/3700630EF1E26E2A",
-"artist": "Ben Sterling"
-},
-{
-"date": "2026-08-28",
 "event": "Chris Lorenzo",
 "venue": "Lowbrow Palace",
 "city": "El Paso",
@@ -1940,47 +1283,11 @@
 },
 {
 "date": "2026-08-28",
-"event": "Chris Stapleton's All-American Road Show",
-"venue": "Freedom Mortgage Pavilion ",
-"city": "Camden",
-"region": "NJ",
-"url": "https://www.ticketmaster.com/chris-stapletons-allamerican-road-show-camden-new-jersey-08-28-2026/event/0200639690BE74A1",
-"artist": "Chris Stapleton"
-},
-{
-"date": "2026-08-28",
 "event": "Creamfields 2026 - Friday - Gold Payment Plan",
 "venue": "Daresbury",
 "city": "Cheshire",
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/creamfields-2026-friday-gold-payment-plan-cheshire-28-08-2026/event/37006313A4E81149",
-"artist": "Chris Stussy"
-},
-{
-"date": "2026-08-28",
-"event": "Creamfields 2026 - Friday - Standard Payment Plan",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-friday-standard-payment-plan-cheshire-28-08-2026/event/37006313A4D51114",
-"artist": "Chris Stussy"
-},
-{
-"date": "2026-08-28",
-"event": "Creamfields 2026 - Friday - Standard",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-friday-standard-cheshire-28-08-2026/event/3700630ECF6269BA",
-"artist": "Chris Stussy"
-},
-{
-"date": "2026-08-28",
-"event": "Creamfields 2026 - Friday - Gold",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-friday-gold-cheshire-28-08-2026/event/3700630EF1E26E2A",
 "artist": "Chris Stussy"
 },
 {
@@ -1994,65 +1301,11 @@
 },
 {
 "date": "2026-08-28",
-"event": "Creamfields 2026 - Friday - Standard Payment Plan",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-friday-standard-payment-plan-cheshire-28-08-2026/event/37006313A4D51114",
-"artist": "Disclosure"
-},
-{
-"date": "2026-08-28",
-"event": "Creamfields 2026 - Friday - Standard",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-friday-standard-cheshire-28-08-2026/event/3700630ECF6269BA",
-"artist": "Disclosure"
-},
-{
-"date": "2026-08-28",
-"event": "Creamfields 2026 - Friday - Gold",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-friday-gold-cheshire-28-08-2026/event/3700630EF1E26E2A",
-"artist": "Disclosure"
-},
-{
-"date": "2026-08-28",
 "event": "Creamfields 2026 - Friday - Gold Payment Plan",
 "venue": "Daresbury",
 "city": "Cheshire",
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/creamfields-2026-friday-gold-payment-plan-cheshire-28-08-2026/event/37006313A4E81149",
-"artist": "Eats Everything"
-},
-{
-"date": "2026-08-28",
-"event": "Creamfields 2026 - Friday - Standard Payment Plan",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-friday-standard-payment-plan-cheshire-28-08-2026/event/37006313A4D51114",
-"artist": "Eats Everything"
-},
-{
-"date": "2026-08-28",
-"event": "Creamfields 2026 - Friday - Standard",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-friday-standard-cheshire-28-08-2026/event/3700630ECF6269BA",
-"artist": "Eats Everything"
-},
-{
-"date": "2026-08-28",
-"event": "Creamfields 2026 - Friday - Gold",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-friday-gold-cheshire-28-08-2026/event/3700630EF1E26E2A",
 "artist": "Eats Everything"
 },
 {
@@ -2066,75 +1319,12 @@
 },
 {
 "date": "2026-08-28",
-"event": "Creamfields 2026 - Friday - Standard Payment Plan",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-friday-standard-payment-plan-cheshire-28-08-2026/event/37006313A4D51114",
-"artist": "FISHER"
-},
-{
-"date": "2026-08-28",
-"event": "Creamfields 2026 - Friday - Standard",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-friday-standard-cheshire-28-08-2026/event/3700630ECF6269BA",
-"artist": "FISHER"
-},
-{
-"date": "2026-08-28",
-"event": "Creamfields 2026 - Friday - Gold",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-friday-gold-cheshire-28-08-2026/event/3700630EF1E26E2A",
-"artist": "FISHER"
-},
-{
-"date": "2026-08-28",
 "event": "Creamfields 2026 - Friday - Gold Payment Plan",
 "venue": "Daresbury",
 "city": "Cheshire",
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/creamfields-2026-friday-gold-payment-plan-cheshire-28-08-2026/event/37006313A4E81149",
 "artist": "Franky Wah"
-},
-{
-"date": "2026-08-28",
-"event": "Creamfields 2026 - Friday - Standard Payment Plan",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-friday-standard-payment-plan-cheshire-28-08-2026/event/37006313A4D51114",
-"artist": "Franky Wah"
-},
-{
-"date": "2026-08-28",
-"event": "Creamfields 2026 - Friday - Standard",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-friday-standard-cheshire-28-08-2026/event/3700630ECF6269BA",
-"artist": "Franky Wah"
-},
-{
-"date": "2026-08-28",
-"event": "Creamfields 2026 - Friday - Gold",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-friday-gold-cheshire-28-08-2026/event/3700630EF1E26E2A",
-"artist": "Franky Wah"
-},
-{
-"date": "2026-08-28",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-08-28-2026/event/3B00643504538196",
-"artist": "Harry Styles"
 },
 {
 "date": "2026-08-28",
@@ -2152,33 +1342,6 @@
 "city": "Cheshire",
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/creamfields-2026-friday-gold-payment-plan-cheshire-28-08-2026/event/37006313A4E81149",
-"artist": "John Summit"
-},
-{
-"date": "2026-08-28",
-"event": "Creamfields 2026 - Friday - Standard Payment Plan",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-friday-standard-payment-plan-cheshire-28-08-2026/event/37006313A4D51114",
-"artist": "John Summit"
-},
-{
-"date": "2026-08-28",
-"event": "Creamfields 2026 - Friday - Standard",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-friday-standard-cheshire-28-08-2026/event/3700630ECF6269BA",
-"artist": "John Summit"
-},
-{
-"date": "2026-08-28",
-"event": "Creamfields 2026 - Friday - Gold",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-friday-gold-cheshire-28-08-2026/event/3700630EF1E26E2A",
 "artist": "John Summit"
 },
 {
@@ -2210,65 +1373,11 @@
 },
 {
 "date": "2026-08-28",
-"event": "Creamfields 2026 - Friday - Standard Payment Plan",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-friday-standard-payment-plan-cheshire-28-08-2026/event/37006313A4D51114",
-"artist": "Luke Dean"
-},
-{
-"date": "2026-08-28",
-"event": "Creamfields 2026 - Friday - Standard",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-friday-standard-cheshire-28-08-2026/event/3700630ECF6269BA",
-"artist": "Luke Dean"
-},
-{
-"date": "2026-08-28",
-"event": "Creamfields 2026 - Friday - Gold",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-friday-gold-cheshire-28-08-2026/event/3700630EF1E26E2A",
-"artist": "Luke Dean"
-},
-{
-"date": "2026-08-28",
 "event": "Creamfields 2026 - Friday - Gold Payment Plan",
 "venue": "Daresbury",
 "city": "Cheshire",
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/creamfields-2026-friday-gold-payment-plan-cheshire-28-08-2026/event/37006313A4E81149",
-"artist": "Max Dean"
-},
-{
-"date": "2026-08-28",
-"event": "Creamfields 2026 - Friday - Standard Payment Plan",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-friday-standard-payment-plan-cheshire-28-08-2026/event/37006313A4D51114",
-"artist": "Max Dean"
-},
-{
-"date": "2026-08-28",
-"event": "Creamfields 2026 - Friday - Standard",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-friday-standard-cheshire-28-08-2026/event/3700630ECF6269BA",
-"artist": "Max Dean"
-},
-{
-"date": "2026-08-28",
-"event": "Creamfields 2026 - Friday - Gold",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-friday-gold-cheshire-28-08-2026/event/3700630EF1E26E2A",
 "artist": "Max Dean"
 },
 {
@@ -2318,48 +1427,12 @@
 },
 {
 "date": "2026-08-28",
-"event": "Creamfields 2026 - Friday - Standard Payment Plan",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-friday-standard-payment-plan-cheshire-28-08-2026/event/37006313A4D51114",
-"artist": "Rossi."
-},
-{
-"date": "2026-08-28",
-"event": "Creamfields 2026 - Friday - Standard",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-friday-standard-cheshire-28-08-2026/event/3700630ECF6269BA",
-"artist": "Rossi."
-},
-{
-"date": "2026-08-28",
-"event": "Creamfields 2026 - Friday - Gold",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-friday-gold-cheshire-28-08-2026/event/3700630EF1E26E2A",
-"artist": "Rossi."
-},
-{
-"date": "2026-08-28",
 "event": "Salmo ",
 "venue": "Lungomare Aldo Moro",
 "city": "Montesilvano (Pescara)",
 "region": "IT",
 "url": "https://www.ticketmaster.it/biglietti/salmo-sayf-montesilvano-pescara-28-08-2026/event/15qagfbw3u7e",
 "artist": "SALMO"
-},
-{
-"date": "2026-08-28",
-"event": "Tame Impala w/ Dominic Fike",
-"venue": "Target Center",
-"city": "Minneapolis",
-"region": "MN",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7-F_M",
-"artist": "Tame Impala"
 },
 {
 "date": "2026-08-28",
@@ -2444,74 +1517,11 @@
 },
 {
 "date": "2026-08-29",
-"event": "Creamfields 2026 - Saturday - Standard Payment Plan",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-saturday-standard-payment-plan-cheshire-29-08-2026/event/37006313A4DA1118",
-"artist": "CamelPhat"
-},
-{
-"date": "2026-08-29",
-"event": "Creamfields 2026 - Saturday - Standard",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-saturday-standard-cheshire-29-08-2026/event/3700630ECF6469C7",
-"artist": "CamelPhat"
-},
-{
-"date": "2026-08-29",
-"event": "Creamfields 2026 - Saturday - Gold",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-saturday-gold-cheshire-29-08-2026/event/3700630EF1E46E2E",
-"artist": "CamelPhat"
-},
-{
-"date": "2026-08-29",
-"event": "Chris Stapleton's All-American Road Show",
-"venue": "Freedom Mortgage Pavilion ",
-"city": "Camden",
-"region": "NJ",
-"url": "https://www.ticketmaster.com/chris-stapletons-allamerican-road-show-camden-new-jersey-08-29-2026/event/020064277C4D3134",
-"artist": "Chris Stapleton"
-},
-{
-"date": "2026-08-29",
 "event": "Creamfields 2026 - Saturday - Gold Payment Plan",
 "venue": "Daresbury",
 "city": "Cheshire",
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/creamfields-2026-saturday-gold-payment-plan-cheshire-29-08-2026/event/37006313A4ED1154",
-"artist": "Dom Dolla"
-},
-{
-"date": "2026-08-29",
-"event": "Creamfields 2026 - Saturday - Standard Payment Plan",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-saturday-standard-payment-plan-cheshire-29-08-2026/event/37006313A4DA1118",
-"artist": "Dom Dolla"
-},
-{
-"date": "2026-08-29",
-"event": "Creamfields 2026 - Saturday - Standard",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-saturday-standard-cheshire-29-08-2026/event/3700630ECF6469C7",
-"artist": "Dom Dolla"
-},
-{
-"date": "2026-08-29",
-"event": "Creamfields 2026 - Saturday - Gold",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-saturday-gold-cheshire-29-08-2026/event/3700630EF1E46E2E",
 "artist": "Dom Dolla"
 },
 {
@@ -2522,15 +1532,6 @@
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/fatboy-slim-colchester-29-08-2026/event/35006371941D315A",
 "artist": "Eats Everything"
-},
-{
-"date": "2026-08-29",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-08-29-2026/event/3B006435046481AA",
-"artist": "Harry Styles"
 },
 {
 "date": "2026-08-29",
@@ -2552,33 +1553,6 @@
 },
 {
 "date": "2026-08-29",
-"event": "Creamfields 2026 - Saturday - Standard Payment Plan",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-saturday-standard-payment-plan-cheshire-29-08-2026/event/37006313A4DA1118",
-"artist": "JOSHWA"
-},
-{
-"date": "2026-08-29",
-"event": "Creamfields 2026 - Saturday - Standard",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-saturday-standard-cheshire-29-08-2026/event/3700630ECF6469C7",
-"artist": "JOSHWA"
-},
-{
-"date": "2026-08-29",
-"event": "Creamfields 2026 - Saturday - Gold",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-saturday-gold-cheshire-29-08-2026/event/3700630EF1E46E2E",
-"artist": "JOSHWA"
-},
-{
-"date": "2026-08-29",
 "event": "Harry Styles: Together, Together",
 "venue": "Madison Square Garden",
 "city": "New York",
@@ -2593,33 +1567,6 @@
 "city": "Cheshire",
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/creamfields-2026-saturday-gold-payment-plan-cheshire-29-08-2026/event/37006313A4ED1154",
-"artist": "Josh Baker"
-},
-{
-"date": "2026-08-29",
-"event": "Creamfields 2026 - Saturday - Standard Payment Plan",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-saturday-standard-payment-plan-cheshire-29-08-2026/event/37006313A4DA1118",
-"artist": "Josh Baker"
-},
-{
-"date": "2026-08-29",
-"event": "Creamfields 2026 - Saturday - Standard",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-saturday-standard-cheshire-29-08-2026/event/3700630ECF6469C7",
-"artist": "Josh Baker"
-},
-{
-"date": "2026-08-29",
-"event": "Creamfields 2026 - Saturday - Gold",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-saturday-gold-cheshire-29-08-2026/event/3700630EF1E46E2E",
 "artist": "Josh Baker"
 },
 {
@@ -2651,33 +1598,6 @@
 },
 {
 "date": "2026-08-29",
-"event": "Creamfields 2026 - Saturday - Standard Payment Plan",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-saturday-standard-payment-plan-cheshire-29-08-2026/event/37006313A4DA1118",
-"artist": "Manda Moor"
-},
-{
-"date": "2026-08-29",
-"event": "Creamfields 2026 - Saturday - Standard",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-saturday-standard-cheshire-29-08-2026/event/3700630ECF6469C7",
-"artist": "Manda Moor"
-},
-{
-"date": "2026-08-29",
-"event": "Creamfields 2026 - Saturday - Gold",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-saturday-gold-cheshire-29-08-2026/event/3700630EF1E46E2E",
-"artist": "Manda Moor"
-},
-{
-"date": "2026-08-29",
 "event": "Reading Festival 2026 - Saturday",
 "venue": "Richfield Avenue",
 "city": "Reading",
@@ -2692,15 +1612,6 @@
 "city": "Forest Hills",
 "region": "NY",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7-Pv4",
-"artist": "Midnight Generation"
-},
-{
-"date": "2026-08-29",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "Forest Hills Stadium",
-"city": "Forest Hills",
-"region": "NY",
-"url": "https://www.axs.com/events/1308722/empire-of-the-sun-tickets?skin=foresthills",
 "artist": "Midnight Generation"
 },
 {
@@ -2732,33 +1643,6 @@
 },
 {
 "date": "2026-08-29",
-"event": "Creamfields 2026 - Saturday - Standard Payment Plan",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-saturday-standard-payment-plan-cheshire-29-08-2026/event/37006313A4DA1118",
-"artist": "Omar+"
-},
-{
-"date": "2026-08-29",
-"event": "Creamfields 2026 - Saturday - Standard",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-saturday-standard-cheshire-29-08-2026/event/3700630ECF6469C7",
-"artist": "Omar+"
-},
-{
-"date": "2026-08-29",
-"event": "Creamfields 2026 - Saturday - Gold",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-saturday-gold-cheshire-29-08-2026/event/3700630EF1E46E2E",
-"artist": "Omar+"
-},
-{
-"date": "2026-08-29",
 "event": "Creamfields 2026 - Saturday - Gold Payment Plan",
 "venue": "Daresbury",
 "city": "Cheshire",
@@ -2768,65 +1652,11 @@
 },
 {
 "date": "2026-08-29",
-"event": "Creamfields 2026 - Saturday - Standard Payment Plan",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-saturday-standard-payment-plan-cheshire-29-08-2026/event/37006313A4DA1118",
-"artist": "Patrick Topping"
-},
-{
-"date": "2026-08-29",
-"event": "Creamfields 2026 - Saturday - Standard",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-saturday-standard-cheshire-29-08-2026/event/3700630ECF6469C7",
-"artist": "Patrick Topping"
-},
-{
-"date": "2026-08-29",
-"event": "Creamfields 2026 - Saturday - Gold",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-saturday-gold-cheshire-29-08-2026/event/3700630EF1E46E2E",
-"artist": "Patrick Topping"
-},
-{
-"date": "2026-08-29",
 "event": "Creamfields 2026 - Saturday - Gold Payment Plan",
 "venue": "Daresbury",
 "city": "Cheshire",
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/creamfields-2026-saturday-gold-payment-plan-cheshire-29-08-2026/event/37006313A4ED1154",
-"artist": "Pete Tong"
-},
-{
-"date": "2026-08-29",
-"event": "Creamfields 2026 - Saturday - Standard Payment Plan",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-saturday-standard-payment-plan-cheshire-29-08-2026/event/37006313A4DA1118",
-"artist": "Pete Tong"
-},
-{
-"date": "2026-08-29",
-"event": "Creamfields 2026 - Saturday - Standard",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-saturday-standard-cheshire-29-08-2026/event/3700630ECF6469C7",
-"artist": "Pete Tong"
-},
-{
-"date": "2026-08-29",
-"event": "Creamfields 2026 - Saturday - Gold",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-saturday-gold-cheshire-29-08-2026/event/3700630EF1E46E2E",
 "artist": "Pete Tong"
 },
 {
@@ -2836,15 +1666,6 @@
 "city": "Forest Hills",
 "region": "NY",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7-Pv4",
-"artist": "Polo & Pan"
-},
-{
-"date": "2026-08-29",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "Forest Hills Stadium",
-"city": "Forest Hills",
-"region": "NY",
-"url": "https://www.axs.com/events/1308722/empire-of-the-sun-tickets?skin=foresthills",
 "artist": "Polo & Pan"
 },
 {
@@ -2885,33 +1706,6 @@
 },
 {
 "date": "2026-08-29",
-"event": "Creamfields 2026 - Saturday - Standard Payment Plan",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-saturday-standard-payment-plan-cheshire-29-08-2026/event/37006313A4DA1118",
-"artist": "Sidney Charles"
-},
-{
-"date": "2026-08-29",
-"event": "Creamfields 2026 - Saturday - Standard",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-saturday-standard-cheshire-29-08-2026/event/3700630ECF6469C7",
-"artist": "Sidney Charles"
-},
-{
-"date": "2026-08-29",
-"event": "Creamfields 2026 - Saturday - Gold",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-saturday-gold-cheshire-29-08-2026/event/3700630EF1E46E2E",
-"artist": "Sidney Charles"
-},
-{
-"date": "2026-08-29",
 "event": "Tchami",
 "venue": "Academy LA",
 "city": "Los Angeles",
@@ -2948,33 +1742,6 @@
 },
 {
 "date": "2026-08-30",
-"event": "Creamfields 2026 - Sunday - Standard Payment Plan",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-sunday-standard-payment-plan-cheshire-30-08-2026/event/37006313A4E3111E",
-"artist": "Armand Van Helden"
-},
-{
-"date": "2026-08-30",
-"event": "Creamfields 2026 - Sunday - Standard",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-sunday-standard-cheshire-30-08-2026/event/3700630ECF6669D5",
-"artist": "Armand Van Helden"
-},
-{
-"date": "2026-08-30",
-"event": "Creamfields 2026 - Sunday - Gold",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-sunday-gold-cheshire-30-08-2026/event/3700630EF1E76E36",
-"artist": "Armand Van Helden"
-},
-{
-"date": "2026-08-30",
 "event": "Bob Moses (21+ Event)",
 "venue": "Encore Beach Club",
 "city": "Las Vegas",
@@ -3002,33 +1769,6 @@
 },
 {
 "date": "2026-08-30",
-"event": "Creamfields 2026 - Sunday - Standard Payment Plan",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-sunday-standard-payment-plan-cheshire-30-08-2026/event/37006313A4E3111E",
-"artist": "D.O.D"
-},
-{
-"date": "2026-08-30",
-"event": "Creamfields 2026 - Sunday - Standard",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-sunday-standard-cheshire-30-08-2026/event/3700630ECF6669D5",
-"artist": "D.O.D"
-},
-{
-"date": "2026-08-30",
-"event": "Creamfields 2026 - Sunday - Gold",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-sunday-gold-cheshire-30-08-2026/event/3700630EF1E76E36",
-"artist": "D.O.D"
-},
-{
-"date": "2026-08-30",
 "event": "Creamfields 2026 - Sunday - Gold Payment Plan",
 "venue": "Daresbury",
 "city": "Cheshire",
@@ -3038,65 +1778,11 @@
 },
 {
 "date": "2026-08-30",
-"event": "Creamfields 2026 - Sunday - Standard Payment Plan",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-sunday-standard-payment-plan-cheshire-30-08-2026/event/37006313A4E3111E",
-"artist": "Gorgon City"
-},
-{
-"date": "2026-08-30",
-"event": "Creamfields 2026 - Sunday - Standard",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-sunday-standard-cheshire-30-08-2026/event/3700630ECF6669D5",
-"artist": "Gorgon City"
-},
-{
-"date": "2026-08-30",
-"event": "Creamfields 2026 - Sunday - Gold",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-sunday-gold-cheshire-30-08-2026/event/3700630EF1E76E36",
-"artist": "Gorgon City"
-},
-{
-"date": "2026-08-30",
 "event": "Creamfields 2026 - Sunday - Gold Payment Plan",
 "venue": "Daresbury",
 "city": "Cheshire",
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/creamfields-2026-sunday-gold-payment-plan-cheshire-30-08-2026/event/37006313A4F1116C",
-"artist": "Jamback"
-},
-{
-"date": "2026-08-30",
-"event": "Creamfields 2026 - Sunday - Standard Payment Plan",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-sunday-standard-payment-plan-cheshire-30-08-2026/event/37006313A4E3111E",
-"artist": "Jamback"
-},
-{
-"date": "2026-08-30",
-"event": "Creamfields 2026 - Sunday - Standard",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-sunday-standard-cheshire-30-08-2026/event/3700630ECF6669D5",
-"artist": "Jamback"
-},
-{
-"date": "2026-08-30",
-"event": "Creamfields 2026 - Sunday - Gold",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-sunday-gold-cheshire-30-08-2026/event/3700630EF1E76E36",
 "artist": "Jamback"
 },
 {
@@ -3119,65 +1805,11 @@
 },
 {
 "date": "2026-08-30",
-"event": "Creamfields 2026 - Sunday - Standard Payment Plan",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-sunday-standard-payment-plan-cheshire-30-08-2026/event/37006313A4E3111E",
-"artist": "Julian Fijma"
-},
-{
-"date": "2026-08-30",
-"event": "Creamfields 2026 - Sunday - Standard",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-sunday-standard-cheshire-30-08-2026/event/3700630ECF6669D5",
-"artist": "Julian Fijma"
-},
-{
-"date": "2026-08-30",
-"event": "Creamfields 2026 - Sunday - Gold",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-sunday-gold-cheshire-30-08-2026/event/3700630EF1E76E36",
-"artist": "Julian Fijma"
-},
-{
-"date": "2026-08-30",
 "event": "Creamfields 2026 - Sunday - Gold Payment Plan",
 "venue": "Daresbury",
 "city": "Cheshire",
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/creamfields-2026-sunday-gold-payment-plan-cheshire-30-08-2026/event/37006313A4F1116C",
-"artist": "Kolter"
-},
-{
-"date": "2026-08-30",
-"event": "Creamfields 2026 - Sunday - Standard Payment Plan",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-sunday-standard-payment-plan-cheshire-30-08-2026/event/37006313A4E3111E",
-"artist": "Kolter"
-},
-{
-"date": "2026-08-30",
-"event": "Creamfields 2026 - Sunday - Standard",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-sunday-standard-cheshire-30-08-2026/event/3700630ECF6669D5",
-"artist": "Kolter"
-},
-{
-"date": "2026-08-30",
-"event": "Creamfields 2026 - Sunday - Gold",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-sunday-gold-cheshire-30-08-2026/event/3700630EF1E76E36",
 "artist": "Kolter"
 },
 {
@@ -3196,33 +1828,6 @@
 "city": "Cheshire",
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/creamfields-2026-sunday-gold-payment-plan-cheshire-30-08-2026/event/37006313A4F1116C",
-"artist": "Marsolo"
-},
-{
-"date": "2026-08-30",
-"event": "Creamfields 2026 - Sunday - Standard Payment Plan",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-sunday-standard-payment-plan-cheshire-30-08-2026/event/37006313A4E3111E",
-"artist": "Marsolo"
-},
-{
-"date": "2026-08-30",
-"event": "Creamfields 2026 - Sunday - Standard",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-sunday-standard-cheshire-30-08-2026/event/3700630ECF6669D5",
-"artist": "Marsolo"
-},
-{
-"date": "2026-08-30",
-"event": "Creamfields 2026 - Sunday - Gold",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-sunday-gold-cheshire-30-08-2026/event/3700630EF1E76E36",
 "artist": "Marsolo"
 },
 {
@@ -3263,33 +1868,6 @@
 },
 {
 "date": "2026-08-30",
-"event": "Creamfields 2026 - Sunday - Standard Payment Plan",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-sunday-standard-payment-plan-cheshire-30-08-2026/event/37006313A4E3111E",
-"artist": "Prospa"
-},
-{
-"date": "2026-08-30",
-"event": "Creamfields 2026 - Sunday - Standard",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-sunday-standard-cheshire-30-08-2026/event/3700630ECF6669D5",
-"artist": "Prospa"
-},
-{
-"date": "2026-08-30",
-"event": "Creamfields 2026 - Sunday - Gold",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-sunday-gold-cheshire-30-08-2026/event/3700630EF1E76E36",
-"artist": "Prospa"
-},
-{
-"date": "2026-08-30",
 "event": "Leeds Festival 2026 - Sunday",
 "venue": "Bramham Park",
 "city": "Leeds",
@@ -3305,51 +1883,6 @@
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/creamfields-2026-sunday-gold-payment-plan-cheshire-30-08-2026/event/37006313A4F1116C",
 "artist": "Tiësto"
-},
-{
-"date": "2026-08-30",
-"event": "Creamfields 2026 - Sunday - Standard Payment Plan",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-sunday-standard-payment-plan-cheshire-30-08-2026/event/37006313A4E3111E",
-"artist": "Tiësto"
-},
-{
-"date": "2026-08-30",
-"event": "Creamfields 2026 - Sunday - Standard",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-sunday-standard-cheshire-30-08-2026/event/3700630ECF6669D5",
-"artist": "Tiësto"
-},
-{
-"date": "2026-08-30",
-"event": "Creamfields 2026 - Sunday - Gold",
-"venue": "Daresbury",
-"city": "Cheshire",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/creamfields-2026-sunday-gold-cheshire-30-08-2026/event/3700630EF1E76E36",
-"artist": "Tiësto"
-},
-{
-"date": "2026-08-31",
-"event": "SUPERBLOOM 2026 Concert - LORDE + LYKKE LI + AUDREY HOBERT",
-"venue": "",
-"city": "Munich",
-"region": "DE",
-"url": "https://www.ticketmaster.de/event/superbloom-2026-concert-lorde--lykke-li--audrey-hobert-tickets/811190403?language=en-us",
-"artist": "Lykke Li"
-},
-{
-"date": "2026-09-01",
-"event": "Chris Stapleton's All-American Road Show",
-"venue": "Rogers Stadium",
-"city": "Toronto",
-"region": "ON",
-"url": "https://www.ticketmaster.ca/chris-stapletons-allamerican-road-show-toronto-ontario-09-01-2026/event/1000642EF7BC3B4A",
-"artist": "Chris Stapleton"
 },
 {
 "date": "2026-09-01",
@@ -3370,24 +1903,6 @@
 "artist": "RÜFÜS DU SOL"
 },
 {
-"date": "2026-09-01",
-"event": "RÜFÜS DU SOL NORTH AMERICA 2026",
-"venue": "Acrisure Amphitheater",
-"city": "Grand Rapids",
-"region": "MI",
-"url": "https://www.ticketmaster.com/rufus-du-sol-north-america-2026-grand-rapids-michigan-09-01-2026/event/0800644DFA9D1C62",
-"artist": "RÜFÜS DU SOL"
-},
-{
-"date": "2026-09-01",
-"event": "Tame Impala - The Deadbeat Tour ",
-"venue": "Climate Pledge Arena",
-"city": "Seattle",
-"region": "WA",
-"url": "https://www.ticketmaster.com/tame-impala-the-deadbeat-tour-seattle-washington-09-01-2026/event/0F006431E0CCB2E3",
-"artist": "Tame Impala"
-},
-{
 "date": "2026-09-02",
 "event": "RÜFÜS DU SOL NORTH AMERICA 2026",
 "venue": "Riverbend Music Center",
@@ -3395,15 +1910,6 @@
 "region": "OH",
 "url": "https://www.ticketmaster.com/rufus-du-sol-north-america-2026-cincinnati-ohio-09-02-2026/event/1600644B9ACA6868",
 "artist": "Fcukers"
-},
-{
-"date": "2026-09-02",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-09-02-2026/event/3B006435047F81C1",
-"artist": "Harry Styles"
 },
 {
 "date": "2026-09-02",
@@ -3442,15 +1948,6 @@
 "artist": "RÜFÜS DU SOL"
 },
 {
-"date": "2026-09-02",
-"event": "Tame Impala - The Deadbeat Tour ",
-"venue": "Climate Pledge Arena",
-"city": "Seattle",
-"region": "WA",
-"url": "https://www.ticketmaster.com/tame-impala-the-deadbeat-tour-seattle-washington-09-02-2026/event/0F006431E0D0B2E8",
-"artist": "Tame Impala"
-},
-{
 "date": "2026-09-03",
 "event": "RÜFÜS DU SOL NORTH AMERICA 2026",
 "venue": "The Pavilion at Star Lake",
@@ -3476,15 +1973,6 @@
 "region": "ON",
 "url": "https://www.ticketweb.ca/event/dombresky-dprtmnt-tickets/14959293",
 "artist": "Dombresky"
-},
-{
-"date": "2026-09-04",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-09-04-2026/event/3B006435049481D0",
-"artist": "Harry Styles"
 },
 {
 "date": "2026-09-04",
@@ -3601,15 +2089,6 @@
 "city": "New York",
 "region": "NY",
 "url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-09-05-2026/event/3B00643504A381D8",
-"artist": "Harry Styles"
-},
-{
-"date": "2026-09-05",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-09-05-2026/event/3B00643504A381D8",
 "artist": "Jamie xx"
 },
 {
@@ -3656,15 +2135,6 @@
 "region": "ON",
 "url": "https://www.ticketmaster.ca/rufus-du-sol-north-america-2026-toronto-ontario-09-05-2026/event/1000644CF6A0BEC5",
 "artist": "RÜFÜS DU SOL"
-},
-{
-"date": "2026-09-05",
-"event": "Tame Impala - The Deadbeat Tour ",
-"venue": "Rogers Arena",
-"city": "Vancouver",
-"region": "BC",
-"url": "https://www.ticketmaster.ca/tame-impala-the-deadbeat-tour-vancouver-british-columbia-09-05-2026/event/11006442E123957E",
-"artist": "Tame Impala"
 },
 {
 "date": "2026-09-05",
@@ -3739,15 +2209,6 @@
 "artist": "Purple Disco Machine"
 },
 {
-"date": "2026-09-06",
-"event": "Tame Impala - The Deadbeat Tour ",
-"venue": "Rogers Arena",
-"city": "Vancouver",
-"region": "BC",
-"url": "https://www.ticketmaster.ca/tame-impala-the-deadbeat-tour-vancouver-british-columbia-09-06-2026/event/11006442DF7E9470",
-"artist": "Tame Impala"
-},
-{
 "date": "2026-09-07",
 "event": "Odd Mob",
 "venue": "Ocean Resort Casino - HQ2 Beachclub",
@@ -3755,24 +2216,6 @@
 "region": "NJ",
 "url": "https://www.ticketweb.com/event/odd-mob-ocean-casino-resort-tickets/14271144?REFERRAL_ID=tmfeed",
 "artist": "Odd Mob"
-},
-{
-"date": "2026-09-08",
-"event": "Tame Impala - The Deadbeat Tour ",
-"venue": "Moda Center",
-"city": "Portland",
-"region": "OR",
-"url": "https://www.ticketmaster.com/tame-impala-the-deadbeat-tour-portland-oregon-09-08-2026/event/0F00643BBC928C13",
-"artist": "Tame Impala"
-},
-{
-"date": "2026-09-09",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-09-09-2026/event/3B00643504B581EB",
-"artist": "Harry Styles"
 },
 {
 "date": "2026-09-09",
@@ -3829,15 +2272,6 @@
 "artist": "SOFI TUKKER"
 },
 {
-"date": "2026-09-10",
-"event": "Void & Phantom",
-"venue": "Funk N' Waffles",
-"city": "Syracuse",
-"region": "NY",
-"url": "https://www.ticketweb.com/event/void-phantom-funk-n-waffles-tickets/14989903?REFERRAL_ID=tmfeed",
-"artist": "Void"
-},
-{
 "date": "2026-09-11",
 "event": "Breakaway Philadelphia 2026",
 "venue": "Subaru Park Festival Grounds",
@@ -3871,15 +2305,6 @@
 "city": "New York",
 "region": "NY",
 "url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-09-11-2026/event/3B00643504C881F8",
-"artist": "Harry Styles"
-},
-{
-"date": "2026-09-11",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-09-11-2026/event/3B00643504C881F8",
 "artist": "Jamie xx"
 },
 {
@@ -3902,39 +2327,12 @@
 },
 {
 "date": "2026-09-11",
-"event": "Tame Impala - The Deadbeat Tour ",
-"venue": "Ball Arena",
-"city": "Denver",
-"region": "CO",
-"url": "https://www.ticketmaster.com/tame-impala-the-deadbeat-tour-denver-colorado-09-11-2026/event/1E006434E7FB9F65",
-"artist": "Tame Impala"
-},
-{
-"date": "2026-09-11",
-"event": "Club Level Seating: Tame Impala",
-"venue": "Ball Arena",
-"city": "Denver",
-"region": "CO",
-"url": "https://www.ticketmaster.com/club-level-seating-tame-impala-denver-colorado-09-11-2026/event/1E006437879E6EA8",
-"artist": "Tame Impala"
-},
-{
-"date": "2026-09-11",
 "event": "Breakaway Philadelphia 2026",
 "venue": "Subaru Park Festival Grounds",
 "city": "Chester",
 "region": "PA",
 "url": "https://www.universe.com/events/breakaway-philadelphia-2026-tickets-WT3N6X?ref=ticketmaster",
 "artist": "Tiësto"
-},
-{
-"date": "2026-09-12",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-09-12-2026/event/3B00643504D78209",
-"artist": "Harry Styles"
 },
 {
 "date": "2026-09-12",
@@ -3983,15 +2381,6 @@
 },
 {
 "date": "2026-09-13",
-"event": "Hugel at Navy Pier Open Air",
-"venue": "Navy Pier",
-"city": "Chicago",
-"region": "IL",
-"url": "https://www.tixr.com/groups/navypiereventcenter/events/hugel-192654",
-"artist": "HUGEL"
-},
-{
-"date": "2026-09-13",
 "event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
 "venue": "Ameris Bank Amphitheatre",
 "city": "Alpharetta",
@@ -4007,33 +2396,6 @@
 "region": "GA",
 "url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-alpharetta-georgia-09-13-2026/event/0E006466AAAEAAE3",
 "artist": "Polo & Pan"
-},
-{
-"date": "2026-09-13",
-"event": "VOID, Phantom, Dementia",
-"venue": "TSDMAAC",
-"city": "Detroit",
-"region": "MI",
-"url": "https://www.ticketweb.com/event/void-phantom-dementia-tsdmaac-tickets/14214234",
-"artist": "Void"
-},
-{
-"date": "2026-09-14",
-"event": "Tame Impala - The Deadbeat Tour ",
-"venue": "Mortgage Matchup Center",
-"city": "Phoenix",
-"region": "AZ",
-"url": "https://www.ticketmaster.com/tame-impala-the-deadbeat-tour-phoenix-arizona-09-14-2026/event/19006435EC24902A",
-"artist": "Tame Impala"
-},
-{
-"date": "2026-09-16",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-09-16-2026/event/3B00643504E38212",
-"artist": "Harry Styles"
 },
 {
 "date": "2026-09-16",
@@ -4100,15 +2462,6 @@
 },
 {
 "date": "2026-09-17",
-"event": "Tame Impala - The Deadbeat Tour ",
-"venue": "American Airlines Center",
-"city": "Dallas",
-"region": "TX",
-"url": "https://www.ticketmaster.com/tame-impala-the-deadbeat-tour-dallas-texas-09-17-2026/event/0C006434C8B79075",
-"artist": "Tame Impala"
-},
-{
-"date": "2026-09-17",
 "event": "Tinlicker - North America 2026",
 "venue": "Saint Andrew's Hall",
 "city": "Detroit",
@@ -4124,15 +2477,6 @@
 "region": "ON",
 "url": "https://www.ticketweb.ca/event/cid-dprtmnt-tickets/14255884",
 "artist": "CID"
-},
-{
-"date": "2026-09-18",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-09-18-2026/event/3B00643505018228",
-"artist": "Harry Styles"
 },
 {
 "date": "2026-09-18",
@@ -4217,15 +2561,6 @@
 },
 {
 "date": "2026-09-19",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-09-19-2026/event/3B00643505178231",
-"artist": "Harry Styles"
-},
-{
-"date": "2026-09-19",
 "event": "Nocturnal Wonderland",
 "venue": "Glen Helen Regional Park",
 "city": "San Bernardino",
@@ -4250,15 +2585,6 @@
 "region": "AB",
 "url": "https://www.ticketweb.ca/event/kyle-watson-w-david-stone-the-starlite-room-tickets/14272654",
 "artist": "Kyle Watson"
-},
-{
-"date": "2026-09-19",
-"event": "Robyn - The Sexistential Tour",
-"venue": "Palacio de los Deportes",
-"city": "Ciudad de México",
-"region": "CDMX",
-"url": "https://www.ticketmaster.com.mx/robyn-the-sexistential-tour-ciudad-de-mexico-19-09-2026/event/1400643B9351974D",
-"artist": "Lykke Li"
 },
 {
 "date": "2026-09-19",
@@ -4316,15 +2642,6 @@
 },
 {
 "date": "2026-09-19",
-"event": "Tame Impala w/ Dominic Fike",
-"venue": "Toyota Center - TX",
-"city": "Houston",
-"region": "TX",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7-F_z",
-"artist": "Tame Impala"
-},
-{
-"date": "2026-09-19",
 "event": "Tinlicker North America 2026",
 "venue": "History",
 "city": "Toronto",
@@ -4378,15 +2695,6 @@
 "artist": "Polo & Pan"
 },
 {
-"date": "2026-09-20",
-"event": "Tame Impala",
-"venue": "Toyota Center - TX",
-"city": "Houston",
-"region": "TX",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7-a4M",
-"artist": "Tame Impala"
-},
-{
 "date": "2026-09-21",
 "event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
 "venue": "Moody Center ATX",
@@ -4421,15 +2729,6 @@
 "region": "DC",
 "url": "https://www.ticketmaster.com/tinlicker-north-america-2026-washington-district-of-columbia-09-22-2026/event/1500648E8D464797",
 "artist": "Tinlicker"
-},
-{
-"date": "2026-09-23",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-09-23-2026/event/3B0064350525823A",
-"artist": "Harry Styles"
 },
 {
 "date": "2026-09-23",
@@ -4595,15 +2894,6 @@
 },
 {
 "date": "2026-09-25",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-09-25-2026/event/3B00643505428256",
-"artist": "Harry Styles"
-},
-{
-"date": "2026-09-25",
 "event": "Husky",
 "venue": "The Vanguard",
 "city": "Newtown",
@@ -4739,15 +3029,6 @@
 },
 {
 "date": "2026-09-26",
-"event": "Bourbon & Beyond",
-"venue": "Kentucky Expo Center",
-"city": "Louisville",
-"region": "KY",
-"url": "https://on.fgtix.com/trk/Es3ec",
-"artist": "Chris Stapleton"
-},
-{
-"date": "2026-09-26",
 "event": "SOFI TUKKER Presents: ANIMAL TALK",
 "venue": "RBC Amphitheatre",
 "city": "Toronto",
@@ -4763,15 +3044,6 @@
 "region": "DC",
 "url": "https://www.ticketmaster.com/gorgon-city-washington-district-of-columbia-09-26-2026/event/150064C499B482F3",
 "artist": "Gorgon City"
-},
-{
-"date": "2026-09-26",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-09-26-2026/event/3B006435054E8262",
-"artist": "Harry Styles"
 },
 {
 "date": "2026-09-26",
@@ -4933,15 +3205,6 @@
 "city": "New York",
 "region": "NY",
 "url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-09-30-2026/event/3B00643505768283",
-"artist": "Harry Styles"
-},
-{
-"date": "2026-09-30",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-09-30-2026/event/3B00643505768283",
 "artist": "Jamie xx"
 },
 {
@@ -4978,15 +3241,6 @@
 "city": "Champaign",
 "region": "IL",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1A70IJb",
-"artist": "John Summit"
-},
-{
-"date": "2026-10-01",
-"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
-"venue": "State Farm Center",
-"city": "Champaign",
-"region": "IL",
-"url": "https://fightingillini.evenue.net/events/john-summit-ctrl-escape-arena-tour-october-1-2026",
 "artist": "John Summit"
 },
 {
@@ -5045,15 +3299,6 @@
 },
 {
 "date": "2026-10-02",
-"event": "Chris Stapleton's All-American Road Show",
-"venue": "Jiffy Lube Live",
-"city": "Bristow",
-"region": "VA",
-"url": "https://www.ticketmaster.com/chris-stapletons-allamerican-road-show-bristow-virginia-10-02-2026/event/15006426AF4A6453",
-"artist": "Chris Stapleton"
-},
-{
-"date": "2026-10-02",
 "event": "You&Me - Friday",
 "venue": "Depot Mayfield",
 "city": "Manchester",
@@ -5081,15 +3326,6 @@
 },
 {
 "date": "2026-10-02",
-"event": "2-Day Palm Tree Music Festival",
-"venue": "Blue Note Napa Summer Sessions",
-"city": "Napa",
-"region": "CA",
-"url": "https://www.ticketmaster.com/2day-palm-tree-music-festival-napa-california-10-02-2026/event/1C0064C5E1192FCE",
-"artist": "Disclosure"
-},
-{
-"date": "2026-10-02",
 "event": "Breakaway Utah 2026",
 "venue": "America First Field",
 "city": "Sandy",
@@ -5105,15 +3341,6 @@
 "region": "CA",
 "url": "https://www.ticketmaster.com/2day-palm-tree-music-festival-napa-california-10-02-2026/event/1C0064C5E1192FCE",
 "artist": "HUGEL"
-},
-{
-"date": "2026-10-02",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-10-02-2026/event/3B00643505888295",
-"artist": "Harry Styles"
 },
 {
 "date": "2026-10-02",
@@ -5288,15 +3515,6 @@
 },
 {
 "date": "2026-10-03",
-"event": "Country Calling",
-"venue": "Ocean City Inlet",
-"city": "Ocean City",
-"region": "MD",
-"url": "https://on.fgtix.com/trk/XmtGb",
-"artist": "Chris Stapleton"
-},
-{
-"date": "2026-10-03",
 "event": "You&Me - Saturday",
 "venue": "Depot Mayfield",
 "city": "Manchester",
@@ -5321,15 +3539,6 @@
 "region": "CA",
 "url": "https://www.ticketmaster.com/palm-tree-music-festival-sat-103-napa-california-10-03-2026/event/1C0064C9377913CF",
 "artist": "HUGEL"
-},
-{
-"date": "2026-10-03",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-10-03-2026/event/3B006435059882A6",
-"artist": "Harry Styles"
 },
 {
 "date": "2026-10-03",
@@ -5384,15 +3593,6 @@
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/youme-saturday-manchester-03-10-2026/event/35006497E11350C4",
 "artist": "Julian Fijma"
-},
-{
-"date": "2026-10-03",
-"event": "Austin City Limits Music Festival - Weekend One",
-"venue": "Zilker Park",
-"city": "Austin",
-"region": "TX",
-"url": "https://on.fgtix.com/trk/v8SK",
-"artist": "Lykke Li"
 },
 {
 "date": "2026-10-03",
@@ -5585,24 +3785,6 @@
 },
 {
 "date": "2026-10-07",
-"event": "Chris Stapleton's All-American Road Show",
-"venue": "Pinnacle Bank Arena",
-"city": "Lincoln",
-"region": "NE",
-"url": "https://www.ticketmaster.com/chris-stapletons-allamerican-road-show-lincoln-nebraska-10-07-2026/event/06006425DA7EA5F4",
-"artist": "Chris Stapleton"
-},
-{
-"date": "2026-10-07",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-10-07-2026/event/3B00643505AA82B9",
-"artist": "Harry Styles"
-},
-{
-"date": "2026-10-07",
 "event": "Harry Styles: Together, Together",
 "venue": "Madison Square Garden",
 "city": "New York",
@@ -5711,15 +3893,6 @@
 },
 {
 "date": "2026-10-09",
-"event": "Chris Stapleton's All-American Road Show",
-"venue": "Morton Amphitheater",
-"city": "Kansas City",
-"region": "MO",
-"url": "https://www.ticketmaster.com/chris-stapletons-allamerican-road-show-kansas-city-missouri-10-09-2026/event/21006390CCEC1E1D",
-"artist": "Chris Stapleton"
-},
-{
-"date": "2026-10-09",
 "event": "FORM Arcosanti Festival",
 "venue": "Arcosanti",
 "city": "Mayer",
@@ -5744,15 +3917,6 @@
 "region": "CO",
 "url": "https://www.ticketmaster.com/hugel-presents-make-the-girls-dance-denver-colorado-10-09-2026/event/1E0064BBE417502B",
 "artist": "HUGEL"
-},
-{
-"date": "2026-10-09",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-10-09-2026/event/3B00643505B782CA",
-"artist": "Harry Styles"
 },
 {
 "date": "2026-10-09",
@@ -5801,30 +3965,12 @@
 },
 {
 "date": "2026-10-09",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "PH Live at Planet Hollywood",
-"city": "Las Vegas",
-"region": "NV",
-"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-las-vegas-nevada-10-09-2026/event/3900646A91191937",
-"artist": "Polo & Pan"
-},
-{
-"date": "2026-10-09",
 "event": "Tinlicker North America 2026",
 "venue": "The Wiltern",
 "city": "Los Angeles",
 "region": "CA",
 "url": "https://www.ticketmaster.com/tinlicker-north-america-2026-los-angeles-california-10-09-2026/event/09006490AB107C05",
 "artist": "Tinlicker"
-},
-{
-"date": "2026-10-10",
-"event": "Chris Stapleton's All-American Road Show",
-"venue": "Morton Amphitheater",
-"city": "Kansas City",
-"region": "MO",
-"url": "https://www.ticketmaster.com/chris-stapletons-allamerican-road-show-kansas-city-missouri-10-10-2026/event/21006428DD461F37",
-"artist": "Chris Stapleton"
 },
 {
 "date": "2026-10-10",
@@ -5842,25 +3988,7 @@
 "city": "New York",
 "region": "NY",
 "url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-10-10-2026/event/3B00643505D182DF",
-"artist": "Harry Styles"
-},
-{
-"date": "2026-10-10",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-10-10-2026/event/3B00643505D182DF",
 "artist": "Jamie xx"
-},
-{
-"date": "2026-10-10",
-"event": "Austin City Limits Music Festival - Weekend Two",
-"venue": "Zilker Park",
-"city": "Austin",
-"region": "TX",
-"url": "https://on.fgtix.com/trk/y8SK",
-"artist": "Lykke Li"
 },
 {
 "date": "2026-10-10",
@@ -6008,30 +4136,12 @@
 },
 {
 "date": "2026-10-13",
-"event": "The Jungle Giants",
-"venue": "Fortune Sound Club",
-"city": "Vancouver",
-"region": "BC",
-"url": "https://www.ticketmaster.ca/event/Z7r9jZ1A700uZ",
-"artist": "The Jungle Giants"
-},
-{
-"date": "2026-10-13",
 "event": "Tinlicker North America 2026",
 "venue": "Knitting Factory - Boise",
 "city": "Boise",
 "region": "ID",
 "url": "https://www.ticketmaster.com/tinlicker-north-america-2026-boise-idaho-10-13-2026/event/1E006491AA08B6F8",
 "artist": "Tinlicker"
-},
-{
-"date": "2026-10-14",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-10-14-2026/event/3B00643505DD82E6",
-"artist": "Harry Styles"
 },
 {
 "date": "2026-10-14",
@@ -6122,15 +4232,6 @@
 "region": "LIM",
 "url": "https://www.ticketmaster.pe/event/hugel-lima-venta-general",
 "artist": "HUGEL"
-},
-{
-"date": "2026-10-16",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-10-16-2026/event/3B00643505EE82F4",
-"artist": "Harry Styles"
 },
 {
 "date": "2026-10-16",
@@ -6274,15 +4375,6 @@
 "city": "New York",
 "region": "NY",
 "url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-10-17-2026/event/3B00643506808378",
-"artist": "Harry Styles"
-},
-{
-"date": "2026-10-17",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-10-17-2026/event/3B00643506808378",
 "artist": "Jamie xx"
 },
 {
@@ -6350,30 +4442,12 @@
 },
 {
 "date": "2026-10-21",
-"event": "Black Coffee - BEHIND THE BOOTH UPGRADE",
-"venue": "Ziggo Dome",
-"city": "Amsterdam",
-"region": "NL",
-"url": "https://www.ticketmaster.nl/event/black-coffee-behind-the-booth-upgrade-tickets/78326905?language=en-us",
-"artist": "Black Coffee"
-},
-{
-"date": "2026-10-21",
 "event": "Black Coffee | Venue Premium Packages",
 "venue": "Ziggo Dome Club",
 "city": "Amsterdam",
 "region": "NL",
 "url": "https://www.ticketmaster.nl/event/black-coffee-%7C-venue-premium-packages-tickets/1460659511?language=en-us",
 "artist": "Black Coffee"
-},
-{
-"date": "2026-10-21",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-10-21-2026/event/3B0064350690838A",
-"artist": "Harry Styles"
 },
 {
 "date": "2026-10-21",
@@ -6428,15 +4502,6 @@
 "region": "FL",
 "url": "https://on.fgtix.com/trk/Yb64b",
 "artist": "Green Velvet"
-},
-{
-"date": "2026-10-23",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-10-23-2026/event/3B006435069E8398",
-"artist": "Harry Styles"
 },
 {
 "date": "2026-10-23",
@@ -6517,15 +4582,6 @@
 "city": "New York",
 "region": "NY",
 "url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-10-24-2026/event/3B00643506AE83A2",
-"artist": "Harry Styles"
-},
-{
-"date": "2026-10-24",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-10-24-2026/event/3B00643506AE83A2",
 "artist": "Jamie xx"
 },
 {
@@ -6572,24 +4628,6 @@
 "region": "TX",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1A70auE",
 "artist": "ZHU"
-},
-{
-"date": "2026-10-26",
-"event": "Forbidden",
-"venue": "The Federal Theatre",
-"city": "Denver",
-"region": "CO",
-"url": "https://thefederaltheatre.holdmyticket.com/tickets/465317",
-"artist": "Void"
-},
-{
-"date": "2026-10-28",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-10-28-2026/event/3B00643506BF83B6",
-"artist": "Harry Styles"
 },
 {
 "date": "2026-10-28",
@@ -6647,30 +4685,12 @@
 },
 {
 "date": "2026-10-30",
-"event": "Dom Dolla",
-"venue": "Navy Pier",
-"city": "Chicago",
-"region": "IL",
-"url": "https://www.tixr.com/groups/navypiereventcenter/events/dom-dolla-194113",
-"artist": "Dom Dolla"
-},
-{
-"date": "2026-10-30",
 "event": "Dombresky (21 and Over)",
 "venue": "The Concourse Project",
 "city": "Austin",
 "region": "TX",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7PyqZ",
 "artist": "Dombresky"
-},
-{
-"date": "2026-10-30",
-"event": "Harry Styles: Together, Together. Harryween.",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-harryween-new-york-new-york-10-30-2026/event/3B00643506CF83CB",
-"artist": "Harry Styles"
 },
 {
 "date": "2026-10-30",
@@ -6707,15 +4727,6 @@
 "region": "JAL",
 "url": "https://www.ticketmaster.com.mx/sofi-tukker-presents-animal-talk-zapopan-30-10-2026/event/3D00649BADDC31F8",
 "artist": "SOFI TUKKER"
-},
-{
-"date": "2026-10-30",
-"event": "Forbidden, Heathen, Void",
-"venue": "Reggies Rock Club",
-"city": "Chicago",
-"region": "IL",
-"url": "https://www.ticketweb.com/event/forbidden-heathen-void-reggies-rock-club-tickets/14274074?REFERRAL_ID=tmfeed",
-"artist": "Void"
 },
 {
 "date": "2026-10-31",
@@ -6755,15 +4766,6 @@
 },
 {
 "date": "2026-10-31",
-"event": "Dom Dolla",
-"venue": "Navy Pier",
-"city": "Chicago",
-"region": "IL",
-"url": "https://www.tixr.com/groups/navypiereventcenter/events/dom-dolla-194116",
-"artist": "Dom Dolla"
-},
-{
-"date": "2026-10-31",
 "event": "Gorgon City (18 and Over)",
 "venue": "SILO",
 "city": "Dallas",
@@ -6779,15 +4781,6 @@
 "region": "TX",
 "url": "https://www.ticketmaster.com/hugel-presents-make-the-girls-dance-irving-texas-10-31-2026/event/0C0064BDE8F33203",
 "artist": "HUGEL"
-},
-{
-"date": "2026-10-31",
-"event": "Harry Styles: Together, Together. Harryween.",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-harryween-new-york-new-york-10-31-2026/event/3B00643506DA83DE",
-"artist": "Harry Styles"
 },
 {
 "date": "2026-10-31",
@@ -6872,30 +4865,12 @@
 },
 {
 "date": "2026-10-31",
-"event": "FORBIDDEN - Chaos By Design US Tour 2026",
-"venue": "The Mercury Music Lounge",
-"city": "Lakewood",
-"region": "OH",
-"url": "https://www.ticketweb.com/event/forbidden-chaos-by-the-mercury-music-lounge-tickets/14270684",
-"artist": "Void"
-},
-{
-"date": "2026-10-31",
 "event": "ZHU - ON THE MOVE - Halloween (21+ Event)",
 "venue": "Gold Bar Distillery",
 "city": "San Francisco",
 "region": "CA",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1A70AvU",
 "artist": "ZHU"
-},
-{
-"date": "2026-11-02",
-"event": "Forbidden",
-"venue": "Tally Ho Theater",
-"city": "Leesburg",
-"region": "VA",
-"url": "https://www.ticketweb.com/event/forbidden-tally-ho-theater-tickets/14266214",
-"artist": "Void"
 },
 {
 "date": "2026-11-05",
@@ -6988,15 +4963,6 @@
 "artist": "Sammy Virji"
 },
 {
-"date": "2026-11-07",
-"event": "Forbidden - Chaos By Design US Tour 2026",
-"venue": "Empire Underground",
-"city": "Albany",
-"region": "NY",
-"url": "https://www.ticketmaster.com/forbidden-chaos-by-design-us-tour-albany-new-york-11-07-2026/event/300064F2D489904E",
-"artist": "Void"
-},
-{
 "date": "2026-11-08",
 "event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
 "venue": "Dickies Arena",
@@ -7004,24 +4970,6 @@
 "region": "TX",
 "url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-fort-worth-texas-11-08-2026/event/0C0064B49E2D86C5",
 "artist": "John Summit"
-},
-{
-"date": "2026-11-08",
-"event": "Forbidden: Chaos By Design US Tour 2026",
-"venue": "Mickey's Black Box",
-"city": "Lititz",
-"region": "PA",
-"url": "https://www.ticketmaster.com/forbidden-chaos-by-design-us-tour-lititz-pennsylvania-11-08-2026/event/020064F4F9B0E154",
-"artist": "Void"
-},
-{
-"date": "2026-11-12",
-"event": "Forbidden \"Chaos By Design\" Tour in Orlando",
-"venue": "Conduit",
-"city": "Winter Park",
-"region": "FL",
-"url": "https://www.ticketweb.com/event/forbidden-chaos-by-design-tour-conduit-tickets/14267384",
-"artist": "Void"
 },
 {
 "date": "2026-11-13",
@@ -7049,15 +4997,6 @@
 "region": "OH",
 "url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-columbus-ohio-11-13-2026/event/050064B3F56A8E85",
 "artist": "John Summit"
-},
-{
-"date": "2026-11-13",
-"event": "FORBIDDEN Chaos By Design US Tour 2026",
-"venue": "The Masquerade  - Altar",
-"city": "Atlanta",
-"region": "GA",
-"url": "https://www.ticketmaster.com/forbidden-chaos-by-design-us-tour-atlanta-georgia-11-13-2026/event/0E0064F1C7D31C86",
-"artist": "Void"
 },
 {
 "date": "2026-11-13",
@@ -7132,15 +5071,6 @@
 "artist": "John Summit"
 },
 {
-"date": "2026-11-15",
-"event": "Forbidden: Chaos By Design US Tour 2026",
-"venue": "Club LA",
-"city": "Destin",
-"region": "FL",
-"url": "https://www.ticketweb.com/event/forbidden-chaos-by-design-us-club-la-tickets/14272694",
-"artist": "Void"
-},
-{
 "date": "2026-11-16",
 "event": "Rhye",
 "venue": "Vogue Theatre-BC",
@@ -7192,33 +5122,6 @@
 "city": "México",
 "region": "CDMX",
 "url": "https://www.ticketmaster.com.mx/individual-general-corona-capital-2026-mexico-20-11-2026/event/14006499FA57F0FC",
-"artist": "Fcukers"
-},
-{
-"date": "2026-11-20",
-"event": "Individual Comfort Pass Banamex Corona Capital 2026",
-"venue": "Autodromo Hnos. Rodriguez",
-"city": "México",
-"region": "CDMX",
-"url": "https://www.ticketmaster.com.mx/individual-comfort-pass-banamex-corona-capital-mexico-20-11-2026/event/14006499FAF2F21C",
-"artist": "Fcukers"
-},
-{
-"date": "2026-11-20",
-"event": "Individual Banamex Plus Corona Capital 2026",
-"venue": "Autodromo Hnos. Rodriguez",
-"city": "México",
-"region": "CDMX",
-"url": "https://www.ticketmaster.com.mx/individual-banamex-plus-corona-capital-2026-mexico-20-11-2026/event/14006499F22BE35A",
-"artist": "Fcukers"
-},
-{
-"date": "2026-11-20",
-"event": "Abono General 3 días Corona Capital 2026",
-"venue": "Autodromo Hnos. Rodriguez",
-"city": "México",
-"region": "CDMX",
-"url": "https://www.ticketmaster.com.mx/abono-general-3-dias-corona-capital-mexico-20-11-2026/event/14006499D700B533",
 "artist": "Fcukers"
 },
 {
@@ -7276,15 +5179,6 @@
 "artist": "John Summit"
 },
 {
-"date": "2026-11-22",
-"event": "Forbidden: Chaos By Design US Tour 2026",
-"venue": "Teragram Ballroom",
-"city": "Los Angeles",
-"region": "CA",
-"url": "https://www.ticketmaster.com/forbidden-chaos-by-design-us-tour-los-angeles-california-11-22-2026/event/090064EFDA41E3B5",
-"artist": "Void"
-},
-{
 "date": "2026-11-24",
 "event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
 "venue": "United Center",
@@ -7322,15 +5216,6 @@
 },
 {
 "date": "2026-11-27",
-"event": "Harry Styles: Together, Together",
-"venue": "Marvel Stadium",
-"city": "Docklands",
-"region": "VIC",
-"url": "https://www.ticketmaster.com.au/harry-styles-together-together-docklands-27-11-2026/event/25006436CFC6E40D",
-"artist": "Harry Styles"
-},
-{
-"date": "2026-11-27",
 "event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
 "venue": "The Liacouras Center",
 "city": "Philadelphia",
@@ -7358,15 +5243,6 @@
 },
 {
 "date": "2026-11-28",
-"event": "Harry Styles: Together, Together",
-"venue": "Marvel Stadium",
-"city": "Docklands",
-"region": "VIC",
-"url": "https://www.ticketmaster.com.au/harry-styles-together-together-docklands-28-11-2026/event/2500643393CDFCCE",
-"artist": "Harry Styles"
-},
-{
-"date": "2026-11-28",
 "event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
 "venue": "Barclays Center",
 "city": "Brooklyn",
@@ -7391,24 +5267,6 @@
 "region": "VIC",
 "url": "https://www.moshtix.com.au/v2/event/all-day-i-dream-of-australia-melbourne/197778",
 "artist": "Lee Burridge"
-},
-{
-"date": "2026-12-02",
-"event": "Harry Styles: Together, Together",
-"venue": "Marvel Stadium",
-"city": "Docklands",
-"region": "VIC",
-"url": "https://www.ticketmaster.com.au/harry-styles-together-together-docklands-02-12-2026/event/25006436CFDFE44E",
-"artist": "Harry Styles"
-},
-{
-"date": "2026-12-04",
-"event": "Harry Styles: Together, Together",
-"venue": "Marvel Stadium",
-"city": "Docklands",
-"region": "VIC",
-"url": "https://www.ticketmaster.com.au/harry-styles-together-together-docklands-04-12-2026/event/25006436CFE9E468",
-"artist": "Harry Styles"
 },
 {
 "date": "2026-12-04",
@@ -7493,15 +5351,6 @@
 },
 {
 "date": "2026-12-12",
-"event": "Harry Styles: Together, Together",
-"venue": "Accor Stadium",
-"city": "Sydney Olympic Park",
-"region": "NSW",
-"url": "https://www.ticketmaster.com.au/harry-styles-together-together-sydney-olympic-park-12-12-2026/event/250064346C5043CE",
-"artist": "Harry Styles"
-},
-{
-"date": "2026-12-12",
 "event": "SIDEPIECE - 12.12.26 @ The Bluestone - Columbus, OH",
 "venue": "Forum Columbus",
 "city": "Columbus",
@@ -7517,15 +5366,6 @@
 "region": "ACT",
 "url": "https://www.moshtix.com.au/v2/event/spilt-milk-canberra-2026/198093",
 "artist": "Tobiahs"
-},
-{
-"date": "2026-12-13",
-"event": "Harry Styles: Together, Together",
-"venue": "Accor Stadium",
-"city": "Sydney Olympic Park",
-"region": "NSW",
-"url": "https://www.ticketmaster.com.au/harry-styles-together-together-sydney-olympic-park-13-12-2026/event/25006436C550C697",
-"artist": "Harry Styles"
 },
 {
 "date": "2026-12-13",
