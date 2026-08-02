@@ -120,17 +120,35 @@ def main():
 
     # phase 2: events for every resolved artist
     events = []
-    with_events = 0
     for name in artists:
         aid = (cache.get(name) or {}).get("id")
         if not aid:
             continue
         found = events_for(aid)
-        if found:
-            with_events += 1
-            for e in found:
-                e["artist"] = name
-            events.extend(found)
+        for e in found:
+            e["artist"] = name
+        events.extend(found)
+
+    # ticketmaster returns a separate record per ticket type, so one festival night
+    # can land four identical rows. collapse on artist + date + venue + city, and
+    # drop anything that has already happened.
+    seen = set()
+    kept = []
+    for e in events:
+        if (e.get("date") or "") < today:
+            continue
+        key = (
+            e.get("artist", ""),
+            e.get("date", ""),
+            (e.get("venue") or "").strip().lower(),
+            (e.get("city") or "").strip().lower(),
+        )
+        if key in seen:
+            continue
+        seen.add(key)
+        kept.append(e)
+    events = kept
+    with_events = len({e.get("artist", "") for e in events})
 
     events.sort(key=lambda e: (e.get("date") or "9999", e.get("artist", "")))
 
