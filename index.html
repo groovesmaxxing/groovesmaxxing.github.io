@@ -91,6 +91,26 @@ h2{font-weight:900;font-size:clamp(1.9rem,4.5vw,2.8rem);line-height:1.1;margin-b
 .cluster p{font-size:.94rem;color:#33332f}
 
 /* listen */
+.pod .pep{font:inherit;background:none;border:0;padding:0;cursor:pointer;color:#9a9a95;border-bottom:1px solid #34343a}
+.pod .pep:hover{color:var(--racing);border-bottom-color:var(--racing)}
+.pod .pep[aria-pressed="true"]{color:var(--racing);border-bottom-color:var(--racing)}
+.pod .pslot{margin-top:12px}
+.pod .pslot iframe{width:100%;height:152px;border:0;border-radius:12px;display:block}
+.pod .ptitle{color:#f0f0ea;text-decoration:none}
+.pod:hover .ptitle{color:var(--racing)}
+.pod .pguests a{color:#9a9a95;text-decoration:none;border-bottom:1px solid #34343a}
+.pod .pguests a:hover{color:var(--racing);border-bottom-color:var(--racing)}
+.pod .plabel{color:#5f5f5c}
+.pod .psep{color:#3d3d42}
+.pods{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:6px}
+.pod{display:block;text-decoration:none;border:1px solid #2c2c31;border-radius:8px;padding:18px 19px;transition:border-color .15s,transform .15s}
+.pod:hover{border-color:var(--racing);transform:translateY(-2px)}
+.pod h4{margin:0 0 6px;text-decoration:none;font-size:1rem;color:#f0f0ea}
+.pod:hover h4{color:var(--racing)}
+.pod p{margin:0 0 9px;font-size:.87rem;line-height:1.6;color:#b9b9b3}
+.pod .pwho{font-size:.72rem;color:#7f7f7b;letter-spacing:.04em;margin-bottom:10px}
+.pod .pguests{font-size:.72rem;color:#8a8a86;margin:0;padding-top:9px;border-top:1px solid #26262a}
+.pod b{color:#dcdcd6;font-weight:600}
 .players{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:36px}
 .player h4{font-weight:900;margin-bottom:10px;font-size:1.05rem}
 .player iframe{border-radius:14px;border:0;width:100%}
@@ -208,7 +228,8 @@ fill="none" stroke="#F2F2EF" stroke-width="7" stroke-linecap="round" stroke-line
 <a href="#story" data-pv-t="the story" data-pv-d="why this exists. one person sending way too many songs to the group chat, until the group chat got too small." data-pv-m="fun first · zero budget · no pay-to-play">the story</a>
 <a href="#lanes" data-pv-t="the sound" data-pv-d="three lanes, one groove. daytime funk, night-shift bass, and the stuff that never made it to streaming." data-pv-m="vibes ☀️ · bumpy 🚧 · contraband 💎">the sound</a>
 <a href="#artists" data-pv-t="who we follow" data-pv-d="682 artists deep, sorted into the scenes they actually belong to. the israeli wave, the uk minimal heads, the legends, and more." data-pv-m="7 clusters · the heavy-rotation eleven">who we follow</a>
-<a href="#listen" data-pv-t="press play" data-pv-d="the playlists, embedded and playable right here. plus the two soundcloud mixes that refresh themselves off our taste." data-pv-m="4 players · daily drops + weekly wave">press play</a>
+<a href="#listen" data-pv-t="press play" data-pv-d="the playlists, embedded and playable right here. plus the two soundcloud mixes that refresh themselves off our taste." data-pv-m="6 players · daily drops + weekly wave">press play</a>
+<a href="#podcasts" data-pv-t="podcasts" data-pv-d="interview shows where the artists we follow actually talk. no mix series." data-pv-m="8 shows · verified episodes">podcasts</a>
 <a href="#library" data-pv-t="the library" data-pv-d="sets worth your hour. solomun at orange for cercle, coachella yuma tent, knockdown center warehouse pressure." data-pv-m="7 sets · full dj-set playlist in the works">the library</a>
 <a href="#labels" data-pv-t="the imprint radar" data-pv-d="the labels that keep showing up when a track survives the skip test. hover any name on the wall to see why it earned the spot." data-pv-m="87 imprints · 4 tiers">the imprint radar</a>
 <a href="#series" data-pv-t="on the calendar" data-pv-d="the recurring stuff. what lands every week, and what lands every month." data-pv-m="fresh grooves friday · contraband of the week · events radar">on the calendar</a>
@@ -325,6 +346,16 @@ fill="none" stroke="#F2F2EF" stroke-width="7" stroke-linecap="round" stroke-line
 <iframe src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fuser-675637809%2Fsets%2Fcontratbandgrooves&color=%23ff1c02&auto_play=false&show_teaser=false" height="352" loading="lazy" title="contraband grooves playlist on SoundCloud"></iframe>
 <p class="note">90 edits you can't stream anywhere else</p>
 </div>
+<div class="player">
+<h4>dj sets 🎛️</h4>
+<iframe src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fuser-675637809%2Fsets%2Fdj-sets&color=%23ff1c02&auto_play=false&show_teaser=false" height="352" loading="lazy" title="dj sets playlist on SoundCloud"></iframe>
+<p class="note">5 mixes, front to back</p>
+</div>
+<div class="player">
+<h4>radio sets 📻</h4>
+<iframe src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fuser-675637809%2Fsets%2Fradio-sets&color=%23ff1c02&auto_play=false&show_teaser=false" height="352" loading="lazy" title="radio sets playlist on SoundCloud"></iframe>
+<p class="note">4 hours off the airwaves</p>
+</div>
 </div>
 <div class="mix-row">
 <a class="pill" href="https://soundcloud.com/discover/sets/new-for-you::user-675637809" target="_blank" rel="noopener">daily drops ↻</a>
@@ -418,6 +449,73 @@ fill="none" stroke="#F2F2EF" stroke-width="7" stroke-linecap="round" stroke-line
 <div class="coming">more sets loading… full dj-set playlist on youtube in the works ⏳</div>
 </div>
 </section>
+
+<section id="podcasts">
+<div class="wrap">
+<span class="mono eyebrow">in their own words</span>
+<h2>podcasts worth an hour</h2>
+<p class="note" style="margin:4px 0 22px">interview shows only, no mix series dressed up as podcasts. every episode below was checked, and every bolded name is someone on the roster.</p>
+<div class="pods">
+<div class="pod">
+<h4><a class="ptitle" href="https://open.spotify.com/episode/3MhPF9CGl2FRMDTEtjbJxq" target="_blank" rel="noopener">The Will Clarke Podcast</a></h4>
+<p class="pwho mono">hosted by <b>Will Clarke</b></p>
+<p>weekly, every tuesday, since 2015. he sits down with artists and producers and gets past the press answers. recent guests include <b>Chris Lake</b> and Rossi.</p>
+<p class="pguests mono"><button type="button" class="pep" data-ep="3MhPF9CGl2FRMDTEtjbJxq" data-title="latest episode ↗">latest episode ↗</button></p>
+<div class="pslot" hidden></div>
+</div>
+<div class="pod">
+<h4><a class="ptitle" href="https://open.spotify.com/episode/1812AeDb7JWIsyyFM5b17i" target="_blank" rel="noopener">Sherm In The Booth</a></h4>
+<p class="pwho mono">hosted by Sherm, Hood Politics</p>
+<p>one on one with djs and producers about how the catalogue actually got made. four artists we follow have sat in that chair.</p>
+<p class="pguests mono"><span class="plabel">episodes:</span> <button type="button" class="pep" data-ep="1812AeDb7JWIsyyFM5b17i" data-title="SITB 203 feat. Max Styler (DJ/Producer)" title="SITB 203 feat. Max Styler (DJ/Producer)">max styler</button> <span class="psep">·</span> <button type="button" class="pep" data-ep="1JWumO089ip9nezspmNV6d" data-title="SITB 172 feat. CID (DJ/Producer)" title="SITB 172 feat. CID (DJ/Producer)">cid</button> <span class="psep">·</span> <button type="button" class="pep" data-ep="4my46xjtBdRNbuakjH5QhO" data-title="SITB 205 feat. Win and Woo (DJ/Producer Duo)" title="SITB 205 feat. Win and Woo (DJ/Producer Duo)">win and woo</button> <span class="psep">·</span> <button type="button" class="pep" data-ep="48hQttc7aVZcgUu4HX94ze" data-title="Breaking Through In Dance Music: Charleston Edition" title="Breaking Through In Dance Music: Charleston Edition">dj susan</button></p>
+<div class="pslot" hidden></div>
+</div>
+<div class="pod">
+<h4><a class="ptitle" href="https://open.spotify.com/episode/7ePtWrQvOPM0dnqtmjf8A0" target="_blank" rel="noopener">RA Exchange</a></h4>
+<p class="pwho mono">from Resident Advisor</p>
+<p>the long-running one. one artist an episode, the record they just made and how they think.</p>
+<p class="pguests mono"><span class="plabel">episodes:</span> <button type="button" class="pep" data-ep="7ePtWrQvOPM0dnqtmjf8A0" data-title="EX.793 Chris Stussy" title="EX.793 Chris Stussy">chris stussy</button></p>
+<div class="pslot" hidden></div>
+</div>
+<div class="pod">
+<h4><a class="ptitle" href="https://open.spotify.com/episode/1EztOvKykCJXD6tJPhY3LD" target="_blank" rel="noopener">TSL Time</a></h4>
+<p class="pwho mono">hosted by Richie</p>
+<p>filmed in person, touring djs talking about tour life and the business end. two long ones worth your time.</p>
+<p class="pguests mono"><span class="plabel">episodes:</span> <button type="button" class="pep" data-ep="1EztOvKykCJXD6tJPhY3LD" data-title="Chris Lake TALKS 20 Years of Music Week, Producing &#x27;Toxic&#x27; &amp; New Album, and Starting Black Book" title="Chris Lake TALKS 20 Years of Music Week, Producing &#x27;Toxic&#x27; &amp; New Album, and Starting Black Book">chris lake</button> <span class="psep">·</span> <button type="button" class="pep" data-ep="2vNKQqAhFmfybxVEX3j2O0" data-title="Chris Stussy TALKS Ibiza Secrets, DC-10 Madness &amp; The Set That Made Him Cry" title="Chris Stussy TALKS Ibiza Secrets, DC-10 Madness &amp; The Set That Made Him Cry">chris stussy</button></p>
+<div class="pslot" hidden></div>
+</div>
+<div class="pod">
+<h4><a class="ptitle" href="https://open.spotify.com/episode/0jmbMX3dhOMBBWRkF6XkLD" target="_blank" rel="noopener">Off The Record</a></h4>
+<p class="pwho mono">from the Crossfader coaching platform</p>
+<p>career-shaped rather than music-shaped, how working djs actually built the thing. <b>James Hype</b> has been on twice.</p>
+<p class="pguests mono"><span class="plabel">episodes:</span> <button type="button" class="pep" data-ep="0jmbMX3dhOMBBWRkF6XkLD" data-title="Ep 157. James Hype - &quot;The Secrets To Becoming a Headline DJ&quot;" title="Ep 157. James Hype - &quot;The Secrets To Becoming a Headline DJ&quot;">james hype</button></p>
+<div class="pslot" hidden></div>
+</div>
+<div class="pod">
+<h4><a class="ptitle" href="https://podcasts.apple.com/us/podcast/lp-giobbi-femme-house-radio/id1657976631" target="_blank" rel="noopener">LP Giobbi - Femme House Radio</a></h4>
+<p class="pwho mono">hosted by <b>LP Giobbi</b></p>
+<p>weekly on insomniac radio, built around women, gender-expansive, bipoc and lgbtqia+ artists. half guest mix, half proper interview.</p>
+<p class="pguests mono"><a href="https://podcasts.apple.com/us/podcast/lp-giobbi-femme-house-radio/id1657976631" target="_blank" rel="noopener">the show ↗</a></p>
+<div class="pslot" hidden></div>
+</div>
+<div class="pod">
+<h4><a class="ptitle" href="https://open.spotify.com/episode/2MNvQB7bWHedV0K7MhAZtn" target="_blank" rel="noopener">Billboard On The Record</a></h4>
+<p class="pwho mono">from Billboard</p>
+<p>industry-facing and usually not our lane, but the <b>John Summit</b> episode on building a dance music business is the exception.</p>
+<p class="pguests mono"><span class="plabel">episodes:</span> <button type="button" class="pep" data-ep="2MNvQB7bWHedV0K7MhAZtn" data-title="How to Build a Dance Music Empire w/ John Summit" title="How to Build a Dance Music Empire w/ John Summit">john summit</button></p>
+<div class="pslot" hidden></div>
+</div>
+<div class="pod">
+<h4><a class="ptitle" href="https://open.spotify.com/episode/7Evkd0kVnRJCjqK7pcvRwD" target="_blank" rel="noopener">Bakkie Bakkie</a></h4>
+<p class="pwho mono">dutch language</p>
+<p>dutch artists on their year and their career. worth it for the <b>Chris Stussy</b> episode even if you do not speak dutch.</p>
+<p class="pguests mono"><span class="plabel">episodes:</span> <button type="button" class="pep" data-ep="7Evkd0kVnRJCjqK7pcvRwD" data-title="CHRIS STUSSY" title="CHRIS STUSSY">chris stussy</button></p>
+<div class="pslot" hidden></div>
+</div>
+</div>
+</div>
+</section>
+
 
 <section id="labels">
 <div class="wrap">
@@ -578,6 +676,19 @@ links[i].addEventListener('blur',off);
 }
 window.addEventListener('scroll',function(){box.classList.remove('on');},{passive:true});
 document.addEventListener('keydown',function(e){if(e.key==='Escape'){box.classList.remove('on');}});
+})();
+</script>
+<script>
+(function(){var b=document.querySelectorAll(".pod .pep");if(!b.length)return;
+for(var i=0;i<b.length;i++){b[i].addEventListener("click",function(){
+var card=this.closest(".pod"),slot=card.querySelector(".pslot");
+var sibs=card.querySelectorAll(".pep");
+for(var j=0;j<sibs.length;j++){sibs[j].setAttribute("aria-pressed",String(sibs[j]===this));}
+slot.innerHTML="";var fr=document.createElement("iframe");
+fr.src="https://open.spotify.com/embed/episode/"+this.getAttribute("data-ep")+"?utm_source=generator&theme=0";
+fr.title=this.getAttribute("data-title")||"podcast episode";fr.loading="lazy";
+fr.setAttribute("allow","autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture");
+slot.appendChild(fr);slot.hidden=false;});}
 })();
 </script>
 </body>
