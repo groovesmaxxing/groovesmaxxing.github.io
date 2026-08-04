@@ -35,6 +35,11 @@ OVERRIDES = {
     "Void": None,  # ticketmaster's Void is a louisiana thrash band, not the tech house one
 }
 
+# venues we never list, matched on (venue, city), lowercased. decided by hand.
+VENUE_BLOCK = {
+    ("tracks", "denver"),  # cut 2026-08-04, g-mo's call
+}
+
 calls = 0
 
 
@@ -86,6 +91,8 @@ def events_for(attraction_id):
         v = venues[0]
         city = (v.get("city") or {}).get("name", "")
         state = (v.get("state") or {}).get("stateCode") or (v.get("country") or {}).get("countryCode", "")
+        if ((v.get("name") or "").strip().lower(), city.strip().lower()) in VENUE_BLOCK:
+            continue
         start = (e.get("dates") or {}).get("start") or {}
         out.append({
             "date": start.get("localDate", ""),
