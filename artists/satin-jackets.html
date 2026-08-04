@@ -63,6 +63,11 @@ footer{border-top:1px solid var(--line);margin-top:72px;padding:34px 0 60px}
 .fine{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel)}
 .bio a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#33333a}
 .bio a:hover{color:var(--racing);text-decoration-color:var(--racing)}
+.artist{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:16px}
+.artist > *{grid-column:1 / -1}
+.artist > .aname{grid-column:1}
+.artist > .links{grid-column:2;grid-row:1;margin-top:0;justify-self:end;flex-wrap:nowrap}
+@media (max-width:640px){.artist > .aname{grid-column:1 / -1}.artist > .links{grid-column:1 / -1;grid-row:2;justify-self:start;margin-top:14px;flex-wrap:wrap}}
 
 .pn{display:flex;justify-content:space-between;gap:14px;border-top:1px solid var(--line);margin-top:52px;padding-top:26px}
 .pn a{font-family:'Space Mono',monospace;font-size:.8rem;color:var(--steel);text-decoration:none;max-width:46%}
