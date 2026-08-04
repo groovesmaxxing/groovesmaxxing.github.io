@@ -1,17 +1,8 @@
 {
-"generated": "2026-08-03T17:21:49+00:00",
+"generated": "2026-08-04T16:31:04+00:00",
 "artist_count": 682,
-"artists_with_events": 152,
+"artists_with_events": 151,
 "events": [
-{
-"date": "2026-08-03",
-"event": "Parcels (Valid government-issued photo ID is required for entry. Under 18 must be accompanied by an adult at all times)",
-"venue": "Pappy and Harriets Pioneertown Palace",
-"city": "Pioneertown",
-"region": "CA",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7xajN",
-"artist": "Parcels"
-},
 {
 "date": "2026-08-04",
 "event": "Parcels (Valid government-issued photo ID is required for entry. Under 18 must be accompanied by an adult at all times)",
@@ -3092,15 +3083,6 @@
 },
 {
 "date": "2026-10-02",
-"event": "Claptone",
-"venue": "The Church Nightclub",
-"city": "Denver",
-"region": "CO",
-"url": "https://www.ticketweb.com/event/claptone-the-church-nightclub-tickets/15002673",
-"artist": "CLAPTONE"
-},
-{
-"date": "2026-10-02",
 "event": "Breakaway Utah 2026",
 "venue": "America First Field",
 "city": "Sandy",
@@ -3308,6 +3290,15 @@
 },
 {
 "date": "2026-10-02",
+"event": "ARK: Tiga",
+"venue": "Tama",
+"city": "Poznan",
+"region": "PL",
+"url": "https://www.ticketmaster.pl/event/ark-tiga-tickets/313482685?language=en-us",
+"artist": "Tiga"
+},
+{
+"date": "2026-10-02",
 "event": "Breakaway Utah 2026",
 "venue": "America First Field",
 "city": "Sandy",
@@ -3512,6 +3503,15 @@
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/youme-saturday-manchester-03-10-2026/event/35006497E11350C4",
 "artist": "Stef Davidse"
+},
+{
+"date": "2026-10-03",
+"event": "ARK: Tiga",
+"venue": "Tama",
+"city": "Poznan",
+"region": "PL",
+"url": "https://www.ticketmaster.pl/event/ark-tiga-tickets/1676400471?language=en-us",
+"artist": "Tiga"
 },
 {
 "date": "2026-10-03",
@@ -4280,6 +4280,15 @@
 },
 {
 "date": "2026-10-22",
+"event": "MEDUZA",
+"venue": "Melkweg",
+"city": "Amsterdam",
+"region": "NL",
+"url": "https://www.ticketmaster.nl/event/meduza-tickets/1899883751?language=en-us",
+"artist": "MEDUZA"
+},
+{
+"date": "2026-10-22",
 "event": "The Jungle Giants",
 "venue": "Antone's Nightclub",
 "city": "Austin",
@@ -4475,6 +4484,15 @@
 "region": "TX",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZ7vw",
 "artist": "Adriatique"
+},
+{
+"date": "2026-10-30",
+"event": "Escape",
+"venue": "NOS Events Center",
+"city": "San Bernardino",
+"region": "CA",
+"url": "https://on.fgtix.com/trk/Ni5m",
+"artist": "Cloonee"
 },
 {
 "date": "2026-10-30",
