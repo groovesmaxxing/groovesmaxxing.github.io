@@ -1,17 +1,8 @@
 {
-"generated": "2026-08-04T16:31:04+00:00",
+"generated": "2026-08-05T16:15:52+00:00",
 "artist_count": 682,
-"artists_with_events": 151,
+"artists_with_events": 153,
 "events": [
-{
-"date": "2026-08-04",
-"event": "Parcels (Valid government-issued photo ID is required for entry. Under 18 must be accompanied by an adult at all times)",
-"venue": "Pappy and Harriets Pioneertown Palace",
-"city": "Pioneertown",
-"region": "CA",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7xajP",
-"artist": "Parcels"
-},
 {
 "date": "2026-08-06",
 "event": "RÜFÜS DU SOL NORTH AMERICA 2026",
@@ -1859,6 +1850,15 @@
 },
 {
 "date": "2026-09-05",
+"event": "Gordo ( 21+ )",
+"venue": "Big Night Live",
+"city": "Boston",
+"region": "MA",
+"url": "https://www.ticketmaster.com/gordo-21-boston-massachusetts-09-05-2026/event/0100650570B25D78",
+"artist": "Gordo"
+},
+{
+"date": "2026-09-05",
 "event": "Hugel [Early Show]",
 "venue": "Echostage",
 "city": "Washington",
@@ -3080,6 +3080,15 @@
 "region": "QLD",
 "url": "https://www.moshtix.com.au/v2/event/overtone-festival-2026/195721",
 "artist": "Barry Can't Swim"
+},
+{
+"date": "2026-10-02",
+"event": "Claptone",
+"venue": "The Church Nightclub",
+"city": "Denver",
+"region": "CO",
+"url": "https://www.ticketweb.com/event/claptone-the-church-nightclub-tickets/15002673",
+"artist": "CLAPTONE"
 },
 {
 "date": "2026-10-02",
@@ -4307,6 +4316,15 @@
 },
 {
 "date": "2026-10-23",
+"event": "Chris Lorenzo",
+"venue": "Echostage",
+"city": "Washington",
+"region": "DC",
+"url": "https://www.ticketmaster.com/chris-lorenzo-washington-district-of-columbia-10-23-2026/event/150065032DB3603A",
+"artist": "Chris Lorenzo"
+},
+{
+"date": "2026-10-23",
 "event": "Dom Dolla - Ages 18+",
 "venue": "The Pinnacle - TN",
 "city": "Nashville",
@@ -4385,6 +4403,15 @@
 "region": "BC",
 "url": "https://www.ticketweb.ca/event/playhouse-pres-devault-celebrities-nightclub-tickets/14235444?REFERRAL_ID=tmfeed",
 "artist": "Devault"
+},
+{
+"date": "2026-10-24",
+"event": "Dom Dolla (18 and Over)",
+"venue": "The Pinnacle - TN",
+"city": "Nashville",
+"region": "TN",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZAFy",
+"artist": "Dom Dolla"
 },
 {
 "date": "2026-10-24",
@@ -5006,6 +5033,15 @@
 "region": "FL",
 "url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-miami-florida-11-21-2026/event/0D0064B3A9E1800A",
 "artist": "John Summit"
+},
+{
+"date": "2026-11-21",
+"event": "Sidepiece (18 and Over)",
+"venue": "The Ritz Ybor",
+"city": "Tampa",
+"region": "FL",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZkjb",
+"artist": "SIDEPIECE"
 },
 {
 "date": "2026-11-24",
