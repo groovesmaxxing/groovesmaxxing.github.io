@@ -1,17 +1,8 @@
 {
-"generated": "2026-08-05T16:15:52+00:00",
+"generated": "2026-08-07T11:56:34+00:00",
 "artist_count": 682,
-"artists_with_events": 153,
+"artists_with_events": 158,
 "events": [
-{
-"date": "2026-08-06",
-"event": "RÜFÜS DU SOL NORTH AMERICA 2026",
-"venue": "Kia Forum",
-"city": "Inglewood",
-"region": "CA",
-"url": "https://www.ticketmaster.com/rufus-du-sol-north-america-2026-inglewood-california-08-06-2026/event/0900644BFCB72440",
-"artist": "RÜFÜS DU SOL"
-},
 {
 "date": "2026-08-07",
 "event": "Up in the Sky",
@@ -1229,6 +1220,15 @@
 },
 {
 "date": "2026-08-28",
+"event": "Tom & Collins",
+"venue": "CODA",
+"city": "Toronto",
+"region": "ON",
+"url": "https://www.ticketweb.ca/event/tom-collins-coda-tickets/15019283",
+"artist": "Tom & Collins"
+},
+{
+"date": "2026-08-28",
 "event": "Wade Bowen",
 "venue": "House of Blues Houston",
 "city": "Houston",
@@ -1814,6 +1814,15 @@
 },
 {
 "date": "2026-09-05",
+"event": "Matroda",
+"venue": "Commodore Ballroom",
+"city": "Vancouver",
+"region": "BC",
+"url": "https://www.ticketmaster.ca/matroda-vancouver-british-columbia-09-05-2026/event/11006506835F4A0A",
+"artist": "Biscits"
+},
+{
+"date": "2026-09-05",
 "event": "Chris Stussy [Late Show]",
 "venue": "Echostage",
 "city": "Washington",
@@ -1878,10 +1887,10 @@
 {
 "date": "2026-09-05",
 "event": "Matroda",
-"venue": "Malkin Bowl",
+"venue": "Commodore Ballroom",
 "city": "Vancouver",
 "region": "BC",
-"url": "https://www.ticketmaster.ca/matroda-vancouver-british-columbia-09-05-2026/event/110064B4D79DAAF6",
+"url": "https://www.ticketmaster.ca/matroda-vancouver-british-columbia-09-05-2026/event/11006506835F4A0A",
 "artist": "Matroda"
 },
 {
@@ -4154,6 +4163,15 @@
 },
 {
 "date": "2026-10-17",
+"event": "Festival Nescafé Vaiven 2026 General",
+"venue": "Jardines de México",
+"city": "Tehuixtla",
+"region": "MOR",
+"url": "https://www.ticketmaster.com.mx/festival-nescafe-vaiven-2026-general-tehuixtla-17-10-2026/event/1400649CE183E00A",
+"artist": "Adam Ten"
+},
+{
+"date": "2026-10-17",
 "event": "Anyma presents Æden",
 "venue": "The Domain",
 "city": "Sydney",
@@ -4163,12 +4181,30 @@
 },
 {
 "date": "2026-10-17",
+"event": "Festival Nescafé Vaiven 2026 General",
+"venue": "Jardines de México",
+"city": "Tehuixtla",
+"region": "MOR",
+"url": "https://www.ticketmaster.com.mx/festival-nescafe-vaiven-2026-general-tehuixtla-17-10-2026/event/1400649CE183E00A",
+"artist": "Bob Moses"
+},
+{
+"date": "2026-10-17",
 "event": "Playhouse Pres: Cid",
 "venue": "Celebrities",
 "city": "Vancouver",
 "region": "BC",
 "url": "https://www.ticketweb.ca/event/playhouse-pres-cid-celebrities-nightclub-tickets/14236734?REFERRAL_ID=tmfeed",
 "artist": "CID"
+},
+{
+"date": "2026-10-17",
+"event": "Festival Nescafé Vaiven 2026 General",
+"venue": "Jardines de México",
+"city": "Tehuixtla",
+"region": "MOR",
+"url": "https://www.ticketmaster.com.mx/festival-nescafe-vaiven-2026-general-tehuixtla-17-10-2026/event/1400649CE183E00A",
+"artist": "DRAMA"
 },
 {
 "date": "2026-10-17",
@@ -4217,12 +4253,39 @@
 },
 {
 "date": "2026-10-17",
+"event": "Festival Nescafé Vaiven 2026 General",
+"venue": "Jardines de México",
+"city": "Tehuixtla",
+"region": "MOR",
+"url": "https://www.ticketmaster.com.mx/festival-nescafe-vaiven-2026-general-tehuixtla-17-10-2026/event/1400649CE183E00A",
+"artist": "Max Styler"
+},
+{
+"date": "2026-10-17",
+"event": "Festival Nescafé Vaiven 2026 General",
+"venue": "Jardines de México",
+"city": "Tehuixtla",
+"region": "MOR",
+"url": "https://www.ticketmaster.com.mx/festival-nescafe-vaiven-2026-general-tehuixtla-17-10-2026/event/1400649CE183E00A",
+"artist": "OMRI."
+},
+{
+"date": "2026-10-17",
 "event": "Odd Mob (18 and Over)",
 "venue": "SILO",
 "city": "Dallas",
 "region": "TX",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZ7vY",
 "artist": "Odd Mob"
+},
+{
+"date": "2026-10-17",
+"event": "Festival Nescafé Vaiven 2026 General",
+"venue": "Jardines de México",
+"city": "Tehuixtla",
+"region": "MOR",
+"url": "https://www.ticketmaster.com.mx/festival-nescafe-vaiven-2026-general-tehuixtla-17-10-2026/event/1400649CE183E00A",
+"artist": "Rafael"
 },
 {
 "date": "2026-10-17",
@@ -4241,6 +4304,15 @@
 "region": "WA",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1A70o8g",
 "artist": "Tinlicker"
+},
+{
+"date": "2026-10-17",
+"event": "Festival Nescafé Vaiven 2026 General",
+"venue": "Jardines de México",
+"city": "Tehuixtla",
+"region": "MOR",
+"url": "https://www.ticketmaster.com.mx/festival-nescafe-vaiven-2026-general-tehuixtla-17-10-2026/event/1400649CE183E00A",
+"artist": "ZHU"
 },
 {
 "date": "2026-10-18",
@@ -4421,6 +4493,15 @@
 "region": "CA",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7Pg_v",
 "artist": "Franc Moody"
+},
+{
+"date": "2026-10-24",
+"event": "Hugel",
+"venue": "Reframe Studios Outdoors",
+"city": "Los Angeles",
+"region": "CA",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZ-kd",
+"artist": "HUGEL"
 },
 {
 "date": "2026-10-24",
@@ -4766,6 +4847,15 @@
 },
 {
 "date": "2026-11-06",
+"event": "Carl Cox",
+"venue": "Hollywood Palladium",
+"city": "Hollywood",
+"region": "CA",
+"url": "https://www.ticketmaster.com/carl-cox-hollywood-california-11-06-2026/event/09006503777A2802",
+"artist": "OMRI."
+},
+{
+"date": "2026-11-06",
 "event": "Sammy Virji: North America Tour 2026 Part 2",
 "venue": "PNE Forum",
 "city": "Vancouver",
@@ -4808,6 +4898,15 @@
 "region": "TX",
 "url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-fort-worth-texas-11-07-2026/event/0C0064B3CF15B693",
 "artist": "John Summit"
+},
+{
+"date": "2026-11-07",
+"event": "Bohemia Presents Jonas Blue",
+"venue": "Bohemia Beach Club | FIVE Palm",
+"city": "Dubai",
+"region": "AE",
+"url": "https://www.ticketmaster.ae/event/bohemia-presents-jonas-blue-tickets/1679671426",
+"artist": "Jonas Blue"
 },
 {
 "date": "2026-11-07",
@@ -5176,6 +5275,15 @@
 "city": "Chicago",
 "region": "IL",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7Ptae",
+"artist": "Rhye"
+},
+{
+"date": "2026-12-06",
+"event": "Rhye",
+"venue": "Majestic Theatre-MI",
+"city": "Detroit",
+"region": "MI",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7PKON",
 "artist": "Rhye"
 },
 {
