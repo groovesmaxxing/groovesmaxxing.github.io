@@ -1,71 +1,8 @@
 {
-"generated": "2026-08-07T11:56:34+00:00",
+"generated": "2026-08-08T11:04:21+00:00",
 "artist_count": 682,
-"artists_with_events": 158,
+"artists_with_events": 159,
 "events": [
-{
-"date": "2026-08-07",
-"event": "Up in the Sky",
-"venue": "Base of Buttermilk Mountain",
-"city": "Aspen",
-"region": "CO",
-"url": "https://on.fgtix.com/trk/w6v3b",
-"artist": "Fcukers"
-},
-{
-"date": "2026-08-07",
-"event": "Up in the Sky",
-"venue": "Base of Buttermilk Mountain",
-"city": "Aspen",
-"region": "CO",
-"url": "https://on.fgtix.com/trk/w6v3b",
-"artist": "John Summit"
-},
-{
-"date": "2026-08-07",
-"event": "Outside Lands",
-"venue": "Golden Gate Park",
-"city": "San Francisco",
-"region": "CA",
-"url": "https://on.fgtix.com/trk/sILM",
-"artist": "Odd Mob"
-},
-{
-"date": "2026-08-07",
-"event": "Pete Tong Live After Racing -  County Enclosure",
-"venue": "Haydock Park Racecourse",
-"city": "Newton-Le-Willows",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/pete-tong-live-after-racing-county-newtonlewillows-07-08-2026/event/1F0064370AE37C7D",
-"artist": "Pete Tong"
-},
-{
-"date": "2026-08-07",
-"event": "RÜFÜS DU SOL NORTH AMERICA 2026",
-"venue": "Kia Forum",
-"city": "Inglewood",
-"region": "CA",
-"url": "https://www.ticketmaster.com/rufus-du-sol-north-america-2026-inglewood-california-08-07-2026/event/09006455E5DFE35A",
-"artist": "RÜFÜS DU SOL"
-},
-{
-"date": "2026-08-07",
-"event": "Outside Lands",
-"venue": "Golden Gate Park",
-"city": "San Francisco",
-"region": "CA",
-"url": "https://on.fgtix.com/trk/sILM",
-"artist": "Tobiahs"
-},
-{
-"date": "2026-08-07",
-"event": "Yotto - Ages 21+",
-"venue": "Castaways",
-"city": "Chicago",
-"region": "IL",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7x4Qb",
-"artist": "YOTTO"
-},
 {
 "date": "2026-08-08",
 "event": "îLESONIQ 2026 - 2-jours",
@@ -938,6 +875,15 @@
 "region": "UT",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7xePA",
 "artist": "SOFI TUKKER"
+},
+{
+"date": "2026-08-22",
+"event": "Will Clarke - Ages 18+",
+"venue": "Decca Live",
+"city": "Jacksonville",
+"region": "FL",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1A70dQk",
+"artist": "Will Clarke"
 },
 {
 "date": "2026-08-23",
@@ -4450,6 +4396,15 @@
 "artist": "Odd Mob"
 },
 {
+"date": "2026-10-23",
+"event": "Chris Lorenzo",
+"venue": "Echostage",
+"city": "Washington",
+"region": "DC",
+"url": "https://www.ticketmaster.com/chris-lorenzo-washington-district-of-columbia-10-23-2026/event/150065032DB3603A",
+"artist": "Ragie Ban"
+},
+{
 "date": "2026-10-24",
 "event": "CROOKED COLOURS - 'Dirt Road Gold' Album Tour",
 "venue": "Northcote Theatre",
@@ -5096,6 +5051,15 @@
 "region": "NSW",
 "url": "https://www.moshtix.com.au/v2/event/all-day-i-dream-of-australia-byron-bay/197695",
 "artist": "Lee Burridge"
+},
+{
+"date": "2026-11-20",
+"event": "Prospa present Prophecy",
+"venue": "Radius - Chicago",
+"city": "Chicago",
+"region": "IL",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7Jfjf",
+"artist": "Prospa"
 },
 {
 "date": "2026-11-20",
