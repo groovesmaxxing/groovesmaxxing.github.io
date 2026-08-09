@@ -1,206 +1,8 @@
 {
-"generated": "2026-08-08T11:04:21+00:00",
+"generated": "2026-08-09T11:05:44+00:00",
 "artist_count": 682,
-"artists_with_events": 159,
+"artists_with_events": 158,
 "events": [
-{
-"date": "2026-08-08",
-"event": "îLESONIQ 2026 - 2-jours",
-"venue": "Parc Jean Drapeau",
-"city": "Montreal",
-"region": "QC",
-"url": "https://www.ticketmaster.ca/ilesoniq-2026-2jours-montreal-quebec-08-08-2026/event/31006305D97A480A",
-"artist": "AYYBO"
-},
-{
-"date": "2026-08-08",
-"event": "Adriatique present X on the Thames",
-"venue": "Old Royal Naval College",
-"city": "London",
-"region": "GB",
-"url": "https://www.universe.com/events/adriatique-present-x-on-the-thames-tickets-DSQHKW?ref=ticketmaster",
-"artist": "Adriatique"
-},
-{
-"date": "2026-08-08",
-"event": "Electric Paradise",
-"venue": "The National Bowl",
-"city": "Milton Keynes",
-"region": "GB",
-"url": "https://www.universe.com/events/electric-paradise-tickets-JBWVRM?ref=ticketmaster",
-"artist": "Armand Van Helden"
-},
-{
-"date": "2026-08-08",
-"event": "Ilesoniq 2026 - Samedi",
-"venue": "Parc Jean Drapeau",
-"city": "Montreal",
-"region": "QC",
-"url": "https://www.ticketmaster.ca/ilesoniq-2026-samedi-montreal-quebec-08-08-2026/event/3100646671AB29F9",
-"artist": "Chris Lake"
-},
-{
-"date": "2026-08-08",
-"event": "îLESONIQ 2026 - 2-jours",
-"venue": "Parc Jean Drapeau",
-"city": "Montreal",
-"region": "QC",
-"url": "https://www.ticketmaster.ca/ilesoniq-2026-2jours-montreal-quebec-08-08-2026/event/31006305D97A480A",
-"artist": "Chris Lorenzo"
-},
-{
-"date": "2026-08-08",
-"event": "Up in the Sky",
-"venue": "Base of Buttermilk Mountain",
-"city": "Aspen",
-"region": "CO",
-"url": "https://on.fgtix.com/trk/w6v3b",
-"artist": "Dom Dolla"
-},
-{
-"date": "2026-08-08",
-"event": "îLESONIQ 2026 - 2-jours",
-"venue": "Parc Jean Drapeau",
-"city": "Montreal",
-"region": "QC",
-"url": "https://www.ticketmaster.ca/ilesoniq-2026-2jours-montreal-quebec-08-08-2026/event/31006305D97A480A",
-"artist": "Dom Dolla"
-},
-{
-"date": "2026-08-08",
-"event": "Adrenalyn",
-"venue": "Hallenstadion",
-"city": "Zürich",
-"region": "CH",
-"url": "https://www.ticketmaster.ch/event/adrenalyn-tickets/1883733569?language=en-us",
-"artist": "FISHER"
-},
-{
-"date": "2026-08-08",
-"event": "Gudfella",
-"venue": "Ocean Resort Casino, HQ2 Nightclub and HQ2 Dayclub/Beachclub",
-"city": "Atlantic City",
-"region": "NJ",
-"url": "https://www.ticketweb.com/event/gudfella-ocean-casino-resort-tickets/14202954?REFERRAL_ID=tmfeed",
-"artist": "GUDFELLA"
-},
-{
-"date": "2026-08-08",
-"event": "Hugel (21+ Event)",
-"venue": "Encore Beach Club",
-"city": "Las Vegas",
-"region": "NV",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7Ppqt",
-"artist": "HUGEL"
-},
-{
-"date": "2026-08-08",
-"event": "Juos",
-"venue": "Nova SD",
-"city": "San Diego",
-"region": "CA",
-"url": "https://www.ticketweb.com/event/juos-nova-sd-tickets/14200824",
-"artist": "Juos"
-},
-{
-"date": "2026-08-08",
-"event": "Ilesoniq 2026 - Samedi",
-"venue": "Parc Jean Drapeau",
-"city": "Montreal",
-"region": "QC",
-"url": "https://www.ticketmaster.ca/ilesoniq-2026-samedi-montreal-quebec-08-08-2026/event/3100646671AB29F9",
-"artist": "Marco Strous"
-},
-{
-"date": "2026-08-08",
-"event": "Electric Paradise",
-"venue": "The National Bowl",
-"city": "Milton Keynes",
-"region": "GB",
-"url": "https://www.universe.com/events/electric-paradise-tickets-JBWVRM?ref=ticketmaster",
-"artist": "Michael Gray"
-},
-{
-"date": "2026-08-08",
-"event": "Up in the Sky",
-"venue": "Base of Buttermilk Mountain",
-"city": "Aspen",
-"region": "CO",
-"url": "https://on.fgtix.com/trk/w6v3b",
-"artist": "Parcels"
-},
-{
-"date": "2026-08-08",
-"event": "Up in the Sky",
-"venue": "Base of Buttermilk Mountain",
-"city": "Aspen",
-"region": "CO",
-"url": "https://on.fgtix.com/trk/w6v3b",
-"artist": "Polo & Pan"
-},
-{
-"date": "2026-08-08",
-"event": "Ragie Ban",
-"venue": "Circle Line Cruises, Pier 83",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketweb.com/event/ragie-ban-circle-line-cruises-tickets/14839723?REFERRAL_ID=tmfeed",
-"artist": "Ragie Ban"
-},
-{
-"date": "2026-08-08",
-"event": "îLESONIQ 2026 - 2-jours",
-"venue": "Parc Jean Drapeau",
-"city": "Montreal",
-"region": "QC",
-"url": "https://www.ticketmaster.ca/ilesoniq-2026-2jours-montreal-quebec-08-08-2026/event/31006305D97A480A",
-"artist": "Roddy Lima"
-},
-{
-"date": "2026-08-08",
-"event": "Ilesoniq 2026 - Samedi",
-"venue": "Parc Jean Drapeau",
-"city": "Montreal",
-"region": "QC",
-"url": "https://www.ticketmaster.ca/ilesoniq-2026-samedi-montreal-quebec-08-08-2026/event/3100646671AB29F9",
-"artist": "SIDEPIECE"
-},
-{
-"date": "2026-08-08",
-"event": "Outside Lands",
-"venue": "Golden Gate Park",
-"city": "San Francisco",
-"region": "CA",
-"url": "https://on.fgtix.com/trk/sILM",
-"artist": "Sultan + Shepard"
-},
-{
-"date": "2026-08-08",
-"event": "Ilesoniq 2026 - Samedi",
-"venue": "Parc Jean Drapeau",
-"city": "Montreal",
-"region": "QC",
-"url": "https://www.ticketmaster.ca/ilesoniq-2026-samedi-montreal-quebec-08-08-2026/event/3100646671AB29F9",
-"artist": "Tiga"
-},
-{
-"date": "2026-08-08",
-"event": "Ilesoniq 2026 - Samedi",
-"venue": "Parc Jean Drapeau",
-"city": "Montreal",
-"region": "QC",
-"url": "https://www.ticketmaster.ca/ilesoniq-2026-samedi-montreal-quebec-08-08-2026/event/3100646671AB29F9",
-"artist": "YOTTO"
-},
-{
-"date": "2026-08-08",
-"event": "Outside Lands",
-"venue": "Golden Gate Park",
-"city": "San Francisco",
-"region": "CA",
-"url": "https://on.fgtix.com/trk/sILM",
-"artist": "it's murph"
-},
 {
 "date": "2026-08-09",
 "event": "Ilesoniq 2026 - Dimanche",
@@ -2855,6 +2657,15 @@
 "region": "CO",
 "url": "https://daytripdenver.frontgatetickets.com",
 "artist": "Purple Disco Machine"
+},
+{
+"date": "2026-09-26",
+"event": "Ragie Ban",
+"venue": "REFUGE ",
+"city": "Brooklyn",
+"region": "NY",
+"url": "https://www.ticketweb.com/event/ragie-ban-refuge-tickets/14839723?REFERRAL_ID=tmfeed",
+"artist": "Ragie Ban"
 },
 {
 "date": "2026-09-26",
