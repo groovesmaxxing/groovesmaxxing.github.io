@@ -1,98 +1,8 @@
 {
-"generated": "2026-08-09T11:05:44+00:00",
+"generated": "2026-08-10T12:00:07+00:00",
 "artist_count": 682,
-"artists_with_events": 158,
+"artists_with_events": 156,
 "events": [
-{
-"date": "2026-08-09",
-"event": "Ilesoniq 2026 - Dimanche",
-"venue": "Parc Jean Drapeau",
-"city": "Montreal",
-"region": "QC",
-"url": "https://www.ticketmaster.ca/ilesoniq-2026-dimanche-montreal-quebec-08-09-2026/event/3100646671B12A0E",
-"artist": "AYYBO"
-},
-{
-"date": "2026-08-09",
-"event": "AYYBO",
-"venue": "Le Studio TD",
-"city": "Montreal",
-"region": "QC",
-"url": "https://www.ticketmaster.ca/ayybo-montreal-quebec-08-09-2026/event/310064F59336434C",
-"artist": "AYYBO"
-},
-{
-"date": "2026-08-09",
-"event": "Outside Lands",
-"venue": "Golden Gate Park",
-"city": "San Francisco",
-"region": "CA",
-"url": "https://on.fgtix.com/trk/sILM",
-"artist": "Carlita"
-},
-{
-"date": "2026-08-09",
-"event": "Ilesoniq 2026 - Dimanche",
-"venue": "Parc Jean Drapeau",
-"city": "Montreal",
-"region": "QC",
-"url": "https://www.ticketmaster.ca/ilesoniq-2026-dimanche-montreal-quebec-08-09-2026/event/3100646671B12A0E",
-"artist": "Chris Lorenzo"
-},
-{
-"date": "2026-08-09",
-"event": "Outside Lands",
-"venue": "Golden Gate Park",
-"city": "San Francisco",
-"region": "CA",
-"url": "https://on.fgtix.com/trk/sILM",
-"artist": "Disco Lines"
-},
-{
-"date": "2026-08-09",
-"event": "Ilesoniq 2026 - Dimanche",
-"venue": "Parc Jean Drapeau",
-"city": "Montreal",
-"region": "QC",
-"url": "https://www.ticketmaster.ca/ilesoniq-2026-dimanche-montreal-quebec-08-09-2026/event/3100646671B12A0E",
-"artist": "Dom Dolla"
-},
-{
-"date": "2026-08-09",
-"event": "Ilesoniq 2026 - Dimanche",
-"venue": "Parc Jean Drapeau",
-"city": "Montreal",
-"region": "QC",
-"url": "https://www.ticketmaster.ca/ilesoniq-2026-dimanche-montreal-quebec-08-09-2026/event/3100646671B12A0E",
-"artist": "Roddy Lima"
-},
-{
-"date": "2026-08-09",
-"event": "Outside Lands",
-"venue": "Golden Gate Park",
-"city": "San Francisco",
-"region": "CA",
-"url": "https://on.fgtix.com/trk/sILM",
-"artist": "RÜFÜS DU SOL"
-},
-{
-"date": "2026-08-09",
-"event": "FNGRS CRSSD x Cross Pollination Present: Lane 8 + more (21 and Over)",
-"venue": "Waterfront Park - San Diego",
-"city": "San Diego",
-"region": "CA",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A70tqY",
-"artist": "Sultan + Shepard"
-},
-{
-"date": "2026-08-09",
-"event": "FNGRS CRSSD x Cross Pollination Present: Lane 8 + more (21 and Over)",
-"venue": "Waterfront Park - San Diego",
-"city": "San Diego",
-"region": "CA",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A70tqY",
-"artist": "YOTTO"
-},
 {
 "date": "2026-08-11",
 "event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
@@ -2058,7 +1968,7 @@
 {
 "date": "2026-09-18",
 "event": "Tinlicker North America 2026",
-"venue": "History",
+"venue": "History Toronto",
 "city": "Toronto",
 "region": "ON",
 "url": "https://www.ticketmaster.ca/tinlicker-north-america-2026-toronto-ontario-09-18-2026/event/1000648ED5201062",
@@ -2193,7 +2103,7 @@
 {
 "date": "2026-09-19",
 "event": "Tinlicker North America 2026",
-"venue": "History",
+"venue": "History Toronto",
 "city": "Toronto",
 "region": "ON",
 "url": "https://www.ticketmaster.ca/tinlicker-north-america-2026-toronto-ontario-09-19-2026/event/1000648ED5231078",
