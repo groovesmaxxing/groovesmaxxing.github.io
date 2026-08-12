@@ -1,44 +1,8 @@
 {
-"generated": "2026-08-11T11:56:17+00:00",
+"generated": "2026-08-12T11:58:58+00:00",
 "artist_count": 682,
-"artists_with_events": 156,
+"artists_with_events": 155,
 "events": [
-{
-"date": "2026-08-11",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "Red Rocks Amphitheatre",
-"city": "Morrison",
-"region": "CO",
-"url": "https://www.axs.com/events/1367724/empire-of-the-sun-tickets",
-"artist": "Midnight Generation"
-},
-{
-"date": "2026-08-11",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "Red Rocks Amphitheatre",
-"city": "Morrison",
-"region": "CO",
-"url": "https://www.axs.com/events/1367724/empire-of-the-sun-tickets",
-"artist": "Polo & Pan"
-},
-{
-"date": "2026-08-11",
-"event": "RÜFÜS DU SOL NORTH AMERICA 2026",
-"venue": "Kia Forum",
-"city": "Inglewood",
-"region": "CA",
-"url": "https://www.ticketmaster.com/rufus-du-sol-north-america-2026-inglewood-california-08-11-2026/event/09006455E5EDE39D",
-"artist": "RÜFÜS DU SOL"
-},
-{
-"date": "2026-08-11",
-"event": "Twin Diplomacy",
-"venue": "Valley Bar",
-"city": "Phoenix",
-"region": "AZ",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7PO8J",
-"artist": "Twin Diplomacy"
-},
 {
 "date": "2026-08-12",
 "event": "RÜFÜS DU SOL NORTH AMERICA 2026",
@@ -155,6 +119,15 @@
 "region": "TX",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1A70SfS",
 "artist": "ACRAZE"
+},
+{
+"date": "2026-08-15",
+"event": "Biscits - Ages 18+",
+"venue": "Decca Live",
+"city": "Jacksonville",
+"region": "FL",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZv8J",
+"artist": "Biscits"
 },
 {
 "date": "2026-08-15",
@@ -1831,6 +1804,15 @@
 "artist": "Polo & Pan"
 },
 {
+"date": "2026-09-12",
+"event": "Walker and Royce - Ages 18+",
+"venue": "Decca Live",
+"city": "Jacksonville",
+"region": "FL",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7J7-z",
+"artist": "Walker & Royce"
+},
+{
 "date": "2026-09-13",
 "event": "Hugel at Navy Pier Open Air",
 "venue": "Navy Pier",
@@ -3209,6 +3191,15 @@
 },
 {
 "date": "2026-10-03",
+"event": "GLOW Block Party: Diplo",
+"venue": "Pennsylvania Avenue",
+"city": "Washington",
+"region": "DC",
+"url": "https://www.ticketmaster.com/glow-block-party-diplo-washington-district-of-columbia-10-03-2026/event/1500650B90C25674",
+"artist": "Westend"
+},
+{
+"date": "2026-10-03",
 "event": "Austin City Limits Music Festival - Weekend One",
 "venue": "Zilker Park",
 "city": "Austin",
@@ -4261,6 +4252,15 @@
 "artist": "John Summit"
 },
 {
+"date": "2026-10-29",
+"event": "Mochakk ( 21+ )",
+"venue": "Big Night Live",
+"city": "Boston",
+"region": "MA",
+"url": "https://www.ticketmaster.com/mochakk-21-boston-massachusetts-10-29-2026/event/01006504CBA7A4B2",
+"artist": "Mochakk"
+},
+{
 "date": "2026-10-30",
 "event": "Adriatique (18 and Over)",
 "venue": "SILO",
@@ -4847,11 +4847,11 @@
 },
 {
 "date": "2026-11-27",
-"event": "Devault",
+"event": "Insomniac presents DEVAULT ",
 "venue": "Hollywood Palladium",
 "city": "Hollywood",
 "region": "CA",
-"url": "https://www.ticketmaster.com/devault-hollywood-california-11-27-2026/event/090064CD1DD77F50",
+"url": "https://www.ticketmaster.com/insomniac-presents-devault-hollywood-california-11-27-2026/event/090064CD1DD77F50",
 "artist": "Devault"
 },
 {
@@ -4961,6 +4961,24 @@
 "region": "IL",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7Ptae",
 "artist": "Rhye"
+},
+{
+"date": "2026-12-05",
+"event": "it's murph (18+)",
+"venue": "Bill Graham Civic Auditorium",
+"city": "San Francisco",
+"region": "CA",
+"url": "https://www.ticketmaster.com/its-murph-18-san-francisco-california-12-05-2026/event/1C0065043113836F",
+"artist": "Tobiahs"
+},
+{
+"date": "2026-12-05",
+"event": "it's murph (18+)",
+"venue": "Bill Graham Civic Auditorium",
+"city": "San Francisco",
+"region": "CA",
+"url": "https://www.ticketmaster.com/its-murph-18-san-francisco-california-12-05-2026/event/1C0065043113836F",
+"artist": "it's murph"
 },
 {
 "date": "2026-12-06",
