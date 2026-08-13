@@ -1,17 +1,8 @@
 {
-"generated": "2026-08-12T11:58:58+00:00",
+"generated": "2026-08-13T12:02:26+00:00",
 "artist_count": 682,
 "artists_with_events": 155,
 "events": [
-{
-"date": "2026-08-12",
-"event": "RÜFÜS DU SOL NORTH AMERICA 2026",
-"venue": "Kia Forum",
-"city": "Inglewood",
-"region": "CA",
-"url": "https://www.ticketmaster.com/rufus-du-sol-north-america-2026-inglewood-california-08-12-2026/event/09006455E5F2E3B2",
-"artist": "RÜFÜS DU SOL"
-},
 {
 "date": "2026-08-13",
 "event": "RÜFÜS DU SOL NORTH AMERICA 2026",
@@ -92,6 +83,15 @@
 "region": "NV",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7OJ4Y",
 "artist": "Tiësto"
+},
+{
+"date": "2026-08-14",
+"event": "Wade Bowen (18+ Event)",
+"venue": "Red River Station BBQ",
+"city": "Saint Jo",
+"region": "TX",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7PVe_",
+"artist": "Wade"
 },
 {
 "date": "2026-08-14",
@@ -2336,6 +2336,15 @@
 },
 {
 "date": "2026-09-25",
+"event": "Green Velvet",
+"venue": "The Tivoli",
+"city": "Brisbane",
+"region": "QLD",
+"url": "https://www.ticketmaster.com.au/green-velvet-brisbane-25-09-2026/event/130064FCD0AB74E7",
+"artist": "Green Velvet"
+},
+{
+"date": "2026-09-25",
 "event": "Husky",
 "venue": "The Vanguard",
 "city": "Newtown",
@@ -4046,6 +4055,15 @@
 },
 {
 "date": "2026-10-23",
+"event": "CID (21 and Over)",
+"venue": "1015 Folsom",
+"city": "San Francisco",
+"region": "CA",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZI-J",
+"artist": "CID"
+},
+{
+"date": "2026-10-23",
 "event": "Chris Lorenzo",
 "venue": "Echostage",
 "city": "Washington",
@@ -4259,6 +4277,15 @@
 "region": "MA",
 "url": "https://www.ticketmaster.com/mochakk-21-boston-massachusetts-10-29-2026/event/01006504CBA7A4B2",
 "artist": "Mochakk"
+},
+{
+"date": "2026-10-29",
+"event": "Rossi. (21 and Over)",
+"venue": "1015 Folsom",
+"city": "San Francisco",
+"region": "CA",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZI-E",
+"artist": "Rossi."
 },
 {
 "date": "2026-10-30",
