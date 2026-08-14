@@ -1,17 +1,8 @@
 {
-"generated": "2026-08-13T12:02:26+00:00",
+"generated": "2026-08-14T11:56:53+00:00",
 "artist_count": 682,
 "artists_with_events": 155,
 "events": [
-{
-"date": "2026-08-13",
-"event": "RÜFÜS DU SOL NORTH AMERICA 2026",
-"venue": "Kia Forum",
-"city": "Inglewood",
-"region": "CA",
-"url": "https://www.ticketmaster.com/rufus-du-sol-north-america-2026-inglewood-california-08-13-2026/event/09006455E5F7E3C2",
-"artist": "RÜFÜS DU SOL"
-},
 {
 "date": "2026-08-14",
 "event": "Breakaway Michigan 2026",
@@ -1967,6 +1958,15 @@
 },
 {
 "date": "2026-09-19",
+"event": "CID (18+ Event)",
+"venue": "Blackbox Theater - Charlotte",
+"city": "Charlotte",
+"region": "NC",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7J8Ge",
+"artist": "CID"
+},
+{
+"date": "2026-09-19",
 "event": "Sofi Tukker w/ DRAMA",
 "venue": "Greek Theatre-Los Angeles",
 "city": "Los Angeles",
@@ -3183,8 +3183,8 @@
 {
 "date": "2026-10-03",
 "event": "ARK: Tiga",
-"venue": "Tama",
-"city": "Poznan",
+"venue": "OCZKI",
+"city": "Warsaw",
 "region": "PL",
 "url": "https://www.ticketmaster.pl/event/ark-tiga-tickets/1676400471?language=en-us",
 "artist": "Tiga"
@@ -3467,6 +3467,15 @@
 "region": "CA",
 "url": "https://www.ticketmaster.com/tinlicker-north-america-2026-los-angeles-california-10-09-2026/event/09006490AB107C05",
 "artist": "Tinlicker"
+},
+{
+"date": "2026-10-10",
+"event": "Devault (18+ Event)",
+"venue": "Blackbox Theater - Charlotte",
+"city": "Charlotte",
+"region": "NC",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7Jfot",
+"artist": "Devault"
 },
 {
 "date": "2026-10-10",
@@ -5051,6 +5060,15 @@
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/whp-presents-tiesto-manchester-11-12-2026/event/35006497DC684E75",
 "artist": "Tiësto"
+},
+{
+"date": "2026-12-12",
+"event": "JOHN SUMMIT - CTRL ESCAPE TOUR",
+"venue": "Los Angeles Memorial Coliseum",
+"city": "Los Angeles",
+"region": "CA",
+"url": "https://www.ticketmaster.com/john-summit-ctrl-escape-tour-los-angeles-california-12-12-2026/event/0A0064FFC2CDF6B7",
+"artist": "John Summit"
 },
 {
 "date": "2026-12-12",
