@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>on tour · groovesmaxxing</title>
-  <meta name="description" content="where the 679 artists we follow are playing next. refreshed nightly from ticketmaster, searchable by artist and city, denver one tap away.">
+  <meta name="description" content="where the 680 artists we follow are playing next. refreshed nightly from ticketmaster, searchable by artist and city, denver one tap away.">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root { --night:#0B0B0D; --racing:#FF1C02; --deep:#CC1400; --day:#F2F2EF; --steel:#8A8A93; --card:#141417; --card2:#1a1a1f; --line:#2a2a31; }
@@ -52,7 +52,7 @@
     <header class="page">
       <span class="mono eyebrow">the follow list, live</span>
       <h1>on tour</h1>
-      <p class="lede">where the artists we follow are playing next. swept nightly from ticketmaster across all 679 names on <a href="roster.html">the roster</a>, searchable by artist or city.</p>
+      <p class="lede">where the artists we follow are playing next. swept nightly from ticketmaster across all 680 names on <a href="roster.html">the roster</a>, searchable by artist or city.</p>
       <p class="stamp mono" id="stamp">loading the radar…</p>
     </header>
 
@@ -114,7 +114,7 @@
     fetch('radar-events.json').then(function(r){ return r.json(); }).then(function(data){
       all = data.events || [];
       if(data.generated){
-        stamp.textContent = 'swept nightly · last sweep ' + data.generated.slice(0,10) + ' · ' + (data.artists_with_events || 0) + ' of ' + (data.artist_count || 679) + ' artists have dates on ticketmaster';
+        stamp.textContent = 'swept nightly · last sweep ' + data.generated.slice(0,10) + ' · ' + (data.artists_with_events || 0) + ' of ' + (data.artist_count || 680) + ' artists have dates on ticketmaster';
       } else {
         stamp.textContent = 'the radar is warming up. the first nightly sweep has not run yet.';
       }
