@@ -1,5 +1,5 @@
 {
-"generated": "2026-08-17T10:54:31+00:00",
+"generated": "2026-08-18T10:53:14+00:00",
 "artist_count": 682,
 "artists_with_events": 148,
 "events": [
@@ -86,15 +86,6 @@
 },
 {
 "date": "2026-08-21",
-"event": "Lowlands 2026 - Festivalticket",
-"venue": "Evenemententerrein Walibi",
-"city": "Biddinghuizen",
-"region": "NL",
-"url": "https://www.ticketmaster.nl/event/lowlands-2026-festivalticket-tickets/1050736969?language=en-us",
-"artist": "Fcukers"
-},
-{
-"date": "2026-08-21",
 "event": "Franc Moody (DJ Set)",
 "venue": "Club Vinyl",
 "city": "Denver",
@@ -128,15 +119,6 @@
 "region": "OH",
 "url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-cuyahoga-falls-ohio-08-21-2026/event/05006466041B9FD2",
 "artist": "Midnight Generation"
-},
-{
-"date": "2026-08-21",
-"event": "Lowlands 2026 - Festivalticket",
-"venue": "Evenemententerrein Walibi",
-"city": "Biddinghuizen",
-"region": "NL",
-"url": "https://www.ticketmaster.nl/event/lowlands-2026-festivalticket-tickets/1050736969?language=en-us",
-"artist": "Parcels"
 },
 {
 "date": "2026-08-21",
@@ -221,11 +203,11 @@
 },
 {
 "date": "2026-08-22",
-"event": "Suset Festival 2026 - Partout / Fri-Sat",
+"event": "Suset Festival 2026 - 1-Day / Saturday",
 "venue": "Esbjerg Havn",
 "city": "Esbjerg",
 "region": "DK",
-"url": "https://www.ticketmaster.dk/event/suset-festival-2026-partout-fri-sat-tickets/941253390?language=en-us",
+"url": "https://www.ticketmaster.dk/event/suset-festival-2026-1-day-saturday-tickets/404195477?language=en-us",
 "artist": "Jonathan"
 },
 {
@@ -302,12 +284,30 @@
 },
 {
 "date": "2026-08-23",
+"event": "Lowlands 2026 - Festivalticket",
+"venue": "Evenemententerrein Walibi",
+"city": "Biddinghuizen",
+"region": "NL",
+"url": "https://www.ticketmaster.nl/event/lowlands-2026-festivalticket-tickets/1050736969?language=en-us",
+"artist": "Fcukers"
+},
+{
+"date": "2026-08-23",
 "event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
 "venue": "Riverbend Music Center",
 "city": "Cincinnati",
 "region": "OH",
 "url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-cincinnati-ohio-08-23-2026/event/16006464E70AC6B5",
 "artist": "Midnight Generation"
+},
+{
+"date": "2026-08-23",
+"event": "Lowlands 2026 - Festivalticket",
+"venue": "Evenemententerrein Walibi",
+"city": "Biddinghuizen",
+"region": "NL",
+"url": "https://www.ticketmaster.nl/event/lowlands-2026-festivalticket-tickets/1050736969?language=en-us",
+"artist": "Parcels"
 },
 {
 "date": "2026-08-23",
@@ -2198,6 +2198,15 @@
 "region": "NC",
 "url": "https://www.universe.com/events/breakaway-carolina-2026-tickets-5N4SWK?ref=ticketmaster",
 "artist": "Tiësto"
+},
+{
+"date": "2026-09-25",
+"event": "PRE-SALE: In The Round with Wade Bowen & friends",
+"venue": "The Bluebird Cafe",
+"city": "Nashville",
+"region": "TN",
+"url": "https://www.ticketweb.com/event/pre-sale-in-the-round-the-bluebird-cafe-tickets/15031933",
+"artist": "Wade"
 },
 {
 "date": "2026-09-25",
@@ -4694,12 +4703,30 @@
 },
 {
 "date": "2026-12-04",
+"event": "Max Styler [Extended Set]",
+"venue": "Echostage",
+"city": "Washington",
+"region": "DC",
+"url": "https://www.ticketmaster.com/max-styler-extended-set-washington-district-of-columbia-12-04-2026/event/1500650E172BFB30",
+"artist": "Discip"
+},
+{
+"date": "2026-12-04",
 "event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
 "venue": "Oakland Arena",
 "city": "Oakland",
 "region": "CA",
 "url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-oakland-california-12-04-2026/event/1C0064B3BCEE6B02",
 "artist": "John Summit"
+},
+{
+"date": "2026-12-04",
+"event": "Max Styler [Extended Set]",
+"venue": "Echostage",
+"city": "Washington",
+"region": "DC",
+"url": "https://www.ticketmaster.com/max-styler-extended-set-washington-district-of-columbia-12-04-2026/event/1500650E172BFB30",
+"artist": "Max Styler"
 },
 {
 "date": "2026-12-04",
