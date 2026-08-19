@@ -1,35 +1,8 @@
 {
-"generated": "2026-08-18T10:53:14+00:00",
+"generated": "2026-08-19T10:53:19+00:00",
 "artist_count": 682,
-"artists_with_events": 148,
+"artists_with_events": 151,
 "events": [
-{
-"date": "2026-08-18",
-"event": "LUCA CARBONI – RIO ARI O LIVE",
-"venue": "Villa Bertelli - Forte dei Marmi",
-"city": "Forte dei Marmi",
-"region": "IT",
-"url": "https://www.ticketmaster.it/biglietti/luca-carboni-rio-ari-o-live-forte-dei-marmi-18-08-2026/event/48bkq3xw6njn",
-"artist": "Luca"
-},
-{
-"date": "2026-08-18",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "BMO Pavilion",
-"city": "Milwaukee",
-"region": "WI",
-"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-milwaukee-wisconsin-08-18-2026/event/07006465DEA99891",
-"artist": "Midnight Generation"
-},
-{
-"date": "2026-08-18",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "BMO Pavilion",
-"city": "Milwaukee",
-"region": "WI",
-"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-milwaukee-wisconsin-08-18-2026/event/07006465DEA99891",
-"artist": "Polo & Pan"
-},
 {
 "date": "2026-08-19",
 "event": "RÜFÜS DU SOL NORTH AMERICA 2026",
@@ -1184,11 +1157,11 @@
 },
 {
 "date": "2026-09-05",
-"event": "Chris Stussy [Late Show]",
+"event": "Chris Stassy [Late Show]",
 "venue": "Echostage",
 "city": "Washington",
 "region": "DC",
-"url": "https://www.ticketmaster.com/chris-stussy-late-show-washington-district-of-columbia-09-05-2026/event/150064EC183FC83B",
+"url": "https://www.ticketmaster.com/chris-stassy-late-show-washington-district-of-columbia-09-05-2026/event/150064EC183FC83B",
 "artist": "Chris Stussy"
 },
 {
@@ -2876,6 +2849,15 @@
 },
 {
 "date": "2026-10-03",
+"event": "Official 2026 ACL Fest Nights: Parcels",
+"venue": "Stubb's Waller Creek Amphitheater",
+"city": "Austin",
+"region": "TX",
+"url": "https://www.ticketmaster.com/official-2026-acl-fest-nights-parcels-austin-texas-10-03-2026/event/3A0064FDB2E8A336",
+"artist": "Parcels"
+},
+{
+"date": "2026-10-03",
 "event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
 "venue": "Hayden Homes Amphitheater",
 "city": "Bend",
@@ -3209,6 +3191,15 @@
 },
 {
 "date": "2026-10-09",
+"event": "Prospa",
+"venue": "History Toronto",
+"city": "Toronto",
+"region": "ON",
+"url": "https://www.ticketmaster.ca/prospa-toronto-ontario-10-09-2026/event/10006511B6D1B212",
+"artist": "Prospa"
+},
+{
+"date": "2026-10-09",
 "event": "Tinlicker North America 2026",
 "venue": "The Wiltern",
 "city": "Los Angeles",
@@ -3296,6 +3287,15 @@
 "region": "WA",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7J7_t",
 "artist": "Satin Jackets"
+},
+{
+"date": "2026-10-10",
+"event": "Skyline Saturdays Presents TOMAN",
+"venue": "The Penthouse | FIVE Palm",
+"city": "Dubai",
+"region": "AE",
+"url": "https://www.ticketmaster.ae/event/skyline-saturdays-presents-toman-tickets/580417794",
+"artist": "Toman"
 },
 {
 "date": "2026-10-10",
@@ -4424,6 +4424,15 @@
 },
 {
 "date": "2026-11-14",
+"event": "Bohemia Presents Alex Wann & SONA",
+"venue": "Bohemia Beach Club | FIVE Palm",
+"city": "Dubai",
+"region": "AE",
+"url": "https://www.ticketmaster.ae/event/bohemia-presents-alex-wann--sona-tickets/428316098",
+"artist": "Alex Wann"
+},
+{
+"date": "2026-11-14",
 "event": "Baba Zula",
 "venue": "Blind İstanbul",
 "city": "İstanbul",
@@ -4556,6 +4565,15 @@
 "region": "NSW",
 "url": "https://www.moshtix.com.au/v2/event/all-day-i-dream-of-australia-byron-bay/197695",
 "artist": "Lee Burridge"
+},
+{
+"date": "2026-11-20",
+"event": "MARCO CAROLA PRESENTS MUSIC ON | PACHA ICONS",
+"venue": "FIVE Luxe JBR",
+"city": "Dubai",
+"region": "AE",
+"url": "https://www.ticketmaster.ae/event/marco-carola-presents-music-on-%7C-pacha-icons-tickets/448640469",
+"artist": "Marco Carola"
 },
 {
 "date": "2026-11-20",
@@ -4808,6 +4826,15 @@
 "region": "NY",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7POP6",
 "artist": "Rhye"
+},
+{
+"date": "2026-12-11",
+"event": "ARK: MYD",
+"venue": "Hydrozagadka",
+"city": "Warsaw",
+"region": "PL",
+"url": "https://www.ticketmaster.pl/event/ark-myd-tickets/1883563107?language=en-us",
+"artist": "Myd"
 },
 {
 "date": "2026-12-11",
