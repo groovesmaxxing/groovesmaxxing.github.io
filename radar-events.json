@@ -1,17 +1,8 @@
 {
-"generated": "2026-08-19T10:53:19+00:00",
+"generated": "2026-08-20T10:54:44+00:00",
 "artist_count": 682,
-"artists_with_events": 151,
+"artists_with_events": 152,
 "events": [
-{
-"date": "2026-08-19",
-"event": "RÜFÜS DU SOL NORTH AMERICA 2026",
-"venue": "Mortgage Matchup Center",
-"city": "Phoenix",
-"region": "AZ",
-"url": "https://www.ticketmaster.com/rufus-du-sol-north-america-2026-phoenix-arizona-08-19-2026/event/1900644CB68B85D7",
-"artist": "RÜFÜS DU SOL"
-},
 {
 "date": "2026-08-20",
 "event": "FRANC MOODY plus DJ Max Gain (21+ Event)",
@@ -2336,11 +2327,11 @@
 },
 {
 "date": "2026-09-27",
-"event": "Monkey Safari (DE) | Winter Series pres. by Thick as Thieves",
+"event": "Monkey Safari (DE) [12 Hour Set] | Winter Series pres. by Thick as Thieves",
 "venue": "Revolver Nightclub",
 "city": "Prahran",
 "region": "VIC",
-"url": "https://www.moshtix.com.au/v2/event/monkey-safari-de-winter-series-pres-by-thick-as-thieves/195308",
+"url": "https://www.moshtix.com.au/v2/event/monkey-safari-de-12-hour-set-winter-series-pres-by-thick-as-thieves/195308",
 "artist": "Monkey Safari"
 },
 {
@@ -2639,6 +2630,15 @@
 "region": "TX",
 "url": "https://www.ticketmaster.com/parcels-loved-tour-2026-dallas-texas-10-02-2026/event/0C0064E7D95E8BF4",
 "artist": "Parcels"
+},
+{
+"date": "2026-10-02",
+"event": "Peggy Gou",
+"venue": "Echostage",
+"city": "Washington",
+"region": "DC",
+"url": "https://www.ticketmaster.com/peggy-gou-washington-district-of-columbia-10-02-2026/event/15006512D9C4F9B1",
+"artist": "Peggy Gou"
 },
 {
 "date": "2026-10-02",
@@ -3830,6 +3830,15 @@
 },
 {
 "date": "2026-10-23",
+"event": "DRAMA (18+ Event)",
+"venue": "Warehouse215",
+"city": "Phoenix",
+"region": "AZ",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZMJ9",
+"artist": "DRAMA"
+},
+{
+"date": "2026-10-23",
 "event": "Dom Dolla - Ages 18+",
 "venue": "The Pinnacle - TN",
 "city": "Nashville",
@@ -4268,6 +4277,15 @@
 "region": "CA",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1A70AvU",
 "artist": "ZHU"
+},
+{
+"date": "2026-11-01",
+"event": "CROOKED COLOURS | Dirt Road Gold Album Tour",
+"venue": "The Northern - Byron Bay",
+"city": "Byron Bay",
+"region": "NSW",
+"url": "https://www.moshtix.com.au/v2/event/crooked-colours-dirt-road-gold-album-tour/196100",
+"artist": "Crooked Colours"
 },
 {
 "date": "2026-11-05",
@@ -4817,6 +4835,15 @@
 "region": "PA",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7POPF",
 "artist": "Rhye"
+},
+{
+"date": "2026-12-10",
+"event": "Fcukers",
+"venue": "The Princess Theatre",
+"city": "Brisbane",
+"region": "QLD",
+"url": "https://www.ticketmaster.com.au/fcukers-brisbane-10-12-2026/event/250064EA8FE14FBC",
+"artist": "Fcukers"
 },
 {
 "date": "2026-12-10",
