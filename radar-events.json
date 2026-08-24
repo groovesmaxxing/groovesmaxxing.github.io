@@ -1,44 +1,8 @@
 {
-"generated": "2026-08-23T09:48:00+00:00",
+"generated": "2026-08-24T10:08:38+00:00",
 "artist_count": 682,
 "artists_with_events": 149,
 "events": [
-{
-"date": "2026-08-23",
-"event": "Lowlands 2026 - Festivalticket",
-"venue": "Evenemententerrein Walibi",
-"city": "Biddinghuizen",
-"region": "NL",
-"url": "https://www.ticketmaster.nl/event/lowlands-2026-festivalticket-tickets/1050736969?language=en-us",
-"artist": "Fcukers"
-},
-{
-"date": "2026-08-23",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "Riverbend Music Center",
-"city": "Cincinnati",
-"region": "OH",
-"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-cincinnati-ohio-08-23-2026/event/16006464E70AC6B5",
-"artist": "Midnight Generation"
-},
-{
-"date": "2026-08-23",
-"event": "Lowlands 2026 - Festivalticket",
-"venue": "Evenemententerrein Walibi",
-"city": "Biddinghuizen",
-"region": "NL",
-"url": "https://www.ticketmaster.nl/event/lowlands-2026-festivalticket-tickets/1050736969?language=en-us",
-"artist": "Parcels"
-},
-{
-"date": "2026-08-23",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "Riverbend Music Center",
-"city": "Cincinnati",
-"region": "OH",
-"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-cincinnati-ohio-08-23-2026/event/16006464E70AC6B5",
-"artist": "Polo & Pan"
-},
 {
 "date": "2026-08-25",
 "event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
@@ -4002,7 +3966,7 @@
 {
 "date": "2026-10-31",
 "event": "Kenton Slash Demon (DK)",
-"venue": "",
+"venue": "VEGA - Musikkens Hus, Store VEGA",
 "city": "København V",
 "region": "DK",
 "url": "https://www.ticketmaster.dk/event/kenton-slash-demon-dk--tickets/2050964530?language=en-us",
@@ -4712,6 +4676,15 @@
 },
 {
 "date": "2026-12-13",
+"event": "Fcukers",
+"venue": "The Timber Yard",
+"city": "Port Melbourne",
+"region": "VIC",
+"url": "https://www.moshtix.com.au/v2/event/fcukers/197502",
+"artist": "Fcukers"
+},
+{
+"date": "2026-12-13",
 "event": "Spilt Milk Gold Coast | 2026",
 "venue": "Gold Coast Sports and Leisure Centre",
 "city": "Carrara ",
@@ -4803,7 +4776,7 @@
 {
 "date": "2027-03-17",
 "event": "JONATHAN",
-"venue": "",
+"venue": "VEGA - Musikkens Hus, Store VEGA",
 "city": "København V",
 "region": "DK",
 "url": "https://www.ticketmaster.dk/event/jonathan-tickets/526340871?language=en-us",
