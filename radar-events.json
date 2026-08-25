@@ -1,44 +1,8 @@
 {
-"generated": "2026-08-23T09:48:00+00:00",
+"generated": "2026-08-25T09:55:34+00:00",
 "artist_count": 682,
-"artists_with_events": 149,
+"artists_with_events": 152,
 "events": [
-{
-"date": "2026-08-23",
-"event": "Lowlands 2026 - Festivalticket",
-"venue": "Evenemententerrein Walibi",
-"city": "Biddinghuizen",
-"region": "NL",
-"url": "https://www.ticketmaster.nl/event/lowlands-2026-festivalticket-tickets/1050736969?language=en-us",
-"artist": "Fcukers"
-},
-{
-"date": "2026-08-23",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "Riverbend Music Center",
-"city": "Cincinnati",
-"region": "OH",
-"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-cincinnati-ohio-08-23-2026/event/16006464E70AC6B5",
-"artist": "Midnight Generation"
-},
-{
-"date": "2026-08-23",
-"event": "Lowlands 2026 - Festivalticket",
-"venue": "Evenemententerrein Walibi",
-"city": "Biddinghuizen",
-"region": "NL",
-"url": "https://www.ticketmaster.nl/event/lowlands-2026-festivalticket-tickets/1050736969?language=en-us",
-"artist": "Parcels"
-},
-{
-"date": "2026-08-23",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "Riverbend Music Center",
-"city": "Cincinnati",
-"region": "OH",
-"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-cincinnati-ohio-08-23-2026/event/16006464E70AC6B5",
-"artist": "Polo & Pan"
-},
 {
 "date": "2026-08-25",
 "event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
@@ -833,6 +797,15 @@
 },
 {
 "date": "2026-09-04",
+"event": "Emmit Fenn",
+"venue": "ZeyZey Miami",
+"city": "Miami",
+"region": "FL",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7P44U",
+"artist": "Emmit Fenn"
+},
+{
+"date": "2026-09-04",
 "event": "Harry Styles: Together, Together",
 "venue": "Madison Square Garden",
 "city": "New York",
@@ -1253,6 +1226,15 @@
 "region": "AL",
 "url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-birmingham-alabama-09-12-2026/event/20006465B1FB5497",
 "artist": "Polo & Pan"
+},
+{
+"date": "2026-09-12",
+"event": "Satin Jackets",
+"venue": "ZeyZey Miami",
+"city": "Miami",
+"region": "FL",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7PEAZ",
+"artist": "Satin Jackets"
 },
 {
 "date": "2026-09-12",
@@ -1976,6 +1958,15 @@
 },
 {
 "date": "2026-09-26",
+"event": "Green Velvet live at The Point",
+"venue": "",
+"city": "",
+"region": "",
+"url": "https://www.moshtix.com.au/v2/event/green-velvet-live-at-the-point/199171",
+"artist": "Green Velvet"
+},
+{
+"date": "2026-09-26",
 "event": "HOMOBLOC",
 "venue": "Depot Mayfield",
 "city": "Manchester",
@@ -2198,6 +2189,15 @@
 "region": "UT",
 "url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-west-valley-city-utah-10-01-2026/event/1E006466C582D26F",
 "artist": "Polo & Pan"
+},
+{
+"date": "2026-10-01",
+"event": "The Jungle Giants",
+"venue": "Elsewhere",
+"city": "Brooklyn",
+"region": "NY",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1A70sC8",
+"artist": "The Jungle Giants"
 },
 {
 "date": "2026-10-01",
@@ -4002,7 +4002,7 @@
 {
 "date": "2026-10-31",
 "event": "Kenton Slash Demon (DK)",
-"venue": "",
+"venue": "VEGA - Musikkens Hus, Store VEGA",
 "city": "København V",
 "region": "DK",
 "url": "https://www.ticketmaster.dk/event/kenton-slash-demon-dk--tickets/2050964530?language=en-us",
@@ -4070,6 +4070,15 @@
 "region": "NSW",
 "url": "https://www.moshtix.com.au/v2/event/crooked-colours-dirt-road-gold-album-tour/196100",
 "artist": "Crooked Colours"
+},
+{
+"date": "2026-11-05",
+"event": "Moby (18+)",
+"venue": "Bill Graham Civic Auditorium",
+"city": "San Francisco",
+"region": "CA",
+"url": "https://www.ticketmaster.com/moby-18-san-francisco-california-11-05-2026/event/1C006515F9551DE3",
+"artist": "Azzecca"
 },
 {
 "date": "2026-11-05",
@@ -4145,6 +4154,15 @@
 },
 {
 "date": "2026-11-07",
+"event": "TAB Champions Stakes Day - General Admission",
+"venue": "Flemington Racecourse",
+"city": "Flemington",
+"region": "VIC",
+"url": "https://www.ticketmaster.com.au/tab-champions-stakes-day-general-admission-flemington-07-11-2026/event/2500647ED99C8074",
+"artist": "FISHER"
+},
+{
+"date": "2026-11-07",
 "event": "Hugel presents: Make The Girls Dance",
 "venue": "Greek Theatre-U.C. Berkeley",
 "city": "Berkeley",
@@ -4214,6 +4232,15 @@
 "region": "OH",
 "url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-columbus-ohio-11-13-2026/event/050064B3F56A8E85",
 "artist": "John Summit"
+},
+{
+"date": "2026-11-13",
+"event": "Tobiahs",
+"venue": "The Opera House",
+"city": "Toronto",
+"region": "ON",
+"url": "https://www.ticketmaster.ca/tobiahs-toronto-ontario-11-13-2026/event/10006514B317E3C6",
+"artist": "Tobiahs"
 },
 {
 "date": "2026-11-13",
@@ -4478,6 +4505,15 @@
 },
 {
 "date": "2026-11-27",
+"event": "ARK: Goodboys Live",
+"venue": "Niebo",
+"city": "Warsaw",
+"region": "PL",
+"url": "https://www.ticketmaster.pl/event/ark-goodboys-live-tickets/2014988157?language=en-us",
+"artist": "Goodboys"
+},
+{
+"date": "2026-11-27",
 "event": "Gorgon City",
 "venue": "O2 Victoria Warehouse Manchester",
 "city": "Manchester",
@@ -4712,6 +4748,15 @@
 },
 {
 "date": "2026-12-13",
+"event": "Fcukers",
+"venue": "The Timber Yard",
+"city": "Port Melbourne",
+"region": "VIC",
+"url": "https://www.moshtix.com.au/v2/event/fcukers/197502",
+"artist": "Fcukers"
+},
+{
+"date": "2026-12-13",
 "event": "Spilt Milk Gold Coast | 2026",
 "venue": "Gold Coast Sports and Leisure Centre",
 "city": "Carrara ",
@@ -4803,7 +4848,7 @@
 {
 "date": "2027-03-17",
 "event": "JONATHAN",
-"venue": "",
+"venue": "VEGA - Musikkens Hus, Store VEGA",
 "city": "København V",
 "region": "DK",
 "url": "https://www.ticketmaster.dk/event/jonathan-tickets/526340871?language=en-us",
