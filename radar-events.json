@@ -1,35 +1,8 @@
 {
-"generated": "2026-08-25T09:55:34+00:00",
+"generated": "2026-08-26T10:01:56+00:00",
 "artist_count": 682,
-"artists_with_events": 152,
+"artists_with_events": 154,
 "events": [
-{
-"date": "2026-08-25",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "RBC Amphitheatre",
-"city": "Toronto",
-"region": "ON",
-"url": "https://www.ticketmaster.ca/empire-of-the-sun-ask-that-toronto-ontario-08-25-2026/event/10006465CD6950A0",
-"artist": "Midnight Generation"
-},
-{
-"date": "2026-08-25",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "RBC Amphitheatre",
-"city": "Toronto",
-"region": "ON",
-"url": "https://www.ticketmaster.ca/empire-of-the-sun-ask-that-toronto-ontario-08-25-2026/event/10006465CD6950A0",
-"artist": "Polo & Pan"
-},
-{
-"date": "2026-08-25",
-"event": "RÜFÜS DU SOL NORTH AMERICA 2026",
-"venue": "Mystic Lake Amphitheater",
-"city": "Shakopee",
-"region": "MN",
-"url": "https://www.ticketmaster.com/rufus-du-sol-north-america-2026-shakopee-minnesota-08-25-2026/event/2100644DBF7B3B74",
-"artist": "RÜFÜS DU SOL"
-},
 {
 "date": "2026-08-26",
 "event": "Harry Styles: Together, Together",
@@ -326,6 +299,15 @@
 "region": "OH",
 "url": "https://www.universe.com/events/ayybo-forum-columbus-oh-08-29-26-tickets-KXW31T?ref=ticketmaster",
 "artist": "AYYBO"
+},
+{
+"date": "2026-08-29",
+"event": "Soulrise Festival w Anyma presents Aeden (19 and Over)",
+"venue": "Ambleside Park",
+"city": "West Vancouver",
+"region": "BC",
+"url": "https://www.ticketmaster.ca/event/Z7r9jZ1A7Pa-I",
+"artist": "Anyma"
 },
 {
 "date": "2026-08-29",
@@ -2066,6 +2048,15 @@
 },
 {
 "date": "2026-09-26",
+"event": "WhoMadeWho pres. The Moment (LIVE)",
+"venue": "Foro Polanco Moliere",
+"city": "México",
+"region": "CDMX",
+"url": "https://www.ticketmaster.com.mx/whomadewho-pres-the-moment-live-mexico-26-09-2026/event/140064FC934B5946",
+"artist": "WhoMadeWho"
+},
+{
+"date": "2026-09-26",
 "event": "Day Trip Block Party Denver",
 "venue": "JUNKYARD",
 "city": "Denver",
@@ -2974,6 +2965,15 @@
 "artist": "Tinlicker"
 },
 {
+"date": "2026-10-09",
+"event": "Wade Bowen - The Version Of Me You Get Tour ",
+"venue": "The Backyard at the Lumberyard",
+"city": "Canyon",
+"region": "TX",
+"url": "https://www.ticketmaster.com/wade-bowen-the-version-of-me-canyon-texas-10-09-2026/event/0C006515E8797737",
+"artist": "Wade"
+},
+{
 "date": "2026-10-10",
 "event": "Devault (18+ Event)",
 "venue": "Blackbox Theater - Charlotte",
@@ -2990,6 +2990,15 @@
 "region": "GB",
 "url": "https://www.universe.com/events/colorize-15-years-tickets-HT3K6J?ref=ticketmaster",
 "artist": "Estiva"
+},
+{
+"date": "2026-10-10",
+"event": "Afrojack",
+"venue": "Echostage",
+"city": "Washington",
+"region": "DC",
+"url": "https://www.ticketmaster.com/afrojack-washington-district-of-columbia-10-10-2026/event/150064D12EBBDD59",
+"artist": "Green Velvet"
 },
 {
 "date": "2026-10-10",
@@ -4280,6 +4289,15 @@
 },
 {
 "date": "2026-11-14",
+"event": "Above - Nov 14 ft. Gudfella",
+"venue": "ivy Sydney",
+"city": "Sydney",
+"region": "NSW",
+"url": "https://www.moshtix.com.au/v2/event/above-nov-14-ft-gudfella/198750",
+"artist": "GUDFELLA"
+},
+{
+"date": "2026-11-14",
 "event": "Jazzy - Peace & Patience Tour",
 "venue": "The Telegraph Building",
 "city": "Belfast",
@@ -4441,6 +4459,15 @@
 "artist": "SOSA"
 },
 {
+"date": "2026-11-20",
+"event": "hypersonic festival Melbourne 2026",
+"venue": "Melbourne Showgrounds",
+"city": "Ascot Vale",
+"region": "VIC",
+"url": "https://www.moshtix.com.au/v2/event/hypersonic-festival-melbourne-2026/199623",
+"artist": "YOTTO"
+},
+{
 "date": "2026-11-21",
 "event": "Felix Radu",
 "venue": "Théâtre Royal",
@@ -4475,6 +4502,15 @@
 "region": "FL",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZkjb",
 "artist": "SIDEPIECE"
+},
+{
+"date": "2026-11-21",
+"event": "hypersonic festival Sydney 2026",
+"venue": "Royal Randwick Racecourse",
+"city": "Randwick",
+"region": "NSW",
+"url": "https://www.moshtix.com.au/v2/event/hypersonic-festival-sydney-2026/199622",
+"artist": "YOTTO"
 },
 {
 "date": "2026-11-24",
@@ -4541,6 +4577,15 @@
 },
 {
 "date": "2026-11-28",
+"event": "FYE Ultraclub Presents: FRANKY RIZARDO",
+"venue": "FYE Ultra Club",
+"city": "Toronto",
+"region": "ON",
+"url": "https://www.ticketweb.ca/event/fye-ultraclub-presents-franky-rizardo-fye-ultra-club-tickets/14936203",
+"artist": "Franky Rizardo"
+},
+{
+"date": "2026-11-28",
 "event": "Gorgon City",
 "venue": "Alexandra Palace",
 "city": "London",
@@ -4559,12 +4604,30 @@
 },
 {
 "date": "2026-11-28",
+"event": "Josh Baker",
+"venue": "History Toronto",
+"city": "Toronto",
+"region": "ON",
+"url": "https://www.ticketmaster.ca/josh-baker-toronto-ontario-11-28-2026/event/1000650CDAAADCE9",
+"artist": "Josh Baker"
+},
+{
+"date": "2026-11-28",
 "event": "All Day I Dream of Australia | Sydney",
 "venue": "ivy Sydney",
 "city": "Sydney",
 "region": "NSW",
 "url": "https://www.moshtix.com.au/v2/event/all-day-i-dream-of-australia-sydney/197441",
 "artist": "Lee Burridge"
+},
+{
+"date": "2026-11-28",
+"event": "Tiga",
+"venue": "Village Studios",
+"city": "Vancouver",
+"region": "BC",
+"url": "https://www.ticketweb.ca/event/tiga-village-studios-tickets/14284214?REFERRAL_ID=tmfeed",
+"artist": "Tiga"
 },
 {
 "date": "2026-11-29",
@@ -4583,6 +4646,15 @@
 "region": "DC",
 "url": "https://www.ticketmaster.com/max-styler-extended-set-washington-district-of-columbia-12-04-2026/event/1500650E172BFB30",
 "artist": "Discip"
+},
+{
+"date": "2026-12-04",
+"event": "Hans Glader",
+"venue": "The Moroccan Lounge",
+"city": "Los Angeles",
+"region": "CA",
+"url": "https://www.ticketmaster.com/hans-glader-los-angeles-california-12-04-2026/event/090065079D33712E",
+"artist": "Hans Glader"
 },
 {
 "date": "2026-12-04",
@@ -4610,6 +4682,15 @@
 "region": "MN",
 "url": "https://www.ticketmaster.com/rhye-joy-tour-minneapolis-minnesota-12-04-2026/event/060064C4FDF02FF9",
 "artist": "Rhye"
+},
+{
+"date": "2026-12-05",
+"event": "&ME @ Pacha ICONS",
+"venue": "FIVE Luxe JBR",
+"city": "Dubai",
+"region": "AE",
+"url": "https://www.ticketmaster.ae/event/me--pacha-icons-tickets/644346780",
+"artist": "&ME"
 },
 {
 "date": "2026-12-05",
