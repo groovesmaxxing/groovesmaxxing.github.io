@@ -44,9 +44,33 @@
   </url>
   <url>
     <loc>https://groovesmaxxing.com/newsletter.html</loc>
-    <lastmod>2026-08-17</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://groovesmaxxing.com/newsletter/fgf-004.html</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://groovesmaxxing.com/newsletter/fgf-003.html</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://groovesmaxxing.com/newsletter/fgf-002.html</loc>
+    <lastmod>2026-08-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://groovesmaxxing.com/newsletter/fgf-001.html</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://groovesmaxxing.com/artists/3beat.html</loc>
