@@ -1,26 +1,8 @@
 {
-"generated": "2026-08-26T10:01:56+00:00",
+"generated": "2026-08-27T19:54:21+00:00",
 "artist_count": 682,
 "artists_with_events": 154,
 "events": [
-{
-"date": "2026-08-26",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-08-26-2026/event/3B0064350404814E",
-"artist": "Jamie xx"
-},
-{
-"date": "2026-08-26",
-"event": "RÜFÜS DU SOL NORTH AMERICA 2026",
-"venue": "American Family Insurance Amphitheater - Summerfest Grounds",
-"city": "Milwaukee",
-"region": "WI",
-"url": "https://www.ticketmaster.com/rufus-du-sol-north-america-2026-milwaukee-wisconsin-08-26-2026/event/0700644F091BD764",
-"artist": "RÜFÜS DU SOL"
-},
 {
 "date": "2026-08-27",
 "event": "Polo & Pan - Americas Tour 2026",
@@ -38,15 +20,6 @@
 "region": "OH",
 "url": "https://www.ticketmaster.com/rufus-du-sol-north-america-2026-cuyahoga-falls-ohio-08-27-2026/event/0500644DB736E448",
 "artist": "RÜFÜS DU SOL"
-},
-{
-"date": "2026-08-27",
-"event": "Salmo",
-"venue": "Arena Flegrea",
-"city": "Napoli",
-"region": "IT",
-"url": "https://www.ticketmaster.it/biglietti/salmo-napoli-27-08-2026/event/qfp0j9ucuegy",
-"artist": "SALMO"
 },
 {
 "date": "2026-08-28",
@@ -239,11 +212,11 @@
 },
 {
 "date": "2026-08-28",
-"event": "Tom & Collins",
+"event": "Tom & Collins | 4AM LAST CALL",
 "venue": "CODA",
 "city": "Toronto",
 "region": "ON",
-"url": "https://www.ticketweb.ca/event/tom-collins-coda-tickets/15019283",
+"url": "https://www.ticketweb.ca/event/tom-collins-4am-coda-tickets/15019283",
 "artist": "Tom & Collins"
 },
 {
@@ -992,6 +965,15 @@
 "region": "AB",
 "url": "https://www.ticketmaster.ca/foundation-with-dom-dolla-edmonton-alberta-09-06-2026/event/110064CCFE1AF0F8",
 "artist": "Dom Dolla"
+},
+{
+"date": "2026-09-06",
+"event": "Fisher (21+ Event)",
+"venue": "Omnia Las Vegas",
+"city": "Las Vegas",
+"region": "NV",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1A70MFs",
+"artist": "FISHER"
 },
 {
 "date": "2026-09-06",
@@ -1886,6 +1868,15 @@
 },
 {
 "date": "2026-09-25",
+"event": "Tiesto (21+ Event)",
+"venue": "Omnia Las Vegas",
+"city": "Las Vegas",
+"region": "NV",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZyu-",
+"artist": "Tiësto"
+},
+{
+"date": "2026-09-25",
 "event": "WMOT Finally Friday featuring Skylar Gregg ,  Wade Bowen &  EG Vines",
 "venue": "3rd and Lindsley",
 "city": "Nashville",
@@ -1928,6 +1919,15 @@
 "region": "ON",
 "url": "https://www.ticketmaster.ca/sofi-tukker-presents-animal-talk-toronto-ontario-09-26-2026/event/10006497A3E5AD9A",
 "artist": "DRAMA"
+},
+{
+"date": "2026-09-26",
+"event": "GUDFELLA",
+"venue": "The Penthouse | FIVE Palm",
+"city": "Dubai",
+"region": "AE",
+"url": "https://www.ticketmaster.ae/event/gudfella-tickets/1958210940",
+"artist": "GUDFELLA"
 },
 {
 "date": "2026-09-26",
@@ -1982,6 +1982,15 @@
 "region": "AR",
 "url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-rogers-arkansas-09-26-2026/event/1B00646A8F34A0E8",
 "artist": "Midnight Generation"
+},
+{
+"date": "2026-09-26",
+"event": "Parcels with Velvet Trip - Ages 21+",
+"venue": "The Regency Ballroom",
+"city": "San Francisco",
+"region": "CA",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAvvPv",
+"artist": "Parcels"
 },
 {
 "date": "2026-09-26",
@@ -2458,6 +2467,15 @@
 "city": "Sandy",
 "region": "UT",
 "url": "https://www.universe.com/events/breakaway-utah-2026-tickets-96845F?ref=ticketmaster",
+"artist": "Tiësto"
+},
+{
+"date": "2026-10-02",
+"event": "Tiesto (21 and Over)",
+"venue": "Omnia Las Vegas",
+"city": "Las Vegas",
+"region": "NV",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZyuE",
 "artist": "Tiësto"
 },
 {
@@ -4451,6 +4469,15 @@
 },
 {
 "date": "2026-11-20",
+"event": "BLNK CNVS Presents: SIDEPIECE - Ages 18+",
+"venue": "Assembly Food Hall",
+"city": "Nashville",
+"region": "TN",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAvZC9",
+"artist": "SIDEPIECE"
+},
+{
+"date": "2026-11-20",
 "event": "Eastenderz, Manchester",
 "venue": "Depot Mayfield",
 "city": "Manchester",
@@ -4574,15 +4601,6 @@
 "region": "CA",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7PgGw",
 "artist": "Devault"
-},
-{
-"date": "2026-11-28",
-"event": "FYE Ultraclub Presents: FRANKY RIZARDO",
-"venue": "FYE Ultra Club",
-"city": "Toronto",
-"region": "ON",
-"url": "https://www.ticketweb.ca/event/fye-ultraclub-presents-franky-rizardo-fye-ultra-club-tickets/14936203",
-"artist": "Franky Rizardo"
 },
 {
 "date": "2026-11-28",
