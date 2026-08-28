@@ -1,26 +1,8 @@
 {
-"generated": "2026-08-27T19:54:21+00:00",
+"generated": "2026-08-28T20:58:06+00:00",
 "artist_count": 682,
-"artists_with_events": 154,
+"artists_with_events": 156,
 "events": [
-{
-"date": "2026-08-27",
-"event": "Polo & Pan - Americas Tour 2026",
-"venue": "Agora Port de Québec",
-"city": "Quebec",
-"region": "QC",
-"url": "https://lepointdevente.com/billets/poloandpan-americastour",
-"artist": "Polo & Pan"
-},
-{
-"date": "2026-08-27",
-"event": "RÜFÜS DU SOL NORTH AMERICA 2026",
-"venue": "Blossom Music Center",
-"city": "Cuyahoga Falls",
-"region": "OH",
-"url": "https://www.ticketmaster.com/rufus-du-sol-north-america-2026-cuyahoga-falls-ohio-08-27-2026/event/0500644DB736E448",
-"artist": "RÜFÜS DU SOL"
-},
 {
 "date": "2026-08-28",
 "event": "Creamfields 2026 - Friday - Gold Payment Plan",
@@ -185,30 +167,12 @@
 },
 {
 "date": "2026-08-28",
-"event": "Salmo ",
-"venue": "Lungomare Aldo Moro",
-"city": "Montesilvano (Pescara)",
-"region": "IT",
-"url": "https://www.ticketmaster.it/biglietti/salmo-sayf-montesilvano-pescara-28-08-2026/event/15qagfbw3u7e",
-"artist": "SALMO"
-},
-{
-"date": "2026-08-28",
 "event": "It's Murph (18 and Over)",
 "venue": "Under the 'K' Bridge Park",
 "city": "Brooklyn",
 "region": "NY",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7067P",
 "artist": "Tchami"
-},
-{
-"date": "2026-08-28",
-"event": "The Jungle Giants - Experiencing Feelings of Joy Tour w/ The Tullamarines // Tear Drive",
-"venue": "Waves",
-"city": "Towradgi",
-"region": "NSW",
-"url": "https://www.moshtix.com.au/v2/event/the-jungle-giants-experiencing-feelings-of-joy-tour-w-the-tullamarines-tear-drive/195463",
-"artist": "The Jungle Giants"
 },
 {
 "date": "2026-08-28",
@@ -842,6 +806,15 @@
 },
 {
 "date": "2026-09-05",
+"event": "Fisher",
+"venue": "Ocean Resort Casino - HQ2 Beachclub",
+"city": "Atlantic City",
+"region": "NJ",
+"url": "https://www.ticketweb.com/event/fisher-ocean-casino-resort-tickets/14744853?REFERRAL_ID=tmfeed",
+"artist": "FISHER"
+},
+{
+"date": "2026-09-05",
 "event": "Fisher (21+ Event)",
 "venue": "Ocean Casino Resort - HQ2 Beachclub",
 "city": "Atlantic City",
@@ -857,6 +830,15 @@
 "region": "ON",
 "url": "https://www.ticketmaster.ca/rufus-du-sol-north-america-2026-toronto-ontario-09-05-2026/event/1000644CF6A0BEC5",
 "artist": "Fcukers"
+},
+{
+"date": "2026-09-05",
+"event": "Genesi",
+"venue": "Ocean Resort Casino, HQ2 Nightclub and HQ2 Dayclub/Beachclub",
+"city": "Atlantic City",
+"region": "NJ",
+"url": "https://www.ticketweb.com/event/genesi-ocean-casino-resort-tickets/14204244?REFERRAL_ID=tmfeed",
+"artist": "GENESI"
 },
 {
 "date": "2026-09-05",
@@ -1354,6 +1336,15 @@
 "artist": "Tinlicker"
 },
 {
+"date": "2026-09-18",
+"event": "Cu Friday Pres: Twin Diplomacy",
+"venue": "Common/UNDRGRD",
+"city": "Calgary",
+"region": "AB",
+"url": "https://www.ticketweb.ca/event/cu-friday-pres-twin-diplomacy-commonundrgrd-tickets/14192394?REFERRAL_ID=tmfeed",
+"artist": "Twin Diplomacy"
+},
+{
 "date": "2026-09-19",
 "event": "WHP presents: Rampa + &ME",
 "venue": "Depot Mayfield",
@@ -1505,6 +1496,15 @@
 "region": "BC",
 "url": "https://www.ticketmaster.ca/foundation-v170-w-lane-8-elderbrook-burnaby-british-columbia-09-19-2026/event/110064D8B1DD8ACC",
 "artist": "Tobiahs"
+},
+{
+"date": "2026-09-19",
+"event": "Playhouse Pres: Twin Diplomacy",
+"venue": "Celebrities",
+"city": "Vancouver",
+"region": "BC",
+"url": "https://www.ticketweb.ca/event/playhouse-pres-twin-diplomacy-celebrities-nightclub-tickets/14192354?REFERRAL_ID=tmfeed",
+"artist": "Twin Diplomacy"
 },
 {
 "date": "2026-09-19",
@@ -3056,6 +3056,15 @@
 },
 {
 "date": "2026-10-10",
+"event": "Polo & Pan - Americas Tour Block Party - Ages 21+",
+"venue": "The Midway",
+"city": "San Francisco",
+"region": "CA",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7JpeZ",
+"artist": "Polo & Pan"
+},
+{
+"date": "2026-10-10",
 "event": "Austin City Limits Music Festival - Weekend Two",
 "venue": "Zilker Park",
 "city": "Austin",
@@ -3080,6 +3089,15 @@
 "region": "WA",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7J7_t",
 "artist": "Satin Jackets"
+},
+{
+"date": "2026-10-10",
+"event": "Tinlicker - Ages 21+",
+"venue": "The Midway",
+"city": "San Francisco",
+"region": "CA",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZ6-v",
+"artist": "Tinlicker"
 },
 {
 "date": "2026-10-10",
@@ -3605,11 +3623,11 @@
 },
 {
 "date": "2026-10-22",
-"event": "The Jungle Giants",
+"event": "The Jungle Giants w/ Morning Silk",
 "venue": "Antone's Nightclub",
 "city": "Austin",
 "region": "TX",
-"url": "https://www.ticketmaster.com/the-jungle-giants-austin-texas-10-22-2026/event/3A0064AF0B1A8172",
+"url": "https://www.ticketmaster.com/the-jungle-giants-w-morning-silk-austin-texas-10-22-2026/event/3A0064AF0B1A8172",
 "artist": "The Jungle Giants"
 },
 {
@@ -4064,6 +4082,15 @@
 },
 {
 "date": "2026-10-31",
+"event": "Midnight Carnival Block Party ft. RL GRIME - Ages 18+",
+"venue": "The Midway",
+"city": "San Francisco",
+"region": "CA",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZxo3",
+"artist": "RL Grime"
+},
+{
+"date": "2026-10-31",
 "event": "SOFI TUKKER Presents: ANIMAL TALK",
 "venue": "Pepsi Center",
 "city": "México",
@@ -4124,6 +4151,15 @@
 "region": "TX",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1A70t74",
 "artist": "John Summit"
+},
+{
+"date": "2026-11-06",
+"event": "Adriatique - Ages 21+",
+"venue": "The Midway",
+"city": "San Francisco",
+"region": "CA",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZsO6",
+"artist": "Adriatique"
 },
 {
 "date": "2026-11-06",
@@ -4532,6 +4568,15 @@
 },
 {
 "date": "2026-11-21",
+"event": "WUKI - BEATS I CAN'T RELEASE: MIXTAPE VOL. 3 - Ages 21+",
+"venue": "The Midway",
+"city": "San Francisco",
+"region": "CA",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAvak7",
+"artist": "Wuki"
+},
+{
+"date": "2026-11-21",
 "event": "hypersonic festival Sydney 2026",
 "venue": "Royal Randwick Racecourse",
 "city": "Randwick",
@@ -4846,6 +4891,15 @@
 "artist": "Tobiahs"
 },
 {
+"date": "2026-12-12",
+"event": "Twin Diplomacy",
+"venue": "Ocean Resort Casino, HQ2 Nightclub and HQ2 Dayclub/Beachclub",
+"city": "Atlantic City",
+"region": "NJ",
+"url": "https://www.ticketweb.com/event/twin-diplomacy-ocean-casino-resort-tickets/14191274?REFERRAL_ID=tmfeed",
+"artist": "Twin Diplomacy"
+},
+{
 "date": "2026-12-13",
 "event": "Fcukers",
 "venue": "The Timber Yard",
@@ -4862,6 +4916,15 @@
 "region": "QLD",
 "url": "https://www.moshtix.com.au/v2/event/spilt-milk-gold-coast-2026/198097",
 "artist": "Tobiahs"
+},
+{
+"date": "2026-12-18",
+"event": "Twin Diplomacy",
+"venue": "CODA",
+"city": "Toronto",
+"region": "ON",
+"url": "https://www.ticketweb.ca/event/twin-diplomacy-coda-tickets/14193774",
+"artist": "Twin Diplomacy"
 },
 {
 "date": "2026-12-19",
