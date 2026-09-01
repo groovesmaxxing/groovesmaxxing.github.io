@@ -1,7 +1,7 @@
 {
-"generated": "2026-08-31T17:08:44+00:00",
+"generated": "2026-09-01T14:15:01+00:00",
 "artist_count": 682,
-"artists_with_events": 142,
+"artists_with_events": 145,
 "events": [
 {
 "date": "2026-09-01",
@@ -173,6 +173,15 @@
 "region": "BC",
 "url": "https://www.ticketmaster.ca/matroda-vancouver-british-columbia-09-05-2026/event/11006506835F4A0A",
 "artist": "Biscits"
+},
+{
+"date": "2026-09-05",
+"event": "Disco lines",
+"venue": "LIV Nightclub Miami",
+"city": "Miami Beach",
+"region": "FL",
+"url": "https://www.ticketweb.com/event/disco-lines-liv-nightclub-miami-tickets/14262124",
+"artist": "Disco Lines"
 },
 {
 "date": "2026-09-05",
@@ -733,6 +742,15 @@
 "artist": "Twin Diplomacy"
 },
 {
+"date": "2026-09-18",
+"event": "Walker & Royce",
+"venue": "Academy LA",
+"city": "Los Angeles",
+"region": "CA",
+"url": "https://www.ticketweb.com/event/walker-royce-academy-la-tickets/14295904",
+"artist": "Walker & Royce"
+},
+{
 "date": "2026-09-19",
 "event": "WHP presents: Rampa + &ME",
 "venue": "Depot Mayfield",
@@ -821,6 +839,15 @@
 "region": "CA",
 "url": "https://on.fgtix.com/trk/Br8J",
 "artist": "Malaa"
+},
+{
+"date": "2026-09-19",
+"event": "Matroda",
+"venue": "LIV Nightclub Miami",
+"city": "Miami Beach",
+"region": "FL",
+"url": "https://www.ticketweb.com/event/matroda-liv-nightclub-miami-tickets/15014873",
+"artist": "Matroda"
 },
 {
 "date": "2026-09-19",
@@ -3614,6 +3641,15 @@
 },
 {
 "date": "2026-11-06",
+"event": "CID [GLOW OFF:SITE]",
+"venue": "Dock5",
+"city": "Washington",
+"region": "DC",
+"url": "https://www.ticketmaster.com/cid-glow-offsite-washington-district-of-columbia-11-06-2026/event/1500651E44631FE8",
+"artist": "Pedroz"
+},
+{
+"date": "2026-11-06",
 "event": "Sammy Virji: North America Tour 2026 Part 2",
 "venue": "PNE Forum",
 "city": "Vancouver",
@@ -4226,6 +4262,15 @@
 },
 {
 "date": "2026-12-06",
+"event": "Defected Brisbane 2026",
+"venue": "Felons Barrel Hall, Howard Smith Wharves",
+"city": "Brisbane City",
+"region": "QLD",
+"url": "https://www.moshtix.com.au/v2/event/defected-brisbane-2026/198304",
+"artist": "David Penn"
+},
+{
+"date": "2026-12-06",
 "event": "Rhye",
 "venue": "Majestic Theatre-MI",
 "city": "Detroit",
@@ -4259,6 +4304,15 @@
 "region": "NY",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7POP6",
 "artist": "Rhye"
+},
+{
+"date": "2026-12-11",
+"event": "Defected Melbourne 2026",
+"venue": "Northcote Theatre",
+"city": "Northcote",
+"region": "VIC",
+"url": "https://www.moshtix.com.au/v2/event/defected-melbourne-2026/198339",
+"artist": "David Penn"
 },
 {
 "date": "2026-12-11",
@@ -4322,6 +4376,15 @@
 "region": "NJ",
 "url": "https://www.ticketweb.com/event/twin-diplomacy-ocean-casino-resort-tickets/14191274?REFERRAL_ID=tmfeed",
 "artist": "Twin Diplomacy"
+},
+{
+"date": "2026-12-13",
+"event": "Defected Byron Bay 2026",
+"venue": "The Beach Hotel",
+"city": "Byron Bay",
+"region": "NSW",
+"url": "https://www.moshtix.com.au/v2/event/defected-byron-bay-2026/198282",
+"artist": "David Penn"
 },
 {
 "date": "2026-12-13",
@@ -4430,6 +4493,24 @@
 "region": "FL",
 "url": "https://on.fgtix.com/trk/zUfcc",
 "artist": "RL Grime"
+},
+{
+"date": "2026-12-31",
+"event": "New Year's At The Bowl",
+"venue": "Arts Centre Melbourne, Sidney Myer Music Bowl",
+"city": "Linlithgow Ave",
+"region": "VIC",
+"url": "https://www.moshtix.com.au/v2/event/new-year-s-at-the-bowl/199647",
+"artist": "Flight Facilities"
+},
+{
+"date": "2027-01-01",
+"event": "Field Day 2027",
+"venue": "The Domain",
+"city": "Sydney",
+"region": "NSW",
+"url": "https://www.moshtix.com.au/v2/event/field-day-2027/199201",
+"artist": "Elderbrook"
 },
 {
 "date": "2027-03-17",
