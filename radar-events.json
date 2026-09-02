@@ -1,26 +1,8 @@
 {
-"generated": "2026-09-01T14:15:01+00:00",
+"generated": "2026-09-02T13:44:46+00:00",
 "artist_count": 682,
 "artists_with_events": 145,
 "events": [
-{
-"date": "2026-09-01",
-"event": "RÜFÜS DU SOL NORTH AMERICA 2026",
-"venue": "Acrisure Amphitheater",
-"city": "Grand Rapids",
-"region": "MI",
-"url": "https://www.ticketmaster.com/rufus-du-sol-north-america-2026-grand-rapids-michigan-09-01-2026/event/0800644DFA9D1C62",
-"artist": "Fcukers"
-},
-{
-"date": "2026-09-01",
-"event": "RÜFÜS DU SOL Premiums: Party Decks, 4Tops, Lounge",
-"venue": "Acrisure Amphitheater",
-"city": "Grand Rapids",
-"region": "MI",
-"url": "https://www.ticketmaster.com/rufus-du-sol-premiums-party-decks-grand-rapids-michigan-09-01-2026/event/080065011590210E",
-"artist": "RÜFÜS DU SOL"
-},
 {
 "date": "2026-09-02",
 "event": "RÜFÜS DU SOL NORTH AMERICA 2026",
@@ -4145,6 +4127,15 @@
 },
 {
 "date": "2026-11-28",
+"event": "Skyline Saturdays Presents RAFAEL",
+"venue": "The Penthouse | FIVE Palm",
+"city": "Dubai",
+"region": "AE",
+"url": "https://www.ticketmaster.ae/event/skyline-saturdays-presents-rafael-tickets/1830573512",
+"artist": "Rafael"
+},
+{
+"date": "2026-11-28",
 "event": "Tiga",
 "venue": "Village Studios",
 "city": "Vancouver",
@@ -4430,6 +4421,15 @@
 "region": "VIC",
 "url": "https://www.moshtix.com.au/v2/event/spilt-milk-geelong-2026/198094",
 "artist": "Tobiahs"
+},
+{
+"date": "2026-12-19",
+"event": "Twin Diplomacy - Ages 18+",
+"venue": "ReelWorks Denver",
+"city": "Denver",
+"region": "CO",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7P-4I",
+"artist": "Twin Diplomacy"
 },
 {
 "date": "2026-12-20",
