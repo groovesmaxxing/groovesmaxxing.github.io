@@ -1,53 +1,8 @@
 {
-"generated": "2026-09-02T13:44:46+00:00",
+"generated": "2026-09-03T13:39:45+00:00",
 "artist_count": 682,
-"artists_with_events": 145,
+"artists_with_events": 148,
 "events": [
-{
-"date": "2026-09-02",
-"event": "RÜFÜS DU SOL NORTH AMERICA 2026",
-"venue": "Riverbend Music Center",
-"city": "Cincinnati",
-"region": "OH",
-"url": "https://www.ticketmaster.com/rufus-du-sol-north-america-2026-cincinnati-ohio-09-02-2026/event/1600644B9ACA6868",
-"artist": "Fcukers"
-},
-{
-"date": "2026-09-02",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-09-02-2026/event/3B006435047F81C1",
-"artist": "Jamie xx"
-},
-{
-"date": "2026-09-02",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "PNC Bank Arts Center",
-"city": "Holmdel",
-"region": "NJ",
-"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-holmdel-new-jersey-09-02-2026/event/0200646692A1A310",
-"artist": "Midnight Generation"
-},
-{
-"date": "2026-09-02",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "PNC Bank Arts Center",
-"city": "Holmdel",
-"region": "NJ",
-"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-holmdel-new-jersey-09-02-2026/event/0200646692A1A310",
-"artist": "Polo & Pan"
-},
-{
-"date": "2026-09-02",
-"event": "RÜFÜS DU SOL NORTH AMERICA 2026",
-"venue": "Riverbend Music Center",
-"city": "Cincinnati",
-"region": "OH",
-"url": "https://www.ticketmaster.com/rufus-du-sol-north-america-2026-cincinnati-ohio-09-02-2026/event/1600644B9ACA6868",
-"artist": "RÜFÜS DU SOL"
-},
 {
 "date": "2026-09-03",
 "event": "RÜFÜS DU SOL NORTH AMERICA 2026",
@@ -248,6 +203,15 @@
 },
 {
 "date": "2026-09-05",
+"event": "Mau P - After Dark - Ages 18+",
+"venue": "Radius - Chicago",
+"city": "Chicago",
+"region": "IL",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAvvfP",
+"artist": "Mau P"
+},
+{
+"date": "2026-09-05",
 "event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
 "venue": "TD Pavilion at Highmark Mann",
 "city": "Philadelphia",
@@ -290,6 +254,15 @@
 "region": "TX",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7PoZI",
 "artist": "WhoMadeWho"
+},
+{
+"date": "2026-09-06",
+"event": "ANYMA  - Ages 18+",
+"venue": "Radius - Chicago",
+"city": "Chicago",
+"region": "IL",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAvvfJ",
+"artist": "Anyma"
 },
 {
 "date": "2026-09-06",
@@ -2489,6 +2462,15 @@
 },
 {
 "date": "2026-10-10",
+"event": "ToBeHonest, Gabss B2B Moontalk, InntRaw",
+"venue": "Academy LA",
+"city": "Los Angeles",
+"region": "CA",
+"url": "https://www.ticketweb.com/event/tobehonest-gabss-b2b-moontalk-inntraw-academy-la-tickets/14299534",
+"artist": "TOBEHONEST"
+},
+{
+"date": "2026-10-10",
 "event": "Tinlicker - Ages 21+",
 "venue": "The Midway",
 "city": "San Francisco",
@@ -2612,6 +2594,15 @@
 "region": "NY",
 "url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-10-14-2026/event/3B00643505DD82E6",
 "artist": "Jamie xx"
+},
+{
+"date": "2026-10-14",
+"event": "Hellogoodbye + Man Man",
+"venue": "Brudenell Social Club",
+"city": "Leeds",
+"region": "GB",
+"url": "https://www.universe.com/events/hellogoodbye-man-man-tickets-C7G4ZV?ref=ticketmaster",
+"artist": "MAN"
 },
 {
 "date": "2026-10-14",
@@ -3830,6 +3821,15 @@
 },
 {
 "date": "2026-11-14",
+"event": "Ray Wylie Hubbard & Friends: 80th Birthday Celebration",
+"venue": "Gruene Hall",
+"city": "New Braunfels",
+"region": "TX",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZpOg",
+"artist": "Wade"
+},
+{
+"date": "2026-11-14",
 "event": "ZHU ??? ON THE MOVE (18+ Event)",
 "venue": "SILO",
 "city": "Dallas",
@@ -4151,6 +4151,15 @@
 "region": "VIC",
 "url": "https://www.moshtix.com.au/v2/event/all-day-i-dream-of-australia-melbourne/197778",
 "artist": "Lee Burridge"
+},
+{
+"date": "2026-12-04",
+"event": "D.O.D + more TBA",
+"venue": "NX",
+"city": "Newcastle Upon Tyne",
+"region": "GB",
+"url": "https://www.universe.com/events/d-o-d-more-tba-tickets-CX5KSY?ref=ticketmaster",
+"artist": "D.O.D"
 },
 {
 "date": "2026-12-04",
