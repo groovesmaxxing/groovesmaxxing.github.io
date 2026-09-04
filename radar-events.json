@@ -1,26 +1,8 @@
 {
-"generated": "2026-09-03T13:39:45+00:00",
+"generated": "2026-09-04T13:36:47+00:00",
 "artist_count": 682,
-"artists_with_events": 148,
+"artists_with_events": 149,
 "events": [
-{
-"date": "2026-09-03",
-"event": "RÜFÜS DU SOL NORTH AMERICA 2026",
-"venue": "The Pavilion at Star Lake",
-"city": "Burgettstown",
-"region": "PA",
-"url": "https://www.ticketmaster.com/rufus-du-sol-north-america-2026-burgettstown-pennsylvania-09-03-2026/event/1600644F26F0D879",
-"artist": "Fcukers"
-},
-{
-"date": "2026-09-03",
-"event": "RÜFÜS DU SOL NORTH AMERICA 2026",
-"venue": "The Pavilion at Star Lake",
-"city": "Burgettstown",
-"region": "PA",
-"url": "https://www.ticketmaster.com/rufus-du-sol-north-america-2026-burgettstown-pennsylvania-09-03-2026/event/1600644F26F0D879",
-"artist": "RÜFÜS DU SOL"
-},
 {
 "date": "2026-09-04",
 "event": "DOMBRESKY",
@@ -2561,6 +2543,15 @@
 },
 {
 "date": "2026-10-13",
+"event": "Gregory Alan Isakov - Ages 21+ Unless with a Parent or Legal Guardian",
+"venue": "Ardmore Music Hall",
+"city": "Ardmore",
+"region": "PA",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAvkAS",
+"artist": "MADI"
+},
+{
+"date": "2026-10-13",
 "event": "Rhye en Ciudad de México",
 "venue": "Pepsi Center",
 "city": "México",
@@ -4001,12 +3992,30 @@
 },
 {
 "date": "2026-11-21",
+"event": "WHP x Eat Your Own Ears",
+"venue": "Depot Mayfield",
+"city": "Manchester",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/whp-x-eat-your-own-ears-manchester-21-11-2026/event/3500651421F2D58A",
+"artist": "Peggy Gou"
+},
+{
+"date": "2026-11-21",
 "event": "Sidepiece (18 and Over)",
 "venue": "The Ritz Ybor",
 "city": "Tampa",
 "region": "FL",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZkjb",
 "artist": "SIDEPIECE"
+},
+{
+"date": "2026-11-21",
+"event": "Wade Bowen - Ages 18+",
+"venue": "Billy Bob's",
+"city": "Fort Worth",
+"region": "TX",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAv4Fe",
+"artist": "Wade"
 },
 {
 "date": "2026-11-21",
@@ -4214,6 +4223,15 @@
 "region": "AE",
 "url": "https://www.ticketmaster.ae/event/me--pacha-icons-tickets/644346780",
 "artist": "&ME"
+},
+{
+"date": "2026-12-05",
+"event": "The Haçienda, Manchester",
+"venue": "Depot Mayfield",
+"city": "Manchester",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/the-hacienda-manchester-manchester-05-12-2026/event/35006503980A16B6",
+"artist": "Armand Van Helden"
 },
 {
 "date": "2026-12-05",
