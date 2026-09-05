@@ -1,80 +1,8 @@
 {
-"generated": "2026-09-04T13:36:47+00:00",
+"generated": "2026-09-05T12:48:06+00:00",
 "artist_count": 682,
-"artists_with_events": 149,
+"artists_with_events": 147,
 "events": [
-{
-"date": "2026-09-04",
-"event": "DOMBRESKY",
-"venue": "DPRTMNT",
-"city": "Toronto",
-"region": "ON",
-"url": "https://www.ticketweb.ca/event/dombresky-dprtmnt-tickets/14959293",
-"artist": "Dombresky"
-},
-{
-"date": "2026-09-04",
-"event": "Emmit Fenn",
-"venue": "ZeyZey Miami",
-"city": "Miami",
-"region": "FL",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7P44U",
-"artist": "Emmit Fenn"
-},
-{
-"date": "2026-09-04",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-09-04-2026/event/3B006435049481D0",
-"artist": "Jamie xx"
-},
-{
-"date": "2026-09-04",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "Merriweather Post Pavilion",
-"city": "Columbia",
-"region": "MD",
-"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-columbia-maryland-09-04-2026/event/1500646A8F7748DF",
-"artist": "Midnight Generation"
-},
-{
-"date": "2026-09-04",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "Merriweather Post Pavilion",
-"city": "Columbia",
-"region": "MD",
-"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-columbia-maryland-09-04-2026/event/1500646A8F7748DF",
-"artist": "Polo & Pan"
-},
-{
-"date": "2026-09-04",
-"event": "Sofi Tukker",
-"venue": "Centro de Convenciones Barranco",
-"city": "",
-"region": "LIM",
-"url": "https://www.ticketmaster.pe/event/sofi-tukker",
-"artist": "SOFI TUKKER"
-},
-{
-"date": "2026-09-04",
-"event": "Vandelux",
-"venue": "Malkin Bowl",
-"city": "Vancouver",
-"region": "BC",
-"url": "https://www.ticketmaster.ca/vandelux-vancouver-british-columbia-09-04-2026/event/110064AEADFA695C",
-"artist": "Vandelux"
-},
-{
-"date": "2026-09-04",
-"event": "Westend (18 and Over)",
-"venue": "Vanguard - Orlando",
-"city": "Orlando",
-"region": "FL",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7PbaU",
-"artist": "Westend"
-},
 {
 "date": "2026-09-05",
 "event": "Armand Van Helden",
@@ -1838,6 +1766,15 @@
 "region": "VIC",
 "url": "https://www.moshtix.com.au/v2/event/freeform-festival-2026/195722",
 "artist": "Barry Can't Swim"
+},
+{
+"date": "2026-10-03",
+"event": "CID - Ages 21+",
+"venue": "Vogue Theatre - IN",
+"city": "Indianapolis",
+"region": "IN",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZaox",
+"artist": "CID"
 },
 {
 "date": "2026-10-03",
