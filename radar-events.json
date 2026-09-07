@@ -1,98 +1,8 @@
 {
-"generated": "2026-09-06T12:57:24+00:00",
+"generated": "2026-09-07T15:07:27+00:00",
 "artist_count": 682,
 "artists_with_events": 144,
 "events": [
-{
-"date": "2026-09-06",
-"event": "ANYMA  - Ages 18+",
-"venue": "Radius - Chicago",
-"city": "Chicago",
-"region": "IL",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAvvfJ",
-"artist": "Anyma"
-},
-{
-"date": "2026-09-06",
-"event": "Black Coffee (21 and Over)",
-"venue": "Pacha New York",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZ4bs",
-"artist": "Black Coffee"
-},
-{
-"date": "2026-09-06",
-"event": "Foundation with Dom Dolla",
-"venue": "Fan Park at ICE District",
-"city": "Edmonton",
-"region": "AB",
-"url": "https://www.ticketmaster.ca/foundation-with-dom-dolla-edmonton-alberta-09-06-2026/event/110064CCFE1AF0F8",
-"artist": "Chris Lorenzo"
-},
-{
-"date": "2026-09-06",
-"event": "Foundation with Dom Dolla",
-"venue": "Fan Park at ICE District",
-"city": "Edmonton",
-"region": "AB",
-"url": "https://www.ticketmaster.ca/foundation-with-dom-dolla-edmonton-alberta-09-06-2026/event/110064CCFE1AF0F8",
-"artist": "Dom Dolla"
-},
-{
-"date": "2026-09-06",
-"event": "Fisher (21+ Event)",
-"venue": "Omnia Las Vegas",
-"city": "Las Vegas",
-"region": "NV",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A70MFs",
-"artist": "FISHER"
-},
-{
-"date": "2026-09-06",
-"event": "Joshwa, Fallon, George Smeddles",
-"venue": "Club Vinyl",
-"city": "Denver",
-"region": "CO",
-"url": "https://www.ticketweb.com/event/joshwa-fallon-george-smeddles-club-vinyl-tickets/14877453",
-"artist": "JOSHWA"
-},
-{
-"date": "2026-09-06",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "Coastal Credit Union Music Park at Walnut Creek",
-"city": "Raleigh",
-"region": "NC",
-"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-raleigh-north-carolina-09-06-2026/event/2D006465A6EBE524",
-"artist": "Midnight Generation"
-},
-{
-"date": "2026-09-06",
-"event": "Odd Mob [LDW]",
-"venue": "Echostage",
-"city": "Washington",
-"region": "DC",
-"url": "https://www.ticketmaster.com/odd-mob-ldw-washington-district-of-columbia-09-06-2026/event/150064E508BA9EBB",
-"artist": "Odd Mob"
-},
-{
-"date": "2026-09-06",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "Coastal Credit Union Music Park at Walnut Creek",
-"city": "Raleigh",
-"region": "NC",
-"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-raleigh-north-carolina-09-06-2026/event/2D006465A6EBE524",
-"artist": "Polo & Pan"
-},
-{
-"date": "2026-09-06",
-"event": "Purple Disco Machine + Gigamesh (21+ Event)",
-"venue": "Victory Hall at The Boxyard",
-"city": "Seattle",
-"region": "WA",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7P-aY",
-"artist": "Purple Disco Machine"
-},
 {
 "date": "2026-09-07",
 "event": "Odd Mob",
@@ -263,6 +173,15 @@
 "region": "AL",
 "url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-birmingham-alabama-09-12-2026/event/20006465B1FB5497",
 "artist": "Midnight Generation"
+},
+{
+"date": "2026-09-12",
+"event": "THE PENTHOUSE PRESENTS: MOUSSE T.",
+"venue": "The Penthouse | FIVE Palm",
+"city": "Dubai",
+"region": "AE",
+"url": "https://www.ticketmaster.ae/event/the-penthouse-presents-mousse-t-tickets/1960017567",
+"artist": "Mousse T."
 },
 {
 "date": "2026-09-12",
@@ -857,6 +776,15 @@
 "region": "MA",
 "url": "https://www.ticketweb.com/event/franky-rizardo-royale-boston-tickets/14947833?REFERRAL_ID=tmfeed",
 "artist": "Franky Rizardo"
+},
+{
+"date": "2026-09-25",
+"event": "GOODBOYS (UK) at Felons Barrel Hall",
+"venue": "Felons Barrel Hall, Howard Smith Wharves",
+"city": "Brisbane City",
+"region": "QLD",
+"url": "https://www.moshtix.com.au/v2/event/goodboys-uk-at-felons-barrel-hall/199977",
+"artist": "Goodboys"
 },
 {
 "date": "2026-09-25",
@@ -1631,6 +1559,15 @@
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/youme-saturday-manchester-03-10-2026/event/35006497E11350C4",
 "artist": "Dennis Quin"
+},
+{
+"date": "2026-10-03",
+"event": "GOODBOYS (UK) at Felons Barrel Room",
+"venue": "Felons Barrel Room",
+"city": "Manly",
+"region": "NSW",
+"url": "https://www.moshtix.com.au/v2/event/goodboys-uk-at-felons-barrel-room/199976",
+"artist": "Goodboys"
 },
 {
 "date": "2026-10-03",
@@ -3935,6 +3872,15 @@
 "region": "VIC",
 "url": "https://www.moshtix.com.au/v2/event/all-day-i-dream-of-australia-melbourne/197778",
 "artist": "Lee Burridge"
+},
+{
+"date": "2026-12-04",
+"event": "Anyma presents ÆDEN – Abu Dhabi Grand Prix Afterparty",
+"venue": "YAS GATEWAY PARK",
+"city": "Abu Dhabi",
+"region": "AE",
+"url": "https://www.ticketmaster.ae/event/anyma-presents-den--abu-dhabi-grand-prix-afterparty-tickets/1331606446",
+"artist": "Anyma"
 },
 {
 "date": "2026-12-04",
