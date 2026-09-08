@@ -1,17 +1,8 @@
 {
-"generated": "2026-09-07T15:07:27+00:00",
+"generated": "2026-09-08T13:42:56+00:00",
 "artist_count": 682,
-"artists_with_events": 144,
+"artists_with_events": 143,
 "events": [
-{
-"date": "2026-09-07",
-"event": "Odd Mob",
-"venue": "Ocean Resort Casino - HQ2 Beachclub",
-"city": "Atlantic City",
-"region": "NJ",
-"url": "https://www.ticketweb.com/event/odd-mob-ocean-casino-resort-tickets/14271144?REFERRAL_ID=tmfeed",
-"artist": "Odd Mob"
-},
 {
 "date": "2026-09-09",
 "event": "Harry Styles: Together, Together",
@@ -1127,6 +1118,24 @@
 "region": "CA",
 "url": "https://www.ticketweb.com/event/day-trip-feat-armand-van-los-angeles-state-historic-park-tickets/14877963",
 "artist": "Armand Van Helden"
+},
+{
+"date": "2026-09-27",
+"event": "Dom Dolla B2B Green Velvet",
+"venue": "The Wool Store",
+"city": "West Footscray",
+"region": "VIC",
+"url": "https://www.ticketmaster.com.au/dom-dolla-b2b-green-velvet-west-footscray-27-09-2026/event/25006524DCEBE513",
+"artist": "Dom Dolla"
+},
+{
+"date": "2026-09-27",
+"event": "Dom Dolla B2B Green Velvet",
+"venue": "The Wool Store",
+"city": "West Footscray",
+"region": "VIC",
+"url": "https://www.ticketmaster.com.au/dom-dolla-b2b-green-velvet-west-footscray-27-09-2026/event/25006524DCEBE513",
+"artist": "Green Velvet"
 },
 {
 "date": "2026-09-27",
@@ -3667,15 +3676,6 @@
 "artist": "SOSA"
 },
 {
-"date": "2026-11-20",
-"event": "hypersonic festival Melbourne 2026",
-"venue": "Melbourne Showgrounds",
-"city": "Ascot Vale",
-"region": "VIC",
-"url": "https://www.moshtix.com.au/v2/event/hypersonic-festival-melbourne-2026/199623",
-"artist": "YOTTO"
-},
-{
 "date": "2026-11-21",
 "event": "Felix Radu",
 "venue": "Théâtre Royal",
@@ -3737,15 +3737,6 @@
 "region": "CA",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1AAvak7",
 "artist": "Wuki"
-},
-{
-"date": "2026-11-21",
-"event": "hypersonic festival Sydney 2026",
-"venue": "Royal Randwick Racecourse",
-"city": "Randwick",
-"region": "NSW",
-"url": "https://www.moshtix.com.au/v2/event/hypersonic-festival-sydney-2026/199622",
-"artist": "YOTTO"
 },
 {
 "date": "2026-11-24",
@@ -3875,11 +3866,11 @@
 },
 {
 "date": "2026-12-04",
-"event": "Anyma presents ÆDEN – Abu Dhabi Grand Prix Afterparty",
-"venue": "YAS GATEWAY PARK",
+"event": "Anyma presents ÆDEN",
+"venue": "YAS GATEWAY PARK NORTH",
 "city": "Abu Dhabi",
 "region": "AE",
-"url": "https://www.ticketmaster.ae/event/anyma-presents-den--abu-dhabi-grand-prix-afterparty-tickets/1331606446",
+"url": "https://www.ticketmaster.ae/event/anyma-presents-den-tickets/1331606446",
 "artist": "Anyma"
 },
 {
