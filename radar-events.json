@@ -1,7 +1,7 @@
 {
-"generated": "2026-09-08T13:42:56+00:00",
+"generated": "2026-09-09T13:48:08+00:00",
 "artist_count": 682,
-"artists_with_events": 143,
+"artists_with_events": 148,
 "events": [
 {
 "date": "2026-09-09",
@@ -923,7 +923,7 @@
 },
 {
 "date": "2026-09-25",
-"event": "PRE-SALE: In The Round with Wade Bowen & friends",
+"event": "PRE-SALE: In The Round with Wade Bowen, Heather Morgan & friend",
 "venue": "The Bluebird Cafe",
 "city": "Nashville",
 "region": "TN",
@@ -1175,6 +1175,15 @@
 },
 {
 "date": "2026-09-30",
+"event": "Tamar. Sunrise 2",
+"venue": "Masada Peak",
+"city": "Masada",
+"region": "IL",
+"url": "https://www.ticketmaster.co.il/event/MPM20/ALL/en",
+"artist": "Adam Ten"
+},
+{
+"date": "2026-09-30",
 "event": "Fcukers",
 "venue": "The Echo Lounge & Music Hall",
 "city": "Dallas",
@@ -1190,6 +1199,15 @@
 "region": "NY",
 "url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-09-30-2026/event/3B00643505768283",
 "artist": "Jamie xx"
+},
+{
+"date": "2026-09-30",
+"event": "Tamar. Sunrise 2",
+"venue": "Masada Peak",
+"city": "Masada",
+"region": "IL",
+"url": "https://www.ticketmaster.co.il/event/MPM20/ALL/en",
+"artist": "Mita Gami"
 },
 {
 "date": "2026-09-30",
@@ -2219,6 +2237,15 @@
 },
 {
 "date": "2026-10-11",
+"event": "Horse Meat Disco",
+"venue": "NOIR (inside REBEL)",
+"city": "Toronto",
+"region": "ON",
+"url": "https://www.ticketweb.ca/event/horse-meat-disco-noir-inside-rebel-tickets/14310204",
+"artist": "Horse Meat Disco"
+},
+{
+"date": "2026-10-11",
 "event": "Jazzy",
 "venue": "Village Studios",
 "city": "Vancouver",
@@ -2405,6 +2432,15 @@
 "region": "NY",
 "url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-10-16-2026/event/3B00643505EE82F4",
 "artist": "Jamie xx"
+},
+{
+"date": "2026-10-16",
+"event": "Deorro: Botas y Rave",
+"venue": "The Cosmopolitan of Las Vegas",
+"city": "Las Vegas",
+"region": "NV",
+"url": "https://www.ticketmaster.com/deorro-botas-y-rave-las-vegas-nevada-10-16-2026/event/17006522D17A3722",
+"artist": "Juos"
 },
 {
 "date": "2026-10-16",
@@ -2729,6 +2765,15 @@
 "region": "NL",
 "url": "https://www.ticketmaster.nl/event/meduza-tickets/1899883751?language=en-us",
 "artist": "MEDUZA"
+},
+{
+"date": "2026-10-22",
+"event": "Stavroz",
+"venue": "Le Studio TD",
+"city": "Montreal",
+"region": "QC",
+"url": "https://www.ticketmaster.ca/stavroz-montreal-quebec-10-22-2026/event/3100651FDB017FF0",
+"artist": "Stavroz"
 },
 {
 "date": "2026-10-22",
@@ -3191,6 +3236,15 @@
 },
 {
 "date": "2026-10-31",
+"event": "NEVER DULL [USA]",
+"venue": "Heaps Normal Health Club",
+"city": "Marrickville",
+"region": "NSW",
+"url": "https://www.moshtix.com.au/v2/event/never-dull-usa-/199888",
+"artist": "Never Dull"
+},
+{
+"date": "2026-10-31",
 "event": "NeXup",
 "venue": "Depot Mayfield",
 "city": "Manchester",
@@ -3460,6 +3514,15 @@
 "artist": "ZHU"
 },
 {
+"date": "2026-11-13",
+"event": "it's murph: Fade Into Nothing Tour",
+"venue": "History Toronto",
+"city": "Toronto",
+"region": "ON",
+"url": "https://www.ticketmaster.ca/its-murph-fade-into-nothing-tour-toronto-ontario-11-13-2026/event/10006522B3E0C9CD",
+"artist": "it's murph"
+},
+{
 "date": "2026-11-14",
 "event": "Bohemia Presents Alex Wann & SONA",
 "venue": "Bohemia Beach Club | FIVE Palm",
@@ -3548,6 +3611,15 @@
 "region": "TX",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1A70aZs",
 "artist": "ZHU"
+},
+{
+"date": "2026-11-15",
+"event": "Tempo Daylife Tampa Bay Presents - Elderbrook",
+"venue": "Seminole Hard Rock Tampa Event Center",
+"city": "Tampa",
+"region": "FL",
+"url": "https://www.ticketmaster.com/tempo-daylife-tampa-bay-presents-elderbrook-tampa-florida-11-15-2026/event/0D00651AAA085EB6",
+"artist": "Elderbrook"
 },
 {
 "date": "2026-11-15",
@@ -3875,11 +3947,11 @@
 },
 {
 "date": "2026-12-04",
-"event": "D.O.D + more TBA",
+"event": "D.O.D",
 "venue": "NX",
 "city": "Newcastle Upon Tyne",
 "region": "GB",
-"url": "https://www.universe.com/events/d-o-d-more-tba-tickets-CX5KSY?ref=ticketmaster",
+"url": "https://www.universe.com/events/d-o-d-tickets-CX5KSY?ref=ticketmaster",
 "artist": "D.O.D"
 },
 {
@@ -3911,6 +3983,15 @@
 },
 {
 "date": "2026-12-04",
+"event": "Layton Giordani - 12.04.26 @ The Bluestone - Columbus, OH",
+"venue": "Forum Columbus",
+"city": "Columbus",
+"region": "OH",
+"url": "https://www.universe.com/events/layton-giordani-12-04-26-the-bluestone-columbus-oh-tickets-L8ZWV5?ref=ticketmaster",
+"artist": "Layton Giordani"
+},
+{
+"date": "2026-12-04",
 "event": "Max Styler [Extended Set]",
 "venue": "Echostage",
 "city": "Washington",
@@ -3926,6 +4007,15 @@
 "region": "MN",
 "url": "https://www.ticketmaster.com/rhye-joy-tour-minneapolis-minnesota-12-04-2026/event/060064C4FDF02FF9",
 "artist": "Rhye"
+},
+{
+"date": "2026-12-04",
+"event": "D.O.D",
+"venue": "NX",
+"city": "Newcastle Upon Tyne",
+"region": "GB",
+"url": "https://www.universe.com/events/d-o-d-tickets-CX5KSY?ref=ticketmaster",
+"artist": "Solardo"
 },
 {
 "date": "2026-12-05",
