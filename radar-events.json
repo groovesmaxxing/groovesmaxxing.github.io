@@ -1,35 +1,8 @@
 {
-"generated": "2026-09-09T13:48:08+00:00",
+"generated": "2026-09-10T13:41:24+00:00",
 "artist_count": 682,
-"artists_with_events": 148,
+"artists_with_events": 149,
 "events": [
-{
-"date": "2026-09-09",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-09-09-2026/event/3B00643504B581EB",
-"artist": "Jamie xx"
-},
-{
-"date": "2026-09-09",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "Truliant Amphitheater",
-"city": "Charlotte",
-"region": "NC",
-"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-charlotte-north-carolina-09-09-2026/event/2D0064659EB0D3DB",
-"artist": "Midnight Generation"
-},
-{
-"date": "2026-09-09",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "Truliant Amphitheater",
-"city": "Charlotte",
-"region": "NC",
-"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-charlotte-north-carolina-09-09-2026/event/2D0064659EB0D3DB",
-"artist": "Polo & Pan"
-},
 {
 "date": "2026-09-10",
 "event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
@@ -2238,6 +2211,15 @@
 {
 "date": "2026-10-11",
 "event": "Horse Meat Disco",
+"venue": "REBEL",
+"city": "Toronto",
+"region": "ON",
+"url": "https://www.ticketweb.ca/event/horse-meat-disco-noir-inside-rebel-tickets/14310664?REFERRAL_ID=tmfeed",
+"artist": "Horse Meat Disco"
+},
+{
+"date": "2026-10-11",
+"event": "Horse Meat Disco",
 "venue": "NOIR (inside REBEL)",
 "city": "Toronto",
 "region": "ON",
@@ -3127,6 +3109,15 @@
 "artist": "SOFI TUKKER"
 },
 {
+"date": "2026-10-30",
+"event": "TCHAMI @ Mayberry",
+"venue": "",
+"city": "",
+"region": "",
+"url": "https://www.moshtix.com.au/v2/event/tchami-mayberry/199889",
+"artist": "Tchami"
+},
+{
 "date": "2026-10-31",
 "event": "Adam Port @ Pacha ICONS",
 "venue": "FIVE Luxe JBR",
@@ -3857,12 +3848,57 @@
 },
 {
 "date": "2026-11-27",
+"event": "20 Years of The Warehouse Project presents: Rossi",
+"venue": "Depot Mayfield",
+"city": "Manchester",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/20-years-of-the-warehouse-project-manchester-27-11-2026/event/35006527EFFE471F",
+"artist": "Jamback"
+},
+{
+"date": "2026-11-27",
 "event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
 "venue": "The Liacouras Center",
 "city": "Philadelphia",
 "region": "PA",
 "url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-philadelphia-pennsylvania-11-27-2026/event/020064B3BF9DC462",
 "artist": "John Summit"
+},
+{
+"date": "2026-11-27",
+"event": "20 Years of The Warehouse Project presents: Rossi",
+"venue": "Depot Mayfield",
+"city": "Manchester",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/20-years-of-the-warehouse-project-manchester-27-11-2026/event/35006527EFFE471F",
+"artist": "M-High"
+},
+{
+"date": "2026-11-27",
+"event": "20 Years of The Warehouse Project presents: Rossi",
+"venue": "Depot Mayfield",
+"city": "Manchester",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/20-years-of-the-warehouse-project-manchester-27-11-2026/event/35006527EFFE471F",
+"artist": "Marsolo"
+},
+{
+"date": "2026-11-27",
+"event": "20 Years of The Warehouse Project presents: Rossi",
+"venue": "Depot Mayfield",
+"city": "Manchester",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/20-years-of-the-warehouse-project-manchester-27-11-2026/event/35006527EFFE471F",
+"artist": "Ranger Trucco"
+},
+{
+"date": "2026-11-27",
+"event": "20 Years of The Warehouse Project presents: Rossi",
+"venue": "Depot Mayfield",
+"city": "Manchester",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/20-years-of-the-warehouse-project-manchester-27-11-2026/event/35006527EFFE471F",
+"artist": "Rossi."
 },
 {
 "date": "2026-11-28",
