@@ -1,0 +1,6 @@
+# backups the generators write beside the file they are editing.
+# sitelink_tracklists.py, site_edit.py and friends all drop a .bak on --write,
+# and without this they show up as untracked noise every run and one of them
+# eventually rides along in a commit.
+*.bak
+*.bak_*
