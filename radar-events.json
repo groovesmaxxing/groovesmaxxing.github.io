@@ -1,35 +1,8 @@
 {
-"generated": "2026-09-10T13:41:24+00:00",
+"generated": "2026-09-11T13:39:36+00:00",
 "artist_count": 682,
-"artists_with_events": 149,
+"artists_with_events": 151,
 "events": [
-{
-"date": "2026-09-10",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "Allianz Amphitheater at Riverfront",
-"city": "Richmond",
-"region": "VA",
-"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-richmond-virginia-09-10-2026/event/01006465977ED918",
-"artist": "Midnight Generation"
-},
-{
-"date": "2026-09-10",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "Allianz Amphitheater at Riverfront",
-"city": "Richmond",
-"region": "VA",
-"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-richmond-virginia-09-10-2026/event/01006465977ED918",
-"artist": "Polo & Pan"
-},
-{
-"date": "2026-09-10",
-"event": "Sofi Tukker",
-"venue": "Red Rocks Amphitheatre",
-"city": "Morrison",
-"region": "CO",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7P7a7",
-"artist": "SOFI TUKKER"
-},
 {
 "date": "2026-09-11",
 "event": "Breakaway Philadelphia 2026",
@@ -379,15 +352,6 @@
 "city": "San Bernardino",
 "region": "CA",
 "url": "https://on.fgtix.com/trk/Br8J",
-"artist": "GUDFELLA"
-},
-{
-"date": "2026-09-19",
-"event": "Nocturnal Wonderland",
-"venue": "Glen Helen Regional Park",
-"city": "San Bernardino",
-"region": "CA",
-"url": "https://on.fgtix.com/trk/Br8J",
 "artist": "Green Velvet"
 },
 {
@@ -446,21 +410,21 @@
 },
 {
 "date": "2026-09-19",
+"event": "THE PENTHOUSE PRESENTS: ODEN & FATZO (LIVE)",
+"venue": "The Penthouse | FIVE Palm",
+"city": "Dubai",
+"region": "AE",
+"url": "https://www.ticketmaster.ae/event/the-penthouse-presents-oden--fatzo-live--tickets/903554834",
+"artist": "Oden & Fatzo"
+},
+{
+"date": "2026-09-19",
 "event": "WHP presents: Rampa + &ME",
 "venue": "Depot Mayfield",
 "city": "Manchester",
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/whp-presents-rampa-me-manchester-19-09-2026/event/350064DA49D97546",
 "artist": "Rampa"
-},
-{
-"date": "2026-09-19",
-"event": "Nocturnal Wonderland",
-"venue": "Glen Helen Regional Park",
-"city": "San Bernardino",
-"region": "CA",
-"url": "https://on.fgtix.com/trk/Br8J",
-"artist": "SIDEPIECE"
 },
 {
 "date": "2026-09-19",
@@ -508,15 +472,6 @@
 "artist": "Twin Diplomacy"
 },
 {
-"date": "2026-09-19",
-"event": "Nocturnal Wonderland",
-"venue": "Glen Helen Regional Park",
-"city": "San Bernardino",
-"region": "CA",
-"url": "https://on.fgtix.com/trk/Br8J",
-"artist": "Walker & Royce"
-},
-{
 "date": "2026-09-20",
 "event": "Shaky Knees Music Festival",
 "venue": "PIEDMONT PARK",
@@ -524,6 +479,15 @@
 "region": "GA",
 "url": "https://on.fgtix.com/trk/AuGK",
 "artist": "Fcukers"
+},
+{
+"date": "2026-09-20",
+"event": "Nocturnal Wonderland",
+"venue": "Glen Helen Regional Park",
+"city": "San Bernardino",
+"region": "CA",
+"url": "https://on.fgtix.com/trk/Br8J",
+"artist": "GUDFELLA"
 },
 {
 "date": "2026-09-20",
@@ -542,6 +506,24 @@
 "region": "TX",
 "url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-dallas-texas-09-20-2026/event/0C00646AB741A355",
 "artist": "Polo & Pan"
+},
+{
+"date": "2026-09-20",
+"event": "Nocturnal Wonderland",
+"venue": "Glen Helen Regional Park",
+"city": "San Bernardino",
+"region": "CA",
+"url": "https://on.fgtix.com/trk/Br8J",
+"artist": "SIDEPIECE"
+},
+{
+"date": "2026-09-20",
+"event": "Nocturnal Wonderland",
+"venue": "Glen Helen Regional Park",
+"city": "San Bernardino",
+"region": "CA",
+"url": "https://on.fgtix.com/trk/Br8J",
+"artist": "Walker & Royce"
 },
 {
 "date": "2026-09-21",
@@ -950,11 +932,11 @@
 },
 {
 "date": "2026-09-26",
-"event": "Green Velvet live at The Point",
+"event": "Green Velvet",
 "venue": "",
 "city": "",
 "region": "",
-"url": "https://www.moshtix.com.au/v2/event/green-velvet-live-at-the-point/199171",
+"url": "https://www.moshtix.com.au/v2/event/green-velvet/199171",
 "artist": "Green Velvet"
 },
 {
@@ -1118,6 +1100,24 @@
 "region": "VIC",
 "url": "https://www.moshtix.com.au/v2/event/monkey-safari-de-12-hour-set-winter-series-pres-by-thick-as-thieves/195308",
 "artist": "Monkey Safari"
+},
+{
+"date": "2026-09-27",
+"event": "Odd Mob",
+"venue": "The Rechabite",
+"city": "Perth",
+"region": "WA",
+"url": "https://www.moshtix.com.au/v2/event/odd-mob/200217",
+"artist": "Odd Mob"
+},
+{
+"date": "2026-09-29",
+"event": "Fcukers",
+"venue": "The Mohawk-Austin",
+"city": "Austin",
+"region": "TX",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZUFb",
+"artist": "Fcukers"
 },
 {
 "date": "2026-09-29",
@@ -1958,6 +1958,15 @@
 },
 {
 "date": "2026-10-09",
+"event": "Niteharts Festival",
+"venue": "Snapdragon Stadium",
+"city": "San Diego",
+"region": "CA",
+"url": "https://on.fgtix.com/trk/4iDbc",
+"artist": "Devault"
+},
+{
+"date": "2026-10-09",
 "event": "FORM Arcosanti Festival",
 "venue": "Arcosanti",
 "city": "Mayer",
@@ -2129,6 +2138,15 @@
 },
 {
 "date": "2026-10-10",
+"event": "Prospa - Ages 18+",
+"venue": "SILO",
+"city": "Dallas",
+"region": "TX",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZyPf",
+"artist": "Prospa"
+},
+{
+"date": "2026-10-10",
 "event": "Austin City Limits Music Festival - Weekend Two",
 "venue": "Zilker Park",
 "city": "Austin",
@@ -2246,6 +2264,15 @@
 },
 {
 "date": "2026-10-11",
+"event": "Niteharts Festival",
+"venue": "Snapdragon Stadium",
+"city": "San Diego",
+"region": "CA",
+"url": "https://on.fgtix.com/trk/4iDbc",
+"artist": "RL Grime"
+},
+{
+"date": "2026-10-11",
 "event": "Austin City Limits Music Festival - Weekend Two",
 "venue": "Zilker Park",
 "city": "Austin",
@@ -2342,6 +2369,15 @@
 "region": "OR",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1A70Z_x",
 "artist": "Tinlicker"
+},
+{
+"date": "2026-10-16",
+"event": "Bob Moses (club set) - Ages 18+",
+"venue": "SILO",
+"city": "Dallas",
+"region": "TX",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZ6Of",
+"artist": "Bob Moses"
 },
 {
 "date": "2026-10-16",
@@ -3146,6 +3182,15 @@
 },
 {
 "date": "2026-10-31",
+"event": "Escape",
+"venue": "NOS Events Center",
+"city": "San Bernardino",
+"region": "CA",
+"url": "https://on.fgtix.com/trk/Ni5m",
+"artist": "Disco Lines"
+},
+{
+"date": "2026-10-31",
 "event": "Dom Dolla",
 "venue": "Navy Pier",
 "city": "Chicago",
@@ -3269,6 +3314,15 @@
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/nexup-manchester-31-10-2026/event/350064D7F74AAE45",
 "artist": "Stef Davidse"
+},
+{
+"date": "2026-10-31",
+"event": "Escape",
+"venue": "NOS Events Center",
+"city": "San Bernardino",
+"region": "CA",
+"url": "https://on.fgtix.com/trk/Ni5m",
+"artist": "VNSSA"
 },
 {
 "date": "2026-10-31",
@@ -3497,6 +3551,15 @@
 },
 {
 "date": "2026-11-13",
+"event": "Nonstop Presents: Vintage Culture \"Our Affairs\"",
+"venue": "The Rady Shell at Jacobs Park",
+"city": "San Diego",
+"region": "CA",
+"url": "https://www.ticketmaster.com/nonstop-presents-vintage-culture-our-affairs-san-diego-california-11-13-2026/event/0A00650CF5957BE0",
+"artist": "Vintage Culture"
+},
+{
+"date": "2026-11-13",
 "event": "ZHU ??? ON THE MOVE (18+ Event)",
 "venue": "Revel Entertainment Center",
 "city": "Albuquerque",
@@ -3587,6 +3650,15 @@
 },
 {
 "date": "2026-11-14",
+"event": "Tchami",
+"venue": "Ocean Resort Casino, HQ2 Nightclub and HQ2 Dayclub/Beachclub",
+"city": "Atlantic City",
+"region": "NJ",
+"url": "https://www.ticketweb.com/event/tchami-ocean-casino-resort-tickets/14310494?REFERRAL_ID=tmfeed",
+"artist": "Tchami"
+},
+{
+"date": "2026-11-14",
 "event": "Ray Wylie Hubbard & Friends: 80th Birthday Celebration",
 "venue": "Gruene Hall",
 "city": "New Braunfels",
@@ -3602,6 +3674,15 @@
 "region": "TX",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1A70aZs",
 "artist": "ZHU"
+},
+{
+"date": "2026-11-14",
+"event": "it's murph: Fade Into Nothing Tour",
+"venue": "History Toronto",
+"city": "Toronto",
+"region": "ON",
+"url": "https://www.ticketmaster.ca/its-murph-fade-into-nothing-tour-toronto-ontario-11-14-2026/event/10006522B3E3C9DA",
+"artist": "it's murph"
 },
 {
 "date": "2026-11-15",
@@ -3620,6 +3701,15 @@
 "region": "GA",
 "url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-atlanta-georgia-11-15-2026/event/0E0064B3C4C2EDAC",
 "artist": "John Summit"
+},
+{
+"date": "2026-11-15",
+"event": "Solardo - Ages 21+",
+"venue": "SILO",
+"city": "Dallas",
+"region": "TX",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAvJa8",
+"artist": "Solardo"
 },
 {
 "date": "2026-11-16",
@@ -3848,11 +3938,11 @@
 },
 {
 "date": "2026-11-27",
-"event": "20 Years of The Warehouse Project presents: Rossi",
+"event": "WHP presents: 20 years of The Warehouse Project",
 "venue": "Depot Mayfield",
 "city": "Manchester",
 "region": "GB",
-"url": "https://www.ticketmaster.co.uk/20-years-of-the-warehouse-project-manchester-27-11-2026/event/35006527EFFE471F",
+"url": "https://www.ticketmaster.co.uk/whp-presents-20-years-of-the-manchester-27-11-2026/event/35006527EFFE471F",
 "artist": "Jamback"
 },
 {
@@ -3866,38 +3956,38 @@
 },
 {
 "date": "2026-11-27",
-"event": "20 Years of The Warehouse Project presents: Rossi",
+"event": "WHP presents: 20 years of The Warehouse Project",
 "venue": "Depot Mayfield",
 "city": "Manchester",
 "region": "GB",
-"url": "https://www.ticketmaster.co.uk/20-years-of-the-warehouse-project-manchester-27-11-2026/event/35006527EFFE471F",
+"url": "https://www.ticketmaster.co.uk/whp-presents-20-years-of-the-manchester-27-11-2026/event/35006527EFFE471F",
 "artist": "M-High"
 },
 {
 "date": "2026-11-27",
-"event": "20 Years of The Warehouse Project presents: Rossi",
+"event": "WHP presents: 20 years of The Warehouse Project",
 "venue": "Depot Mayfield",
 "city": "Manchester",
 "region": "GB",
-"url": "https://www.ticketmaster.co.uk/20-years-of-the-warehouse-project-manchester-27-11-2026/event/35006527EFFE471F",
+"url": "https://www.ticketmaster.co.uk/whp-presents-20-years-of-the-manchester-27-11-2026/event/35006527EFFE471F",
 "artist": "Marsolo"
 },
 {
 "date": "2026-11-27",
-"event": "20 Years of The Warehouse Project presents: Rossi",
+"event": "WHP presents: 20 years of The Warehouse Project",
 "venue": "Depot Mayfield",
 "city": "Manchester",
 "region": "GB",
-"url": "https://www.ticketmaster.co.uk/20-years-of-the-warehouse-project-manchester-27-11-2026/event/35006527EFFE471F",
+"url": "https://www.ticketmaster.co.uk/whp-presents-20-years-of-the-manchester-27-11-2026/event/35006527EFFE471F",
 "artist": "Ranger Trucco"
 },
 {
 "date": "2026-11-27",
-"event": "20 Years of The Warehouse Project presents: Rossi",
+"event": "WHP presents: 20 years of The Warehouse Project",
 "venue": "Depot Mayfield",
 "city": "Manchester",
 "region": "GB",
-"url": "https://www.ticketmaster.co.uk/20-years-of-the-warehouse-project-manchester-27-11-2026/event/35006527EFFE471F",
+"url": "https://www.ticketmaster.co.uk/whp-presents-20-years-of-the-manchester-27-11-2026/event/35006527EFFE471F",
 "artist": "Rossi."
 },
 {
@@ -4034,6 +4124,15 @@
 "region": "DC",
 "url": "https://www.ticketmaster.com/max-styler-extended-set-washington-district-of-columbia-12-04-2026/event/1500650E172BFB30",
 "artist": "Max Styler"
+},
+{
+"date": "2026-12-04",
+"event": "RL GRIME - Ages 18+",
+"venue": "SILO",
+"city": "Dallas",
+"region": "TX",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZyPK",
+"artist": "RL Grime"
 },
 {
 "date": "2026-12-04",
