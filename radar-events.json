@@ -1,89 +1,8 @@
 {
-"generated": "2026-09-11T13:39:36+00:00",
+"generated": "2026-09-12T12:56:10+00:00",
 "artist_count": 682,
 "artists_with_events": 151,
 "events": [
-{
-"date": "2026-09-11",
-"event": "Breakaway Philadelphia 2026",
-"venue": "Subaru Park Festival Grounds",
-"city": "Chester",
-"region": "PA",
-"url": "https://www.universe.com/events/breakaway-philadelphia-2026-tickets-WT3N6X?ref=ticketmaster",
-"artist": "CID"
-},
-{
-"date": "2026-09-11",
-"event": "DRAMA - Ages 21+",
-"venue": "Vogue Theatre - IN",
-"city": "Indianapolis",
-"region": "IN",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7J38w",
-"artist": "DRAMA"
-},
-{
-"date": "2026-09-11",
-"event": "Breakaway Philadelphia 2026",
-"venue": "Subaru Park Festival Grounds",
-"city": "Chester",
-"region": "PA",
-"url": "https://www.universe.com/events/breakaway-philadelphia-2026-tickets-WT3N6X?ref=ticketmaster",
-"artist": "Devault"
-},
-{
-"date": "2026-09-11",
-"event": "Devault (18+ Event)",
-"venue": "The Fruit",
-"city": "Durham",
-"region": "NC",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7JFeF",
-"artist": "Devault"
-},
-{
-"date": "2026-09-11",
-"event": "Breakaway Philadelphia 2026",
-"venue": "Subaru Park Festival Grounds",
-"city": "Chester",
-"region": "PA",
-"url": "https://www.universe.com/events/breakaway-philadelphia-2026-tickets-WT3N6X?ref=ticketmaster",
-"artist": "HILLS"
-},
-{
-"date": "2026-09-11",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-09-11-2026/event/3B00643504C881F8",
-"artist": "Jamie xx"
-},
-{
-"date": "2026-09-11",
-"event": "Breakaway Philadelphia 2026",
-"venue": "Subaru Park Festival Grounds",
-"city": "Chester",
-"region": "PA",
-"url": "https://www.universe.com/events/breakaway-philadelphia-2026-tickets-WT3N6X?ref=ticketmaster",
-"artist": "Layton Giordani"
-},
-{
-"date": "2026-09-11",
-"event": "Breakaway Philadelphia 2026",
-"venue": "Subaru Park Festival Grounds",
-"city": "Chester",
-"region": "PA",
-"url": "https://www.universe.com/events/breakaway-philadelphia-2026-tickets-WT3N6X?ref=ticketmaster",
-"artist": "SOFI TUKKER"
-},
-{
-"date": "2026-09-11",
-"event": "Breakaway Philadelphia 2026",
-"venue": "Subaru Park Festival Grounds",
-"city": "Chester",
-"region": "PA",
-"url": "https://www.universe.com/events/breakaway-philadelphia-2026-tickets-WT3N6X?ref=ticketmaster",
-"artist": "Tiësto"
-},
 {
 "date": "2026-09-12",
 "event": "Harry Styles: Together, Together",
@@ -933,9 +852,9 @@
 {
 "date": "2026-09-26",
 "event": "Green Velvet",
-"venue": "",
-"city": "",
-"region": "",
+"venue": "ivy Sydney",
+"city": "Sydney",
+"region": "NSW",
 "url": "https://www.moshtix.com.au/v2/event/green-velvet/199171",
 "artist": "Green Velvet"
 },
@@ -2804,6 +2723,15 @@
 },
 {
 "date": "2026-10-23",
+"event": "Acraze - Ages 18+",
+"venue": "Magic Stick",
+"city": "Detroit",
+"region": "MI",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZ-PN",
+"artist": "ACRAZE"
+},
+{
+"date": "2026-10-23",
 "event": "ALISHA - Concourse Only",
 "venue": "Depot Mayfield",
 "city": "Manchester",
@@ -2902,6 +2830,15 @@
 "artist": "Ragie Ban"
 },
 {
+"date": "2026-10-23",
+"event": "Walker and Royce",
+"venue": "Electric City",
+"city": "Buffalo",
+"region": "NY",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZ0bd",
+"artist": "Walker & Royce"
+},
+{
 "date": "2026-10-24",
 "event": "AYYBO [GLOW OFF:SITE]",
 "venue": "Dock5",
@@ -2990,6 +2927,15 @@
 "region": "CA",
 "url": "https://www.ticketmaster.com/sofi-tukker-presents-animal-talk-18-daly-city-california-10-24-2026/event/1C00648FC066CD8D",
 "artist": "SOFI TUKKER"
+},
+{
+"date": "2026-10-24",
+"event": "Twin Diplomacy - Ages 18+",
+"venue": "Magic Stick",
+"city": "Detroit",
+"region": "MI",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7PJFo",
+"artist": "Twin Diplomacy"
 },
 {
 "date": "2026-10-25",
@@ -3089,6 +3035,15 @@
 "region": "SA",
 "url": "https://www.moshtix.com.au/v2/event/crooked-colours-dirt-road-gold-album-tour/196192",
 "artist": "Crooked Colours"
+},
+{
+"date": "2026-10-30",
+"event": "Devault x Fallon - Ages 18+",
+"venue": "Magic Stick",
+"city": "Detroit",
+"region": "MI",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7J6A4",
+"artist": "Devault"
 },
 {
 "date": "2026-10-30",
