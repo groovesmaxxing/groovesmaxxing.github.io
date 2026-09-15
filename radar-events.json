@@ -1,7 +1,7 @@
 {
-"generated": "2026-09-14T15:57:24+00:00",
+"generated": "2026-09-15T14:23:02+00:00",
 "artist_count": 682,
-"artists_with_events": 150,
+"artists_with_events": 153,
 "events": [
 {
 "date": "2026-09-16",
@@ -92,6 +92,15 @@
 "region": "NO",
 "url": "https://www.ticketmaster.no/event/infected-mushroom-tickets/486265476?language=en-us",
 "artist": "Infected Mushroom"
+},
+{
+"date": "2026-09-18",
+"event": "James Hype (18 and Over)",
+"venue": "DUCTWORK - Houston",
+"city": "Houston",
+"region": "TX",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZga9",
+"artist": "James Hype"
 },
 {
 "date": "2026-09-18",
@@ -698,6 +707,15 @@
 },
 {
 "date": "2026-09-25",
+"event": "Wax Motif",
+"venue": "Exchange LA",
+"city": "Los Angeles",
+"region": "CA",
+"url": "https://www.ticketweb.com/event/wax-motif-exchange-la-tickets/14319494",
+"artist": "WAX MOTIF"
+},
+{
+"date": "2026-09-25",
 "event": "WMOT Finally Friday featuring Skylar Gregg ,  Wade Bowen &  EG Vines",
 "venue": "3rd and Lindsley",
 "city": "Nashville",
@@ -1153,6 +1171,15 @@
 "city": "Sandy",
 "region": "UT",
 "url": "https://www.universe.com/events/breakaway-utah-2026-tickets-96845F?ref=ticketmaster",
+"artist": "Gorgon City"
+},
+{
+"date": "2026-10-02",
+"event": "Gorgon City (18 and Over)",
+"venue": "DUCTWORK - Houston",
+"city": "Houston",
+"region": "TX",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZ-_v",
 "artist": "Gorgon City"
 },
 {
@@ -1892,6 +1919,15 @@
 "region": "TX",
 "url": "https://www.ticketmaster.com/wade-bowen-the-version-of-me-canyon-texas-10-09-2026/event/0C006515E8797737",
 "artist": "Wade"
+},
+{
+"date": "2026-10-09",
+"event": "Walker and Royce (18 and Over)",
+"venue": "DUCTWORK - Houston",
+"city": "Houston",
+"region": "TX",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAvfaP",
+"artist": "Walker & Royce"
 },
 {
 "date": "2026-10-10",
@@ -2831,6 +2867,15 @@
 },
 {
 "date": "2026-10-24",
+"event": "Odd Mob (18 and Over)",
+"venue": "DUCTWORK - Houston",
+"city": "Houston",
+"region": "TX",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAvt0z",
+"artist": "Odd Mob"
+},
+{
+"date": "2026-10-24",
 "event": "SOFI TUKKER Presents: ANIMAL TALK (18+)",
 "venue": "Cow Palace",
 "city": "Daly City",
@@ -2990,6 +3035,15 @@
 "region": "PA",
 "url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-university-park-pennsylvania-10-30-2026/event/020064B2C916ABB2",
 "artist": "John Summit"
+},
+{
+"date": "2026-10-30",
+"event": "Meduza - Ages 18+",
+"venue": "KC Live!",
+"city": "Kansas City",
+"region": "MO",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7JFqa",
+"artist": "MEDUZA"
 },
 {
 "date": "2026-10-30",
@@ -3332,6 +3386,15 @@
 "region": "VIC",
 "url": "https://www.ticketmaster.com.au/tab-champions-stakes-day-general-admission-flemington-07-11-2026/event/2500647ED99C8074",
 "artist": "FISHER"
+},
+{
+"date": "2026-11-07",
+"event": "Gorgon City",
+"venue": "PNE Forum",
+"city": "Vancouver",
+"region": "BC",
+"url": "https://www.ticketleader.ca/events/detail/gorgoncity",
+"artist": "Gorgon City"
 },
 {
 "date": "2026-11-07",
@@ -3695,12 +3758,30 @@
 },
 {
 "date": "2026-11-21",
+"event": "Festival Zamna Montréal",
+"venue": "Hall Est du Stade olympique",
+"city": "Montréal",
+"region": "QC",
+"url": "https://www.ticketmaster.ca/festival-zamna-montreal-montreal-quebec-11-21-2026/event/31006524AFF85CC1",
+"artist": "ARTBAT"
+},
+{
+"date": "2026-11-21",
 "event": "Felix Radu",
 "venue": "Théâtre Royal",
 "city": "Mons",
 "region": "BE",
 "url": "https://www.ticketmaster.be/event/felix-radu-tickets/182766643",
 "artist": "Félix"
+},
+{
+"date": "2026-11-21",
+"event": "Festival Zamna Montréal",
+"venue": "Hall Est du Stade olympique",
+"city": "Montréal",
+"region": "QC",
+"url": "https://www.ticketmaster.ca/festival-zamna-montreal-montreal-quebec-11-21-2026/event/31006524AFF85CC1",
+"artist": "HUGEL"
 },
 {
 "date": "2026-11-21",
@@ -3935,6 +4016,15 @@
 "region": "AE",
 "url": "https://www.ticketmaster.ae/event/anyma-presents-den-tickets/1331606446",
 "artist": "Anyma"
+},
+{
+"date": "2026-12-04",
+"event": "Chris Lorenzo (18 and Over)",
+"venue": "DUCTWORK - Houston",
+"city": "Houston",
+"region": "TX",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAvtPd",
+"artist": "Chris Lorenzo"
 },
 {
 "date": "2026-12-04",
@@ -4270,6 +4360,15 @@
 "artist": "Tobiahs"
 },
 {
+"date": "2026-12-27",
+"event": "Dombresky (18 and Over)",
+"venue": "DUCTWORK - Houston",
+"city": "Houston",
+"region": "TX",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAvtPk",
+"artist": "Dombresky"
+},
+{
 "date": "2026-12-28",
 "event": "Lakes Festival 2026",
 "venue": "Hagley Park Entertainment Triangle",
@@ -4324,6 +4423,15 @@
 "artist": "RL Grime"
 },
 {
+"date": "2026-12-30",
+"event": "NYE on the Hill 2026",
+"venue": "The Farm",
+"city": "Kernot",
+"region": "VIC",
+"url": "https://www.moshtix.com.au/v2/event/nye-on-the-hill-2026/195738",
+"artist": "Torren Foot"
+},
+{
 "date": "2026-12-31",
 "event": "New Year's At The Bowl",
 "venue": "Arts Centre Melbourne, Sidney Myer Music Bowl",
@@ -4333,6 +4441,15 @@
 "artist": "Flight Facilities"
 },
 {
+"date": "2026-12-31",
+"event": "PAWSA | NEW YEAR’S EVE — PACHA ICONS",
+"venue": "FIVE Luxe JBR",
+"city": "Dubai",
+"region": "AE",
+"url": "https://www.ticketmaster.ae/event/pawsa-%7C-new-years-eve--pacha-icons-tickets/1967242251",
+"artist": "PAWSA"
+},
+{
 "date": "2027-01-01",
 "event": "Field Day 2027",
 "venue": "The Domain",
@@ -4340,6 +4457,15 @@
 "region": "NSW",
 "url": "https://www.moshtix.com.au/v2/event/field-day-2027/199201",
 "artist": "Elderbrook"
+},
+{
+"date": "2027-02-19",
+"event": "LAYTON GIORDANI",
+"venue": "REBEL",
+"city": "Toronto",
+"region": "ON",
+"url": "https://www.ticketweb.ca/event/layton-giordani-rebel-tickets/14316154",
+"artist": "Layton Giordani"
 },
 {
 "date": "2027-03-17",
