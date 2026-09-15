@@ -4,17 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Joseph Capriati · groovesMAXXING</title>
-<meta name="description" content="Joseph Capriati: techno from caserta to barcelona. verified links, dj sets and interviews, tracked on groovesmaxxing.">
-<link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
-<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+<link rel="icon" href="../favicon.svg">
+<link rel="icon" href="../favicon.png">
+<link rel="icon" sizes="16x16" href="../favicon-16.png">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<meta name="description" content="Joseph Capriati: Caserta-to-Barcelona techno, Redimension founder. verified links and releases, tracked on groovesmaxxing.">
 <meta property="og:title" content="Joseph Capriati · groovesMAXXING">
-<meta property="og:description" content="Joseph Capriati: techno from caserta to barcelona. verified links, dj sets and interviews, tracked on groovesmaxxing.">
-<meta property="og:image" content="https://groovesmaxxing.com/og-image.png">
+<meta property="og:description" content="Joseph Capriati: Caserta-to-Barcelona techno, Redimension founder. verified links and releases, tracked on groovesmaxxing.">
+<meta property="og:type" content="profile">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Joseph Capriati · groovesMAXXING">
+<meta name="twitter:description" content="Joseph Capriati: Caserta-to-Barcelona techno, Redimension founder. verified links and releases, tracked on groovesmaxxing.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap">
+<link rel="canonical" href="https://groovesmaxxing.com/artists/joseph-capriati">
 <style>
 :root{--night:#0B0B0D;--racing:#FF1C02;--deep:#CC1400;--day:#F2F2EF;--steel:#8A8A93;--line:#26262b;--card:#141417}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -24,14 +28,10 @@ a{color:inherit}
 .top{padding:34px 0 8px}
 .back{font-family:'Space Mono',monospace;font-size:.82rem;color:var(--steel);text-decoration:none;letter-spacing:.04em}
 .back:hover{color:var(--racing)}
-.mast{padding:44px 0 10px}
-.mono{font-family:'Space Mono',monospace}
-.eyebrow{font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.34em;color:var(--racing);text-transform:uppercase}
-h1{font-weight:900;font-size:clamp(2.4rem,7vw,3.6rem);line-height:1.02;letter-spacing:-.02em;margin:14px 0 16px}
-h1 .rd{color:var(--racing)}
-.lede{color:#c9c9c4;font-size:1.05rem;line-height:1.6;max-width:640px}
-.rule{height:1px;background:var(--line);margin:54px 0}
-.artist{padding:8px 0 10px}
+.artist{padding:8px 0 10px;display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:16px}
+.artist > *{grid-column:1 / -1}
+.artist > .aname{grid-column:1}
+.artist > .links{grid-column:2;grid-row:1;margin-top:0;justify-self:end;flex-wrap:nowrap}
 .aname{margin:0;font-weight:900;font-size:clamp(2rem,5.6vw,2.9rem);line-height:1.05;letter-spacing:-.02em}
 .meta{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 26px}
 .tag{font-family:'Space Mono',monospace;font-size:.76rem;letter-spacing:.06em;color:var(--steel);border:1px solid var(--line);border-radius:999px;padding:6px 13px}
@@ -39,9 +39,6 @@ h1 .rd{color:var(--racing)}
 .bio p{color:#c9c9c4;font-size:1rem;line-height:1.72;margin-bottom:17px;max-width:660px}
 .bio p:last-child{margin-bottom:0}
 .bio b{color:var(--day);font-weight:600}
-blockquote{border-left:3px solid var(--racing);padding:2px 0 2px 20px;margin:24px 0;max-width:640px}
-blockquote p{color:var(--day);font-size:1.06rem;line-height:1.6;font-weight:600;margin-bottom:8px}
-blockquote cite{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);font-style:normal;letter-spacing:.04em}
 .facts{border-top:1px solid var(--line);margin-top:30px;padding-top:22px}
 .fact{display:flex;gap:18px;padding:9px 0;font-size:.94rem;line-height:1.5}
 .fact .k{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);letter-spacing:.05em;flex:none;width:132px;padding-top:3px}
@@ -50,112 +47,128 @@ blockquote cite{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--
 .lk{font-family:'Space Mono',monospace;font-size:.79rem;letter-spacing:.04em;text-decoration:none;color:#c9c9c4;border:1px solid var(--line);border-radius:6px;padding:9px 14px;transition:border-color .15s,color .15s}
 .lk.ico{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;padding:0;border-radius:999px}
 .lki{width:17px;height:17px;display:block}
-.lk.ico.mono2{font-size:.72rem;letter-spacing:.06em;font-weight:700}
 .lk:hover{border-color:var(--racing);color:var(--racing)}
-.player{margin-top:28px;border-radius:12px;overflow:hidden}
-.player iframe{width:100%;height:152px;border:0;display:block}
-.wip{border:1px solid #2c2c31;border-left:2px solid var(--racing);border-radius:6px;padding:16px 18px;margin:26px 0 0;max-width:640px}
-.wip p{font-family:'Space Mono',monospace;font-size:.78rem;color:var(--steel);line-height:1.75;margin:0}
-.wip a{color:#cfcfc9;border-bottom:1px solid #3a3a40}
-.wip a:hover{color:var(--racing);border-bottom-color:var(--racing)}
-.note{font-family:'Space Mono',monospace;font-size:.78rem;color:var(--steel);line-height:1.7;margin-top:30px}
-footer{border-top:1px solid var(--line);margin-top:72px;padding:34px 0 60px}
-.fine{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel)}
-.bio a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#33333a}
-.bio a:hover{color:var(--racing);text-decoration-color:var(--racing)}
-.artist{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:16px}
-.artist > *{grid-column:1 / -1}
-.artist > .aname{grid-column:1}
-.artist > .links{grid-column:2;grid-row:1;margin-top:0;justify-self:end;flex-wrap:nowrap}
-@media (max-width:640px){.artist > .aname{grid-column:1 / -1}.artist > .links{grid-column:1 / -1;grid-row:2;justify-self:start;margin-top:14px;flex-wrap:wrap}}
-
+.sec{border-top:1px solid var(--line);margin-top:44px;padding-top:26px}
+.eyebrow2{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.28em;color:var(--racing);text-transform:uppercase;margin:0 0 18px}
+.spot{border-radius:12px;overflow:hidden}
+.spot iframe{width:100%;height:352px;border:0;display:block}
+@media (max-width:640px){.artist{grid-template-columns:1fr}.artist>.aname{grid-column:1 / -1}.artist>.links{grid-column:1 / -1;grid-row:2;justify-self:start;margin-top:14px;flex-wrap:wrap}}
+.rel{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:12px 0;border-top:1px solid var(--line)}
+.rel:first-of-type{border-top:0}
+.rel .t{font-size:.98rem;color:var(--day);font-weight:600}
+.rel .t small{display:block;font-weight:400;color:var(--steel);font-size:.82rem;margin-top:2px}
+.rel .l{font-family:'Space Mono',monospace;font-size:.74rem;color:#c9c9c4;text-align:right;flex:none;white-space:nowrap}
+.rel .l span{display:block;color:var(--steel)}
+.subtle{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);line-height:1.7;margin-top:16px}
+.subtle a{color:#cfcfc9;border-bottom:1px solid #3a3a40;text-decoration:none}
+.subtle a:hover{color:var(--racing);border-bottom-color:var(--racing)}
 .pn{display:flex;justify-content:space-between;gap:14px;border-top:1px solid var(--line);margin-top:52px;padding-top:26px}
 .pn a{font-family:'Space Mono',monospace;font-size:.8rem;color:var(--steel);text-decoration:none;max-width:46%}
 .pn a:hover{color:var(--racing)}
 .pn .lbl{display:block;font-size:.68rem;letter-spacing:.08em;margin-bottom:4px}
+footer{border-top:1px solid var(--line);margin-top:72px;padding:34px 0 60px}
+.fine{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel)}
+.fine a{color:#cfcfc9;text-decoration:none;border-bottom:1px solid #3a3a40}
+.fine a:hover{color:var(--racing)}
 </style>
-<link rel="canonical" href="https://groovesmaxxing.com/artists/joseph-capriati">
-  <!-- gmx-seo start -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Joseph Capriati · groovesMAXXING">
-  <meta name="twitter:description" content="Joseph Capriati: techno from caserta to barcelona. verified links, dj sets and interviews, tracked on groovesmaxxing.">
-  <script type="application/ld+json">
+
+<script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "MusicGroup",
-  "name": "Joseph Capriati",
-  "url": "https://groovesmaxxing.com/artists/joseph-capriati",
-  "description": "Joseph Capriati: techno from caserta to barcelona. verified links, dj sets and interviews, tracked on groovesmaxxing.",
-  "genre": "techno",
-  "sameAs": [
-    "https://www.instagram.com/drumcoderecords/",
+  "@context":"https://schema.org",
+  "@type":"MusicGroup",
+  "name":"Joseph Capriati",
+  "url":"https://groovesmaxxing.com/artists/joseph-capriati",
+  "genre":"techno",
+  "foundingLocation":"Italy",
+  "description":"Caserta-born techno artist based in Barcelona, founder of the Redimension label.",
+  "sameAs":[
     "https://open.spotify.com/artist/7onsqSWPufMm5ZnUCECDpf",
-    "https://ra.co/dj/josephcapriati",
     "https://soundcloud.com/joseph-capriati",
-    "https://www.beatport.com/artist/joseph-capriati/33777",
-    "https://josephcapriati.bandcamp.com",
-    "https://www.instagram.com/josephcapriati/"
+    "https://www.instagram.com/josephcapriati/",
+    "https://www.beatport.com/artist/joseph-capriati/33777"
   ]
 }
-  </script>
-  <!-- gmx-seo end -->
+</script>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="i-spotify" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.4" fill="currentColor"/><path d="M7.1 9.5c3.1-.85 6.6-.6 9.2.9M7.6 12.6c2.6-.7 5.5-.5 7.7.8M8.1 15.6c2.1-.55 4.4-.4 6.1.65" stroke="#0B0B0D" stroke-width="1.5" stroke-linecap="round" fill="none"/></symbol><symbol id="i-soundcloud" viewBox="0 0 24 24"><g fill="currentColor"><rect x="1.6" y="11.4" width="1.3" height="5.2" rx=".65"/><rect x="4.1" y="9.6" width="1.3" height="7" rx=".65"/><rect x="6.6" y="8.4" width="1.3" height="8.2" rx=".65"/><rect x="9.1" y="10.2" width="1.3" height="6.4" rx=".65"/><path d="M11.9 6.9c.5-.35 1.1-.55 1.8-.55 1.9 0 3.5 1.45 3.7 3.3.3-.1.6-.15.95-.15 1.6 0 2.9 1.3 2.9 2.9S19.95 15.3 18.35 15.3H11.9a.6.6 0 0 1-.6-.6V7.4c0-.2.1-.4.6-.5z"/></g></symbol><symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.4" cy="6.6" r="1.15" fill="currentColor" stroke="none"/></symbol><symbol id="i-bandcamp" viewBox="0 0 24 24"><path d="M2.6 17.6 8.9 6.4h12.5l-6.3 11.2z" fill="currentColor"/></symbol><symbol id="i-youtube" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4.2" fill="currentColor"/><path d="M10.2 8.9v6.2L15.6 12z" fill="#0B0B0D"/></symbol><symbol id="i-apple" viewBox="0 0 24 24"><path d="M16.4 12.6c0-2.2 1.8-3.2 1.9-3.3-1-1.5-2.6-1.7-3.2-1.7-1.4-.15-2.7.8-3.4.8-.7 0-1.8-.8-2.9-.78-1.5.02-2.9.87-3.7 2.2-1.6 2.7-.4 6.8 1.1 9 .75 1.1 1.65 2.3 2.8 2.26 1.1-.05 1.55-.72 2.9-.721.35 0 1.75.72 2.9.7 1.2-.02 1.96-1.1 2.7-2.2.85-1.26 1.2-2.48 1.22-2.54-.03-.02-2.34-.9-2.36-3.57z" fill="currentColor"/><path d="M14.3 6.1c.6-.75 1.02-1.78.9-2.8-.87.04-1.93.58-2.56 1.32-.56.65-1.06 1.7-.93 2.7.97.07 1.97-.5 2.59-1.22z" fill="currentColor"/></symbol><symbol id="i-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M10.1 13.9a4.2 4.2 0 0 0 6 0l2.6-2.6a4.24 4.24 0 0 0-6-6l-1.3 1.3"/><path d="M13.9 10.1a4.2 4.2 0 0 0-6 0l-2.6 2.6a4.24 4.24 0 0 0 6 6l1.3-1.3"/></symbol><symbol id="i-x" viewBox="0 0 24 24"><path d="M17.72 3h3.31l-7.23 8.26L22.3 21h-6.63l-5.2-6.8L4.52 21H1.2l7.73-8.84L1.7 3h6.8l4.7 6.21zm-1.16 16.03h1.83L7.6 4.88H5.63z" fill="currentColor"/></symbol><symbol id="i-tiktok" viewBox="0 0 24 24"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.58 3H12.5v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 1 1 .76-5.06V9.63a5.9 5.9 0 0 0-.76-.05 5.79 5.79 0 1 0 5.79 5.79V8.98a7.3 7.3 0 0 0 4.28 1.37V7.16a4.3 4.3 0 0 1-3.38-1.34z" fill="currentColor"/></symbol></svg>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<symbol id="i-spotify" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.4" fill="currentColor"></circle><path d="M7.1 9.5c3.1-.85 6.6-.6 9.2.9M7.6 12.6c2.6-.7 5.5-.5 7.7.8M8.1 15.6c2.1-.55 4.4-.4 6.1.65" stroke="#0B0B0D" stroke-width="1.5" stroke-linecap="round" fill="none"></path></symbol>
+<symbol id="i-soundcloud" viewBox="0 0 24 24"><g fill="currentColor"><rect x="1.6" y="11.4" width="1.3" height="5.2" rx=".65"></rect><rect x="4.1" y="9.6" width="1.3" height="7" rx=".65"></rect><rect x="6.6" y="8.4" width="1.3" height="8.2" rx=".65"></rect><rect x="9.1" y="10.2" width="1.3" height="6.4" rx=".65"></rect><path d="M11.9 6.9c.5-.35 1.1-.55 1.8-.55 1.9 0 3.5 1.45 3.7 3.3.3-.1.6-.15.95-.15 1.6 0 2.9 1.3 2.9 2.9S19.95 15.3 18.35 15.3H11.9a.6.6 0 0 1-.6-.6V7.4c0-.2.1-.4.6-.5z"></path></g></symbol>
+<symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4.1"></circle><circle cx="17.4" cy="6.6" r="1.15" fill="currentColor" stroke="none"></circle></symbol>
+<symbol id="i-apple" viewBox="0 0 24 24"><path d="M16.4 12.6c0-2.2 1.8-3.2 1.9-3.3-1-1.5-2.6-1.7-3.2-1.7-1.4-.15-2.7.8-3.4.8-.7 0-1.8-.8-2.9-.78-1.5.02-2.9.87-3.7 2.2-1.6 2.7-.4 6.8 1.1 9 .75 1.1 1.65 2.3 2.8 2.26 1.1-.05 1.55-.72 2.9-.721.35 0 1.75.72 2.9.7 1.2-.02 1.96-1.1 2.7-2.2.85-1.26 1.2-2.48 1.22-2.54-.03-.02-2.34-.9-2.36-3.57z" fill="currentColor"></path><path d="M14.3 6.1c.6-.75 1.02-1.78.9-2.8-.87.04-1.93.58-2.56 1.32-.56.65-1.06 1.7-.93 2.7.97.07 1.97-.5 2.59-1.22z" fill="currentColor"></path></symbol>
+<symbol id="i-youtube" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4.2" fill="currentColor"></rect><path d="M10.2 8.9v6.2L15.6 12z" fill="#0B0B0D"></path></symbol>
+<symbol id="i-tiktok" viewBox="0 0 24 24"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.58 3H12.5v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 1 1 .76-5.06V9.63a5.9 5.9 0 0 0-.76-.05 5.79 5.79 0 1 0 5.79 5.79V8.98a7.3 7.3 0 0 0 4.28 1.37V7.16a4.3 4.3 0 0 1-3.38-1.34z" fill="currentColor"></path></symbol>
+<symbol id="i-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M10.1 13.9a4.2 4.2 0 0 0 6 0l2.6-2.6a4.24 4.24 0 0 0-6-6l-1.3 1.3"></path><path d="M13.9 10.1a4.2 4.2 0 0 0-6 0l-2.6 2.6a4.24 4.24 0 0 0 6 6l1.3-1.3"></path></symbol>
+</svg>
+
+
 <div class="wrap">
 
-<div class="top"><a class="back" href="../artists.html">← all artists</a></div>
+  <div class="top"><a class="back" href="../artists.html">← all artists</a></div>
 
-<section class="artist" id="joseph-capriati">
-<h1 class="aname">Joseph Capriati</h1>
-<div class="meta">
-<span class="tag lane">🚧 bumpy</span>
-<span class="tag">caserta to barcelona</span>
-<span class="tag">techno</span>
-<span class="tag badge">👀 one to watch · 2</span>
-<span class="tag badge">🧃 🌴</span>
-<span class="tag badge">🏷️ label boss</span>
-<span class="tag badge">▶️ sets on file</span>
-</div>
-<div class="bio">
-<p>joseph capriati grew up in caserta, in southern italy, and made his first records in 2007 for analytic trail and globox, two of the labels that shaped naples' techno scene at the time. he now splits his time between italy and barcelona, spain, where he keeps his studio.</p>
-<p>he became a fixture on <a href="https://www.instagram.com/drumcoderecords/" target="_blank" rel="noopener">drumcode</a>, releasing his second album, <b>Self Portrait</b>, on the label in november 2013. in 2016 he started his own label, <b>Redimension</b>, and in 2020 he put out the album <b>Metamorfosi</b>, a title he later carried over to an ibiza residency and, in june 2025, to a new label of his own called <b>Metamorfosi Records</b>.</p>
-<p>metamorfosi records' first release paired him with <a href="dennis-cruz.html"><b>Dennis Cruz</b></a> on "No Sleep," out in 2025.</p>
-<p>he built his touring career on a residency with the music on parties at amnesia in ibiza starting in the summer of 2012, and by 2013 he was playing more than 130 shows a year across 25 countries.</p>
-<blockquote><p>The creativity, and being excited to create, that's a blessing.</p><cite>joseph capriati to dj mag</cite></blockquote>
-<p>he plays the metamorfosi residency at amnesia ibiza across the summer of 2026, with dates including eastern electrics in london on 9 august 2026.</p>
-</div>
-<div class="facts">
-<div class="fact"><div class="k">from</div><div class="v">caserta, italy, based in barcelona, spain</div></div>
-<div class="fact"><div class="k">his labels</div><div class="v">Redimension and Metamorfosi Records</div></div>
-<div class="fact"><div class="k">signature record</div><div class="v">Self Portrait album, 2013, on Drumcode</div></div>
-<div class="fact"><div class="k">out now</div><div class="v">No Sleep, with Dennis Cruz, 2025</div></div>
-<div class="fact"><div class="k">upcoming</div><div class="v">Metamorfosi residency at Amnesia Ibiza through 1 september 2026</div></div>
-</div>
-<div class="player"><iframe src="https://open.spotify.com/embed/artist/7onsqSWPufMm5ZnUCECDpf?theme=0" loading="lazy" title="Joseph Capriati on Spotify" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe></div>
-<div class="player"><iframe src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fjoseph-capriati&color=%23ff1c02&auto_play=false&show_teaser=false" loading="lazy" title="Joseph Capriati on SoundCloud"></iframe></div>
-<p style="margin:18px 0 0;color:var(--steel);font-size:.85rem">the sets, verified. slide →</p>
-<div style="display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;margin:10px 0 4px;padding-bottom:8px">
-<div style="flex:0 0 78%;max-width:420px;scroll-snap-align:start"><button type="button" data-yt="SIMVjRUNt7Y" data-title="Adam Beyer b2b Joseph Capriati at Ultra Miami 2026" style="position:relative;display:block;width:100%;aspect-ratio:16/9;border:1px solid var(--line);border-radius:10px;overflow:hidden;padding:0;cursor:pointer;background:#000" aria-label="play Adam Beyer b2b Joseph Capriati at Ultra Miami 2026"><img src="https://img.youtube.com/vi/SIMVjRUNt7Y/hqdefault.jpg" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;opacity:.85"><span aria-hidden="true" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" style="width:44px;height:44px;fill:var(--day);filter:drop-shadow(0 2px 8px rgba(0,0,0,.6))"><path d="M8 5v14l11-7z"/></svg></span></button><div style="margin-top:6px;font-size:.8rem;color:var(--steel)">b2b adam beyer, resistance megastructure ultra · mar 2026</div></div>
-<div style="flex:0 0 78%;max-width:420px;scroll-snap-align:start"><button type="button" data-yt="nj1vZRkUfWg" data-title="Joseph Capriati five hour sunrise set at Club Space" style="position:relative;display:block;width:100%;aspect-ratio:16/9;border:1px solid var(--line);border-radius:10px;overflow:hidden;padding:0;cursor:pointer;background:#000" aria-label="play Joseph Capriati five hour sunrise set at Club Space"><img src="https://img.youtube.com/vi/nj1vZRkUfWg/hqdefault.jpg" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;opacity:.85"><span aria-hidden="true" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" style="width:44px;height:44px;fill:var(--day);filter:drop-shadow(0 2px 8px rgba(0,0,0,.6))"><path d="M8 5v14l11-7z"/></svg></span></button><div style="margin-top:6px;font-size:.8rem;color:var(--steel)">five hour sunrise on the space terrace · sep 2025</div></div>
-<div style="flex:0 0 78%;max-width:420px;scroll-snap-align:start"><button type="button" data-yt="KV38B1wNHxo" data-title="Joseph Capriati at Awakenings x Metamorfosi ADE" style="position:relative;display:block;width:100%;aspect-ratio:16/9;border:1px solid var(--line);border-radius:10px;overflow:hidden;padding:0;cursor:pointer;background:#000" aria-label="play Joseph Capriati at Awakenings x Metamorfosi ADE"><img src="https://img.youtube.com/vi/KV38B1wNHxo/hqdefault.jpg" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;opacity:.85"><span aria-hidden="true" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" style="width:44px;height:44px;fill:var(--day);filter:drop-shadow(0 2px 8px rgba(0,0,0,.6))"><path d="M8 5v14l11-7z"/></svg></span></button><div style="margin-top:6px;font-size:.8rem;color:var(--steel)">awakenings x metamorfosi, gashouder ade · 2024</div></div>
-</div>
-<script>document.querySelectorAll('button[data-yt]').forEach(function(b){b.addEventListener('click',function(){var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+b.dataset.yt+'?autoplay=1';f.title=b.dataset.title;f.setAttribute('allow','autoplay; encrypted-media; fullscreen; picture-in-picture');f.setAttribute('allowfullscreen','');f.style.cssText='width:100%;aspect-ratio:16/9;border:0;display:block;border-radius:10px';b.replaceWith(f)})});</script>
-<div class="links">
-<a class="lk ico" href="https://open.spotify.com/artist/7onsqSWPufMm5ZnUCECDpf" target="_blank" rel="noopener" aria-label="Spotify" title="Spotify"><svg class="lki"><use href="#i-spotify"/></svg></a>
-<a class="lk ico mono2" href="https://ra.co/dj/josephcapriati" target="_blank" rel="noopener" aria-label="Resident Advisor" title="Resident Advisor">RA</a>
-<a class="lk ico" href="https://soundcloud.com/joseph-capriati" target="_blank" rel="noopener" aria-label="SoundCloud" title="SoundCloud"><svg class="lki"><use href="#i-soundcloud"/></svg></a>
-<a class="lk ico mono2" href="https://www.beatport.com/artist/joseph-capriati/33777" target="_blank" rel="noopener" aria-label="Beatport" title="Beatport">BP</a>
-<a class="lk ico" href="https://josephcapriati.bandcamp.com" target="_blank" rel="noopener" aria-label="Bandcamp" title="Bandcamp"><svg class="lki"><use href="#i-bandcamp"/></svg></a>
-<a class="lk ico" href="https://www.instagram.com/josephcapriati/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg class="lki"><use href="#i-instagram"/></svg></a>
-</div>
-</section>
-<nav class="pn"><a href="jord"><span class="lbl">← previous</span>JØRD</a><a href="josh-baker" style="text-align:right"><span class="lbl">next →</span>Josh Baker</a></nav>
-<p class="note">quotes are verbatim from the artists' own public posts and interviews, spelling and all. every artist has a page now, and the starters are growing into full profiles one at a time.</p>
+  <section class="artist">
+    <h1 class="aname">Joseph Capriati</h1>
+    <div class="links">
+      <a class="lk ico" href="https://open.spotify.com/artist/7onsqSWPufMm5ZnUCECDpf" target="_blank" rel="noopener" aria-label="Spotify"><svg class="lki"><use href="#i-spotify"></use></svg></a>
+      <a class="lk ico" href="https://soundcloud.com/joseph-capriati" target="_blank" rel="noopener" aria-label="SoundCloud"><svg class="lki"><use href="#i-soundcloud"></use></svg></a>
+      <a class="lk ico" href="https://www.instagram.com/josephcapriati/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="lki"><use href="#i-instagram"></use></svg></a>
+      <a class="lk ico" href="https://www.beatport.com/artist/joseph-capriati/33777" target="_blank" rel="noopener" aria-label="Beatport"><svg class="lki"><use href="#i-link"></use></svg></a>
+      <a class="lk ico" href="https://josephcapriati.bandcamp.com" target="_blank" rel="noopener" aria-label="Bandcamp"><svg class="lki"><use href="#i-link"></use></svg></a>
+    </div>
 
-<footer>
-<p class="fine">groovesMAXXING · <a href="../index.html">home</a> · <a href="../roster.html">the roster</a> · <a href="../events.html">the radar</a></p>
-</footer>
+    <div class="meta">
+      <span class="tag lane">🚧 bumpy</span>
+      <span class="tag">caserta to barcelona</span>
+      <span class="tag">techno</span>
+      <span class="tag badge">👀 one to watch · 2</span>
+      <span class="tag badge">🧃 🌴</span>
+      <span class="tag badge">🏷️ label boss</span>
+      <span class="tag badge">▶️ sets on file</span>
+    </div>
+
+    <div class="bio">
+      <p><b>Joseph Capriati</b> is a Caserta-born techno force based in Barcelona, and the founder of the <b>Redimension</b> label. His current output runs mostly through <b>Metamorfosi Records</b>, the label tied to his event brand.</p>
+      <p>Recent work stays high-profile: <b>Control</b> with <b>GENNARO</b> and <b>No Sleep</b> with <b>Dennis Cruz</b> on Metamorfosi, <b>Meandri</b> on Global Underground, and a remix of <b>Boris Brejcha</b>. He has also worked with <b>Indira Paganotto</b> and <b>Agents Of Time</b>.</p>
+      <p>Peak-time techno, bumpy and relentless.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <p class="eyebrow2">on spotify</p>
+    <div class="spot">
+      <iframe src="https://open.spotify.com/embed/artist/7onsqSWPufMm5ZnUCECDpf?utm_source=generator&theme=0" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+    </div>
+  </section>
+
+  <section class="sec">
+    <p class="eyebrow2">selected releases</p>
+    <div class="rel"><div class="t">Control<small>with GENNARO</small></div><div class="l">Metamorfosi Records<span>Sep 18, 2026</span></div></div>
+    <div class="rel"><div class="t">Red In The Desert (Joseph Capriati Remix)<small>Boris Brejcha remix</small></div><div class="l">FCKNG SERIOUS<span>Jun 26, 2026</span></div></div>
+    <div class="rel"><div class="t">No Sleep<small>with Dennis Cruz</small></div><div class="l">Metamorfosi Records<span>Jun 20, 2025</span></div></div>
+    <div class="rel"><div class="t">Meandri (Extended Mix)</div><div class="l">Global Underground<span>Feb 28, 2025</span></div></div>
+    <div class="rel"><div class="t">I Can't Stop (Joseph Capriati Remixes)<small>Sandy Rivera remix</small></div><div class="l">Defected<span>Oct 4, 2024</span></div></div>
+    <div class="rel"><div class="t">Mantra EP<small>with Indira Paganotto</small></div><div class="l">ARTCORE RECORDS<span>Jun 13, 2024</span></div></div>
+    <div class="rel"><div class="t">Blu<small>with Agents Of Time</small></div><div class="l">Kompakt<span>Mar 25, 2022</span></div></div>
+    <div class="rel"><div class="t">Love Changed Me (Dave Clarke Remix)<small>with Eric Kupper, Byron Stingily</small></div><div class="l">REDIMENSION<span>Jul 23, 2021</span></div></div>
+    <p class="subtle">release dates and labels verified on <a href="https://www.beatport.com/artist/joseph-capriati/33777" target="_blank" rel="noopener">Beatport</a>.</p>
+  </section>
+
+  <div class="facts">
+    <div class="fact"><div class="k">genre</div><div class="v">techno</div></div>
+    <div class="fact"><div class="k">based</div><div class="v">caserta, italy, based in barcelona, spain</div></div>
+    <div class="fact"><div class="k">label</div><div class="v">Redimension (boss), Metamorfosi Records</div></div>
+    <div class="fact"><div class="k">works with</div><div class="v">Dennis Cruz, Indira Paganotto, Agents Of Time</div></div>
+  </div>
+
+  <nav class="pn">
+    <a href="jord"><span class="lbl">← previous</span>JØRD</a>
+    <a href="josh-baker" style="text-align:right"><span class="lbl">next →</span>Josh Baker</a>
+  </nav>
+
+  <footer>
+    <p class="fine">groovesMAXXING · <a href="../index.html">home</a> · <a href="../roster.html">the roster</a> · <a href="../events.html">the radar</a></p>
+  </footer>
 
 </div>
 </body>
