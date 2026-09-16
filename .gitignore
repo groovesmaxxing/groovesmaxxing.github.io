@@ -4,3 +4,6 @@
 # eventually rides along in a commit.
 *.bak
 *.bak_*
+
+# the cowork app mirrors its outputs folder into this clone. never part of the site.
+Claude outputs/
