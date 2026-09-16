@@ -1,5 +1,5 @@
 {
-"generated": "2026-09-15T14:23:02+00:00",
+"generated": "2026-09-16T14:15:47+00:00",
 "artist_count": 682,
 "artists_with_events": 153,
 "events": [
@@ -428,8 +428,8 @@
 },
 {
 "date": "2026-09-24",
-"event": "Mochakk (18 and Over)",
-"venue": "PETCO Park",
+"event": "Mochakk + Ben Sterling + Jackie Hollander (18 and Over)",
+"venue": "Gallagher Square at Petco Park",
 "city": "San Diego",
 "region": "CA",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7J7pp",
@@ -1796,6 +1796,15 @@
 },
 {
 "date": "2026-10-08",
+"event": "Prospa",
+"venue": "History Toronto",
+"city": "Toronto",
+"region": "ON",
+"url": "https://www.ticketmaster.ca/prospa-toronto-ontario-10-08-2026/event/1000652A172424D8",
+"artist": "Prospa"
+},
+{
+"date": "2026-10-08",
 "event": "Tinlicker North America 2026",
 "venue": "House of Blues San Diego",
 "city": "San Diego",
@@ -2234,6 +2243,15 @@
 "region": "OR",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1A70Z_x",
 "artist": "Tinlicker"
+},
+{
+"date": "2026-10-16",
+"event": "Black Coffee",
+"venue": "LIV Nightclub Miami",
+"city": "Miami Beach",
+"region": "FL",
+"url": "https://www.ticketweb.com/event/black-coffee-liv-nightclub-miami-tickets/14322564",
+"artist": "Black Coffee"
 },
 {
 "date": "2026-10-16",
