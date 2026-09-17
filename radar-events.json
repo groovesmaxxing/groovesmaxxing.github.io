@@ -1,44 +1,8 @@
 {
-"generated": "2026-09-16T14:15:47+00:00",
+"generated": "2026-09-17T14:21:52+00:00",
 "artist_count": 682,
-"artists_with_events": 153,
+"artists_with_events": 156,
 "events": [
-{
-"date": "2026-09-16",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-09-16-2026/event/3B00643504E38212",
-"artist": "Jamie xx"
-},
-{
-"date": "2026-09-16",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "FPL Solar Amphitheater at Bayfront Park",
-"city": "Miami",
-"region": "FL",
-"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-miami-florida-09-16-2026/event/0D00646533C9B880",
-"artist": "Midnight Generation"
-},
-{
-"date": "2026-09-16",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "FPL Solar Amphitheater at Bayfront Park",
-"city": "Miami",
-"region": "FL",
-"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-miami-florida-09-16-2026/event/0D00646533C9B880",
-"artist": "Polo & Pan"
-},
-{
-"date": "2026-09-16",
-"event": "Tinlicker North America 2026",
-"venue": "House of Blues Chicago",
-"city": "Chicago",
-"region": "IL",
-"url": "https://www.ticketmaster.com/tinlicker-north-america-2026-chicago-illinois-09-16-2026/event/04006474BA327B3D",
-"artist": "Tinlicker"
-},
 {
 "date": "2026-09-17",
 "event": "ANOTR at Ally Pally",
@@ -815,6 +779,15 @@
 },
 {
 "date": "2026-09-26",
+"event": "Elrow Scotland",
+"venue": "Royal Highland Centre",
+"city": "Edinburgh",
+"region": "GB",
+"url": "https://www.universe.com/events/elrow-scotland-tickets-JP1HDT?ref=ticketmaster",
+"artist": "Mason Collective"
+},
+{
+"date": "2026-09-26",
 "event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
 "venue": "Walmart AMP",
 "city": "Rogers",
@@ -830,6 +803,15 @@
 "region": "CA",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1AAvvPv",
 "artist": "Parcels"
+},
+{
+"date": "2026-09-26",
+"event": "Elrow Scotland",
+"venue": "Royal Highland Centre",
+"city": "Edinburgh",
+"region": "GB",
+"url": "https://www.universe.com/events/elrow-scotland-tickets-JP1HDT?ref=ticketmaster",
+"artist": "Patrick Topping"
 },
 {
 "date": "2026-09-26",
@@ -3326,6 +3308,15 @@
 },
 {
 "date": "2026-11-06",
+"event": "CamelPhat (21 and Over)",
+"venue": "Royale Boston",
+"city": "Boston",
+"region": "MA",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAvoeK",
+"artist": "CamelPhat"
+},
+{
+"date": "2026-11-06",
 "event": "EDC Orlando",
 "venue": "Tinker Field",
 "city": "Orlando",
@@ -3497,11 +3488,11 @@
 },
 {
 "date": "2026-11-13",
-"event": "Nonstop Presents: Vintage Culture \"Our Affairs\"",
+"event": "Nonstop Presents: Vintage Culture \"affairs\"",
 "venue": "The Rady Shell at Jacobs Park",
 "city": "San Diego",
 "region": "CA",
-"url": "https://www.ticketmaster.com/nonstop-presents-vintage-culture-our-affairs-san-diego-california-11-13-2026/event/0A00650CF5957BE0",
+"url": "https://www.ticketmaster.com/nonstop-presents-vintage-culture-affairs-san-diego-california-11-13-2026/event/0A00650CF5957BE0",
 "artist": "Vintage Culture"
 },
 {
