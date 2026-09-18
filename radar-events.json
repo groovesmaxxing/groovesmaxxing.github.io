@@ -1,44 +1,8 @@
 {
-"generated": "2026-09-17T14:21:52+00:00",
+"generated": "2026-09-18T13:40:22+00:00",
 "artist_count": 682,
 "artists_with_events": 156,
 "events": [
-{
-"date": "2026-09-17",
-"event": "ANOTR at Ally Pally",
-"venue": "",
-"city": "",
-"region": "",
-"url": "https://www.universe.com/events/anotr-at-ally-pally-tickets-9FGKJP?ref=ticketmaster",
-"artist": "ANOTR"
-},
-{
-"date": "2026-09-17",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "MIDFLORIDA Credit Union Amphitheatre at the FL State Fairgrounds",
-"city": "Tampa",
-"region": "FL",
-"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-tampa-florida-09-17-2026/event/0D0064659DBA8425",
-"artist": "Midnight Generation"
-},
-{
-"date": "2026-09-17",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "MIDFLORIDA Credit Union Amphitheatre at the FL State Fairgrounds",
-"city": "Tampa",
-"region": "FL",
-"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-tampa-florida-09-17-2026/event/0D0064659DBA8425",
-"artist": "Polo & Pan"
-},
-{
-"date": "2026-09-17",
-"event": "Tinlicker - North America 2026",
-"venue": "Saint Andrew's Hall",
-"city": "Detroit",
-"region": "MI",
-"url": "https://www.ticketmaster.com/tinlicker-north-america-2026-detroit-michigan-09-17-2026/event/080064882A6AC1E4",
-"artist": "Tinlicker"
-},
 {
 "date": "2026-09-18",
 "event": "CID",
@@ -743,11 +707,11 @@
 },
 {
 "date": "2026-09-26",
-"event": "Green Velvet",
+"event": "Green Velvet [NEW VENUE]",
 "venue": "ivy Sydney",
 "city": "Sydney",
 "region": "NSW",
-"url": "https://www.moshtix.com.au/v2/event/green-velvet/199171",
+"url": "https://www.moshtix.com.au/v2/event/green-velvet-new-venue-/199171",
 "artist": "Green Velvet"
 },
 {
@@ -2408,6 +2372,15 @@
 },
 {
 "date": "2026-10-16",
+"event": "Walker & Royce",
+"venue": "Royale Boston",
+"city": "Boston",
+"region": "MA",
+"url": "https://www.ticketweb.com/event/walker-royce-royale-boston-tickets/14327994?REFERRAL_ID=tmfeed",
+"artist": "Walker & Royce"
+},
+{
+"date": "2026-10-16",
 "event": "Zhu - Ages 16+",
 "venue": "Mesa Amphitheatre",
 "city": "Mesa",
@@ -3308,11 +3281,11 @@
 },
 {
 "date": "2026-11-06",
-"event": "CamelPhat (21 and Over)",
+"event": "CamelPhat",
 "venue": "Royale Boston",
 "city": "Boston",
 "region": "MA",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAvoeK",
+"url": "https://www.ticketweb.com/event/camelphat-royale-boston-tickets/14328034?REFERRAL_ID=tmfeed",
 "artist": "CamelPhat"
 },
 {
@@ -3827,6 +3800,15 @@
 "region": "FL",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZkjb",
 "artist": "SIDEPIECE"
+},
+{
+"date": "2026-11-21",
+"event": "SOLARDO - Ages 18+",
+"venue": "Decca Live",
+"city": "Jacksonville",
+"region": "FL",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAvpaz",
+"artist": "Solardo"
 },
 {
 "date": "2026-11-21",
