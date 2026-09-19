@@ -1,80 +1,8 @@
 {
-"generated": "2026-09-18T13:40:22+00:00",
+"generated": "2026-09-19T13:14:31+00:00",
 "artist_count": 682,
-"artists_with_events": 156,
+"artists_with_events": 155,
 "events": [
-{
-"date": "2026-09-18",
-"event": "CID",
-"venue": "DPRTMNT",
-"city": "Toronto",
-"region": "ON",
-"url": "https://www.ticketweb.ca/event/cid-dprtmnt-tickets/14255884",
-"artist": "CID"
-},
-{
-"date": "2026-09-18",
-"event": "Infected Mushroom",
-"venue": "Sentrum Scene",
-"city": "Oslo",
-"region": "NO",
-"url": "https://www.ticketmaster.no/event/infected-mushroom-tickets/486265476?language=en-us",
-"artist": "Infected Mushroom"
-},
-{
-"date": "2026-09-18",
-"event": "James Hype (18 and Over)",
-"venue": "DUCTWORK - Houston",
-"city": "Houston",
-"region": "TX",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZga9",
-"artist": "James Hype"
-},
-{
-"date": "2026-09-18",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-09-18-2026/event/3B00643505018228",
-"artist": "Jamie xx"
-},
-{
-"date": "2026-09-18",
-"event": "Malaa",
-"venue": "Time Nightclub",
-"city": "Costa Mesa",
-"region": "CA",
-"url": "https://www.ticketweb.com/event/malaa-time-nightclub-tickets/14272194",
-"artist": "Malaa"
-},
-{
-"date": "2026-09-18",
-"event": "Tinlicker North America 2026",
-"venue": "History Toronto",
-"city": "Toronto",
-"region": "ON",
-"url": "https://www.ticketmaster.ca/tinlicker-north-america-2026-toronto-ontario-09-18-2026/event/1000648ED5201062",
-"artist": "Tinlicker"
-},
-{
-"date": "2026-09-18",
-"event": "Cu Friday Pres: Twin Diplomacy",
-"venue": "Common/UNDRGRD",
-"city": "Calgary",
-"region": "AB",
-"url": "https://www.ticketweb.ca/event/cu-friday-pres-twin-diplomacy-commonundrgrd-tickets/14192394?REFERRAL_ID=tmfeed",
-"artist": "Twin Diplomacy"
-},
-{
-"date": "2026-09-18",
-"event": "Walker & Royce",
-"venue": "Academy LA",
-"city": "Los Angeles",
-"region": "CA",
-"url": "https://www.ticketweb.com/event/walker-royce-academy-la-tickets/14295904",
-"artist": "Walker & Royce"
-},
 {
 "date": "2026-09-19",
 "event": "WHP presents: Rampa + &ME",
@@ -1112,6 +1040,15 @@
 },
 {
 "date": "2026-10-02",
+"event": "The Strokes w/ Beach House",
+"venue": "Flushing Meadows Corona Park",
+"city": "Flushing",
+"region": "NY",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7PPvE",
+"artist": "Fcukers"
+},
+{
+"date": "2026-10-02",
 "event": "Breakaway Utah 2026",
 "venue": "America First Field",
 "city": "Sandy",
@@ -1364,6 +1301,15 @@
 },
 {
 "date": "2026-10-03",
+"event": "Dom Dolla w/ Peggy Gou",
+"venue": "Flushing Meadows Corona Park",
+"city": "Flushing",
+"region": "NY",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1A70_P9",
+"artist": "Dom Dolla"
+},
+{
+"date": "2026-10-03",
 "event": "GOODBOYS (UK) at Felons Barrel Room",
 "venue": "Felons Barrel Room",
 "city": "Manly",
@@ -1496,6 +1442,15 @@
 "region": "TX",
 "url": "https://www.ticketmaster.com/official-2026-acl-fest-nights-parcels-austin-texas-10-03-2026/event/3A0064FDB2E8A336",
 "artist": "Parcels"
+},
+{
+"date": "2026-10-03",
+"event": "Dom Dolla w/ Peggy Gou",
+"venue": "Flushing Meadows Corona Park",
+"city": "Flushing",
+"region": "NY",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1A70_P9",
+"artist": "Peggy Gou"
 },
 {
 "date": "2026-10-03",
@@ -3809,6 +3764,15 @@
 "region": "FL",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1AAvpaz",
 "artist": "Solardo"
+},
+{
+"date": "2026-11-21",
+"event": "Tiesto",
+"venue": "Omnia Las Vegas",
+"city": "Las Vegas",
+"region": "NV",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAvVp_",
+"artist": "Tiësto"
 },
 {
 "date": "2026-11-21",
