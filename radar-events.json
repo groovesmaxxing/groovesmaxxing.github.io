@@ -1,63 +1,9 @@
 {
-"generated": "2026-09-20T13:38:49+00:00",
-"artist_count": 682,
-"artists_with_events": 151,
+"generated": "2026-09-21T15:57:35+00:00",
+"artist_count": 695,
+"artists_with_events": 156,
 "events": [
 {
-"date": "2026-09-20",
-"event": "Shaky Knees Music Festival",
-"venue": "PIEDMONT PARK",
-"city": "Atlanta",
-"region": "GA",
-"url": "https://on.fgtix.com/trk/AuGK",
-"artist": "Fcukers"
-},
-{
-"date": "2026-09-20",
-"event": "Nocturnal Wonderland",
-"venue": "Glen Helen Regional Park",
-"city": "San Bernardino",
-"region": "CA",
-"url": "https://on.fgtix.com/trk/Br8J",
-"artist": "GUDFELLA"
-},
-{
-"date": "2026-09-20",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "Dos Equis Pavilion",
-"city": "Dallas",
-"region": "TX",
-"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-dallas-texas-09-20-2026/event/0C00646AB741A355",
-"artist": "Midnight Generation"
-},
-{
-"date": "2026-09-20",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "Dos Equis Pavilion",
-"city": "Dallas",
-"region": "TX",
-"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-dallas-texas-09-20-2026/event/0C00646AB741A355",
-"artist": "Polo & Pan"
-},
-{
-"date": "2026-09-20",
-"event": "Nocturnal Wonderland",
-"venue": "Glen Helen Regional Park",
-"city": "San Bernardino",
-"region": "CA",
-"url": "https://on.fgtix.com/trk/Br8J",
-"artist": "SIDEPIECE"
-},
-{
-"date": "2026-09-20",
-"event": "Nocturnal Wonderland",
-"venue": "Glen Helen Regional Park",
-"city": "San Bernardino",
-"region": "CA",
-"url": "https://on.fgtix.com/trk/Br8J",
-"artist": "Walker & Royce"
-},
-{
 "date": "2026-09-21",
 "event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
 "venue": "Moody Center ATX",
@@ -74,6 +20,15 @@
 "region": "TX",
 "url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-austin-texas-09-21-2026/event/3A00646A9B8E774C",
 "artist": "Polo & Pan"
+},
+{
+"date": "2026-09-22",
+"event": "Channel Tres (16 and Over)",
+"venue": "Ogden Theatre",
+"city": "Denver",
+"region": "CO",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1A70NJF",
+"artist": "Channel Tres"
 },
 {
 "date": "2026-09-22",
@@ -92,6 +47,15 @@
 "region": "DC",
 "url": "https://www.ticketmaster.com/tinlicker-north-america-2026-washington-district-of-columbia-09-22-2026/event/1500648E8D464797",
 "artist": "Tinlicker"
+},
+{
+"date": "2026-09-23",
+"event": "Channel Tres w/ KILIMANJARO",
+"venue": "The Complex - UT",
+"city": "Salt Lake City",
+"region": "UT",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1A70pao",
+"artist": "Channel Tres"
 },
 {
 "date": "2026-09-23",
@@ -191,6 +155,15 @@
 "region": "CO",
 "url": "https://www.ticketweb.com/event/carlita-the-church-nightclub-tickets/14256494",
 "artist": "Carlita"
+},
+{
+"date": "2026-09-25",
+"event": "Channel Tres with JTOTY, Gelli Haha - Ages 21+",
+"venue": "The Regency Ballroom",
+"city": "San Francisco",
+"region": "CA",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAvv0y",
+"artist": "Channel Tres"
 },
 {
 "date": "2026-09-25",
@@ -671,6 +644,15 @@
 },
 {
 "date": "2026-09-29",
+"event": "Channel Tres (21 and Over)",
+"venue": "Showbox SODO",
+"city": "Seattle",
+"region": "WA",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1A709Ae",
+"artist": "Channel Tres"
+},
+{
+"date": "2026-09-29",
 "event": "Fcukers",
 "venue": "The Mohawk-Austin",
 "city": "Austin",
@@ -713,6 +695,15 @@
 "region": "IL",
 "url": "https://www.ticketmaster.co.il/event/MPM20/ALL/en",
 "artist": "Adam Ten"
+},
+{
+"date": "2026-09-30",
+"event": "Channel Tres - The Enigma Tour",
+"venue": "Commodore Ballroom",
+"city": "Vancouver",
+"region": "BC",
+"url": "https://www.ticketmaster.ca/channel-tres-the-enigma-tour-vancouver-british-columbia-09-30-2026/event/110064A5E08AFB00",
+"artist": "Channel Tres"
 },
 {
 "date": "2026-09-30",
@@ -767,6 +758,15 @@
 "region": "TX",
 "url": "https://www.ticketmaster.com/tinlicker-north-america-2026-austin-texas-09-30-2026/event/3A006479ED454C87",
 "artist": "Tinlicker"
+},
+{
+"date": "2026-10-01",
+"event": "Channel Tres",
+"venue": "Roseland Theater",
+"city": "Portland",
+"region": "OR",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZgQb",
+"artist": "Channel Tres"
 },
 {
 "date": "2026-10-01",
@@ -974,6 +974,15 @@
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/youme-friday-manchester-02-10-2026/event/35006498021F6E4C",
 "artist": "Julian Fijma"
+},
+{
+"date": "2026-10-02",
+"event": "Breakaway Utah 2026",
+"venue": "America First Field",
+"city": "Sandy",
+"region": "UT",
+"url": "https://www.universe.com/events/breakaway-utah-2026-tickets-96845F?ref=ticketmaster",
+"artist": "Kaskade"
 },
 {
 "date": "2026-10-02",
@@ -1217,6 +1226,15 @@
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/youme-saturday-manchester-03-10-2026/event/35006497E11350C4",
 "artist": "Julian Fijma"
+},
+{
+"date": "2026-10-03",
+"event": "Austin City Limits Music Festival - Weekend One",
+"venue": "Zilker Park",
+"city": "Austin",
+"region": "TX",
+"url": "https://on.fgtix.com/trk/v8SK",
+"artist": "Lykke Li"
 },
 {
 "date": "2026-10-03",
@@ -1712,6 +1730,15 @@
 "region": "NY",
 "url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-10-10-2026/event/3B00643505D182DF",
 "artist": "Jamie xx"
+},
+{
+"date": "2026-10-10",
+"event": "Austin City Limits Music Festival - Weekend Two",
+"venue": "Zilker Park",
+"city": "Austin",
+"region": "TX",
+"url": "https://on.fgtix.com/trk/y8SK",
+"artist": "Lykke Li"
 },
 {
 "date": "2026-10-10",
@@ -2462,6 +2489,15 @@
 },
 {
 "date": "2026-10-23",
+"event": "Channel Tres",
+"venue": "Shrine Expo Hall",
+"city": "Los Angeles",
+"region": "CA",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1A709vt",
+"artist": "Channel Tres"
+},
+{
+"date": "2026-10-23",
 "event": "Chris Lorenzo",
 "venue": "Echostage",
 "city": "Washington",
@@ -2513,6 +2549,15 @@
 "region": "QC",
 "url": "https://www.ticketmaster.ca/john-summit-ctrl-escape-arena-tour-montreal-quebec-10-23-2026/event/310064B3DA7587CE",
 "artist": "John Summit"
+},
+{
+"date": "2026-10-23",
+"event": "IMANU PRESENTS DE_VERTE",
+"venue": "Melkweg",
+"city": "Amsterdam",
+"region": "NL",
+"url": "https://www.ticketmaster.nl/event/imanu-presents-de_verte-tickets/742730013?language=en-us",
+"artist": "Kaskade"
 },
 {
 "date": "2026-10-23",
@@ -2705,6 +2750,15 @@
 },
 {
 "date": "2026-10-29",
+"event": "Thundercat: Distracted AF Tour",
+"venue": "The Factory",
+"city": "Saint Louis",
+"region": "MO",
+"url": "https://www.ticketmaster.com/thundercat-distracted-af-tour-saint-louis-missouri-10-29-2026/event/210064E39E0E20F8",
+"artist": "Channel Tres"
+},
+{
+"date": "2026-10-29",
 "event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
 "venue": "TD Garden",
 "city": "Boston",
@@ -2849,6 +2903,15 @@
 },
 {
 "date": "2026-10-31",
+"event": "Thundercat: Distracted AF Tour",
+"venue": "Marathon Music Works",
+"city": "Nashville",
+"region": "TN",
+"url": "https://www.ticketweb.com/event/thundercat-distracted-af-tour-marathon-music-works-tickets/14249594",
+"artist": "Channel Tres"
+},
+{
+"date": "2026-10-31",
 "event": "Foundation V18.0 Halloween with Chris Lake",
 "venue": "The Vancouver Convention Centre",
 "city": "Vancouver",
@@ -2927,6 +2990,15 @@
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/fly-warehouse-josh-baker-halloween-glasgow-31-10-2026/event/360064DAE94BD8F3",
 "artist": "Josh Baker"
+},
+{
+"date": "2026-10-31",
+"event": "KASKADE",
+"venue": "REBEL",
+"city": "Toronto",
+"region": "ON",
+"url": "https://www.ticketweb.ca/event/kaskade-rebel-tickets/14310744",
+"artist": "Kaskade"
 },
 {
 "date": "2026-10-31",
@@ -3028,6 +3100,15 @@
 "artist": "Crooked Colours"
 },
 {
+"date": "2026-11-03",
+"event": "Thundercat: Distracted AF Tour",
+"venue": "Avondale Brewing Co.",
+"city": "Birmingham",
+"region": "AL",
+"url": "https://www.ticketmaster.com/thundercat-distracted-af-tour-birmingham-alabama-11-03-2026/event/200064E9DC63398C",
+"artist": "Channel Tres"
+},
+{
 "date": "2026-11-05",
 "event": "Moby (18+)",
 "venue": "Bill Graham Civic Auditorium",
@@ -3035,6 +3116,15 @@
 "region": "CA",
 "url": "https://www.ticketmaster.com/moby-18-san-francisco-california-11-05-2026/event/1C006515F9551DE3",
 "artist": "Azzecca"
+},
+{
+"date": "2026-11-05",
+"event": "Thundercat: Distracted AF Tour",
+"venue": "The Fillmore New Orleans",
+"city": "New Orleans",
+"region": "LA",
+"url": "https://www.ticketmaster.com/thundercat-distracted-af-tour-new-orleans-louisiana-11-05-2026/event/1B0064E9979F7FCA",
+"artist": "Channel Tres"
 },
 {
 "date": "2026-11-05",
@@ -3107,6 +3197,15 @@
 "region": "TX",
 "url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-austin-texas-11-06-2026/event/3A0064B3DA33FD80",
 "artist": "John Summit"
+},
+{
+"date": "2026-11-06",
+"event": "EDC Orlando",
+"venue": "Tinker Field",
+"city": "Orlando",
+"region": "FL",
+"url": "https://on.fgtix.com/trk/8uFM",
+"artist": "Kaskade"
 },
 {
 "date": "2026-11-06",
@@ -3217,6 +3316,15 @@
 "artist": "John Summit"
 },
 {
+"date": "2026-11-12",
+"event": "ODESZA [DJ Set]",
+"venue": "Echostage",
+"city": "Washington",
+"region": "DC",
+"url": "https://www.ticketmaster.com/odesza-dj-set-washington-district-of-columbia-11-12-2026/event/15006518B24D63E0",
+"artist": "ODESZA"
+},
+{
 "date": "2026-11-13",
 "event": "ANOTR | Playa Pacha",
 "venue": "FIVE Luxe JBR",
@@ -3233,6 +3341,15 @@
 "region": "CO",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7xaFa",
 "artist": "D.O.D"
+},
+{
+"date": "2026-11-13",
+"event": "DJ Tennis",
+"venue": "CODA",
+"city": "Toronto",
+"region": "ON",
+"url": "https://www.ticketweb.ca/event/dj-tennis-coda-tickets/14277864",
+"artist": "DJ Tennis"
 },
 {
 "date": "2026-11-13",
@@ -3476,6 +3593,15 @@
 "region": "FL",
 "url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-miami-florida-11-20-2026/event/0D0064B2B883819E",
 "artist": "John Summit"
+},
+{
+"date": "2026-11-20",
+"event": "Kaskade at The Concourse Project (Outdoors) - Ages 18+",
+"venue": "The Concourse Project",
+"city": "Austin",
+"region": "TX",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAv8-Z",
+"artist": "Kaskade"
 },
 {
 "date": "2026-11-20",
