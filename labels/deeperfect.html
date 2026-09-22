@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DEEPERFECT · groovesMAXXING</title>
+<meta name="description" content="DEEPERFECT: the Florence label Stefano Noferini founded. verified links and the artists we track on it.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<meta property="og:title" content="DEEPERFECT · groovesMAXXING">
+<meta property="og:description" content="DEEPERFECT: the Florence label Stefano Noferini founded. verified links and the artists we track on it.">
+<meta property="og:image" content="https://groovesmaxxing.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--night:#0B0B0D;--racing:#FF1C02;--deep:#CC1400;--day:#F2F2EF;--steel:#8A8A93;--line:#26262b;--card:#141417}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--night);color:var(--day);font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:0 26px}
+a{color:inherit}
+.top{padding:34px 0 8px}
+.back{font-family:'Space Mono',monospace;font-size:.82rem;color:var(--steel);text-decoration:none;letter-spacing:.04em}
+.back:hover{color:var(--racing)}
+h1{font-weight:900;font-size:clamp(2.4rem,7vw,3.6rem);line-height:1.02;letter-spacing:-.02em;margin:14px 0 16px}
+.artist{padding:8px 0 10px}
+.aname{margin:0;font-weight:900;font-size:clamp(2rem,5.6vw,2.9rem);line-height:1.05;letter-spacing:-.02em}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 26px}
+.tag{font-family:'Space Mono',monospace;font-size:.76rem;letter-spacing:.06em;color:var(--steel);border:1px solid var(--line);border-radius:999px;padding:6px 13px}
+.tag.lane{color:var(--racing);border-color:rgba(255,28,2,.42)}
+.tag.badge{color:var(--day);border-color:rgba(242,242,239,.34);background:rgba(242,242,239,.05)}
+.bio p{color:#c9c9c4;font-size:1rem;line-height:1.72;margin-bottom:17px;max-width:660px}
+.bio p:last-child{margin-bottom:0}
+.bio b{color:var(--day);font-weight:600}
+blockquote{border-left:3px solid var(--racing);padding:2px 0 2px 20px;margin:24px 0;max-width:640px}
+blockquote p{color:var(--day);font-size:1.06rem;line-height:1.6;font-weight:600;margin-bottom:8px}
+blockquote cite{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);font-style:normal;letter-spacing:.04em}
+.facts{border-top:1px solid var(--line);margin-top:30px;padding-top:22px}
+.fact{display:flex;gap:18px;padding:9px 0;font-size:.94rem;line-height:1.5}
+.fact .k{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);letter-spacing:.05em;flex:none;width:132px;padding-top:3px}
+.fact .v{color:#c9c9c4}
+.links{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+.lk{font-family:'Space Mono',monospace;font-size:.79rem;letter-spacing:.04em;text-decoration:none;color:#c9c9c4;border:1px solid var(--line);border-radius:6px;padding:9px 14px;transition:border-color .15s,color .15s}
+.lk.ico{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;padding:0;border-radius:999px}
+.lki{width:17px;height:17px;display:block}
+.lk.ico.mono2{font-size:.72rem;letter-spacing:.06em;font-weight:700}
+.lk:hover{border-color:var(--racing);color:var(--racing)}
+.player{margin-top:28px;border-radius:12px;overflow:hidden}
+.player iframe{width:100%;height:152px;border:0;display:block}
+.player.tall{margin-top:10px}
+.player.tall iframe{height:352px}
+.note{font-family:'Space Mono',monospace;font-size:.78rem;color:var(--steel);line-height:1.7;margin-top:30px}
+footer{border-top:1px solid var(--line);margin-top:72px;padding:34px 0 60px}
+.fine{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel)}
+.bio a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#33333a}
+.bio a:hover{color:var(--racing);text-decoration-color:var(--racing)}
+.fact .v a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#33333a}
+.fact .v a:hover{color:var(--racing);text-decoration-color:var(--racing)}
+.artist{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:16px}
+.artist > *{grid-column:1 / -1}
+.artist > .aname{grid-column:1}
+.artist > .links{grid-column:2;grid-row:1;margin-top:0;justify-self:end;flex-wrap:nowrap}
+@media (max-width:640px){.artist > .aname{grid-column:1 / -1}.artist > .links{grid-column:1 / -1;grid-row:2;justify-self:start;margin-top:14px;flex-wrap:wrap}}
+
+.pn{display:flex;justify-content:space-between;gap:14px;border-top:1px solid var(--line);margin-top:52px;padding-top:26px}
+.pn a{font-family:'Space Mono',monospace;font-size:.8rem;color:var(--steel);text-decoration:none;max-width:46%}
+.pn a:hover{color:var(--racing)}
+.pn .lbl{display:block;font-size:.68rem;letter-spacing:.08em;margin-bottom:4px}
+</style>
+<link rel="canonical" href="https://groovesmaxxing.com/labels/deeperfect">
+  <!-- gmx-seo start -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DEEPERFECT · groovesMAXXING">
+  <meta name="twitter:description" content="DEEPERFECT: the Florence label Stefano Noferini founded. verified links and the artists we track on it.">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "DEEPERFECT",
+  "alternateName": "Deeperfect Records",
+  "url": "https://groovesmaxxing.com/labels/deeperfect",
+  "description": "DEEPERFECT: the Florence label Stefano Noferini founded. verified links and the artists we track on it.",
+  "founder": [
+    { "@type": "Person", "name": "Stefano Noferini" }
+  ],
+  "sameAs": [
+    "https://www.beatport.com/label/deeperfect/2051",
+    "https://deeperfect.bandcamp.com/",
+    "https://soundcloud.com/deeperfect-records",
+    "https://www.instagram.com/deeperfect/",
+    "https://www.youtube.com/user/deeperfectrecords",
+    "https://deeperfect.com/",
+    "https://www.discogs.com/label/16349-Dee-P-erfect",
+    "https://ra.co/labels/3393"
+  ]
+}
+  </script>
+  <!-- gmx-seo end -->
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="i-spotify" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.4" fill="currentColor"/><path d="M7.1 9.5c3.1-.85 6.6-.6 9.2.9M7.6 12.6c2.6-.7 5.5-.5 7.7.8M8.1 15.6c2.1-.55 4.4-.4 6.1.65" stroke="#0B0B0D" stroke-width="1.5" stroke-linecap="round" fill="none"/></symbol><symbol id="i-soundcloud" viewBox="0 0 24 24"><g fill="currentColor"><rect x="1.6" y="11.4" width="1.3" height="5.2" rx=".65"/><rect x="4.1" y="9.6" width="1.3" height="7" rx=".65"/><rect x="6.6" y="8.4" width="1.3" height="8.2" rx=".65"/><rect x="9.1" y="10.2" width="1.3" height="6.4" rx=".65"/><path d="M11.9 6.9c.5-.35 1.1-.55 1.8-.55 1.9 0 3.5 1.45 3.7 3.3.3-.1.6-.15.95-.15 1.6 0 2.9 1.3 2.9 2.9S19.95 15.3 18.35 15.3H11.9a.6.6 0 0 1-.6-.6V7.4c0-.2.1-.4.6-.5z"/></g></symbol><symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.4" cy="6.6" r="1.15" fill="currentColor" stroke="none"/></symbol><symbol id="i-bandcamp" viewBox="0 0 24 24"><path d="M2.6 17.6 8.9 6.4h12.5l-6.3 11.2z" fill="currentColor"/></symbol><symbol id="i-youtube" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4.2" fill="currentColor"/><path d="M10.2 8.9v6.2L15.6 12z" fill="#0B0B0D"/></symbol><symbol id="i-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M10.1 13.9a4.2 4.2 0 0 0 6 0l2.6-2.6a4.24 4.24 0 0 0-6-6l-1.3 1.3"/><path d="M13.9 10.1a4.2 4.2 0 0 0-6 0l-2.6 2.6a4.24 4.24 0 0 0 6 6l1.3-1.3"/></symbol></svg>
+<div class="wrap">
+
+<div class="top"><a class="back" href="../index.html#labels">← the label wall</a></div>
+
+<section class="artist label" id="deeperfect">
+<h1 class="aname">DEEPERFECT</h1>
+<div class="links">
+<a class="lk ico mono2" href="https://www.beatport.com/label/deeperfect/2051" target="_blank" rel="noopener" aria-label="Beatport" title="Beatport">BP</a>
+<a class="lk ico" href="https://deeperfect.bandcamp.com/" target="_blank" rel="noopener" aria-label="Bandcamp" title="Bandcamp"><svg class="lki"><use href="#i-bandcamp"/></svg></a>
+<a class="lk ico" href="https://soundcloud.com/deeperfect-records" target="_blank" rel="noopener" aria-label="SoundCloud" title="SoundCloud"><svg class="lki"><use href="#i-soundcloud"/></svg></a>
+<a class="lk ico" href="https://www.instagram.com/deeperfect/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg class="lki"><use href="#i-instagram"/></svg></a>
+<a class="lk ico" href="https://www.youtube.com/user/deeperfectrecords" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube"><svg class="lki"><use href="#i-youtube"/></svg></a>
+<a class="lk ico" href="https://deeperfect.com/" target="_blank" rel="noopener" aria-label="Website" title="Website"><svg class="lki"><use href="#i-link"/></svg></a>
+<a class="lk ico mono2" href="https://www.discogs.com/label/16349-Dee-P-erfect" target="_blank" rel="noopener" aria-label="Discogs" title="Discogs">DG</a>
+<a class="lk ico mono2" href="https://ra.co/labels/3393" target="_blank" rel="noopener" aria-label="Resident Advisor" title="Resident Advisor">RA</a>
+</div>
+<div class="meta">
+<span class="tag lane">either lane</span>
+<span class="tag">record label</span>
+<span class="tag">tech house · minimal deep tech</span>
+</div>
+<div class="bio">
+<p><b>DEEPERFECT</b> is the Florence label Stefano Noferini founded. the Italian DJ and producer calls it "my label", and the site footer reads "© 2022 Deeperfect Records - Florence Italy". Bandcamp gives the location as Italy and the Discogs profile calls it an "Italy based house and tribal house label." the name is written three ways, all of them the label's own: "Deeperfect" on its Beatport page and on Bandcamp, "Deeperfect Records" in the site footer and on Resident Advisor, and "DEEPERFECT" on Instagram and on its Spotify playlist. we go with the last one, the wall's spelling. Discogs does its own thing and files the label as "Dee-P-erfect", with a separate "Deeperfect Records" entry that its own profile says is only for copyright lines. the start date comes in more versions than the name, and we print them all rather than pick one. the label's Bandcamp bio says 2003, "Record Label born in Italy in 2003 Tech House, Minimal Deep Tech.", and Ibiza Spotlight and Wikipedia say 2003 as well. Resident Advisor's label page says established 2004. the catalogue says earlier still: DPE 002, Exelent Trite "Congenial EP", is dated 2001 on Discogs, and so are DPE 003 to DPE 007. then there is a compilation called "Ten Years of Deeperfect Records", out on 11 May 2010, which counts back to about 2000. four answers, all sourced, unresolved.</p>
+<p>Discogs lists the parent as Sound4Group, and that is as far as we take it. from 2010 the label worked with Self, a large Italian distribution company, per Beatportal's Label of the Month piece in January 2026. Discogs also shows two sub-labels, DEEPERFECT Shift and DPE, whose releases do not count toward the roster here. the sound in the label's own words is brief: "Tech House, Minimal Deep Tech." in the Bandcamp bio, "Bringing you the Italian touch with perfection. Deep Tech: Deeperfect" on the Spotify playlist, and "GET DEEP, AIM FOR PERFECT" as the site tagline. Noferini put it to Beatportal in January 2026 as "It's always the groove first...because it's the main thing that I want to hear from the track, and it's what our sound is based on." Resident Advisor's own bio for the label, RA's line and not the label's, reads "Deeperfect Records is one of the most important Italian Label." the label also runs a production school, Deeperfect Academy. on the catalogue: Exelent Trite "Congenial EP" (DPE 002, 2001) is the earliest catalogue number on Discogs, UMEK &amp; Stefano Noferini "Goes On" won Best Minimal/Techno Track at the 2013 International Dance Music Awards, "Ten Years of Deeperfect Records" is the 2010 compilation, and "Deeperfect Records #Beatportdecade Techno" (DPE869, 12 September 2014) was the label's part of Beatport's tenth-birthday series.</p>
+<p>the radio show is Deeperfect Radio Show, a set on the label's own SoundCloud, and the label site links it as its radio show. Club Edition is a separate thing: Noferini's own weekly radio show, which Beatportal in January 2026 said goes out on 110 stations across 15 countries, and an older set titled "Stefano Noferini Presents Club Edition Summer 2018" sits on the label account too. on the party side, Deeperfect at Eden, Ibiza ran eight Wednesdays from 23 April to 11 June 2025, billed by Ibiza Spotlight as the label's longest series of parties to date, and Deeperfect x Eat The Beat Club Train, a joint party with the Melbourne promoter Eat The Beat, was last held at ADE in Amsterdam on 24 October 2025. a few things share the name without being the label: the Discogs artist "Deeperfect", and the labels Deeper Rekords NYC, Perfect Records and D.E.P. Records, are all unrelated.</p>
+<p>a few notes on the names. six are here as remixers: <a href="../artists/ben-sterling.html">Ben Sterling</a> on "What I Do" (DPE1802, 2021), <a href="../artists/brad-brunner.html">Brad Brunner</a> on "Blueberry Brownie EP" (DPE1899, 2022) and "Metamorfosis" (2024), <a href="../artists/german-brigante.html">German Brigante</a> on "The Specialist" (DPE589, 2013), <a href="../artists/max-dean.html">Max Dean</a> on "Time EP" (DPE1849, 2022), and <a href="../artists/balanka.html">Balanka</a> on "Tasty" (2026) and <a href="../artists/gio-lucca.html">Gio Lucca</a> on "Block" (2025). three rest on compilation tracks rather than their own releases: <a href="../artists/aitor-astiz.html">Aitor Astiz</a> and <a href="../artists/bruno-bona.html">Bruno Bona</a> on "Winter Club Cuts 2025" and <a href="../artists/twolate-ita.html">TWOLATE (ITA)</a> on "Summer Cuts 2026". <a href="../artists/trace.html">Trace</a> is here for "Dhamar" (2024) and "We Gonna Do" (2026). the rest are on their own releases, from <a href="../artists/dennis-cruz.html">Dennis Cruz</a>'s "A Better Day" (DPE982, 2015) and <a href="../artists/jean-pierre.html">Jean Pierre</a>, on "Deeperfect Ibiza 2016 Mixed by Elio Riso" (2016) and then his own "Just Before Loco Ep" (DPE1625, 2019), to <a href="../artists/justin-rabin.html">Justin Rabin</a>'s "Onda" and <a href="../artists/rsquared.html">RSquared</a>'s "Aeroplane Mode", both 2026. 29 artists we track have released on it, a confirmed floor from a catalogue sweep, not the full roster: <a href="../artists/ag-swifty.html">AG Swifty</a>, <a href="../artists/aitor-astiz.html">Aitor Astiz</a>, <a href="../artists/balanka.html">Balanka</a>, <a href="../artists/ben-sterling.html">Ben Sterling</a>, <a href="../artists/brad-brunner.html">Brad Brunner</a>, <a href="../artists/bruno-bona.html">Bruno Bona</a>, <a href="../artists/dennis-cruz.html">Dennis Cruz</a>, <a href="../artists/discip.html">Discip</a>, <a href="../artists/edip.html">EdiP</a>, <a href="../artists/firza.html">FIRZA</a>, <a href="../artists/funk-cartel.html">Funk Cartel</a>, <a href="../artists/german-brigante.html">German Brigante</a>, <a href="../artists/gio-lucca.html">Gio Lucca</a>, <a href="../artists/iglesias.html">Iglesias</a>, <a href="../artists/jay-de-lys.html">Jay de Lys</a>, <a href="../artists/jean-pierre.html">Jean Pierre</a>, <a href="../artists/jeff-sorkowitz.html">Jeff Sorkowitz</a>, <a href="../artists/justin-rabin.html">Justin Rabin</a>, <a href="../artists/kidoo.html">Kidoo</a>, <a href="../artists/mason-collective.html">Mason Collective</a>, <a href="../artists/max-dean.html">Max Dean</a>, <a href="../artists/piem.html">Piem</a>, <a href="../artists/ranger-trucco.html">Ranger Trucco</a>, <a href="../artists/roddy-lima.html">Roddy Lima</a>, <a href="../artists/rsquared.html">RSquared</a>, <a href="../artists/trace.html">Trace</a>, <a href="../artists/twenty-six.html">TWENTY SIX</a>, <a href="../artists/twolate-ita.html">TWOLATE (ITA)</a>, <a href="../artists/vanny-granata.html">Vanny Granata</a></p>
+</div>
+<div class="facts">
+<div class="fact"><div class="k">founded</div><div class="v">2003 by the label's own Bandcamp bio, Ibiza Spotlight and Wikipedia. 2004 by Resident Advisor's label page. 2001 by the catalogue, where DPE 002, Exelent Trite "Congenial EP", and DPE 003 to DPE 007 are all dated 2001 on Discogs. and a compilation called "Ten Years of Deeperfect Records", out on 11 May 2010, counts back to about 2000. all sourced, unresolved</div></div>
+<div class="fact"><div class="k">run by</div><div class="v">Stefano Noferini, the founder, who calls it "my label". Discogs lists the parent as Sound4Group. from 2010 distribution went through Self, a large Italian distribution company, per Beatportal</div></div>
+<div class="fact"><div class="k">based</div><div class="v">Florence, Italy. the site footer reads "© 2022 Deeperfect Records - Florence Italy", Bandcamp says Italy, and the Discogs profile reads "Italy based house and tribal house label."</div></div>
+<div class="fact"><div class="k">not the same as</div><div class="v">the Discogs artist "Deeperfect", and the labels Deeper Rekords NYC, Perfect Records and D.E.P. Records, all unrelated. on Discogs the label itself is filed as "Dee-P-erfect", and the separate "Deeperfect Records" entry there is only for copyright lines, by its own profile. the sub-labels DEEPERFECT Shift and DPE are the label's own, but their releases are not counted here</div></div>
+<div class="fact"><div class="k">the series</div><div class="v">Deeperfect Radio Show, a SoundCloud set on the label's own account, linked from the label site as its radio show. Club Edition, Noferini's weekly radio show, on 110 stations across 15 countries per Beatportal in January 2026, with an older "Stefano Noferini Presents Club Edition Summer 2018" set on the label account. the parties: Deeperfect at Eden, Ibiza, eight Wednesdays from 23 April to 11 June 2025, the label's longest series of parties to date per Ibiza Spotlight, and Deeperfect x Eat The Beat Club Train at ADE, Amsterdam, a joint party with the Melbourne promoter Eat The Beat, last held 24 October 2025</div></div>
+<div class="fact"><div class="k">notable releases</div><div class="v">Exelent Trite "Congenial EP" (DPE 002, 2001, the earliest catalogue number on Discogs), "Ten Years of Deeperfect Records" (compilation, 11 May 2010), UMEK &amp; Stefano Noferini "Goes On" (Best Minimal/Techno Track at the 2013 International Dance Music Awards), "Deeperfect Records #Beatportdecade Techno" (DPE869, 12 September 2014, part of Beatport's tenth-birthday series)</div></div>
+<div class="fact"><div class="k">released on it</div><div class="v">29 artists we track have released on it, a confirmed floor from a catalogue sweep, not the full roster: <a href="../artists/ag-swifty.html">AG Swifty</a>, <a href="../artists/aitor-astiz.html">Aitor Astiz</a>, <a href="../artists/balanka.html">Balanka</a>, <a href="../artists/ben-sterling.html">Ben Sterling</a>, <a href="../artists/brad-brunner.html">Brad Brunner</a>, <a href="../artists/bruno-bona.html">Bruno Bona</a>, <a href="../artists/dennis-cruz.html">Dennis Cruz</a>, <a href="../artists/discip.html">Discip</a>, <a href="../artists/edip.html">EdiP</a>, <a href="../artists/firza.html">FIRZA</a>, <a href="../artists/funk-cartel.html">Funk Cartel</a>, <a href="../artists/german-brigante.html">German Brigante</a>, <a href="../artists/gio-lucca.html">Gio Lucca</a>, <a href="../artists/iglesias.html">Iglesias</a>, <a href="../artists/jay-de-lys.html">Jay de Lys</a>, <a href="../artists/jean-pierre.html">Jean Pierre</a>, <a href="../artists/jeff-sorkowitz.html">Jeff Sorkowitz</a>, <a href="../artists/justin-rabin.html">Justin Rabin</a>, <a href="../artists/kidoo.html">Kidoo</a>, <a href="../artists/mason-collective.html">Mason Collective</a>, <a href="../artists/max-dean.html">Max Dean</a>, <a href="../artists/piem.html">Piem</a>, <a href="../artists/ranger-trucco.html">Ranger Trucco</a>, <a href="../artists/roddy-lima.html">Roddy Lima</a>, <a href="../artists/rsquared.html">RSquared</a>, <a href="../artists/trace.html">Trace</a>, <a href="../artists/twenty-six.html">TWENTY SIX</a>, <a href="../artists/twolate-ita.html">TWOLATE (ITA)</a>, <a href="../artists/vanny-granata.html">Vanny Granata</a></div></div>
+</div>
+<blockquote><p>"My label has always been mostly underground. It began like that and it will always be like that."</p><cite>&#8212; Stefano Noferini, founder, Vice</cite></blockquote>
+<p style="margin:26px 0 0;color:var(--steel);font-size:.85rem">the label's own playlist, "DEEPERFECT", the one its site links as its Spotify link. the owner account reads deeperfect_user.</p>
+<div class="player"><iframe src="https://open.spotify.com/embed/playlist/2sAjBzY6MrqPhXN0BofR58?utm_source=generator&amp;theme=0" loading="lazy" title="DEEPERFECT playlist on Spotify"></iframe></div>
+<p style="margin:26px 0 0;color:var(--steel);font-size:.85rem">the series: Deeperfect Radio Show, the label's radio show as a set on its own SoundCloud, the one the label site links.</p>
+<div class="player tall"><iframe src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fdeeperfect-records%2Fsets%2Fdeeperfect-radio-show-podcast&color=%23ff1c02&auto_play=false&show_teaser=false" loading="lazy" title="Deeperfect Radio Show by Deeperfect Records on SoundCloud"></iframe></div>
+</section>
+<nav class="pn"><a href="cuttin-headz.html"><span class="lbl">← previous</span>Cuttin' Headz</a><a href="musical-freedom.html" style="text-align:right"><span class="lbl">next →</span>Musical Freedom</a></nav>
+<p class="note">every fact on this page is sourced or it is not on this page, and quotes are verbatim, spelling and all. the roster line links the artists we track who release here.</p>
+
+<footer>
+<p class="fine">groovesMAXXING · <a href="../index.html">home</a> · <a href="../roster.html">the roster</a> · <a href="../events.html">the radar</a> · <a href="../sets.html">the sets</a></p>
+</footer>
+
+</div>
+</body>
+</html>

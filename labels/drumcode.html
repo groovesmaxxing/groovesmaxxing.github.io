@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drumcode · groovesMAXXING</title>
+<meta name="description" content="Drumcode: the Swedish techno label Adam Beyer founded in 1996. verified links and the artists we track on it.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<meta property="og:title" content="Drumcode · groovesMAXXING">
+<meta property="og:description" content="Drumcode: the Swedish techno label Adam Beyer founded in 1996. verified links and the artists we track on it.">
+<meta property="og:image" content="https://groovesmaxxing.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--night:#0B0B0D;--racing:#FF1C02;--deep:#CC1400;--day:#F2F2EF;--steel:#8A8A93;--line:#26262b;--card:#141417}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--night);color:var(--day);font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:0 26px}
+a{color:inherit}
+.top{padding:34px 0 8px}
+.back{font-family:'Space Mono',monospace;font-size:.82rem;color:var(--steel);text-decoration:none;letter-spacing:.04em}
+.back:hover{color:var(--racing)}
+h1{font-weight:900;font-size:clamp(2.4rem,7vw,3.6rem);line-height:1.02;letter-spacing:-.02em;margin:14px 0 16px}
+.artist{padding:8px 0 10px}
+.aname{margin:0;font-weight:900;font-size:clamp(2rem,5.6vw,2.9rem);line-height:1.05;letter-spacing:-.02em}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 26px}
+.tag{font-family:'Space Mono',monospace;font-size:.76rem;letter-spacing:.06em;color:var(--steel);border:1px solid var(--line);border-radius:999px;padding:6px 13px}
+.tag.lane{color:var(--racing);border-color:rgba(255,28,2,.42)}
+.tag.badge{color:var(--day);border-color:rgba(242,242,239,.34);background:rgba(242,242,239,.05)}
+.bio p{color:#c9c9c4;font-size:1rem;line-height:1.72;margin-bottom:17px;max-width:660px}
+.bio p:last-child{margin-bottom:0}
+.bio b{color:var(--day);font-weight:600}
+blockquote{border-left:3px solid var(--racing);padding:2px 0 2px 20px;margin:24px 0;max-width:640px}
+blockquote p{color:var(--day);font-size:1.06rem;line-height:1.6;font-weight:600;margin-bottom:8px}
+blockquote cite{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);font-style:normal;letter-spacing:.04em}
+.facts{border-top:1px solid var(--line);margin-top:30px;padding-top:22px}
+.fact{display:flex;gap:18px;padding:9px 0;font-size:.94rem;line-height:1.5}
+.fact .k{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);letter-spacing:.05em;flex:none;width:132px;padding-top:3px}
+.fact .v{color:#c9c9c4}
+.links{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+.lk{font-family:'Space Mono',monospace;font-size:.79rem;letter-spacing:.04em;text-decoration:none;color:#c9c9c4;border:1px solid var(--line);border-radius:6px;padding:9px 14px;transition:border-color .15s,color .15s}
+.lk.ico{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;padding:0;border-radius:999px}
+.lki{width:17px;height:17px;display:block}
+.lk.ico.mono2{font-size:.72rem;letter-spacing:.06em;font-weight:700}
+.lk:hover{border-color:var(--racing);color:var(--racing)}
+.player{margin-top:28px;border-radius:12px;overflow:hidden}
+.player iframe{width:100%;height:152px;border:0;display:block}
+.player.tall{margin-top:10px}
+.player.tall iframe{height:352px}
+.note{font-family:'Space Mono',monospace;font-size:.78rem;color:var(--steel);line-height:1.7;margin-top:30px}
+footer{border-top:1px solid var(--line);margin-top:72px;padding:34px 0 60px}
+.fine{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel)}
+.bio a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#33333a}
+.bio a:hover{color:var(--racing);text-decoration-color:var(--racing)}
+.fact .v a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#33333a}
+.fact .v a:hover{color:var(--racing);text-decoration-color:var(--racing)}
+.artist{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:16px}
+.artist > *{grid-column:1 / -1}
+.artist > .aname{grid-column:1}
+.artist > .links{grid-column:2;grid-row:1;margin-top:0;justify-self:end;flex-wrap:nowrap}
+@media (max-width:640px){.artist > .aname{grid-column:1 / -1}.artist > .links{grid-column:1 / -1;grid-row:2;justify-self:start;margin-top:14px;flex-wrap:wrap}}
+
+.pn{display:flex;justify-content:space-between;gap:14px;border-top:1px solid var(--line);margin-top:52px;padding-top:26px}
+.pn a{font-family:'Space Mono',monospace;font-size:.8rem;color:var(--steel);text-decoration:none;max-width:46%}
+.pn a:hover{color:var(--racing)}
+.pn .lbl{display:block;font-size:.68rem;letter-spacing:.08em;margin-bottom:4px}
+</style>
+<link rel="canonical" href="https://groovesmaxxing.com/labels/drumcode">
+  <!-- gmx-seo start -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Drumcode · groovesMAXXING">
+  <meta name="twitter:description" content="Drumcode: the Swedish techno label Adam Beyer founded in 1996. verified links and the artists we track on it.">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Drumcode",
+  "alternateName": "Drumcode Records",
+  "url": "https://groovesmaxxing.com/labels/drumcode",
+  "description": "Drumcode: the Swedish techno label Adam Beyer founded in 1996. verified links and the artists we track on it.",
+  "foundingDate": "1996",
+  "founder": [
+    { "@type": "Person", "name": "Adam Beyer" }
+  ],
+  "sameAs": [
+    "https://www.beatport.com/label/drumcode/2027",
+    "https://drumcoderecords.bandcamp.com/",
+    "https://soundcloud.com/drumcode",
+    "https://www.instagram.com/drumcoderecords/",
+    "https://www.youtube.com/user/drumcodeofficial",
+    "https://www.drumcode.se/",
+    "https://www.discogs.com/label/237-Drumcode",
+    "https://ra.co/labels/963"
+  ]
+}
+  </script>
+  <!-- gmx-seo end -->
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="i-spotify" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.4" fill="currentColor"/><path d="M7.1 9.5c3.1-.85 6.6-.6 9.2.9M7.6 12.6c2.6-.7 5.5-.5 7.7.8M8.1 15.6c2.1-.55 4.4-.4 6.1.65" stroke="#0B0B0D" stroke-width="1.5" stroke-linecap="round" fill="none"/></symbol><symbol id="i-soundcloud" viewBox="0 0 24 24"><g fill="currentColor"><rect x="1.6" y="11.4" width="1.3" height="5.2" rx=".65"/><rect x="4.1" y="9.6" width="1.3" height="7" rx=".65"/><rect x="6.6" y="8.4" width="1.3" height="8.2" rx=".65"/><rect x="9.1" y="10.2" width="1.3" height="6.4" rx=".65"/><path d="M11.9 6.9c.5-.35 1.1-.55 1.8-.55 1.9 0 3.5 1.45 3.7 3.3.3-.1.6-.15.95-.15 1.6 0 2.9 1.3 2.9 2.9S19.95 15.3 18.35 15.3H11.9a.6.6 0 0 1-.6-.6V7.4c0-.2.1-.4.6-.5z"/></g></symbol><symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.4" cy="6.6" r="1.15" fill="currentColor" stroke="none"/></symbol><symbol id="i-bandcamp" viewBox="0 0 24 24"><path d="M2.6 17.6 8.9 6.4h12.5l-6.3 11.2z" fill="currentColor"/></symbol><symbol id="i-youtube" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4.2" fill="currentColor"/><path d="M10.2 8.9v6.2L15.6 12z" fill="#0B0B0D"/></symbol><symbol id="i-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M10.1 13.9a4.2 4.2 0 0 0 6 0l2.6-2.6a4.24 4.24 0 0 0-6-6l-1.3 1.3"/><path d="M13.9 10.1a4.2 4.2 0 0 0-6 0l-2.6 2.6a4.24 4.24 0 0 0 6 6l1.3-1.3"/></symbol></svg>
+<div class="wrap">
+
+<div class="top"><a class="back" href="../index.html#labels">← the label wall</a></div>
+
+<section class="artist label" id="drumcode">
+<h1 class="aname">Drumcode</h1>
+<div class="links">
+<a class="lk ico mono2" href="https://www.beatport.com/label/drumcode/2027" target="_blank" rel="noopener" aria-label="Beatport" title="Beatport">BP</a>
+<a class="lk ico" href="https://drumcoderecords.bandcamp.com/" target="_blank" rel="noopener" aria-label="Bandcamp" title="Bandcamp"><svg class="lki"><use href="#i-bandcamp"/></svg></a>
+<a class="lk ico" href="https://soundcloud.com/drumcode" target="_blank" rel="noopener" aria-label="SoundCloud" title="SoundCloud"><svg class="lki"><use href="#i-soundcloud"/></svg></a>
+<a class="lk ico" href="https://www.instagram.com/drumcoderecords/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg class="lki"><use href="#i-instagram"/></svg></a>
+<a class="lk ico" href="https://www.youtube.com/user/drumcodeofficial" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube"><svg class="lki"><use href="#i-youtube"/></svg></a>
+<a class="lk ico" href="https://www.drumcode.se/" target="_blank" rel="noopener" aria-label="Website" title="Website"><svg class="lki"><use href="#i-link"/></svg></a>
+<a class="lk ico mono2" href="https://www.discogs.com/label/237-Drumcode" target="_blank" rel="noopener" aria-label="Discogs" title="Discogs">DG</a>
+<a class="lk ico mono2" href="https://ra.co/labels/963" target="_blank" rel="noopener" aria-label="Resident Advisor" title="Resident Advisor">RA</a>
+</div>
+<div class="meta">
+<span class="tag lane">either lane</span>
+<span class="tag">record label</span>
+<span class="tag">techno</span>
+</div>
+<div class="bio">
+<p><b>Drumcode</b> is the Swedish techno label Adam Beyer founded in 1996. the label's own site puts it in two sentences: "Drumcode Records is a Swedish techno label managed by Adam Beyer. The label was founded in 1996 and has enjoyed a streak of success in its releases, talent scouting, radio efforts, and general international label camaraderie ever since." Resident Advisor keeps it shorter, "Techno label run by Adam Beyer.", with the country as Sweden and established 1996. the Discogs profile opens with "Swedish label managed by Swedish DJ &amp; producer Adam Beyer, founded in 1996." and goes on to say the label started out as a mostly Swedish techno concern, with local colleagues such as Jesper Dahlbäck, Cari Lekebusch, Thomas Krome, Fredrik Almquist and Joel Mull among its early names. the name comes in two forms, both the label's own. "Drumcode" is what Beatport, SoundCloud, Resident Advisor and Discogs use, "Drumcode Records" is what the label's site copy and its Bandcamp use, and Discogs keeps "Drumcode Records" as a parent entry above the main Drumcode page. one label, two forms of the name. the base is Sweden by every source we have, the label's own "Swedish", Resident Advisor's country field and Discogs, and none of them names a city, so we don't either. the first release is Adam Beyer &amp; Lenk "Drumcode 01" (1996) per Discogs, and 2026 is the label's thirtieth year, which its site marks with "DRUMCODE MALLORCA 30 YEARS OF DRUMCODE".</p>
+<p>Discogs lists four sub-labels, A-Sides, DCLTD, Gainlane and The Remixes, and its "Drumcode Records" parent entry adds Code Red and Drumcode Collection. DCLTD, Drumcode Limited, was relaunched in 2021 as a vinyl-only outlet for darker, harder techno. releases on any of those do not count toward the roster here. the label calls itself a techno label, so we tag it one. Adam Beyer's own line on how he wanted the label seen comes from Beatportal, which made Drumcode its Label of the Month on 9 June 2020 in a piece by Ben Jolley, and it is the quote below. the series are two. A-Sides is the yearly various-artists compilation, filed by Discogs as a sub-label of its own even though its volumes carry Drumcode DC catalogue numbers, and A-Sides Vol. 14 arrived in December 2025, curated by Adam Beyer from that year's demo submissions. Drumcode Radio Live is the weekly radio show. its current set sits on Adam Beyer's own SoundCloud rather than on a label account, and a recent episode, DCR837, went up there on 18 August 2026. a separate Drumcode Radio Live account does exist on SoundCloud, but its last upload was DCR181 on 24 January 2014. on the catalogue, after "Drumcode 01" there is Cari Lekebusch "Bråkstake" (1997), which Adam Beyer picked among the label's best early tracks, and much later Adam Beyer "Explorer Vol. 1" (DC329, 2025), described on Beatportal's label page as his first solo album in over 20 years.</p>
+<p>a few notes on the names. two are here as remixers: <a href="../artists/odd-mob.html">Odd Mob</a> on "Simulator Remixes" (DC307, 2024) and "Drumcode Presents: 2024" (2025), and <a href="../artists/will-clarke.html">Will Clarke</a> on an A-Sides Vol. 8 track (DC211, 2019). <a href="../artists/marco-carola.html">Marco Carola</a>'s credits are remixes as well, on "Being And Becoming Ltd" (DC24,5, 2002) and "Stand Down" (CRCD01, 2008), and <a href="../artists/joseph-capriati.html">Joseph Capriati</a> has one on "Remainings III Remixes" (DC60, 2009) next to his own "Sidechains / Kontrol Room" (DC53, 2009) and "Iron Pump / Black Line" (DC53.5, 2009). a good few rest on the compilations. the A-Sides volumes carry Drumcode DC catalogue numbers, so they count as Drumcode releases even though Discogs also keeps an A-Sides sub-label entry: <a href="../artists/sidney-charles.html">Sidney Charles</a> on A-Sides Vol. 3 (DC142, 2015), <a href="../artists/layton-giordani.html">Layton Giordani</a> on A-Sides Vol. 5 (DC159, 2016), <a href="../artists/jamie-jones.html">Jamie Jones</a> on A-Sides Vol. 8 (DC211, 2019) and <a href="../artists/eats-everything.html">Eats Everything</a> on A-Sides Vol. 9 (2020). the DC4 compilations hold <a href="../artists/adam-sellouk.html">Adam Sellouk</a> and <a href="../artists/roddy-lima.html">Roddy Lima</a>, both on DC4 Vol. 3 (DC344, 2026), and <a href="../artists/rafael-cerato.html">Rafael Cerato</a> on DC4 Vol. 5 (2026). <a href="../artists/tini-gessler.html">Tini Gessler</a> is on "Drumcode Presents: Elevate" (DC277, 2023). <a href="../artists/alok.html">Alok</a> is here for "Lazer Beams (Alok Edit)" (2026), his edit of <a href="../artists/green-velvet.html">Green Velvet</a>'s "Lazer Beams", while Green Velvet's own releases here are "Mentalizm" (DC188, 2018), "Space Date" (DC193, 2018) and "Space Date Remixes" (DC207, 2019). <a href="../artists/tiga.html">Tiga</a> is here for "Let's Go Dancing" (ARMAS2930, 2024) with Layton Giordani and Audion, which Discogs lists as a joint Armada and Drumcode release. <a href="../artists/hntr.html">HNTR</a> is on "Hypnotic (feat. Kyozo)" (2025) and "Victory" (DCX011, 2025) and is credited on "Explorer Vol.1" (DC329, 2025). the rest are on their own releases: <a href="../artists/steve-lawler.html">Steve Lawler</a> "Doves / Chalkee" (DC48, 2008), <a href="../artists/rebuke.html">Rebūke</a> "Rattle" (DC212, 2019), "Obscurity" (2020) and "Wasp" (2021), <a href="../artists/vintage-culture.html">Vintage Culture</a> "Lift Me Up" (DC311, 2024), with Kyozo featured, <a href="../artists/genesi.html">GENESI</a> "DNA" (2026) and <a href="../artists/volkoder.html">Volkoder</a> "Waiting For You" (2026), with <a href="../artists/adam-beyer.html">Adam Beyer</a>, the founder, across the catalogue from "Drumcode 01" (DC01, 1996), "Compressed" (02, 1996) and "Tasty Bits" (05, 1997) onward. 22 artists we track have released on it, a confirmed floor from a catalogue sweep, not the full roster: <a href="../artists/adam-beyer.html">Adam Beyer</a>, <a href="../artists/adam-sellouk.html">Adam Sellouk</a>, <a href="../artists/alok.html">Alok</a>, <a href="../artists/eats-everything.html">Eats Everything</a>, <a href="../artists/genesi.html">GENESI</a>, <a href="../artists/green-velvet.html">Green Velvet</a>, <a href="../artists/hntr.html">HNTR</a>, <a href="../artists/jamie-jones.html">Jamie Jones</a>, <a href="../artists/joseph-capriati.html">Joseph Capriati</a>, <a href="../artists/layton-giordani.html">Layton Giordani</a>, <a href="../artists/marco-carola.html">Marco Carola</a>, <a href="../artists/odd-mob.html">Odd Mob</a>, <a href="../artists/rafael-cerato.html">Rafael Cerato</a>, <a href="../artists/rebuke.html">Rebūke</a>, <a href="../artists/roddy-lima.html">Roddy Lima</a>, <a href="../artists/sidney-charles.html">Sidney Charles</a>, <a href="../artists/steve-lawler.html">Steve Lawler</a>, <a href="../artists/tiga.html">Tiga</a>, <a href="../artists/tini-gessler.html">Tini Gessler</a>, <a href="../artists/vintage-culture.html">Vintage Culture</a>, <a href="../artists/volkoder.html">Volkoder</a>, <a href="../artists/will-clarke.html">Will Clarke</a></p>
+</div>
+<div class="facts">
+<div class="fact"><div class="k">founded</div><div class="v">1996, by Adam Beyer. the label's own site, Resident Advisor and Discogs all say 1996. the first release is Adam Beyer &amp; Lenk "Drumcode 01" (1996) per Discogs. 2026 is the thirtieth year, and the label's site features "DRUMCODE MALLORCA 30 YEARS OF DRUMCODE"</div></div>
+<div class="fact"><div class="k">run by</div><div class="v">Adam Beyer. "managed by Adam Beyer" in the label's own words, "run by Adam Beyer" on Resident Advisor, and "managed by Swedish DJ &amp; producer Adam Beyer" per Discogs</div></div>
+<div class="fact"><div class="k">based</div><div class="v">Sweden. the label calls itself Swedish, Resident Advisor files it under Sweden and Discogs calls it a Swedish label. no source names a city</div></div>
+<div class="fact"><div class="k">sub-labels</div><div class="v">A-Sides, DCLTD, Gainlane and The Remixes per Discogs, with Code Red and Drumcode Collection listed under the Discogs "Drumcode Records" parent entry. DCLTD, Drumcode Limited, was relaunched in 2021 as a vinyl-only outlet for darker, harder techno. sub-label releases do not count toward the roster here</div></div>
+<div class="fact"><div class="k">the series</div><div class="v">A-Sides, the yearly various-artists compilation, Vol. 14 in December 2025, curated by Adam Beyer from that year's demo submissions. Drumcode Radio Live, the weekly radio show, whose current set sits on Adam Beyer's own SoundCloud rather than a label account, with DCR837 up on 18 August 2026. a separate Drumcode Radio Live SoundCloud account stopped at DCR181 on 24 January 2014</div></div>
+<div class="fact"><div class="k">notable releases</div><div class="v">Adam Beyer &amp; Lenk "Drumcode 01" (1996, the first release), Cari Lekebusch "Bråkstake" (1997, which Adam Beyer picked among the label's best early tracks), Adam Beyer "Explorer Vol. 1" (DC329, 2025, his first solo album in over 20 years per Beatportal's label page), A-Sides Vol. 14 (December 2025). Beatportal Label of the Month, 9 June 2020</div></div>
+<div class="fact"><div class="k">released on it</div><div class="v">22 artists we track have released on it, a confirmed floor from a catalogue sweep, not the full roster: <a href="../artists/adam-beyer.html">Adam Beyer</a>, <a href="../artists/adam-sellouk.html">Adam Sellouk</a>, <a href="../artists/alok.html">Alok</a>, <a href="../artists/eats-everything.html">Eats Everything</a>, <a href="../artists/genesi.html">GENESI</a>, <a href="../artists/green-velvet.html">Green Velvet</a>, <a href="../artists/hntr.html">HNTR</a>, <a href="../artists/jamie-jones.html">Jamie Jones</a>, <a href="../artists/joseph-capriati.html">Joseph Capriati</a>, <a href="../artists/layton-giordani.html">Layton Giordani</a>, <a href="../artists/marco-carola.html">Marco Carola</a>, <a href="../artists/odd-mob.html">Odd Mob</a>, <a href="../artists/rafael-cerato.html">Rafael Cerato</a>, <a href="../artists/rebuke.html">Rebūke</a>, <a href="../artists/roddy-lima.html">Roddy Lima</a>, <a href="../artists/sidney-charles.html">Sidney Charles</a>, <a href="../artists/steve-lawler.html">Steve Lawler</a>, <a href="../artists/tiga.html">Tiga</a>, <a href="../artists/tini-gessler.html">Tini Gessler</a>, <a href="../artists/vintage-culture.html">Vintage Culture</a>, <a href="../artists/volkoder.html">Volkoder</a>, <a href="../artists/will-clarke.html">Will Clarke</a></div></div>
+</div>
+<blockquote><p>"It was always a very conscious decision to try and portray it as something positive that was about techno but didn't judge or point at other music styles…"</p><cite>&#8212; Adam Beyer, founder, Beatportal</cite></blockquote>
+<p style="margin:26px 0 0;color:var(--steel);font-size:.85rem">the label's own catalogue playlist, "DRUMCODE", on its own Spotify account. the owner account is Drumcode Records and the playlist description reads "Drumcode catalog, all in one place."</p>
+<div class="player"><iframe src="https://open.spotify.com/embed/playlist/2a9vewgAKwZoYkJVBqJoLH?utm_source=generator&amp;theme=0" loading="lazy" title="Drumcode playlist on Spotify"></iframe></div>
+<p style="margin:26px 0 0;color:var(--steel);font-size:.85rem">the series: Drumcode Radio Live, the weekly radio show. the set below is published on Adam Beyer's own SoundCloud account, not on a label account, and a recent episode, DCR837, went up there on 18 August 2026. the separate Drumcode Radio Live account on SoundCloud stopped at DCR181 in January 2014.</p>
+<div class="player tall"><iframe src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fadambeyer%2Fsets%2Fdrumcode-radio-live&color=%23ff1c02&auto_play=false&show_teaser=false" loading="lazy" title="Drumcode Radio Live by Adam Beyer on SoundCloud"></iframe></div>
+</section>
+<nav class="pn"><a href="afterlife.html"><span class="lbl">← previous</span>Afterlife</a><a href="cuttin-headz.html" style="text-align:right"><span class="lbl">next →</span>Cuttin' Headz</a></nav>
+<p class="note">every fact on this page is sourced or it is not on this page, and quotes are verbatim, spelling and all. the roster line links the artists we track who release here.</p>
+
+<footer>
+<p class="fine">groovesMAXXING · <a href="../index.html">home</a> · <a href="../roster.html">the roster</a> · <a href="../events.html">the radar</a> · <a href="../sets.html">the sets</a></p>
+</footer>
+
+</div>
+</body>
+</html>
