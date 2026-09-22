@@ -1,26 +1,8 @@
 {
-"generated": "2026-09-21T15:57:35+00:00",
+"generated": "2026-09-22T14:05:58+00:00",
 "artist_count": 695,
-"artists_with_events": 156,
+"artists_with_events": 155,
 "events": [
-{
-"date": "2026-09-21",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "Moody Center ATX",
-"city": "Austin",
-"region": "TX",
-"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-austin-texas-09-21-2026/event/3A00646A9B8E774C",
-"artist": "Midnight Generation"
-},
-{
-"date": "2026-09-21",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "Moody Center ATX",
-"city": "Austin",
-"region": "TX",
-"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-austin-texas-09-21-2026/event/3A00646A9B8E774C",
-"artist": "Polo & Pan"
-},
 {
 "date": "2026-09-22",
 "event": "Channel Tres (16 and Over)",
@@ -428,6 +410,15 @@
 },
 {
 "date": "2026-09-26",
+"event": "Fisher - Ages 18+",
+"venue": "Factory Town",
+"city": "Miami",
+"region": "FL",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZYjI",
+"artist": "FISHER"
+},
+{
+"date": "2026-09-26",
 "event": "GUDFELLA",
 "venue": "The Penthouse | FIVE Palm",
 "city": "Dubai",
@@ -482,15 +473,6 @@
 },
 {
 "date": "2026-09-26",
-"event": "Elrow Scotland",
-"venue": "Royal Highland Centre",
-"city": "Edinburgh",
-"region": "GB",
-"url": "https://www.universe.com/events/elrow-scotland-tickets-JP1HDT?ref=ticketmaster",
-"artist": "Mason Collective"
-},
-{
-"date": "2026-09-26",
 "event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
 "venue": "Walmart AMP",
 "city": "Rogers",
@@ -506,15 +488,6 @@
 "region": "CA",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1AAvvPv",
 "artist": "Parcels"
-},
-{
-"date": "2026-09-26",
-"event": "Elrow Scotland",
-"venue": "Royal Highland Centre",
-"city": "Edinburgh",
-"region": "GB",
-"url": "https://www.universe.com/events/elrow-scotland-tickets-JP1HDT?ref=ticketmaster",
-"artist": "Patrick Topping"
 },
 {
 "date": "2026-09-26",
@@ -1334,6 +1307,15 @@
 "region": "TX",
 "url": "https://on.fgtix.com/trk/v8SK",
 "artist": "RÜFÜS DU SOL"
+},
+{
+"date": "2026-10-03",
+"event": "SIDEPIECE",
+"venue": "Avalon Hollywood",
+"city": "Hollywood",
+"region": "CA",
+"url": "https://www.ticketweb.com/event/sidepiece-avalon-hollywood-tickets/14334404",
+"artist": "SIDEPIECE"
 },
 {
 "date": "2026-10-03",
@@ -2282,6 +2264,15 @@
 },
 {
 "date": "2026-10-17",
+"event": "WHP presents: Eric Prydz [Concourse Only]",
+"venue": "Depot Mayfield",
+"city": "Manchester",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/whp-presents-eric-prydz-concourse-only-manchester-17-10-2026/event/3500650303726DC1",
+"artist": "Franky Wah"
+},
+{
+"date": "2026-10-17",
 "event": "Harry Styles: Together, Together",
 "venue": "Madison Square Garden",
 "city": "New York",
@@ -2412,7 +2403,7 @@
 "venue": "Ziggo Dome Club",
 "city": "Amsterdam",
 "region": "NL",
-"url": "https://www.ticketmaster.nl/event/black-coffee-%7C-venue-premium-packages-tickets/1460659511?language=en-us",
+"url": "https://www.ticketmaster.nl/event/black-coffee-%7C-venue-premium-packages-tickets/1286275434?language=en-us",
 "artist": "Black Coffee"
 },
 {
@@ -3461,6 +3452,15 @@
 },
 {
 "date": "2026-11-14",
+"event": "Odesza - Ages 18+",
+"venue": "Factory Town",
+"city": "Miami",
+"region": "FL",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAvovK",
+"artist": "ODESZA"
+},
+{
+"date": "2026-11-14",
 "event": "Rhye (6 and Over)",
 "venue": "Warfield",
 "city": "San Francisco",
@@ -3920,6 +3920,15 @@
 },
 {
 "date": "2026-11-29",
+"event": "LAYTON GIORDANI",
+"venue": "LONDON MUSIC HALL",
+"city": "London",
+"region": "ON",
+"url": "https://www.ticketweb.ca/event/layton-giordani-london-music-hall-tickets/14335304?REFERRAL_ID=tmfeed",
+"artist": "Layton Giordani"
+},
+{
+"date": "2026-11-29",
 "event": "All Day I Dream of Australia | Melbourne",
 "venue": "Bourke Street Courtyard",
 "city": "Melbourne",
@@ -4376,6 +4385,15 @@
 "region": "NSW",
 "url": "https://www.moshtix.com.au/v2/event/field-day-2027/199201",
 "artist": "Elderbrook"
+},
+{
+"date": "2027-01-09",
+"event": "CID",
+"venue": "Hollywood Palladium",
+"city": "Hollywood",
+"region": "CA",
+"url": "https://www.ticketmaster.com/cid-hollywood-california-01-09-2027/event/0900653032FDAFBF",
+"artist": "CID"
 },
 {
 "date": "2027-02-19",
