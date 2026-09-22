@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sweat It Out · groovesMAXXING</title>
+<meta name="description" content="Sweat It Out: Sydney record label started by the late DJ Ajax, parent of Club Sweat. verified links and the artists we track on it.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<meta property="og:title" content="Sweat It Out · groovesMAXXING">
+<meta property="og:description" content="Sweat It Out: Sydney record label started by the late DJ Ajax, parent of Club Sweat. verified links and the artists we track on it.">
+<meta property="og:image" content="https://groovesmaxxing.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--night:#0B0B0D;--racing:#FF1C02;--deep:#CC1400;--day:#F2F2EF;--steel:#8A8A93;--line:#26262b;--card:#141417}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--night);color:var(--day);font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:0 26px}
+a{color:inherit}
+.top{padding:34px 0 8px}
+.back{font-family:'Space Mono',monospace;font-size:.82rem;color:var(--steel);text-decoration:none;letter-spacing:.04em}
+.back:hover{color:var(--racing)}
+h1{font-weight:900;font-size:clamp(2.4rem,7vw,3.6rem);line-height:1.02;letter-spacing:-.02em;margin:14px 0 16px}
+.artist{padding:8px 0 10px}
+.aname{margin:0;font-weight:900;font-size:clamp(2rem,5.6vw,2.9rem);line-height:1.05;letter-spacing:-.02em}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 26px}
+.tag{font-family:'Space Mono',monospace;font-size:.76rem;letter-spacing:.06em;color:var(--steel);border:1px solid var(--line);border-radius:999px;padding:6px 13px}
+.tag.lane{color:var(--racing);border-color:rgba(255,28,2,.42)}
+.tag.badge{color:var(--day);border-color:rgba(242,242,239,.34);background:rgba(242,242,239,.05)}
+.bio p{color:#c9c9c4;font-size:1rem;line-height:1.72;margin-bottom:17px;max-width:660px}
+.bio p:last-child{margin-bottom:0}
+.bio b{color:var(--day);font-weight:600}
+blockquote{border-left:3px solid var(--racing);padding:2px 0 2px 20px;margin:24px 0;max-width:640px}
+blockquote p{color:var(--day);font-size:1.06rem;line-height:1.6;font-weight:600;margin-bottom:8px}
+blockquote cite{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);font-style:normal;letter-spacing:.04em}
+.facts{border-top:1px solid var(--line);margin-top:30px;padding-top:22px}
+.fact{display:flex;gap:18px;padding:9px 0;font-size:.94rem;line-height:1.5}
+.fact .k{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);letter-spacing:.05em;flex:none;width:132px;padding-top:3px}
+.fact .v{color:#c9c9c4}
+.links{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+.lk{font-family:'Space Mono',monospace;font-size:.79rem;letter-spacing:.04em;text-decoration:none;color:#c9c9c4;border:1px solid var(--line);border-radius:6px;padding:9px 14px;transition:border-color .15s,color .15s}
+.lk.ico{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;padding:0;border-radius:999px}
+.lki{width:17px;height:17px;display:block}
+.lk.ico.mono2{font-size:.72rem;letter-spacing:.06em;font-weight:700}
+.lk:hover{border-color:var(--racing);color:var(--racing)}
+.player{margin-top:28px;border-radius:12px;overflow:hidden}
+.player iframe{width:100%;height:152px;border:0;display:block}
+.player.tall{margin-top:10px}
+.player.tall iframe{height:352px}
+.note{font-family:'Space Mono',monospace;font-size:.78rem;color:var(--steel);line-height:1.7;margin-top:30px}
+footer{border-top:1px solid var(--line);margin-top:72px;padding:34px 0 60px}
+.fine{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel)}
+.bio a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#33333a}
+.bio a:hover{color:var(--racing);text-decoration-color:var(--racing)}
+.fact .v a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#33333a}
+.fact .v a:hover{color:var(--racing);text-decoration-color:var(--racing)}
+.artist{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:16px}
+.artist > *{grid-column:1 / -1}
+.artist > .aname{grid-column:1}
+.artist > .links{grid-column:2;grid-row:1;margin-top:0;justify-self:end;flex-wrap:nowrap}
+@media (max-width:640px){.artist > .aname{grid-column:1 / -1}.artist > .links{grid-column:1 / -1;grid-row:2;justify-self:start;margin-top:14px;flex-wrap:wrap}}
+
+.pn{display:flex;justify-content:space-between;gap:14px;border-top:1px solid var(--line);margin-top:52px;padding-top:26px}
+.pn a{font-family:'Space Mono',monospace;font-size:.8rem;color:var(--steel);text-decoration:none;max-width:46%}
+.pn a:hover{color:var(--racing)}
+.pn .lbl{display:block;font-size:.68rem;letter-spacing:.08em;margin-bottom:4px}
+</style>
+<link rel="canonical" href="https://groovesmaxxing.com/labels/sweat-it-out">
+  <!-- gmx-seo start -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sweat It Out · groovesMAXXING">
+  <meta name="twitter:description" content="Sweat It Out: Sydney record label started by the late DJ Ajax, parent of Club Sweat. verified links and the artists we track on it.">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Sweat It Out",
+  "url": "https://groovesmaxxing.com/labels/sweat-it-out",
+  "description": "Sweat It Out: Sydney record label started by the late DJ Ajax, parent of Club Sweat. verified links and the artists we track on it.",
+  "founder": [
+    { "@type": "Person", "name": "Ajax (Adrian Thomas)" }
+  ],
+  "sameAs": [
+    "https://sweatitoutmusic.com/",
+    "https://www.beatport.com/label/sweat-it-out/9418",
+    "https://sweatitout.bandcamp.com/",
+    "https://soundcloud.com/sweat-it-out-music",
+    "https://www.instagram.com/sweatitoutmusic/",
+    "https://www.youtube.com/channel/UCRmm-A4pwINMtf4q0DqyOZg",
+    "https://www.discogs.com/label/128723-Sweat-It-Out!",
+    "https://ra.co/labels/8498"
+  ]
+}
+  </script>
+  <!-- gmx-seo end -->
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="i-spotify" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.4" fill="currentColor"/><path d="M7.1 9.5c3.1-.85 6.6-.6 9.2.9M7.6 12.6c2.6-.7 5.5-.5 7.7.8M8.1 15.6c2.1-.55 4.4-.4 6.1.65" stroke="#0B0B0D" stroke-width="1.5" stroke-linecap="round" fill="none"/></symbol><symbol id="i-soundcloud" viewBox="0 0 24 24"><g fill="currentColor"><rect x="1.6" y="11.4" width="1.3" height="5.2" rx=".65"/><rect x="4.1" y="9.6" width="1.3" height="7" rx=".65"/><rect x="6.6" y="8.4" width="1.3" height="8.2" rx=".65"/><rect x="9.1" y="10.2" width="1.3" height="6.4" rx=".65"/><path d="M11.9 6.9c.5-.35 1.1-.55 1.8-.55 1.9 0 3.5 1.45 3.7 3.3.3-.1.6-.15.95-.15 1.6 0 2.9 1.3 2.9 2.9S19.95 15.3 18.35 15.3H11.9a.6.6 0 0 1-.6-.6V7.4c0-.2.1-.4.6-.5z"/></g></symbol><symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.4" cy="6.6" r="1.15" fill="currentColor" stroke="none"/></symbol><symbol id="i-bandcamp" viewBox="0 0 24 24"><path d="M2.6 17.6 8.9 6.4h12.5l-6.3 11.2z" fill="currentColor"/></symbol><symbol id="i-youtube" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4.2" fill="currentColor"/><path d="M10.2 8.9v6.2L15.6 12z" fill="#0B0B0D"/></symbol><symbol id="i-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M10.1 13.9a4.2 4.2 0 0 0 6 0l2.6-2.6a4.24 4.24 0 0 0-6-6l-1.3 1.3"/><path d="M13.9 10.1a4.2 4.2 0 0 0-6 0l-2.6 2.6a4.24 4.24 0 0 0 6 6l1.3-1.3"/></symbol></svg>
+<div class="wrap">
+
+<div class="top"><a class="back" href="../index.html#labels">← the label wall</a></div>
+
+<section class="artist label" id="sweat-it-out">
+<h1 class="aname">Sweat It Out</h1>
+<div class="links">
+<a class="lk ico mono2" href="https://www.beatport.com/label/sweat-it-out/9418" target="_blank" rel="noopener" aria-label="Beatport" title="Beatport">BP</a>
+<a class="lk ico" href="https://sweatitout.bandcamp.com/" target="_blank" rel="noopener" aria-label="Bandcamp" title="Bandcamp"><svg class="lki"><use href="#i-bandcamp"/></svg></a>
+<a class="lk ico" href="https://soundcloud.com/sweat-it-out-music" target="_blank" rel="noopener" aria-label="SoundCloud" title="SoundCloud"><svg class="lki"><use href="#i-soundcloud"/></svg></a>
+<a class="lk ico" href="https://www.instagram.com/sweatitoutmusic/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg class="lki"><use href="#i-instagram"/></svg></a>
+<a class="lk ico" href="https://www.youtube.com/channel/UCRmm-A4pwINMtf4q0DqyOZg" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube"><svg class="lki"><use href="#i-youtube"/></svg></a>
+<a class="lk ico" href="https://sweatitoutmusic.com/" target="_blank" rel="noopener" aria-label="Website" title="Website"><svg class="lki"><use href="#i-link"/></svg></a>
+<a class="lk ico mono2" href="https://www.discogs.com/label/128723-Sweat-It-Out!" target="_blank" rel="noopener" aria-label="Discogs" title="Discogs">DG</a>
+<a class="lk ico mono2" href="https://ra.co/labels/8498" target="_blank" rel="noopener" aria-label="Resident Advisor" title="Resident Advisor">RA</a>
+</div>
+<div class="meta">
+<span class="tag lane">either lane</span>
+<span class="tag">record label</span>
+</div>
+<div class="bio">
+<p><b>Sweat It Out</b> is a Sydney record label and, by its own account, "started by the late and great AJAX". Ajax was Adrian Thomas, a DJ and producer from the Bang Gang collective, who died in Melbourne in February 2013 after being hit by a truck. who else was in the room at the start depends on who you ask. the label's own copy names only Ajax. Mixmag in 2021 wrote that director Jamie Raeburn founded it in 2008 with Ajax and Matt Handley of Yolanda Be Cool. The Music Network, twice in October 2021, said it was founded in 2010 by Ajax, Handley and Raeburn. the year is the bigger problem, because the catalogue says 2008: SWEAT001, the Gameboy/Gamegirl EP "The Golden Ghetto Sex", and SWEATDS001 dated April 2008 both sit on Discogs, and the tenth anniversary vinyl in 2018 was titled "Sweat It Out 2008 - 2018". so we go with 2008 as the release-backed date and flag the 2010 claim as the odd one out. Raeburn runs it today, CEO in 2021 and managing director by 2026, and he also heads Central Station Records, a sister company the label has shared staff with since an October 2021 restructure while both are described as run independently.</p>
+<p>what it puts out is broad. Josh Kellett, general manager in 2018, said the label started as more of a dance and electronic label and then branched out across genres, and with no genre statement from the label and no tags visible on its Beatport page, we leave the genre tag off. the discography backs the breadth: Yolanda Be Cool and DCUP "We No Speak Americano" in 2010, What So Not's debut "7 Dollar Bill" in 2011 (a fresh-faced Flume was in the duo, per Mixmag), and <a href="../artists/rufus-du-sol.html">RÜFÜS DU SOL</a>'s first two albums, "Atlas" in 2013 and "Bloom" in 2016, with "Solace" following in 2018. <a href="../artists/dom-dolla.html">Dom Dolla</a> and <a href="../artists/go-freek.html">Go Freek</a>'s "Define" topped the ARIA club chart for nine weeks in 2015, Dom Dolla's "San Frandisco" won Best Dance Release at the 2020 ARIA Awards, <a href="../artists/purple-disco-machine.html">Purple Disco Machine</a>'s "Soulmatic" album came out here in 2017, and Luude's Colin Hay collaboration "Down Under" reached number 32 on the UK singles chart in January 2022. Mixmag's take is that Sweat It Out picked up where Modular left off. the first international signing, per The Music Network, was <a href="../artists/monkey-safari.html">Monkey Safari</a>.</p>
+<p>the imprint family takes some untangling. <a href="club-sweat.html">Club Sweat</a> is filed on Discogs as a sub-label of Sweat It Out, described on its Resident Advisor page as a "subsidiary label of Sweat It Out", and called "our sister label" in the label's own copy. it began as a compilation series on Sweat It Out in 2010 and got its own CLUBSWE catalogue in 2013, with Danny T as its head. the site also lists Love CLVB and a distribution arm called Get It Out, and a publishing wing, Sweat It Out Publishing, launched in February 2021 with Kobalt. the name itself has moved: the (P) lines read "Sweat It Out!" with an exclamation mark from 2015 to 2022 and plain "Sweat It Out" from 2023 on, which is why Discogs and RA still file it under the older spelling. distribution shifted too, Warner Music Australia on the (P) lines through 2023 and Sony or Columbia licensing on the recent Purple Disco Machine records. a Traxsource bio claims a 2012 nomination for best Australian indie label, which we could not confirm anywhere else.</p>
+<p>there is no mix series or podcast, but the writing camps are the recurring thing now: a first writers camp in 2021 with Dom Dolla and <a href="../artists/crooked-colours.html">Crooked Colours</a> among the participants, a Spotify EQUAL camp in Sydney in February 2025 directed by KLP, a Melbourne camp in May 2025, plus a 2026 Melbourne camp and a first Amsterdam camp that we have only seen as headlines. remixers on Sweat It Out releases count on this site, and a good chunk of the names below got in that way, on records like "Sundream", "Strangers", "Pump The Brakes" and "Candy". <a href="../artists/jamie-jones.html">Jamie Jones</a> and <a href="../artists/jazzy.html">Jazzy</a>'s "We Groovin" is a Helix Records record licensed to Sweat It Out with a SWEAT catalogue number, and <a href="../artists/kyle-watson.html">Kyle Watson</a>'s "I Got You" remixes came in under licence from This Ain't Bristol. Motez has a run of originals here from "Promise Me" in 2014 onward but no page on this site yet. NAAR (US) is the newest name below, "Like Me" from July 2026, confirmed by Deezer's label field. a further group of artists we track appear only on Club Sweat and are listed on <a href="club-sweat.html">that page</a>, not here. 36 artists we track have released on it, a confirmed floor from a partial catalogue sweep, not the full roster: <a href="../artists/andruss.html">Andruss</a>, <a href="../artists/ayybo.html">AYYBO</a>, <a href="../artists/chaney.html">CHANEY</a>, <a href="../artists/claptone.html">CLAPTONE</a>, <a href="../artists/crooked-colours.html">Crooked Colours</a>, <a href="../artists/dom-dolla.html">Dom Dolla</a>, <a href="../artists/flight-facilities.html">Flight Facilities</a>, <a href="../artists/franc-moody.html">Franc Moody</a>, <a href="../artists/funkerman.html">Funkerman</a>, <a href="../artists/gabss.html">Gabss</a>, <a href="../artists/go-freek.html">Go Freek</a>, <a href="../artists/hayden-james.html">Hayden James</a>, <a href="../artists/jaded.html">JADED</a>, <a href="../artists/jamie-jones.html">Jamie Jones</a>, <a href="../artists/jazzy.html">Jazzy</a>, <a href="../artists/john-summit.html">John Summit</a>, <a href="../artists/joshwa.html">JOSHWA</a>, <a href="../artists/kyle-watson.html">Kyle Watson</a>, <a href="../artists/lp-giobbi.html">LP Giobbi</a>, <a href="../artists/monkey-safari.html">Monkey Safari</a>, <a href="../artists/mousse-t.html">Mousse T.</a>, <a href="../artists/naar-us.html">NAAR (US)</a>, <a href="../artists/odd-mob.html">Odd Mob</a>, <a href="../artists/purple-disco-machine.html">Purple Disco Machine</a>, <a href="../artists/rl-grime.html">RL Grime</a>, <a href="../artists/roosevelt.html">Roosevelt</a>, <a href="../artists/rufus-du-sol.html">RÜFÜS DU SOL</a>, <a href="../artists/solomun.html">Solomun</a>, <a href="../artists/the-magician.html">The Magician</a>, <a href="../artists/tinlicker.html">Tinlicker</a>, <a href="../artists/torren-foot.html">Torren Foot</a>, <a href="../artists/volkoder.html">Volkoder</a>, <a href="../artists/wax-motif.html">WAX MOTIF</a>, <a href="../artists/will-clarke.html">Will Clarke</a>, <a href="../artists/will-k.html">WILL K</a>, <a href="../artists/yuksek.html">Yuksek</a></p>
+</div>
+<div class="facts">
+<div class="fact"><div class="k">founded</div><div class="v">2008, Sydney, per the label, Discogs, Mixmag and the first catalogue numbers. The Music Network said 2010 twice in October 2021, which the 2008 releases contradict. founders: the label credits Ajax (Adrian Thomas) alone, Mixmag says Jamie Raeburn with Ajax and Matt Handley, The Music Network says Ajax, Handley and Raeburn</div></div>
+<div class="fact"><div class="k">run by</div><div class="v">Jamie Raeburn, CEO in 2021 and managing director by 2026 per The Music Network, also head of Central Station Records. Matt Handley, director and A&amp;R. Josh Kellett, director of A&amp;R and creative across both labels since October 2021. Ajax died in February 2013</div></div>
+<div class="fact"><div class="k">based</div><div class="v">Sydney, Australia. an older label-supplied Traxsource bio says Sydney and Melbourne</div></div>
+<div class="fact"><div class="k">sister imprints</div><div class="v"><a href="club-sweat.html">Club Sweat</a>, a Discogs sub-label and RA "subsidiary label", called a sister label by the label itself, a compilation series from 2010 and a CLUBSWE catalogue from 2013. also Love CLVB, the Get It Out distribution arm, Sweat It Out Publishing (Kobalt, 2021) and the sister company Central Station Records</div></div>
+<div class="fact"><div class="k">not the same as</div><div class="v">the Spotify-owned "Sweat It Out" workout playlist, the SoundCloud accounts at /sweatitout and /clubsweat, and two Discogs entries the site itself marks DO NOT USE. the historic spelling is "Sweat It Out!", still used by Discogs and RA</div></div>
+<div class="fact"><div class="k">the series</div><div class="v">no podcast or mix series. compilations are historic: "Sweat it Out! Volume 1" mixed by Ajax and Miami Horror (2008), "Sweat It Out! Classics" (2015), "Sweat It Out 2008 - 2018" anniversary vinyl (2018). the writing camps (2021, Sydney and Melbourne in 2025, a 2026 Melbourne camp and an Amsterdam camp seen only as headlines) are the current recurring thing</div></div>
+<div class="fact"><div class="k">notable releases</div><div class="v">Gameboy/Gamegirl "The Golden Ghetto Sex" (SWEAT001, 2008), Yolanda Be Cool &amp; DCUP "We No Speak Americano" (2010), RÜFÜS "Atlas" (2013), Dom Dolla &amp; Go Freek "Define" (2015), Purple Disco Machine "Soulmatic" (2017), Dom Dolla "San Frandisco" (2019, ARIA Best Dance Release 2020), Luude feat. Colin Hay "Down Under" (2021, UK number 32)</div></div>
+<div class="fact"><div class="k">released on it</div><div class="v">36 artists we track have released on it, a confirmed floor from a partial catalogue sweep, not the full roster: <a href="../artists/andruss.html">Andruss</a>, <a href="../artists/ayybo.html">AYYBO</a>, <a href="../artists/chaney.html">CHANEY</a>, <a href="../artists/claptone.html">CLAPTONE</a>, <a href="../artists/crooked-colours.html">Crooked Colours</a>, <a href="../artists/dom-dolla.html">Dom Dolla</a>, <a href="../artists/flight-facilities.html">Flight Facilities</a>, <a href="../artists/franc-moody.html">Franc Moody</a>, <a href="../artists/funkerman.html">Funkerman</a>, <a href="../artists/gabss.html">Gabss</a>, <a href="../artists/go-freek.html">Go Freek</a>, <a href="../artists/hayden-james.html">Hayden James</a>, <a href="../artists/jaded.html">JADED</a>, <a href="../artists/jamie-jones.html">Jamie Jones</a>, <a href="../artists/jazzy.html">Jazzy</a>, <a href="../artists/john-summit.html">John Summit</a>, <a href="../artists/joshwa.html">JOSHWA</a>, <a href="../artists/kyle-watson.html">Kyle Watson</a>, <a href="../artists/lp-giobbi.html">LP Giobbi</a>, <a href="../artists/monkey-safari.html">Monkey Safari</a>, <a href="../artists/mousse-t.html">Mousse T.</a>, <a href="../artists/naar-us.html">NAAR (US)</a>, <a href="../artists/odd-mob.html">Odd Mob</a>, <a href="../artists/purple-disco-machine.html">Purple Disco Machine</a>, <a href="../artists/rl-grime.html">RL Grime</a>, <a href="../artists/roosevelt.html">Roosevelt</a>, <a href="../artists/rufus-du-sol.html">RÜFÜS DU SOL</a>, <a href="../artists/solomun.html">Solomun</a>, <a href="../artists/the-magician.html">The Magician</a>, <a href="../artists/tinlicker.html">Tinlicker</a>, <a href="../artists/torren-foot.html">Torren Foot</a>, <a href="../artists/volkoder.html">Volkoder</a>, <a href="../artists/wax-motif.html">WAX MOTIF</a>, <a href="../artists/will-clarke.html">Will Clarke</a>, <a href="../artists/will-k.html">WILL K</a>, <a href="../artists/yuksek.html">Yuksek</a></div></div>
+</div>
+<blockquote><p>"On Sweat, Purple Disco Machine crossing over in Europe was monumental for the label, our years of development paying off. At home: Dom Dolla's ARIA win in 2020 with 'San Frandisco' and his meteoric rise in the U.S. followed-on from the touring and triple j support on 'Take It' which saw his fan audience grow exponentially."</p><cite>&#8212; Jamie Raeburn, CEO, The Music Network</cite></blockquote>
+<p style="margin:26px 0 0;color:var(--steel);font-size:.85rem">the label's own playlist, official. the owner shows as "Sweat It Out", and the label site footer links to that same Spotify user, sweatitoutmusic.</p>
+<div class="player"><iframe src="https://open.spotify.com/embed/playlist/69shmnVKYZUWfH8WbzF8t5?utm_source=generator&amp;theme=0" loading="lazy" title="Sweat It Out playlist on Spotify"></iframe></div>
+<p style="margin:26px 0 0;color:var(--steel);font-size:.85rem">no mix series or podcast, checked 22 september 2026 on the RA label page, the label's soundcloud and a web search for label-run showcases. the compilations (Volume 1 in 2008, Classics in 2015, the 2008 to 2018 anniversary vinyl) are historic, and the writing camps are the current recurring thing. this is the label's soundcloud profile instead.</p>
+<div class="player tall"><iframe src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fsweat-it-out-music&color=%23ff1c02&auto_play=false&show_teaser=false" loading="lazy" title="Sweat It Out on SoundCloud"></iframe></div>
+</section>
+<nav class="pn"><a href="toolroom.html"><span class="lbl">← previous</span>Toolroom</a><a href="sola.html" style="text-align:right"><span class="lbl">next →</span>Sola</a></nav>
+<p class="note">every fact on this page is sourced or it is not on this page, and quotes are verbatim, spelling and all. the roster line links the artists we track who release here.</p>
+
+<footer>
+<p class="fine">groovesMAXXING · <a href="../index.html">home</a> · <a href="../roster.html">the roster</a> · <a href="../events.html">the radar</a> · <a href="../sets.html">the sets</a></p>
+</footer>
+
+</div>
+</body>
+</html>

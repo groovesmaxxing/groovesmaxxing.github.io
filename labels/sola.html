@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sola · groovesMAXXING</title>
+<meta name="description" content="Sola: Solardo's tech house label, based in Manchester. verified links and the artists we track on it.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<meta property="og:title" content="Sola · groovesMAXXING">
+<meta property="og:description" content="Sola: Solardo's tech house label, based in Manchester. verified links and the artists we track on it.">
+<meta property="og:image" content="https://groovesmaxxing.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--night:#0B0B0D;--racing:#FF1C02;--deep:#CC1400;--day:#F2F2EF;--steel:#8A8A93;--line:#26262b;--card:#141417}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--night);color:var(--day);font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:0 26px}
+a{color:inherit}
+.top{padding:34px 0 8px}
+.back{font-family:'Space Mono',monospace;font-size:.82rem;color:var(--steel);text-decoration:none;letter-spacing:.04em}
+.back:hover{color:var(--racing)}
+h1{font-weight:900;font-size:clamp(2.4rem,7vw,3.6rem);line-height:1.02;letter-spacing:-.02em;margin:14px 0 16px}
+.artist{padding:8px 0 10px}
+.aname{margin:0;font-weight:900;font-size:clamp(2rem,5.6vw,2.9rem);line-height:1.05;letter-spacing:-.02em}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 26px}
+.tag{font-family:'Space Mono',monospace;font-size:.76rem;letter-spacing:.06em;color:var(--steel);border:1px solid var(--line);border-radius:999px;padding:6px 13px}
+.tag.lane{color:var(--racing);border-color:rgba(255,28,2,.42)}
+.tag.badge{color:var(--day);border-color:rgba(242,242,239,.34);background:rgba(242,242,239,.05)}
+.bio p{color:#c9c9c4;font-size:1rem;line-height:1.72;margin-bottom:17px;max-width:660px}
+.bio p:last-child{margin-bottom:0}
+.bio b{color:var(--day);font-weight:600}
+blockquote{border-left:3px solid var(--racing);padding:2px 0 2px 20px;margin:24px 0;max-width:640px}
+blockquote p{color:var(--day);font-size:1.06rem;line-height:1.6;font-weight:600;margin-bottom:8px}
+blockquote cite{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);font-style:normal;letter-spacing:.04em}
+.facts{border-top:1px solid var(--line);margin-top:30px;padding-top:22px}
+.fact{display:flex;gap:18px;padding:9px 0;font-size:.94rem;line-height:1.5}
+.fact .k{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);letter-spacing:.05em;flex:none;width:132px;padding-top:3px}
+.fact .v{color:#c9c9c4}
+.links{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+.lk{font-family:'Space Mono',monospace;font-size:.79rem;letter-spacing:.04em;text-decoration:none;color:#c9c9c4;border:1px solid var(--line);border-radius:6px;padding:9px 14px;transition:border-color .15s,color .15s}
+.lk.ico{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;padding:0;border-radius:999px}
+.lki{width:17px;height:17px;display:block}
+.lk.ico.mono2{font-size:.72rem;letter-spacing:.06em;font-weight:700}
+.lk:hover{border-color:var(--racing);color:var(--racing)}
+.player{margin-top:28px;border-radius:12px;overflow:hidden}
+.player iframe{width:100%;height:152px;border:0;display:block}
+.player.tall{margin-top:10px}
+.player.tall iframe{height:352px}
+.note{font-family:'Space Mono',monospace;font-size:.78rem;color:var(--steel);line-height:1.7;margin-top:30px}
+footer{border-top:1px solid var(--line);margin-top:72px;padding:34px 0 60px}
+.fine{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel)}
+.bio a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#33333a}
+.bio a:hover{color:var(--racing);text-decoration-color:var(--racing)}
+.fact .v a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#33333a}
+.fact .v a:hover{color:var(--racing);text-decoration-color:var(--racing)}
+.artist{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:16px}
+.artist > *{grid-column:1 / -1}
+.artist > .aname{grid-column:1}
+.artist > .links{grid-column:2;grid-row:1;margin-top:0;justify-self:end;flex-wrap:nowrap}
+@media (max-width:640px){.artist > .aname{grid-column:1 / -1}.artist > .links{grid-column:1 / -1;grid-row:2;justify-self:start;margin-top:14px;flex-wrap:wrap}}
+
+.pn{display:flex;justify-content:space-between;gap:14px;border-top:1px solid var(--line);margin-top:52px;padding-top:26px}
+.pn a{font-family:'Space Mono',monospace;font-size:.8rem;color:var(--steel);text-decoration:none;max-width:46%}
+.pn a:hover{color:var(--racing)}
+.pn .lbl{display:block;font-size:.68rem;letter-spacing:.08em;margin-bottom:4px}
+</style>
+<link rel="canonical" href="https://groovesmaxxing.com/labels/sola">
+  <!-- gmx-seo start -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sola · groovesMAXXING">
+  <meta name="twitter:description" content="Sola: Solardo's tech house label, based in Manchester. verified links and the artists we track on it.">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Sola",
+  "url": "https://groovesmaxxing.com/labels/sola",
+  "description": "Sola: Solardo's tech house label, based in Manchester. verified links and the artists we track on it.",
+  "founder": [
+    { "@type": "Person", "name": "Mark Richards" },
+    { "@type": "Person", "name": "James Eliot" }
+  ],
+  "sameAs": [
+    "https://www.beatport.com/label/sola/63883",
+    "https://soundcloud.com/solamusicuk",
+    "https://www.instagram.com/solamusicuk/",
+    "https://www.discogs.com/label/1340136-Solä",
+    "https://ra.co/labels/15741"
+  ]
+}
+  </script>
+  <!-- gmx-seo end -->
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="i-spotify" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.4" fill="currentColor"/><path d="M7.1 9.5c3.1-.85 6.6-.6 9.2.9M7.6 12.6c2.6-.7 5.5-.5 7.7.8M8.1 15.6c2.1-.55 4.4-.4 6.1.65" stroke="#0B0B0D" stroke-width="1.5" stroke-linecap="round" fill="none"/></symbol><symbol id="i-soundcloud" viewBox="0 0 24 24"><g fill="currentColor"><rect x="1.6" y="11.4" width="1.3" height="5.2" rx=".65"/><rect x="4.1" y="9.6" width="1.3" height="7" rx=".65"/><rect x="6.6" y="8.4" width="1.3" height="8.2" rx=".65"/><rect x="9.1" y="10.2" width="1.3" height="6.4" rx=".65"/><path d="M11.9 6.9c.5-.35 1.1-.55 1.8-.55 1.9 0 3.5 1.45 3.7 3.3.3-.1.6-.15.95-.15 1.6 0 2.9 1.3 2.9 2.9S19.95 15.3 18.35 15.3H11.9a.6.6 0 0 1-.6-.6V7.4c0-.2.1-.4.6-.5z"/></g></symbol><symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.4" cy="6.6" r="1.15" fill="currentColor" stroke="none"/></symbol><symbol id="i-bandcamp" viewBox="0 0 24 24"><path d="M2.6 17.6 8.9 6.4h12.5l-6.3 11.2z" fill="currentColor"/></symbol><symbol id="i-youtube" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4.2" fill="currentColor"/><path d="M10.2 8.9v6.2L15.6 12z" fill="#0B0B0D"/></symbol><symbol id="i-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M10.1 13.9a4.2 4.2 0 0 0 6 0l2.6-2.6a4.24 4.24 0 0 0-6-6l-1.3 1.3"/><path d="M13.9 10.1a4.2 4.2 0 0 0-6 0l-2.6 2.6a4.24 4.24 0 0 0 6 6l1.3-1.3"/></symbol></svg>
+<div class="wrap">
+
+<div class="top"><a class="back" href="../index.html#labels">← the label wall</a></div>
+
+<section class="artist label" id="sola">
+<h1 class="aname">Sola</h1>
+<div class="links">
+<a class="lk ico mono2" href="https://www.beatport.com/label/sola/63883" target="_blank" rel="noopener" aria-label="Beatport" title="Beatport">BP</a>
+<a class="lk ico" href="https://soundcloud.com/solamusicuk" target="_blank" rel="noopener" aria-label="SoundCloud" title="SoundCloud"><svg class="lki"><use href="#i-soundcloud"/></svg></a>
+<a class="lk ico" href="https://www.instagram.com/solamusicuk/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg class="lki"><use href="#i-instagram"/></svg></a>
+<a class="lk ico mono2" href="https://www.discogs.com/label/1340136-Solä" target="_blank" rel="noopener" aria-label="Discogs" title="Discogs">DG</a>
+<a class="lk ico mono2" href="https://ra.co/labels/15741" target="_blank" rel="noopener" aria-label="Resident Advisor" title="Resident Advisor">RA</a>
+</div>
+<div class="meta">
+<span class="tag lane">either lane</span>
+<span class="tag">record label</span>
+</div>
+<div class="bio">
+<p><b>Sola</b> is the label <a href="../artists/solardo.html">Solardo</a>, the duo of Mark Richards and James Eliot, started because they had studio music with nowhere to put it. when it started depends on who you ask. Resident Advisor and Music Business Worldwide both say 2017, Discogs has Solardo releases on the label from August 2015 with Believe-style catalogue numbers, and Eliot told Mixmag they started the label around the same time they started Solardo. the SOLA numbered series, the one that runs to SOLA255 today, begins in 2017. the name has moved around too: Discogs and a 2017 DJ Mag piece spell it "Solä" with the diaeresis, Beatport, Deezer and the imprint string on releases say "Sola", press and Armada say "Sola Records", and the social handles are all solamusicuk. the label's own SoundCloud bio puts it in Manchester, Armada's press release says "Manchester and London".</p>
+<p>the label describes itself as a "forward-thinking UK independent record label founded by Solardo" that is "pushing cutting edge music to the open minded generation". Beatport's tags are mostly tech house with deep house, house and minimal around the edges, and Eliot told Mixmag in 2018 that Sola had its own sound and was, by his count, the third biggest tech house label on Beatport behind Hot Creations and Relief. the 2024 to 2026 output leans toward Latin tech and South American producers. early SOLA numbers went to Solardo, <a href="../artists/franky-rizardo.html">Franky Rizardo</a> and <a href="../artists/camelphat.html">CamelPhat</a>, and the 50th release in October 2018 was marked with a Solardo and CamelPhat collaboration, "Accelerator", and a DJ Mag At Work showcase in London with Secondcity, Del-30 and Mason Maynard. Eli Brown, Mason Maynard, Secondcity, Sonny Fodera, Shiba San and Hannah Wants have all released on it too, none of them on our roster.</p>
+<p>the messy part is ownership. on 14 December 2023 BEAT Music Fund, Armada Music's investment vehicle, bought the entire Sola back catalogue. since then new Sola releases sit on armadamusic.com and Armada's Bandcamp, visualizers go out on Armada Music TV, and the label's SoundCloud bio lists an armadamusic.com address for label management. whether Solardo still own or run the frontline label after the sale is not stated anywhere we found, so we are not claiming it either way. one odd detail: Armada's own press release for the deal names the founders as "Mark Foster and James Barlow", while every other source, including Music Business Worldwide and Record of the Day, says Mark Richards and James Eliot. the label had a sub-label, <b>Sola Nauts</b>, which Richards described in December 2020 as a label born out of lockdown for more experimental house and techno. it ran on Beatport from March 2021 to December 2023, and Beatport's Sola page mixes its tracks in with the parent's. <a href="../artists/tini-gessler.html">Tini Gessler</a>'s "Blue Sky" sits under Sola Nauts on Beatport but carries the plain Sola label on Deezer, which has no Sola Nauts string at all, so she is counted below. a second pass through Deezer's label field also added TEKO, Tony Romera and it's murph, the last on "Fetish" with Solardo and Ero808. a "Solardo Presents Sola Radio" show ran from June 2022 to July 2024 inside Solardo's podcast feed, which has since gone back to being "Solardo presents The Spot", a Solardo show rather than a label one.</p>
+<p>the thing that has kept going is the seasonal compilation: Sola Ibiza 2017, Sola Miami 2018, Sola ADE 2019, a "Lost Summer Sessions" edition in 2020 with a Beatport Live stream from Depot Mayfield, "New Beginnings" in 2021, "Sola presents South America" in 2024, and yearly Ibiza editions up to "Sola: Ibiza 2026". several of the names below rest on those compilations rather than solo EPs. 31 artists we track have released on it, a confirmed floor from a partial catalogue sweep, not the full roster: <a href="../artists/andrew-meller.html">Andrew Meller</a>, <a href="../artists/andruss.html">Andruss</a>, <a href="../artists/anotr.html">ANOTR</a>, <a href="../artists/biscits.html">Biscits</a>, <a href="../artists/bruno-furlan.html">Bruno Furlan</a>, <a href="../artists/buogo.html">Buogo</a>, <a href="../artists/camelphat.html">CamelPhat</a>, <a href="../artists/cid.html">CID</a>, <a href="../artists/cloonee.html">Cloonee</a>, <a href="../artists/fancy-inc.html">Fancy Inc</a>, <a href="../artists/franky-rizardo.html">Franky Rizardo</a>, <a href="../artists/funkerman.html">Funkerman</a>, <a href="../artists/iglesias.html">Iglesias</a>, <a href="../artists/it-s-murph.html">it's murph</a>, <a href="../artists/jay-de-lys.html">Jay de Lys</a>, <a href="../artists/martin-ikin.html">Martin Ikin</a>, <a href="../artists/mason-collective.html">Mason Collective</a>, <a href="../artists/piem.html">Piem</a>, <a href="../artists/ribguga.html">Ribguga</a>, <a href="../artists/rsquared.html">RSquared</a>, <a href="../artists/shermanology.html">Shermanology</a>, <a href="../artists/solardo.html">Solardo</a>, <a href="../artists/sosa.html">SOSA</a>, <a href="../artists/teko.html">TEKO</a>, <a href="../artists/tini-gessler.html">Tini Gessler</a>, <a href="../artists/tobehonest.html">TOBEHONEST</a>, <a href="../artists/tony-romera.html">Tony Romera</a>, <a href="../artists/twolate-ita.html">TWOLATE (ITA)</a>, <a href="../artists/volkoder.html">Volkoder</a>, <a href="../artists/wade.html">Wade</a>, <a href="../artists/will-clarke.html">Will Clarke</a></p>
+</div>
+<div class="facts">
+<div class="fact"><div class="k">founded</div><div class="v">by Mark Richards and James Eliot (Solardo). year disputed: Resident Advisor and Music Business Worldwide say 2017, Discogs lists label releases from August 2015, Eliot says it began around the same time as Solardo, and the SOLA numbered series starts in 2017. Armada's press release prints the founders as "Mark Foster and James Barlow", which no other source supports</div></div>
+<div class="fact"><div class="k">run by</div><div class="v">Solardo founded it. BEAT Music Fund (Armada Music) bought the back catalogue in December 2023 and label management now runs through an armadamusic.com address. whether Solardo still own the frontline label is unconfirmed</div></div>
+<div class="fact"><div class="k">based</div><div class="v">Manchester per the label's own SoundCloud bio, "Manchester and London" per Armada's press release</div></div>
+<div class="fact"><div class="k">sister imprints</div><div class="v">Sola Nauts, sub-label for more experimental house and techno, active on Beatport March 2021 to December 2023. Deezer carries no separate Sola Nauts label string, those records read as plain Sola there, so Beatport is the only route that separates them</div></div>
+<div class="fact"><div class="k">not the same as</div><div class="v">Headstrong's "Sola Records", a York trance label with its own Discogs page, website and YouTube channel, or the Japanese "Sola" on Discogs. neither is Solardo's label</div></div>
+<div class="fact"><div class="k">the series</div><div class="v">seasonal compilations, Sola Ibiza, Miami and ADE editions from Sola Ibiza 2017 (SOLA014) to Sola: Ibiza 2026 (SOLA254). "Solardo Presents Sola Radio" ran June 2022 to July 2024 and is not current</div></div>
+<div class="fact"><div class="k">notable releases</div><div class="v">Solardo "Planet Moog" (2015, earliest on Discogs), Solardo "On The Corner EP" (SOLA011, 2017), CamelPhat "Monsters EP" (SOLA016, 2017), Solardo &amp; CamelPhat "Accelerator" (SOLA050, 2018), "Sola presents South America" (SOLA213, 2024), Solardo "Wake Me Up" (SOLA255, 2026)</div></div>
+<div class="fact"><div class="k">released on it</div><div class="v">31 artists we track have released on it, a confirmed floor from a partial catalogue sweep, not the full roster: <a href="../artists/andrew-meller.html">Andrew Meller</a>, <a href="../artists/andruss.html">Andruss</a>, <a href="../artists/anotr.html">ANOTR</a>, <a href="../artists/biscits.html">Biscits</a>, <a href="../artists/bruno-furlan.html">Bruno Furlan</a>, <a href="../artists/buogo.html">Buogo</a>, <a href="../artists/camelphat.html">CamelPhat</a>, <a href="../artists/cid.html">CID</a>, <a href="../artists/cloonee.html">Cloonee</a>, <a href="../artists/fancy-inc.html">Fancy Inc</a>, <a href="../artists/franky-rizardo.html">Franky Rizardo</a>, <a href="../artists/funkerman.html">Funkerman</a>, <a href="../artists/iglesias.html">Iglesias</a>, <a href="../artists/it-s-murph.html">it's murph</a>, <a href="../artists/jay-de-lys.html">Jay de Lys</a>, <a href="../artists/martin-ikin.html">Martin Ikin</a>, <a href="../artists/mason-collective.html">Mason Collective</a>, <a href="../artists/piem.html">Piem</a>, <a href="../artists/ribguga.html">Ribguga</a>, <a href="../artists/rsquared.html">RSquared</a>, <a href="../artists/shermanology.html">Shermanology</a>, <a href="../artists/solardo.html">Solardo</a>, <a href="../artists/sosa.html">SOSA</a>, <a href="../artists/teko.html">TEKO</a>, <a href="../artists/tini-gessler.html">Tini Gessler</a>, <a href="../artists/tobehonest.html">TOBEHONEST</a>, <a href="../artists/tony-romera.html">Tony Romera</a>, <a href="../artists/twolate-ita.html">TWOLATE (ITA)</a>, <a href="../artists/volkoder.html">Volkoder</a>, <a href="../artists/wade.html">Wade</a>, <a href="../artists/will-clarke.html">Will Clarke</a></div></div>
+</div>
+<blockquote><p>"Sola now has got its own kind of sound, we don't wanna be putting out 130bpm techno EPs and stuff that could be played in Berghain on Sola."</p><cite>&#8212; James Eliot, co-founder (Solardo), Mixmag</cite></blockquote>
+<p style="margin:26px 0 0;color:var(--steel);font-size:.85rem">the label's own playlist, official. it runs from Solardo's Spotify account rather than a label account, and the description is written in the label's first person. we did not confirm the account's verification badge.</p>
+<div class="player"><iframe src="https://open.spotify.com/embed/playlist/0huUhh7U10L7aQJVMgLGB8?utm_source=generator&amp;theme=0" loading="lazy" title="Sola playlist on Spotify"></iframe></div>
+<p style="margin:26px 0 0;color:var(--steel);font-size:.85rem">the series: Sola's seasonal compilations, Ibiza, Miami and ADE editions running from Sola Ibiza 2017 to Sola: Ibiza 2026. the 2026 and 2025 editions were not found on Spotify, so this is "Sola presents Ibiza 2024" (SOLA218).</p>
+<div class="player tall"><iframe src="https://open.spotify.com/embed/album/7ijJNifUhgowupgS8SsDeD?utm_source=generator&amp;theme=0" loading="lazy" title="Sola presents Ibiza 2024 on Spotify"></iframe></div>
+</section>
+<nav class="pn"><a href="sweat-it-out.html"><span class="lbl">← previous</span>Sweat It Out</a><a href="afterlife.html" style="text-align:right"><span class="lbl">next →</span>Afterlife</a></nav>
+<p class="note">every fact on this page is sourced or it is not on this page, and quotes are verbatim, spelling and all. the roster line links the artists we track who release here.</p>
+
+<footer>
+<p class="fine">groovesMAXXING · <a href="../index.html">home</a> · <a href="../roster.html">the roster</a> · <a href="../events.html">the radar</a> · <a href="../sets.html">the sets</a></p>
+</footer>
+
+</div>
+</body>
+</html>
