@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experts Only · groovesMAXXING</title>
+<meta name="description" content="Experts Only: John Summit's label, renamed from Off The Grid Records in 2023. verified links and the artists we track on it.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<meta property="og:title" content="Experts Only · groovesMAXXING">
+<meta property="og:description" content="Experts Only: John Summit's label, renamed from Off The Grid Records in 2023. verified links and the artists we track on it.">
+<meta property="og:image" content="https://groovesmaxxing.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--night:#0B0B0D;--racing:#FF1C02;--deep:#CC1400;--day:#F2F2EF;--steel:#8A8A93;--line:#26262b;--card:#141417}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--night);color:var(--day);font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:0 26px}
+a{color:inherit}
+.top{padding:34px 0 8px}
+.back{font-family:'Space Mono',monospace;font-size:.82rem;color:var(--steel);text-decoration:none;letter-spacing:.04em}
+.back:hover{color:var(--racing)}
+h1{font-weight:900;font-size:clamp(2.4rem,7vw,3.6rem);line-height:1.02;letter-spacing:-.02em;margin:14px 0 16px}
+.artist{padding:8px 0 10px}
+.aname{margin:0;font-weight:900;font-size:clamp(2rem,5.6vw,2.9rem);line-height:1.05;letter-spacing:-.02em}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 26px}
+.tag{font-family:'Space Mono',monospace;font-size:.76rem;letter-spacing:.06em;color:var(--steel);border:1px solid var(--line);border-radius:999px;padding:6px 13px}
+.tag.lane{color:var(--racing);border-color:rgba(255,28,2,.42)}
+.tag.badge{color:var(--day);border-color:rgba(242,242,239,.34);background:rgba(242,242,239,.05)}
+.bio p{color:#c9c9c4;font-size:1rem;line-height:1.72;margin-bottom:17px;max-width:660px}
+.bio p:last-child{margin-bottom:0}
+.bio b{color:var(--day);font-weight:600}
+blockquote{border-left:3px solid var(--racing);padding:2px 0 2px 20px;margin:24px 0;max-width:640px}
+blockquote p{color:var(--day);font-size:1.06rem;line-height:1.6;font-weight:600;margin-bottom:8px}
+blockquote cite{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);font-style:normal;letter-spacing:.04em}
+.facts{border-top:1px solid var(--line);margin-top:30px;padding-top:22px}
+.fact{display:flex;gap:18px;padding:9px 0;font-size:.94rem;line-height:1.5}
+.fact .k{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);letter-spacing:.05em;flex:none;width:132px;padding-top:3px}
+.fact .v{color:#c9c9c4}
+.links{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+.lk{font-family:'Space Mono',monospace;font-size:.79rem;letter-spacing:.04em;text-decoration:none;color:#c9c9c4;border:1px solid var(--line);border-radius:6px;padding:9px 14px;transition:border-color .15s,color .15s}
+.lk.ico{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;padding:0;border-radius:999px}
+.lki{width:17px;height:17px;display:block}
+.lk.ico.mono2{font-size:.72rem;letter-spacing:.06em;font-weight:700}
+.lk:hover{border-color:var(--racing);color:var(--racing)}
+.player{margin-top:28px;border-radius:12px;overflow:hidden}
+.player iframe{width:100%;height:152px;border:0;display:block}
+.player.tall{margin-top:10px}
+.player.tall iframe{height:352px}
+.note{font-family:'Space Mono',monospace;font-size:.78rem;color:var(--steel);line-height:1.7;margin-top:30px}
+footer{border-top:1px solid var(--line);margin-top:72px;padding:34px 0 60px}
+.fine{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel)}
+.bio a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#33333a}
+.bio a:hover{color:var(--racing);text-decoration-color:var(--racing)}
+.fact .v a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#33333a}
+.fact .v a:hover{color:var(--racing);text-decoration-color:var(--racing)}
+.artist{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:16px}
+.artist > *{grid-column:1 / -1}
+.artist > .aname{grid-column:1}
+.artist > .links{grid-column:2;grid-row:1;margin-top:0;justify-self:end;flex-wrap:nowrap}
+@media (max-width:640px){.artist > .aname{grid-column:1 / -1}.artist > .links{grid-column:1 / -1;grid-row:2;justify-self:start;margin-top:14px;flex-wrap:wrap}}
+
+.pn{display:flex;justify-content:space-between;gap:14px;border-top:1px solid var(--line);margin-top:52px;padding-top:26px}
+.pn a{font-family:'Space Mono',monospace;font-size:.8rem;color:var(--steel);text-decoration:none;max-width:46%}
+.pn a:hover{color:var(--racing)}
+.pn .lbl{display:block;font-size:.68rem;letter-spacing:.08em;margin-bottom:4px}
+</style>
+<link rel="canonical" href="https://groovesmaxxing.com/labels/experts-only">
+  <!-- gmx-seo start -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Experts Only · groovesMAXXING">
+  <meta name="twitter:description" content="Experts Only: John Summit's label, renamed from Off The Grid Records in 2023. verified links and the artists we track on it.">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Experts Only",
+  "url": "https://groovesmaxxing.com/labels/experts-only",
+  "description": "Experts Only: John Summit's label, renamed from Off The Grid Records in 2023. verified links and the artists we track on it.",
+  "founder": [
+    { "@type": "Person", "name": "John Summit", "url": "https://groovesmaxxing.com/artists/john-summit.html" }
+  ],
+  "sameAs": [
+    "https://www.beatport.com/label/experts-only/103008",
+    "https://soundcloud.com/expertsonly",
+    "https://www.instagram.com/expertsonly/",
+    "https://www.discogs.com/label/3407479-Experts-Only",
+    "https://www.expertsonlyrecs.com/"
+  ]
+}
+  </script>
+  <!-- gmx-seo end -->
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="i-soundcloud" viewBox="0 0 24 24"><g fill="currentColor"><rect x="1.6" y="11.4" width="1.3" height="5.2" rx=".65"/><rect x="4.1" y="9.6" width="1.3" height="7" rx=".65"/><rect x="6.6" y="8.4" width="1.3" height="8.2" rx=".65"/><rect x="9.1" y="10.2" width="1.3" height="6.4" rx=".65"/><path d="M11.9 6.9c.5-.35 1.1-.55 1.8-.55 1.9 0 3.5 1.45 3.7 3.3.3-.1.6-.15.95-.15 1.6 0 2.9 1.3 2.9 2.9S19.95 15.3 18.35 15.3H11.9a.6.6 0 0 1-.6-.6V7.4c0-.2.1-.4.6-.5z"/></g></symbol><symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.4" cy="6.6" r="1.15" fill="currentColor" stroke="none"/></symbol></svg>
+<div class="wrap">
+
+<div class="top"><a class="back" href="../index.html#labels">← the label wall</a></div>
+
+<section class="artist label" id="experts-only">
+<h1 class="aname">Experts Only</h1>
+<div class="links">
+<a class="lk ico mono2" href="https://www.beatport.com/label/experts-only/103008" target="_blank" rel="noopener" aria-label="Beatport" title="Beatport">BP</a>
+<a class="lk ico" href="https://soundcloud.com/expertsonly" target="_blank" rel="noopener" aria-label="SoundCloud" title="SoundCloud"><svg class="lki"><use href="#i-soundcloud"/></svg></a>
+<a class="lk ico" href="https://www.instagram.com/expertsonly/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg class="lki"><use href="#i-instagram"/></svg></a>
+</div>
+<div class="meta">
+<span class="tag lane">either lane</span>
+<span class="tag">record label</span>
+<span class="tag">house</span>
+</div>
+<div class="bio">
+<p><b>Experts Only</b> is John Summit's label, sole founder in every source we checked. it launched as "Off The Grid Records" in march 2022, debut release "In Chicago" by Summit himself that may. in june 2023 it got hit with a cease and desist over a trademark conflict with an unrelated "Off The Grid Campout" events brand, and on 6 september 2023 the label relaunched under its current name, drawing on merch copy the team had already been using: "we had 'experts only' on [Off The Grid] merch that we released over a year ago. It wasn't like, 'Oh, we gotta rebrand, what name do we do?' and scrambling," Summit told Dancing Astronaut. the first single under the new name, Odd Mob &amp; Omnom's "Losing Control," hit #1 on Beatport within days.</p>
+<p>it runs as a real team, not a one-man shop: Toby Andrews (label manager, formerly president of Astralwerks), Jack David (head of marketing, formerly head of electronic music at UMG London), Will Weston (events), and Holt Harmon &amp; Parker Cohen of the management company Metatone, who oversee the label alongside Summit's other business interests. distribution runs through Darkroom Records as of early 2025. Summit on the A&amp;R filter, to Billboard: "my A&amp;R room is literally playing to a crowd of 10,000 people." and on picking demos: "The goal, really, is just music I'll play in my sets. When I listen to demos, it's like 'would I play this, yes or no?'"</p>
+<p>43 artists we track have released on it, listed below, the label's branded events series, the Experts Only Ski Weekender, runs annual editions in Vail and Whistler, named for Summit's own lifelong skiing habit and the "double black diamond" expert-run symbol on the label's logo. it has also run a branded festival in New York City with Kaskade and Cassian on the bill.</p>
+</div>
+<div class="facts">
+<div class="fact"><div class="k">founded</div><div class="v">march 2022 as Off The Grid Records, renamed Experts Only 6 september 2023</div></div>
+<div class="fact"><div class="k">run by</div><div class="v">John Summit, founder, with a team led by label manager Toby Andrews</div></div>
+<div class="fact"><div class="k">based</div><div class="v">no stated base beyond the events cities (Vail, Whistler, New York)</div></div>
+<div class="fact"><div class="k">not a release</div><div class="v">the label was originally called Off The Grid Records; renamed after a trademark dispute, not a rebrand of ambition</div></div>
+<div class="fact"><div class="k">notable releases</div><div class="v">"In Chicago" (2022, debut), "Losing Control" by Odd Mob &amp; Omnom (2023, first release under the current name, #1 on Beatport)</div></div>
+<div class="fact"><div class="k">released on it</div><div class="v">43 artists we track have released on it: <a href="../artists/ayybo.html">AYYBO</a>, <a href="../artists/adam-sellouk.html">Adam Sellouk</a>, <a href="../artists/adam-ten.html">Adam Ten</a>, <a href="../artists/alt-control.html">Alt Control</a>, <a href="../artists/broken-hill.html">Broken Hill</a>, <a href="../artists/cid.html">CID</a>, <a href="../artists/dansyn.html">Dansyn</a>, <a href="../artists/deeper-purpose.html">Deeper Purpose</a>, <a href="../artists/dinu.html">Dinu</a>, <a href="../artists/discip.html">Discip</a>, <a href="../artists/disco-lines.html">Disco Lines</a>, <a href="../artists/dodi.html">Dodi</a>, <a href="../artists/edip.html">EdiP</a>, <a href="../artists/emily-nash.html">Emily Nash</a>, <a href="../artists/enamour.html">Enamour</a>, <a href="../artists/g-pol.html">G-POL</a>, <a href="../artists/greg-99.html">GREG 99</a>, <a href="../artists/green-velvet.html">Green Velvet</a>, <a href="../artists/guz.html">Guz</a>, <a href="../artists/hills.html">HILLS</a>, <a href="../artists/john-summit.html">John Summit</a>, <a href="../artists/kamino.html">Kamino</a>, <a href="../artists/kaskade.html">Kaskade</a>, <a href="../artists/kyle-walker.html">Kyle Walker</a>, <a href="../artists/kyle-watson.html">Kyle Watson</a>, <a href="../artists/layton-giordani.html">Layton Giordani</a>, <a href="../artists/meduza.html">MEDUZA</a>, <a href="../artists/mau-p.html">Mau P</a>, <a href="../artists/max-styler.html">Max Styler</a>, <a href="../artists/millero.html">Millero</a>, <a href="../artists/no-static.html">NO STATIC</a>, <a href="../artists/odd-mob.html">Odd Mob</a>, <a href="../artists/pedroz.html">Pedroz</a>, <a href="../artists/rafael-cerato.html">Rafael Cerato</a>, <a href="../artists/ranger-trucco.html">Ranger Trucco</a>, <a href="../artists/roddy-lima.html">Roddy Lima</a>, <a href="../artists/script.html">SCRIPT</a>, <a href="../artists/sidepiece.html">SIDEPIECE</a>, <a href="../artists/sofi-tukker.html">SOFI TUKKER</a>, <a href="../artists/tini-gessler.html">Tini Gessler</a>, <a href="../artists/volac.html">VOLAC</a>, <a href="../artists/vinter.html">Vinter</a>, <a href="../artists/westend.html">Westend</a></div></div>
+</div>
+<blockquote><p>"my A&amp;R room is literally playing to a crowd of 10,000 people."</p><cite>— John Summit, Billboard</cite></blockquote>
+<p style="margin:26px 0 0;color:var(--steel);font-size:.85rem">no spotify label playlist confirmed, checked 21 september 2026, only individual tracks distributed by their own artists. this is the label's own soundcloud instead.</p>
+<div class="player tall"><iframe src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fexpertsonly&color=%23ff1c02&auto_play=false&show_teaser=false" loading="lazy" title="Experts Only on SoundCloud"></iframe></div>
+</section>
+<nav class="pn"><a href="diynamic.html"><span class="lbl">← previous</span>Diynamic</a><a href="tszr.html" style="text-align:right"><span class="lbl">next →</span>TSZR</a></nav>
+<p class="note">every fact on this page is sourced or it is not on this page, and quotes are verbatim, spelling and all. the roster line links the artists we track who release here.</p>
+
+<footer>
+<p class="fine">groovesMAXXING · <a href="../index.html">home</a> · <a href="../roster.html">the roster</a> · <a href="../events.html">the radar</a> · <a href="../sets.html">the sets</a></p>
+</footer>
+
+</div>
+</body>
+</html>

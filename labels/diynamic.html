@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diynamic · groovesMAXXING</title>
+<meta name="description" content="Diynamic: Solomun and Adriano Trolio's Hamburg house label since 2006. verified links and the artists we track on it.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<meta property="og:title" content="Diynamic · groovesMAXXING">
+<meta property="og:description" content="Diynamic: Solomun and Adriano Trolio's Hamburg house label since 2006. verified links and the artists we track on it.">
+<meta property="og:image" content="https://groovesmaxxing.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--night:#0B0B0D;--racing:#FF1C02;--deep:#CC1400;--day:#F2F2EF;--steel:#8A8A93;--line:#26262b;--card:#141417}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--night);color:var(--day);font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:0 26px}
+a{color:inherit}
+.top{padding:34px 0 8px}
+.back{font-family:'Space Mono',monospace;font-size:.82rem;color:var(--steel);text-decoration:none;letter-spacing:.04em}
+.back:hover{color:var(--racing)}
+h1{font-weight:900;font-size:clamp(2.4rem,7vw,3.6rem);line-height:1.02;letter-spacing:-.02em;margin:14px 0 16px}
+.artist{padding:8px 0 10px}
+.aname{margin:0;font-weight:900;font-size:clamp(2rem,5.6vw,2.9rem);line-height:1.05;letter-spacing:-.02em}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 26px}
+.tag{font-family:'Space Mono',monospace;font-size:.76rem;letter-spacing:.06em;color:var(--steel);border:1px solid var(--line);border-radius:999px;padding:6px 13px}
+.tag.lane{color:var(--racing);border-color:rgba(255,28,2,.42)}
+.tag.badge{color:var(--day);border-color:rgba(242,242,239,.34);background:rgba(242,242,239,.05)}
+.bio p{color:#c9c9c4;font-size:1rem;line-height:1.72;margin-bottom:17px;max-width:660px}
+.bio p:last-child{margin-bottom:0}
+.bio b{color:var(--day);font-weight:600}
+blockquote{border-left:3px solid var(--racing);padding:2px 0 2px 20px;margin:24px 0;max-width:640px}
+blockquote p{color:var(--day);font-size:1.06rem;line-height:1.6;font-weight:600;margin-bottom:8px}
+blockquote cite{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);font-style:normal;letter-spacing:.04em}
+.facts{border-top:1px solid var(--line);margin-top:30px;padding-top:22px}
+.fact{display:flex;gap:18px;padding:9px 0;font-size:.94rem;line-height:1.5}
+.fact .k{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);letter-spacing:.05em;flex:none;width:132px;padding-top:3px}
+.fact .v{color:#c9c9c4}
+.links{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+.lk{font-family:'Space Mono',monospace;font-size:.79rem;letter-spacing:.04em;text-decoration:none;color:#c9c9c4;border:1px solid var(--line);border-radius:6px;padding:9px 14px;transition:border-color .15s,color .15s}
+.lk.ico{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;padding:0;border-radius:999px}
+.lki{width:17px;height:17px;display:block}
+.lk.ico.mono2{font-size:.72rem;letter-spacing:.06em;font-weight:700}
+.lk:hover{border-color:var(--racing);color:var(--racing)}
+.player{margin-top:28px;border-radius:12px;overflow:hidden}
+.player iframe{width:100%;height:152px;border:0;display:block}
+.player.tall{margin-top:10px}
+.player.tall iframe{height:352px}
+.note{font-family:'Space Mono',monospace;font-size:.78rem;color:var(--steel);line-height:1.7;margin-top:30px}
+footer{border-top:1px solid var(--line);margin-top:72px;padding:34px 0 60px}
+.fine{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel)}
+.bio a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#33333a}
+.bio a:hover{color:var(--racing);text-decoration-color:var(--racing)}
+.fact .v a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#33333a}
+.fact .v a:hover{color:var(--racing);text-decoration-color:var(--racing)}
+.artist{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:16px}
+.artist > *{grid-column:1 / -1}
+.artist > .aname{grid-column:1}
+.artist > .links{grid-column:2;grid-row:1;margin-top:0;justify-self:end;flex-wrap:nowrap}
+@media (max-width:640px){.artist > .aname{grid-column:1 / -1}.artist > .links{grid-column:1 / -1;grid-row:2;justify-self:start;margin-top:14px;flex-wrap:wrap}}
+
+.pn{display:flex;justify-content:space-between;gap:14px;border-top:1px solid var(--line);margin-top:52px;padding-top:26px}
+.pn a{font-family:'Space Mono',monospace;font-size:.8rem;color:var(--steel);text-decoration:none;max-width:46%}
+.pn a:hover{color:var(--racing)}
+.pn .lbl{display:block;font-size:.68rem;letter-spacing:.08em;margin-bottom:4px}
+</style>
+<link rel="canonical" href="https://groovesmaxxing.com/labels/diynamic">
+  <!-- gmx-seo start -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Diynamic · groovesMAXXING">
+  <meta name="twitter:description" content="Diynamic: Solomun and Adriano Trolio's Hamburg house label since 2006. verified links and the artists we track on it.">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Diynamic",
+  "url": "https://groovesmaxxing.com/labels/diynamic",
+  "description": "Diynamic: Solomun and Adriano Trolio's Hamburg house label since 2006. verified links and the artists we track on it.",
+  "founder": [
+    { "@type": "Person", "name": "Solomun", "url": "https://groovesmaxxing.com/artists/solomun.html" },
+    { "@type": "Person", "name": "Adriano Trolio" }
+  ],
+  "sameAs": [
+    "https://www.beatport.com/label/diynamic-music/255853",
+    "https://diynamic.bandcamp.com/",
+    "https://soundcloud.com/diynamic-music",
+    "https://www.instagram.com/diynamicmusic/",
+    "https://www.discogs.com/label/62555-Diynamic-Music",
+    "https://ra.co/labels/1006"
+  ]
+}
+  </script>
+  <!-- gmx-seo end -->
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="i-soundcloud" viewBox="0 0 24 24"><g fill="currentColor"><rect x="1.6" y="11.4" width="1.3" height="5.2" rx=".65"/><rect x="4.1" y="9.6" width="1.3" height="7" rx=".65"/><rect x="6.6" y="8.4" width="1.3" height="8.2" rx=".65"/><rect x="9.1" y="10.2" width="1.3" height="6.4" rx=".65"/><path d="M11.9 6.9c.5-.35 1.1-.55 1.8-.55 1.9 0 3.5 1.45 3.7 3.3.3-.1.6-.15.95-.15 1.6 0 2.9 1.3 2.9 2.9S19.95 15.3 18.35 15.3H11.9a.6.6 0 0 1-.6-.6V7.4c0-.2.1-.4.6-.5z"/></g></symbol><symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.4" cy="6.6" r="1.15" fill="currentColor" stroke="none"/></symbol><symbol id="i-bandcamp" viewBox="0 0 24 24"><path d="M2.6 17.6 8.9 6.4h12.5l-6.3 11.2z" fill="currentColor"/></symbol></svg>
+<div class="wrap">
+
+<div class="top"><a class="back" href="../index.html#labels">← the label wall</a></div>
+
+<section class="artist label" id="diynamic">
+<h1 class="aname">Diynamic</h1>
+<div class="links">
+<a class="lk ico mono2" href="https://www.beatport.com/label/diynamic-music/255853" target="_blank" rel="noopener" aria-label="Beatport" title="Beatport">BP</a>
+<a class="lk ico" href="https://diynamic.bandcamp.com/" target="_blank" rel="noopener" aria-label="Bandcamp" title="Bandcamp"><svg class="lki"><use href="#i-bandcamp"/></svg></a>
+<a class="lk ico" href="https://soundcloud.com/diynamic-music" target="_blank" rel="noopener" aria-label="SoundCloud" title="SoundCloud"><svg class="lki"><use href="#i-soundcloud"/></svg></a>
+<a class="lk ico" href="https://www.instagram.com/diynamicmusic/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg class="lki"><use href="#i-instagram"/></svg></a>
+</div>
+<div class="meta">
+<span class="tag lane">either lane</span>
+<span class="tag">record label</span>
+<span class="tag">house</span>
+</div>
+<div class="bio">
+<p><b>Diynamic</b> launched in Hamburg on 4 november 2006, founded by Mladen "Solomun" and Adriano Trolio, a local promoter who'd been bringing electro-house to the city's parties since 2002. the name is short for "do it yourself." Solomun told DJ Mag plainly why they started it: "we had to do something on our own where we could invite all of our friends." early releases leaned minimal and Detroit-influenced; by around 2013 the house sound had shifted toward vocals, slower tempos and heavier basslines, the sound most people associate with the label now.</p>
+<p>it operates as a real company, Diynamic GmbH &amp; Co. KG, not just a side project. "Diynamic still is and will be a platform for my artists, definitely," Solomun said about ten years in. "We want to manage them – it's not like we're just doing the label." two sub-imprints have spun out of it: 2DIY4, launched 2011 for material that "does not necessarily fit the Diynamic concept," and Diynamic Revisited.</p>
+<p>40 artists we track have released on it, listed below, the label runs a recurring guest-mix series, the Diynamic Radio Show, archived on its soundcloud, plus Solomun's own weekly Ibiza residency "Solomun +1" at Pacha and the touring Diynamic Festival, which debuted in Amsterdam in 2013. catalog artists include Stimming, H.O.S.H, Kollektiv Turmstraße, Adriatique, ARTBAT and David August alongside Solomun himself.</p>
+</div>
+<div class="facts">
+<div class="fact"><div class="k">founded</div><div class="v">4 november 2006, Hamburg, Germany</div></div>
+<div class="fact"><div class="k">run by</div><div class="v">Mladen "Solomun" and Adriano Trolio, now operating as Diynamic GmbH &amp; Co. KG</div></div>
+<div class="fact"><div class="k">based</div><div class="v">Hamburg, Germany</div></div>
+<div class="fact"><div class="k">family</div><div class="v">sub-imprints 2DIY4 (2011) and Diynamic Revisited</div></div>
+<div class="fact"><div class="k">notable releases</div><div class="v">catalog spans Solomun, Stimming, H.O.S.H, Kollektiv Turmstraße, Adriatique, ARTBAT and David August</div></div>
+<div class="fact"><div class="k">released on it</div><div class="v">40 artists we track have released on it: <a href="../artists/artbat.html">ARTBAT</a>, <a href="../artists/adam-port.html">Adam Port</a>, <a href="../artists/adam-ten.html">Adam Ten</a>, <a href="../artists/adriatique.html">Adriatique</a>, <a href="../artists/amour-propre.html">Amour Propre</a>, <a href="../artists/ben-sterling.html">Ben Sterling</a>, <a href="../artists/betoko.html">Betoko</a>, <a href="../artists/blank-sense.html">Blank Sense</a>, <a href="../artists/broken-hill.html">Broken Hill</a>, <a href="../artists/buka.html">Buka</a>, <a href="../artists/camelphat.html">CamelPhat</a>, <a href="../artists/darco.html">Darco</a>, <a href="../artists/deomid.html">Deomid</a>, <a href="../artists/enamour.html">Enamour</a>, <a href="../artists/franksy.html">Franksy</a>, <a href="../artists/genesi.html">GENESI</a>, <a href="../artists/greggio.html">Greggio</a>, <a href="../artists/id-id.html">ID ID</a>, <a href="../artists/jonathan.html">Jonathan</a>, <a href="../artists/josh-gigante.html">Josh Gigante</a>, <a href="../artists/kimonos.html">KIMONOS</a>, <a href="../artists/konstantin-kobra.html">Konstantin Kobra</a>, <a href="../artists/maxi-meraki.html">MAXI MERAKI</a>, <a href="../artists/meduza.html">MEDUZA</a>, <a href="../artists/malive.html">Malive</a>, <a href="../artists/mau-p.html">Mau P</a>, <a href="../artists/max-styler.html">Max Styler</a>, <a href="../artists/nala.html">Nala</a>, <a href="../artists/notre-dame.html">Notre Dame</a>, <a href="../artists/peredel.html">Peredel</a>, <a href="../artists/rafael-cerato.html">Rafael Cerato</a>, <a href="../artists/rem-siman.html">Rem Siman</a>, <a href="../artists/solomun.html">Solomun</a>, <a href="../artists/sonickraft.html">Sonickraft</a>, <a href="../artists/super-flu.html">Super Flu</a>, <a href="../artists/tiga.html">Tiga</a>, <a href="../artists/ugo-banchi.html">Ugo Banchi</a>, <a href="../artists/vintage-culture.html">Vintage Culture</a>, <a href="../artists/volkoder.html">Volkoder</a>, <a href="../artists/welker.html">WELKER</a></div></div>
+</div>
+<blockquote><p>"Diynamic still is and will be a platform for my artists, definitely."</p><cite>— Solomun, DJ Mag</cite></blockquote>
+<p style="margin:26px 0 0;color:var(--steel);font-size:.85rem">no spotify label playlist confirmed, checked 21 september 2026, only individual tracks distributed by their own artists. this is the label's own soundcloud instead.</p>
+<div class="player tall"><iframe src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fdiynamic-music&color=%23ff1c02&auto_play=false&show_teaser=false" loading="lazy" title="Diynamic on SoundCloud"></iframe></div>
+</section>
+<nav class="pn"><a href="collecting-dots.html"><span class="lbl">← previous</span>Collecting Dots</a><a href="experts-only.html" style="text-align:right"><span class="lbl">next →</span>Experts Only</a></nav>
+<p class="note">every fact on this page is sourced or it is not on this page, and quotes are verbatim, spelling and all. the roster line links the artists we track who release here.</p>
+
+<footer>
+<p class="fine">groovesMAXXING · <a href="../index.html">home</a> · <a href="../roster.html">the roster</a> · <a href="../events.html">the radar</a> · <a href="../sets.html">the sets</a></p>
+</footer>
+
+</div>
+</body>
+</html>

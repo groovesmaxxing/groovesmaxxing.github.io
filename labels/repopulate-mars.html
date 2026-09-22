@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Repopulate Mars · groovesMAXXING</title>
+<meta name="description" content="Repopulate Mars: Lee Foss's 2016 house/tech house label, not Hot Since 82's. verified links and the artists we track on it.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<meta property="og:title" content="Repopulate Mars · groovesMAXXING">
+<meta property="og:description" content="Repopulate Mars: Lee Foss's 2016 house/tech house label, not Hot Since 82's. verified links and the artists we track on it.">
+<meta property="og:image" content="https://groovesmaxxing.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--night:#0B0B0D;--racing:#FF1C02;--deep:#CC1400;--day:#F2F2EF;--steel:#8A8A93;--line:#26262b;--card:#141417}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--night);color:var(--day);font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:0 26px}
+a{color:inherit}
+.top{padding:34px 0 8px}
+.back{font-family:'Space Mono',monospace;font-size:.82rem;color:var(--steel);text-decoration:none;letter-spacing:.04em}
+.back:hover{color:var(--racing)}
+h1{font-weight:900;font-size:clamp(2.4rem,7vw,3.6rem);line-height:1.02;letter-spacing:-.02em;margin:14px 0 16px}
+.artist{padding:8px 0 10px}
+.aname{margin:0;font-weight:900;font-size:clamp(2rem,5.6vw,2.9rem);line-height:1.05;letter-spacing:-.02em}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 26px}
+.tag{font-family:'Space Mono',monospace;font-size:.76rem;letter-spacing:.06em;color:var(--steel);border:1px solid var(--line);border-radius:999px;padding:6px 13px}
+.tag.lane{color:var(--racing);border-color:rgba(255,28,2,.42)}
+.tag.badge{color:var(--day);border-color:rgba(242,242,239,.34);background:rgba(242,242,239,.05)}
+.bio p{color:#c9c9c4;font-size:1rem;line-height:1.72;margin-bottom:17px;max-width:660px}
+.bio p:last-child{margin-bottom:0}
+.bio b{color:var(--day);font-weight:600}
+blockquote{border-left:3px solid var(--racing);padding:2px 0 2px 20px;margin:24px 0;max-width:640px}
+blockquote p{color:var(--day);font-size:1.06rem;line-height:1.6;font-weight:600;margin-bottom:8px}
+blockquote cite{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);font-style:normal;letter-spacing:.04em}
+.facts{border-top:1px solid var(--line);margin-top:30px;padding-top:22px}
+.fact{display:flex;gap:18px;padding:9px 0;font-size:.94rem;line-height:1.5}
+.fact .k{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);letter-spacing:.05em;flex:none;width:132px;padding-top:3px}
+.fact .v{color:#c9c9c4}
+.links{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+.lk{font-family:'Space Mono',monospace;font-size:.79rem;letter-spacing:.04em;text-decoration:none;color:#c9c9c4;border:1px solid var(--line);border-radius:6px;padding:9px 14px;transition:border-color .15s,color .15s}
+.lk.ico{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;padding:0;border-radius:999px}
+.lki{width:17px;height:17px;display:block}
+.lk.ico.mono2{font-size:.72rem;letter-spacing:.06em;font-weight:700}
+.lk:hover{border-color:var(--racing);color:var(--racing)}
+.player{margin-top:28px;border-radius:12px;overflow:hidden}
+.player iframe{width:100%;height:152px;border:0;display:block}
+.player.tall{margin-top:10px}
+.player.tall iframe{height:352px}
+.note{font-family:'Space Mono',monospace;font-size:.78rem;color:var(--steel);line-height:1.7;margin-top:30px}
+footer{border-top:1px solid var(--line);margin-top:72px;padding:34px 0 60px}
+.fine{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel)}
+.bio a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#33333a}
+.bio a:hover{color:var(--racing);text-decoration-color:var(--racing)}
+.fact .v a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#33333a}
+.fact .v a:hover{color:var(--racing);text-decoration-color:var(--racing)}
+.artist{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:16px}
+.artist > *{grid-column:1 / -1}
+.artist > .aname{grid-column:1}
+.artist > .links{grid-column:2;grid-row:1;margin-top:0;justify-self:end;flex-wrap:nowrap}
+@media (max-width:640px){.artist > .aname{grid-column:1 / -1}.artist > .links{grid-column:1 / -1;grid-row:2;justify-self:start;margin-top:14px;flex-wrap:wrap}}
+
+.pn{display:flex;justify-content:space-between;gap:14px;border-top:1px solid var(--line);margin-top:52px;padding-top:26px}
+.pn a{font-family:'Space Mono',monospace;font-size:.8rem;color:var(--steel);text-decoration:none;max-width:46%}
+.pn a:hover{color:var(--racing)}
+.pn .lbl{display:block;font-size:.68rem;letter-spacing:.08em;margin-bottom:4px}
+</style>
+<link rel="canonical" href="https://groovesmaxxing.com/labels/repopulate-mars">
+  <!-- gmx-seo start -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Repopulate Mars · groovesMAXXING">
+  <meta name="twitter:description" content="Repopulate Mars: Lee Foss's 2016 house/tech house label, not Hot Since 82's. verified links and the artists we track on it.">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Repopulate Mars",
+  "url": "https://groovesmaxxing.com/labels/repopulate-mars",
+  "description": "Repopulate Mars: Lee Foss's 2016 house/tech house label, not Hot Since 82's. verified links and the artists we track on it.",
+  "founder": [
+    { "@type": "Person", "name": "Lee Foss" }
+  ],
+  "sameAs": [
+    "https://www.repopulatemars.com",
+    "https://www.beatport.com/label/repopulate-mars/54131",
+    "https://www.discogs.com/label/1000889-Repopulate-Mars",
+    "https://soundcloud.com/repopulatemars",
+    "https://www.instagram.com/repopulatemars",
+    "https://www.facebook.com/repopulatemars",
+    "https://www.youtube.com/@repopulatemars"
+  ]
+}
+  </script>
+  <!-- gmx-seo end -->
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="i-soundcloud" viewBox="0 0 24 24"><g fill="currentColor"><rect x="1.6" y="11.4" width="1.3" height="5.2" rx=".65"/><rect x="4.1" y="9.6" width="1.3" height="7" rx=".65"/><rect x="6.6" y="8.4" width="1.3" height="8.2" rx=".65"/><rect x="9.1" y="10.2" width="1.3" height="6.4" rx=".65"/><path d="M11.9 6.9c.5-.35 1.1-.55 1.8-.55 1.9 0 3.5 1.45 3.7 3.3.3-.1.6-.15.95-.15 1.6 0 2.9 1.3 2.9 2.9S19.95 15.3 18.35 15.3H11.9a.6.6 0 0 1-.6-.6V7.4c0-.2.1-.4.6-.5z"/></g></symbol><symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.4" cy="6.6" r="1.15" fill="currentColor" stroke="none"/></symbol><symbol id="i-youtube" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4.2" fill="currentColor"/><path d="M10.2 8.9v6.2L15.6 12z" fill="#0B0B0D"/></symbol></svg>
+<div class="wrap">
+
+<div class="top"><a class="back" href="../index.html#labels">← the label wall</a></div>
+
+<section class="artist label" id="repopulate-mars">
+<h1 class="aname">Repopulate Mars</h1>
+<div class="links">
+<a class="lk ico mono2" href="https://www.beatport.com/label/repopulate-mars/54131" target="_blank" rel="noopener" aria-label="Beatport" title="Beatport">BP</a>
+<a class="lk ico" href="https://soundcloud.com/repopulatemars" target="_blank" rel="noopener" aria-label="SoundCloud" title="SoundCloud"><svg class="lki"><use href="#i-soundcloud"/></svg></a>
+<a class="lk ico" href="https://www.instagram.com/repopulatemars" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg class="lki"><use href="#i-instagram"/></svg></a>
+<a class="lk ico" href="https://www.youtube.com/@repopulatemars" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube"><svg class="lki"><use href="#i-youtube"/></svg></a>
+</div>
+<div class="meta">
+<span class="tag lane">either lane</span>
+<span class="tag">record label</span>
+<span class="tag">house · tech house</span>
+</div>
+<div class="bio">
+<p><b>Repopulate Mars</b> is Lee Foss's label, founded in 2016. it is not, as we'd first assumed, a Hot Since 82 project, we found nothing anywhere connecting the two, and Hot Since 82 runs his own separate label, Knee Deep In Sound. Foss is sole founder and label head, Discogs' own profile reads "US label founded by Lee Foss." it grew out of an existing "Repopulate Mars" event series with a cosmic visual theme, and Foss started it, in his own words to DJ Mag, as "a great way to offer an alternative to Hot Creations which is so popular that we simply can't release more than a fraction of the songs that we like." Hot Creations is the tech house label Foss co-runs with Jamie Jones.</p>
+<p>on the label's A&amp;R approach, Foss told Beatportal: "on the label side, I'm just looking to tell the story of my favorite tunes. I try not to get bogged down in genres. I try to find the stuff that grabs my ear and interests me." and on the sound he gravitates to: "I'm a big fan of basslines that are either the lead melody or just ripping and big and strong. for me, that's what I hear first." the debut release, Detlef's "Swagon EP" (2017), sampling Soulja Boy's "Turn My Swag On," is credited by Beatportal as the release that broke the label internationally.</p>
+<p>Foss is based in the US, Discogs and a 2021 interview place him in Topanga, California, originally from Chicago. the label's own bandcamp page lists "London, UK" as its location, which conflicts with every other source we checked and looks like stale or default metadata rather than a real base, we're flagging it rather than repeating it as fact.</p>
+<p>53 artists we track have released on it, listed below. two sister labels have spun off it, South Of Saturn (2019, "a rawer sound," per Foss) and North Of Neptune. the label also runs a recurring touring club-night series across New York, Chicago, Detroit and Los Angeles, and a "Repopulate Mars Radio" mix series on its own soundcloud. DJ Mag's 2018 "Best of North America" feature named it in its Breakthrough Label category.</p>
+</div>
+<div class="facts">
+<div class="fact"><div class="k">founded</div><div class="v">2016, by Lee Foss, sole founder</div></div>
+<div class="fact"><div class="k">run by</div><div class="v">Lee Foss</div></div>
+<div class="fact"><div class="k">based</div><div class="v">United States, Foss himself in Topanga, California per a 2021 interview. the label's own bandcamp lists London, UK, which we could not corroborate anywhere else</div></div>
+<div class="fact"><div class="k">not the same as</div><div class="v">not connected to Hot Since 82, whose own label is the separate Knee Deep In Sound</div></div>
+<div class="fact"><div class="k">notable releases</div><div class="v">Detlef "Swagon EP" (RPM008, 2017, breakout), John Summit "Beauty Sleep" (RPM094, 2021, reached #1 overall on Beatport), Mau P "Drugs From Amsterdam" (RPM142, 2022)</div></div>
+<div class="fact"><div class="k">released on it</div><div class="v">53 artists we track have released on it: <a href="../artists/3beat.html">3Beat</a>, <a href="../artists/avilo.html">Avilo</a>, <a href="../artists/buja-br.html">BUJA (BR)</a>, <a href="../artists/balanka.html">Balanka</a>, <a href="../artists/ben-sterling.html">Ben Sterling</a>, <a href="../artists/blank-sense.html">Blank Sense</a>, <a href="../artists/braydon-terzo.html">Braydon Terzo</a>, <a href="../artists/bruno-furlan.html">Bruno Furlan</a>, <a href="../artists/cid.html">CID</a>, <a href="../artists/camelphat.html">CamelPhat</a>, <a href="../artists/chapter-verse.html">Chapter &amp; Verse</a>, <a href="../artists/chris-lake.html">Chris Lake</a>, <a href="../artists/cloonee.html">Cloonee</a>, <a href="../artists/dj-susan.html">DJ Susan</a>, <a href="../artists/dont-blink.html">DONT BLINK</a>, <a href="../artists/dansyn.html">Dansyn</a>, <a href="../artists/deeper-purpose.html">Deeper Purpose</a>, <a href="../artists/franksy.html">Franksy</a>, <a href="../artists/greg-br.html">GREG (BR)</a>, <a href="../artists/gabss.html">Gabss</a>, <a href="../artists/greggio.html">Greggio</a>, <a href="../artists/hills.html">HILLS</a>, <a href="../artists/jaded.html">JADED</a>, <a href="../artists/jay-de-lys.html">Jay de Lys</a>, <a href="../artists/john-summit.html">John Summit</a>, <a href="../artists/justin-rabin.html">Justin Rabin</a>, <a href="../artists/kormak.html">Kormak</a>, <a href="../artists/kyle-walker.html">Kyle Walker</a>, <a href="../artists/lee-foss.html">Lee Foss</a>, <a href="../artists/matroda.html">Matroda</a>, <a href="../artists/mau-p.html">Mau P</a>, <a href="../artists/max-dean.html">Max Dean</a>, <a href="../artists/max-styler.html">Max Styler</a>, <a href="../artists/michael-bibi.html">Michael Bibi</a>, <a href="../artists/nightfunk.html">NightFunk</a>, <a href="../artists/peace-maker.html">PEACE MAKER!</a>, <a href="../artists/polovich.html">POLOVICH</a>, <a href="../artists/pedroz.html">Pedroz</a>, <a href="../artists/piem.html">Piem</a>, <a href="../artists/rello.html">Rello</a>, <a href="../artists/roddy-lima.html">Roddy Lima</a>, <a href="../artists/shermanology.html">Shermanology</a>, <a href="../artists/solardo.html">Solardo</a>, <a href="../artists/tobehonest.html">TOBEHONEST</a>, <a href="../artists/trace.html">Trace</a>, <a href="../artists/volac.html">VOLAC</a>, <a href="../artists/vintage-culture.html">Vintage Culture</a>, <a href="../artists/viot.html">Viot</a>, <a href="../artists/void.html">Void</a>, <a href="../artists/volkoder.html">Volkoder</a>, <a href="../artists/welker.html">WELKER</a>, <a href="../artists/wax-motif.html">Wax Motif</a>, <a href="../artists/westend.html">Westend</a></div></div>
+</div>
+<blockquote><p>"I launched Repopulate Mars to start to tell the narrative of where we truly come from, from point A, music."</p><cite>— Lee Foss, founder, DJ Mag</cite></blockquote>
+<p style="margin:26px 0 0;color:var(--steel);font-size:.85rem">no spotify label playlist confirmed, checked 21 september 2026. this is the label's own soundcloud instead.</p>
+<div class="player tall"><iframe src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Frepopulatemars&color=%23ff1c02&auto_play=false&show_teaser=false" loading="lazy" title="Repopulate Mars on SoundCloud"></iframe></div>
+</section>
+<nav class="pn"><a href="get-physical.html"><span class="lbl">← previous</span>Get Physical</a><a href="hot-creations.html" style="text-align:right"><span class="lbl">next →</span>Hot Creations</a></nav>
+<p class="note">every fact on this page is sourced or it is not on this page, and quotes are verbatim, spelling and all. the roster line links the artists we track who release here.</p>
+
+<footer>
+<p class="fine">groovesMAXXING · <a href="../index.html">home</a> · <a href="../roster.html">the roster</a> · <a href="../events.html">the radar</a> · <a href="../sets.html">the sets</a></p>
+</footer>
+
+</div>
+</body>
+</html>

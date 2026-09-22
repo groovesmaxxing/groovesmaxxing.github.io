@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HUB Records · groovesMAXXING</title>
+<meta name="description" content="HUB Records: the Brazilian house/techno/trance label founded 2015 by Felippe Senne, not the many other labels sharing this name.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<meta property="og:title" content="HUB Records · groovesMAXXING">
+<meta property="og:description" content="HUB Records: the Brazilian house/techno/trance label founded 2015 by Felippe Senne, not the many other labels sharing this name.">
+<meta property="og:image" content="https://groovesmaxxing.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--night:#0B0B0D;--racing:#FF1C02;--deep:#CC1400;--day:#F2F2EF;--steel:#8A8A93;--line:#26262b;--card:#141417}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--night);color:var(--day);font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:0 26px}
+a{color:inherit}
+.top{padding:34px 0 8px}
+.back{font-family:'Space Mono',monospace;font-size:.82rem;color:var(--steel);text-decoration:none;letter-spacing:.04em}
+.back:hover{color:var(--racing)}
+h1{font-weight:900;font-size:clamp(2.4rem,7vw,3.6rem);line-height:1.02;letter-spacing:-.02em;margin:14px 0 16px}
+.artist{padding:8px 0 10px}
+.aname{margin:0;font-weight:900;font-size:clamp(2rem,5.6vw,2.9rem);line-height:1.05;letter-spacing:-.02em}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 26px}
+.tag{font-family:'Space Mono',monospace;font-size:.76rem;letter-spacing:.06em;color:var(--steel);border:1px solid var(--line);border-radius:999px;padding:6px 13px}
+.tag.lane{color:var(--racing);border-color:rgba(255,28,2,.42)}
+.tag.badge{color:var(--day);border-color:rgba(242,242,239,.34);background:rgba(242,242,239,.05)}
+.bio p{color:#c9c9c4;font-size:1rem;line-height:1.72;margin-bottom:17px;max-width:660px}
+.bio p:last-child{margin-bottom:0}
+.bio b{color:var(--day);font-weight:600}
+blockquote{border-left:3px solid var(--racing);padding:2px 0 2px 20px;margin:24px 0;max-width:640px}
+blockquote p{color:var(--day);font-size:1.06rem;line-height:1.6;font-weight:600;margin-bottom:8px}
+blockquote cite{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);font-style:normal;letter-spacing:.04em}
+.facts{border-top:1px solid var(--line);margin-top:30px;padding-top:22px}
+.fact{display:flex;gap:18px;padding:9px 0;font-size:.94rem;line-height:1.5}
+.fact .k{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);letter-spacing:.05em;flex:none;width:132px;padding-top:3px}
+.fact .v{color:#c9c9c4}
+.links{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+.lk{font-family:'Space Mono',monospace;font-size:.79rem;letter-spacing:.04em;text-decoration:none;color:#c9c9c4;border:1px solid var(--line);border-radius:6px;padding:9px 14px;transition:border-color .15s,color .15s}
+.lk.ico{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;padding:0;border-radius:999px}
+.lki{width:17px;height:17px;display:block}
+.lk.ico.mono2{font-size:.72rem;letter-spacing:.06em;font-weight:700}
+.lk:hover{border-color:var(--racing);color:var(--racing)}
+.player{margin-top:28px;border-radius:12px;overflow:hidden}
+.player iframe{width:100%;height:152px;border:0;display:block}
+.player.tall{margin-top:10px}
+.player.tall iframe{height:352px}
+.note{font-family:'Space Mono',monospace;font-size:.78rem;color:var(--steel);line-height:1.7;margin-top:30px}
+footer{border-top:1px solid var(--line);margin-top:72px;padding:34px 0 60px}
+.fine{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel)}
+.bio a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#33333a}
+.bio a:hover{color:var(--racing);text-decoration-color:var(--racing)}
+.fact .v a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#33333a}
+.fact .v a:hover{color:var(--racing);text-decoration-color:var(--racing)}
+.artist{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:16px}
+.artist > *{grid-column:1 / -1}
+.artist > .aname{grid-column:1}
+.artist > .links{grid-column:2;grid-row:1;margin-top:0;justify-self:end;flex-wrap:nowrap}
+@media (max-width:640px){.artist > .aname{grid-column:1 / -1}.artist > .links{grid-column:1 / -1;grid-row:2;justify-self:start;margin-top:14px;flex-wrap:wrap}}
+
+.pn{display:flex;justify-content:space-between;gap:14px;border-top:1px solid var(--line);margin-top:52px;padding-top:26px}
+.pn a{font-family:'Space Mono',monospace;font-size:.8rem;color:var(--steel);text-decoration:none;max-width:46%}
+.pn a:hover{color:var(--racing)}
+.pn .lbl{display:block;font-size:.68rem;letter-spacing:.08em;margin-bottom:4px}
+</style>
+<link rel="canonical" href="https://groovesmaxxing.com/labels/hub-records">
+  <!-- gmx-seo start -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="HUB Records · groovesMAXXING">
+  <meta name="twitter:description" content="HUB Records: the Brazilian house/techno/trance label founded 2015 by Felippe Senne, not the many other labels sharing this name.">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "HUB Records",
+  "url": "https://groovesmaxxing.com/labels/hub-records",
+  "description": "HUB Records: the Brazilian house/techno/trance label founded 2015 by Felippe Senne, not the many other labels sharing this name.",
+  "founder": [
+    { "@type": "Person", "name": "Felippe Senne" }
+  ],
+  "sameAs": [
+    "https://www.beatport.com/label/hub-records/53792",
+    "https://www.discogs.com/label/1547319-Hub-Records-10",
+    "https://www.facebook.com/hubrecordsbrasil",
+    "https://twitter.com/hubrecords"
+  ]
+}
+  </script>
+  <!-- gmx-seo end -->
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="i-soundcloud" viewBox="0 0 24 24"><g fill="currentColor"><rect x="1.6" y="11.4" width="1.3" height="5.2" rx=".65"/><rect x="4.1" y="9.6" width="1.3" height="7" rx=".65"/><rect x="6.6" y="8.4" width="1.3" height="8.2" rx=".65"/><rect x="9.1" y="10.2" width="1.3" height="6.4" rx=".65"/><path d="M11.9 6.9c.5-.35 1.1-.55 1.8-.55 1.9 0 3.5 1.45 3.7 3.3.3-.1.6-.15.95-.15 1.6 0 2.9 1.3 2.9 2.9S19.95 15.3 18.35 15.3H11.9a.6.6 0 0 1-.6-.6V7.4c0-.2.1-.4.6-.5z"/></g></symbol><symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.4" cy="6.6" r="1.15" fill="currentColor" stroke="none"/></symbol><symbol id="i-youtube" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4.2" fill="currentColor"/><path d="M10.2 8.9v6.2L15.6 12z" fill="#0B0B0D"/></symbol></svg>
+<div class="wrap">
+
+<div class="top"><a class="back" href="../index.html#labels">← the label wall</a></div>
+
+<section class="artist label" id="hub-records">
+<h1 class="aname">HUB Records</h1>
+<div class="links">
+<a class="lk ico mono2" href="https://www.beatport.com/label/hub-records/53792" target="_blank" rel="noopener" aria-label="Beatport" title="Beatport">BP</a>
+<a class="lk ico" href="https://soundcloud.com/hubrecords" target="_blank" rel="noopener" aria-label="SoundCloud" title="SoundCloud"><svg class="lki"><use href="#i-soundcloud"/></svg></a>
+<a class="lk ico" href="https://www.instagram.com/hubrecords/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg class="lki"><use href="#i-instagram"/></svg></a>
+<a class="lk ico" href="https://www.youtube.com/@HUBMusicGroup" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube"><svg class="lki"><use href="#i-youtube"/></svg></a>
+</div>
+<div class="meta">
+<span class="tag lane">either lane</span>
+<span class="tag">record label</span>
+<span class="tag">house · techno · trance</span>
+</div>
+<div class="bio">
+<p>this name collides harder than almost anything else on this wall. we found at least eleven separate "Hub Records" entities on Discogs alone, plus a French techno label called Techno Hub Records (est. 2008), a second Beatport entity called "WORLDOFBRIGHTS HUB," and a US soundtrack-and-liner-notes "Hub Records" unconnected to dance music. the label below is <b>HUB Records, Rio de Janeiro, Brazil</b>, founded in early 2015 by Felippe Senne, initially as an outlet for talent from a music-production course he also ran. we confirmed the identity by anchoring on a specific, real release, Cat Dealers &amp; KVSH's "Little More" (2016), which appears on the Brazilian label's own YouTube channel tagged "[HUB Records]," independently corroborated by Senne's own account of managing Cat Dealers pre-2017 and by KVSH's own later, catalogued releases on the label.</p>
+<p>Rafael Brahma joined as a business partner in 2017 and brokered a distribution deal with Sony Music Brasil that scaled the label up, later press describes both men as co-founders. ownership has since moved through more major partners: a Virgin Music Brasil (Universal Music Group) partnership for its recordings from september 2021, and a publishing joint venture, HUB Publishing, with Warner/Chappell Brasil from july 2022. we could not find a source reconciling exactly how the Sony and Virgin relationships coexist or succeeded each other, so we're reporting each on its own rather than guessing at the transition. its own domain, hubrecords.com.br, now redirects straight to its instagram rather than hosting a site.</p>
+<p>Senne on the label's mission, in Portuguese, verbatim: "a proposta principal da HUB é oferecer música de alta qualidade para os fãs e DJs de música eletrônica do universo 'four-on-the-floor'... com o compromisso primordial de agradar a pista de dança, trazer inovação aliada a funcionalidade, além de ter DNA artístico genuinamente brasileiro." in short, house/techno/trance for the dancefloor, built with what he calls a genuinely Brazilian artistic identity.</p>
+<p>13 artists we track have released on it, listed below. it runs its own sub-imprints, HUB LAB and Endless Music, and describes itself, on its audio-focused YouTube channel, as the biggest electronic-music label in Latin America, a claim from the label itself we haven't independently verified beyond its own channel copy.</p>
+</div>
+<div class="facts">
+<div class="fact"><div class="k">founded</div><div class="v">early 2015, rio de janeiro, brazil, by Felippe Senne. Rafael Brahma joined as partner in 2017, later press calls both co-founders</div></div>
+<div class="fact"><div class="k">run by</div><div class="v">Felippe Senne and Rafael Brahma</div></div>
+<div class="fact"><div class="k">based</div><div class="v">rio de janeiro, brazil</div></div>
+<div class="fact"><div class="k">not the same as</div><div class="v">at least 11 unrelated Discogs entities share this name, closest same-genre collision is Techno Hub Records, a French label est. 2008</div></div>
+<div class="fact"><div class="k">notable releases</div><div class="v">Cat Dealers &amp; KVSH "Little More" (2016, anchor/breakout), KVSH, Vintage Culture &amp; Breno Miranda "Cante Por Nós" (2018, diamond-certified in Brazil)</div></div>
+<div class="fact"><div class="k">released on it</div><div class="v">13 artists we track have released on it: <a href="../artists/buja-br.html">BUJA (BR)</a>, <a href="../artists/fezzo.html">FEZZO</a>, <a href="../artists/fatsync.html">FatSync</a>, <a href="../artists/gesus.html">GESUS</a>, <a href="../artists/giu.html">GIU</a>, <a href="../artists/gabss.html">Gabss</a>, <a href="../artists/gaddi.html">Gaddi</a>, <a href="../artists/juntaro.html">JUNTARO</a>, <a href="../artists/loozbone.html">LOOZBONE</a>, <a href="../artists/sielo.html">Sielo</a>, <a href="../artists/vinter.html">Vinter</a>, <a href="../artists/zaro.html">ZARO</a>, <a href="../artists/zaark.html">Zaark</a></div></div>
+</div>
+<blockquote><p>"a proposta principal da HUB é oferecer música de alta qualidade para os fãs e DJs de música eletrônica do universo 'four-on-the-floor'... com o compromisso primordial de agradar a pista de dança."</p><cite>— Felippe Senne, founder, Eletro Vibez</cite></blockquote>
+<p style="margin:26px 0 0;color:var(--steel);font-size:.85rem">no bandcamp or resident advisor page found, checked 21 september 2026. a spotify curator profile exists (open.spotify.com/user/hubrecords) with a "HUB Records" releases playlist, but it isn't a distinct label page we can embed. this is the label's own soundcloud instead.</p>
+<div class="player tall"><iframe src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fhubrecords&color=%23ff1c02&auto_play=false&show_teaser=false" loading="lazy" title="HUB Records on SoundCloud"></iframe></div>
+</section>
+<nav class="pn"><a href="in-rotation.html"><span class="lbl">← previous</span>IN / ROTATION</a><a href="aeterna-records.html" style="text-align:right"><span class="lbl">next →</span>AETERNA Records</a></nav>
+<p class="note">every fact on this page is sourced or it is not on this page, and quotes are verbatim, spelling and all. the roster line links the artists we track who release here.</p>
+
+<footer>
+<p class="fine">groovesMAXXING · <a href="../index.html">home</a> · <a href="../roster.html">the roster</a> · <a href="../events.html">the radar</a> · <a href="../sets.html">the sets</a></p>
+</footer>
+
+</div>
+</body>
+</html>

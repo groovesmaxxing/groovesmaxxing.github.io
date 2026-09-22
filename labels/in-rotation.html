@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IN / ROTATION · groovesMAXXING</title>
+<meta name="description" content="IN / ROTATION: Insomniac Records' 2017 bass-leaning imprint. verified links and the artists we track on it.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<meta property="og:title" content="IN / ROTATION · groovesMAXXING">
+<meta property="og:description" content="IN / ROTATION: Insomniac Records' 2017 bass-leaning imprint. verified links and the artists we track on it.">
+<meta property="og:image" content="https://groovesmaxxing.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--night:#0B0B0D;--racing:#FF1C02;--deep:#CC1400;--day:#F2F2EF;--steel:#8A8A93;--line:#26262b;--card:#141417}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--night);color:var(--day);font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:0 26px}
+a{color:inherit}
+.top{padding:34px 0 8px}
+.back{font-family:'Space Mono',monospace;font-size:.82rem;color:var(--steel);text-decoration:none;letter-spacing:.04em}
+.back:hover{color:var(--racing)}
+h1{font-weight:900;font-size:clamp(2.4rem,7vw,3.6rem);line-height:1.02;letter-spacing:-.02em;margin:14px 0 16px}
+.artist{padding:8px 0 10px}
+.aname{margin:0;font-weight:900;font-size:clamp(2rem,5.6vw,2.9rem);line-height:1.05;letter-spacing:-.02em}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 26px}
+.tag{font-family:'Space Mono',monospace;font-size:.76rem;letter-spacing:.06em;color:var(--steel);border:1px solid var(--line);border-radius:999px;padding:6px 13px}
+.tag.lane{color:var(--racing);border-color:rgba(255,28,2,.42)}
+.tag.badge{color:var(--day);border-color:rgba(242,242,239,.34);background:rgba(242,242,239,.05)}
+.bio p{color:#c9c9c4;font-size:1rem;line-height:1.72;margin-bottom:17px;max-width:660px}
+.bio p:last-child{margin-bottom:0}
+.bio b{color:var(--day);font-weight:600}
+blockquote{border-left:3px solid var(--racing);padding:2px 0 2px 20px;margin:24px 0;max-width:640px}
+blockquote p{color:var(--day);font-size:1.06rem;line-height:1.6;font-weight:600;margin-bottom:8px}
+blockquote cite{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);font-style:normal;letter-spacing:.04em}
+.facts{border-top:1px solid var(--line);margin-top:30px;padding-top:22px}
+.fact{display:flex;gap:18px;padding:9px 0;font-size:.94rem;line-height:1.5}
+.fact .k{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);letter-spacing:.05em;flex:none;width:132px;padding-top:3px}
+.fact .v{color:#c9c9c4}
+.links{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+.lk{font-family:'Space Mono',monospace;font-size:.79rem;letter-spacing:.04em;text-decoration:none;color:#c9c9c4;border:1px solid var(--line);border-radius:6px;padding:9px 14px;transition:border-color .15s,color .15s}
+.lk.ico{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;padding:0;border-radius:999px}
+.lki{width:17px;height:17px;display:block}
+.lk.ico.mono2{font-size:.72rem;letter-spacing:.06em;font-weight:700}
+.lk:hover{border-color:var(--racing);color:var(--racing)}
+.player{margin-top:28px;border-radius:12px;overflow:hidden}
+.player iframe{width:100%;height:152px;border:0;display:block}
+.player.tall{margin-top:10px}
+.player.tall iframe{height:352px}
+.note{font-family:'Space Mono',monospace;font-size:.78rem;color:var(--steel);line-height:1.7;margin-top:30px}
+footer{border-top:1px solid var(--line);margin-top:72px;padding:34px 0 60px}
+.fine{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel)}
+.bio a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#33333a}
+.bio a:hover{color:var(--racing);text-decoration-color:var(--racing)}
+.fact .v a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#33333a}
+.fact .v a:hover{color:var(--racing);text-decoration-color:var(--racing)}
+.artist{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:16px}
+.artist > *{grid-column:1 / -1}
+.artist > .aname{grid-column:1}
+.artist > .links{grid-column:2;grid-row:1;margin-top:0;justify-self:end;flex-wrap:nowrap}
+@media (max-width:640px){.artist > .aname{grid-column:1 / -1}.artist > .links{grid-column:1 / -1;grid-row:2;justify-self:start;margin-top:14px;flex-wrap:wrap}}
+
+.pn{display:flex;justify-content:space-between;gap:14px;border-top:1px solid var(--line);margin-top:52px;padding-top:26px}
+.pn a{font-family:'Space Mono',monospace;font-size:.8rem;color:var(--steel);text-decoration:none;max-width:46%}
+.pn a:hover{color:var(--racing)}
+.pn .lbl{display:block;font-size:.68rem;letter-spacing:.08em;margin-bottom:4px}
+</style>
+<link rel="canonical" href="https://groovesmaxxing.com/labels/in-rotation">
+  <!-- gmx-seo start -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="IN / ROTATION · groovesMAXXING">
+  <meta name="twitter:description" content="IN / ROTATION: Insomniac Records' 2017 bass-leaning imprint. verified links and the artists we track on it.">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "IN / ROTATION",
+  "url": "https://groovesmaxxing.com/labels/in-rotation",
+  "description": "IN / ROTATION: Insomniac Records' 2017 bass-leaning imprint. verified links and the artists we track on it.",
+  "parentOrganization": { "@type": "Organization", "name": "Insomniac Records" },
+  "sameAs": [
+    "https://www.insomniac.com/labels/in-rotation/",
+    "https://www.discogs.com/label/1363670-In-Rotation"
+  ]
+}
+  </script>
+  <!-- gmx-seo end -->
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="i-soundcloud" viewBox="0 0 24 24"><g fill="currentColor"><rect x="1.6" y="11.4" width="1.3" height="5.2" rx=".65"/><rect x="4.1" y="9.6" width="1.3" height="7" rx=".65"/><rect x="6.6" y="8.4" width="1.3" height="8.2" rx=".65"/><rect x="9.1" y="10.2" width="1.3" height="6.4" rx=".65"/><path d="M11.9 6.9c.5-.35 1.1-.55 1.8-.55 1.9 0 3.5 1.45 3.7 3.3.3-.1.6-.15.95-.15 1.6 0 2.9 1.3 2.9 2.9S19.95 15.3 18.35 15.3H11.9a.6.6 0 0 1-.6-.6V7.4c0-.2.1-.4.6-.5z"/></g></symbol><symbol id="i-youtube" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4.2" fill="currentColor"/><path d="M10.2 8.9v6.2L15.6 12z" fill="#0B0B0D"/></symbol></svg>
+<div class="wrap">
+
+<div class="top"><a class="back" href="../index.html#labels">← the label wall</a></div>
+
+<section class="artist label" id="in-rotation">
+<h1 class="aname">IN / ROTATION</h1>
+<div class="links">
+<a class="lk ico mono2" href="https://www.beatport.com/label/in-rotation-insomniac-records/64140" target="_blank" rel="noopener" aria-label="Beatport" title="Beatport">BP</a>
+<a class="lk ico" href="https://soundcloud.com/inrotationrecs" target="_blank" rel="noopener" aria-label="SoundCloud" title="SoundCloud"><svg class="lki"><use href="#i-soundcloud"/></svg></a>
+<a class="lk ico" href="https://www.youtube.com/@inrotationrecs" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube"><svg class="lki"><use href="#i-youtube"/></svg></a>
+</div>
+<div class="meta">
+<span class="tag lane">either lane</span>
+<span class="tag">record label</span>
+<span class="tag">bass house · dubstep · trap</span>
+</div>
+<div class="bio">
+<p><b>IN / ROTATION</b> launched 28 march 2017, as an Insomniac Records offshoot, its stylization varies across sources and platforms, "In / Rotation" at launch, "IN / ROTATION" on its current beatport, discogs and social handles, we're using the current, most-used form. Pasquale Rotella, Insomniac's founder, on why: "the next revolution in our Insomniac Records family, In / Rotation was created to provide a unique platform for artists on all levels to showcase their music and more." the debut release was a free download, Dombresky's "Technikal," and an early signee, Dead Critic, was 17 at the time, consistent with the label's stated mission of platforming artists "of all levels."</p>
+<p>it sits inside a real, traceable distribution chain. IN / ROTATION is an imprint of Insomniac Records, part of Insomniac Music Group, whose catalog has been distributed by FUGA since november 2022, a deal renewed in 2026. FUGA has been owned by Downtown Music Holdings since 2020, and Downtown itself was acquired by Virgin Music Group, a Universal Music Group unit, in a deal worth $775 million that closed in february 2026. one weak link in that chain, worth stating plainly: none of the public coverage of the FUGA/Insomniac deal names IN / ROTATION specifically, only the parent group and sibling imprints, so its coverage under that deal is highly likely but not individually confirmed.</p>
+<p>48 artists we track have released on it, listed below. the label runs a various-artists compilation series called "ROTATE," now well past its 14th volume, as its clearest ongoing showcase for developing artists. we found no dedicated festival stage or radio show under the IN / ROTATION name, its Discogs entry is also unusually sparse for how active its Beatport catalog is, a reminder that database coverage lags for newer imprints like this one.</p>
+</div>
+<div class="facts">
+<div class="fact"><div class="k">founded</div><div class="v">28 march 2017, as an Insomniac Records offshoot</div></div>
+<div class="fact"><div class="k">run by</div><div class="v">Insomniac Music Group. Joe Wiseman is named its Director in the group's distribution announcements, no imprint-specific head found</div></div>
+<div class="fact"><div class="k">based</div><div class="v">los angeles</div></div>
+<div class="fact"><div class="k">distribution chain</div><div class="v">via Insomniac Music Group → FUGA (since nov 2022) → Downtown Music Holdings (since 2020) → Virgin Music Group / Universal Music Group (deal closed feb 2026, $775M). IN / ROTATION itself isn't individually named in that coverage</div></div>
+<div class="fact"><div class="k">notable releases</div><div class="v">Dombresky "Technikal" (march 2017, debut, free download), Dead Critic "Written in Blood" EP (2017), Braydon Terzo "Satisfy / Submission"</div></div>
+<div class="fact"><div class="k">released on it</div><div class="v">48 artists we track have released on it: <a href="../artists/benni-ola.html">Benni Ola</a>, <a href="../artists/blank-sense.html">Blank Sense</a>, <a href="../artists/braydon-terzo.html">Braydon Terzo</a>, <a href="../artists/broken-hill.html">Broken Hill</a>, <a href="../artists/bruno-furlan.html">Bruno Furlan</a>, <a href="../artists/chapter-verse.html">Chapter &amp; Verse</a>, <a href="../artists/dont-blink.html">DONT BLINK</a>, <a href="../artists/dansyn.html">Dansyn</a>, <a href="../artists/dvirnuns.html">DvirNuns</a>, <a href="../artists/esse.html">ESSE</a>, <a href="../artists/edip.html">EdiP</a>, <a href="../artists/emily-nash.html">Emily Nash</a>, <a href="../artists/enzo-is-burning.html">Enzo is Burning</a>, <a href="../artists/fancy-inc.html">Fancy Inc</a>, <a href="../artists/g-pol.html">G-POL</a>, <a href="../artists/gabss.html">Gabss</a>, <a href="../artists/gkat.html">Gkat</a>, <a href="../artists/hills.html">HILLS</a>, <a href="../artists/iglesias.html">Iglesias</a>, <a href="../artists/j-worra.html">J. Worra</a>, <a href="../artists/jude-frank.html">Jude &amp; Frank</a>, <a href="../artists/kamino.html">Kamino</a>, <a href="../artists/kyle-walker.html">Kyle Walker</a>, <a href="../artists/loozbone.html">LOOZBONE</a>, <a href="../artists/manics.html">Manics</a>, <a href="../artists/millero.html">Millero</a>, <a href="../artists/mont-rouge.html">Mont Rouge</a>, <a href="../artists/n2n.html">N2N</a>, <a href="../artists/no-static.html">NO STATIC</a>, <a href="../artists/polovich.html">POLOVICH</a>, <a href="../artists/pedroz.html">Pedroz</a>, <a href="../artists/rafael-cerato.html">Rafael Cerato</a>, <a href="../artists/sidepiece.html">SIDEPIECE</a>, <a href="../artists/slamm.html">SLAMM</a>, <a href="../artists/sqwad.html">SQWAD</a>, <a href="../artists/san-pacho.html">San Pacho</a>, <a href="../artists/shermanology.html">Shermanology</a>, <a href="../artists/sielo.html">Sielo</a>, <a href="../artists/tobehonest.html">TOBEHONEST</a>, <a href="../artists/twenty-six.html">TWENTY SIX</a>, <a href="../artists/the-anahit.html">The Anahit</a>, <a href="../artists/tini-gessler.html">Tini Gessler</a>, <a href="../artists/trace.html">Trace</a>, <a href="../artists/twin-diplomacy.html">Twin Diplomacy</a>, <a href="../artists/volac.html">VOLAC</a>, <a href="../artists/westend.html">Westend</a>, <a href="../artists/win-and-woo.html">Win and Woo</a>, <a href="../artists/yamagucci.html">Yamagucci</a></div></div>
+</div>
+<blockquote><p>"the next revolution in our Insomniac Records family, In / Rotation was created to provide a unique platform for artists on all levels to showcase their music and more."</p><cite>— Pasquale Rotella, Insomniac founder</cite></blockquote>
+<p style="margin:26px 0 0;color:var(--steel);font-size:.85rem">no spotify label playlist confirmed, checked 21 september 2026. no dedicated resident advisor or bandcamp page found either. this is the label's own soundcloud instead.</p>
+<div class="player tall"><iframe src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Finrotationrecs&color=%23ff1c02&auto_play=false&show_teaser=false" loading="lazy" title="IN / ROTATION on SoundCloud"></iframe></div>
+</section>
+<nav class="pn"><a href="nervous-records.html"><span class="lbl">← previous</span>Nervous Records</a><a href="hub-records.html" style="text-align:right"><span class="lbl">next →</span>HUB Records</a></nav>
+<p class="note">every fact on this page is sourced or it is not on this page, and quotes are verbatim, spelling and all. the roster line links the artists we track who release here.</p>
+
+<footer>
+<p class="fine">groovesMAXXING · <a href="../index.html">home</a> · <a href="../roster.html">the roster</a> · <a href="../events.html">the radar</a> · <a href="../sets.html">the sets</a></p>
+</footer>
+
+</div>
+</body>
+</html>

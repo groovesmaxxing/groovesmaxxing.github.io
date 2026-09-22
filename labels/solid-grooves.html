@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solid Grooves · groovesMAXXING</title>
+<meta name="description" content="Solid Grooves: Michael Bibi &amp; PAWSA's London tech house label since 2015. verified links and the artists we track on it.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<meta property="og:title" content="Solid Grooves · groovesMAXXING">
+<meta property="og:description" content="Solid Grooves: Michael Bibi &amp; PAWSA's London tech house label since 2015. verified links and the artists we track on it.">
+<meta property="og:image" content="https://groovesmaxxing.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--night:#0B0B0D;--racing:#FF1C02;--deep:#CC1400;--day:#F2F2EF;--steel:#8A8A93;--line:#26262b;--card:#141417}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--night);color:var(--day);font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:0 26px}
+a{color:inherit}
+.top{padding:34px 0 8px}
+.back{font-family:'Space Mono',monospace;font-size:.82rem;color:var(--steel);text-decoration:none;letter-spacing:.04em}
+.back:hover{color:var(--racing)}
+h1{font-weight:900;font-size:clamp(2.4rem,7vw,3.6rem);line-height:1.02;letter-spacing:-.02em;margin:14px 0 16px}
+.artist{padding:8px 0 10px}
+.aname{margin:0;font-weight:900;font-size:clamp(2rem,5.6vw,2.9rem);line-height:1.05;letter-spacing:-.02em}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 26px}
+.tag{font-family:'Space Mono',monospace;font-size:.76rem;letter-spacing:.06em;color:var(--steel);border:1px solid var(--line);border-radius:999px;padding:6px 13px}
+.tag.lane{color:var(--racing);border-color:rgba(255,28,2,.42)}
+.tag.badge{color:var(--day);border-color:rgba(242,242,239,.34);background:rgba(242,242,239,.05)}
+.bio p{color:#c9c9c4;font-size:1rem;line-height:1.72;margin-bottom:17px;max-width:660px}
+.bio p:last-child{margin-bottom:0}
+.bio b{color:var(--day);font-weight:600}
+blockquote{border-left:3px solid var(--racing);padding:2px 0 2px 20px;margin:24px 0;max-width:640px}
+blockquote p{color:var(--day);font-size:1.06rem;line-height:1.6;font-weight:600;margin-bottom:8px}
+blockquote cite{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);font-style:normal;letter-spacing:.04em}
+.facts{border-top:1px solid var(--line);margin-top:30px;padding-top:22px}
+.fact{display:flex;gap:18px;padding:9px 0;font-size:.94rem;line-height:1.5}
+.fact .k{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);letter-spacing:.05em;flex:none;width:132px;padding-top:3px}
+.fact .v{color:#c9c9c4}
+.links{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+.lk{font-family:'Space Mono',monospace;font-size:.79rem;letter-spacing:.04em;text-decoration:none;color:#c9c9c4;border:1px solid var(--line);border-radius:6px;padding:9px 14px;transition:border-color .15s,color .15s}
+.lk.ico{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;padding:0;border-radius:999px}
+.lki{width:17px;height:17px;display:block}
+.lk.ico.mono2{font-size:.72rem;letter-spacing:.06em;font-weight:700}
+.lk:hover{border-color:var(--racing);color:var(--racing)}
+.player{margin-top:28px;border-radius:12px;overflow:hidden}
+.player iframe{width:100%;height:152px;border:0;display:block}
+.player.tall{margin-top:10px}
+.player.tall iframe{height:352px}
+.note{font-family:'Space Mono',monospace;font-size:.78rem;color:var(--steel);line-height:1.7;margin-top:30px}
+footer{border-top:1px solid var(--line);margin-top:72px;padding:34px 0 60px}
+.fine{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel)}
+.bio a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#33333a}
+.bio a:hover{color:var(--racing);text-decoration-color:var(--racing)}
+.fact .v a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#33333a}
+.fact .v a:hover{color:var(--racing);text-decoration-color:var(--racing)}
+.artist{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:16px}
+.artist > *{grid-column:1 / -1}
+.artist > .aname{grid-column:1}
+.artist > .links{grid-column:2;grid-row:1;margin-top:0;justify-self:end;flex-wrap:nowrap}
+@media (max-width:640px){.artist > .aname{grid-column:1 / -1}.artist > .links{grid-column:1 / -1;grid-row:2;justify-self:start;margin-top:14px;flex-wrap:wrap}}
+
+.pn{display:flex;justify-content:space-between;gap:14px;border-top:1px solid var(--line);margin-top:52px;padding-top:26px}
+.pn a{font-family:'Space Mono',monospace;font-size:.8rem;color:var(--steel);text-decoration:none;max-width:46%}
+.pn a:hover{color:var(--racing)}
+.pn .lbl{display:block;font-size:.68rem;letter-spacing:.08em;margin-bottom:4px}
+</style>
+<link rel="canonical" href="https://groovesmaxxing.com/labels/solid-grooves">
+  <!-- gmx-seo start -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Solid Grooves · groovesMAXXING">
+  <meta name="twitter:description" content="Solid Grooves: Michael Bibi &amp; PAWSA's London tech house label since 2015. verified links and the artists we track on it.">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Solid Grooves",
+  "url": "https://groovesmaxxing.com/labels/solid-grooves",
+  "description": "Solid Grooves: Michael Bibi &amp; PAWSA's London tech house label since 2015. verified links and the artists we track on it.",
+  "founder": [
+    { "@type": "Person", "name": "Michael Bibi" },
+    { "@type": "Person", "name": "PAWSA" }
+  ],
+  "sameAs": [
+    "https://www.discogs.com/label/1036779-Solid-Grooves-Records",
+    "https://ra.co/labels/13194",
+    "https://www.facebook.com/solidgroovesrecords",
+    "https://www.youtube.com/@SolidGroovesRecords"
+  ]
+}
+  </script>
+  <!-- gmx-seo end -->
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="i-soundcloud" viewBox="0 0 24 24"><g fill="currentColor"><rect x="1.6" y="11.4" width="1.3" height="5.2" rx=".65"/><rect x="4.1" y="9.6" width="1.3" height="7" rx=".65"/><rect x="6.6" y="8.4" width="1.3" height="8.2" rx=".65"/><rect x="9.1" y="10.2" width="1.3" height="6.4" rx=".65"/><path d="M11.9 6.9c.5-.35 1.1-.55 1.8-.55 1.9 0 3.5 1.45 3.7 3.3.3-.1.6-.15.95-.15 1.6 0 2.9 1.3 2.9 2.9S19.95 15.3 18.35 15.3H11.9a.6.6 0 0 1-.6-.6V7.4c0-.2.1-.4.6-.5z"/></g></symbol><symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.4" cy="6.6" r="1.15" fill="currentColor" stroke="none"/></symbol><symbol id="i-youtube" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4.2" fill="currentColor"/><path d="M10.2 8.9v6.2L15.6 12z" fill="#0B0B0D"/></symbol></svg>
+<div class="wrap">
+
+<div class="top"><a class="back" href="../index.html#labels">← the label wall</a></div>
+
+<section class="artist label" id="solid-grooves">
+<h1 class="aname">Solid Grooves</h1>
+<div class="links">
+<a class="lk ico" href="https://soundcloud.com/solidgrooves-records" target="_blank" rel="noopener" aria-label="SoundCloud" title="SoundCloud"><svg class="lki"><use href="#i-soundcloud"/></svg></a>
+<a class="lk ico" href="https://www.instagram.com/solidgroovesuk" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg class="lki"><use href="#i-instagram"/></svg></a>
+<a class="lk ico" href="https://www.youtube.com/@SolidGroovesRecords" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube"><svg class="lki"><use href="#i-youtube"/></svg></a>
+</div>
+<div class="meta">
+<span class="tag lane">either lane</span>
+<span class="tag">record label</span>
+<span class="tag">tech house</span>
+</div>
+<div class="bio">
+<p><b>Solid Grooves</b> was founded in london in 2015 by Michael Bibi and PAWSA (David Esekhile), who'd been running it as a party brand for a few years before the record label existed. PAWSA on the split: "when we started this, he understood how to put a party on and i focused on the music. i wanted the output to combine that minimal, solid sound with the more commercial club stuff." Discogs' own label profile names the second founder "David Lee," a name that doesn't match PAWSA's real one anywhere else we checked, we're flagging that as a Discogs data error rather than repeating it.</p>
+<p>this name collides badly. we found at least seven distinct, unrelated "Solid Groove" or "Solid Grooves" entities on Discogs and Resident Advisor alone, a defunct US label since renamed Solid Trax, a UK reggae label, a UK garage label running since 1991, an Italian recording studio, a producer alias, and closest of all, a techno label out of Amsterdam founded in 2014 by Danny Stompé under the near-identical name Solid Grooves Records. none of those are this label. the London tech house imprint below is confirmed by Michael Bibi and PAWSA's own social handles and by Resident Advisor's matching profile.</p>
+<p>18 artists we track have released on it, listed below, alongside the label, Solid Grooves runs a long season of "Solid Grooves Casino" nights at DC-10 in Ibiza and has taken the brand to Miami, Madrid, and a sold-out Los Angeles show.</p>
+</div>
+<div class="facts">
+<div class="fact"><div class="k">founded</div><div class="v">2015, london, by Michael Bibi &amp; PAWSA (David Esekhile)</div></div>
+<div class="fact"><div class="k">run by</div><div class="v">Michael Bibi &amp; PAWSA, co-founders</div></div>
+<div class="fact"><div class="k">based</div><div class="v">london, with a long-running ibiza residency at DC-10</div></div>
+<div class="fact"><div class="k">not the same as</div><div class="v">at least 7 unrelated Discogs/RA entities share this name, closest is Solid Grooves Records, Amsterdam, founded 2014 by Danny Stompé</div></div>
+<div class="fact"><div class="k">notable releases</div><div class="v">Michael Bibi "Restoration EP" (SGR004, 2015), PAWSA "Stage Two EP" (2015), Dennis Cruz "See Line EP" (SGR006, 2016)</div></div>
+<div class="fact"><div class="k">released on it</div><div class="v">18 artists we track have released on it: <a href="../artists/anotr.html">ANOTR</a>, <a href="../artists/ayybo.html">AYYBO</a>, <a href="../artists/audio-bullys.html">Audio Bullys</a>, <a href="../artists/brn.html">BRN</a>, <a href="../artists/ben-sterling.html">Ben Sterling</a>, <a href="../artists/chasewest.html">ChaseWest</a>, <a href="../artists/dennis-cruz.html">Dennis Cruz</a>, <a href="../artists/discip.html">Discip</a>, <a href="../artists/dunmore-brothers.html">Dunmore Brothers</a>, <a href="../artists/gennaro.html">GENNARO</a>, <a href="../artists/iglesias.html">Iglesias</a>, <a href="../artists/jamback.html">Jamback</a>, <a href="../artists/josh-butler.html">Josh Butler</a>, <a href="../artists/kolter.html">Kolter</a>, <a href="../artists/michael-bibi.html">Michael Bibi</a>, <a href="../artists/pawsa.html">PAWSA</a>, <a href="../artists/toman.html">Toman</a>, <a href="../artists/wade.html">Wade</a></div></div>
+</div>
+<blockquote><p>"when we started this, he understood how to put a party on and i focused on the music."</p><cite>— PAWSA, co-founder, DJ Mag</cite></blockquote>
+<p style="margin:26px 0 0;color:var(--steel);font-size:.85rem">no dedicated label website or confirmed bandcamp found, checked 21 september 2026, and no beatport label URL could be independently confirmed so we're not linking one. this is the label's own soundcloud instead.</p>
+<div class="player tall"><iframe src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fsolidgrooves-records&color=%23ff1c02&auto_play=false&show_teaser=false" loading="lazy" title="Solid Grooves on SoundCloud"></iframe></div>
+</section>
+<nav class="pn"><a href="dirtybird.html"><span class="lbl">← previous</span>Dirtybird</a><a href="get-physical.html" style="text-align:right"><span class="lbl">next →</span>Get Physical</a></nav>
+<p class="note">every fact on this page is sourced or it is not on this page, and quotes are verbatim, spelling and all. the roster line links the artists we track who release here.</p>
+
+<footer>
+<p class="fine">groovesMAXXING · <a href="../index.html">home</a> · <a href="../roster.html">the roster</a> · <a href="../events.html">the radar</a> · <a href="../sets.html">the sets</a></p>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Physical · groovesMAXXING</title>
+<meta name="description" content="Get Physical Music: Berlin house label founded 2002 by M.A.N.D.Y., DJ T. and Booka Shade. verified links and the artists we track on it.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<meta property="og:title" content="Get Physical · groovesMAXXING">
+<meta property="og:description" content="Get Physical Music: Berlin house label founded 2002 by M.A.N.D.Y., DJ T. and Booka Shade. verified links and the artists we track on it.">
+<meta property="og:image" content="https://groovesmaxxing.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--night:#0B0B0D;--racing:#FF1C02;--deep:#CC1400;--day:#F2F2EF;--steel:#8A8A93;--line:#26262b;--card:#141417}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--night);color:var(--day);font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:0 26px}
+a{color:inherit}
+.top{padding:34px 0 8px}
+.back{font-family:'Space Mono',monospace;font-size:.82rem;color:var(--steel);text-decoration:none;letter-spacing:.04em}
+.back:hover{color:var(--racing)}
+h1{font-weight:900;font-size:clamp(2.4rem,7vw,3.6rem);line-height:1.02;letter-spacing:-.02em;margin:14px 0 16px}
+.artist{padding:8px 0 10px}
+.aname{margin:0;font-weight:900;font-size:clamp(2rem,5.6vw,2.9rem);line-height:1.05;letter-spacing:-.02em}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 26px}
+.tag{font-family:'Space Mono',monospace;font-size:.76rem;letter-spacing:.06em;color:var(--steel);border:1px solid var(--line);border-radius:999px;padding:6px 13px}
+.tag.lane{color:var(--racing);border-color:rgba(255,28,2,.42)}
+.tag.badge{color:var(--day);border-color:rgba(242,242,239,.34);background:rgba(242,242,239,.05)}
+.bio p{color:#c9c9c4;font-size:1rem;line-height:1.72;margin-bottom:17px;max-width:660px}
+.bio p:last-child{margin-bottom:0}
+.bio b{color:var(--day);font-weight:600}
+blockquote{border-left:3px solid var(--racing);padding:2px 0 2px 20px;margin:24px 0;max-width:640px}
+blockquote p{color:var(--day);font-size:1.06rem;line-height:1.6;font-weight:600;margin-bottom:8px}
+blockquote cite{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);font-style:normal;letter-spacing:.04em}
+.facts{border-top:1px solid var(--line);margin-top:30px;padding-top:22px}
+.fact{display:flex;gap:18px;padding:9px 0;font-size:.94rem;line-height:1.5}
+.fact .k{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);letter-spacing:.05em;flex:none;width:132px;padding-top:3px}
+.fact .v{color:#c9c9c4}
+.links{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+.lk{font-family:'Space Mono',monospace;font-size:.79rem;letter-spacing:.04em;text-decoration:none;color:#c9c9c4;border:1px solid var(--line);border-radius:6px;padding:9px 14px;transition:border-color .15s,color .15s}
+.lk.ico{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;padding:0;border-radius:999px}
+.lki{width:17px;height:17px;display:block}
+.lk.ico.mono2{font-size:.72rem;letter-spacing:.06em;font-weight:700}
+.lk:hover{border-color:var(--racing);color:var(--racing)}
+.player{margin-top:28px;border-radius:12px;overflow:hidden}
+.player iframe{width:100%;height:152px;border:0;display:block}
+.player.tall{margin-top:10px}
+.player.tall iframe{height:352px}
+.note{font-family:'Space Mono',monospace;font-size:.78rem;color:var(--steel);line-height:1.7;margin-top:30px}
+footer{border-top:1px solid var(--line);margin-top:72px;padding:34px 0 60px}
+.fine{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel)}
+.bio a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#33333a}
+.bio a:hover{color:var(--racing);text-decoration-color:var(--racing)}
+.fact .v a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#33333a}
+.fact .v a:hover{color:var(--racing);text-decoration-color:var(--racing)}
+.artist{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:16px}
+.artist > *{grid-column:1 / -1}
+.artist > .aname{grid-column:1}
+.artist > .links{grid-column:2;grid-row:1;margin-top:0;justify-self:end;flex-wrap:nowrap}
+@media (max-width:640px){.artist > .aname{grid-column:1 / -1}.artist > .links{grid-column:1 / -1;grid-row:2;justify-self:start;margin-top:14px;flex-wrap:wrap}}
+
+.pn{display:flex;justify-content:space-between;gap:14px;border-top:1px solid var(--line);margin-top:52px;padding-top:26px}
+.pn a{font-family:'Space Mono',monospace;font-size:.8rem;color:var(--steel);text-decoration:none;max-width:46%}
+.pn a:hover{color:var(--racing)}
+.pn .lbl{display:block;font-size:.68rem;letter-spacing:.08em;margin-bottom:4px}
+</style>
+<link rel="canonical" href="https://groovesmaxxing.com/labels/get-physical">
+  <!-- gmx-seo start -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Get Physical · groovesMAXXING">
+  <meta name="twitter:description" content="Get Physical Music: Berlin house label founded 2002 by M.A.N.D.Y., DJ T. and Booka Shade. verified links and the artists we track on it.">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Get Physical Music",
+  "url": "https://groovesmaxxing.com/labels/get-physical",
+  "description": "Get Physical Music: Berlin house label founded 2002 by M.A.N.D.Y., DJ T. and Booka Shade. verified links and the artists we track on it.",
+  "founder": [
+    { "@type": "Person", "name": "Patrick Bodmer" },
+    { "@type": "Person", "name": "Philipp Jung" },
+    { "@type": "Person", "name": "Thomas Koch" },
+    { "@type": "Person", "name": "Walter Merziger" },
+    { "@type": "Person", "name": "Arno Kammermeier" }
+  ],
+  "sameAs": [
+    "https://soundcloud.com/get-physical-music",
+    "https://getphysicalmusic.bandcamp.com",
+    "https://www.discogs.com/label/8847-Get-Physical-Music",
+    "https://ra.co/labels/403"
+  ]
+}
+  </script>
+  <!-- gmx-seo end -->
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="i-soundcloud" viewBox="0 0 24 24"><g fill="currentColor"><rect x="1.6" y="11.4" width="1.3" height="5.2" rx=".65"/><rect x="4.1" y="9.6" width="1.3" height="7" rx=".65"/><rect x="6.6" y="8.4" width="1.3" height="8.2" rx=".65"/><rect x="9.1" y="10.2" width="1.3" height="6.4" rx=".65"/><path d="M11.9 6.9c.5-.35 1.1-.55 1.8-.55 1.9 0 3.5 1.45 3.7 3.3.3-.1.6-.15.95-.15 1.6 0 2.9 1.3 2.9 2.9S19.95 15.3 18.35 15.3H11.9a.6.6 0 0 1-.6-.6V7.4c0-.2.1-.4.6-.5z"/></g></symbol><symbol id="i-bandcamp" viewBox="0 0 24 24"><path d="M2.6 17.6 8.9 6.4h12.5l-6.3 11.2z" fill="currentColor"/></symbol><symbol id="i-youtube" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4.2" fill="currentColor"/><path d="M10.2 8.9v6.2L15.6 12z" fill="#0B0B0D"/></symbol></svg>
+<div class="wrap">
+
+<div class="top"><a class="back" href="../index.html#labels">← the label wall</a></div>
+
+<section class="artist label" id="get-physical">
+<h1 class="aname">Get Physical</h1>
+<div class="links">
+<a class="lk ico" href="https://soundcloud.com/get-physical-music" target="_blank" rel="noopener" aria-label="SoundCloud" title="SoundCloud"><svg class="lki"><use href="#i-soundcloud"/></svg></a>
+<a class="lk ico" href="https://getphysicalmusic.bandcamp.com" target="_blank" rel="noopener" aria-label="Bandcamp" title="Bandcamp"><svg class="lki"><use href="#i-bandcamp"/></svg></a>
+</div>
+<div class="meta">
+<span class="tag lane">either lane</span>
+<span class="tag">record label</span>
+<span class="tag">house</span>
+</div>
+<div class="bio">
+<p><b>Get Physical Music</b> launched in Berlin in 2002, grown out of a friendship circle in the Berlin/Frankfurt house scene. three acts founded it: M.A.N.D.Y. (Patrick Bodmer &amp; Philipp Jung), DJ T. (Thomas Koch), and Booka Shade (Walter Merziger &amp; Arno Kammermeier), five people by the count nearly every 2026 trade obituary gives. both English and German Wikipedia, plus the German outlet groove.de, name a sixth co-founder inside the Booka Shade grouping, producer Peter Hayo, whose exact role we could not independently confirm beyond "producer and studio operator." we're printing the five-person version as the well-corroborated core and flagging the sixth as a real but less-verified claim rather than picking one.</p>
+<p>Philipp Jung, one of the two founders of M.A.N.D.Y. and a co-founder of the label, died in may 2026 at his home in Costa Rica, aged 55. the cause has not been disclosed by any outlet we checked, and none of the trade press we read speculated on one. he had stepped back from touring with M.A.N.D.Y. around 2018 to focus on label work, and had gone on to found two further imprints, Kindisch and Metaphysical. shortly before he died he curated "Rewind Forward, Vol. 1," an anniversary compilation marking the label's history, and had posted in april 2026: "after 25 years of doing this, I honestly feel like I've only scratched the surface."</p>
+<p>the label is no longer run by its 2002 founders day to day. Roland Leesker joined as a partner around 2010 and now serves as Co-Owner and Creative Director, its current operational lead. "we simply do what we like. just follow your heart," Leesker told DJ Mag, "we are not looking for any trends or hype anymore. our focus is on individual artists." the label's own domain, getphysicalmusic.com, now redirects straight to its bandcamp page rather than hosting a standalone site, a consolidation we confirmed by checking both the root domain and its old about-us path.</p>
+<p>22 artists we track have released on it, listed below. the label runs "Get Physical Radio," a monthly podcast active as of this research, and "Body Language," a longer-running DJ-mix compilation series now past its 27th volume.</p>
+</div>
+<div class="facts">
+<div class="fact"><div class="k">founded</div><div class="v">2002, berlin, by M.A.N.D.Y. (Patrick Bodmer &amp; Philipp Jung), DJ T. (Thomas Koch) and Booka Shade (Walter Merziger &amp; Arno Kammermeier). Wikipedia and German press add a sixth co-founder, Peter Hayo, role unverified</div></div>
+<div class="fact"><div class="k">run by</div><div class="v">Roland Leesker, Co-Owner and Creative Director since around 2010</div></div>
+<div class="fact"><div class="k">based</div><div class="v">berlin, germany</div></div>
+<div class="fact"><div class="k">current status</div><div class="v">co-founder Philipp Jung died may 2026, aged 55, cause undisclosed. Roland Leesker leads the label day to day</div></div>
+<div class="fact"><div class="k">notable releases</div><div class="v">M.A.N.D.Y. "No Stoppin'" (GPM006), Booka Shade "Night Falls EP" (GPM041), DJ T. "Ambush" (GPM038)</div></div>
+<div class="fact"><div class="k">released on it</div><div class="v">22 artists we track have released on it: <a href="../artists/ameme.html">AMÉMÉ</a>, <a href="../artists/adam-ten.html">Adam Ten</a>, <a href="../artists/blond-ish.html">BLOND:ISH</a>, <a href="../artists/betoko.html">Betoko</a>, <a href="../artists/bonafique.html">Bonafique</a>, <a href="../artists/calussa.html">Calussa</a>, <a href="../artists/enamour.html">Enamour</a>, <a href="../artists/german-brigante.html">German Brigante</a>, <a href="../artists/jamie-jones.html">Jamie Jones</a>, <a href="../artists/kadi-il.html">KADI (IL)</a>, <a href="../artists/meloko.html">Meloko</a>, <a href="../artists/mishell.html">Mishell</a>, <a href="../artists/mita-gami.html">Mita Gami</a>, <a href="../artists/monkey-safari.html">Monkey Safari</a>, <a href="../artists/nico-de-andrea.html">Nico de Andrea</a>, <a href="../artists/omri.html">OMRI.</a>, <a href="../artists/piem.html">Piem</a>, <a href="../artists/rafael-cerato.html">Rafael Cerato</a>, <a href="../artists/shermanology.html">Shermanology</a>, <a href="../artists/solomun.html">Solomun</a>, <a href="../artists/super-flu.html">Super Flu</a>, <a href="../artists/whomadewho.html">WhoMadeWho</a></div></div>
+</div>
+<blockquote><p>"we simply do what we like. just follow your heart."</p><cite>— Roland Leesker, Co-Owner &amp; Creative Director, DJ Mag</cite></blockquote>
+<p style="margin:26px 0 0;color:var(--steel);font-size:.85rem">no spotify label playlist confirmed, checked 21 september 2026. beatport presence is real, per trade press, but we couldn't independently confirm the exact current label URL, so we're not linking one. this is the label's own soundcloud instead.</p>
+<div class="player tall"><iframe src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fget-physical-music&color=%23ff1c02&auto_play=false&show_teaser=false" loading="lazy" title="Get Physical on SoundCloud"></iframe></div>
+</section>
+<nav class="pn"><a href="solid-grooves.html"><span class="lbl">← previous</span>Solid Grooves</a><a href="repopulate-mars.html" style="text-align:right"><span class="lbl">next →</span>Repopulate Mars</a></nav>
+<p class="note">every fact on this page is sourced or it is not on this page, and quotes are verbatim, spelling and all. the roster line links the artists we track who release here.</p>
+
+<footer>
+<p class="fine">groovesMAXXING · <a href="../index.html">home</a> · <a href="../roster.html">the roster</a> · <a href="../events.html">the radar</a> · <a href="../sets.html">the sets</a></p>
+</footer>
+
+</div>
+</body>
+</html>
