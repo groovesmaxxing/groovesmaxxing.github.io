@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crosstown Rebels · groovesMAXXING</title>
+<meta name="description" content="Crosstown Rebels: Damian Lazarus's London label since 2003. verified links, the Crosstown Mix Show, and the artists we track on it.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<meta property="og:title" content="Crosstown Rebels · groovesMAXXING">
+<meta property="og:description" content="Crosstown Rebels: Damian Lazarus's London label since 2003. verified links, the Crosstown Mix Show, and the artists we track on it.">
+<meta property="og:image" content="https://groovesmaxxing.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--night:#0B0B0D;--racing:#FF1C02;--deep:#CC1400;--day:#F2F2EF;--steel:#8A8A93;--line:#26262b;--card:#141417}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--night);color:var(--day);font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:0 26px}
+a{color:inherit}
+.top{padding:34px 0 8px}
+.back{font-family:'Space Mono',monospace;font-size:.82rem;color:var(--steel);text-decoration:none;letter-spacing:.04em}
+.back:hover{color:var(--racing)}
+h1{font-weight:900;font-size:clamp(2.4rem,7vw,3.6rem);line-height:1.02;letter-spacing:-.02em;margin:14px 0 16px}
+.artist{padding:8px 0 10px}
+.aname{margin:0;font-weight:900;font-size:clamp(2rem,5.6vw,2.9rem);line-height:1.05;letter-spacing:-.02em}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 26px}
+.tag{font-family:'Space Mono',monospace;font-size:.76rem;letter-spacing:.06em;color:var(--steel);border:1px solid var(--line);border-radius:999px;padding:6px 13px}
+.tag.lane{color:var(--racing);border-color:rgba(255,28,2,.42)}
+.tag.badge{color:var(--day);border-color:rgba(242,242,239,.34);background:rgba(242,242,239,.05)}
+.bio p{color:#c9c9c4;font-size:1rem;line-height:1.72;margin-bottom:17px;max-width:660px}
+.bio p:last-child{margin-bottom:0}
+.bio b{color:var(--day);font-weight:600}
+blockquote{border-left:3px solid var(--racing);padding:2px 0 2px 20px;margin:24px 0;max-width:640px}
+blockquote p{color:var(--day);font-size:1.06rem;line-height:1.6;font-weight:600;margin-bottom:8px}
+blockquote cite{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);font-style:normal;letter-spacing:.04em}
+.facts{border-top:1px solid var(--line);margin-top:30px;padding-top:22px}
+.fact{display:flex;gap:18px;padding:9px 0;font-size:.94rem;line-height:1.5}
+.fact .k{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);letter-spacing:.05em;flex:none;width:132px;padding-top:3px}
+.fact .v{color:#c9c9c4}
+.links{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+.lk{font-family:'Space Mono',monospace;font-size:.79rem;letter-spacing:.04em;text-decoration:none;color:#c9c9c4;border:1px solid var(--line);border-radius:6px;padding:9px 14px;transition:border-color .15s,color .15s}
+.lk.ico{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;padding:0;border-radius:999px}
+.lki{width:17px;height:17px;display:block}
+.lk.ico.mono2{font-size:.72rem;letter-spacing:.06em;font-weight:700}
+.lk:hover{border-color:var(--racing);color:var(--racing)}
+.player{margin-top:28px;border-radius:12px;overflow:hidden}
+.player iframe{width:100%;height:152px;border:0;display:block}
+.player.tall{margin-top:10px}
+.player.tall iframe{height:352px}
+.note{font-family:'Space Mono',monospace;font-size:.78rem;color:var(--steel);line-height:1.7;margin-top:30px}
+footer{border-top:1px solid var(--line);margin-top:72px;padding:34px 0 60px}
+.fine{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel)}
+.bio a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#33333a}
+.bio a:hover{color:var(--racing);text-decoration-color:var(--racing)}
+.fact .v a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#33333a}
+.fact .v a:hover{color:var(--racing);text-decoration-color:var(--racing)}
+.artist{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:16px}
+.artist > *{grid-column:1 / -1}
+.artist > .aname{grid-column:1}
+.artist > .links{grid-column:2;grid-row:1;margin-top:0;justify-self:end;flex-wrap:nowrap}
+@media (max-width:640px){.artist > .aname{grid-column:1 / -1}.artist > .links{grid-column:1 / -1;grid-row:2;justify-self:start;margin-top:14px;flex-wrap:wrap}}
+
+.pn{display:flex;justify-content:space-between;gap:14px;border-top:1px solid var(--line);margin-top:52px;padding-top:26px}
+.pn a{font-family:'Space Mono',monospace;font-size:.8rem;color:var(--steel);text-decoration:none;max-width:46%}
+.pn a:hover{color:var(--racing)}
+.pn .lbl{display:block;font-size:.68rem;letter-spacing:.08em;margin-bottom:4px}
+</style>
+<link rel="canonical" href="https://groovesmaxxing.com/labels/crosstown-rebels">
+  <!-- gmx-seo start -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Crosstown Rebels · groovesMAXXING">
+  <meta name="twitter:description" content="Crosstown Rebels: Damian Lazarus's London label since 2003. verified links, the Crosstown Mix Show, and the artists we track on it.">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Crosstown Rebels",
+  "url": "https://groovesmaxxing.com/labels/crosstown-rebels",
+  "description": "Crosstown Rebels: Damian Lazarus's London label since 2003. verified links, the Crosstown Mix Show, and the artists we track on it.",
+  "founder": [
+    { "@type": "Person", "name": "Damian Lazarus" }
+  ],
+  "sameAs": [
+    "https://www.crosstownrebels.com/",
+    "https://www.beatport.com/label/crosstown-rebels/1328",
+    "https://crosstownrebels.bandcamp.com/",
+    "https://soundcloud.com/crosstownrebels",
+    "https://www.discogs.com/label/13612-Crosstown-Rebels",
+    "https://ra.co/labels/345"
+  ]
+}
+  </script>
+  <!-- gmx-seo end -->
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="i-soundcloud" viewBox="0 0 24 24"><g fill="currentColor"><rect x="1.6" y="11.4" width="1.3" height="5.2" rx=".65"/><rect x="4.1" y="9.6" width="1.3" height="7" rx=".65"/><rect x="6.6" y="8.4" width="1.3" height="8.2" rx=".65"/><rect x="9.1" y="10.2" width="1.3" height="6.4" rx=".65"/><path d="M11.9 6.9c.5-.35 1.1-.55 1.8-.55 1.9 0 3.5 1.45 3.7 3.3.3-.1.6-.15.95-.15 1.6 0 2.9 1.3 2.9 2.9S19.95 15.3 18.35 15.3H11.9a.6.6 0 0 1-.6-.6V7.4c0-.2.1-.4.6-.5z"/></g></symbol><symbol id="i-bandcamp" viewBox="0 0 24 24"><path d="M2.6 17.6 8.9 6.4h12.5l-6.3 11.2z" fill="currentColor"/></symbol></svg>
+<div class="wrap">
+
+<div class="top"><a class="back" href="../index.html#labels">← the label wall</a></div>
+
+<section class="artist label" id="crosstown-rebels">
+<h1 class="aname">Crosstown Rebels</h1>
+<div class="links">
+<a class="lk ico mono2" href="https://www.beatport.com/label/crosstown-rebels/1328" target="_blank" rel="noopener" aria-label="Beatport" title="Beatport">BP</a>
+<a class="lk ico" href="https://crosstownrebels.bandcamp.com/" target="_blank" rel="noopener" aria-label="Bandcamp" title="Bandcamp"><svg class="lki"><use href="#i-bandcamp"/></svg></a>
+<a class="lk ico" href="https://soundcloud.com/crosstownrebels" target="_blank" rel="noopener" aria-label="SoundCloud" title="SoundCloud"><svg class="lki"><use href="#i-soundcloud"/></svg></a>
+<a class="lk ico mono2" href="https://www.discogs.com/label/13612-Crosstown-Rebels" target="_blank" rel="noopener" aria-label="Discogs" title="Discogs">DG</a>
+</div>
+<div class="meta">
+<span class="tag lane">either lane</span>
+<span class="tag">record label</span>
+<span class="tag">london</span>
+<span class="tag">underground house + techno</span>
+<span class="tag badge">📈 heavy rotation</span>
+</div>
+<div class="bio">
+<p><b>Crosstown Rebels</b> was founded in 2003 by <b>Damian Lazarus</b>, who still runs it. discogs, resident advisor and the label's own 20th-anniversary page all agree on the year and the founder, and Lazarus is still quoted running the label as of 2024. it's a London label at its core, registered there, and its own bio calls it a "unique underground music experience... dedicated to the support and development of the best cutting edge electronic dance music." it runs two sub-labels of its own, Rebellion for the peak-time club sound and Secret Teachings for the non-dancefloor, experimental side.</p>
+<p>one correction worth printing plainly: <b>Nicolas Jaar has never actually released on Crosstown Rebels.</b> his only documented tie to the label is a 2010 remix, "Gravy Train (Nicolas Jaar Remix)" of a Maceo Plex original, included on the label's Rebel Rave compilation, and the one Deezer credit that surfaced him here is a track of his folded into someone else's DJ mix, Get Lost V, mixed by Acid Pauli. neither is a release credit, so he isn't in the roster count below.</p>
+<blockquote><p>The original vision was to connect like minded DJs and producers from all over the world and create a musical family that would grow and support each other.</p><cite>Damian Lazarus, flaunt, on 20 years of Crosstown Rebels</cite></blockquote>
+<p>the label runs a real string of its own series: <b>the Crosstown Mix Show</b>, an ongoing podcast past 130 episodes; <b>Get Lost</b>, the touring party Lazarus started in 2007, its Miami edition paused for 2024 ("last year's incredible 20th anniversary... was simply so good that we've decided to take a pause," per Lazarus); <b>Rebel Rave</b>, the compilation series running since 2010; and <b>SPIRITS</b>, an active numbered compilation still going, its eighth volume out january 2026. 30 artists we track have released on it, listed below, current releases include Alex Wann &amp; JUNO (DE)'s <b>"Allo EP"</b> and Bonafique &amp; Yuvee's <b>"Terapia EP."</b></p>
+</div>
+<div class="facts">
+<div class="fact"><div class="k">founded</div><div class="v">2003, by Damian Lazarus, per discogs and the label's own 20th-anniversary page</div></div>
+<div class="fact"><div class="k">run by</div><div class="v">Damian Lazarus, still active as of 2024 press</div></div>
+<div class="fact"><div class="k">based</div><div class="v">london, uk</div></div>
+<div class="fact"><div class="k">notable releases</div><div class="v">Art Department, "Without You" (CRM064), Maceo Plex "Life Index" EP, HoneyLuv "Right Spot" (2024), Alex Wann &amp; JUNO (DE) "Allo EP", Bonafique &amp; Yuvee "Terapia EP"</div></div>
+<div class="fact"><div class="k">the series</div><div class="v">the Crosstown Mix Show (ongoing podcast), Get Lost (touring party since 2007, Miami paused for 2024), Rebel Rave (compilations since 2010), SPIRITS (active compilation series)</div></div>
+<div class="fact"><div class="k">not a release</div><div class="v">Nicolas Jaar: one 2010 remix on Rebel Rave, and one track folded into someone else's DJ mix. no original release, not counted below</div></div>
+<div class="fact"><div class="k">released on it</div><div class="v">30 artists we track have released on it: <a href="../artists/me.html">&amp;ME</a>, <a href="../artists/ameme.html">AMÉMÉ</a>, <a href="../artists/ayybo.html">AYYBO</a>, <a href="../artists/adam-ten.html">Adam Ten</a>, <a href="../artists/alex-wann.html">Alex Wann</a>, <a href="../artists/bedouin.html">Bedouin</a>, <a href="../artists/ben-sterling.html">Ben Sterling</a>, <a href="../artists/benja-nl.html">Benja (NL)</a>, <a href="../artists/black-coffee.html">Black Coffee</a>, <a href="../artists/bonafique.html">Bonafique</a>, <a href="../artists/dennis-cruz.html">Dennis Cruz</a>, <a href="../artists/enamour.html">Enamour</a>, <a href="../artists/franc-fala.html">Franc Fala</a>, <a href="../artists/franky-wah.html">Franky Wah</a>, <a href="../artists/garden-city-movement.html">Garden City Movement</a>, <a href="../artists/gorgon-city.html">Gorgon City</a>, <a href="../artists/juno-de.html">JUNO (DE)</a>, <a href="../artists/jamie-jones.html">Jamie Jones</a>, <a href="../artists/josh-butler.html">Josh Butler</a>, <a href="../artists/lisbona-sisters.html">Lisbona Sisters</a>, <a href="../artists/luch.html">Luch</a>, <a href="../artists/mita-gami.html">Mita Gami</a>, <a href="../artists/omri.html">OMRI.</a>, <a href="../artists/rafael.html">Rafael</a>, <a href="../artists/raz-alon.html">Raz Alon</a>, <a href="../artists/seth-troxler.html">Seth Troxler</a>, <a href="../artists/super-flu.html">Super Flu</a>, <a href="../artists/the-martinez-brothers.html">The Martinez Brothers</a>, <a href="../artists/tiga.html">Tiga</a>, <a href="../artists/yamagucci.html">Yamagucci</a></div></div>
+</div>
+<p style="margin:26px 0 0;color:var(--steel);font-size:.85rem">the label's own soundcloud. 172,654 followers, 1,759 tracks, checked 21 september 2026.</p>
+<div class="player tall"><iframe src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fcrosstownrebels&color=%23ff1c02&auto_play=false&show_teaser=false" loading="lazy" title="Crosstown Rebels on SoundCloud"></iframe></div>
+</section>
+<nav class="pn"><a href="maccabi-house.html"><span class="lbl">← previous</span>Maccabi House</a><a href="black-book-records.html" style="text-align:right"><span class="lbl">next →</span>Black Book Records</a></nav>
+<p class="note">every fact on this page is sourced or it is not on this page, and quotes are verbatim, spelling and all. the roster line links the artists we track who release here.</p>
+
+<footer>
+<p class="fine">groovesMAXXING · <a href="../index.html">home</a> · <a href="../roster.html">the roster</a> · <a href="../events.html">the radar</a> · <a href="../sets.html">the sets</a></p>
+</footer>
+
+</div>
+</body>
+</html>

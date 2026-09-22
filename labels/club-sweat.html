@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Club Sweat · groovesMAXXING</title>
+<meta name="description" content="Club Sweat: the house and tech house sub-label of Sweat It Out, run by Danny T. verified links, the Workout Series, and the artists we track on it.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<meta property="og:title" content="Club Sweat · groovesMAXXING">
+<meta property="og:description" content="Club Sweat: the house and tech house sub-label of Sweat It Out, run by Danny T. verified links, the Workout Series, and the artists we track on it.">
+<meta property="og:image" content="https://groovesmaxxing.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--night:#0B0B0D;--racing:#FF1C02;--deep:#CC1400;--day:#F2F2EF;--steel:#8A8A93;--line:#26262b;--card:#141417}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--night);color:var(--day);font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:0 26px}
+a{color:inherit}
+.top{padding:34px 0 8px}
+.back{font-family:'Space Mono',monospace;font-size:.82rem;color:var(--steel);text-decoration:none;letter-spacing:.04em}
+.back:hover{color:var(--racing)}
+h1{font-weight:900;font-size:clamp(2.4rem,7vw,3.6rem);line-height:1.02;letter-spacing:-.02em;margin:14px 0 16px}
+.artist{padding:8px 0 10px}
+.aname{margin:0;font-weight:900;font-size:clamp(2rem,5.6vw,2.9rem);line-height:1.05;letter-spacing:-.02em}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 26px}
+.tag{font-family:'Space Mono',monospace;font-size:.76rem;letter-spacing:.06em;color:var(--steel);border:1px solid var(--line);border-radius:999px;padding:6px 13px}
+.tag.lane{color:var(--racing);border-color:rgba(255,28,2,.42)}
+.tag.badge{color:var(--day);border-color:rgba(242,242,239,.34);background:rgba(242,242,239,.05)}
+.bio p{color:#c9c9c4;font-size:1rem;line-height:1.72;margin-bottom:17px;max-width:660px}
+.bio p:last-child{margin-bottom:0}
+.bio b{color:var(--day);font-weight:600}
+blockquote{border-left:3px solid var(--racing);padding:2px 0 2px 20px;margin:24px 0;max-width:640px}
+blockquote p{color:var(--day);font-size:1.06rem;line-height:1.6;font-weight:600;margin-bottom:8px}
+blockquote cite{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);font-style:normal;letter-spacing:.04em}
+.facts{border-top:1px solid var(--line);margin-top:30px;padding-top:22px}
+.fact{display:flex;gap:18px;padding:9px 0;font-size:.94rem;line-height:1.5}
+.fact .k{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);letter-spacing:.05em;flex:none;width:132px;padding-top:3px}
+.fact .v{color:#c9c9c4}
+.links{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+.lk{font-family:'Space Mono',monospace;font-size:.79rem;letter-spacing:.04em;text-decoration:none;color:#c9c9c4;border:1px solid var(--line);border-radius:6px;padding:9px 14px;transition:border-color .15s,color .15s}
+.lk.ico{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;padding:0;border-radius:999px}
+.lki{width:17px;height:17px;display:block}
+.lk.ico.mono2{font-size:.72rem;letter-spacing:.06em;font-weight:700}
+.lk:hover{border-color:var(--racing);color:var(--racing)}
+.player{margin-top:28px;border-radius:12px;overflow:hidden}
+.player iframe{width:100%;height:152px;border:0;display:block}
+.player.tall{margin-top:10px}
+.player.tall iframe{height:352px}
+.note{font-family:'Space Mono',monospace;font-size:.78rem;color:var(--steel);line-height:1.7;margin-top:30px}
+footer{border-top:1px solid var(--line);margin-top:72px;padding:34px 0 60px}
+.fine{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel)}
+.bio a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#33333a}
+.bio a:hover{color:var(--racing);text-decoration-color:var(--racing)}
+.fact .v a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#33333a}
+.fact .v a:hover{color:var(--racing);text-decoration-color:var(--racing)}
+.artist{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:16px}
+.artist > *{grid-column:1 / -1}
+.artist > .aname{grid-column:1}
+.artist > .links{grid-column:2;grid-row:1;margin-top:0;justify-self:end;flex-wrap:nowrap}
+@media (max-width:640px){.artist > .aname{grid-column:1 / -1}.artist > .links{grid-column:1 / -1;grid-row:2;justify-self:start;margin-top:14px;flex-wrap:wrap}}
+
+.pn{display:flex;justify-content:space-between;gap:14px;border-top:1px solid var(--line);margin-top:52px;padding-top:26px}
+.pn a{font-family:'Space Mono',monospace;font-size:.8rem;color:var(--steel);text-decoration:none;max-width:46%}
+.pn a:hover{color:var(--racing)}
+.pn .lbl{display:block;font-size:.68rem;letter-spacing:.08em;margin-bottom:4px}
+</style>
+<link rel="canonical" href="https://groovesmaxxing.com/labels/club-sweat">
+  <!-- gmx-seo start -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Club Sweat · groovesMAXXING">
+  <meta name="twitter:description" content="Club Sweat: the house and tech house sub-label of Sweat It Out, run by Danny T. verified links, the Workout Series, and the artists we track on it.">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Club Sweat",
+  "url": "https://groovesmaxxing.com/labels/club-sweat",
+  "description": "Club Sweat: the house and tech house sub-label of Sweat It Out, run by Danny T. verified links, the Workout Series, and the artists we track on it.",
+  "sameAs": [
+    "https://www.beatport.com/label/club-sweat/30552",
+    "https://clubsweat.bandcamp.com/",
+    "https://www.discogs.com/label/711343-Club-Sweat",
+    "https://ra.co/labels/11337"
+  ]
+}
+  </script>
+  <!-- gmx-seo end -->
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="i-bandcamp" viewBox="0 0 24 24"><path d="M2.6 17.6 8.9 6.4h12.5l-6.3 11.2z" fill="currentColor"/></symbol></svg>
+<div class="wrap">
+
+<div class="top"><a class="back" href="../index.html#labels">← the label wall</a></div>
+
+<section class="artist label" id="club-sweat">
+<h1 class="aname">Club Sweat</h1>
+<div class="links">
+<a class="lk ico mono2" href="https://www.beatport.com/label/club-sweat/30552" target="_blank" rel="noopener" aria-label="Beatport" title="Beatport">BP</a>
+<a class="lk ico" href="https://clubsweat.bandcamp.com/" target="_blank" rel="noopener" aria-label="Bandcamp" title="Bandcamp"><svg class="lki"><use href="#i-bandcamp"/></svg></a>
+<a class="lk ico mono2" href="https://www.discogs.com/label/711343-Club-Sweat" target="_blank" rel="noopener" aria-label="Discogs" title="Discogs">DG</a>
+</div>
+<div class="meta">
+<span class="tag lane">either lane</span>
+<span class="tag">record label</span>
+<span class="tag">sydney</span>
+<span class="tag">house + tech house</span>
+<span class="tag badge">📈 heavy rotation</span>
+</div>
+<div class="bio">
+<p>a name check first, since it matters here more than usual: this page is about the house and dance record label <b>Club Sweat</b>, a sub-label of the Sydney label Sweat It Out. it is not the unrelated fitness and elliptical-workout brand that shares the name on instagram and a linktree, we checked those accounts directly and ruled them out. this page never links to that brand, and neither should anyone reading it.</p>
+<p>resident advisor lists Club Sweat as founded in 2013, based in Australia. no source names an individual founder for the imprint specifically, the person publicly tied to running it is Danny T, per Sweat It Out's own GM Josh Kellett in 2018: "the emergence and growth of our sub-label Club Sweat (run by our own Danny T) has been amazing to watch too." "run by" isn't the same as "founded by," so that's the title we're using. the label's own resident advisor bio describes a relaunch: "Club Sweat has been laying dormant for a little while now... this no nonsense, no frills subsidiary label of Sweat It Out was created as an avenue for us to release music we love without an agenda."</p>
+<blockquote><p>Very proud to welcome Taleena in the club sweat fam, a tastemaker like no other with an arsenal of new music to unleash.</p><cite>Danny T, on signing Taleena, september 2021</cite></blockquote>
+<p>the flagship series is the <b>Workout Series</b>, numbered VA compilations running from volume 1 through at least volume 24 since 2016. the catalogue is active and current, weekly releases running through august 2026. 39 artists we track have released on it, listed below, early standouts include Purple Disco Machine's <b>"Body Funk"</b> (2017) and <b>"Emotion"</b> EP (2019), through to recent releases like Steve Lawler's <b>"Tiny D"</b> and Wongo's <b>"Funky One,"</b> both 2026.</p>
+</div>
+<div class="facts">
+<div class="fact"><div class="k">founded</div><div class="v">2013, per resident advisor. no individual founder named</div></div>
+<div class="fact"><div class="k">run by</div><div class="v">Danny T, per Sweat It Out's own GM Josh Kellett, 2018</div></div>
+<div class="fact"><div class="k">based</div><div class="v">sydney, australia. a sub-label of Sweat It Out</div></div>
+<div class="fact"><div class="k">notable releases</div><div class="v">Purple Disco Machine "Body Funk" (2017), "Emotion" EP (2019), Steve Lawler "Tiny D" (2026), Wongo "Funky One" (2026), TOBEHONEST "Pipe Down" EP</div></div>
+<div class="fact"><div class="k">the series</div><div class="v">Workout Series, numbered VA compilations, volume 1 through at least 24, running since 2016</div></div>
+<div class="fact"><div class="k">released on it</div><div class="v">39 artists we track have released on it: <a href="../artists/babert.html">Babert</a>, <a href="../artists/balanka.html">Balanka</a>, <a href="../artists/bonafique.html">Bonafique</a>, <a href="../artists/broken-hill.html">Broken Hill</a>, <a href="../artists/bruno-bona.html">Bruno Bona</a>, <a href="../artists/bruno-furlan.html">Bruno Furlan</a>, <a href="../artists/david-penn.html">David Penn</a>, <a href="../artists/deeper-purpose.html">Deeper Purpose</a>, <a href="../artists/dodi.html">Dodi</a>, <a href="../artists/dom-dolla.html">Dom Dolla</a>, <a href="../artists/dvirnuns.html">DvirNuns</a>, <a href="../artists/esse.html">ESSE</a>, <a href="../artists/franky-wah.html">Franky Wah</a>, <a href="../artists/gabss.html">Gabss</a>, <a href="../artists/guz.html">Guz</a>, <a href="../artists/highlite.html">HIGHLITE</a>, <a href="../artists/hugel.html">HUGEL</a>, <a href="../artists/j-worra.html">J. Worra</a>, <a href="../artists/jaded.html">JADED</a>, <a href="../artists/jude-frank.html">Jude &amp; Frank</a>, <a href="../artists/kadi-il.html">KADI (IL)</a>, <a href="../artists/kideko.html">Kideko</a>, <a href="../artists/kormak.html">Kormak</a>, <a href="../artists/kyle-walker.html">Kyle Walker</a>, <a href="../artists/kyle-watson.html">Kyle Watson</a>, <a href="../artists/lee-foss.html">Lee Foss</a>, <a href="../artists/marco-lys.html">Marco Lys</a>, <a href="../artists/mary-jane.html">Mary Jane</a>, <a href="../artists/pedroz.html">Pedroz</a>, <a href="../artists/purple-disco-machine.html">Purple Disco Machine</a>, <a href="../artists/ranger-trucco.html">Ranger Trucco</a>, <a href="../artists/tobehonest.html">TOBEHONEST</a>, <a href="../artists/tini-gessler.html">Tini Gessler</a>, <a href="../artists/tom-collins.html">Tom &amp; Collins</a>, <a href="../artists/trace.html">Trace</a>, <a href="../artists/volac.html">VOLAC</a>, <a href="../artists/volkoder.html">Volkoder</a>, <a href="../artists/welker.html">WELKER</a>, <a href="../artists/yamagucci.html">Yamagucci</a></div></div>
+</div>
+<p style="margin:26px 0 0;color:var(--steel);font-size:.85rem">no dedicated club sweat instagram or soundcloud, both checked and ruled out against the fitness brand, 21 september 2026. no working official website either, the listed url now 404s. this is the parent Sweat It Out soundcloud instead, which carries the workout series playlist.</p>
+<div class="player tall"><iframe src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fsweat-it-out-music%2Fsets%2Fclub-sweat-workout-series-vol&color=%23ff1c02&auto_play=false&show_teaser=false" loading="lazy" title="Club Sweat Workout Series on SoundCloud"></iframe></div>
+</section>
+<nav class="pn"><a href="black-book-records.html"><span class="lbl">← previous</span>Black Book Records</a><a href="collecting-dots.html" style="text-align:right"><span class="lbl">next →</span>Collecting Dots</a></nav>
+<p class="note">every fact on this page is sourced or it is not on this page, and quotes are verbatim, spelling and all. the roster line links the artists we track who release here.</p>
+
+<footer>
+<p class="fine">groovesMAXXING · <a href="../index.html">home</a> · <a href="../roster.html">the roster</a> · <a href="../events.html">the radar</a> · <a href="../sets.html">the sets</a></p>
+</footer>
+
+</div>
+</body>
+</html>
