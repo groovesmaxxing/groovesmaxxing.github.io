@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dim Mak · groovesMAXXING</title>
+<meta name="description" content="Dim Mak: Steve Aoki's label, started in 1996 and based in Los Angeles, from punk 7-inches to main stage house. verified links and the artists we track on it.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<meta property="og:title" content="Dim Mak · groovesMAXXING">
+<meta property="og:description" content="Dim Mak: Steve Aoki's label, started in 1996 and based in Los Angeles, from punk 7-inches to main stage house. verified links and the artists we track on it.">
+<meta property="og:image" content="https://groovesmaxxing.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--night:#0B0B0D;--racing:#FF1C02;--deep:#CC1400;--day:#F2F2EF;--steel:#8A8A93;--line:#26262b;--card:#141417}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--night);color:var(--day);font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:0 26px}
+a{color:inherit}
+.top{padding:34px 0 8px}
+.back{font-family:'Space Mono',monospace;font-size:.82rem;color:var(--steel);text-decoration:none;letter-spacing:.04em}
+.back:hover{color:var(--racing)}
+h1{font-weight:900;font-size:clamp(2.4rem,7vw,3.6rem);line-height:1.02;letter-spacing:-.02em;margin:14px 0 16px}
+.artist{padding:8px 0 10px}
+.aname{margin:0;font-weight:900;font-size:clamp(2rem,5.6vw,2.9rem);line-height:1.05;letter-spacing:-.02em}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 26px}
+.tag{font-family:'Space Mono',monospace;font-size:.76rem;letter-spacing:.06em;color:var(--steel);border:1px solid var(--line);border-radius:999px;padding:6px 13px}
+.tag.lane{color:var(--racing);border-color:rgba(255,28,2,.42)}
+.tag.badge{color:var(--day);border-color:rgba(242,242,239,.34);background:rgba(242,242,239,.05)}
+.bio p{color:#c9c9c4;font-size:1rem;line-height:1.72;margin-bottom:17px;max-width:660px}
+.bio p:last-child{margin-bottom:0}
+.bio b{color:var(--day);font-weight:600}
+blockquote{border-left:3px solid var(--racing);padding:2px 0 2px 20px;margin:24px 0;max-width:640px}
+blockquote p{color:var(--day);font-size:1.06rem;line-height:1.6;font-weight:600;margin-bottom:8px}
+blockquote cite{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);font-style:normal;letter-spacing:.04em}
+.facts{border-top:1px solid var(--line);margin-top:30px;padding-top:22px}
+.fact{display:flex;gap:18px;padding:9px 0;font-size:.94rem;line-height:1.5}
+.fact .k{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);letter-spacing:.05em;flex:none;width:132px;padding-top:3px}
+.fact .v{color:#c9c9c4}
+.links{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+.lk{font-family:'Space Mono',monospace;font-size:.79rem;letter-spacing:.04em;text-decoration:none;color:#c9c9c4;border:1px solid var(--line);border-radius:6px;padding:9px 14px;transition:border-color .15s,color .15s}
+.lk.ico{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;padding:0;border-radius:999px}
+.lki{width:17px;height:17px;display:block}
+.lk.ico.mono2{font-size:.72rem;letter-spacing:.06em;font-weight:700}
+.lk:hover{border-color:var(--racing);color:var(--racing)}
+.player{margin-top:28px;border-radius:12px;overflow:hidden}
+.player iframe{width:100%;height:152px;border:0;display:block}
+.player.tall{margin-top:10px}
+.player.tall iframe{height:352px}
+.note{font-family:'Space Mono',monospace;font-size:.78rem;color:var(--steel);line-height:1.7;margin-top:30px}
+footer{border-top:1px solid var(--line);margin-top:72px;padding:34px 0 60px}
+.fine{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel)}
+.bio a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#33333a}
+.bio a:hover{color:var(--racing);text-decoration-color:var(--racing)}
+.fact .v a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#33333a}
+.fact .v a:hover{color:var(--racing);text-decoration-color:var(--racing)}
+.artist{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:16px}
+.artist > *{grid-column:1 / -1}
+.artist > .aname{grid-column:1}
+.artist > .links{grid-column:2;grid-row:1;margin-top:0;justify-self:end;flex-wrap:nowrap}
+@media (max-width:640px){.artist > .aname{grid-column:1 / -1}.artist > .links{grid-column:1 / -1;grid-row:2;justify-self:start;margin-top:14px;flex-wrap:wrap}}
+
+.pn{display:flex;justify-content:space-between;gap:14px;border-top:1px solid var(--line);margin-top:52px;padding-top:26px}
+.pn a{font-family:'Space Mono',monospace;font-size:.8rem;color:var(--steel);text-decoration:none;max-width:46%}
+.pn a:hover{color:var(--racing)}
+.pn .lbl{display:block;font-size:.68rem;letter-spacing:.08em;margin-bottom:4px}
+</style>
+<link rel="canonical" href="https://groovesmaxxing.com/labels/dim-mak">
+  <!-- gmx-seo start -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dim Mak · groovesMAXXING">
+  <meta name="twitter:description" content="Dim Mak: Steve Aoki's label, started in 1996 and based in Los Angeles, from punk 7-inches to main stage house. verified links and the artists we track on it.">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Dim Mak",
+  "alternateName": "Dim Mak Records",
+  "url": "https://groovesmaxxing.com/labels/dim-mak",
+  "description": "Dim Mak: Steve Aoki's label, started in 1996 and based in Los Angeles, from punk 7-inches to main stage house. verified links and the artists we track on it.",
+  "founder": [
+    { "@type": "Person", "name": "Steve Aoki" }
+  ],
+  "parentOrganization": { "@type": "Organization", "name": "Dim Mak Records, Inc." },
+  "sameAs": [
+    "https://www.beatport.com/label/dim-mak-records/11919",
+    "https://soundcloud.com/dimmakrecords",
+    "https://www.instagram.com/dimmak/",
+    "https://www.youtube.com/dimmak",
+    "https://www.dimmak.com/",
+    "https://www.discogs.com/label/29882-Dim-Mak-Records",
+    "https://ra.co/labels/6354"
+  ]
+}
+  </script>
+  <!-- gmx-seo end -->
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="i-spotify" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.4" fill="currentColor"/><path d="M7.1 9.5c3.1-.85 6.6-.6 9.2.9M7.6 12.6c2.6-.7 5.5-.5 7.7.8M8.1 15.6c2.1-.55 4.4-.4 6.1.65" stroke="#0B0B0D" stroke-width="1.5" stroke-linecap="round" fill="none"/></symbol><symbol id="i-soundcloud" viewBox="0 0 24 24"><g fill="currentColor"><rect x="1.6" y="11.4" width="1.3" height="5.2" rx=".65"/><rect x="4.1" y="9.6" width="1.3" height="7" rx=".65"/><rect x="6.6" y="8.4" width="1.3" height="8.2" rx=".65"/><rect x="9.1" y="10.2" width="1.3" height="6.4" rx=".65"/><path d="M11.9 6.9c.5-.35 1.1-.55 1.8-.55 1.9 0 3.5 1.45 3.7 3.3.3-.1.6-.15.95-.15 1.6 0 2.9 1.3 2.9 2.9S19.95 15.3 18.35 15.3H11.9a.6.6 0 0 1-.6-.6V7.4c0-.2.1-.4.6-.5z"/></g></symbol><symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.4" cy="6.6" r="1.15" fill="currentColor" stroke="none"/></symbol><symbol id="i-bandcamp" viewBox="0 0 24 24"><path d="M2.6 17.6 8.9 6.4h12.5l-6.3 11.2z" fill="currentColor"/></symbol><symbol id="i-youtube" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4.2" fill="currentColor"/><path d="M10.2 8.9v6.2L15.6 12z" fill="#0B0B0D"/></symbol><symbol id="i-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M10.1 13.9a4.2 4.2 0 0 0 6 0l2.6-2.6a4.24 4.24 0 0 0-6-6l-1.3 1.3"/><path d="M13.9 10.1a4.2 4.2 0 0 0-6 0l-2.6 2.6a4.24 4.24 0 0 0 6 6l1.3-1.3"/></symbol></svg>
+<div class="wrap">
+
+<div class="top"><a class="back" href="../index.html#labels">← the label wall</a></div>
+
+<section class="artist label" id="dim-mak">
+<h1 class="aname">Dim Mak</h1>
+<div class="links">
+<a class="lk ico mono2" href="https://www.beatport.com/label/dim-mak-records/11919" target="_blank" rel="noopener" aria-label="Beatport" title="Beatport">BP</a>
+<a class="lk ico" href="https://soundcloud.com/dimmakrecords" target="_blank" rel="noopener" aria-label="SoundCloud" title="SoundCloud"><svg class="lki"><use href="#i-soundcloud"/></svg></a>
+<a class="lk ico" href="https://www.instagram.com/dimmak/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg class="lki"><use href="#i-instagram"/></svg></a>
+<a class="lk ico" href="https://www.youtube.com/dimmak" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube"><svg class="lki"><use href="#i-youtube"/></svg></a>
+<a class="lk ico" href="https://www.dimmak.com/" target="_blank" rel="noopener" aria-label="Website" title="Website"><svg class="lki"><use href="#i-link"/></svg></a>
+<a class="lk ico mono2" href="https://www.discogs.com/label/29882-Dim-Mak-Records" target="_blank" rel="noopener" aria-label="Discogs" title="Discogs">DG</a>
+<a class="lk ico mono2" href="https://ra.co/labels/6354" target="_blank" rel="noopener" aria-label="Resident Advisor" title="Resident Advisor">RA</a>
+</div>
+<div class="meta">
+<span class="tag lane">either lane</span>
+<span class="tag">record label</span>
+</div>
+<div class="bio">
+<p><b>Dim Mak</b> is Steve Aoki's label, started in 1996 and based in Los Angeles. the label's own site describes it as an independent record label, events company and lifestyle brand, based in Los Angeles and founded by Steve Aoki in 1996, and its tagline, on the site and in its SoundCloud bio, is "By Any Means Necessary" (the SoundCloud version ends with an exclamation mark). Discogs keeps it to one line, "Formed in 1996 and run by influential Los Angeles DJ Steve Aoki.", and Resident Advisor's bio reads "Dim Mak is a label run by Los Angeles DJ Steve Aoki. The label releases music in many different styles ranging from punk to garage rock to disco to new wave and beyond." the name comes two ways. the site's about line calls it "Dim Mak Records" and its footer signs off "© Dim Mak 2026", Beatport, SoundCloud and Discogs all print "Dim Mak Records", and Resident Advisor prints "Dim Mak". we use Dim Mak as the page name, and the catalogue-facing name is Dim Mak Records. where it started is told two ways as well. the site calls itself Los Angeles-based and founded in 1996 in the same breath, while Wikipedia says "Steve Aoki started Dim Mak Records in 1996 at the age of 19, out of his college apartment at the University of California, Santa Barbara." and that after the Pretty Girls Make Graves EP (2001) and The Kills' "Black Rooster" (2002), "Aoki relocated Dim Mak to Los Angeles, initiating the label's second era." so, Los Angeles now, Santa Barbara at the start. per Wikipedia, "The label's first release was a 7-inch record by a hardcore punk band called Stickfigurecarousel." Aoki told Magnetic Magazine "We printed at Kinko's." and that he split the cost of that record three ways with two other guys, around $1200 all in.</p>
+<p>the sound is the part the label never pins down. its own words are a slogan, not a genre list, and Resident Advisor's punk to garage rock to disco to new wave line is a range rather than a lane, so we don't tag one. the catalogue backs that up. Pretty Girls Make Graves' self-titled EP (2001) and The Kills' "Black Rooster" EP (2002) are the early-era records Wikipedia names, with "Black Rooster" the one it ties to the move to Los Angeles. Bloc Party "Silent Alarm" (2005) came out with Atlantic and, Wikipedia says, "went on to sell over 350,000 physical albums". then the club years: The Bloody Beetroots feat. Steve Aoki "Warp 1.9", which Wikipedia reports Thump ranked 19th on its best EDM songs list, and MSTRKRFT "Fist of God". on paper, Discogs files the label as "Dim Mak Records" under a parent entry, "Dim Mak Records, Inc.", with a separate sub-label entry called "Dim Mak", and keeps Dim Mak LLC, Dim Mak Publishing and Dim Mak En Fuego as related entries that are not the label itself. En Fuego is the Latin sub-label. the label's own site links three imprints as its own: Dim Mak En Fuego, A Good One, which the site lists alongside the label with no description, and New Noise.</p>
+<p>New Noise is the series, and the one imprint with a story of its own. "Dim Mak Presents New Noise" is the label's discovery series, and Wikipedia has its start: "Launched in 2010, New Noise got its start as a compilation series highlighting fresh faces handpicked by Steve Aoki and crew." the numbered volumes run on, Beatport catalogues Vol. 24 under Dim Mak Records and Spotify carries volumes up to Vol. 28, though we could not confirm the date of the latest edition. the series was later relaunched as a copyright-free feed for gaming and YouTube creators, per reports on dancemusicnw.com and musicconnection.com, and it has a YouTube channel of its own. the SoundCloud set on the label's own account, embedded below, promises fresh uploads every other Tuesday in its title.</p>
+<p>a few notes on the names. five are here as remixers: <a href="../artists/d-o-d.html">D.O.D</a> on "Hades EP" (2013), <a href="../artists/goodboys.html">Goodboys</a> on "No Beef (Remixes Pt. 1)" (DM1391, 2022), <a href="../artists/sammy-porter.html">Sammy Porter</a> on "Let Me Take You There (Sammy Porter Remix)" (DM1201, 2020) and the "Let Me Take You There (Remixes)" package (DM1202, 2020), <a href="../artists/san-pacho.html">San Pacho</a> on "Bang / True G (Remixes)" (DM1155, 2019) and "The Red Tape (Deluxe)" (DM1147, 2019), and <a href="../artists/tom-budin.html">Tom Budin</a> on "Dim Mak Greatest Hits 2016: Remixes" (DM886, 2017). <a href="../artists/tiesto.html">Tiësto</a> is here for "Tornado" (2011) with Steve Aoki, and <a href="../artists/alok.html">Alok</a> for a track on Steve Aoki's "HiROQUEST 2: Double Helix" (DM1577, 2023). four came through New Noise, whose NN catalogue numbers Discogs files under Dim Mak Records: <a href="../artists/manics.html">Manics</a> "Embrace" (NN072, 2017), "New Noise XI" (DM1081, 2018) and "Binary EP" (2019), <a href="../artists/vnssa.html">VNSSA</a> "Anxiety" (NN098, 2018) and "New Noise XIV" (DM1127, 2019), <a href="../artists/kyle-walker.html">Kyle Walker</a> "Movement" (NN119, 2019) and "New Noise XV" (DM1187, 2019), and <a href="../artists/westend.html">Westend</a> "Goin Up" (NN109, 2019) and "New Noise XV" (DM1187, 2019), then back in 2024 as a remixer on "Warp 1.9 (Westend &amp; Cherry Tooth Remix)" (DM1628). the rest are on their own releases: <a href="../artists/armand-van-helden.html">Armand Van Helden</a> "BRRRAT!" (2005), "New York: A Mix Odyssey Part 2" (2010) and "BRRRAT! (Remixes)" (2010), <a href="../artists/infected-mushroom.html">Infected Mushroom</a> "Army of Mushrooms" (2012), "Friends On Mushrooms, Vol. 2" (2013) and "Friends On Mushrooms (Deluxe Edition)" (2015), <a href="../artists/max-styler.html">Max Styler</a> "Badman (Remixes)" (2015), "Heartache" (2016) and "Dim Mak Greatest Hits 2016" (DM882, 2017), <a href="../artists/matroda.html">Matroda</a> "Ghetto Funk" (DM895, 2017), "Get Down" (DM903, 2017) and "BO$$" (DM930, 2017), <a href="../artists/niko-the-kid.html">Niko The Kid</a> "On The Run EP" (DM937, 2017) next to remixes on "Paradise (Remixes)" (DM932, 2017) and "Paradise (feat. Bright Lights) (Remixes)" (2017), <a href="../artists/rromarin.html">Rromarin</a> "Fading Out" (DM929, 2017) and "Fading Out (Dugong Jr Remix)" (DM616, 2018), <a href="../artists/bijou.html">BIJOU</a> "Young &amp; Reckless" (DM1025, 2018), "Gotta Shine" (NN075, 2018) and "Gotta Shine (feat. Germ)" (2018), <a href="../artists/chapter-verse.html">Chapter &amp; Verse</a> "Paragon" (2024) and "Hiro Quest 3: Paragon" (DJKM00040, 2025), and <a href="../artists/seung.html">SEUNG</a> "Mind On The Beat" (2026). the punk and indie years are thin on this list, which says something about the list, not the label. 20 artists we track have released on it, a confirmed floor from a catalogue sweep, not the full roster: <a href="../artists/alok.html">Alok</a>, <a href="../artists/armand-van-helden.html">Armand Van Helden</a>, <a href="../artists/bijou.html">BIJOU</a>, <a href="../artists/chapter-verse.html">Chapter &amp; Verse</a>, <a href="../artists/d-o-d.html">D.O.D</a>, <a href="../artists/goodboys.html">Goodboys</a>, <a href="../artists/infected-mushroom.html">Infected Mushroom</a>, <a href="../artists/kyle-walker.html">Kyle Walker</a>, <a href="../artists/manics.html">Manics</a>, <a href="../artists/matroda.html">Matroda</a>, <a href="../artists/max-styler.html">Max Styler</a>, <a href="../artists/niko-the-kid.html">Niko The Kid</a>, <a href="../artists/rromarin.html">Rromarin</a>, <a href="../artists/sammy-porter.html">Sammy Porter</a>, <a href="../artists/san-pacho.html">San Pacho</a>, <a href="../artists/seung.html">SEUNG</a>, <a href="../artists/tiesto.html">Tiësto</a>, <a href="../artists/tom-budin.html">Tom Budin</a>, <a href="../artists/vnssa.html">VNSSA</a>, <a href="../artists/westend.html">Westend</a></p>
+</div>
+<div class="facts">
+<div class="fact"><div class="k">founded</div><div class="v">1996. Wikipedia places the start in Santa Barbara, out of Steve Aoki's college apartment at the University of California, Santa Barbara, when he was 19, with the move to Los Angeles after The Kills' "Black Rooster" (2002). the label's own site says Los Angeles-based and founded in 1996 in one breath. the first release was a 7-inch by the hardcore punk band Stickfigurecarousel, per Wikipedia</div></div>
+<div class="fact"><div class="k">founded by</div><div class="v">Steve Aoki, per the label's own site. "Formed in 1996 and run by influential Los Angeles DJ Steve Aoki." per Discogs, and "a label run by Los Angeles DJ Steve Aoki" per Resident Advisor</div></div>
+<div class="fact"><div class="k">based</div><div class="v">Los Angeles, per the label's own site, Discogs and Resident Advisor. Santa Barbara at the start, per Wikipedia</div></div>
+<div class="fact"><div class="k">sub-labels</div><div class="v">Dim Mak En Fuego, the Latin sub-label. the label's own site also links A Good One, listed alongside the label with no description, and New Noise. Discogs files the label under the parent entry "Dim Mak Records, Inc." with a separate sub-label entry called "Dim Mak"</div></div>
+<div class="fact"><div class="k">not the same as</div><div class="v">Dim Mak LLC and Dim Mak Records, Inc., which are company entries on Discogs, or Dim Mak Publishing. Steve Aoki's own channels are not the label's. the Bandcamp page under this name belongs to an unrelated metal band, so there is no Bandcamp link here</div></div>
+<div class="fact"><div class="k">the series</div><div class="v">New Noise, since 2010. "Dim Mak Presents New Noise" started as a compilation series of fresh faces handpicked by Steve Aoki and crew, per Wikipedia, with numbered volumes on Beatport (Vol. 24 under Dim Mak Records) and Spotify (up to Vol. 28), the date of the latest edition unconfirmed. later relaunched as a copyright-free feed for gaming and YouTube creators, with its own YouTube channel and a SoundCloud set on the label's own account that promises fresh uploads every other Tuesday</div></div>
+<div class="fact"><div class="k">notable releases</div><div class="v">Pretty Girls Make Graves, self-titled EP (2001), The Kills "Black Rooster" EP (2002, the release Wikipedia ties to the move to Los Angeles), Bloc Party "Silent Alarm" (2005, with Atlantic, which Wikipedia says "went on to sell over 350,000 physical albums"), The Bloody Beetroots feat. Steve Aoki "Warp 1.9" (ranked 19th on Thump's best EDM songs list, per Wikipedia), MSTRKRFT "Fist of God"</div></div>
+<div class="fact"><div class="k">released on it</div><div class="v">20 artists we track have released on it, a confirmed floor from a catalogue sweep, not the full roster: <a href="../artists/alok.html">Alok</a>, <a href="../artists/armand-van-helden.html">Armand Van Helden</a>, <a href="../artists/bijou.html">BIJOU</a>, <a href="../artists/chapter-verse.html">Chapter &amp; Verse</a>, <a href="../artists/d-o-d.html">D.O.D</a>, <a href="../artists/goodboys.html">Goodboys</a>, <a href="../artists/infected-mushroom.html">Infected Mushroom</a>, <a href="../artists/kyle-walker.html">Kyle Walker</a>, <a href="../artists/manics.html">Manics</a>, <a href="../artists/matroda.html">Matroda</a>, <a href="../artists/max-styler.html">Max Styler</a>, <a href="../artists/niko-the-kid.html">Niko The Kid</a>, <a href="../artists/rromarin.html">Rromarin</a>, <a href="../artists/sammy-porter.html">Sammy Porter</a>, <a href="../artists/san-pacho.html">San Pacho</a>, <a href="../artists/seung.html">SEUNG</a>, <a href="../artists/tiesto.html">Tiësto</a>, <a href="../artists/tom-budin.html">Tom Budin</a>, <a href="../artists/vnssa.html">VNSSA</a>, <a href="../artists/westend.html">Westend</a></div></div>
+</div>
+<blockquote><p>"Dim Mak, oh cool… Death Touch is Bruce Lee. I like the association with Bruce Lee without saying it's Bruce Lee."</p><cite>&#8212; Steve Aoki, founder, Magnetic Magazine</cite></blockquote>
+<p style="margin:26px 0 0;color:var(--steel);font-size:.85rem">the label's own playlist, "MAIN STAGE", on its own Spotify account. the owner account is dimmakrecords and this exact playlist is the one the label's site links.</p>
+<div class="player"><iframe src="https://open.spotify.com/embed/playlist/5ZHgDaXVOyRsB6nczZPbYa?utm_source=generator&amp;theme=0" loading="lazy" title="MAIN STAGE playlist on Spotify"></iframe></div>
+<p style="margin:26px 0 0;color:var(--steel);font-size:.85rem">the series: New Noise, the label's own discovery feed as a set on its own SoundCloud. fresh uploads every other Tuesday, per the set's title.</p>
+<div class="player tall"><iframe src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fdimmakrecords%2Fsets%2Fdim-mak-presents-new-noise&color=%23ff1c02&auto_play=false&show_teaser=false" loading="lazy" title="Dim Mak Presents New Noise by Dim Mak Records on SoundCloud"></iframe></div>
+</section>
+<nav class="pn"><a href="anjunadeep.html"><span class="lbl">← previous</span>Anjunadeep</a><a href="piv.html" style="text-align:right"><span class="lbl">next →</span>PIV</a></nav>
+<p class="note">every fact on this page is sourced or it is not on this page, and quotes are verbatim, spelling and all. the roster line links the artists we track who release here.</p>
+
+<footer>
+<p class="fine">groovesMAXXING · <a href="../index.html">home</a> · <a href="../roster.html">the roster</a> · <a href="../events.html">the radar</a> · <a href="../sets.html">the sets</a></p>
+</footer>
+
+</div>
+</body>
+</html>
