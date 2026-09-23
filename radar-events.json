@@ -1,35 +1,8 @@
 {
-"generated": "2026-09-22T14:05:58+00:00",
+"generated": "2026-09-23T14:18:31+00:00",
 "artist_count": 695,
-"artists_with_events": 155,
+"artists_with_events": 156,
 "events": [
-{
-"date": "2026-09-22",
-"event": "Channel Tres (16 and Over)",
-"venue": "Ogden Theatre",
-"city": "Denver",
-"region": "CO",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A70NJF",
-"artist": "Channel Tres"
-},
-{
-"date": "2026-09-22",
-"event": "Fcukers",
-"venue": "Ventura Theater",
-"city": "Ventura",
-"region": "CA",
-"url": "https://www.ticketweb.com/event/fcukers-ventura-theater-tickets/14999833",
-"artist": "Fcukers"
-},
-{
-"date": "2026-09-22",
-"event": "Tinlicker North America 2026",
-"venue": "9:30 CLUB",
-"city": "Washington",
-"region": "DC",
-"url": "https://www.ticketmaster.com/tinlicker-north-america-2026-washington-district-of-columbia-09-22-2026/event/1500648E8D464797",
-"artist": "Tinlicker"
-},
 {
 "date": "2026-09-23",
 "event": "Channel Tres w/ KILIMANJARO",
@@ -473,6 +446,15 @@
 },
 {
 "date": "2026-09-26",
+"event": "Day Trip Afters: LP Giobbi, Swimming Paul, Coco & Breezy",
+"venue": "Club Vinyl",
+"city": "Denver",
+"region": "CO",
+"url": "https://www.ticketweb.com/event/day-trip-afters-lp-giobbi-club-vinyl-tickets/14322814",
+"artist": "LP Giobbi"
+},
+{
+"date": "2026-09-26",
 "event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
 "venue": "Walmart AMP",
 "city": "Rogers",
@@ -568,6 +550,15 @@
 "city": "Denver",
 "region": "CO",
 "url": "https://daytripdenver.frontgatetickets.com",
+"artist": "ZHU"
+},
+{
+"date": "2026-09-26",
+"event": "Day Trip Afters: ZHU",
+"venue": "The Church Nightclub",
+"city": "Denver",
+"region": "CO",
+"url": "https://www.ticketweb.com/event/day-trip-afters-zhu-the-church-nightclub-tickets/14322744",
 "artist": "ZHU"
 },
 {
@@ -1310,11 +1301,11 @@
 },
 {
 "date": "2026-10-03",
-"event": "SIDEPIECE",
+"event": "SIDEPIECE w/ Maesic",
 "venue": "Avalon Hollywood",
 "city": "Hollywood",
 "region": "CA",
-"url": "https://www.ticketweb.com/event/sidepiece-avalon-hollywood-tickets/14334404",
+"url": "https://www.ticketweb.com/event/sidepiece-w-maesic-avalon-hollywood-tickets/14334404",
 "artist": "SIDEPIECE"
 },
 {
@@ -2372,6 +2363,15 @@
 },
 {
 "date": "2026-10-18",
+"event": "Black Coffee",
+"venue": "Navy Pier",
+"city": "Chicago",
+"region": "IL",
+"url": "https://www.tixr.com/groups/navypiereventcenter/events/black-coffee-207842",
+"artist": "Black Coffee"
+},
+{
+"date": "2026-10-18",
 "event": "THE JUNGLE GIANTS",
 "venue": "Crescent Ballroom",
 "city": "Phoenix",
@@ -2768,6 +2768,15 @@
 },
 {
 "date": "2026-10-29",
+"event": "Rafael",
+"venue": "Tipitina's",
+"city": "New Orleans",
+"region": "LA",
+"url": "https://www.ticketweb.com/event/rafael-tipitinas-tickets/14287184",
+"artist": "Rafael"
+},
+{
+"date": "2026-10-29",
 "event": "Rossi. (21 and Over)",
 "venue": "1015 Folsom",
 "city": "San Francisco",
@@ -2882,6 +2891,15 @@
 "region": "",
 "url": "https://www.moshtix.com.au/v2/event/tchami-mayberry/199889",
 "artist": "Tchami"
+},
+{
+"date": "2026-10-31",
+"event": "Haunted Superclub Día 2 pres. Adam Beyer",
+"venue": "Lurin Live",
+"city": "",
+"region": "LIM",
+"url": "https://www.ticketmaster.pe/event/haunted-superclub-dia-2-pres-adam-beyer-venta-general",
+"artist": "Adam Beyer"
 },
 {
 "date": "2026-10-31",
@@ -3443,6 +3461,15 @@
 },
 {
 "date": "2026-11-14",
+"event": "Deorro - 18+",
+"venue": "North Island Credit Union Amphitheatre",
+"city": "Chula Vista",
+"region": "CA",
+"url": "https://www.ticketmaster.com/deorro-18-chula-vista-california-11-14-2026/event/0A006532BC68A7D7",
+"artist": "Juos"
+},
+{
+"date": "2026-11-14",
 "event": "Playhouse Pres: Kyle Watson",
 "venue": "Celebrities",
 "city": "Vancouver",
@@ -3746,6 +3773,15 @@
 "region": "TX",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1AAv4Fe",
 "artist": "Wade"
+},
+{
+"date": "2026-11-21",
+"event": "Westend",
+"venue": "Ogden Theatre",
+"city": "Denver",
+"region": "CO",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAv4Fd",
+"artist": "Westend"
 },
 {
 "date": "2026-11-21",
@@ -4127,11 +4163,20 @@
 },
 {
 "date": "2026-12-10",
-"event": "Fcukers",
+"event": "Fcukers *Upgraded venue - relocated to The Tivoli*",
 "venue": "The Princess Theatre",
 "city": "Brisbane",
 "region": "QLD",
-"url": "https://www.ticketmaster.com.au/fcukers-brisbane-10-12-2026/event/250064EA8FE14FBC",
+"url": "https://www.ticketmaster.com.au/fcukers-upgraded-venue-relocated-to-the-brisbane-10-12-2026/event/250064EA8FE14FBC",
+"artist": "Fcukers"
+},
+{
+"date": "2026-12-10",
+"event": "Fcukers",
+"venue": "The Tivoli",
+"city": "Brisbane",
+"region": "QLD",
+"url": "https://www.ticketmaster.com.au/fcukers-brisbane-10-12-2026/event/13006532BD837891",
 "artist": "Fcukers"
 },
 {
