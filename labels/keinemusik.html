@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keinemusik · groovesMAXXING</title>
+<meta name="description" content="Keinemusik: the Berlin label and crew of &amp;ME, Adam Port, Rampa and Reznik, since 2009. verified links and the artists we track on it.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<meta property="og:title" content="Keinemusik · groovesMAXXING">
+<meta property="og:description" content="Keinemusik: the Berlin label and crew of &amp;ME, Adam Port, Rampa and Reznik, since 2009. verified links and the artists we track on it.">
+<meta property="og:image" content="https://groovesmaxxing.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--night:#0B0B0D;--racing:#FF1C02;--deep:#CC1400;--day:#F2F2EF;--steel:#8A8A93;--line:#26262b;--card:#141417}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--night);color:var(--day);font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:0 26px}
+a{color:inherit}
+.top{padding:34px 0 8px}
+.back{font-family:'Space Mono',monospace;font-size:.82rem;color:var(--steel);text-decoration:none;letter-spacing:.04em}
+.back:hover{color:var(--racing)}
+h1{font-weight:900;font-size:clamp(2.4rem,7vw,3.6rem);line-height:1.02;letter-spacing:-.02em;margin:14px 0 16px}
+.artist{padding:8px 0 10px}
+.aname{margin:0;font-weight:900;font-size:clamp(2rem,5.6vw,2.9rem);line-height:1.05;letter-spacing:-.02em}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 26px}
+.tag{font-family:'Space Mono',monospace;font-size:.76rem;letter-spacing:.06em;color:var(--steel);border:1px solid var(--line);border-radius:999px;padding:6px 13px}
+.tag.lane{color:var(--racing);border-color:rgba(255,28,2,.42)}
+.tag.badge{color:var(--day);border-color:rgba(242,242,239,.34);background:rgba(242,242,239,.05)}
+.bio p{color:#c9c9c4;font-size:1rem;line-height:1.72;margin-bottom:17px;max-width:660px}
+.bio p:last-child{margin-bottom:0}
+.bio b{color:var(--day);font-weight:600}
+blockquote{border-left:3px solid var(--racing);padding:2px 0 2px 20px;margin:24px 0;max-width:640px}
+blockquote p{color:var(--day);font-size:1.06rem;line-height:1.6;font-weight:600;margin-bottom:8px}
+blockquote cite{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);font-style:normal;letter-spacing:.04em}
+.facts{border-top:1px solid var(--line);margin-top:30px;padding-top:22px}
+.fact{display:flex;gap:18px;padding:9px 0;font-size:.94rem;line-height:1.5}
+.fact .k{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);letter-spacing:.05em;flex:none;width:132px;padding-top:3px}
+.fact .v{color:#c9c9c4}
+.links{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+.lk{font-family:'Space Mono',monospace;font-size:.79rem;letter-spacing:.04em;text-decoration:none;color:#c9c9c4;border:1px solid var(--line);border-radius:6px;padding:9px 14px;transition:border-color .15s,color .15s}
+.lk.ico{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;padding:0;border-radius:999px}
+.lki{width:17px;height:17px;display:block}
+.lk.ico.mono2{font-size:.72rem;letter-spacing:.06em;font-weight:700}
+.lk:hover{border-color:var(--racing);color:var(--racing)}
+.player{margin-top:28px;border-radius:12px;overflow:hidden}
+.player iframe{width:100%;height:152px;border:0;display:block}
+.player.tall{margin-top:10px}
+.player.tall iframe{height:352px}
+.note{font-family:'Space Mono',monospace;font-size:.78rem;color:var(--steel);line-height:1.7;margin-top:30px}
+footer{border-top:1px solid var(--line);margin-top:72px;padding:34px 0 60px}
+.fine{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel)}
+.bio a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#33333a}
+.bio a:hover{color:var(--racing);text-decoration-color:var(--racing)}
+.fact .v a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#33333a}
+.fact .v a:hover{color:var(--racing);text-decoration-color:var(--racing)}
+.artist{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:16px}
+.artist > *{grid-column:1 / -1}
+.artist > .aname{grid-column:1}
+.artist > .links{grid-column:2;grid-row:1;margin-top:0;justify-self:end;flex-wrap:nowrap}
+@media (max-width:640px){.artist > .aname{grid-column:1 / -1}.artist > .links{grid-column:1 / -1;grid-row:2;justify-self:start;margin-top:14px;flex-wrap:wrap}}
+
+.pn{display:flex;justify-content:space-between;gap:14px;border-top:1px solid var(--line);margin-top:52px;padding-top:26px}
+.pn a{font-family:'Space Mono',monospace;font-size:.8rem;color:var(--steel);text-decoration:none;max-width:46%}
+.pn a:hover{color:var(--racing)}
+.pn .lbl{display:block;font-size:.68rem;letter-spacing:.08em;margin-bottom:4px}
+</style>
+<link rel="canonical" href="https://groovesmaxxing.com/labels/keinemusik">
+  <!-- gmx-seo start -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Keinemusik · groovesMAXXING">
+  <meta name="twitter:description" content="Keinemusik: the Berlin label and crew of &amp;ME, Adam Port, Rampa and Reznik, since 2009. verified links and the artists we track on it.">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Keinemusik",
+  "url": "https://groovesmaxxing.com/labels/keinemusik",
+  "description": "Keinemusik: the Berlin label and crew of &ME, Adam Port, Rampa and Reznik, since 2009. verified links and the artists we track on it.",
+  "founder": [
+    { "@type": "Person", "name": "&ME" },
+    { "@type": "Person", "name": "Adam Port" },
+    { "@type": "Person", "name": "Rampa" },
+    { "@type": "Person", "name": "Reznik" }
+  ],
+  "sameAs": [
+    "https://www.beatport.com/label/keinemusik/12792",
+    "https://keinemusik.bandcamp.com/",
+    "https://soundcloud.com/keinemusik",
+    "https://www.instagram.com/keinemusik/",
+    "https://www.youtube.com/user/keinemusik",
+    "https://keinemusik.com/",
+    "https://www.discogs.com/label/150816-Keinemusik",
+    "https://ra.co/labels/2302"
+  ]
+}
+  </script>
+  <!-- gmx-seo end -->
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="i-spotify" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.4" fill="currentColor"/><path d="M7.1 9.5c3.1-.85 6.6-.6 9.2.9M7.6 12.6c2.6-.7 5.5-.5 7.7.8M8.1 15.6c2.1-.55 4.4-.4 6.1.65" stroke="#0B0B0D" stroke-width="1.5" stroke-linecap="round" fill="none"/></symbol><symbol id="i-soundcloud" viewBox="0 0 24 24"><g fill="currentColor"><rect x="1.6" y="11.4" width="1.3" height="5.2" rx=".65"/><rect x="4.1" y="9.6" width="1.3" height="7" rx=".65"/><rect x="6.6" y="8.4" width="1.3" height="8.2" rx=".65"/><rect x="9.1" y="10.2" width="1.3" height="6.4" rx=".65"/><path d="M11.9 6.9c.5-.35 1.1-.55 1.8-.55 1.9 0 3.5 1.45 3.7 3.3.3-.1.6-.15.95-.15 1.6 0 2.9 1.3 2.9 2.9S19.95 15.3 18.35 15.3H11.9a.6.6 0 0 1-.6-.6V7.4c0-.2.1-.4.6-.5z"/></g></symbol><symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.4" cy="6.6" r="1.15" fill="currentColor" stroke="none"/></symbol><symbol id="i-bandcamp" viewBox="0 0 24 24"><path d="M2.6 17.6 8.9 6.4h12.5l-6.3 11.2z" fill="currentColor"/></symbol><symbol id="i-youtube" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4.2" fill="currentColor"/><path d="M10.2 8.9v6.2L15.6 12z" fill="#0B0B0D"/></symbol><symbol id="i-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M10.1 13.9a4.2 4.2 0 0 0 6 0l2.6-2.6a4.24 4.24 0 0 0-6-6l-1.3 1.3"/><path d="M13.9 10.1a4.2 4.2 0 0 0-6 0l-2.6 2.6a4.24 4.24 0 0 0 6 6l1.3-1.3"/></symbol></svg>
+<div class="wrap">
+
+<div class="top"><a class="back" href="../index.html#labels">← the label wall</a></div>
+
+<section class="artist label" id="keinemusik">
+<h1 class="aname">Keinemusik</h1>
+<div class="links">
+<a class="lk ico mono2" href="https://www.beatport.com/label/keinemusik/12792" target="_blank" rel="noopener" aria-label="Beatport" title="Beatport">BP</a>
+<a class="lk ico" href="https://keinemusik.bandcamp.com/" target="_blank" rel="noopener" aria-label="Bandcamp" title="Bandcamp"><svg class="lki"><use href="#i-bandcamp"/></svg></a>
+<a class="lk ico" href="https://soundcloud.com/keinemusik" target="_blank" rel="noopener" aria-label="SoundCloud" title="SoundCloud"><svg class="lki"><use href="#i-soundcloud"/></svg></a>
+<a class="lk ico" href="https://www.instagram.com/keinemusik/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg class="lki"><use href="#i-instagram"/></svg></a>
+<a class="lk ico" href="https://www.youtube.com/user/keinemusik" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube"><svg class="lki"><use href="#i-youtube"/></svg></a>
+<a class="lk ico" href="https://keinemusik.com/" target="_blank" rel="noopener" aria-label="Website" title="Website"><svg class="lki"><use href="#i-link"/></svg></a>
+<a class="lk ico mono2" href="https://www.discogs.com/label/150816-Keinemusik" target="_blank" rel="noopener" aria-label="Discogs" title="Discogs">DG</a>
+<a class="lk ico mono2" href="https://ra.co/labels/2302" target="_blank" rel="noopener" aria-label="Resident Advisor" title="Resident Advisor">RA</a>
+</div>
+<div class="meta">
+<span class="tag lane">either lane</span>
+<span class="tag">record label</span>
+<span class="tag">house · techno</span>
+</div>
+<div class="bio">
+<p><b>Keinemusik</b> is the Berlin label and crew that &amp;ME, Adam Port, Rampa and Reznik founded in 2009. the label's own Bandcamp bio puts the whole idea in one breath: "Keinemusik is a network with the label as the pulse pumping centre, driven by the spirit behind the collective: to find your own agenda, refine House and Techno off the beaten path, and build recall across music, art, and image. Founded in 2009 by &amp;ME, Adam Port, Rampa and Reznik, it spans releases, global parties, TEILE, and Worldwide Dancing Club." the crew page on keinemusik.com keeps it to "Keinemusik has been around since 2009." and names the same four as its members. how many people that makes depends on who you ask. the label's own words count four founders. Discogs names five people running it, Rampa, &amp;ME, Adam Port, Reznik and Monja Gentschow, and files Monja Gentschow as an illustrator. Beatportal's 2019 feature by Alice Austin says "The five new friends" formed Keinemusik in 2009. four or five, then, depending on the source. the base is Berlin, per the label's Bandcamp location, Resident Advisor and the Discogs profile, which reads "Electronic music label based in Berlin, Germany." the name is printed "Keinemusik" on its own site, Bandcamp, Beatport, Resident Advisor and Discogs alike, and the label code is LC 35439. the first catalogue number, KM001, is David Mayer "Nacktenordner EP" (2009) on Discogs, and Deezer's earliest is &amp;ME "F.I.R." (KM002), 5 May 2009. Discogs also lists a sub-label, keinerechte, whose releases do not count toward the roster here.</p>
+<p>the genre tag is the label's own phrase, "refine House and Techno off the beaten path", so house and techno. the collective and the label share the name, and Keinemusik plays as a crew and throws parties as well as putting out records. the crew page says of the output that "A more or less constant count of five releases per year have been released ever since, solely laid down by members of the crew." that last clause is worth holding against the catalogue, and the roster paragraph below does. the series is the Keinemusik Radio Show, a set on the label's own SoundCloud, linked from the "show radio" button on keinemusik.com. it is live, with guest hosts and new episodes through 2026. SG Lewis hosted the episode of 1 May 2026, and the latest at the time of writing is by Bontan, 11 September 2026. on the records, EDM Sauce calls Adam Port, Stryv and Malachiii "Move" (2022) the label's commercial monster, number 1 in several countries, and names the &amp;ME, Rampa and Adam Port records "Muyè" (2017) and "Confusion" (2021) alongside it. the newest release is Adam Port and SG Lewis "Be The One" (KM075, 24 April 2026). one thing that is not the label: Drake's "Falling Back" and "A Keeper" (2022) were made with &amp;ME and Rampa, and the label's site blogged it, but they came out on OVO Sound and Republic. Rampa's own line on how it started, from that Beatportal feature, is the quote below.</p>
+<p>a few notes on the names, and on that "solely laid down by members of the crew" line. every release we can see carries a crew member, and outside names arrive as remixers or next to a member. <a href="../artists/me.html">&amp;ME</a>, <a href="../artists/adam-port.html">Adam Port</a> and <a href="../artists/rampa.html">Rampa</a> are the founders on their own records, from &amp;ME "F.I.R. / +++" (KM002, 2009), Adam Port "Chemistry" (KM004, 2009) and Rampa "Wife &amp; Man" (2009), through "Workparty One" (2010), which carries all three, to Adam Port "Corrosive Love" (KM009, 2011) and Rampa "Workparty Two" (KM010, 2011). <a href="../artists/keinemusik.html">Keinemusik</a>, the crew itself, is a credited artist on its own albums, "You Are Safe" (KM039, 2017), "You Are Safe Remixes" (KM040, 2018) and "HIGHSNOBIETY 20190801" (2019). four are here as remixers. <a href="../artists/black-coffee.html">Black Coffee</a> (KM041), <a href="../artists/dj-tennis.html">DJ Tennis</a> (KM040) and <a href="../artists/solomun.html">Solomun</a> (KM042) all have "You Are Safe" remixes from 2018, Black Coffee also has "Muyè (Black Coffee Remix)" (2018) and is on "The Rapture Pt. III" (KM066S1D, 2023) with &amp;ME, Solomun also has "Send Return" (KM059, 2022), and <a href="../artists/bedouin.html">Bedouin</a>, the Brooklyn duo, has a "Doppelgänger 01" remix (KM038, 2017). three are collaborators with Adam Port: <a href="../artists/sg-lewis.html">SG Lewis</a> on "Be The One" (2026), <a href="../artists/stryv.html">Stryv</a> and <a href="../artists/malachiii.html">Malachiii</a> on "Move", which Beatport dates 2022 and which Discogs files as a 2024 release listing Keinemusik and Interscope Records together, with Camila Cabello among the credits, so a joint release. the one light contradiction sits at the very start of the catalogue: KM001 is David Mayer "Nacktenordner EP" (2009), and David Mayer is not among the four founders, though he plays in Keinemusik line-ups. Reznik, the fourth founder, is not on our roster yet. 11 artists we track have released on it, a confirmed floor from a catalogue sweep, not the full roster: <a href="../artists/me.html">&amp;ME</a>, <a href="../artists/adam-port.html">Adam Port</a>, <a href="../artists/bedouin.html">Bedouin</a>, <a href="../artists/black-coffee.html">Black Coffee</a>, <a href="../artists/dj-tennis.html">DJ Tennis</a>, <a href="../artists/keinemusik.html">Keinemusik</a>, <a href="../artists/malachiii.html">Malachiii</a>, <a href="../artists/rampa.html">Rampa</a>, <a href="../artists/sg-lewis.html">SG Lewis</a>, <a href="../artists/solomun.html">Solomun</a>, <a href="../artists/stryv.html">Stryv</a></p>
+</div>
+<div class="facts">
+<div class="fact"><div class="k">founded</div><div class="v">2009. the label's own Bandcamp bio and crew page say so, and so does Beatportal. the first catalogue number is David Mayer "Nacktenordner EP" (KM001, 2009) per Discogs, and Deezer's earliest is &amp;ME "F.I.R." (KM002, 5 May 2009)</div></div>
+<div class="fact"><div class="k">founded by</div><div class="v">four by the label's own count, &amp;ME, Adam Port, Rampa and Reznik, per its Bandcamp bio and crew page. five by Discogs, which names Rampa, &amp;ME, Adam Port, Reznik and Monja Gentschow, an illustrator, as the people running it, and Beatportal's 2019 feature says "The five new friends" formed it. the count depends on who you ask</div></div>
+<div class="fact"><div class="k">based</div><div class="v">Berlin, Germany. the label's Bandcamp location field, Resident Advisor and the Discogs profile agree, and Discogs reads "Electronic music label based in Berlin, Germany." label code LC 35439</div></div>
+<div class="fact"><div class="k">sub-label</div><div class="v">keinerechte, per Discogs. its releases do not count toward the roster here</div></div>
+<div class="fact"><div class="k">the series</div><div class="v">Keinemusik Radio Show, a set on the label's own SoundCloud, linked from the "show radio" button on keinemusik.com. live in 2026 with guest hosts: SG Lewis hosted the episode of 1 May 2026, Bontan the episode of 11 September 2026</div></div>
+<div class="fact"><div class="k">the crew</div><div class="v">the collective and the label share the name. Keinemusik plays as a crew and throws parties, and its Bandcamp bio says it "spans releases, global parties, TEILE, and Worldwide Dancing Club". not the label: Drake's "Falling Back" and "A Keeper" (2022), made with &amp;ME and Rampa and blogged on the label's site, came out on OVO Sound and Republic</div></div>
+<div class="fact"><div class="k">released on it</div><div class="v">11 artists we track have released on it, a confirmed floor from a catalogue sweep, not the full roster: <a href="../artists/me.html">&amp;ME</a>, <a href="../artists/adam-port.html">Adam Port</a>, <a href="../artists/bedouin.html">Bedouin</a>, <a href="../artists/black-coffee.html">Black Coffee</a>, <a href="../artists/dj-tennis.html">DJ Tennis</a>, <a href="../artists/keinemusik.html">Keinemusik</a>, <a href="../artists/malachiii.html">Malachiii</a>, <a href="../artists/rampa.html">Rampa</a>, <a href="../artists/sg-lewis.html">SG Lewis</a>, <a href="../artists/solomun.html">Solomun</a>, <a href="../artists/stryv.html">Stryv</a></div></div>
+</div>
+<blockquote><p>"We had no strategy then, and we have no strategy now. It all grew very slowly and consistently over the last ten years. And I think the only real plan we have is to keep it slow."</p><cite>&#8212; Rampa, co-founder, Beatportal (2019)</cite></blockquote>
+<p style="margin:26px 0 0;color:var(--steel);font-size:.85rem">the label's own playlist, "Keinemusik - The Party Is Over", on its own Spotify account. the owner account is Keinemusik and the playlist description reads "Curated by &amp;ME, Rampa, Adam Port and Reznik."</p>
+<div class="player"><iframe src="https://open.spotify.com/embed/playlist/3U9lafWEnb3uP6JFbI65uq?utm_source=generator&amp;theme=0" loading="lazy" title="Keinemusik playlist on Spotify"></iframe></div>
+<p style="margin:26px 0 0;color:var(--steel);font-size:.85rem">the series: Keinemusik Radio Show, on the label's own SoundCloud and linked from the "show radio" button on keinemusik.com. the full set would not embed when we built this page, so the player below carries the latest episode, "Keinemusik Radio Show by Bontan 11.09.2026". the show runs with guest hosts, and SG Lewis took the episode of 1 May 2026.</p>
+<div class="player tall"><iframe src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fkeinemusik%2Fkeinemusik-radio-show-by-bontan-11092026&color=%23ff1c02&auto_play=false&show_teaser=false" loading="lazy" title="Keinemusik Radio Show by Bontan 11.09.2026 by Keinemusik on SoundCloud"></iframe></div>
+<p style="margin:12px 0 0;color:var(--steel);font-size:.85rem">the whole set: <a href="https://soundcloud.com/keinemusik/sets/keinemusik-radio-show" target="_blank" rel="noopener">soundcloud.com/keinemusik/sets/keinemusik-radio-show</a></p>
+</section>
+<nav class="pn"><a href="exx-underground.html"><span class="lbl">← previous</span>Exx Underground</a><a href="revival-new-york.html" style="text-align:right"><span class="lbl">next →</span>Revival New York</a></nav>
+<p class="note">every fact on this page is sourced or it is not on this page, and quotes are verbatim, spelling and all. the roster line links the artists we track who release here.</p>
+
+<footer>
+<p class="fine">groovesMAXXING · <a href="../index.html">home</a> · <a href="../roster.html">the roster</a> · <a href="../events.html">the radar</a> · <a href="../sets.html">the sets</a></p>
+</footer>
+
+</div>
+</body>
+</html>

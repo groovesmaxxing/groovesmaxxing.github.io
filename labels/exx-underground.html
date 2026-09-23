@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exx Underground · groovesMAXXING</title>
+<meta name="description" content="Exx Underground: Andrey Exx's underground label, sister to Exx Muzik, with a yearly best-of. verified links and the artists we track on it.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<meta property="og:title" content="Exx Underground · groovesMAXXING">
+<meta property="og:description" content="Exx Underground: Andrey Exx's underground label, sister to Exx Muzik, with a yearly best-of. verified links and the artists we track on it.">
+<meta property="og:image" content="https://groovesmaxxing.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--night:#0B0B0D;--racing:#FF1C02;--deep:#CC1400;--day:#F2F2EF;--steel:#8A8A93;--line:#26262b;--card:#141417}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--night);color:var(--day);font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:0 26px}
+a{color:inherit}
+.top{padding:34px 0 8px}
+.back{font-family:'Space Mono',monospace;font-size:.82rem;color:var(--steel);text-decoration:none;letter-spacing:.04em}
+.back:hover{color:var(--racing)}
+h1{font-weight:900;font-size:clamp(2.4rem,7vw,3.6rem);line-height:1.02;letter-spacing:-.02em;margin:14px 0 16px}
+.artist{padding:8px 0 10px}
+.aname{margin:0;font-weight:900;font-size:clamp(2rem,5.6vw,2.9rem);line-height:1.05;letter-spacing:-.02em}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 26px}
+.tag{font-family:'Space Mono',monospace;font-size:.76rem;letter-spacing:.06em;color:var(--steel);border:1px solid var(--line);border-radius:999px;padding:6px 13px}
+.tag.lane{color:var(--racing);border-color:rgba(255,28,2,.42)}
+.tag.badge{color:var(--day);border-color:rgba(242,242,239,.34);background:rgba(242,242,239,.05)}
+.bio p{color:#c9c9c4;font-size:1rem;line-height:1.72;margin-bottom:17px;max-width:660px}
+.bio p:last-child{margin-bottom:0}
+.bio b{color:var(--day);font-weight:600}
+blockquote{border-left:3px solid var(--racing);padding:2px 0 2px 20px;margin:24px 0;max-width:640px}
+blockquote p{color:var(--day);font-size:1.06rem;line-height:1.6;font-weight:600;margin-bottom:8px}
+blockquote cite{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);font-style:normal;letter-spacing:.04em}
+.facts{border-top:1px solid var(--line);margin-top:30px;padding-top:22px}
+.fact{display:flex;gap:18px;padding:9px 0;font-size:.94rem;line-height:1.5}
+.fact .k{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);letter-spacing:.05em;flex:none;width:132px;padding-top:3px}
+.fact .v{color:#c9c9c4}
+.links{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+.lk{font-family:'Space Mono',monospace;font-size:.79rem;letter-spacing:.04em;text-decoration:none;color:#c9c9c4;border:1px solid var(--line);border-radius:6px;padding:9px 14px;transition:border-color .15s,color .15s}
+.lk.ico{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;padding:0;border-radius:999px}
+.lki{width:17px;height:17px;display:block}
+.lk.ico.mono2{font-size:.72rem;letter-spacing:.06em;font-weight:700}
+.lk:hover{border-color:var(--racing);color:var(--racing)}
+.player{margin-top:28px;border-radius:12px;overflow:hidden}
+.player iframe{width:100%;height:152px;border:0;display:block}
+.player.tall{margin-top:10px}
+.player.tall iframe{height:352px}
+.note{font-family:'Space Mono',monospace;font-size:.78rem;color:var(--steel);line-height:1.7;margin-top:30px}
+footer{border-top:1px solid var(--line);margin-top:72px;padding:34px 0 60px}
+.fine{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel)}
+.bio a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#33333a}
+.bio a:hover{color:var(--racing);text-decoration-color:var(--racing)}
+.fact .v a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#33333a}
+.fact .v a:hover{color:var(--racing);text-decoration-color:var(--racing)}
+.artist{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:16px}
+.artist > *{grid-column:1 / -1}
+.artist > .aname{grid-column:1}
+.artist > .links{grid-column:2;grid-row:1;margin-top:0;justify-self:end;flex-wrap:nowrap}
+@media (max-width:640px){.artist > .aname{grid-column:1 / -1}.artist > .links{grid-column:1 / -1;grid-row:2;justify-self:start;margin-top:14px;flex-wrap:wrap}}
+
+.pn{display:flex;justify-content:space-between;gap:14px;border-top:1px solid var(--line);margin-top:52px;padding-top:26px}
+.pn a{font-family:'Space Mono',monospace;font-size:.8rem;color:var(--steel);text-decoration:none;max-width:46%}
+.pn a:hover{color:var(--racing)}
+.pn .lbl{display:block;font-size:.68rem;letter-spacing:.08em;margin-bottom:4px}
+</style>
+<link rel="canonical" href="https://groovesmaxxing.com/labels/exx-underground">
+  <!-- gmx-seo start -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Exx Underground · groovesMAXXING">
+  <meta name="twitter:description" content="Exx Underground: Andrey Exx's underground label, sister to Exx Muzik, with a yearly best-of. verified links and the artists we track on it.">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Exx Underground",
+  "url": "https://groovesmaxxing.com/labels/exx-underground",
+  "description": "Exx Underground: Andrey Exx's underground label, sister to Exx Muzik, with a yearly best-of. verified links and the artists we track on it.",
+  "sameAs": [
+    "https://www.beatport.com/label/exx-underground/94598",
+    "https://soundcloud.com/exxunderground",
+    "https://www.instagram.com/exxunderground/",
+    "https://www.discogs.com/label/2258917-Exx-Underground"
+  ]
+}
+  </script>
+  <!-- gmx-seo end -->
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="i-spotify" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.4" fill="currentColor"/><path d="M7.1 9.5c3.1-.85 6.6-.6 9.2.9M7.6 12.6c2.6-.7 5.5-.5 7.7.8M8.1 15.6c2.1-.55 4.4-.4 6.1.65" stroke="#0B0B0D" stroke-width="1.5" stroke-linecap="round" fill="none"/></symbol><symbol id="i-soundcloud" viewBox="0 0 24 24"><g fill="currentColor"><rect x="1.6" y="11.4" width="1.3" height="5.2" rx=".65"/><rect x="4.1" y="9.6" width="1.3" height="7" rx=".65"/><rect x="6.6" y="8.4" width="1.3" height="8.2" rx=".65"/><rect x="9.1" y="10.2" width="1.3" height="6.4" rx=".65"/><path d="M11.9 6.9c.5-.35 1.1-.55 1.8-.55 1.9 0 3.5 1.45 3.7 3.3.3-.1.6-.15.95-.15 1.6 0 2.9 1.3 2.9 2.9S19.95 15.3 18.35 15.3H11.9a.6.6 0 0 1-.6-.6V7.4c0-.2.1-.4.6-.5z"/></g></symbol><symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.4" cy="6.6" r="1.15" fill="currentColor" stroke="none"/></symbol><symbol id="i-bandcamp" viewBox="0 0 24 24"><path d="M2.6 17.6 8.9 6.4h12.5l-6.3 11.2z" fill="currentColor"/></symbol><symbol id="i-youtube" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4.2" fill="currentColor"/><path d="M10.2 8.9v6.2L15.6 12z" fill="#0B0B0D"/></symbol><symbol id="i-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M10.1 13.9a4.2 4.2 0 0 0 6 0l2.6-2.6a4.24 4.24 0 0 0-6-6l-1.3 1.3"/><path d="M13.9 10.1a4.2 4.2 0 0 0-6 0l-2.6 2.6a4.24 4.24 0 0 0 6 6l1.3-1.3"/></symbol></svg>
+<div class="wrap">
+
+<div class="top"><a class="back" href="../index.html#labels">← the label wall</a></div>
+
+<section class="artist label" id="exx-underground">
+<h1 class="aname">Exx Underground</h1>
+<div class="links">
+<a class="lk ico mono2" href="https://www.beatport.com/label/exx-underground/94598" target="_blank" rel="noopener" aria-label="Beatport" title="Beatport">BP</a>
+<a class="lk ico" href="https://soundcloud.com/exxunderground" target="_blank" rel="noopener" aria-label="SoundCloud" title="SoundCloud"><svg class="lki"><use href="#i-soundcloud"/></svg></a>
+<a class="lk ico" href="https://www.instagram.com/exxunderground/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg class="lki"><use href="#i-instagram"/></svg></a>
+<a class="lk ico mono2" href="https://www.discogs.com/label/2258917-Exx-Underground" target="_blank" rel="noopener" aria-label="Discogs" title="Discogs">DG</a>
+</div>
+<div class="meta">
+<span class="tag lane">either lane</span>
+<span class="tag">record label</span>
+</div>
+<div class="bio">
+<p><b>Exx Underground</b> is Andrey Exx's label, and its own SoundCloud bio puts it in three lines: "Record Label, Owner @djandreyexx", "Only underground music." and "@exxboundless @exxchill @exxtalents - our sub-labels." the handle @djandreyexx is Andrey Exx, whose ADE profile places him in Moscow, and that is the owner's base, not a stated base for the label, which names none. who owns it is told two ways. the label's own bio names one owner. iHouseU, on 16 October 2023, wrote of Airsand &amp; TuraniQa that "This couple are the owners of the top labels Exx Muzik &amp; Exx Underground." and that "Airsand &amp; TuraniQa is a project from Andrey Exx ... and Julia Turano (vocalist, producer and DJ)." so one owner by the label, a couple by the press, and Andrey Exx in both. Exx Muzik is the sister label, with the same owners per iHouseU, though Discogs records no link between the two. the three sub-labels from the bio, Exx Boundless, Exx Chill and Exx Talents, we found named nowhere else. Discogs keeps its profile to "Electronic music label." and notes that catalogue number EU023 was never released. no founding year is stated anywhere, so the catalogue does the talking: it starts at EU001, also numbered EXX 01, Lisitsyn "Dark Side", 2021 on Discogs and 26 March 2021 on Deezer. Discogs lists 234 releases and Deezer returns more than 300 albums under the name, so call it well over two hundred releases since 2021. no parent company or distributor turned up, so we name none. "Only underground music." is a stance rather than a genre, so we don't tag one.</p>
+<p>the series is Best Of Exx Underground, a yearly compilation. Vol.1 (EUCOMP002, 2021) has Lisitsyn on it. Beatport carries Vol.2 (EUCOMP006, 30 December 2022), whose copy reads "Collection of the best tracks of the year from our label.", and Vol. 4 (EUCOMP016, 3 January 2025). the 2025 edition is a set on the label's own SoundCloud, embedded below. there are event compilations too: "Exx Underground ADE 2024" for Amsterdam Dance Event and "Exx Underground Miami 2025" (EUCOMP018, 28 March 2025) for Miami Music Week. no source calls any one release notable, so we list none. the newest release is Corsini "Chikaku", 18 September 2026, and it stands in below for the playlist the label does not have on Spotify. the name is printed "Exx Underground" on Beatport, SoundCloud, Discogs and Deezer, while the Instagram account displays "Exx Underground Music Label". videos go to a shared "Exx Labels" YouTube channel that also carries Exx Muzik, so it is not the label's own and is not linked here. there is no Bandcamp, no Resident Advisor label page and no website.</p>
+<p>a few notes on the names. <a href="../artists/lisitsyn.html">Lisitsyn</a> has the first number in the catalogue, "Dark Side" (EU001, also EXX 01, 2021), plus "Zerkalo" (EXX 06, 2021) and a spot on "Best Of Exx Underground Vol.1" (EUCOMP002, 2021). <a href="../artists/id-id.html">ID ID</a> is here as a remixer, on Filizola's "Moving" (2024). two rest on the label's own compilations alone: <a href="../artists/berin.html">Berin</a> on "Exx Underground Showcase ADE 2023" (2023) and <a href="../artists/leo-sagrado.html">Leo Sagrado</a> on "EXXcellent Tunes Vol. 3" (EUCOMP004, 2022). <a href="../artists/sedat.html">SEDAT</a> has "Emergency Exit" (EXX 80, 2022) and is on "Exx Underground Showcase ADE 2023" (2023) and "Essential Selection Ibiza 2024" (2024) as well. <a href="../artists/gutenn.html">Gutenn</a> pairs "Double The Sun" (2024) with "Best Of Exx Underground 2024" (2024), and <a href="../artists/petel.html">PETEL</a> pairs "Konflict" (2023) with "Best Of Exx Underground, Vol. 4" (2025). the rest are on their own releases: <a href="../artists/benesh.html">Benesh</a> "Blessed" (2025), <a href="../artists/catmoonk.html">CATMOONK</a> "It's My Life" (2024) and "Turn The Lights Off" (2026), <a href="../artists/jon-k.html">Jon.K</a> "Ganzi" (EXX 21, 2021) and a "Take You Home" remix (EXX 22, 2021), <a href="../artists/jonah.html">JONAH.</a> "Scandal" (2024), <a href="../artists/misha-klein.html">Misha Klein</a> "Flashback" (2024) and "We Are Free" (2025), <a href="../artists/offir.html">Offir.</a> "Daddy &amp; Your Mind" (2024), <a href="../artists/panic-chase.html">Panic Chase</a> "Queen" (EU043, 2022) and "Messing Around" (EU054, 2022), and <a href="../artists/sony-vibe.html">Sony Vibe</a> "Born Not To Be Quiet EP" (EXX 124, 2022) and "Born Not To Be Quiet" (2022). 15 artists we track have released on it, a confirmed floor from a catalogue sweep, not the full roster: <a href="../artists/benesh.html">Benesh</a>, <a href="../artists/berin.html">Berin</a>, <a href="../artists/catmoonk.html">CATMOONK</a>, <a href="../artists/gutenn.html">Gutenn</a>, <a href="../artists/id-id.html">ID ID</a>, <a href="../artists/jon-k.html">Jon.K</a>, <a href="../artists/jonah.html">JONAH.</a>, <a href="../artists/leo-sagrado.html">Leo Sagrado</a>, <a href="../artists/lisitsyn.html">Lisitsyn</a>, <a href="../artists/misha-klein.html">Misha Klein</a>, <a href="../artists/offir.html">Offir.</a>, <a href="../artists/panic-chase.html">Panic Chase</a>, <a href="../artists/petel.html">PETEL</a>, <a href="../artists/sedat.html">SEDAT</a>, <a href="../artists/sony-vibe.html">Sony Vibe</a></p>
+</div>
+<div class="facts">
+<div class="fact"><div class="k">catalogue starts</div><div class="v">EU001, also numbered EXX 01: Lisitsyn "Dark Side", 2021 on Discogs, 26 March 2021 on Deezer. no founding year is stated anywhere. Discogs lists 234 releases and Deezer returns more than 300 albums under the name, so well over two hundred releases since 2021. Discogs notes that EU023 was never released</div></div>
+<div class="fact"><div class="k">owned by</div><div class="v">Andrey Exx, one owner by the label and a couple by the press. the label's own SoundCloud bio reads "Record Label, Owner @djandreyexx", and @djandreyexx is Andrey Exx. iHouseU, 16 October 2023, says of Airsand &amp; TuraniQa "This couple are the owners of the top labels Exx Muzik &amp; Exx Underground.", the project being Andrey Exx and Julia Turano. Andrey Exx is in both accounts</div></div>
+<div class="fact"><div class="k">based</div><div class="v">none stated by the label. Andrey Exx's ADE profile places him in Moscow, and that is the owner's base, not a stated base for the label</div></div>
+<div class="fact"><div class="k">family</div><div class="v">Exx Muzik, the sister label, same owners per iHouseU, though Discogs records no link between the two. three sub-labels named in the label's own SoundCloud bio, Exx Boundless, Exx Chill and Exx Talents, which we found named nowhere else. no parent company or distributor turned up. videos go to a shared "Exx Labels" YouTube channel that also carries Exx Muzik, so it is not linked here</div></div>
+<div class="fact"><div class="k">the series</div><div class="v">Best Of Exx Underground, a yearly compilation. Vol.1 (EUCOMP002, 2021), Vol.2 (EUCOMP006, 30 December 2022) and Vol. 4 (EUCOMP016, 3 January 2025), the last two on Beatport, and the 2025 edition as a set on the label's own SoundCloud. event compilations too: "Exx Underground ADE 2024" for Amsterdam Dance Event and "Exx Underground Miami 2025" (EUCOMP018, 28 March 2025) for Miami Music Week</div></div>
+<div class="fact"><div class="k">released on it</div><div class="v">15 artists we track have released on it, a confirmed floor from a catalogue sweep, not the full roster: <a href="../artists/benesh.html">Benesh</a>, <a href="../artists/berin.html">Berin</a>, <a href="../artists/catmoonk.html">CATMOONK</a>, <a href="../artists/gutenn.html">Gutenn</a>, <a href="../artists/id-id.html">ID ID</a>, <a href="../artists/jon-k.html">Jon.K</a>, <a href="../artists/jonah.html">JONAH.</a>, <a href="../artists/leo-sagrado.html">Leo Sagrado</a>, <a href="../artists/lisitsyn.html">Lisitsyn</a>, <a href="../artists/misha-klein.html">Misha Klein</a>, <a href="../artists/offir.html">Offir.</a>, <a href="../artists/panic-chase.html">Panic Chase</a>, <a href="../artists/petel.html">PETEL</a>, <a href="../artists/sedat.html">SEDAT</a>, <a href="../artists/sony-vibe.html">Sony Vibe</a></div></div>
+</div>
+<blockquote><p>"Only underground music."</p><cite>&#8212; Exx Underground, its own SoundCloud bio, no person credited</cite></blockquote>
+<p style="margin:26px 0 0;color:var(--steel);font-size:.85rem">the newest release, Corsini "Chikaku" (18 September 2026), on Exx Underground per Deezer. the label has no playlist of its own on Spotify, so a release stands in.</p>
+<div class="player tall"><iframe src="https://open.spotify.com/embed/album/3SPeKliIp4yuQWVWaUjiSg?utm_source=generator&amp;theme=0" loading="lazy" title="Chikaku on Spotify"></iframe></div>
+<p style="margin:26px 0 0;color:var(--steel);font-size:.85rem">the series: Best Of Exx Underground, the label's yearly compilation. the 2025 edition is a set on the label's own SoundCloud, below. one of the event compilations, <a href="https://open.spotify.com/album/5DRqes9CUTgURNBWJFfrA5" target="_blank" rel="noopener">"Exx Underground ADE 2024"</a>, is on Spotify.</p>
+<div class="player tall"><iframe src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fexxunderground%2Fsets%2Fbest-of-exx-underground-2025&color=%23ff1c02&auto_play=false&show_teaser=false" loading="lazy" title="Best Of Exx Underground 2025 by Exx Underground on SoundCloud"></iframe></div>
+</section>
+<nav class="pn"><a href="realm.html"><span class="lbl">← previous</span>REALM</a><a href="keinemusik.html" style="text-align:right"><span class="lbl">next →</span>Keinemusik</a></nav>
+<p class="note">every fact on this page is sourced or it is not on this page, and quotes are verbatim, spelling and all. the roster line links the artists we track who release here.</p>
+
+<footer>
+<p class="fine">groovesMAXXING · <a href="../index.html">home</a> · <a href="../roster.html">the roster</a> · <a href="../events.html">the radar</a> · <a href="../sets.html">the sets</a></p>
+</footer>
+
+</div>
+</body>
+</html>

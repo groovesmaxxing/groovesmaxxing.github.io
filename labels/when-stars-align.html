@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>When Stars Align · groovesMAXXING</title>
+<meta name="description" content="When Stars Align: CamelPhat's label, first release in 2022, melodic techno, indie dance and melodic afro house. verified links and the artists we track on it.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<meta property="og:title" content="When Stars Align · groovesMAXXING">
+<meta property="og:description" content="When Stars Align: CamelPhat's label, first release in 2022, melodic techno, indie dance and melodic afro house. verified links and the artists we track on it.">
+<meta property="og:image" content="https://groovesmaxxing.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--night:#0B0B0D;--racing:#FF1C02;--deep:#CC1400;--day:#F2F2EF;--steel:#8A8A93;--line:#26262b;--card:#141417}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--night);color:var(--day);font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:0 26px}
+a{color:inherit}
+.top{padding:34px 0 8px}
+.back{font-family:'Space Mono',monospace;font-size:.82rem;color:var(--steel);text-decoration:none;letter-spacing:.04em}
+.back:hover{color:var(--racing)}
+h1{font-weight:900;font-size:clamp(2.4rem,7vw,3.6rem);line-height:1.02;letter-spacing:-.02em;margin:14px 0 16px}
+.artist{padding:8px 0 10px}
+.aname{margin:0;font-weight:900;font-size:clamp(2rem,5.6vw,2.9rem);line-height:1.05;letter-spacing:-.02em}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 26px}
+.tag{font-family:'Space Mono',monospace;font-size:.76rem;letter-spacing:.06em;color:var(--steel);border:1px solid var(--line);border-radius:999px;padding:6px 13px}
+.tag.lane{color:var(--racing);border-color:rgba(255,28,2,.42)}
+.tag.badge{color:var(--day);border-color:rgba(242,242,239,.34);background:rgba(242,242,239,.05)}
+.bio p{color:#c9c9c4;font-size:1rem;line-height:1.72;margin-bottom:17px;max-width:660px}
+.bio p:last-child{margin-bottom:0}
+.bio b{color:var(--day);font-weight:600}
+blockquote{border-left:3px solid var(--racing);padding:2px 0 2px 20px;margin:24px 0;max-width:640px}
+blockquote p{color:var(--day);font-size:1.06rem;line-height:1.6;font-weight:600;margin-bottom:8px}
+blockquote cite{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);font-style:normal;letter-spacing:.04em}
+.facts{border-top:1px solid var(--line);margin-top:30px;padding-top:22px}
+.fact{display:flex;gap:18px;padding:9px 0;font-size:.94rem;line-height:1.5}
+.fact .k{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);letter-spacing:.05em;flex:none;width:132px;padding-top:3px}
+.fact .v{color:#c9c9c4}
+.links{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+.lk{font-family:'Space Mono',monospace;font-size:.79rem;letter-spacing:.04em;text-decoration:none;color:#c9c9c4;border:1px solid var(--line);border-radius:6px;padding:9px 14px;transition:border-color .15s,color .15s}
+.lk.ico{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;padding:0;border-radius:999px}
+.lki{width:17px;height:17px;display:block}
+.lk.ico.mono2{font-size:.72rem;letter-spacing:.06em;font-weight:700}
+.lk:hover{border-color:var(--racing);color:var(--racing)}
+.player{margin-top:28px;border-radius:12px;overflow:hidden}
+.player iframe{width:100%;height:152px;border:0;display:block}
+.player.tall{margin-top:10px}
+.player.tall iframe{height:352px}
+.note{font-family:'Space Mono',monospace;font-size:.78rem;color:var(--steel);line-height:1.7;margin-top:30px}
+footer{border-top:1px solid var(--line);margin-top:72px;padding:34px 0 60px}
+.fine{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel)}
+.bio a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#33333a}
+.bio a:hover{color:var(--racing);text-decoration-color:var(--racing)}
+.fact .v a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#33333a}
+.fact .v a:hover{color:var(--racing);text-decoration-color:var(--racing)}
+.artist{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:16px}
+.artist > *{grid-column:1 / -1}
+.artist > .aname{grid-column:1}
+.artist > .links{grid-column:2;grid-row:1;margin-top:0;justify-self:end;flex-wrap:nowrap}
+@media (max-width:640px){.artist > .aname{grid-column:1 / -1}.artist > .links{grid-column:1 / -1;grid-row:2;justify-self:start;margin-top:14px;flex-wrap:wrap}}
+
+.pn{display:flex;justify-content:space-between;gap:14px;border-top:1px solid var(--line);margin-top:52px;padding-top:26px}
+.pn a{font-family:'Space Mono',monospace;font-size:.8rem;color:var(--steel);text-decoration:none;max-width:46%}
+.pn a:hover{color:var(--racing)}
+.pn .lbl{display:block;font-size:.68rem;letter-spacing:.08em;margin-bottom:4px}
+</style>
+<link rel="canonical" href="https://groovesmaxxing.com/labels/when-stars-align">
+  <!-- gmx-seo start -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="When Stars Align · groovesMAXXING">
+  <meta name="twitter:description" content="When Stars Align: CamelPhat's label, first release in 2022, melodic techno, indie dance and melodic afro house. verified links and the artists we track on it.">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "When Stars Align",
+  "url": "https://groovesmaxxing.com/labels/when-stars-align",
+  "description": "When Stars Align: CamelPhat's label, first release in 2022, melodic techno, indie dance and melodic afro house. verified links and the artists we track on it.",
+  "founder": [
+    { "@type": "Person", "name": "Dave Whelan" },
+    { "@type": "Person", "name": "Mike Di Scala" }
+  ],
+  "sameAs": [
+    "https://www.beatport.com/label/when-stars-align/106180",
+    "https://soundcloud.com/whenstarsalignofficial",
+    "https://www.instagram.com/wsa.music/",
+    "https://www.youtube.com/@WhenStarsAlign",
+    "https://www.discogs.com/label/2980060-When-Stars-Align"
+  ]
+}
+  </script>
+  <!-- gmx-seo end -->
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="i-spotify" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.4" fill="currentColor"/><path d="M7.1 9.5c3.1-.85 6.6-.6 9.2.9M7.6 12.6c2.6-.7 5.5-.5 7.7.8M8.1 15.6c2.1-.55 4.4-.4 6.1.65" stroke="#0B0B0D" stroke-width="1.5" stroke-linecap="round" fill="none"/></symbol><symbol id="i-soundcloud" viewBox="0 0 24 24"><g fill="currentColor"><rect x="1.6" y="11.4" width="1.3" height="5.2" rx=".65"/><rect x="4.1" y="9.6" width="1.3" height="7" rx=".65"/><rect x="6.6" y="8.4" width="1.3" height="8.2" rx=".65"/><rect x="9.1" y="10.2" width="1.3" height="6.4" rx=".65"/><path d="M11.9 6.9c.5-.35 1.1-.55 1.8-.55 1.9 0 3.5 1.45 3.7 3.3.3-.1.6-.15.95-.15 1.6 0 2.9 1.3 2.9 2.9S19.95 15.3 18.35 15.3H11.9a.6.6 0 0 1-.6-.6V7.4c0-.2.1-.4.6-.5z"/></g></symbol><symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.4" cy="6.6" r="1.15" fill="currentColor" stroke="none"/></symbol><symbol id="i-bandcamp" viewBox="0 0 24 24"><path d="M2.6 17.6 8.9 6.4h12.5l-6.3 11.2z" fill="currentColor"/></symbol><symbol id="i-youtube" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4.2" fill="currentColor"/><path d="M10.2 8.9v6.2L15.6 12z" fill="#0B0B0D"/></symbol><symbol id="i-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M10.1 13.9a4.2 4.2 0 0 0 6 0l2.6-2.6a4.24 4.24 0 0 0-6-6l-1.3 1.3"/><path d="M13.9 10.1a4.2 4.2 0 0 0-6 0l-2.6 2.6a4.24 4.24 0 0 0 6 6l1.3-1.3"/></symbol></svg>
+<div class="wrap">
+
+<div class="top"><a class="back" href="../index.html#labels">← the label wall</a></div>
+
+<section class="artist label" id="when-stars-align">
+<h1 class="aname">When Stars Align</h1>
+<div class="links">
+<a class="lk ico mono2" href="https://www.beatport.com/label/when-stars-align/106180" target="_blank" rel="noopener" aria-label="Beatport" title="Beatport">BP</a>
+<a class="lk ico" href="https://soundcloud.com/whenstarsalignofficial" target="_blank" rel="noopener" aria-label="SoundCloud" title="SoundCloud"><svg class="lki"><use href="#i-soundcloud"/></svg></a>
+<a class="lk ico" href="https://www.instagram.com/wsa.music/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg class="lki"><use href="#i-instagram"/></svg></a>
+<a class="lk ico" href="https://www.youtube.com/@WhenStarsAlign" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube"><svg class="lki"><use href="#i-youtube"/></svg></a>
+<a class="lk ico mono2" href="https://www.discogs.com/label/2980060-When-Stars-Align" target="_blank" rel="noopener" aria-label="Discogs" title="Discogs">DG</a>
+</div>
+<div class="meta">
+<span class="tag lane">either lane</span>
+<span class="tag">record label</span>
+<span class="tag">melodic techno · indie dance · melodic afro house</span>
+</div>
+<div class="bio">
+<p><b>When Stars Align</b> is CamelPhat's label. Discogs puts it in one line: "Label founded by CamelPhat in 2022." the label's own YouTube channel opens its description with "Founded by CAMELPHAT, When Stars Align is a label that embodies innovation, artistry, and forward-thinking sounds." CamelPhat are Dave Whelan and Mike Di Scala, per Beatportal's label page, and Whelan calls it "our own label" in Complex, which is the quote below. the start is told two ways. EDM.com reported on 18 February 2021 that the duo were "set to launch a new label, When Stars Align" and had opened a demo call on Twitter, while the first release, WSA001, came out on 7 October 2022, Eldon "Magic Me" in a CamelPhat remix, and Discogs dates the founding to 2022. so the name was public about twenty months before the first record, and both dates stand here. the label states no base. CamelPhat are from Liverpool, but that is the duo's city, and no source gives the label one, so we don't either. the name holds steady, "When Stars Align" on Beatport, SoundCloud and Discogs, and on Deezer, where all 64 albums that carry it print it the same way. the Instagram account displays "WHEN STARS ALIGN RECORDS" under the handle wsa.music, and Apple Music prints "℗ 2026 When Stars Align" on "Unique Moment". one release sits on a joint imprint: Beatport runs a separate "When Stars Align / The Nations" label page, and "Embers" by CamelPhat, Julia Church and Shimza carries that joint credit.</p>
+<p>the label has written its own genre, so we tag it in its words. the same YouTube description goes on: "Known for blurring the lines between melodic techno, indie dance, and melodic afro house, the label maintains a steadfast commitment to the underground, championing cutting-edge music with an avant-garde flair." the series is Constellation Series, the label's own various-artists compilation. Vol. 1 arrived on 15 December 2023 per EDM Identity, Vol. 2 in January 2024 per Dancing Astronaut, and Vol. 3 is WSA010, 17 May 2024 on Discogs, three volumes so far that we can see. the catalogue's markers: Eldon "Magic Me" in its CamelPhat remix (WSA001, October 2022), the first release. CamelPhat's own album "Spiritual Milk" (WSA005, September 2023). Samm &amp; Ajna "Move" (21 June 2024), which Dancing Astronaut reported CamelPhat calling the biggest signing to the label so far. CamelPhat and Volkoder "Unique Moment" (July 2026). the newest release is Carl Bee "AURA EP" (4 September 2026), the embed below. a few things share the name without being the label. Ecocide's record "When The Stars Align" and an artist called Stars Align are unrelated, and Discogs also carries "CamelPhat Limited", a company entry, not this imprint.</p>
+<p>a few notes on the names. <a href="../artists/camelphat.html">CamelPhat</a>, the founders, run through the catalogue as artists and remixers, from the "Magic Me" remix (WSA001, 2022) through "Your Mind" (WSA003, 2023) to their album "Spiritual Milk" (WSA005, 2023). <a href="../artists/anyma.html">Anyma</a> and <a href="../artists/shimza.html">Shimza</a> are here through that album, "Spiritual Milk" and its extended mixes (WSA005, 2023). five are here as remixers: <a href="../artists/brunello.html">Brunello</a> on "Move (Remixes)" (2024), remixing "Move" by Samm &amp; Ajna, <a href="../artists/nico-de-andrea.html">Nico de Andrea</a> and <a href="../artists/yotto.html">YOTTO</a> on "Endlessly (Remixes)" (2024), remixing "Endlessly" by CamelPhat &amp; Nadia Ali, <a href="../artists/vintage-culture.html">Vintage Culture</a> on "Home (Vintage Culture Remix)" (WP2324, 2024), remixing "Home" by CamelPhat &amp; Rhodes, and <a href="../artists/max-styler.html">Max Styler</a> on "Backtrack Blow Up (Max Styler Remix)" (WSA024R1, 2025). <a href="../artists/sapian.html">Sapian</a>'s entry is a remix too, "So Good (feat. Kuuda) (Sapian Remix)" (2026), of "So Good" by CamelPhat &amp; Josh Gigante. <a href="../artists/sonickraft.html">Sonickraft</a> rests on a compilation, "Constellation Series Vol 3" (WSA010, 2024). a few pairs share a record: <a href="../artists/gabss.html">Gabss</a> and <a href="../artists/roddy-lima.html">Roddy Lima</a> on "Electricity / Funky Beat" (WSA033, 2025), <a href="../artists/gozlan.html">Gozlan</a> and <a href="../artists/kimonos.html">Kimonos</a> on "Face / Nasty EP" (WSA019, 2025), and <a href="../artists/volkoder.html">Volkoder</a> with CamelPhat on "Unique Moment" (2026). <a href="../artists/josh-gigante.html">Josh Gigante</a> is on "Your Mind" (WSA003, 2023) with CamelPhat, then "The One" (WSA036, 2025) and "So Good" (WSA044, 2026). the rest are on their own releases: <a href="../artists/ajna.html">Ajna</a> on "Move" (WSA011, 2024), the Samm &amp; Ajna record, <a href="../artists/millero.html">Millero</a> "Sweet Moment" (WSA008, 2024), <a href="../artists/mahoo-ch.html">Mahoo (CH)</a> "California" (2025), <a href="../artists/selim-sivade.html">Selim Sivade</a> "Falling For More / Discipline" (WSA022, 2025), <a href="../artists/welker.html">WELKER</a> "Dancing Around EP" (WSA023, 2025), <a href="../artists/ugo-banchi.html">Ugo Banchi</a> "Pogo EP" (WSA026, 2025) and <a href="../artists/rafael-cerato.html">Rafael Cerato</a> "Miami Bass EP" (WSA041, 2026). 23 artists we track have released on it, a confirmed floor from a catalogue sweep, not the full roster: <a href="../artists/ajna.html">Ajna</a>, <a href="../artists/anyma.html">Anyma</a>, <a href="../artists/brunello.html">Brunello</a>, <a href="../artists/camelphat.html">CamelPhat</a>, <a href="../artists/gabss.html">Gabss</a>, <a href="../artists/gozlan.html">Gozlan</a>, <a href="../artists/josh-gigante.html">Josh Gigante</a>, <a href="../artists/kimonos.html">Kimonos</a>, <a href="../artists/mahoo-ch.html">Mahoo (CH)</a>, <a href="../artists/max-styler.html">Max Styler</a>, <a href="../artists/millero.html">Millero</a>, <a href="../artists/nico-de-andrea.html">Nico de Andrea</a>, <a href="../artists/rafael-cerato.html">Rafael Cerato</a>, <a href="../artists/roddy-lima.html">Roddy Lima</a>, <a href="../artists/sapian.html">Sapian</a>, <a href="../artists/selim-sivade.html">Selim Sivade</a>, <a href="../artists/shimza.html">Shimza</a>, <a href="../artists/sonickraft.html">Sonickraft</a>, <a href="../artists/ugo-banchi.html">Ugo Banchi</a>, <a href="../artists/vintage-culture.html">Vintage Culture</a>, <a href="../artists/volkoder.html">Volkoder</a>, <a href="../artists/welker.html">WELKER</a>, <a href="../artists/yotto.html">YOTTO</a></p>
+</div>
+<div class="facts">
+<div class="fact"><div class="k">founded</div><div class="v">announced February 2021, first release October 2022. EDM.com reported on 18 February 2021 that CamelPhat were "set to launch a new label, When Stars Align" and had opened a demo call on Twitter. the first release, Eldon "Magic Me" in a CamelPhat remix (WSA001), came out on 7 October 2022 per Discogs, which dates the founding to 2022</div></div>
+<div class="fact"><div class="k">founded by</div><div class="v">CamelPhat, the duo of Dave Whelan and Mike Di Scala per Beatportal. "Label founded by CamelPhat in 2022." in Discogs' words, "Founded by CAMELPHAT" on the label's own YouTube channel, and "our own label" in Dave Whelan's words to Complex</div></div>
+<div class="fact"><div class="k">based</div><div class="v">no stated base. CamelPhat are from Liverpool, but no source gives the label a city, so we don't either</div></div>
+<div class="fact"><div class="k">the sound</div><div class="v">the label's own words, from its YouTube channel: "Known for blurring the lines between melodic techno, indie dance, and melodic afro house..."</div></div>
+<div class="fact"><div class="k">the series</div><div class="v">Constellation Series, the label's various-artists compilations, with Vol. 1 on its own SoundCloud. Vol. 1 on 15 December 2023 per EDM Identity, Vol. 2 in January 2024 per Dancing Astronaut, Vol. 3 as WSA010 on 17 May 2024 per Discogs. three volumes that we can see</div></div>
+<div class="fact"><div class="k">joint imprint</div><div class="v">When Stars Align / The Nations, a separate label page on Beatport. "Embers" by CamelPhat, Julia Church and Shimza carries that joint credit</div></div>
+<div class="fact"><div class="k">released on it</div><div class="v">23 artists we track have released on it, a confirmed floor from a catalogue sweep, not the full roster: <a href="../artists/ajna.html">Ajna</a>, <a href="../artists/anyma.html">Anyma</a>, <a href="../artists/brunello.html">Brunello</a>, <a href="../artists/camelphat.html">CamelPhat</a>, <a href="../artists/gabss.html">Gabss</a>, <a href="../artists/gozlan.html">Gozlan</a>, <a href="../artists/josh-gigante.html">Josh Gigante</a>, <a href="../artists/kimonos.html">Kimonos</a>, <a href="../artists/mahoo-ch.html">Mahoo (CH)</a>, <a href="../artists/max-styler.html">Max Styler</a>, <a href="../artists/millero.html">Millero</a>, <a href="../artists/nico-de-andrea.html">Nico de Andrea</a>, <a href="../artists/rafael-cerato.html">Rafael Cerato</a>, <a href="../artists/roddy-lima.html">Roddy Lima</a>, <a href="../artists/sapian.html">Sapian</a>, <a href="../artists/selim-sivade.html">Selim Sivade</a>, <a href="../artists/shimza.html">Shimza</a>, <a href="../artists/sonickraft.html">Sonickraft</a>, <a href="../artists/ugo-banchi.html">Ugo Banchi</a>, <a href="../artists/vintage-culture.html">Vintage Culture</a>, <a href="../artists/volkoder.html">Volkoder</a>, <a href="../artists/welker.html">WELKER</a>, <a href="../artists/yotto.html">YOTTO</a></div></div>
+</div>
+<blockquote><p>"...we are consciously working on the third album. That will probably come out on our own label, When Stars Align."</p><cite>&#8212; Dave Whelan, CamelPhat, Complex (2024)</cite></blockquote>
+<p style="margin:26px 0 0;color:var(--steel);font-size:.85rem">the newest release on the label, Carl Bee "AURA EP" (4 September 2026), on When Stars Align per Deezer. the label has no playlist of its own on Spotify, so a release stands in.</p>
+<div class="player tall"><iframe src="https://open.spotify.com/embed/album/7mVY4nfl3iM1JADmCk1O4J?utm_source=generator&amp;theme=0" loading="lazy" title="AURA EP on Spotify"></iframe></div>
+<p style="margin:26px 0 0;color:var(--steel);font-size:.85rem">the series: Constellation Series, the label's own various-artists compilations, three volumes out so far that we can see, Vol. 1 in December 2023, Vol. 2 in January 2024 and Vol. 3 (WSA010) in May 2024. below, volume one, the set on the label's own SoundCloud.</p>
+<div class="player tall"><iframe src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fwhenstarsalignofficial%2Fsets%2Fvarious-artists-constellation-series-vol-1&color=%23ff1c02&auto_play=false&show_teaser=false" loading="lazy" title="Constellation Series Vol 1 by When Stars Align on SoundCloud"></iframe></div>
+</section>
+<nav class="pn"><a href="rose-avenue.html"><span class="lbl">← previous</span>Rose Avenue</a><a href="affairs.html" style="text-align:right"><span class="lbl">next →</span>AFFAIRS</a></nav>
+<p class="note">every fact on this page is sourced or it is not on this page, and quotes are verbatim, spelling and all. the roster line links the artists we track who release here.</p>
+
+<footer>
+<p class="fine">groovesMAXXING · <a href="../index.html">home</a> · <a href="../roster.html">the roster</a> · <a href="../events.html">the radar</a> · <a href="../sets.html">the sets</a></p>
+</footer>
+
+</div>
+</body>
+</html>
