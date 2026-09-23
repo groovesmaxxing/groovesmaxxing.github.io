@@ -2,7 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="grooves">
 <title>sets worth your hour · groovesMAXXING</title>
 <meta name="description" content="every dj set on groovesmaxxing.com in one place, 696 of them across 516 artists. click to load, nothing plays until you do.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -58,6 +63,15 @@ footer a{color:var(--steel);text-decoration:none}
 footer a:hover{color:var(--racing)}
 @media (max-width:620px){.wrap{padding:36px 16px 60px}.grid{grid-template-columns:1fr 1fr;gap:14px 10px}.card .t{font-size:13px}.set-play{width:44px;height:44px}.set-play svg{width:18px;height:18px}}
 @media (max-width:420px){.grid{grid-template-columns:1fr}}
+/* app tab bar (phase 5, pwa shell). the same block sits on every tab page. */
+.gmx-tabs{display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(11,11,13,.96);border-top:1px solid rgba(242,242,239,.12);padding-bottom:env(safe-area-inset-bottom);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.gmx-tabs ul{list-style:none;margin:0 auto;padding:0;display:flex;justify-content:space-around;max-width:720px}
+.gmx-tabs li{flex:1}
+.gmx-tabs a{display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 4px 8px;min-height:54px;text-decoration:none;color:#8A8A93;font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:lowercase}
+.gmx-tabs svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.gmx-tabs a[aria-current="page"]{color:#FF1C02}
+.gmx-tabs a:hover{color:#F2F2EF}
+@media (max-width:1024px){.gmx-tabs{display:block}body{padding-bottom:calc(66px + env(safe-area-inset-bottom))}}
 </style>
 </head>
 <body>
@@ -3384,5 +3398,15 @@ empty.style.display=n?'none':'block';
 });
 })();
 </script>
+<nav class="gmx-tabs" aria-label="app tabs">
+<ul>
+<li><a href="/scan"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><circle cx="12" cy="12" r="5.4"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>scan</a></li>
+<li><a href="/sets.html" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="M10 8.6v6.8l5.4-3.4z"/></svg>sets</a></li>
+<li><a href="/artists.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.6" r="3.8"/><path d="M4.6 20.2c.9-3.8 3.9-5.8 7.4-5.8s6.5 2 7.4 5.8"/></svg>artists</a></li>
+<li><a href="/tracklists/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 7h15M4.5 12h15M4.5 17h9"/></svg>tracklists</a></li>
+<li><a href="/more.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="12" r="1.4" fill="currentColor"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/><circle cx="18.5" cy="12" r="1.4" fill="currentColor"/></svg>more</a></li>
+</ul>
+</nav>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})})}</script>
 </body>
 </html>

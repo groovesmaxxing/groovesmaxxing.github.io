@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>scan · groovesMAXXING</title>
+<meta name="description" content="hear a track, tap once. groovesmaxxing listens for about 12 seconds and looks for it in our own library of sets first, then in the catalogs.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="grooves">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--night:#0B0B0D;--racing:#FF1C02;--deep:#CC1400;--day:#F2F2EF;--steel:#8A8A93;--line:rgba(242,242,239,.12)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--night);color:var(--day);font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh}
+.wrap{max-width:640px;margin:0 auto;padding:0 22px}
+a{color:inherit}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--racing);outline-offset:3px}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.top{display:flex;justify-content:space-between;align-items:center;padding:calc(18px + env(safe-area-inset-top)) 0 0}
+.wm{font-weight:900;font-size:1.05rem;letter-spacing:-.02em;text-decoration:none}
+.wm span{color:var(--racing)}
+.eyebrow{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.34em;color:var(--racing);text-transform:uppercase}
+
+/* the stage: rings button, label, mic text */
+.stage{display:flex;flex-direction:column;align-items:center;text-align:center;padding:40px 0 24px}
+.rings{position:relative;width:236px;height:236px;border-radius:50%;display:grid;place-items:center;-webkit-tap-highlight-color:transparent;touch-action:manipulation;transition:transform .15s}
+.rings:active{transform:scale(.97)}
+.rings svg{width:100%;height:100%;display:block;overflow:visible;filter:drop-shadow(0 0 14px rgba(255,28,2,.45))}
+.rings .r{fill:none;stroke:var(--racing);stroke-width:2.4;transform-origin:50px 50px;transition:transform .12s ease-out}
+.rings .dot{fill:var(--racing)}
+.rings .wave{fill:none;stroke:var(--day);stroke-width:3;stroke-linejoin:round;stroke-linecap:round;transform-origin:50px 50px;transition:transform .12s ease-out}
+.rings.busy .r{animation:breathe 1.6s ease-in-out infinite}
+.rings.busy .r:nth-child(2){animation-delay:.2s}
+.rings.busy .r:nth-child(3){animation-delay:.4s}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.rings[disabled]{cursor:default}
+.tap{font-family:'Space Mono',monospace;font-size:.86rem;letter-spacing:.12em;margin-top:22px;min-height:1.4em}
+.tap b{font-weight:400;color:var(--racing)}
+.rec{display:none;align-items:center;gap:10px;font-family:'Space Mono',monospace;font-size:.86rem;letter-spacing:.1em;margin-top:22px}
+.rec i{width:10px;height:10px;border-radius:50%;background:var(--racing);animation:blink 1s steps(2,start) infinite}
+@keyframes blink{to{visibility:hidden}}
+.rec .n{color:var(--racing);min-width:2ch;text-align:right}
+.mic{color:#c9c9c4;font-size:.98rem;line-height:1.65;max-width:400px;margin-top:22px}
+.stage.listening .tap,.stage.finding .tap{display:none}
+.stage.listening .rec{display:flex}
+.stage.finding .rec{display:flex}
+.stage.finding .rec i{animation:none;background:var(--steel)}
+
+/* result card */
+.card{display:none;border:1px solid var(--line);border-radius:22px;padding:24px 22px 20px;margin:6px 0 30px;background:rgba(242,242,239,.03)}
+.card.on{display:block}
+.card .kw{font-family:'Space Mono',monospace;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--steel)}
+.card .kw b{font-weight:400;color:var(--racing)}
+.card h2{font-weight:900;font-size:clamp(1.7rem,7vw,2.3rem);line-height:1.05;letter-spacing:-.02em;margin:10px 0 4px;overflow-wrap:anywhere}
+.card .ttl{font-weight:600;font-size:1.12rem;line-height:1.3;overflow-wrap:anywhere}
+.card .lab{font-family:'Space Mono',monospace;font-size:.8rem;color:var(--steel);margin-top:8px;letter-spacing:.04em}
+.pill{display:inline-block;font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:5px 11px;margin-top:12px;color:var(--day)}
+.pill.out{border-color:var(--racing);color:var(--racing)}
+.pill.unr{border-color:#c9c9c4}
+.row{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.btn{font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.08em;border:2px solid var(--line);border-radius:999px;padding:10px 16px;text-decoration:none;color:var(--day);background:transparent;line-height:1}
+.btn:hover{border-color:var(--racing)}
+.btn.red{border-color:var(--racing);background:var(--racing);color:var(--night)}
+.btn.red:hover{background:var(--deep);border-color:var(--deep);color:var(--day)}
+.btn.ghost{color:var(--steel)}
+.card h3{font-family:'Space Mono',monospace;font-weight:400;font-size:.72rem;letter-spacing:.28em;color:var(--steel);text-transform:uppercase;margin:24px 0 8px}
+.heard{list-style:none}
+.heard li{border-top:1px solid var(--line);padding:11px 0;display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.heard a{text-decoration:none;font-weight:600;font-size:.95rem;overflow-wrap:anywhere}
+.heard a:hover{color:var(--racing)}
+.heard .at{font-family:'Space Mono',monospace;font-size:.78rem;color:var(--steel);flex:none}
+.heard .at a{font-weight:400;color:var(--racing)}
+.guess{border-top:1px solid var(--line);margin-top:18px;padding-top:16px}
+.guess .kw{margin-bottom:6px}
+.guess .nm{font-weight:600;font-size:1.05rem;overflow-wrap:anywhere}
+.guess .pc{font-family:'Space Mono',monospace;font-size:.8rem;color:var(--steel);margin-top:3px}
+.note{color:#c9c9c4;line-height:1.65;font-size:.95rem;margin-top:8px}
+.form{display:none;border-top:1px solid var(--line);margin-top:18px;padding-top:16px}
+.form.on{display:block}
+.form label{display:block;font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.14em;color:var(--steel);text-transform:uppercase;margin:12px 0 5px}
+.form input,.form textarea{width:100%;background:transparent;border:2px solid var(--line);border-radius:14px;color:var(--day);font-family:'Space Mono',monospace;font-size:.9rem;padding:11px 14px}
+.form textarea{min-height:76px;resize:vertical}
+.form input:focus,.form textarea:focus{border-color:var(--racing);outline:none}
+.form .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.msg{font-family:'Space Mono',monospace;font-size:.8rem;color:var(--steel);margin-top:12px;line-height:1.6}
+.msg.ok{color:var(--racing)}
+
+/* recent */
+.recent{margin:10px 0 40px}
+.recent h3{font-family:'Space Mono',monospace;font-weight:400;font-size:.72rem;letter-spacing:.28em;color:var(--steel);text-transform:uppercase;margin:0 0 8px}
+.recent ul{list-style:none;border-top:1px solid var(--line)}
+.recent li{border-bottom:1px solid var(--line);padding:12px 0;display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.recent .who{font-weight:600;font-size:.95rem;overflow-wrap:anywhere}
+.recent .who small{display:block;font-weight:400;color:var(--steel);font-size:.82rem}
+.recent .when{font-family:'Space Mono',monospace;font-size:.74rem;color:var(--steel);flex:none}
+.recent .none{color:var(--steel);font-family:'Space Mono',monospace;font-size:.82rem;padding:12px 0}
+.fine{font-family:'Space Mono',monospace;font-size:.74rem;color:var(--steel);letter-spacing:.04em;line-height:1.8;margin:10px 0 40px}
+.fine a{text-decoration:none}
+.fine a:hover{color:var(--racing)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media (min-width:1025px){.stage{padding-top:70px}}
+/* app tab bar (phase 5, pwa shell). the same block sits on every tab page. */
+.gmx-tabs{display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(11,11,13,.96);border-top:1px solid rgba(242,242,239,.12);padding-bottom:env(safe-area-inset-bottom);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.gmx-tabs ul{list-style:none;margin:0 auto;padding:0;display:flex;justify-content:space-around;max-width:720px}
+.gmx-tabs li{flex:1}
+.gmx-tabs a{display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 4px 8px;min-height:54px;text-decoration:none;color:#8A8A93;font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:lowercase}
+.gmx-tabs svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.gmx-tabs a[aria-current="page"]{color:#FF1C02}
+.gmx-tabs a:hover{color:#F2F2EF}
+@media (max-width:1024px){.gmx-tabs{display:block}body{padding-bottom:calc(66px + env(safe-area-inset-bottom))}}
+</style>
+<link rel="canonical" href="https://groovesmaxxing.com/scan">
+</head>
+<body>
+<div class="wrap">
+
+<div class="top">
+<a class="wm" href="index.html">grooves<span>MAXXING</span></a>
+<span class="eyebrow">scan</span>
+</div>
+
+<section class="stage" id="stage" aria-live="polite">
+<button class="rings" id="go" aria-label="tap to scan">
+<svg viewBox="0 0 100 100" aria-hidden="true">
+<circle class="r" cx="50" cy="50" r="42"/>
+<circle class="r" cx="50" cy="50" r="30"/>
+<circle class="r" cx="50" cy="50" r="19"/>
+<circle class="dot" cx="50" cy="50" r="6.5"/>
+<polyline class="wave" points="6,39 17,61 28,39 39,61 50,39 61,61 72,39 83,61 94,39"/>
+</svg>
+</button>
+<div class="tap" id="tap">tap to <b>scan</b></div>
+<div class="rec" id="rec"><i></i><span id="recword">listening</span><span class="n" id="count">12</span></div>
+<p class="mic" id="mictext">groovesmaxxing listens for about 12 seconds to find the track. if we can't find it, you choose whether we keep the clip to keep hunting.</p>
+</section>
+
+<section class="card" id="card"></section>
+
+<section class="recent" id="recent">
+<h3>recent scans</h3>
+<ul id="recentlist"></ul>
+</section>
+
+<p class="fine">scans stay on this phone. nothing here is ever marked confirmed, every result has a button to tell us we got it wrong. <a href="privacy.html">privacy</a> · <a href="more.html">more</a></p>
+
+</div>
+
+<nav class="gmx-tabs" aria-label="app tabs">
+<ul>
+<li><a href="/scan" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><circle cx="12" cy="12" r="5.4"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>scan</a></li>
+<li><a href="/sets.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="M10 8.6v6.8l5.4-3.4z"/></svg>sets</a></li>
+<li><a href="/artists.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.6" r="3.8"/><path d="M4.6 20.2c.9-3.8 3.9-5.8 7.4-5.8s6.5 2 7.4 5.8"/></svg>artists</a></li>
+<li><a href="/tracklists/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 7h15M4.5 12h15M4.5 17h9"/></svg>tracklists</a></li>
+<li><a href="/more.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="12" r="1.4" fill="currentColor"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/><circle cx="18.5" cy="12" r="1.4" fill="currentColor"/></svg>more</a></li>
+</ul>
+</nav>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})})}</script>
+<script>
+(function(){
+'use strict';
+/* groovesmaxxing scan (phase 5, step b). vanilla, no dependencies.
+   the api base and the app key come from /gmx-config.json, never from this file. */
+var CAPTURE_MS=12000, POLL_MS=500, POLL_CAP_MS=30000, HISTORY_MAX=50;
+var $=function(id){return document.getElementById(id)};
+var stage=$('stage'), go=$('go'), rec=$('rec'), recword=$('recword'), count=$('count'), card=$('card'), recentlist=$('recentlist');
+var rings=go.querySelectorAll('.r'), wave=go.querySelector('.wave');
+var cfg=null, cfgErr=null, busy=false, heldBlob=null, heldAt=null, current=null;
+
+/* config */
+fetch('/gmx-config.json',{cache:'no-store'}).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()})
+  .then(function(j){if(!j.api_base||!j.app_key)throw new Error('incomplete');cfg=j})
+  .catch(function(e){cfgErr=e});
+
+/* the device id: minted once, kept on the phone. letters, digits, dash, underscore, 32 long. */
+function deviceId(){
+  var k='gmx_device', v=null;
+  try{v=localStorage.getItem(k)}catch(e){}
+  if(v&&/^[A-Za-z0-9_-]{8,64}$/.test(v))return v;
+  var b=new Uint8Array(16); (window.crypto||window.msCrypto).getRandomValues(b);
+  v=Array.prototype.map.call(b,function(x){return ('0'+x.toString(16)).slice(-2)}).join('');
+  try{localStorage.setItem(k,v)}catch(e){}
+  return v;
+}
+function headers(extra){
+  var h={'X-GMX-App-Key':cfg.app_key,'X-GMX-Device':deviceId()};
+  if(extra)for(var k in extra)h[k]=extra[k];
+  return h;
+}
+function tick(ms){try{if(navigator.vibrate)navigator.vibrate(ms||30)}catch(e){}}
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function pct(n){return Math.round(Number(n)||0)+'%'}
+function slug(s){
+  s=String(s||'').toLowerCase().replace(/[øØ]/g,'o');
+  try{s=s.normalize('NFKD').replace(/[̀-ͯ]/g,'')}catch(e){}
+  return s.replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+}
+
+/* recording */
+function pickMime(){
+  var c=['audio/webm;codecs=opus','audio/webm','audio/mp4','audio/ogg;codecs=opus'];
+  for(var i=0;i<c.length;i++){if(window.MediaRecorder&&MediaRecorder.isTypeSupported&&MediaRecorder.isTypeSupported(c[i]))return c[i]}
+  return '';
+}
+function setLevel(v){
+  var s=1+Math.min(.22,v*1.4);
+  for(var i=0;i<rings.length;i++)rings[i].style.transform='scale('+(1+(s-1)*(1-i*.25))+')';
+  wave.style.transform='scaleY('+(1+Math.min(.6,v*3))+')';
+}
+function clearLevel(){for(var i=0;i<rings.length;i++)rings[i].style.transform='';wave.style.transform=''}
+
+function startScan(){
+  if(busy)return;
+  if(!cfg){showCard(errCard(cfgErr?'the app config did not load. pull down to refresh and try again.':'still loading, one second.'));return}
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia||!window.MediaRecorder){
+    showCard(errCard("this browser can't record audio. on iphone use safari, on android use chrome, then add the app to your home screen."));return;
+  }
+  busy=true; go.disabled=true; card.classList.remove('on'); current=null; dropBlob();
+  stage.classList.add('listening'); go.classList.add('busy'); recword.textContent='listening'; count.textContent='12';
+  var mime=pickMime(), chunks=[], started=false, t0=0, timer=null, stream=null, ctx=null, raf=null, mr=null, stopped=false;
+  navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false},video:false})
+  .then(function(st){
+    stream=st;
+    try{
+      ctx=new (window.AudioContext||window.webkitAudioContext)();
+      var src=ctx.createMediaStreamSource(st), an=ctx.createAnalyser(); an.fftSize=512; src.connect(an);
+      var buf=new Uint8Array(an.fftSize);
+      (function loop(){an.getByteTimeDomainData(buf);var sum=0;for(var i=0;i<buf.length;i++){var d=(buf[i]-128)/128;sum+=d*d}
+        setLevel(Math.sqrt(sum/buf.length));raf=requestAnimationFrame(loop)})();
+    }catch(e){}
+    mr=new MediaRecorder(st,mime?{mimeType:mime}:undefined);
+    mr.ondataavailable=function(ev){
+      if(ev.data&&ev.data.size>0){
+        chunks.push(ev.data);
+        if(!started){ started=true; t0=Date.now(); heldAt=new Date().toISOString(); tick(30);
+          timer=setInterval(function(){var left=Math.max(0,Math.ceil((CAPTURE_MS-(Date.now()-t0))/1000));count.textContent=String(left);
+            if(Date.now()-t0>=CAPTURE_MS&&!stopped){stopped=true;try{mr.stop()}catch(e){}}},100);
+        }
+      }
+    };
+    mr.onerror=function(){finishCapture(new Error('recorder'))};
+    mr.onstop=function(){
+      var type=(mr.mimeType||mime||'audio/webm').split(';')[0];
+      finishCapture(null,new Blob(chunks,{type:type}));
+    };
+    mr.start(250);
+    setTimeout(function(){if(!started&&!stopped){stopped=true;try{mr.stop()}catch(e){}}},CAPTURE_MS+4000);
+  }).catch(function(e){finishCapture(e)});
+
+  function cleanup(){
+    if(timer)clearInterval(timer); if(raf)cancelAnimationFrame(raf);
+    if(stream)stream.getTracks().forEach(function(t){t.stop()});
+    if(ctx&&ctx.close)ctx.close().catch(function(){});
+    clearLevel(); stage.classList.remove('listening');
+  }
+  function finishCapture(err,blob){
+    cleanup(); tick(30);
+    if(err||!blob||blob.size<2000){
+      var name=err&&err.name?err.name:'';
+      var m= name==='NotAllowedError'||name==='SecurityError' ? 'the mic is blocked. allow the microphone for groovesmaxxing.com in your browser settings and try again.'
+           : name==='NotFoundError' ? 'no microphone found on this device.'
+           : 'the clip did not record. try again.';
+      showCard(errCard(m)); reset(); return;
+    }
+    heldBlob=blob; identify(blob);
+  }
+}
+function reset(){busy=false;go.disabled=false;go.classList.remove('busy');stage.classList.remove('listening','finding')}
+function dropBlob(){heldBlob=null;heldAt=null}
+
+/* identify and poll */
+function identify(blob){
+  stage.classList.add('finding'); recword.textContent='finding it'; count.textContent='';
+  var ext=blob.type.indexOf('mp4')>=0?'m4a':blob.type.indexOf('ogg')>=0?'ogg':'webm';
+  var fd=new FormData(); fd.append('audio',blob,'clip.'+ext); fd.append('source','mic');
+  var began=Date.now();
+  fetch(cfg.api_base+'/identify',{method:'POST',headers:headers(),body:fd})
+  .then(function(r){
+    if(r.status===429)throw new Error('rate');
+    if(r.status===401)throw new Error('key');
+    if(!r.ok)throw new Error('http '+r.status);
+    return r.json();
+  })
+  .then(function(job){
+    return new Promise(function(res,rej){
+      (function poll(){
+        if(Date.now()-began>POLL_CAP_MS)return rej(new Error('slow'));
+        fetch(cfg.api_base+'/jobs/'+encodeURIComponent(job.job_id),{headers:headers()})
+        .then(function(r){if(!r.ok)throw new Error('http '+r.status);return r.json()})
+        .then(function(j){
+          if(j.state==='done')return res(j);
+          if(j.state==='failed')return rej(new Error('failed'));
+          setTimeout(poll,POLL_MS);
+        }).catch(function(e){ if(Date.now()-began>POLL_CAP_MS)rej(e); else setTimeout(poll,POLL_MS); });
+      })();
+    });
+  })
+  .then(function(j){
+    var r=j.result||{}, c=r.card||{kind:'none'};
+    current={job_id:j.job_id,recognition_id:r.recognition_id||j.job_id,card:c,seconds:Math.round((Date.now()-began)/100)/10};
+    showCard(resultCard(current)); remember(current); reset();
+  })
+  .catch(function(e){
+    var m=e&&e.message||'';
+    var text= m==='rate' ? 'too many scans this hour on this phone. try again in a bit.'
+            : m==='slow' ? 'took too long. the recognizer did not answer in 30 seconds. try again.'
+            : m==='key' ? 'the app key was refused. pull down to refresh and try again.'
+            : m==='failed' ? 'the recognizer choked on that clip. try again.'
+            : 'could not reach the recognizer. check your signal and try again.';
+    showCard(errCard(text)); reset();
+  });
+}
+
+/* cards */
+function showCard(html){card.innerHTML=html;card.classList.add('on');card.scrollIntoView({behavior:'smooth',block:'nearest'})}
+function errCard(text){return '<p class="kw"><b>hm.</b></p><h2>that did not work.</h2><p class="note">'+esc(text)+'</p><div class="row"><button class="btn red" data-act="again">scan again</button></div>'}
+
+function nameOf(c){
+  var a=c.artist_claim, t=c.title_claim;
+  if(a&&t)return {artist:a,title:t};
+  if(t)return {artist:'',title:t};
+  if(a)return {artist:a,title:''};
+  return null;
+}
+function statusPill(s){
+  var cls=s==='out now'?'out':s==='unreleased'?'unr':'';
+  return '<span class="pill '+cls+'">'+esc(s||'ID')+'</span>';
+}
+function storeRow(c){
+  var l=c.store_links||{}, out='';
+  if(l.spotify)out+='<a class="btn" href="'+esc(l.spotify)+'" target="_blank" rel="noopener">spotify</a>';
+  if(l.apple)out+='<a class="btn" href="'+esc(l.apple)+'" target="_blank" rel="noopener">apple music</a>';
+  if(l.beatport_search)out+='<a class="btn" href="'+esc(l.beatport_search)+'" target="_blank" rel="noopener">beatport</a>';
+  return out;
+}
+function heardRows(c){
+  var h=c.heard_in||[]; if(!h.length)return '';
+  var out='<h3>heard in</h3><ul class="heard">';
+  h.slice(0,5).forEach(function(r){
+    out+='<li><a href="'+esc(r.page_url)+'">'+esc(r.set_title)+'</a><span class="at">'+(r.deep_link?'<a href="'+esc(r.deep_link)+'" target="_blank" rel="noopener">'+esc(r.at)+'</a>':esc(r.at))+'</span></li>';
+  });
+  return out+'</ul>';
+}
+function resultCard(cur){
+  var c=cur.card, cand=c.candidate, out='';
+  if(c.kind==='match'&&cand){
+    var nm=nameOf(cand);
+    out+='<p class="kw"><b>'+esc(cand.word||'likely')+'</b> · '+pct(cand.shown_score)+'</p>';
+    if(nm){
+      out+='<h2>'+esc(nm.artist||'unknown artist')+'</h2><p class="ttl">'+esc(nm.title)+'</p>';
+    }else{
+      var h0=(cand.heard_in||[])[0];
+      out+='<h2>ID</h2><p class="ttl">'+(h0?'heard in '+esc(h0.set_title)+' at '+esc(h0.at):'in our library, still unnamed')+'</p>';
+    }
+    if(cand.label&&cand.status==='out now')out+='<p class="lab">'+esc(cand.label)+(cand.release_date?' · '+esc(cand.release_date):'')+'</p>';
+    out+=statusPill(cand.status);
+    var links=storeRow(cand);
+    out+='<div class="row">'+links+'<button class="btn" data-act="share">share</button></div>';
+    out+='<div class="row" id="artistrow"></div>';
+    out+=heardRows(cand);
+    out+='<h3>right?</h3><div class="row"><button class="btn red" data-act="confirm">that\'s right</button><button class="btn" data-act="correct">it\'s actually...</button></div>';
+    out+=correctionForm();
+    if(nm)checkArtistPage(nm.artist);
+  }else if(c.kind==='guess'&&cand){
+    var g=nameOf(cand);
+    out+='<p class="kw"><b>no match</b></p><h2>nothing we\'re sure of.</h2>';
+    out+='<div class="guess"><p class="kw">closest guess</p><p class="nm">'+(g?esc(g.artist)+(g.artist&&g.title?' - ':'')+esc(g.title):'an unnamed library entry')+'</p><p class="pc">'+pct(cand.shown_score)+' · '+esc(cand.word||'guess')+'</p>';
+    out+='<div class="row"><button class="btn" data-act="confirm">that\'s right</button><button class="btn" data-act="correct">it\'s actually...</button></div></div>';
+    out+=correctionForm();
+    out+='<h3>help us find it?</h3><p class="note">we keep your 12 second clip and keep hunting. tell us where you heard it, or not.</p><div class="row"><button class="btn red" data-act="help">help us find it?</button><button class="btn ghost" data-act="again">no thanks, scan again</button></div>';
+    out+=helpForm();
+  }else{
+    out+='<p class="kw"><b>no match</b></p><h2>nothing yet.</h2><p class="note">not in our library of sets, not in the catalogs. happens with the good stuff.</p>';
+    out+='<h3>help us find it?</h3><p class="note">we keep your 12 second clip and keep hunting. tell us where you heard it, or not.</p><div class="row"><button class="btn red" data-act="help">help us find it?</button><button class="btn ghost" data-act="again">no thanks, scan again</button></div>';
+    out+=helpForm();
+  }
+  out+='<div class="msg" id="cardmsg"></div>';
+  if(c.kind==='match')out+='<div class="row"><button class="btn ghost" data-act="again">scan again</button></div>';
+  return out;
+}
+function correctionForm(){
+  return '<form class="form" id="cform" autocomplete="off"><label for="c-artist">artist</label><input id="c-artist" name="artist_claim" maxlength="255">'+
+    '<label for="c-title">title</label><input id="c-title" name="title_claim" maxlength="512">'+
+    '<label for="c-url">a link that proves it (optional)</label><input id="c-url" name="source_url" inputmode="url" maxlength="1024" placeholder="https://">'+
+    '<label for="c-ig">your instagram (optional)</label><input id="c-ig" name="ig_handle" maxlength="64" placeholder="@">'+
+    '<label for="c-note">anything else</label><textarea id="c-note" name="note" maxlength="1000"></textarea>'+
+    '<div class="hp" aria-hidden="true"><label for="c-web">website</label><input id="c-web" name="website" tabindex="-1" autocomplete="off"></div>'+
+    '<div class="row"><button class="btn red" type="submit">send the fix</button><button class="btn ghost" type="button" data-act="closeform">never mind</button></div></form>';
+}
+function helpForm(){
+  return '<form class="form" id="hform" autocomplete="off"><label for="h-venue">venue or event</label><input id="h-venue" name="venue_claim" maxlength="255">'+
+    '<label for="h-dj">who was playing</label><input id="h-dj" name="dj_claim" maxlength="255">'+
+    '<label for="h-city">city</label><input id="h-city" name="city_claim" maxlength="255">'+
+    '<label for="h-note">anything else</label><textarea id="h-note" name="note" maxlength="1000"></textarea>'+
+    '<div class="row"><button class="btn red" type="submit">keep the clip</button><button class="btn ghost" type="button" data-act="closeform">never mind</button></div></form>';
+}
+function checkArtistPage(artist){
+  var s=slug(artist); if(!s)return;
+  fetch('/artists/'+s+'.html',{method:'HEAD'}).then(function(r){
+    var row=$('artistrow'); if(!row||!r.ok)return;
+    row.innerHTML='<a class="btn" href="/artists/'+s+'.html">'+esc(artist)+' on groovesmaxxing →</a>';
+  }).catch(function(){});
+}
+function say(text,ok){var m=$('cardmsg');if(!m)return;m.textContent=text;m.className='msg'+(ok?' ok':'')}
+
+/* actions */
+card.addEventListener('click',function(ev){
+  var b=ev.target.closest('[data-act]'); if(!b)return;
+  var act=b.getAttribute('data-act');
+  if(act==='again'){card.classList.remove('on');card.innerHTML='';dropBlob();current=null;window.scrollTo({top:0,behavior:'smooth'});return}
+  if(act==='share'){share();return}
+  if(act==='confirm'){sendCorrection({verdict:'confirm'});return}
+  if(act==='correct'){var f=$('cform');if(f){f.classList.add('on');$('c-artist').focus()}return}
+  if(act==='help'){var h=$('hform');if(h){h.classList.add('on');$('h-venue').focus()}return}
+  if(act==='closeform'){var fm=b.closest('form');if(fm)fm.classList.remove('on');return}
+});
+card.addEventListener('submit',function(ev){
+  ev.preventDefault();
+  var f=ev.target;
+  if(f.id==='cform'){
+    var a=f.artist_claim.value.trim(), t=f.title_claim.value.trim();
+    if(!a&&!t){say('an artist or a title, at least one.');return}
+    sendCorrection({verdict:'correct',artist_claim:a||null,title_claim:t||null,source_url:f.source_url.value.trim()||null,
+      ig_handle:f.ig_handle.value.trim()||null,note:f.note.value.trim()||null,website:f.website.value||''});
+  }else if(f.id==='hform'){
+    sendHelp(f);
+  }
+});
+function sendCorrection(body){
+  if(!current){say('nothing to answer for.');return}
+  body.recognition_id=current.recognition_id;
+  say('sending');
+  fetch(cfg.api_base+'/corrections',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify(body)})
+  .then(function(r){
+    if(r.status===409){say('this phone already answered for this one.');return}
+    if(r.status===429){say('too many this hour, try later.');return}
+    if(!r.ok)throw new Error(r.status);
+    say(body.verdict==='confirm'?'logged. appreciate you.':'logged, we will check it. appreciate you.',true);
+    var f=$('cform');if(f)f.classList.remove('on');
+  }).catch(function(){say('did not send. check your signal and try again.')});
+}
+function sendHelp(f){
+  if(!current||!heldBlob){say('the clip is gone, scan again first.');return}
+  var ext=heldBlob.type.indexOf('mp4')>=0?'m4a':heldBlob.type.indexOf('ogg')>=0?'ogg':'webm';
+  var fd=new FormData();
+  fd.append('kind','mic_capture_optin'); fd.append('audio',heldBlob,'clip.'+ext);
+  fd.append('recognition_id',current.recognition_id); if(heldAt)fd.append('heard_at',heldAt);
+  ['venue_claim','dj_claim','city_claim','note'].forEach(function(k){var v=f[k].value.trim();if(v)fd.append(k,v)});
+  say('keeping it');
+  fetch(cfg.api_base+'/contribute',{method:'POST',headers:headers(),body:fd})
+  .then(function(r){
+    if(r.status===429){say('too many this hour, try later.');return}
+    if(!r.ok)throw new Error(r.status);
+    say('kept. we keep hunting. gone the day we find it, or after 12 months.',true);
+    f.classList.remove('on'); dropBlob();
+  }).catch(function(){say('did not send. check your signal and try again.')});
+}
+function share(){
+  if(!current||!current.card.candidate)return;
+  var c=current.card.candidate, nm=nameOf(c), l=c.store_links||{};
+  var text=(nm?(nm.artist?nm.artist+' - ':'')+nm.title:'an unreleased ID')+' · found with the groovesmaxxing scan';
+  var url=l.spotify||l.apple||l.beatport_search||'https://groovesmaxxing.com/scan';
+  if(navigator.share){navigator.share({title:'groovesMAXXING',text:text,url:url}).catch(function(){});return}
+  if(navigator.clipboard){navigator.clipboard.writeText(text+' '+url).then(function(){say('copied.',true)}).catch(function(){})}
+}
+
+/* history, on the phone only */
+function loadHistory(){try{return JSON.parse(localStorage.getItem('gmx_history')||'[]')}catch(e){return []}}
+function remember(cur){
+  var c=cur.card, cand=c.candidate, nm=cand?nameOf(cand):null;
+  var row={t:Date.now(),kind:c.kind,artist:nm?nm.artist:'',title:nm?nm.title:'',score:cand?cand.shown_score:0,status:cand?cand.status:''};
+  var h=loadHistory(); h.unshift(row); h=h.slice(0,HISTORY_MAX);
+  try{localStorage.setItem('gmx_history',JSON.stringify(h))}catch(e){}
+  renderHistory();
+}
+function when(t){
+  var d=new Date(t), n=new Date(), s=(n-d)/1000;
+  if(s<60)return 'just now'; if(s<3600)return Math.floor(s/60)+' min ago'; if(s<86400)return Math.floor(s/3600)+' h ago';
+  return d.toLocaleDateString(undefined,{month:'short',day:'numeric'}).toLowerCase();
+}
+function renderHistory(){
+  var h=loadHistory();
+  if(!h.length){recentlist.innerHTML='<li class="none">nothing scanned yet.</li>';return}
+  recentlist.innerHTML=h.map(function(r){
+    var who;
+    if(r.kind==='match')who=esc(r.artist||'ID')+'<small>'+esc(r.title||'unnamed library entry')+' · '+pct(r.score)+'</small>';
+    else if(r.kind==='guess')who='no match<small>closest guess: '+esc((r.artist?r.artist+' - ':'')+r.title)+' · '+pct(r.score)+'</small>';
+    else who='no match<small>nothing yet</small>';
+    return '<li><span class="who">'+who+'</span><span class="when">'+when(r.t)+'</span></li>';
+  }).join('');
+}
+renderHistory();
+go.addEventListener('click',startScan);
+})();
+</script>
+</body>
+</html>

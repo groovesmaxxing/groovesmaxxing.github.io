@@ -1,0 +1,18 @@
+{
+  "name": "groovesMAXXING",
+  "short_name": "grooves",
+  "description": "scan what's playing, then the sets, the artists and the tracklists. your friend with permanent aux privileges.",
+  "id": "/scan",
+  "start_url": "/scan",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0B0B0D",
+  "theme_color": "#0B0B0D",
+  "lang": "en",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
