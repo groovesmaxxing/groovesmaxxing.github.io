@@ -1,26 +1,8 @@
 {
-"generated": "2026-09-23T14:18:31+00:00",
+"generated": "2026-09-24T14:17:06+00:00",
 "artist_count": 695,
 "artists_with_events": 156,
 "events": [
-{
-"date": "2026-09-23",
-"event": "Channel Tres w/ KILIMANJARO",
-"venue": "The Complex - UT",
-"city": "Salt Lake City",
-"region": "UT",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A70pao",
-"artist": "Channel Tres"
-},
-{
-"date": "2026-09-23",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-09-23-2026/event/3B0064350525823A",
-"artist": "Jamie xx"
-},
 {
 "date": "2026-09-24",
 "event": "DOM DOLLA",
@@ -2228,6 +2210,15 @@
 },
 {
 "date": "2026-10-17",
+"event": "D.O.D. (16 and Over)",
+"venue": "Mission Ballroom",
+"city": "Denver",
+"region": "CO",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7xaFa",
+"artist": "D.O.D"
+},
+{
+"date": "2026-10-17",
 "event": "Festival Nescafé Vaiven 2026 General",
 "venue": "Jardines de México",
 "city": "Tehuixtla",
@@ -2363,11 +2354,11 @@
 },
 {
 "date": "2026-10-18",
-"event": "Black Coffee",
+"event": "Black Coffee (18+ Event)",
 "venue": "Navy Pier",
 "city": "Chicago",
 "region": "IL",
-"url": "https://www.tixr.com/groups/navypiereventcenter/events/black-coffee-207842",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAeZaV",
 "artist": "Black Coffee"
 },
 {
@@ -3155,6 +3146,15 @@
 },
 {
 "date": "2026-11-06",
+"event": "ARTBAT",
+"venue": "REBEL",
+"city": "Toronto",
+"region": "ON",
+"url": "https://www.ticketweb.ca/event/artbat-rebel-tickets/14287174",
+"artist": "ARTBAT"
+},
+{
+"date": "2026-11-06",
 "event": "Adriatique - Ages 21+",
 "venue": "The Midway",
 "city": "San Francisco",
@@ -3197,6 +3197,15 @@
 "region": "AB",
 "url": "https://www.ticketweb.ca/event/gorgon-city-the-palace-theatre-tickets/14284114?REFERRAL_ID=tmfeed",
 "artist": "Gorgon City"
+},
+{
+"date": "2026-11-06",
+"event": "HUGEL PRESENTS MAKE THE GIRLS DANCE",
+"venue": "The Rady Shell at Jacobs Park",
+"city": "San Diego",
+"region": "CA",
+"url": "https://www.ticketmaster.com/hugel-presents-make-the-girls-dance-san-diego-california-11-06-2026/event/0A00652809C3AB63",
+"artist": "HUGEL"
 },
 {
 "date": "2026-11-06",
@@ -3341,15 +3350,6 @@
 "region": "AE",
 "url": "https://www.ticketmaster.ae/event/anotr-%7C-playa-pacha-tickets/725830588",
 "artist": "ANOTR"
-},
-{
-"date": "2026-11-13",
-"event": "D.O.D. (16 and Over)",
-"venue": "Mission Ballroom",
-"city": "Denver",
-"region": "CO",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7xaFa",
-"artist": "D.O.D"
 },
 {
 "date": "2026-11-13",
@@ -4196,6 +4196,15 @@
 "region": "VIC",
 "url": "https://www.moshtix.com.au/v2/event/defected-melbourne-2026/198339",
 "artist": "David Penn"
+},
+{
+"date": "2026-12-11",
+"event": "Luke Dean b2b Max Dean @ Pacha ICONS",
+"venue": "FIVE Luxe JBR",
+"city": "Dubai",
+"region": "AE",
+"url": "https://www.ticketmaster.ae/event/luke-dean-b2b-max-dean--pacha-icons-tickets/1877550820",
+"artist": "Luke Dean"
 },
 {
 "date": "2026-12-11",
