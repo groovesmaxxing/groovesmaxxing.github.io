@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>privacy · groovesMAXXING</title>
+<meta name="description" content="what the groovesmaxxing scan keeps and what it never does: about 12 seconds of audio, deleted after the match, no account, no gps, no ads.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#0B0B0D">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="grooves">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--night:#0B0B0D;--racing:#FF1C02;--deep:#CC1400;--day:#F2F2EF;--steel:#8A8A93;--line:rgba(242,242,239,.12)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--night);color:var(--day);font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:0 26px}
+a{color:inherit}
+a:focus-visible{outline:3px solid var(--racing);outline-offset:3px}
+.top{padding:34px 0 8px}
+.back{font-family:'Space Mono',monospace;font-size:.82rem;color:var(--steel);text-decoration:none;letter-spacing:.04em}
+.back:hover{color:var(--racing)}
+.mast{padding:44px 0 10px}
+.eyebrow{font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.34em;color:var(--racing);text-transform:uppercase}
+h1{font-weight:900;font-size:clamp(2.4rem,7vw,3.6rem);line-height:1.02;letter-spacing:-.02em;margin:14px 0 16px}
+h1 .rd{color:var(--racing)}
+.lede{color:#c9c9c4;font-size:1.05rem;line-height:1.6;max-width:640px}
+h2{font-family:'Space Mono',monospace;font-weight:400;font-size:.76rem;letter-spacing:.3em;color:var(--steel);text-transform:uppercase;margin:46px 0 12px}
+.note{color:#c9c9c4;line-height:1.7;max-width:640px;margin-top:10px}
+.note b{color:var(--day);font-weight:600}
+.note a{text-decoration:none;border-bottom:1px solid var(--line)}
+.note a:hover{color:var(--racing);border-color:var(--racing)}
+.stamp{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);letter-spacing:.06em;margin-top:18px}
+.fine{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);letter-spacing:.04em;line-height:1.8;margin:56px 0 40px}
+.fine a{text-decoration:none}
+.fine a:hover{color:var(--racing)}
+/* app tab bar (phase 5, pwa shell). the same block sits on every tab page. */
+.gmx-tabs{display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(11,11,13,.96);border-top:1px solid rgba(242,242,239,.12);padding-bottom:env(safe-area-inset-bottom);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.gmx-tabs ul{list-style:none;margin:0 auto;padding:0;display:flex;justify-content:space-around;max-width:720px}
+.gmx-tabs li{flex:1}
+.gmx-tabs a{display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 4px 8px;min-height:54px;text-decoration:none;color:#8A8A93;font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:lowercase}
+.gmx-tabs svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.gmx-tabs a[aria-current="page"]{color:#FF1C02}
+.gmx-tabs a:hover{color:#F2F2EF}
+@media (max-width:1024px){.gmx-tabs{display:block}body{padding-bottom:calc(66px + env(safe-area-inset-bottom))}}
+</style>
+<link rel="canonical" href="https://groovesmaxxing.com/privacy">
+</head>
+<body>
+<div class="wrap">
+
+<div class="top"><a class="back" href="more.html">← more</a></div>
+
+<header class="mast">
+<span class="eyebrow">privacy</span>
+<h1>what the scan keeps,<br><span class="rd">and what it never does.</span></h1>
+<p class="lede">the short version: the scan hears about 12 seconds, tries to name the track, and throws the audio away. no account, no login, no gps, no ads. the long version is below, in plain words.</p>
+<p class="stamp">last updated 2026-09-24 · tester week version</p>
+</header>
+
+<h2>the scan</h2>
+<p class="note">when you tap the button your browser asks for the mic. we get audio only while the button is on, about 12 seconds, then it stops on its own. nothing is recorded before you tap or after it stops.</p>
+<p class="note">the clip goes to our server, which looks for the track in our own library of sets first and in a music recognition catalog second. the catalog is a third party (acrcloud). it receives the clip to match it and nothing else about you.</p>
+<p class="note">the clip is deleted on the server as soon as the result is in, match or no match. what stays is one line per scan: when it happened, how long it took, what it found and how sure it was. no audio.</p>
+
+<h2>"help us find it?"</h2>
+<p class="note">if the scan comes up empty you can tap <b>help us find it?</b>. that is the only case where we keep a clip. you're sending the same 12 seconds again, plus whatever you type: the venue or event, the dj, the city, a note. we use all of it to hunt the track down.</p>
+<p class="note">a kept clip lives until we identify it or for 12 months, whichever comes first, then a job deletes it. want it gone sooner? <a href="mailto:groovesmaxxing@gmail.com?subject=delete%20my%20clip">email us</a>, say roughly when you scanned, and it's gone.</p>
+<p class="note">kept clips are fingerprinted, never played, streamed or handed to anyone. the same goes for every recording in our library.</p>
+
+<h2>your phone</h2>
+<p class="note">the first time the app loads it makes up one random id and keeps it in your browser. that id goes with every scan so we can cap scans per phone (30 an hour) and count one answer per phone on each result. it's not tied to your name, email, number or anything else, and it stays on the phone until you clear the site's data.</p>
+<p class="note">your scan history, the last 50, lives in your browser only. we don't have it. clear the site's data and it's gone.</p>
+<p class="note">no gps, no location. the city you might type into the form is the only place we ever know, and only because you typed it.</p>
+
+<h2>corrections</h2>
+<p class="note"><b>that's right</b> and <b>it's actually...</b> send your answer with the phone id. we keep those to fix the library. nothing changes on one vote alone.</p>
+
+<h2>what we don't do</h2>
+<p class="note">no accounts, no logins, no passwords. no ads, no trackers, no analytics scripts. we don't sell or share anything about you. there's nothing to sell.</p>
+<p class="note">two outside things do load: the fonts (google fonts) and, on the more tab, the newsletter signup form (buttondown). each sees your address the way any web request does, and nothing more from us.</p>
+
+<h2>the server</h2>
+<p class="note">the site is hosted on github pages behind cloudflare, in the usual way, so both see the request data every host sees (your address, your browser). the scan itself runs on our own machine in the united states.</p>
+<p class="note">the server writes one line per request: the route, the status, the milliseconds, and a short hash of the phone id, never the id itself.</p>
+
+<h2>kids</h2>
+<p class="note">the scan isn't built for anyone under 13 and we don't knowingly keep anything from them. if that happened, email us and it's deleted.</p>
+
+<h2>you</h2>
+<p class="note">want something deleted, or want to know what we hold? <a href="mailto:groovesmaxxing@gmail.com?subject=privacy">email us</a>. a person answers, not a form.</p>
+<p class="note">this is the tester week version. a lawyer reads it before the scan opens to everyone, and the date up top changes when it does.</p>
+
+<p class="fine">© 2026 groovesmaxxing · <a href="terms.html">terms</a> · <a href="more.html">more</a></p>
+
+</div>
+<nav class="gmx-tabs" aria-label="app tabs">
+<ul>
+<li><a href="/scan"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><circle cx="12" cy="12" r="5.4"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>scan</a></li>
+<li><a href="/sets"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="M10 8.6v6.8l5.4-3.4z"/></svg>sets</a></li>
+<li><a href="/artists"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.6" r="3.8"/><path d="M4.6 20.2c.9-3.8 3.9-5.8 7.4-5.8s6.5 2 7.4 5.8"/></svg>artists</a></li>
+<li><a href="/tracklists/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 7h15M4.5 12h15M4.5 17h9"/></svg>tracklists</a></li>
+<li><a href="/more" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="12" r="1.4" fill="currentColor"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/><circle cx="18.5" cy="12" r="1.4" fill="currentColor"/></svg>more</a></li>
+</ul>
+</nav>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})})}</script>
+</body>
+</html>
