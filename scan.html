@@ -30,6 +30,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .wm{font-weight:900;font-size:1.05rem;letter-spacing:-.02em;text-decoration:none}
 .wm span{color:var(--racing)}
 .eyebrow{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.34em;color:var(--racing);text-transform:uppercase}
+h1.eyebrow{margin:0;font-weight:400}
 
 /* the stage: rings button, label, mic text */
 .stage{display:flex;flex-direction:column;align-items:center;text-align:center;padding:40px 0 24px}
@@ -51,7 +52,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 @keyframes blink{to{visibility:hidden}}
 .rec .n{color:var(--racing);min-width:2ch;text-align:right}
 .mic{color:#c9c9c4;font-size:.98rem;line-height:1.65;max-width:400px;margin-top:22px}
-.stage.listening .tap,.stage.finding .tap{display:none}
+.stage.finding .tap{display:none}
 .stage.listening .rec{display:flex}
 .stage.finding .rec{display:flex}
 .stage.finding .rec i{animation:none;background:var(--steel)}
@@ -126,7 +127,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 <div class="top">
 <a class="wm" href="index.html">grooves<span>MAXXING</span></a>
-<span class="eyebrow">scan</span>
+<h1 class="eyebrow">scan</h1>
 </div>
 
 <section class="stage" id="stage" aria-live="polite">
@@ -172,9 +173,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
    the api base and the app key come from /gmx-config.json, never from this file. */
 var CAPTURE_MS=12000, POLL_MS=500, POLL_CAP_MS=30000, HISTORY_MAX=50;
 var $=function(id){return document.getElementById(id)};
-var stage=$('stage'), go=$('go'), rec=$('rec'), recword=$('recword'), count=$('count'), card=$('card'), recentlist=$('recentlist');
+var stage=$('stage'), go=$('go'), tap=$('tap'), rec=$('rec'), recword=$('recword'), count=$('count'), card=$('card'), recentlist=$('recentlist');
 var rings=go.querySelectorAll('.r'), wave=go.querySelector('.wave');
-var cfg=null, cfgErr=null, busy=false, heldBlob=null, heldAt=null, current=null;
+var cfg=null, cfgErr=null, busy=false, heldBlob=null, heldAt=null, current=null, cancelScan=null;
 
 /* config */
 fetch('/gmx-config.json',{cache:'no-store'}).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()})
@@ -224,12 +225,19 @@ function startScan(){
   if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia||!window.MediaRecorder){
     showCard(errCard("this browser can't record audio. on iphone use safari, on android use chrome, then add the app to your home screen."));return;
   }
-  busy=true; go.disabled=true; card.classList.remove('on'); current=null; dropBlob();
+  busy=true; card.classList.remove('on'); current=null; dropBlob();
   stage.classList.add('listening'); go.classList.add('busy'); recword.textContent='listening'; count.textContent='12';
-  var mime=pickMime(), chunks=[], started=false, t0=0, timer=null, stream=null, ctx=null, raf=null, mr=null, stopped=false;
+  tap.innerHTML='tap to <b>stop</b>'; go.setAttribute('aria-label','tap to stop');
+  var mime=pickMime(), chunks=[], started=false, t0=0, timer=null, stream=null, ctx=null, raf=null, mr=null, stopped=false, cancelled=false;
+  /* a second tap while listening throws the clip away and goes back to tap to scan. */
+  cancelScan=function(){
+    if(cancelled||stopped)return; cancelled=true; stopped=true; tick(20);
+    if(mr&&mr.state!=='inactive'){try{mr.stop()}catch(e){cleanup();reset()}}else{cleanup();reset()}
+  };
   navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false},video:false})
   .then(function(st){
     stream=st;
+    if(cancelled){cleanup();reset();return}
     try{
       ctx=new (window.AudioContext||window.webkitAudioContext)();
       var src=ctx.createMediaStreamSource(st), an=ctx.createAnalyser(); an.fftSize=512; src.connect(an);
@@ -249,12 +257,13 @@ function startScan(){
     };
     mr.onerror=function(){finishCapture(new Error('recorder'))};
     mr.onstop=function(){
+      if(cancelled){cleanup();reset();return}
       var type=(mr.mimeType||mime||'audio/webm').split(';')[0];
       finishCapture(null,new Blob(chunks,{type:type}));
     };
     mr.start(250);
     setTimeout(function(){if(!started&&!stopped){stopped=true;try{mr.stop()}catch(e){}}},CAPTURE_MS+4000);
-  }).catch(function(e){finishCapture(e)});
+  }).catch(function(e){if(cancelled){cleanup();reset();return}finishCapture(e)});
 
   function cleanup(){
     if(timer)clearInterval(timer); if(raf)cancelAnimationFrame(raf);
@@ -263,6 +272,7 @@ function startScan(){
     clearLevel(); stage.classList.remove('listening');
   }
   function finishCapture(err,blob){
+    if(cancelled)return;
     cleanup(); tick(30);
     if(err||!blob||blob.size<2000){
       var name=err&&err.name?err.name:'';
@@ -274,12 +284,12 @@ function startScan(){
     heldBlob=blob; identify(blob);
   }
 }
-function reset(){busy=false;go.disabled=false;go.classList.remove('busy');stage.classList.remove('listening','finding')}
+function reset(){busy=false;cancelScan=null;go.disabled=false;go.classList.remove('busy');stage.classList.remove('listening','finding');tap.innerHTML='tap to <b>scan</b>';go.setAttribute('aria-label','tap to scan')}
 function dropBlob(){heldBlob=null;heldAt=null}
 
 /* identify and poll */
 function identify(blob){
-  stage.classList.add('finding'); recword.textContent='finding it'; count.textContent='';
+  cancelScan=null; go.disabled=true; stage.classList.add('finding'); recword.textContent='finding it'; count.textContent='';
   var ext=blob.type.indexOf('mp4')>=0?'m4a':blob.type.indexOf('ogg')>=0?'ogg':'webm';
   var fd=new FormData(); fd.append('audio',blob,'clip.'+ext); fd.append('source','mic');
   var began=Date.now();
@@ -499,7 +509,7 @@ function renderHistory(){
   }).join('');
 }
 renderHistory();
-go.addEventListener('click',startScan);
+go.addEventListener('click',function(){if(busy){if(cancelScan)cancelScan();return}startScan()});
 })();
 </script>
 </body>
