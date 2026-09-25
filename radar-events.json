@@ -1,62 +1,8 @@
 {
-"generated": "2026-09-24T14:17:06+00:00",
-"artist_count": 695,
-"artists_with_events": 156,
+"generated": "2026-09-25T14:39:52+00:00",
+"artist_count": 688,
+"artists_with_events": 158,
 "events": [
-{
-"date": "2026-09-24",
-"event": "DOM DOLLA",
-"venue": "Marvel Stadium",
-"city": "Docklands",
-"region": "VIC",
-"url": "https://www.ticketmaster.com.au/dom-dolla-docklands-24-09-2026/event/250064B2DB574B26",
-"artist": "Dom Dolla"
-},
-{
-"date": "2026-09-24",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "The Cynthia Woods Mitchell Pavilion sponsored by Huntsman",
-"city": "The Woodlands",
-"region": "TX",
-"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-the-woodlands-texas-09-24-2026/event/3A006469B109A549",
-"artist": "Midnight Generation"
-},
-{
-"date": "2026-09-24",
-"event": "Mochakk + Ben Sterling + Jackie Hollander (18 and Over)",
-"venue": "Gallagher Square at Petco Park",
-"city": "San Diego",
-"region": "CA",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7J7pp",
-"artist": "Mochakk"
-},
-{
-"date": "2026-09-24",
-"event": "Parcels",
-"venue": "McMenamins Historic Edgefield Manor",
-"city": "Troutdale",
-"region": "OR",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7xF0_",
-"artist": "Parcels"
-},
-{
-"date": "2026-09-24",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "The Cynthia Woods Mitchell Pavilion sponsored by Huntsman",
-"city": "The Woodlands",
-"region": "TX",
-"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-the-woodlands-texas-09-24-2026/event/3A006469B109A549",
-"artist": "Polo & Pan"
-},
-{
-"date": "2026-09-24",
-"event": "Tinlicker North America 2026",
-"venue": "MTELUS",
-"city": "Montreal",
-"region": "QC",
-"url": "https://www.ticketmaster.ca/tinlicker-north-america-2026-montreal-quebec-09-24-2026/event/3100648DC17D7864",
-"artist": "Tinlicker"
-},
 {
 "date": "2026-09-25",
 "event": "Breakaway Carolina 2026",
@@ -416,6 +362,15 @@
 "region": "NY",
 "url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-09-26-2026/event/3B006435054E8262",
 "artist": "Jamie xx"
+},
+{
+"date": "2026-09-26",
+"event": "John Summit- Ages 21+",
+"venue": "LIV Nightclub Las Vegas",
+"city": "Las Vegas",
+"region": "NV",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7xbfK",
+"artist": "John Summit"
 },
 {
 "date": "2026-09-26",
@@ -959,6 +914,15 @@
 },
 {
 "date": "2026-10-02",
+"event": "Matroda - Ages 21+",
+"venue": "LIV Nightclub Las Vegas",
+"city": "Las Vegas",
+"region": "NV",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7xbQ3",
+"artist": "Matroda"
+},
+{
+"date": "2026-10-02",
 "event": "Breakaway Utah 2026",
 "venue": "America First Field",
 "city": "Sandy",
@@ -1091,6 +1055,15 @@
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/youme-saturday-manchester-03-10-2026/event/35006497E11350C4",
 "artist": "Dennis Quin"
+},
+{
+"date": "2026-10-03",
+"event": "Disco Lines - Ages 21+",
+"venue": "LIV Nightclub Las Vegas",
+"city": "Las Vegas",
+"region": "NV",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7xb3p",
+"artist": "Disco Lines"
 },
 {
 "date": "2026-10-03",
@@ -1352,6 +1325,15 @@
 "region": "TX",
 "url": "https://on.fgtix.com/trk/v8SK",
 "artist": "it's murph"
+},
+{
+"date": "2026-10-04",
+"event": "DEVAULT - Ages 21+",
+"venue": "LIV Nightclub Las Vegas",
+"city": "Las Vegas",
+"region": "NV",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7PoZ3",
+"artist": "Devault"
 },
 {
 "date": "2026-10-04",
@@ -1652,6 +1634,15 @@
 },
 {
 "date": "2026-10-10",
+"event": "D.O.D - Ages 21+",
+"venue": "LIV Nightclub Las Vegas",
+"city": "Las Vegas",
+"region": "NV",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZ7_F",
+"artist": "D.O.D"
+},
+{
+"date": "2026-10-10",
 "event": "Devault (18+ Event)",
 "venue": "Blackbox Theater - Charlotte",
 "city": "Charlotte",
@@ -1787,6 +1778,15 @@
 },
 {
 "date": "2026-10-10",
+"event": "Ti??sto - ages 21+",
+"venue": "LIV Nightclub Las Vegas",
+"city": "Las Vegas",
+"region": "NV",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7xbfk",
+"artist": "Tiësto"
+},
+{
+"date": "2026-10-10",
 "event": "Skyline Saturdays Presents TOMAN",
 "venue": "The Penthouse | FIVE Palm",
 "city": "Dubai",
@@ -1811,6 +1811,15 @@
 "region": "TX",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZ7vt",
 "artist": "BIJOU"
+},
+{
+"date": "2026-10-11",
+"event": "Cloonee - Ages 21+",
+"venue": "LIV Nightclub Las Vegas",
+"city": "Las Vegas",
+"region": "NV",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7xbfe",
+"artist": "Cloonee"
 },
 {
 "date": "2026-10-11",
@@ -1985,11 +1994,11 @@
 },
 {
 "date": "2026-10-16",
-"event": "Cu Fridays Pres: Cid",
-"venue": "Common/UNDRGRD",
+"event": "Cid: Out of Service Tour - Moved To Main Floor",
+"venue": "Commonwealth Bar",
 "city": "Calgary",
 "region": "AB",
-"url": "https://www.ticketweb.ca/event/cu-fridays-pres-cid-commonundrgrd-tickets/14238184?REFERRAL_ID=tmfeed",
+"url": "https://www.ticketweb.ca/event/cid-out-of-service-tour-commonwealth-bar-stage-tickets/14238184?REFERRAL_ID=tmfeed",
 "artist": "CID"
 },
 {
@@ -2153,6 +2162,15 @@
 "region": "MA",
 "url": "https://www.ticketweb.com/event/walker-royce-royale-boston-tickets/14327994?REFERRAL_ID=tmfeed",
 "artist": "Walker & Royce"
+},
+{
+"date": "2026-10-16",
+"event": "Westend - Ages 21+",
+"venue": "LIV Nightclub Las Vegas",
+"city": "Las Vegas",
+"region": "NV",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZp4S",
+"artist": "Westend"
 },
 {
 "date": "2026-10-16",
@@ -2462,6 +2480,15 @@
 },
 {
 "date": "2026-10-23",
+"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
+"venue": "Centre Bell",
+"city": "Montreal",
+"region": "QC",
+"url": "https://www.ticketmaster.ca/john-summit-ctrl-escape-arena-tour-montreal-quebec-10-23-2026/event/310064B3DA7587CE",
+"artist": "Alok"
+},
+{
+"date": "2026-10-23",
 "event": "CID (21 and Over)",
 "venue": "1015 Folsom",
 "city": "San Francisco",
@@ -2513,6 +2540,15 @@
 "region": "FL",
 "url": "https://on.fgtix.com/trk/Yb64b",
 "artist": "Green Velvet"
+},
+{
+"date": "2026-10-23",
+"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
+"venue": "Centre Bell",
+"city": "Montreal",
+"region": "QC",
+"url": "https://www.ticketmaster.ca/john-summit-ctrl-escape-arena-tour-montreal-quebec-10-23-2026/event/310064B3DA7587CE",
+"artist": "Jackie Hollander"
 },
 {
 "date": "2026-10-23",
@@ -2585,6 +2621,15 @@
 "region": "DC",
 "url": "https://www.ticketmaster.com/ayybo-glow-offsite-washington-district-of-columbia-10-24-2026/event/1500651D3AD7FBDF",
 "artist": "AYYBO"
+},
+{
+"date": "2026-10-24",
+"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
+"venue": "TD Coliseum",
+"city": "Hamilton",
+"region": "ON",
+"url": "https://www.ticketmaster.ca/john-summit-ctrl-escape-arena-tour-hamilton-ontario-10-24-2026/event/100064B3D5123522",
+"artist": "Alok"
 },
 {
 "date": "2026-10-24",
@@ -2692,6 +2737,24 @@
 "city": "Toronto",
 "region": "ON",
 "url": "https://www.ticketmaster.ca/john-summit-ctrl-escape-arena-tour-toronto-ontario-10-25-2026/event/100064B3A9BBACE6",
+"artist": "Alok"
+},
+{
+"date": "2026-10-25",
+"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
+"venue": "Scotiabank Arena",
+"city": "Toronto",
+"region": "ON",
+"url": "https://www.ticketmaster.ca/john-summit-ctrl-escape-arena-tour-toronto-ontario-10-25-2026/event/100064B3A9BBACE6",
+"artist": "Jackie Hollander"
+},
+{
+"date": "2026-10-25",
+"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
+"venue": "Scotiabank Arena",
+"city": "Toronto",
+"region": "ON",
+"url": "https://www.ticketmaster.ca/john-summit-ctrl-escape-arena-tour-toronto-ontario-10-25-2026/event/100064B3A9BBACE6",
 "artist": "John Summit"
 },
 {
@@ -2732,12 +2795,30 @@
 },
 {
 "date": "2026-10-29",
+"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
+"venue": "TD Garden",
+"city": "Boston",
+"region": "MA",
+"url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-boston-massachusetts-10-29-2026/event/010064B2AC06B8C3",
+"artist": "Alok"
+},
+{
+"date": "2026-10-29",
 "event": "Thundercat: Distracted AF Tour",
 "venue": "The Factory",
 "city": "Saint Louis",
 "region": "MO",
 "url": "https://www.ticketmaster.com/thundercat-distracted-af-tour-saint-louis-missouri-10-29-2026/event/210064E39E0E20F8",
 "artist": "Channel Tres"
+},
+{
+"date": "2026-10-29",
+"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
+"venue": "TD Garden",
+"city": "Boston",
+"region": "MA",
+"url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-boston-massachusetts-10-29-2026/event/010064B2AC06B8C3",
+"artist": "Jackie Hollander"
 },
 {
 "date": "2026-10-29",
@@ -2783,6 +2864,15 @@
 "region": "TX",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZ7vw",
 "artist": "Adriatique"
+},
+{
+"date": "2026-10-30",
+"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
+"venue": "Bryce Jordan Center",
+"city": "University Park",
+"region": "PA",
+"url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-university-park-pennsylvania-10-30-2026/event/020064B2C916ABB2",
+"artist": "Alok"
 },
 {
 "date": "2026-10-30",
@@ -3164,6 +3254,15 @@
 },
 {
 "date": "2026-11-06",
+"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
+"venue": "Moody Center ATX",
+"city": "Austin",
+"region": "TX",
+"url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-austin-texas-11-06-2026/event/3A0064B3DA33FD80",
+"artist": "Alok"
+},
+{
+"date": "2026-11-06",
 "event": "CID [GLOW OFF:SITE]",
 "venue": "Dock5",
 "city": "Washington",
@@ -3206,6 +3305,15 @@
 "region": "CA",
 "url": "https://www.ticketmaster.com/hugel-presents-make-the-girls-dance-san-diego-california-11-06-2026/event/0A00652809C3AB63",
 "artist": "HUGEL"
+},
+{
+"date": "2026-11-06",
+"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
+"venue": "Moody Center ATX",
+"city": "Austin",
+"region": "TX",
+"url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-austin-texas-11-06-2026/event/3A0064B3DA33FD80",
+"artist": "Jackie Hollander"
 },
 {
 "date": "2026-11-06",
@@ -3304,6 +3412,15 @@
 "city": "Fort Worth",
 "region": "TX",
 "url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-fort-worth-texas-11-07-2026/event/0C0064B3CF15B693",
+"artist": "Jackie Hollander"
+},
+{
+"date": "2026-11-07",
+"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
+"venue": "Dickies Arena",
+"city": "Fort Worth",
+"region": "TX",
+"url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-fort-worth-texas-11-07-2026/event/0C0064B3CF15B693",
 "artist": "John Summit"
 },
 {
@@ -3314,6 +3431,24 @@
 "region": "AE",
 "url": "https://www.ticketmaster.ae/event/bohemia-presents-jonas-blue-tickets/1679671426",
 "artist": "Jonas Blue"
+},
+{
+"date": "2026-11-07",
+"event": "Skyline Saturdays Presents Jonas Blue",
+"venue": "The Penthouse | FIVE Palm",
+"city": "Dubai",
+"region": "AE",
+"url": "https://www.ticketmaster.ae/event/skyline-saturdays-presents-jonas-blue-tickets/1704006531",
+"artist": "Jonas Blue"
+},
+{
+"date": "2026-11-07",
+"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
+"venue": "Dickies Arena",
+"city": "Fort Worth",
+"region": "TX",
+"url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-fort-worth-texas-11-07-2026/event/0C0064B3CF15B693",
+"artist": "Layton Giordani"
 },
 {
 "date": "2026-11-07",
@@ -3331,7 +3466,25 @@
 "city": "Fort Worth",
 "region": "TX",
 "url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-fort-worth-texas-11-08-2026/event/0C0064B49E2D86C5",
+"artist": "Jackie Hollander"
+},
+{
+"date": "2026-11-08",
+"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
+"venue": "Dickies Arena",
+"city": "Fort Worth",
+"region": "TX",
+"url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-fort-worth-texas-11-08-2026/event/0C0064B49E2D86C5",
 "artist": "John Summit"
+},
+{
+"date": "2026-11-08",
+"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
+"venue": "Dickies Arena",
+"city": "Fort Worth",
+"region": "TX",
+"url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-fort-worth-texas-11-08-2026/event/0C0064B49E2D86C5",
+"artist": "Layton Giordani"
 },
 {
 "date": "2026-11-12",
@@ -3353,12 +3506,30 @@
 },
 {
 "date": "2026-11-13",
+"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
+"venue": "Schottenstein Center",
+"city": "Columbus",
+"region": "OH",
+"url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-columbus-ohio-11-13-2026/event/050064B3F56A8E85",
+"artist": "Alok"
+},
+{
+"date": "2026-11-13",
 "event": "DJ Tennis",
 "venue": "CODA",
 "city": "Toronto",
 "region": "ON",
 "url": "https://www.ticketweb.ca/event/dj-tennis-coda-tickets/14277864",
 "artist": "DJ Tennis"
+},
+{
+"date": "2026-11-13",
+"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
+"venue": "Schottenstein Center",
+"city": "Columbus",
+"region": "OH",
+"url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-columbus-ohio-11-13-2026/event/050064B3F56A8E85",
+"artist": "Jackie Hollander"
 },
 {
 "date": "2026-11-13",
@@ -3431,6 +3602,15 @@
 "region": "ON",
 "url": "https://www.ticketweb.ca/event/biscits-coda-tickets/15047583",
 "artist": "Biscits"
+},
+{
+"date": "2026-11-14",
+"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
+"venue": "Spectrum Center",
+"city": "Charlotte",
+"region": "NC",
+"url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-charlotte-north-carolina-11-14-2026/event/2D0064B3DA953D82",
+"artist": "Broken Hill"
 },
 {
 "date": "2026-11-14",
@@ -3515,6 +3695,15 @@
 },
 {
 "date": "2026-11-14",
+"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
+"venue": "Spectrum Center",
+"city": "Charlotte",
+"region": "NC",
+"url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-charlotte-north-carolina-11-14-2026/event/2D0064B3DA953D82",
+"artist": "Walker & Royce"
+},
+{
+"date": "2026-11-14",
 "event": "ZHU ??? ON THE MOVE (18+ Event)",
 "venue": "SILO",
 "city": "Dallas",
@@ -3539,6 +3728,15 @@
 "region": "FL",
 "url": "https://www.ticketmaster.com/tempo-daylife-tampa-bay-presents-elderbrook-tampa-florida-11-15-2026/event/0D00651AAA085EB6",
 "artist": "Elderbrook"
+},
+{
+"date": "2026-11-15",
+"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
+"venue": "State Farm Arena",
+"city": "Atlanta",
+"region": "GA",
+"url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-atlanta-georgia-11-15-2026/event/0E0064B3C4C2EDAC",
+"artist": "Jackie Hollander"
 },
 {
 "date": "2026-11-15",
@@ -3602,6 +3800,15 @@
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/eastenderz-manchester-manchester-20-11-2026/event/350064F6A7984FF2",
 "artist": "Cloonee"
+},
+{
+"date": "2026-11-20",
+"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
+"venue": "Kaseya Center",
+"city": "Miami",
+"region": "FL",
+"url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-miami-florida-11-20-2026/event/0D0064B2B883819E",
+"artist": "Devault"
 },
 {
 "date": "2026-11-20",
@@ -3692,6 +3899,24 @@
 "region": "QC",
 "url": "https://www.ticketmaster.ca/festival-zamna-montreal-montreal-quebec-11-21-2026/event/31006524AFF85CC1",
 "artist": "ARTBAT"
+},
+{
+"date": "2026-11-21",
+"event": "Danza Presents Kepler, Dennis Quin & more!",
+"venue": "Electric Studios",
+"city": "Sheffield",
+"region": "GB",
+"url": "https://www.universe.com/events/danza-presents-kepler-dennis-quin-more-tickets-N17XWK?ref=ticketmaster",
+"artist": "Dennis Quin"
+},
+{
+"date": "2026-11-21",
+"event": "Dom Dolla ??? Race Week - Ages 21+",
+"venue": "LIV Nightclub Las Vegas",
+"city": "Las Vegas",
+"region": "NV",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7P3C3",
+"artist": "Dom Dolla"
 },
 {
 "date": "2026-11-21",
@@ -3793,6 +4018,24 @@
 "artist": "Wuki"
 },
 {
+"date": "2026-11-22",
+"event": "Disco Lines ??? Race Week - Ages 21+",
+"venue": "LIV Nightclub Las Vegas",
+"city": "Las Vegas",
+"region": "NV",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZ7_A",
+"artist": "Disco Lines"
+},
+{
+"date": "2026-11-24",
+"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
+"venue": "United Center",
+"city": "Chicago",
+"region": "IL",
+"url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-chicago-illinois-11-24-2026/event/040064B3E1EAB73E",
+"artist": "Jackie Hollander"
+},
+{
 "date": "2026-11-24",
 "event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
 "venue": "United Center",
@@ -3836,6 +4079,15 @@
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/gorgon-city-manchester-27-11-2026/event/3E0064A6D9C43F2A",
 "artist": "Gorgon City"
+},
+{
+"date": "2026-11-27",
+"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
+"venue": "The Liacouras Center",
+"city": "Philadelphia",
+"region": "PA",
+"url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-philadelphia-pennsylvania-11-27-2026/event/020064B3BF9DC462",
+"artist": "Jackie Hollander"
 },
 {
 "date": "2026-11-27",
@@ -3916,6 +4168,15 @@
 "city": "Brooklyn",
 "region": "NY",
 "url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-brooklyn-new-york-11-28-2026/event/300064B2D1E05179",
+"artist": "Jackie Hollander"
+},
+{
+"date": "2026-11-28",
+"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
+"venue": "Barclays Center",
+"city": "Brooklyn",
+"region": "NY",
+"url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-brooklyn-new-york-11-28-2026/event/300064B2D1E05179",
 "artist": "John Summit"
 },
 {
@@ -3947,12 +4208,39 @@
 },
 {
 "date": "2026-11-28",
+"event": "Sidepiece - ages 21+",
+"venue": "LIV Nightclub Las Vegas",
+"city": "Las Vegas",
+"region": "NV",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7xbQo",
+"artist": "SIDEPIECE"
+},
+{
+"date": "2026-11-28",
 "event": "Tiga",
 "venue": "Village Studios",
 "city": "Vancouver",
 "region": "BC",
 "url": "https://www.ticketweb.ca/event/tiga-village-studios-tickets/14284214?REFERRAL_ID=tmfeed",
 "artist": "Tiga"
+},
+{
+"date": "2026-11-29",
+"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
+"venue": "Barclays Center",
+"city": "Brooklyn",
+"region": "NY",
+"url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-brooklyn-new-york-11-29-2026/event/300064BA7F8B1EA7",
+"artist": "Jackie Hollander"
+},
+{
+"date": "2026-11-29",
+"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
+"venue": "Barclays Center",
+"city": "Brooklyn",
+"region": "NY",
+"url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-brooklyn-new-york-11-29-2026/event/300064BA7F8B1EA7",
+"artist": "John Summit"
 },
 {
 "date": "2026-11-29",
@@ -4450,6 +4738,24 @@
 "artist": "CID"
 },
 {
+"date": "2027-01-16",
+"event": "D.O.D. - Ages 18+",
+"venue": "Shrine Auditorium-CA",
+"city": "Los Angeles",
+"region": "CA",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAeer8",
+"artist": "D.O.D"
+},
+{
+"date": "2027-01-16",
+"event": "D.O.D. - Ages 18+",
+"venue": "Shrine Auditorium-CA",
+"city": "Los Angeles",
+"region": "CA",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAeer8",
+"artist": "Twin Diplomacy"
+},
+{
 "date": "2027-02-19",
 "event": "LAYTON GIORDANI",
 "venue": "REBEL",
@@ -4484,6 +4790,24 @@
 "region": "NY",
 "url": "https://www.ticketmaster.com/odd-mob-new-york-new-york-05-29-2027/event/00006436DE90D883",
 "artist": "San Pacho"
+},
+{
+"date": "2027-07-03",
+"event": "Josh Baker B2b Kettama B2b Prospa",
+"venue": "Finsbury Park",
+"city": "London",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/josh-baker-b2b-kettama-b2b-prospa-london-03-07-2027/event/37006537DEAF6A2C",
+"artist": "Josh Baker"
+},
+{
+"date": "2027-07-03",
+"event": "Josh Baker B2b Kettama B2b Prospa",
+"venue": "Finsbury Park",
+"city": "London",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/josh-baker-b2b-kettama-b2b-prospa-london-03-07-2027/event/37006537DEAF6A2C",
+"artist": "Prospa"
 }
 ]
 }
