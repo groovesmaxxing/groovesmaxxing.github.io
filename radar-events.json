@@ -1,305 +1,8 @@
 {
-"generated": "2026-09-25T14:39:52+00:00",
+"generated": "2026-09-26T13:48:54+00:00",
 "artist_count": 688,
-"artists_with_events": 158,
+"artists_with_events": 148,
 "events": [
-{
-"date": "2026-09-25",
-"event": "Breakaway Carolina 2026",
-"venue": "zMAX Dragway",
-"city": "Concord",
-"region": "NC",
-"url": "https://www.universe.com/events/breakaway-carolina-2026-tickets-5N4SWK?ref=ticketmaster",
-"artist": "Beltran"
-},
-{
-"date": "2026-09-25",
-"event": "WILD ON THE WATER: BIG WILD w/MINDCHATTER",
-"venue": "Dillon Amphitheater",
-"city": "Dillon",
-"region": "CO",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7Ppue",
-"artist": "Big Wild"
-},
-{
-"date": "2026-09-25",
-"event": "Somewhere Festival 2026",
-"venue": "Downtown Wichita, Kansas",
-"city": "Wichita",
-"region": "KS",
-"url": "https://www.universe.com/events/somewhere-festival-2026-tickets-KF08TY?ref=ticketmaster",
-"artist": "Bob Moses"
-},
-{
-"date": "2026-09-25",
-"event": "Carlita",
-"venue": "The Church Nightclub",
-"city": "Denver",
-"region": "CO",
-"url": "https://www.ticketweb.com/event/carlita-the-church-nightclub-tickets/14256494",
-"artist": "Carlita"
-},
-{
-"date": "2026-09-25",
-"event": "Channel Tres with JTOTY, Gelli Haha - Ages 21+",
-"venue": "The Regency Ballroom",
-"city": "San Francisco",
-"region": "CA",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAvv0y",
-"artist": "Channel Tres"
-},
-{
-"date": "2026-09-25",
-"event": "Breakaway Carolina 2026",
-"venue": "zMAX Dragway",
-"city": "Concord",
-"region": "NC",
-"url": "https://www.universe.com/events/breakaway-carolina-2026-tickets-5N4SWK?ref=ticketmaster",
-"artist": "ChaseWest"
-},
-{
-"date": "2026-09-25",
-"event": "Breakaway Carolina 2026",
-"venue": "zMAX Dragway",
-"city": "Concord",
-"region": "NC",
-"url": "https://www.universe.com/events/breakaway-carolina-2026-tickets-5N4SWK?ref=ticketmaster",
-"artist": "Chris Lake"
-},
-{
-"date": "2026-09-25",
-"event": "Breakaway Carolina 2026",
-"venue": "zMAX Dragway",
-"city": "Concord",
-"region": "NC",
-"url": "https://www.universe.com/events/breakaway-carolina-2026-tickets-5N4SWK?ref=ticketmaster",
-"artist": "Chris Lorenzo"
-},
-{
-"date": "2026-09-25",
-"event": "Breakaway Carolina 2026",
-"venue": "zMAX Dragway",
-"city": "Concord",
-"region": "NC",
-"url": "https://www.universe.com/events/breakaway-carolina-2026-tickets-5N4SWK?ref=ticketmaster",
-"artist": "Cloonee"
-},
-{
-"date": "2026-09-25",
-"event": "Breakaway Carolina 2026",
-"venue": "zMAX Dragway",
-"city": "Concord",
-"region": "NC",
-"url": "https://www.universe.com/events/breakaway-carolina-2026-tickets-5N4SWK?ref=ticketmaster",
-"artist": "DREYA V"
-},
-{
-"date": "2026-09-25",
-"event": "Breakaway Carolina 2026",
-"venue": "zMAX Dragway",
-"city": "Concord",
-"region": "NC",
-"url": "https://www.universe.com/events/breakaway-carolina-2026-tickets-5N4SWK?ref=ticketmaster",
-"artist": "Discip"
-},
-{
-"date": "2026-09-25",
-"event": "Franky Rizardo",
-"venue": "Royale Boston",
-"city": "Boston",
-"region": "MA",
-"url": "https://www.ticketweb.com/event/franky-rizardo-royale-boston-tickets/14947833?REFERRAL_ID=tmfeed",
-"artist": "Franky Rizardo"
-},
-{
-"date": "2026-09-25",
-"event": "GOODBOYS (UK) at Felons Barrel Hall",
-"venue": "Felons Barrel Hall, Howard Smith Wharves",
-"city": "Brisbane City",
-"region": "QLD",
-"url": "https://www.moshtix.com.au/v2/event/goodboys-uk-at-felons-barrel-hall/199977",
-"artist": "Goodboys"
-},
-{
-"date": "2026-09-25",
-"event": "Green Velvet",
-"venue": "The Tivoli",
-"city": "Brisbane",
-"region": "QLD",
-"url": "https://www.ticketmaster.com.au/green-velvet-brisbane-25-09-2026/event/130064FCD0AB74E7",
-"artist": "Green Velvet"
-},
-{
-"date": "2026-09-25",
-"event": "Husky",
-"venue": "The Vanguard",
-"city": "Newtown",
-"region": "NSW",
-"url": "https://www.moshtix.com.au/v2/event/husky/196860",
-"artist": "Husky"
-},
-{
-"date": "2026-09-25",
-"event": "Breakaway Carolina 2026",
-"venue": "zMAX Dragway",
-"city": "Concord",
-"region": "NC",
-"url": "https://www.universe.com/events/breakaway-carolina-2026-tickets-5N4SWK?ref=ticketmaster",
-"artist": "J. Worra"
-},
-{
-"date": "2026-09-25",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-09-25-2026/event/3B00643505428256",
-"artist": "Jamie xx"
-},
-{
-"date": "2026-09-25",
-"event": "KYLE WATSON",
-"venue": "DPRTMNT",
-"city": "Toronto",
-"region": "ON",
-"url": "https://www.ticketweb.ca/event/kyle-watson-dprtmnt-tickets/14272314",
-"artist": "Kyle Watson"
-},
-{
-"date": "2026-09-25",
-"event": "Ohana Festival",
-"venue": "Doheny State Beach",
-"city": "Dana Point",
-"region": "CA",
-"url": "https://on.fgtix.com/trk/ycJM",
-"artist": "Midnight Generation"
-},
-{
-"date": "2026-09-25",
-"event": "WILD ON THE WATER: BIG WILD w/MINDCHATTER",
-"venue": "Dillon Amphitheater",
-"city": "Dillon",
-"region": "CO",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7Ppue",
-"artist": "Mindchatter"
-},
-{
-"date": "2026-09-25",
-"event": "SOFI TUKKER Presents: ANIMAL TALK",
-"venue": "Huntington Bank Pavilion at Northerly Island",
-"city": "Chicago",
-"region": "IL",
-"url": "https://www.ticketmaster.com/sofi-tukker-presents-animal-talk-chicago-illinois-09-25-2026/event/04006499E4CD1223",
-"artist": "Nala"
-},
-{
-"date": "2026-09-25",
-"event": "Prospa - Ages 16+",
-"venue": "Mission Ballroom",
-"city": "Denver",
-"region": "CO",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A70oQf",
-"artist": "Prospa"
-},
-{
-"date": "2026-09-25",
-"event": "SOFI TUKKER Presents: ANIMAL TALK",
-"venue": "Huntington Bank Pavilion at Northerly Island",
-"city": "Chicago",
-"region": "IL",
-"url": "https://www.ticketmaster.com/sofi-tukker-presents-animal-talk-chicago-illinois-09-25-2026/event/04006499E4CD1223",
-"artist": "SOFI TUKKER"
-},
-{
-"date": "2026-09-25",
-"event": "Satin Jackets",
-"venue": "Outset",
-"city": "Chicago",
-"region": "IL",
-"url": "https://www.ticketmaster.com/satin-jackets-chicago-illinois-09-25-2026/event/040064CBC21AD8F8",
-"artist": "Satin Jackets"
-},
-{
-"date": "2026-09-25",
-"event": "SOLOMUN",
-"venue": "Depot Mayfield",
-"city": "Manchester",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/solomun-manchester-25-09-2026/event/350064B5B3A55827",
-"artist": "Solomun"
-},
-{
-"date": "2026-09-25",
-"event": "Tinlicker (18 and Over)",
-"venue": "Roadrunner-Boston",
-"city": "Boston",
-"region": "MA",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A70Zv3",
-"artist": "Tinlicker"
-},
-{
-"date": "2026-09-25",
-"event": "Breakaway Carolina 2026",
-"venue": "zMAX Dragway",
-"city": "Concord",
-"region": "NC",
-"url": "https://www.universe.com/events/breakaway-carolina-2026-tickets-5N4SWK?ref=ticketmaster",
-"artist": "Tiësto"
-},
-{
-"date": "2026-09-25",
-"event": "Tiesto (21+ Event)",
-"venue": "Omnia Las Vegas",
-"city": "Las Vegas",
-"region": "NV",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZyu-",
-"artist": "Tiësto"
-},
-{
-"date": "2026-09-25",
-"event": "Wax Motif",
-"venue": "Exchange LA",
-"city": "Los Angeles",
-"region": "CA",
-"url": "https://www.ticketweb.com/event/wax-motif-exchange-la-tickets/14319494",
-"artist": "WAX MOTIF"
-},
-{
-"date": "2026-09-25",
-"event": "WMOT Finally Friday featuring Skylar Gregg ,  Wade Bowen &  EG Vines",
-"venue": "3rd and Lindsley",
-"city": "Nashville",
-"region": "TN",
-"url": "https://www.ticketweb.com/event/wmot-finally-friday-skylar-gregg-3rd-and-lindsley-tickets/14278484",
-"artist": "Wade"
-},
-{
-"date": "2026-09-25",
-"event": "PRE-SALE: In The Round with Wade Bowen, Heather Morgan & friend",
-"venue": "The Bluebird Cafe",
-"city": "Nashville",
-"region": "TN",
-"url": "https://www.ticketweb.com/event/pre-sale-in-the-round-the-bluebird-cafe-tickets/15031933",
-"artist": "Wade"
-},
-{
-"date": "2026-09-25",
-"event": "Breakaway Carolina 2026",
-"venue": "zMAX Dragway",
-"city": "Concord",
-"region": "NC",
-"url": "https://www.universe.com/events/breakaway-carolina-2026-tickets-5N4SWK?ref=ticketmaster",
-"artist": "Westend"
-},
-{
-"date": "2026-09-25",
-"event": "ZHU ??? ON THE MOVE",
-"venue": "The Eastern-GA",
-"city": "Atlanta",
-"region": "GA",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A70Fbf",
-"artist": "ZHU"
-},
 {
 "date": "2026-09-26",
 "event": "SOFI TUKKER Presents: ANIMAL TALK",
@@ -461,15 +164,6 @@
 "region": "DC",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7Pp80",
 "artist": "Satin Jackets"
-},
-{
-"date": "2026-09-26",
-"event": "Tinlicker North America 2026",
-"venue": "Brooklyn Paramount",
-"city": "Brooklyn",
-"region": "NY",
-"url": "https://www.ticketmaster.com/tinlicker-north-america-2026-brooklyn-new-york-09-26-2026/event/0000648EF21B20B3",
-"artist": "Tinlicker"
 },
 {
 "date": "2026-09-26",
@@ -4298,6 +3992,15 @@
 },
 {
 "date": "2026-12-04",
+"event": "Franky Rizardo",
+"venue": "Royale Boston",
+"city": "Boston",
+"region": "MA",
+"url": "https://www.ticketweb.com/event/franky-rizardo-royale-boston-tickets/14947833?REFERRAL_ID=tmfeed",
+"artist": "Franky Rizardo"
+},
+{
+"date": "2026-12-04",
 "event": "Hans Glader",
 "venue": "The Moroccan Lounge",
 "city": "Los Angeles",
@@ -4511,6 +4214,15 @@
 "region": "TX",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZ7A4",
 "artist": "SIDEPIECE"
+},
+{
+"date": "2026-12-11",
+"event": "Tinlicker North America 2026",
+"venue": "Brooklyn Paramount",
+"city": "Brooklyn",
+"region": "NY",
+"url": "https://www.ticketmaster.com/tinlicker-north-america-2026-brooklyn-new-york-12-11-2026/event/0000648EF21B20B3",
+"artist": "Tinlicker"
 },
 {
 "date": "2026-12-11",
