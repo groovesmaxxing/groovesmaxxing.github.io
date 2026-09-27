@@ -2,6 +2,10 @@
 #gmx-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:1000;background:#FF1C02;transform-origin:0 50%;transform:scaleX(0);box-shadow:0 0 12px rgba(255,28,2,.7);pointer-events:none}
 .gmx-fx{position:absolute;left:0;top:0;width:100%;z-index:-1;pointer-events:none;opacity:0;transition:opacity 1.2s ease}
 .gmx-fx.on{opacity:1}
+.gmx-mark{position:absolute;z-index:-1;pointer-events:none;display:none;filter:drop-shadow(0 0 24px rgba(255,28,2,.35))}
+.gmx-mark svg{width:100%;height:100%;overflow:visible}
+.gmx-rings{transform-origin:50% 50%;animation:gmx-spin 24s linear infinite}
+@keyframes gmx-spin{to{transform:rotate(360deg)}}
 body::before{content:"";position:fixed;inset:-24px 0 0 -24px;z-index:-2;pointer-events:none;
 background-image:radial-gradient(circle,rgba(255,28,2,.12) 1.6px,transparent 2.2px);background-size:24px 24px;
 -webkit-mask-image:radial-gradient(ellipse 45% 40% at 8% 92%,#000 0%,transparent 70%);mask-image:radial-gradient(ellipse 45% 40% at 8% 92%,#000 0%,transparent 70%);
@@ -30,7 +34,7 @@ footer svg{animation:gmx-beat 6s ease-in-out infinite}
 @keyframes gmx-beat{50%{transform:scale(1.05)}}
 
 @media (prefers-reduced-motion: reduce){
-  #gmx-progress,body::before,.gmx-fx{display:none}
+  #gmx-progress,body::before,.gmx-fx,.gmx-mark{display:none!important}
   .gmx-motion .rv{opacity:1;transform:none;transition:none}
   .gmx-motion .gmx-zz::after{width:96px;transition:none}
   .gmx-lift:hover{transform:none}
