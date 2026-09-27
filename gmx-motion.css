@@ -1,0 +1,38 @@
+/* groovesmaxxing page motion kit. shared by the inner pages, the homepage carries its own inline copy. */
+#gmx-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:1000;background:#FF1C02;transform-origin:0 50%;transform:scaleX(0);box-shadow:0 0 12px rgba(255,28,2,.7);pointer-events:none}
+.gmx-fx{position:absolute;left:0;top:0;width:100%;z-index:-1;pointer-events:none;opacity:0;transition:opacity 1.2s ease}
+.gmx-fx.on{opacity:1}
+body::before{content:"";position:fixed;inset:-24px 0 0 -24px;z-index:-2;pointer-events:none;
+background-image:radial-gradient(circle,rgba(255,28,2,.12) 1.6px,transparent 2.2px);background-size:24px 24px;
+-webkit-mask-image:radial-gradient(ellipse 45% 40% at 8% 92%,#000 0%,transparent 70%);mask-image:radial-gradient(ellipse 45% 40% at 8% 92%,#000 0%,transparent 70%);
+animation:gmx-drift 16s linear infinite;will-change:transform}
+@keyframes gmx-drift{to{transform:translate(24px,24px)}}
+
+.gmx-motion .rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .85s cubic-bezier(.2,.7,.2,1)}
+.gmx-motion .rv.in{opacity:1;transform:none}
+
+.gmx-motion .gmx-zz::after{content:"";display:block;height:12px;margin-top:10px;width:0;
+background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='12' viewBox='0 0 24 12'%3E%3Cpolyline points='0,6 6,1 12,11 18,1 24,6' fill='none' stroke='%23FF1C02' stroke-width='2.4' stroke-linejoin='round'/%3E%3C/svg%3E") repeat-x left center/24px 12px;
+transition:width 1s cubic-bezier(.2,.7,.2,1) .2s}
+.gmx-motion .gmx-zz.in::after{width:96px}
+.gmx-motion h1.gmx-zz.in::after{width:120px}
+
+.gmx-lift{transition:transform .22s ease,border-color .2s,box-shadow .22s}
+.gmx-lift:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(255,28,2,.12)}
+.pill,.rchip,.chip{position:relative;overflow:hidden}
+.pill::after,.rchip::after,.chip::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.3),transparent);transform:skewX(-20deg);pointer-events:none}
+.pill:hover::after,.rchip:hover::after,.chip:hover::after{animation:gmx-sweep .7s ease}
+@keyframes gmx-sweep{to{left:130%}}
+.icon-btn{transition:background .2s,transform .2s cubic-bezier(.3,1.6,.5,1)}
+.icon-btn:hover{transform:translateY(-4px) scale(1.06);animation:gmx-ring 1s ease-out}
+@keyframes gmx-ring{from{box-shadow:0 0 0 0 rgba(255,28,2,.55)}to{box-shadow:0 0 0 16px rgba(255,28,2,0)}}
+footer svg{animation:gmx-beat 6s ease-in-out infinite}
+@keyframes gmx-beat{50%{transform:scale(1.05)}}
+
+@media (prefers-reduced-motion: reduce){
+  #gmx-progress,body::before,.gmx-fx{display:none}
+  .gmx-motion .rv{opacity:1;transform:none;transition:none}
+  .gmx-motion .gmx-zz::after{width:96px;transition:none}
+  .gmx-lift:hover{transform:none}
+  .pill:hover::after,.rchip:hover::after,.chip:hover::after,.icon-btn:hover,footer svg{animation:none}
+}
