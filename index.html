@@ -212,6 +212,81 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--racing);outline-off
 .gmx-tabs a[aria-current="page"]{color:#FF1C02}
 .gmx-tabs a:hover{color:#F2F2EF}
 @media (max-width:1024px){.gmx-tabs{display:block}body{padding-bottom:calc(66px + env(safe-area-inset-bottom))}}
+
+/* ===== gmx motion layer ===== */
+.hero .hero-fx{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0;transition:opacity 1.2s ease}
+.hero .hero-fx.on{opacity:1}
+.hero > :not(.hero-fx){position:relative;z-index:1}
+.hero .mark{width:min(64vw,330px);margin-bottom:30px;overflow:visible}
+.hero .wordmark{font-size:clamp(2.6rem,9vw,7.6rem)}
+.hero .max{transition:text-shadow .08s linear}
+.hero .pill:not(.solid){background:rgba(11,11,13,.82)}
+.hero .icon-btn{background:rgba(11,11,13,.85)}
+.hero .icon-btn:hover{background:var(--racing)}
+@media (min-width:641px){.hero .area-nav a{background-color:rgba(11,11,13,.82);border-radius:6px;padding-left:6px;padding-right:6px}}
+#gmx-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:1000;background:var(--racing);transform-origin:0 50%;transform:scaleX(0);box-shadow:0 0 12px rgba(255,28,2,.7);pointer-events:none}
+
+/* scroll reveal, only when the script is running */
+.gmx-motion .rv{opacity:0;transform:translateY(30px);transition:opacity .75s ease,transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i,0)*70ms)}
+.gmx-motion .rv.in{opacity:1;transform:none}
+.gmx-motion .rv.in.tilt{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--ty,0px));transition:transform .25s ease-out,opacity .75s ease}
+
+/* zigzag underline that draws itself under every section heading */
+section h2{position:relative}
+.gmx-motion section h2::after{content:"";display:block;height:12px;margin-top:12px;width:0;
+background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='12' viewBox='0 0 24 12'%3E%3Cpolyline points='0,6 6,1 12,11 18,1 24,6' fill='none' stroke='%23FF1C02' stroke-width='2.4' stroke-linejoin='round'/%3E%3C/svg%3E") repeat-x left center/24px 12px;
+transition:width 1s cubic-bezier(.2,.7,.2,1) .25s}
+.gmx-motion section h2.in::after{width:96px}
+.gmx-motion .day-section h2::after{filter:saturate(.9) brightness(.85)}
+
+/* drifting halftone texture on every section */
+section{position:relative;isolation:isolate;overflow-x:clip}
+section::before{content:"";position:absolute;inset:-24px 0 0 -24px;z-index:-1;pointer-events:none;
+background-image:radial-gradient(circle,rgba(255,28,2,.16) 1.6px,transparent 2.2px);background-size:24px 24px;
+-webkit-mask-image:radial-gradient(ellipse 60% 55% at 85% 20%,#000 0%,transparent 70%);mask-image:radial-gradient(ellipse 60% 55% at 85% 20%,#000 0%,transparent 70%);
+animation:gmx-drift 14s linear infinite;will-change:transform}
+section:nth-of-type(even)::before{-webkit-mask-image:radial-gradient(ellipse 60% 55% at 12% 80%,#000 0%,transparent 70%);mask-image:radial-gradient(ellipse 60% 55% at 12% 80%,#000 0%,transparent 70%);animation-direction:reverse}
+.day-section::before{background-image:radial-gradient(circle,rgba(204,20,0,.13) 1.6px,transparent 2.2px)}
+@keyframes gmx-drift{to{transform:translate(24px,24px)}}
+
+/* pills: a light sweep on hover */
+.pill{position:relative;overflow:hidden;transition:background .2s,color .2s,transform .2s}
+.pill::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);pointer-events:none}
+.pill:hover{transform:translateY(-2px)}
+.pill:hover::after{animation:gmx-sweep .7s ease}
+@keyframes gmx-sweep{to{left:130%}}
+
+/* icon buttons pop in, then bounce and ring on hover */
+.icon-btn{transition:background .2s,transform .2s cubic-bezier(.3,1.6,.5,1)}
+.icon-btn:hover{transform:translateY(-4px) scale(1.06);animation:gmx-ring 1s ease-out}
+@keyframes gmx-ring{from{box-shadow:0 0 0 0 rgba(255,28,2,.55)}to{box-shadow:0 0 0 16px rgba(255,28,2,0)}}
+.gmx-motion .hero .icon-btn{animation:gmx-pop .6s cubic-bezier(.3,1.6,.5,1) both;animation-delay:calc(.5s + var(--i,0)*60ms)}
+.gmx-motion .hero .icon-btn:hover{animation:gmx-ring 1s ease-out}
+@keyframes gmx-pop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:none}}
+
+/* area links: underline slides in */
+.area-nav a{background:linear-gradient(var(--racing),var(--racing)) left bottom/0 1px no-repeat;transition:background-size .3s ease,color .2s}
+.area-nav a:hover{background-size:100% 1px;color:var(--day)}
+
+/* label wall: heavy-rotation chips breathe, every chip lifts */
+.wall a{transition:border-color .15s,color .15s,transform .2s}
+.wall a:hover{transform:translateY(-3px)}
+.wall a.hot{animation:gmx-breathe 3.4s ease-in-out infinite;animation-delay:calc(var(--i,0)*-0.5s)}
+@keyframes gmx-breathe{50%{border-color:rgba(255,28,2,.85);box-shadow:0 0 18px rgba(255,28,2,.25)}}
+
+/* lane emoji wiggle, footer mark pulses on the beat */
+.lane:hover h3{animation:gmx-wiggle .5s ease}
+@keyframes gmx-wiggle{25%{transform:rotate(-3deg)}75%{transform:rotate(3deg)}}
+footer svg{animation:gmx-beat .4918s ease-out infinite}
+@keyframes gmx-beat{0%{transform:scale(1.08)}60%,100%{transform:scale(1)}}
+
+@media (prefers-reduced-motion: reduce){
+  #gmx-progress,section::before{display:none}
+  .gmx-motion .rv{opacity:1;transform:none;transition:none}
+  .gmx-motion section h2::after{width:96px;transition:none}
+  .pill:hover::after,.icon-btn:hover,.wall a.hot,footer svg,.lane:hover h3,.gmx-motion .hero .icon-btn{animation:none}
+}
+@media (hover:none){ .gmx-motion .rv.in.tilt{transform:none} }
 </style>
 <link rel="canonical" href="https://groovesmaxxing.com/">
   <!-- gmx-seo start -->
@@ -1272,5 +1347,181 @@ slot.appendChild(fr);slot.hidden=false;});}
 </ul>
 </nav>
 <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})})}</script>
+<script>
+(() => {
+  const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const root = document.documentElement;
+  root.classList.add('gmx-motion');
+  const BPM = 122;
+  const beatAt = t => Math.pow(1 - ((t * BPM / 60) % 1), 3);
+
+  /* ---------- scroll progress ---------- */
+  const bar = document.createElement('div'); bar.id = 'gmx-progress'; document.body.prepend(bar);
+  let pend = false;
+  const prog = () => { pend = false; const h = root.scrollHeight - innerHeight; bar.style.transform = `scaleX(${h > 0 ? scrollY / h : 0})`; };
+  addEventListener('scroll', () => { if (!pend) { pend = true; requestAnimationFrame(prog); } }, {passive: true});
+  prog();
+
+  /* ---------- reveal on scroll ---------- */
+  const ITEMS = '.lane, .cluster, .player, .pod, .serie, .wall-group, .drops li, .icon-row .icon-btn';
+  const all = new Set([...document.querySelectorAll('main section .wrap > *, section .wrap > *, ' + ITEMS)]);
+  const targets = [...all].filter(el => !el.closest('.hero') && ![...all].some(o => o !== el && el.contains(o)));
+  const groups = new Map();
+  targets.forEach(el => { const p = el.parentElement; const n = groups.get(p) || 0; el.style.setProperty('--i', Math.min(n, 8)); groups.set(p, n + 1); el.classList.add('rv'); });
+  document.querySelectorAll('.hero .icon-btn').forEach((el, i) => el.style.setProperty('--i', i));
+  document.querySelectorAll('.wall a.hot').forEach((el, i) => el.style.setProperty('--i', i));
+  const heads = [...document.querySelectorAll('section h2')];
+  if (RM || !('IntersectionObserver' in window)) {
+    targets.forEach(el => el.classList.add('in')); heads.forEach(h => h.classList.add('in'));
+  } else {
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); countUp(e.target); }
+    }), {rootMargin: '0px 0px -8% 0px', threshold: 0.08});
+    targets.forEach(el => io.observe(el)); heads.forEach(h => io.observe(h));
+  }
+
+  /* ---------- numbers in headings count up ---------- */
+  function countUp(el){
+    if (RM || el.tagName !== 'H2') return;
+    const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    let node; while ((node = w.nextNode())) {
+      const m = node.nodeValue.match(/\d[\d,]*/); if (!m) continue;
+      const end = parseInt(m[0].replace(/,/g, ''), 10); if (!(end > 20)) continue;
+      const pre = node.nodeValue.slice(0, m.index), post = node.nodeValue.slice(m.index + m[0].length), comma = m[0].includes(',');
+      const t0 = performance.now(), dur = 1400, n = node;
+      const step = now => {
+        const k = Math.min(1, (now - t0) / dur), v = Math.round(end * (1 - Math.pow(1 - k, 3)));
+        n.nodeValue = pre + (comma ? v.toLocaleString('en-US') : v) + post;
+        if (k < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step); break;
+    }
+  }
+
+  /* ---------- cards tilt toward the pointer ---------- */
+  if (!RM && matchMedia('(hover:hover)').matches) {
+    document.querySelectorAll('.lane, .cluster, .pod, .serie').forEach(el => {
+      el.classList.add('tilt');
+      el.addEventListener('pointermove', e => {
+        const r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+        el.style.setProperty('--ry', (x * 7).toFixed(2) + 'deg'); el.style.setProperty('--rx', (-y * 7).toFixed(2) + 'deg'); el.style.setProperty('--ty', '-4px');
+      });
+      el.addEventListener('pointerleave', () => { el.style.setProperty('--rx', '0deg'); el.style.setProperty('--ry', '0deg'); el.style.setProperty('--ty', '0px'); });
+    });
+  }
+
+  /* ---------- hero: halftone pulse field + living logo ---------- */
+  const hero = document.querySelector('.hero'); if (!hero) return;
+  const mark = hero.querySelector('.mark'), word = hero.querySelector('.wordmark'), maxEl = hero.querySelector('.max');
+  const wave = mark && mark.querySelector('polyline'), dot = mark && mark.querySelector(':scope > circle');
+  const base = wave ? wave.getAttribute('points').trim().split(/\s+/).map(p => p.split(',').map(Number)) : [];
+
+  const cv = document.createElement('canvas'); cv.className = 'hero-fx'; cv.setAttribute('aria-hidden', 'true');
+  hero.prepend(cv);
+  const gl = cv.getContext('webgl', {antialias: false, alpha: true, premultipliedAlpha: false});
+  let prog2 = null, U = {};
+  if (gl) {
+    const VS = 'attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}';
+    const FS = `
+precision highp float;
+uniform vec2 uRes; uniform vec2 uC; uniform float uT; uniform float uBeat; uniform float uLogoR;
+uniform vec2 uWord; uniform vec2 uWordHalf; uniform vec2 uP; uniform vec3 uShock; uniform float uCell; uniform float uClearK;
+const vec3 RED = vec3(1.0,0.110,0.008); const vec3 DEEP = vec3(0.8,0.078,0.0); const vec3 DAY = vec3(0.949,0.949,0.937);
+void main(){
+  vec2 p = gl_FragCoord.xy; float m = min(uRes.x,uRes.y); float cell = uCell;
+  float row = floor(p.y/cell); float off = mod(row,2.0)*0.5*cell;
+  vec2 cc = vec2((floor((p.x+off)/cell)+0.5)*cell - off, (row+0.5)*cell);
+  float d = length(cc-uC)/m;
+  float ph = d*20.0 - uT*1.7;
+  float ph2 = length(cc-uP)/m*14.0 - uT*1.1;
+  float v = (0.5+0.5*sin(ph))*0.8 + (0.5+0.5*sin(ph2))*0.3;
+  float sd = length(cc-uShock.xy)/m, age = uT-uShock.z;
+  v += 0.9*exp(-pow((sd-age*0.55)*14.0,2.0))*exp(-age*1.2)*step(0.0,age);
+  float clearR = uLogoR/m*uClearK;
+  float rr = min(uWordHalf.x,uWordHalf.y)*0.9; vec2 q = abs(cc-uWord)-(uWordHalf-vec2(rr));
+  float box = length(max(q,0.0))+min(max(q.x,q.y),0.0)-rr;
+  float env = smoothstep(clearR, clearR+0.08, d) * smoothstep(0.0, 0.08*m, box);
+  float r = cell*0.5*clamp(v*env*(0.8+0.4*uBeat),0.0,1.0);
+  float a = 1.0 - smoothstep(r-0.9, r+0.6, length(p-cc));
+  float band = mod(floor(ph/6.2831853),3.0);
+  vec3 col = band<0.5 ? RED : (band<1.5 ? DAY : DEEP);
+  vec2 uv = p/uRes-0.5; float vig = 1.0 - smoothstep(0.35, 0.75, length(uv*vec2(1.0,1.3)));
+  gl_FragColor = vec4(col, a*(0.35+0.65*vig)*0.9);
+}`;
+    const sh = (t, s) => { const o = gl.createShader(t); gl.shaderSource(o, s); gl.compileShader(o); return gl.getShaderParameter(o, gl.COMPILE_STATUS) ? o : null; };
+    const vs = sh(gl.VERTEX_SHADER, VS), fs = sh(gl.FRAGMENT_SHADER, FS);
+    if (vs && fs) {
+      prog2 = gl.createProgram(); gl.attachShader(prog2, vs); gl.attachShader(prog2, fs); gl.linkProgram(prog2); gl.useProgram(prog2);
+      gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 3,-1, -1,3]), gl.STATIC_DRAW);
+      const l = gl.getAttribLocation(prog2, 'a'); gl.enableVertexAttribArray(l); gl.vertexAttribPointer(l, 2, gl.FLOAT, false, 0, 0);
+      ['uRes','uC','uT','uBeat','uLogoR','uWord','uWordHalf','uP','uShock','uCell','uClearK'].forEach(n => U[n] = gl.getUniformLocation(prog2, n));
+      gl.enable(gl.BLEND); gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+    }
+  }
+
+  const small = matchMedia('(max-width:640px)').matches;
+  const dpr = Math.min(devicePixelRatio || 1, small ? 1 : 1.5);
+  let W = 0, H = 0, geo = null;
+  const measure = () => {
+    const hr = hero.getBoundingClientRect();
+    W = cv.width = Math.round(hr.width * dpr); H = cv.height = Math.round(hr.height * dpr);
+    if (gl) gl.viewport(0, 0, W, H);
+    const mr = mark.getBoundingClientRect(), wr = word.getBoundingClientRect();
+    const last = hero.querySelector('.tagline'), tr = last ? last.getBoundingClientRect() : wr;
+    const links = hero.querySelector('.hero-links'), lw = links ? links.getBoundingClientRect().width : 0;
+    const top = wr.top - hr.top - 10, bot = small ? hr.height + 40 : tr.bottom - hr.top + 10;
+    geo = {
+      c: [(mr.left + mr.width/2 - hr.left) * dpr, H - (mr.top + mr.height/2 - hr.top) * dpr],
+      R: mr.width/2 * dpr,
+      word: [(wr.left + wr.width/2 - hr.left) * dpr, H - ((top + bot)/2) * dpr],
+      half: [(small ? hr.width : wr.width/2 + 30) * dpr, ((bot - top)/2) * dpr],
+    };
+  };
+  measure();
+  if ('ResizeObserver' in window) new ResizeObserver(measure).observe(hero); else addEventListener('resize', measure);
+  document.fonts && document.fonts.ready.then(measure);
+
+  let P = [0, 0], PT = [0, 0], shock = [0, 0, -99], visible = true;
+  hero.addEventListener('pointermove', e => { const r = hero.getBoundingClientRect(); PT = [(e.clientX - r.left) * dpr, H - (e.clientY - r.top) * dpr]; });
+  hero.addEventListener('pointerdown', e => { if (e.target.closest('a,button')) return; const r = hero.getBoundingClientRect(); shock = [(e.clientX - r.left) * dpr, H - (e.clientY - r.top) * dpr, (performance.now() - t0) / 1000]; });
+  if ('IntersectionObserver' in window) new IntersectionObserver(es => { visible = es[0].isIntersecting; if (visible) kick(); }).observe(hero);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) kick(); });
+
+  const t0 = performance.now(); let last = 0, running = false;
+  const cap = small ? 30 : 60;
+  function draw(t){
+    const b = RM ? 0.3 : beatAt(t);
+    if (prog2 && geo) {
+      P[0] += (PT[0] - P[0]) * 0.04; P[1] += (PT[1] - P[1]) * 0.04;
+      if (!PT[0]) { P = [W * (0.5 + 0.45 * Math.cos(t * 0.07)), H * (0.5 + 0.4 * Math.sin(t * 0.05))]; }
+      gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
+      gl.uniform2f(U.uRes, W, H); gl.uniform2f(U.uC, geo.c[0], geo.c[1]); gl.uniform1f(U.uT, t); gl.uniform1f(U.uBeat, b);
+      gl.uniform1f(U.uLogoR, geo.R); gl.uniform2f(U.uWord, geo.word[0], geo.word[1]); gl.uniform2f(U.uWordHalf, geo.half[0], geo.half[1]);
+      gl.uniform2f(U.uP, P[0], P[1]); gl.uniform3f(U.uShock, shock[0], shock[1], shock[2]);
+      gl.uniform1f(U.uClearK, small ? 1.02 : 1.35); gl.uniform1f(U.uCell, Math.max(14 * dpr, Math.min(W, H) / 52));
+      gl.drawArrays(gl.TRIANGLES, 0, 3);
+      cv.classList.add('on');
+    }
+    if (wave && !RM) {
+      wave.setAttribute('points', base.map(([x, y], i) => {
+        if (i < 2 || i > base.length - 3) return x + ',' + y;
+        const k = 0.72 + 0.28 * Math.sin(t * 2.3 + i * 1.3) + 0.4 * b;
+        return x + ',' + (120 + (y - 120) * k).toFixed(1);
+      }).join(' '));
+      if (dot) dot.setAttribute('r', (18 + 6 * b).toFixed(2));
+      if (maxEl) maxEl.style.textShadow = `0 0 ${(28 * b).toFixed(1)}px rgba(255,28,2,${(0.55 * b).toFixed(2)})`;
+    }
+  }
+  function loop(now){
+    if (!visible || document.hidden) { running = false; return; }
+    requestAnimationFrame(loop);
+    if (now - last < 1000 / cap - 1) return;
+    last = now; draw((now - t0) / 1000);
+  }
+  function kick(){ if (!running && !RM) { running = true; requestAnimationFrame(loop); } }
+  if (RM) draw(4); else kick();
+})();
+</script>
 </body>
 </html>
