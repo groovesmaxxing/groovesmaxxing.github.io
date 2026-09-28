@@ -1,35 +1,8 @@
 {
-"generated": "2026-09-27T14:45:25+00:00",
+"generated": "2026-09-28T17:43:38+00:00",
 "artist_count": 688,
 "artists_with_events": 144,
 "events": [
-{
-"date": "2026-09-27",
-"event": "Day Trip feat. Armand Van Helden, James Poole, Adam Auburn, Athena",
-"venue": "Los Angeles State Historic Park: On The Promenade",
-"city": "Los Angeles",
-"region": "CA",
-"url": "https://www.ticketweb.com/event/day-trip-feat-armand-van-los-angeles-state-historic-park-tickets/14877963",
-"artist": "Armand Van Helden"
-},
-{
-"date": "2026-09-27",
-"event": "Monkey Safari (DE) [12 Hour Set] | Winter Series pres. by Thick as Thieves",
-"venue": "Revolver Nightclub",
-"city": "Prahran",
-"region": "VIC",
-"url": "https://www.moshtix.com.au/v2/event/monkey-safari-de-12-hour-set-winter-series-pres-by-thick-as-thieves/195308",
-"artist": "Monkey Safari"
-},
-{
-"date": "2026-09-27",
-"event": "Odd Mob",
-"venue": "The Rechabite",
-"city": "Perth",
-"region": "WA",
-"url": "https://www.moshtix.com.au/v2/event/odd-mob/200217",
-"artist": "Odd Mob"
-},
 {
 "date": "2026-09-29",
 "event": "Channel Tres (21 and Over)",
@@ -802,6 +775,15 @@
 "city": "Washington",
 "region": "DC",
 "url": "https://www.ticketmaster.com/glow-block-party-diplo-washington-district-of-columbia-10-03-2026/event/1500650B90C25674",
+"artist": "Westend"
+},
+{
+"date": "2026-10-03",
+"event": "Westend [Official GLOW Block Party Afters]",
+"venue": "Zebbie's Garden",
+"city": "Washington",
+"region": "DC",
+"url": "https://www.ticketmaster.com/westend-official-glow-block-party-afters-washington-district-of-columbia-10-03-2026/event/15006539404930C6",
 "artist": "Westend"
 },
 {
@@ -4205,6 +4187,15 @@
 "region": "VIC",
 "url": "https://www.moshtix.com.au/v2/event/nye-on-the-hill-2026/195738",
 "artist": "Torren Foot"
+},
+{
+"date": "2026-12-30",
+"event": "it's murph (NYW)",
+"venue": "Echostage",
+"city": "Washington",
+"region": "DC",
+"url": "https://www.ticketmaster.com/its-murph-nyw-washington-district-of-columbia-12-30-2026/event/150065378FD3449D",
+"artist": "it's murph"
 },
 {
 "date": "2026-12-31",
