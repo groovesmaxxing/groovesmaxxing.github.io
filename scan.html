@@ -384,7 +384,7 @@ function resultCard(cur){
   }else if(c.kind==='guess'&&cand){
     var g=nameOf(cand);
     out+='<p class="kw"><b>no match</b></p><h2>nothing we\'re sure of.</h2>';
-    out+='<div class="guess"><p class="kw">closest guess</p><p class="nm">'+(g?esc(g.artist)+(g.artist&&g.title?' - ':'')+esc(g.title):'an unnamed library entry')+'</p><p class="pc">'+pct(cand.shown_score)+' · '+esc(cand.word||'guess')+'</p>';
+    out+='<div class="guess"><p class="kw">closest guess</p><p class="nm">'+(g?esc(g.artist)+(g.artist&&g.title?' - ':'')+esc(g.title):'an unnamed library entry')+'</p><p class="pc">'+(cand.shown_score==null?esc(cand.word||'possible match'):pct(cand.shown_score)+' · '+esc(cand.word||'guess'))+'</p>';
     out+='<div class="row"><button class="btn" data-act="confirm">that\'s right</button><button class="btn" data-act="correct">it\'s actually...</button></div></div>';
     out+=correctionForm();
     out+='<h3>help us find it?</h3><p class="note">we keep your 12 second clip and keep hunting. tell us where you heard it, or not.</p><div class="row"><button class="btn red" data-act="help">help us find it?</button><button class="btn ghost" data-act="again">no thanks, scan again</button></div>';
@@ -504,7 +504,7 @@ function renderHistory(){
   recentlist.innerHTML=h.map(function(r){
     var who;
     if(r.kind==='match')who=esc(r.artist||'ID')+'<small>'+esc(r.title||'unnamed library entry')+' · '+pct(r.score)+'</small>';
-    else if(r.kind==='guess')who='no match<small>closest guess: '+esc((r.artist?r.artist+' - ':'')+r.title)+' · '+pct(r.score)+'</small>';
+    else if(r.kind==='guess')who='no match<small>closest guess: '+esc((r.artist?r.artist+' - ':'')+r.title)+(r.score==null?' · possible match':' · '+pct(r.score))+'</small>';
     else who='no match<small>nothing yet</small>';
     return '<li><span class="who">'+who+'</span><span class="when">'+when(r.t)+'</span></li>';
   }).join('');
