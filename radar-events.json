@@ -1,7 +1,7 @@
 {
-"generated": "2026-09-28T17:43:38+00:00",
+"generated": "2026-09-29T15:59:05+00:00",
 "artist_count": 688,
-"artists_with_events": 144,
+"artists_with_events": 145,
 "events": [
 {
 "date": "2026-09-29",
@@ -1544,11 +1544,11 @@
 },
 {
 "date": "2026-10-16",
-"event": "Lewis OfMan",
+"event": "KCRW Presents: Lewis OfMan",
 "venue": "Teragram Ballroom",
 "city": "Los Angeles",
 "region": "CA",
-"url": "https://www.ticketmaster.com/lewis-ofman-los-angeles-california-10-16-2026/event/090064AE4A252F6B",
+"url": "https://www.ticketmaster.com/kcrw-presents-lewis-ofman-los-angeles-california-10-16-2026/event/090064AE4A252F6B",
 "artist": "Lewis OfMan"
 },
 {
@@ -4199,6 +4199,15 @@
 },
 {
 "date": "2026-12-31",
+"event": "Adriatique",
+"venue": "LIV Nightclub Miami",
+"city": "Miami Beach",
+"region": "FL",
+"url": "https://www.ticketweb.com/event/adriatique-liv-nightclub-miami-tickets/14349084",
+"artist": "Adriatique"
+},
+{
+"date": "2026-12-31",
 "event": "New Year's At The Bowl",
 "venue": "Arts Centre Melbourne, Sidney Myer Music Bowl",
 "city": "Linlithgow Ave",
@@ -4253,12 +4262,75 @@
 },
 {
 "date": "2027-02-19",
+"event": "Palm Tree Music Festival",
+"venue": "Rio Grande Park",
+"city": "Aspen",
+"region": "CO",
+"url": "https://on.fgtix.com/trk/v1yW",
+"artist": "Disco Lines"
+},
+{
+"date": "2027-02-19",
 "event": "LAYTON GIORDANI",
 "venue": "REBEL",
 "city": "Toronto",
 "region": "ON",
 "url": "https://www.ticketweb.ca/event/layton-giordani-rebel-tickets/14316154",
 "artist": "Layton Giordani"
+},
+{
+"date": "2027-02-19",
+"event": "Palm Tree Music Festival",
+"venue": "Rio Grande Park",
+"city": "Aspen",
+"region": "CO",
+"url": "https://on.fgtix.com/trk/v1yW",
+"artist": "The Martinez Brothers"
+},
+{
+"date": "2027-02-20",
+"event": "Palm Tree Music Festival",
+"venue": "Rio Grande Park",
+"city": "Aspen",
+"region": "CO",
+"url": "https://on.fgtix.com/trk/v1yW",
+"artist": "Chris Lake"
+},
+{
+"date": "2027-02-20",
+"event": "Palm Tree Music Festival",
+"venue": "Rio Grande Park",
+"city": "Aspen",
+"region": "CO",
+"url": "https://on.fgtix.com/trk/v1yW",
+"artist": "FISHER"
+},
+{
+"date": "2027-02-20",
+"event": "Palm Tree Music Festival",
+"venue": "Rio Grande Park",
+"city": "Aspen",
+"region": "CO",
+"url": "https://on.fgtix.com/trk/v1yW",
+"artist": "HUGEL"
+},
+{
+"date": "2027-02-20",
+"event": "Palm Tree Music Festival",
+"venue": "Rio Grande Park",
+"city": "Aspen",
+"region": "CO",
+"url": "https://on.fgtix.com/trk/v1yW",
+"artist": "Max Styler"
+},
+{
+"date": "2027-02-20",
+"event": "Palm Tree Music Festival",
+"venue": "Rio Grande Park",
+"city": "Aspen",
+"region": "CO",
+"url": "https://on.fgtix.com/trk/v1yW",
+"artist": "Nala"
 },
 {
 "date": "2027-03-17",
@@ -4303,6 +4375,24 @@
 "city": "London",
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/josh-baker-b2b-kettama-b2b-prospa-london-03-07-2027/event/37006537DEAF6A2C",
+"artist": "Prospa"
+},
+{
+"date": "2027-07-04",
+"event": "Josh Baker B2b Kettama B2b Prospa",
+"venue": "Finsbury Park",
+"city": "London",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/josh-baker-b2b-kettama-b2b-prospa-london-04-07-2027/event/3700653CA09C1F1E",
+"artist": "Josh Baker"
+},
+{
+"date": "2027-07-04",
+"event": "Josh Baker B2b Kettama B2b Prospa",
+"venue": "Finsbury Park",
+"city": "London",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/josh-baker-b2b-kettama-b2b-prospa-london-04-07-2027/event/3700653CA09C1F1E",
 "artist": "Prospa"
 }
 ]
