@@ -142,7 +142,7 @@ h1.eyebrow{margin:0;font-weight:400}
 </svg>
 </button>
 <div class="tap" id="tap">tap to <b>scan</b></div>
-<div class="rec" id="rec"><i></i><span id="recword">listening</span><span class="n" id="count">12</span></div>
+<div class="rec" id="rec"><i></i><span id="recword">listening</span><span class="n" id="count">15</span></div>
 <p class="mic" id="mictext">groovesmaxxing listens for about 15 seconds to find the track. if we can't find it, you choose whether we keep the clip to keep hunting.</p>
 </section>
 
@@ -277,7 +277,7 @@ function startScan(){
     cleanup(); tick(30);
     if(err||!blob||blob.size<2000){
       var name=err&&err.name?err.name:'';
-      var m= name==='NotAllowedError'||name==='SecurityError' ? 'the mic is blocked. allow the microphone for groovesmaxxing.com in your browser settings and try again.'
+      var m= name==='NotAllowedError'||name==='SecurityError' ? (/iPhone|iPad|iPod/.test(navigator.userAgent) ? 'the mic is blocked. open iphone settings, find safari (under apps on newer iphones), set microphone to ask or allow, then try again.' : 'the mic is blocked. allow the microphone for groovesmaxxing.com in your browser settings and try again.')
            : name==='NotFoundError' ? 'no microphone found on this device.'
            : 'the clip did not record. try again.';
       showCard(errCard(m)); reset(); return;
