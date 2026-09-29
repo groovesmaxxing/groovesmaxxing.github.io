@@ -86,6 +86,15 @@ h1.eyebrow{margin:0;font-weight:400}
 .guess .nm{font-weight:600;font-size:1.05rem;overflow-wrap:anywhere}
 .guess .pc{font-family:'Space Mono',monospace;font-size:.8rem;color:var(--steel);margin-top:3px}
 .note{color:#c9c9c4;line-height:1.65;font-size:.95rem;margin-top:8px}
+.how{margin-top:18px;background:none;border:0;color:var(--steel);font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.08em;text-decoration:underline;text-underline-offset:4px;cursor:pointer;padding:8px}
+.how:hover,.how:focus-visible{color:var(--day)}
+.howbox{border:1px solid var(--line);border-radius:22px;background:#141417;color:var(--day);padding:24px 22px 20px;max-width:420px;width:calc(100% - 32px);margin:auto}
+.howbox::backdrop{background:rgba(0,0,0,.6)}
+.howbox h2{font-weight:900;font-size:1.4rem;margin-bottom:12px}
+.howbox p{color:#c9c9c4;line-height:1.6;font-size:.95rem;margin-top:10px}
+.howbox .links{font-family:'Space Mono',monospace;font-size:.78rem}
+.howbox .links a{color:var(--steel)}
+.howbox .btn{margin-top:18px}
 .form{display:none;border-top:1px solid var(--line);margin-top:18px;padding-top:16px}
 .form.on{display:block}
 .form label{display:block;font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.14em;color:var(--steel);text-transform:uppercase;margin:12px 0 5px}
@@ -143,8 +152,18 @@ h1.eyebrow{margin:0;font-weight:400}
 </button>
 <div class="tap" id="tap">tap to <b>scan</b></div>
 <div class="rec" id="rec"><i></i><span id="recword">listening</span><span class="n" id="count">15</span></div>
-<p class="mic" id="mictext">groovesmaxxing listens for about 15 seconds to find the track. if we can't find it, you choose whether we keep the clip to keep hunting.</p>
+<button class="how" type="button" id="howbtn" aria-haspopup="dialog">how it works?</button>
 </section>
+
+<dialog class="howbox" id="howbox" aria-labelledby="howtitle">
+<h2 id="howtitle">how it works</h2>
+<p>tap once near the speaker. we listen for about 15 seconds.</p>
+<p>we check our own library of sets first, then the big catalogs.</p>
+<p>can't name it? you choose whether we keep the clip to keep hunting. nothing is kept unless you say so.</p>
+<p>your scans stay on this phone, and every result has a button to tell us we got it wrong.</p>
+<p class="links"><a href="privacy.html">privacy</a> · <a href="more.html">more</a></p>
+<button class="btn" type="button" id="howclose">close</button>
+</dialog>
 
 <section class="card" id="card"></section>
 
@@ -152,8 +171,6 @@ h1.eyebrow{margin:0;font-weight:400}
 <h3>recent scans</h3>
 <ul id="recentlist"></ul>
 </section>
-
-<p class="fine">scans stay on this phone. nothing here is ever marked confirmed, every result has a button to tell us we got it wrong. <a href="privacy.html">privacy</a> · <a href="more.html">more</a></p>
 
 </div>
 
@@ -384,16 +401,16 @@ function resultCard(cur){
   }else if(c.kind==='guess'&&cand){
     var g=nameOf(cand);
     out+='<p class="kw"><b>no match</b></p><h2>nothing we\'re sure of.</h2>';
-    out+='<div class="row"><button class="btn red" data-act="listen">listen again</button></div><p class="note">a fresh 15 seconds. try it on a drop or a vocal, not an intro.</p>';
+    out+='<div class="row"><button class="btn red" data-act="listen">listen again</button></div><p class="note">best on a drop or a vocal.</p>';
     out+='<div class="guess"><p class="kw">closest guess</p><p class="nm">'+(g?esc(g.artist)+(g.artist&&g.title?' - ':'')+esc(g.title):'an unnamed library entry')+'</p><p class="pc">'+(cand.shown_score==null?esc(cand.word||'possible match'):pct(cand.shown_score)+' · '+esc(cand.word||'guess'))+'</p>';
     out+='<div class="row"><button class="btn" data-act="confirm">that\'s right</button><button class="btn" data-act="correct">it\'s actually...</button></div></div>';
     out+=correctionForm();
-    out+='<h3>help us find it?</h3><p class="note">we keep your 15 second clip and keep hunting. tell us where you heard it, or not.</p><div class="row"><button class="btn" data-act="help">help us find it?</button><button class="btn ghost" data-act="again">no thanks, scan again</button></div>';
+    out+='<h3>help us find it?</h3><div class="row"><button class="btn" data-act="help">help us find it?</button><button class="btn ghost" data-act="again">no thanks, scan again</button></div>';
     out+=helpForm();
   }else{
-    out+='<p class="kw"><b>no match</b></p><h2>nothing yet.</h2><p class="note">not in our library of sets, not in the catalogs. happens with the good stuff.</p>';
-    out+='<div class="row"><button class="btn red" data-act="listen">listen again</button></div><p class="note">a fresh 15 seconds. try it on a drop or a vocal, not an intro.</p>';
-    out+='<h3>help us find it?</h3><p class="note">we keep your 15 second clip and keep hunting. tell us where you heard it, or not.</p><div class="row"><button class="btn" data-act="help">help us find it?</button><button class="btn ghost" data-act="again">no thanks, scan again</button></div>';
+    out+='<p class="kw"><b>no match</b></p><h2>nothing yet.</h2>';
+    out+='<div class="row"><button class="btn red" data-act="listen">listen again</button></div><p class="note">best on a drop or a vocal.</p>';
+    out+='<h3>help us find it?</h3><div class="row"><button class="btn" data-act="help">help us find it?</button><button class="btn ghost" data-act="again">no thanks, scan again</button></div>';
     out+=helpForm();
   }
   out+='<div class="msg" id="cardmsg"></div>';
@@ -514,6 +531,7 @@ function renderHistory(){
 }
 renderHistory();
 go.addEventListener('click',function(){if(busy){if(cancelScan)cancelScan();return}startScan()});
+(function(){var hb=document.getElementById('howbtn'),box=document.getElementById('howbox'),hc=document.getElementById('howclose');if(!hb||!box||!box.showModal){if(hb)hb.style.display='none';return}hb.addEventListener('click',function(){box.showModal()});hc.addEventListener('click',function(){box.close()});box.addEventListener('click',function(e){if(e.target===box)box.close()});})();
 })();
 </script>
 <script src="/gmx-install.js" defer></script>
