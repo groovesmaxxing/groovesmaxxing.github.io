@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>scan · groovesMAXXING</title>
-<meta name="description" content="hear a track, tap once. groovesmaxxing listens for about 12 seconds and looks for it in our own library of sets first, then in the catalogs.">
+<meta name="description" content="hear a track, tap once. groovesmaxxing listens for about 15 seconds and looks for it in our own library of sets first, then in the catalogs.">
 <meta name="robots" content="noindex">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
@@ -143,7 +143,7 @@ h1.eyebrow{margin:0;font-weight:400}
 </button>
 <div class="tap" id="tap">tap to <b>scan</b></div>
 <div class="rec" id="rec"><i></i><span id="recword">listening</span><span class="n" id="count">12</span></div>
-<p class="mic" id="mictext">groovesmaxxing listens for about 12 seconds to find the track. if we can't find it, you choose whether we keep the clip to keep hunting.</p>
+<p class="mic" id="mictext">groovesmaxxing listens for about 15 seconds to find the track. if we can't find it, you choose whether we keep the clip to keep hunting.</p>
 </section>
 
 <section class="card" id="card"></section>
@@ -172,7 +172,7 @@ h1.eyebrow{margin:0;font-weight:400}
 'use strict';
 /* groovesmaxxing scan (phase 5, step b). vanilla, no dependencies.
    the api base and the app key come from /gmx-config.json, never from this file. */
-var CAPTURE_MS=12000, POLL_MS=500, POLL_CAP_MS=30000, HISTORY_MAX=50;
+var CAPTURE_MS=15000, POLL_MS=500, POLL_CAP_MS=30000, HISTORY_MAX=50;
 var $=function(id){return document.getElementById(id)};
 var stage=$('stage'), go=$('go'), tap=$('tap'), rec=$('rec'), recword=$('recword'), count=$('count'), card=$('card'), recentlist=$('recentlist');
 var rings=go.querySelectorAll('.r'), wave=go.querySelector('.wave');
@@ -384,14 +384,16 @@ function resultCard(cur){
   }else if(c.kind==='guess'&&cand){
     var g=nameOf(cand);
     out+='<p class="kw"><b>no match</b></p><h2>nothing we\'re sure of.</h2>';
+    out+='<div class="row"><button class="btn red" data-act="listen">listen again</button></div><p class="note">a fresh 15 seconds. try it on a drop or a vocal, not an intro.</p>';
     out+='<div class="guess"><p class="kw">closest guess</p><p class="nm">'+(g?esc(g.artist)+(g.artist&&g.title?' - ':'')+esc(g.title):'an unnamed library entry')+'</p><p class="pc">'+(cand.shown_score==null?esc(cand.word||'possible match'):pct(cand.shown_score)+' · '+esc(cand.word||'guess'))+'</p>';
     out+='<div class="row"><button class="btn" data-act="confirm">that\'s right</button><button class="btn" data-act="correct">it\'s actually...</button></div></div>';
     out+=correctionForm();
-    out+='<h3>help us find it?</h3><p class="note">we keep your 12 second clip and keep hunting. tell us where you heard it, or not.</p><div class="row"><button class="btn red" data-act="help">help us find it?</button><button class="btn ghost" data-act="again">no thanks, scan again</button></div>';
+    out+='<h3>help us find it?</h3><p class="note">we keep your 15 second clip and keep hunting. tell us where you heard it, or not.</p><div class="row"><button class="btn" data-act="help">help us find it?</button><button class="btn ghost" data-act="again">no thanks, scan again</button></div>';
     out+=helpForm();
   }else{
     out+='<p class="kw"><b>no match</b></p><h2>nothing yet.</h2><p class="note">not in our library of sets, not in the catalogs. happens with the good stuff.</p>';
-    out+='<h3>help us find it?</h3><p class="note">we keep your 12 second clip and keep hunting. tell us where you heard it, or not.</p><div class="row"><button class="btn red" data-act="help">help us find it?</button><button class="btn ghost" data-act="again">no thanks, scan again</button></div>';
+    out+='<div class="row"><button class="btn red" data-act="listen">listen again</button></div><p class="note">a fresh 15 seconds. try it on a drop or a vocal, not an intro.</p>';
+    out+='<h3>help us find it?</h3><p class="note">we keep your 15 second clip and keep hunting. tell us where you heard it, or not.</p><div class="row"><button class="btn" data-act="help">help us find it?</button><button class="btn ghost" data-act="again">no thanks, scan again</button></div>';
     out+=helpForm();
   }
   out+='<div class="msg" id="cardmsg"></div>';
@@ -428,6 +430,7 @@ card.addEventListener('click',function(ev){
   var b=ev.target.closest('[data-act]'); if(!b)return;
   var act=b.getAttribute('data-act');
   if(act==='again'){card.classList.remove('on');card.innerHTML='';dropBlob();current=null;window.scrollTo({top:0,behavior:'smooth'});return}
+if(act==='listen'){card.classList.remove('on');card.innerHTML='';dropBlob();current=null;window.scrollTo({top:0,behavior:'smooth'});startScan();return}
   if(act==='share'){share();return}
   if(act==='confirm'){sendCorrection({verdict:'confirm'});return}
   if(act==='correct'){var f=$('cform');if(f){f.classList.add('on');$('c-artist').focus()}return}
