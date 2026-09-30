@@ -199,6 +199,8 @@ var $=function(id){return document.getElementById(id)};
 var stage=$('stage'), go=$('go'), tap=$('tap'), rec=$('rec'), recword=$('recword'), count=$('count'), card=$('card'), recentlist=$('recentlist');
 var rings=go.querySelectorAll('.r'), wave=go.querySelector('.wave');
 var cfg=null, cfgErr=null, busy=false, heldBlob=null, heldAt=null, current=null, cancelScan=null;
+/* pull to refresh (gmx-refresh.js) stays off while listening or finding */
+window.gmxRefreshBlocked=function(){return busy};
 
 /* config */
 fetch('/gmx-config.json',{cache:'no-store'}).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()})
@@ -592,5 +594,6 @@ go.addEventListener('click',function(){if(busy){if(cancelScan)cancelScan();retur
 </script>
 <script src="/gmx-install.js" defer></script>
 <script src="/gmx-motion.js" defer></script>
+<script src="/gmx-refresh.js" defer></script>
 </body>
 </html>
