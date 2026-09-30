@@ -244,7 +244,7 @@ function startScan(){
     showCard(errCard("this browser can't record audio. on iphone use safari, on android use chrome, then add the app to your home screen."));return;
   }
   busy=true; card.classList.remove('on'); current=null; dropBlob();
-  stage.classList.add('listening'); go.classList.add('busy'); recword.textContent='listening'; count.textContent='12';
+  stage.classList.add('listening'); go.classList.add('busy'); recword.textContent='listening'; count.textContent=String(Math.round(CAPTURE_MS/1000));
   tap.innerHTML='tap to <b>stop</b>'; go.setAttribute('aria-label','tap to stop');
   var mime=pickMime(), chunks=[], started=false, t0=0, timer=null, stream=null, ctx=null, raf=null, mr=null, stopped=false, cancelled=false;
   /* a second tap while listening throws the clip away and goes back to tap to scan. */
