@@ -114,6 +114,10 @@ h1.eyebrow{margin:0;font-weight:400}
 .recent .who small{display:block;font-weight:400;color:var(--steel);font-size:.82rem}
 .recent .when{font-family:'Space Mono',monospace;font-size:.74rem;color:var(--steel);flex:none}
 .recent .none{color:var(--steel);font-family:'Space Mono',monospace;font-size:.82rem;padding:12px 0}
+.recent li{flex-wrap:wrap}
+.recent .acts{flex-basis:100%;display:flex;gap:8px;align-items:center;margin-top:4px}
+.recent .acts .btn{padding:7px 12px;font-size:.72rem}
+.recent .acts .msg{margin:0}
 .fine{font-family:'Space Mono',monospace;font-size:.74rem;color:var(--steel);letter-spacing:.04em;line-height:1.8;margin:10px 0 40px}
 .fine a{text-decoration:none}
 .fine a:hover{color:var(--racing)}
@@ -184,6 +188,7 @@ h1.eyebrow{margin:0;font-weight:400}
 </ul>
 </nav>
 <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})})}</script>
+<script src="/gmx-clips.js"></script>
 <script>
 (function(){
 'use strict';
@@ -353,7 +358,10 @@ function identify(blob){
   .then(function(j){
     var r=j.result||{}, c=r.card||{kind:'none'};
     current={job_id:j.job_id,recognition_id:r.recognition_id||j.job_id,card:c,seconds:Math.round((Date.now()-began)/100)/10};
-    showCard(resultCard(current)); remember(current); reset();
+    /* keep my clips (DECISION 12): the switch under more, the clip stays on this phone */
+    var keep=!!(window.gmxClips&&gmxClips.on()&&heldBlob);
+    if(keep)gmxClips.put({id:current.job_id,t:Date.now(),blob:heldBlob,recognition_id:current.recognition_id,kind:c.kind}).catch(function(){});
+    showCard(resultCard(current)); remember(current,keep); reset();
   })
   .catch(function(e){
     var m=e&&e.message||'';
@@ -524,9 +532,9 @@ function share(){
 
 /* history, on the phone only */
 function loadHistory(){try{return JSON.parse(localStorage.getItem('gmx_history')||'[]')}catch(e){return []}}
-function remember(cur){
+function remember(cur,keep){
   var c=cur.card, cand=c.candidate, nm=cand?nameOf(cand):null;
-  var row={t:Date.now(),kind:c.kind,artist:nm?nm.artist:'',title:nm?nm.title:'',score:cand?cand.shown_score:0,status:cand?cand.status:''};
+  var row={t:Date.now(),kind:c.kind,artist:nm?nm.artist:'',title:nm?nm.title:'',score:cand?cand.shown_score:0,status:cand?cand.status:'',id:cur.job_id,rid:cur.recognition_id,clip:!!keep};
   var h=loadHistory(); h.unshift(row); h=h.slice(0,HISTORY_MAX);
   try{localStorage.setItem('gmx_history',JSON.stringify(h))}catch(e){}
   renderHistory();
@@ -544,10 +552,40 @@ function renderHistory(){
     if(r.kind==='match')who=esc(r.artist||'ID')+'<small>'+esc(r.title||'unnamed library entry')+' · '+pct(r.score)+'</small>';
     else if(r.kind==='guess')who='no match<small>closest guess: '+esc((r.artist?r.artist+' - ':'')+r.title)+(r.score==null?' · possible match':' · '+pct(r.score))+'</small>';
     else who='no match<small>nothing yet</small>';
-    return '<li><span class="who">'+who+'</span><span class="when">'+when(r.t)+'</span></li>';
+    var acts='';
+    if(r.clip&&r.id)acts='<span class="acts"><button class="btn" data-clip="again" data-id="'+esc(r.id)+'">scan again</button>'+(r.kind!=='match'?'<button class="btn" data-clip="help" data-id="'+esc(r.id)+'">help us find it</button>':'')+'<span class="msg"></span></span>';
+    return '<li><span class="who">'+who+'</span><span class="when">'+when(r.t)+'</span>'+acts+'</li>';
   }).join('');
 }
 renderHistory();
+/* a kept clip's two buttons. scan again posts the clip as a new scan. help us find it sends
+   it once with the result it came from (mic_capture_optin), no form: the row's own result is
+   the context. nothing here plays the clip. */
+recentlist.addEventListener('click',function(ev){
+  var b=ev.target.closest('[data-clip]'); if(!b||!window.gmxClips)return;
+  var act=b.getAttribute('data-clip'), id=b.getAttribute('data-id'), m=b.parentNode.querySelector('.msg');
+  var note=function(t,ok){if(m){m.textContent=t;m.className='msg'+(ok?' ok':'')}};
+  if(busy){note('one at a time.');return}
+  gmxClips.get(id).then(function(rec){
+    if(!rec||!rec.blob){note('that clip is gone.');return}
+    if(act==='again'){
+      busy=true; card.classList.remove('on'); current=null; heldBlob=rec.blob; heldAt=new Date(rec.t).toISOString();
+      go.classList.add('busy'); window.scrollTo({top:0,behavior:'smooth'}); identify(rec.blob); return;
+    }
+    if(act==='help'){
+      if(!rec.recognition_id){note('nothing to attach it to.');return}
+      var fd=new FormData(); fd.append('kind','mic_capture_optin'); fd.append('audio',rec.blob,'clip.'+extOf(rec.blob));
+      fd.append('recognition_id',rec.recognition_id); fd.append('heard_at',new Date(rec.t).toISOString());
+      note('sending');
+      fetch(cfg.api_base+'/contribute',{method:'POST',headers:headers(),body:fd}).then(function(r){
+        if(r.status===429){note('too many this hour, try later.');return}
+        if(r.status===409){note('already sent.');return}
+        if(!r.ok)throw new Error(r.status);
+        note('kept. we keep hunting.',true);
+      }).catch(function(){note('did not send. check your signal.')});
+    }
+  }).catch(function(){note('that clip is gone.')});
+});
 go.addEventListener('click',function(){if(busy){if(cancelScan)cancelScan();return}startScan()});
 (function(){var hb=document.getElementById('howbtn'),box=document.getElementById('howbox'),hc=document.getElementById('howclose');if(!hb||!box||!box.showModal){if(hb)hb.style.display='none';return}hb.addEventListener('click',function(){box.showModal()});hc.addEventListener('click',function(){box.close()});box.addEventListener('click',function(e){if(e.target===box)box.close()});})();
 })();

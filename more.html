@@ -41,6 +41,13 @@ h2{font-family:'Space Mono',monospace;font-weight:400;font-size:.76rem;letter-sp
 .list .go{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);letter-spacing:.06em;flex:none}
 .list small{display:block;font-weight:400;color:var(--steel);font-size:.86rem;margin-top:2px}
 .note{color:#c9c9c4;line-height:1.7;max-width:640px;margin-top:10px}
+.list label.sw{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:17px 0;font-weight:600;font-size:1.05rem;cursor:pointer}
+.sw input{position:absolute;opacity:0;width:1px;height:1px}
+.sw .knob{flex:none;width:46px;height:26px;border-radius:999px;border:2px solid var(--line);position:relative;transition:background .15s,border-color .15s}
+.sw .knob::after{content:'';position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:var(--steel);transition:transform .15s,background .15s}
+.sw input:checked+.knob{background:var(--racing);border-color:var(--racing)}
+.sw input:checked+.knob::after{transform:translateX(20px);background:#fff}
+.sw input:focus-visible+.knob{outline:3px solid var(--racing);outline-offset:3px}
 form{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;max-width:520px}
 form label{position:absolute;left:-9999px}
 form input[type=email]{flex:1;min-width:200px;background:transparent;border:2px solid var(--line);border-radius:999px;color:var(--day);font-family:'Space Mono',monospace;font-size:.9rem;padding:12px 18px}
@@ -98,6 +105,11 @@ form input[type=submit]:hover{background:var(--deep);border-color:var(--deep);co
 <li><a href="mailto:groovesmaxxing@gmail.com?subject=app%20feedback"><span class="tx">feedback<small>something broke, something's missing, or a scan got it wrong. tell us.</small></span><span class="go">✉</span></a></li>
 </ul>
 
+<h2>scan</h2>
+<ul class="list">
+<li><label class="sw" for="keepclips"><span class="tx">keep my clips<small>on this phone only. newest 20, gone after 30 days. off deletes them.</small></span><input type="checkbox" id="keepclips" role="switch"><span class="knob" aria-hidden="true"></span></label></li>
+</ul>
+
 <h2>the small print</h2>
 <ul class="list">
 <li><a href="privacy.html"><span class="tx">privacy<small>what the scan keeps, what it never does</small></span><span class="go">↗</span></a></li>
@@ -121,6 +133,8 @@ form input[type=submit]:hover{background:var(--deep);border-color:var(--deep);co
 </ul>
 </nav>
 <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})})}</script>
+<script src="/gmx-clips.js"></script>
+<script>(function(){var k=document.getElementById('keepclips');if(!k||!window.gmxClips)return;k.checked=gmxClips.on();k.addEventListener('change',function(){gmxClips.setOn(k.checked)})})();</script>
 <script src="/gmx-motion.js" defer></script>
 </body>
 </html>
