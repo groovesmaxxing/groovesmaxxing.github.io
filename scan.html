@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>scan · groovesMAXXING</title>
-<meta name="description" content="hear a track, tap once. groovesmaxxing listens for about 15 seconds and looks for it in our own library of sets first, then in the catalogs.">
+<meta name="description" content="hear a track, tap once. groovesmaxxing listens for about 10 seconds and looks for it in our own library of sets first, then in the catalogs.">
 <meta name="robots" content="noindex">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
@@ -151,13 +151,13 @@ h1.eyebrow{margin:0;font-weight:400}
 </svg>
 </button>
 <div class="tap" id="tap">tap to <b>scan</b></div>
-<div class="rec" id="rec"><i></i><span id="recword">listening</span><span class="n" id="count">15</span></div>
+<div class="rec" id="rec"><i></i><span id="recword">listening</span><span class="n" id="count">10</span></div>
 <button class="how" type="button" id="howbtn" aria-haspopup="dialog">how it works?</button>
 </section>
 
 <dialog class="howbox" id="howbox" aria-labelledby="howtitle">
 <h2 id="howtitle">how it works</h2>
-<p>tap once near the speaker. we listen for about 15 seconds.</p>
+<p>tap once near the speaker. we listen for about 10 seconds.</p>
 <p>we check our own library of sets first, then the big catalogs.</p>
 <p>can't name it? you choose whether we keep the clip to keep hunting. nothing is kept unless you say so.</p>
 <p>your scans stay on this phone, and every result has a button to tell us we got it wrong.</p>
@@ -189,7 +189,7 @@ h1.eyebrow{margin:0;font-weight:400}
 'use strict';
 /* groovesmaxxing scan (phase 5, step b). vanilla, no dependencies.
    the api base and the app key come from /gmx-config.json, never from this file. */
-var CAPTURE_MS=15000, POLL_MS=500, POLL_CAP_MS=30000, HISTORY_MAX=50;
+var CAPTURE_MS=10000, POLL_MS=500, POLL_CAP_MS=30000, HISTORY_MAX=50;
 var $=function(id){return document.getElementById(id)};
 var stage=$('stage'), go=$('go'), tap=$('tap'), rec=$('rec'), recword=$('recword'), count=$('count'), card=$('card'), recentlist=$('recentlist');
 var rings=go.querySelectorAll('.r'), wave=go.querySelector('.wave');
@@ -224,11 +224,29 @@ function slug(s){
   return s.replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
 }
 
-/* recording */
-function pickMime(){
-  var c=['audio/webm;codecs=opus','audio/webm','audio/mp4','audio/ogg;codecs=opus'];
-  for(var i=0;i<c.length;i++){if(window.MediaRecorder&&MediaRecorder.isTypeSupported&&MediaRecorder.isTypeSupported(c[i]))return c[i]}
-  return '';
+/* recording: raw pcm off the web audio graph, written here as a 16 kHz mono 16-bit wav.
+   no MediaRecorder: safari's fragmented mp4 cost the recognizer a decode step and the library
+   engines want plain pcm anyway (phase 5 stop 3h, DECISION 11). 10 s is about 320 KB. */
+var OUT_RATE=16000;
+function canCapture(){return !!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia&&(window.AudioContext||window.webkitAudioContext))}
+function extOf(blob){var t=blob&&blob.type||'';return t.indexOf('wav')>=0?'wav':t.indexOf('mp4')>=0?'m4a':t.indexOf('ogg')>=0?'ogg':'webm'}
+function wavBlob(chunks,inRate){
+  var n=0,i; for(i=0;i<chunks.length;i++)n+=chunks[i].length;
+  var all=new Float32Array(n), o=0; for(i=0;i<chunks.length;i++){all.set(chunks[i],o);o+=chunks[i].length}
+  var ratio=inRate/OUT_RATE, outN=Math.floor(n/ratio), pcm=new Int16Array(outN);
+  /* each output sample is the mean of the input samples it covers: a cheap low-pass before the drop */
+  for(var k=0;k<outN;k++){
+    var a=Math.floor(k*ratio), b=Math.min(n,Math.floor((k+1)*ratio)), s=0, c=0;
+    for(var j=a;j<b;j++){s+=all[j];c++}
+    var v=c?s/c:0; v=v<-1?-1:v>1?1:v; pcm[k]=v<0?v*32768:v*32767;
+  }
+  var buf=new ArrayBuffer(44+pcm.length*2), dv=new DataView(buf);
+  function str(p,t){for(var q=0;q<t.length;q++)dv.setUint8(p+q,t.charCodeAt(q))}
+  str(0,'RIFF'); dv.setUint32(4,36+pcm.length*2,true); str(8,'WAVE'); str(12,'fmt '); dv.setUint32(16,16,true);
+  dv.setUint16(20,1,true); dv.setUint16(22,1,true); dv.setUint32(24,OUT_RATE,true); dv.setUint32(28,OUT_RATE*2,true);
+  dv.setUint16(32,2,true); dv.setUint16(34,16,true); str(36,'data'); dv.setUint32(40,pcm.length*2,true);
+  new Int16Array(buf,44).set(pcm);
+  return new Blob([buf],{type:'audio/wav'});
 }
 function setLevel(v){
   var s=1+Math.min(.22,v*1.4);
@@ -240,51 +258,52 @@ function clearLevel(){for(var i=0;i<rings.length;i++)rings[i].style.transform=''
 function startScan(){
   if(busy)return;
   if(!cfg){showCard(errCard(cfgErr?'the app config did not load. pull down to refresh and try again.':'still loading, one second.'));return}
-  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia||!window.MediaRecorder){
+  if(!canCapture()){
     showCard(errCard("this browser can't record audio. on iphone use safari, on android use chrome, then add the app to your home screen."));return;
   }
   busy=true; card.classList.remove('on'); current=null; dropBlob();
   stage.classList.add('listening'); go.classList.add('busy'); recword.textContent='listening'; count.textContent=String(Math.round(CAPTURE_MS/1000));
   tap.innerHTML='tap to <b>stop</b>'; go.setAttribute('aria-label','tap to stop');
-  var mime=pickMime(), chunks=[], started=false, t0=0, timer=null, stream=null, ctx=null, raf=null, mr=null, stopped=false, cancelled=false;
+  var chunks=[], got=0, need=0, t0=0, timer=null, stream=null, ctx=null, node=null, sink=null, stopped=false, cancelled=false;
+  /* the context is made inside the tap, so ios lets it run. */
+  try{ctx=new (window.AudioContext||window.webkitAudioContext)()}catch(e){ctx=null}
   /* a second tap while listening throws the clip away and goes back to tap to scan. */
-  cancelScan=function(){
-    if(cancelled||stopped)return; cancelled=true; stopped=true; tick(20);
-    if(mr&&mr.state!=='inactive'){try{mr.stop()}catch(e){cleanup();reset()}}else{cleanup();reset()}
-  };
+  cancelScan=function(){ if(cancelled||stopped)return; cancelled=true; stopped=true; tick(20); cleanup(); reset(); };
+  function done(){
+    if(stopped)return; stopped=true;
+    var rate=ctx.sampleRate;
+    if(got>rate*2)finishCapture(null,wavBlob(chunks,rate)); else finishCapture(new Error('silent'));
+  }
   navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false},video:false})
   .then(function(st){
     stream=st;
     if(cancelled){cleanup();reset();return}
-    try{
-      ctx=new (window.AudioContext||window.webkitAudioContext)();
-      var src=ctx.createMediaStreamSource(st), an=ctx.createAnalyser(); an.fftSize=512; src.connect(an);
-      var buf=new Uint8Array(an.fftSize);
-      (function loop(){an.getByteTimeDomainData(buf);var sum=0;for(var i=0;i<buf.length;i++){var d=(buf[i]-128)/128;sum+=d*d}
-        setLevel(Math.sqrt(sum/buf.length));raf=requestAnimationFrame(loop)})();
-    }catch(e){}
-    mr=new MediaRecorder(st,mime?{mimeType:mime}:undefined);
-    mr.ondataavailable=function(ev){
-      if(ev.data&&ev.data.size>0){
-        chunks.push(ev.data);
-        if(!started){ started=true; t0=Date.now(); heldAt=new Date().toISOString(); tick(30);
-          timer=setInterval(function(){var left=Math.max(0,Math.ceil((CAPTURE_MS-(Date.now()-t0))/1000));count.textContent=String(left);
-            if(Date.now()-t0>=CAPTURE_MS&&!stopped){stopped=true;try{mr.stop()}catch(e){}}},100);
-        }
-      }
-    };
-    mr.onerror=function(){finishCapture(new Error('recorder'))};
-    mr.onstop=function(){
+    if(!ctx)throw new Error('audio');
+    return (ctx.state==='suspended'?ctx.resume():Promise.resolve()).then(function(){
       if(cancelled){cleanup();reset();return}
-      var type=(mr.mimeType||mime||'audio/webm').split(';')[0];
-      finishCapture(null,new Blob(chunks,{type:type}));
-    };
-    mr.start(250);
-    setTimeout(function(){if(!started&&!stopped){stopped=true;try{mr.stop()}catch(e){}}},CAPTURE_MS+4000);
+      var src=ctx.createMediaStreamSource(st);
+      node=(ctx.createScriptProcessor||ctx.createJavaScriptNode).call(ctx,4096,1,1);
+      need=Math.round(ctx.sampleRate*CAPTURE_MS/1000);
+      node.onaudioprocess=function(ev){
+        if(stopped)return;
+        var inp=ev.inputBuffer.getChannelData(0);
+        if(!t0){ t0=Date.now(); heldAt=new Date().toISOString(); tick(30);
+          timer=setInterval(function(){count.textContent=String(Math.max(0,Math.ceil((CAPTURE_MS-(Date.now()-t0))/1000)))},100);
+        }
+        var take=Math.min(inp.length,need-got); if(take<=0)return;
+        chunks.push(new Float32Array(inp.subarray(0,take))); got+=take;
+        var sum=0; for(var i=0;i<take;i++)sum+=inp[i]*inp[i]; setLevel(Math.sqrt(sum/take));
+        if(got>=need)setTimeout(done,0);
+      };
+      /* a muted gain keeps the processor alive: a node that reaches no output is never pulled */
+      sink=ctx.createGain(); sink.gain.value=0; src.connect(node); node.connect(sink); sink.connect(ctx.destination);
+      setTimeout(done,CAPTURE_MS+4000);
+    });
   }).catch(function(e){if(cancelled){cleanup();reset();return}finishCapture(e)});
 
   function cleanup(){
-    if(timer)clearInterval(timer); if(raf)cancelAnimationFrame(raf);
+    if(timer)clearInterval(timer);
+    try{if(node){node.onaudioprocess=null;node.disconnect()}if(sink)sink.disconnect()}catch(e){}
     if(stream)stream.getTracks().forEach(function(t){t.stop()});
     if(ctx&&ctx.close)ctx.close().catch(function(){});
     clearLevel(); stage.classList.remove('listening');
@@ -308,8 +327,7 @@ function dropBlob(){heldBlob=null;heldAt=null}
 /* identify and poll */
 function identify(blob){
   cancelScan=null; go.disabled=true; stage.classList.add('finding'); recword.textContent='finding it'; count.textContent='';
-  var ext=blob.type.indexOf('mp4')>=0?'m4a':blob.type.indexOf('ogg')>=0?'ogg':'webm';
-  var fd=new FormData(); fd.append('audio',blob,'clip.'+ext); fd.append('source','mic');
+  var fd=new FormData(); fd.append('audio',blob,'clip.'+extOf(blob)); fd.append('source','mic');
   var began=Date.now();
   fetch(cfg.api_base+'/identify',{method:'POST',headers:headers(),body:fd})
   .then(function(r){
@@ -481,7 +499,7 @@ function sendCorrection(body){
 }
 function sendHelp(f){
   if(!current||!heldBlob){say('the clip is gone, scan again first.');return}
-  var ext=heldBlob.type.indexOf('mp4')>=0?'m4a':heldBlob.type.indexOf('ogg')>=0?'ogg':'webm';
+  var ext=extOf(heldBlob);
   var fd=new FormData();
   fd.append('kind','mic_capture_optin'); fd.append('audio',heldBlob,'clip.'+ext);
   fd.append('recognition_id',current.recognition_id); if(heldAt)fd.append('heard_at',heldAt);
