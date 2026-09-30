@@ -1,53 +1,8 @@
 {
-"generated": "2026-09-29T15:59:05+00:00",
+"generated": "2026-09-30T15:59:07+00:00",
 "artist_count": 688,
-"artists_with_events": 145,
+"artists_with_events": 147,
 "events": [
-{
-"date": "2026-09-29",
-"event": "Channel Tres (21 and Over)",
-"venue": "Showbox SODO",
-"city": "Seattle",
-"region": "WA",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A709Ae",
-"artist": "Channel Tres"
-},
-{
-"date": "2026-09-29",
-"event": "Fcukers",
-"venue": "The Mohawk-Austin",
-"city": "Austin",
-"region": "TX",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZUFb",
-"artist": "Fcukers"
-},
-{
-"date": "2026-09-29",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "Talking Stick Resort Amphitheatre",
-"city": "Phoenix",
-"region": "AZ",
-"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-phoenix-arizona-09-29-2026/event/19006469F6FDB16A",
-"artist": "Midnight Generation"
-},
-{
-"date": "2026-09-29",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "Talking Stick Resort Amphitheatre",
-"city": "Phoenix",
-"region": "AZ",
-"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-phoenix-arizona-09-29-2026/event/19006469F6FDB16A",
-"artist": "Polo & Pan"
-},
-{
-"date": "2026-09-29",
-"event": "Tinlicker North America 2026",
-"venue": "House of Blues Dallas ",
-"city": "Dallas",
-"region": "TX",
-"url": "https://www.ticketmaster.com/tinlicker-north-america-2026-dallas-texas-09-29-2026/event/0C00648D152AF6C3",
-"artist": "Tinlicker"
-},
 {
 "date": "2026-09-30",
 "event": "Tamar. Sunrise 2",
@@ -1256,11 +1211,11 @@
 },
 {
 "date": "2026-10-10",
-"event": "Skyline Saturdays Presents TOMAN",
+"event": "HOUSE RULES | TOMAN",
 "venue": "The Penthouse | FIVE Palm",
 "city": "Dubai",
 "region": "AE",
-"url": "https://www.ticketmaster.ae/event/skyline-saturdays-presents-toman-tickets/580417794",
+"url": "https://www.ticketmaster.ae/event/house-rules-%7C-toman-tickets/580417794",
 "artist": "Toman"
 },
 {
@@ -2849,11 +2804,11 @@
 },
 {
 "date": "2026-11-07",
-"event": "TAB Champions Stakes Day - General Admission",
+"event": "TAB Champions Stakes Day - The Dining Room",
 "venue": "Flemington Racecourse",
 "city": "Flemington",
 "region": "VIC",
-"url": "https://www.ticketmaster.com.au/tab-champions-stakes-day-general-admission-flemington-07-11-2026/event/2500647ED99C8074",
+"url": "https://www.ticketmaster.com.au/tab-champions-stakes-day-the-dining-flemington-07-11-2026/event/250064F5D5235758",
 "artist": "FISHER"
 },
 {
@@ -3494,6 +3449,15 @@
 "region": "NV",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZ7_A",
 "artist": "Disco Lines"
+},
+{
+"date": "2026-11-22",
+"event": "Lost Sundays - November 22 ft. Omar+, The Trip & Lewis Taylor",
+"venue": "ivy Sydney",
+"city": "Sydney",
+"region": "NSW",
+"url": "https://www.moshtix.com.au/v2/event/lost-sundays-november-22-ft-omar-the-trip-lewis-taylor/200897",
+"artist": "Omar+"
 },
 {
 "date": "2026-11-24",
@@ -4208,12 +4172,30 @@
 },
 {
 "date": "2026-12-31",
+"event": "New Years Eve: Defected + Glitterbox",
+"venue": "Depot Mayfield",
+"city": "Manchester",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/new-years-eve-defected-glitterbox-manchester-31-12-2026/event/350064EEEAB1ECCE",
+"artist": "Eats Everything"
+},
+{
+"date": "2026-12-31",
 "event": "New Year's At The Bowl",
 "venue": "Arts Centre Melbourne, Sidney Myer Music Bowl",
 "city": "Linlithgow Ave",
 "region": "VIC",
 "url": "https://www.moshtix.com.au/v2/event/new-year-s-at-the-bowl/199647",
 "artist": "Flight Facilities"
+},
+{
+"date": "2026-12-31",
+"event": "New Years Eve: Defected + Glitterbox",
+"venue": "Depot Mayfield",
+"city": "Manchester",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/new-years-eve-defected-glitterbox-manchester-31-12-2026/event/350064EEEAB1ECCE",
+"artist": "Oden & Fatzo"
 },
 {
 "date": "2026-12-31",
@@ -4259,6 +4241,51 @@
 "region": "CA",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1AAeer8",
 "artist": "Twin Diplomacy"
+},
+{
+"date": "2027-01-22",
+"event": "CLAPTONE with Torren Foot & LIZA",
+"venue": "The Beach Hotel",
+"city": "Byron Bay",
+"region": "NSW",
+"url": "https://www.moshtix.com.au/v2/event/claptone-with-torren-foot-liza/200903",
+"artist": "CLAPTONE"
+},
+{
+"date": "2027-01-22",
+"event": "CLAPTONE with Torren Foot & LIZA",
+"venue": "The Beach Hotel",
+"city": "Byron Bay",
+"region": "NSW",
+"url": "https://www.moshtix.com.au/v2/event/claptone-with-torren-foot-liza/200903",
+"artist": "Torren Foot"
+},
+{
+"date": "2027-02-13",
+"event": "CID - Ages 16+",
+"venue": "Ogden Theatre",
+"city": "Denver",
+"region": "CO",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAe7ug",
+"artist": "CID"
+},
+{
+"date": "2027-02-13",
+"event": "Wade Bowen: The Version of Me You Get Tour @ 191 Toole",
+"venue": "191 Toole",
+"city": "Tucson",
+"region": "AZ",
+"url": "https://www.ticketmaster.com/wade-bowen-the-version-of-me-tucson-arizona-02-13-2027/event/1900653CC15E7B4C",
+"artist": "Wade"
+},
+{
+"date": "2027-02-18",
+"event": "Wade Bowen - The Version of Me You Get Tour",
+"venue": "Belly Up",
+"city": "Solana Beach",
+"region": "CA",
+"url": "https://www.ticketweb.com/event/wade-bowen-the-belly-up-tickets/14339334",
+"artist": "Wade"
 },
 {
 "date": "2027-02-19",
@@ -4360,8 +4387,26 @@
 "artist": "San Pacho"
 },
 {
+"date": "2027-07-02",
+"event": "Josh Baker b2b Kettama b2b Prospa",
+"venue": "Finsbury Park",
+"city": "London",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/josh-baker-b2b-kettama-b2b-prospa-london-02-07-2027/event/3700653DD4D752CA",
+"artist": "Josh Baker"
+},
+{
+"date": "2027-07-02",
+"event": "Josh Baker b2b Kettama b2b Prospa",
+"venue": "Finsbury Park",
+"city": "London",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/josh-baker-b2b-kettama-b2b-prospa-london-02-07-2027/event/3700653DD4D752CA",
+"artist": "Prospa"
+},
+{
 "date": "2027-07-03",
-"event": "Josh Baker B2b Kettama B2b Prospa",
+"event": "Josh Baker b2b Kettama b2b Prospa",
 "venue": "Finsbury Park",
 "city": "London",
 "region": "GB",
@@ -4370,7 +4415,7 @@
 },
 {
 "date": "2027-07-03",
-"event": "Josh Baker B2b Kettama B2b Prospa",
+"event": "Josh Baker b2b Kettama b2b Prospa",
 "venue": "Finsbury Park",
 "city": "London",
 "region": "GB",
@@ -4379,7 +4424,7 @@
 },
 {
 "date": "2027-07-04",
-"event": "Josh Baker B2b Kettama B2b Prospa",
+"event": "Josh Baker b2b Kettama b2b Prospa",
 "venue": "Finsbury Park",
 "city": "London",
 "region": "GB",
@@ -4388,7 +4433,7 @@
 },
 {
 "date": "2027-07-04",
-"event": "Josh Baker B2b Kettama B2b Prospa",
+"event": "Josh Baker b2b Kettama b2b Prospa",
 "venue": "Finsbury Park",
 "city": "London",
 "region": "GB",
