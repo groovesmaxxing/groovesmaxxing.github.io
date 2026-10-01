@@ -88,6 +88,37 @@ td.x{overflow-wrap:anywhere}
 .gmx-tabs a[aria-current="page"]{color:#FF1C02}
 .gmx-tabs a:hover{color:#F2F2EF}
 @media (max-width:1024px){.gmx-tabs{display:block}body{padding-bottom:calc(66px + env(safe-area-inset-bottom))}}
+/* hub rows (2026-10-01) */
+table.tl td{vertical-align:middle}
+table.tl td.x>a.hrow{display:flex;align-items:center;gap:14px;padding:6px 0;margin:0;text-decoration:none;color:var(--day)}
+.hrow .em{flex:none;width:46px;height:46px;display:grid;place-items:center;font-size:1.45rem;background:var(--card);border:1px solid var(--line);border-radius:12px;transition:border-color .2s}
+.hrow .nm{display:flex;flex-direction:column;min-width:0;line-height:1.35}
+.hrow .nm b{font-weight:600;font-size:1.02rem;transition:color .2s}
+.hrow .nm i{font-style:normal;color:var(--steel);font-size:.86rem}
+.hrow:hover .em,.hrow:focus-visible .em{border-color:rgba(255,28,2,.55)}
+.hrow:hover .nm b,.hrow:focus-visible .nm b{color:var(--racing)}
+td.ct .dt{display:block;color:#5d5d66;font-size:.72rem;margin-top:2px}
+.how{margin-top:10px;background:none;border:0;color:var(--steel);font-family:'Space Mono',monospace;font-size:.82rem;letter-spacing:.08em;text-decoration:underline;text-underline-offset:4px;cursor:pointer;padding:8px 0}
+.how:hover,.how:focus-visible{color:var(--day)}
+.howbox{border:1px solid var(--line);border-radius:22px;background:#141417;color:var(--day);padding:24px 22px 20px;max-width:440px;width:calc(100% - 32px);margin:auto}
+.howbox::backdrop{background:rgba(0,0,0,.6)}
+.howbox h2{font-weight:900;font-size:1.4rem;margin-bottom:12px}
+.howbox p{color:#c9c9c4;line-height:1.6;font-size:.95rem;margin-top:10px}
+.reach{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.reach a{font-family:'Space Mono',monospace;font-size:.76rem;letter-spacing:.04em;color:var(--day);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:7px 13px}
+.reach a:hover,.reach a:focus-visible{border-color:var(--racing);color:var(--racing)}
+.hbtn{margin-top:18px;background:none;border:1px solid var(--line);border-radius:999px;color:var(--day);font-family:'Space Mono',monospace;font-size:.8rem;letter-spacing:.06em;padding:9px 18px;cursor:pointer}
+.hbtn:hover,.hbtn:focus-visible{border-color:var(--racing);color:var(--racing)}
+.foot a{color:var(--day)}
+.foot a:hover{color:var(--racing)}
+.srcbar{display:none;gap:8px;flex-wrap:wrap;margin:0 0 18px}
+.srcbar.on{display:flex}
+.srcbar button{background:none;border:1px solid var(--line);border-radius:999px;color:var(--steel);font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.06em;padding:8px 15px;cursor:pointer}
+.srcbar button:hover{color:var(--day)}
+.srcbar button[aria-pressed="true"]{color:var(--day);border-color:var(--racing);background:rgba(255,28,2,.08)}
+.srcbar b{font-weight:400;color:#5d5d66;margin-left:6px}
+tr.hid{display:none}
+@media (max-width:520px){.hrow .em{width:40px;height:40px;font-size:1.25rem}.hrow .nm b{font-size:.96rem}}
 </style>
 <script type="application/ld+json">
 {
@@ -273,38 +304,48 @@ td.x{overflow-wrap:anywhere}
 <div class="mast">
 <div class="eyebrow">tracklists</div>
 <h1>every set we have tagged</h1>
-<p class="lede">timestamps measured to five seconds, not eyeballed. labels verified against a catalogue or left off. a track we could not name honestly says ID rather than a guess.</p>
+<button class="how" type="button" id="howbtn" aria-haspopup="dialog">how do we do it?</button>
+<dialog class="howbox" id="howbox" aria-labelledby="howtitle">
+<h2 id="howtitle">how we do it</h2>
+<p>we listen to as many sets as we can, but there are only two ears over here. so every timestamp is measured to five seconds.</p>
+<p>labels are checked against a catalogue, or left off.</p>
+<p>a track we couldn't name says ID instead of a guess. a (?) means one source so far.</p>
+<p>got one wrong or know an ID? tell us and we'll fix it asap 🤝</p>
+<p class="reach"><a href="mailto:groovesmaxxing@gmail.com">email us</a><a href="https://www.instagram.com/groovesmaxxing" target="_blank" rel="noopener">dm us on instagram</a></p>
+<button class="hbtn" type="button" id="howclose">close</button>
+</dialog>
 </div>
 <div class="rule"></div>
+<div class="srcbar" id="srcbar" role="group" aria-label="filter by platform"><button type="button" data-k="all" aria-pressed="true">all<b>26</b></button><button type="button" data-k="youtube" aria-pressed="false">youtube<b>25</b></button><button type="button" data-k="soundcloud" aria-pressed="false">soundcloud<b>1</b></button></div>
 <table class="tl">
-<tr><td class="x"><a href="tobehonest-splash-house-2026">TOBEHONEST @ Splash House 2026</a></td><td class="ct">22 tracks</td></tr>
-<tr><td class="x"><a href="yamagucci-friends-la-2026-strange-house">Yamagucci + Friends LA 2026 | Strange House</a></td><td class="ct">35 tracks</td></tr>
-<tr><td class="x"><a href="hot-since-82-mixmag-lab-london">Hot Since 82 | Mixmag Lab London</a></td><td class="ct">39 tracks</td></tr>
-<tr><td class="x"><a href="cloonee-live-at-red-rocks">Cloonee - Live at Red Rocks</a></td><td class="ct">39 tracks</td></tr>
-<tr><td class="x"><a href="mason-collective-live-at-destino-music-on-ibiza-2026">Mason Collective - Live at Destino, Music On Ibiza 2026</a></td><td class="ct">19 tracks</td></tr>
-<tr><td class="x"><a href="lp-giobbi-at-coachella-2026-quasar-stage">LP Giobbi at Coachella 2026 - Quasar Stage</a></td><td class="ct">29 tracks</td></tr>
-<tr><td class="x"><a href="adam-ten-sunset-brunch-electronik-barcelona-2026">Adam Ten Sunset @ Brunch Electronik Barcelona 2026</a></td><td class="ct">34 tracks</td></tr>
-<tr><td class="x"><a href="dedro-live-sound-nightclub-los-angeles">DEDRO Live @ Sound Nightclub Los Angeles</a></td><td class="ct">29 tracks</td></tr>
-<tr><td class="x"><a href="joseph-capriati-3-5-hour-dj-set-live-from-metamorfosi-at-amnesia-ibiza">Joseph Capriati 3.5-Hour DJ Set Live From Metamorfosi at Amnesia Ibiza 2026</a></td><td class="ct">32 tracks</td></tr>
-<tr><td class="x"><a href="dedro-live-potbellys-tallahassee">DEDRO Live @ Potbellys Tallahassee</a></td><td class="ct">15 tracks</td></tr>
-<tr><td class="x"><a href="blond-ish-sunrise-labryinto-jericoacoara-2026">BLOND:ISH Sunrise @ Labryinto Jericoacoara 2026</a></td><td class="ct">28 tracks</td></tr>
-<tr><td class="x"><a href="hugel-brooklyn-army-terminal-new-york-2026">HUGEL @ Brooklyn Army Terminal, New York 2026</a></td><td class="ct">55 tracks</td></tr>
-<tr><td class="x"><a href="gabss-the-terrace-club-space-miami-2026">GABSS @ The Terrace, Club Space Miami 2026</a></td><td class="ct">33 tracks</td></tr>
-<tr><td class="x"><a href="rafael-la-siesta-x-playa-padre-marbella-2026">Rafael @ LA SIESTA x Playa Padre, Marbella 2026</a></td><td class="ct">36 tracks</td></tr>
-<tr><td class="x"><a href="peace-control-la-siesta-x-playa-padre-marbella-2026">Peace Control @ LA SIESTA x Playa Padre, Marbella 2026</a></td><td class="ct">26 tracks</td></tr>
-<tr><td class="x"><a href="layton-giordani-electric-island-toronto-2026">Layton Giordani @ Electric Island, Toronto 2026</a></td><td class="ct">26 tracks</td></tr>
-<tr><td class="x"><a href="seth-troxler-vs-mochakk-circoloco-dc-10-ibiza-2026">Seth Troxler vs Mochakk @ Circoloco, DC-10 Ibiza 2026</a></td><td class="ct">28 tracks</td></tr>
-<tr><td class="x"><a href="monolink-long-feng-burning-man-2026">Monolink @ Long Feng, Burning Man 2026</a></td><td class="ct">20 tracks</td></tr>
-<tr><td class="x"><a href="gabbs-circoloco-dc-10-ibiza-2026">Gabbs @ Circoloco, DC-10 Ibiza 2026</a></td><td class="ct">17 tracks</td></tr>
-<tr><td class="x"><a href="notre-dame-paranormal-la-clairiere-paris-2026">Notre Dame @ PARANORMAL, La Clairière Paris 2026</a></td><td class="ct">27 tracks</td></tr>
-<tr><td class="x"><a href="tom-collins-pink-mammoth-burning-man-2026">Tom &amp; Collins @ Pink Mammoth, Burning Man 2026</a></td><td class="ct">31 tracks</td></tr>
-<tr><td class="x"><a href="gabbs-the-lot-radio-2025">Gabbs @ The Lot Radio 2025</a></td><td class="ct">14 tracks</td></tr>
-<tr><td class="x"><a href="luch-solomun-1-pacha-ibiza-2026">Luch @ Solomun +1, Pacha Ibiza 2026</a></td><td class="ct">41 tracks</td></tr>
-<tr><td class="x"><a href="roddy-lima-arca-sao-paulo-2026">Roddy Lima @ ARCA, São Paulo 2026</a></td><td class="ct">15 tracks</td></tr>
-<tr><td class="x"><a href="camelphat-mixmag-lab-london">CamelPhat | Mixmag Lab London</a></td><td class="ct">28 tracks</td></tr>
-<tr><td class="x"><a href="no-static-experts-only-festival-nyc-2026">NO STATIC @ Experts Only Festival NYC 2026</a></td><td class="ct">22 tracks</td></tr>
+<tr data-src="soundcloud"><td class="x"><a class="hrow" href="no-static-experts-only-festival-nyc-2026"><span class="em" aria-hidden="true">📡</span><span class="nm"><b>NO STATIC</b><i>Experts Only Festival NYC 2026</i></span></a></td><td class="ct">22 tracks<span class="dt">sep 29</span></td></tr>
+<tr data-src="youtube"><td class="x"><a class="hrow" href="camelphat-mixmag-lab-london"><span class="em" aria-hidden="true">🐪</span><span class="nm"><b>CamelPhat</b><i>Mixmag Lab London</i></span></a></td><td class="ct">28 tracks<span class="dt">sep 29</span></td></tr>
+<tr data-src="youtube"><td class="x"><a class="hrow" href="roddy-lima-arca-sao-paulo-2026"><span class="em" aria-hidden="true">🦜</span><span class="nm"><b>Roddy Lima</b><i>ARCA, São Paulo 2026</i></span></a></td><td class="ct">15 tracks<span class="dt">sep 29</span></td></tr>
+<tr data-src="youtube"><td class="x"><a class="hrow" href="luch-solomun-1-pacha-ibiza-2026"><span class="em" aria-hidden="true">🍒</span><span class="nm"><b>Luch</b><i>Solomun +1, Pacha Ibiza 2026</i></span></a></td><td class="ct">41 tracks</td></tr>
+<tr data-src="youtube"><td class="x"><a class="hrow" href="gabbs-the-lot-radio-2025"><span class="em" aria-hidden="true">📻</span><span class="nm"><b>Gabbs</b><i>The Lot Radio 2025</i></span></a></td><td class="ct">14 tracks</td></tr>
+<tr data-src="youtube"><td class="x"><a class="hrow" href="tom-collins-pink-mammoth-burning-man-2026"><span class="em" aria-hidden="true">🦣</span><span class="nm"><b>Tom &amp; Collins</b><i>Pink Mammoth, Burning Man 2026</i></span></a></td><td class="ct">31 tracks<span class="dt">sep 24</span></td></tr>
+<tr data-src="youtube"><td class="x"><a class="hrow" href="notre-dame-paranormal-la-clairiere-paris-2026"><span class="em" aria-hidden="true">👻</span><span class="nm"><b>Notre Dame</b><i>PARANORMAL, La Clairière Paris 2026</i></span></a></td><td class="ct">27 tracks<span class="dt">sep 24</span></td></tr>
+<tr data-src="youtube"><td class="x"><a class="hrow" href="gabbs-circoloco-dc-10-ibiza-2026"><span class="em" aria-hidden="true">🛬</span><span class="nm"><b>Gabbs</b><i>Circoloco, DC-10 Ibiza 2026</i></span></a></td><td class="ct">17 tracks<span class="dt">sep 24</span></td></tr>
+<tr data-src="youtube"><td class="x"><a class="hrow" href="monolink-long-feng-burning-man-2026"><span class="em" aria-hidden="true">🐉</span><span class="nm"><b>Monolink</b><i>Long Feng, Burning Man 2026</i></span></a></td><td class="ct">20 tracks</td></tr>
+<tr data-src="youtube"><td class="x"><a class="hrow" href="seth-troxler-vs-mochakk-circoloco-dc-10-ibiza-2026"><span class="em" aria-hidden="true">✈️</span><span class="nm"><b>Seth Troxler vs Mochakk</b><i>Circoloco, DC-10 Ibiza 2026</i></span></a></td><td class="ct">28 tracks<span class="dt">sep 21</span></td></tr>
+<tr data-src="youtube"><td class="x"><a class="hrow" href="layton-giordani-electric-island-toronto-2026"><span class="em" aria-hidden="true">⚡</span><span class="nm"><b>Layton Giordani</b><i>Electric Island, Toronto 2026</i></span></a></td><td class="ct">26 tracks<span class="dt">sep 21</span></td></tr>
+<tr data-src="youtube"><td class="x"><a class="hrow" href="peace-control-la-siesta-x-playa-padre-marbella-2026"><span class="em" aria-hidden="true">☮️</span><span class="nm"><b>Peace Control</b><i>LA SIESTA x Playa Padre, Marbella 2026</i></span></a></td><td class="ct">26 tracks<span class="dt">sep 17</span></td></tr>
+<tr data-src="youtube"><td class="x"><a class="hrow" href="rafael-la-siesta-x-playa-padre-marbella-2026"><span class="em" aria-hidden="true">🏖️</span><span class="nm"><b>Rafael</b><i>LA SIESTA x Playa Padre, Marbella 2026</i></span></a></td><td class="ct">36 tracks<span class="dt">sep 16</span></td></tr>
+<tr data-src="youtube"><td class="x"><a class="hrow" href="gabss-the-terrace-club-space-miami-2026"><span class="em" aria-hidden="true">🚀</span><span class="nm"><b>GABSS</b><i>The Terrace, Club Space Miami 2026</i></span></a></td><td class="ct">33 tracks<span class="dt">sep 15</span></td></tr>
+<tr data-src="youtube"><td class="x"><a class="hrow" href="hugel-brooklyn-army-terminal-new-york-2026"><span class="em" aria-hidden="true">🗽</span><span class="nm"><b>HUGEL</b><i>Brooklyn Army Terminal, New York 2026</i></span></a></td><td class="ct">55 tracks<span class="dt">sep 15</span></td></tr>
+<tr data-src="youtube"><td class="x"><a class="hrow" href="blond-ish-sunrise-labryinto-jericoacoara-2026"><span class="em" aria-hidden="true">🌅</span><span class="nm"><b>BLOND:ISH</b><i>Sunrise @ Labryinto Jericoacoara 2026</i></span></a></td><td class="ct">28 tracks<span class="dt">sep 13</span></td></tr>
+<tr data-src="youtube"><td class="x"><a class="hrow" href="dedro-live-potbellys-tallahassee"><span class="em" aria-hidden="true">🐊</span><span class="nm"><b>DEDRO</b><i>Live @ Potbellys, Tallahassee</i></span></a></td><td class="ct">15 tracks<span class="dt">sep 12</span></td></tr>
+<tr data-src="youtube"><td class="x"><a class="hrow" href="joseph-capriati-3-5-hour-dj-set-live-from-metamorfosi-at-amnesia-ibiza"><span class="em" aria-hidden="true">🦋</span><span class="nm"><b>Joseph Capriati</b><i>3.5-hour set, Metamorfosi at Amnesia Ibiza 2026</i></span></a></td><td class="ct">32 tracks<span class="dt">sep 10</span></td></tr>
+<tr data-src="youtube"><td class="x"><a class="hrow" href="dedro-live-sound-nightclub-los-angeles"><span class="em" aria-hidden="true">🔊</span><span class="nm"><b>DEDRO</b><i>Live @ Sound Nightclub, Los Angeles</i></span></a></td><td class="ct">29 tracks<span class="dt">sep 9</span></td></tr>
+<tr data-src="youtube"><td class="x"><a class="hrow" href="adam-ten-sunset-brunch-electronik-barcelona-2026"><span class="em" aria-hidden="true">🌴</span><span class="nm"><b>Adam Ten</b><i>Sunset @ Brunch Electronik Barcelona 2026</i></span></a></td><td class="ct">34 tracks<span class="dt">sep 12</span></td></tr>
+<tr data-src="youtube"><td class="x"><a class="hrow" href="lp-giobbi-at-coachella-2026-quasar-stage"><span class="em" aria-hidden="true">🌵</span><span class="nm"><b>LP Giobbi</b><i>Coachella 2026, Quasar Stage</i></span></a></td><td class="ct">29 tracks<span class="dt">sep 8</span></td></tr>
+<tr data-src="youtube"><td class="x"><a class="hrow" href="mason-collective-live-at-destino-music-on-ibiza-2026"><span class="em" aria-hidden="true">🏝️</span><span class="nm"><b>Mason Collective</b><i>Live at Destino, Music On Ibiza 2026</i></span></a></td><td class="ct">19 tracks<span class="dt">sep 5</span></td></tr>
+<tr data-src="youtube"><td class="x"><a class="hrow" href="cloonee-live-at-red-rocks"><span class="em" aria-hidden="true">⛰️</span><span class="nm"><b>Cloonee</b><i>Live at Red Rocks</i></span></a></td><td class="ct">39 tracks<span class="dt">sep 3</span></td></tr>
+<tr data-src="youtube"><td class="x"><a class="hrow" href="hot-since-82-mixmag-lab-london"><span class="em" aria-hidden="true">🧪</span><span class="nm"><b>Hot Since 82</b><i>Mixmag Lab London</i></span></a></td><td class="ct">39 tracks<span class="dt">sep 2</span></td></tr>
+<tr data-src="youtube"><td class="x"><a class="hrow" href="yamagucci-friends-la-2026-strange-house"><span class="em" aria-hidden="true">🛸</span><span class="nm"><b>Yamagucci + Friends</b><i>Strange House, LA 2026</i></span></a></td><td class="ct">35 tracks<span class="dt">aug 27</span></td></tr>
+<tr data-src="youtube"><td class="x"><a class="hrow" href="tobehonest-splash-house-2026"><span class="em" aria-hidden="true">💦</span><span class="nm"><b>TOBEHONEST</b><i>Splash House 2026</i></span></a></td><td class="ct">22 tracks<span class="dt">aug 26</span></td></tr>
 </table>
-<div class="foot">updated 2026-09-29</div>
+<div class="foot">something wrong or know an ID? <a href="mailto:groovesmaxxing@gmail.com">email us</a> · <a href="https://www.instagram.com/groovesmaxxing" target="_blank" rel="noopener">instagram</a><br>updated 2026-10-01</div>
 </div>
 <nav class="gmx-tabs" aria-label="app tabs">
 <ul>
@@ -316,6 +357,8 @@ td.x{overflow-wrap:anywhere}
 </ul>
 </nav>
 <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})})}</script>
+<script>(function(){var b=document.getElementById('howbtn'),d=document.getElementById('howbox'),c=document.getElementById('howclose');if(!b||!d||!d.showModal){if(b)b.style.display='none';return}b.addEventListener('click',function(){d.showModal()});c.addEventListener('click',function(){d.close()});d.addEventListener('click',function(e){if(e.target===d)d.close()})})();</script>
+<script>(function(){var bar=document.getElementById('srcbar');if(!bar)return;var bs=bar.querySelectorAll('button'),rows=document.querySelectorAll('tr[data-src]');function pick(k){bs.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.k===k?'true':'false')});rows.forEach(function(r){r.classList.toggle('hid',k!=='all'&&r.dataset.src!==k)});try{history.replaceState(null,'',k==='all'?location.pathname:'#'+k)}catch(e){}}bar.classList.add('on');bs.forEach(function(b){b.addEventListener('click',function(){pick(b.dataset.k)})});var h=location.hash.slice(1);pick(h==='youtube'||h==='soundcloud'?h:'all')})();</script>
 <script src="/gmx-motion.js" defer></script>
 </body>
 </html>
