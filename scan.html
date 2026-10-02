@@ -64,6 +64,14 @@ h1.eyebrow{margin:0;font-weight:400}
 .card .kw b{font-weight:400;color:var(--racing)}
 .card h2{font-weight:900;font-size:clamp(1.7rem,7vw,2.3rem);line-height:1.05;letter-spacing:-.02em;margin:10px 0 4px;overflow-wrap:anywhere}
 .card .ttl{font-weight:600;font-size:1.12rem;line-height:1.3;overflow-wrap:anywhere}
+/* recognizer phase 7, decisions 5 and 6 (2026-10-02): the cover on top, the track's name as the headline, the artist under it, the small line says how sure */
+.card .art{width:min(100%,260px);aspect-ratio:1;border-radius:16px;overflow:hidden;background:rgba(242,242,239,.05);border:1px solid var(--line);margin:4px auto 18px}
+.card .art img{width:100%;height:100%;object-fit:cover;display:block}
+.card .art svg{width:100%;height:100%;display:block}
+.card .art .r{fill:none;stroke:var(--racing);stroke-width:2.1}
+.card .art .dot{fill:var(--racing)}
+.card .sub{font-weight:600;font-size:1.12rem;line-height:1.3;color:var(--day);overflow-wrap:anywhere;margin-top:2px}
+.card .sure{font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.08em;color:var(--steel);margin-top:8px}
 .card .lab{font-family:'Space Mono',monospace;font-size:.8rem;color:var(--steel);margin-top:8px;letter-spacing:.04em}
 .pill{display:inline-block;font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:5px 11px;margin-top:12px;color:var(--day)}
 .pill.out{border-color:var(--racing);color:var(--racing)}
@@ -387,6 +395,18 @@ function nameOf(c){
   if(a)return {artist:a,title:''};
   return null;
 }
+function ringsMark(){
+  return '<svg viewBox="0 0 100 100" aria-hidden="true"><circle class="r" cx="50" cy="50" r="43.33"/><circle class="r" cx="50" cy="50" r="31.67"/><circle class="r" cx="50" cy="50" r="20"/><circle class="dot" cx="50" cy="50" r="7.51"/></svg>';
+}
+function artBlock(c){
+  // the cover comes only from a store record (a released track); an unreleased ID draws the rings
+  return '<div class="art">'+(c.artwork_url?'<img src="'+esc(c.artwork_url)+'" alt="" loading="lazy" onerror="this.parentNode.innerHTML=ringsMark()">':ringsMark())+'</div>';
+}
+function sureLine(c){
+  if(c.confidence_line)return esc(c.confidence_line);
+  if(c.shown_score==null)return esc(c.word||'possible match');
+  return (c.word==='very likely'?'very likely':'our best guess')+', '+pct(c.shown_score);
+}
 function statusPill(s){
   var cls=s==='out now'?'out':s==='unreleased'?'unr':'';
   return '<span class="pill '+cls+'">'+esc(s||'ID')+'</span>';
@@ -410,13 +430,15 @@ function resultCard(cur){
   var c=cur.card, cand=c.candidate, out='';
   if(c.kind==='match'&&cand){
     var nm=nameOf(cand);
-    out+='<p class="kw"><b>'+esc(cand.word||'likely')+'</b> · '+pct(cand.shown_score)+'</p>';
-    if(nm){
-      out+='<h2>'+esc(nm.artist||'unknown artist')+'</h2><p class="ttl">'+esc(nm.title)+'</p>';
-    }else{
+    out+=artBlock(cand);
+    var head=cand.headline||(nm?(nm.title||nm.artist):'ID'), sub=cand.headline?cand.subline:(nm&&nm.title?nm.artist:'');
+    out+='<h2>'+esc(head)+'</h2>';
+    if(sub)out+='<p class="sub">'+esc(sub)+'</p>';
+    if(head==='ID'){
       var h0=(cand.heard_in||[])[0];
-      out+='<h2>ID</h2><p class="ttl">'+(h0?'heard in '+esc(h0.set_title)+' at '+esc(h0.at):'in our library, still unnamed')+'</p>';
+      out+='<p class="ttl">'+(h0?'heard in '+esc(h0.set_title)+' at '+esc(h0.at):'in our library, still unnamed')+'</p>';
     }
+    out+='<p class="sure">'+sureLine(cand)+'</p>';
     if(cand.label&&cand.status==='out now')out+='<p class="lab">'+esc(cand.label)+(cand.release_date?' · '+esc(cand.release_date):'')+'</p>';
     out+=statusPill(cand.status);
     var links=storeRow(cand);
@@ -425,12 +447,12 @@ function resultCard(cur){
     out+=heardRows(cand);
     out+='<h3>right?</h3><div class="row"><button class="btn red" data-act="confirm">that\'s right</button><button class="btn" data-act="correct">it\'s actually...</button></div>';
     out+=correctionForm();
-    if(nm)checkArtistPage(nm.artist);
+    if(sub)checkArtistPage(sub);else if(nm&&nm.artist)checkArtistPage(nm.artist);
   }else if(c.kind==='guess'&&cand){
     var g=nameOf(cand);
     out+='<p class="kw"><b>no match</b></p><h2>nothing we\'re sure of.</h2>';
     out+='<div class="row"><button class="btn red" data-act="listen">listen again</button></div><p class="note">best on a drop or a vocal.</p>';
-    out+='<div class="guess"><p class="kw">closest guess</p><p class="nm">'+(g?esc(g.artist)+(g.artist&&g.title?' - ':'')+esc(g.title):'an unnamed library entry')+'</p><p class="pc">'+(cand.shown_score==null?esc(cand.word||'possible match'):pct(cand.shown_score)+' · '+esc(cand.word||'guess'))+'</p>';
+    out+='<div class="guess"><p class="kw">closest guess</p><p class="nm">'+(g?esc(g.artist)+(g.artist&&g.title?' - ':'')+esc(g.title):'an unnamed library entry')+'</p><p class="pc">'+sureLine(cand)+'</p>';
     out+='<div class="row"><button class="btn" data-act="confirm">that\'s right</button><button class="btn" data-act="correct">it\'s actually...</button></div></div>';
     out+=correctionForm();
     out+='<h3>help us find it?</h3><div class="row"><button class="btn" data-act="help">help us find it?</button><button class="btn ghost" data-act="again">no thanks, scan again</button></div>';
