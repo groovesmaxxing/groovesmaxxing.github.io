@@ -1,62 +1,8 @@
 {
-"generated": "2026-10-01T16:34:08+00:00",
+"generated": "2026-10-02T15:54:09+00:00",
 "artist_count": 688,
-"artists_with_events": 152,
+"artists_with_events": 154,
 "events": [
-{
-"date": "2026-10-01",
-"event": "Channel Tres",
-"venue": "Roseland Theater",
-"city": "Portland",
-"region": "OR",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZgQb",
-"artist": "Channel Tres"
-},
-{
-"date": "2026-10-01",
-"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
-"venue": "State Farm Center",
-"city": "Champaign",
-"region": "IL",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A70IJb",
-"artist": "John Summit"
-},
-{
-"date": "2026-10-01",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "Utah First Credit Union Amphitheatre",
-"city": "West Valley City",
-"region": "UT",
-"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-west-valley-city-utah-10-01-2026/event/1E006466C582D26F",
-"artist": "Midnight Generation"
-},
-{
-"date": "2026-10-01",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "Utah First Credit Union Amphitheatre",
-"city": "West Valley City",
-"region": "UT",
-"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-west-valley-city-utah-10-01-2026/event/1E006466C582D26F",
-"artist": "Polo & Pan"
-},
-{
-"date": "2026-10-01",
-"event": "The Jungle Giants",
-"venue": "Elsewhere",
-"city": "Brooklyn",
-"region": "NY",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A70sC8",
-"artist": "The Jungle Giants"
-},
-{
-"date": "2026-10-01",
-"event": "Tinlicker North America 2026",
-"venue": "House of Blues Houston",
-"city": "Houston",
-"region": "TX",
-"url": "https://www.ticketmaster.com/tinlicker-north-america-2026-houston-texas-10-01-2026/event/3A006494A369A2A5",
-"artist": "Tinlicker"
-},
 {
 "date": "2026-10-02",
 "event": "ALISHA",
@@ -1310,6 +1256,15 @@
 },
 {
 "date": "2026-10-14",
+"event": "Madi Diaz w/ Tasha",
+"venue": "Zone One at Elsewhere",
+"city": "Brooklyn",
+"region": "NY",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAvkut",
+"artist": "MADI"
+},
+{
+"date": "2026-10-14",
 "event": "Hellogoodbye + Man Man",
 "venue": "Brudenell Social Club",
 "city": "Leeds",
@@ -1496,6 +1451,15 @@
 "region": "DC",
 "url": "https://www.ticketmaster.com/sofi-tukker-presents-animal-talk-washington-district-of-columbia-10-16-2026/event/1500648EC77AA65F",
 "artist": "SOFI TUKKER"
+},
+{
+"date": "2026-10-16",
+"event": "The Jungle Giants w/ Morning Silk",
+"venue": "Great American Music Hall",
+"city": "San Francisco",
+"region": "CA",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAe4_O",
+"artist": "The Jungle Giants"
 },
 {
 "date": "2026-10-16",
@@ -2777,6 +2741,15 @@
 },
 {
 "date": "2026-11-07",
+"event": "Chris Lake",
+"venue": "Omnia Las Vegas",
+"city": "Las Vegas",
+"region": "NV",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAe7qe",
+"artist": "Chris Lake"
+},
+{
+"date": "2026-11-07",
 "event": "EDC Orlando",
 "venue": "Tinker Field",
 "city": "Orlando",
@@ -3341,6 +3314,15 @@
 "region": "QC",
 "url": "https://www.ticketmaster.ca/festival-zamna-montreal-montreal-quebec-11-21-2026/event/31006524AFF85CC1",
 "artist": "ARTBAT"
+},
+{
+"date": "2026-11-21",
+"event": "Biscits",
+"venue": "Time Nightclub",
+"city": "Costa Mesa",
+"region": "CA",
+"url": "https://www.ticketweb.com/event/biscits-time-nightclub-tickets/14354574",
+"artist": "Biscits"
 },
 {
 "date": "2026-11-21",
@@ -3947,6 +3929,15 @@
 },
 {
 "date": "2026-12-11",
+"event": "Ahmed Spins",
+"venue": "131 McCormack Street",
+"city": "Toronto",
+"region": "ON",
+"url": "https://www.ticketweb.ca/event/ahmed-spins-131-mccormack-street-tickets/14336204?REFERRAL_ID=tmfeed",
+"artist": "Ahmed Spins"
+},
+{
+"date": "2026-12-11",
 "event": "Defected Melbourne 2026",
 "venue": "Northcote Theatre",
 "city": "Northcote",
@@ -4061,6 +4052,15 @@
 "region": "QLD",
 "url": "https://www.moshtix.com.au/v2/event/spilt-milk-gold-coast-2026/198097",
 "artist": "Tobiahs"
+},
+{
+"date": "2026-12-18",
+"event": "Lee Burridge: Extended Set",
+"venue": "Joshua Brooks",
+"city": "Manchester",
+"region": "GB",
+"url": "https://www.universe.com/events/lee-burridge-extended-set-tickets-KMP2WN?ref=ticketmaster",
+"artist": "Lee Burridge"
 },
 {
 "date": "2026-12-18",
@@ -4232,6 +4232,15 @@
 "region": "CA",
 "url": "https://on.fgtix.com/trk/SMhQ",
 "artist": "James Hype"
+},
+{
+"date": "2026-12-31",
+"event": "New Year's Eve: Defected + Glitterbox",
+"venue": "Depot Mayfield",
+"city": "Manchester",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/new-years-eve-defected-glitterbox-manchester-31-12-2026/event/350064EEEAB1ECCE",
+"artist": "Low Steppa"
 },
 {
 "date": "2026-12-31",
@@ -4448,6 +4457,15 @@
 "region": "DK",
 "url": "https://www.ticketmaster.dk/event/jonathan-tickets/526340871?language=en-us",
 "artist": "Jonathan"
+},
+{
+"date": "2027-03-27",
+"event": "Sidepiece w/ Ship Wrek",
+"venue": "Red Rocks Amphitheatre",
+"city": "Morrison",
+"region": "CO",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAekP6",
+"artist": "SIDEPIECE"
 },
 {
 "date": "2027-05-29",
