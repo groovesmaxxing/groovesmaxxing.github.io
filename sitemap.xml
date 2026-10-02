@@ -373,6 +373,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://groovesmaxxing.com/artists/arya-stone</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://groovesmaxxing.com/artists/asher-swissa</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
@@ -2120,7 +2126,7 @@
   </url>
   <url>
     <loc>https://groovesmaxxing.com/artists/kamjam</loc>
-    <lastmod>2026-08-17</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -4373,4 +4379,64 @@
 <url><loc>https://groovesmaxxing.com/labels/rose-avenue</loc><lastmod>2026-09-22</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 <url><loc>https://groovesmaxxing.com/labels/when-stars-align</loc><lastmod>2026-09-22</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 <url><loc>https://groovesmaxxing.com/labels/affairs</loc><lastmod>2026-09-22</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url>
+    <loc>https://groovesmaxxing.com/artists/david-mackay</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://groovesmaxxing.com/artists/humans-musik</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://groovesmaxxing.com/artists/juskidin</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://groovesmaxxing.com/artists/maesic</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://groovesmaxxing.com/artists/matt-egbert</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://groovesmaxxing.com/artists/mitch-oliver</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://groovesmaxxing.com/artists/naj</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://groovesmaxxing.com/artists/raul-vidal</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://groovesmaxxing.com/artists/talon</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://groovesmaxxing.com/artists/zunzarren</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
