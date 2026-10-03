@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>scan · groovesMAXXING</title>
-<meta name="description" content="hear a track, tap once. groovesmaxxing listens for about 10 seconds and looks for it in our own library of sets first, then in the catalogs.">
+<meta name="description" content="hear a track, tap once. groovesmaxxing listens for about 15 seconds and looks for it in our own library of sets first, then in the catalogs.">
 <meta name="robots" content="noindex">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
@@ -163,13 +163,13 @@ h1.eyebrow{margin:0;font-weight:400}
 </svg>
 </button>
 <div class="tap" id="tap">tap to <b>scan</b></div>
-<div class="rec" id="rec"><i></i><span id="recword">listening</span><span class="n" id="count">10</span></div>
+<div class="rec" id="rec"><i></i><span id="recword">listening</span><span class="n" id="count">15</span></div>
 <button class="how" type="button" id="howbtn" aria-haspopup="dialog">how it works?</button>
 </section>
 
 <dialog class="howbox" id="howbox" aria-labelledby="howtitle">
 <h2 id="howtitle">how it works</h2>
-<p>tap once near the speaker. we listen for about 10 seconds.</p>
+<p>tap once near the speaker. we listen for about 15 seconds.</p>
 <p>we check our own library of sets first, then the big catalogs.</p>
 <p>can't name it? you choose whether we keep the clip to keep hunting. nothing is kept unless you say so.</p>
 <p>your scans stay on this phone, and every result has a button to tell us we got it wrong.</p>
@@ -202,7 +202,7 @@ h1.eyebrow{margin:0;font-weight:400}
 'use strict';
 /* groovesmaxxing scan (phase 5, step b). vanilla, no dependencies.
    the api base and the app key come from /gmx-config.json, never from this file. */
-var CAPTURE_MS=10000, POLL_MS=500, POLL_CAP_MS=30000, HISTORY_MAX=50;
+var CAPTURE_MS=15000, POLL_MS=500, POLL_CAP_MS=30000, HISTORY_MAX=50;
 var $=function(id){return document.getElementById(id)};
 var stage=$('stage'), go=$('go'), tap=$('tap'), rec=$('rec'), recword=$('recword'), count=$('count'), card=$('card'), recentlist=$('recentlist');
 var rings=go.querySelectorAll('.r'), wave=go.querySelector('.wave');
@@ -241,7 +241,7 @@ function slug(s){
 
 /* recording: raw pcm off the web audio graph, written here as a 16 kHz mono 16-bit wav.
    no MediaRecorder: safari's fragmented mp4 cost the recognizer a decode step and the library
-   engines want plain pcm anyway (phase 5 stop 3h, DECISION 11). 10 s is about 320 KB. */
+   engines want plain pcm anyway (phase 5 stop 3h, DECISION 11). 15 s is about 480 KB (phase 7 DECISION 8). */
 var OUT_RATE=16000;
 function canCapture(){return !!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia&&(window.AudioContext||window.webkitAudioContext))}
 function extOf(blob){var t=blob&&blob.type||'';return t.indexOf('wav')>=0?'wav':t.indexOf('mp4')>=0?'m4a':t.indexOf('ogg')>=0?'ogg':'webm'}
