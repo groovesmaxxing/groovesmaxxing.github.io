@@ -438,8 +438,8 @@ function resultCard(cur){
       var h0=(cand.heard_in||[])[0];
       out+='<p class="ttl">'+(h0?'heard in '+esc(h0.set_title)+' at '+esc(h0.at):'in our library, still unnamed')+'</p>';
     }
-    out+='<p class="sure">'+sureLine(cand)+'</p>';
     if(cand.label&&cand.status==='out now')out+='<p class="lab">'+esc(cand.label)+(cand.release_date?' · '+esc(cand.release_date):'')+'</p>';
+    out+='<p class="sure">'+sureLine(cand)+'</p>';
     out+=statusPill(cand.status);
     var links=storeRow(cand);
     out+='<div class="row">'+links+'<button class="btn" data-act="share">share</button></div>';
