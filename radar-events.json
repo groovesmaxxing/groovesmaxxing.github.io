@@ -1,314 +1,8 @@
 {
-"generated": "2026-10-02T15:54:09+00:00",
+"generated": "2026-10-03T14:22:37+00:00",
 "artist_count": 688,
-"artists_with_events": 154,
+"artists_with_events": 153,
 "events": [
-{
-"date": "2026-10-02",
-"event": "ALISHA",
-"venue": "The Limelight 1",
-"city": "Belfast",
-"region": "GB",
-"url": "https://www.ticketmaster.ie/alisha-belfast-02-10-2026/event/380064F5D9A11611",
-"artist": "ALISHA"
-},
-{
-"date": "2026-10-02",
-"event": "Overtone Festival 2026",
-"venue": "Musgrave Park, Gold Coast",
-"city": "Southport",
-"region": "QLD",
-"url": "https://www.moshtix.com.au/v2/event/overtone-festival-2026/195721",
-"artist": "Barry Can't Swim"
-},
-{
-"date": "2026-10-02",
-"event": "Claptone",
-"venue": "The Church Nightclub",
-"city": "Denver",
-"region": "CO",
-"url": "https://www.ticketweb.com/event/claptone-the-church-nightclub-tickets/15002673",
-"artist": "CLAPTONE"
-},
-{
-"date": "2026-10-02",
-"event": "Breakaway Utah 2026",
-"venue": "America First Field",
-"city": "Sandy",
-"region": "UT",
-"url": "https://www.universe.com/events/breakaway-utah-2026-tickets-96845F?ref=ticketmaster",
-"artist": "Chris Lake"
-},
-{
-"date": "2026-10-02",
-"event": "You&Me - Friday",
-"venue": "Depot Mayfield",
-"city": "Manchester",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/youme-friday-manchester-02-10-2026/event/35006498021F6E4C",
-"artist": "Dennis Cruz"
-},
-{
-"date": "2026-10-02",
-"event": "You&Me - Friday",
-"venue": "Depot Mayfield",
-"city": "Manchester",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/youme-friday-manchester-02-10-2026/event/35006498021F6E4C",
-"artist": "Dennis Quin"
-},
-{
-"date": "2026-10-02",
-"event": "Palm Tree Music Festival - FRI 10/2",
-"venue": "Blue Note Napa Summer Sessions",
-"city": "Napa",
-"region": "CA",
-"url": "https://www.ticketmaster.com/palm-tree-music-festival-fri-102-napa-california-10-02-2026/event/1C0064C5EA0F58F7",
-"artist": "Disclosure"
-},
-{
-"date": "2026-10-02",
-"event": "The Strokes w/ Beach House",
-"venue": "Flushing Meadows Corona Park",
-"city": "Flushing",
-"region": "NY",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7PPvE",
-"artist": "Fcukers"
-},
-{
-"date": "2026-10-02",
-"event": "Breakaway Utah 2026",
-"venue": "America First Field",
-"city": "Sandy",
-"region": "UT",
-"url": "https://www.universe.com/events/breakaway-utah-2026-tickets-96845F?ref=ticketmaster",
-"artist": "Gorgon City"
-},
-{
-"date": "2026-10-02",
-"event": "Gorgon City (18 and Over)",
-"venue": "DUCTWORK - Houston",
-"city": "Houston",
-"region": "TX",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZ-_v",
-"artist": "Gorgon City"
-},
-{
-"date": "2026-10-02",
-"event": "2-Day Palm Tree Music Festival",
-"venue": "Blue Note Napa Summer Sessions",
-"city": "Napa",
-"region": "CA",
-"url": "https://www.ticketmaster.com/2day-palm-tree-music-festival-napa-california-10-02-2026/event/1C0064C5E1192FCE",
-"artist": "HUGEL"
-},
-{
-"date": "2026-10-02",
-"event": "Breakaway Utah 2026",
-"venue": "America First Field",
-"city": "Sandy",
-"region": "UT",
-"url": "https://www.universe.com/events/breakaway-utah-2026-tickets-96845F?ref=ticketmaster",
-"artist": "Jackie Hollander"
-},
-{
-"date": "2026-10-02",
-"event": "You&Me - Friday",
-"venue": "Depot Mayfield",
-"city": "Manchester",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/youme-friday-manchester-02-10-2026/event/35006498021F6E4C",
-"artist": "Jamback"
-},
-{
-"date": "2026-10-02",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-10-02-2026/event/3B00643505888295",
-"artist": "Jamie xx"
-},
-{
-"date": "2026-10-02",
-"event": "You&Me - Friday",
-"venue": "Depot Mayfield",
-"city": "Manchester",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/youme-friday-manchester-02-10-2026/event/35006498021F6E4C",
-"artist": "Job de Jong"
-},
-{
-"date": "2026-10-02",
-"event": "Breakaway Utah 2026",
-"venue": "America First Field",
-"city": "Sandy",
-"region": "UT",
-"url": "https://www.universe.com/events/breakaway-utah-2026-tickets-96845F?ref=ticketmaster",
-"artist": "John Summit"
-},
-{
-"date": "2026-10-02",
-"event": "You&Me - Friday",
-"venue": "Depot Mayfield",
-"city": "Manchester",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/youme-friday-manchester-02-10-2026/event/35006498021F6E4C",
-"artist": "Josh Baker"
-},
-{
-"date": "2026-10-02",
-"event": "You&Me - Friday",
-"venue": "Depot Mayfield",
-"city": "Manchester",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/youme-friday-manchester-02-10-2026/event/35006498021F6E4C",
-"artist": "Julian Fijma"
-},
-{
-"date": "2026-10-02",
-"event": "Breakaway Utah 2026",
-"venue": "America First Field",
-"city": "Sandy",
-"region": "UT",
-"url": "https://www.universe.com/events/breakaway-utah-2026-tickets-96845F?ref=ticketmaster",
-"artist": "Kaskade"
-},
-{
-"date": "2026-10-02",
-"event": "You&Me - Friday",
-"venue": "Depot Mayfield",
-"city": "Manchester",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/youme-friday-manchester-02-10-2026/event/35006498021F6E4C",
-"artist": "M-High"
-},
-{
-"date": "2026-10-02",
-"event": "You&Me - Friday",
-"venue": "Depot Mayfield",
-"city": "Manchester",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/youme-friday-manchester-02-10-2026/event/35006498021F6E4C",
-"artist": "Marsolo"
-},
-{
-"date": "2026-10-02",
-"event": "You&Me - Friday",
-"venue": "Depot Mayfield",
-"city": "Manchester",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/youme-friday-manchester-02-10-2026/event/35006498021F6E4C",
-"artist": "Mati Astroza"
-},
-{
-"date": "2026-10-02",
-"event": "Matroda - Ages 21+",
-"venue": "LIV Nightclub Las Vegas",
-"city": "Las Vegas",
-"region": "NV",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7xbQ3",
-"artist": "Matroda"
-},
-{
-"date": "2026-10-02",
-"event": "Breakaway Utah 2026",
-"venue": "America First Field",
-"city": "Sandy",
-"region": "UT",
-"url": "https://www.universe.com/events/breakaway-utah-2026-tickets-96845F?ref=ticketmaster",
-"artist": "Max Styler"
-},
-{
-"date": "2026-10-02",
-"event": "Parcels - Loved Tour 2026",
-"venue": "South Side Ballroom",
-"city": "Dallas",
-"region": "TX",
-"url": "https://www.ticketmaster.com/parcels-loved-tour-2026-dallas-texas-10-02-2026/event/0C0064E7D95E8BF4",
-"artist": "Parcels"
-},
-{
-"date": "2026-10-02",
-"event": "Peggy Gou",
-"venue": "Echostage",
-"city": "Washington",
-"region": "DC",
-"url": "https://www.ticketmaster.com/peggy-gou-washington-district-of-columbia-10-02-2026/event/15006512D9C4F9B1",
-"artist": "Peggy Gou"
-},
-{
-"date": "2026-10-02",
-"event": "You&Me - Friday",
-"venue": "Depot Mayfield",
-"city": "Manchester",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/youme-friday-manchester-02-10-2026/event/35006498021F6E4C",
-"artist": "Prospa"
-},
-{
-"date": "2026-10-02",
-"event": "Breakaway Utah 2026",
-"venue": "America First Field",
-"city": "Sandy",
-"region": "UT",
-"url": "https://www.universe.com/events/breakaway-utah-2026-tickets-96845F?ref=ticketmaster",
-"artist": "Roddy Lima"
-},
-{
-"date": "2026-10-02",
-"event": "You&Me - Friday",
-"venue": "Depot Mayfield",
-"city": "Manchester",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/youme-friday-manchester-02-10-2026/event/35006498021F6E4C",
-"artist": "Seth Troxler"
-},
-{
-"date": "2026-10-02",
-"event": "You&Me - Friday",
-"venue": "Depot Mayfield",
-"city": "Manchester",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/youme-friday-manchester-02-10-2026/event/35006498021F6E4C",
-"artist": "Sidney Charles"
-},
-{
-"date": "2026-10-02",
-"event": "You&Me - Friday",
-"venue": "Depot Mayfield",
-"city": "Manchester",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/youme-friday-manchester-02-10-2026/event/35006498021F6E4C",
-"artist": "Stef Davidse"
-},
-{
-"date": "2026-10-02",
-"event": "ARK: Tiga",
-"venue": "Tama",
-"city": "Poznan",
-"region": "PL",
-"url": "https://www.ticketmaster.pl/event/ark-tiga-tickets/313482685?language=en-us",
-"artist": "Tiga"
-},
-{
-"date": "2026-10-02",
-"event": "Breakaway Utah 2026",
-"venue": "America First Field",
-"city": "Sandy",
-"region": "UT",
-"url": "https://www.universe.com/events/breakaway-utah-2026-tickets-96845F?ref=ticketmaster",
-"artist": "Tiësto"
-},
-{
-"date": "2026-10-02",
-"event": "Tiesto (21 and Over)",
-"venue": "Omnia Las Vegas",
-"city": "Las Vegas",
-"region": "NV",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZyuE",
-"artist": "Tiësto"
-},
 {
 "date": "2026-10-03",
 "event": "Freeform Festival 2026",
@@ -380,6 +74,15 @@
 "region": "CA",
 "url": "https://www.ticketmaster.com/palm-tree-music-festival-sat-103-napa-california-10-03-2026/event/1C0064C9377913CF",
 "artist": "HUGEL"
+},
+{
+"date": "2026-10-03",
+"event": "John Summit presents Experts Only - Two Day Pass",
+"venue": "Gorge Amphitheatre",
+"city": "George",
+"region": "WA",
+"url": "https://www.ticketmaster.com/john-summit-presents-experts-only-two-george-washington-10-03-2026/event/0F00648ECCD4CA00",
+"artist": "Jackie Hollander"
 },
 {
 "date": "2026-10-03",
@@ -497,15 +200,6 @@
 "region": "OR",
 "url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-bend-oregon-10-03-2026/event/0F006466AC6BB633",
 "artist": "Midnight Generation"
-},
-{
-"date": "2026-10-03",
-"event": "Odd Mob",
-"venue": "The Fortitude Music Hall",
-"city": "Brisbane",
-"region": "QLD",
-"url": "https://www.ticketmaster.com.au/odd-mob-brisbane-03-10-2026/event/1300648DC2A44B15",
-"artist": "Odd Mob"
 },
 {
 "date": "2026-10-03",
@@ -689,6 +383,24 @@
 },
 {
 "date": "2026-10-05",
+"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
+"venue": "Petco Park",
+"city": "San Diego",
+"region": "CA",
+"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-san-diego-california-10-05-2026/event/0A006466E18AAD1A",
+"artist": "Midnight Generation"
+},
+{
+"date": "2026-10-05",
+"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
+"venue": "Petco Park",
+"city": "San Diego",
+"region": "CA",
+"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-san-diego-california-10-05-2026/event/0A006466E18AAD1A",
+"artist": "Polo & Pan"
+},
+{
+"date": "2026-10-05",
 "event": "The Jungle Giants",
 "venue": "Lee's Palace",
 "city": "Toronto",
@@ -722,24 +434,6 @@
 "region": "QC",
 "url": "https://www.ticketmaster.ca/lewis-ofman-montreal-quebec-10-07-2026/event/310064AFAA8C7319",
 "artist": "Lewis OfMan"
-},
-{
-"date": "2026-10-07",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "Petco Park",
-"city": "San Diego",
-"region": "CA",
-"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-san-diego-california-10-07-2026/event/0A006466E18AAD1A",
-"artist": "Midnight Generation"
-},
-{
-"date": "2026-10-07",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "Petco Park",
-"city": "San Diego",
-"region": "CA",
-"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-san-diego-california-10-07-2026/event/0A006466E18AAD1A",
-"artist": "Polo & Pan"
 },
 {
 "date": "2026-10-07",
@@ -878,11 +572,11 @@
 },
 {
 "date": "2026-10-09",
-"event": "Kyle Watson 360°",
+"event": "Kyle Watson w/ Special Guest Trace, No Static, & Miller (360° Stage)",
 "venue": "Exchange LA",
 "city": "Los Angeles",
 "region": "CA",
-"url": "https://www.ticketweb.com/event/kyle-watson-360-exchange-la-tickets/14991793",
+"url": "https://www.ticketweb.com/event/kyle-watson-w-special-guest-exchange-la-tickets/14991793",
 "artist": "Kyle Watson"
 },
 {
@@ -1202,11 +896,11 @@
 },
 {
 "date": "2026-10-13",
-"event": "LEWIS OFMAN with Special Guests",
+"event": "LEWIS OFMAN with Moon King",
 "venue": "Lee's Palace",
 "city": "Toronto",
 "region": "ON",
-"url": "https://www.ticketweb.ca/event/lewis-ofman-with-special-guests-lees-palace-tickets/14923653",
+"url": "https://www.ticketweb.ca/event/lewis-ofman-with-moon-king-lees-palace-tickets/14923653",
 "artist": "Lewis OfMan"
 },
 {
@@ -1280,6 +974,15 @@
 "region": "GA",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7xF0x",
 "artist": "Parcels"
+},
+{
+"date": "2026-10-15",
+"event": "Prospa present Prophecy (18+ Event)",
+"venue": "Shrine Expo Hall",
+"city": "Los Angeles",
+"region": "CA",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7P87E",
+"artist": "Prospa"
 },
 {
 "date": "2026-10-15",
@@ -1604,6 +1307,15 @@
 "region": "NY",
 "url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-10-17-2026/event/3B00643506808378",
 "artist": "Jamie xx"
+},
+{
+"date": "2026-10-17",
+"event": "Deorro Feat Banda Artilleros & JUOS",
+"venue": "The Factory",
+"city": "Saint Louis",
+"region": "MO",
+"url": "https://www.ticketmaster.com/deorro-feat-banda-artilleros-juos-saint-louis-missouri-10-17-2026/event/21006518E505853D",
+"artist": "Juos"
 },
 {
 "date": "2026-10-17",
@@ -3577,6 +3289,33 @@
 "artist": "Rossi."
 },
 {
+"date": "2026-11-27",
+"event": "Time Warp LA",
+"venue": "Ace * Mission Studios",
+"city": "Los Angeles",
+"region": "CA",
+"url": "https://on.fgtix.com/trk/CFLtc",
+"artist": "SOSA"
+},
+{
+"date": "2026-11-27",
+"event": "Time Warp LA",
+"venue": "Ace * Mission Studios",
+"city": "Los Angeles",
+"region": "CA",
+"url": "https://on.fgtix.com/trk/CFLtc",
+"artist": "The Martinez Brothers"
+},
+{
+"date": "2026-11-27",
+"event": "Time Warp LA",
+"venue": "Ace * Mission Studios",
+"city": "Los Angeles",
+"region": "CA",
+"url": "https://on.fgtix.com/trk/CFLtc",
+"artist": "Tiga"
+},
+{
 "date": "2026-11-28",
 "event": "Devault (18 and Over)",
 "venue": "The Regency Ballroom",
@@ -3935,6 +3674,15 @@
 "region": "ON",
 "url": "https://www.ticketweb.ca/event/ahmed-spins-131-mccormack-street-tickets/14336204?REFERRAL_ID=tmfeed",
 "artist": "Ahmed Spins"
+},
+{
+"date": "2026-12-11",
+"event": "Bob Moses (18+ Event)",
+"venue": "ReelWorks Denver",
+"city": "Denver",
+"region": "CO",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAeaGy",
+"artist": "Bob Moses"
 },
 {
 "date": "2026-12-11",
