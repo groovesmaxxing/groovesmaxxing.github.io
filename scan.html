@@ -202,7 +202,10 @@ h1.eyebrow{margin:0;font-weight:400}
 'use strict';
 /* groovesmaxxing scan (phase 5, step b). vanilla, no dependencies.
    the api base and the app key come from /gmx-config.json, never from this file. */
-var CAPTURE_MS=15000, POLL_MS=500, POLL_CAP_MS=30000, HISTORY_MAX=50;
+var CAPTURE_MS=15000, EARLY_MS=8000, POLL_MS=500, POLL_CAP_MS=30000, HISTORY_MAX=50;
+/* phase 7 DECISION 9: at 8 s the page posts what it has as an early, library-only round and keeps
+   listening. a LIKELY or better answer shows at once, the 15 s scan replaces it when it names something. */
+var scanSeq=0, early=null, finalDone=false;
 var $=function(id){return document.getElementById(id)};
 var stage=$('stage'), go=$('go'), tap=$('tap'), rec=$('rec'), recword=$('recword'), count=$('count'), card=$('card'), recentlist=$('recentlist');
 var rings=go.querySelectorAll('.r'), wave=go.querySelector('.wave');
@@ -276,14 +279,15 @@ function startScan(){
   if(!canCapture()){
     showCard(errCard("this browser can't record audio. on iphone use safari, on android use chrome, then add the app to your home screen."));return;
   }
-  busy=true; card.classList.remove('on'); current=null; dropBlob();
+  busy=true; card.classList.remove('on'); current=null; dropBlob(); scanSeq++; early=null; finalDone=false;
+  var seq=scanSeq, earlySent=false;
   stage.classList.add('listening'); go.classList.add('busy'); recword.textContent='listening'; count.textContent=String(Math.round(CAPTURE_MS/1000));
   tap.innerHTML='tap to <b>stop</b>'; go.setAttribute('aria-label','tap to stop');
   var chunks=[], got=0, need=0, t0=0, timer=null, stream=null, ctx=null, node=null, sink=null, stopped=false, cancelled=false;
   /* the context is made inside the tap, so ios lets it run. */
   try{ctx=new (window.AudioContext||window.webkitAudioContext)()}catch(e){ctx=null}
   /* a second tap while listening throws the clip away and goes back to tap to scan. */
-  cancelScan=function(){ if(cancelled||stopped)return; cancelled=true; stopped=true; tick(20); cleanup(); reset(); };
+  cancelScan=function(){ if(cancelled||stopped)return; cancelled=true; stopped=true; scanSeq++; tick(20); cleanup(); reset(); };
   function done(){
     if(stopped)return; stopped=true;
     var rate=ctx.sampleRate;
@@ -307,6 +311,7 @@ function startScan(){
         }
         var take=Math.min(inp.length,need-got); if(take<=0)return;
         chunks.push(new Float32Array(inp.subarray(0,take))); got+=take;
+        if(!earlySent&&got>=Math.round(ctx.sampleRate*EARLY_MS/1000)){earlySent=true;try{earlyIdentify(wavBlob(chunks,ctx.sampleRate),seq)}catch(e){}}
         var sum=0; for(var i=0;i<take;i++)sum+=inp[i]*inp[i]; setLevel(Math.sqrt(sum/take));
         if(got>=need)setTimeout(done,0);
       };
@@ -340,6 +345,33 @@ function reset(){busy=false;cancelScan=null;go.disabled=false;go.classList.remov
 function dropBlob(){heldBlob=null;heldAt=null}
 
 /* identify and poll */
+function pollJob(jobId,began){
+  return new Promise(function(res,rej){
+    (function poll(){
+      if(Date.now()-began>POLL_CAP_MS)return rej(new Error('slow'));
+      fetch(cfg.api_base+'/jobs/'+encodeURIComponent(jobId),{headers:headers()})
+      .then(function(r){if(!r.ok)throw new Error('http '+r.status);return r.json()})
+      .then(function(j){ if(j.state==='done')return res(j); if(j.state==='failed')return rej(new Error('failed')); setTimeout(poll,POLL_MS); })
+      .catch(function(e){ if(Date.now()-began>POLL_CAP_MS)rej(e); else setTimeout(poll,POLL_MS); });
+    })();
+  });
+}
+/* the early round: library only on the server, never a catalog call. quiet on any failure. */
+function earlyIdentify(blob,seq){
+  var fd=new FormData(); fd.append('audio',blob,'clip.wav'); fd.append('source','mic');
+  var began=Date.now();
+  fetch(cfg.api_base+'/identify',{method:'POST',headers:headers({'X-GMX-Round':'early'}),body:fd})
+  .then(function(r){if(!r.ok)throw new Error('http '+r.status);return r.json()})
+  .then(function(job){return pollJob(job.job_id,began)})
+  .then(function(j){
+    if(seq!==scanSeq||finalDone)return;
+    var r=j.result||{}, c=r.card||{}, cand=c.candidate;
+    if(!cand||(cand.tier!=='LIKELY'&&cand.tier!=='CONFIRMED'))return;
+    early={job_id:j.job_id,recognition_id:r.recognition_id||j.job_id,card:{kind:'match',candidate:cand},seconds:Math.round((Date.now()-began)/100)/10};
+    current=early; tick(40);
+    showCard('<p class="kw" id="earlynote">still listening</p>'+resultCard(early));
+  }).catch(function(){});
+}
 function identify(blob){
   cancelScan=null; go.disabled=true; stage.classList.add('finding'); recword.textContent='finding it'; count.textContent='';
   var fd=new FormData(); fd.append('audio',blob,'clip.'+extOf(blob)); fd.append('source','mic');
@@ -367,13 +399,18 @@ function identify(blob){
   })
   .then(function(j){
     var r=j.result||{}, c=r.card||{kind:'none'};
-    current={job_id:j.job_id,recognition_id:r.recognition_id||j.job_id,card:c,seconds:Math.round((Date.now()-began)/100)/10};
+    finalDone=true;
+    /* the 15 s scan replaces the early card when it names something, else the early card stays */
+    if(c.kind!=='match'&&early)current=early;
+    else current={job_id:j.job_id,recognition_id:r.recognition_id||j.job_id,card:c,seconds:Math.round((Date.now()-began)/100)/10};
     /* keep my clips (DECISION 12): the switch under more, the clip stays on this phone */
     var keep=!!(window.gmxClips&&gmxClips.on()&&heldBlob);
     if(keep)gmxClips.put({id:current.job_id,t:Date.now(),blob:heldBlob,recognition_id:current.recognition_id,kind:c.kind}).catch(function(){});
     showCard(resultCard(current)); remember(current,keep); reset();
   })
   .catch(function(e){
+    finalDone=true;
+    if(early){current=early;showCard(resultCard(current));remember(current,false);reset();return}
     var m=e&&e.message||'';
     var text= m==='rate' ? 'too many scans this hour on this phone. try again in a bit.'
             : m==='slow' ? 'took too long. the recognizer did not answer in 30 seconds. try again.'
