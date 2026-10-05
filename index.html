@@ -287,6 +287,24 @@ footer svg{animation:gmx-beat 6s ease-in-out infinite}
   .pill:hover::after,.icon-btn:hover,.wall a.hot,footer svg,.lane:hover h3,.gmx-motion .hero .icon-btn{animation:none}
 }
 @media (hover:none){ .gmx-motion .rv.in.tilt{transform:none} }
+/* homepage motion, round two: the hero's wave carried down the page */
+.gmx-motion .canon span a{display:inline-block;transition:scale .35s cubic-bezier(.2,.7,.2,1),color .2s}
+.gmx-motion .canon.in span a{animation:gmx-namewave 9s cubic-bezier(.45,0,.55,1) infinite;animation-delay:calc(.4s + var(--k,0)*.12s)}
+.gmx-motion .canon span a:hover{scale:1.07;color:var(--racing)}
+@keyframes gmx-namewave{0%,16%,100%{transform:none;text-shadow:none}8%{transform:translateY(-6px);color:var(--racing);text-shadow:0 8px 20px rgba(255,28,2,.3)}}
+.gmx-divider{position:absolute;left:0;right:0;top:-7px;height:14px;z-index:2;pointer-events:none;opacity:.6;
+background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='14' viewBox='0 0 48 14'%3E%3Cpath d='M0 7 Q12 0 24 7 T48 7' fill='none' stroke='%23FF1C02' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x 0 50%/48px 14px;
+animation:gmx-roll 5s linear infinite,gmx-swell 7s ease-in-out infinite}
+@keyframes gmx-roll{to{background-position-x:48px}}
+@keyframes gmx-swell{50%{transform:scaleY(1.45);opacity:.85}}
+.gmx-ticker{overflow:hidden;margin:-18px 0 40px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.gmx-ticker .gmx-track{display:flex;width:max-content;animation:gmx-tick 70s linear infinite}
+.gmx-ticker:hover .gmx-track{animation-play-state:paused}
+.gmx-ticker span{font-weight:900;font-size:clamp(2.2rem,6.5vw,4.6rem);line-height:1.15;white-space:nowrap;color:transparent;-webkit-text-stroke:1.5px var(--deep);padding-right:.5em}
+.gmx-ticker span::after{content:"\2022";-webkit-text-stroke:0;color:var(--racing);padding-left:.5em}
+@keyframes gmx-tick{to{transform:translateX(-50%)}}
+.gmx-tap{position:absolute;left:0;top:0;z-index:-1;pointer-events:none}
+@media (prefers-reduced-motion: reduce){.gmx-motion .canon.in span a,.gmx-divider{animation:none}.gmx-ticker{display:none}}
 </style>
 <link rel="canonical" href="https://groovesmaxxing.com/">
   <!-- gmx-seo start -->
@@ -482,6 +500,10 @@ fill="none" stroke="#F2F2EF" stroke-width="7" stroke-linecap="round" stroke-line
 <div class="cluster">
 <h3>the nu moda pipeline</h3>
 <p><a href="artists/max-styler.html">Max Styler</a> launched <a href="labels/nu-moda.html">Nu Moda</a> in october 2025 and made it home for his own records. the bench: <a href="artists/kryptogram.html">kryptogram</a>, <a href="artists/greggio.html">Greggio</a>, <a href="artists/knorst.html">Knorst</a>, <a href="artists/jonathan.html">Jonathan</a>, <a href="artists/dvirnuns.html">DvirNuns</a>, <a href="artists/viot.html">Viot</a>, <a href="artists/welker.html">WELKER</a>. the co-signs live here too: <a href="artists/vintage-culture.html">Vintage Culture</a> and <a href="artists/notre-dame.html">Notre Dame</a> on You &amp; Me, <a href="artists/solomun.html">Solomun</a> on One More.</p>
+</div>
+<div class="cluster">
+<h3>the solid grooves crew</h3>
+<p><a href="artists/michael-bibi.html">Michael Bibi</a> and <a href="artists/pawsa.html">PAWSA</a> ran <a href="labels/solid-grooves.html">Solid Grooves</a> as a london party before it was ever a label, and the label came in 2015. bibi put the party on, PAWSA minded the music. the bench since: <a href="artists/dennis-cruz.html">Dennis Cruz</a>, <a href="artists/anotr.html">ANOTR</a>, <a href="artists/ben-sterling.html">Ben Sterling</a>, <a href="artists/toman.html">Toman</a>, <a href="artists/kolter.html">Kolter</a>, <a href="artists/discip.html">Discip</a>, <a href="artists/josh-butler.html">Josh Butler</a>, plus <a href="artists/ayybo.html">AYYBO</a> on 4 Ya Mind. summers belong to DC-10, the casino nights in ibiza.</p>
 </div>
 <div class="cluster">
 <h3>the minimal wave</h3>
@@ -1409,6 +1431,50 @@ slot.appendChild(fr);slot.hidden=false;});}
       });
       el.addEventListener('pointerleave', () => { el.style.setProperty('--rx', '0deg'); el.style.setProperty('--ry', '0deg'); el.style.setProperty('--ty', '0px'); });
     });
+  }
+
+  /* ---------- round two: canon wave, ticker, wave dividers, tap ripples ---------- */
+  const canon = document.querySelector('.canon');
+  if (canon) {
+    const names = [...canon.querySelectorAll('span a')];
+    names.forEach((a, k) => a.style.setProperty('--k', k));
+    if (!RM && names.length) {
+      const tk = document.createElement('div'); tk.className = 'gmx-ticker'; tk.setAttribute('aria-hidden', 'true');
+      const tr = document.createElement('div'); tr.className = 'gmx-track';
+      for (let r = 0; r < 2; r++) names.forEach(a => { const s = document.createElement('span'); s.textContent = a.textContent; tr.appendChild(s); });
+      tk.appendChild(tr); canon.after(tk);
+    }
+  }
+  const secs = [...document.querySelectorAll('body > section, main > section')];
+  secs.slice(1).forEach(s => { const d = document.createElement('div'); d.className = 'gmx-divider'; d.setAttribute('aria-hidden', 'true'); s.prepend(d); });
+  if (!RM) {
+    const SKIP = 'a,button,iframe,input,select,textarea,label,summary,video,audio,[role="button"],.player,.set-slide';
+    secs.forEach(s => s.addEventListener('click', e => {
+      if (e.target.closest(SKIP) || (getSelection && String(getSelection()).length)) return;
+      const sr = s.getBoundingClientRect(), R = 300, d2 = Math.min(devicePixelRatio || 1, 2);
+      const cx = e.clientX - sr.left, cy = e.clientY - sr.top;
+      const x0 = Math.max(0, cx - R), y0 = Math.max(0, cy - R), w = Math.min(sr.width, cx + R) - x0, h = Math.min(sr.height, cy + R) - y0;
+      if (w <= 0 || h <= 0) return;
+      if (s._tap) s._tap.remove();
+      const c = document.createElement('canvas'); c.className = 'gmx-tap'; c.setAttribute('aria-hidden', 'true');
+      c.width = Math.round(w * d2); c.height = Math.round(h * d2); c.style.cssText = `left:${x0}px;top:${y0}px;width:${w}px;height:${h}px`;
+      s.appendChild(c); s._tap = c;
+      const g = c.getContext('2d'); g.scale(d2, d2);
+      const col = s.classList.contains('day-section') ? '204,20,0' : '255,28,2', cell = 20, t0 = performance.now();
+      const frame = now => {
+        const age = (now - t0) / 1000; if (age > 1.8 || s._tap !== c) { if (s._tap === c) { c.remove(); s._tap = null; } return; }
+        g.clearRect(0, 0, w, h);
+        const ring = age * 260, fade = Math.exp(-age * 1.7);
+        for (let y = (cell - (y0 % cell)) % cell; y < h; y += cell) for (let x = (cell - (x0 % cell)) % cell; x < w; x += cell) {
+          const dist = Math.hypot(x + x0 - cx, y + y0 - cy);
+          const v = (Math.exp(-Math.pow((dist - ring) / 34, 2)) + 0.45 * Math.exp(-Math.pow((dist - ring * 0.55) / 26, 2))) * fade;
+          if (v < 0.04) continue;
+          g.fillStyle = `rgba(${col},${Math.min(0.85, v).toFixed(3)})`; g.beginPath(); g.arc(x, y, 1.5 + 5 * Math.min(1, v), 0, 6.2832); g.fill();
+        }
+        requestAnimationFrame(frame);
+      };
+      requestAnimationFrame(frame);
+    }));
   }
 
   /* ---------- hero: halftone pulse field + living logo ---------- */
