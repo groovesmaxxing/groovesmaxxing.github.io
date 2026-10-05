@@ -73,6 +73,11 @@ footer{border-top:1px solid var(--line);margin-top:72px;padding:34px 0 60px}
 .pn a{font-family:'Space Mono',monospace;font-size:.8rem;color:var(--steel);text-decoration:none;max-width:46%}
 .pn a:hover{color:var(--racing)}
 .pn .lbl{display:block;font-size:.68rem;letter-spacing:.08em;margin-bottom:4px}
+/* badge links */
+a.tag.badge{text-decoration:none;transition:border-color .15s,color .15s}
+a.tag.badge:hover{color:var(--racing);border-color:var(--racing)}
+.tag.badge.fp a{text-decoration:none;display:inline-block;padding:0 2px;transition:transform .15s}
+.tag.badge.fp a:hover{transform:scale(1.2)}
 </style>
 <link rel="canonical" href="https://groovesmaxxing.com/artists/konstantin-kobra">
   <!-- gmx-seo start -->
@@ -109,8 +114,8 @@ footer{border-top:1px solid var(--line);margin-top:72px;padding:34px 0 60px}
 <span class="tag lane">🚧 bumpy</span>
 <span class="tag">south asia</span>
 <span class="tag">deep, acid &amp; minimal house</span>
-<span class="tag badge">🎧 in rotation · 6</span>
-<span class="tag badge">🚧 🌴</span>
+<a class="tag badge" href="../badges.html#in-rotation">🎧 in rotation · 6</a>
+<span class="tag badge fp"><a href="../badges.html#bumpy" title="bumpy">🚧</a> <a href="../badges.html#wen-playa" title="wen playa">🌴</a></span>
 </div>
 <div class="bio">
 <p>konstantin kobra is a solo producer and dj working in deep house, acid and minimal house. he describes his base as an island in south asia, with slavic roots.</p>

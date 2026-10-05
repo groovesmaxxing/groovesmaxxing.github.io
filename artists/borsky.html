@@ -72,6 +72,11 @@ footer{border-top:1px solid var(--line);margin-top:72px;padding:34px 0 60px}
 .fine{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel)}
 .fine a{color:#cfcfc9;text-decoration:none;border-bottom:1px solid #3a3a40}
 .fine a:hover{color:var(--racing)}
+/* badge links */
+a.tag.badge{text-decoration:none;transition:border-color .15s,color .15s}
+a.tag.badge:hover{color:var(--racing);border-color:var(--racing)}
+.tag.badge.fp a{text-decoration:none;display:inline-block;padding:0 2px;transition:transform .15s}
+.tag.badge.fp a:hover{transform:scale(1.2)}
 </style>
 
 <script type="application/ld+json">
@@ -117,8 +122,8 @@ footer{border-top:1px solid var(--line);margin-top:72px;padding:34px 0 60px}
     <div class="meta">
       <span class="tag lane">either lane</span>
       <span class="tag">tech house</span>
-      <span class="tag badge">🎧 in rotation · 6</span>
-      <span class="tag badge">🧃 🚧 🌴</span>
+      <a class="tag badge" href="../badges.html#in-rotation">🎧 in rotation · 6</a>
+      <span class="tag badge fp"><a href="../badges.html#juice" title="good vibe juice">🧃</a> <a href="../badges.html#bumpy" title="bumpy">🚧</a> <a href="../badges.html#wen-playa" title="wen playa">🌴</a></span>
     </div>
 
     <div class="bio">

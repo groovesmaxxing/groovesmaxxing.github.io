@@ -76,6 +76,11 @@ footer{border-top:1px solid var(--line);margin-top:72px;padding:34px 0 60px}
 .cap{margin:22px 0 0;color:var(--steel);font-size:.85rem}
 .bio a,.fact .v a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#33333a}
 .bio a:hover,.fact .v a:hover{color:var(--racing);text-decoration-color:var(--racing)}
+/* badge links */
+a.tag.badge{text-decoration:none;transition:border-color .15s,color .15s}
+a.tag.badge:hover{color:var(--racing);border-color:var(--racing)}
+.tag.badge.fp a{text-decoration:none;display:inline-block;padding:0 2px;transition:transform .15s}
+.tag.badge.fp a:hover{transform:scale(1.2)}
 </style>
 
 <script type="application/ld+json">
@@ -128,8 +133,8 @@ footer{border-top:1px solid var(--line);margin-top:72px;padding:34px 0 60px}
       <span class="tag lane">either lane</span>
       <span class="tag">indie dance / house</span>
       <span class="tag">tel aviv, israel</span>
-      <span class="tag badge">👀 one to watch · 2</span>
-      <span class="tag badge">🧃 🚧</span>
+      <a class="tag badge" href="../badges.html#one-to-watch">👀 one to watch · 2</a>
+      <span class="tag badge fp"><a href="../badges.html#juice" title="good vibe juice">🧃</a> <a href="../badges.html#bumpy" title="bumpy">🚧</a></span>
     </div>
 
     <div class="bio">

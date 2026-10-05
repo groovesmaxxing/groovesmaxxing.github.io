@@ -78,6 +78,11 @@ footer{border-top:1px solid var(--line);margin-top:72px;padding:34px 0 60px}
 .fine{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel)}
 .fine a{color:#cfcfc9;text-decoration:none;border-bottom:1px solid #3a3a40}
 .fine a:hover{color:var(--racing)}
+/* badge links */
+a.tag.badge{text-decoration:none;transition:border-color .15s,color .15s}
+a.tag.badge:hover{color:var(--racing);border-color:var(--racing)}
+.tag.badge.fp a{text-decoration:none;display:inline-block;padding:0 2px;transition:transform .15s}
+.tag.badge.fp a:hover{transform:scale(1.2)}
 </style>
 
 <script type="application/ld+json">
@@ -144,14 +149,14 @@ footer{border-top:1px solid var(--line);margin-top:72px;padding:34px 0 60px}
       <span class="tag lane">🚧 bumpy</span>
       <span class="tag">marseille</span>
       <span class="tag">latin + afro house</span>
-      <span class="tag badge">📈 heavy rotation · 10</span>
-      <span class="tag badge">🧃 🚧 🌴</span>
-      <span class="tag badge">🏷️ label boss</span>
-      <span class="tag badge">▶️ sets on file</span>
-      <span class="tag badge">🏆 uk #2 · movin' to the sun</span>
-      <span class="tag badge">🏆 2× diamond in france</span>
-      <span class="tag badge">🏆 2× billboard dance airplay #1</span>
-      <span class="tag badge">🏆 edma breakthrough artist 2024</span>
+      <a class="tag badge" href="../badges.html#heavy-rotation">📈 heavy rotation · 10</a>
+      <span class="tag badge fp"><a href="../badges.html#juice" title="good vibe juice">🧃</a> <a href="../badges.html#bumpy" title="bumpy">🚧</a> <a href="../badges.html#wen-playa" title="wen playa">🌴</a></span>
+      <a class="tag badge" href="../badges.html#label-boss">🏷️ label boss</a>
+      <a class="tag badge" href="../badges.html#sets-on-file">▶️ sets on file</a>
+      <a class="tag badge" href="../badges.html#trophies">🏆 uk #2 · movin' to the sun</a>
+      <a class="tag badge" href="../badges.html#trophies">🏆 2× diamond in france</a>
+      <a class="tag badge" href="../badges.html#trophies">🏆 2× billboard dance airplay #1</a>
+      <a class="tag badge" href="../badges.html#trophies">🏆 edma breakthrough artist 2024</a>
     </div>
 
     <div class="bio">
