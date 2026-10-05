@@ -91,6 +91,11 @@ h2{font-weight:900;font-size:clamp(1.9rem,4.5vw,2.8rem);line-height:1.1;margin-b
 .canon{font-weight:900;font-size:clamp(1.15rem,3vw,1.7rem);line-height:1.5;max-width:900px;margin:26px 0 44px}
 .canon span{color:var(--deep)}
 .canon i{font-style:normal;color:#b9b9b3}
+.canon:has(+ .canon-next){margin-bottom:12px}
+.canon-next{font-weight:800;font-size:clamp(.95rem,2vw,1.12rem);line-height:1.7;max-width:900px;margin:0 0 44px}
+.canon-next span{color:var(--deep)}
+.canon-next a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:rgba(138,138,147,.5);transition:color .2s}
+.canon-next a:hover{color:var(--racing);text-decoration-color:var(--racing)}
 .clusters{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px 34px}
 .cluster h3{font-family:'Space Mono',monospace;font-size:.8rem;letter-spacing:.14em;color:var(--deep);margin-bottom:8px;font-weight:700}
 .cluster p{font-size:.94rem;color:#33332f}
@@ -491,7 +496,8 @@ fill="none" stroke="#F2F2EF" stroke-width="7" stroke-linecap="round" stroke-line
 <span class="mono eyebrow">who we follow</span>
 <h2>699 artists deep</h2>
 <p class="roster-cta"><a class="more" href="roster.html" data-pv-t="the roster" data-pv-d="every artist and label we follow, on one page. filter it, search it, click any name to find them on instagram." data-pv-m="its own page ↗ · 699 artists · 87 labels">see all 699 artists + 87 labels →</a></p>
-<p class="canon">the heavy rotation, the thirteen that define the page: <span><a href="artists/solomun.html">Solomun</a> · <a href="artists/vintage-culture.html">Vintage Culture</a> · <a href="artists/notre-dame.html">Notre Dame</a> · <a href="artists/adam-ten.html">Adam Ten</a> · <a href="artists/mita-gami.html">Mita Gami</a> · <a href="artists/max-styler.html">Max Styler</a> · <a href="artists/ayybo.html">AYYBO</a> · <a href="artists/tobehonest.html">TOBEHONEST</a> · <a href="artists/pawsa.html">PAWSA</a> · <a href="artists/volkoder.html">Volkoder</a> · <a href="artists/misha-klein.html">Misha Klein</a> · <a href="artists/mau-p.html">Mau P</a> · <a href="artists/michael-bibi.html">Michael Bibi</a></span> <i>· everyone else orbits these.</i></p>
+<p class="canon">the heavy rotation, the seventeen that define the page: <span><a href="artists/solomun.html">Solomun</a> · <a href="artists/vintage-culture.html">Vintage Culture</a> · <a href="artists/notre-dame.html">Notre Dame</a> · <a href="artists/adam-ten.html">Adam Ten</a> · <a href="artists/mita-gami.html">Mita Gami</a> · <a href="artists/max-styler.html">Max Styler</a> · <a href="artists/ayybo.html">AYYBO</a> · <a href="artists/tobehonest.html">TOBEHONEST</a> · <a href="artists/pawsa.html">PAWSA</a> · <a href="artists/volkoder.html">Volkoder</a> · <a href="artists/mau-p.html">Mau P</a> · <a href="artists/michael-bibi.html">Michael Bibi</a> · <a href="artists/anotr.html">ANOTR</a> · <a href="artists/hugel.html">HUGEL</a> · <a href="artists/chris-lake.html">Chris Lake</a> · <a href="artists/broken-hill.html">Broken Hill</a> · <a href="artists/tripolism.html">Tripolism</a></span> <i>· everyone else orbits these.</i></p>
+<p class="canon-next">next up in the rotation: <span><a href="artists/rafael.html">Rafael</a> · <a href="artists/jord.html">JØRD</a> · <a href="artists/brunello.html">Brunello</a> · <a href="artists/bonafique.html">Bonafique</a> · <a href="artists/panic-chase.html">Panic Chase</a> · <a href="artists/angelo-ferreri.html">Angelo Ferreri</a> · <a href="artists/gabss.html">Gabss</a> · <a href="artists/millero.html">Millero</a> · <a href="artists/no-static.html">NO STATIC</a> · <a href="artists/darco.html">Darco</a> · <a href="artists/luch.html">Luch</a> · <a href="artists/toman.html">Toman</a></span></p>
 <div class="clusters">
 <div class="cluster">
 <h3>the gdb pipeline</h3>
@@ -1442,7 +1448,7 @@ slot.appendChild(fr);slot.hidden=false;});}
       const tk = document.createElement('div'); tk.className = 'gmx-ticker'; tk.setAttribute('aria-hidden', 'true');
       const tr = document.createElement('div'); tr.className = 'gmx-track';
       for (let r = 0; r < 2; r++) names.forEach(a => { const s = document.createElement('span'); s.textContent = a.textContent; tr.appendChild(s); });
-      tk.appendChild(tr); canon.after(tk);
+      tk.appendChild(tr); (document.querySelector('.canon-next') || canon).after(tk);
     }
   }
   const secs = [...document.querySelectorAll('body > section, main > section')];
