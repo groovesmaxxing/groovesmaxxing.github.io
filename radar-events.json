@@ -1,62 +1,8 @@
 {
-"generated": "2026-10-04T14:50:52+00:00",
+"generated": "2026-10-05T18:34:13+00:00",
 "artist_count": 688,
-"artists_with_events": 145,
+"artists_with_events": 146,
 "events": [
-{
-"date": "2026-10-04",
-"event": "DEVAULT - Ages 21+",
-"venue": "LIV Nightclub Las Vegas",
-"city": "Las Vegas",
-"region": "NV",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7PoZ3",
-"artist": "Devault"
-},
-{
-"date": "2026-10-04",
-"event": "Austin City Limits Music Festival - Weekend One",
-"venue": "Zilker Park",
-"city": "Austin",
-"region": "TX",
-"url": "https://on.fgtix.com/trk/v8SK",
-"artist": "Fcukers"
-},
-{
-"date": "2026-10-04",
-"event": "Odd Mob",
-"venue": "Hindley St Music Hall",
-"city": "Adelaide",
-"region": "SA",
-"url": "https://www.moshtix.com.au/v2/event/odd-mob/194315",
-"artist": "Odd Mob"
-},
-{
-"date": "2026-10-04",
-"event": "Austin City Limits Music Festival - Weekend One",
-"venue": "Zilker Park",
-"city": "Austin",
-"region": "TX",
-"url": "https://on.fgtix.com/trk/v8SK",
-"artist": "Parcels"
-},
-{
-"date": "2026-10-04",
-"event": "Austin City Limits Music Festival - Weekend One",
-"venue": "Zilker Park",
-"city": "Austin",
-"region": "TX",
-"url": "https://on.fgtix.com/trk/v8SK",
-"artist": "SOFI TUKKER"
-},
-{
-"date": "2026-10-04",
-"event": "Tinlicker North America 2026",
-"venue": "The Depot",
-"city": "Salt Lake City",
-"region": "UT",
-"url": "https://www.ticketmaster.com/tinlicker-north-america-2026-salt-lake-city-utah-10-04-2026/event/1E006489A8F09B03",
-"artist": "Tinlicker"
-},
 {
 "date": "2026-10-05",
 "event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
@@ -1730,6 +1676,15 @@
 "region": "QLD",
 "url": "https://www.moshtix.com.au/v2/event/crooked-colours-dirt-road-gold-australia-tour/196189",
 "artist": "Crooked Colours"
+},
+{
+"date": "2026-10-31",
+"event": "Bohemia Presents Dennis Cruz",
+"venue": "Bohemia Beach Club | FIVE Palm",
+"city": "Dubai",
+"region": "AE",
+"url": "https://www.ticketmaster.ae/event/bohemia-presents-dennis-cruz-tickets/1895249673",
+"artist": "Dennis Cruz"
 },
 {
 "date": "2026-10-31",
@@ -3775,6 +3730,15 @@
 "artist": "Torren Foot"
 },
 {
+"date": "2027-02-04",
+"event": "Drama",
+"venue": "The Princess Theatre",
+"city": "Brisbane",
+"region": "QLD",
+"url": "https://www.ticketmaster.com.au/drama-brisbane-04-02-2027/event/25006538C0C84CA6",
+"artist": "DRAMA"
+},
+{
 "date": "2027-02-13",
 "event": "CID - Ages 16+",
 "venue": "Ogden Theatre",
@@ -3872,6 +3836,15 @@
 "region": "CO",
 "url": "https://on.fgtix.com/trk/v1yW",
 "artist": "Nala"
+},
+{
+"date": "2027-02-27",
+"event": "DRAMA",
+"venue": "Heaven",
+"city": "London",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/drama-london-27-02-2027/event/1F006532383C8A9F",
+"artist": "DRAMA"
 },
 {
 "date": "2027-03-17",
