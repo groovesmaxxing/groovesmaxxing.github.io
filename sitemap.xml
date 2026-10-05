@@ -3637,8 +3637,20 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://groovesmaxxing.com/artists/soofnic</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://groovesmaxxing.com/artists/sosa</loc>
     <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://groovesmaxxing.com/artists/space-motion</loc>
+    <lastmod>2026-10-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -4337,7 +4349,7 @@
 <url><loc>https://groovesmaxxing.com/tracklists/gabbs-the-lot-radio-2025</loc><lastmod>2026-09-25</lastmod></url>
 <url><loc>https://groovesmaxxing.com/tracklists/luch-solomun-1-pacha-ibiza-2026</loc><lastmod>2026-09-26</lastmod></url>
 <url><loc>https://groovesmaxxing.com/tracklists/roddy-lima-arca-sao-paulo-2026</loc><lastmod>2026-09-29</lastmod></url>
-<url><loc>https://groovesmaxxing.com/tracklists/camelphat-mixmag-lab-london</loc><lastmod>2026-09-29</lastmod></url>
+<url><loc>https://groovesmaxxing.com/tracklists/camelphat-mixmag-lab-london</loc><lastmod>2026-10-05</lastmod></url>
 <url><loc>https://groovesmaxxing.com/tracklists/no-static-experts-only-festival-nyc-2026</loc><lastmod>2026-09-29</lastmod></url>
 <url><loc>https://groovesmaxxing.com/tracklists/amour-propre-long-feng-burning-man-2026</loc><lastmod>2026-10-01</lastmod></url>
 <url><loc>https://groovesmaxxing.com/tracklists/jackie-it-messy-sessions-x-norish-fm</loc><lastmod>2026-10-02</lastmod></url>
