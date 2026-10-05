@@ -110,6 +110,9 @@ h1.eyebrow{margin:0;font-weight:400}
 .form textarea{min-height:76px;resize:vertical}
 .form input:focus,.form textarea:focus{border-color:var(--racing);outline:none}
 .form .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.btn.on{border-color:var(--racing);color:var(--racing)}
+.where{border-top:1px solid var(--line);margin-top:18px;padding-top:6px}
+.shared{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);text-align:center;margin-top:10px;overflow-wrap:anywhere}
 .msg{font-family:'Space Mono',monospace;font-size:.8rem;color:var(--steel);margin-top:12px;line-height:1.6}
 .msg.ok{color:var(--racing)}
 
@@ -165,6 +168,7 @@ h1.eyebrow{margin:0;font-weight:400}
 <div class="tap" id="tap">tap to <b>scan</b></div>
 <div class="rec" id="rec"><i></i><span id="recword">listening</span><span class="n" id="count">15</span></div>
 <button class="how" type="button" id="howbtn" aria-haspopup="dialog">how it works?</button>
+<p class="shared" id="shared" hidden></p>
 </section>
 
 <dialog class="howbox" id="howbox" aria-labelledby="howtitle">
@@ -173,6 +177,7 @@ h1.eyebrow{margin:0;font-weight:400}
 <p>we check our own library of sets first, then the big catalogs.</p>
 <p>can't name it? you choose whether we keep the clip to keep hunting. nothing is kept unless you say so.</p>
 <p>your scans stay on this phone, and every result has a button to tell us we got it wrong.</p>
+<p>hearing a set? under the result, tell us which one. we send the clip once more to find the spot in it, then delete it.</p>
 <p class="links"><a href="privacy.html">privacy</a> · <a href="more.html">more</a></p>
 <button class="btn" type="button" id="howclose">close</button>
 </dialog>
@@ -403,6 +408,8 @@ function identify(blob){
     /* the 15 s scan replaces the early card when it names something, else the early card stays */
     if(c.kind!=='match'&&early)current=early;
     else current={job_id:j.job_id,recognition_id:r.recognition_id||j.job_id,card:c,seconds:Math.round((Date.now()-began)/100)/10};
+    /* the set hint answers for the 15 s scan, the one the set match ran on, even under an early card */
+    current.hint_ref=r.recognition_id||j.job_id;
     /* keep my clips (DECISION 12): the switch under more, the clip stays on this phone */
     var keep=!!(window.gmxClips&&gmxClips.on()&&heldBlob);
     if(keep)gmxClips.put({id:current.job_id,t:Date.now(),blob:heldBlob,recognition_id:current.recognition_id,kind:c.kind}).catch(function(){});
@@ -500,6 +507,7 @@ function resultCard(cur){
     out+='<h3>help us find it?</h3><div class="row"><button class="btn" data-act="help">help us find it?</button><button class="btn ghost" data-act="again">no thanks, scan again</button></div>';
     out+=helpForm();
   }
+  out+=whereBlock();
   out+='<div class="msg" id="cardmsg"></div>';
   if(c.kind==='match')out+='<div class="row"><button class="btn ghost" data-act="again">scan again</button></div>';
   return out;
@@ -520,6 +528,72 @@ function helpForm(){
     '<label for="h-note">anything else</label><textarea id="h-note" name="note" maxlength="1000"></textarea>'+
     '<div class="row"><button class="btn red" type="submit">keep the clip</button><button class="btn ghost" type="button" data-act="closeform">never mind</button></div></form>';
 }
+/* "where are you hearing this?" (phase 8 step 5, design DECISIONS 3, C and D): one optional
+   tap under any result, never before it. a set chip can carry the link and an @handle, and
+   re-sends this clip once so the server can find the spot in the set. the tap is the consent.
+   the server matches it and deletes it. nothing here publishes anything. */
+var HINT_CHIPS=[['youtube_set','youtube set'],['soundcloud_set','soundcloud set'],['club','club'],['radio','radio'],['other','other']];
+var hintChip=null, sharedLink=null;
+function isSetChip(ch){return ch==='youtube_set'||ch==='soundcloud_set'}
+function whereBlock(){
+  var chips=HINT_CHIPS.map(function(c){return '<button class="btn" type="button" data-chip="'+c[0]+'" aria-pressed="false">'+c[1]+'</button>'}).join('');
+  return '<div class="where"><div class="row"><button class="btn ghost" data-act="where">where are you hearing this?</button></div>'+
+    '<form class="form" id="wform" autocomplete="off"><div class="row" id="wchips">'+chips+'</div>'+
+    '<div id="wset" hidden><label for="w-link">the set\'s link</label><input id="w-link" name="link" inputmode="url" maxlength="1024" placeholder="https://">'+
+    '<label for="w-handle">@handle for credit (optional)</label><input id="w-handle" name="handle" maxlength="31" placeholder="@">'+
+    '<p class="note">we send this clip once more to find the spot in the set, then delete it.</p></div>'+
+    '<div class="row"><button class="btn red" type="submit">send</button><button class="btn ghost" type="button" data-act="closeform">never mind</button></div></form></div>';
+}
+function pickChip(ch){
+  hintChip=ch;
+  var bs=card.querySelectorAll('[data-chip]');
+  for(var i=0;i<bs.length;i++){var on=bs[i].getAttribute('data-chip')===ch;bs[i].classList.toggle('on',on);bs[i].setAttribute('aria-pressed',on?'true':'false')}
+  var w=$('wset'); if(w)w.hidden=!isSetChip(ch);
+  if(isSetChip(ch)&&$('w-link')&&!$('w-link').value)$('w-link').focus();
+}
+function openWhere(){
+  var f=$('wform'); if(!f)return;
+  f.classList.add('on'); hintChip=null;
+  if(sharedLink){ $('w-link').value=sharedLink; pickChip(/soundcloud\.com/i.test(sharedLink)?'soundcloud_set':'youtube_set') }
+}
+function sendHint(f){
+  if(!current){say('nothing to tag.');return}
+  if(!hintChip){say('pick one first.');return}
+  var set=isSetChip(hintChip), link=set?f.link.value.trim():'', handle=set?f.handle.value.trim():'';
+  if(link&&!/^https:\/\//i.test(link)){say('paste the whole link, starting with https://');return}
+  var fd=new FormData();
+  fd.append('recognition_id',current.hint_ref||current.recognition_id); fd.append('chip',hintChip);
+  if(link)fd.append('link',link); if(handle)fd.append('handle',handle);
+  if(set&&heldBlob)fd.append('audio',heldBlob,'clip.'+extOf(heldBlob));
+  say('sending');
+  fetch(cfg.api_base+'/set-hint',{method:'POST',headers:headers(),body:fd})
+  .then(function(r){
+    if(r.status===409){say('this phone already tagged that scan.');return}
+    if(r.status===410){say('that scan is too old to tag. scan again.');return}
+    if(r.status===422){say('that link did not look right. a youtube or soundcloud set, starting with https://');return}
+    if(r.status===429){say('too many this hour, try later.');return}
+    if(!r.ok)throw new Error(r.status);
+    return r.json().then(function(j){
+      var s=j.status;
+      say(s==='placed'||s==='already_placed'?'got it. that helps us tag the set. appreciate you.'
+        :s==='not_in_index'||s==='no_audio'?'got it. we will look at that set. appreciate you.'
+        :s==='no_match'?'got it. we could not line it up with that set this time. appreciate you anyway.'
+        :'noted. appreciate you.',true);
+      f.classList.remove('on'); sharedLink=null; showShared();
+    });
+  }).catch(function(){say('did not send. check your signal and try again.')});
+}
+/* android: "share to groovesMAXXING" from youtube or soundcloud lands here as ?text= or ?url=.
+   the link waits on this phone until the next result. iphone can't share into a web app, so
+   there it's paste. */
+function showShared(){var p=$('shared');if(!p)return;if(sharedLink){p.textContent='set link ready. scan, then tag it under the result.';p.hidden=false}else{p.hidden=true}}
+(function(){
+  try{
+    var q=new URLSearchParams(location.search), all=[q.get('url'),q.get('text'),q.get('title')].join(' '), m=all.match(/https:\/\/[^\s]+/);
+    if(m&&/(^https:\/\/([a-z0-9-]+\.)?(youtube\.com|youtu\.be|soundcloud\.com)\/)/i.test(m[0])){sharedLink=m[0];history.replaceState(null,'',location.pathname)}
+  }catch(e){}
+  showShared();
+})();
 function checkArtistPage(artist){
   var s=slug(artist); if(!s)return;
   fetch('/artists/'+s+'.html',{method:'HEAD'}).then(function(r){
@@ -531,8 +605,10 @@ function say(text,ok){var m=$('cardmsg');if(!m)return;m.textContent=text;m.class
 
 /* actions */
 card.addEventListener('click',function(ev){
+  var ch=ev.target.closest('[data-chip]'); if(ch){pickChip(ch.getAttribute('data-chip'));return}
   var b=ev.target.closest('[data-act]'); if(!b)return;
   var act=b.getAttribute('data-act');
+  if(act==='where'){openWhere();return}
   if(act==='again'){card.classList.remove('on');card.innerHTML='';dropBlob();current=null;window.scrollTo({top:0,behavior:'smooth'});return}
 if(act==='listen'){card.classList.remove('on');card.innerHTML='';dropBlob();current=null;window.scrollTo({top:0,behavior:'smooth'});startScan();return}
   if(act==='share'){share();return}
@@ -551,6 +627,8 @@ card.addEventListener('submit',function(ev){
       ig_handle:f.ig_handle.value.trim()||null,note:f.note.value.trim()||null,website:f.website.value||''});
   }else if(f.id==='hform'){
     sendHelp(f);
+  }else if(f.id==='wform'){
+    sendHint(f);
   }
 });
 function sendCorrection(body){
