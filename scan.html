@@ -410,6 +410,8 @@ function identify(blob){
     else current={job_id:j.job_id,recognition_id:r.recognition_id||j.job_id,card:c,seconds:Math.round((Date.now()-began)/100)/10};
     /* the set hint answers for the 15 s scan, the one the set match ran on, even under an early card */
     current.hint_ref=r.recognition_id||j.job_id;
+    /* the set this clip sits in, when the server already knows it and the set is public */
+    current.in_set=r.in_set||null;
     /* keep my clips (DECISION 12): the switch under more, the clip stays on this phone */
     var keep=!!(window.gmxClips&&gmxClips.on()&&heldBlob);
     if(keep)gmxClips.put({id:current.job_id,t:Date.now(),blob:heldBlob,recognition_id:current.recognition_id,kind:c.kind}).catch(function(){});
@@ -470,6 +472,15 @@ function heardRows(c){
   });
   return out+'</ul>';
 }
+/* "you're listening to": the set and the spot, straight from the scan, no typing. it only
+   comes back for a set that already has its page here or sits on the dj's, label's, venue's
+   or festival's own channel. */
+function inSetRows(cur){
+  var s=cur.in_set; if(!s||!s.set_title)return '';
+  var name=s.page_url?'<a href="'+esc(s.page_url)+'">'+esc(s.set_title)+'</a>':(s.deep_link?'<a href="'+esc(s.deep_link)+'" target="_blank" rel="noopener">'+esc(s.set_title)+'</a>':esc(s.set_title));
+  var at=s.deep_link?'<a href="'+esc(s.deep_link)+'" target="_blank" rel="noopener">around '+esc(s.at)+'</a>':'around '+esc(s.at);
+  return '<h3>you\'re listening to</h3><ul class="heard"><li>'+name+'<span class="at">'+at+'</span></li></ul>';
+}
 function resultCard(cur){
   var c=cur.card, cand=c.candidate, out='';
   if(c.kind==='match'&&cand){
@@ -488,6 +499,7 @@ function resultCard(cur){
     var links=storeRow(cand);
     out+='<div class="row">'+links+'<button class="btn" data-act="share">share</button></div>';
     out+='<div class="row" id="artistrow"></div>';
+    out+=inSetRows(cur);
     out+=heardRows(cand);
     out+='<h3>right?</h3><div class="row"><button class="btn red" data-act="confirm">that\'s right</button><button class="btn" data-act="correct">it\'s actually...</button></div>';
     out+=correctionForm();
@@ -496,6 +508,7 @@ function resultCard(cur){
     var g=nameOf(cand);
     out+='<p class="kw"><b>no match</b></p><h2>nothing we\'re sure of.</h2>';
     out+='<div class="row"><button class="btn red" data-act="listen">listen again</button></div><p class="note">best on a drop or a vocal.</p>';
+    out+=inSetRows(cur);
     out+='<div class="guess"><p class="kw">closest guess</p><p class="nm">'+(g?esc(g.artist)+(g.artist&&g.title?' - ':'')+esc(g.title):'an unnamed library entry')+'</p><p class="pc">'+sureLine(cand)+'</p>';
     out+='<div class="row"><button class="btn" data-act="confirm">that\'s right</button><button class="btn" data-act="correct">it\'s actually...</button></div></div>';
     out+=correctionForm();
@@ -504,6 +517,7 @@ function resultCard(cur){
   }else{
     out+='<p class="kw"><b>no match</b></p><h2>nothing yet.</h2>';
     out+='<div class="row"><button class="btn red" data-act="listen">listen again</button></div><p class="note">best on a drop or a vocal.</p>';
+    out+=inSetRows(cur);
     out+='<h3>help us find it?</h3><div class="row"><button class="btn" data-act="help">help us find it?</button><button class="btn ghost" data-act="again">no thanks, scan again</button></div>';
     out+=helpForm();
   }
@@ -554,7 +568,9 @@ function pickChip(ch){
 function openWhere(){
   var f=$('wform'); if(!f)return;
   f.classList.add('on'); hintChip=null;
-  if(sharedLink){ $('w-link').value=sharedLink; pickChip(/soundcloud\.com/i.test(sharedLink)?'soundcloud_set':'youtube_set') }
+  var known=current&&current.in_set&&current.in_set.deep_link;   /* the scan already found the set: only the @ is left */
+  var pre=sharedLink||known;
+  if(pre){ $('w-link').value=pre; pickChip(/soundcloud\.com/i.test(pre)?'soundcloud_set':'youtube_set') }
 }
 function sendHint(f){
   if(!current){say('nothing to tag.');return}
@@ -564,7 +580,8 @@ function sendHint(f){
   var fd=new FormData();
   fd.append('recognition_id',current.hint_ref||current.recognition_id); fd.append('chip',hintChip);
   if(link)fd.append('link',link); if(handle)fd.append('handle',handle);
-  if(set&&heldBlob)fd.append('audio',heldBlob,'clip.'+extOf(heldBlob));
+  /* the clip goes once more only when the scan did not already place itself in a set */
+  if(set&&heldBlob&&!current.in_set)fd.append('audio',heldBlob,'clip.'+extOf(heldBlob));
   say('sending');
   fetch(cfg.api_base+'/set-hint',{method:'POST',headers:headers(),body:fd})
   .then(function(r){
