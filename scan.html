@@ -479,7 +479,9 @@ function inSetRows(cur){
   var s=cur.in_set; if(!s||!s.set_title)return '';
   var name=s.page_url?'<a href="'+esc(s.page_url)+'">'+esc(s.set_title)+'</a>':(s.deep_link?'<a href="'+esc(s.deep_link)+'" target="_blank" rel="noopener">'+esc(s.set_title)+'</a>':esc(s.set_title));
   var at=s.deep_link?'<a href="'+esc(s.deep_link)+'" target="_blank" rel="noopener">around '+esc(s.at)+'</a>':'around '+esc(s.at);
-  return '<h3>you\'re listening to</h3><ul class="heard"><li>'+name+'<span class="at">'+at+'</span></li></ul>';
+  /* the tracklist's own call at that spot, so a row fixed by ear shows up here too. none on an ID row */
+  var row=s.row?'<li><span>on the tracklist: <b>'+esc(s.row)+'</b></span><span class="at">from '+esc(s.row_at||s.at)+'</span></li>':'';
+  return '<h3>you\'re listening to</h3><ul class="heard"><li>'+name+'<span class="at">'+at+'</span></li>'+row+'</ul>';
 }
 function resultCard(cur){
   var c=cur.card, cand=c.candidate, out='';
