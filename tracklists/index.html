@@ -51,6 +51,8 @@ td.x>a:not(.ar){display:block;padding:8px 0;margin:-8px 0}
 .lab{font-family:'Space Mono',monospace;font-size:.74rem;color:var(--steel);border:1px solid var(--line);border-radius:4px;padding:2px 7px;margin-left:8px;white-space:nowrap}
 .soft{color:var(--steel);font-family:'Space Mono',monospace;font-size:.8rem;margin-left:6px}
 .thx{color:var(--steel);font-size:.85rem;margin-left:6px}
+.sig{font-family:'Space Mono',monospace;font-size:.66rem;letter-spacing:.06em;color:var(--steel);border:1px solid rgba(255,28,2,.32);border-radius:3px;padding:1px 6px;margin-left:6px;white-space:nowrap;vertical-align:1px}
+.sig.ear,.sig.artist{color:var(--day);border-color:rgba(255,28,2,.6)}
 tr.open td.x{color:var(--steel);font-family:'Space Mono',monospace}
 .get{margin-top:8px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
 .g{font-family:'Space Mono',monospace;font-size:.71rem;letter-spacing:.03em;color:var(--steel);border:1px solid var(--line);border-radius:4px;padding:3px 9px;text-decoration:none;white-space:nowrap}
@@ -78,6 +80,7 @@ td.t{width:62px;font-size:.82rem}
 td.n{width:26px;font-size:.82rem}
 td.x{overflow-wrap:anywhere}
 .lab{white-space:normal;display:inline-block;margin-left:6px}
+.sig{margin-left:4px;padding:1px 5px}
 }
 /* app tab bar (phase 5, pwa shell). the same block sits on every tab page. */
 .gmx-tabs{display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(11,11,13,.96);border-top:1px solid rgba(242,242,239,.12);padding-bottom:env(safe-area-inset-bottom);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
@@ -328,6 +331,7 @@ tr.hid{display:none}
 <p>we listen to as many sets as we can, but there are only two ears over here. so every timestamp is measured to five seconds.</p>
 <p>labels are checked against a catalogue, or left off.</p>
 <p>a track we couldn't name says ID instead of a guess. a (?) means one source so far.</p>
+<p>audio, crowd, artist and ear after a track say how we know the name: a fingerprint, a listener, the artist, or our own ears.</p>
 <p>got one wrong or know an ID? tell us and we'll fix it asap 🤝</p>
 <p class="reach"><a href="mailto:groovesmaxxing@gmail.com">email us</a><a href="https://www.instagram.com/groovesmaxxing" target="_blank" rel="noopener">dm us on instagram</a></p>
 <button class="hbtn" type="button" id="howclose">close</button>
