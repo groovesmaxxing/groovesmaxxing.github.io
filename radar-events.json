@@ -1,35 +1,8 @@
 {
-"generated": "2026-10-05T18:34:13+00:00",
+"generated": "2026-10-06T16:01:58+00:00",
 "artist_count": 688,
 "artists_with_events": 146,
 "events": [
-{
-"date": "2026-10-05",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "Petco Park",
-"city": "San Diego",
-"region": "CA",
-"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-san-diego-california-10-05-2026/event/0A006466E18AAD1A",
-"artist": "Midnight Generation"
-},
-{
-"date": "2026-10-05",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "Petco Park",
-"city": "San Diego",
-"region": "CA",
-"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-san-diego-california-10-05-2026/event/0A006466E18AAD1A",
-"artist": "Polo & Pan"
-},
-{
-"date": "2026-10-05",
-"event": "The Jungle Giants",
-"venue": "Lee's Palace",
-"city": "Toronto",
-"region": "ON",
-"url": "https://www.ticketmaster.ca/the-jungle-giants-toronto-ontario-10-05-2026/event/100064B387D55359",
-"artist": "The Jungle Giants"
-},
 {
 "date": "2026-10-06",
 "event": "Parcels",
@@ -299,6 +272,15 @@
 "region": "NY",
 "url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-10-10-2026/event/3B00643505D182DF",
 "artist": "Jamie xx"
+},
+{
+"date": "2026-10-10",
+"event": "Lewis OfMan - 50KWTTS North American Tour",
+"venue": "Union Stage",
+"city": "Washington",
+"region": "DC",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAvzu4",
+"artist": "Lewis OfMan"
 },
 {
 "date": "2026-10-10",
@@ -1418,15 +1400,6 @@
 },
 {
 "date": "2026-10-25",
-"event": "ELECTRO MERVEILLES - THE GRAND FINALE | TCHAMI, TIGERLILY, ALEX HOSKING, MOWGLI MAY & FRED B SIDE",
-"venue": "Manning Bar",
-"city": "Camperdown",
-"region": "NSW",
-"url": "https://www.moshtix.com.au/v2/event/electro-merveilles-the-grand-finale-tchami-tigerlily-alex-hosking-mowgli-may-fred-b-side/198511",
-"artist": "Tchami"
-},
-{
-"date": "2026-10-25",
 "event": "Zhu",
 "venue": "The Concourse Project",
 "city": "Austin",
@@ -2264,6 +2237,15 @@
 },
 {
 "date": "2026-11-13",
+"event": "Biscits",
+"venue": "Newspeak",
+"city": "Montreal",
+"region": "QC",
+"url": "https://www.universe.com/events/biscits-tickets-VFGDT8?ref=ticketmaster",
+"artist": "Biscits"
+},
+{
+"date": "2026-11-13",
 "event": "DJ Tennis",
 "venue": "CODA",
 "city": "Toronto",
@@ -2666,6 +2648,15 @@
 "region": "CA",
 "url": "https://www.ticketweb.com/event/biscits-time-nightclub-tickets/14354574",
 "artist": "Biscits"
+},
+{
+"date": "2026-11-21",
+"event": "D.O.D",
+"venue": "LIV Nightclub Miami",
+"city": "Miami Beach",
+"region": "FL",
+"url": "https://www.ticketweb.com/event/dod-liv-nightclub-miami-tickets/14363794",
+"artist": "D.O.D"
 },
 {
 "date": "2026-11-21",
@@ -3730,6 +3721,15 @@
 "artist": "Torren Foot"
 },
 {
+"date": "2027-02-02",
+"event": "DRAMA",
+"venue": "Freo.Social",
+"city": "Fremantle",
+"region": "WA",
+"url": "https://www.moshtix.com.au/v2/event/drama/200666",
+"artist": "DRAMA"
+},
+{
 "date": "2027-02-04",
 "event": "Drama",
 "venue": "The Princess Theatre",
@@ -3737,6 +3737,42 @@
 "region": "QLD",
 "url": "https://www.ticketmaster.com.au/drama-brisbane-04-02-2027/event/25006538C0C84CA6",
 "artist": "DRAMA"
+},
+{
+"date": "2027-02-05",
+"event": "DRAMA (USA)",
+"venue": "Northcote Theatre",
+"city": "Northcote",
+"region": "VIC",
+"url": "https://www.moshtix.com.au/v2/event/drama-usa-/200689",
+"artist": "DRAMA"
+},
+{
+"date": "2027-02-06",
+"event": "DRAMA",
+"venue": "The Roundhouse UNSW",
+"city": "Kensington",
+"region": "NSW",
+"url": "https://www.moshtix.com.au/v2/event/drama/200671",
+"artist": "DRAMA"
+},
+{
+"date": "2027-02-11",
+"event": "JOHN SUMMIT – EUROPE CTRL ESCAPE ARENA TOUR",
+"venue": "COS Torwar",
+"city": "Warsaw",
+"region": "PL",
+"url": "https://www.ticketmaster.pl/event/john-summit--europe-ctrl-escape-arena-tour-tickets/2045555723?language=en-us",
+"artist": "John Summit"
+},
+{
+"date": "2027-02-12",
+"event": "JOHN SUMMIT – EUROPE CTRL ESCAPE ARENA TOUR",
+"venue": "Vorst Nationaal/Forest National",
+"city": "Forest (Brussels)",
+"region": "BE",
+"url": "https://www.ticketmaster.be/event/john-summit--europe-ctrl-escape-arena-tour-tickets/206059935",
+"artist": "John Summit"
 },
 {
 "date": "2027-02-13",
@@ -3749,12 +3785,30 @@
 },
 {
 "date": "2027-02-13",
+"event": "JOHN SUMMIT – EUROPE CTRL ESCAPE ARENA TOUR",
+"venue": "Ziggo Dome",
+"city": "Amsterdam",
+"region": "NL",
+"url": "https://www.ticketmaster.nl/event/john-summit--europe-ctrl-escape-arena-tour-tickets/1364222872?language=en-us",
+"artist": "John Summit"
+},
+{
+"date": "2027-02-13",
 "event": "Wade Bowen: The Version of Me You Get Tour @ 191 Toole",
 "venue": "191 Toole",
 "city": "Tucson",
 "region": "AZ",
 "url": "https://www.ticketmaster.com/wade-bowen-the-version-of-me-tucson-arizona-02-13-2027/event/1900653CC15E7B4C",
 "artist": "Wade"
+},
+{
+"date": "2027-02-18",
+"event": "JOHN SUMMIT – EUROPE CTRL ESCAPE TOUR",
+"venue": "",
+"city": "Berlin",
+"region": "DE",
+"url": "https://www.ticketmaster.de/event/john-summit--europe-ctrl-escape-tour-tickets/2091996281?language=en-us",
+"artist": "John Summit"
 },
 {
 "date": "2027-02-18",
@@ -3773,6 +3827,15 @@
 "region": "CO",
 "url": "https://on.fgtix.com/trk/v1yW",
 "artist": "Disco Lines"
+},
+{
+"date": "2027-02-19",
+"event": "JOHN SUMMIT – EUROPE CTRL ESCAPE TOUR",
+"venue": "",
+"city": "Cologne",
+"region": "DE",
+"url": "https://www.ticketmaster.de/event/john-summit--europe-ctrl-escape-tour-tickets/704561120?language=en-us",
+"artist": "John Summit"
 },
 {
 "date": "2027-02-19",
@@ -3821,6 +3884,15 @@
 },
 {
 "date": "2027-02-20",
+"event": "JOHN SUMMIT - EUROPE CTRL ESCAPE TOUR",
+"venue": "Halle 622",
+"city": "Zürich",
+"region": "CH",
+"url": "https://www.ticketmaster.ch/event/john-summit-europe-ctrl-escape-tour-tickets/881350826?language=en-us",
+"artist": "John Summit"
+},
+{
+"date": "2027-02-20",
 "event": "Palm Tree Music Festival",
 "venue": "Rio Grande Park",
 "city": "Aspen",
@@ -3845,6 +3917,15 @@
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/drama-london-27-02-2027/event/1F006532383C8A9F",
 "artist": "DRAMA"
+},
+{
+"date": "2027-02-27",
+"event": "JOHN SUMMIT - EUROPE CTRL ESCAPE ARENA TOUR",
+"venue": "The O2",
+"city": "London",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/john-summit-europe-ctrl-escape-arena-london-27-02-2027/event/35006542F27AE994",
+"artist": "John Summit"
 },
 {
 "date": "2027-03-17",
