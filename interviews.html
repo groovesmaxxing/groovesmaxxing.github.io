@@ -87,6 +87,34 @@ footer a{color:var(--steel);text-decoration:none}
 footer a:hover{color:var(--racing)}
 @media (max-width:620px){.wrap{padding:36px 16px 60px}.rail{margin:14px -16px 0;padding:8px 16px}.grid{grid-template-columns:1fr 1fr;gap:14px 10px}.card .t{font-size:13px}.set-play{width:44px;height:44px}.set-play svg{width:18px;height:18px}}
 @media (max-width:420px){.grid{grid-template-columns:1fr}}
+
+.ivtabs{display:flex;gap:4px;margin:26px 0 0;border-bottom:1px solid var(--line)}
+.ivtab{font-family:'Space Mono',monospace;font-size:12.5px;letter-spacing:.1em;background:none;border:0;border-bottom:3px solid transparent;color:var(--steel);padding:10px 14px 12px;cursor:pointer;margin-bottom:-1px}
+.ivtab:hover{color:var(--day)}
+.ivtab[aria-selected="true"]{color:var(--day);border-bottom-color:var(--racing)}
+.ivtab:focus-visible{outline:3px solid var(--racing);outline-offset:3px}
+.ivpane[hidden]{display:none}
+#shows .sub{margin-top:26px}
+.pods{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:6px}
+.pod{display:block;text-decoration:none;border:1px solid #2c2c31;border-radius:8px;padding:18px 19px;transition:border-color .15s,transform .15s}
+.pod:hover{border-color:var(--racing);transform:translateY(-2px)}
+.pod h4{margin:0 0 6px;text-decoration:none;font-size:1rem;color:#f0f0ea}
+.pod:hover h4{color:var(--racing)}
+.pod p{margin:0 0 9px;font-size:.87rem;line-height:1.6;color:#b9b9b3}
+.pod .pwho{font-size:.72rem;color:#7f7f7b;letter-spacing:.04em;margin-bottom:10px}
+.pod .pguests{font-size:.72rem;color:#8a8a86;margin:0;padding-top:9px;border-top:1px solid #26262a}
+.pod b{color:#dcdcd6;font-weight:600}
+.pod .pep{font:inherit;background:none;border:0;padding:0;cursor:pointer;color:#9a9a95;border-bottom:1px solid #34343a}
+.pod .pep:hover{color:var(--racing);border-bottom-color:var(--racing)}
+.pod .pep[aria-pressed="true"]{color:var(--racing);border-bottom-color:var(--racing)}
+.pod .pslot{margin-top:12px}
+.pod .pslot iframe{width:100%;height:152px;border:0;border-radius:12px;display:block}
+.pod .ptitle{color:#f0f0ea;text-decoration:none}
+.pod:hover .ptitle{color:var(--racing)}
+.pod .pguests a{color:#9a9a95;text-decoration:none;border-bottom:1px solid #34343a}
+.pod .pguests a:hover{color:var(--racing);border-bottom-color:var(--racing)}
+.pod .plabel{color:#5f5f5c}
+.pod .psep{color:#3d3d42}
 /* app tab bar (phase 5, pwa shell). the same block sits on every tab page. */
 .gmx-tabs{display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(11,11,13,.96);border-top:1px solid rgba(242,242,239,.12);padding-bottom:env(safe-area-inset-bottom);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 .gmx-tabs ul{list-style:none;margin:0 auto;padding:0;display:flex;justify-content:space-around;max-width:720px}
@@ -109,6 +137,12 @@ footer a:hover{color:var(--racing)}
 <p class="sub">the artists we follow, talking. sit-down interviews and talk podcasts, no mixes. the newest 6 up top, then every artist a to z. tap a name to open their talks. nothing plays until you tap play. the mixes live at <a href="sets.html">sets worth your hour</a>.</p>
 <p class="count">60 talks · 40 interviews · 20 podcasts · 28 artists · refreshed 2026-10-06</p>
 
+<div class="ivtabs" role="tablist" aria-label="interviews or shows">
+<button class="ivtab" type="button" role="tab" aria-selected="true" aria-controls="talks" data-tab="talks">the roster, talking</button>
+<button class="ivtab" type="button" role="tab" aria-selected="false" aria-controls="shows" data-tab="shows">shows worth your hour</button>
+</div>
+
+<div class="ivpane" id="talks" role="tabpanel">
 <div class="tools"><input id="q" type="search" placeholder="find an artist, outlet or talk" aria-label="search the artists, outlets and talk titles" autocomplete="off"></div>
 
 <section class="g" id="newest">
@@ -180,6 +214,69 @@ footer a:hover{color:var(--racing)}
 <details class="a" id="vintage-culture"><summary><span class="nm">Vintage Culture</span><span class="n">3 talks</span></summary><div class="in"><a class="pg" href="artists/vintage-culture.html">artist page →</a><div class="grid"><div class="card"><button class="set-facade" type="button" data-yt="UTsE0jxxiAg" data-title="Vintage Culture interview at One World Radio | Tomorrowland Winter 2025" aria-label="play Vintage Culture interview at One World Radio | Tomorrowland Winter 2025"><img src="https://img.youtube.com/vi/UTsE0jxxiAg/hqdefault.jpg" alt="" loading="lazy"><span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></button><div class="t">Vintage Culture interview at One World Radio | Tomorrowland Winter 2025</div><div class="m">Tomorrowland One World Radio · interview · mar 2025 · 8 min</div></div><div class="card"><button class="set-facade" type="button" data-yt="lz56aZYuoY0" data-title="VINTAGE CULTURE - Flow #376" aria-label="play VINTAGE CULTURE - Flow #376"><img src="https://img.youtube.com/vi/lz56aZYuoY0/hqdefault.jpg" alt="" loading="lazy"><span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></button><div class="t">VINTAGE CULTURE - Flow #376</div><div class="m">Flow Podcast · talk podcast · jun 2024 · 128 min</div></div><div class="card"><button class="set-facade" type="button" data-yt="xkTZ0LnfqwQ" data-title="Kolsch &amp; Vintage Culture Ask Each Other Some Controversial Questions" aria-label="play Kolsch &amp; Vintage Culture Ask Each Other Some Controversial Questions"><img src="https://img.youtube.com/vi/xkTZ0LnfqwQ/hqdefault.jpg" alt="" loading="lazy"><span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></button><div class="t">Kölsch &amp; Vintage Culture Ask Each Other Some Controversial Questions</div><div class="m">Hï Ibiza · interview · sep 2023 · 13 min</div></div></div></div></details>
 </section>
 <p id="empty">nothing matches that. try a shorter name.</p>
+</div>
+
+<div class="ivpane" id="shows" role="tabpanel" hidden>
+<p class="sub">interview shows only, no mix series dressed up as podcasts. every episode below was checked, and every bolded name is someone on the roster.</p>
+<div class="pods">
+<div class="pod">
+<h4><a class="ptitle" href="https://open.spotify.com/episode/3MhPF9CGl2FRMDTEtjbJxq" target="_blank" rel="noopener">The Will Clarke Podcast</a></h4>
+<p class="pwho mono">hosted by <b>Will Clarke</b></p>
+<p>weekly, every tuesday, since 2015. he sits down with artists and producers and gets past the press answers. recent guests include <b>Chris Lake</b> and Rossi.</p>
+<p class="pguests mono"><button type="button" class="pep" data-ep="3MhPF9CGl2FRMDTEtjbJxq" data-title="latest episode ↗">latest episode ↗</button></p>
+<div class="pslot" hidden></div>
+</div>
+<div class="pod">
+<h4><a class="ptitle" href="https://open.spotify.com/episode/1812AeDb7JWIsyyFM5b17i" target="_blank" rel="noopener">Sherm In The Booth</a></h4>
+<p class="pwho mono">hosted by Sherm, Hood Politics</p>
+<p>one on one with djs and producers about how the catalogue actually got made. four artists we follow have sat in that chair.</p>
+<p class="pguests mono"><span class="plabel">episodes:</span> <button type="button" class="pep" data-ep="1812AeDb7JWIsyyFM5b17i" data-title="SITB 203 feat. Max Styler (DJ/Producer)" title="SITB 203 feat. Max Styler (DJ/Producer)">max styler</button> <span class="psep">·</span> <button type="button" class="pep" data-ep="1JWumO089ip9nezspmNV6d" data-title="SITB 172 feat. CID (DJ/Producer)" title="SITB 172 feat. CID (DJ/Producer)">cid</button> <span class="psep">·</span> <button type="button" class="pep" data-ep="4my46xjtBdRNbuakjH5QhO" data-title="SITB 205 feat. Win and Woo (DJ/Producer Duo)" title="SITB 205 feat. Win and Woo (DJ/Producer Duo)">win and woo</button> <span class="psep">·</span> <button type="button" class="pep" data-ep="48hQttc7aVZcgUu4HX94ze" data-title="Breaking Through In Dance Music: Charleston Edition" title="Breaking Through In Dance Music: Charleston Edition">dj susan</button></p>
+<div class="pslot" hidden></div>
+</div>
+<div class="pod">
+<h4><a class="ptitle" href="https://open.spotify.com/episode/7ePtWrQvOPM0dnqtmjf8A0" target="_blank" rel="noopener">RA Exchange</a></h4>
+<p class="pwho mono">from Resident Advisor</p>
+<p>the long-running one. one artist an episode, the record they just made and how they think.</p>
+<p class="pguests mono"><span class="plabel">episodes:</span> <button type="button" class="pep" data-ep="7ePtWrQvOPM0dnqtmjf8A0" data-title="EX.793 Chris Stussy" title="EX.793 Chris Stussy">chris stussy</button></p>
+<div class="pslot" hidden></div>
+</div>
+<div class="pod">
+<h4><a class="ptitle" href="https://open.spotify.com/episode/1EztOvKykCJXD6tJPhY3LD" target="_blank" rel="noopener">TSL Time</a></h4>
+<p class="pwho mono">hosted by Richie</p>
+<p>filmed in person, touring djs talking about tour life and the business end. two long ones worth your time.</p>
+<p class="pguests mono"><span class="plabel">episodes:</span> <button type="button" class="pep" data-ep="1EztOvKykCJXD6tJPhY3LD" data-title="Chris Lake TALKS 20 Years of Music Week, Producing &#x27;Toxic&#x27; &amp; New Album, and Starting Black Book" title="Chris Lake TALKS 20 Years of Music Week, Producing &#x27;Toxic&#x27; &amp; New Album, and Starting Black Book">chris lake</button> <span class="psep">·</span> <button type="button" class="pep" data-ep="2vNKQqAhFmfybxVEX3j2O0" data-title="Chris Stussy TALKS Ibiza Secrets, DC-10 Madness &amp; The Set That Made Him Cry" title="Chris Stussy TALKS Ibiza Secrets, DC-10 Madness &amp; The Set That Made Him Cry">chris stussy</button></p>
+<div class="pslot" hidden></div>
+</div>
+<div class="pod">
+<h4><a class="ptitle" href="https://open.spotify.com/episode/0jmbMX3dhOMBBWRkF6XkLD" target="_blank" rel="noopener">Off The Record</a></h4>
+<p class="pwho mono">from the Crossfader coaching platform</p>
+<p>career-shaped rather than music-shaped, how working djs actually built the thing. <b>James Hype</b> has been on twice.</p>
+<p class="pguests mono"><span class="plabel">episodes:</span> <button type="button" class="pep" data-ep="0jmbMX3dhOMBBWRkF6XkLD" data-title="Ep 157. James Hype - &quot;The Secrets To Becoming a Headline DJ&quot;" title="Ep 157. James Hype - &quot;The Secrets To Becoming a Headline DJ&quot;">james hype</button></p>
+<div class="pslot" hidden></div>
+</div>
+<div class="pod">
+<h4><a class="ptitle" href="https://podcasts.apple.com/us/podcast/lp-giobbi-femme-house-radio/id1657976631" target="_blank" rel="noopener">LP Giobbi - Femme House Radio</a></h4>
+<p class="pwho mono">hosted by <b>LP Giobbi</b></p>
+<p>weekly on insomniac radio, built around women, gender-expansive, bipoc and lgbtqia+ artists. half guest mix, half proper interview.</p>
+<p class="pguests mono"><a href="https://podcasts.apple.com/us/podcast/lp-giobbi-femme-house-radio/id1657976631" target="_blank" rel="noopener">the show ↗</a></p>
+<div class="pslot" hidden></div>
+</div>
+<div class="pod">
+<h4><a class="ptitle" href="https://open.spotify.com/episode/2MNvQB7bWHedV0K7MhAZtn" target="_blank" rel="noopener">Billboard On The Record</a></h4>
+<p class="pwho mono">from Billboard</p>
+<p>industry-facing and usually not our lane, but the <b>John Summit</b> episode on building a dance music business is the exception.</p>
+<p class="pguests mono"><span class="plabel">episodes:</span> <button type="button" class="pep" data-ep="2MNvQB7bWHedV0K7MhAZtn" data-title="How to Build a Dance Music Empire w/ John Summit" title="How to Build a Dance Music Empire w/ John Summit">john summit</button></p>
+<div class="pslot" hidden></div>
+</div>
+<div class="pod">
+<h4><a class="ptitle" href="https://open.spotify.com/episode/7Evkd0kVnRJCjqK7pcvRwD" target="_blank" rel="noopener">Bakkie Bakkie</a></h4>
+<p class="pwho mono">dutch language</p>
+<p>dutch artists on their year and their career. worth it for the <b>Chris Stussy</b> episode even if you do not speak dutch.</p>
+<p class="pguests mono"><span class="plabel">episodes:</span> <button type="button" class="pep" data-ep="7Evkd0kVnRJCjqK7pcvRwD" data-title="CHRIS STUSSY" title="CHRIS STUSSY">chris stussy</button></p>
+<div class="pslot" hidden></div>
+</div>
+</div>
+</div>
 
 <footer>groovesmaxxing · <a href="index.html">home</a> · <a href="sets.html">the sets</a> · <a href="roster.html">the roster</a> · <a href="events.html">the radar</a> · <a href="tracklists/">tracklists</a></footer>
 
@@ -218,6 +315,29 @@ if(rail)rail.hidden=!!v;
 if(v&&hits.length<=3){for(var h=0;h<hits.length;h++){if(!hits[h].open){hits[h].open=true;auto.push(hits[h]);}}}
 empty.style.display=(v&&!hits.length)?'block':'none';
 });
+})();
+
+(function(){
+var tabs=document.querySelectorAll('.ivtab'),panes=document.querySelectorAll('.ivpane');if(!tabs.length)return;
+function pick(name,push){
+for(var i=0;i<tabs.length;i++){tabs[i].setAttribute('aria-selected',String(tabs[i].getAttribute('data-tab')===name));}
+for(var j=0;j<panes.length;j++){panes[j].hidden=panes[j].id!==name;}
+if(push){try{history.replaceState(null,'',name==='shows'?'#shows':location.pathname);}catch(e){}}
+}
+for(var t=0;t<tabs.length;t++){tabs[t].addEventListener('click',function(){pick(this.getAttribute('data-tab'),true);});}
+if(location.hash==='#shows'){pick('shows',false);}
+window.addEventListener('hashchange',function(){if(location.hash==='#shows'){pick('shows',false);}});
+})();
+(function(){var b=document.querySelectorAll(".pod .pep");if(!b.length)return;
+for(var i=0;i<b.length;i++){b[i].addEventListener("click",function(){
+var card=this.closest(".pod"),slot=card.querySelector(".pslot");
+var sibs=card.querySelectorAll(".pep");
+for(var j=0;j<sibs.length;j++){sibs[j].setAttribute("aria-pressed",String(sibs[j]===this));}
+slot.innerHTML="";var fr=document.createElement("iframe");
+fr.src="https://open.spotify.com/embed/episode/"+this.getAttribute("data-ep")+"?utm_source=generator&theme=0";
+fr.title=this.getAttribute("data-title")||"podcast episode";fr.loading="lazy";
+fr.setAttribute("allow","autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture");
+slot.appendChild(fr);slot.hidden=false;});}
 })();
 </script>
 <nav class="gmx-tabs" aria-label="app tabs">
