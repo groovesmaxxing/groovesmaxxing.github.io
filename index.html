@@ -105,26 +105,6 @@ h2{font-weight:900;font-size:clamp(1.9rem,4.5vw,2.8rem);line-height:1.1;margin-b
 
 
 /* listen */
-.pod .pep{font:inherit;background:none;border:0;padding:0;cursor:pointer;color:#9a9a95;border-bottom:1px solid #34343a}
-.pod .pep:hover{color:var(--racing);border-bottom-color:var(--racing)}
-.pod .pep[aria-pressed="true"]{color:var(--racing);border-bottom-color:var(--racing)}
-.pod .pslot{margin-top:12px}
-.pod .pslot iframe{width:100%;height:152px;border:0;border-radius:12px;display:block}
-.pod .ptitle{color:#f0f0ea;text-decoration:none}
-.pod:hover .ptitle{color:var(--racing)}
-.pod .pguests a{color:#9a9a95;text-decoration:none;border-bottom:1px solid #34343a}
-.pod .pguests a:hover{color:var(--racing);border-bottom-color:var(--racing)}
-.pod .plabel{color:#5f5f5c}
-.pod .psep{color:#3d3d42}
-.pods{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:6px}
-.pod{display:block;text-decoration:none;border:1px solid #2c2c31;border-radius:8px;padding:18px 19px;transition:border-color .15s,transform .15s}
-.pod:hover{border-color:var(--racing);transform:translateY(-2px)}
-.pod h4{margin:0 0 6px;text-decoration:none;font-size:1rem;color:#f0f0ea}
-.pod:hover h4{color:var(--racing)}
-.pod p{margin:0 0 9px;font-size:.87rem;line-height:1.6;color:#b9b9b3}
-.pod .pwho{font-size:.72rem;color:#7f7f7b;letter-spacing:.04em;margin-bottom:10px}
-.pod .pguests{font-size:.72rem;color:#8a8a86;margin:0;padding-top:9px;border-top:1px solid #26262a}
-.pod b{color:#dcdcd6;font-weight:600}
 .players{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:36px}
 .player{position:relative;isolation:isolate;border-radius:20px;padding:22px;border:1px solid rgba(255,255,255,.07);overflow:hidden;transition:border-color .2s,transform .2s}
 .player::before{content:"";position:absolute;inset:-14%;z-index:-2;background-image:var(--cover);background-size:cover;background-position:center;filter:blur(22px) saturate(1.35) brightness(var(--lift,1));opacity:.75}
@@ -391,7 +371,7 @@ fill="none" stroke="#F2F2EF" stroke-width="7" stroke-linecap="round" stroke-line
 <a href="#lanes" data-pv-t="the sound" data-pv-d="three lanes, one groove. daytime funk, night-shift bass, and the stuff that never made it to streaming." data-pv-m="vibes ☀️ · bumpy 🚧 · contraband 💎">the sound</a>
 <a href="#artists" data-pv-t="who we follow" data-pv-d="705 artists deep, sorted into the scenes they actually belong to. the israeli wave, the minimal wave, the legends, and more." data-pv-m="8 clusters · the heavy-rotation eleven">who we follow</a>
 <a href="#listen" data-pv-t="press play" data-pv-d="the playlists, embedded and playable right here. plus the two soundcloud mixes that refresh themselves off our taste." data-pv-m="6 players · daily drops + weekly wave">press play</a>
-<a href="#podcasts" data-pv-t="podcasts" data-pv-d="interview shows where the artists we follow actually talk. no mix series." data-pv-m="8 shows · verified episodes">podcasts</a>
+<a href="#podcasts" data-pv-t="in their own words" data-pv-d="interviews and talk podcasts with the artists we follow. seven a week, every one on its own page." data-pv-m="60 talks · 28 artists">podcasts</a>
 <a href="#library" data-pv-t="the library" data-pv-d="sets worth your hour. a fresh seven every week from the newest on the site, the whole library on its own page, and one youtube playlist to match." data-pv-m="7 a week · 49 in rotation · every set on its own page">the library</a>
 <a href="#labels" data-pv-t="the imprint radar" data-pv-d="the labels that keep showing up when a track survives the skip test. hover any name on the wall to see why it earned the spot." data-pv-m="85 imprints · 4 tiers">the imprint radar</a>
 <a href="#series" data-pv-t="on the calendar" data-pv-d="the recurring stuff. what lands every week, and what lands every month." data-pv-m="fresh grooves friday · contraband of the week · events radar">on the calendar</a>
@@ -1102,68 +1082,512 @@ fill="none" stroke="#F2F2EF" stroke-width="7" stroke-linecap="round" stroke-line
 <section id="podcasts">
 <div class="wrap">
 <span class="mono eyebrow">in their own words</span>
-<h2>podcasts worth an hour</h2>
-<p class="note" style="margin:4px 0 22px">interview shows only, no mix series dressed up as podcasts. every episode below was checked, and every bolded name is someone on the roster.</p>
-<div class="pods">
-<div class="pod">
-<h4><a class="ptitle" href="https://open.spotify.com/episode/3MhPF9CGl2FRMDTEtjbJxq" target="_blank" rel="noopener">The Will Clarke Podcast</a></h4>
-<p class="pwho mono">hosted by <b>Will Clarke</b></p>
-<p>weekly, every tuesday, since 2015. he sits down with artists and producers and gets past the press answers. recent guests include <b>Chris Lake</b> and Rossi.</p>
-<p class="pguests mono"><button type="button" class="pep" data-ep="3MhPF9CGl2FRMDTEtjbJxq" data-title="latest episode ↗">latest episode ↗</button></p>
-<div class="pslot" hidden></div>
+<h2>the roster, talking</h2>
+<div class="set-stage">
+<div class="set-viewport">
+<div class="set-rail">
+<!-- iv-pool:start -->
+<div class="set-slide">
+<button class="set-facade" type="button" data-yt="X95f6g0ELvw" data-title="J. Worra on Checkout Hitting 161M Streams, Chicago House &amp; A 10-Year Day Job | POWERTOOLS PODCAST" aria-label="play J. Worra on Checkout Hitting 161M Streams, Chicago House &amp; A 10-Year Day Job | POWERTOOLS PODCAST">
+<img src="https://img.youtube.com/vi/X95f6g0ELvw/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/X95f6g0ELvw/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">J. Worra on &quot;Checkout&quot; Hitting 161M Streams, Chicago House &amp; A 10-Year Day Job | POWERTOOLS PODCAST</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Powertools Podcast · talk podcast · oct 2026 · 30 min</span>
 </div>
-<div class="pod">
-<h4><a class="ptitle" href="https://open.spotify.com/episode/1812AeDb7JWIsyyFM5b17i" target="_blank" rel="noopener">Sherm In The Booth</a></h4>
-<p class="pwho mono">hosted by Sherm, Hood Politics</p>
-<p>one on one with djs and producers about how the catalogue actually got made. four artists we follow have sat in that chair.</p>
-<p class="pguests mono"><span class="plabel">episodes:</span> <button type="button" class="pep" data-ep="1812AeDb7JWIsyyFM5b17i" data-title="SITB 203 feat. Max Styler (DJ/Producer)" title="SITB 203 feat. Max Styler (DJ/Producer)">max styler</button> <span class="psep">·</span> <button type="button" class="pep" data-ep="1JWumO089ip9nezspmNV6d" data-title="SITB 172 feat. CID (DJ/Producer)" title="SITB 172 feat. CID (DJ/Producer)">cid</button> <span class="psep">·</span> <button type="button" class="pep" data-ep="4my46xjtBdRNbuakjH5QhO" data-title="SITB 205 feat. Win and Woo (DJ/Producer Duo)" title="SITB 205 feat. Win and Woo (DJ/Producer Duo)">win and woo</button> <span class="psep">·</span> <button type="button" class="pep" data-ep="48hQttc7aVZcgUu4HX94ze" data-title="Breaking Through In Dance Music: Charleston Edition" title="Breaking Through In Dance Music: Charleston Edition">dj susan</button></p>
-<div class="pslot" hidden></div>
 </div>
-<div class="pod">
-<h4><a class="ptitle" href="https://open.spotify.com/episode/7ePtWrQvOPM0dnqtmjf8A0" target="_blank" rel="noopener">RA Exchange</a></h4>
-<p class="pwho mono">from Resident Advisor</p>
-<p>the long-running one. one artist an episode, the record they just made and how they think.</p>
-<p class="pguests mono"><span class="plabel">episodes:</span> <button type="button" class="pep" data-ep="7ePtWrQvOPM0dnqtmjf8A0" data-title="EX.793 Chris Stussy" title="EX.793 Chris Stussy">chris stussy</button></p>
-<div class="pslot" hidden></div>
+<div class="set-slide">
+<button class="set-facade" type="button" data-yt="pPKCrGF8fzY" data-title="ROAD TO NOW | JONAS BLUE INTERVIEW" aria-label="play ROAD TO NOW | JONAS BLUE INTERVIEW">
+<img src="https://img.youtube.com/vi/pPKCrGF8fzY/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/pPKCrGF8fzY/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">ROAD TO NOW | JONAS BLUE INTERVIEW</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Hï Ibiza · interview · sep 2026 · 11 min</span>
 </div>
-<div class="pod">
-<h4><a class="ptitle" href="https://open.spotify.com/episode/1EztOvKykCJXD6tJPhY3LD" target="_blank" rel="noopener">TSL Time</a></h4>
-<p class="pwho mono">hosted by Richie</p>
-<p>filmed in person, touring djs talking about tour life and the business end. two long ones worth your time.</p>
-<p class="pguests mono"><span class="plabel">episodes:</span> <button type="button" class="pep" data-ep="1EztOvKykCJXD6tJPhY3LD" data-title="Chris Lake TALKS 20 Years of Music Week, Producing &#x27;Toxic&#x27; &amp; New Album, and Starting Black Book" title="Chris Lake TALKS 20 Years of Music Week, Producing &#x27;Toxic&#x27; &amp; New Album, and Starting Black Book">chris lake</button> <span class="psep">·</span> <button type="button" class="pep" data-ep="2vNKQqAhFmfybxVEX3j2O0" data-title="Chris Stussy TALKS Ibiza Secrets, DC-10 Madness &amp; The Set That Made Him Cry" title="Chris Stussy TALKS Ibiza Secrets, DC-10 Madness &amp; The Set That Made Him Cry">chris stussy</button></p>
-<div class="pslot" hidden></div>
 </div>
-<div class="pod">
-<h4><a class="ptitle" href="https://open.spotify.com/episode/0jmbMX3dhOMBBWRkF6XkLD" target="_blank" rel="noopener">Off The Record</a></h4>
-<p class="pwho mono">from the Crossfader coaching platform</p>
-<p>career-shaped rather than music-shaped, how working djs actually built the thing. <b>James Hype</b> has been on twice.</p>
-<p class="pguests mono"><span class="plabel">episodes:</span> <button type="button" class="pep" data-ep="0jmbMX3dhOMBBWRkF6XkLD" data-title="Ep 157. James Hype - &quot;The Secrets To Becoming a Headline DJ&quot;" title="Ep 157. James Hype - &quot;The Secrets To Becoming a Headline DJ&quot;">james hype</button></p>
-<div class="pslot" hidden></div>
+<div class="set-slide">
+<button class="set-facade" type="button" data-yt="-qWzYHc-6Ik" data-title="BLOND:ISH on Her #1 Lovers On The Dancefloor, Getting To Know Her Better | Brian Fink Interview" aria-label="play BLOND:ISH on Her #1 Lovers On The Dancefloor, Getting To Know Her Better | Brian Fink Interview">
+<img src="https://img.youtube.com/vi/-qWzYHc-6Ik/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/-qWzYHc-6Ik/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">BLOND:ISH on Her #1 &quot;Lovers On The Dancefloor&quot;, Getting To Know Her Better | Brian Fink Interview</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Brian Fink | America’s Dance 30 · interview · sep 2026 · 16 min</span>
 </div>
-<div class="pod">
-<h4><a class="ptitle" href="https://podcasts.apple.com/us/podcast/lp-giobbi-femme-house-radio/id1657976631" target="_blank" rel="noopener">LP Giobbi - Femme House Radio</a></h4>
-<p class="pwho mono">hosted by <b>LP Giobbi</b></p>
-<p>weekly on insomniac radio, built around women, gender-expansive, bipoc and lgbtqia+ artists. half guest mix, half proper interview.</p>
-<p class="pguests mono"><a href="https://podcasts.apple.com/us/podcast/lp-giobbi-femme-house-radio/id1657976631" target="_blank" rel="noopener">the show ↗</a></p>
-<div class="pslot" hidden></div>
 </div>
-<div class="pod">
-<h4><a class="ptitle" href="https://open.spotify.com/episode/2MNvQB7bWHedV0K7MhAZtn" target="_blank" rel="noopener">Billboard On The Record</a></h4>
-<p class="pwho mono">from Billboard</p>
-<p>industry-facing and usually not our lane, but the <b>John Summit</b> episode on building a dance music business is the exception.</p>
-<p class="pguests mono"><span class="plabel">episodes:</span> <button type="button" class="pep" data-ep="2MNvQB7bWHedV0K7MhAZtn" data-title="How to Build a Dance Music Empire w/ John Summit" title="How to Build a Dance Music Empire w/ John Summit">john summit</button></p>
-<div class="pslot" hidden></div>
+<div class="set-slide">
+<button class="set-facade" type="button" data-yt="wclvrIBnkyk" data-title="Channel Tres Talks New Music, House Music, R&amp;B &amp; His Creative Journey | Chillin With Cam" aria-label="play Channel Tres Talks New Music, House Music, R&amp;B &amp; His Creative Journey | Chillin With Cam">
+<img src="https://img.youtube.com/vi/wclvrIBnkyk/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/wclvrIBnkyk/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">Channel Tres Talks New Music, House Music, R&amp;B &amp; His Creative Journey | Chillin’ With Cam</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Cam Sullivan-Brown · interview · aug 2026 · 28 min</span>
 </div>
-<div class="pod">
-<h4><a class="ptitle" href="https://open.spotify.com/episode/7Evkd0kVnRJCjqK7pcvRwD" target="_blank" rel="noopener">Bakkie Bakkie</a></h4>
-<p class="pwho mono">dutch language</p>
-<p>dutch artists on their year and their career. worth it for the <b>Chris Stussy</b> episode even if you do not speak dutch.</p>
-<p class="pguests mono"><span class="plabel">episodes:</span> <button type="button" class="pep" data-ep="7Evkd0kVnRJCjqK7pcvRwD" data-title="CHRIS STUSSY" title="CHRIS STUSSY">chris stussy</button></p>
-<div class="pslot" hidden></div>
 </div>
+<div class="set-slide">
+<button class="set-facade" type="button" data-yt="Nz7kdwCUhsE" data-title="Interview - Kyle Watson" aria-label="play Interview - Kyle Watson">
+<img src="https://img.youtube.com/vi/Nz7kdwCUhsE/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/Nz7kdwCUhsE/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">Interview - Kyle Watson</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Gray Area · interview · aug 2026 · 48 min</span>
+</div>
+</div>
+<div class="set-slide">
+<button class="set-facade" type="button" data-yt="SGhZn71lZxY" data-title="Anyone Can Drop a Banger. Almost Nobody Can Build a Night. ft. Mishell | EF EP 165" aria-label="play Anyone Can Drop a Banger. Almost Nobody Can Build a Night. ft. Mishell | EF EP 165">
+<img src="https://img.youtube.com/vi/SGhZn71lZxY/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/SGhZn71lZxY/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">Anyone Can Drop a Banger. Almost Nobody Can Build a Night. ft. Mishell | EF EP 165</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Elevated Frequencies Podcast with Olivia Mancuso · talk podcast · aug 2026 · 36 min</span>
+</div>
+</div>
+<div class="set-slide">
+<button class="set-facade" type="button" data-yt="ePyaNi4vvpU" data-title="DANSYN on His Rebrand, Grammy Nomination &amp; Why AI Will Never Replace Producers | POWERTOOLS PODCAST" aria-label="play DANSYN on His Rebrand, Grammy Nomination &amp; Why AI Will Never Replace Producers | POWERTOOLS PODCAST">
+<img src="https://img.youtube.com/vi/ePyaNi4vvpU/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/ePyaNi4vvpU/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">DANSYN on His Rebrand, Grammy Nomination &amp; Why AI Will Never Replace Producers | POWERTOOLS PODCAST</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Powertools Podcast · talk podcast · jul 2026 · 25 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="_EKoHX8yIoE" data-title="BLOND:ISH: Abracadabra, Pacha Ibiza &amp; Dance Music | Ibiza Global Podcast #3 with Tommy Vee" aria-label="play BLOND:ISH: Abracadabra, Pacha Ibiza &amp; Dance Music | Ibiza Global Podcast #3 with Tommy Vee">
+<img src="https://img.youtube.com/vi/_EKoHX8yIoE/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/_EKoHX8yIoE/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">BLOND:ISH: Abracadabra, Pacha Ibiza &amp; Dance Music | Ibiza Global Podcast #3 with Tommy Vee</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Ibiza Global Radio with Tommy Vee · talk podcast · jul 2026 · 36 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="ohzPEWzWuPU" data-title="HUGEL&#x27;s 21 year journey from club DJ to stadium stages, Capital Dance" aria-label="play HUGEL&#x27;s 21 year journey from club DJ to stadium stages, Capital Dance">
+<img src="https://img.youtube.com/vi/ohzPEWzWuPU/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/ohzPEWzWuPU/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">HUGEL&#x27;s 21 year journey from club DJ to stadium stages, Capital Dance</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Capital Dance · interview · jun 2026 · 13 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="a7aXL9WWrkY" data-title="Channel Tres x Zane Lowe - Medicine New Music Daily Interview" aria-label="play Channel Tres x Zane Lowe - Medicine New Music Daily Interview">
+<img src="https://img.youtube.com/vi/a7aXL9WWrkY/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/a7aXL9WWrkY/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">Channel Tres x Zane Lowe - &quot;Medicine&quot; New Music Daily Interview</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Channel Tres with Zane Lowe · interview · mar 2026 · 21 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="y7sBvwBFx6U" data-title="SOTTOCASSA - VANNY GRANATA - S02 EP.9" aria-label="play SOTTOCASSA - VANNY GRANATA - S02 EP.9">
+<img src="https://img.youtube.com/vi/y7sBvwBFx6U/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/y7sBvwBFx6U/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">SOTTOCASSA - VANNY GRANATA - S02 EP.9</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Sotto Cassa Podcast · talk podcast · jan 2026 · 70 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="JL7kqmvjvoY" data-title="Max Styler on His Label Nu Moda, Evolving His Sound, &amp; Building Momentum | POWERTOOLS PODCAST" aria-label="play Max Styler on His Label Nu Moda, Evolving His Sound, &amp; Building Momentum | POWERTOOLS PODCAST">
+<img src="https://img.youtube.com/vi/JL7kqmvjvoY/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/JL7kqmvjvoY/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">Max Styler on His Label &quot;Nu Moda&quot;, Evolving His Sound, &amp; Building Momentum | POWERTOOLS PODCAST</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Powertools Podcast · talk podcast · dec 2025 · 31 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="ZM0xX9Bw18M" data-title="TOMAN ON MAKING THE SONG OF 2025 | INTERVIEW" aria-label="play TOMAN ON MAKING THE SONG OF 2025 | INTERVIEW">
+<img src="https://img.youtube.com/vi/ZM0xX9Bw18M/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/ZM0xX9Bw18M/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">TOMAN ON MAKING THE SONG OF 2025 | INTERVIEW</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Hï Ibiza · interview · dec 2025 · 5 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="44cwGcbczH8" data-title="Road To Now, HUGEL interview, Hi Ibiza" aria-label="play Road To Now, HUGEL interview, Hi Ibiza">
+<img src="https://img.youtube.com/vi/44cwGcbczH8/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/44cwGcbczH8/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">Road To Now, HUGEL interview, Hï Ibiza</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Hï Ibiza · interview · dec 2025 · 11 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="NJ47iPOckqA" data-title="Max Styler Nearly Quit Music Before His Career Exploded" aria-label="play Max Styler Nearly Quit Music Before His Career Exploded">
+<img src="https://img.youtube.com/vi/NJ47iPOckqA/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/NJ47iPOckqA/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">Max Styler Nearly Quit Music Before His Career Exploded</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Will Clarke · talk podcast · nov 2025 · 49 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="2OWshugqW08" data-title="Joseph Capriati on Sobriety, 27 Hour DJ Sets, and Starting Metamorfosi" aria-label="play Joseph Capriati on Sobriety, 27 Hour DJ Sets, and Starting Metamorfosi">
+<img src="https://img.youtube.com/vi/2OWshugqW08/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/2OWshugqW08/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">Joseph Capriati on Sobriety, 27 Hour DJ Sets, and Starting Metamorfosi</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">TSL Time Podcast · talk podcast · oct 2025 · 93 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="n1rEJferCro" data-title="BLOND:ISH TALKS Building Abracadabra, Meme Marketing, and Ibiza War Stories" aria-label="play BLOND:ISH TALKS Building Abracadabra, Meme Marketing, and Ibiza War Stories">
+<img src="https://img.youtube.com/vi/n1rEJferCro/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/n1rEJferCro/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">BLOND:ISH TALKS Building Abracadabra, Meme Marketing, and Ibiza War Stories</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">TSL Time Podcast · talk podcast · oct 2025 · 70 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="6s4Ow_eeWtQ" data-title="אדם טן - איך פורצים לעולם? השיטה של Adam Ten - בלי לימיטר - פרק 56" aria-label="play אדם טן - איך פורצים לעולם? השיטה של Adam Ten - בלי לימיטר - פרק 56">
+<img src="https://img.youtube.com/vi/6s4Ow_eeWtQ/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/6s4Ow_eeWtQ/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">אדם טן - איך פורצים לעולם? השיטה של Adam Ten - בלי לימיטר - פרק 56</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">מכללת BPM · talk podcast · apr 2025 · 74 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="T9u8NAu1ruw" data-title="Backstage with Sllash &amp; Doppe at Kastel | Pre-Show Interview" aria-label="play Backstage with Sllash &amp; Doppe at Kastel | Pre-Show Interview">
+<img src="https://img.youtube.com/vi/T9u8NAu1ruw/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/T9u8NAu1ruw/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">Backstage with Sllash &amp; Doppe at Kastel | Pre-Show Interview</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Houseyounite · interview · apr 2025 · 5 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="mXOc7j2V1Rw" data-title="fabric presents Carlita" aria-label="play fabric presents Carlita">
+<img src="https://img.youtube.com/vi/mXOc7j2V1Rw/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/mXOc7j2V1Rw/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">fabric presents Carlita</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">fabriclondon · interview · apr 2025 · 11 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="csjnR3vTh18" data-title="Franky Rizardo Interview - FLOW Pacha Ibiza 2025" aria-label="play Franky Rizardo Interview - FLOW Pacha Ibiza 2025">
+<img src="https://img.youtube.com/vi/csjnR3vTh18/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/csjnR3vTh18/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">Franky Rizardo Interview - FLOW Pacha Ibiza 2025</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Franky Rizardo · interview · apr 2025 · 4 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="Xs76EEGmPJA" data-title="Max and Luke Dean TALK Glasgow Meltdown, Ball Cream Advertisements, and Wild Afterparties" aria-label="play Max and Luke Dean TALK Glasgow Meltdown, Ball Cream Advertisements, and Wild Afterparties">
+<img src="https://img.youtube.com/vi/Xs76EEGmPJA/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/Xs76EEGmPJA/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">Max and Luke Dean TALK Glasgow Meltdown, Ball Cream Advertisements, and Wild Afterparties</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">TSL Time Podcast · talk podcast · apr 2025 · 81 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="UTsE0jxxiAg" data-title="Vintage Culture interview at One World Radio | Tomorrowland Winter 2025" aria-label="play Vintage Culture interview at One World Radio | Tomorrowland Winter 2025">
+<img src="https://img.youtube.com/vi/UTsE0jxxiAg/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/UTsE0jxxiAg/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">Vintage Culture interview at One World Radio | Tomorrowland Winter 2025</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Tomorrowland One World Radio · interview · mar 2025 · 8 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="u8nNTNwgyAE" data-title="HUGEL interview with Brodie Nero, being a top DJ and producer and writing hits in Bali" aria-label="play HUGEL interview with Brodie Nero, being a top DJ and producer and writing hits in Bali">
+<img src="https://img.youtube.com/vi/u8nNTNwgyAE/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/u8nNTNwgyAE/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">HUGEL interview with Brodie Nero, being a top DJ and producer and writing hits in Bali</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Brodie Nero · interview · mar 2025 · 53 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="tZmKY99jioA" data-title="AYYBO On How He Got Into Music, Playing For 20,000+ People, Music Theory &amp; More | Chats With Bri" aria-label="play AYYBO On How He Got Into Music, Playing For 20,000+ People, Music Theory &amp; More | Chats With Bri">
+<img src="https://img.youtube.com/vi/tZmKY99jioA/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/tZmKY99jioA/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">AYYBO On How He Got Into Music, Playing For 20,000+ People,  Music Theory &amp; More | Chats With Bri</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Trademark Live · interview · jan 2025 · 8 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="2Cgoz-KnpTs" data-title="עמית אגמי MITA GAMI - פרק סיום שנה מיוחד - בלי לימיטר - פרק 39" aria-label="play עמית אגמי MITA GAMI - פרק סיום שנה מיוחד - בלי לימיטר - פרק 39">
+<img src="https://img.youtube.com/vi/2Cgoz-KnpTs/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/2Cgoz-KnpTs/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">עמית אגמי MITA GAMI - פרק סיום שנה מיוחד - בלי לימיטר -  פרק 39</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">מכללת BPM · talk podcast · dec 2024 · 78 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="TkMgqKuqMqE" data-title="Joseph Capriati on Sobriety, Ibiza and Business Techno" aria-label="play Joseph Capriati on Sobriety, Ibiza and Business Techno">
+<img src="https://img.youtube.com/vi/TkMgqKuqMqE/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/TkMgqKuqMqE/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">Joseph Capriati on Sobriety, Ibiza and Business Techno</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Resident Advisor · talk podcast · dec 2024 · 77 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="WGgnyQ4AeZI" data-title="DJ | Lira &amp; DJ Misha Klein" aria-label="play DJ | Lira &amp; DJ Misha Klein">
+<img src="https://img.youtube.com/vi/WGgnyQ4AeZI/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/WGgnyQ4AeZI/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">DJ подкаст | Lira &amp; DJ Misha Klein</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Аудиошкола DJ Грува · talk podcast · jun 2024 · 36 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="lz56aZYuoY0" data-title="VINTAGE CULTURE - Flow #376" aria-label="play VINTAGE CULTURE - Flow #376">
+<img src="https://img.youtube.com/vi/lz56aZYuoY0/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/lz56aZYuoY0/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">VINTAGE CULTURE - Flow #376</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Flow Podcast · talk podcast · jun 2024 · 128 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="tjQAogoxE2o" data-title="Solardo Interview at Seismic Spring 2024" aria-label="play Solardo Interview at Seismic Spring 2024">
+<img src="https://img.youtube.com/vi/tjQAogoxE2o/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/tjQAogoxE2o/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">Solardo Interview at Seismic Spring 2024</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Seismic Dance Event · interview · jun 2024 · 5 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="Tw88Eh-2epw" data-title="Channel Tres on Approaching the Craft of Music like a Student | The Green Room" aria-label="play Channel Tres on Approaching the Craft of Music like a Student | The Green Room">
+<img src="https://img.youtube.com/vi/Tw88Eh-2epw/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/Tw88Eh-2epw/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">Channel Tres on Approaching the Craft of Music like a Student | The Green Room</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Rolling Stone · interview · apr 2024 · 10 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="zSS4XjIgNcM" data-title="House music roots, finding happiness &amp; life on the road. Moments in Music w/ Joseph Capriati &amp; Monki" aria-label="play House music roots, finding happiness &amp; life on the road. Moments in Music w/ Joseph Capriati &amp; Monki">
+<img src="https://img.youtube.com/vi/zSS4XjIgNcM/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/zSS4XjIgNcM/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">House music roots, finding happiness &amp; life on the road. Moments in Music w/ Joseph Capriati &amp; Monki</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Defected Records with Monki · talk podcast · mar 2024 · 60 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="mcsnVQRFrR4" data-title="Gray Area Interview: AYYBO" aria-label="play Gray Area Interview: AYYBO">
+<img src="https://img.youtube.com/vi/mcsnVQRFrR4/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/mcsnVQRFrR4/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">Gray Area Interview: AYYBO</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Gray Area · interview · dec 2023 · 46 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="xkTZ0LnfqwQ" data-title="Kolsch &amp; Vintage Culture Ask Each Other Some Controversial Questions" aria-label="play Kolsch &amp; Vintage Culture Ask Each Other Some Controversial Questions">
+<img src="https://img.youtube.com/vi/xkTZ0LnfqwQ/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/xkTZ0LnfqwQ/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">Kölsch &amp; Vintage Culture Ask Each Other Some Controversial Questions</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Hï Ibiza · interview · sep 2023 · 13 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="XHXR7uboys4" data-title="Max Dean talks NeXup Tour, Influences &amp; Best Moments! Interview @ Joshua Brooks w/ Zandie Waring" aria-label="play Max Dean talks NeXup Tour, Influences &amp; Best Moments! Interview @ Joshua Brooks w/ Zandie Waring">
+<img src="https://img.youtube.com/vi/XHXR7uboys4/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/XHXR7uboys4/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">Max Dean talks NeXup Tour, Influences &amp; Best Moments! Interview @ Joshua Brooks w/ Zandie Waring</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Unity Radio with Zandie Waring · interview · mar 2023 · 15 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="SF5pcK8Ja7Y" data-title="Sounds of Sirin Podcast #68 - Mitch Oliver" aria-label="play Sounds of Sirin Podcast #68 - Mitch Oliver">
+<img src="https://img.youtube.com/vi/SF5pcK8Ja7Y/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/SF5pcK8Ja7Y/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">Sounds of Sirin Podcast #68 - Mitch Oliver</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Sounds Of Sirin · talk podcast · jan 2023 · 75 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="NE1JtIxW-qg" data-title="FLIGHT FACILITIES | No Expectations and Facility Reviews at Beyond The Valley | AUD&#x27;$ Interview" aria-label="play FLIGHT FACILITIES | No Expectations and Facility Reviews at Beyond The Valley | AUD&#x27;$ Interview">
+<img src="https://img.youtube.com/vi/NE1JtIxW-qg/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/NE1JtIxW-qg/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">FLIGHT FACILITIES | No Expectations and Facility Reviews at Beyond The Valley | AUD&#x27;$ Interview</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">AUD&#x27;$  - Australia&#x27;s Hip-Hop Connect · interview · jan 2023 · 3 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="TK4jl1R1CEc" data-title="DJ Interview: Toman Interview at After Caposile" aria-label="play DJ Interview: Toman Interview at After Caposile">
+<img src="https://img.youtube.com/vi/TK4jl1R1CEc/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/TK4jl1R1CEc/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">DJ Interview: Toman Interview at After Caposile</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">MEOKO MUSIC  · interview · oct 2022 · 6 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="eQET79lsIQA" data-title="Tomorrowland 2022 - Solardo - Interview" aria-label="play Tomorrowland 2022 - Solardo - Interview">
+<img src="https://img.youtube.com/vi/eQET79lsIQA/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/eQET79lsIQA/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">Tomorrowland 2022 - Solardo - Interview</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">AdamK · interview · sep 2022 · 8 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="-m4U9jqpLuQ" data-title="In The Studio w/ LP GIOBBI - EP 90" aria-label="play In The Studio w/ LP GIOBBI - EP 90">
+<img src="https://img.youtube.com/vi/-m4U9jqpLuQ/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/-m4U9jqpLuQ/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">In The Studio w/ LP GIOBBI - EP 90</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Ableton Podcast · talk podcast · aug 2021 · 64 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="7W3RGzD1o_k" data-title="Gray Area Interview: LP Giobbi" aria-label="play Gray Area Interview: LP Giobbi">
+<img src="https://img.youtube.com/vi/7W3RGzD1o_k/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/7W3RGzD1o_k/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">Gray Area Interview: LP Giobbi</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Gray Area · interview · aug 2021 · 57 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="aXqLlmvAbU4" data-title="Entrevue avec Mitch Oliver" aria-label="play Entrevue avec Mitch Oliver">
+<img src="https://img.youtube.com/vi/aXqLlmvAbU4/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/aXqLlmvAbU4/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">Entrevue avec Mitch Oliver</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Musitechnic Formation · interview · jun 2021 · 12 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="-mLjCf60O6U" data-title="Behind the Headphones: Adam Ten (Multinotes)" aria-label="play Behind the Headphones: Adam Ten (Multinotes)">
+<img src="https://img.youtube.com/vi/-mLjCf60O6U/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/-mLjCf60O6U/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">Behind the Headphones: Adam Ten (Multinotes)</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">The RRP · interview · jun 2021 · 11 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="zYNNRFSGLYY" data-title="Solomun - Nobody Is Not Loved (Interview Part 1/3)" aria-label="play Solomun - Nobody Is Not Loved (Interview Part 1/3)">
+<img src="https://img.youtube.com/vi/zYNNRFSGLYY/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/zYNNRFSGLYY/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">Solomun - Nobody Is Not Loved (Interview Part 1/3)</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Solomun (Official) · interview · may 2021 · 14 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="BAeNPQo3CHg" data-title="The Going Out Podcast - S1 Ep1 - Mark Richards (Solardo)" aria-label="play The Going Out Podcast - S1 Ep1 - Mark Richards (Solardo)">
+<img src="https://img.youtube.com/vi/BAeNPQo3CHg/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/BAeNPQo3CHg/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">The Going Out Podcast - S1 Ep1 - Mark Richards (Solardo)</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Skiddle · talk podcast · nov 2020 · 45 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="1taBCrcHcQw" data-title="In Conversation with Solomun" aria-label="play In Conversation with Solomun">
+<img src="https://img.youtube.com/vi/1taBCrcHcQw/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/1taBCrcHcQw/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">In Conversation with Solomun</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Ibiza Spotlight · interview · sep 2019 · 30 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="4Bar70zdugs" data-title="INTERVIEW: SOLARDO" aria-label="play INTERVIEW: SOLARDO">
+<img src="https://img.youtube.com/vi/4Bar70zdugs/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/4Bar70zdugs/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">INTERVIEW: SOLARDO</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">97.8 Dance FM · interview · mar 2019 · 9 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="dutRdz9c9_8" data-title="How to be a Resident DJ with Dennis Cruz" aria-label="play How to be a Resident DJ with Dennis Cruz">
+<img src="https://img.youtube.com/vi/dutRdz9c9_8/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/dutRdz9c9_8/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">How to be a Resident DJ with Dennis Cruz</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Grahame Farmer from Data Transmission · interview · jan 2019 · 6 min</span>
+</div>
+</div>
+<div class="set-slide" hidden>
+<button class="set-facade" type="button" data-yt="I8qiRf37qDI" data-title="Club Solardo: Ibiza Spotlight Interview" aria-label="play Club Solardo: Ibiza Spotlight Interview">
+<img src="https://img.youtube.com/vi/I8qiRf37qDI/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/I8qiRf37qDI/hqdefault.jpg'" alt="" loading="lazy">
+<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</button>
+<div class="set-meta">
+<span class="t">Club Solardo: Ibiza Spotlight Interview</span>
+<span class="mono" style="color:#6a6a66" data-gen="1">Solardo · interview · nov 2018 · 4 min</span>
+</div>
+</div>
+<!-- iv-pool:end -->
+</div>
+</div>
+<div class="set-dots"><!-- iv-dots:start -->
+<button type="button" aria-label="talk 1 of 7" aria-current="true"></button><button type="button" aria-label="talk 2 of 7"></button><button type="button" aria-label="talk 3 of 7"></button><button type="button" aria-label="talk 4 of 7"></button><button type="button" aria-label="talk 5 of 7"></button><button type="button" aria-label="talk 6 of 7"></button><button type="button" aria-label="talk 7 of 7"></button>
+<!-- iv-dots:end --></div>
 </div>
 <div class="mix-row">
-<a class="pill" href="interviews.html">the roster on video, interviews and talk podcasts on their own page →</a>
+<a class="pill" href="interviews.html">every talk on the site, on its own page →</a>
+<a class="pill" href="interviews.html#shows">the interview shows we follow →</a>
+<span class="mono">seven a week, picked from the library. nothing plays until you tap</span>
 </div>
 </div>
 </section>
@@ -1278,7 +1702,9 @@ fill="none" stroke="#F2F2EF" stroke-width="7" stroke-linecap="round" stroke-line
 
 <script>
 (function(){
-var stage=document.querySelector('.set-stage');if(!stage)return;
+var stages=document.querySelectorAll('.set-stage');if(!stages.length)return;
+for(var si=0;si<stages.length;si++){run(stages[si]);}
+function run(stage){
 var pool=stage.querySelectorAll('.set-slide'),win=7;
 if(pool.length>win){
 var d0=new Date(),t=new Date(Date.UTC(d0.getFullYear(),d0.getMonth(),d0.getDate())),dn=t.getUTCDay()||7;
@@ -1314,6 +1740,7 @@ var wrap=document.createElement('div');wrap.className='video-frame';wrap.appendC
 this.parentNode.replaceChild(wrap,this);
 });}
 go(0);play();
+}
 })();
 </script>
 <script>
@@ -1346,19 +1773,6 @@ links[i].addEventListener('blur',off);
 }
 window.addEventListener('scroll',function(){box.classList.remove('on');},{passive:true});
 document.addEventListener('keydown',function(e){if(e.key==='Escape'){box.classList.remove('on');}});
-})();
-</script>
-<script>
-(function(){var b=document.querySelectorAll(".pod .pep");if(!b.length)return;
-for(var i=0;i<b.length;i++){b[i].addEventListener("click",function(){
-var card=this.closest(".pod"),slot=card.querySelector(".pslot");
-var sibs=card.querySelectorAll(".pep");
-for(var j=0;j<sibs.length;j++){sibs[j].setAttribute("aria-pressed",String(sibs[j]===this));}
-slot.innerHTML="";var fr=document.createElement("iframe");
-fr.src="https://open.spotify.com/embed/episode/"+this.getAttribute("data-ep")+"?utm_source=generator&theme=0";
-fr.title=this.getAttribute("data-title")||"podcast episode";fr.loading="lazy";
-fr.setAttribute("allow","autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture");
-slot.appendChild(fr);slot.hidden=false;});}
 })();
 </script>
 <nav class="gmx-tabs" aria-label="app tabs">
