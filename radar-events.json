@@ -1,44 +1,8 @@
 {
-"generated": "2026-10-07T16:37:42+00:00",
+"generated": "2026-10-08T16:35:44+00:00",
 "artist_count": 688,
-"artists_with_events": 147,
+"artists_with_events": 149,
 "events": [
-{
-"date": "2026-10-07",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-10-07-2026/event/3B00643505AA82B9",
-"artist": "Jamie xx"
-},
-{
-"date": "2026-10-07",
-"event": "LEWIS OFMAN - Déplacé au / Moved to Bar Le Ritz",
-"venue": "Le Studio TD",
-"city": "Montreal",
-"region": "QC",
-"url": "https://www.ticketmaster.ca/lewis-ofman-deplace-au-moved-to-montreal-quebec-10-07-2026/event/310064AFAA8C7319",
-"artist": "Lewis OfMan"
-},
-{
-"date": "2026-10-07",
-"event": "The Jungle Giants",
-"venue": "Outset",
-"city": "Chicago",
-"region": "IL",
-"url": "https://www.ticketmaster.com/the-jungle-giants-chicago-illinois-10-07-2026/event/040064AF2E134111",
-"artist": "The Jungle Giants"
-},
-{
-"date": "2026-10-07",
-"event": "Tinlicker North America 2026",
-"venue": "The Van Buren",
-"city": "Phoenix",
-"region": "AZ",
-"url": "https://www.ticketmaster.com/tinlicker-north-america-2026-phoenix-arizona-10-07-2026/event/1900648FDF639CB3",
-"artist": "Tinlicker"
-},
 {
 "date": "2026-10-08",
 "event": "Fcukers (21+ Event)",
@@ -569,6 +533,15 @@
 "region": "GA",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7xF0x",
 "artist": "Parcels"
+},
+{
+"date": "2026-10-14",
+"event": "Prospa",
+"venue": "Shrine Expo Hall",
+"city": "Los Angeles",
+"region": "CA",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7P9f-",
+"artist": "Prospa"
 },
 {
 "date": "2026-10-15",
@@ -3227,6 +3200,15 @@
 },
 {
 "date": "2026-12-04",
+"event": "SIDEPIECE - Ages 18+",
+"venue": "Russell Industrial Center",
+"city": "Detroit",
+"region": "MI",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAepbU",
+"artist": "SIDEPIECE"
+},
+{
+"date": "2026-12-04",
 "event": "D.O.D",
 "venue": "NX",
 "city": "Newcastle Upon Tyne",
@@ -3488,6 +3470,15 @@
 },
 {
 "date": "2026-12-18",
+"event": "Fcukers",
+"venue": "Brooklyn Paramount",
+"city": "Brooklyn",
+"region": "NY",
+"url": "https://www.ticketmaster.com/fcukers-brooklyn-new-york-12-18-2026/event/000065450681D65F",
+"artist": "Fcukers"
+},
+{
+"date": "2026-12-18",
 "event": "Lee Burridge: Extended Set",
 "venue": "Joshua Brooks",
 "city": "Manchester",
@@ -3512,6 +3503,15 @@
 "region": "ES",
 "url": "https://www.ticketmaster.es/event/los-40dance-tickets/1850100541?language=en-us",
 "artist": "Jonas Blue"
+},
+{
+"date": "2026-12-19",
+"event": "WHP presents: 20 Years of The Warehouse Project Pt 2",
+"venue": "Depot Mayfield",
+"city": "Manchester",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/whp-presents-20-years-of-the-manchester-19-12-2026/event/35006545C82A5505",
+"artist": "Seth Troxler"
 },
 {
 "date": "2026-12-19",
@@ -3791,6 +3791,15 @@
 "region": "NSW",
 "url": "https://www.moshtix.com.au/v2/event/claptone-with-torren-foot-liza/200903",
 "artist": "Torren Foot"
+},
+{
+"date": "2027-01-23",
+"event": "LOT33 REUNION presents MOUSSE T. (GERMANY)",
+"venue": "Hopscotch Bar",
+"city": "Braddon",
+"region": "ACT",
+"url": "https://www.moshtix.com.au/v2/event/lot33-reunion-presents-mousse-t-germany-/201148",
+"artist": "Mousse T."
 },
 {
 "date": "2027-02-02",
