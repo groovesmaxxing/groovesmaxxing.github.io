@@ -1,62 +1,8 @@
 {
-"generated": "2026-10-08T16:35:44+00:00",
+"generated": "2026-10-09T16:19:28+00:00",
 "artist_count": 688,
-"artists_with_events": 149,
+"artists_with_events": 151,
 "events": [
-{
-"date": "2026-10-08",
-"event": "Fcukers (21+ Event)",
-"venue": "Walter Studios",
-"city": "Phoenix",
-"region": "AZ",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZFO4",
-"artist": "Fcukers"
-},
-{
-"date": "2026-10-08",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "Hollywood Bowl",
-"city": "Hollywood",
-"region": "CA",
-"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-hollywood-california-10-08-2026/event/0B006465E365551D",
-"artist": "Midnight Generation"
-},
-{
-"date": "2026-10-08",
-"event": "Parcels",
-"venue": "Criterion Theater - Oklahoma City",
-"city": "Oklahoma City",
-"region": "OK",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7xF0-",
-"artist": "Parcels"
-},
-{
-"date": "2026-10-08",
-"event": "Empire of the Sun - Ask That God: Afterlife North American Tour",
-"venue": "Hollywood Bowl",
-"city": "Hollywood",
-"region": "CA",
-"url": "https://www.ticketmaster.com/empire-of-the-sun-ask-that-hollywood-california-10-08-2026/event/0B006465E365551D",
-"artist": "Polo & Pan"
-},
-{
-"date": "2026-10-08",
-"event": "Prospa",
-"venue": "History Toronto",
-"city": "Toronto",
-"region": "ON",
-"url": "https://www.ticketmaster.ca/prospa-toronto-ontario-10-08-2026/event/1000652A172424D8",
-"artist": "Prospa"
-},
-{
-"date": "2026-10-08",
-"event": "Tinlicker North America 2026",
-"venue": "House of Blues San Diego",
-"city": "San Diego",
-"region": "CA",
-"url": "https://www.ticketmaster.com/tinlicker-north-america-2026-san-diego-california-10-08-2026/event/0A006490DBAB96A8",
-"artist": "Tinlicker"
-},
 {
 "date": "2026-10-09",
 "event": "CID - 10.09.26 @ Forum - Columbus, OH",
@@ -155,6 +101,15 @@
 "region": "ON",
 "url": "https://www.ticketmaster.ca/prospa-toronto-ontario-10-09-2026/event/10006511B6D1B212",
 "artist": "Prospa"
+},
+{
+"date": "2026-10-09",
+"event": "Satin Jackets (21+ Event)",
+"venue": "The Get Down Music Venue",
+"city": "Portland",
+"region": "OR",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7PdPv",
+"artist": "Satin Jackets"
 },
 {
 "date": "2026-10-09",
@@ -1019,6 +974,15 @@
 "region": "AZ",
 "url": "https://www.ticketweb.com/event/the-jungle-giants-crescent-ballroom-tickets/14932713",
 "artist": "The Jungle Giants"
+},
+{
+"date": "2026-10-18",
+"event": "Vintage Culture - Ages 21+",
+"venue": "Walter WhereHouse",
+"city": "Phoenix",
+"region": "AZ",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAvZ-7",
+"artist": "Vintage Culture"
 },
 {
 "date": "2026-10-18",
@@ -2291,6 +2255,15 @@
 },
 {
 "date": "2026-11-13",
+"event": "Kyle Watson - Ages 21+",
+"venue": "Walter WhereHouse",
+"city": "Phoenix",
+"region": "AZ",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AA7dCF",
+"artist": "Kyle Watson"
+},
+{
+"date": "2026-11-13",
 "event": "Tobiahs",
 "venue": "The Opera House",
 "city": "Toronto",
@@ -2648,6 +2621,15 @@
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/eastenderz-manchester-manchester-20-11-2026/event/350064F6A7984FF2",
 "artist": "SOSA"
+},
+{
+"date": "2026-11-20",
+"event": "Millero - Ages 21+",
+"venue": "Walter WhereHouse",
+"city": "Phoenix",
+"region": "AZ",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AA7dC8",
+"artist": "The Botanist"
 },
 {
 "date": "2026-11-21",
@@ -3550,6 +3532,15 @@
 "artist": "Dombresky"
 },
 {
+"date": "2026-12-27",
+"event": "FISHER (NYW)",
+"venue": "Echostage",
+"city": "Washington",
+"region": "DC",
+"url": "https://www.ticketmaster.com/fisher-nyw-washington-district-of-columbia-12-27-2026/event/15006548727E3285",
+"artist": "FISHER"
+},
+{
 "date": "2026-12-28",
 "event": "Lakes Festival 2026",
 "venue": "Hagley Park Entertainment Triangle",
@@ -3686,6 +3677,15 @@
 },
 {
 "date": "2026-12-31",
+"event": "New Years Eve: Mindchatter (DJ set) - Ages 21+",
+"venue": "Walter WhereHouse",
+"city": "Phoenix",
+"region": "AZ",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AA7dCf",
+"artist": "Mindchatter"
+},
+{
+"date": "2026-12-31",
 "event": "New Year's Eve: Defected + Glitterbox",
 "venue": "Depot Mayfield",
 "city": "Manchester",
@@ -3746,6 +3746,15 @@
 "region": "NSW",
 "url": "https://www.moshtix.com.au/v2/event/field-day-2027/199201",
 "artist": "Elderbrook"
+},
+{
+"date": "2027-01-03",
+"event": "Rufus Du Sol (21 and Over)",
+"venue": "Pier 80 - San Francisco",
+"city": "San Francisco",
+"region": "CA",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAe3qg",
+"artist": "RÜFÜS DU SOL"
 },
 {
 "date": "2027-01-09",
