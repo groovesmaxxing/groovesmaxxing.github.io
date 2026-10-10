@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>events radar · groovesMAXXING</title>
-<meta name="description" content="the map of where the grooves are: big us festivals + underground rooms city by city, house · techno · indie dance only. fall 2026 through december, past dates drop off on their own.">
+<meta name="description" content="where the grooves are, on one page: the curated radar of festivals and underground rooms, every ticketmaster date for the artists we follow, and the denver venues, house · techno · indie dance only.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta property="og:title" content="groovesMAXXING · events radar">
-<meta property="og:description" content="big festivals vs underground rooms, house · techno · indie dance only. past dates drop off on their own.">
+<meta property="og:description" content="the radar, on tour and denver venues, on one page. house · techno · indie dance only. past dates drop off on their own.">
 <meta property="og:image" content="https://groovesmaxxing.com/og-image.png">
 <meta property="og:url" content="https://groovesmaxxing.com/events">
 <meta property="og:type" content="website">
@@ -27,7 +27,7 @@
   a{color:inherit}
   a:focus-visible{outline:3px solid var(--racing);outline-offset:3px}
   [hidden]{display:none!important}
-  .wrap{max-width:840px;margin:0 auto;padding:52px 24px 80px}
+  .wrap{max-width:960px;margin:0 auto;padding:52px 24px 80px}
   .back{font-family:'Space Mono',monospace;font-size:.8rem;letter-spacing:.12em;text-decoration:none;color:var(--steel);display:inline-block;margin-bottom:34px}
   .back:hover{color:var(--racing)}
   .kicker{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--racing);margin-bottom:14px}
@@ -65,6 +65,45 @@
   .method b{color:var(--day)}
   .method a{color:var(--racing);text-decoration:none}
   footer{margin-top:34px;padding-top:18px;border-top:1px solid var(--line);color:var(--steel);font-size:12.5px;font-family:'Space Mono',monospace}
+
+  /* the hub (site navigation build, 2026-10-10): the radar, on tour and denver venues on one page */
+  .jump{position:sticky;top:0;z-index:5;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:22px -24px 0;padding:10px 24px;background:rgba(11,11,13,.96);border-bottom:1px solid var(--line);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+  .jump::-webkit-scrollbar{display:none}
+  .jump a{flex:0 0 auto;display:inline-flex;align-items:center;min-height:38px;padding:6px 14px;border:1px solid var(--line);border-radius:999px;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);text-decoration:none}
+  .jump a:hover,.jump a:focus-visible{color:var(--day);border-color:var(--racing)}
+  section.hub{scroll-margin-top:72px}
+  section.hub+section.hub{margin-top:30px}
+  .lede{color:var(--steel);font-size:14px;margin-bottom:14px;max-width:640px}
+  .lede a,.fine a{color:var(--racing);text-decoration:none}
+  .lede a:hover,.fine a:hover{text-decoration:underline}
+  .stamp{font-family:'Space Mono',monospace;color:var(--steel);font-size:12px;margin-bottom:14px}
+  .ttools{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 6px}
+  #tq{flex:1;min-width:220px;background:#151518;border:1px solid #2c2c31;border-radius:999px;padding:12px 18px;color:var(--day);font-family:'Space Mono',monospace;font-size:16px}
+  #tq:focus{outline:none;border-color:var(--racing)}
+  .chip{background:none;border:1px solid var(--line);border-radius:999px;padding:10px 18px;color:var(--steel);font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.08em;cursor:pointer;min-height:44px}
+  .chip:hover{border-color:var(--racing);color:var(--day)}
+  .chip.on{background:var(--racing);border-color:var(--racing);color:#fff}
+  #tcount{font-family:'Space Mono',monospace;color:var(--steel);font-size:.75rem;padding:8px 0 4px}
+  .tlist{padding:4px 0 18px}
+  .tour{display:flex;gap:16px;align-items:baseline;border-bottom:1px solid var(--line);padding:12px 4px}
+  .tour .d{font-family:'Space Mono',monospace;color:var(--racing);font-size:.78rem;white-space:nowrap;min-width:88px}
+  .tour .a{font-weight:600}
+  .tour .w{color:#c9c9c2;font-size:.88rem;flex:1}
+  .tour .go{color:var(--racing);text-decoration:none;font-family:'Space Mono',monospace;font-size:.75rem;white-space:nowrap}
+  .tour .go:hover{color:var(--day)}
+  #tempty{color:var(--steel);padding:30px 0;display:none}
+  .fine{color:#6a6a66;font-size:.75rem;padding:8px 0 10px;max-width:640px}
+  .vhead{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--day);margin:26px 0 14px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+  .v{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:8px}
+  .v:hover{background:var(--card2);border-color:#3a3a37}
+  .v h3{font-weight:600;font-size:1.05rem}
+  .v .meta{color:var(--steel);font-size:.72rem;letter-spacing:.02em;font-family:'Space Mono',monospace}
+  .vtake{color:#c9c9c2;font-size:.9rem;flex:1}
+  .v .links{font-size:.75rem;display:flex;gap:14px;flex-wrap:wrap;font-family:'Space Mono',monospace}
+  .v .links a{color:var(--racing);text-decoration:none}
+  .v .links a:hover{color:var(--day)}
+  @media (max-width:560px){.tour{flex-wrap:wrap;gap:6px 12px}.tour .w{flex-basis:100%}}
 </style>
 <link rel="canonical" href="https://groovesmaxxing.com/events">
 <link rel="stylesheet" href="/gmx-motion.css">
@@ -78,8 +117,11 @@
   <div class="kicker">events radar · last refresh 21 sep 2026 · past dates drop off on their own</div>
   <h1>where the <span>grooves</span> are</h1>
   <p class="sub">The US house / techno / indie dance calendar from now through December 2026. The big ones worth traveling for, and the underground worth staying out late for.</p>
+  <nav class="jump" aria-label="sections"><a href="#radar">the radar</a><a href="#tours">on tour</a><a href="#venues">denver venues</a></nav>
+
   <p class="legend"><b>🔴 canon alert</b> = artists from the groovesmaxxing roster are on the bill · lineups shift, so always confirm on the official link</p>
 
+  <section class="hub" id="radar">
   <!-- ================= TIER 1 ================= -->
   <div class="tierline">tier 1 / main stage</div>
   <h2 class="tier">the big ones</h2>
@@ -190,8 +232,149 @@
   <div class="method">
     <b>How this radar is built:</b> official festival sites + venue calendars + music press, filtered through the groovesmaxxing taste (house · techno · indie dance, and bass/EDM-mainstream bills get skipped). Every date on this page was checked on the event's own page the day of the last refresh. Past dates hide themselves. Good self-serve sources between refreshes: <a href="https://edmtrain.com/" target="_blank" rel="noopener">EDM Train</a> (nationwide tracker + per-city pages), <a href="https://ra.co/events/us/colorado" target="_blank" rel="noopener">Resident Advisor</a>, <a href="https://19hz.info/" target="_blank" rel="noopener">19hz.info</a>, <a href="https://dice.fm/" target="_blank" rel="noopener">Dice</a>, and the venue links above. Lineups and dates move. The official link is always the truth.
   </div>
+  </section>
 
-  <footer>groovesmaxxing events radar · through december 2026 · last refresh 21 sep 2026</footer>
+  <section class="hub" id="tours">
+  <div class="tierline">the follow list, live</div>
+  <h2 class="tier">on tour</h2>
+  <p class="lede">where the artists we follow are playing next. swept nightly from ticketmaster across all 688 names on <a href="/artists">the artists</a>, searchable by artist or city. lineups shift, so always confirm on the official link.</p>
+  <p class="stamp" id="tstamp">loading the radar…</p>
+  <div class="ttools">
+    <input id="tq" type="search" placeholder="search an artist or a city" aria-label="search an artist or a city">
+    <button class="chip" id="tdenver" type="button">denver</button>
+  </div>
+  <p id="tcount"></p>
+  <div class="tlist" id="tlist"></div>
+  <p id="tempty">nothing matches that. try fewer letters, or clear denver.</p>
+  <p class="fine">ticketmaster carries most us tours and misses plenty of club rooms and european dates, so an empty result means "not on ticketmaster," not "not touring." the curated monthly picks stay on <a href="/events">the radar</a>.</p>
+  </section>
+
+  <section class="hub" id="venues">
+  <div class="tierline">the field guide</div>
+  <h2 class="tier">denver venues</h2>
+  <p class="lede">seventeen rooms where the grooves actually happen, from an 1865 cathedral to the big Red Rocks. we checked every single one, and every single one is open. the clubs first, then the big rooms.</p>
+  <h3 class="vhead">the clubs · dance floors first</h3>
+  <div class="grid">
+
+        <div class="v">
+          <h3>The Church</h3>
+          <p class="meta mono">Capitol Hill · 1160 Lincoln St · cap ~1,550 · ages vary by night</p>
+          <p class="vtake">the longest-running dance club in the city, open since 1996 inside an 1865 cathedral. Global Fridays every week, big house and melodic bookings on saturdays.</p>
+          <p class="links mono"><a href="https://churchnightclubco.com/" target="_blank" rel="noopener">site ↗</a><a href="https://www.instagram.com/thechurchdenver/" target="_blank" rel="noopener">instagram ↗</a><a href="https://ra.co/clubs/187678" target="_blank" rel="noopener">ra ↗</a></p>
+        </div>
+
+        <div class="v">
+          <h3>Club Vinyl</h3>
+          <p class="meta mono">Broadway · 1082 N Broadway · cap ~2,470 · 21+</p>
+          <p class="vtake">four floors and a rooftop on Broadway with Funktion-One sound. the basement is where the proper house and techno lives.</p>
+          <p class="links mono"><a href="https://vinylnightclub.com/" target="_blank" rel="noopener">site ↗</a><a href="https://www.instagram.com/clubvinyl/" target="_blank" rel="noopener">instagram ↗</a><a href="https://ra.co/clubs/1595" target="_blank" rel="noopener">ra ↗</a></p>
+        </div>
+
+        <div class="v">
+          <h3>Bar Standard</h3>
+          <p class="meta mono">Broadway · 1037 N Broadway · cap ~750 · 21+</p>
+          <p class="vtake">the house and techno room of the Broadway strip, inside an art moderne furrier building. TheHundred Presents runs the underground through here.</p>
+          <p class="links mono"><a href="https://www.coclubs.com/private-events/bar-standard" target="_blank" rel="noopener">site ↗</a><a href="https://www.instagram.com/barstandard/" target="_blank" rel="noopener">instagram ↗</a><a href="https://ra.co/clubs/9253" target="_blank" rel="noopener">ra ↗</a></p>
+        </div>
+
+        <div class="v">
+          <h3>Milk</h3>
+          <p class="meta mono">Broadway · alley behind 1037 N Broadway · cap ~970 · 21+</p>
+          <p class="vtake">the basement under Bar Standard, entrance in the alley. new wave, darkwave and indie dance inside a Clockwork Orange fever dream.</p>
+          <p class="links mono"><a href="https://www.coclubs.com/private-events/milk" target="_blank" rel="noopener">site ↗</a><a href="https://www.instagram.com/milkbardenver/" target="_blank" rel="noopener">instagram ↗</a><a href="https://ra.co/clubs/90891" target="_blank" rel="noopener">ra ↗</a></p>
+        </div>
+
+        <div class="v">
+          <h3>The Black Box</h3>
+          <p class="meta mono">Capitol Hill · 314 E 13th Ave · cap ~350 · 18+</p>
+          <p class="vtake">Sub.mission's room, dubstep, 140 and drum and bass on the custom Basscouch. more bass than house, still essential. Electronic Tuesdays every week.</p>
+          <p class="links mono"><a href="https://www.blackboxdenver.co/" target="_blank" rel="noopener">site ↗</a><a href="https://www.instagram.com/blackboxdenver/" target="_blank" rel="noopener">instagram ↗</a><a href="https://ra.co/clubs/126580" target="_blank" rel="noopener">ra ↗</a></p>
+        </div>
+
+        <div class="v">
+          <h3>The Beacon</h3>
+          <p class="meta mono">RiNo · 2854 Larimer St</p>
+          <p class="vtake">an art bar built on local djs instead of headliners. minimal, tech house and raw grooves most nights, and surprise sets happen.</p>
+          <p class="links mono"><a href="https://be.thebeacon.co/" target="_blank" rel="noopener">site ↗</a><a href="https://www.instagram.com/beacondenver/" target="_blank" rel="noopener">instagram ↗</a><a href="https://ra.co/clubs/194645" target="_blank" rel="noopener">ra ↗</a></p>
+        </div>
+</div>
+  <h3 class="vhead">the big rooms · when the tour comes through</h3>
+  <div class="grid">
+
+        <div class="v">
+          <h3>Larimer Lounge</h3>
+          <p class="meta mono">RiNo · 2721 Larimer St · cap 250 · varies by show</p>
+          <p class="vtake">the RiNo indie rock room since 2002 that moonlights in house. Open House is the series to watch.</p>
+          <p class="links mono"><a href="https://larimerlounge.com/" target="_blank" rel="noopener">site ↗</a><a href="https://www.instagram.com/larimerlounge/" target="_blank" rel="noopener">instagram ↗</a><a href="https://ra.co/clubs/45631" target="_blank" rel="noopener">ra ↗</a></p>
+        </div>
+
+        <div class="v">
+          <h3>Mission Ballroom</h3>
+          <p class="meta mono">RiNo · 4242 Wynkoop St · cap up to 3,950 · varies by show</p>
+          <p class="vtake">AEG's flagship with a movable stage, so a 2,200 cap night and a 3,950 one both feel right. the biggest house and techno tours land here.</p>
+          <p class="links mono"><a href="https://www.missionballroom.com/" target="_blank" rel="noopener">site ↗</a><a href="https://www.instagram.com/missionballroom/" target="_blank" rel="noopener">instagram ↗</a><a href="https://ra.co/clubs/166494" target="_blank" rel="noopener">ra ↗</a></p>
+        </div>
+
+        <div class="v">
+          <h3>Ogden Theatre</h3>
+          <p class="meta mono">Capitol Hill · 935 E Colfax Ave · cap 1,600 · 16+ unless noted</p>
+          <p class="vtake">a 1917 movie house on Colfax, the mid-size stop between the clubs and the arenas.</p>
+          <p class="links mono"><a href="https://www.ogdentheatre.com/" target="_blank" rel="noopener">site ↗</a><a href="https://www.instagram.com/ogdentheatre/" target="_blank" rel="noopener">instagram ↗</a><a href="https://ra.co/clubs/9577" target="_blank" rel="noopener">ra ↗</a></p>
+        </div>
+
+        <div class="v">
+          <h3>Fillmore Auditorium</h3>
+          <p class="meta mono">Capitol Hill · 1510 N Clarkson St · cap ~3,900 · varies by show</p>
+          <p class="vtake">Live Nation's big room in a 1907 roller rink. when Factory 93 brings warehouse techno to a few thousand people, it happens here.</p>
+          <p class="links mono"><a href="https://www.livenation.com/venue/KovZpZAE6eJA/fillmore-auditorium-denver-events" target="_blank" rel="noopener">site ↗</a><a href="https://www.instagram.com/fillmoreden/" target="_blank" rel="noopener">instagram ↗</a><a href="https://ra.co/clubs/9928" target="_blank" rel="noopener">ra ↗</a></p>
+        </div>
+
+        <div class="v">
+          <h3>Cervantes' Masterpiece Ballroom</h3>
+          <p class="meta mono">Five Points · 2637 Welton St · cap ~1,500 both rooms · mostly 16+</p>
+          <p class="vtake">a Five Points landmark that hosted Duke Ellington before it hosted hard techno. two rooms running jam to bass to club, SHIFT is the series.</p>
+          <p class="links mono"><a href="https://www.cervantesmasterpiece.com/" target="_blank" rel="noopener">site ↗</a><a href="https://www.instagram.com/cervantesmasterpiece/" target="_blank" rel="noopener">instagram ↗</a><a href="https://ra.co/clubs/7503" target="_blank" rel="noopener">ra ↗</a></p>
+        </div>
+
+        <div class="v">
+          <h3>Meow Wolf / Perplexiplex</h3>
+          <p class="meta mono">Sun Valley · 1338 1st St · cap ~475 · varies by show</p>
+          <p class="vtake">a projection-mapped room inside Convergence Station. left-field house and techno with visuals no other room in town can touch.</p>
+          <p class="links mono"><a href="https://meowwolf.com/visit/denver" target="_blank" rel="noopener">site ↗</a><a href="https://www.instagram.com/convergencestation/" target="_blank" rel="noopener">instagram ↗</a><a href="https://ra.co/clubs/193432" target="_blank" rel="noopener">ra ↗</a></p>
+        </div>
+
+        <div class="v">
+          <h3>Red Rocks Amphitheatre</h3>
+          <p class="meta mono">Morrison · 17598 W Alameda Pkwy · cap 9,525 · all ages</p>
+          <p class="vtake">the icon. 9,525 seats in the rocks since 1941, and the top of every denver dance calendar.</p>
+          <p class="links mono"><a href="https://www.redrocksonline.com/" target="_blank" rel="noopener">site ↗</a><a href="https://www.instagram.com/redrocksco/" target="_blank" rel="noopener">instagram ↗</a><a href="https://ra.co/clubs/31675" target="_blank" rel="noopener">ra ↗</a></p>
+        </div>
+
+        <div class="v">
+          <h3>ReelWorks</h3>
+          <p class="meta mono">RiNo · 1399 35th St · cap 3,500 · varies by show</p>
+          <p class="vtake">the warehouse. L-Acoustics sound, full projection mapping, and where the big touring techno and house actually lands.</p>
+          <p class="links mono"><a href="https://reelworksdenver.com/" target="_blank" rel="noopener">site ↗</a><a href="https://www.instagram.com/reelworksdenver/" target="_blank" rel="noopener">instagram ↗</a><a href="https://ra.co/clubs/190581" target="_blank" rel="noopener">ra ↗</a></p>
+        </div>
+
+        <div class="v">
+          <h3>Summit</h3>
+          <p class="meta mono">Ballpark · 1902 Blake St · cap 1,100 · varies by show</p>
+          <p class="vtake">Live Nation's club hall on Blake Street. leans bass and metal more than house, but the dance tours still stop here.</p>
+          <p class="links mono"><a href="https://www.summitdenver.com/" target="_blank" rel="noopener">site ↗</a><a href="https://www.instagram.com/summitden/" target="_blank" rel="noopener">instagram ↗</a></p>
+        </div>
+
+        <div class="v">
+          <h3>Gothic Theatre</h3>
+          <p class="meta mono">Englewood · 3263 S Broadway · cap ~1,000 · 16+ unless noted</p>
+          <p class="vtake">a 1925 art deco movie palace on south Broadway. melodic and left-field electronic between the indie and punk bookings.</p>
+          <p class="links mono"><a href="https://www.gothictheatre.com/" target="_blank" rel="noopener">site ↗</a><a href="https://www.instagram.com/gothictheatre/" target="_blank" rel="noopener">instagram ↗</a><a href="https://ra.co/clubs/25621" target="_blank" rel="noopener">ra ↗</a></p>
+        </div>
+</div>
+  <p class="fine">ages, hours and lineups move, so check the venue before you head out. capacities are approximate, pulled from venue pages and public directories. every room on this page was verified open in august 2026.</p>
+  </section>
+
+  <footer>groovesmaxxing events radar · the radar, on tour and denver venues · last refresh 21 sep 2026</footer>
 
 </div>
 <script>
@@ -211,6 +394,59 @@
     }
     if(!live){cities[c].hidden=true;}
   }
+})();
+</script>
+<script>
+(function(){
+  var list = document.getElementById('tlist');
+  var q = document.getElementById('tq');
+  var den = document.getElementById('tdenver');
+  var count = document.getElementById('tcount');
+  var empty = document.getElementById('tempty');
+  var stamp = document.getElementById('tstamp');
+  var all = [];
+  var denverOn = false;
+
+  function esc(s){ var d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
+
+  function fmtDate(iso){
+    if(!iso) return 'tba';
+    var p = iso.split('-');
+    var months = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+    return months[(+p[1]||1)-1] + ' ' + (+p[2]||'') + ' ' + p[0].slice(2);
+  }
+
+  function render(){
+    var term = (q.value || '').toLowerCase().trim();
+    var rows = all.filter(function(e){
+      if(denverOn && (e.city || '').toLowerCase() !== 'denver' && (e.city || '').toLowerCase() !== 'morrison' && (e.city || '').toLowerCase() !== 'englewood') return false;
+      if(!term) return true;
+      return (e.artist || '').toLowerCase().indexOf(term) > -1 || (e.city || '').toLowerCase().indexOf(term) > -1 || (e.venue || '').toLowerCase().indexOf(term) > -1;
+    });
+    list.innerHTML = rows.slice(0, 1000).map(function(e){
+      var where = [e.city, e.region].filter(Boolean).join(', ');
+      var place = [e.venue, where].filter(Boolean).join(' · ') || 'venue tba';
+      return '<div class="tour"><span class="d">' + esc(fmtDate(e.date)) + '</span><span class="a">' + esc(e.artist) + '</span><span class="w">' + esc(place) + '</span>' + (e.url ? '<a class="go" href="' + esc(e.url) + '" target="_blank" rel="noopener">tickets ↗</a>' : '') + '</div>';
+    }).join('');
+    count.textContent = rows.length ? rows.length + ' shows' + (rows.length > 1000 ? ', showing the first 1000' : '') : '';
+    empty.style.display = rows.length ? 'none' : 'block';
+  }
+
+  q.addEventListener('input', render);
+  den.addEventListener('click', function(){ denverOn = !denverOn; den.className = 'chip' + (denverOn ? ' on' : ''); render(); });
+
+  fetch('radar-events.json').then(function(r){ return r.json(); }).then(function(data){
+    all = data.events || [];
+    if(data.generated){
+      stamp.textContent = 'swept nightly · last sweep ' + data.generated.slice(0,10) + ' · ' + (data.artists_with_events || 0) + ' of ' + (data.artist_count || 688) + ' artists have dates on ticketmaster';
+    } else {
+      stamp.textContent = 'the radar is warming up. the first nightly sweep has not run yet.';
+    }
+    render();
+  }).catch(function(){
+    stamp.textContent = 'could not load the radar data. refresh, or check back in a minute.';
+    empty.style.display = 'block';
+  });
 })();
 </script>
 <script src="/gmx-motion.js" defer></script>

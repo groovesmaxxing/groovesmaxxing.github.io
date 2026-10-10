@@ -1,7 +1,8 @@
 /* groovesmaxxing shared youtube stage (site navigation build, 2026-10-10). vanilla, no dependencies.
    one player for every set and talk on the site: full width, prev and next arrows, a counter, the dots,
    swipe on touch, arrow keys, nothing loads until you tap, youtube-nocookie embeds.
-   home page: upgrades the two pools in place. data-window keeps the weekly seven, data-auto the slow advance.
+   home page: upgrades the two pools in place. data-window keeps the weekly seven, data-auto the slow advance,
+   and one slide marked data-featured keeps the first slot (the one hand pick per carousel).
    artist and label pages: reads the generated rails (the sets:start and interviews:start blocks, and the
    old iframe grids) as data and builds the stage right after them. the generated markup is never edited,
    only hidden, so the laptop scripts can keep rewriting it. */
@@ -44,13 +45,18 @@ function run(stage){
   var win=parseInt(stage.getAttribute('data-window')||'0',10)||0;
   var auto=parseInt(stage.getAttribute('data-auto')||'0',10)||0;
   var label=stage.getAttribute('data-label')||'set';
+  /* one featured slot: a slide marked data-featured always leads, the rest follow in their own order */
+  var feat=pool.filter(function(s){return s.hasAttribute('data-featured');}).slice(0,1);
+  if(feat.length){rail.insertBefore(feat[0],rail.firstChild);pool=feat.concat(pool.filter(function(s){return s!==feat[0];}));}
   if(win&&pool.length>win){
-    /* the weekly window: the same seven for everyone all week, a new seven on monday */
+    /* the weekly window: the same seven for everyone all week, a new seven on monday. a featured slide keeps slot one */
+    var rest=pool.slice(feat.length),room=win-feat.length;
     var d0=new Date(),t=new Date(Date.UTC(d0.getFullYear(),d0.getMonth(),d0.getDate())),dn=t.getUTCDay()||7;
     t.setUTCDate(t.getUTCDate()+4-dn);
     var wk=Math.ceil(((t-Date.UTC(t.getUTCFullYear(),0,1))/864e5+1)/7);
-    var start=(wk%Math.floor(pool.length/win))*win;
-    for(var p=0;p<pool.length;p++){pool[p].hidden=!(p>=start&&p<start+win);}
+    var start=(wk%Math.max(1,Math.floor(rest.length/room)))*room;
+    for(var p=0;p<rest.length;p++){rest[p].hidden=!(p>=start&&p<start+room);}
+    if(feat.length)feat[0].hidden=false;
   }
   var slides=pool.filter(function(s){return !s.hidden;});
   if(!slides.length)return;
