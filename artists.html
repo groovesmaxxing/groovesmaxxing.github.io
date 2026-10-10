@@ -227,6 +227,8 @@ details.az .drow:last-child{border-bottom:0}
     if(lane===v){lane='';c.classList.remove('on')}
     else{lane=v;chips.forEach(function(x){x.classList.remove('on')});c.classList.add('on')}
     apply()})});
+  /* the page opens on # and A, the rest fold until tapped */
+  if(!location.hash){['g-num','g-A'].forEach(function(id){var d=document.getElementById(id);if(d)d.open=true;});}
   counts();openHash();window.addEventListener('hashchange',openHash);
 })();
 </script>
