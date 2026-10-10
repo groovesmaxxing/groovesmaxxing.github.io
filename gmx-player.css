@@ -1,0 +1,30 @@
+/* groovesmaxxing shared youtube stage (site navigation build, 2026-10-10). pairs with gmx-player.js.
+   the home page already carries the facade and dot rules inline, these repeat them for every other page
+   and add the arrows and the counter. scoped under .gmx-stage so nothing else on a page moves. */
+.gmx-stage{position:relative;margin-top:14px}
+.gmx-stage .set-viewport{overflow:hidden;border-radius:16px;touch-action:pan-y}
+.gmx-stage .set-rail{display:flex;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+.gmx-stage .set-slide{flex:0 0 100%;min-width:100%}
+.gmx-stage .set-slide[hidden]{display:none}
+.gmx-stage .set-facade{position:relative;display:block;width:100%;padding:0;padding-top:56.25%;border:0;border-radius:16px;overflow:hidden;background:#000;cursor:pointer}
+.gmx-stage .set-facade img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.gmx-stage .set-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:72px;height:72px;border-radius:50%;background:var(--racing,#FF1C02);display:grid;place-items:center;box-shadow:0 10px 34px rgba(0,0,0,.32);transition:background .2s,transform .2s}
+.gmx-stage .set-play svg{width:26px;height:26px;fill:#fff;margin-left:3px}
+.gmx-stage .set-facade:hover .set-play{background:var(--deep,#CC1400);transform:translate(-50%,-50%) scale(1.07)}
+.gmx-stage .video-frame{position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#000}
+.gmx-stage .video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.gmx-stage .set-meta{display:flex;justify-content:space-between;gap:6px 12px;flex-wrap:wrap;margin-top:12px}
+.gmx-stage .set-meta .t{font-weight:900;line-height:1.35}
+.gmx-stage .set-meta .mono{font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.08em;color:var(--steel,#8A8A93);text-transform:lowercase}
+.gmx-stage .set-ctl{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:18px}
+.gmx-stage .set-arrow{width:46px;height:46px;border-radius:50%;border:2px solid var(--racing,#FF1C02);background:transparent;color:inherit;cursor:pointer;display:grid;place-items:center;padding:0;transition:background .2s,color .2s,transform .2s}
+.gmx-stage .set-arrow svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.gmx-stage .set-arrow:hover{background:var(--racing,#FF1C02);color:#fff;transform:translateY(-2px)}
+.gmx-stage .set-count{font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.12em;color:var(--steel,#8A8A93);min-width:72px;text-align:center}
+.gmx-stage .set-dots{display:flex;gap:8px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+.gmx-stage .set-dots button{width:8px;height:8px;padding:0;border:0;border-radius:999px;background:#c9c9c2;cursor:pointer;transition:width .25s,background .25s}
+.gmx-stage .set-dots button[aria-current="true"]{background:var(--racing,#FF1C02);width:24px}
+.gmx-stage .set-ctl[hidden],.gmx-stage .set-dots[hidden]{display:none}
+.gmx-stage .set-arrow:focus-visible,.gmx-stage .set-dots button:focus-visible,.gmx-stage .set-facade:focus-visible{outline:3px solid var(--racing,#FF1C02);outline-offset:3px}
+@media (max-width:640px){.gmx-stage .set-play{width:60px;height:60px}.gmx-stage .set-play svg{width:22px;height:22px}.gmx-stage .set-meta .t{font-size:.95rem}}
+@media (prefers-reduced-motion: reduce){.gmx-stage .set-rail{transition:none}.gmx-stage .set-arrow:hover{transform:none}}
