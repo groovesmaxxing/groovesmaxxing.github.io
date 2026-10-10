@@ -33,6 +33,7 @@ SLEEP = 0.25  # 4/sec, under the 5/sec cap
 # rewritten every run, so fixing an entry here repairs a bad cache automatically.
 OVERRIDES = {
     "Void": None,  # ticketmaster's Void is a louisiana thrash band, not the tech house one
+    "MADI": None,  # ticketmaster's MADI is madi diaz, a us singer-songwriter. ours is MADI (IT) from rome, confirmed with her
 }
 
 # venues we never list, matched on (venue, city), lowercased. decided by hand.
