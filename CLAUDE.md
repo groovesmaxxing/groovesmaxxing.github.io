@@ -16,7 +16,7 @@ A plain static website. Every page is a hand-written or script-written `.html` f
 
 | Folder | What it holds |
 |---|---|
-| `artists/` | One page per artist (about 712 pages), for example `artists/adam-ten.html` |
+| `artists/` | One page per artist (708 profiles plus 4 redirect pages), for example `artists/adam-ten.html` |
 | `labels/` | One page per record label (about 71 pages) |
 | `tracklists/` | One page per DJ set tracklist, plus `tracklists/index.html` which lists them all with a youtube or soundcloud filter |
 | `newsletter/` | Archived issues of the Fresh Grooves Friday newsletter, named `fgf-001.html`, `fgf-002.html` and so on |
@@ -103,6 +103,10 @@ These blocks are filled in by scripts. Hand edits inside them will likely be ove
 
 - UNKNOWN: the scripts that fill these blocks are not in this repo. `.gitignore` names `sitelink_tracklists.py` and `site_edit.py`, and commit messages mention a release "tracker", `sets_library.json` and a "registry". Where these live and how to run them is not recorded here.
 
+### Redirect pages
+
+When a page moves, the old file is kept as a tiny redirect page with `<meta http-equiv="refresh">`, a canonical link to the new address and `noindex`. Examples are `artists/chris-stussy.html`, `artists/gabri.html`, `artists/greg-br.html` and `artists/nu-moda.html`. These are meant to stay out of `sitemap.xml` and out of the directory pages. Do not delete them, because old links still point at them.
+
 ### Ignored files
 
 - `*.bak` and `*.bak_*` backups that the generator scripts write.
@@ -122,13 +126,12 @@ Totals are typed into page text by hand or by script, for example "708 artists, 
 ### Adding a new page
 
 1. Copy the closest existing page as a starting point so the template, fonts and tokens match.
-2. Add the page's URL to `sitemap.xml`. Several recent artist pages were missed (see Known gaps).
+2. Add the page's URL to `sitemap.xml`. Leave redirect pages out.
 3. Link to it from the right directory page (`artists.html`, `roster.html`, `labels.html`, `tracklists/index.html` or `newsletter.html`).
-4. UNKNOWN: whether new artists should also be added to `radar-artists.json` every time. It currently lists 688 names while `roster.html` says 708 artists.
+4. For a new artist, add their name to `radar-artists.json` so the nightly sweep looks up tour dates, and update the "all N names" count in `tours.html`. Short or common names can match the wrong act on Ticketmaster, so check them and use `OVERRIDES` in `fetch_events.py` when needed.
 
 ## Known gaps (as of 2026-10-10)
 
-- `artists/chris-stussy.html`, `artists/gabri.html`, `artists/greg-br.html` and `artists/nu-moda.html` exist but are not in `sitemap.xml`.
-- `radar-artists.json` has 688 names, `roster.html` reports 708 artists, `artists/` has about 712 files.
+- `radar-artists.json` has 688 names while `roster.html` reports 708 artists, so about 20 newer artists get no tour dates.
 - `README.md` is a single heading with no content.
 - No broken internal links were found in a scan of all HTML files.
