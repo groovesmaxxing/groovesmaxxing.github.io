@@ -28,7 +28,7 @@
   });
   // never hide things that are already on screen at load, only what is below the fold
   const fold = innerHeight * 0.92;
-  const list = [...targets].filter(el => el.getBoundingClientRect().top > fold).slice(0, 500);
+  const list = [...targets].filter(el => { const r = el.getBoundingClientRect(); return r.top > fold && r.height < innerHeight * 1.5; }).slice(0, 500);  // a block taller than the screen can never reach the reveal threshold, so it is never hidden
   list.forEach(el => el.classList.add('rv'));
 
   const heads = [...document.querySelectorAll('.wrap h1, .wrap h2, main h1, main h2, section h2')].filter(h => !h.closest('footer,nav') && parseFloat(getComputedStyle(h).fontSize) >= 22);
