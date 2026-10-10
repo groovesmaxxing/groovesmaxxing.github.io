@@ -69,7 +69,8 @@ A plain static website. Every page is a hand-written or script-written `.html` f
 ## Build and deploy
 
 - There is no build. Edit the HTML, commit, push to `main`.
-- UNKNOWN: GitHub Pages settings are not stored in the repo. The repo name and `CNAME` point to GitHub Pages publishing from `main`, but the exact source setting (branch and folder) has to be checked in the GitHub repo settings.
+- Every pull request gets a Cloudflare Pages check, which builds a preview of the branch.
+- UNKNOWN: which service actually serves groovesmaxxing.com. The repo name and `CNAME` suggest GitHub Pages, but pull requests also get a "Cloudflare Pages" check, so Cloudflare Pages is connected to this repo too. Neither service's settings are stored in the repo. Check the GitHub repo settings and the Cloudflare dashboard.
 - UNKNOWN: there is no local preview script. Any simple static file server pointed at the repo root should work, but nothing in the repo says which one is used.
 
 ### Nightly events radar (the only automation)
