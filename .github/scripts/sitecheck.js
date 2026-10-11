@@ -52,6 +52,21 @@ const NO_TABS=['/sets.html','/interviews.html'];
         const v=await p.evaluate(()=>({rows:document.querySelectorAll('.tour').length,opacity:getComputedStyle(document.getElementById('tours')).opacity}));
         log(v.rows>0&&v.opacity==='1',path+': the tour list is visible after it renders ('+v.rows+' rows, opacity '+v.opacity+')');
       }
+      if(path==='/artists/solomun.html'){
+        await p.waitForTimeout(900);
+        const r=await p.evaluate(()=>({box:!!document.querySelector('.gmx-rel'),chips:document.querySelectorAll('.gmx-rel .row a').length,stages:document.querySelectorAll('.gmx-rel .gmx-stage').length}));
+        log(r.box,path+': "also on the site" box present ('+r.chips+' links, '+r.stages+' stages)');
+      }
+      if(path==='/events.html'){
+        await p.waitForTimeout(600);
+        const l=await p.evaluate(()=>document.querySelectorAll('#radar strong a.gmx-ar').length);
+        log(l>20,path+': bold artist names link to profiles ('+l+')');
+      }
+      if(path==='/tracklists/cloonee-live-at-red-rocks.html'){
+        await p.waitForTimeout(600);
+        const l=await p.evaluate(()=>({ar:document.querySelectorAll('table.tl a.gmx-ar').length,more:!!document.querySelector('.gmx-rel')}));
+        log(l.ar>0&&l.more,path+': row names linked ('+l.ar+') and the keep going box present');
+      }
       if(path==='/sets.html'){
         await p.click('details.a summary >> nth=0');await p.waitForTimeout(1200);
         const n=await p.evaluate(()=>document.querySelector('details.a[open] .grid[data-slug] .card')?document.querySelector('details.a[open] .grid[data-slug]').querySelectorAll('.card').length:0);
