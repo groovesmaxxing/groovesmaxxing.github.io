@@ -23,6 +23,8 @@ T = {
     'crate_js': '<script src="/gmx-crate.js" defer></script>',
     'related_js': '<script src="/gmx-related.js" defer></script>',
     'upcoming_js': '<script src="/gmx-upcoming.js" defer></script>',
+    'quick_css': '<link rel="stylesheet" href="/gmx-quick.css">',
+    'quick_js': '<script src="/gmx-quick.js" defer></script>',
 }
 
 def ensure(path, heads, before_motion, after_motion):
@@ -121,4 +123,9 @@ def seo(path):
 
 for f in sorted(glob.glob('*.html') + glob.glob('artists/*.html') + glob.glob('labels/*.html') + glob.glob('tracklists/*.html') + glob.glob('newsletter/*.html')):
     n += seo(f)
+# quick search (ui build 1, 2026-10-11): the sheet that opens from any search link or the "/" key, on
+# every page. the full search page keeps only its own script.
+for f in sorted(glob.glob('*.html') + glob.glob('artists/*.html') + glob.glob('labels/*.html') + glob.glob('tracklists/*.html') + glob.glob('newsletter/*.html')):
+    if f.startswith('google') or f == 'search.html': continue
+    n += ensure(f, ['quick_css'], [], ['quick_js'])
 print('ensure_tags:', n, 'pages touched')
