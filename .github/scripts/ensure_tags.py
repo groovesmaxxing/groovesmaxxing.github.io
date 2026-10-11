@@ -61,4 +61,64 @@ for f in ['index.html', 'sets.html', 'interviews.html']:
     anchor = T['player_js'] if T['player_js'] in s else MOTION_JS
     if anchor not in s: continue
     s = s.replace(anchor, anchor + '\n' + T['crate_js'], 1); open(f, 'w', encoding='utf-8').write(s); n += 1
+
+# seo (2026-10-11): the head tags the laptop templates do not write, re-applied after every render.
+#   twitter:card on every page that has an og:image, so a link pasted into x or slack unfurls large.
+#   a BreadcrumbList (home › section › page) on every artist, label, tracklist and newsletter page, so
+#   search results show the section path instead of the bare url. named from the page title, linked
+#   from its canonical. the block sits behind a marker comment so the plain <script type=...> stays
+#   exactly what preflight parses.
+import html as _html, json
+CRUMB_MARK = '<!-- gmx-crumbs -->'
+SECTIONS = {'artists': ('artists', '/artists'), 'labels': ('labels', '/labels'),
+            'tracklists': ('tracklists', '/tracklists/'), 'newsletter': ('newsletter', '/newsletter')}
+SITE = 'https://groovesmaxxing.com'
+
+def page_name(s):
+    m = re.search(r'<title>(.*?)</title>', s, re.S)
+    if not m: return ''
+    t = _html.unescape(re.sub(r'\s+', ' ', m.group(1))).strip()
+    for sep in (' · groovesMAXXING', ' · groovesmaxxing'):
+        if t.lower().endswith(sep.lower()): t = t[:-len(sep)].rstrip()
+    for pre in ('groovesMAXXING · ',):
+        if t.lower().startswith(pre.lower()): t = t[len(pre):].lstrip()
+    return t
+
+def crumbs(path, s):
+    folder = path.split('/')[0]
+    if folder not in SECTIONS or path.endswith('/index.html'): return None
+    canon = re.search(r'<link rel="canonical" href="([^"]+)"', s)
+    name = page_name(s)
+    if not canon or not name: return None
+    sec, sec_url = SECTIONS[folder]
+    d = {'@context': 'https://schema.org', '@type': 'BreadcrumbList', 'itemListElement': [
+        {'@type': 'ListItem', 'position': 1, 'name': 'groovesmaxxing', 'item': SITE + '/'},
+        {'@type': 'ListItem', 'position': 2, 'name': sec, 'item': SITE + sec_url},
+        {'@type': 'ListItem', 'position': 3, 'name': name, 'item': canon.group(1)}]}
+    return CRUMB_MARK + '\n<script type="application/ld+json">' + json.dumps(d, ensure_ascii=False).replace('</', '<\\/') + '</script>'
+
+def seo(path):
+    s = open(path, encoding='utf-8').read(); o = s
+    if 'http-equiv="refresh"' in s or path.startswith('google'): return False
+    desc = re.search(r'<meta name="description" content="([^"]+)">', s)
+    if desc and 'property="og:title"' not in s and page_name(s):
+        # a page with a title and a description but no open graph block (the friday drop) gets the
+        # plain one: title, description, the site card, and its canonical as og:url when it has one
+        canon = re.search(r'<link rel="canonical" href="([^"]+)"', s)
+        t = _html.escape(page_name(s) + ' · groovesMAXXING', quote=True)
+        og_block = ['<meta property="og:title" content="%s">' % t, '<meta property="og:description" content="%s">' % desc.group(1)] \
+            + ([] if 'property="og:image"' in s else ['<meta property="og:image" content="%s/og-image.png">' % SITE]) \
+            + (['<meta property="og:url" content="%s">' % canon.group(1)] if canon and 'property="og:url"' not in s else [])
+        s = s.replace(desc.group(0), desc.group(0) + '\n' + '\n'.join(og_block), 1)
+    og = re.search(r'<meta property="og:image" content="[^"]+">', s)
+    if og and 'name="twitter:card"' not in s:
+        s = s.replace(og.group(0), og.group(0) + '\n<meta name="twitter:card" content="summary_large_image">', 1)
+    if CRUMB_MARK not in s:
+        c = crumbs(path, s)
+        if c: s = s.replace('</head>', c + '\n</head>', 1)
+    if s != o: open(path, 'w', encoding='utf-8').write(s)
+    return s != o
+
+for f in sorted(glob.glob('*.html') + glob.glob('artists/*.html') + glob.glob('labels/*.html') + glob.glob('tracklists/*.html') + glob.glob('newsletter/*.html')):
+    n += seo(f)
 print('ensure_tags:', n, 'pages touched')

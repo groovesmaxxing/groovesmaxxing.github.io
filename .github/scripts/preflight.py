@@ -115,6 +115,13 @@ def check_page(f, text):
         fail(f, "tags: " + e)
     redirect = 'http-equiv="refresh"' in text
     ld = re.findall(r'<script type="application/ld\+json">(.*?)</script>', text, re.S)
+    # seo basics on every page a search engine may list: a title, a description, a canonical and an
+    # og:title. redirect stubs and noindex pages (crate, scan, more, legal, 404) are not listed.
+    if not redirect and 'content="noindex"' not in text and not f.startswith("google"):
+        for what, rx in (("title", r"<title>[^<]+</title>"), ("meta description", r'<meta name="description" content="[^"]{20,}"'),
+                         ("canonical", r'<link rel="canonical" href="https://groovesmaxxing\.com/'), ("og:title", r'<meta property="og:title" content="[^"]+"')):
+            if not re.search(rx, text):
+                fail(f, "indexable page without a %s" % what)
     # the markup checks look at markup, not at the strings inside inline scripts that build markup later
     text = re.sub(r"<script\b[^>]*>.*?</script>", "", text, flags=re.S)
     for m in re.finditer(r'<(?:a|link|script|img|iframe|source)\b[^>]*?\s(?:href|src)="([^"]+)"', text):
