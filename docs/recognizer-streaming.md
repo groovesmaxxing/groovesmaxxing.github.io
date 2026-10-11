@@ -64,3 +64,19 @@ text frames, json, any number of them, in this order of life:
 
 the card now prints `found in N s` plus per-round upload and match times. with the socket the phone prints
 `found in N s · streamed`. that line is how we will know the server half paid off.
+
+## what the card wants from the server, streaming or not
+
+the phone now fills these in itself when they are missing, from public services and from our own
+tracklists. the server can make that fallback redundant by sending them on every match, early rounds
+included:
+
+- `card.candidate.artwork_url`: the cover, at least 600 px square. the releases database on the laptop
+  already holds the spotify id for most released tracks, and spotify's track endpoint carries the art.
+- `card.candidate.store_links`: real urls, not searches: `spotify`, `apple`, `beatport`, `soundcloud`,
+  `deezer`. the phone shows a search button only when a real link is missing.
+- `card.candidate.heard_in`: for every library match, including an ID with no name, the set the
+  fingerprint came from and the second it sits at: `[{set_title, page_url, deep_link, at}]`. the phone
+  renders this as "hear it in" on the card. it is the one thing the phone cannot work out for an ID on
+  its own, since there is no name to look up.
+- `in_set`: unchanged, the set the clip itself was scanned from, when known.
