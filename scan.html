@@ -1230,6 +1230,24 @@ function onCfg(){
   renderYou(); loadFollows(); resumeWait();
 }
 function youNote(t,ok){var m=$('youmsg');if(m){m.textContent=t;m.className='msg'+(ok?' ok':'')}}
+/* the code from the mail, typed here: no browser hand-off, which the gmail app on android cannot do */
+function showCodeForm(email){
+  var f=$('yform'); if(!f||$('cform2'))return;
+  var c=document.createElement('form'); c.className='form on'; c.id='cform2'; c.setAttribute('autocomplete','one-time-code');
+  c.innerHTML='<label for="y-code">the six digits from the mail</label><input id="y-code" name="code" inputmode="numeric" pattern="[0-9 ]*" maxlength="7" autocomplete="one-time-code" placeholder="000 000">'+
+    '<div class="row"><button class="btn red" type="submit">sign in with the code</button><span class="msg" id="codemsg"></span></div>';
+  c.dataset.email=email; f.parentNode.insertBefore(c,f.nextSibling); $('y-code').focus();
+}
+function sendCode(f){
+  var m=$('codemsg'), code=($('y-code').value||'').replace(/\D/g,'');
+  if(code.length!==6){m.textContent='six digits.';return}
+  m.textContent='checking';
+  fx(cfg.api_base+'/auth/code',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify({email:f.dataset.email,code:code})},POST_MS).then(function(r){
+    if(r.status===410){m.textContent='that code is wrong, used or too old. ask for a new one.';return}
+    if(!r.ok)throw new Error(r.status);
+    return r.json().then(function(j){if(pollTimer){clearInterval(pollTimer);pollTimer=null}try{localStorage.removeItem('gmx_pending')}catch(e){}setSession(j.session);meCache=null;renderYou();youNote('signed in as '+j.email+'.',true);loadFollows();ensurePush()});
+  }).catch(function(){m.textContent='did not send. check your signal.'});
+}
 /* the page that asked for the link keeps a ticket and asks every few seconds whether the link was
    tapped, in any browser. the first ready answer carries this browser's own session, so the person
    is signed in where they started. the ticket is remembered across a reload for the link's window. */
@@ -1310,10 +1328,12 @@ document.addEventListener('submit',function(ev){
       if(r.status===422){youNote('that does not look like an email address.');return}
       if(!r.ok)throw new Error(r.status);
       return r.json().then(function(j){
-        youNote(j.mail_sent?'sent. tap the link in the mail, anywhere. this page signs in on its own while it stays open.':'the mail could not go out right now. try again later.',j.mail_sent);
-        if(j.mail_sent&&j.pending)waitForLink(j.pending,j.minutes||20);
+        youNote(j.mail_sent?'sent. type the six digits from the mail here, or tap its link anywhere.':'the mail could not go out right now. try again later.',j.mail_sent);
+        if(j.mail_sent){showCodeForm(email);if(j.pending)waitForLink(j.pending,j.minutes||20)}
       });
     }).catch(function(){youNote('did not send. check your signal and try again.')});
+  }else if(f.id==='cform2'){
+    ev.preventDefault(); sendCode(f);
   }else if(f.id==='hform2'){
     ev.preventDefault(); youNote('saving');
     fx(cfg.api_base+'/me',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify({handle:$('y-handle').value.trim()||null})},POST_MS).then(function(r){
