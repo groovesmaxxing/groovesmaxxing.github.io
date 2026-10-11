@@ -16,6 +16,7 @@
 <meta name="apple-mobile-web-app-title" content="grooves">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{--night:#0B0B0D;--racing:#FF1C02;--deep:#CC1400;--day:#F2F2EF;--steel:#8A8A93;--line:rgba(242,242,239,.12)}
@@ -138,7 +139,7 @@ h1.eyebrow{margin:0;font-weight:400}
 .gmx-tabs{display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(11,11,13,.96);border-top:1px solid rgba(242,242,239,.12);padding-bottom:env(safe-area-inset-bottom);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 .gmx-tabs ul{list-style:none;margin:0 auto;padding:0;display:flex;justify-content:space-around;max-width:720px}
 .gmx-tabs li{flex:1}
-.gmx-tabs a{display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 4px 8px;min-height:54px;text-decoration:none;color:#8A8A93;font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:lowercase}
+.gmx-tabs a{display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 4px 8px;min-height:54px;text-decoration:none;color:#8A8A93;font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.08em;text-transform:lowercase}
 .gmx-tabs svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .gmx-tabs a[aria-current="page"]{color:#FF1C02}
 .gmx-tabs a:hover{color:#F2F2EF}
@@ -146,6 +147,7 @@ h1.eyebrow{margin:0;font-weight:400}
 </style>
 <link rel="canonical" href="https://groovesmaxxing.com/scan">
 <link rel="stylesheet" href="/gmx-motion.css">
+<meta property="og:image" content="https://groovesmaxxing.com/og-image.png">
 </head>
 <body>
 <div class="wrap">
@@ -208,6 +210,15 @@ h1.eyebrow{margin:0;font-weight:400}
 /* groovesmaxxing scan (phase 5, step b). vanilla, no dependencies.
    the api base and the app key come from /gmx-config.json, never from this file. */
 var CAPTURE_MS=15000, EARLY_MS=8000, POLL_MS=500, POLL_CAP_MS=30000, HISTORY_MAX=50;
+var POST_MS=25000, GET_MS=8000;   /* every request has a deadline, so a dead cell link never leaves the page spinning */
+/* site review build, 2026-10-11: audio worklet capture, request deadlines, config retry, level checks, one poll loop */
+function fx(url,opts,ms){
+  opts=opts||{};
+  if(!('AbortController' in window))return fetch(url,opts);
+  var ac=new AbortController(), t=setTimeout(function(){ac.abort()},ms||GET_MS);
+  opts.signal=ac.signal;
+  return fetch(url,opts).then(function(r){clearTimeout(t);return r},function(e){clearTimeout(t);throw (e&&e.name==='AbortError')?new Error('timeout'):e});
+}
 /* phase 7 DECISION 9: at 8 s the page posts what it has as an early, library-only round and keeps
    listening. a LIKELY or better answer shows at once, the 15 s scan replaces it when it names something. */
 var scanSeq=0, early=null, finalDone=false;
@@ -219,9 +230,15 @@ var cfg=null, cfgErr=null, busy=false, heldBlob=null, heldAt=null, current=null,
 window.gmxRefreshBlocked=function(){return busy};
 
 /* config */
-fetch('/gmx-config.json',{cache:'no-store'}).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()})
-  .then(function(j){if(!j.api_base||!j.app_key)throw new Error('incomplete');cfg=j})
-  .catch(function(e){cfgErr=e});
+(function loadCfg(tries){
+  fx('/gmx-config.json',{cache:'no-store'},GET_MS).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()})
+  .then(function(j){if(!j.api_base||!j.app_key)throw new Error('incomplete');cfg=j;cfgErr=null;try{localStorage.setItem('gmx_cfg',JSON.stringify(j))}catch(e){}})
+  .catch(function(e){
+    cfgErr=e;
+    if(!cfg){try{var c=JSON.parse(localStorage.getItem('gmx_cfg')||'null');if(c&&c.api_base&&c.app_key)cfg=c}catch(x){}}   /* the last good copy, so a flaky load still scans */
+    if(tries>1)setTimeout(function(){loadCfg(tries-1)},(4-tries)*1500);
+  });
+})(3);
 
 /* the device id: minted once, kept on the phone. letters, digits, dash, underscore, 32 long. */
 function deviceId(){
@@ -257,7 +274,9 @@ function wavBlob(chunks,inRate){
   var n=0,i; for(i=0;i<chunks.length;i++)n+=chunks[i].length;
   var all=new Float32Array(n), o=0; for(i=0;i<chunks.length;i++){all.set(chunks[i],o);o+=chunks[i].length}
   var ratio=inRate/OUT_RATE, outN=Math.floor(n/ratio), pcm=new Int16Array(outN);
-  /* each output sample is the mean of the input samples it covers: a cheap low-pass before the drop */
+  /* two passes of a butterworth low-pass at 6.8 kHz (fourth order in all) before the drop, so cymbals and
+     hats do not fold back into the band the fingerprint reads. then the mean of the samples each output covers. */
+  if(ratio>1.05){lowpass(all,inRate,6800);lowpass(all,inRate,6800);}
   for(var k=0;k<outN;k++){
     var a=Math.floor(k*ratio), b=Math.min(n,Math.floor((k+1)*ratio)), s=0, c=0;
     for(var j=a;j<b;j++){s+=all[j];c++}
@@ -270,6 +289,11 @@ function wavBlob(chunks,inRate){
   dv.setUint16(32,2,true); dv.setUint16(34,16,true); str(36,'data'); dv.setUint32(40,pcm.length*2,true);
   new Int16Array(buf,44).set(pcm);
   return new Blob([buf],{type:'audio/wav'});
+}
+function lowpass(x,rate,fc){
+  var w=Math.tan(Math.PI*fc/rate), k=w*w, q=Math.SQRT1_2, norm=1/(1+w/q+k);
+  var b0=k*norm, b1=2*b0, b2=b0, a1=2*(k-1)*norm, a2=(1-w/q+k)*norm, x1=0,x2=0,y1=0,y2=0;
+  for(var i=0;i<x.length;i++){var xi=x[i], y=b0*xi+b1*x1+b2*x2-a1*y1-a2*y2; x2=x1;x1=xi;y2=y1;y1=y;x[i]=y;}
 }
 function setLevel(v){
   var s=1+Math.min(.22,v*1.4);
@@ -288,7 +312,10 @@ function startScan(){
   var seq=scanSeq, earlySent=false;
   stage.classList.add('listening'); go.classList.add('busy'); recword.textContent='listening'; count.textContent=String(Math.round(CAPTURE_MS/1000));
   tap.innerHTML='tap to <b>stop</b>'; go.setAttribute('aria-label','tap to stop');
-  var chunks=[], got=0, need=0, t0=0, timer=null, stream=null, ctx=null, node=null, sink=null, stopped=false, cancelled=false;
+  var chunks=[], got=0, need=0, t0=0, timer=null, stream=null, ctx=null, node=null, sink=null, stopped=false, cancelled=false, sq=0, clipped=0;
+  /* the screen locking mid-scan suspends the audio graph on iphone and the clip ends short. say so instead of guessing. */
+  function onHide(){if(document.hidden&&!stopped){stopped=true;cancelled=true;scanSeq++;cleanup();reset();showCard(errCard('the screen went off mid-scan, so the clip stopped short. keep the phone awake and scan again.'));}}
+  document.addEventListener('visibilitychange',onHide);
   /* the context is made inside the tap, so ios lets it run. */
   try{ctx=new (window.AudioContext||window.webkitAudioContext)()}catch(e){ctx=null}
   /* a second tap while listening throws the clip away and goes back to tap to scan. */
@@ -296,7 +323,11 @@ function startScan(){
   function done(){
     if(stopped)return; stopped=true;
     var rate=ctx.sampleRate;
-    if(got>rate*2)finishCapture(null,wavBlob(chunks,rate)); else finishCapture(new Error('silent'));
+    if(got<=rate*2)return finishCapture(new Error('silent'));
+    var rms=Math.sqrt(sq/got);
+    if(clipped/got>0.02)return finishCapture(new Error('loud'));      /* more than two percent of samples at the rail */
+    if(rms<0.004)return finishCapture(new Error('quiet'));           /* about the noise floor of a phone mic in a quiet room */
+    finishCapture(null,wavBlob(chunks,rate));
   }
   navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false},video:false})
   .then(function(st){
@@ -306,29 +337,43 @@ function startScan(){
     return (ctx.state==='suspended'?ctx.resume():Promise.resolve()).then(function(){
       if(cancelled){cleanup();reset();return}
       var src=ctx.createMediaStreamSource(st);
-      node=(ctx.createScriptProcessor||ctx.createJavaScriptNode).call(ctx,4096,1,1);
       need=Math.round(ctx.sampleRate*CAPTURE_MS/1000);
-      node.onaudioprocess=function(ev){
+      function onChunk(inp){
         if(stopped)return;
-        var inp=ev.inputBuffer.getChannelData(0);
         if(!t0){ t0=Date.now(); heldAt=new Date().toISOString(); tick(30);
           timer=setInterval(function(){count.textContent=String(Math.max(0,Math.ceil((CAPTURE_MS-(Date.now()-t0))/1000)))},100);
         }
         var take=Math.min(inp.length,need-got); if(take<=0)return;
         chunks.push(new Float32Array(inp.subarray(0,take))); got+=take;
         if(!earlySent&&got>=Math.round(ctx.sampleRate*EARLY_MS/1000)){earlySent=true;try{earlyIdentify(wavBlob(chunks,ctx.sampleRate),seq)}catch(e){}}
-        var sum=0; for(var i=0;i<take;i++)sum+=inp[i]*inp[i]; setLevel(Math.sqrt(sum/take));
+        var sum=0; for(var i=0;i<take;i++){var v=inp[i]; sum+=v*v; if(v>0.985||v<-0.985)clipped++;} sq+=sum; setLevel(Math.sqrt(sum/take));
         if(got>=need)setTimeout(done,0);
-      };
-      /* a muted gain keeps the processor alive: a node that reaches no output is never pulled */
-      sink=ctx.createGain(); sink.gain.value=0; src.connect(node); node.connect(sink); sink.connect(ctx.destination);
+      }
+      /* a muted gain keeps the graph alive: a node that reaches no output is never pulled */
+      sink=ctx.createGain(); sink.gain.value=0; sink.connect(ctx.destination);
+      function legacy(){
+        stage.setAttribute('data-cap','legacy');
+        node=(ctx.createScriptProcessor||ctx.createJavaScriptNode).call(ctx,4096,1,1);
+        node.onaudioprocess=function(ev){onChunk(ev.inputBuffer.getChannelData(0))};
+        src.connect(node); node.connect(sink);
+      }
+      /* the worklet runs off the main thread. ScriptProcessorNode is deprecated and stays as the fallback. */
+      var wl=ctx.audioWorklet&&window.AudioWorkletNode?ctx.audioWorklet.addModule('/gmx-capture-worklet.js').then(function(){
+        if(stopped)return;
+        node=new AudioWorkletNode(ctx,'gmx-capture',{numberOfInputs:1,numberOfOutputs:1,channelCount:1});
+        stage.setAttribute('data-cap','worklet');
+        node.port.onmessage=function(ev){onChunk(ev.data)};
+        src.connect(node); node.connect(sink);
+      }):Promise.reject(new Error('no worklet'));
+      wl.catch(function(){if(!stopped)legacy()});
       setTimeout(done,CAPTURE_MS+4000);
     });
   }).catch(function(e){if(cancelled){cleanup();reset();return}finishCapture(e)});
 
   function cleanup(){
     if(timer)clearInterval(timer);
-    try{if(node){node.onaudioprocess=null;node.disconnect()}if(sink)sink.disconnect()}catch(e){}
+    document.removeEventListener('visibilitychange',onHide);
+    try{if(node){if(node.port){node.port.onmessage=null;node.port.close()}node.onaudioprocess=null;node.disconnect()}if(sink)sink.disconnect()}catch(e){}
     if(stream)stream.getTracks().forEach(function(t){t.stop()});
     if(ctx&&ctx.close)ctx.close().catch(function(){});
     clearLevel(); stage.classList.remove('listening');
@@ -340,6 +385,8 @@ function startScan(){
       var name=err&&err.name?err.name:'';
       var m= name==='NotAllowedError'||name==='SecurityError' ? (/iPhone|iPad|iPod/.test(navigator.userAgent) ? 'the mic is blocked. open iphone settings, find safari (under apps on newer iphones), set microphone to ask or allow, then try again.' : 'the mic is blocked. allow the microphone for groovesmaxxing.com in your browser settings and try again.')
            : name==='NotFoundError' ? 'no microphone found on this device.'
+           : (err&&err.message==='loud') ? 'that was too loud for the mic and the clip clipped. move back a little or cover the mic less, then scan again.'
+           : (err&&err.message==='quiet') ? 'the mic barely heard anything. get closer to the speaker and scan again.'
            : 'the clip did not record. try again.';
       showCard(errCard(m)); reset(); return;
     }
@@ -354,8 +401,8 @@ function pollJob(jobId,began){
   return new Promise(function(res,rej){
     (function poll(){
       if(Date.now()-began>POLL_CAP_MS)return rej(new Error('slow'));
-      fetch(cfg.api_base+'/jobs/'+encodeURIComponent(jobId),{headers:headers()})
-      .then(function(r){if(!r.ok)throw new Error('http '+r.status);return r.json()})
+      fx(cfg.api_base+'/jobs/'+encodeURIComponent(jobId),{headers:headers()},GET_MS)
+      .then(function(r){if(r.status>=500)throw new Error('server');if(!r.ok)throw new Error('http '+r.status);return r.json()})
       .then(function(j){ if(j.state==='done')return res(j); if(j.state==='failed')return rej(new Error('failed')); setTimeout(poll,POLL_MS); })
       .catch(function(e){ if(Date.now()-began>POLL_CAP_MS)rej(e); else setTimeout(poll,POLL_MS); });
     })();
@@ -365,7 +412,7 @@ function pollJob(jobId,began){
 function earlyIdentify(blob,seq){
   var fd=new FormData(); fd.append('audio',blob,'clip.wav'); fd.append('source','mic');
   var began=Date.now();
-  fetch(cfg.api_base+'/identify',{method:'POST',headers:headers({'X-GMX-Round':'early'}),body:fd})
+  fx(cfg.api_base+'/identify',{method:'POST',headers:headers({'X-GMX-Round':'early'}),body:fd},POST_MS)
   .then(function(r){if(!r.ok)throw new Error('http '+r.status);return r.json()})
   .then(function(job){return pollJob(job.job_id,began)})
   .then(function(j){
@@ -381,27 +428,15 @@ function identify(blob){
   cancelScan=null; go.disabled=true; stage.classList.add('finding'); recword.textContent='finding it'; count.textContent='';
   var fd=new FormData(); fd.append('audio',blob,'clip.'+extOf(blob)); fd.append('source','mic');
   var began=Date.now();
-  fetch(cfg.api_base+'/identify',{method:'POST',headers:headers(),body:fd})
+  fx(cfg.api_base+'/identify',{method:'POST',headers:headers(),body:fd},POST_MS)
   .then(function(r){
     if(r.status===429)throw new Error('rate');
     if(r.status===401)throw new Error('key');
+    if(r.status>=500)throw new Error('server');
     if(!r.ok)throw new Error('http '+r.status);
     return r.json();
   })
-  .then(function(job){
-    return new Promise(function(res,rej){
-      (function poll(){
-        if(Date.now()-began>POLL_CAP_MS)return rej(new Error('slow'));
-        fetch(cfg.api_base+'/jobs/'+encodeURIComponent(job.job_id),{headers:headers()})
-        .then(function(r){if(!r.ok)throw new Error('http '+r.status);return r.json()})
-        .then(function(j){
-          if(j.state==='done')return res(j);
-          if(j.state==='failed')return rej(new Error('failed'));
-          setTimeout(poll,POLL_MS);
-        }).catch(function(e){ if(Date.now()-began>POLL_CAP_MS)rej(e); else setTimeout(poll,POLL_MS); });
-      })();
-    });
-  })
+  .then(function(job){return pollJob(job.job_id,began)})
   .then(function(j){
     var r=j.result||{}, c=r.card||{kind:'none'};
     finalDone=true;
@@ -425,6 +460,8 @@ function identify(blob){
             : m==='slow' ? 'took too long. the recognizer did not answer in 30 seconds. try again.'
             : m==='key' ? 'the app key was refused. pull down to refresh and try again.'
             : m==='failed' ? 'the recognizer choked on that clip. try again.'
+            : m==='server' ? 'the recognizer answered but is failing on its end. give it a minute and try again.'
+            : m==='timeout' ? 'the upload stalled. check your signal and try again.'
             : 'could not reach the recognizer. check your signal and try again.';
     showCard(errCard(text)); reset();
   });
@@ -585,7 +622,7 @@ function sendHint(f){
   /* the clip goes once more only when the scan did not already place itself in a set */
   if(set&&heldBlob&&!current.in_set)fd.append('audio',heldBlob,'clip.'+extOf(heldBlob));
   say('sending');
-  fetch(cfg.api_base+'/set-hint',{method:'POST',headers:headers(),body:fd})
+  fx(cfg.api_base+'/set-hint',{method:'POST',headers:headers(),body:fd},POST_MS)
   .then(function(r){
     if(r.status===409){say('this phone already tagged that scan.');return}
     if(r.status===410){say('that scan is too old to tag. scan again.');return}
@@ -613,12 +650,13 @@ function showShared(){var p=$('shared');if(!p)return;if(sharedLink){p.textConten
   }catch(e){}
   showShared();
 })();
+var slugIndex=null;
 function checkArtistPage(artist){
   var s=slug(artist); if(!s)return;
-  fetch('/artists/'+s+'.html',{method:'HEAD'}).then(function(r){
-    var row=$('artistrow'); if(!row||!r.ok)return;
-    row.innerHTML='<a class="btn" href="/artists/'+s+'.html">'+esc(artist)+' on groovesmaxxing →</a>';
-  }).catch(function(){});
+  function show(){var row=$('artistrow');if(row)row.innerHTML='<a class="btn" href="/artists/'+s+'.html">'+esc(artist)+' on groovesmaxxing →</a>'}
+  function probe(){fx('/artists/'+s+'.html',{method:'HEAD'},GET_MS).then(function(r){if(r.ok)show()}).catch(function(){})}
+  var idx=slugIndex||(slugIndex=fx('/artists-index.json',{},GET_MS).then(function(r){return r.ok?r.json():null}).catch(function(){return null}));
+  idx.then(function(j){ if(j&&j.slugs){ if(j.slugs.indexOf(s)>-1)show(); } else probe(); });   /* no index on this build: the old probe */
 }
 function say(text,ok){var m=$('cardmsg');if(!m)return;m.textContent=text;m.className='msg'+(ok?' ok':'')}
 
@@ -654,7 +692,7 @@ function sendCorrection(body){
   if(!current){say('nothing to answer for.');return}
   body.recognition_id=current.recognition_id;
   say('sending');
-  fetch(cfg.api_base+'/corrections',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify(body)})
+  fx(cfg.api_base+'/corrections',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify(body)},POST_MS)
   .then(function(r){
     if(r.status===409){say('this phone already answered for this one.');return}
     if(r.status===429){say('too many this hour, try later.');return}
@@ -671,7 +709,7 @@ function sendHelp(f){
   fd.append('recognition_id',current.recognition_id); if(heldAt)fd.append('heard_at',heldAt);
   ['venue_claim','dj_claim','city_claim','note'].forEach(function(k){var v=f[k].value.trim();if(v)fd.append(k,v)});
   say('keeping it');
-  fetch(cfg.api_base+'/contribute',{method:'POST',headers:headers(),body:fd})
+  fx(cfg.api_base+'/contribute',{method:'POST',headers:headers(),body:fd},POST_MS)
   .then(function(r){
     if(r.status===429){say('too many this hour, try later.');return}
     if(!r.ok)throw new Error(r.status);
@@ -735,7 +773,7 @@ recentlist.addEventListener('click',function(ev){
       var fd=new FormData(); fd.append('kind','mic_capture_optin'); fd.append('audio',rec.blob,'clip.'+extOf(rec.blob));
       fd.append('recognition_id',rec.recognition_id); fd.append('heard_at',new Date(rec.t).toISOString());
       note('sending');
-      fetch(cfg.api_base+'/contribute',{method:'POST',headers:headers(),body:fd}).then(function(r){
+      fx(cfg.api_base+'/contribute',{method:'POST',headers:headers(),body:fd},POST_MS).then(function(r){
         if(r.status===429){note('too many this hour, try later.');return}
         if(r.status===409){note('already sent.');return}
         if(!r.ok)throw new Error(r.status);
