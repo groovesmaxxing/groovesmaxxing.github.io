@@ -125,6 +125,73 @@ def seo(path):
 
 for f in sorted(glob.glob('*.html') + glob.glob('artists/*.html') + glob.glob('labels/*.html') + glob.glob('tracklists/*.html') + glob.glob('newsletter/*.html')):
     n += seo(f)
+# seo (2026-10-11, video): a VideoObject on every tracklist page that embeds a youtube set, behind the
+# <!-- gmx-video --> marker, re-applied after every laptop render. the set's name, the page description,
+# the cover (the share card, then youtube's own still), the date from the page's sub line (the sitemap's
+# lastmod when the sub carries none), the length, the embed and watch urls, and every named, timestamped
+# row as a Clip (name, start, end, the timestamped link) so a search result can show the set's key moments.
+VIDEO_MARK = '<!-- gmx-video -->'
+_LASTMOD = {}
+try:
+    _sm = open('sitemap.xml', encoding='utf-8').read()
+    for _loc, _mod in re.findall(r'<loc>https://groovesmaxxing\.com/([^<]+)</loc>\s*<lastmod>([^<]+)</lastmod>', _sm):
+        _LASTMOD[_loc.strip('/')] = _mod.strip()
+except OSError:
+    pass
+
+def _plain(s):
+    return _html.unescape(re.sub(r'<[^>]+>', ' ', re.sub(r'<(?:div|span) class="(?:get|thx|gnote|soft|sig[^"]*|lab)">.*?</(?:div|span)>', '', s, flags=re.S))).replace('\u00a0', ' ')
+
+def _secs(t):
+    p = [int(x) for x in t.split(':')]
+    return sum(v * 60 ** i for i, v in enumerate(reversed(p)))
+
+def _iso_dur(t):
+    s = _secs(t); h, m, sec = s // 3600, s % 3600 // 60, s % 60
+    return 'PT' + (f'{h}H' if h else '') + (f'{m}M' if m or h else '') + f'{sec}S'
+
+def video(path, s):
+    yt = re.search(r'<iframe src="https://www\.youtube(?:-nocookie)?\.com/embed/([A-Za-z0-9_-]+)[^"]*"([^>]*)>', s)
+    if not yt: return None
+    vid, slug = yt.group(1), path[len('tracklists/'):-5]
+    title = re.search(r'\btitle="([^"]+)"', yt.group(2))
+    name = _html.unescape(title.group(1)) if title else page_name(s)
+    desc = re.search(r'<meta name="description" content="([^"]+)">', s)
+    sub = re.search(r'<div class="sub">(.*?)</div>', s, re.S)
+    subtext = _plain(sub.group(1)) if sub else ''
+    date = re.search(r'\b(20\d\d-\d\d-\d\d)\b', subtext)
+    upload = date.group(1) if date else _LASTMOD.get('tracklists/' + slug)
+    if not upload: return None
+    dur = re.search(r'\b(\d{1,2}:\d\d:\d\d|\d{1,3}:\d\d)\b', subtext)
+    total = _secs(dur.group(1)) if dur else None
+    rows = []
+    for m in re.finditer(r'<tr[^>]*>\s*<td class="t"><a href="([^"]*[?&]t=(\d+)s)"[^>]*>[^<]*</a></td>\s*<td class="n">[^<]*</td>\s*<td class="x">(.*?)</td>\s*</tr>', s, re.S):
+        nm = ' '.join(_plain(m.group(3)).split())
+        if not nm or re.match(r'^ID\s*-\s*ID\b', nm, re.I): continue
+        rows.append((int(m.group(2)), _html.unescape(m.group(1)), nm))
+    clips = []
+    for i, (start, url, nm) in enumerate(rows[:100]):
+        end = rows[i + 1][0] if i + 1 < len(rows) else total
+        c = {'@type': 'Clip', 'name': nm, 'startOffset': start, 'url': url}
+        if end and end > start: c['endOffset'] = end
+        clips.append(c)
+    thumbs = ([f'{SITE}/og/tracklists/{slug}.jpg'] if glob.os.path.exists(f'og/tracklists/{slug}.jpg') else []) + [f'https://i.ytimg.com/vi/{vid}/hqdefault.jpg']
+    d = {'@context': 'https://schema.org', '@type': 'VideoObject', 'name': name, 'thumbnailUrl': thumbs, 'uploadDate': upload,
+         'embedUrl': f'https://www.youtube-nocookie.com/embed/{vid}', 'contentUrl': f'https://www.youtube.com/watch?v={vid}',
+         'url': f'{SITE}/tracklists/{slug}'}
+    if desc: d['description'] = _html.unescape(desc.group(1))
+    if total: d['duration'] = _iso_dur(dur.group(1))
+    if clips: d['hasPart'] = clips
+    return VIDEO_MARK + '\n<script type="application/ld+json">' + json.dumps(d, ensure_ascii=False).replace('</', '<\\/') + '</script>'
+
+for f in sorted(glob.glob('tracklists/*.html')):
+    if f.endswith('/index.html'): continue
+    s = open(f, encoding='utf-8').read()
+    if 'http-equiv="refresh"' in s or VIDEO_MARK in s: continue
+    block = video(f, s)
+    if not block: continue
+    open(f, 'w', encoding='utf-8').write(s.replace('</head>', block + '\n</head>', 1)); n += 1
+
 # quick search (ui build 1, 2026-10-11): the sheet that opens from any search link or the "/" key, on
 # every page. the full search page keeps only its own script.
 for f in sorted(glob.glob('*.html') + glob.glob('artists/*.html') + glob.glob('labels/*.html') + glob.glob('tracklists/*.html') + glob.glob('newsletter/*.html')):
