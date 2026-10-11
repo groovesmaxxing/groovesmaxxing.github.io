@@ -9,7 +9,7 @@ urls = ['/', '/scan', '/more', '/search', '/sets', '/artists', '/events', '/radi
         '/gmx-nav.js', '/gmx-nav.css', '/gmx-player.js', '/gmx-player.css', '/gmx-motion.js', '/gmx-motion.css',
         '/gmx-refresh.js', '/gmx-clips.js', '/gmx-sets.js', '/gmx-follow.js', '/gmx-crate.js', '/gmx-profile.css', '/gmx-label.css',
         '/gmx-capture-worklet.js', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png', '/favicon.svg',
-        '/sets-index.json', '/set-tags.json', '/search-index.json', '/artists-index.json', '/radar-denver.json']
+        '/sets-index.json', '/set-tags.json', '/search-index.json', '/artists-index.json', '/radar-denver.json', '/names-index.json', '/related-index.json', '/gmx-related.js', '/tracks-index.json']
 for f in sorted(glob.glob('tracklists/*.html')):
     if f.endswith('/index.html'): continue
     urls.append('/' + f[:-5])

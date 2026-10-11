@@ -39,7 +39,7 @@ function wireRows(){
   [].slice.call(document.querySelectorAll('table.tl tr')).forEach(function(r){
     var x=r.querySelector('td.x');if(!x||x.querySelector('.gmx-heart'))return;
     var get=x.querySelector('.get'),c=x.cloneNode(true),lab=text(c.querySelector('.lab'));
-    [].slice.call(c.querySelectorAll('.get,.thx,.gnote,.soft,.lab,.gmx-heart')).forEach(function(e){e.remove()});
+    [].slice.call(c.querySelectorAll('.get,.thx,.gnote,.soft,.sig,.lab,.gmx-heart')).forEach(function(e){e.remove()});
     var name=text(c);
     if(!name||/^ID\b/i.test(name)&&name.length<6)return;
     var links={};[].slice.call(x.querySelectorAll('.get a')).forEach(function(a){var h=a.getAttribute('href')||'';if(/open\.spotify\.com/.test(h))links.spotify=h;else if(/beatport\.com/.test(h))links.beatport=h;else if(/soundcloud\.com/.test(h))links.soundcloud=h;else if(/music\.apple\.com/.test(h))links.apple=h;});

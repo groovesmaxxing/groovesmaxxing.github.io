@@ -18,9 +18,9 @@ var path=location.pathname.replace(/\.html$/,'').replace(/\/index$/,'/');
 function under(p){return path===p||path.indexOf(p+'/')===0;}
 function current(href){
   if(href==='/')return path==='/';
-  if(href==='/sets')return under('/sets')||under('/tracklists')||path==='/interviews';
+  if(href==='/sets')return under('/sets')||under('/tracklists')||path==='/interviews'||path==='/radio';
   if(href==='/artists')return under('/artists')||under('/labels')||path==='/roster'||path==='/badges';
-  if(href==='/more')return under('/more')||under('/newsletter')||under('/upcoming')||path==='/events'||path==='/tours'||path==='/venues'||path==='/friday'||path==='/privacy'||path==='/terms';
+  if(href==='/more')return under('/more')||under('/newsletter')||under('/upcoming')||path==='/events'||path==='/tours'||path==='/venues'||path==='/friday'||path==='/privacy'||path==='/terms'||path==='/crate';
   return path===href;
 }
 var nav=document.createElement('nav');nav.className='gmx-tabs';nav.setAttribute('aria-label','app tabs');
@@ -32,6 +32,10 @@ TABS.forEach(function(t){
   li.appendChild(a);ul.appendChild(li);
 });
 nav.appendChild(ul);
-function mount(){document.body.appendChild(nav);}
+function mount(){
+  document.body.appendChild(nav);
+  /* a skip link for keyboard and screen reader users, on every page that gets its bar from here */
+  if(!document.querySelector('.gmx-skip')){var main=document.querySelector('main')||document.querySelector('.wrap');if(main){if(!main.id)main.id='gmx-main';var sk=document.createElement('a');sk.className='gmx-skip';sk.href='#'+main.id;sk.textContent='skip to content';document.body.insertBefore(sk,document.body.firstChild);}}
+}
 if(document.body)mount();else document.addEventListener('DOMContentLoaded',mount);
 })();

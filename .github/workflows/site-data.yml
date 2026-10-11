@@ -32,7 +32,10 @@ jobs:
           python3 .github/scripts/build_search_index.py
           python3 .github/scripts/build_feed.py
           python3 .github/scripts/build_precache.py
+          python3 .github/scripts/build_related.py
+          python3 .github/scripts/build_tracks.py
           python3 .github/scripts/ensure_tags.py
+          python3 .github/scripts/crosslink_audit.py
 
       - name: share cards (only the pages whose name or subtitle changed)
         run: |
