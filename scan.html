@@ -59,6 +59,11 @@ h1.eyebrow{margin:0;font-weight:400}
 .skel{display:grid;gap:12px}.skel i{display:block;border-radius:10px;background:linear-gradient(90deg,rgba(242,242,239,.05),rgba(242,242,239,.12),rgba(242,242,239,.05));background-size:200% 100%;animation:shimmer 1.2s linear infinite}
 @keyframes shimmer{to{background-position:-200% 0}}.skel .a{width:min(100%,220px);aspect-ratio:1;margin:0 auto}.skel .b{height:34px;width:70%}.skel .c{height:18px;width:45%}.skel .d{height:40px;width:100%;border-radius:999px}
 .timing{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.06em;color:var(--steel);margin-top:14px;line-height:1.7}.timing b{font-weight:400;color:var(--day)}
+.card .art img{opacity:0;transition:opacity .4s}.card .art img.in{opacity:1}.card .art.found{border-color:rgba(255,28,2,.45)}
+.hear li small{display:block;font-weight:400;color:var(--steel);font-size:.78rem;font-family:'Space Mono',monospace;margin-top:2px}
+.btn.find{color:var(--steel);border-style:dashed}
+.card .sub a.sublink{color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,28,2,.45)}.card .sub a.sublink:hover{color:var(--racing)}
+.card h2 a.listen{color:inherit;text-decoration:none}.card h2 a.listen:hover{color:var(--racing)}.card h2 a.listen::after{content:' ↗';font-size:.6em;color:var(--racing);vertical-align:super}
 .stage.finding .tap{display:none}
 .stage.listening .rec{display:flex}
 .stage.finding .rec{display:flex}
@@ -128,7 +133,7 @@ h1.eyebrow{margin:0;font-weight:400}
 .recent h3{font-family:'Space Mono',monospace;font-weight:400;font-size:.72rem;letter-spacing:.28em;color:var(--steel);text-transform:uppercase;margin:0 0 8px}
 .recent ul{list-style:none;border-top:1px solid var(--line)}
 .recent li{border-bottom:1px solid var(--line);padding:12px 0;display:flex;justify-content:space-between;gap:12px;align-items:baseline}
-.recent .who{font-weight:600;font-size:.95rem;overflow-wrap:anywhere}
+.recent .who{font-weight:600;font-size:.95rem;overflow-wrap:anywhere}.recent .who a.sublink{color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,28,2,.45)}.recent .who a.sublink:hover{color:var(--racing)}
 .recent .who small{display:block;font-weight:400;color:var(--steel);font-size:.82rem}
 .recent .when{font-family:'Space Mono',monospace;font-size:.74rem;color:var(--steel);flex:none}
 .recent .none{color:var(--steel);font-family:'Space Mono',monospace;font-size:.82rem;padding:12px 0}
@@ -515,7 +520,7 @@ function identify(blob){
 }
 
 /* cards */
-function showCard(html){card.innerHTML=html;card.classList.add('on');card.scrollIntoView({behavior:'smooth',block:'nearest'})}
+function showCard(html){card.innerHTML=html;card.classList.add('on');card.scrollIntoView({behavior:'smooth',block:'nearest'});if(current&&current.card&&current.card.candidate&&html.indexOf('earlynote')<0||html.indexOf('earlynote')>-1)try{enrich(current)}catch(e){}}
 function errCard(text){return '<p class="kw"><b>hm.</b></p><h2>that did not work.</h2><p class="note">'+esc(text)+'</p><div class="row"><button class="btn red" data-act="again">scan again</button></div>'}
 
 function nameOf(c){
@@ -583,10 +588,11 @@ function resultCard(cur){
     out+='<p class="sure">'+sureLine(cand)+'</p>';
     out+=statusPill(cand.status);
     var links=storeRow(cand);
-    out+='<div class="row">'+links+'<button class="btn" data-act="share">share</button></div>';
+    out+='<div class="row" id="storerow">'+links+'<button class="btn" data-act="share">share</button></div>';
     out+='<div class="row" id="artistrow"></div>';
     out+=inSetRows(cur);
     out+=heardRows(cand);
+    out+='<div id="hear"></div>';
     out+='<h3>right?</h3><div class="row"><button class="btn red" data-act="confirm">that\'s right</button><button class="btn" data-act="correct">it\'s actually...</button></div>';
     out+=correctionForm();
     if(sub)checkArtistPage(sub);else if(nm&&nm.artist)checkArtistPage(nm.artist);
@@ -595,7 +601,7 @@ function resultCard(cur){
     out+='<p class="kw"><b>no match</b></p><h2>nothing we\'re sure of.</h2>';
     out+='<div class="row"><button class="btn red" data-act="listen">listen again</button></div><p class="note">best on a drop or a vocal.</p>';
     out+=inSetRows(cur);
-    out+='<div class="guess"><p class="kw">closest guess</p><p class="nm">'+(g?esc(g.artist)+(g.artist&&g.title?' - ':'')+esc(g.title):'an unnamed library entry')+'</p><p class="pc">'+sureLine(cand)+'</p>';
+    out+='<div class="guess"><p class="kw">closest guess</p><p class="nm">'+(g?esc(g.artist)+(g.artist&&g.title?' - ':'')+esc(g.title):'an unnamed library entry')+'</p><p class="pc">'+sureLine(cand)+'</p><div id="hear"></div>';
     out+='<div class="row"><button class="btn" data-act="confirm">that\'s right</button><button class="btn" data-act="correct">it\'s actually...</button></div></div>';
     out+=correctionForm();
     out+='<h3>help us find it?</h3><div class="row"><button class="btn" data-act="help">help us find it?</button><button class="btn ghost" data-act="again">no thanks, scan again</button></div>';
@@ -612,6 +618,74 @@ function resultCard(cur){
   out+='<div class="msg" id="cardmsg"></div>';
   if(c.kind==='match')out+='<div class="row"><button class="btn ghost" data-act="again">scan again</button></div>';
   return out;
+}
+/* the card fills itself in (2026-10-11): when the server sends no cover or no store links, the phone asks
+   spotify's embed service (with a spotify link) or apple's public search (with a name) for the cover and the
+   apple link, deezer for a deezer link, and our own tracklists for a verified spotify link. "hear it in" lists
+   the sets on the site where that track was played, with the link that opens the set at that second.
+   everything is cached on the phone. nothing here identifies audio, it only dresses a result. */
+var ART_KEY='gmx_art', tracksIdx=null;
+function artCache(){try{return JSON.parse(localStorage.getItem(ART_KEY)||'{}')}catch(e){return {}}}
+function artRemember(k,v){try{var c=artCache();c[k]=v;var ks=Object.keys(c);while(ks.length>120){delete c[ks.shift()]}localStorage.setItem(ART_KEY,JSON.stringify(c))}catch(e){}}
+function foldT(t){t=String(t||'').normalize('NFKD').replace(/[̀-ͯ]/g,'').toLowerCase();t=t.replace(/\((?:extended|original|radio|club|edit|mix|remix|version|feat\.?|ft\.?)[^)]*\)/g,' ').replace(/\b(extended mix|original mix|radio edit|club mix)\b/g,' ');return t.replace(/[^a-z0-9]+/g,' ').trim()}
+function jsonp(url,ms){return new Promise(function(res,rej){var cb='gmxcb'+Date.now()+Math.floor(Math.random()*1e4),sc=document.createElement('script'),t=setTimeout(function(){done();rej(new Error('timeout'))},ms||6000);
+  function done(){clearTimeout(t);delete window[cb];if(sc.parentNode)sc.parentNode.removeChild(sc)}
+  window[cb]=function(d){done();res(d)};sc.src=url+(url.indexOf('?')>-1?'&':'?')+'callback='+cb;sc.onerror=function(){done();rej(new Error('jsonp'))};document.head.appendChild(sc)})}
+function tracks(){return tracksIdx?Promise.resolve(tracksIdx):fx('/tracks-index.json',{},GET_MS).then(function(r){return r.ok?r.json():null}).then(function(j){tracksIdx=j;return j}).catch(function(){return null})}
+function sameTrack(q,row){return q&&row.q&&(row.q===q||(q.length>12&&(row.q.indexOf(q)>-1||q.indexOf(row.q)>-1)))}
+function enrich(cur){
+  var c=cur&&cur.card&&cur.card.candidate; if(!c)return;
+  var nm=nameOf(c); if(!nm||!(nm.title||nm.artist))return;
+  var artist=nm.artist||'', title=nm.title||'', q=foldT(artist+' '+title), key=q||foldT(title);
+  var cardEl=card, art=cardEl.querySelector('.art'), store=cardEl.querySelector('#storerow'), hearEl=cardEl.querySelector('#hear');
+  var l=c.store_links||{};
+  function setArt(url){if(!art||!url||art.getAttribute('data-done'))return;art.setAttribute('data-done','1');var img=document.createElement('img');img.alt='';img.loading='lazy';img.onload=function(){img.classList.add('in');art.classList.add('found')};img.onerror=function(){img.remove()};img.src=url;art.innerHTML='';art.appendChild(img)}
+  function addBtn(href,label,cls){if(!store||!href||store.querySelector('a[href="'+href+'"]'))return;var a=document.createElement('a');a.className='btn'+(cls?' '+cls:'');a.href=href;a.target='_blank';a.rel='noopener';a.textContent=label;var share=store.querySelector('[data-act="share"]');store.insertBefore(a,share||null);titleLink()}
+  function titleLink(){
+    var h=cardEl.querySelector('h2');if(!h||h.querySelector('a'))return;
+    var best=['open.spotify.com','music.apple.com','deezer.com','soundcloud.com','beatport.com'].map(function(d){var a=store&&store.querySelector('a.btn:not(.find)[href*="'+d+'"]');return a&&a.href}).filter(Boolean)[0];
+    if(!best)return;var a=document.createElement('a');a.className='listen';a.href=best;a.target='_blank';a.rel='noopener';a.setAttribute('aria-label','listen to '+h.textContent);a.textContent=h.textContent;h.innerHTML='';h.appendChild(a);
+  }
+  titleLink();
+  var cached=artCache()[key];
+  if(cached){if(cached.img&&!c.artwork_url)setArt(cached.img);if(cached.ap)addBtn(cached.ap,'apple music');if(cached.dz)addBtn(cached.dz,'deezer');if(cached.sp&&!l.spotify)addBtn(cached.sp,'spotify')}
+  /* 1. our own tracklists: a verified spotify link, and the sets where it was played */
+  tracks().then(function(j){
+    if(!j)return;var hits=j.rows.filter(function(r){return sameTrack(q,r)||(title&&foldT(title).length>8&&r.q.indexOf(foldT(title))>-1&&(!artist||r.q.indexOf(foldT(artist).split(' ')[0])>-1))}).slice(0,6);
+    if(!hits.length)return;
+    var sp=hits.map(function(r){return r.links&&r.links.sp}).filter(Boolean)[0];
+    if(sp&&!l.spotify){addBtn(sp,'spotify');artRemember(key,Object.assign(artCache()[key]||{},{sp:sp}))}
+    if(hearEl&&!hearEl.children.length){
+      hearEl.innerHTML='<h3>hear it in</h3><ul class="heard hear">'+hits.map(function(r){var play=r.l?'<a href="'+esc(r.l)+'" target="_blank" rel="noopener">play from '+esc(r.at)+' ↗</a>':esc(r.at);return '<li><a href="'+esc(r.u)+'">'+esc(r.set)+'<small>'+esc(r.n)+(r.lab?' · '+esc(r.lab):'')+'</small></a><span class="at">'+play+'</span></li>'}).join('')+'</ul>';
+    }
+  });
+  if(c.artwork_url&&l.spotify&&l.apple)return;
+  /* 2. spotify's embed service gives the cover for a spotify link, no key needed */
+  var viaSpotify=l.spotify?fx('https://open.spotify.com/oembed?url='+encodeURIComponent(l.spotify),{},GET_MS).then(function(r){return r.ok?r.json():null}).then(function(j){if(j&&j.thumbnail_url&&!c.artwork_url){setArt(j.thumbnail_url);artRemember(key,Object.assign(artCache()[key]||{},{img:j.thumbnail_url}))}}).catch(function(){}):Promise.resolve();
+  /* 3. apple's public search: the cover at 600px and the apple music link, matched on the folded name */
+  if(!(cached&&cached.ap)&&(artist||title)){
+    fx('https://itunes.apple.com/search?media=music&entity=song&limit=6&term='+encodeURIComponent((artist+' '+title).trim()),{},GET_MS).then(function(r){return r.ok?r.json():null}).then(function(j){
+      var hit=(j&&j.results||[]).filter(function(x){var fq=foldT((x.artistName||'')+' '+(x.trackName||''));return fq===q||(q.length>12&&(fq.indexOf(foldT(title))>-1&&fq.indexOf(foldT(artist).split(' ')[0])>-1))})[0];
+      if(!hit)return;var img=(hit.artworkUrl100||'').replace(/100x100bb/,'600x600bb');
+      if(img&&!c.artwork_url)setArt(img);if(hit.trackViewUrl&&!l.apple)addBtn(hit.trackViewUrl,'apple music');
+      artRemember(key,Object.assign(artCache()[key]||{},{img:img||undefined,ap:hit.trackViewUrl}));
+    }).catch(function(){});
+  }
+  /* 4. deezer, through jsonp since its api has no cors */
+  if(!(cached&&cached.dz)&&(artist||title)){
+    jsonp('https://api.deezer.com/search?limit=5&output=jsonp&q='+encodeURIComponent((artist+' '+title).trim()),6000).then(function(j){
+      var hit=(j&&j.data||[]).filter(function(x){var fq=foldT((x.artist&&x.artist.name||'')+' '+(x.title||''));return fq===q||(q.length>12&&fq.indexOf(foldT(title))>-1)})[0];
+      if(!hit)return;addBtn(hit.link,'deezer');if(hit.album&&hit.album.cover_big&&!c.artwork_url)setArt(hit.album.cover_big);
+      artRemember(key,Object.assign(artCache()[key]||{},{dz:hit.link}));
+    }).catch(function(){});
+  }
+  /* 5. last resort when a released track has no real link: a search on each store */
+  viaSpotify.then(function(){setTimeout(function(){
+    if(!store||c.status!=='out now')return;var qs=encodeURIComponent((artist+' '+title).trim());
+    if(!store.querySelector('a[href*="open.spotify.com"]'))addBtn('https://open.spotify.com/search/'+qs,'find on spotify','find');
+    if(!store.querySelector('a[href*="soundcloud.com"]'))addBtn('https://soundcloud.com/search?q='+qs,'find on soundcloud','find');
+    if(!store.querySelector('a[href*="beatport.com"]')&&!l.beatport_search)addBtn('https://www.beatport.com/search?q='+qs,'find on beatport','find');
+  },2500)});
 }
 function timingLine(cur){
   var t=cur.timing;if(!t||!t.rounds.length)return '';
@@ -708,7 +782,11 @@ function showShared(){var p=$('shared');if(!p)return;if(sharedLink){p.textConten
 var slugIndex=null;
 function checkArtistPage(artist){
   var s=slug(artist); if(!s)return;
-  function show(){var row=$('artistrow');if(row)row.innerHTML='<a class="btn" href="/artists/'+s+'.html">'+esc(artist)+' on groovesmaxxing →</a>'}
+  function show(){
+    var row=$('artistrow');if(row)row.innerHTML='<a class="btn" href="/artists/'+s+'">'+esc(artist)+' on groovesmaxxing →</a>';
+    /* the artist line itself becomes the link to the profile */
+    var sub=card.querySelector('.sub');if(sub&&!sub.querySelector('a')){var a=document.createElement('a');a.href='/artists/'+s;a.className='sublink';a.textContent=sub.textContent;sub.innerHTML='';sub.appendChild(a)}
+  }
   function probe(){fx('/artists/'+s+'.html',{method:'HEAD'},GET_MS).then(function(r){if(r.ok)show()}).catch(function(){})}
   var idx=slugIndex||(slugIndex=fx('/artists-index.json',{},GET_MS).then(function(r){return r.ok?r.json():null}).catch(function(){return null}));
   idx.then(function(j){ if(j&&j.slugs){ if(j.slugs.indexOf(s)>-1)show(); } else probe(); });   /* no index on this build: the old probe */
@@ -800,13 +878,19 @@ function renderHistory(){
   if(!h.length){recentlist.innerHTML='<li class="none">nothing scanned yet.</li>';return}
   recentlist.innerHTML=h.map(function(r){
     var who;
-    if(r.kind==='match')who=esc(r.artist||'ID')+'<small>'+esc(r.title||'unnamed library entry')+' · '+pct(r.score)+(r.secs?' · '+r.secs+' s':'')+'</small>';
+    if(r.kind==='match')who='<span data-artist="'+esc(r.artist||'')+'">'+esc(r.artist||'ID')+'</span><small>'+esc(r.title||'unnamed library entry')+' · '+pct(r.score)+(r.secs?' · '+r.secs+' s':'')+'</small>';
     else if(r.kind==='guess')who='no match<small>closest guess: '+esc((r.artist?r.artist+' - ':'')+r.title)+(r.score==null?' · possible match':' · '+pct(r.score))+'</small>';
     else who='no match<small>nothing yet</small>';
     var acts='';
     if(r.clip&&r.id)acts='<span class="acts"><button class="btn" data-clip="again" data-id="'+esc(r.id)+'">scan again</button>'+(r.kind!=='match'?'<button class="btn" data-clip="help" data-id="'+esc(r.id)+'">help us find it</button>':'')+'<span class="msg"></span></span>';
     return '<li><span class="who">'+who+'</span><span class="when">'+when(r.t)+'</span>'+acts+'</li>';
   }).join('');
+  linkHistoryArtists();
+}
+function linkHistoryArtists(){
+  var spans=[].slice.call(recentlist.querySelectorAll('[data-artist]')).filter(function(x){return x.getAttribute('data-artist')});if(!spans.length)return;
+  var idx=slugIndex||(slugIndex=fx('/artists-index.json',{},GET_MS).then(function(r){return r.ok?r.json():null}).catch(function(){return null}));
+  idx.then(function(j){if(!j||!j.slugs)return;spans.forEach(function(x){var s=slug(x.getAttribute('data-artist'));if(j.slugs.indexOf(s)<0)return;var a=document.createElement('a');a.href='/artists/'+s;a.className='sublink';a.textContent=x.textContent;x.innerHTML='';x.appendChild(a)})});
 }
 renderHistory();
 /* a kept clip's two buttons. scan again posts the clip as a new scan. help us find it sends
@@ -838,6 +922,7 @@ recentlist.addEventListener('click',function(ev){
   }).catch(function(){note('that clip is gone.')});
 });
 go.addEventListener('click',function(){if(busy){if(cancelScan)cancelScan();return}startScan()});
+window.gmxScanDemo=function(res){current=res;showCard(resultCard(res))};
 (function(){var hb=document.getElementById('howbtn'),box=document.getElementById('howbox'),hc=document.getElementById('howclose');if(!hb||!box||!box.showModal){if(hb)hb.style.display='none';return}hb.addEventListener('click',function(){box.showModal()});hc.addEventListener('click',function(){box.close()});box.addEventListener('click',function(e){if(e.target===box)box.close()});})();
 })();
 </script>
