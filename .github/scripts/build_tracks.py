@@ -32,7 +32,7 @@ for f in sorted(glob.glob('tracklists/*.html')):
                 elif 'soundcloud.com' in href and 'search' not in href: links['sc'] = href
                 elif 'beatport.com' in href and 'search' not in href: links['bp'] = href
         body = re.sub(r'<div class="get">.*?</div>', '', body, flags=re.S)
-        body = re.sub(r'<span class="(?:thx|gnote|soft)">.*?</span>', '', body, flags=re.S)
+        body = re.sub(r'<span class="(?:thx|gnote|soft|sig[^"]*)">.*?</span>', '', body, flags=re.S)
         lab = text((re.search(r'<span class="lab">(.*?)</span>', body) or [None, ''])[1])
         body = re.sub(r'<span class="lab">.*?</span>', '', body, flags=re.S)
         name = text(body)
