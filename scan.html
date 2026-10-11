@@ -1227,9 +1227,32 @@ function onCfg(){
       return r.json().then(function(j){setSession(j.session);meCache=null;renderYou();youNote('signed in as '+j.email+'.',true);ensurePush()});
     }).catch(function(){youNote('could not finish signing in. check your signal and try the link again.')});
   }
-  renderYou(); loadFollows();
+  renderYou(); loadFollows(); resumeWait();
 }
 function youNote(t,ok){var m=$('youmsg');if(m){m.textContent=t;m.className='msg'+(ok?' ok':'')}}
+/* the page that asked for the link keeps a ticket and asks every few seconds whether the link was
+   tapped, in any browser. the first ready answer carries this browser's own session, so the person
+   is signed in where they started. the ticket is remembered across a reload for the link's window. */
+var pollTimer=null;
+function waitForLink(ticket,minutes){
+  try{localStorage.setItem('gmx_pending',JSON.stringify({t:ticket,until:Date.now()+minutes*60000}))}catch(e){}
+  if(pollTimer)clearInterval(pollTimer);
+  var ask=function(){
+    if(sessionToken()){clearInterval(pollTimer);pollTimer=null;return}
+    fx(cfg.api_base+'/auth/poll',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify({pending:ticket})},POST_MS).then(function(r){return r.ok?r.json():null}).then(function(j){
+      if(!j)return;
+      if(j.state==='ready'){clearInterval(pollTimer);pollTimer=null;try{localStorage.removeItem('gmx_pending')}catch(e){}setSession(j.session);meCache=null;renderYou();youNote('signed in as '+j.email+'.',true);loadFollows();ensurePush()}
+      else if(j.state==='gone'){clearInterval(pollTimer);pollTimer=null;try{localStorage.removeItem('gmx_pending')}catch(e){}}
+    }).catch(function(){});
+  };
+  pollTimer=setInterval(ask,4000); ask();
+}
+function resumeWait(){
+  if(sessionToken())return;
+  var p=null;try{p=JSON.parse(localStorage.getItem('gmx_pending')||'null')}catch(e){}
+  if(p&&p.t&&p.until>Date.now())waitForLink(p.t,Math.ceil((p.until-Date.now())/60000));
+  else try{localStorage.removeItem('gmx_pending')}catch(e){}
+}
 function renderYou(){
   var box=$('youbody'); if(!box||!cfg)return;
   if(!sessionToken()){
@@ -1286,7 +1309,10 @@ document.addEventListener('submit',function(ev){
       if(r.status===429){youNote('too many links for that address this hour.');return}
       if(r.status===422){youNote('that does not look like an email address.');return}
       if(!r.ok)throw new Error(r.status);
-      return r.json().then(function(j){youNote(j.mail_sent?'sent. open the link on this phone within '+j.minutes+' minutes.':'the mail could not go out right now. try again later.',j.mail_sent)});
+      return r.json().then(function(j){
+        youNote(j.mail_sent?'sent. tap the link in the mail, anywhere. this page signs in on its own while it stays open.':'the mail could not go out right now. try again later.',j.mail_sent);
+        if(j.mail_sent&&j.pending)waitForLink(j.pending,j.minutes||20);
+      });
     }).catch(function(){youNote('did not send. check your signal and try again.')});
   }else if(f.id==='hform2'){
     ev.preventDefault(); youNote('saving');
