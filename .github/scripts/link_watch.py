@@ -213,6 +213,16 @@ def fetch(url, method="GET"):
         return 0, url, str(e)[:120].encode()
 
 
+def site_of(netloc):
+    """the registrable site behind a host: bakermat.bandcamp.com and bandcamp.com are one site, so a
+    subdomain folding into its apex is not a move. two labels, three under the usual second-level ccTLDs."""
+    host = (netloc or "").lower().split(":")[0]
+    parts = host.split(".")
+    if len(parts) >= 3 and parts[-2] in ("co", "com", "org", "net", "ac", "gov") and len(parts[-1]) == 2:
+        return ".".join(parts[-3:])
+    return ".".join(parts[-2:])
+
+
 def oembed(endpoint, target):
     code, _final, body = fetch(endpoint + urllib.parse.quote(target, safe=""))
     title = None
@@ -252,9 +262,9 @@ def ask(key, row):
             rec["state"] = "broken"
         elif 200 <= code < 400:
             rec["state"] = "ok"
-            h0, h1 = urllib.parse.urlparse(url).netloc.lower().removeprefix("www."), urllib.parse.urlparse(final).netloc.lower().removeprefix("www.")
+            h0, h1 = site_of(urllib.parse.urlparse(url).netloc), site_of(urllib.parse.urlparse(final).netloc)
             if h1 and h0 != h1:
-                rec["state"], rec["note"] = "moved", f"lands on {h1}"
+                rec["state"], rec["note"] = "moved", f"lands on {urllib.parse.urlparse(final).netloc.lower()}"
             elif final and final != url and urllib.parse.urlparse(final).path in ("", "/") and urllib.parse.urlparse(url).path not in ("", "/"):
                 rec["state"], rec["note"] = "moved", "lands on the home page"
         else:
