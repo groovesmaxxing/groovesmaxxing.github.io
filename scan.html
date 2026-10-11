@@ -76,6 +76,7 @@ h1.eyebrow{margin:0;font-weight:400}
 .card .kw b{font-weight:400;color:var(--racing)}
 .card h2{font-weight:900;font-size:clamp(1.7rem,7vw,2.3rem);line-height:1.05;letter-spacing:-.02em;margin:10px 0 4px;overflow-wrap:anywhere}
 .card .ttl{font-weight:600;font-size:1.12rem;line-height:1.3;overflow-wrap:anywhere}
+.card h2.long{font-size:clamp(1.15rem,4.6vw,1.5rem);line-height:1.2}
 /* recognizer phase 7, decisions 5 and 6 (2026-10-02): the cover on top, the track's name as the headline, the artist under it, the small line says how sure */
 .card .art{width:min(100%,260px);aspect-ratio:1;border-radius:16px;overflow:hidden;background:rgba(242,242,239,.05);border:1px solid var(--line);margin:4px auto 18px}
 .card .art img{width:100%;height:100%;object-fit:cover;display:block}
@@ -584,8 +585,20 @@ function decorate(cur){
 }
 function errCard(text){return '<p class="kw"><b>hm.</b></p><h2>that did not work.</h2><p class="note">'+esc(text)+'</p><div class="row"><button class="btn red" data-act="again">scan again</button></div>'}
 
+/* a refsync library entry (a reference clip the laptop contributed from an id upload) carries its file name and
+   notes as the title and "refsync <poster>" as the artist. the card shows the caption as the title, nobody as the
+   artist, and where it came from as a note, instead of printing the raw line. */
+function libName(a,t){
+  a=String(a||'');t=String(t||'');
+  if(!(/^refsync\b/i.test(a)||/\bcaption:\s*/i.test(t)||/\bposted by\b/i.test(t)))return null;
+  var cap=(t.match(/caption:\s*(.+?)\s*$/i)||[])[1]||'';
+  var poster=(t.match(/posted by\s+(.+?)\.(?:\s|$)/i)||[])[1]||a.replace(/^refsync\s*/i,'');
+  var d=t.match(/\b(20\d{2})(\d{2})(\d{2})\b/),when=d?d[1]+'-'+d[2]+'-'+d[3]:'';
+  return {artist:'',title:cap||'ID',lib:true,note:'an id from '+(poster?'a '+poster.trim()+' upload':'an upload')+(when?' ('+when+')':'')+', no artist named yet'};
+}
 function nameOf(c){
   var a=c.artist_claim, t=c.title_claim;
+  var lib=libName(a,t); if(lib)return lib;
   if(a&&t)return {artist:a,title:t};
   if(t)return {artist:'',title:t};
   if(a)return {artist:a,title:''};
@@ -638,9 +651,11 @@ function resultCard(cur){
   if(c.kind==='match'&&cand){
     var nm=nameOf(cand);
     out+=artBlock(cand);
-    var head=cand.headline||(nm?(nm.title||nm.artist):'ID'), sub=cand.headline?cand.subline:(nm&&nm.title?nm.artist:'');
-    out+='<h2>'+esc(head)+'</h2>';
+    var lib=!!(nm&&nm.lib);
+    var head=(!lib&&cand.headline)||(nm?(nm.title||nm.artist):'ID'), sub=(!lib&&cand.headline)?cand.subline:(nm&&nm.title?nm.artist:'');
+    out+='<h2'+(head.length>42?' class="long"':'')+'>'+esc(head)+'</h2>';
     if(sub)out+='<p class="sub">'+esc(sub)+'</p>';
+    if(lib&&head!=='ID')out+='<p class="ttl">'+esc(nm.note)+'</p>';
     if(head==='ID'){
       var h0=(cand.heard_in||[])[0];
       out+='<p class="ttl">'+(h0?'heard in '+esc(h0.set_title)+' at '+esc(h0.at):'in our library, still unnamed')+'</p>';
