@@ -141,6 +141,7 @@ mark{background:none;color:var(--racing)}
 .crow .rm{flex:none;font-family:'Space Mono',monospace;font-size:.7rem;color:var(--steel);background:none;border:1px solid var(--line);border-radius:999px;padding:6px 10px;cursor:pointer;min-height:34px}
 .crow .rm:hover{color:var(--racing);border-color:var(--racing)}
 .ctools{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.ctools a.lc{text-decoration:none;display:inline-flex;align-items:center}
 .cempty{font-family:'Space Mono',monospace;font-size:.85rem;color:var(--steel);line-height:1.8;padding:30px 0}
 .cempty a{color:#cfcfc9}
 .cmsg{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel);margin-top:8px;min-height:1.2em}
@@ -157,19 +158,21 @@ mark{background:none;color:var(--racing)}
 <header class="mast">
 <span class="eyebrow">my crate</span>
 <h1>what you<br><span class="rd">hearted.</span></h1>
-<p class="lede">every set and track you tapped the heart on. it lives on this phone only, nothing is sent anywhere. open the store links, or copy the list to paste wherever your playlists live.</p>
+<p class="lede">every set and track you tapped the heart on, and every artist and label you follow. it lives on this phone only, nothing is sent anywhere. open the store links, copy the list to paste wherever your playlists live, or see what's dropping from the names in here.</p>
 </header>
 
 <div class="ctools">
 <button type="button" class="lc" id="c-copy">copy the list</button>
 <button type="button" class="lc" id="c-spotify">open the spotify links</button>
 <button type="button" class="lc" id="c-clear">clear the crate</button>
+<a class="lc" href="/upcoming?mine=1">what's dropping from my crate →</a>
 </div>
 <p class="cmsg" id="c-msg"></p>
 
+<div id="c-follow"></div>
 <div id="c-sets"></div>
 <div id="c-tracks"></div>
-<p class="cempty" id="c-empty" hidden>nothing in the crate yet. tap the heart under any set on the <a href="/">home page</a>, on an artist page, on <a href="/sets">the sets</a> or on <a href="/radio">radio</a>, and next to any track on a <a href="/tracklists/">tracklist</a>.</p>
+<p class="cempty" id="c-empty" hidden>nothing in the crate yet. tap the heart under any set on the <a href="/">home page</a>, on an artist page, on <a href="/sets">the sets</a> or on <a href="/radio">radio</a>, tap follow on any <a href="/artists">artist</a> or <a href="/labels">label</a> page, and heart any track on a <a href="/tracklists/">tracklist</a>.</p>
 
 <footer>
 <p class="fine">groovesMAXXING · <a href="/sets">the sets</a> · <a href="/tracklists/">tracklists</a> · <a href="/search">search</a></p>
@@ -180,7 +183,7 @@ mark{background:none;color:var(--racing)}
 <script src="/gmx-crate.js"></script>
 <script>
 (function(){
-var sets=document.getElementById('c-sets'),tracks=document.getElementById('c-tracks'),empty=document.getElementById('c-empty'),msg=document.getElementById('c-msg');
+var sets=document.getElementById('c-sets'),tracks=document.getElementById('c-tracks'),follow=document.getElementById('c-follow'),empty=document.getElementById('c-empty'),msg=document.getElementById('c-msg');
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 function say(t){msg.textContent=t}
 function links(it){
@@ -192,11 +195,13 @@ function links(it){
   if(l.soundcloud)out+='<a href="'+esc(l.soundcloud)+'" target="_blank" rel="noopener">soundcloud ↗</a>';
   if(it.kind==='track'&&it.url)out+='<a href="'+esc(it.url)+'">the tracklist →</a>';
   if(it.kind==='track'&&!l.spotify)out+='<a href="https://open.spotify.com/search/'+encodeURIComponent(it.title)+'" target="_blank" rel="noopener">find on spotify ↗</a>';
+  if(it.kind==='artist'||it.kind==='label'){if(it.url)out+='<a href="'+esc(it.url)+'">the profile →</a>';out+='<a href="/upcoming?mine=1">dropping soon →</a>'}
   return out;
 }
-function row(it){return '<div class="crow" data-id="'+esc(it.id)+'"><span class="ck" aria-hidden="true">'+(it.kind==='set'?'▶️':'🎧')+'</span><div class="cb"><div class="cn">'+esc(it.title)+'</div>'+(it.sub?'<div class="cs">'+esc(it.sub)+'</div>':'')+'<div class="cl">'+links(it)+'</div></div><button type="button" class="rm" data-rm="'+esc(it.id)+'">remove</button></div>'}
+function row(it){return '<div class="crow" data-id="'+esc(it.id)+'"><span class="ck" aria-hidden="true">'+({set:'▶️',track:'🎧',artist:'🎤',label:'🏷️'}[it.kind]||'🎧')+'</span><div class="cb"><div class="cn">'+esc(it.title)+'</div>'+(it.sub?'<div class="cs">'+esc(it.sub)+'</div>':'')+'<div class="cl">'+links(it)+'</div></div><button type="button" class="rm" data-rm="'+esc(it.id)+'">remove</button></div>'}
 function render(){
-  var l=gmxCrate.load(),s=l.filter(function(x){return x.kind==='set'}),t=l.filter(function(x){return x.kind==='track'});
+  var l=gmxCrate.load(),s=l.filter(function(x){return x.kind==='set'}),t=l.filter(function(x){return x.kind==='track'}),f=l.filter(function(x){return x.kind==='artist'||x.kind==='label'});
+  follow.innerHTML=f.length?'<div class="letterhead">following · '+f.length+'</div>'+f.map(row).join(''):'';
   sets.innerHTML=s.length?'<div class="letterhead">sets · '+s.length+'</div>'+s.map(row).join(''):'';
   tracks.innerHTML=t.length?'<div class="letterhead">tracks · '+t.length+'</div>'+t.map(row).join(''):'';
   empty.hidden=!!l.length;

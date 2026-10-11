@@ -4,7 +4,7 @@
    so the laptop scripts can keep changing what the pages say. outside hosts are blocked, so thumbnails stay black. */
 const {chromium}=require('playwright');
 const BASE='http://127.0.0.1:8787';
-const PAGES=['/index.html','/artists.html','/sets.html','/interviews.html','/events.html','/more.html','/scan.html','/badges.html','/upcoming.html','/labels.html','/newsletter.html','/friday.html','/404.html','/search.html','/radio.html','/crate.html','/tracklists/index.html',
+const PAGES=['/index.html','/artists.html','/sets.html','/interviews.html','/events.html','/more.html','/scan.html','/badges.html','/upcoming.html','/labels.html','/newsletter.html','/friday.html','/404.html','/search.html','/radio.html','/crate.html','/open-ids.html','/tracklists/index.html',
   '/artists/adam-ten.html','/artists/max-styler.html','/artists/balanka.html','/artists/gkat.html','/artists/solomun.html','/labels/make-the-girls-dance-records.html','/labels/nu-moda.html','/tracklists/cloonee-live-at-red-rocks.html','/newsletter/fgf-001.html'];
 const NO_TABS=['/sets.html','/interviews.html'];
 (async()=>{
@@ -71,6 +71,20 @@ const NO_TABS=['/sets.html','/interviews.html'];
         await p.click('details.a summary >> nth=0');await p.waitForTimeout(1200);
         const n=await p.evaluate(()=>document.querySelector('details.a[open] .grid[data-slug] .card')?document.querySelector('details.a[open] .grid[data-slug]').querySelectorAll('.card').length:0);
         log(n>0,path+': an opened fold renders its cards from sets-index.json ('+n+')');
+      }
+      if(path==='/open-ids.html'){
+        await p.waitForTimeout(900);
+        const o=await p.evaluate(()=>({sets:document.querySelectorAll('.oset').length,rows:document.querySelectorAll('.orow').length,reps:document.querySelectorAll('.rep').length}));
+        log(o.sets>0&&o.rows>0,path+': the board renders from open-ids.json ('+o.sets+' sets, '+o.rows+' rows, '+o.reps+' repeats)');
+      }
+      if(path==='/upcoming.html'){
+        await p.waitForTimeout(600);
+        const u=await p.evaluate(()=>({bar:!!document.querySelector('.gmx-mine'),chips:document.querySelectorAll('.gmx-mine button').length}));
+        log(u.bar&&u.chips===2,path+': the crate filter bar is present ('+u.chips+' chips)');
+      }
+      if(path==='/artists/adam-ten.html'){
+        const f=await p.evaluate(()=>!!document.querySelector('section.artist .meta .gmx-follow'));
+        log(f,path+': follow pill in the meta row');
       }
       if(path==='/search.html'){
         await p.fill('#q','adam ten');await p.waitForTimeout(600);

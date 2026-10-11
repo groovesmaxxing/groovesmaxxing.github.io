@@ -6,6 +6,7 @@ player, the tab bar, the follow-along and the crate without the laptop template 
 artist and label profiles: player css/js, nav css/js, crate js, related js
 tracklist pages:           nav css/js, follow js, crate js, related js
 the radar hub:             related js
+dropping soon:             crate js, upcoming js (the crate filter survives the laptop's next render)
 newsletter issues:         nav css/js
 root pages with no inline tab bar: nav css/js
 """
@@ -21,6 +22,7 @@ T = {
     'follow_js': '<script src="/gmx-follow.js" defer></script>',
     'crate_js': '<script src="/gmx-crate.js" defer></script>',
     'related_js': '<script src="/gmx-related.js" defer></script>',
+    'upcoming_js': '<script src="/gmx-upcoming.js" defer></script>',
 }
 
 def ensure(path, heads, before_motion, after_motion):
@@ -45,6 +47,7 @@ for f in sorted(glob.glob('tracklists/*.html')):
     if f.endswith('/index.html'): continue
     n += ensure(f, ['nav_css'], [], ['nav_js', 'follow_js', 'crate_js', 'related_js'])
 n += ensure('events.html', ['nav_css'], [], ['nav_js', 'related_js'])
+n += ensure('upcoming.html', ['nav_css'], [], ['nav_js', 'crate_js', 'upcoming_js'])
 for f in sorted(glob.glob('newsletter/*.html')):
     n += ensure(f, ['nav_css'], [], ['nav_js'])
 for f in sorted(glob.glob('*.html')):
