@@ -251,6 +251,14 @@ h1.eyebrow{margin:0;font-weight:400}
 <ul id="recentlist"></ul>
 </section>
 
+<section class="recent you" id="you">
+<h3>you</h3>
+<div id="youbody"><p class="smeta">sign in to get told by email when an ID you scanned comes out, keep your scans across phones, and put your name on the IDs you help with.</p>
+<form class="form on" id="yform" autocomplete="off"><label for="y-email">email</label><input id="y-email" name="email" type="email" inputmode="email" maxlength="320" required>
+<div class="row"><button class="btn red" type="submit">send me a sign-in link</button><span class="msg" id="youmsg"></span></div></form></div>
+<ul id="followlist" hidden></ul>
+</section>
+
 </div>
 
 <nav class="gmx-tabs" aria-label="app tabs">
@@ -304,7 +312,7 @@ window.gmxRefreshBlocked=function(){return busy};
 /* config */
 (function loadCfg(tries){
   fx('/gmx-config.json',{cache:'no-store'},GET_MS).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()})
-  .then(function(j){if(!j.api_base||!j.app_key)throw new Error('incomplete');cfg=j;cfgErr=null;try{localStorage.setItem('gmx_cfg',JSON.stringify(j))}catch(e){}})
+  .then(function(j){if(!j.api_base||!j.app_key)throw new Error('incomplete');cfg=j;cfgErr=null;try{localStorage.setItem('gmx_cfg',JSON.stringify(j))}catch(e){}onCfg()})
   .catch(function(e){
     cfgErr=e;
     if(!cfg){try{var c=JSON.parse(localStorage.getItem('gmx_cfg')||'null');if(c&&c.api_base&&c.app_key)cfg=c}catch(x){}}   /* the last good copy, so a flaky load still scans */
@@ -324,9 +332,16 @@ function deviceId(){
 }
 function headers(extra){
   var h={'X-GMX-App-Key':cfg.app_key,'X-GMX-Device':deviceId()};
+  var ss=sessionToken(); if(ss)h['X-GMX-Session']=ss;
   if(extra)for(var k in extra)h[k]=extra[k];
   return h;
 }
+/* the account (2026-10-11): sign in by email link, no password. the session token lives on this
+   phone only and rides every call as X-GMX-Session, so follows, history and credit join the
+   account. nothing works worse signed out: a phone follows and gets push on its own. */
+function sessionToken(){try{return localStorage.getItem('gmx_session')||''}catch(e){return ''}}
+function setSession(t){try{if(t)localStorage.setItem('gmx_session',t);else localStorage.removeItem('gmx_session')}catch(e){}}
+var meCache=null;
 function tick(ms){try{if(navigator.vibrate)navigator.vibrate(ms||30)}catch(e){}}
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 function pct(n){return Math.round(Number(n)||0)+'%'}
@@ -754,6 +769,7 @@ function resultCard(cur){
     out+=pathBlock(cur);
     out+='<h3>right?</h3><div class="row"><button class="btn red" data-act="confirm">that\'s right</button><button class="btn" data-act="correct">it\'s actually...</button></div>';
     out+=correctionForm();
+    out+=followRow(cand);
     if(sub)checkArtistPage(sub);else if(nm&&nm.artist)checkArtistPage(nm.artist);
   }else if(c.kind==='guess'&&cand){
     var g=nameOf(cand);
@@ -762,6 +778,7 @@ function resultCard(cur){
     out+='<div class="guess"><p class="kw">closest guess</p><p class="nm">'+(g?esc(g.artist)+(g.artist&&g.title?' - ':'')+esc(g.title):'an unnamed library entry')+'</p><p class="pc">'+sureLine(cand)+'</p><div id="hear"></div>';
     out+='<div class="row"><button class="btn" data-act="confirm">that\'s right</button><button class="btn" data-act="correct">it\'s actually...</button></div></div>';
     out+=correctionForm();
+    out+=followRow(cand);
     out+=pathBlock(cur);
     out+='<h3>help us find it?</h3><div class="row"><button class="btn" data-act="help">help us find it?</button><button class="btn ghost" data-act="again">no thanks, scan again</button></div>';
     out+=helpForm();
@@ -771,6 +788,7 @@ function resultCard(cur){
     out+=pathBlock(cur);
     out+='<h3>help us find it?</h3><div class="row"><button class="btn" data-act="help">help us find it?</button><button class="btn ghost" data-act="again">no thanks, scan again</button></div>';
     out+=helpForm();
+    out+=followRow(null);
   }
   out+=timingLine(cur);
   out+=whereBlock();
@@ -979,6 +997,7 @@ card.addEventListener('click',function(ev){
 if(act==='listen'){card.classList.remove('on');card.innerHTML='';dropBlob();current=null;window.scrollTo({top:0,behavior:'smooth'});startScan();return}
   if(act==='share'){share();return}
   if(act==='confirm'){sendCorrection({verdict:'confirm'});return}
+  if(act==='follow'){followNow(b);return}
   if(act==='correct'){var f=$('cform');if(f){f.classList.add('on');$('c-artist').focus()}return}
   if(act==='help'){var h=$('hform');if(h){h.classList.add('on');$('h-venue').focus()}return}
   if(act==='closeform'){var fm=b.closest('form');if(fm)fm.classList.remove('on');return}
@@ -1158,6 +1177,135 @@ autobar.addEventListener('click',function(e){
   if(b.id==='autonow'){if(!busy){clearTimeout(autoTimer);autoTimer=null;startScan()}}
 });
 /* tonight: every result while a session is open, with its offset from the start. a repeat of the last row counts up instead of repeating. */
+/* ---- tell me when it's out, and the account (2026-10-11) ---- */
+function followRow(cand){
+  if(cand&&cand.status==='out now')return '';
+  var what=cand&&cand.library_entry_id&&!(cand.artist_claim&&cand.title_claim)?'tell me when it gets a name':'tell me when it\'s out';
+  return '<div class="row" id="followrow"><button class="btn" data-act="follow">'+what+'</button></div>';
+}
+function urlB64ToU8(b){var pad='='.repeat((4-b.length%4)%4),raw=atob((b+pad).replace(/-/g,'+').replace(/_/g,'/')),out=new Uint8Array(raw.length);for(var i=0;i<raw.length;i++)out[i]=raw.charCodeAt(i);return out}
+/* a push subscription for this phone: the browser's permission prompt, the recognizer's public key,
+   the subscription posted back. resolves true when the phone can be pushed, false when it cannot
+   (no permission, no service worker, iphone without the app on the home screen). never throws. */
+function ensurePush(){
+  if(!('serviceWorker' in navigator)||!('PushManager' in window)||!('Notification' in window))return Promise.resolve(false);
+  return fx(cfg.api_base+'/push/key',{headers:headers()},GET_MS).then(function(r){return r.ok?r.json():null}).then(function(k){
+    if(!k||!k.enabled||!k.public_key)return false;
+    return Notification.requestPermission().then(function(perm){
+      if(perm!=='granted')return false;
+      return navigator.serviceWorker.ready.then(function(reg){
+        return reg.pushManager.getSubscription().then(function(sub){return sub||reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:urlB64ToU8(k.public_key)})});
+      }).then(function(sub){
+        return fx(cfg.api_base+'/push/subscribe',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify({subscription:sub.toJSON()})},POST_MS).then(function(r){return r.ok});
+      });
+    });
+  }).catch(function(){return false});
+}
+function followNow(btn){
+  if(!current||!current.recognition_id){say('nothing to follow yet.');return}
+  btn.disabled=true; say('one moment');
+  ensurePush().then(function(pushed){
+    return fx(cfg.api_base+'/follow',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify({recognition_id:current.recognition_id})},POST_MS).then(function(r){
+      if(r.status===409)return r.json().then(function(j){var d=String(j.detail||'');say(d.indexOf('already out')>-1?'that one is already out.':'keep the clip first (help us find it), then tap again.');btn.disabled=false});
+      if(r.status===429){say('too many this hour, try later.');btn.disabled=false;return}
+      if(!r.ok)throw new Error(r.status);
+      return r.json().then(function(f){
+        var how=pushed?'this phone gets a push':(sessionToken()?'you get an email':'turn on notifications, or sign in below for email');
+        say((f.until==='named'?'we will tell you when it gets a name, and when it comes out. ':'we will tell you when it comes out. ')+how+'.',true);
+        btn.textContent='following'; loadFollows();
+      });
+    });
+  }).catch(function(){say('did not send. check your signal and try again.');btn.disabled=false});
+}
+function onCfg(){
+  var q=new URLSearchParams(location.search), tok=q.get('signin');
+  if(tok){
+    history.replaceState(null,'',location.pathname);
+    fx(cfg.api_base+'/auth/finish',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify({token:tok})},POST_MS).then(function(r){
+      if(r.status===410){youNote('that link is used up or too old. ask for a new one.');return}
+      if(!r.ok)throw new Error(r.status);
+      return r.json().then(function(j){setSession(j.session);meCache=null;renderYou();youNote('signed in as '+j.email+'.',true);ensurePush()});
+    }).catch(function(){youNote('could not finish signing in. check your signal and try the link again.')});
+  }
+  renderYou(); loadFollows();
+}
+function youNote(t,ok){var m=$('youmsg');if(m){m.textContent=t;m.className='msg'+(ok?' ok':'')}}
+function renderYou(){
+  var box=$('youbody'); if(!box||!cfg)return;
+  if(!sessionToken()){
+    box.innerHTML='<p class="smeta">sign in to get told by email when an ID you scanned comes out, keep your scans across phones, and put your name on the IDs you help with.</p>'+
+      '<form class="form on" id="yform" autocomplete="off"><label for="y-email">email</label><input id="y-email" name="email" type="email" inputmode="email" maxlength="320" required>'+
+      '<div class="row"><button class="btn red" type="submit">send me a sign-in link</button><span class="msg" id="youmsg"></span></div></form>';
+    return;
+  }
+  var paint=function(me){
+    box.innerHTML='<p class="smeta">signed in as '+esc(me.email)+(me.role==='verified_artist'?' · verified artist':'')+' · '+me.devices+' phone'+(me.devices===1?'':'s')+' · '+me.follows+' following</p>'+
+      '<form class="form on" id="hform2" autocomplete="off"><label for="y-handle">your handle, shown as credit on IDs you help name</label><input id="y-handle" name="handle" maxlength="30" value="'+esc(me.handle||'')+'" placeholder="optional">'+
+      '<div class="row"><button class="btn" type="submit">save</button><button class="btn ghost" type="button" data-you="push">turn on notifications</button><button class="btn ghost" type="button" data-you="out">sign out</button><span class="msg" id="youmsg"></span></div></form>'+
+      '<ul id="otherlist"></ul>';
+    loadServerHistory();
+  };
+  if(meCache){paint(meCache);return}
+  fx(cfg.api_base+'/me',{headers:headers()},GET_MS).then(function(r){
+    if(r.status===401){setSession('');renderYou();return}
+    if(!r.ok)throw new Error(r.status);
+    return r.json().then(function(me){meCache=me;paint(me)});
+  }).catch(function(){box.innerHTML='<p class="smeta">signed in, but the recognizer did not answer. <button class="btn ghost" type="button" data-you="out">sign out</button></p>'});
+}
+/* scans from the account's other phones, the ones this phone has no row for */
+function loadServerHistory(){
+  var ul=$('otherlist'); if(!ul||!sessionToken())return;
+  fx(cfg.api_base+'/me/history?limit=60',{headers:headers()},GET_MS).then(function(r){return r.ok?r.json():[]}).then(function(rows){
+    var mine={}; loadHistory().forEach(function(r){if(r.id)mine[r.id]=1});
+    var other=rows.filter(function(r){return !r.this_device&&!mine[r.job_id]});
+    if(!other.length){ul.innerHTML='';return}
+    ul.innerHTML='<li class="none">from your other phones</li>'+other.slice(0,25).map(function(r){
+      var name=r.kind==='match'?esc(r.artist||'ID')+'<small>'+esc(r.title||'unnamed library entry')+(r.status?' · '+esc(r.status):'')+'</small>':r.kind==='guess'?'no match<small>closest guess: '+esc((r.artist?r.artist+' - ':'')+(r.title||''))+'</small>':'no match<small>'+esc(r.in_set||'nothing yet')+'</small>';
+      return '<li><span class="who">'+name+'</span><span class="when">'+when(new Date(r.at).getTime())+'</span></li>';
+    }).join('');
+  }).catch(function(){});
+}
+function loadFollows(){
+  var ul=$('followlist'); if(!ul||!cfg)return;
+  fx(cfg.api_base+'/follows',{headers:headers()},GET_MS).then(function(r){return r.ok?r.json():[]}).then(function(rows){
+    rows=rows.filter(function(f){return f.state!=='cancelled'});
+    if(!rows.length){ul.hidden=true;ul.innerHTML='';return}
+    ul.hidden=false;
+    ul.innerHTML='<li class="none">waiting on</li>'+rows.slice(0,30).map(function(f){
+      var st=f.state==='notified'?'out now':f.named?'named, waiting for the release':f.until==='named'?'waiting for a name':'waiting for the release';
+      var nm=f.url&&f.state==='notified'?'<a href="'+esc(f.url)+'" target="_blank" rel="noopener">'+esc(f.name||'an ID')+'</a>':esc(f.name||'an ID');
+      return '<li><span class="who">'+nm+'<small>'+st+'</small></span>'+(f.state==='open'?'<span class="acts"><button class="btn ghost" data-unfollow="'+esc(f.follow_id)+'">stop</button></span>':'<span class="when">'+when(new Date(f.released||f.created_at).getTime())+'</span>')+'</li>';
+    }).join('');
+  }).catch(function(){});
+}
+document.addEventListener('submit',function(ev){
+  var f=ev.target;
+  if(f.id==='yform'){
+    ev.preventDefault(); var email=$('y-email').value.trim(); if(!email||!cfg)return; youNote('sending');
+    fx(cfg.api_base+'/auth/start',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify({email:email})},POST_MS).then(function(r){
+      if(r.status===429){youNote('too many links for that address this hour.');return}
+      if(r.status===422){youNote('that does not look like an email address.');return}
+      if(!r.ok)throw new Error(r.status);
+      return r.json().then(function(j){youNote(j.mail_sent?'sent. open the link on this phone within '+j.minutes+' minutes.':'the mail could not go out right now. try again later.',j.mail_sent)});
+    }).catch(function(){youNote('did not send. check your signal and try again.')});
+  }else if(f.id==='hform2'){
+    ev.preventDefault(); youNote('saving');
+    fx(cfg.api_base+'/me',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify({handle:$('y-handle').value.trim()||null})},POST_MS).then(function(r){
+      if(r.status===422)return r.json().then(function(j){youNote(String(j.detail||'that handle will not do'))});
+      if(!r.ok)throw new Error(r.status);
+      return r.json().then(function(me){meCache=me;youNote('saved.',true)});
+    }).catch(function(){youNote('did not save. check your signal.')});
+  }
+});
+document.addEventListener('click',function(ev){
+  var y=ev.target.closest('[data-you]');
+  if(y){
+    if(y.getAttribute('data-you')==='out'){fx(cfg.api_base+'/auth/signout',{method:'POST',headers:headers()},POST_MS).catch(function(){});setSession('');meCache=null;renderYou();loadFollows();return}
+    if(y.getAttribute('data-you')==='push'){y.disabled=true;ensurePush().then(function(ok){youNote(ok?'this phone gets notified.':'notifications are off for this site, or this browser cannot push. on iphone, add the app to the home screen first.',ok);y.disabled=false});return}
+  }
+  var u=ev.target.closest('[data-unfollow]');
+  if(u){u.disabled=true;fx(cfg.api_base+'/unfollow',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify({follow_id:u.getAttribute('data-unfollow')})},POST_MS).then(function(){loadFollows()}).catch(function(){u.disabled=false})}
+});
 function onScanEnd(cur,row){
   var d=draining;
   if(d){drainDone=true;gmxClips.del(d.id).catch(function(){});}

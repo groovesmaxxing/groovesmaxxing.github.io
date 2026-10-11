@@ -1,7 +1,7 @@
 /* groovesmaxxing service worker (phase 5, pwa shell).
    network first, cache fallback, offline page in the voice.
    only same-origin GET requests are ever cached. the api host is never touched. */
-var CACHE = 'gmx-v6';
+var CACHE = 'gmx-v7';
 var SHELL = ['/scan', '/more', '/gmx-clips.js', '/gmx-refresh.js', '/gmx-nav.js', '/gmx-nav.css', '/gmx-player.js', '/gmx-player.css', '/gmx-sets.js', '/search', '/gmx-profile.css', '/gmx-label.css', '/gmx-capture-worklet.js', '/artists-index.json', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png', '/favicon.svg'];
 
 var OFFLINE = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">' +
@@ -70,4 +70,23 @@ self.addEventListener('fetch', function (e) {
       });
     })
   );
+});
+
+/* push (2026-10-11): the recognizer tells this phone when an ID it follows comes out or gets a
+   name. the payload is a small json {title, body, url}; a tap opens the url, or the scan page. */
+self.addEventListener('push', function (e) {
+  var d = {};
+  try { d = e.data ? e.data.json() : {}; } catch (err) { d = { body: e.data ? e.data.text() : '' }; }
+  e.waitUntil(self.registration.showNotification(d.title || 'groovesmaxxing', {
+    body: d.body || '', icon: '/icon-192.png', badge: '/icon-192.png', tag: d.alert_id || undefined,
+    data: { url: d.url || '/scan' }
+  }));
+});
+self.addEventListener('notificationclick', function (e) {
+  e.notification.close();
+  var url = (e.notification.data && e.notification.data.url) || '/scan';
+  e.waitUntil(self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then(function (list) {
+    for (var i = 0; i < list.length; i++) { if (list[i].url.indexOf(self.location.origin) === 0 && 'focus' in list[i]) { list[i].navigate(url); return list[i].focus(); } }
+    return self.clients.openWindow(url);
+  }));
 });
