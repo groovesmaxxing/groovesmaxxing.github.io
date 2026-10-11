@@ -38,7 +38,9 @@ def iso(d=None):
     return (d or NOW).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
-def get(url, timeout=TIMEOUT, token=None):
+def get(url, timeout=TIMEOUT, token=None, limit=600000):
+    """status, body, milliseconds. a page body is cut at limit (the probes look for a few strings near the
+    top); an api answer is read whole (limit=None), a cut json answer was the first run's crash."""
     headers = {"User-Agent": UA, "Accept": "application/json,text/html;q=0.9,*/*;q=0.5", "Cache-Control": "no-cache"}
     if token:
         headers["Authorization"] = "Bearer " + token
@@ -46,7 +48,7 @@ def get(url, timeout=TIMEOUT, token=None):
     t0 = time.time()
     try:
         with urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=timeout) as r:
-            return r.status, r.read(600000), round((time.time() - t0) * 1000)
+            return r.status, r.read() if limit is None else r.read(limit), round((time.time() - t0) * 1000)
     except urllib.error.HTTPError as e:
         return e.code, b"", round((time.time() - t0) * 1000)
     except Exception as e:
@@ -102,11 +104,15 @@ def probe_workflows():
     token, repo = os.environ.get("GITHUB_TOKEN"), os.environ.get("GITHUB_REPOSITORY")
     if not token or not repo:
         return {"state": "unknown", "note": "no GITHUB_TOKEN", "runs": []}
-    code, body, _ = get(f"https://api.github.com/repos/{repo}/actions/runs?per_page=100", token=token)
+    code, body, _ = get(f"https://api.github.com/repos/{repo}/actions/runs?per_page=60", token=token, limit=None)
     if code != 200:
         return {"state": "unknown", "note": "actions api answered %d" % code, "runs": []}
+    try:
+        runs_in = json.loads(body).get("workflow_runs", [])
+    except Exception as e:
+        return {"state": "unknown", "note": "actions api answer did not parse: %s" % str(e)[:80], "runs": []}
     latest = {}
-    for r in json.loads(body).get("workflow_runs", []):
+    for r in runs_in:
         name = r.get("name") or r.get("path")
         if name == "site watch":
             continue   # this run, always in progress while it looks
@@ -138,8 +144,18 @@ def probe_freshness():
 def main():
     os.makedirs(OUT, exist_ok=True)
     offline = "--offline" in sys.argv
-    report = {"generated": iso(), "site": [] if offline else probe_site(), "recognizer": {"state": "unknown"} if offline else probe_recognizer(),
-              "workflows": probe_workflows() if not offline else {"state": "unknown", "runs": []}, "freshness": probe_freshness()}
+    def safely(name, fn, fallback):
+        """one probe failing is a reading, not a crash: the others still land in the feed."""
+        try:
+            return fn()
+        except Exception as e:  # noqa: BLE001
+            print("probe %s failed: %s: %s" % (name, type(e).__name__, str(e)[:160]))
+            return dict(fallback, note="probe failed: %s" % type(e).__name__) if isinstance(fallback, dict) else fallback
+    report = {"generated": iso(),
+              "site": [] if offline else safely("site", probe_site, []),
+              "recognizer": {"state": "unknown"} if offline else safely("recognizer", probe_recognizer, {"state": "unknown"}),
+              "workflows": safely("workflows", probe_workflows, {"state": "unknown", "runs": []}) if not offline else {"state": "unknown", "runs": []},
+              "freshness": safely("freshness", probe_freshness, {"state": "unknown", "rows": []})}
     site_states = {r["state"] for r in report["site"]}
     worst = "down" if "down" in site_states or report["recognizer"]["state"] == "down" else \
             "wrong" if "wrong" in site_states or report["freshness"]["state"] == "fail" or report["workflows"]["state"] == "failed" else \
