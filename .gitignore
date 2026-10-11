@@ -7,3 +7,6 @@
 
 # the cowork app mirrors its outputs folder into this clone. never part of the site.
 Claude outputs/
+
+# python bytecode from running the workflow scripts locally
+__pycache__/

@@ -4,7 +4,7 @@
    so the laptop scripts can keep changing what the pages say. outside hosts are blocked, so thumbnails stay black. */
 const {chromium}=require('playwright');
 const BASE='http://127.0.0.1:8787';
-const PAGES=['/index.html','/artists.html','/sets.html','/interviews.html','/events.html','/more.html','/scan.html','/badges.html','/upcoming.html','/labels.html','/newsletter.html','/friday.html','/404.html','/tracklists/index.html',
+const PAGES=['/index.html','/artists.html','/sets.html','/interviews.html','/events.html','/more.html','/scan.html','/badges.html','/upcoming.html','/labels.html','/newsletter.html','/friday.html','/404.html','/search.html','/tracklists/index.html',
   '/artists/adam-ten.html','/artists/max-styler.html','/artists/balanka.html','/artists/gkat.html','/artists/solomun.html','/labels/make-the-girls-dance-records.html','/labels/nu-moda.html','/tracklists/cloonee-live-at-red-rocks.html','/newsletter/fgf-001.html'];
 const NO_TABS=['/sets.html','/interviews.html'];
 (async()=>{
@@ -33,6 +33,16 @@ const NO_TABS=['/sets.html','/interviews.html'];
       log(!info.overflow,path+': no horizontal overflow');
       if(!NO_TABS.includes(path))log(info.tabs,path+': tab bar present');
       if(info.rails)log(info.stages>0&&info.railsHidden,path+': youtube rail became the shared player ('+info.stages+' stage(s))');
+      if(path==='/sets.html'){
+        await p.click('details.a summary >> nth=0');await p.waitForTimeout(1200);
+        const n=await p.evaluate(()=>document.querySelector('details.a[open] .grid[data-slug] .card')?document.querySelector('details.a[open] .grid[data-slug]').querySelectorAll('.card').length:0);
+        log(n>0,path+': an opened fold renders its cards from sets-index.json ('+n+')');
+      }
+      if(path==='/search.html'){
+        await p.fill('#q','adam ten');await p.waitForTimeout(600);
+        const r=await p.evaluate(()=>({hits:document.querySelectorAll('.hit').length,groups:[...document.querySelectorAll('.grp')].map(g=>g.firstChild.textContent)}));
+        log(r.hits>0,path+': "adam ten" finds results across groups '+JSON.stringify(r.groups));
+      }
       await p.close();
     }
     await ctx.close();
