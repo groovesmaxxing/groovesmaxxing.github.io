@@ -94,6 +94,16 @@ const fs=require('fs');try{fs.mkdirSync('shots',{recursive:true})}catch(e){}
         const f=await p.evaluate(()=>!!document.querySelector('section.artist .meta .gmx-follow'));
         log(f,path+': follow pill in the meta row');
       }
+      if(path==='/artists/adam-ten.html'||path==='/index.html'){
+        // quick search (ui build 1): the "/" key opens the sheet, typing finds rows, escape closes it
+        await p.keyboard.press('/');await p.waitForTimeout(300);
+        const opened=await p.evaluate(()=>{const s=document.querySelector('.gmx-quick');return !!s&&!s.hidden&&document.activeElement===s.querySelector('.gmx-quick-box')});
+        await p.keyboard.type('adam ten');await p.waitForTimeout(900);
+        const q=await p.evaluate(()=>({hits:document.querySelectorAll('.gmx-quick-hit').length,lit:!!document.querySelector('.gmx-quick-hit.lit'),all:(document.querySelector('.gmx-quick-all')||{}).getAttribute&&document.querySelector('.gmx-quick-all').getAttribute('href')}));
+        await p.keyboard.press('Escape');await p.waitForTimeout(200);
+        const closed=await p.evaluate(()=>document.querySelector('.gmx-quick').hidden);
+        log(opened&&q.hits>0&&q.lit&&/q=adam/.test(q.all||'')&&closed,path+': quick search opens on "/", finds "adam ten" ('+q.hits+' rows, first lit, full link '+q.all+') and closes on escape');
+      }
       if(path==='/search.html'){
         await p.fill('#q','adam ten');await p.waitForTimeout(600);
         const r=await p.evaluate(()=>({hits:document.querySelectorAll('.hit').length,groups:[...document.querySelectorAll('.grp')].map(g=>g.firstChild.textContent)}));
