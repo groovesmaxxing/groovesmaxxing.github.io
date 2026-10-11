@@ -49,3 +49,27 @@ count = sum(len(e['open']) for e in sets)
 json.dump({'generated': date.today().isoformat(), 'count': count, 'sets': len(sets), 'tracklists': len([f for f in glob.glob('tracklists/*.html') if not f.endswith('/index.html')]), 'list': sets},
           open('open-ids.json', 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
 print('open-ids.json: %d open rows across %d sets' % (count, len(sets)))
+
+# the same board, written into /open-ids itself between its markers, so a crawler (and a phone with
+# scripts off) reads every open row without fetching the json. the page script redraws the board
+# from the json on load with the same markup, plus the "i know this one" button, so nothing jumps.
+def esc(s): return html.escape(str(s or ''), quote=True)
+
+def block(e):
+    rows = ''.join('<div class="orow"><span class="at">%s</span><span class="tn">%s</span><span class="id">ID%s</span></div>' % (
+        ('<a href="%s" target="_blank" rel="noopener" aria-label="play %s from %s">%s ↗</a>' % (esc(r['l']), esc(e['h1']), esc(r['at']), esc(r['at']))) if r.get('l') else esc(r['at']),
+        esc(r['tn']), ('<i>%s</i>' % esc(r['note'])) if r['note'] else '') for r in e['open'])
+    return '<section class="oset" id="%s"><div class="oh"><a class="nm" href="%s">%s</a><span class="wh">%s%s</span><span class="ct">%d open <small>of %d</small></span></div>%s</section>' % (
+        esc(e['slug']), esc(e['u']), esc(e['h1']), esc(e['where']), (' · ' + esc(e['when'])) if e['when'] else '', len(e['open']), e['total'], rows)
+
+def between(page, start, end, body):
+    a, b = page.find(start), page.find(end)
+    if a < 0 or b < a: raise SystemExit('open-ids.html: marker %s missing' % start)
+    return page[:a + len(start)] + body + page[b:]
+
+page = open('open-ids.html', encoding='utf-8').read()
+page = between(page, '<!-- open-ids stat start -->', '<!-- open-ids stat end -->',
+               '<b>%d</b> open across <b>%d</b> of %d tracklists · rebuilt on every update, last %s' % (count, len(sets), len(glob.glob('tracklists/*.html')) - 1, date.today().isoformat()))
+page = between(page, '<!-- open-ids board start -->', '<!-- open-ids board end -->', '\n' + '\n'.join(block(e) for e in sets) + '\n')
+open('open-ids.html', 'w', encoding='utf-8').write(page)
+print('open-ids.html: board written in place')
