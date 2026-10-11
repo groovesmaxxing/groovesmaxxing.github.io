@@ -16,6 +16,7 @@
 <meta name="apple-mobile-web-app-title" content="grooves">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{--night:#0B0B0D;--racing:#FF1C02;--deep:#CC1400;--day:#F2F2EF;--steel:#8A8A93;--line:rgba(242,242,239,.12)}
@@ -61,14 +62,17 @@ form input[type=submit]:hover{background:var(--deep);border-color:var(--deep);co
 .gmx-tabs{display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(11,11,13,.96);border-top:1px solid rgba(242,242,239,.12);padding-bottom:env(safe-area-inset-bottom);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 .gmx-tabs ul{list-style:none;margin:0 auto;padding:0;display:flex;justify-content:space-around;max-width:720px}
 .gmx-tabs li{flex:1}
-.gmx-tabs a{display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 4px 8px;min-height:54px;text-decoration:none;color:#8A8A93;font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:lowercase}
+.gmx-tabs a{display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 4px 8px;min-height:54px;text-decoration:none;color:#8A8A93;font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.08em;text-transform:lowercase}
 .gmx-tabs svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .gmx-tabs a[aria-current="page"]{color:#FF1C02}
 .gmx-tabs a:hover{color:#F2F2EF}
 @media (max-width:1024px){.gmx-tabs{display:block}body{padding-bottom:calc(66px + env(safe-area-inset-bottom))}}
+.wipe{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;background:none;border:0;color:inherit;font:inherit;text-align:left;cursor:pointer;padding:0}
+.wipe .tx{color:#e36b5a}
 </style>
 <link rel="canonical" href="https://groovesmaxxing.com/more">
 <link rel="stylesheet" href="/gmx-motion.css">
+<meta property="og:image" content="https://groovesmaxxing.com/og-image.png">
 </head>
 <body>
 <div class="wrap">
@@ -108,6 +112,7 @@ form input[type=submit]:hover{background:var(--deep);border-color:var(--deep);co
 <h2>scan</h2>
 <ul class="list">
 <li><label class="sw" for="keepclips"><span class="tx">keep my clips<small>on this phone only. newest 20, gone after 30 days. off deletes them.</small></span><input type="checkbox" id="keepclips" role="switch"><span class="knob" aria-hidden="true"></span></label></li>
+<li><button type="button" class="wipe" id="wipeall"><span class="tx">clear everything on this phone<small>the device id, the recent scans and any kept clips. nothing on our side changes.</small></span><span class="go" id="wipemsg">✕</span></button></li>
 </ul>
 
 <h2>the small print</h2>
@@ -134,6 +139,11 @@ form input[type=submit]:hover{background:var(--deep);border-color:var(--deep);co
 </nav>
 <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})})}</script>
 <script src="/gmx-clips.js"></script>
+<script>(function(){var b=document.getElementById('wipeall'),m=document.getElementById('wipemsg');if(!b)return;b.addEventListener('click',function(){
+  if(!confirm('clear the device id, the recent scans and any kept clips on this phone?'))return;
+  var done=function(){['gmx_history','gmx_device','gmx_keep_clips','gmx_install_hide_until','gmx_cfg'].forEach(function(k){try{localStorage.removeItem(k)}catch(e){}});if(m)m.textContent='done';var k=document.getElementById('keepclips');if(k)k.checked=false;};
+  if(window.gmxClips)gmxClips.clear().then(done,done);else done();
+});})();</script>
 <script>(function(){var k=document.getElementById('keepclips');if(!k||!window.gmxClips)return;k.checked=gmxClips.on();k.addEventListener('change',function(){gmxClips.setOn(k.checked)})})();</script>
 <script src="/gmx-motion.js" defer></script>
 <script src="/gmx-refresh.js" defer></script>
