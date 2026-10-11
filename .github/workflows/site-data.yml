@@ -2,7 +2,7 @@ name: site data
 
 # the derived files the pages read, rebuilt after every push to main that a person or the laptop made,
 # never after its own commits: the light sets page, the search index, the feed, the offline list, the
-# shared tags on every page, and one share card per artist, label and tracklist page.
+# shared tags on every page, one share card per artist, label and tracklist page, and the security tags.
 
 on:
   push:
@@ -21,8 +21,8 @@ jobs:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: 22
 
@@ -42,6 +42,9 @@ jobs:
           npm install --no-save playwright@1.56.1
           npx playwright install --with-deps chromium
           NODE_PATH=$PWD/node_modules node .github/scripts/share_cards.js
+
+      - name: the security tags (fonts, referrer, content security policy with this push's script hashes)
+        run: python3 .github/scripts/harden_pages.py
 
       - name: commit what changed
         run: |
