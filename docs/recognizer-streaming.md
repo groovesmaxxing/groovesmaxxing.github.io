@@ -1,8 +1,8 @@
 # recognizer: the streaming contract
 
 the phone side of the scan is built for this already. the server side lives on the laptop host and is the
-half still to build. until it exists the phone falls back to the round-based flow (library rounds at 4, 6.5,
-9 and 12 seconds, catalogs at 15), which works against the server as it is today.
+half still to build. until it exists the phone falls back to the round-based flow (library rounds at 5, 9 and 12
+seconds, catalogs at 15, four requests a scan against the thirty an hour per phone), which works against the server as it is today.
 
 ## why
 

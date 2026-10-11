@@ -223,9 +223,10 @@ h1.eyebrow{margin:0;font-weight:400}
 'use strict';
 /* groovesmaxxing scan (phase 5, step b). vanilla, no dependencies.
    the api base and the app key come from /gmx-config.json, never from this file. */
-var CAPTURE_MS=15000, ROUNDS_MS=[4000,6500,9000,12000], POLL_MS=350, POLL_CAP_MS=30000, HISTORY_MAX=50;
-/* speed build, 2026-10-11: a library round every couple of seconds from four in, the scan stops on the first sure
-   match, the live level strip and the status line keep the screen honest, the card says how long it took. */
+var CAPTURE_MS=15000, ROUNDS_MS=[5000,9000,12000], POLL_MS=350, POLL_CAP_MS=30000, HISTORY_MAX=50;
+/* speed build, 2026-10-11: library rounds at 5, 9 and 12 s, the scan stops on the first sure match, the live level
+   strip and the status line keep the screen honest, the card says how long it took. three rounds plus the final clip
+   is four requests a scan, so the api's thirty an hour per phone covers seven scans. a 429 on any round stops the rest. */
 
 var POST_MS=25000, GET_MS=8000;   /* every request has a deadline, so a dead cell link never leaves the page spinning */
 /* site review build, 2026-10-11: audio worklet capture, request deadlines, config retry, level checks, one poll loop */
@@ -238,7 +239,7 @@ function fx(url,opts,ms){
 }
 /* phase 7 DECISION 9: at 8 s the page posts what it has as an early, library-only round and keeps
    listening. a LIKELY or better answer shows at once, the 15 s scan replaces it when it names something. */
-var scanSeq=0, early=null, finalDone=false;
+var scanSeq=0, early=null, finalDone=false, rateHit=false;
 var $=function(id){return document.getElementById(id)};
 var stage=$('stage'), go=$('go'), tap=$('tap'), rec=$('rec'), recword=$('recword'), count=$('count'), card=$('card'), recentlist=$('recentlist');
 var stat=$('stat'), lvl=$('lvl'), stopCapture=null, timing=null, levels=[];
@@ -331,7 +332,7 @@ function startScan(){
   if(!canCapture()){
     showCard(errCard("this browser can't record audio. on iphone use safari, on android use chrome, then add the app to your home screen."));return;
   }
-  busy=true; card.classList.remove('on'); current=null; dropBlob(); scanSeq++; early=null; finalDone=false;
+  busy=true; card.classList.remove('on'); current=null; dropBlob(); scanSeq++; early=null; finalDone=false; rateHit=false;
   var seq=scanSeq, nextRound=0;
   timing={t0:Date.now(),rounds:[],first:null};levels=[];drawLevels();say2('listening');
   stage.classList.add('listening'); go.classList.add('busy'); recword.textContent='listening'; count.textContent=String(Math.round(CAPTURE_MS/1000));
@@ -371,7 +372,7 @@ function startScan(){
         }
         var take=Math.min(inp.length,need-got); if(take<=0)return;
         chunks.push(new Float32Array(inp.subarray(0,take))); got+=take;
-        while(nextRound<ROUNDS_MS.length&&got>=Math.round(ctx.sampleRate*ROUNDS_MS[nextRound]/1000)){var at=ROUNDS_MS[nextRound++];try{earlyIdentify(wavBlob(chunks,ctx.sampleRate),seq,at)}catch(e){}}
+        while(!rateHit&&nextRound<ROUNDS_MS.length&&got>=Math.round(ctx.sampleRate*ROUNDS_MS[nextRound]/1000)){var at=ROUNDS_MS[nextRound++];try{earlyIdentify(wavBlob(chunks,ctx.sampleRate),seq,at)}catch(e){}}
         var sum=0; for(var i=0;i<take;i++){var v=inp[i]; sum+=v*v; if(v>0.985||v<-0.985)clipped++;} sq+=sum; var rms=Math.sqrt(sum/take); setLevel(rms); levels.push(rms); if(levels.length>120)levels.shift(); drawLevels();
         if(got>=need)setTimeout(done,0);
       }
@@ -442,7 +443,7 @@ function earlyIdentify(blob,seq,at){
   if(timing)timing.rounds.push(round);
   say2('matching at <b>'+(at/1000)+' s</b>'+(timing.rounds.length>1?' · '+timing.rounds.slice(0,-1).map(function(r){return r.answer}).join(', '):''));
   fx(cfg.api_base+'/identify',{method:'POST',headers:headers({'X-GMX-Round':'early'}),body:fd},POST_MS)
-  .then(function(r){sent=Date.now();round.post=sent-began;if(!r.ok)throw new Error('http '+r.status);return r.json()})
+  .then(function(r){sent=Date.now();round.post=sent-began;if(r.status===429){rateHit=true;throw new Error('rate')}if(!r.ok)throw new Error('http '+r.status);return r.json()})
   .then(function(job){return pollJob(job.job_id,began)})
   .then(function(j){
     round.wait=Date.now()-(sent||began);
@@ -465,7 +466,12 @@ function earlyIdentify(blob,seq,at){
     }
     say2('close at <b>'+(at/1000)+' s</b>, still listening for a sure one');
     showCard('<p class="kw" id="earlynote">still listening</p>'+resultCard(early));
-  }).catch(function(){round.answer=(at/1000)+' s: no answer'});
+  }).catch(function(e){
+    /* a 429 means this phone spent its thirty requests for the hour. no more rounds this scan, the final clip still goes. */
+    var capped=e&&e.message==='rate';
+    round.answer=(at/1000)+' s: '+(capped?'hourly cap':'no answer');
+    if(capped&&seq===scanSeq&&!finalDone)say2('this phone hit the hourly scan cap, one last try at 15 s');
+  });
 }
 function identify(blob){
   if(finalDone)return;
