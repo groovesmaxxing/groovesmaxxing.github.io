@@ -12,6 +12,7 @@ on:
 permissions:
   contents: write
   actions: read
+  issues: write
 
 concurrency:
   group: status-branch
@@ -25,7 +26,9 @@ jobs:
       - name: the last feed, so an unchanged state is not committed again
         run: |
           mkdir -p status-out
-          curl -fsSL -o status-out/site-watch.json "https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/status/site-watch.json" || true
+          for f in site-watch.json events.json; do
+            curl -fsSL -o "status-out/$f" "https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/status/$f" || true
+          done
       - name: probe
         id: probe
         env:
@@ -35,4 +38,4 @@ jobs:
         if: steps.probe.outputs.publish == 'true'
         run: |
           msg="site watch: $(python3 -c "import json;print(json.load(open('status-out/site-watch.json'))['summary'])")"
-          .github/scripts/status_publish.sh "$msg" status-out/site-watch.json
+          .github/scripts/status_publish.sh "$msg" status-out/site-watch.json status-out/events.json
