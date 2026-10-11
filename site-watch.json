@@ -1,0 +1,187 @@
+{
+ "generated": "2026-10-11T19:40:47Z",
+ "site": [
+  {
+   "path": "/",
+   "code": 200,
+   "ms": 258,
+   "state": "ok",
+   "note": null
+  },
+  {
+   "path": "/scan",
+   "code": 200,
+   "ms": 145,
+   "state": "ok",
+   "note": null
+  },
+  {
+   "path": "/sets",
+   "code": 200,
+   "ms": 152,
+   "state": "ok",
+   "note": null
+  },
+  {
+   "path": "/artists",
+   "code": 200,
+   "ms": 221,
+   "state": "ok",
+   "note": null
+  },
+  {
+   "path": "/tracklists/",
+   "code": 200,
+   "ms": 132,
+   "state": "ok",
+   "note": null
+  },
+  {
+   "path": "/search-index.json",
+   "code": 200,
+   "ms": 167,
+   "state": "ok",
+   "note": "generated 2026-10-11"
+  },
+  {
+   "path": "/upcoming.json",
+   "code": 200,
+   "ms": 122,
+   "state": "ok",
+   "note": "generated 2026-10-11"
+  },
+  {
+   "path": "/radar-events.json",
+   "code": 200,
+   "ms": 144,
+   "state": "ok",
+   "note": "generated 2026-10-11T15:48:15"
+  },
+  {
+   "path": "/sitemap.xml",
+   "code": 200,
+   "ms": 147,
+   "state": "ok",
+   "note": null
+  },
+  {
+   "path": "/sw.js",
+   "code": 200,
+   "ms": 118,
+   "state": "ok",
+   "note": null
+  }
+ ],
+ "recognizer": {
+  "state": "up",
+  "code": 200,
+  "ms": 1338,
+  "health": {
+   "status": "ok",
+   "version": "0.1.1"
+  }
+ },
+ "workflows": {
+  "state": "ok",
+  "failed": [],
+  "runs": [
+   {
+    "name": "events radar sweep",
+    "status": "completed",
+    "conclusion": "success",
+    "event": "schedule",
+    "branch": "main",
+    "at": "2026-10-11T15:48:19Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38152628330",
+    "state": "ok"
+   },
+   {
+    "name": "link watch",
+    "status": "completed",
+    "conclusion": "success",
+    "event": "workflow_dispatch",
+    "branch": "main",
+    "at": "2026-10-11T19:35:59Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38168621481",
+    "state": "ok"
+   },
+   {
+    "name": "pages build and deployment",
+    "status": "in_progress",
+    "conclusion": null,
+    "event": "dynamic",
+    "branch": "main",
+    "at": "2026-10-11T19:40:39Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38169024734",
+    "state": "running"
+   },
+   {
+    "name": "site check",
+    "status": "in_progress",
+    "conclusion": null,
+    "event": "push",
+    "branch": "main",
+    "at": "2026-10-11T19:40:38Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38169025089",
+    "state": "running"
+   },
+   {
+    "name": "site data",
+    "status": "in_progress",
+    "conclusion": null,
+    "event": "push",
+    "branch": "main",
+    "at": "2026-10-11T19:40:38Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38169025096",
+    "state": "running"
+   }
+  ]
+ },
+ "freshness": {
+  "state": "ok",
+  "rows": [
+   {
+    "state": "ok",
+    "id": "F-18",
+    "text": "friday.html carries the newest week: 2026-10-02, 9 days old"
+   },
+   {
+    "state": "ok",
+    "id": "F-21",
+    "text": "dropping soon says when it was last refreshed: 2026-10-09, 2 days old"
+   },
+   {
+    "state": "ok",
+    "id": "F-24",
+    "text": "the newsletter hub carries the newest issue: 2026-10-09, 2 days old"
+   },
+   {
+    "state": "ok",
+    "id": "F-30",
+    "text": "the events radar data is refreshed nightly: 2026-10-11, 0 days old"
+   },
+   {
+    "state": "ok",
+    "id": "F-31",
+    "text": "the denver radar data is refreshed nightly: 2026-10-11, 0 days old"
+   },
+   {
+    "state": "ok",
+    "id": "F-32",
+    "text": "the tracks index was rebuilt after the newest tracklist: 2026-10-11, 0 days old"
+   },
+   {
+    "state": "ok",
+    "id": "F-33",
+    "text": "upcoming.json (the home page's next up band) was rebuilt after the newest dropping soon render: 2026-10-11, 0 days old"
+   },
+   {
+    "state": "ok",
+    "id": "F-40",
+    "text": "the artist count on the home page and the artist index equals the number of profiles: 708 everywhere"
+   }
+  ]
+ },
+ "state": "ok",
+ "summary": "recognizer up"
+}
