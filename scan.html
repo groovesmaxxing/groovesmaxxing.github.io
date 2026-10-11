@@ -570,8 +570,9 @@ function namesIndex(){return namesIdx||(namesIdx=fx('/names-index.json',{},GET_M
 function crateItem(cand){
   var nm=nameOf(cand)||{artist:'',title:''},links={};
   [].slice.call(card.querySelectorAll('#storerow a.btn:not(.find)')).forEach(function(a){var h=a.href||'';if(/open\.spotify\.com/.test(h))links.spotify=h;else if(/music\.apple\.com/.test(h))links.apple=h;else if(/beatport\.com/.test(h)&&!/search/.test(h))links.beatport=h;else if(/soundcloud\.com/.test(h)&&!/search/.test(h))links.soundcloud=h});
-  var title=(nm.artist?nm.artist+' - ':'')+(nm.title||'unnamed library entry');
-  return {kind:'track',id:'scan:'+(foldT(nm.artist+' '+nm.title)||cand.library_id||'id'),title:title,sub:[cand.label||'',cand.status||'','found with the scan'].filter(Boolean).join(' · '),url:'/scan',links:links,artist:nm.artist||'',label:cand.label||''};
+  var who=nm.artist||((card.querySelector('.sub')||{}).textContent||'').trim();
+  var title=(who?who+' - ':'')+(nm.title||'unnamed library entry');
+  return {kind:'track',id:'scan:'+(foldT(who+' '+nm.title)||cand.library_id||'id'),title:title,sub:[cand.label||'',cand.status||'','found with the scan'].filter(Boolean).join(' · '),url:'/scan',links:links,artist:who,label:cand.label||''};
 }
 function decorate(cur){
   var c=cur&&cur.card&&cur.card.candidate; if(!c||cur.card.kind!=='match')return;
@@ -727,6 +728,9 @@ function enrich(cur){
   var artist=nm.artist||'', title=nm.title||'', q=foldT(artist+' '+title), key=q||foldT(title);
   var cardEl=card, art=cardEl.querySelector('.art'), store=cardEl.querySelector('#storerow'), hearEl=cardEl.querySelector('#hear');
   var l=c.store_links||{};
+  /* an unreleased card carries no link to the song, ever (G-MO, 2026-09-27): no store button, no store cover, no store
+     search. the same title on a released original must not leak its links onto an edit that is not out. */
+  var unreleased=c.released===false||(c.status&&c.status!=='out now');
   function setArt(url){if(!art||!url||art.getAttribute('data-done'))return;art.setAttribute('data-done','1');var img=document.createElement('img');img.alt='';img.loading='lazy';img.onload=function(){img.classList.add('in');art.classList.add('found')};img.onerror=function(){img.remove()};img.src=url;art.innerHTML='';art.appendChild(img)}
   function addBtn(href,label,cls){if(!store||!href||store.querySelector('a[href="'+href+'"]'))return;var a=document.createElement('a');a.className='btn'+(cls?' '+cls:'');a.href=href;a.target='_blank';a.rel='noopener';a.textContent=label;var share=store.querySelector('[data-act="share"]');store.insertBefore(a,share||null);titleLink()}
   function titleLink(){
@@ -742,12 +746,20 @@ function enrich(cur){
     if(!j)return;var hits=j.rows.filter(function(r){return sameTrack(q,r)||(title&&foldT(title).length>8&&r.q.indexOf(foldT(title))>-1&&(!artist||r.q.indexOf(foldT(artist).split(' ')[0])>-1))}).slice(0,6);
     if(!hits.length)return;
     var sp=hits.map(function(r){return r.links&&r.links.sp}).filter(Boolean)[0];
-    if(sp&&!l.spotify){addBtn(sp,'spotify');artRemember(key,Object.assign(artCache()[key]||{},{sp:sp}))}
+    if(sp&&!l.spotify&&!unreleased){addBtn(sp,'spotify');artRemember(key,Object.assign(artCache()[key]||{},{sp:sp}))}
+    /* no artist on the card, but our tracklists name one: say so, and link the profile when there is one */
+    if(!artist&&!cardEl.querySelector('.sub')){
+      var count={};hits.forEach(function(r){var a=String(r.n||'').split(' - ')[0].trim();if(a&&!/^id$/i.test(a))count[a]=(count[a]||0)+1});
+      var who=Object.keys(count).sort(function(a,b){return count[b]-count[a]})[0];
+      if(who){var h2=cardEl.querySelector('h2'),sub=document.createElement('p');sub.className='sub';sub.textContent=who;if(h2)h2.insertAdjacentElement('afterend',sub);
+        var t=cardEl.querySelector('.ttl');if(t&&/no artist named yet/.test(t.textContent))t.textContent=t.textContent.replace('no artist named yet','named in our tracklists');
+        checkArtistPage(who)}
+    }
     if(hearEl&&!hearEl.children.length){
       hearEl.innerHTML='<h3>hear it in</h3><ul class="heard hear">'+hits.map(function(r){var play=r.l?'<a href="'+esc(r.l)+'" target="_blank" rel="noopener">play from '+esc(r.at)+' ↗</a>':esc(r.at);return '<li><a href="'+esc(r.u)+'">'+esc(r.set)+'<small>'+esc(r.n)+(r.lab?' · '+esc(r.lab):'')+'</small></a><span class="at">'+play+'</span></li>'}).join('')+'</ul>';
     }
   });
-  if(c.artwork_url&&l.spotify&&l.apple)return;
+  if(unreleased||(c.artwork_url&&l.spotify&&l.apple))return;
   /* 2. spotify's embed service gives the cover for a spotify link, no key needed */
   var viaSpotify=l.spotify?fx('https://open.spotify.com/oembed?url='+encodeURIComponent(l.spotify),{},GET_MS).then(function(r){return r.ok?r.json():null}).then(function(j){if(j&&j.thumbnail_url&&!c.artwork_url){setArt(j.thumbnail_url);artRemember(key,Object.assign(artCache()[key]||{},{img:j.thumbnail_url}))}}).catch(function(){}):Promise.resolve();
   /* 3. apple's public search: the cover at 600px and the apple music link, matched on the folded name */
