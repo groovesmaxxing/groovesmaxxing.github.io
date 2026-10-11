@@ -119,6 +119,19 @@ const fs=require('fs');try{fs.mkdirSync('shots',{recursive:true})}catch(e){}
         const r=await p.evaluate(()=>({hits:document.querySelectorAll('.hit').length,groups:[...document.querySelectorAll('.grp')].map(g=>g.firstChild.textContent)}));
         log(r.hits>0,path+': "adam ten" finds results across groups '+JSON.stringify(r.groups));
       }
+      if(path==='/index.html'){
+        // next up (ui build 3): hidden with an empty crate; a crate that follows an artist from upcoming.json shows the band
+        const empty=await p.evaluate(()=>document.getElementById('nextup').hidden);
+        const seeded=await p.evaluate(async()=>{
+          const j=await (await fetch('/upcoming.json')).json();
+          const row=(j.rows||[]).find(r=>r.tier!=='named, not dated'&&r.artists.length);if(!row)return null;
+          localStorage.setItem('gmx_crate',JSON.stringify([{kind:'artist',id:'artist:test',title:row.artists[0],artist:row.artists[0],t:Date.now()}]));return row.artists[0];
+        });
+        await p.reload();await p.waitForTimeout(1200);
+        const band=await p.evaluate(()=>({hidden:document.getElementById('nextup').hidden,rows:document.querySelectorAll('#nextup-list li').length,first:(document.querySelector('#nextup-list li .t')||{}).textContent||''}));
+        await p.evaluate(()=>localStorage.removeItem('gmx_crate'));
+        log(empty&&!!seeded&&!band.hidden&&band.rows>0,path+': next up band hidden on an empty crate, shown after following "'+seeded+'" ('+band.rows+' rows, first: '+band.first.slice(0,60)+')');
+      }
       if(SHOTS.includes(path)){try{await p.screenshot({path:'shots/'+vp.name+path.replace(/\//g,'_').replace(/\.html$/,'')+'.png',fullPage:path!=='/index.html'})}catch(e){}}
       await p.close();
     }

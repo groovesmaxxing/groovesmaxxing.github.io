@@ -59,6 +59,15 @@
    "fail_days": 30
   },
   {
+   "id": "F-33",
+   "what": "upcoming.json (the home page's next up band) was rebuilt after the newest dropping soon render",
+   "file": "upcoming.json",
+   "test": "generated",
+   "key": "generated",
+   "warn_days": 10,
+   "fail_days": 21
+  },
+  {
    "id": "F-40",
    "what": "the artist count on the home page and the artist index equals the number of profiles",
    "test": "counts_agree",
