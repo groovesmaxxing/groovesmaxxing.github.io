@@ -652,6 +652,22 @@ function heardRows(c){
 /* "you're listening to": the set and the spot, straight from the scan, no typing. it only
    comes back for a set that already has its page here or sits on the dj's, label's, venue's
    or festival's own channel. */
+/* the recognizer placed the clip in a set we have a tracklist for, and the row playing at that second is named:
+   that row leads the card (2026-10-11, the woop woop scan), with the catalog's closest guess kept below it.
+   an "ID - ID" row or a set with no page gives nothing here and the card reads as before. */
+function placedHead(cur){
+  var s=cur.in_set; if(!s||!s.row)return '';
+  var parts=String(s.row).split(' - '),who=parts.length>1?parts[0].trim():'',ttl=(parts.length>1?parts.slice(1).join(' - '):s.row).trim();
+  var unrel=/\(unreleased\)/i.test(ttl);
+  var out='<p class="kw"><b>on the tracklist</b></p>';
+  if(unrel)out+='<div class="art unrel" data-done="1">'+logoMark()+'<span class="ulbl">unreleased</span></div>';
+  out+='<h2'+(ttl.length>42?' class="long"':'')+'>'+esc(ttl)+'</h2>';
+  if(who&&!/^id$/i.test(who))out+='<p class="sub">'+esc(who)+'</p>';
+  out+='<p class="ttl">the recognizer placed this clip in '+esc(s.set_title)+(s.row_at?' and our tracklist calls '+esc(s.row_at)+' this':'')+'. not a fingerprint match on its own.</p>';
+  out+='<div class="row"><button class="btn red" data-act="listen">listen again</button></div>';
+  if(who&&!/^id$/i.test(who))checkArtistPage(who);
+  return out;
+}
 function inSetRows(cur){
   var s=cur.in_set; if(!s||!s.set_title)return '';
   var name=s.page_url?'<a href="'+esc(s.page_url)+'">'+esc(s.set_title)+'</a>':(s.deep_link?'<a href="'+esc(s.deep_link)+'" target="_blank" rel="noopener">'+esc(s.set_title)+'</a>':esc(s.set_title));
@@ -688,8 +704,7 @@ function resultCard(cur){
     if(sub)checkArtistPage(sub);else if(nm&&nm.artist)checkArtistPage(nm.artist);
   }else if(c.kind==='guess'&&cand){
     var g=nameOf(cand);
-    out+='<p class="kw"><b>no match</b></p><h2>nothing we\'re sure of.</h2>';
-    out+='<div class="row"><button class="btn red" data-act="listen">listen again</button></div><p class="note">best on a drop or a vocal.</p>';
+    out+=placedHead(cur)||'<p class="kw"><b>no match</b></p><h2>nothing we\'re sure of.</h2><div class="row"><button class="btn red" data-act="listen">listen again</button></div><p class="note">best on a drop or a vocal.</p>';
     out+=inSetRows(cur);
     out+='<div class="guess"><p class="kw">closest guess</p><p class="nm">'+(g?esc(g.artist)+(g.artist&&g.title?' - ':'')+esc(g.title):'an unnamed library entry')+'</p><p class="pc">'+sureLine(cand)+'</p><div id="hear"></div>';
     out+='<div class="row"><button class="btn" data-act="confirm">that\'s right</button><button class="btn" data-act="correct">it\'s actually...</button></div></div>';
@@ -697,8 +712,7 @@ function resultCard(cur){
     out+='<h3>help us find it?</h3><div class="row"><button class="btn" data-act="help">help us find it?</button><button class="btn ghost" data-act="again">no thanks, scan again</button></div>';
     out+=helpForm();
   }else{
-    out+='<p class="kw"><b>no match</b></p><h2>nothing yet.</h2>';
-    out+='<div class="row"><button class="btn red" data-act="listen">listen again</button></div><p class="note">best on a drop or a vocal.</p>';
+    out+=placedHead(cur)||'<p class="kw"><b>no match</b></p><h2>nothing yet.</h2><div class="row"><button class="btn red" data-act="listen">listen again</button></div><p class="note">best on a drop or a vocal.</p>';
     out+=inSetRows(cur);
     out+='<h3>help us find it?</h3><div class="row"><button class="btn" data-act="help">help us find it?</button><button class="btn ghost" data-act="again">no thanks, scan again</button></div>';
     out+=helpForm();
