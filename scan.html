@@ -129,6 +129,17 @@ h1.eyebrow{margin:0;font-weight:400}
 .msg.ok{color:var(--racing)}
 
 /* recent */
+.autobar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;margin:-6px 0 14px;min-height:0}
+.autobar .btn.on{border-color:var(--racing);color:var(--racing)}
+.autobar .next{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.06em;color:var(--steel)}
+.autobar .next b{font-weight:400;color:var(--day)}
+.autobar .note{flex-basis:100%;text-align:center;font-family:'Space Mono',monospace;font-size:.72rem;color:var(--steel);line-height:1.6}
+.pendingbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;border:1px solid rgba(255,28,2,.45);border-radius:14px;padding:10px 14px;margin:0 0 18px;font-family:'Space Mono',monospace;font-size:.76rem;line-height:1.6;color:var(--day)}
+.pendingbar b{font-weight:400;color:var(--racing)}
+.pendingbar .btn{padding:7px 12px;font-size:.72rem}
+.session .smeta{font-family:'Space Mono',monospace;font-size:.74rem;color:var(--steel);margin:0 0 8px;letter-spacing:.04em}
+.session .when{color:var(--racing)}
+.session .stools{margin-top:12px}.session .stools .btn{padding:7px 12px;font-size:.72rem}.session .stools .msg{margin:0}
 .recent{margin:10px 0 40px}
 .recent h3{font-family:'Space Mono',monospace;font-weight:400;font-size:.72rem;letter-spacing:.28em;color:var(--steel);text-transform:uppercase;margin:0 0 8px}
 .recent ul{list-style:none;border-top:1px solid var(--line)}
@@ -193,11 +204,23 @@ h1.eyebrow{margin:0;font-weight:400}
 <p>can't name it? you choose whether we keep the clip to keep hunting. nothing is kept unless you say so.</p>
 <p>your scans stay on this phone, and every result has a button to tell us we got it wrong.</p>
 <p>hearing a set? under the result, tell us which one. we send the clip once more to find the spot in it, then delete it.</p>
+<p>at a set, turn on auto. the phone scans on its own every eight minutes, keeps the screen awake, and builds tonight's list as it goes. tap the rings or the auto button to stop.</p>
+<p>no signal? the clip stays on this phone and gets matched the moment you are back online.</p>
 <p class="links"><a href="/privacy">privacy</a> · <a href="/more">more</a></p>
 <button class="btn" type="button" id="howclose">close</button>
 </dialog>
 
+<div class="autobar" id="autobar"></div>
+<div class="pendingbar" id="pendingbar" hidden></div>
+
 <section class="card" id="card"></section>
+
+<section class="recent session" id="session" hidden>
+<h3>tonight</h3>
+<p class="smeta" id="sessionmeta"></p>
+<ul id="sessionlist"></ul>
+<div class="row stools" id="sessiontools"><button class="btn" type="button" data-s="copy">copy the list</button><button class="btn ghost" type="button" data-s="clear">clear tonight</button><span class="msg" id="sessionmsg"></span></div>
+</section>
 
 <section class="recent" id="recent">
 <h3>recent scans</h3>
@@ -411,6 +434,7 @@ function startScan(){
     cleanup(); tick(30);
     if(err||!blob||blob.size<2000){
       var name=err&&err.name?err.name:'';
+      if(auto&&(name==='NotAllowedError'||name==='SecurityError'))autoStop('auto stopped: this phone wants a tap before each scan');
       var m= name==='NotAllowedError'||name==='SecurityError' ? (/iPhone|iPad|iPod/.test(navigator.userAgent) ? 'the mic is blocked. open iphone settings, find safari (under apps on newer iphones), set microphone to ask or allow, then try again.' : 'the mic is blocked. allow the microphone for groovesmaxxing.com in your browser settings and try again.')
            : name==='NotFoundError' ? 'no microphone found on this device.'
            : (err&&err.message==='loud') ? 'that was too loud for the mic and the clip clipped. move back a little or cover the mic less, then scan again.'
@@ -421,7 +445,7 @@ function startScan(){
     heldBlob=blob; identify(blob);
   }
 }
-function reset(){busy=false;cancelScan=null;stopCapture=null;go.disabled=false;go.classList.remove('busy');stage.classList.remove('listening','finding');tap.innerHTML='tap to <b>scan</b>';go.setAttribute('aria-label','tap to scan')}
+function reset(){busy=false;cancelScan=null;stopCapture=null;go.disabled=false;go.classList.remove('busy');stage.classList.remove('listening','finding');tap.innerHTML='tap to <b>scan</b>';go.setAttribute('aria-label','tap to scan');try{onReset()}catch(e){}}
 function dropBlob(){heldBlob=null;heldAt=null}
 
 /* identify and poll */
@@ -476,6 +500,7 @@ function earlyIdentify(blob,seq,at){
 }
 function identify(blob){
   if(finalDone)return;
+  if(!navigator.onLine&&!draining){queueClip(blob);return}
   cancelScan=null; go.disabled=true; stage.classList.add('finding'); recword.textContent='finding it'; count.textContent='';
   say2('checking the catalogs');
   if(!early)showCard('<div class="skel" aria-hidden="true"><i class="a"></i><i class="b"></i><i class="c"></i><i class="d"></i></div>');
@@ -515,6 +540,10 @@ function identify(blob){
     finalDone=true; say2('');
     if(early){current=early;showCard(resultCard(current));remember(current,false);reset();return}
     var m=e&&e.message||'';
+    if(m==='rate')rateHit=true;
+    var netErr=!/^(rate|slow|key|failed|server|http )/.test(m);
+    if(netErr&&draining){var d=draining;draining=null;drainFailed=true;showCard(errCard('still no signal for the clip from '+when(d.t)+'. it stays on this phone, we try again when you are back online.'));reset();return}
+    if(netErr&&heldBlob&&!draining){queueClip(heldBlob);return}
     var text= m==='rate' ? 'too many scans this hour on this phone. try again in a bit.'
             : m==='slow' ? 'took too long. the recognizer did not answer in 30 seconds. try again.'
             : m==='key' ? 'the app key was refused. pull down to refresh and try again.'
@@ -895,10 +924,11 @@ function share(){
 function loadHistory(){try{return JSON.parse(localStorage.getItem('gmx_history')||'[]')}catch(e){return []}}
 function remember(cur,keep){
   var c=cur.card, cand=c.candidate, nm=cand?nameOf(cand):null;
-  var row={t:Date.now(),kind:c.kind,artist:nm?nm.artist:'',title:nm?nm.title:'',score:cand?cand.shown_score:0,status:cand?cand.status:'',id:cur.job_id,rid:cur.recognition_id,clip:!!keep,secs:cur.timing&&cur.timing.first?Math.round(cur.timing.first/100)/10:null};
+  var row={t:draining?draining.t:Date.now(),kind:c.kind,artist:nm?nm.artist:'',title:nm?nm.title:'',score:cand?cand.shown_score:0,status:cand?cand.status:'',id:cur.job_id,rid:cur.recognition_id,clip:!!keep,secs:cur.timing&&cur.timing.first?Math.round(cur.timing.first/100)/10:null};
   var h=loadHistory(); h.unshift(row); h=h.slice(0,HISTORY_MAX);
   try{localStorage.setItem('gmx_history',JSON.stringify(h))}catch(e){}
   renderHistory();
+  onScanEnd(cur,row);
 }
 function when(t){
   var d=new Date(t), n=new Date(), s=(n-d)/1000;
@@ -937,6 +967,7 @@ recentlist.addEventListener('click',function(ev){
     if(!rec||!rec.blob){note('that clip is gone.');return}
     if(act==='again'){
       busy=true; card.classList.remove('on'); current=null; heldBlob=rec.blob; heldAt=new Date(rec.t).toISOString();
+      scanSeq++; early=null; finalDone=false; rateHit=false; timing={t0:Date.now(),rounds:[],first:null};
       go.classList.add('busy'); window.scrollTo({top:0,behavior:'smooth'}); identify(rec.blob); return;
     }
     if(act==='help'){
@@ -953,7 +984,139 @@ recentlist.addEventListener('click',function(ev){
     }
   }).catch(function(){note('that clip is gone.')});
 });
-go.addEventListener('click',function(){if(busy){if(cancelScan)cancelScan();return}startScan()});
+go.addEventListener('click',function(){if(busy){if(auto)autoStop('stopped');if(cancelScan)cancelScan();return}startScan()});
+
+/* ---- auto scan and the offline queue (set mode build, 2026-10-11) ----
+   auto: tap once at the start of a set. the phone scans on its own every eight minutes (twenty when the
+   hourly cap bites), keeps the screen awake, and every result lands in tonight's list with its offset from
+   the start, a personal tracklist of the night. a tap on the rings or the auto button stops it. after a lock
+   screen or a reload auto waits for a tap again, since the mic needs a gesture on the phones that matter.
+   offline: a clip recorded with no signal, or one whose upload never reached the recognizer, stays on this
+   phone as a pending clip and is matched the moment the phone is back online, oldest first, one at a time.
+   nothing here leaves the phone until it is online. */
+var AUTO_KEY='gmx_auto', SESSION_KEY='gmx_session', AUTO_GAP_MS=8*60000, AUTO_GAP_CAPPED_MS=20*60000, SESSION_MAX_AGE=12*3600000;
+var auto=false, autoTimer=null, autoNext=0, autoTick=null, autoNote='', wake=null, draining=null, drainFailed=false, drainDone=false;
+var autobar=$('autobar'), pendingbar=$('pendingbar'), sessionEl=$('session'), sessionlist=$('sessionlist'), sessionmeta=$('sessionmeta'), sessionmsg=$('sessionmsg');
+function loadSession(){try{var s=JSON.parse(localStorage.getItem(SESSION_KEY)||'null');if(s&&s.rows)return s}catch(e){}return {start:0,rows:[]}}
+function saveSession(s){try{localStorage.setItem(SESSION_KEY,JSON.stringify(s))}catch(e){}}
+function fmtOffset(ms){var t=Math.max(0,Math.round(ms/1000)),h=Math.floor(t/3600),m=Math.floor(t%3600/60),x=t%60;return (h?h+':'+('0'+m).slice(-2):String(m))+':'+('0'+x).slice(-2)}
+function fmtClock(t){try{return new Date(t).toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'}).toLowerCase()}catch(e){return ''}}
+/* the screen stays on while auto runs, where the browser allows it */
+function wakeOn(){if(!('wakeLock' in navigator)||wake)return;navigator.wakeLock.request('screen').then(function(w){wake=w;w.addEventListener('release',function(){wake=null})}).catch(function(){})}
+function wakeOff(){if(wake){try{wake.release()}catch(e){}wake=null}}
+document.addEventListener('visibilitychange',function(){if(!document.hidden&&auto)wakeOn()});
+function autoStart(){
+  var s=loadSession();if(!s.start||Date.now()-s.start>SESSION_MAX_AGE){s={start:Date.now(),rows:[]};saveSession(s)}
+  auto=true;autoNote='';try{localStorage.setItem(AUTO_KEY,'1')}catch(e){}
+  wakeOn();renderAuto();renderSession();tick(40);
+  if(!busy)startScan();
+}
+function autoStop(note){
+  auto=false;autoNote=note||'';clearTimeout(autoTimer);autoTimer=null;autoNext=0;clearInterval(autoTick);autoTick=null;wakeOff();
+  try{localStorage.setItem(AUTO_KEY,'0')}catch(e){}
+  renderAuto();
+}
+function autoSchedule(ms){
+  clearTimeout(autoTimer);autoNext=Date.now()+ms;
+  autoTimer=setTimeout(function(){autoTimer=null;if(!auto)return;if(busy||document.hidden){autoSchedule(30000);return}startScan()},ms);
+  renderAuto();
+}
+function onReset(){
+  if(draining){var ok=drainDone;drainDone=false;draining=null;renderPending();if(ok)setTimeout(drain,600)}
+  else if(drainFailed){drainFailed=false;renderPending()}
+  if(auto&&!autoTimer&&!busy)autoSchedule(rateHit?AUTO_GAP_CAPPED_MS:AUTO_GAP_MS);
+}
+function renderAuto(){
+  if(!autobar)return;
+  var resumable=false;try{resumable=!auto&&localStorage.getItem(AUTO_KEY)==='1'&&loadSession().start&&Date.now()-loadSession().start<SESSION_MAX_AGE}catch(e){}
+  var h='<button class="btn'+(auto?' on':'')+'" type="button" id="autobtn" aria-pressed="'+(auto?'true':'false')+'">'+(auto?'auto on · tap to stop':(resumable?'resume auto':'auto · for a set'))+'</button>';
+  if(auto)h+='<span class="next" id="autonext"></span><button class="btn ghost" type="button" id="autonow">scan now</button>';
+  if(autoNote)h+='<span class="note">'+esc(autoNote)+'</span>';
+  autobar.innerHTML=h;
+  clearInterval(autoTick);autoTick=null;
+  if(auto){var paint=function(){var el=$('autonext');if(!el)return;if(busy)el.innerHTML='scanning';else if(autoNext)el.innerHTML='next in <b>'+fmtOffset(autoNext-Date.now())+'</b>';else el.innerHTML=''};paint();autoTick=setInterval(paint,1000)}
+}
+autobar.addEventListener('click',function(e){
+  var b=e.target.closest('button');if(!b)return;
+  if(b.id==='autobtn'){if(auto)autoStop('stopped');else autoStart();return}
+  if(b.id==='autonow'){if(!busy){clearTimeout(autoTimer);autoTimer=null;startScan()}}
+});
+/* tonight: every result while a session is open, with its offset from the start. a repeat of the last row counts up instead of repeating. */
+function onScanEnd(cur,row){
+  var d=draining;
+  if(d){drainDone=true;gmxClips.del(d.id).catch(function(){});}
+  var name=(row.artist?row.artist+' - ':'')+(row.title||'');
+  if(row.kind!=='match'&&row.kind!=='guess')name='';
+  sessionAdd({t:row.t,kind:row.kind,name:name,score:row.score},d?d.t:null);
+}
+/* a row in tonight's list. a kept clip lands as pending and is replaced by its match when it drains. */
+function sessionAdd(r,replaceT){
+  var s=loadSession();if(!s.start)return;
+  if(Date.now()-s.start>SESSION_MAX_AGE&&!auto)return;
+  if(replaceT){for(var i=0;i<s.rows.length;i++){if(s.rows[i].kind==='pending'&&s.rows[i].t===replaceT){s.rows[i]={t:replaceT,off:replaceT-s.start,kind:r.kind,name:r.name,score:r.score,n:1};saveSession(s);renderSession();return}}}
+  var last=s.rows[s.rows.length-1];
+  if(r.name&&last&&last.name===r.name){last.n=(last.n||1)+1}
+  else s.rows.push({t:r.t,off:r.t-s.start,kind:r.kind,name:r.name||'',score:r.score,n:1});
+  saveSession(s);renderSession();
+}
+function renderSession(){
+  var s=loadSession();if(!sessionEl)return;
+  var show=(s.start&&s.rows.length)||auto;
+  sessionEl.hidden=!show;if(!show)return;
+  var named=s.rows.filter(function(r){return r.name&&r.kind==='match'}).length;
+  sessionmeta.textContent='started '+fmtClock(s.start)+' · '+s.rows.length+(s.rows.length===1?' scan':' scans')+' · '+named+' named';
+  sessionlist.innerHTML=s.rows.length?s.rows.map(function(r){
+    var who=r.kind==='pending'?'kept, no signal<small>matched when you are back online</small>':r.name?(r.kind==='guess'?'<span>maybe '+esc(r.name)+'</span>':'<span>'+esc(r.name)+'</span>')+'<small>'+(r.kind==='guess'?'closest guess':pct(r.score))+(r.n>1?' · heard '+r.n+' times':'')+'</small>':'nothing named<small>no match</small>';
+    return '<li><span class="who">'+who+'</span><span class="when">+'+fmtOffset(r.off)+'</span></li>';
+  }).join(''):'<li class="none">listening. the first result lands here.</li>';
+}
+$('sessiontools').addEventListener('click',function(e){
+  var b=e.target.closest('[data-s]');if(!b)return;var s=loadSession();
+  if(b.getAttribute('data-s')==='clear'){if(s.rows.length&&!confirm('clear tonight\'s list on this phone?'))return;saveSession({start:auto?Date.now():0,rows:[]});renderSession();sessionmsg.textContent='cleared.';return}
+  var lines=s.rows.filter(function(r){return r.name}).map(function(r){return fmtOffset(r.off)+'  '+(r.kind==='guess'?'? ':'')+r.name});
+  if(!lines.length){sessionmsg.textContent='nothing named yet.';return}
+  var txt='tonight with groovesmaxxing · '+fmtClock(s.start)+'\n'+lines.join('\n')+'\nhttps://groovesmaxxing.com/scan';
+  if(navigator.clipboard)navigator.clipboard.writeText(txt).then(function(){sessionmsg.textContent='copied, '+lines.length+' lines.'},function(){sessionmsg.textContent='could not copy.'});else sessionmsg.textContent='copy is not available here.';
+});
+/* the offline queue */
+function queueClip(blob){
+  var rec={id:'q'+Date.now()+Math.floor(Math.random()*1000),t:Date.now(),blob:blob,kind:'pending',heard_at:heldAt||new Date().toISOString()};
+  var store=window.gmxClips?gmxClips.put(rec):Promise.reject(new Error('no store'));
+  store.then(function(){
+    sessionAdd({t:rec.t,kind:'pending',name:''});
+    showCard('<p class="kw"><b>kept.</b></p><h2>no signal, no problem.</h2><p class="note">the clip stays on this phone and gets matched the moment you are back online. nothing is sent until then.</p><div class="row"><button class="btn red" data-act="again">scan again</button></div>');
+    renderPending();
+  },function(){
+    showCard(errCard('could not reach the recognizer, and could not keep the clip on this phone either. try again when you have signal.'));
+  });
+  heldBlob=null;reset();
+}
+function pendingList(){return window.gmxClips?gmxClips.list().then(function(rows){return rows.filter(function(r){return r.kind==='pending'&&r.blob}).sort(function(a,b){return a.t-b.t})}).catch(function(){return []}):Promise.resolve([])}
+function renderPending(){
+  if(!pendingbar)return;
+  pendingList().then(function(p){
+    pendingbar.hidden=!p.length;if(!p.length)return;
+    var on=navigator.onLine;
+    pendingbar.innerHTML='<span><b>'+p.length+'</b> '+(p.length===1?'clip':'clips')+' waiting for signal'+(on?'':' · offline')+'</span>'+(on?'<button class="btn" type="button" id="drainbtn">'+(busy?'matching…':'match now')+'</button>':'');
+    var b=$('drainbtn');if(b)b.addEventListener('click',function(){drain()});
+  });
+}
+function drain(){
+  if(busy||draining||!navigator.onLine||!window.gmxClips||!cfg)return;
+  pendingList().then(function(p){
+    if(!p.length){renderPending();return}
+    var rec=p[0];draining=rec;drainDone=false;drainFailed=false;
+    busy=true;card.classList.remove('on');current=null;heldBlob=rec.blob;heldAt=rec.heard_at||new Date(rec.t).toISOString();
+    scanSeq++;early=null;finalDone=false;rateHit=false;timing={t0:Date.now(),rounds:[],first:null};
+    go.classList.add('busy');say2('matching a clip from '+when(rec.t));renderPending();
+    identify(rec.blob);
+  });
+}
+window.addEventListener('online',function(){renderPending();setTimeout(drain,1500)});
+window.addEventListener('offline',renderPending);
+renderAuto();renderSession();renderPending();
+if(navigator.onLine)setTimeout(drain,2500);
+window.gmxSession={start:autoStart,stop:autoStop,drain:drain,queue:queueClip,session:loadSession};
 window.gmxScanDemo=function(res){current=res;showCard(resultCard(res))};
 (function(){var hb=document.getElementById('howbtn'),box=document.getElementById('howbox'),hc=document.getElementById('howclose');if(!hb||!box||!box.showModal){if(hb)hb.style.display='none';return}hb.addEventListener('click',function(){box.showModal()});hc.addEventListener('click',function(){box.close()});box.addEventListener('click',function(e){if(e.target===box)box.close()});})();
 })();
