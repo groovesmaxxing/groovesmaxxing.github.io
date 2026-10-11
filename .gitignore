@@ -10,3 +10,6 @@ Claude outputs/
 
 # python bytecode from running the workflow scripts locally
 __pycache__/
+node_modules/
+package.json
+package-lock.json

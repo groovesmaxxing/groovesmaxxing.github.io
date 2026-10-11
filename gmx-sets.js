@@ -22,6 +22,7 @@ function fill(grid){
     var a=j&&j.artists&&j.artists[grid.getAttribute('data-slug')];
     if(!a){grid.innerHTML='<p class="count">the sets did not load. refresh and try again.</p>';return}
     grid.innerHTML=a.cards.map(card).join('');grid.setAttribute('data-done','1');
+    try{grid.dispatchEvent(new CustomEvent('gmx:cards',{bubbles:true}))}catch(e){}
   });
 }
 function play(b){
