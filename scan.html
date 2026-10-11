@@ -571,7 +571,8 @@ function crateItem(cand){
   var nm=nameOf(cand)||{artist:'',title:''},links={};
   [].slice.call(card.querySelectorAll('#storerow a.btn:not(.find)')).forEach(function(a){var h=a.href||'';if(/open\.spotify\.com/.test(h))links.spotify=h;else if(/music\.apple\.com/.test(h))links.apple=h;else if(/beatport\.com/.test(h)&&!/search/.test(h))links.beatport=h;else if(/soundcloud\.com/.test(h)&&!/search/.test(h))links.soundcloud=h});
   var who=nm.artist||((card.querySelector('.sub')||{}).textContent||'').trim();
-  var title=(who?who+' - ':'')+(nm.title||'unnamed library entry');
+  var shown=nm.lib?((card.querySelector('h2')||{}).textContent||'').trim():'';
+  var title=(who?who+' - ':'')+(shown||nm.title||'unnamed library entry');
   return {kind:'track',id:'scan:'+(foldT(who+' '+nm.title)||cand.library_id||'id'),title:title,sub:[cand.label||'',cand.status||'','found with the scan'].filter(Boolean).join(' · '),url:'/scan',links:links,artist:who,label:cand.label||''};
 }
 function decorate(cur){
@@ -747,13 +748,19 @@ function enrich(cur){
     if(!hits.length)return;
     var sp=hits.map(function(r){return r.links&&r.links.sp}).filter(Boolean)[0];
     if(sp&&!l.spotify&&!unreleased){addBtn(sp,'spotify');artRemember(key,Object.assign(artCache()[key]||{},{sp:sp}))}
-    /* no artist on the card, but our tracklists name one: say so, and link the profile when there is one */
+    /* no artist on the card, but our tracklists name the record: take their name whole, artist and the full title
+       with its edit credit (G-MO, 2026-10-11: "Whisper To Me (Assaf Michael & Reef Kopel Edit)", not just the
+       caption), say so, and link the profile when there is one. the most played name across the sets wins. */
     if(!artist&&!cardEl.querySelector('.sub')){
-      var count={};hits.forEach(function(r){var a=String(r.n||'').split(' - ')[0].trim();if(a&&!/^id$/i.test(a))count[a]=(count[a]||0)+1});
-      var who=Object.keys(count).sort(function(a,b){return count[b]-count[a]})[0];
-      if(who){var h2=cardEl.querySelector('h2'),sub=document.createElement('p');sub.className='sub';sub.textContent=who;if(h2)h2.insertAdjacentElement('afterend',sub);
+      var count={};hits.forEach(function(r){var n=String(r.n||'').trim();if(n&&n.indexOf(' - ')>0&&!/^id\s*-/i.test(n))count[n]=(count[n]||0)+1});
+      var full=Object.keys(count).sort(function(a,b){return count[b]-count[a]||b.length-a.length})[0];
+      if(full){
+        var who=full.split(' - ')[0].trim(),ttlName=full.split(' - ').slice(1).join(' - ').trim();
+        var h2=cardEl.querySelector('h2'),sub=document.createElement('p');sub.className='sub';sub.textContent=who;
+        if(h2){if(nm.lib&&ttlName&&foldT(ttlName).indexOf(foldT(title))>-1){h2.textContent=ttlName;h2.classList.toggle('long',ttlName.length>42)}h2.insertAdjacentElement('afterend',sub)}
         var t=cardEl.querySelector('.ttl');if(t&&/no artist named yet/.test(t.textContent))t.textContent=t.textContent.replace('no artist named yet','named in our tracklists');
-        checkArtistPage(who)}
+        checkArtistPage(who);
+      }
     }
     if(hearEl&&!hearEl.children.length){
       hearEl.innerHTML='<h3>hear it in</h3><ul class="heard hear">'+hits.map(function(r){var play=r.l?'<a href="'+esc(r.l)+'" target="_blank" rel="noopener">play from '+esc(r.at)+' ↗</a>':esc(r.at);return '<li><a href="'+esc(r.u)+'">'+esc(r.set)+'<small>'+esc(r.n)+(r.lab?' · '+esc(r.lab):'')+'</small></a><span class="at">'+play+'</span></li>'}).join('')+'</ul>';
