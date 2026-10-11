@@ -105,6 +105,20 @@ h1.eyebrow{margin:0;font-weight:400}
 .card h3{font-family:'Space Mono',monospace;font-weight:400;font-size:.72rem;letter-spacing:.28em;color:var(--steel);text-transform:uppercase;margin:24px 0 8px}
 .heard{list-style:none}
 .heard li{border-top:1px solid var(--line);padding:11px 0;display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+/* what happens next (ui build 4): four steps, a line down the left, the live one red */
+.path{list-style:none;margin:4px 0 0;padding:0;position:relative}
+.path::before{content:"";position:absolute;left:7px;top:10px;bottom:10px;width:1px;background:var(--line)}
+.path li{position:relative;display:grid;grid-template-columns:16px 1fr;column-gap:12px;row-gap:2px;padding:7px 0;align-items:baseline}
+.path .dot{width:11px;height:11px;border-radius:50%;border:1.5px solid var(--steel);background:var(--night);margin-left:1.5px;position:relative;z-index:1;align-self:center;grid-row:1 / span 2}
+.path .lb{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--steel)}
+.path .nt{grid-column:2;font-size:.9rem;line-height:1.45;color:#c9c9c4;overflow-wrap:anywhere}
+.path .st-done .dot{background:var(--day);border-color:var(--day)}
+.path .st-done .lb{color:var(--day)}
+.path .st-now .dot{background:var(--racing);border-color:var(--racing);box-shadow:0 0 0 4px rgba(255,28,2,.18)}
+.path .st-now .lb{color:var(--racing)}
+.path .st-now .nt{color:var(--day)}
+.path .st-next .nt{color:var(--steel)}
+@media (prefers-reduced-motion: no-preference){.path .st-now .dot{animation:pathpulse 1.6s ease-in-out infinite}@keyframes pathpulse{50%{box-shadow:0 0 0 7px rgba(255,28,2,.08)}}}
 .heard a{text-decoration:none;font-weight:600;font-size:.95rem;overflow-wrap:anywhere}
 .heard a:hover{color:var(--racing)}
 .heard .at{font-family:'Space Mono',monospace;font-size:.78rem;color:var(--steel);flex:none}
@@ -681,6 +695,39 @@ function inSetRows(cur){
   var row=s.row?'<li><span>on the tracklist: <b>'+esc(s.row)+'</b></span><span class="at">from '+esc(s.row_at||s.at)+'</span></li>':'';
   return '<h3>you\'re listening to</h3><ul class="heard"><li>'+name+'<span class="at">'+at+'</span></li>'+row+'</ul>';
 }
+/* what happens next (ui build 4, 2026-10-11, the flighty move): four steps under every result, the one that
+   is live lit. heard, named, placed, confirmed. a result the recognizer is sure of is named and waits on a
+   person; a guess or a blank waits on a name; a set placement fills the third step; a human confirmation
+   fills the last. after the phone answers, the last step says what closes it. */
+function pathStep(state,label,note){return '<li class="st-'+state+'"><span class="dot" aria-hidden="true"></span><span class="lb">'+label+'</span><span class="nt">'+note+'</span></li>'}
+function pathBlock(cur){
+  var c=cur.card, cand=c.candidate, t=cur.timing, s=cur.in_set, nm=cand?nameOf(cand):null;
+  var secs=function(ms){return (Math.round(ms/100)/10)+' s'};
+  var heard=t&&t.first?'found in '+secs(t.first)+(t.rounds&&t.rounds.length>1?' · '+t.rounds.length+' rounds':''):(t?'listening':'just now');
+  var named,namedState,conf,confState;
+  if(c.kind==='match'&&cand){
+    var lib=!!(nm&&nm.lib),head=(!lib&&cand.headline)||(nm?(nm.title||nm.artist):'ID');
+    if(head==='ID'){named='in our library, no name yet';namedState='now'}
+    else{named=((lib||cand.status!=='out now')?'from our library of sets':'from the catalog')+(cand.status==='unreleased'?' · unreleased':cand.status==='out now'?' · out now':'');namedState='done'}
+    if(cand.accepted_name){conf='a person confirmed this name';confState='done'}
+    else{conf='waiting on you: that’s right, or it’s actually… two phones or the artist close it';confState=head==='ID'?'next':'now'}
+  }else if(c.kind==='guess'&&cand){
+    named='a guess at '+pct(cand.shown_score)+', under our bar';namedState='now';
+    conf='nothing to confirm until it has a name';confState='next';
+  }else{
+    named='nothing yet';namedState='now';
+    conf='nothing to confirm until it has a name';confState='next';
+  }
+  var placed,placedState;
+  if(s&&s.set_title){placed='in '+esc(s.set_title)+(s.at?' around '+esc(s.at):'')+(s.row?' · the tracklist calls it '+esc(s.row):'');placedState='done'}
+  else{placed='not placed in a set yet. “where are you hearing this?” helps.';placedState='next'}
+  return '<h3>what happens next</h3><ol class="path" id="path">'+pathStep('done','heard',esc(heard))+pathStep(namedState,'named',esc(named))+pathStep(placedState,'placed',placed)+pathStep(confState,'confirmed',conf)+'</ol>';
+}
+function markSent(verdict){
+  var p=$('path');if(!p)return;var li=p.lastElementChild;if(!li)return;
+  li.className='st-done';
+  li.querySelector('.nt').textContent=verdict==='confirm'?'your word is in. a second phone, a tracklist row or the artist closes it.':'your fix is in the queue. a second phone or a reviewer closes it, and the next scan shows it.';
+}
 function resultCard(cur){
   var c=cur.card, cand=c.candidate, out='';
   if(c.kind==='match'&&cand){
@@ -704,6 +751,7 @@ function resultCard(cur){
     out+=inSetRows(cur);
     out+=heardRows(cand);
     out+='<div id="hear"></div>';
+    out+=pathBlock(cur);
     out+='<h3>right?</h3><div class="row"><button class="btn red" data-act="confirm">that\'s right</button><button class="btn" data-act="correct">it\'s actually...</button></div>';
     out+=correctionForm();
     if(sub)checkArtistPage(sub);else if(nm&&nm.artist)checkArtistPage(nm.artist);
@@ -714,11 +762,13 @@ function resultCard(cur){
     out+='<div class="guess"><p class="kw">closest guess</p><p class="nm">'+(g?esc(g.artist)+(g.artist&&g.title?' - ':'')+esc(g.title):'an unnamed library entry')+'</p><p class="pc">'+sureLine(cand)+'</p><div id="hear"></div>';
     out+='<div class="row"><button class="btn" data-act="confirm">that\'s right</button><button class="btn" data-act="correct">it\'s actually...</button></div></div>';
     out+=correctionForm();
+    out+=pathBlock(cur);
     out+='<h3>help us find it?</h3><div class="row"><button class="btn" data-act="help">help us find it?</button><button class="btn ghost" data-act="again">no thanks, scan again</button></div>';
     out+=helpForm();
   }else{
     out+=placedHead(cur)||'<p class="kw"><b>no match</b></p><h2>nothing yet.</h2><div class="row"><button class="btn red" data-act="listen">listen again</button></div><p class="note">best on a drop or a vocal.</p>';
     out+=inSetRows(cur);
+    out+=pathBlock(cur);
     out+='<h3>help us find it?</h3><div class="row"><button class="btn" data-act="help">help us find it?</button><button class="btn ghost" data-act="again">no thanks, scan again</button></div>';
     out+=helpForm();
   }
@@ -957,6 +1007,7 @@ function sendCorrection(body){
     if(r.status===429){say('too many this hour, try later.');return}
     if(!r.ok)throw new Error(r.status);
     say(body.verdict==='confirm'?'logged. appreciate you.':'logged, we will check it. appreciate you.',true);
+    markSent(body.verdict);
     var f=$('cform');if(f)f.classList.remove('on');
   }).catch(function(){say('did not send. check your signal and try again.')});
 }
@@ -1182,6 +1233,7 @@ window.addEventListener('offline',renderPending);
 renderAuto();renderSession();renderPending();
 if(navigator.onLine)setTimeout(drain,2500);
 window.gmxSession={start:autoStart,stop:autoStop,drain:drain,queue:queueClip,session:loadSession};
+window.gmxPath={block:pathBlock,sent:markSent};   /* the site check renders the four steps from a made-up result */
 window.gmxScanDemo=function(res){current=res;showCard(resultCard(res))};
 (function(){var hb=document.getElementById('howbtn'),box=document.getElementById('howbox'),hc=document.getElementById('howclose');if(!hb||!box||!box.showModal){if(hb)hb.style.display='none';return}hb.addEventListener('click',function(){box.showModal()});hc.addEventListener('click',function(){box.close()});box.addEventListener('click',function(e){if(e.target===box)box.close()});})();
 })();

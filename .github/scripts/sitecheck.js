@@ -79,6 +79,19 @@ const fs=require('fs');try{fs.mkdirSync('shots',{recursive:true})}catch(e){}
       if(path==='/scan.html'){
         const a=await p.evaluate(()=>({auto:!!document.querySelector('#autobar #autobtn'),pending:!!document.getElementById('pendingbar'),api:typeof window.gmxSession==='object'}));
         log(a.auto&&a.pending&&a.api,path+': auto button, pending bar and session hooks present');
+        // what happens next (ui build 4): four steps from a made-up match, a guess and a blank, and the sent state
+        const w=await p.evaluate(()=>{
+          const t={t0:Date.now()-16800,first:16800,rounds:[{at:5000},{at:9000},{at:12000},{at:15000}]};
+          const cand={artist_claim:'Space Motion',title_claim:'Woop Woop',headline:'Woop Woop',subline:'Space Motion',status:'unreleased',shown_score:97,tier:'CONFIRMED',confidence:97,heard_in:[],store_links:{}};
+          const match=gmxPath.block({card:{kind:'match',candidate:cand},timing:t,in_set:{set_title:'Vintage Culture at Club Space',at:'44:15',row:'Space Motion - Woop Woop (unreleased)'}});
+          const guess=gmxPath.block({card:{kind:'guess',candidate:Object.assign({},cand,{shown_score:62,tier:'LIKELY'})},timing:t,in_set:null});
+          const none=gmxPath.block({card:{kind:'none',candidate:null},timing:t,in_set:null});
+          const d=document.createElement('div');d.innerHTML=match;const m=d.querySelectorAll('.path li');
+          const states=[...m].map(li=>li.className);
+          document.getElementById('card').innerHTML=match;gmxPath.sent('confirm');const last=document.querySelector('#path li:last-child');
+          return {steps:m.length,states,guessNow:/st-now/.test(guess)&&/under our bar/.test(guess),noneNow:/nothing yet/.test(none),placed:/Club Space/.test(match)&&/calls it/.test(match),sent:last.className==='st-done'&&/your word is in/.test(last.textContent)};
+        });
+        log(w.steps===4&&w.states.join()==='st-done,st-done,st-done,st-now'&&w.guessNow&&w.noneNow&&w.placed&&w.sent,path+': what happens next renders four steps ('+w.states.join(' ')+'), the guess and blank cases, and the sent state');
       }
       if(path==='/open-ids.html'){
         await p.waitForTimeout(900);
