@@ -43,12 +43,21 @@ if wall:
 
 # sets: from sets-index.json when the page is light (lighten_sets.py ran first), else from the full page
 import os
+# set-tags.json carries the approved card tags per video id (written by the laptop's tagwatch approve), so a
+# search for "afro house" or "sunrise" finds the sets that carry the tag
+tags = {}
+if os.path.exists('set-tags.json'):
+    try: tags = json.load(open('set-tags.json', encoding='utf-8')).get('sets', {}) or {}
+    except ValueError: tags = {}
+def tag_words(yt):
+    t = tags.get(yt) or {}
+    return ' '.join([t.get('lane', '')] + list(t.get('tags') or []) + [str(t.get('year', ''))])
 if os.path.exists('sets-index.json'):
     for slug, a in json.load(open('sets-index.json', encoding='utf-8'))['artists'].items():
         who = text(a['name'])
         for c in a['cards']:
             mm = re.search(r'<div class="m">(.*?)</div>', c['html'], re.S); meta = text(mm.group(1)) if mm else ''
-            add('set', html.unescape(c['title']), meta if meta.lower().startswith(who.lower()) else who + ' · ' + meta, '/sets#' + slug, c['yt'])
+            add('set', html.unescape(c['title']), meta if meta.lower().startswith(who.lower()) else who + ' · ' + meta, '/sets#' + slug, c['yt'] + ' ' + tag_words(c['yt']))
 else:
     for m in re.finditer(r'<details class="a" id="([^"]+)"><summary><span class="nm">(.*?)</span>.*?</details>', read('sets.html'), re.S):
         slug, who = m.group(1), text(m.group(2))
