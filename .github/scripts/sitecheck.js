@@ -47,6 +47,11 @@ const NO_TABS=['/sets.html','/interviews.html'];
         const h=await p.evaluate(()=>document.querySelectorAll('.gmx-stage .gmx-heart').length);
         log(h>0,path+': hearts on the stage slides ('+h+')');
       }
+      if(path==='/events.html'){
+        await p.evaluate(()=>document.getElementById('tours').scrollIntoView());await p.waitForTimeout(900);
+        const v=await p.evaluate(()=>({rows:document.querySelectorAll('.tour').length,opacity:getComputedStyle(document.getElementById('tours')).opacity}));
+        log(v.rows>0&&v.opacity==='1',path+': the tour list is visible after it renders ('+v.rows+' rows, opacity '+v.opacity+')');
+      }
       if(path==='/sets.html'){
         await p.click('details.a summary >> nth=0');await p.waitForTimeout(1200);
         const n=await p.evaluate(()=>document.querySelector('details.a[open] .grid[data-slug] .card')?document.querySelector('details.a[open] .grid[data-slug]').querySelectorAll('.card').length:0);

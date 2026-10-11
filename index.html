@@ -1868,8 +1868,8 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){box.classLi
     targets.forEach(el => el.classList.add('in')); heads.forEach(h => h.classList.add('in'));
   } else {
     const io = new IntersectionObserver(es => es.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); countUp(e.target); }
-    }), {rootMargin: '0px 0px -8% 0px', threshold: 0.08});
+      if (e.isIntersecting && (e.intersectionRatio >= 0.08 || e.boundingClientRect.height > innerHeight * 0.8)) { e.target.classList.add('in'); io.unobserve(e.target); countUp(e.target); }
+    }), {rootMargin: '0px 0px -8% 0px', threshold: [0, 0.08]});
     targets.forEach(el => io.observe(el)); heads.forEach(h => io.observe(h));
   }
 
