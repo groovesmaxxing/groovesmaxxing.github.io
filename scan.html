@@ -62,7 +62,7 @@ h1.eyebrow{margin:0;font-weight:400}
 .card .art img{opacity:0;transition:opacity .4s}.card .art img.in{opacity:1}.card .art.found{border-color:rgba(255,28,2,.45)}
 .hear li small{display:block;font-weight:400;color:var(--steel);font-size:.78rem;font-family:'Space Mono',monospace;margin-top:2px}
 .btn.find{color:var(--steel);border-style:dashed}
-.card .sub a.sublink{color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,28,2,.45)}.card .sub a.sublink:hover{color:var(--racing)}
+.card .sub a.sublink,.card .lab a.sublink{color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,28,2,.45)}.card .sub a.sublink:hover,.card .lab a.sublink:hover{color:var(--racing)}
 .card h2 a.listen{color:inherit;text-decoration:none}.card h2 a.listen:hover{color:var(--racing)}.card h2 a.listen::after{content:' ↗';font-size:.6em;color:var(--racing);vertical-align:super}
 .stage.finding .tap{display:none}
 .stage.listening .rec{display:flex}
@@ -218,6 +218,7 @@ h1.eyebrow{margin:0;font-weight:400}
 </nav>
 <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})})}</script>
 <script src="/gmx-clips.js"></script>
+<script src="/gmx-crate.js"></script>
 <script>
 (function(){
 'use strict';
@@ -526,7 +527,32 @@ function identify(blob){
 }
 
 /* cards */
-function showCard(html){card.innerHTML=html;card.classList.add('on');card.scrollIntoView({behavior:'smooth',block:'nearest'});if(current&&current.card&&current.card.candidate&&html.indexOf('earlynote')<0||html.indexOf('earlynote')>-1)try{enrich(current)}catch(e){}}
+function showCard(html){card.innerHTML=html;card.classList.add('on');card.scrollIntoView({behavior:'smooth',block:'nearest'});if(current&&current.card&&current.card.candidate&&html.indexOf('earlynote')<0||html.indexOf('earlynote')>-1)try{enrich(current)}catch(e){}try{decorate(html.indexOf('earlynote')>-1?early:current)}catch(e){}}
+/* the crate heart and the label link (crate loop build, 2026-10-11). the heart saves the match on this phone
+   like a tracklist row would, with whatever store links the card has at tap time, so a link that arrives
+   later from enrich() still makes it in. the label line links to our label page when there is one. */
+var namesIdx=null;
+function namesIndex(){return namesIdx||(namesIdx=fx('/names-index.json',{},GET_MS).then(function(r){return r.ok?r.json():null}).catch(function(){return null}))}
+function crateItem(cand){
+  var nm=nameOf(cand)||{artist:'',title:''},links={};
+  [].slice.call(card.querySelectorAll('#storerow a.btn:not(.find)')).forEach(function(a){var h=a.href||'';if(/open\.spotify\.com/.test(h))links.spotify=h;else if(/music\.apple\.com/.test(h))links.apple=h;else if(/beatport\.com/.test(h)&&!/search/.test(h))links.beatport=h;else if(/soundcloud\.com/.test(h)&&!/search/.test(h))links.soundcloud=h});
+  var title=(nm.artist?nm.artist+' - ':'')+(nm.title||'unnamed library entry');
+  return {kind:'track',id:'scan:'+(foldT(nm.artist+' '+nm.title)||cand.library_id||'id'),title:title,sub:[cand.label||'',cand.status||'','found with the scan'].filter(Boolean).join(' · '),url:'/scan',links:links,artist:nm.artist||'',label:cand.label||''};
+}
+function decorate(cur){
+  var c=cur&&cur.card&&cur.card.candidate; if(!c||cur.card.kind!=='match')return;
+  var store=card.querySelector('#storerow');
+  if(store&&window.gmxCrate&&!store.querySelector('.gmx-heart')){
+    var nm=nameOf(c),label=nm?((nm.artist?nm.artist+' - ':'')+nm.title):'this match';
+    store.insertBefore(gmxCrate.heart(function(){return crateItem(c)},label),store.querySelector('[data-act="share"]')||null);
+  }
+  var lab=card.querySelector('p.lab');
+  if(lab&&c.label&&!lab.querySelector('a'))namesIndex().then(function(n){
+    var key=String(c.label).normalize('NFKD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/&/g,'and').replace(/\s+/g,' ').trim(),sl=n&&n.l&&n.l[key];
+    if(!sl||lab.querySelector('a'))return;
+    lab.innerHTML='<a class="sublink" href="/labels/'+esc(sl)+'">'+esc(c.label)+'</a>'+(c.release_date?' · '+esc(c.release_date):'');
+  });
+}
 function errCard(text){return '<p class="kw"><b>hm.</b></p><h2>that did not work.</h2><p class="note">'+esc(text)+'</p><div class="row"><button class="btn red" data-act="again">scan again</button></div>'}
 
 function nameOf(c){

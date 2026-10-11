@@ -34,6 +34,7 @@ jobs:
           python3 .github/scripts/build_precache.py
           python3 .github/scripts/build_related.py
           python3 .github/scripts/build_tracks.py
+          python3 .github/scripts/build_open_ids.py
           python3 .github/scripts/ensure_tags.py
           python3 .github/scripts/crosslink_audit.py
 
