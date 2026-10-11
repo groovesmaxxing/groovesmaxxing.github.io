@@ -37,13 +37,15 @@
   if (RM || !('IntersectionObserver' in window)) {
     list.forEach(el => el.classList.add('in')); heads.forEach(h => h.classList.add('in'));
   } else {
+    // a block that grew after load (a list rendered from json, an opened fold) can be taller than the screen, and
+    // a tall block never reaches a 6% ratio on a phone. so: any intersection reveals a block taller than the screen.
     const io = new IntersectionObserver(es => {
       let k = 0;
-      es.filter(e => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top).forEach(e => {
+      es.filter(e => e.isIntersecting && (e.intersectionRatio >= 0.06 || e.boundingClientRect.height > innerHeight * 0.8)).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top).forEach(e => {
         e.target.style.transitionDelay = (Math.min(k++, 8) * 60) + 'ms';
         e.target.classList.add('in'); io.unobserve(e.target);
       });
-    }, {rootMargin: '0px 0px -6% 0px', threshold: 0.06});
+    }, {rootMargin: '0px 0px -6% 0px', threshold: [0, 0.06]});
     list.forEach(el => io.observe(el)); heads.forEach(h => io.observe(h));
   }
 
