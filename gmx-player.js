@@ -14,6 +14,14 @@ var PLAY='<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><pa
 var PREV='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>';
 var NEXT='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>';
 
+var ytReady=[],ytState=0;
+function ytApi(cb){
+  if(window.YT&&YT.Player)return cb();
+  ytReady.push(cb);if(ytState)return;ytState=1;
+  var prev=window.onYouTubeIframeAPIReady;
+  window.onYouTubeIframeAPIReady=function(){if(prev)try{prev()}catch(e){}ytReady.splice(0).forEach(function(f){f()})};
+  var sc=document.createElement('script');sc.src='https://www.youtube.com/iframe_api';sc.async=true;document.head.appendChild(sc);
+}
 function el(tag,cls,html){var e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e;}
 function text(n){return n?(n.textContent||'').replace(/\s+/g,' ').trim():'';}
 function ytId(src){var m=/\/embed\/([A-Za-z0-9_-]{6,})/.exec(src||'');return m?m[1]:'';}
@@ -108,15 +116,21 @@ function run(stage){
     if(!b||!stage.contains(b))return;
     if(Date.now()-swiped<400)return;
     lock();
-    var fr=document.createElement('iframe');
-    fr.src='https://www.youtube-nocookie.com/embed/'+b.getAttribute('data-yt')+'?autoplay=1';
+    var fr=document.createElement('iframe'),radio=stage.hasAttribute('data-radio');
+    fr.src='https://www.youtube-nocookie.com/embed/'+b.getAttribute('data-yt')+'?autoplay=1'+(radio?'&enablejsapi=1&origin='+encodeURIComponent(location.origin):'');
     fr.title=b.getAttribute('data-title')||'';fr.loading='lazy';fr.allowFullscreen=true;
     fr.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
     var w=el('div','video-frame');w.appendChild(fr);w.__facade=b;
     b.parentNode.replaceChild(w,b);
+    if(radio)ytApi(function(){try{new YT.Player(fr,{events:{onStateChange:function(ev){
+      /* radio: when the set ends, the next one starts on its own. the first tap was the user's, the rest ride on it */
+      if(ev.data===YT.PlayerState.ENDED){lock();go(i+1);var nb=slides[i].querySelector('.set-facade');if(nb)nb.click();}
+    }}})}catch(x){}});
   });
   go(0);play();
+  try{stage.dispatchEvent(new CustomEvent('gmx:stage',{bubbles:true}))}catch(e){}
 }
+window.gmxPlayer={run:run,slide:slide};
 
 /* build a stage next to a generated rail and hide the rail */
 function build(c,items,label){

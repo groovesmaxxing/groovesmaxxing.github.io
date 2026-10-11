@@ -1,7 +1,7 @@
 /* groovesmaxxing service worker (phase 5, pwa shell).
    network first, cache fallback, offline page in the voice.
    only same-origin GET requests are ever cached. the api host is never touched. */
-var CACHE = 'gmx-v5';
+var CACHE = 'gmx-v6';
 var SHELL = ['/scan', '/more', '/gmx-clips.js', '/gmx-refresh.js', '/gmx-nav.js', '/gmx-nav.css', '/gmx-player.js', '/gmx-player.css', '/gmx-sets.js', '/search', '/gmx-profile.css', '/gmx-label.css', '/gmx-capture-worklet.js', '/artists-index.json', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png', '/favicon.svg'];
 
 var OFFLINE = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">' +
@@ -11,8 +11,23 @@ var OFFLINE = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">' +
   'h1{font-weight:900;font-size:2rem;margin:0 0 10px}h1 span{color:#FF1C02}p{font-family:"Space Mono",monospace;color:#8A8A93;font-size:.9rem;line-height:1.7;max-width:320px;margin:0 auto}' +
   'a{color:#FF1C02;text-decoration:none}</style></head><body><div>' +
   '<h1>no signal, <span>no scan.</span></h1>' +
-  '<p>the recognizer needs the internet. the pages you already opened still work. <a href="/scan">try again</a> when you are back on.</p>' +
+  '<p>the recognizer needs the internet. every <a href="/tracklists/">tracklist</a>, the radar and the pages you already opened still work. <a href="/scan">try again</a> when you are back on.</p>' +
   '</div></body></html>';
+
+/* the shell installs at once. the longer list in precache.json (every tracklist, the hubs, the data) comes
+   in behind it, and tops up once an hour while the app is open, so a tracklist opened in a basement with
+   no signal still loads. */
+function topUp() {
+  return fetch('/precache.json', { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
+    if (!j || !j.urls) return;
+    return caches.open(CACHE).then(function (c) {
+      return Promise.all(j.urls.map(function (u) {
+        return c.match(u).then(function (hit) { return hit ? null : c.add(u).catch(function () {}); });
+      }));
+    });
+  }).catch(function () {});
+}
+var lastTopUp = 0;
 
 self.addEventListener('install', function (e) {
   e.waitUntil(
@@ -28,7 +43,7 @@ self.addEventListener('activate', function (e) {
   e.waitUntil(
     caches.keys().then(function (keys) {
       return Promise.all(keys.filter(function (k) { return k !== CACHE; }).map(function (k) { return caches.delete(k); }));
-    }).then(function () { return self.clients.claim(); })
+    }).then(function () { return self.clients.claim(); }).then(function () { lastTopUp = Date.now(); return topUp(); })
   );
 });
 
@@ -37,6 +52,7 @@ self.addEventListener('fetch', function (e) {
   if (req.method !== 'GET') return;
   var url = new URL(req.url);
   if (url.origin !== self.location.origin) return;
+  if (req.mode === 'navigate' && Date.now() - lastTopUp > 36e5) { lastTopUp = Date.now(); e.waitUntil(topUp()); }
   e.respondWith(
     fetch(req).then(function (res) {
       if (res && res.ok && res.type === 'basic') {
