@@ -1,0 +1,44 @@
+name: link watch
+
+# nightly: do the site's links still go where they say? broken, moved, and titles that no longer read like
+# what the page calls them (youtube, spotify and soundcloud answer with the title behind a link). a rolling
+# budget covers the whole site in about a week. the report goes to the status branch for the Desk, and one
+# issue labelled link-watch opens when something is broken and closes itself when it is not.
+
+on:
+  schedule:
+    - cron: "40 10 * * *"
+  workflow_dispatch:
+    inputs:
+      budget:
+        description: "links to ask about this run"
+        default: "700"
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: status-branch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: the last report and the cache
+        run: |
+          mkdir -p status-out
+          for f in link-watch.json link-watch-cache.json; do
+            curl -fsSL -o "status-out/$f" "https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/status/$f" || true
+          done
+      - name: ask
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LINKWATCH_BUDGET: ${{ inputs.budget || '700' }}
+        run: python3 .github/scripts/link_watch.py
+      - name: publish to the status branch
+        run: |
+          msg="link watch: $(python3 -c "import json;print(json.load(open('status-out/link-watch.json'))['summary'])")"
+          .github/scripts/status_publish.sh "$msg" status-out/link-watch.json status-out/link-watch-cache.json
