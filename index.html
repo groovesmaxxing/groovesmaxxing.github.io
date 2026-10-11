@@ -174,6 +174,16 @@ h2{font-weight:900;font-size:clamp(1.9rem,4.5vw,2.8rem);line-height:1.1;margin-b
 #gm-pv .pv-m{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.1em;color:var(--steel);display:block;margin-top:10px;border-top:1px solid rgba(255,255,255,.12);padding-top:8px}
 @media (hover:none){#gm-pv{display:none}}
 @media (max-width:620px){.area-nav{gap:0 12px}.area-nav a{font-size:.74rem;padding:9px 0}}
+#tonight{padding-top:0}
+#tonight .drops{list-style:none;padding:0;margin:14px 0 0;max-width:760px}
+#tonight .drops li{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;padding:10px 0;border-top:1px solid #26262b;font-size:.95rem}
+#tonight .drops li:last-child{border-bottom:1px solid #26262b}
+#tonight .drops .d{font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.06em;color:var(--racing);flex:0 0 96px}
+#tonight .drops .t{flex:1 1 220px}
+#tonight .drops .t b{font-weight:600}
+#tonight .drops .w{color:var(--steel);font-size:.88rem}
+#tonight .drops a.go{color:var(--racing);text-decoration:none;font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.06em;white-space:nowrap}
+#tonight a.more{font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.1em;text-decoration:none;border-bottom:2px solid var(--racing);padding-bottom:2px;display:inline-block}
 /* folded home sections (site review build, 2026-10-11): the long reads sit under the newsletter, closed until tapped */
 .fold{border-top:1px solid #26262b}
 .fold>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:1040px;margin:0 auto;padding:26px 24px;font-weight:900;font-size:clamp(1.25rem,3vw,1.7rem);line-height:1.2}
@@ -205,7 +215,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--racing);outline-off
 .gmx-tabs{display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(11,11,13,.96);border-top:1px solid rgba(242,242,239,.12);padding-bottom:env(safe-area-inset-bottom);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 .gmx-tabs ul{list-style:none;margin:0 auto;padding:0;display:flex;justify-content:space-around;max-width:720px}
 .gmx-tabs li{flex:1}
-.gmx-tabs a{display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 4px 8px;min-height:54px;text-decoration:none;color:#8A8A93;font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.08em;text-transform:lowercase}
+.gmx-tabs a{display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 2px 8px;min-height:54px;text-decoration:none;color:#8A8A93;font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.08em;text-transform:lowercase}
 .gmx-tabs svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .gmx-tabs a[aria-current="page"]{color:#FF1C02}
 .gmx-tabs a:hover{color:#F2F2EF}
@@ -297,6 +307,7 @@ footer svg{animation:gmx-beat 6s ease-in-out infinite}
 .gmx-tap{position:absolute;left:0;top:0;z-index:-1;pointer-events:none}
 </style>
 <link rel="canonical" href="https://groovesmaxxing.com/">
+<link rel="alternate" type="application/rss+xml" title="fresh grooves friday" href="/feed.xml">
 <link rel="stylesheet" href="/gmx-player.css">
   <!-- gmx-seo start -->
   <script type="application/ld+json">
@@ -400,6 +411,16 @@ fill="none" stroke="#F2F2EF" stroke-width="7" stroke-linecap="round" stroke-line
 <h2>we listen to everything.<br>you get the good stuff.</h2>
 <p class="manifesto">house, techno &amp; indie dance, curated like a friend texting you bangers. <em>new releases</em> every friday, <em>live sets</em> worth your hour, and <em>hidden gems</em> you can't stream anywhere else.</p>
 <p class="about-foot">708 artists followed. 1,000+ tracks curated. zero skips. no ads, no sponsors, no corporate playlist politics. just taste, maxxed.</p>
+</div>
+</section>
+
+
+<section id="tonight" hidden>
+<div class="wrap">
+<span class="mono eyebrow">on in denver</span>
+<h2>the next nights out</h2>
+<ul class="drops" id="tonight-list"></ul>
+<p class="mono" style="margin-top:14px"><a class="more" href="/events#tours">every date on the radar →</a></p>
 </div>
 </section>
 
@@ -1753,6 +1774,25 @@ function onHash(){openFor(location.hash);var t=location.hash&&document.querySele
 window.addEventListener('hashchange',onHash);if(location.hash)onHash();
 })();
 </script>
+<script>
+(function(){
+/* on in denver: the next four dates from the nightly ticketmaster sweep, denver and the two rooms outside it.
+   a row only shows when the event is named after the artist, so a name collision on ticketmaster never lands here. */
+var sec=document.getElementById('tonight'),list=document.getElementById('tonight-list');if(!sec||!list||!window.fetch)return;
+function esc(s){var d=document.createElement('div');d.textContent=s||'';return d.innerHTML}
+var M=['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+/* radar-denver.json is the small file the sweep writes next to the full radar: already filtered to denver
+   and to events named after the artist. the full radar is the fallback for a build that predates it. */
+fetch('/radar-denver.json').then(function(r){if(!r.ok)throw new Error(r.status);return r.json()}).catch(function(){return fetch('/radar-events.json').then(function(r){return r.json()}).then(function(j){
+  return {events:(j.events||[]).filter(function(e){var c=(e.city||'').toLowerCase(),n=(e.event||'').toLowerCase(),a=(e.artist||'').toLowerCase();return (c==='denver'||c==='morrison'||c==='englewood')&&a&&(n.indexOf(a)===0||(a.length>=5&&new RegExp('(^|[^a-z])'+a.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'([^a-z]|$)').test(n)))})}})}).then(function(j){
+  var t=new Date(),today=t.getFullYear()+'-'+('0'+(t.getMonth()+1)).slice(-2)+'-'+('0'+t.getDate()).slice(-2);
+  var rows=(j.events||[]).filter(function(e){return e.date>=today}).sort(function(a,b){return a.date<b.date?-1:1}).slice(0,4);
+  if(!rows.length)return;
+  list.innerHTML=rows.map(function(e){var p=e.date.split('-');return '<li><span class="d">'+M[(+p[1]||1)-1]+' '+(+p[2])+'</span><span class="t"><b>'+esc(e.artist)+'</b> <span class="w">· '+esc([e.venue,e.city].filter(Boolean).join(', '))+'</span></span>'+(e.url?'<a class="go" href="'+esc(e.url)+'" target="_blank" rel="noopener">tickets ↗</a>':'')+'</li>'}).join('');
+  sec.hidden=false;
+}).catch(function(){});
+})();
+</script>
 <script src="/gmx-player.js" defer></script>
 <script>
 (function(){
@@ -1792,6 +1832,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){box.classLi
 <li><a href="/scan"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><circle cx="12" cy="12" r="5.4"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>scan</a></li>
 <li><a href="/sets"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="M10 8.6v6.8l5.4-3.4z"/></svg>sets</a></li>
 <li><a href="/artists"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.6" r="3.8"/><path d="M4.6 20.2c.9-3.8 3.9-5.8 7.4-5.8s6.5 2 7.4 5.8"/></svg>artists</a></li>
+<li><a href="/search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 20 20"/></svg>search</a></li>
 <li><a href="/more"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="12" r="1.4" fill="currentColor"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/><circle cx="18.5" cy="12" r="1.4" fill="currentColor"/></svg>more</a></li>
 </ul>
 </nav>

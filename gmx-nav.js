@@ -1,5 +1,5 @@
 /* groovesmaxxing shared tab bar (site navigation build, 2026-10-10). vanilla, no dependencies.
-   the same five tabs the tab pages carry inline (home, scan, sets, artists, more), built here for every
+   the same six tabs the tab pages carry inline (home, scan, sets, artists, more), built here for every
    page that had none: the artist and label profiles, the tracklists, the newsletter issues, the radar
    pages. does nothing on a page that already has a bar. */
 (function(){
@@ -10,9 +10,10 @@ var ICON={
   scan:'<circle cx="12" cy="12" r="9.2"/><circle cx="12" cy="12" r="5.4"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/>',
   sets:'<circle cx="12" cy="12" r="9.2"/><path d="M10 8.6v6.8l5.4-3.4z"/>',
   artists:'<circle cx="12" cy="8.6" r="3.8"/><path d="M4.6 20.2c.9-3.8 3.9-5.8 7.4-5.8s6.5 2 7.4 5.8"/>',
+  search:'<circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 20 20"/>',
   more:'<circle cx="5.5" cy="12" r="1.4" fill="currentColor"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/><circle cx="18.5" cy="12" r="1.4" fill="currentColor"/>'
 };
-var TABS=[['/','home'],['/scan','scan'],['/sets','sets'],['/artists','artists'],['/more','more']];
+var TABS=[['/','home'],['/scan','scan'],['/sets','sets'],['/artists','artists'],['/search','search'],['/more','more']];
 var path=location.pathname.replace(/\.html$/,'').replace(/\/index$/,'/');
 function under(p){return path===p||path.indexOf(p+'/')===0;}
 function current(href){
