@@ -53,6 +53,12 @@ h1.eyebrow{margin:0;font-weight:400}
 @keyframes blink{to{visibility:hidden}}
 .rec .n{color:var(--racing);min-width:2ch;text-align:right}
 .mic{color:#c9c9c4;font-size:.98rem;line-height:1.65;max-width:400px;margin-top:22px}
+.lvl{display:none;width:min(320px,100%);height:36px;margin-top:14px;opacity:.9}.stage.listening .lvl,.stage.finding .lvl{display:block}
+.stat{font-family:'Space Mono',monospace;font-size:.74rem;letter-spacing:.06em;color:var(--steel);margin-top:12px;min-height:1.3em;max-width:360px;line-height:1.6}.stat b{font-weight:400;color:var(--racing)}
+.card.on{animation:cardin .32s cubic-bezier(.2,.7,.2,1)}@keyframes cardin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.skel{display:grid;gap:12px}.skel i{display:block;border-radius:10px;background:linear-gradient(90deg,rgba(242,242,239,.05),rgba(242,242,239,.12),rgba(242,242,239,.05));background-size:200% 100%;animation:shimmer 1.2s linear infinite}
+@keyframes shimmer{to{background-position:-200% 0}}.skel .a{width:min(100%,220px);aspect-ratio:1;margin:0 auto}.skel .b{height:34px;width:70%}.skel .c{height:18px;width:45%}.skel .d{height:40px;width:100%;border-radius:999px}
+.timing{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.06em;color:var(--steel);margin-top:14px;line-height:1.7}.timing b{font-weight:400;color:var(--day)}
 .stage.finding .tap{display:none}
 .stage.listening .rec{display:flex}
 .stage.finding .rec{display:flex}
@@ -169,13 +175,15 @@ h1.eyebrow{margin:0;font-weight:400}
 </button>
 <div class="tap" id="tap">tap to <b>scan</b></div>
 <div class="rec" id="rec"><i></i><span id="recword">listening</span><span class="n" id="count">15</span></div>
+<canvas class="lvl" id="lvl" width="320" height="36" aria-hidden="true"></canvas>
+<div class="stat" id="stat" aria-live="polite"></div>
 <button class="how" type="button" id="howbtn" aria-haspopup="dialog">how it works?</button>
 <p class="shared" id="shared" hidden></p>
 </section>
 
 <dialog class="howbox" id="howbox" aria-labelledby="howtitle">
 <h2 id="howtitle">how it works</h2>
-<p>tap once near the speaker. we listen for about 15 seconds.</p>
+<p>tap once near the speaker. we listen for up to 15 seconds and start matching at four, then every couple of seconds. a sure match stops the scan early.</p>
 <p>we check our own library of sets first, then the big catalogs.</p>
 <p>can't name it? you choose whether we keep the clip to keep hunting. nothing is kept unless you say so.</p>
 <p>your scans stay on this phone, and every result has a button to tell us we got it wrong.</p>
@@ -210,7 +218,10 @@ h1.eyebrow{margin:0;font-weight:400}
 'use strict';
 /* groovesmaxxing scan (phase 5, step b). vanilla, no dependencies.
    the api base and the app key come from /gmx-config.json, never from this file. */
-var CAPTURE_MS=15000, EARLY_MS=8000, POLL_MS=500, POLL_CAP_MS=30000, HISTORY_MAX=50;
+var CAPTURE_MS=15000, ROUNDS_MS=[4000,6500,9000,12000], POLL_MS=350, POLL_CAP_MS=30000, HISTORY_MAX=50;
+/* speed build, 2026-10-11: a library round every couple of seconds from four in, the scan stops on the first sure
+   match, the live level strip and the status line keep the screen honest, the card says how long it took. */
+
 var POST_MS=25000, GET_MS=8000;   /* every request has a deadline, so a dead cell link never leaves the page spinning */
 /* site review build, 2026-10-11: audio worklet capture, request deadlines, config retry, level checks, one poll loop */
 function fx(url,opts,ms){
@@ -225,6 +236,12 @@ function fx(url,opts,ms){
 var scanSeq=0, early=null, finalDone=false;
 var $=function(id){return document.getElementById(id)};
 var stage=$('stage'), go=$('go'), tap=$('tap'), rec=$('rec'), recword=$('recword'), count=$('count'), card=$('card'), recentlist=$('recentlist');
+var stat=$('stat'), lvl=$('lvl'), stopCapture=null, timing=null, levels=[];
+function say2(html){if(stat)stat.innerHTML=html}
+function drawLevels(){
+  if(!lvl||!lvl.getContext)return;var g=lvl.getContext('2d'),W=lvl.width,H=lvl.height,n=60,w=W/n;g.clearRect(0,0,W,H);
+  for(var i=0;i<n;i++){var v=levels[levels.length-n+i]||0,h=Math.max(2,Math.min(H,v*H*5));g.fillStyle=i>n-4?'#FF1C02':'rgba(242,242,239,.35)';g.fillRect(i*w+1,(H-h)/2,w-2,h)}
+}
 var rings=go.querySelectorAll('.r'), wave=go.querySelector('.wave');
 var cfg=null, cfgErr=null, busy=false, heldBlob=null, heldAt=null, current=null, cancelScan=null;
 /* pull to refresh (gmx-refresh.js) stays off while listening or finding */
@@ -310,7 +327,8 @@ function startScan(){
     showCard(errCard("this browser can't record audio. on iphone use safari, on android use chrome, then add the app to your home screen."));return;
   }
   busy=true; card.classList.remove('on'); current=null; dropBlob(); scanSeq++; early=null; finalDone=false;
-  var seq=scanSeq, earlySent=false;
+  var seq=scanSeq, nextRound=0;
+  timing={t0:Date.now(),rounds:[],first:null};levels=[];drawLevels();say2('listening');
   stage.classList.add('listening'); go.classList.add('busy'); recword.textContent='listening'; count.textContent=String(Math.round(CAPTURE_MS/1000));
   tap.innerHTML='tap to <b>stop</b>'; go.setAttribute('aria-label','tap to stop');
   var chunks=[], got=0, need=0, t0=0, timer=null, stream=null, ctx=null, node=null, sink=null, stopped=false, cancelled=false, sq=0, clipped=0;
@@ -321,6 +339,8 @@ function startScan(){
   try{ctx=new (window.AudioContext||window.webkitAudioContext)()}catch(e){ctx=null}
   /* a second tap while listening throws the clip away and goes back to tap to scan. */
   cancelScan=function(){ if(cancelled||stopped)return; cancelled=true; stopped=true; scanSeq++; tick(20); cleanup(); reset(); };
+  /* a sure match from an early round ends the scan right there */
+  stopCapture=function(){ if(stopped)return; stopped=true; cleanup(); };
   function done(){
     if(stopped)return; stopped=true;
     var rate=ctx.sampleRate;
@@ -346,8 +366,8 @@ function startScan(){
         }
         var take=Math.min(inp.length,need-got); if(take<=0)return;
         chunks.push(new Float32Array(inp.subarray(0,take))); got+=take;
-        if(!earlySent&&got>=Math.round(ctx.sampleRate*EARLY_MS/1000)){earlySent=true;try{earlyIdentify(wavBlob(chunks,ctx.sampleRate),seq)}catch(e){}}
-        var sum=0; for(var i=0;i<take;i++){var v=inp[i]; sum+=v*v; if(v>0.985||v<-0.985)clipped++;} sq+=sum; setLevel(Math.sqrt(sum/take));
+        while(nextRound<ROUNDS_MS.length&&got>=Math.round(ctx.sampleRate*ROUNDS_MS[nextRound]/1000)){var at=ROUNDS_MS[nextRound++];try{earlyIdentify(wavBlob(chunks,ctx.sampleRate),seq,at)}catch(e){}}
+        var sum=0; for(var i=0;i<take;i++){var v=inp[i]; sum+=v*v; if(v>0.985||v<-0.985)clipped++;} sq+=sum; var rms=Math.sqrt(sum/take); setLevel(rms); levels.push(rms); if(levels.length>120)levels.shift(); drawLevels();
         if(got>=need)setTimeout(done,0);
       }
       /* a muted gain keeps the graph alive: a node that reaches no output is never pulled */
@@ -394,7 +414,7 @@ function startScan(){
     heldBlob=blob; identify(blob);
   }
 }
-function reset(){busy=false;cancelScan=null;go.disabled=false;go.classList.remove('busy');stage.classList.remove('listening','finding');tap.innerHTML='tap to <b>scan</b>';go.setAttribute('aria-label','tap to scan')}
+function reset(){busy=false;cancelScan=null;stopCapture=null;go.disabled=false;go.classList.remove('busy');stage.classList.remove('listening','finding');tap.innerHTML='tap to <b>scan</b>';go.setAttribute('aria-label','tap to scan')}
 function dropBlob(){heldBlob=null;heldAt=null}
 
 /* identify and poll */
@@ -409,28 +429,50 @@ function pollJob(jobId,began){
     })();
   });
 }
-/* the early round: library only on the server, never a catalog call. quiet on any failure. */
-function earlyIdentify(blob,seq){
+/* the early rounds: library only on the server, never a catalog call. quiet on any failure.
+   a CONFIRMED answer ends the scan at once. a LIKELY one shows and the scan keeps going for the catalogs. */
+function earlyIdentify(blob,seq,at){
   var fd=new FormData(); fd.append('audio',blob,'clip.wav'); fd.append('source','mic');
-  var began=Date.now();
+  var began=Date.now(), sent=null, round={at:at,post:0,wait:0,answer:'…'};
+  if(timing)timing.rounds.push(round);
+  say2('matching at <b>'+(at/1000)+' s</b>'+(timing.rounds.length>1?' · '+timing.rounds.slice(0,-1).map(function(r){return r.answer}).join(', '):''));
   fx(cfg.api_base+'/identify',{method:'POST',headers:headers({'X-GMX-Round':'early'}),body:fd},POST_MS)
-  .then(function(r){if(!r.ok)throw new Error('http '+r.status);return r.json()})
+  .then(function(r){sent=Date.now();round.post=sent-began;if(!r.ok)throw new Error('http '+r.status);return r.json()})
   .then(function(job){return pollJob(job.job_id,began)})
   .then(function(j){
+    round.wait=Date.now()-(sent||began);
     if(seq!==scanSeq||finalDone)return;
     var r=j.result||{}, c=r.card||{}, cand=c.candidate;
-    if(!cand||(cand.tier!=='LIKELY'&&cand.tier!=='CONFIRMED'))return;
-    early={job_id:j.job_id,recognition_id:r.recognition_id||j.job_id,card:{kind:'match',candidate:cand},seconds:Math.round((Date.now()-began)/100)/10};
+    if(!cand||(cand.tier!=='LIKELY'&&cand.tier!=='CONFIRMED')){round.answer=(at/1000)+' s: nothing yet';say2('matching · '+timing.rounds.map(function(x){return x.answer}).join(' · '));return}
+    var nm=nameOf(cand),who=nm?(nm.title||nm.artist):'a library entry';
+    round.answer=(at/1000)+' s: '+(cand.tier==='CONFIRMED'?'sure':'close')+', '+who;
+    early={job_id:j.job_id,recognition_id:r.recognition_id||j.job_id,card:{kind:'match',candidate:cand},seconds:Math.round((Date.now()-timing.t0)/100)/10,timing:timing};
+    if(!timing.first)timing.first=Date.now()-timing.t0;
     current=early; tick(40);
+    if(cand.tier==='CONFIRMED'){
+      /* done: stop the mic, skip the catalogs, keep the clip we have for corrections and the set hint */
+      finalDone=true; heldBlob=blob; if(stopCapture)stopCapture();
+      current.hint_ref=current.recognition_id; current.in_set=r.in_set||null;
+      var keep=!!(window.gmxClips&&gmxClips.on()&&heldBlob);
+      if(keep)gmxClips.put({id:current.job_id,t:Date.now(),blob:heldBlob,recognition_id:current.recognition_id,kind:'match'}).catch(function(){});
+      say2('got it at <b>'+(at/1000)+' s</b>');
+      showCard(resultCard(current)); remember(current,keep); reset(); return;
+    }
+    say2('close at <b>'+(at/1000)+' s</b>, still listening for a sure one');
     showCard('<p class="kw" id="earlynote">still listening</p>'+resultCard(early));
-  }).catch(function(){});
+  }).catch(function(){round.answer=(at/1000)+' s: no answer'});
 }
 function identify(blob){
+  if(finalDone)return;
   cancelScan=null; go.disabled=true; stage.classList.add('finding'); recword.textContent='finding it'; count.textContent='';
+  say2('checking the catalogs');
+  if(!early)showCard('<div class="skel" aria-hidden="true"><i class="a"></i><i class="b"></i><i class="c"></i><i class="d"></i></div>');
+  var sentAt=null,finalRound={at:CAPTURE_MS,post:0,wait:0,answer:'…'};if(timing)timing.rounds.push(finalRound);
   var fd=new FormData(); fd.append('audio',blob,'clip.'+extOf(blob)); fd.append('source','mic');
   var began=Date.now();
   fx(cfg.api_base+'/identify',{method:'POST',headers:headers(),body:fd},POST_MS)
   .then(function(r){
+    sentAt=Date.now();finalRound.post=sentAt-began;
     if(r.status===429)throw new Error('rate');
     if(r.status===401)throw new Error('key');
     if(r.status>=500)throw new Error('server');
@@ -440,10 +482,13 @@ function identify(blob){
   .then(function(job){return pollJob(job.job_id,began)})
   .then(function(j){
     var r=j.result||{}, c=r.card||{kind:'none'};
-    finalDone=true;
+    finalRound.wait=Date.now()-(sentAt||began);finalRound.answer='15 s: '+(c.kind==='match'?'match':c.kind==='guess'?'a guess':'nothing');
+    if(finalDone)return;
+    finalDone=true; say2('');
     /* the 15 s scan replaces the early card when it names something, else the early card stays */
     if(c.kind!=='match'&&early)current=early;
-    else current={job_id:j.job_id,recognition_id:r.recognition_id||j.job_id,card:c,seconds:Math.round((Date.now()-began)/100)/10};
+    else current={job_id:j.job_id,recognition_id:r.recognition_id||j.job_id,card:c,seconds:Math.round((Date.now()-timing.t0)/100)/10,timing:timing};
+    if(current.timing&&!current.timing.first&&c.kind==='match')current.timing.first=Date.now()-timing.t0;
     /* the set hint answers for the 15 s scan, the one the set match ran on, even under an early card */
     current.hint_ref=r.recognition_id||j.job_id;
     /* the set this clip sits in, when the server already knows it and the set is public */
@@ -454,7 +499,8 @@ function identify(blob){
     showCard(resultCard(current)); remember(current,keep); reset();
   })
   .catch(function(e){
-    finalDone=true;
+    if(finalDone)return;
+    finalDone=true; say2('');
     if(early){current=early;showCard(resultCard(current));remember(current,false);reset();return}
     var m=e&&e.message||'';
     var text= m==='rate' ? 'too many scans this hour on this phone. try again in a bit.'
@@ -561,10 +607,18 @@ function resultCard(cur){
     out+='<h3>help us find it?</h3><div class="row"><button class="btn" data-act="help">help us find it?</button><button class="btn ghost" data-act="again">no thanks, scan again</button></div>';
     out+=helpForm();
   }
+  out+=timingLine(cur);
   out+=whereBlock();
   out+='<div class="msg" id="cardmsg"></div>';
   if(c.kind==='match')out+='<div class="row"><button class="btn ghost" data-act="again">scan again</button></div>';
   return out;
+}
+function timingLine(cur){
+  var t=cur.timing;if(!t||!t.rounds.length)return '';
+  var secs=function(ms){return (Math.round(ms/100)/10)+' s'};
+  var found=t.first?'<b>found in '+secs(t.first)+'</b>':'<b>'+secs(Date.now()-t.t0)+' end to end</b>';
+  var parts=t.rounds.filter(function(r){return r.post||r.wait}).map(function(r){return (r.at/1000)+' s: up '+secs(r.post)+', match '+secs(r.wait)});
+  return '<p class="timing">'+found+(parts.length?' · '+parts.join(' · '):'')+'</p>';
 }
 function correctionForm(){
   return '<form class="form" id="cform" autocomplete="off"><label for="c-artist">artist</label><input id="c-artist" name="artist_claim" maxlength="255">'+
@@ -731,7 +785,7 @@ function share(){
 function loadHistory(){try{return JSON.parse(localStorage.getItem('gmx_history')||'[]')}catch(e){return []}}
 function remember(cur,keep){
   var c=cur.card, cand=c.candidate, nm=cand?nameOf(cand):null;
-  var row={t:Date.now(),kind:c.kind,artist:nm?nm.artist:'',title:nm?nm.title:'',score:cand?cand.shown_score:0,status:cand?cand.status:'',id:cur.job_id,rid:cur.recognition_id,clip:!!keep};
+  var row={t:Date.now(),kind:c.kind,artist:nm?nm.artist:'',title:nm?nm.title:'',score:cand?cand.shown_score:0,status:cand?cand.status:'',id:cur.job_id,rid:cur.recognition_id,clip:!!keep,secs:cur.timing&&cur.timing.first?Math.round(cur.timing.first/100)/10:null};
   var h=loadHistory(); h.unshift(row); h=h.slice(0,HISTORY_MAX);
   try{localStorage.setItem('gmx_history',JSON.stringify(h))}catch(e){}
   renderHistory();
@@ -746,7 +800,7 @@ function renderHistory(){
   if(!h.length){recentlist.innerHTML='<li class="none">nothing scanned yet.</li>';return}
   recentlist.innerHTML=h.map(function(r){
     var who;
-    if(r.kind==='match')who=esc(r.artist||'ID')+'<small>'+esc(r.title||'unnamed library entry')+' · '+pct(r.score)+'</small>';
+    if(r.kind==='match')who=esc(r.artist||'ID')+'<small>'+esc(r.title||'unnamed library entry')+' · '+pct(r.score)+(r.secs?' · '+r.secs+' s':'')+'</small>';
     else if(r.kind==='guess')who='no match<small>closest guess: '+esc((r.artist?r.artist+' - ':'')+r.title)+(r.score==null?' · possible match':' · '+pct(r.score))+'</small>';
     else who='no match<small>nothing yet</small>';
     var acts='';

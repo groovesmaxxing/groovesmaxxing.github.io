@@ -1,0 +1,66 @@
+# recognizer: the streaming contract
+
+the phone side of the scan is built for this already. the server side lives on the laptop host and is the
+half still to build. until it exists the phone falls back to the round-based flow (library rounds at 4, 6.5,
+9 and 12 seconds, catalogs at 15), which works against the server as it is today.
+
+## why
+
+shazam answers in three to five seconds because it matches while it listens. our flow records, uploads, then
+waits, so the floor is the first round plus the upload plus the server's time. streaming removes the upload
+wait and lets the server answer the moment it is sure.
+
+## how the phone decides
+
+`gmx-config.json` may carry a `stream_url`. when it is present and the browser has WebSocket, the scan opens
+it at tap time. if the socket is not open within 1500 ms, or closes before the first server message, the
+phone falls back to the rounds for that scan and tries the socket again next time.
+
+## the socket
+
+`wss://<host>/stream` (the exact path is whatever `stream_url` says).
+
+### phone to server
+
+1. first frame, text, json:
+   `{"type":"hello","app_key":"...","device":"<32 hex>","rate":16000,"channels":1,"format":"pcm16le","source":"mic"}`
+2. then binary frames: raw 16 kHz mono 16-bit little-endian pcm, one frame every 500 ms or so (8000 samples,
+   16 KB). the phone has already low-passed and decimated, the same bytes it puts in the wav today.
+3. optional text frames:
+   `{"type":"end"}` when the phone stops sending (15 s reached, or the user tapped stop). the server answers
+   with its final verdict and closes.
+   `{"type":"hint","chip":"youtube_set","link":"https://...","handle":"@x"}` the same payload as `/set-hint`,
+   sent only after a result, only on the user's tap.
+
+### server to phone
+
+text frames, json, any number of them, in this order of life:
+
+- `{"type":"ready","session":"<id>"}` once, after hello. the phone starts sending audio on this.
+- `{"type":"listening","seconds":4.0}` optional progress, any cadence.
+- `{"type":"match","tier":"LIKELY","card":{...},"recognition_id":"...","seconds":4.5,"in_set":{...}}`
+  a likely answer. the phone shows it with "still listening" and keeps sending.
+- `{"type":"match","tier":"CONFIRMED","card":{...},"recognition_id":"...","seconds":6.0,"in_set":{...}}`
+  the phone stops the mic, shows the card, closes the socket. `card` is the same shape `/jobs/<id>` returns
+  in `result.card` today, so the card code does not change.
+- `{"type":"done","card":{...},"recognition_id":"...","seconds":15.2}` the final verdict after `end` when
+  nothing was sure: a `guess` or `none` card, exactly as the 15 s round returns today.
+- `{"type":"error","code":"rate"|"key"|"server"|"bad_audio","message":"..."}` then close. the phone maps the
+  codes to the same messages it shows today.
+
+### what the server should do to earn the speed
+
+- keep the library fingerprint index in memory between sessions, loaded once at start.
+- run the library match on the audio so far every 1.5 s from 3 s in, on the same session's accumulated
+  buffer, not on a fresh upload.
+- start the catalog lookups at 6 s in parallel with the library passes instead of after the final clip.
+- answer CONFIRMED as soon as the library score clears the bar, and LIKELY as soon as it clears the lower
+  one. the bars are the ones the round flow uses now.
+- keep one session per socket, drop the buffer on close, never write audio to disk unless the phone sends a
+  `contribute` later (that path stays on http as it is).
+- rate limit by device the same way `/identify` does. `rate` on the socket is the same 429.
+
+### timing the phone reports
+
+the card now prints `found in N s` plus per-round upload and match times. with the socket the phone prints
+`found in N s · streamed`. that line is how we will know the server half paid off.
