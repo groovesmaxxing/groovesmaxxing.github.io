@@ -1,0 +1,38 @@
+name: site watch
+
+# every half hour: the live pages, the derived files, the recognizer's api and every workflow's last run,
+# written as site-watch.json to the status branch for the groovesMAXXING Desk to read. never red for a
+# down service (recognizer uptime is the alarm), only for a broken run of itself.
+
+on:
+  schedule:
+    - cron: "7,37 * * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: status-branch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: the last feed, so an unchanged state is not committed again
+        run: |
+          mkdir -p status-out
+          curl -fsSL -o status-out/site-watch.json "https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/status/site-watch.json" || true
+      - name: probe
+        id: probe
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 .github/scripts/site_watch.py
+      - name: publish to the status branch
+        if: steps.probe.outputs.publish == 'true'
+        run: |
+          msg="site watch: $(python3 -c "import json;print(json.load(open('status-out/site-watch.json'))['summary'])")"
+          .github/scripts/status_publish.sh "$msg" status-out/site-watch.json
