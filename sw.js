@@ -1,8 +1,8 @@
 /* groovesmaxxing service worker (phase 5, pwa shell).
    network first, cache fallback, offline page in the voice.
    only same-origin GET requests are ever cached. the api host is never touched. */
-var CACHE = 'gmx-v2';
-var SHELL = ['/scan', '/more', '/gmx-clips.js', '/gmx-refresh.js', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png', '/favicon.svg'];
+var CACHE = 'gmx-v3';
+var SHELL = ['/scan', '/more', '/gmx-clips.js', '/gmx-refresh.js', '/gmx-nav.js', '/gmx-nav.css', '/gmx-player.js', '/gmx-player.css', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png', '/favicon.svg'];
 
 var OFFLINE = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">' +
   '<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">' +

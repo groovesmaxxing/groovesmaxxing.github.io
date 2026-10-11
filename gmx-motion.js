@@ -15,7 +15,7 @@
   prog();
 
   /* reveal targets: the blocks of each .wrap, or the items of a block that is a list or grid */
-  const SKIP = 'header,nav,footer,script,style,.top,.gmx-tabs,[hidden]';
+  const SKIP = 'header,nav,footer,script,style,.top,.gmx-tabs,.gmx-stage,[hidden]';   // the shared player wires its own slides
   const blocks = [...document.querySelectorAll('.wrap > *, main > *, section > *')].filter(el => !el.matches(SKIP) && !el.closest('header,footer,nav,.top'));
   const targets = new Set();
   blocks.forEach(el => {
