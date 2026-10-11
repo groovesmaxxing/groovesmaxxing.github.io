@@ -76,6 +76,10 @@ const fs=require('fs');try{fs.mkdirSync('shots',{recursive:true})}catch(e){}
         const n=await p.evaluate(()=>document.querySelector('details.a[open] .grid[data-slug] .card')?document.querySelector('details.a[open] .grid[data-slug]').querySelectorAll('.card').length:0);
         log(n>0,path+': an opened fold renders its cards from sets-index.json ('+n+')');
       }
+      if(path==='/scan.html'){
+        const a=await p.evaluate(()=>({auto:!!document.querySelector('#autobar #autobtn'),pending:!!document.getElementById('pendingbar'),api:typeof window.gmxSession==='object'}));
+        log(a.auto&&a.pending&&a.api,path+': auto button, pending bar and session hooks present');
+      }
       if(path==='/open-ids.html'){
         await p.waitForTimeout(900);
         const o=await p.evaluate(()=>({sets:document.querySelectorAll('.oset').length,rows:document.querySelectorAll('.orow').length,reps:document.querySelectorAll('.rep').length}));
