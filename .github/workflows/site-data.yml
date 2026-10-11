@@ -2,7 +2,8 @@ name: site data
 
 # the derived files the pages read, rebuilt after every push to main that a person or the laptop made,
 # never after its own commits: the light sets page, the search index, the feed, the offline list, the
-# shared tags on every page, and one share card per artist, label and tracklist page.
+# shared tags on every page, the published artist count, and one share card per artist, label and
+# tracklist page.
 
 on:
   push:
@@ -36,6 +37,7 @@ jobs:
           python3 .github/scripts/build_tracks.py
           python3 .github/scripts/build_open_ids.py
           python3 .github/scripts/ensure_tags.py
+          python3 .github/scripts/sync_counts.py
           python3 .github/scripts/crosslink_audit.py
 
       - name: share cards (only the pages whose name or subtitle changed)
