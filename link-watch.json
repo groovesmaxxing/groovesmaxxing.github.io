@@ -1,0 +1,77 @@
+{
+ "generated": "2026-10-11T19:35:02Z",
+ "pages": 840,
+ "links": {
+  "checkable": 6012,
+  "by_kind": {
+   "other": 2728,
+   "spotify": 1777,
+   "soundcloud": 694,
+   "youtube": 813
+  },
+  "checked_within_recheck": 700,
+  "asked_this_run": 700,
+  "unknown": 49,
+  "budget": 700,
+  "recheck_days": 10
+ },
+ "broken": [
+  {
+   "url": "https://soundcloud.com/vgs-augis",
+   "kind": "soundcloud",
+   "code": 404,
+   "note": null,
+   "title": null,
+   "pages": [
+    "/artists/augis"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-11T19:35:02Z",
+   "first_seen": "2026-10-11T19:35:02Z"
+  }
+ ],
+ "moved": [
+  {
+   "url": "https://alokmusic.com/",
+   "kind": "other",
+   "code": 200,
+   "note": "lands on alok.komi.io",
+   "title": null,
+   "pages": [
+    "/artists/alok"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-11T19:35:02Z",
+   "first_seen": "2026-10-11T19:35:02Z"
+  },
+  {
+   "url": "https://bakermat.bandcamp.com",
+   "kind": "other",
+   "code": 200,
+   "note": "lands on bandcamp.com",
+   "title": null,
+   "pages": [
+    "/artists/bakermat"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-11T19:35:02Z",
+   "first_seen": "2026-10-11T19:35:02Z"
+  },
+  {
+   "url": "https://bakermatmusic.com",
+   "kind": "other",
+   "code": 200,
+   "note": "lands on bakermat.hq.fan",
+   "title": null,
+   "pages": [
+    "/artists/bakermat"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-11T19:35:02Z",
+   "first_seen": "2026-10-11T19:35:02Z"
+  }
+ ],
+ "differs": [],
+ "anchors_broken": [],
+ "summary": "1 broken, 3 moved, 0 read differently, 0 broken anchors, 700 of 6012 links checked in the last 10 days"
+}
