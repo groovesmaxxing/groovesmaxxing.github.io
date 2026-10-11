@@ -37,6 +37,7 @@ jobs:
           python3 .github/scripts/build_tracks.py
           python3 .github/scripts/build_open_ids.py
           python3 .github/scripts/build_upcoming.py
+          python3 .github/scripts/build_event_schema.py
           python3 .github/scripts/ensure_tags.py
           python3 .github/scripts/sync_counts.py
           python3 .github/scripts/crosslink_audit.py
