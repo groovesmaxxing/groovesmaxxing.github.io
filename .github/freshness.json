@@ -1,0 +1,82 @@
+{
+ "_comment": "the surfaces that go stale on their own. freshness.py reads this daily. days are since the newest date the page itself states, or since a data file's generated stamp. warn prints, fail turns the run red, which mails the repo owner.",
+ "rows": [
+  {
+   "id": "F-18",
+   "what": "friday.html carries the newest week",
+   "file": "friday.html",
+   "test": "newest_date",
+   "pattern": "week of (?:(\\w{3}) )?\\d{1,2} to (?:(\\w{3}) )?(\\d{1,2}), (\\d{4})",
+   "groups": "end_month_or_start_month,end_day,year",
+   "warn_days": 9,
+   "fail_days": 16
+  },
+  {
+   "id": "F-21",
+   "what": "dropping soon says when it was last refreshed",
+   "file": "upcoming.html",
+   "test": "newest_date",
+   "pattern": "last refresh (\\d{1,2}) (\\w{3}) (\\d{4})",
+   "groups": "day,month,year",
+   "warn_days": 9,
+   "fail_days": 16
+  },
+  {
+   "id": "F-24",
+   "what": "the newsletter hub carries the newest issue",
+   "file": "newsletter.html",
+   "test": "newest_date",
+   "pattern": "issue \\d{3} &middot; (\\d{1,2}) (\\w+) (\\d{4})",
+   "groups": "day,month,year",
+   "warn_days": 9,
+   "fail_days": 16
+  },
+  {
+   "id": "F-30",
+   "what": "the events radar data is refreshed nightly",
+   "file": "radar-events.json",
+   "test": "generated",
+   "key": "generated",
+   "warn_days": 2,
+   "fail_days": 4
+  },
+  {
+   "id": "F-31",
+   "what": "the denver radar data is refreshed nightly",
+   "file": "radar-denver.json",
+   "test": "generated",
+   "key": "generated",
+   "warn_days": 2,
+   "fail_days": 4
+  },
+  {
+   "id": "F-32",
+   "what": "the tracks index was rebuilt after the newest tracklist",
+   "file": "tracks-index.json",
+   "test": "generated",
+   "key": "generated",
+   "warn_days": 14,
+   "fail_days": 30
+  },
+  {
+   "id": "F-40",
+   "what": "the artist count on the home page and the artist index equals the number of profiles",
+   "test": "counts_agree",
+   "expected": "artist_pages",
+   "spots": [
+    {
+     "file": "index.html",
+     "pattern": "(?<!\\d)(\\d{3,4}) artists"
+    },
+    {
+     "file": "artists.html",
+     "pattern": "(\\d+) names"
+    },
+    {
+     "file": "artists-index.json",
+     "pattern": "\"count\":(\\d+)"
+    }
+   ]
+  }
+ ]
+}

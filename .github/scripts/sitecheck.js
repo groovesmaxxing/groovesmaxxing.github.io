@@ -7,6 +7,10 @@ const BASE='http://127.0.0.1:8787';
 const PAGES=['/index.html','/artists.html','/sets.html','/interviews.html','/events.html','/more.html','/scan.html','/badges.html','/upcoming.html','/labels.html','/newsletter.html','/friday.html','/404.html','/search.html','/radio.html','/crate.html','/open-ids.html','/tracklists/index.html',
   '/artists/adam-ten.html','/artists/max-styler.html','/artists/balanka.html','/artists/gkat.html','/artists/solomun.html','/labels/make-the-girls-dance-records.html','/labels/nu-moda.html','/tracklists/cloonee-live-at-red-rocks.html','/newsletter/fgf-001.html'];
 const NO_TABS=['/sets.html','/interviews.html'];
+/* the render proof: full-page screenshots of the pages a layout change usually touches, saved to shots/ and
+   uploaded as a workflow artifact, so a push that moved something can be looked at, not just trusted */
+const SHOTS=['/index.html','/scan.html','/upcoming.html','/open-ids.html','/search.html','/artists/adam-ten.html','/tracklists/cloonee-live-at-red-rocks.html'];
+const fs=require('fs');try{fs.mkdirSync('shots',{recursive:true})}catch(e){}
 (async()=>{
   const b=await chromium.launch();let fails=0;
   const log=(ok,msg)=>{console.log((ok?'  ok  ':'  FAIL')+' '+msg);if(!ok)fails++;};
@@ -91,6 +95,7 @@ const NO_TABS=['/sets.html','/interviews.html'];
         const r=await p.evaluate(()=>({hits:document.querySelectorAll('.hit').length,groups:[...document.querySelectorAll('.grp')].map(g=>g.firstChild.textContent)}));
         log(r.hits>0,path+': "adam ten" finds results across groups '+JSON.stringify(r.groups));
       }
+      if(SHOTS.includes(path)){try{await p.screenshot({path:'shots/'+vp.name+path.replace(/\//g,'_').replace(/\.html$/,'')+'.png',fullPage:path!=='/index.html'})}catch(e){}}
       await p.close();
     }
     await ctx.close();
