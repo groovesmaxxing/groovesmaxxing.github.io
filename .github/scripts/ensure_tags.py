@@ -25,6 +25,8 @@ T = {
     'upcoming_js': '<script src="/gmx-upcoming.js" defer></script>',
     'quick_css': '<link rel="stylesheet" href="/gmx-quick.css">',
     'quick_js': '<script src="/gmx-quick.js" defer></script>',
+    'sheet_css': '<link rel="stylesheet" href="/gmx-sheet.css">',
+    'sheet_js': '<script src="/gmx-sheet.js" defer></script>',
 }
 
 def ensure(path, heads, before_motion, after_motion):
@@ -128,4 +130,13 @@ for f in sorted(glob.glob('*.html') + glob.glob('artists/*.html') + glob.glob('l
 for f in sorted(glob.glob('*.html') + glob.glob('artists/*.html') + glob.glob('labels/*.html') + glob.glob('tracklists/*.html') + glob.glob('newsletter/*.html')):
     if f.startswith('google') or f == 'search.html': continue
     n += ensure(f, ['quick_css'], [], ['quick_js'])
+# bottom sheet (ui build 2, 2026-10-11): the "…" beside every heart and follow pill, so it rides on every
+# page that carries the crate, loaded right after it.
+for f in sorted(glob.glob('*.html') + glob.glob('artists/*.html') + glob.glob('labels/*.html') + glob.glob('tracklists/*.html')):
+    s = open(f, encoding='utf-8').read()
+    if T['crate_js'] not in s or T['sheet_js'] in s or 'http-equiv="refresh"' in s: continue
+    s = s.replace(T['crate_js'], T['crate_js'] + '\n' + T['sheet_js'], 1)
+    if T['sheet_css'] not in s:
+        s = s.replace(MOTION_CSS, MOTION_CSS + '\n' + T['sheet_css'], 1) if MOTION_CSS in s else s.replace('</head>', T['sheet_css'] + '\n</head>', 1)
+    open(f, 'w', encoding='utf-8').write(s); n += 1
 print('ensure_tags:', n, 'pages touched')

@@ -94,6 +94,16 @@ const fs=require('fs');try{fs.mkdirSync('shots',{recursive:true})}catch(e){}
         const f=await p.evaluate(()=>!!document.querySelector('section.artist .meta .gmx-follow'));
         log(f,path+': follow pill in the meta row');
       }
+      if(path==='/tracklists/cloonee-live-at-red-rocks.html'||path==='/artists/adam-ten.html'){
+        // bottom sheet (ui build 2): a "…" beside the hearts and the follow pill opens a sheet of actions
+        await p.waitForTimeout(600);
+        const m=await p.evaluate(()=>document.querySelectorAll('.gmx-more').length);
+        await p.click('.gmx-more >> nth=0');await p.waitForTimeout(300);
+        const s=await p.evaluate(()=>{const sh=document.querySelector('.gmx-sheet');return {open:!!sh&&!sh.hidden,acts:sh?sh.querySelectorAll('.gmx-sheet-act').length:0,title:sh?sh.querySelector('.gmx-sheet-title').textContent:'',focused:!!sh&&sh.contains(document.activeElement)}});
+        await p.keyboard.press('Escape');await p.waitForTimeout(200);
+        const gone=await p.evaluate(()=>document.querySelector('.gmx-sheet').hidden);
+        log(m>0&&s.open&&s.acts>=3&&s.focused&&gone,path+': "…" buttons ('+m+'), the first opens a sheet ("'+s.title+'", '+s.acts+' actions, focus inside) and escape closes it');
+      }
       if(path==='/artists/adam-ten.html'||path==='/index.html'){
         // quick search (ui build 1): the "/" key opens the sheet, typing finds rows, escape closes it
         await p.keyboard.press('/');await p.waitForTimeout(300);
