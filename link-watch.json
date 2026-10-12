@@ -1,17 +1,17 @@
 {
- "generated": "2026-10-11T19:35:02Z",
+ "generated": "2026-10-12T19:58:43Z",
  "pages": 840,
  "links": {
-  "checkable": 6012,
+  "checkable": 5948,
   "by_kind": {
-   "other": 2728,
-   "spotify": 1777,
+   "other": 2726,
+   "spotify": 1715,
    "soundcloud": 694,
    "youtube": 813
   },
-  "checked_within_recheck": 700,
+  "checked_within_recheck": 1395,
   "asked_this_run": 700,
-  "unknown": 49,
+  "unknown": 98,
   "budget": 700,
   "recheck_days": 10
  },
@@ -28,6 +28,19 @@
    "page_count": 1,
    "checked": "2026-10-11T19:35:02Z",
    "first_seen": "2026-10-11T19:35:02Z"
+  },
+  {
+   "url": "https://www.funkcartel.co.uk",
+   "kind": "other",
+   "code": 404,
+   "note": null,
+   "title": null,
+   "pages": [
+    "/artists/funk-cartel"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-12T19:58:43Z",
+   "first_seen": "2026-10-12T19:58:43Z"
   }
  ],
  "moved": [
@@ -69,9 +82,62 @@
    "page_count": 1,
    "checked": "2026-10-11T19:35:02Z",
    "first_seen": "2026-10-11T19:35:02Z"
+  },
+  {
+   "url": "https://fancyinc.com.br/",
+   "kind": "other",
+   "code": 200,
+   "note": "lands on fancyinc.komi.io",
+   "title": null,
+   "pages": [
+    "/artists/fancy-inc"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-12T19:58:43Z",
+   "first_seen": "2026-10-12T19:58:43Z"
+  },
+  {
+   "url": "https://genesimusic.com",
+   "kind": "other",
+   "code": 200,
+   "note": "lands on genesi.komi.io",
+   "title": null,
+   "pages": [
+    "/artists/genesi"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-12T19:58:43Z",
+   "first_seen": "2026-10-12T19:58:43Z"
+  },
+  {
+   "url": "https://www.dontblink.io",
+   "kind": "other",
+   "code": 200,
+   "note": "lands on dontblink.komi.io",
+   "title": null,
+   "pages": [
+    "/artists/dont-blink"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-12T19:58:43Z",
+   "first_seen": "2026-10-12T19:58:43Z"
   }
  ],
- "differs": [],
+ "differs": [
+  {
+   "url": "https://open.spotify.com/artist/4sITB0d3Uz43DKFElXk6xo",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: Gabe Cline",
+   "title": "Gabrl",
+   "pages": [
+    "/artists/gabe-cline"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-12T19:58:43Z",
+   "first_seen": "2026-10-12T19:58:43Z"
+  }
+ ],
  "anchors_broken": [],
- "summary": "1 broken, 3 moved, 0 read differently, 0 broken anchors, 700 of 6012 links checked in the last 10 days"
+ "summary": "2 broken, 6 moved, 1 read differently, 0 broken anchors, 1395 of 5948 links checked in the last 10 days"
 }
