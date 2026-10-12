@@ -4,11 +4,12 @@ Guide to the groovesmaxxing.com website repo. Everything here was read from the 
 
 ## What this is
 
-A plain static website. Every page is a hand-written or script-written `.html` file with its CSS inside a `<style>` tag in the page itself. There is no framework, no `package.json`, no build step and no bundler. What is committed is exactly what visitors get.
+A static website. Every page is a `.html` file in this repo, written by hand or by scripts on the owner's laptop. There is no framework, no committed `package.json` and no bundler. Pages are served as committed, except that the `site-data` workflow rebuilds derived files on every push to `main` (see Automation).
 
 - Live domain: `groovesmaxxing.com` (set by the `CNAME` file)
 - GitHub repo: `groovesmaxxing/groovesmaxxing.github.io`
 - Default branch: `main`
+- Other long-lived branch: `status`, an orphan branch holding only the feeds the Desk page reads (`site-watch.json`, `link-watch.json` and its cache). Written by `.github/scripts/status_publish.sh`. Never merge it into `main`.
 
 ## Layout
 
@@ -17,122 +18,137 @@ A plain static website. Every page is a hand-written or script-written `.html` f
 | Folder | What it holds |
 |---|---|
 | `artists/` | One page per artist (708 profiles plus 4 redirect pages), for example `artists/adam-ten.html` |
-| `labels/` | One page per record label (about 71 pages) |
-| `tracklists/` | One page per DJ set tracklist, plus `tracklists/index.html` which lists them all with a youtube or soundcloud filter |
-| `newsletter/` | Archived issues of the Fresh Grooves Friday newsletter, named `fgf-001.html`, `fgf-002.html` and so on |
+| `labels/` | One page per record label (71 pages) |
+| `tracklists/` | One page per DJ set tracklist, plus `tracklists/index.html` |
+| `newsletter/` | Archived Fresh Grooves Friday issues, `fgf-001.html` and so on |
 | `media/covers/` | Playlist cover images used by `index.html` |
-| `.github/workflows/` | One GitHub Actions workflow, `events-radar.yml` |
-| `.github/scripts/` | `fetch_events.py`, the script that workflow runs |
+| `og/` | Per-page social share images, written by `share_cards.js` |
+| `docs/` | `recognizer-streaming.md`, the contract between `scan.html` and the recognizer backend |
+| `.github/workflows/` | Seven workflows, see Automation |
+| `.github/scripts/` | The scripts those workflows run |
 
 ### Top-level pages
 
 | File | Purpose |
 |---|---|
 | `index.html` | Homepage |
-| `artists.html` | Artist directory with profiles. Some artist pages are only linked from here through JavaScript, not plain links |
-| `roster.html` | One-page list of every artist and label followed |
+| `artists.html` | Artist directory. `roster.html` now redirects here |
 | `labels.html` | Label directory |
-| `sets.html` | Every DJ set on the site in one page |
+| `sets.html` | Every DJ set. The laptop writes the full page, then `lighten_sets.py` moves the cards into `sets-index.json`, which `gmx-sets.js` loads on demand |
+| `search.html` | One search box for the whole site, reads `search-index.json` |
+| `crate.html` | The sets and tracks a visitor hearted, stored on their phone only |
+| `radio.html` | The set library played back to back |
+| `open-ids.html` | Tracklist rows not identified yet, reads `open-ids.json` |
 | `interviews.html` | Interviews and talk podcasts |
-| `badges.html` | The badges shown on artist pages and who has each one |
+| `badges.html` | Badges shown on artist pages |
 | `upcoming.html` | Releases dropping soon |
-| `friday.html` | The full weekly Fresh Grooves Friday release list |
+| `friday.html` | The weekly Fresh Grooves Friday release list |
 | `newsletter.html` | Index of newsletter issues |
-| `events.html` | Map of festivals and club rooms by city |
-| `tours.html` | Upcoming tour dates, read from `radar-events.json` |
+| `events.html` | The events radar: festivals and club rooms by city, plus the "on tour" section that reads `radar-events.json`. `tours.html` now redirects to `events.html#tours` |
 | `venues.html` | Denver venues |
-| `scan.html` | The "scan" music recognizer page. It is also the installed app's start page |
-| `more.html` | Menu page for the installed phone app |
+| `scan.html` | The music recognizer page and the installed app's start page |
+| `more.html` | Menu page for the installed app |
 | `privacy.html`, `terms.html` | Legal pages for the scan feature |
 | `404.html` | Page shown for missing URLs |
 | `google04d31c35e73795cf.html` | Google Search Console ownership check. Do not delete |
-
-`scan`, `more`, `privacy`, `terms` and `404` are marked `noindex` so search engines skip them.
 
 ### Shared files
 
 | File | Purpose |
 |---|---|
-| `gmx-motion.css`, `gmx-motion.js` | Page motion kit (progress bar, reveal on scroll, hover effects). Loaded by almost every page. `gmx-motion.css` says the homepage keeps its own inline copy instead |
-| `gmx-refresh.js` | Pull down to refresh inside the installed app |
-| `gmx-install.js` | "Add to home screen" prompt |
-| `gmx-clips.js` | Optional "keep my clips" storage for the scan page, kept only on the visitor's phone |
-| `sw.js` | Service worker for the installed app. Cache name is `gmx-v2`. Network first, cached copy when offline |
-| `manifest.webmanifest` | Installed app settings (name, icons, colors, start page `/scan`) |
-| `gmx-config.json` | Address of the recognizer backend and the app key that `scan.html` sends to it. Anyone can read this file on the live site |
-| `sitemap.xml`, `robots.txt` | Search engine files. The sitemap lists about 843 URLs |
+| `gmx-nav.js`, `gmx-nav.css` | The tab bar on every page |
+| `gmx-player.js`, `gmx-player.css` | The shared youtube stage that plays sets across pages |
+| `gmx-follow.js` | Follow-along tracklists, synced to the players |
+| `gmx-crate.js`, `gmx-sheet.js`, `gmx-sheet.css` | Hearts on sets and tracklist rows, and the "…" bottom sheet |
+| `gmx-quick.js`, `gmx-quick.css` | Quick search sheet |
+| `gmx-nextup.js` | The "next up" strip |
+| `gmx-related.js` | Cross-links everything the site holds on an artist |
+| `gmx-sets.js` | Fills the sets page from `sets-index.json` |
+| `gmx-upcoming.js` | Dropping soon, filtered on the visitor's crate |
+| `gmx-profile.css`, `gmx-label.css` | Shared artist and label profile styles |
+| `gmx-motion.css`, `gmx-motion.js` | Page motion kit. The homepage keeps its own inline copy |
+| `gmx-refresh.js` | Pull to refresh inside the installed app |
+| `gmx-install.js` | "Add to home screen" nudge |
+| `gmx-clips.js`, `gmx-capture-worklet.js` | Scan page clip storage and audio capture |
+| `sw.js` | Service worker. Cache name is a versioned string (`gmx-v8` at the time of writing). Precaches the list in `precache.json` |
+| `manifest.webmanifest` | Installed app settings, start page `/scan` |
+| `gmx-config.json` | Recognizer backend address (`api_base`) and the app key `scan.html` sends. Public on the live site by design. Do not change it without the owner |
+| `sitemap.xml`, `robots.txt`, `feed.xml` | Search engine files and the newsletter RSS feed |
 | `radar-artists.json` | Artist names the nightly tour sweep looks up |
-| `radar-attractions.json` | Cache of Ticketmaster ids for those artists. Written by the workflow |
-| `radar-events.json` | Upcoming events. Written by the workflow, read by `tours.html` |
-| Favicons, `icon-*.png`, `apple-touch-icon.png`, `og-image.png` | Site icons and the social share image |
+| `radar-attractions.json`, `radar-events.json`, `radar-denver.json` | Written by the nightly sweep. Do not hand-edit |
+| `*-index.json`, `open-ids.json`, `upcoming.json`, `precache.json`, `set-tags.json` | Derived files written by the `site-data` workflow. Do not hand-edit |
 
-## Build and deploy
+## Build, deploy and automation
 
-- There is no build. Edit the HTML, commit, push to `main`.
-- Every pull request gets a Cloudflare Pages check, which builds a preview of the branch.
-- UNKNOWN: which service actually serves groovesmaxxing.com. The repo name and `CNAME` suggest GitHub Pages, but pull requests also get a "Cloudflare Pages" check, so Cloudflare Pages is connected to this repo too. Neither service's settings are stored in the repo. Check the GitHub repo settings and the Cloudflare dashboard.
-- UNKNOWN: there is no local preview script. Any simple static file server pointed at the repo root should work, but nothing in the repo says which one is used.
+- Edit the HTML, commit, push to `main`. `site-data` then commits derived files on top, so pull before working.
+- Every push and pull request runs `site check`: `preflight.py` (structure and brand checks over every page) and `sitecheck.js` (headless Chromium loads the main pages at phone and desktop width and fails on console errors, missing same-origin files, horizontal overflow or a missing tab bar). Outside hosts are blocked in that check.
+- Run the same checks locally: `python3 .github/scripts/preflight.py`, then serve the repo with `python3 -m http.server 8787 --bind 127.0.0.1` and run `npm install --no-save playwright@1.56.1` and `node .github/scripts/sitecheck.js`.
+- Every pull request also gets a Cloudflare Pages check.
+- UNKNOWN: which service actually serves groovesmaxxing.com. `CNAME` suggests GitHub Pages, and Cloudflare Pages is connected too. Neither service's settings are in the repo.
 
-### Nightly events radar (the only automation)
+### Workflows
 
-- Workflow `.github/workflows/events-radar.yml` runs once a day at 09:23 UTC, and can also be started by hand from the Actions tab.
-- It runs `.github/scripts/fetch_events.py` (Python standard library only, no installs) with the `TM_API_KEY` repository secret.
-- It rewrites `radar-attractions.json` and `radar-events.json` and commits them as `github-actions[bot]` with the message `radar: nightly events refresh`.
-- Because of this, `main` on GitHub gets a new commit most days. Always pull before working.
-- Do not hand-edit `radar-attractions.json` or `radar-events.json`. To fix a wrong Ticketmaster match, edit `OVERRIDES` in `fetch_events.py`. To hide a venue, edit `VENUE_BLOCK` in the same file.
+| Workflow | When | What |
+|---|---|---|
+| `site-check.yml` | every push and pull request | preflight and headless page load check |
+| `site-data.yml` | every push to `main` | runs the `build_*.py` scripts, `lighten_sets.py`, `ensure_tags.py`, `sync_counts.py`, `crosslink_audit.py` and `share_cards.js`, then commits as `site data: derived files, tags and share cards` |
+| `events-radar.yml` | daily 09:23 UTC, or by hand | `fetch_events.py` with the `TM_API_KEY` secret, then `build_event_schema.py`. Commits as `radar: nightly events refresh` |
+| `site-watch.yml` | every 30 minutes | checks the live site's key pages, publishes to the `status` branch |
+| `link-watch.yml` | daily | checks outside links, publishes to the `status` branch |
+| `uptime.yml` | every 4 hours | checks the recognizer at `api_base` from `gmx-config.json` answers |
+| `freshness.yml` | daily | checks the rows in `.github/freshness.json` and fails when one is too old |
+
+### Events radar
+
+- To fix a wrong Ticketmaster match, add the name to `OVERRIDES` in `fetch_events.py` (`None` means never match). To hide a venue, edit `VENUE_BLOCK` in the same file.
+- The matcher accepts an exact name or one that starts with the artist name and is at most 8 characters longer, so short or common names can pick up the wrong act. Check new names before adding them.
 
 ## Conventions seen in the code
 
 ### Page template
 
-- Each page carries its own `<style>` block starting with the same color tokens: `--night #0B0B0D`, `--racing #FF1C02`, `--deep #CC1400`, `--day #F2F2EF`, `--steel #8A8A93`, `--line #26262b`, `--card #141417`.
-- Fonts are Poppins (400, 600, 900) and Space Mono (400, 700) from Google Fonts.
-- Pages inside `artists/`, `labels/` and the other folders use relative paths like `../favicon.svg`. Shared scripts are loaded with root paths like `/gmx-motion.js`.
-- Each page sets a `<title>` ending in `· groovesMAXXING`, a meta description, Open Graph tags pointing at `https://groovesmaxxing.com/og-image.png`, and a canonical URL without `.html`.
+- Each page carries its own `<style>` block with the same color tokens: `--night #0B0B0D`, `--racing #FF1C02`, `--deep #CC1400`, `--day #F2F2EF`, `--steel #8A8A93`, `--card #141417`.
+- Fonts are Poppins (400, 600, 900) and Space Mono (400, 700).
+- Pages in folders use relative paths like `../favicon.svg`. Shared scripts use root paths like `/gmx-nav.js`.
+- `<title>` ends in `· groovesMAXXING`. Pages carry a meta description, Open Graph tags and a canonical URL without `.html`.
 - Copy on the site is written in lowercase.
+- `ensure_tags.py` adds the shared tags (tab bar, player, follow-along and so on) to any page missing them, so a fresh laptop-written page still gets them.
 
 ### Generated sections (edit with care)
 
-Many pages contain blocks wrapped in marker comments, for example:
+Blocks wrapped in marker comments are written by scripts:
 
 - `<!-- gmx-seo start -->` / `<!-- gmx-seo end -->` (about 751 pages)
 - `<!-- sets:start -->` / `<!-- sets:end -->` (about 522 pages)
 - `<!-- upcoming:start -->`, `<!-- tracklists:start -->`, `<!-- interviews:start -->`
 - On the homepage: `sets-pool`, `sets-dots`, `iv-pool`, `iv-dots`, `upcoming`
 
-These blocks are filled in by scripts. Hand edits inside them will likely be overwritten the next time the script runs. Leave the markers in place.
+Hand edits inside them will be overwritten. Leave the markers in place.
 
-- UNKNOWN: the scripts that fill these blocks are not in this repo. `.gitignore` names `sitelink_tracklists.py` and `site_edit.py`, and commit messages mention a release "tracker", `sets_library.json` and a "registry". Where these live and how to run them is not recorded here.
+- UNKNOWN: the scripts that fill these blocks live on the owner's laptop, not in this repo. `.gitignore` names `sitelink_tracklists.py` and `site_edit.py`.
 
 ### Redirect pages
 
-When a page moves, the old file is kept as a tiny redirect page with `<meta http-equiv="refresh">`, a canonical link to the new address and `noindex`. Examples are `artists/chris-stussy.html`, `artists/gabri.html`, `artists/greg-br.html` and `artists/nu-moda.html`. These are meant to stay out of `sitemap.xml` and out of the directory pages. Do not delete them, because old links still point at them.
-
-### Ignored files
-
-- `*.bak` and `*.bak_*` backups that the generator scripts write.
-- `Claude outputs/`, a folder the Cowork app mirrors into local copies. Never part of the site.
-
-### Commit messages
-
-- Short, lowercase, describing what changed, for example `add hot since 82 profile with set and tracklist, roster and counts to 708`.
-- Often start with an area name and a colon, such as `radar:`, `upcoming:`, `badges:`, `newsletter:`, `artists:`.
+A moved page stays as a tiny redirect with `<meta http-equiv="refresh">`, a canonical link to the new address and `noindex`. Examples: `roster.html`, `tours.html`, `artists/chris-stussy.html`, `artists/gabri.html`, `artists/greg-br.html`, `artists/nu-moda.html`. Keep them out of `sitemap.xml` and the directories. Do not delete them.
 
 ### Counts written into the copy
 
-Totals are typed into page text by hand or by script, for example "708 artists, 103 labels" in `roster.html`, "700 of them across 521 artists" in `sets.html`, and "688 artists" in `tours.html`. When adding an artist, label or set, check the commit history for which counts usually change alongside it ("roster and counts to 708").
+- The artist count on `index.html` ("N artists") and `artists.html` ("N names") is set by `sync_counts.py` from the number of non-redirect pages in `artists/`. Do not bump it by hand.
+- Other counts are still typed by hand, for example "all N names" in the on tour section of `events.html`, which must match the length of `radar-artists.json`.
+
+### Commit messages
+
+Short and lowercase, often starting with an area and a colon: `radar:`, `upcoming:`, `badges:`, `newsletter:`, `artists:`, `scan:`.
+
+### Ignored files
+
+`*.bak` backups, `Claude outputs/`, `node_modules/`, `package.json`, `shots/`, `status-out/`.
 
 ## Checklists
 
-### Adding a new page
+### Adding a new artist
 
-1. Copy the closest existing page as a starting point so the template, fonts and tokens match.
-2. Add the page's URL to `sitemap.xml`. Leave redirect pages out.
-3. Link to it from the right directory page (`artists.html`, `roster.html`, `labels.html`, `tracklists/index.html` or `newsletter.html`).
-4. For a new artist, add their name to `radar-artists.json` so the nightly sweep looks up tour dates, and update the "all N names" count in `tours.html`. Short or common names can match the wrong act on Ticketmaster, so check them and use `OVERRIDES` in `fetch_events.py` when needed.
-
-## Known gaps (as of 2026-10-10)
-
-- `radar-artists.json` has 688 names while `roster.html` reports 708 artists, so about 20 newer artists get no tour dates.
-- `README.md` is a single heading with no content.
-- No broken internal links were found in a scan of all HTML files.
+1. Copy the closest existing profile page.
+2. Add it to `sitemap.xml` and link it from `artists.html`.
+3. Add the name to `radar-artists.json`, update "all N names" in `events.html`, and check the Ticketmaster match. Use `OVERRIDES` when it is wrong.
+4. Push. `site-data` updates the artist counts and derived files.
