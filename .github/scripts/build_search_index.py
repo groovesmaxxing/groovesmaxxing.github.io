@@ -79,8 +79,19 @@ for m in re.finditer(r'<a class="hrow" href="([^"]+)">.*?<b>(.*?)</b><i>(.*?)</i
 for m in re.finditer(r'<a class="issue" href="([^"]+)">\s*<div class="inum">(.*?)</div>\s*<div class="ititle">(.*?)</div>', read('newsletter.html'), re.S):
     add('issue', text(m.group(3)), text(m.group(2)), m.group(1))
 
-out = {'generated': date.today().isoformat(), 'count': len(items), 'items': items}
+# the sounds: a fixed vocabulary of genres, lanes and moods counted across every item's search words, so
+# /search can offer "afro house" or "sunrise" as a tap. the approved set tags land here too once the laptop
+# writes them, because tag_words() folds them into each set's k. only the ones with a few hits are kept.
+SOUNDS = ['tech house', 'afro house', 'melodic house', 'melodic techno', 'progressive house', 'deep house', 'indie dance',
+          'dark disco', 'disco house', 'jackin house', 'minimal', 'techno', 'bumpy', 'vibes',
+          'sunrise', 'sunset', 'closing', 'rooftop', 'boiler room', 'warehouse', 'beach', 'b2b', 'essential mix', 'festival']
+sounds = []
+for w in SOUNDS:
+    pat = re.compile(r'(?<![a-z0-9])' + re.escape(w) + r'(?![a-z0-9])')
+    n = sum(1 for i in items if pat.search(i['k']))
+    if n >= 3: sounds.append([w, n])
+out = {'generated': date.today().isoformat(), 'count': len(items), 'sounds': sounds, 'items': items}
 with open('search-index.json', 'w', encoding='utf-8') as f:
     json.dump(out, f, ensure_ascii=False, separators=(',', ':'))
 from collections import Counter
-print('search-index.json:', len(items), 'items', dict(Counter(i['t'] for i in items)))
+print('search-index.json:', len(items), 'items', dict(Counter(i['t'] for i in items)), '· sounds:', len(sounds))

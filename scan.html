@@ -2,11 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com https://api.deezer.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-O5eePBQpTdOuhGBNJLjDbDkt8NDigEfEXbWuCJHPAQA='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://open.spotify.com https://itunes.apple.com https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com https://api.deezer.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-p1Q14k5a9GRgjvwcCBsRWRUKCmGNYS87Qucr1Qyn4dM='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://open.spotify.com https://itunes.apple.com https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>scan · groovesMAXXING</title>
 <meta name="description" content="hear a track, tap once. groovesmaxxing listens for about 15 seconds and looks for it in our own library of sets first, then in the catalogs.">
+<meta property="og:title" content="scan · groovesMAXXING">
+<meta property="og:description" content="hear a track, tap once. groovesmaxxing listens for about 15 seconds and looks for it in our own library of sets first, then in the catalogs.">
+<meta property="og:url" content="https://groovesmaxxing.com/scan">
 <meta name="robots" content="noindex">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
@@ -63,7 +66,7 @@ h1.eyebrow{margin:0;font-weight:400}
 .card .art img{opacity:0;transition:opacity .4s}.card .art img.in{opacity:1}.card .art.found{border-color:rgba(255,28,2,.45)}
 .hear li small{display:block;font-weight:400;color:var(--steel);font-size:.78rem;font-family:'Space Mono',monospace;margin-top:2px}
 .btn.find{color:var(--steel);border-style:dashed}
-.card .sub a.sublink{color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,28,2,.45)}.card .sub a.sublink:hover{color:var(--racing)}
+.card .sub a.sublink,.card .lab a.sublink{color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,28,2,.45)}.card .sub a.sublink:hover,.card .lab a.sublink:hover{color:var(--racing)}
 .card h2 a.listen{color:inherit;text-decoration:none}.card h2 a.listen:hover{color:var(--racing)}.card h2 a.listen::after{content:' ↗';font-size:.6em;color:var(--racing);vertical-align:super}
 .stage.finding .tap{display:none}
 .stage.listening .rec{display:flex}
@@ -77,12 +80,17 @@ h1.eyebrow{margin:0;font-weight:400}
 .card .kw b{font-weight:400;color:var(--racing)}
 .card h2{font-weight:900;font-size:clamp(1.7rem,7vw,2.3rem);line-height:1.05;letter-spacing:-.02em;margin:10px 0 4px;overflow-wrap:anywhere}
 .card .ttl{font-weight:600;font-size:1.12rem;line-height:1.3;overflow-wrap:anywhere}
+.card h2.long{font-size:clamp(1.15rem,4.6vw,1.5rem);line-height:1.2}
 /* recognizer phase 7, decisions 5 and 6 (2026-10-02): the cover on top, the track's name as the headline, the artist under it, the small line says how sure */
 .card .art{width:min(100%,260px);aspect-ratio:1;border-radius:16px;overflow:hidden;background:rgba(242,242,239,.05);border:1px solid var(--line);margin:4px auto 18px}
 .card .art img{width:100%;height:100%;object-fit:cover;display:block}
 .card .art svg{width:100%;height:100%;display:block}
 .card .art .r{fill:none;stroke:var(--racing);stroke-width:2.1}
 .card .art .dot{fill:var(--racing)}
+.card .art.unrel{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px 18px 18px}
+.card .art.unrel svg{width:64%;height:auto;overflow:visible;filter:drop-shadow(0 0 14px rgba(255,28,2,.35))}
+.card .art .wave{fill:none;stroke:var(--day);stroke-width:2.9;stroke-linejoin:round;stroke-linecap:round}
+.card .art .ulbl{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--steel);margin-top:14px}
 .card .sub{font-weight:600;font-size:1.12rem;line-height:1.3;color:var(--day);overflow-wrap:anywhere;margin-top:2px}
 .card .sure{font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.08em;color:var(--steel);margin-top:8px}
 .card .lab{font-family:'Space Mono',monospace;font-size:.8rem;color:var(--steel);margin-top:8px;letter-spacing:.04em}
@@ -98,6 +106,20 @@ h1.eyebrow{margin:0;font-weight:400}
 .card h3{font-family:'Space Mono',monospace;font-weight:400;font-size:.72rem;letter-spacing:.28em;color:var(--steel);text-transform:uppercase;margin:24px 0 8px}
 .heard{list-style:none}
 .heard li{border-top:1px solid var(--line);padding:11px 0;display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+/* what happens next (ui build 4): four steps, a line down the left, the live one red */
+.path{list-style:none;margin:4px 0 0;padding:0;position:relative}
+.path::before{content:"";position:absolute;left:7px;top:10px;bottom:10px;width:1px;background:var(--line)}
+.path li{position:relative;display:grid;grid-template-columns:16px 1fr;column-gap:12px;row-gap:2px;padding:7px 0;align-items:baseline}
+.path .dot{width:11px;height:11px;border-radius:50%;border:1.5px solid var(--steel);background:var(--night);margin-left:1.5px;position:relative;z-index:1;align-self:center;grid-row:1 / span 2}
+.path .lb{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--steel)}
+.path .nt{grid-column:2;font-size:.9rem;line-height:1.45;color:#c9c9c4;overflow-wrap:anywhere}
+.path .st-done .dot{background:var(--day);border-color:var(--day)}
+.path .st-done .lb{color:var(--day)}
+.path .st-now .dot{background:var(--racing);border-color:var(--racing);box-shadow:0 0 0 4px rgba(255,28,2,.18)}
+.path .st-now .lb{color:var(--racing)}
+.path .st-now .nt{color:var(--day)}
+.path .st-next .nt{color:var(--steel)}
+@media (prefers-reduced-motion: no-preference){.path .st-now .dot{animation:pathpulse 1.6s ease-in-out infinite}@keyframes pathpulse{50%{box-shadow:0 0 0 7px rgba(255,28,2,.08)}}}
 .heard a{text-decoration:none;font-weight:600;font-size:.95rem;overflow-wrap:anywhere}
 .heard a:hover{color:var(--racing)}
 .heard .at{font-family:'Space Mono',monospace;font-size:.78rem;color:var(--steel);flex:none}
@@ -130,6 +152,17 @@ h1.eyebrow{margin:0;font-weight:400}
 .msg.ok{color:var(--racing)}
 
 /* recent */
+.autobar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;margin:-6px 0 14px;min-height:0}
+.autobar .btn.on{border-color:var(--racing);color:var(--racing)}
+.autobar .next{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.06em;color:var(--steel)}
+.autobar .next b{font-weight:400;color:var(--day)}
+.autobar .note{flex-basis:100%;text-align:center;font-family:'Space Mono',monospace;font-size:.72rem;color:var(--steel);line-height:1.6}
+.pendingbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;border:1px solid rgba(255,28,2,.45);border-radius:14px;padding:10px 14px;margin:0 0 18px;font-family:'Space Mono',monospace;font-size:.76rem;line-height:1.6;color:var(--day)}
+.pendingbar b{font-weight:400;color:var(--racing)}
+.pendingbar .btn{padding:7px 12px;font-size:.72rem}
+.session .smeta{font-family:'Space Mono',monospace;font-size:.74rem;color:var(--steel);margin:0 0 8px;letter-spacing:.04em}
+.session .when{color:var(--racing)}
+.session .stools{margin-top:12px}.session .stools .btn{padding:7px 12px;font-size:.72rem}.session .stools .msg{margin:0}
 .recent{margin:10px 0 40px}
 .recent h3{font-family:'Space Mono',monospace;font-weight:400;font-size:.72rem;letter-spacing:.28em;color:var(--steel);text-transform:uppercase;margin:0 0 8px}
 .recent ul{list-style:none;border-top:1px solid var(--line)}
@@ -142,6 +175,30 @@ h1.eyebrow{margin:0;font-weight:400}
 .recent .acts{flex-basis:100%;display:flex;gap:8px;align-items:center;margin-top:4px}
 .recent .acts .btn{padding:7px 12px;font-size:.72rem}
 .recent .acts .msg{margin:0}
+.you .prof{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin:2px 0 6px}
+.you .prof .at{font-weight:700;font-size:1.4rem;letter-spacing:-.01em;overflow-wrap:anywhere;line-height:1.2}
+.you .prof .at.none{font-weight:400;font-size:1rem;color:var(--steel)}
+.you .prof small{font-family:'Space Mono',monospace;font-size:.72rem;color:var(--steel);letter-spacing:.04em;overflow-wrap:anywhere}
+.you .prof .chg{font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.1em;color:var(--steel);background:none;border:0;border-bottom:1px solid var(--line);padding:0 0 1px;cursor:pointer}
+.you .prof .chg:hover{color:var(--racing);border-color:var(--racing)}
+.you .stat{font-family:'Space Mono',monospace;font-size:.74rem;color:var(--steel);letter-spacing:.04em;line-height:1.7;margin:0 0 6px;max-width:none;min-height:0}
+.you .stat b{font-weight:400;color:var(--day)}
+.you .setup{counter-reset:s;margin:10px 0 0}
+.you .setup li{display:block;padding:12px 0 12px 34px;position:relative}
+.you .setup li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:12px;width:20px;height:20px;border:2px solid var(--line);border-radius:50%;font-family:'Space Mono',monospace;font-size:.64rem;display:flex;align-items:center;justify-content:center;color:var(--steel)}
+.you .setup li.done::before{content:'\2713';border-color:var(--racing);color:var(--racing)}
+.you .setup .t{font-weight:600;font-size:.92rem}
+.you .setup li.done .t{color:var(--steel);font-weight:400}
+.you .setup p{font-size:.84rem;color:var(--steel);margin:3px 0 0;line-height:1.5}
+.you .setup .form,.you #hbox .form{border-top:0;margin:8px 0 0;padding-top:0}
+.you .setup .form label{margin-top:0}
+.you .setup .row,.you .tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.you .setup .row .btn,.you .tools .btn,.you #hbox .btn{padding:7px 12px;font-size:.72rem}
+.you .setup .msg,.you .tools .msg,.you #hbox .msg{margin:0;flex-basis:100%}
+.you .tools{margin-top:14px}
+.autobar .you-chip{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.06em;color:var(--steel);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:7px 11px;line-height:1;max-width:46vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.autobar .you-chip b{font-weight:400;color:var(--day)}
+.autobar .you-chip.in{border-color:rgba(255,28,2,.45)}
 .fine{font-family:'Space Mono',monospace;font-size:.74rem;color:var(--steel);letter-spacing:.04em;line-height:1.8;margin:10px 0 40px}
 .fine a{text-decoration:none}
 .fine a:hover{color:var(--racing)}
@@ -159,7 +216,9 @@ h1.eyebrow{margin:0;font-weight:400}
 </style>
 <link rel="canonical" href="https://groovesmaxxing.com/scan">
 <link rel="stylesheet" href="/gmx-motion.css">
+<link rel="stylesheet" href="/gmx-quick.css">
 <meta property="og:image" content="https://groovesmaxxing.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
 <div class="wrap">
@@ -194,15 +253,35 @@ h1.eyebrow{margin:0;font-weight:400}
 <p>can't name it? you choose whether we keep the clip to keep hunting. nothing is kept unless you say so.</p>
 <p>your scans stay on this phone, and every result has a button to tell us we got it wrong.</p>
 <p>hearing a set? under the result, tell us which one. we send the clip once more to find the spot in it, then delete it.</p>
+<p>at a set, turn on auto. the phone scans on its own every eight minutes, keeps the screen awake, and builds tonight's list as it goes. tap the rings or the auto button to stop.</p>
+<p>no signal? the clip stays on this phone and gets matched the moment you are back online.</p>
 <p class="links"><a href="/privacy">privacy</a> · <a href="/more">more</a></p>
 <button class="btn" type="button" id="howclose">close</button>
 </dialog>
 
+<div class="autobar" id="autobar"></div>
+<div class="pendingbar" id="pendingbar" hidden></div>
+
 <section class="card" id="card"></section>
+
+<section class="recent session" id="session" hidden>
+<h3>tonight</h3>
+<p class="smeta" id="sessionmeta"></p>
+<ul id="sessionlist"></ul>
+<div class="row stools" id="sessiontools"><button class="btn" type="button" data-s="copy">copy the list</button><button class="btn ghost" type="button" data-s="clear">clear tonight</button><span class="msg" id="sessionmsg"></span></div>
+</section>
 
 <section class="recent" id="recent">
 <h3>recent scans</h3>
 <ul id="recentlist"></ul>
+</section>
+
+<section class="recent you" id="you">
+<h3>you</h3>
+<div id="youbody"><p class="smeta">sign in to get told by email when an ID you scanned comes out, keep your scans across phones, and put your name on the IDs you help with.</p>
+<form class="form on" id="yform" autocomplete="off"><label for="y-email">email</label><input id="y-email" name="email" type="email" inputmode="email" maxlength="320" required>
+<div class="row"><button class="btn red" type="submit">send me a sign-in link</button><span class="msg" id="youmsg"></span></div></form></div>
+<ul id="followlist" hidden></ul>
 </section>
 
 </div>
@@ -219,6 +298,7 @@ h1.eyebrow{margin:0;font-weight:400}
 </nav>
 <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})})}</script>
 <script src="/gmx-clips.js"></script>
+<script src="/gmx-crate.js"></script>
 <script>
 (function(){
 'use strict';
@@ -257,7 +337,7 @@ window.gmxRefreshBlocked=function(){return busy};
 /* config */
 (function loadCfg(tries){
   fx('/gmx-config.json',{cache:'no-store'},GET_MS).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()})
-  .then(function(j){if(!j.api_base||!j.app_key)throw new Error('incomplete');cfg=j;cfgErr=null;try{localStorage.setItem('gmx_cfg',JSON.stringify(j))}catch(e){}})
+  .then(function(j){if(!j.api_base||!j.app_key)throw new Error('incomplete');cfg=j;cfgErr=null;try{localStorage.setItem('gmx_cfg',JSON.stringify(j))}catch(e){}onCfg()})
   .catch(function(e){
     cfgErr=e;
     if(!cfg){try{var c=JSON.parse(localStorage.getItem('gmx_cfg')||'null');if(c&&c.api_base&&c.app_key)cfg=c}catch(x){}}   /* the last good copy, so a flaky load still scans */
@@ -277,9 +357,16 @@ function deviceId(){
 }
 function headers(extra){
   var h={'X-GMX-App-Key':cfg.app_key,'X-GMX-Device':deviceId()};
+  var ss=sessionToken(); if(ss)h['X-GMX-Session']=ss;
   if(extra)for(var k in extra)h[k]=extra[k];
   return h;
 }
+/* the account (2026-10-11): sign in by email link, no password. the session token lives on this
+   phone only and rides every call as X-GMX-Session, so follows, history and credit join the
+   account. nothing works worse signed out: a phone follows and gets push on its own. */
+function sessionToken(){try{return localStorage.getItem('gmx_session')||''}catch(e){return ''}}
+function setSession(t){try{if(t)localStorage.setItem('gmx_session',t);else localStorage.removeItem('gmx_session')}catch(e){}}
+var meCache=null;
 function tick(ms){try{if(navigator.vibrate)navigator.vibrate(ms||30)}catch(e){}}
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 /* a link or cover is used only when it is https, http or a path on this site. anything with another
@@ -415,6 +502,7 @@ function startScan(){
     cleanup(); tick(30);
     if(err||!blob||blob.size<2000){
       var name=err&&err.name?err.name:'';
+      if(auto&&(name==='NotAllowedError'||name==='SecurityError'))autoStop('auto stopped: this phone wants a tap before each scan');
       var m= name==='NotAllowedError'||name==='SecurityError' ? (/iPhone|iPad|iPod/.test(navigator.userAgent) ? 'the mic is blocked. open iphone settings, find safari (under apps on newer iphones), set microphone to ask or allow, then try again.' : 'the mic is blocked. allow the microphone for groovesmaxxing.com in your browser settings and try again.')
            : name==='NotFoundError' ? 'no microphone found on this device.'
            : (err&&err.message==='loud') ? 'that was too loud for the mic and the clip clipped. move back a little or cover the mic less, then scan again.'
@@ -425,7 +513,7 @@ function startScan(){
     heldBlob=blob; identify(blob);
   }
 }
-function reset(){busy=false;cancelScan=null;stopCapture=null;go.disabled=false;go.classList.remove('busy');stage.classList.remove('listening','finding');tap.innerHTML='tap to <b>scan</b>';go.setAttribute('aria-label','tap to scan')}
+function reset(){busy=false;cancelScan=null;stopCapture=null;go.disabled=false;go.classList.remove('busy');stage.classList.remove('listening','finding');tap.innerHTML='tap to <b>scan</b>';go.setAttribute('aria-label','tap to scan');try{onReset()}catch(e){}}
 function dropBlob(){heldBlob=null;heldAt=null}
 
 /* identify and poll */
@@ -480,6 +568,7 @@ function earlyIdentify(blob,seq,at){
 }
 function identify(blob){
   if(finalDone)return;
+  if(!navigator.onLine&&!draining){queueClip(blob);return}
   cancelScan=null; go.disabled=true; stage.classList.add('finding'); recword.textContent='finding it'; count.textContent='';
   say2('checking the catalogs');
   if(!early)showCard('<div class="skel" aria-hidden="true"><i class="a"></i><i class="b"></i><i class="c"></i><i class="d"></i></div>');
@@ -519,6 +608,10 @@ function identify(blob){
     finalDone=true; say2('');
     if(early){current=early;showCard(resultCard(current));remember(current,false);reset();return}
     var m=e&&e.message||'';
+    if(m==='rate')rateHit=true;
+    var netErr=!/^(rate|slow|key|failed|server|http )/.test(m);
+    if(netErr&&draining){var d=draining;draining=null;drainFailed=true;showCard(errCard('still no signal for the clip from '+when(d.t)+'. it stays on this phone, we try again when you are back online.'));reset();return}
+    if(netErr&&heldBlob&&!draining){queueClip(heldBlob);return}
     var text= m==='rate' ? 'too many scans this hour on this phone. try again in a bit.'
             : m==='slow' ? 'took too long. the recognizer did not answer in 30 seconds. try again.'
             : m==='key' ? 'the app key was refused. pull down to refresh and try again.'
@@ -533,11 +626,50 @@ function identify(blob){
 /* cards */
 /* a cover that fails to load gives way to the rings (error events do not bubble, so this captures) */
 card.addEventListener('error',function(e){var t=e.target;if(t&&t.tagName==='IMG'&&t.hasAttribute('data-rings')&&t.parentNode)t.parentNode.innerHTML=ringsMark()},true);
-function showCard(html){card.innerHTML=html;card.classList.add('on');card.scrollIntoView({behavior:'smooth',block:'nearest'});if(current&&current.card&&current.card.candidate&&html.indexOf('earlynote')<0||html.indexOf('earlynote')>-1)try{enrich(current)}catch(e){}}
+function showCard(html){card.innerHTML=html;card.classList.add('on');card.scrollIntoView({behavior:'smooth',block:'nearest'});if(current&&current.card&&current.card.candidate&&html.indexOf('earlynote')<0||html.indexOf('earlynote')>-1)try{enrich(current)}catch(e){}try{decorate(html.indexOf('earlynote')>-1?early:current)}catch(e){}}
+/* the crate heart and the label link (crate loop build, 2026-10-11). the heart saves the match on this phone
+   like a tracklist row would, with whatever store links the card has at tap time, so a link that arrives
+   later from enrich() still makes it in. the label line links to our label page when there is one. */
+var namesIdx=null;
+function namesIndex(){return namesIdx||(namesIdx=fx('/names-index.json',{},GET_MS).then(function(r){return r.ok?r.json():null}).catch(function(){return null}))}
+function crateItem(cand){
+  var nm=nameOf(cand)||{artist:'',title:''},links={};
+  [].slice.call(card.querySelectorAll('#storerow a.btn:not(.find)')).forEach(function(a){var h=a.href||'';if(/open\.spotify\.com/.test(h))links.spotify=h;else if(/music\.apple\.com/.test(h))links.apple=h;else if(/beatport\.com/.test(h)&&!/search/.test(h))links.beatport=h;else if(/soundcloud\.com/.test(h)&&!/search/.test(h))links.soundcloud=h});
+  var who=nm.artist||((card.querySelector('.sub')||{}).textContent||'').trim();
+  var shown=nm.lib?((card.querySelector('h2')||{}).textContent||'').trim():'';
+  var title=(who?who+' - ':'')+(shown||nm.title||'unnamed library entry');
+  return {kind:'track',id:'scan:'+(foldT(who+' '+nm.title)||cand.library_id||'id'),title:title,sub:[cand.label||'',cand.status||'','found with the scan'].filter(Boolean).join(' · '),url:'/scan',links:links,artist:who,label:cand.label||''};
+}
+function decorate(cur){
+  var c=cur&&cur.card&&cur.card.candidate; if(!c||cur.card.kind!=='match')return;
+  var store=card.querySelector('#storerow');
+  if(store&&window.gmxCrate&&!store.querySelector('.gmx-heart')){
+    var nm=nameOf(c),label=nm?((nm.artist?nm.artist+' - ':'')+nm.title):'this match';
+    store.insertBefore(gmxCrate.heart(function(){return crateItem(c)},label),store.querySelector('[data-act="share"]')||null);
+  }
+  var lab=card.querySelector('p.lab');
+  if(lab&&c.label&&!lab.querySelector('a'))namesIndex().then(function(n){
+    var key=String(c.label).normalize('NFKD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/&/g,'and').replace(/\s+/g,' ').trim(),sl=n&&n.l&&n.l[key];
+    if(!sl||lab.querySelector('a'))return;
+    lab.innerHTML='<a class="sublink" href="/labels/'+esc(sl)+'">'+esc(c.label)+'</a>'+(c.release_date?' · '+esc(c.release_date):'');
+  });
+}
 function errCard(text){return '<p class="kw"><b>hm.</b></p><h2>that did not work.</h2><p class="note">'+esc(text)+'</p><div class="row"><button class="btn red" data-act="again">scan again</button></div>'}
 
+/* a refsync library entry (a reference clip the laptop contributed from an id upload) carries its file name and
+   notes as the title and "refsync <poster>" as the artist. the card shows the caption as the title, nobody as the
+   artist, and where it came from as a note, instead of printing the raw line. */
+function libName(a,t){
+  a=String(a||'');t=String(t||'');
+  if(!(/^refsync\b/i.test(a)||/\bcaption:\s*/i.test(t)||/\bposted by\b/i.test(t)))return null;
+  var cap=(t.match(/caption:\s*(.+?)\s*$/i)||[])[1]||'';
+  var poster=(t.match(/posted by\s+(.+?)\.(?:\s|$)/i)||[])[1]||a.replace(/^refsync\s*/i,'');
+  var d=t.match(/\b(20\d{2})(\d{2})(\d{2})\b/),when=d?d[1]+'-'+d[2]+'-'+d[3]:'';
+  return {artist:'',title:cap||'ID',lib:true,note:'an id from '+(poster?'a '+poster.trim()+' upload':'an upload')+(when?' ('+when+')':'')+', no artist named yet'};
+}
 function nameOf(c){
   var a=c.artist_claim, t=c.title_claim;
+  var lib=libName(a,t); if(lib)return lib;
   if(a&&t)return {artist:a,title:t};
   if(t)return {artist:'',title:t};
   if(a)return {artist:a,title:''};
@@ -547,9 +679,17 @@ function ringsMark(){
   return '<svg viewBox="0 0 100 100" aria-hidden="true"><circle class="r" cx="50" cy="50" r="43.33"/><circle class="r" cx="50" cy="50" r="31.67"/><circle class="r" cx="50" cy="50" r="20"/><circle class="dot" cx="50" cy="50" r="7.51"/></svg>';
 }
 function artBlock(c){
-  // the cover comes only from a store record (a released track); an unreleased ID draws the rings
+  // the cover comes only from a store record (a released track). an unreleased ID has no cover to show,
+  // so it carries the groovesmaxxing mark, the rings and the wave, with the word under it (G-MO, 2026-10-11).
+  // a released track with no cover yet draws the plain rings until enrich() finds one.
   var a=safeUrl(c.artwork_url);
-  return '<div class="art">'+(a?'<img src="'+esc(a)+'" alt="" loading="lazy" data-rings="1">':ringsMark())+'</div>';
+  if(a)return '<div class="art"><img src="'+esc(a)+'" alt="" loading="lazy" data-rings="1"></div>';
+  if(c.released===false||(c.status&&c.status!=='out now'))return '<div class="art unrel" data-done="1">'+logoMark()+'<span class="ulbl">unreleased</span></div>';
+  return '<div class="art">'+ringsMark()+'</div>';
+}
+function logoMark(){
+  return '<svg viewBox="0 0 100 100" aria-hidden="true"><circle class="r" cx="50" cy="50" r="43.33"/><circle class="r" cx="50" cy="50" r="31.67"/><circle class="r" cx="50" cy="50" r="20"/><circle class="dot" cx="50" cy="50" r="7.51"/>'+
+    '<polyline class="wave" points="2.5,50 12.5,50 20,36.54 28.33,59.54 36.67,43.54 45,54.38 50,48.5 55,55.21 63.33,41.71 71.67,61.88 80,34.75 87.5,50 97.5,50"/></svg>';
 }
 function sureLine(c){
   if(c.confidence_line)return esc(c.confidence_line);
@@ -579,6 +719,22 @@ function heardRows(c){
 /* "you're listening to": the set and the spot, straight from the scan, no typing. it only
    comes back for a set that already has its page here or sits on the dj's, label's, venue's
    or festival's own channel. */
+/* the recognizer placed the clip in a set we have a tracklist for, and the row playing at that second is named:
+   that row leads the card (2026-10-11, the woop woop scan), with the catalog's closest guess kept below it.
+   an "ID - ID" row or a set with no page gives nothing here and the card reads as before. */
+function placedHead(cur){
+  var s=cur.in_set; if(!s||!s.row)return '';
+  var parts=String(s.row).split(' - '),who=parts.length>1?parts[0].trim():'',ttl=(parts.length>1?parts.slice(1).join(' - '):s.row).trim();
+  var unrel=/\(unreleased\)/i.test(ttl);
+  var out='<p class="kw"><b>on the tracklist</b></p>';
+  if(unrel)out+='<div class="art unrel" data-done="1">'+logoMark()+'<span class="ulbl">unreleased</span></div>';
+  out+='<h2'+(ttl.length>42?' class="long"':'')+'>'+esc(ttl)+'</h2>';
+  if(who&&!/^id$/i.test(who))out+='<p class="sub">'+esc(who)+'</p>';
+  out+='<p class="ttl">the recognizer placed this clip in '+esc(s.set_title)+(s.row_at?' and our tracklist calls '+esc(s.row_at)+' this':'')+'. not a fingerprint match on its own.</p>';
+  out+='<div class="row"><button class="btn red" data-act="listen">listen again</button></div>';
+  if(who&&!/^id$/i.test(who))checkArtistPage(who);
+  return out;
+}
 function inSetRows(cur){
   var s=cur.in_set; if(!s||!s.set_title)return '';
   s=Object.assign({},s,{page_url:safeUrl(s.page_url),deep_link:safeUrl(s.deep_link)});
@@ -588,14 +744,49 @@ function inSetRows(cur){
   var row=s.row?'<li><span>on the tracklist: <b>'+esc(s.row)+'</b></span><span class="at">from '+esc(s.row_at||s.at)+'</span></li>':'';
   return '<h3>you\'re listening to</h3><ul class="heard"><li>'+name+'<span class="at">'+at+'</span></li>'+row+'</ul>';
 }
+/* what happens next (ui build 4, 2026-10-11, the flighty move): four steps under every result, the one that
+   is live lit. heard, named, placed, confirmed. a result the recognizer is sure of is named and waits on a
+   person; a guess or a blank waits on a name; a set placement fills the third step; a human confirmation
+   fills the last. after the phone answers, the last step says what closes it. */
+function pathStep(state,label,note){return '<li class="st-'+state+'"><span class="dot" aria-hidden="true"></span><span class="lb">'+label+'</span><span class="nt">'+note+'</span></li>'}
+function pathBlock(cur){
+  var c=cur.card, cand=c.candidate, t=cur.timing, s=cur.in_set, nm=cand?nameOf(cand):null;
+  var secs=function(ms){return (Math.round(ms/100)/10)+' s'};
+  var heard=t&&t.first?'found in '+secs(t.first)+(t.rounds&&t.rounds.length>1?' · '+t.rounds.length+' rounds':''):(t?'listening':'just now');
+  var named,namedState,conf,confState;
+  if(c.kind==='match'&&cand){
+    var lib=!!(nm&&nm.lib),head=(!lib&&cand.headline)||(nm?(nm.title||nm.artist):'ID');
+    if(head==='ID'){named='in our library, no name yet';namedState='now'}
+    else{named=((lib||cand.status!=='out now')?'from our library of sets':'from the catalog')+(cand.status==='unreleased'?' · unreleased':cand.status==='out now'?' · out now':'');namedState='done'}
+    if(cand.accepted_name){conf='a person confirmed this name';confState='done'}
+    else{conf='waiting on you: that’s right, or it’s actually… two phones or the artist close it';confState=head==='ID'?'next':'now'}
+  }else if(c.kind==='guess'&&cand){
+    named='a guess at '+pct(cand.shown_score)+', under our bar';namedState='now';
+    conf='nothing to confirm until it has a name';confState='next';
+  }else{
+    named='nothing yet';namedState='now';
+    conf='nothing to confirm until it has a name';confState='next';
+  }
+  var placed,placedState;
+  if(s&&s.set_title){placed='in '+esc(s.set_title)+(s.at?' around '+esc(s.at):'')+(s.row?' · the tracklist calls it '+esc(s.row):'');placedState='done'}
+  else{placed='not placed in a set yet. “where are you hearing this?” helps.';placedState='next'}
+  return '<h3>what happens next</h3><ol class="path" id="path">'+pathStep('done','heard',esc(heard))+pathStep(namedState,'named',esc(named))+pathStep(placedState,'placed',placed)+pathStep(confState,'confirmed',conf)+'</ol>';
+}
+function markSent(verdict){
+  var p=$('path');if(!p)return;var li=p.lastElementChild;if(!li)return;
+  li.className='st-done';
+  li.querySelector('.nt').textContent=verdict==='confirm'?'your word is in. a second phone, a tracklist row or the artist closes it.':'your fix is in the queue. a second phone or a reviewer closes it, and the next scan shows it.';
+}
 function resultCard(cur){
   var c=cur.card, cand=c.candidate, out='';
   if(c.kind==='match'&&cand){
     var nm=nameOf(cand);
     out+=artBlock(cand);
-    var head=cand.headline||(nm?(nm.title||nm.artist):'ID'), sub=cand.headline?cand.subline:(nm&&nm.title?nm.artist:'');
-    out+='<h2>'+esc(head)+'</h2>';
+    var lib=!!(nm&&nm.lib);
+    var head=(!lib&&cand.headline)||(nm?(nm.title||nm.artist):'ID'), sub=(!lib&&cand.headline)?cand.subline:(nm&&nm.title?nm.artist:'');
+    out+='<h2'+(head.length>42?' class="long"':'')+'>'+esc(head)+'</h2>';
     if(sub)out+='<p class="sub">'+esc(sub)+'</p>';
+    if(lib&&head!=='ID')out+='<p class="ttl">'+esc(nm.note)+'</p>';
     if(head==='ID'){
       var h0=(cand.heard_in||[])[0];
       out+='<p class="ttl">'+(h0?'heard in '+esc(h0.set_title)+' at '+esc(h0.at):'in our library, still unnamed')+'</p>';
@@ -609,25 +800,29 @@ function resultCard(cur){
     out+=inSetRows(cur);
     out+=heardRows(cand);
     out+='<div id="hear"></div>';
+    out+=pathBlock(cur);
     out+='<h3>right?</h3><div class="row"><button class="btn red" data-act="confirm">that\'s right</button><button class="btn" data-act="correct">it\'s actually...</button></div>';
     out+=correctionForm();
+    out+=followRow(cand);
     if(sub)checkArtistPage(sub);else if(nm&&nm.artist)checkArtistPage(nm.artist);
   }else if(c.kind==='guess'&&cand){
     var g=nameOf(cand);
-    out+='<p class="kw"><b>no match</b></p><h2>nothing we\'re sure of.</h2>';
-    out+='<div class="row"><button class="btn red" data-act="listen">listen again</button></div><p class="note">best on a drop or a vocal.</p>';
+    out+=placedHead(cur)||'<p class="kw"><b>no match</b></p><h2>nothing we\'re sure of.</h2><div class="row"><button class="btn red" data-act="listen">listen again</button></div><p class="note">best on a drop or a vocal.</p>';
     out+=inSetRows(cur);
     out+='<div class="guess"><p class="kw">closest guess</p><p class="nm">'+(g?esc(g.artist)+(g.artist&&g.title?' - ':'')+esc(g.title):'an unnamed library entry')+'</p><p class="pc">'+sureLine(cand)+'</p><div id="hear"></div>';
     out+='<div class="row"><button class="btn" data-act="confirm">that\'s right</button><button class="btn" data-act="correct">it\'s actually...</button></div></div>';
     out+=correctionForm();
+    out+=followRow(cand);
+    out+=pathBlock(cur);
     out+='<h3>help us find it?</h3><div class="row"><button class="btn" data-act="help">help us find it?</button><button class="btn ghost" data-act="again">no thanks, scan again</button></div>';
     out+=helpForm();
   }else{
-    out+='<p class="kw"><b>no match</b></p><h2>nothing yet.</h2>';
-    out+='<div class="row"><button class="btn red" data-act="listen">listen again</button></div><p class="note">best on a drop or a vocal.</p>';
+    out+=placedHead(cur)||'<p class="kw"><b>no match</b></p><h2>nothing yet.</h2><div class="row"><button class="btn red" data-act="listen">listen again</button></div><p class="note">best on a drop or a vocal.</p>';
     out+=inSetRows(cur);
+    out+=pathBlock(cur);
     out+='<h3>help us find it?</h3><div class="row"><button class="btn" data-act="help">help us find it?</button><button class="btn ghost" data-act="again">no thanks, scan again</button></div>';
     out+=helpForm();
+    out+=followRow(null);
   }
   out+=timingLine(cur);
   out+=whereBlock();
@@ -655,6 +850,9 @@ function enrich(cur){
   var artist=nm.artist||'', title=nm.title||'', q=foldT(artist+' '+title), key=q||foldT(title);
   var cardEl=card, art=cardEl.querySelector('.art'), store=cardEl.querySelector('#storerow'), hearEl=cardEl.querySelector('#hear');
   var l=c.store_links||{};
+  /* an unreleased card carries no link to the song, ever (G-MO, 2026-09-27): no store button, no store cover, no store
+     search. the same title on a released original must not leak its links onto an edit that is not out. */
+  var unreleased=c.released===false||(c.status&&c.status!=='out now');
   function setArt(url){url=safeUrl(url);if(!art||!url||art.getAttribute('data-done'))return;art.setAttribute('data-done','1');var img=document.createElement('img');img.alt='';img.loading='lazy';img.onload=function(){img.classList.add('in');art.classList.add('found')};img.onerror=function(){img.remove()};img.src=url;art.innerHTML='';art.appendChild(img)}
   function addBtn(href,label,cls){href=safeUrl(href);if(!store||!href||store.querySelector('a[href="'+href+'"]'))return;var a=document.createElement('a');a.className='btn'+(cls?' '+cls:'');a.href=href;a.target='_blank';a.rel='noopener';a.textContent=label;var share=store.querySelector('[data-act="share"]');store.insertBefore(a,share||null);titleLink()}
   function titleLink(){
@@ -670,12 +868,26 @@ function enrich(cur){
     if(!j)return;var hits=j.rows.filter(function(r){return sameTrack(q,r)||(title&&foldT(title).length>8&&r.q.indexOf(foldT(title))>-1&&(!artist||r.q.indexOf(foldT(artist).split(' ')[0])>-1))}).slice(0,6);
     if(!hits.length)return;
     var sp=hits.map(function(r){return r.links&&r.links.sp}).filter(Boolean)[0];
-    if(sp&&!l.spotify){addBtn(sp,'spotify');artRemember(key,Object.assign(artCache()[key]||{},{sp:sp}))}
+    if(sp&&!l.spotify&&!unreleased){addBtn(sp,'spotify');artRemember(key,Object.assign(artCache()[key]||{},{sp:sp}))}
+    /* no artist on the card, but our tracklists name the record: take their name whole, artist and the full title
+       with its edit credit (G-MO, 2026-10-11: "Whisper To Me (Assaf Michael & Reef Kopel Edit)", not just the
+       caption), say so, and link the profile when there is one. the most played name across the sets wins. */
+    if(!artist&&!cardEl.querySelector('.sub')){
+      var count={};hits.forEach(function(r){var n=String(r.n||'').trim();if(n&&n.indexOf(' - ')>0&&!/^id\s*-/i.test(n))count[n]=(count[n]||0)+1});
+      var full=Object.keys(count).sort(function(a,b){return count[b]-count[a]||b.length-a.length})[0];
+      if(full){
+        var who=full.split(' - ')[0].trim(),ttlName=full.split(' - ').slice(1).join(' - ').trim();
+        var h2=cardEl.querySelector('h2'),sub=document.createElement('p');sub.className='sub';sub.textContent=who;
+        if(h2){if(nm.lib&&ttlName&&foldT(ttlName).indexOf(foldT(title))>-1){h2.textContent=ttlName;h2.classList.toggle('long',ttlName.length>42)}h2.insertAdjacentElement('afterend',sub)}
+        var t=cardEl.querySelector('.ttl');if(t&&/no artist named yet/.test(t.textContent))t.textContent=t.textContent.replace('no artist named yet','named in our tracklists');
+        checkArtistPage(who);
+      }
+    }
     if(hearEl&&!hearEl.children.length){
       hearEl.innerHTML='<h3>hear it in</h3><ul class="heard hear">'+hits.map(function(r){var rl=safeUrl(r.l),ru=safeUrl(r.u);var play=rl?'<a href="'+esc(rl)+'" target="_blank" rel="noopener">play from '+esc(r.at)+' ↗</a>':esc(r.at);return '<li><a href="'+esc(ru)+'">'+esc(r.set)+'<small>'+esc(r.n)+(r.lab?' · '+esc(r.lab):'')+'</small></a><span class="at">'+play+'</span></li>'}).join('')+'</ul>';
     }
   });
-  if(c.artwork_url&&l.spotify&&l.apple)return;
+  if(unreleased||(c.artwork_url&&l.spotify&&l.apple))return;
   /* 2. spotify's embed service gives the cover for a spotify link, no key needed */
   var viaSpotify=l.spotify?fx('https://open.spotify.com/oembed?url='+encodeURIComponent(l.spotify),{},GET_MS).then(function(r){return r.ok?r.json():null}).then(function(j){if(j&&j.thumbnail_url&&!c.artwork_url){setArt(j.thumbnail_url);artRemember(key,Object.assign(artCache()[key]||{},{img:j.thumbnail_url}))}}).catch(function(){}):Promise.resolve();
   /* 3. apple's public search: the cover at 600px and the apple music link, matched on the folded name */
@@ -819,6 +1031,7 @@ card.addEventListener('click',function(ev){
 if(act==='listen'){card.classList.remove('on');card.innerHTML='';dropBlob();current=null;window.scrollTo({top:0,behavior:'smooth'});startScan();return}
   if(act==='share'){share();return}
   if(act==='confirm'){sendCorrection({verdict:'confirm'});return}
+  if(act==='follow'){followNow(b);return}
   if(act==='correct'){var f=$('cform');if(f){f.classList.add('on');$('c-artist').focus()}return}
   if(act==='help'){var h=$('hform');if(h){h.classList.add('on');$('h-venue').focus()}return}
   if(act==='closeform'){var fm=b.closest('form');if(fm)fm.classList.remove('on');return}
@@ -847,6 +1060,7 @@ function sendCorrection(body){
     if(r.status===429){say('too many this hour, try later.');return}
     if(!r.ok)throw new Error(r.status);
     say(body.verdict==='confirm'?'logged. appreciate you.':'logged, we will check it. appreciate you.',true);
+    markSent(body.verdict);
     var f=$('cform');if(f)f.classList.remove('on');
   }).catch(function(){say('did not send. check your signal and try again.')});
 }
@@ -879,10 +1093,11 @@ function share(){
 function loadHistory(){try{return JSON.parse(localStorage.getItem('gmx_history')||'[]')}catch(e){return []}}
 function remember(cur,keep){
   var c=cur.card, cand=c.candidate, nm=cand?nameOf(cand):null;
-  var row={t:Date.now(),kind:c.kind,artist:nm?nm.artist:'',title:nm?nm.title:'',score:cand?cand.shown_score:0,status:cand?cand.status:'',id:cur.job_id,rid:cur.recognition_id,clip:!!keep,secs:cur.timing&&cur.timing.first?Math.round(cur.timing.first/100)/10:null};
+  var row={t:draining?draining.t:Date.now(),kind:c.kind,artist:nm?nm.artist:'',title:nm?nm.title:'',score:cand?cand.shown_score:0,status:cand?cand.status:'',id:cur.job_id,rid:cur.recognition_id,clip:!!keep,secs:cur.timing&&cur.timing.first?Math.round(cur.timing.first/100)/10:null};
   var h=loadHistory(); h.unshift(row); h=h.slice(0,HISTORY_MAX);
   try{localStorage.setItem('gmx_history',JSON.stringify(h))}catch(e){}
   renderHistory();
+  onScanEnd(cur,row);
 }
 function when(t){
   var d=new Date(t), n=new Date(), s=(n-d)/1000;
@@ -897,8 +1112,10 @@ function renderHistory(){
     if(r.kind==='match')who='<span data-artist="'+esc(r.artist||'')+'">'+esc(r.artist||'ID')+'</span><small>'+esc(r.title||'unnamed library entry')+' · '+pct(r.score)+(r.secs?' · '+r.secs+' s':'')+'</small>';
     else if(r.kind==='guess')who='no match<small>closest guess: '+esc((r.artist?r.artist+' - ':'')+r.title)+(r.score==null?' · possible match':' · '+pct(r.score))+'</small>';
     else who='no match<small>nothing yet</small>';
-    var acts='';
-    if(r.clip&&r.id)acts='<span class="acts"><button class="btn" data-clip="again" data-id="'+esc(r.id)+'">scan again</button>'+(r.kind!=='match'?'<button class="btn" data-clip="help" data-id="'+esc(r.id)+'">help us find it</button>':'')+'<span class="msg"></span></span>';
+    var acts='', btns='';
+    if(r.clip&&r.id)btns='<button class="btn" data-clip="again" data-id="'+esc(r.id)+'">scan again</button>'+(r.kind!=='match'?'<button class="btn" data-clip="help" data-id="'+esc(r.id)+'">help us find it</button>':'');
+    if(r.rid&&r.status!=='out now'&&(r.kind==='match'||r.kind==='guess'))btns+='<button class="btn ghost" data-follow="'+esc(r.rid)+'">tell me when it\'s out</button>';
+    if(btns)acts='<span class="acts">'+btns+'<span class="msg"></span></span>';
     return '<li><span class="who">'+who+'</span><span class="when">'+when(r.t)+'</span>'+acts+'</li>';
   }).join('');
   linkHistoryArtists();
@@ -921,6 +1138,7 @@ recentlist.addEventListener('click',function(ev){
     if(!rec||!rec.blob){note('that clip is gone.');return}
     if(act==='again'){
       busy=true; card.classList.remove('on'); current=null; heldBlob=rec.blob; heldAt=new Date(rec.t).toISOString();
+      scanSeq++; early=null; finalDone=false; rateHit=false; timing={t0:Date.now(),rounds:[],first:null};
       go.classList.add('busy'); window.scrollTo({top:0,behavior:'smooth'}); identify(rec.blob); return;
     }
     if(act==='help'){
@@ -937,13 +1155,385 @@ recentlist.addEventListener('click',function(ev){
     }
   }).catch(function(){note('that clip is gone.')});
 });
-go.addEventListener('click',function(){if(busy){if(cancelScan)cancelScan();return}startScan()});
+go.addEventListener('click',function(){if(busy){if(auto)autoStop('stopped');if(cancelScan)cancelScan();return}startScan()});
+
+/* ---- auto scan and the offline queue (set mode build, 2026-10-11) ----
+   auto: tap once at the start of a set. the phone scans on its own every eight minutes (twenty when the
+   hourly cap bites), keeps the screen awake, and every result lands in tonight's list with its offset from
+   the start, a personal tracklist of the night. a tap on the rings or the auto button stops it. after a lock
+   screen or a reload auto waits for a tap again, since the mic needs a gesture on the phones that matter.
+   offline: a clip recorded with no signal, or one whose upload never reached the recognizer, stays on this
+   phone as a pending clip and is matched the moment the phone is back online, oldest first, one at a time.
+   nothing here leaves the phone until it is online. */
+var AUTO_KEY='gmx_auto', SESSION_KEY='gmx_session', AUTO_GAP_MS=8*60000, AUTO_GAP_CAPPED_MS=20*60000, SESSION_MAX_AGE=12*3600000;
+var auto=false, autoTimer=null, autoNext=0, autoTick=null, autoNote='', wake=null, draining=null, drainFailed=false, drainDone=false;
+var autobar=$('autobar'), pendingbar=$('pendingbar'), sessionEl=$('session'), sessionlist=$('sessionlist'), sessionmeta=$('sessionmeta'), sessionmsg=$('sessionmsg');
+function loadSession(){try{var s=JSON.parse(localStorage.getItem(SESSION_KEY)||'null');if(s&&s.rows)return s}catch(e){}return {start:0,rows:[]}}
+function saveSession(s){try{localStorage.setItem(SESSION_KEY,JSON.stringify(s))}catch(e){}}
+function fmtOffset(ms){var t=Math.max(0,Math.round(ms/1000)),h=Math.floor(t/3600),m=Math.floor(t%3600/60),x=t%60;return (h?h+':'+('0'+m).slice(-2):String(m))+':'+('0'+x).slice(-2)}
+function fmtClock(t){try{return new Date(t).toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'}).toLowerCase()}catch(e){return ''}}
+/* the screen stays on while auto runs, where the browser allows it */
+function wakeOn(){if(!('wakeLock' in navigator)||wake)return;navigator.wakeLock.request('screen').then(function(w){wake=w;w.addEventListener('release',function(){wake=null})}).catch(function(){})}
+function wakeOff(){if(wake){try{wake.release()}catch(e){}wake=null}}
+document.addEventListener('visibilitychange',function(){if(!document.hidden&&auto)wakeOn()});
+function autoStart(){
+  var s=loadSession();if(!s.start||Date.now()-s.start>SESSION_MAX_AGE){s={start:Date.now(),rows:[]};saveSession(s)}
+  auto=true;autoNote='';try{localStorage.setItem(AUTO_KEY,'1')}catch(e){}
+  wakeOn();renderAuto();renderSession();tick(40);
+  if(!busy)startScan();
+}
+function autoStop(note){
+  auto=false;autoNote=note||'';clearTimeout(autoTimer);autoTimer=null;autoNext=0;clearInterval(autoTick);autoTick=null;wakeOff();
+  try{localStorage.setItem(AUTO_KEY,'0')}catch(e){}
+  renderAuto();
+}
+function autoSchedule(ms){
+  clearTimeout(autoTimer);autoNext=Date.now()+ms;
+  autoTimer=setTimeout(function(){autoTimer=null;if(!auto)return;if(busy||document.hidden){autoSchedule(30000);return}startScan()},ms);
+  renderAuto();
+}
+function onReset(){
+  if(draining){var ok=drainDone;drainDone=false;draining=null;renderPending();if(ok)setTimeout(drain,600)}
+  else if(drainFailed){drainFailed=false;renderPending()}
+  if(auto&&!autoTimer&&!busy)autoSchedule(rateHit?AUTO_GAP_CAPPED_MS:AUTO_GAP_MS);
+}
+function renderAuto(){
+  if(!autobar)return;
+  var resumable=false;try{resumable=!auto&&localStorage.getItem(AUTO_KEY)==='1'&&loadSession().start&&Date.now()-loadSession().start<SESSION_MAX_AGE}catch(e){}
+  var h='<button class="btn'+(auto?' on':'')+'" type="button" id="autobtn" aria-pressed="'+(auto?'true':'false')+'">'+(auto?'auto on · tap to stop':(resumable?'resume auto':'auto · for a set'))+'</button>';
+  if(auto)h+='<span class="next" id="autonext"></span><button class="btn ghost" type="button" id="autonow">scan now</button>';
+  h+=youChip();
+  if(autoNote)h+='<span class="note">'+esc(autoNote)+'</span>';
+  autobar.innerHTML=h;
+  clearInterval(autoTick);autoTick=null;
+  if(auto){var paint=function(){var el=$('autonext');if(!el)return;if(busy)el.innerHTML='scanning';else if(autoNext)el.innerHTML='next in <b>'+fmtOffset(autoNext-Date.now())+'</b>';else el.innerHTML=''};paint();autoTick=setInterval(paint,1000)}
+}
+autobar.addEventListener('click',function(e){
+  var b=e.target.closest('button');if(!b)return;
+  if(b.id==='autobtn'){if(auto)autoStop('stopped');else autoStart();return}
+  if(b.id==='autonow'){if(!busy){clearTimeout(autoTimer);autoTimer=null;startScan()}}
+});
+/* tonight: every result while a session is open, with its offset from the start. a repeat of the last row counts up instead of repeating. */
+/* ---- tell me when it's out, and the account (2026-10-11) ---- */
+function followRow(cand){
+  if(cand&&cand.status==='out now')return '';
+  var what=cand&&cand.library_entry_id&&!(cand.artist_claim&&cand.title_claim)?'tell me when it gets a name':'tell me when it\'s out';
+  return '<div class="row" id="followrow"><button class="btn" data-act="follow">'+what+'</button></div>';
+}
+function urlB64ToU8(b){var pad='='.repeat((4-b.length%4)%4),raw=atob((b+pad).replace(/-/g,'+').replace(/_/g,'/')),out=new Uint8Array(raw.length);for(var i=0;i<raw.length;i++)out[i]=raw.charCodeAt(i);return out}
+/* a push subscription for this phone: the browser's permission prompt, the recognizer's public key,
+   the subscription posted back. resolves true when the phone can be pushed, false when it cannot
+   (no permission, no service worker, iphone without the app on the home screen). never throws. */
+function ensurePush(){
+  if(!('serviceWorker' in navigator)||!('PushManager' in window)||!('Notification' in window))return Promise.resolve(false);
+  return fx(cfg.api_base+'/push/key',{headers:headers()},GET_MS).then(function(r){return r.ok?r.json():null}).then(function(k){
+    if(!k||!k.enabled||!k.public_key)return false;
+    return Notification.requestPermission().then(function(perm){
+      if(perm!=='granted')return false;
+      return navigator.serviceWorker.ready.then(function(reg){
+        return reg.pushManager.getSubscription().then(function(sub){return sub||reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:urlB64ToU8(k.public_key)})});
+      }).then(function(sub){
+        return fx(cfg.api_base+'/push/subscribe',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify({subscription:sub.toJSON()})},POST_MS).then(function(r){return r.ok});
+      });
+    });
+  }).catch(function(){return false});
+}
+function followNow(btn,rid,note){
+  note=note||say; rid=rid||(current&&current.recognition_id);
+  if(!rid){note('nothing to follow yet.');return}
+  btn.disabled=true; note('one moment');
+  ensurePush().then(function(pushed){
+    return fx(cfg.api_base+'/follow',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify({recognition_id:rid})},POST_MS).then(function(r){
+      if(r.status===409)return r.json().then(function(j){var d=String(j.detail||'');note(d.indexOf('already out')>-1?'that one is already out.':'keep the clip first (help us find it), then tap again.');btn.disabled=false});
+      if(r.status===404){note('that scan is gone from the recognizer.');return}
+      if(r.status===429){note('too many this hour, try later.');btn.disabled=false;return}
+      if(!r.ok)throw new Error(r.status);
+      return r.json().then(function(f){
+        var how=pushed?'this phone gets a push':(sessionToken()?'you get an email':'turn on notifications, or sign in below for email');
+        note((f.until==='named'?'we will tell you when it gets a name, and when it comes out. ':'we will tell you when it comes out. ')+how+'.',true);
+        btn.textContent='following'; if(meCache){meCache.follows++;meCache.followed=(meCache.followed||0)+1;renderSetup()} loadFollows(); pushState();
+      });
+    });
+  }).catch(function(){note('did not send. check your signal and try again.');btn.disabled=false});
+}
+recentlist.addEventListener('click',function(ev){
+  var b=ev.target.closest('[data-follow]'); if(!b)return;
+  var m=b.parentNode.querySelector('.msg');
+  followNow(b,b.getAttribute('data-follow'),function(t,ok){if(m){m.textContent=t;m.className='msg'+(ok?' ok':'')}});
+});
+function onCfg(){
+  var q=new URLSearchParams(location.search), tok=q.get('signin');
+  if(tok){
+    history.replaceState(null,'',location.pathname);
+    fx(cfg.api_base+'/auth/finish',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify({token:tok})},POST_MS).then(function(r){
+      if(r.status===410){youNote('that link is used up or too old. ask for a new one.');return}
+      if(!r.ok)throw new Error(r.status);
+      return r.json().then(function(j){setSession(j.session);meCache=null;renderYou();justIn=true;ensurePush()});
+    }).catch(function(){youNote('could not finish signing in. check your signal and try the link again.')});
+  }
+  renderYou(); loadFollows(); resumeWait();
+}
+function youNote(t,ok){var m=$('youmsg');if(m){m.textContent=t;m.className='msg'+(ok?' ok':'')}}
+/* the code from the mail, typed here: no browser hand-off, which the gmail app on android cannot do */
+function showCodeForm(email){
+  var f=$('yform'); if(!f||$('cform2'))return;
+  var c=document.createElement('form'); c.className='form on'; c.id='cform2'; c.setAttribute('autocomplete','one-time-code');
+  c.innerHTML='<label for="y-code">the six digits from the mail</label><input id="y-code" name="code" inputmode="numeric" pattern="[0-9 ]*" maxlength="7" autocomplete="one-time-code" placeholder="000 000">'+
+    '<div class="row"><button class="btn red" type="submit">sign in with the code</button><span class="msg" id="codemsg"></span></div>';
+  c.dataset.email=email; f.parentNode.insertBefore(c,f.nextSibling); $('y-code').focus();
+}
+function sendCode(f){
+  var m=$('codemsg'), code=($('y-code').value||'').replace(/\D/g,'');
+  if(code.length!==6){m.textContent='six digits.';return}
+  m.textContent='checking';
+  fx(cfg.api_base+'/auth/code',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify({email:f.dataset.email,code:code})},POST_MS).then(function(r){
+    if(r.status===410){m.textContent='that code is wrong, used or too old. ask for a new one.';return}
+    if(!r.ok)throw new Error(r.status);
+    return r.json().then(function(j){if(pollTimer){clearInterval(pollTimer);pollTimer=null}try{localStorage.removeItem('gmx_pending')}catch(e){}setSession(j.session);meCache=null;renderYou();justIn=true;loadFollows();ensurePush()});
+  }).catch(function(){m.textContent='did not send. check your signal.'});
+}
+/* the page that asked for the link keeps a ticket and asks every few seconds whether the link was
+   tapped, in any browser. the first ready answer carries this browser's own session, so the person
+   is signed in where they started. the ticket is remembered across a reload for the link's window. */
+var pollTimer=null;
+function waitForLink(ticket,minutes){
+  try{localStorage.setItem('gmx_pending',JSON.stringify({t:ticket,until:Date.now()+minutes*60000}))}catch(e){}
+  if(pollTimer)clearInterval(pollTimer);
+  var ask=function(){
+    if(sessionToken()){clearInterval(pollTimer);pollTimer=null;return}
+    fx(cfg.api_base+'/auth/poll',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify({pending:ticket})},POST_MS).then(function(r){return r.ok?r.json():null}).then(function(j){
+      if(!j)return;
+      if(j.state==='ready'){clearInterval(pollTimer);pollTimer=null;try{localStorage.removeItem('gmx_pending')}catch(e){}setSession(j.session);meCache=null;renderYou();justIn=true;loadFollows();ensurePush()}
+      else if(j.state==='gone'){clearInterval(pollTimer);pollTimer=null;try{localStorage.removeItem('gmx_pending')}catch(e){}}
+    }).catch(function(){});
+  };
+  pollTimer=setInterval(ask,4000); ask();
+}
+function resumeWait(){
+  if(sessionToken())return;
+  var p=null;try{p=JSON.parse(localStorage.getItem('gmx_pending')||'null')}catch(e){}
+  if(p&&p.t&&p.until>Date.now())waitForLink(p.t,Math.ceil((p.until-Date.now())/60000));
+  else try{localStorage.removeItem('gmx_pending')}catch(e){}
+}
+var justIn=false, pushNow='', setupWas=null;
+/* the chip beside the auto button: who this phone is, before anyone scrolls */
+function youChip(){
+  if(!sessionToken())return '<a class="you-chip" href="#you">sign in</a>';
+  var me=meCache; return '<a class="you-chip in" href="#you">'+(me&&me.handle?'<b>@'+esc(me.handle)+'</b>':'<b>you</b>')+'</a>';
+}
+function renderYou(){
+  var box=$('youbody'); if(!box||!cfg)return;
+  if(!sessionToken()){
+    box.innerHTML='<p class="smeta">sign in to get told by email when an ID you scanned comes out, keep your scans across phones, and put your name on the IDs you help with.</p>'+
+      '<form class="form on" id="yform" autocomplete="off"><label for="y-email">email</label><input id="y-email" name="email" type="email" inputmode="email" maxlength="320" required>'+
+      '<div class="row"><button class="btn red" type="submit">send me a sign-in link</button><span class="msg" id="youmsg"></span></div></form>';
+    renderAuto();
+    return;
+  }
+  var paint=function(me){
+    box.innerHTML='<div class="prof">'+(me.handle?'<span class="at">@'+esc(me.handle)+'</span>':'<span class="at none">no handle yet</span>')+
+      '<small>'+esc(me.email)+(me.role==='verified_artist'?' · verified artist':'')+'</small>'+
+      (me.handle?'<button class="chg" type="button" data-you="handle">change</button>':'')+'</div>'+
+      '<p class="stat" id="youstat"></p>'+
+      '<div id="hbox" hidden></div>'+
+      '<ol class="setup" id="setup" hidden></ol>'+
+      '<div class="tools"><button class="btn ghost" type="button" data-you="push" id="pushbtn" hidden>turn on notifications</button><button class="btn ghost" type="button" data-you="out">sign out</button><span class="msg" id="youmsg"></span></div>'+
+      '<ul id="otherlist"></ul>';
+    if(justIn){justIn=false;youNote('you are in.',true)}
+    paintStat(); renderSetup(); renderAuto(); loadServerHistory(); pushState();
+  };
+  if(meCache){paint(meCache);return}
+  fx(cfg.api_base+'/me',{headers:headers()},GET_MS).then(function(r){
+    if(r.status===401){setSession('');renderYou();return}
+    if(!r.ok)throw new Error(r.status);
+    return r.json().then(function(me){meCache=me;paint(me)});
+  }).catch(function(){box.innerHTML='<p class="smeta">signed in, but the recognizer did not answer. <button class="btn ghost" type="button" data-you="out">sign out</button></p>'});
+}
+/* where this phone stands on push: permission, and a live subscription behind it */
+function pushKnown(){
+  if(!('Notification' in window)||!('PushManager' in window)||!('serviceWorker' in navigator))return Promise.resolve('none');
+  if(Notification.permission==='denied')return Promise.resolve('blocked');
+  if(Notification.permission!=='granted')return Promise.resolve('off');
+  return navigator.serviceWorker.ready.then(function(reg){return reg.pushManager.getSubscription()}).then(function(sub){return sub?'on':'allowed'}).catch(function(){return 'allowed'});
+}
+function pushState(){pushKnown().then(function(st){pushNow=st;paintStat();renderSetup()})}
+function paintStat(){
+  var el=$('youstat'),me=meCache; if(!el||!me)return;
+  var w={on:'notifications <b>on</b>',off:'notifications <b>off</b>, email instead',blocked:'notifications <b>blocked</b> here, email instead',none:'no push in this browser, email instead',allowed:'notifications <b>allowed</b>, not registered'}[pushNow]||'notifications: checking';
+  el.innerHTML=w+' · <b>'+me.follows+'</b> following · <b>'+me.devices+'</b> '+(me.devices===1?'device':'devices');
+}
+function pushSkipped(){try{return localStorage.getItem('gmx_push_skip')==='1'}catch(e){return false}}
+/* three steps, shown until all three are done, then the block is just the profile */
+function renderSetup(){
+  var me=meCache,box=$('setup'),pb=$('pushbtn'); if(!me||!box||!pushNow)return;
+  var pushDone=pushNow==='on'||me.push_subscriptions>0||pushSkipped();
+  var cannot=pushNow==='none'||pushNow==='blocked';
+  var steps=[
+    {done:!!me.handle,t:'pick your handle',p:'the name shown as credit on IDs you help name. 2 to 30 letters, digits, dots or underscores, yours alone.',
+     form:'<form class="form on" id="hform2" data-first="1" autocomplete="off"><label for="y-handle">handle</label><input id="y-handle" name="handle" maxlength="30" placeholder="yourname" required><div class="row"><button class="btn" type="submit">that is me</button><span class="msg" id="hmsg"></span></div></form>'},
+    {done:pushDone,t:'turn on notifications',p:pushNow==='none'?'this browser cannot push. on iphone, add the app to the home screen first. alerts go by email either way.':pushNow==='blocked'?'blocked for this site in the browser settings. alerts go by email either way.':'a push to this phone when an ID you follow gets a name or comes out. email otherwise.',
+     form:'<div class="row">'+(cannot?'':'<button class="btn" type="button" data-you="push">turn on</button>')+'<button class="btn ghost" type="button" data-you="skip">email is fine</button></div>'},
+    {done:(me.followed||me.follows)>0,t:'follow your first ID',p:'tap "tell me when it\'s out" on a scan, in the card or in recent scans, and it lands here.',form:''}
+  ];
+  var left=steps.filter(function(x){return !x.done}).length;
+  if(!left){if(setupWas===false)youNote('you are set.',true);setupWas=true;box.hidden=true;box.innerHTML='';if(pb)pb.hidden=!(pushNow==='off'||pushNow==='allowed');return}
+  setupWas=false; if(pb)pb.hidden=true;
+  box.innerHTML=steps.map(function(x){return '<li'+(x.done?' class="done"':'')+'><span class="t">'+x.t+'</span>'+(x.done?'':'<p>'+x.p+'</p>'+x.form)+'</li>'}).join('');
+  box.hidden=false;
+}
+function hNote(t,ok){var m=$('hmsg');if(m){m.textContent=t;m.className='msg'+(ok?' ok':'')}}
+function showHandleForm(){
+  var hb=$('hbox'); if(!hb||!meCache)return;
+  hb.innerHTML='<form class="form on" id="hform2" autocomplete="off"><label for="y-handle">new handle</label><input id="y-handle" name="handle" maxlength="30" value="'+esc(meCache.handle||'')+'"><div class="row"><button class="btn" type="submit">save</button><button class="btn ghost" type="button" data-you="hcancel">cancel</button><span class="msg" id="hmsg"></span></div></form>';
+  hb.hidden=false; try{$('y-handle').focus()}catch(e){}
+}
+/* scans from the account's other phones, the ones this phone has no row for */
+function loadServerHistory(){
+  var ul=$('otherlist'); if(!ul||!sessionToken())return;
+  fx(cfg.api_base+'/me/history?limit=60',{headers:headers()},GET_MS).then(function(r){return r.ok?r.json():[]}).then(function(rows){
+    var mine={}; loadHistory().forEach(function(r){if(r.id)mine[r.id]=1});
+    var other=rows.filter(function(r){return !r.this_device&&!mine[r.job_id]});
+    if(!other.length){ul.innerHTML='';return}
+    ul.innerHTML='<li class="none">from your other phones</li>'+other.slice(0,25).map(function(r){
+      var name=r.kind==='match'?esc(r.artist||'ID')+'<small>'+esc(r.title||'unnamed library entry')+(r.status?' · '+esc(r.status):'')+'</small>':r.kind==='guess'?'no match<small>closest guess: '+esc((r.artist?r.artist+' - ':'')+(r.title||''))+'</small>':'no match<small>'+esc(r.in_set||'nothing yet')+'</small>';
+      return '<li><span class="who">'+name+'</span><span class="when">'+when(new Date(r.at).getTime())+'</span></li>';
+    }).join('');
+  }).catch(function(){});
+}
+function loadFollows(){
+  var ul=$('followlist'); if(!ul||!cfg)return;
+  fx(cfg.api_base+'/follows',{headers:headers()},GET_MS).then(function(r){return r.ok?r.json():[]}).then(function(rows){
+    rows=rows.filter(function(f){return f.state!=='cancelled'});
+    ul.hidden=false;
+    if(!rows.length){ul.innerHTML='<li class="none">waiting on nothing yet. tap "tell me when it\'s out" on a scan and it lands here.</li>';return}
+    ul.innerHTML='<li class="none">waiting on</li>'+rows.slice(0,30).map(function(f){
+      var st=f.state==='notified'?'out now':f.named?'named, waiting for the release':f.until==='named'?'waiting for a name':'waiting for the release';
+      var nm=f.url&&f.state==='notified'?'<a href="'+esc(f.url)+'" target="_blank" rel="noopener">'+esc(f.name||'an ID')+'</a>':esc(f.name||'an ID');
+      return '<li><span class="who">'+nm+'<small>'+st+'</small></span>'+(f.state==='open'?'<span class="acts"><button class="btn ghost" data-unfollow="'+esc(f.follow_id)+'">stop</button></span>':'<span class="when">'+when(new Date(f.released||f.created_at).getTime())+'</span>')+'</li>';
+    }).join('');
+  }).catch(function(){});
+}
+document.addEventListener('submit',function(ev){
+  var f=ev.target;
+  if(f.id==='yform'){
+    ev.preventDefault(); var email=$('y-email').value.trim(); if(!email||!cfg)return; youNote('sending');
+    fx(cfg.api_base+'/auth/start',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify({email:email})},POST_MS).then(function(r){
+      if(r.status===429){youNote('too many links for that address this hour.');return}
+      if(r.status===422){youNote('that does not look like an email address.');return}
+      if(!r.ok)throw new Error(r.status);
+      return r.json().then(function(j){
+        youNote(j.mail_sent?'sent. type the six digits from the mail here, or tap its link anywhere.':'the mail could not go out right now. try again later.',j.mail_sent);
+        if(j.mail_sent){showCodeForm(email);if(j.pending)waitForLink(j.pending,j.minutes||20)}
+      });
+    }).catch(function(){youNote('did not send. check your signal and try again.')});
+  }else if(f.id==='cform2'){
+    ev.preventDefault(); sendCode(f);
+  }else if(f.id==='hform2'){
+    ev.preventDefault(); var hv=$('y-handle').value.trim();
+    if(!hv&&f.getAttribute('data-first')){hNote('type a name first');return}
+    hNote('saving');
+    fx(cfg.api_base+'/me',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify({handle:hv||null})},POST_MS).then(function(r){
+      if(r.status===422||r.status===409)return r.json().then(function(j){hNote(String(j.detail||'that handle will not do'))});
+      if(!r.ok)throw new Error(r.status);
+      return r.json().then(function(me){meCache=me;renderYou();youNote(me.handle?'you are @'+me.handle+'.':'handle cleared.',true)});
+    }).catch(function(){hNote('did not save. check your signal.')});
+  }
+});
+document.addEventListener('click',function(ev){
+  var y=ev.target.closest('[data-you]');
+  if(y){
+    if(y.getAttribute('data-you')==='out'){fx(cfg.api_base+'/auth/signout',{method:'POST',headers:headers()},POST_MS).catch(function(){});setSession('');meCache=null;renderYou();loadFollows();return}
+    if(y.getAttribute('data-you')==='push'){y.disabled=true;ensurePush().then(function(ok){youNote(ok?'this phone gets notified.':'notifications are off for this site, or this browser cannot push. on iphone, add the app to the home screen first.',ok);y.disabled=false;pushState()});return}
+    if(y.getAttribute('data-you')==='skip'){try{localStorage.setItem('gmx_push_skip','1')}catch(e){}renderSetup();return}
+    if(y.getAttribute('data-you')==='handle'){showHandleForm();return}
+    if(y.getAttribute('data-you')==='hcancel'){var hb=$('hbox');if(hb){hb.hidden=true;hb.innerHTML=''}return}
+  }
+  var u=ev.target.closest('[data-unfollow]');
+  if(u){u.disabled=true;fx(cfg.api_base+'/unfollow',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify({follow_id:u.getAttribute('data-unfollow')})},POST_MS).then(function(){meCache=null;renderYou();loadFollows()}).catch(function(){u.disabled=false})}
+});
+function onScanEnd(cur,row){
+  var d=draining;
+  if(d){drainDone=true;gmxClips.del(d.id).catch(function(){});}
+  var name=(row.artist?row.artist+' - ':'')+(row.title||'');
+  if(row.kind!=='match'&&row.kind!=='guess')name='';
+  sessionAdd({t:row.t,kind:row.kind,name:name,score:row.score},d?d.t:null);
+}
+/* a row in tonight's list. a kept clip lands as pending and is replaced by its match when it drains. */
+function sessionAdd(r,replaceT){
+  var s=loadSession();if(!s.start)return;
+  if(Date.now()-s.start>SESSION_MAX_AGE&&!auto)return;
+  if(replaceT){for(var i=0;i<s.rows.length;i++){if(s.rows[i].kind==='pending'&&s.rows[i].t===replaceT){s.rows[i]={t:replaceT,off:replaceT-s.start,kind:r.kind,name:r.name,score:r.score,n:1};saveSession(s);renderSession();return}}}
+  var last=s.rows[s.rows.length-1];
+  if(r.name&&last&&last.name===r.name){last.n=(last.n||1)+1}
+  else s.rows.push({t:r.t,off:r.t-s.start,kind:r.kind,name:r.name||'',score:r.score,n:1});
+  saveSession(s);renderSession();
+}
+function renderSession(){
+  var s=loadSession();if(!sessionEl)return;
+  var show=(s.start&&s.rows.length)||auto;
+  sessionEl.hidden=!show;if(!show)return;
+  var named=s.rows.filter(function(r){return r.name&&r.kind==='match'}).length;
+  sessionmeta.textContent='started '+fmtClock(s.start)+' · '+s.rows.length+(s.rows.length===1?' scan':' scans')+' · '+named+' named';
+  sessionlist.innerHTML=s.rows.length?s.rows.map(function(r){
+    var who=r.kind==='pending'?'kept, no signal<small>matched when you are back online</small>':r.name?(r.kind==='guess'?'<span>maybe '+esc(r.name)+'</span>':'<span>'+esc(r.name)+'</span>')+'<small>'+(r.kind==='guess'?'closest guess':pct(r.score))+(r.n>1?' · heard '+r.n+' times':'')+'</small>':'nothing named<small>no match</small>';
+    return '<li><span class="who">'+who+'</span><span class="when">+'+fmtOffset(r.off)+'</span></li>';
+  }).join(''):'<li class="none">listening. the first result lands here.</li>';
+}
+$('sessiontools').addEventListener('click',function(e){
+  var b=e.target.closest('[data-s]');if(!b)return;var s=loadSession();
+  if(b.getAttribute('data-s')==='clear'){if(s.rows.length&&!confirm('clear tonight\'s list on this phone?'))return;saveSession({start:auto?Date.now():0,rows:[]});renderSession();sessionmsg.textContent='cleared.';return}
+  var lines=s.rows.filter(function(r){return r.name}).map(function(r){return fmtOffset(r.off)+'  '+(r.kind==='guess'?'? ':'')+r.name});
+  if(!lines.length){sessionmsg.textContent='nothing named yet.';return}
+  var txt='tonight with groovesmaxxing · '+fmtClock(s.start)+'\n'+lines.join('\n')+'\nhttps://groovesmaxxing.com/scan';
+  if(navigator.clipboard)navigator.clipboard.writeText(txt).then(function(){sessionmsg.textContent='copied, '+lines.length+' lines.'},function(){sessionmsg.textContent='could not copy.'});else sessionmsg.textContent='copy is not available here.';
+});
+/* the offline queue */
+function queueClip(blob){
+  var rec={id:'q'+Date.now()+Math.floor(Math.random()*1000),t:Date.now(),blob:blob,kind:'pending',heard_at:heldAt||new Date().toISOString()};
+  var store=window.gmxClips?gmxClips.put(rec):Promise.reject(new Error('no store'));
+  store.then(function(){
+    sessionAdd({t:rec.t,kind:'pending',name:''});
+    showCard('<p class="kw"><b>kept.</b></p><h2>no signal, no problem.</h2><p class="note">the clip stays on this phone and gets matched the moment you are back online. nothing is sent until then.</p><div class="row"><button class="btn red" data-act="again">scan again</button></div>');
+    renderPending();
+  },function(){
+    showCard(errCard('could not reach the recognizer, and could not keep the clip on this phone either. try again when you have signal.'));
+  });
+  heldBlob=null;reset();
+}
+function pendingList(){return window.gmxClips?gmxClips.list().then(function(rows){return rows.filter(function(r){return r.kind==='pending'&&r.blob}).sort(function(a,b){return a.t-b.t})}).catch(function(){return []}):Promise.resolve([])}
+function renderPending(){
+  if(!pendingbar)return;
+  pendingList().then(function(p){
+    pendingbar.hidden=!p.length;if(!p.length)return;
+    var on=navigator.onLine;
+    pendingbar.innerHTML='<span><b>'+p.length+'</b> '+(p.length===1?'clip':'clips')+' waiting for signal'+(on?'':' · offline')+'</span>'+(on?'<button class="btn" type="button" id="drainbtn">'+(busy?'matching…':'match now')+'</button>':'');
+    var b=$('drainbtn');if(b)b.addEventListener('click',function(){drain()});
+  });
+}
+function drain(){
+  if(busy||draining||!navigator.onLine||!window.gmxClips||!cfg)return;
+  pendingList().then(function(p){
+    if(!p.length){renderPending();return}
+    var rec=p[0];draining=rec;drainDone=false;drainFailed=false;
+    busy=true;card.classList.remove('on');current=null;heldBlob=rec.blob;heldAt=rec.heard_at||new Date(rec.t).toISOString();
+    scanSeq++;early=null;finalDone=false;rateHit=false;timing={t0:Date.now(),rounds:[],first:null};
+    go.classList.add('busy');say2('matching a clip from '+when(rec.t));renderPending();
+    identify(rec.blob);
+  });
+}
+window.addEventListener('online',function(){renderPending();setTimeout(drain,1500)});
+window.addEventListener('offline',renderPending);
+renderAuto();renderSession();renderPending();
+if(navigator.onLine)setTimeout(drain,2500);
+window.gmxSession={start:autoStart,stop:autoStop,drain:drain,queue:queueClip,session:loadSession};
+window.gmxPath={block:pathBlock,sent:markSent};   /* the site check renders the four steps from a made-up result */
 window.gmxScanDemo=function(res){current=res;showCard(resultCard(res))};
 (function(){var hb=document.getElementById('howbtn'),box=document.getElementById('howbox'),hc=document.getElementById('howclose');if(!hb||!box||!box.showModal){if(hb)hb.style.display='none';return}hb.addEventListener('click',function(){box.showModal()});hc.addEventListener('click',function(){box.close()});box.addEventListener('click',function(e){if(e.target===box)box.close()});})();
 })();
 </script>
 <script src="/gmx-install.js" defer></script>
 <script src="/gmx-motion.js" defer></script>
+<script src="/gmx-quick.js" defer></script>
 <script src="/gmx-refresh.js" defer></script>
 </body>
 </html>

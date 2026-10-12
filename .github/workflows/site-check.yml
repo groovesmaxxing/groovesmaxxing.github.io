@@ -12,11 +12,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - name: preflight (tags, links, anchors, embeds, noopener, fonts, json-ld, sitemap, banned strings)
+        env:
+          BANNED_STRINGS: ${{ secrets.BANNED_STRINGS }}
+        run: python3 .github/scripts/preflight.py
+      - name: the security tags on every page are current
+        run: python3 .github/scripts/harden_pages.py --check
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: 22
-      - name: the security tags on every page are current
-        run: python3 .github/scripts/harden_pages.py --check
       - name: install a browser
         run: |
           npm install --no-save playwright@1.56.1
@@ -26,3 +30,11 @@ jobs:
           python3 -m http.server 8787 --bind 127.0.0.1 >/dev/null 2>&1 &
           sleep 1
           NODE_PATH=$PWD/node_modules node .github/scripts/sitecheck.js
+      - name: render proof (phone and desktop screenshots of the key pages)
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: render-proof
+          path: shots/
+          if-no-files-found: ignore
+          retention-days: 14

@@ -1,15 +1,16 @@
-# backups the generators write beside the file they are editing.
-# sitelink_tracklists.py, site_edit.py and friends all drop a .bak on --write,
+
 # and without this they show up as untracked noise every run and one of them
+# backups the generators write beside the file they are editing.
 # eventually rides along in a commit.
+# python bytecode from running the workflow scripts locally
+# sitelink_tracklists.py, site_edit.py and friends all drop a .bak on --write,
+# the cowork app mirrors its outputs folder into this clone. never part of the site.
 *.bak
 *.bak_*
-
-# the cowork app mirrors its outputs folder into this clone. never part of the site.
 Claude outputs/
-
-# python bytecode from running the workflow scripts locally
 __pycache__/
 node_modules/
-package.json
 package-lock.json
+package.json
+shots/
+status-out/

@@ -4,9 +4,13 @@
    so the laptop scripts can keep changing what the pages say. outside hosts are blocked, so thumbnails stay black. */
 const {chromium}=require('playwright');
 const BASE='http://127.0.0.1:8787';
-const PAGES=['/index.html','/artists.html','/sets.html','/interviews.html','/events.html','/more.html','/scan.html','/badges.html','/upcoming.html','/labels.html','/newsletter.html','/friday.html','/404.html','/search.html','/radio.html','/crate.html','/tracklists/index.html',
+const PAGES=['/index.html','/artists.html','/sets.html','/interviews.html','/events.html','/more.html','/scan.html','/badges.html','/upcoming.html','/labels.html','/newsletter.html','/friday.html','/404.html','/search.html','/radio.html','/crate.html','/open-ids.html','/tracklists/index.html',
   '/artists/adam-ten.html','/artists/max-styler.html','/artists/balanka.html','/artists/gkat.html','/artists/solomun.html','/labels/make-the-girls-dance-records.html','/labels/nu-moda.html','/tracklists/cloonee-live-at-red-rocks.html','/newsletter/fgf-001.html'];
 const NO_TABS=['/sets.html','/interviews.html'];
+/* the render proof: full-page screenshots of the pages a layout change usually touches, saved to shots/ and
+   uploaded as a workflow artifact, so a push that moved something can be looked at, not just trusted */
+const SHOTS=['/index.html','/scan.html','/upcoming.html','/open-ids.html','/search.html','/artists/adam-ten.html','/tracklists/cloonee-live-at-red-rocks.html'];
+const fs=require('fs');try{fs.mkdirSync('shots',{recursive:true})}catch(e){}
 (async()=>{
   const b=await chromium.launch();let fails=0;
   const log=(ok,msg)=>{console.log((ok?'  ok  ':'  FAIL')+' '+msg);if(!ok)fails++;};
@@ -72,11 +76,76 @@ const NO_TABS=['/sets.html','/interviews.html'];
         const n=await p.evaluate(()=>document.querySelector('details.a[open] .grid[data-slug] .card')?document.querySelector('details.a[open] .grid[data-slug]').querySelectorAll('.card').length:0);
         log(n>0,path+': an opened fold renders its cards from sets-index.json ('+n+')');
       }
+      if(path==='/scan.html'){
+        const a=await p.evaluate(()=>({auto:!!document.querySelector('#autobar #autobtn'),pending:!!document.getElementById('pendingbar'),api:typeof window.gmxSession==='object'}));
+        log(a.auto&&a.pending&&a.api,path+': auto button, pending bar and session hooks present');
+        // what happens next (ui build 4): four steps from a made-up match, a guess and a blank, and the sent state
+        const w=await p.evaluate(()=>{
+          const t={t0:Date.now()-16800,first:16800,rounds:[{at:5000},{at:9000},{at:12000},{at:15000}]};
+          const cand={artist_claim:'Space Motion',title_claim:'Woop Woop',headline:'Woop Woop',subline:'Space Motion',status:'unreleased',shown_score:97,tier:'CONFIRMED',confidence:97,heard_in:[],store_links:{}};
+          const match=gmxPath.block({card:{kind:'match',candidate:cand},timing:t,in_set:{set_title:'Vintage Culture at Club Space',at:'44:15',row:'Space Motion - Woop Woop (unreleased)'}});
+          const guess=gmxPath.block({card:{kind:'guess',candidate:Object.assign({},cand,{shown_score:62,tier:'LIKELY'})},timing:t,in_set:null});
+          const none=gmxPath.block({card:{kind:'none',candidate:null},timing:t,in_set:null});
+          const d=document.createElement('div');d.innerHTML=match;const m=d.querySelectorAll('.path li');
+          const states=[...m].map(li=>li.className);
+          document.getElementById('card').innerHTML=match;gmxPath.sent('confirm');const last=document.querySelector('#path li:last-child');
+          return {steps:m.length,states,guessNow:/st-now/.test(guess)&&/under our bar/.test(guess),noneNow:/nothing yet/.test(none),placed:/Club Space/.test(match)&&/calls it/.test(match),sent:last.className==='st-done'&&/your word is in/.test(last.textContent)};
+        });
+        log(w.steps===4&&w.states.join()==='st-done,st-done,st-done,st-now'&&w.guessNow&&w.noneNow&&w.placed&&w.sent,path+': what happens next renders four steps ('+w.states.join(' ')+'), the guess and blank cases, and the sent state');
+      }
+      if(path==='/open-ids.html'){
+        await p.waitForTimeout(900);
+        const o=await p.evaluate(()=>({sets:document.querySelectorAll('.oset').length,rows:document.querySelectorAll('.orow').length,reps:document.querySelectorAll('.rep').length}));
+        log(o.sets>0&&o.rows>0,path+': the board renders from open-ids.json ('+o.sets+' sets, '+o.rows+' rows, '+o.reps+' repeats)');
+      }
+      if(path==='/upcoming.html'){
+        await p.waitForTimeout(600);
+        const u=await p.evaluate(()=>({bar:!!document.querySelector('.gmx-mine'),chips:document.querySelectorAll('.gmx-mine button').length}));
+        log(u.bar&&u.chips===2,path+': the crate filter bar is present ('+u.chips+' chips)');
+      }
+      if(path==='/artists/adam-ten.html'){
+        const f=await p.evaluate(()=>!!document.querySelector('section.artist .meta .gmx-follow'));
+        log(f,path+': follow pill in the meta row');
+      }
+      if(path==='/tracklists/cloonee-live-at-red-rocks.html'||path==='/artists/adam-ten.html'){
+        // bottom sheet (ui build 2): a "…" beside the hearts and the follow pill opens a sheet of actions
+        await p.waitForTimeout(600);
+        const m=await p.evaluate(()=>document.querySelectorAll('.gmx-more').length);
+        await p.click('.gmx-more >> nth=0');await p.waitForTimeout(300);
+        const s=await p.evaluate(()=>{const sh=document.querySelector('.gmx-sheet');return {open:!!sh&&!sh.hidden,acts:sh?sh.querySelectorAll('.gmx-sheet-act').length:0,title:sh?sh.querySelector('.gmx-sheet-title').textContent:'',focused:!!sh&&sh.contains(document.activeElement)}});
+        await p.keyboard.press('Escape');await p.waitForTimeout(200);
+        const gone=await p.evaluate(()=>document.querySelector('.gmx-sheet').hidden);
+        log(m>0&&s.open&&s.acts>=3&&s.focused&&gone,path+': "…" buttons ('+m+'), the first opens a sheet ("'+s.title+'", '+s.acts+' actions, focus inside) and escape closes it');
+      }
+      if(path==='/artists/adam-ten.html'||path==='/index.html'){
+        // quick search (ui build 1): the "/" key opens the sheet, typing finds rows, escape closes it
+        await p.keyboard.press('/');await p.waitForTimeout(300);
+        const opened=await p.evaluate(()=>{const s=document.querySelector('.gmx-quick');return !!s&&!s.hidden&&document.activeElement===s.querySelector('.gmx-quick-box')});
+        await p.keyboard.type('adam ten');await p.waitForTimeout(900);
+        const q=await p.evaluate(()=>({hits:document.querySelectorAll('.gmx-quick-hit').length,lit:!!document.querySelector('.gmx-quick-hit.lit'),all:(document.querySelector('.gmx-quick-all')||{}).getAttribute&&document.querySelector('.gmx-quick-all').getAttribute('href')}));
+        await p.keyboard.press('Escape');await p.waitForTimeout(200);
+        const closed=await p.evaluate(()=>document.querySelector('.gmx-quick').hidden);
+        log(opened&&q.hits>0&&q.lit&&/q=adam/.test(q.all||'')&&closed,path+': quick search opens on "/", finds "adam ten" ('+q.hits+' rows, first lit, full link '+q.all+') and closes on escape');
+      }
       if(path==='/search.html'){
         await p.fill('#q','adam ten');await p.waitForTimeout(600);
         const r=await p.evaluate(()=>({hits:document.querySelectorAll('.hit').length,groups:[...document.querySelectorAll('.grp')].map(g=>g.firstChild.textContent)}));
         log(r.hits>0,path+': "adam ten" finds results across groups '+JSON.stringify(r.groups));
       }
+      if(path==='/index.html'){
+        // next up (ui build 3): hidden with an empty crate; a crate that follows an artist from upcoming.json shows the band
+        const empty=await p.evaluate(()=>document.getElementById('nextup').hidden);
+        const seeded=await p.evaluate(async()=>{
+          const j=await (await fetch('/upcoming.json')).json();
+          const row=(j.rows||[]).find(r=>r.tier!=='named, not dated'&&r.artists.length);if(!row)return null;
+          localStorage.setItem('gmx_crate',JSON.stringify([{kind:'artist',id:'artist:test',title:row.artists[0],artist:row.artists[0],t:Date.now()}]));return row.artists[0];
+        });
+        await p.reload();await p.waitForTimeout(1200);
+        const band=await p.evaluate(()=>({hidden:document.getElementById('nextup').hidden,rows:document.querySelectorAll('#nextup-list li').length,first:(document.querySelector('#nextup-list li .t')||{}).textContent||''}));
+        await p.evaluate(()=>localStorage.removeItem('gmx_crate'));
+        log(empty&&!!seeded&&!band.hidden&&band.rows>0,path+': next up band hidden on an empty crate, shown after following "'+seeded+'" ('+band.rows+' rows, first: '+band.first.slice(0,60)+')');
+      }
+      if(SHOTS.includes(path)){try{await p.screenshot({path:'shots/'+vp.name+path.replace(/\//g,'_').replace(/\.html$/,'')+'.png',fullPage:path!=='/index.html'})}catch(e){}}
       await p.close();
     }
     await ctx.close();

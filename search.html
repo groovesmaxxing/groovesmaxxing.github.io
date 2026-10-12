@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-wM6RbXa0CNsDStQjUwiHf86evJeaDV1hlN8WqOHO4Y8='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self'; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-BSbBf2fPiiss2LsnOW5VQIEZKjGpQuBHGUI6zHFTCg0='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self'; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <link rel="manifest" href="/manifest.webmanifest">
@@ -19,6 +19,7 @@
 <meta property="og:title" content="groovesMAXXING · search">
 <meta property="og:description" content="one search box for the whole site.">
 <meta property="og:image" content="https://groovesmaxxing.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preload" as="font" type="font/woff2" href="/fonts/poppins-400-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-400-latin.woff2" crossorigin>
 <link rel="stylesheet" href="/gmx-fonts.css">
@@ -131,6 +132,7 @@ details.az .drow:last-child{border-bottom:0}
 .hint a{color:#cfcfc9}
 mark{background:none;color:var(--racing)}
 @media (max-width:640px){.hit{flex-wrap:wrap}.hs{margin-left:34px;max-width:100%;text-align:left}}
+.sounds{margin-top:10px}.sounds .sl{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--racing);align-self:center;margin-right:4px}
 </style>
 <link rel="canonical" href="https://groovesmaxxing.com/search">
 <link rel="stylesheet" href="/gmx-motion.css">
@@ -156,6 +158,7 @@ mark{background:none;color:var(--racing)}
 <button class="lc" data-k="tracklist" aria-pressed="false">tracklists</button>
 <button class="lc" data-k="issue" aria-pressed="false">issues</button>
 </div>
+<div class="lanechips sounds" id="sounds" role="group" aria-label="by sound" hidden></div>
 </div>
 
 <div class="res" id="res" aria-live="polite"></div>
@@ -176,7 +179,17 @@ var ORDER=['artist','label','set','talk','tracklist','issue'],LIMIT=8,index=null
 function fold(t){return (t||'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/\s+/g,' ').trim()}
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 function mark(s,terms){var h=esc(s);terms.forEach(function(t){if(t.length<2)return;h=h.replace(new RegExp('('+t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig'),'<mark>$1</mark>')});return h}
-function load(){return index?Promise.resolve(index):fetch('/search-index.json').then(function(r){return r.json()}).then(function(j){index=j;nEl.textContent=j.count+' entries';return j}).catch(function(){nores.textContent='the index did not load. refresh and try again.';nores.style.display='block';return null})}
+var soundsEl=document.getElementById('sounds');
+/* the sounds the index counted (genres, lanes, moods): one tap fills the box, so a search by feel works
+   with no typing. the chip for the current query lights up */
+function drawSounds(j){
+  var list=(j&&j.sounds)||[];if(!list.length||!soundsEl)return;
+  soundsEl.innerHTML='<span class="sl">by sound</span>'+list.map(function(p){return '<button class="lc" data-q="'+esc(p[0])+'" aria-pressed="false">'+esc(p[0])+'</button>'}).join('');
+  soundsEl.hidden=false;paintSounds();
+}
+function paintSounds(){if(!soundsEl)return;var v=fold(q.value);[].slice.call(soundsEl.querySelectorAll('[data-q]')).forEach(function(b){var on=b.getAttribute('data-q')===v;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on?'true':'false')})}
+if(soundsEl)soundsEl.addEventListener('click',function(e){var b=e.target.closest('[data-q]');if(!b)return;q.value=b.classList.contains('on')?'':b.getAttribute('data-q');expanded={};run();paintSounds();try{var u=new URL(location);if(q.value)u.searchParams.set('q',q.value);else u.searchParams.delete('q');history.replaceState(null,'',u)}catch(x){}});
+function load(){return index?Promise.resolve(index):fetch('/search-index.json').then(function(r){return r.json()}).then(function(j){index=j;nEl.textContent=j.count+' entries';drawSounds(j);return j}).catch(function(){nores.textContent='the index did not load. refresh and try again.';nores.style.display='block';return null})}
 function score(it,terms){var k=it.k,n=fold(it.n),s=0;for(var i=0;i<terms.length;i++){var t=terms[i];if(k.indexOf(t)<0)return 0;s+=n.indexOf(t)===0?3:n.indexOf(t)>-1?2:1}return s}
 function run(){
   var v=fold(q.value),terms=v.split(' ').filter(Boolean);
@@ -199,7 +212,7 @@ function run(){
 }
 res.addEventListener('click',function(e){var b=e.target.closest('[data-more]');if(b){expanded[b.getAttribute('data-more')]=true;run()}});
 chips.forEach(function(c){c.addEventListener('click',function(){var k=c.getAttribute('data-k');only=only===k?'':k;chips.forEach(function(x){var on=x.getAttribute('data-k')===only;x.classList.toggle('on',on);x.setAttribute('aria-pressed',on?'true':'false')});expanded={};run()})});
-var t=null;q.addEventListener('input',function(){clearTimeout(t);t=setTimeout(function(){run();try{var u=new URL(location);if(q.value)u.searchParams.set('q',q.value);else u.searchParams.delete('q');history.replaceState(null,'',u)}catch(e){}},80)});
+var t=null;q.addEventListener('input',function(){clearTimeout(t);t=setTimeout(function(){run();paintSounds();try{var u=new URL(location);if(q.value)u.searchParams.set('q',q.value);else u.searchParams.delete('q');history.replaceState(null,'',u)}catch(e){}},80)});
 try{var q0=new URLSearchParams(location.search).get('q');if(q0){q.value=q0;run()}}catch(e){}
 load();q.focus();
 })();

@@ -18,7 +18,7 @@ var path=location.pathname.replace(/\.html$/,'').replace(/\/index$/,'/');
 function under(p){return path===p||path.indexOf(p+'/')===0;}
 function current(href){
   if(href==='/')return path==='/';
-  if(href==='/sets')return under('/sets')||under('/tracklists')||path==='/interviews'||path==='/radio';
+  if(href==='/sets')return under('/sets')||under('/tracklists')||path==='/interviews'||path==='/radio'||path==='/open-ids';
   if(href==='/artists')return under('/artists')||under('/labels')||path==='/roster'||path==='/badges';
   if(href==='/more')return under('/more')||under('/newsletter')||under('/upcoming')||path==='/events'||path==='/tours'||path==='/venues'||path==='/friday'||path==='/privacy'||path==='/terms'||path==='/crate';
   return path===href;

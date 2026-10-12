@@ -1,0 +1,17 @@
+name: recognizer uptime
+
+# every four hours, ask the recognizer's public api for a page. no answer, a timeout or a 5xx turns the run
+# red, and github mails the owner. the containers sat exited for a whole day once with nothing noticing.
+# turn it off from the actions tab if the laptop is going to be away for a while.
+
+on:
+  schedule:
+    - cron: "25 */4 * * *"
+  workflow_dispatch: {}
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - run: python3 .github/scripts/uptime.py

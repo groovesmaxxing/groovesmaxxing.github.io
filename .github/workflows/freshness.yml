@@ -1,0 +1,17 @@
+name: freshness
+
+# the rot nothing else notices: a page that states its own date and has gone quiet, a nightly data file
+# that stopped arriving, a count that disagrees with the pages. .github/freshness.json holds the rows.
+# runs every morning. a failing row turns the run red, and github mails the owner about a red scheduled run.
+
+on:
+  schedule:
+    - cron: "10 14 * * *"
+  workflow_dispatch: {}
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - run: python3 .github/scripts/freshness.py
