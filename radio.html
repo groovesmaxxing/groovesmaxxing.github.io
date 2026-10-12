@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-KetDa+eGMfmmLZeDQq0nPuZ+nA36AO54lsSVUN3fF8Q='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self'; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-/n5d80Qa3HmJQHHsC4ZmiUfetYy6h5l12QBX0po1LFs=' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self'; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <link rel="manifest" href="/manifest.webmanifest">
@@ -168,7 +168,9 @@ var wrap=document.getElementById('stage-wrap'),note=document.getElementById('rad
 var M={jan:1,feb:2,mar:3,apr:4,may:5,jun:6,jul:7,aug:8,sep:9,oct:10,nov:11,dec:12};
 function when(html){var m=/\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\s+(20\d\d)\b/i.exec(html||'');return m?(+m[2])*12+M[m[1].toLowerCase()]:0}
 function text(h){var d=document.createElement('div');d.innerHTML=h||'';return (d.textContent||'').replace(/\s+/g,' ').trim()}
-fetch('/sets-index.json').then(function(r){return r.json()}).then(function(j){
+/* gmx-player.js loads with defer, so wait for it before building the stage. the index can arrive first */
+var ready=new Promise(function(r){if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',r);else r()});
+Promise.all([fetch('/sets-index.json').then(function(r){return r.json()}),ready]).then(function(v){var j=v[0];
   var items=[];
   Object.keys(j.artists||{}).forEach(function(slug){var a=j.artists[slug];(a.cards||[]).forEach(function(c){
     var m=/<div class="m">(.*?)<\/div>/.exec(c.html||'');
