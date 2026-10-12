@@ -1078,8 +1078,10 @@ function renderHistory(){
     if(r.kind==='match')who='<span data-artist="'+esc(r.artist||'')+'">'+esc(r.artist||'ID')+'</span><small>'+esc(r.title||'unnamed library entry')+' · '+pct(r.score)+(r.secs?' · '+r.secs+' s':'')+'</small>';
     else if(r.kind==='guess')who='no match<small>closest guess: '+esc((r.artist?r.artist+' - ':'')+r.title)+(r.score==null?' · possible match':' · '+pct(r.score))+'</small>';
     else who='no match<small>nothing yet</small>';
-    var acts='';
-    if(r.clip&&r.id)acts='<span class="acts"><button class="btn" data-clip="again" data-id="'+esc(r.id)+'">scan again</button>'+(r.kind!=='match'?'<button class="btn" data-clip="help" data-id="'+esc(r.id)+'">help us find it</button>':'')+'<span class="msg"></span></span>';
+    var acts='', btns='';
+    if(r.clip&&r.id)btns='<button class="btn" data-clip="again" data-id="'+esc(r.id)+'">scan again</button>'+(r.kind!=='match'?'<button class="btn" data-clip="help" data-id="'+esc(r.id)+'">help us find it</button>':'');
+    if(r.rid&&r.status!=='out now'&&(r.kind==='match'||r.kind==='guess'))btns+='<button class="btn ghost" data-follow="'+esc(r.rid)+'">tell me when it\'s out</button>';
+    if(btns)acts='<span class="acts">'+btns+'<span class="msg"></span></span>';
     return '<li><span class="who">'+who+'</span><span class="when">'+when(r.t)+'</span>'+acts+'</li>';
   }).join('');
   linkHistoryArtists();
@@ -1201,22 +1203,29 @@ function ensurePush(){
     });
   }).catch(function(){return false});
 }
-function followNow(btn){
-  if(!current||!current.recognition_id){say('nothing to follow yet.');return}
-  btn.disabled=true; say('one moment');
+function followNow(btn,rid,note){
+  note=note||say; rid=rid||(current&&current.recognition_id);
+  if(!rid){note('nothing to follow yet.');return}
+  btn.disabled=true; note('one moment');
   ensurePush().then(function(pushed){
-    return fx(cfg.api_base+'/follow',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify({recognition_id:current.recognition_id})},POST_MS).then(function(r){
-      if(r.status===409)return r.json().then(function(j){var d=String(j.detail||'');say(d.indexOf('already out')>-1?'that one is already out.':'keep the clip first (help us find it), then tap again.');btn.disabled=false});
-      if(r.status===429){say('too many this hour, try later.');btn.disabled=false;return}
+    return fx(cfg.api_base+'/follow',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify({recognition_id:rid})},POST_MS).then(function(r){
+      if(r.status===409)return r.json().then(function(j){var d=String(j.detail||'');note(d.indexOf('already out')>-1?'that one is already out.':'keep the clip first (help us find it), then tap again.');btn.disabled=false});
+      if(r.status===404){note('that scan is gone from the recognizer.');return}
+      if(r.status===429){note('too many this hour, try later.');btn.disabled=false;return}
       if(!r.ok)throw new Error(r.status);
       return r.json().then(function(f){
         var how=pushed?'this phone gets a push':(sessionToken()?'you get an email':'turn on notifications, or sign in below for email');
-        say((f.until==='named'?'we will tell you when it gets a name, and when it comes out. ':'we will tell you when it comes out. ')+how+'.',true);
-        btn.textContent='following'; loadFollows();
+        note((f.until==='named'?'we will tell you when it gets a name, and when it comes out. ':'we will tell you when it comes out. ')+how+'.',true);
+        btn.textContent='following'; loadFollows(); pushState();
       });
     });
-  }).catch(function(){say('did not send. check your signal and try again.');btn.disabled=false});
+  }).catch(function(){note('did not send. check your signal and try again.');btn.disabled=false});
 }
+recentlist.addEventListener('click',function(ev){
+  var b=ev.target.closest('[data-follow]'); if(!b)return;
+  var m=b.parentNode.querySelector('.msg');
+  followNow(b,b.getAttribute('data-follow'),function(t,ok){if(m){m.textContent=t;m.className='msg'+(ok?' ok':'')}});
+});
 function onCfg(){
   var q=new URLSearchParams(location.search), tok=q.get('signin');
   if(tok){
@@ -1280,11 +1289,12 @@ function renderYou(){
     return;
   }
   var paint=function(me){
-    box.innerHTML='<p class="smeta">signed in as '+esc(me.email)+(me.role==='verified_artist'?' · verified artist':'')+' · '+me.devices+' phone'+(me.devices===1?'':'s')+' · '+me.follows+' following</p>'+
+    box.innerHTML='<p class="smeta">signed in as '+esc(me.email)+(me.role==='verified_artist'?' · verified artist':'')+' · '+me.devices+' browser'+(me.devices===1?'':'s')+' or phone'+(me.devices===1?'':'s')+' · '+me.follows+' following</p>'+
+      '<p class="smeta" id="pushstate">notifications: checking</p>'+
       '<form class="form on" id="hform2" autocomplete="off"><label for="y-handle">your handle, shown as credit on IDs you help name</label><input id="y-handle" name="handle" maxlength="30" value="'+esc(me.handle||'')+'" placeholder="optional">'+
       '<div class="row"><button class="btn" type="submit">save</button><button class="btn ghost" type="button" data-you="push">turn on notifications</button><button class="btn ghost" type="button" data-you="out">sign out</button><span class="msg" id="youmsg"></span></div></form>'+
       '<ul id="otherlist"></ul>';
-    loadServerHistory();
+    loadServerHistory(); pushState();
   };
   if(meCache){paint(meCache);return}
   fx(cfg.api_base+'/me',{headers:headers()},GET_MS).then(function(r){
@@ -1292,6 +1302,16 @@ function renderYou(){
     if(!r.ok)throw new Error(r.status);
     return r.json().then(function(me){meCache=me;paint(me)});
   }).catch(function(){box.innerHTML='<p class="smeta">signed in, but the recognizer did not answer. <button class="btn ghost" type="button" data-you="out">sign out</button></p>'});
+}
+/* where this phone stands on push: permission, and a live subscription behind it */
+function pushState(){
+  var el=$('pushstate'); if(!el)return;
+  if(!('Notification' in window)||!('PushManager' in window)||!('serviceWorker' in navigator)){el.textContent='notifications: this browser cannot push. on iphone, add the app to the home screen first.';return}
+  if(Notification.permission==='denied'){el.textContent='notifications: blocked for this site in the browser settings. alerts go by email instead.';return}
+  if(Notification.permission!=='granted'){el.textContent='notifications: off on this phone. alerts go by email until you turn them on.';return}
+  navigator.serviceWorker.ready.then(function(reg){return reg.pushManager.getSubscription()}).then(function(sub){
+    el.textContent=sub?'notifications: on, this phone gets a push.':'notifications: allowed but not registered yet. tap turn on notifications.';
+  }).catch(function(){el.textContent='notifications: allowed.'});
 }
 /* scans from the account's other phones, the ones this phone has no row for */
 function loadServerHistory(){
@@ -1310,8 +1330,8 @@ function loadFollows(){
   var ul=$('followlist'); if(!ul||!cfg)return;
   fx(cfg.api_base+'/follows',{headers:headers()},GET_MS).then(function(r){return r.ok?r.json():[]}).then(function(rows){
     rows=rows.filter(function(f){return f.state!=='cancelled'});
-    if(!rows.length){ul.hidden=true;ul.innerHTML='';return}
     ul.hidden=false;
+    if(!rows.length){ul.innerHTML='<li class="none">waiting on nothing yet. tap "tell me when it\'s out" on a scan and it lands here.</li>';return}
     ul.innerHTML='<li class="none">waiting on</li>'+rows.slice(0,30).map(function(f){
       var st=f.state==='notified'?'out now':f.named?'named, waiting for the release':f.until==='named'?'waiting for a name':'waiting for the release';
       var nm=f.url&&f.state==='notified'?'<a href="'+esc(f.url)+'" target="_blank" rel="noopener">'+esc(f.name||'an ID')+'</a>':esc(f.name||'an ID');
@@ -1347,7 +1367,7 @@ document.addEventListener('click',function(ev){
   var y=ev.target.closest('[data-you]');
   if(y){
     if(y.getAttribute('data-you')==='out'){fx(cfg.api_base+'/auth/signout',{method:'POST',headers:headers()},POST_MS).catch(function(){});setSession('');meCache=null;renderYou();loadFollows();return}
-    if(y.getAttribute('data-you')==='push'){y.disabled=true;ensurePush().then(function(ok){youNote(ok?'this phone gets notified.':'notifications are off for this site, or this browser cannot push. on iphone, add the app to the home screen first.',ok);y.disabled=false});return}
+    if(y.getAttribute('data-you')==='push'){y.disabled=true;ensurePush().then(function(ok){youNote(ok?'this phone gets notified.':'notifications are off for this site, or this browser cannot push. on iphone, add the app to the home screen first.',ok);y.disabled=false;pushState()});return}
   }
   var u=ev.target.closest('[data-unfollow]');
   if(u){u.disabled=true;fx(cfg.api_base+'/unfollow',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify({follow_id:u.getAttribute('data-unfollow')})},POST_MS).then(function(){loadFollows()}).catch(function(){u.disabled=false})}
