@@ -22,6 +22,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -172,7 +173,40 @@ h2{font-weight:900;font-size:clamp(1.9rem,4.5vw,2.8rem);line-height:1.1;margin-b
 #gm-pv .pv-d{font-size:.82rem;line-height:1.45;color:#c9c9c4;display:block}
 #gm-pv .pv-m{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.1em;color:var(--steel);display:block;margin-top:10px;border-top:1px solid rgba(255,255,255,.12);padding-top:8px}
 @media (hover:none){#gm-pv{display:none}}
-@media (max-width:620px){.area-nav{gap:0 14px}.area-nav a{font-size:.66rem}}
+@media (max-width:620px){.area-nav{gap:0 12px}.area-nav a{font-size:.74rem;padding:9px 0}}
+#tonight{padding-top:0}
+#tonight .drops{list-style:none;padding:0;margin:14px 0 0;max-width:760px}
+#tonight .drops li{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;padding:10px 0;border-top:1px solid #26262b;font-size:.95rem}
+#tonight .drops li:last-child{border-bottom:1px solid #26262b}
+#tonight .drops .d{font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.06em;color:var(--racing);flex:0 0 96px}
+#tonight .drops .t{flex:1 1 220px}
+#tonight .drops .t b{font-weight:600}
+#tonight .drops .w{color:var(--steel);font-size:.88rem}
+#tonight .drops a.go{color:var(--racing);text-decoration:none;font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.06em;white-space:nowrap}
+#tonight a.more{font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.1em;text-decoration:none;border-bottom:2px solid var(--racing);padding-bottom:2px;display:inline-block}
+/* next up (ui build 3): the same rows as the denver band, filled from upcoming.json and the crate on this phone */
+#nextup{padding-top:0}
+#nextup .drops{list-style:none;padding:0;margin:14px 0 0;max-width:760px}
+#nextup .drops li{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;padding:10px 0;border-top:1px solid #26262b;font-size:.95rem}
+#nextup .drops li:last-child{border-bottom:1px solid #26262b}
+#nextup .drops .d{font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.06em;color:var(--racing);flex:0 0 96px}
+#nextup .drops .t{flex:1 1 220px}
+#nextup .drops .t b{font-weight:600}
+#nextup .drops .w{color:var(--steel);font-size:.88rem}
+#nextup .drops a.go{color:var(--racing);text-decoration:none;font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.06em;white-space:nowrap}
+#nextup a.more{font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.1em;text-decoration:none;border-bottom:2px solid var(--racing);padding-bottom:2px;display:inline-block}
+/* folded home sections (site review build, 2026-10-11): the long reads sit under the newsletter, closed until tapped */
+.fold{border-top:1px solid #26262b}
+.fold>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:1040px;margin:0 auto;padding:26px 24px;font-weight:900;font-size:clamp(1.25rem,3vw,1.7rem);line-height:1.2}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary .mono{color:var(--steel);font-weight:400;flex:none}
+.fold>summary::after{content:"+";color:var(--racing);font-weight:400;font-size:1.7rem;line-height:1;flex:none;margin-left:6px}
+.fold[open]>summary::after{content:"\2212"}
+.fold>summary:hover{color:var(--racing)}
+.fold>section{padding-top:24px}
+.fold-nav{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+#podcasts .set-meta .mono{color:var(--steel)!important}
+
 
 /* footer */
 footer{padding:70px 0 50px;text-align:center}
@@ -192,7 +226,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--racing);outline-off
 .gmx-tabs{display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(11,11,13,.96);border-top:1px solid rgba(242,242,239,.12);padding-bottom:env(safe-area-inset-bottom);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 .gmx-tabs ul{list-style:none;margin:0 auto;padding:0;display:flex;justify-content:space-around;max-width:720px}
 .gmx-tabs li{flex:1}
-.gmx-tabs a{display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 4px 8px;min-height:54px;text-decoration:none;color:#8A8A93;font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:lowercase}
+.gmx-tabs a{display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 2px 8px;min-height:54px;text-decoration:none;color:#8A8A93;font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.08em;text-transform:lowercase}
 .gmx-tabs svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .gmx-tabs a[aria-current="page"]{color:#FF1C02}
 .gmx-tabs a:hover{color:#F2F2EF}
@@ -284,6 +318,8 @@ footer svg{animation:gmx-beat 6s ease-in-out infinite}
 .gmx-tap{position:absolute;left:0;top:0;z-index:-1;pointer-events:none}
 </style>
 <link rel="canonical" href="https://groovesmaxxing.com/">
+<link rel="alternate" type="application/rss+xml" title="fresh grooves friday" href="/feed.xml">
+<link rel="stylesheet" href="/gmx-player.css">
   <!-- gmx-seo start -->
   <script type="application/ld+json">
 {
@@ -297,6 +333,14 @@ footer svg{animation:gmx-beat 6s ease-in-out infinite}
       "description": "house, techno and indie dance curated by your friend with permanent aux privileges.",
       "publisher": {
         "@id": "https://groovesmaxxing.com/#org"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://groovesmaxxing.com/search?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
       }
     },
     {
@@ -319,6 +363,8 @@ footer svg{animation:gmx-beat 6s ease-in-out infinite}
 }
   </script>
   <!-- gmx-seo end -->
+<link rel="stylesheet" href="/gmx-quick.css">
+<link rel="stylesheet" href="/gmx-sheet.css">
 </head>
 <body>
 
@@ -359,9 +405,9 @@ fill="none" stroke="#F2F2EF" stroke-width="7" stroke-linecap="round" stroke-line
 </a>
 </nav>
 <nav class="hero-links" aria-label="the pages">
-<a class="pill solid" href="/events" data-pv-t="events radar" data-pv-d="where the grooves are. big festivals across the us, underground rooms city by city, denver deepest." data-pv-m="its own page ↗ · past dates drop off on their own">📡 events radar · where the grooves are</a>
-<a class="pill" href="/venues" data-pv-t="denver venues" data-pv-d="seventeen rooms for house, techno and indie dance, every one verified open. the clubs first, then the big rooms." data-pv-m="its own page ↗ · checked august 2026">📍 denver venues · the field guide</a>
-<a class="pill" href="/tours" data-pv-t="on tour" data-pv-d="where the artists we follow are playing next. swept nightly from ticketmaster, searchable by artist or city, denver one tap away." data-pv-m="its own page ↗ · swept nightly">🗺️ on tour · the follow list, live</a>
+<a class="pill solid" href="/events" data-pv-t="events radar" data-pv-d="where the grooves are. big festivals across the us, underground rooms city by city, denver deepest." data-pv-m="the radar, on tour and denver venues ↗ · past dates drop off on their own">📡 events radar · where the grooves are</a>
+<a class="pill" href="/events#venues" data-pv-t="denver venues" data-pv-d="seventeen rooms for house, techno and indie dance, every one verified open. the clubs first, then the big rooms." data-pv-m="on the radar hub ↗ · checked august 2026">📍 denver venues · the field guide</a>
+<a class="pill" href="/events#tours" data-pv-t="on tour" data-pv-d="where the artists we follow are playing next. swept nightly from ticketmaster, searchable by artist or city, denver one tap away." data-pv-m="on the radar hub ↗ · swept nightly">🗺️ on tour · the follow list, live</a>
 <a class="pill" href="tracklists/" data-pv-t="tracklists" data-pv-d="what actually got played. every set we tag, timestamped to five seconds, with the sources shown and the tracks we could not name left honest." data-pv-m="its own page ↗ · updated as we tag">🎧 tracklists · what actually got played</a>
 </nav>
 <nav class="area-nav" aria-label="the areas">
@@ -376,9 +422,18 @@ fill="none" stroke="#F2F2EF" stroke-width="7" stroke-linecap="round" stroke-line
 <a href="#labels" data-pv-t="the imprint radar" data-pv-d="the labels that keep showing up when a track survives the skip test. hover any name on the wall to see why it earned the spot." data-pv-m="85 imprints · 4 tiers">the imprint radar</a>
 <a href="#series" data-pv-t="on the calendar" data-pv-d="the recurring stuff. what lands every week, and what lands every month." data-pv-m="fresh grooves friday · contraband of the week · events radar">on the calendar</a>
 <a href="#letter" data-pv-t="the newsletter" data-pv-d="fresh grooves friday in your inbox, and every past issue readable in full on the site. the releases that survived the week, an artist worth knowing, where they're playing next." data-pv-m="free · fridays · no spam · every issue on the site">the newsletter</a>
-<a href="/roster" data-pv-t="the roster" data-pv-d="every artist and label we follow, on one page. filter it, search it, click any name to find them on instagram." data-pv-m="its own page ↗ · 708 artists · 103 labels">the roster <span class="off">↗</span></a>
+<a href="/artists" data-pv-t="the artists" data-pv-d="every artist we follow, a to z with the lanes, the cities and the sounds. search it, open a letter, tap a name for the profile." data-pv-m="its own page ↗ · 708 artists · the labels on their own index">the artists <span class="off">↗</span></a>
 </nav>
 </header>
+
+<section id="nextup" hidden>
+<div class="wrap">
+<span class="mono eyebrow">from your crate</span>
+<h2>next up</h2>
+<ul class="drops" id="nextup-list"></ul>
+<p class="mono" style="margin-top:14px"><a class="more" href="/upcoming?mine=1" data-count>every drop from my crate →</a></p>
+</div>
+</section>
 
 <section id="about">
 <div class="wrap">
@@ -386,6 +441,16 @@ fill="none" stroke="#F2F2EF" stroke-width="7" stroke-linecap="round" stroke-line
 <h2>we listen to everything.<br>you get the good stuff.</h2>
 <p class="manifesto">house, techno &amp; indie dance, curated like a friend texting you bangers. <em>new releases</em> every friday, <em>live sets</em> worth your hour, and <em>hidden gems</em> you can't stream anywhere else.</p>
 <p class="about-foot">708 artists followed. 1,000+ tracks curated. zero skips. no ads, no sponsors, no corporate playlist politics. just taste, maxxed.</p>
+</div>
+</section>
+
+
+<section id="tonight" hidden>
+<div class="wrap">
+<span class="mono eyebrow">on in denver</span>
+<h2>the next nights out</h2>
+<ul class="drops" id="tonight-list"></ul>
+<p class="mono" style="margin-top:14px"><a class="more" href="/events#tours">every date on the radar →</a></p>
 </div>
 </section>
 
@@ -429,148 +494,15 @@ fill="none" stroke="#F2F2EF" stroke-width="7" stroke-linecap="round" stroke-line
 </div>
 </section>
 
-<section class="day-section story" id="story">
-<div class="wrap">
-<span class="mono eyebrow">the story</span>
-<h2>why this exists</h2>
-<p>groovesmaxxing started the way every good obsession does: one person sending way too many songs to the group chat. the playlists got long. the follows got longer. eventually "you have to hear this" needed a bigger room than a text thread. so here we are.</p>
-<p>the rules are simple. <strong>fun first.</strong> this page exists because sharing music you love is one of life's genuinely great feelings, and for no other reason. <strong>zero budget.</strong> everything here runs on free tools and stubbornness. <strong>no pay-to-play.</strong> no ads, no sponsors, nobody sliding into the inbox to buy a slot. if a track is here, it's because it slaps. <strong>lowercase forever.</strong> corporate never.</p>
-<p>what that adds up to: new releases filtered down every friday so you don't have to dig, live sets that actually earn their runtime, artist deep-dives on the people who define the sound, and the contraband: edits, bootlegs and unreleased heat that never touches a streaming service. consider this your friend with permanent aux privileges.</p>
-</div>
-</section>
 
-<section id="lanes">
-<div class="wrap">
-<span class="mono eyebrow">the sound</span>
-<h2>three lanes, one groove</h2>
-<div class="lanes">
-<div class="lane lane-vibes">
-<h3>vibes ☀️</h3>
-<p>sunny, funky, disco-leaning house. the daytime groove. french touch energy, rooftop approved.</p>
-<p class="who"><a href="/artists/jord">JØRD</a> · <a href="/artists/brunello">Brunello</a> · <a href="/artists/omri">OMRI.</a> · <a href="/artists/bonafique">Bonafique</a> · <a href="/artists/mita-gami">Mita Gami</a> · <a href="/artists/buja-br">BUJA (BR)</a> · <a href="/artists/toman">Toman</a></p>
-</div>
-<div class="lane lane-bumpy">
-<h3>bumpy 🚧</h3>
-<p>bass-driven club heaters and melodic night-shift grooves. hard hats required past midnight.</p>
-<p class="who"><a href="/artists/max-styler">Max Styler</a> · <a href="/artists/ayybo">AYYBO</a> · <a href="/artists/notre-dame">Notre Dame</a> · <a href="/artists/adam-ten">Adam Ten</a> · <a href="/artists/dansyn">Dansyn</a></p>
-</div>
-<div class="lane lane-nonspoty">
-<h3>contraband grooves 💎</h3>
-<p>edits, bootlegs &amp; unreleased heat that never made it to streaming. the stuff you send your group chat.</p>
-<p class="who">soundcloud-only · free downloads · unreleased ids</p>
-</div>
-</div>
-</div>
-</section>
 
-<section class="day-section" id="artists">
-<div class="wrap">
-<span class="mono eyebrow">who we follow</span>
-<h2>708 artists deep</h2>
-<p class="roster-cta"><a class="more" href="/roster" data-pv-t="the roster" data-pv-d="every artist and label we follow, on one page. filter it, search it, click any name to find them on instagram." data-pv-m="its own page ↗ · 708 artists · 103 labels">see all 708 artists + 103 labels →</a></p>
-<p class="canon">the heavy rotation, the seventeen that define the page: <span><a href="/artists/solomun">Solomun</a> · <a href="/artists/vintage-culture">Vintage Culture</a> · <a href="/artists/notre-dame">Notre Dame</a> · <a href="/artists/adam-ten">Adam Ten</a> · <a href="/artists/mita-gami">Mita Gami</a> · <a href="/artists/max-styler">Max Styler</a> · <a href="/artists/ayybo">AYYBO</a> · <a href="/artists/tobehonest">TOBEHONEST</a> · <a href="/artists/pawsa">PAWSA</a> · <a href="/artists/volkoder">Volkoder</a> · <a href="/artists/mau-p">Mau P</a> · <a href="/artists/michael-bibi">Michael Bibi</a> · <a href="/artists/anotr">ANOTR</a> · <a href="/artists/hugel">HUGEL</a> · <a href="/artists/chris-lake">Chris Lake</a> · <a href="/artists/broken-hill">Broken Hill</a> · <a href="/artists/tripolism">Tripolism</a></span> <i>· everyone else orbits these.</i></p>
-<p class="canon-next">next up in the rotation: <span><a href="/artists/rafael">Rafael</a> · <a href="/artists/jord">JØRD</a> · <a href="/artists/brunello">Brunello</a> · <a href="/artists/bonafique">Bonafique</a> · <a href="/artists/panic-chase">Panic Chase</a> · <a href="/artists/angelo-ferreri">Angelo Ferreri</a> · <a href="/artists/gabss">Gabss</a> · <a href="/artists/millero">Millero</a> · <a href="/artists/no-static">NO STATIC</a> · <a href="/artists/darco">Darco</a> · <a href="/artists/luch">Luch</a> · <a href="/artists/toman">Toman</a></span></p>
-<div class="clusters">
-<div class="cluster">
-<h3>the gdb pipeline</h3>
-<p><a href="/artists/ayybo">AYYBO</a>, anaheim's own, runs <a href="/labels/gdb">GDB</a> out of los angeles, and the bench runs deep: <a href="/artists/gabss">Gabss</a>, <a href="/artists/jato">JATO</a>, <a href="/artists/n2n">N2N</a>, <a href="/artists/ivrish">IVRISH</a>, <a href="/artists/polovich">POLOVICH</a>, <a href="/artists/dedro">DEDRO</a>, with <a href="/artists/millero">Millero</a> on remix duty. when your most-played artist is also signing your next favorite, the algorithm didn't find them. you did. label &gt; algorithm.</p>
-</div>
-<div class="cluster">
-<h3>the nu moda pipeline</h3>
-<p><a href="/artists/max-styler">Max Styler</a> launched <a href="/labels/nu-moda">Nu Moda</a> in october 2025 and made it home for his own records. the bench: <a href="/artists/kryptogram">kryptogram</a>, <a href="/artists/greggio">Greggio</a>, <a href="/artists/knorst">Knorst</a>, <a href="/artists/jonathan">Jonathan</a>, <a href="/artists/dvirnuns">DvirNuns</a>, <a href="/artists/viot">Viot</a>, <a href="/artists/welker">WELKER</a>. the co-signs live here too: <a href="/artists/vintage-culture">Vintage Culture</a> and <a href="/artists/notre-dame">Notre Dame</a> on You &amp; Me, <a href="/artists/solomun">Solomun</a> on One More.</p>
-</div>
-<div class="cluster">
-<h3>the solid grooves crew</h3>
-<p><a href="/artists/michael-bibi">Michael Bibi</a> and <a href="/artists/pawsa">PAWSA</a> ran <a href="/labels/solid-grooves">Solid Grooves</a> as a london party before it was ever a label, and the label came in 2015. bibi put the party on, PAWSA minded the music. the bench since: <a href="/artists/dennis-cruz">Dennis Cruz</a>, <a href="/artists/anotr">ANOTR</a>, <a href="/artists/ben-sterling">Ben Sterling</a>, <a href="/artists/toman">Toman</a>, <a href="/artists/kolter">Kolter</a>, <a href="/artists/discip">Discip</a>, <a href="/artists/josh-butler">Josh Butler</a>, plus <a href="/artists/ayybo">AYYBO</a> on 4 Ya Mind. summers belong to DC-10, the casino nights in ibiza.</p>
-</div>
-<div class="cluster">
-<h3>the minimal wave</h3>
-<p>one sound, a lot of passports. <a href="/artists/chris-stassy">Chris Stassy</a> and <a href="/artists/toman">Toman</a> out of amsterdam, <a href="/artists/m-high">M-High</a> doing a&amp;r for <a href="/labels/piv">PIV</a>, <a href="/artists/kolter">Kolter</a> in cologne, <a href="/artists/sidney-charles">Sidney Charles</a> gone hamburg to berlin to lisbon, <a href="/artists/beltran">Beltran</a> flying the flag for southern brazil, <a href="/artists/josh-baker">Josh Baker</a> and <a href="/artists/max-dean">Max Dean</a> holding it down for manchester and london. rolling basslines, boutique labels, zero big-room nonsense.</p>
-</div>
-<div class="cluster">
-<h3>the israeli wave</h3>
-<p><a href="/artists/adam-ten">Adam Ten</a>, <a href="/artists/mita-gami">Mita Gami</a>, <a href="/artists/rafael">Rafael</a>, <a href="/artists/yamagucci">Yamagucci</a>, <a href="/artists/toni-b">Toni B</a>, <a href="/artists/omri">OMRI.</a>, <a href="/artists/mishell">Mishell</a>, <a href="/artists/niv-ast">Niv Ast</a> and a dozen more. the <a href="/labels/maccabi-house">maccabi house</a> orbit out of tel aviv, where melodic groove got its passport renewed.</p>
-</div>
-<div class="cluster">
-<h3>the legends</h3>
-<p><a href="/artists/green-velvet">Green Velvet</a>, <a href="/artists/mike-dunn">Mike Dunn</a>, <a href="/artists/deep-dish">Deep Dish</a>, <a href="/artists/armand-van-helden">Armand Van Helden</a>, <a href="/artists/seth-troxler">Seth Troxler</a>, <a href="/artists/the-martinez-brothers">The Martinez Brothers</a>, and the king himself, <a href="/artists/solomun">Solomun</a>. respect the foundation or leave the building.</p>
-</div>
-<div class="cluster">
-<h3>the melodic heavyweights</h3>
-<p><a href="/artists/artbat">ARTBAT</a>, <a href="/artists/anyma">Anyma</a>, <a href="/artists/adriatique">Adriatique</a>, <a href="/artists/bedouin">Bedouin</a>, <a href="/artists/monolink">Monolink</a>, <a href="/artists/black-coffee">Black Coffee</a>. for when the night needs a narrative arc.</p>
-</div>
-<div class="cluster">
-<h3>the sunshine committee</h3>
-<p><a href="/artists/yuksek">Yuksek</a>, <a href="/artists/the-magician">The Magician</a>, <a href="/artists/purple-disco-machine">Purple Disco Machine</a>, <a href="/artists/horse-meat-disco">Horse Meat Disco</a>, <a href="/artists/satin-jackets">Satin Jackets</a>, <a href="/artists/poolside">Poolside</a>. the daytime cabinet. someone has to govern the rooftop.</p>
-</div>
-<div class="cluster">
-<h3>the mainstage crossover</h3>
-<p><a href="/artists/mau-p">Mau P</a>, <a href="/artists/dom-dolla">Dom Dolla</a>, <a href="/artists/fisher">FISHER</a>, <a href="/artists/john-summit">John Summit</a>, <a href="/artists/chris-lake">Chris Lake</a>. the tech house that clawed out of the sweaty club and onto the festival main stage without losing the bounce. proof the big room can still have taste.</p>
-</div>
-</div>
-</div>
-</section>
 
-<section id="listen">
-<div class="wrap">
-<span class="mono eyebrow">press play</span>
-<h2>the playlists</h2>
-<p class="note" style="margin:4px 0 20px">crate rule: grooves added weekly. the freshest adds live at the bottom of each crate ↓</p>
-<div class="players">
-<div class="player" style="--cover:url('media/covers/good-vibe-juice.jpg')">
-<h4>good vibe juice 🧃</h4>
-<iframe src="https://open.spotify.com/embed/playlist/0cJazkJ5pLBDxCJ8HRe4vx?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="good vibe juice playlist on Spotify"></iframe>
-<p class="note">509 tracks of sunshine</p>
-</div>
-<div class="player" style="--cover:url('media/covers/bumpy.jpg')">
-<h4>bumpy 🚧</h4>
-<iframe src="https://open.spotify.com/embed/playlist/4DfpAcNe8ezmDJYIsF2TEE?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="bumpy playlist on Spotify"></iframe>
-<p class="note">536 tracks for the night shift</p>
-</div>
-<div class="player" style="--cover:url('media/covers/waaavy.jpg')">
-<h4>waaavy 🌊</h4>
-<iframe src="https://open.spotify.com/embed/playlist/351sXMbk8NYd1nK3lVnSK2?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="waaavy playlist on Spotify"></iframe>
-<p class="note">622 tracks, the long swim</p>
-</div>
-<div class="player" style="--cover:url('media/covers/wen-playa.jpg')">
-<h4>wen playa 🌴</h4>
-<iframe src="https://open.spotify.com/embed/playlist/71z0Gztn3USCi5tTPAZqVf?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="wen playa playlist on Spotify"></iframe>
-<p class="note">231 tracks for golden hour</p>
-</div>
-<div class="player" style="--cover:url('media/covers/new-releases.jpg');--lift:2.4">
-<h4>new house releases</h4>
-<iframe src="https://open.spotify.com/embed/playlist/2XHhZCbEuUQhKwBK1G2gji?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="new house releases playlist on Spotify"></iframe>
-<p class="note">what just dropped, while it's still warm</p>
-</div>
-<div class="player" style="--cover:url('media/covers/contraband-grooves.jpg');--lift:2.4">
-<h4>contraband grooves 💎</h4>
-<iframe src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fgroovesmaxxing%2Fsets%2Fcontratbandgrooves&color=%23ff1c02&auto_play=false&show_teaser=false" height="352" loading="lazy" title="contraband grooves playlist on SoundCloud"></iframe>
-<p class="note">100+ edits you can't stream anywhere else</p>
-</div>
-<div class="player" style="--cover:url('media/covers/dj-sets.jpg');--lift:2.4">
-<h4>dj sets 🎛️</h4>
-<iframe src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fgroovesmaxxing%2Fsets%2Fdj-sets&color=%23ff1c02&auto_play=false&show_teaser=false" height="352" loading="lazy" title="dj sets playlist on SoundCloud"></iframe>
-<p class="note">5 mixes, front to back</p>
-</div>
-<div class="player" style="--cover:url('media/covers/radio-sets.jpg');--lift:2.4">
-<h4>radio sets 📻</h4>
-<iframe src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fgroovesmaxxing%2Fsets%2Fradio-sets&color=%23ff1c02&auto_play=false&show_teaser=false" height="352" loading="lazy" title="radio sets playlist on SoundCloud"></iframe>
-<p class="note">4 hours off the airwaves</p>
-</div>
-</div>
-<div class="mix-row">
-<a class="pill" href="https://soundcloud.com/discover/sets/new-for-you::groovesmaxxing" target="_blank" rel="noopener">daily drops ↻</a>
-<a class="pill" href="https://soundcloud.com/discover/sets/weekly::groovesmaxxing" target="_blank" rel="noopener">weekly wave ↻</a>
-<span class="mono">auto-refreshing soundcloud mixes off our taste. new picks every week</span>
-</div>
-</div>
-</section>
 
 <section class="day-section" id="library">
 <div class="wrap">
 <span class="mono eyebrow">the library</span>
 <h2>sets worth your hour</h2>
-<div class="set-stage">
+<div class="set-stage" data-label="set" data-window="7" data-auto="6000">
 <div class="set-viewport">
 <div class="set-rail">
 <!-- sets-pool:start -->
@@ -1073,6 +1005,7 @@ fill="none" stroke="#F2F2EF" stroke-width="7" stroke-linecap="round" stroke-line
 </div>
 <div class="mix-row">
 <a class="pill" href="/sets">every set on the site, on its own page →</a>
+<a class="pill" href="/radio">radio: the library back to back →</a>
 <a class="pill" href="https://www.youtube.com/playlist?list=PLbDTAO7oVors" target="_blank" rel="noopener">the same sets as one youtube playlist ↗</a>
 <a class="pill" href="/interviews">the same artists, in their own words →</a>
 </div>
@@ -1083,7 +1016,7 @@ fill="none" stroke="#F2F2EF" stroke-width="7" stroke-linecap="round" stroke-line
 <div class="wrap">
 <span class="mono eyebrow">in their own words</span>
 <h2>the roster, talking</h2>
-<div class="set-stage">
+<div class="set-stage" data-label="talk" data-window="7" data-auto="6000">
 <div class="set-viewport">
 <div class="set-rail">
 <!-- iv-pool:start -->
@@ -1626,6 +1559,184 @@ fill="none" stroke="#F2F2EF" stroke-width="7" stroke-linecap="round" stroke-line
 </div>
 </section>
 
+
+<section id="letter">
+<div class="wrap">
+<span class="mono eyebrow">fresh grooves friday, delivered</span>
+<h2>the newsletter</h2>
+<p class="note">every friday: the releases that survived the week, an artist worth knowing, and where they're playing next. free, no spam, leave whenever. zero skips 🧃</p>
+<p class="note">already out: <a href="/newsletter">read past issues →</a>, in full, no signup needed.</p>
+<form action="https://buttondown.com/api/emails/embed-subscribe/groovesmaxxed" method="post" class="embeddable-buttondown-form">
+<label for="bd-email">email</label>
+<input type="email" name="email" id="bd-email" placeholder="you@example.com" required>
+<input type="hidden" value="1" name="embed">
+<input type="submit" value="subscribe">
+</form>
+</div>
+</section>
+
+
+<section id="more-home">
+<div class="wrap">
+<span class="mono eyebrow">the rest of it</span>
+<h2>more of the home page</h2>
+<p class="note">the long reads and the deep cuts, folded so the phone scroll stays short. open any one.</p>
+<nav class="fold-nav" aria-label="folded sections">
+<a class="pill" href="#story">the story</a>
+<a class="pill" href="#lanes">the sound</a>
+<a class="pill" href="#artists">who we follow</a>
+<a class="pill" href="#listen">press play</a>
+<a class="pill" href="#series">on the calendar</a>
+</nav>
+</div>
+</section>
+<details class="fold" id="fold-story">
+<summary><span>why this exists</span><span class="mono">the story</span></summary>
+<section class="day-section story" id="story">
+<div class="wrap">
+<span class="mono eyebrow">the story</span>
+<h2>why this exists</h2>
+<p>groovesmaxxing started the way every good obsession does: one person sending way too many songs to the group chat. the playlists got long. the follows got longer. eventually "you have to hear this" needed a bigger room than a text thread. so here we are.</p>
+<p>the rules are simple. <strong>fun first.</strong> this page exists because sharing music you love is one of life's genuinely great feelings, and for no other reason. <strong>zero budget.</strong> everything here runs on free tools and stubbornness. <strong>no pay-to-play.</strong> no ads, no sponsors, nobody sliding into the inbox to buy a slot. if a track is here, it's because it slaps. <strong>lowercase forever.</strong> corporate never.</p>
+<p>what that adds up to: new releases filtered down every friday so you don't have to dig, live sets that actually earn their runtime, artist deep-dives on the people who define the sound, and the contraband: edits, bootlegs and unreleased heat that never touches a streaming service. consider this your friend with permanent aux privileges.</p>
+</div>
+</section>
+</details>
+<details class="fold" id="fold-lanes">
+<summary><span>three lanes, one groove</span><span class="mono">the sound</span></summary>
+<section id="lanes">
+<div class="wrap">
+<span class="mono eyebrow">the sound</span>
+<h2>three lanes, one groove</h2>
+<div class="lanes">
+<div class="lane lane-vibes">
+<h3>vibes ☀️</h3>
+<p>sunny, funky, disco-leaning house. the daytime groove. french touch energy, rooftop approved.</p>
+<p class="who"><a href="/artists/jord">JØRD</a> · <a href="/artists/brunello">Brunello</a> · <a href="/artists/omri">OMRI.</a> · <a href="/artists/bonafique">Bonafique</a> · <a href="/artists/mita-gami">Mita Gami</a> · <a href="/artists/buja-br">BUJA (BR)</a> · <a href="/artists/toman">Toman</a></p>
+</div>
+<div class="lane lane-bumpy">
+<h3>bumpy 🚧</h3>
+<p>bass-driven club heaters and melodic night-shift grooves. hard hats required past midnight.</p>
+<p class="who"><a href="/artists/max-styler">Max Styler</a> · <a href="/artists/ayybo">AYYBO</a> · <a href="/artists/notre-dame">Notre Dame</a> · <a href="/artists/adam-ten">Adam Ten</a> · <a href="/artists/dansyn">Dansyn</a></p>
+</div>
+<div class="lane lane-nonspoty">
+<h3>contraband grooves 💎</h3>
+<p>edits, bootlegs &amp; unreleased heat that never made it to streaming. the stuff you send your group chat.</p>
+<p class="who">soundcloud-only · free downloads · unreleased ids</p>
+</div>
+</div>
+</div>
+</section>
+</details>
+<details class="fold" id="fold-artists">
+<summary><span>708 artists deep</span><span class="mono">who we follow</span></summary>
+<section class="day-section" id="artists">
+<div class="wrap">
+<span class="mono eyebrow">who we follow</span>
+<h2>708 artists deep</h2>
+<p class="roster-cta"><a class="more" href="/artists" data-pv-t="the artists" data-pv-d="every artist we follow, a to z with the lanes, the cities and the sounds. search it, open a letter, tap a name for the profile." data-pv-m="its own page ↗ · 708 artists · the labels on their own index">see all 708 artists →</a></p>
+<p class="canon">the heavy rotation, the seventeen that define the page: <span><a href="/artists/solomun">Solomun</a> · <a href="/artists/vintage-culture">Vintage Culture</a> · <a href="/artists/notre-dame">Notre Dame</a> · <a href="/artists/adam-ten">Adam Ten</a> · <a href="/artists/mita-gami">Mita Gami</a> · <a href="/artists/max-styler">Max Styler</a> · <a href="/artists/ayybo">AYYBO</a> · <a href="/artists/tobehonest">TOBEHONEST</a> · <a href="/artists/pawsa">PAWSA</a> · <a href="/artists/volkoder">Volkoder</a> · <a href="/artists/mau-p">Mau P</a> · <a href="/artists/michael-bibi">Michael Bibi</a> · <a href="/artists/anotr">ANOTR</a> · <a href="/artists/hugel">HUGEL</a> · <a href="/artists/chris-lake">Chris Lake</a> · <a href="/artists/broken-hill">Broken Hill</a> · <a href="/artists/tripolism">Tripolism</a></span> <i>· everyone else orbits these.</i></p>
+<p class="canon-next">next up in the rotation: <span><a href="/artists/rafael">Rafael</a> · <a href="/artists/jord">JØRD</a> · <a href="/artists/brunello">Brunello</a> · <a href="/artists/bonafique">Bonafique</a> · <a href="/artists/panic-chase">Panic Chase</a> · <a href="/artists/angelo-ferreri">Angelo Ferreri</a> · <a href="/artists/gabss">Gabss</a> · <a href="/artists/millero">Millero</a> · <a href="/artists/no-static">NO STATIC</a> · <a href="/artists/darco">Darco</a> · <a href="/artists/luch">Luch</a> · <a href="/artists/toman">Toman</a></span></p>
+<div class="clusters">
+<div class="cluster">
+<h3>the gdb pipeline</h3>
+<p><a href="/artists/ayybo">AYYBO</a>, anaheim's own, runs <a href="/labels/gdb">GDB</a> out of los angeles, and the bench runs deep: <a href="/artists/gabss">Gabss</a>, <a href="/artists/jato">JATO</a>, <a href="/artists/n2n">N2N</a>, <a href="/artists/ivrish">IVRISH</a>, <a href="/artists/polovich">POLOVICH</a>, <a href="/artists/dedro">DEDRO</a>, with <a href="/artists/millero">Millero</a> on remix duty. when your most-played artist is also signing your next favorite, the algorithm didn't find them. you did. label &gt; algorithm.</p>
+</div>
+<div class="cluster">
+<h3>the nu moda pipeline</h3>
+<p><a href="/artists/max-styler">Max Styler</a> launched <a href="/labels/nu-moda">Nu Moda</a> in october 2025 and made it home for his own records. the bench: <a href="/artists/kryptogram">kryptogram</a>, <a href="/artists/greggio">Greggio</a>, <a href="/artists/knorst">Knorst</a>, <a href="/artists/jonathan">Jonathan</a>, <a href="/artists/dvirnuns">DvirNuns</a>, <a href="/artists/viot">Viot</a>, <a href="/artists/welker">WELKER</a>. the co-signs live here too: <a href="/artists/vintage-culture">Vintage Culture</a> and <a href="/artists/notre-dame">Notre Dame</a> on You &amp; Me, <a href="/artists/solomun">Solomun</a> on One More.</p>
+</div>
+<div class="cluster">
+<h3>the solid grooves crew</h3>
+<p><a href="/artists/michael-bibi">Michael Bibi</a> and <a href="/artists/pawsa">PAWSA</a> ran <a href="/labels/solid-grooves">Solid Grooves</a> as a london party before it was ever a label, and the label came in 2015. bibi put the party on, PAWSA minded the music. the bench since: <a href="/artists/dennis-cruz">Dennis Cruz</a>, <a href="/artists/anotr">ANOTR</a>, <a href="/artists/ben-sterling">Ben Sterling</a>, <a href="/artists/toman">Toman</a>, <a href="/artists/kolter">Kolter</a>, <a href="/artists/discip">Discip</a>, <a href="/artists/josh-butler">Josh Butler</a>, plus <a href="/artists/ayybo">AYYBO</a> on 4 Ya Mind. summers belong to DC-10, the casino nights in ibiza.</p>
+</div>
+<div class="cluster">
+<h3>the minimal wave</h3>
+<p>one sound, a lot of passports. <a href="/artists/chris-stassy">Chris Stassy</a> and <a href="/artists/toman">Toman</a> out of amsterdam, <a href="/artists/m-high">M-High</a> doing a&amp;r for <a href="/labels/piv">PIV</a>, <a href="/artists/kolter">Kolter</a> in cologne, <a href="/artists/sidney-charles">Sidney Charles</a> gone hamburg to berlin to lisbon, <a href="/artists/beltran">Beltran</a> flying the flag for southern brazil, <a href="/artists/josh-baker">Josh Baker</a> and <a href="/artists/max-dean">Max Dean</a> holding it down for manchester and london. rolling basslines, boutique labels, zero big-room nonsense.</p>
+</div>
+<div class="cluster">
+<h3>the israeli wave</h3>
+<p><a href="/artists/adam-ten">Adam Ten</a>, <a href="/artists/mita-gami">Mita Gami</a>, <a href="/artists/rafael">Rafael</a>, <a href="/artists/yamagucci">Yamagucci</a>, <a href="/artists/toni-b">Toni B</a>, <a href="/artists/omri">OMRI.</a>, <a href="/artists/mishell">Mishell</a>, <a href="/artists/niv-ast">Niv Ast</a> and a dozen more. the <a href="/labels/maccabi-house">maccabi house</a> orbit out of tel aviv, where melodic groove got its passport renewed.</p>
+</div>
+<div class="cluster">
+<h3>the legends</h3>
+<p><a href="/artists/green-velvet">Green Velvet</a>, <a href="/artists/mike-dunn">Mike Dunn</a>, <a href="/artists/deep-dish">Deep Dish</a>, <a href="/artists/armand-van-helden">Armand Van Helden</a>, <a href="/artists/seth-troxler">Seth Troxler</a>, <a href="/artists/the-martinez-brothers">The Martinez Brothers</a>, and the king himself, <a href="/artists/solomun">Solomun</a>. respect the foundation or leave the building.</p>
+</div>
+<div class="cluster">
+<h3>the melodic heavyweights</h3>
+<p><a href="/artists/artbat">ARTBAT</a>, <a href="/artists/anyma">Anyma</a>, <a href="/artists/adriatique">Adriatique</a>, <a href="/artists/bedouin">Bedouin</a>, <a href="/artists/monolink">Monolink</a>, <a href="/artists/black-coffee">Black Coffee</a>. for when the night needs a narrative arc.</p>
+</div>
+<div class="cluster">
+<h3>the sunshine committee</h3>
+<p><a href="/artists/yuksek">Yuksek</a>, <a href="/artists/the-magician">The Magician</a>, <a href="/artists/purple-disco-machine">Purple Disco Machine</a>, <a href="/artists/horse-meat-disco">Horse Meat Disco</a>, <a href="/artists/satin-jackets">Satin Jackets</a>, <a href="/artists/poolside">Poolside</a>. the daytime cabinet. someone has to govern the rooftop.</p>
+</div>
+<div class="cluster">
+<h3>the mainstage crossover</h3>
+<p><a href="/artists/mau-p">Mau P</a>, <a href="/artists/dom-dolla">Dom Dolla</a>, <a href="/artists/fisher">FISHER</a>, <a href="/artists/john-summit">John Summit</a>, <a href="/artists/chris-lake">Chris Lake</a>. the tech house that clawed out of the sweaty club and onto the festival main stage without losing the bounce. proof the big room can still have taste.</p>
+</div>
+</div>
+</div>
+</section>
+</details>
+<details class="fold" id="fold-listen">
+<summary><span>the playlists</span><span class="mono">press play</span></summary>
+<section id="listen">
+<div class="wrap">
+<span class="mono eyebrow">press play</span>
+<h2>the playlists</h2>
+<p class="note" style="margin:4px 0 20px">crate rule: grooves added weekly. the freshest adds live at the bottom of each crate ↓</p>
+<div class="players">
+<div class="player" style="--cover:url('media/covers/good-vibe-juice.jpg')">
+<h4>good vibe juice 🧃</h4>
+<iframe src="https://open.spotify.com/embed/playlist/0cJazkJ5pLBDxCJ8HRe4vx?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="good vibe juice playlist on Spotify"></iframe>
+<p class="note">509 tracks of sunshine</p>
+</div>
+<div class="player" style="--cover:url('media/covers/bumpy.jpg')">
+<h4>bumpy 🚧</h4>
+<iframe src="https://open.spotify.com/embed/playlist/4DfpAcNe8ezmDJYIsF2TEE?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="bumpy playlist on Spotify"></iframe>
+<p class="note">536 tracks for the night shift</p>
+</div>
+<div class="player" style="--cover:url('media/covers/waaavy.jpg')">
+<h4>waaavy 🌊</h4>
+<iframe src="https://open.spotify.com/embed/playlist/351sXMbk8NYd1nK3lVnSK2?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="waaavy playlist on Spotify"></iframe>
+<p class="note">622 tracks, the long swim</p>
+</div>
+<div class="player" style="--cover:url('media/covers/wen-playa.jpg')">
+<h4>wen playa 🌴</h4>
+<iframe src="https://open.spotify.com/embed/playlist/71z0Gztn3USCi5tTPAZqVf?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="wen playa playlist on Spotify"></iframe>
+<p class="note">231 tracks for golden hour</p>
+</div>
+<div class="player" style="--cover:url('media/covers/new-releases.jpg');--lift:2.4">
+<h4>new house releases</h4>
+<iframe src="https://open.spotify.com/embed/playlist/2XHhZCbEuUQhKwBK1G2gji?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="new house releases playlist on Spotify"></iframe>
+<p class="note">what just dropped, while it's still warm</p>
+</div>
+<div class="player" style="--cover:url('media/covers/contraband-grooves.jpg');--lift:2.4">
+<h4>contraband grooves 💎</h4>
+<iframe src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fgroovesmaxxing%2Fsets%2Fcontratbandgrooves&color=%23ff1c02&auto_play=false&show_teaser=false" height="352" loading="lazy" title="contraband grooves playlist on SoundCloud"></iframe>
+<p class="note">100+ edits you can't stream anywhere else</p>
+</div>
+<div class="player" style="--cover:url('media/covers/dj-sets.jpg');--lift:2.4">
+<h4>dj sets 🎛️</h4>
+<iframe src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fgroovesmaxxing%2Fsets%2Fdj-sets&color=%23ff1c02&auto_play=false&show_teaser=false" height="352" loading="lazy" title="dj sets playlist on SoundCloud"></iframe>
+<p class="note">5 mixes, front to back</p>
+</div>
+<div class="player" style="--cover:url('media/covers/radio-sets.jpg');--lift:2.4">
+<h4>radio sets 📻</h4>
+<iframe src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fgroovesmaxxing%2Fsets%2Fradio-sets&color=%23ff1c02&auto_play=false&show_teaser=false" height="352" loading="lazy" title="radio sets playlist on SoundCloud"></iframe>
+<p class="note">4 hours off the airwaves</p>
+</div>
+</div>
+<div class="mix-row">
+<a class="pill" href="https://soundcloud.com/discover/sets/new-for-you::groovesmaxxing" target="_blank" rel="noopener">daily drops ↻</a>
+<a class="pill" href="https://soundcloud.com/discover/sets/weekly::groovesmaxxing" target="_blank" rel="noopener">weekly wave ↻</a>
+<span class="mono">auto-refreshing soundcloud mixes off our taste. new picks every week</span>
+</div>
+</div>
+</section>
+</details>
+<details class="fold" id="fold-series">
+<summary><span>the series</span><span class="mono">on the calendar</span></summary>
 <section class="day-section" id="series">
 <div class="wrap">
 <span class="mono eyebrow">on the calendar</span>
@@ -1648,21 +1759,7 @@ fill="none" stroke="#F2F2EF" stroke-width="7" stroke-linecap="round" stroke-line
 </div>
 </div>
 </section>
-
-<section id="letter">
-<div class="wrap">
-<span class="mono eyebrow">fresh grooves friday, delivered</span>
-<h2>the newsletter</h2>
-<p class="note">every friday: the releases that survived the week, an artist worth knowing, and where they're playing next. free, no spam, leave whenever. zero skips 🧃</p>
-<p class="note">already out: <a href="/newsletter">read past issues →</a>, in full, no signup needed.</p>
-<form action="https://buttondown.com/api/emails/embed-subscribe/groovesmaxxed" method="post" class="embeddable-buttondown-form">
-<label for="bd-email">email</label>
-<input type="email" name="email" id="bd-email" placeholder="you@example.com" required>
-<input type="hidden" value="1" name="embed">
-<input type="submit" value="subscribe">
-</form>
-</div>
-</section>
+</details>
 
 <footer>
 <div class="wrap">
@@ -1702,47 +1799,35 @@ fill="none" stroke="#F2F2EF" stroke-width="7" stroke-linecap="round" stroke-line
 
 <script>
 (function(){
-var stages=document.querySelectorAll('.set-stage');if(!stages.length)return;
-for(var si=0;si<stages.length;si++){run(stages[si]);}
-function run(stage){
-var pool=stage.querySelectorAll('.set-slide'),win=7;
-if(pool.length>win){
-var d0=new Date(),t=new Date(Date.UTC(d0.getFullYear(),d0.getMonth(),d0.getDate())),dn=t.getUTCDay()||7;
-t.setUTCDate(t.getUTCDate()+4-dn);
-var wk=Math.ceil(((t-Date.UTC(t.getUTCFullYear(),0,1))/864e5+1)/7);
-var start=(wk%Math.floor(pool.length/win))*win;
-for(var p=0;p<pool.length;p++){pool[p].hidden=!(p>=start&&p<start+win);}
-var box=stage.querySelector('.set-dots');box.innerHTML='';
-for(var q=0;q<win;q++){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','set '+(q+1)+' of '+win);if(q===0){b.setAttribute('aria-current','true');}box.appendChild(b);}
-}
-var rail=stage.querySelector('.set-rail'),slides=stage.querySelectorAll('.set-slide:not([hidden])'),
-dots=stage.querySelectorAll('.set-dots button'),i=0,timer=null,locked=false;
-var still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-function go(n){i=(n+slides.length)%slides.length;rail.style.transform='translateX('+(-i*100)+'%)';
-for(var k=0;k<dots.length;k++){dots[k].setAttribute('aria-current',k===i?'true':'false');}}
-function pause(){clearInterval(timer);}
-function play(){pause();if(locked||still)return;timer=setInterval(function(){go(i+1);},6000);}
-function lock(){locked=true;pause();}
-for(var d=0;d<dots.length;d++){(function(k){dots[k].addEventListener('click',function(){lock();go(k);});})(d);}
-stage.addEventListener('pointerenter',pause);
-stage.addEventListener('pointerleave',play);
-stage.addEventListener('focusin',lock);
-var faces=stage.querySelectorAll('.set-facade');
-for(var f=0;f<faces.length;f++){faces[f].addEventListener('click',function(){
-lock();
-var id=this.getAttribute('data-yt');
-var fr=document.createElement('iframe');
-fr.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1';
-fr.title=this.getAttribute('data-title');
-fr.loading='lazy';fr.allowFullscreen=true;
-fr.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
-var wrap=document.createElement('div');wrap.className='video-frame';wrap.appendChild(fr);
-this.parentNode.replaceChild(wrap,this);
-});}
-go(0);play();
-}
+function openFor(hash){var t=hash&&document.querySelector(hash);if(!t)return;var d=t.closest('details.fold');if(d&&!d.open)d.open=true;}
+document.addEventListener('click',function(e){var a=e.target.closest('a[href^="#"]');if(a)openFor(a.getAttribute('href'));});
+function onHash(){openFor(location.hash);var t=location.hash&&document.querySelector(location.hash);if(t)setTimeout(function(){t.scrollIntoView({block:'start'});},0);}
+window.addEventListener('hashchange',onHash);if(location.hash)onHash();
 })();
 </script>
+<script>
+(function(){
+/* on in denver: the next four dates from the nightly ticketmaster sweep, denver and the two rooms outside it.
+   a row only shows when the event is named after the artist, so a name collision on ticketmaster never lands here. */
+var sec=document.getElementById('tonight'),list=document.getElementById('tonight-list');if(!sec||!list||!window.fetch)return;
+function esc(s){var d=document.createElement('div');d.textContent=s||'';return d.innerHTML}
+var M=['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+/* radar-denver.json is the small file the sweep writes next to the full radar: already filtered to denver
+   and to events named after the artist. the full radar is the fallback for a build that predates it. */
+fetch('/radar-denver.json').then(function(r){if(!r.ok)throw new Error(r.status);return r.json()}).catch(function(){return fetch('/radar-events.json').then(function(r){return r.json()}).then(function(j){
+  return {events:(j.events||[]).filter(function(e){var c=(e.city||'').toLowerCase(),n=(e.event||'').toLowerCase(),a=(e.artist||'').toLowerCase();return (c==='denver'||c==='morrison'||c==='englewood')&&a&&(n.indexOf(a)===0||(a.length>=5&&new RegExp('(^|[^a-z])'+a.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'([^a-z]|$)').test(n)))})}})}).then(function(j){
+  var t=new Date(),today=t.getFullYear()+'-'+('0'+(t.getMonth()+1)).slice(-2)+'-'+('0'+t.getDate()).slice(-2);
+  var rows=(j.events||[]).filter(function(e){return e.date>=today}).sort(function(a,b){return a.date<b.date?-1:1}).slice(0,4);
+  if(!rows.length)return;
+  list.innerHTML=rows.map(function(e){var p=e.date.split('-');return '<li><span class="d">'+M[(+p[1]||1)-1]+' '+(+p[2])+'</span><span class="t"><b>'+esc(e.artist)+'</b> <span class="w">· '+esc([e.venue,e.city].filter(Boolean).join(', '))+'</span></span>'+(e.url?'<a class="go" href="'+esc(e.url)+'" target="_blank" rel="noopener">tickets ↗</a>':'')+'</li>'}).join('');
+  sec.hidden=false;
+}).catch(function(){});
+})();
+</script>
+<script src="/gmx-player.js" defer></script>
+<script src="/gmx-crate.js" defer></script>
+<script src="/gmx-sheet.js" defer></script>
+<script src="/gmx-nextup.js" defer></script>
 <script>
 (function(){
 var links=document.querySelectorAll('[data-pv-t]');if(!links.length)return;
@@ -1781,6 +1866,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){box.classLi
 <li><a href="/scan"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><circle cx="12" cy="12" r="5.4"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>scan</a></li>
 <li><a href="/sets"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="M10 8.6v6.8l5.4-3.4z"/></svg>sets</a></li>
 <li><a href="/artists"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.6" r="3.8"/><path d="M4.6 20.2c.9-3.8 3.9-5.8 7.4-5.8s6.5 2 7.4 5.8"/></svg>artists</a></li>
+<li><a href="/search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 20 20"/></svg>search</a></li>
 <li><a href="/more"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="12" r="1.4" fill="currentColor"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/><circle cx="18.5" cy="12" r="1.4" fill="currentColor"/></svg>more</a></li>
 </ul>
 </nav>
@@ -1814,8 +1900,8 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){box.classLi
     targets.forEach(el => el.classList.add('in')); heads.forEach(h => h.classList.add('in'));
   } else {
     const io = new IntersectionObserver(es => es.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); countUp(e.target); }
-    }), {rootMargin: '0px 0px -8% 0px', threshold: 0.08});
+      if (e.isIntersecting && (e.intersectionRatio >= 0.08 || e.boundingClientRect.height > innerHeight * 0.8)) { e.target.classList.add('in'); io.unobserve(e.target); countUp(e.target); }
+    }), {rootMargin: '0px 0px -8% 0px', threshold: [0, 0.08]});
     targets.forEach(el => io.observe(el)); heads.forEach(h => io.observe(h));
   }
 
@@ -2122,5 +2208,6 @@ void main(){
   if (RM) draw(4); else kick();
 })();
 </script>
+<script src="/gmx-quick.js" defer></script>
 </body>
 </html>

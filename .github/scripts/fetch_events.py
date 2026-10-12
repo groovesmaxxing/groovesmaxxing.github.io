@@ -13,6 +13,7 @@ Design rules, decided 2026-08-01:
 """
 import json
 import os
+import re
 import sys
 import time
 import urllib.parse
@@ -42,6 +43,31 @@ VENUE_BLOCK = {
 }
 
 calls = 0
+
+
+DENVER_FILE = "radar-denver.json"
+DENVER_CITIES = {"denver", "morrison", "englewood"}
+
+
+def named_after(e):
+    """True when the event is named after the artist, so a ticketmaster name collision never lands on
+    the home page (Wade matched Koe Wetzel w/ Wade Bowen once). A short name must lead the title."""
+    n = (e.get("event") or "").lower()
+    a = (e.get("artist") or "").lower()
+    if not a or not n:
+        return False
+    if n.startswith(a):
+        return True
+    return len(a) >= 5 and re.search(r"(^|[^a-z])" + re.escape(a) + r"([^a-z]|$)", n) is not None
+
+
+def write_denver(events):
+    """The small file the home page reads: the next twelve denver dates, a few hundred bytes instead of
+    the whole radar. written on every sweep next to radar-events.json."""
+    rows = sorted((e for e in events if (e.get("city") or "").lower() in DENVER_CITIES and named_after(e)), key=lambda e: e.get("date") or "")
+    keep = [{k: e.get(k) for k in ("date", "artist", "venue", "city", "url")} for e in rows[:12]]
+    json.dump({"generated": datetime.now(timezone.utc).isoformat(timespec="seconds"), "events": keep},
+              open(DENVER_FILE, "w", encoding="utf-8"), ensure_ascii=False, indent=0)
 
 
 def get(path, **params):
@@ -189,6 +215,7 @@ def main():
         "artists_with_events": with_events,
         "events": events,
     }, open(OUT_FILE, "w", encoding="utf-8"), ensure_ascii=False, indent=0)
+    write_denver(events)
     print(f"done: {calls} api calls, {with_events} artists with events, {len(events)} events")
     return 0
 
