@@ -2,7 +2,10 @@
    the switch lives in localStorage, the clips in IndexedDB, both on this phone only.
    nothing here plays audio or sends anything: the scan page sends a clip only when the
    user taps help us find it. off by default. turning it off deletes every kept clip.
-   newest KEEP_MAX are kept, and nothing older than KEEP_DAYS. */
+   newest KEEP_MAX are kept, and nothing older than KEEP_DAYS.
+   pending clips (kind pending, recorded with no signal, waiting to be matched) sit outside the cap
+   and the switch: the scan page deletes each one the moment it is matched. "clear everything" under
+   more still wipes them. */
 (function(){
 'use strict';
 var KEY='gmx_keep_clips', DB='gmx', STORE='clips', KEEP_MAX=20, KEEP_DAYS=30;
@@ -26,7 +29,10 @@ function tx(mode,fn){
 function on(){try{return localStorage.getItem(KEY)==='1'}catch(e){return false}}
 function setOn(v){
   try{localStorage.setItem(KEY,v?'1':'0')}catch(e){}
-  return v?Promise.resolve():clear();
+  return v?Promise.resolve():clearKept();
+}
+function clearKept(){
+  return list().then(function(rows){var drop=rows.filter(function(r){return r.kind!=='pending'});if(!drop.length)return;return tx('readwrite',function(s){drop.forEach(function(r){s.delete(r.id)})})}).catch(function(){});
 }
 function put(rec){
   /* rec: {id, t, blob, recognition_id, kind}. the newest first, then the cap and the age. */
@@ -43,10 +49,11 @@ function list(){
 function prune(){
   var floor=Date.now()-KEEP_DAYS*86400000;
   return list().then(function(rows){
-    var drop=rows.filter(function(r,i){return i>=KEEP_MAX||r.t<floor});
+    var kept=rows.filter(function(r){return r.kind!=='pending'});
+    var drop=kept.filter(function(r,i){return i>=KEEP_MAX||r.t<floor}).concat(rows.filter(function(r){return r.kind==='pending'&&r.t<floor}));
     if(!drop.length)return;
     return tx('readwrite',function(s){drop.forEach(function(r){s.delete(r.id)})});
   }).catch(function(){});
 }
-window.gmxClips={on:on,setOn:setOn,put:put,get:get,del:del,clear:clear,list:list,prune:prune,KEEP_MAX:KEEP_MAX,KEEP_DAYS:KEEP_DAYS};
+window.gmxClips={on:on,setOn:setOn,put:put,get:get,del:del,clear:clear,clearKept:clearKept,list:list,prune:prune,KEEP_MAX:KEEP_MAX,KEEP_DAYS:KEEP_DAYS};
 })();

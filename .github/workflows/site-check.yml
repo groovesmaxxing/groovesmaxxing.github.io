@@ -1,0 +1,35 @@
+name: site check
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: preflight (tags, links, anchors, embeds, noopener, fonts, json-ld, sitemap, banned strings)
+        env:
+          BANNED_STRINGS: ${{ secrets.BANNED_STRINGS }}
+        run: python3 .github/scripts/preflight.py
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: install a browser
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: serve the site and load the pages
+        run: |
+          python3 -m http.server 8787 --bind 127.0.0.1 >/dev/null 2>&1 &
+          sleep 1
+          NODE_PATH=$PWD/node_modules node .github/scripts/sitecheck.js
+      - name: render proof (phone and desktop screenshots of the key pages)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: render-proof
+          path: shots/
+          if-no-files-found: ignore
+          retention-days: 14

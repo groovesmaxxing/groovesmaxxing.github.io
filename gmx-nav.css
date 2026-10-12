@@ -1,0 +1,13 @@
+/* groovesmaxxing shared tab bar (site navigation build, 2026-10-10). pairs with gmx-nav.js.
+   the same rules the tab pages carry inline, for every page that gets its bar from the script. */
+.gmx-tabs{display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(11,11,13,.96);border-top:1px solid rgba(242,242,239,.12);padding-bottom:env(safe-area-inset-bottom);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.gmx-tabs ul{list-style:none;margin:0 auto;padding:0;display:flex;justify-content:space-around;max-width:720px}
+.gmx-tabs li{flex:1}
+.gmx-tabs a{display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 2px 8px;min-height:54px;text-decoration:none;color:#8A8A93;font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.08em;text-transform:lowercase}
+.gmx-tabs svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.gmx-tabs a[aria-current="page"]{color:#FF1C02}
+.gmx-tabs a:hover{color:#F2F2EF}
+@media (max-width:1024px){.gmx-tabs{display:block}body{padding-bottom:calc(66px + env(safe-area-inset-bottom))}}
+.gmx-skip{position:absolute;left:12px;top:-60px;z-index:80;background:#FF1C02;color:#0B0B0D;font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.08em;padding:10px 14px;border-radius:999px;text-decoration:none}.gmx-skip:focus{top:12px;outline:3px solid #F2F2EF}
+/* a loading shape for blocks that fill from json: the radio stage, the tour list */
+.gmx-skel{border-radius:16px;background:linear-gradient(90deg,rgba(242,242,239,.05),rgba(242,242,239,.11),rgba(242,242,239,.05));background-size:200% 100%;animation:gmx-shimmer 1.2s linear infinite}@keyframes gmx-shimmer{to{background-position:-200% 0}}@media (prefers-reduced-motion: reduce){.gmx-skel{animation:none}}

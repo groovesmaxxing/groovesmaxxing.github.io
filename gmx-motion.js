@@ -15,7 +15,7 @@
   prog();
 
   /* reveal targets: the blocks of each .wrap, or the items of a block that is a list or grid */
-  const SKIP = 'header,nav,footer,script,style,.top,.gmx-tabs,[hidden]';
+  const SKIP = 'header,nav,footer,script,style,.top,.gmx-tabs,.gmx-stage,[hidden]';   // the shared player wires its own slides
   const blocks = [...document.querySelectorAll('.wrap > *, main > *, section > *')].filter(el => !el.matches(SKIP) && !el.closest('header,footer,nav,.top'));
   const targets = new Set();
   blocks.forEach(el => {
@@ -28,7 +28,7 @@
   });
   // never hide things that are already on screen at load, only what is below the fold
   const fold = innerHeight * 0.92;
-  const list = [...targets].filter(el => el.getBoundingClientRect().top > fold).slice(0, 500);
+  const list = [...targets].filter(el => { const r = el.getBoundingClientRect(); return r.top > fold && r.height < innerHeight * 1.5; }).slice(0, 500);  // a block taller than the screen can never reach the reveal threshold, so it is never hidden
   list.forEach(el => el.classList.add('rv'));
 
   const heads = [...document.querySelectorAll('.wrap h1, .wrap h2, main h1, main h2, section h2')].filter(h => !h.closest('footer,nav') && parseFloat(getComputedStyle(h).fontSize) >= 22);
@@ -37,13 +37,15 @@
   if (RM || !('IntersectionObserver' in window)) {
     list.forEach(el => el.classList.add('in')); heads.forEach(h => h.classList.add('in'));
   } else {
+    // a block that grew after load (a list rendered from json, an opened fold) can be taller than the screen, and
+    // a tall block never reaches a 6% ratio on a phone. so: any intersection reveals a block taller than the screen.
     const io = new IntersectionObserver(es => {
       let k = 0;
-      es.filter(e => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top).forEach(e => {
+      es.filter(e => e.isIntersecting && (e.intersectionRatio >= 0.06 || e.boundingClientRect.height > innerHeight * 0.8)).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top).forEach(e => {
         e.target.style.transitionDelay = (Math.min(k++, 8) * 60) + 'ms';
         e.target.classList.add('in'); io.unobserve(e.target);
       });
-    }, {rootMargin: '0px 0px -6% 0px', threshold: 0.06});
+    }, {rootMargin: '0px 0px -6% 0px', threshold: [0, 0.06]});
     list.forEach(el => io.observe(el)); heads.forEach(h => io.observe(h));
   }
 
