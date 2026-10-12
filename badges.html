@@ -94,6 +94,22 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 .dm{font-family:'Space Mono',monospace;font-size:.72rem;color:var(--steel);letter-spacing:.03em;margin-left:auto;text-align:right}
 .dlane{flex:none;font-size:.85rem;width:20px}
 .nores{font-family:'Space Mono',monospace;font-size:.85rem;color:var(--steel);padding:30px 0;display:none}
+/* expandable a to z groups (site navigation build, 2026-10-10). the rows stay as the roster script writes them,
+   the page folds each letter into a group at load. */
+.azctl{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:14px 0 0}
+.azctl .lc{min-height:36px}
+.azctl .azn{font-family:'Space Mono',monospace;font-size:.72rem;color:var(--steel);letter-spacing:.06em;margin-left:auto}
+details.az{border-bottom:1px solid var(--line)}
+details.az>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:12px 2px;scroll-margin-top:120px}
+details.az>summary::-webkit-details-marker{display:none}
+details.az>summary .letterhead{margin:0;padding:0;border:0;font-size:.95rem}
+details.az>summary .cnt{font-family:'Space Mono',monospace;font-size:.72rem;color:var(--steel);letter-spacing:.06em;white-space:nowrap}
+details.az>summary .cnt::after{content:"+";display:inline-block;width:14px;margin-left:10px;text-align:center;color:var(--racing);font-size:15px;transition:transform .2s}
+details.az[open]>summary .cnt::after{transform:rotate(45deg)}
+details.az>summary:hover .cnt,details.az[open]>summary .cnt{color:var(--day)}
+details.az .azin{padding:0 0 14px}
+details.az .drow:last-child{border-bottom:0}
+@media (prefers-reduced-motion: reduce){details.az>summary .cnt::after{transition:none}}
 /* app tab bar (phase 5, pwa shell). the same block sits on every tab page. */
 .gmx-tabs{display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(11,11,13,.96);border-top:1px solid rgba(242,242,239,.12);padding-bottom:env(safe-area-inset-bottom);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 .gmx-tabs ul{list-style:none;margin:0 auto;padding:0;display:flex;justify-content:space-around;max-width:720px}
