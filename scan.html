@@ -174,6 +174,30 @@ h1.eyebrow{margin:0;font-weight:400}
 .recent .acts{flex-basis:100%;display:flex;gap:8px;align-items:center;margin-top:4px}
 .recent .acts .btn{padding:7px 12px;font-size:.72rem}
 .recent .acts .msg{margin:0}
+.you .prof{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin:2px 0 6px}
+.you .prof .at{font-weight:700;font-size:1.4rem;letter-spacing:-.01em;overflow-wrap:anywhere;line-height:1.2}
+.you .prof .at.none{font-weight:400;font-size:1rem;color:var(--steel)}
+.you .prof small{font-family:'Space Mono',monospace;font-size:.72rem;color:var(--steel);letter-spacing:.04em;overflow-wrap:anywhere}
+.you .prof .chg{font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.1em;color:var(--steel);background:none;border:0;border-bottom:1px solid var(--line);padding:0 0 1px;cursor:pointer}
+.you .prof .chg:hover{color:var(--racing);border-color:var(--racing)}
+.you .stat{font-family:'Space Mono',monospace;font-size:.74rem;color:var(--steel);letter-spacing:.04em;line-height:1.7;margin:0 0 6px;max-width:none;min-height:0}
+.you .stat b{font-weight:400;color:var(--day)}
+.you .setup{counter-reset:s;margin:10px 0 0}
+.you .setup li{display:block;padding:12px 0 12px 34px;position:relative}
+.you .setup li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:12px;width:20px;height:20px;border:2px solid var(--line);border-radius:50%;font-family:'Space Mono',monospace;font-size:.64rem;display:flex;align-items:center;justify-content:center;color:var(--steel)}
+.you .setup li.done::before{content:'\2713';border-color:var(--racing);color:var(--racing)}
+.you .setup .t{font-weight:600;font-size:.92rem}
+.you .setup li.done .t{color:var(--steel);font-weight:400}
+.you .setup p{font-size:.84rem;color:var(--steel);margin:3px 0 0;line-height:1.5}
+.you .setup .form,.you #hbox .form{border-top:0;margin:8px 0 0;padding-top:0}
+.you .setup .form label{margin-top:0}
+.you .setup .row,.you .tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.you .setup .row .btn,.you .tools .btn,.you #hbox .btn{padding:7px 12px;font-size:.72rem}
+.you .setup .msg,.you .tools .msg,.you #hbox .msg{margin:0;flex-basis:100%}
+.you .tools{margin-top:14px}
+.autobar .you-chip{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.06em;color:var(--steel);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:7px 11px;line-height:1;max-width:46vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.autobar .you-chip b{font-weight:400;color:var(--day)}
+.autobar .you-chip.in{border-color:rgba(255,28,2,.45)}
 .fine{font-family:'Space Mono',monospace;font-size:.74rem;color:var(--steel);letter-spacing:.04em;line-height:1.8;margin:10px 0 40px}
 .fine a{text-decoration:none}
 .fine a:hover{color:var(--racing)}
@@ -1168,6 +1192,7 @@ function renderAuto(){
   var resumable=false;try{resumable=!auto&&localStorage.getItem(AUTO_KEY)==='1'&&loadSession().start&&Date.now()-loadSession().start<SESSION_MAX_AGE}catch(e){}
   var h='<button class="btn'+(auto?' on':'')+'" type="button" id="autobtn" aria-pressed="'+(auto?'true':'false')+'">'+(auto?'auto on · tap to stop':(resumable?'resume auto':'auto · for a set'))+'</button>';
   if(auto)h+='<span class="next" id="autonext"></span><button class="btn ghost" type="button" id="autonow">scan now</button>';
+  h+=youChip();
   if(autoNote)h+='<span class="note">'+esc(autoNote)+'</span>';
   autobar.innerHTML=h;
   clearInterval(autoTick);autoTick=null;
@@ -1216,7 +1241,7 @@ function followNow(btn,rid,note){
       return r.json().then(function(f){
         var how=pushed?'this phone gets a push':(sessionToken()?'you get an email':'turn on notifications, or sign in below for email');
         note((f.until==='named'?'we will tell you when it gets a name, and when it comes out. ':'we will tell you when it comes out. ')+how+'.',true);
-        btn.textContent='following'; loadFollows(); pushState();
+        btn.textContent='following'; if(meCache){meCache.follows++;meCache.followed=(meCache.followed||0)+1;renderSetup()} loadFollows(); pushState();
       });
     });
   }).catch(function(){note('did not send. check your signal and try again.');btn.disabled=false});
@@ -1233,7 +1258,7 @@ function onCfg(){
     fx(cfg.api_base+'/auth/finish',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify({token:tok})},POST_MS).then(function(r){
       if(r.status===410){youNote('that link is used up or too old. ask for a new one.');return}
       if(!r.ok)throw new Error(r.status);
-      return r.json().then(function(j){setSession(j.session);meCache=null;renderYou();youNote('signed in as '+j.email+'.',true);ensurePush()});
+      return r.json().then(function(j){setSession(j.session);meCache=null;renderYou();justIn=true;ensurePush()});
     }).catch(function(){youNote('could not finish signing in. check your signal and try the link again.')});
   }
   renderYou(); loadFollows(); resumeWait();
@@ -1254,7 +1279,7 @@ function sendCode(f){
   fx(cfg.api_base+'/auth/code',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify({email:f.dataset.email,code:code})},POST_MS).then(function(r){
     if(r.status===410){m.textContent='that code is wrong, used or too old. ask for a new one.';return}
     if(!r.ok)throw new Error(r.status);
-    return r.json().then(function(j){if(pollTimer){clearInterval(pollTimer);pollTimer=null}try{localStorage.removeItem('gmx_pending')}catch(e){}setSession(j.session);meCache=null;renderYou();youNote('signed in as '+j.email+'.',true);loadFollows();ensurePush()});
+    return r.json().then(function(j){if(pollTimer){clearInterval(pollTimer);pollTimer=null}try{localStorage.removeItem('gmx_pending')}catch(e){}setSession(j.session);meCache=null;renderYou();justIn=true;loadFollows();ensurePush()});
   }).catch(function(){m.textContent='did not send. check your signal.'});
 }
 /* the page that asked for the link keeps a ticket and asks every few seconds whether the link was
@@ -1268,7 +1293,7 @@ function waitForLink(ticket,minutes){
     if(sessionToken()){clearInterval(pollTimer);pollTimer=null;return}
     fx(cfg.api_base+'/auth/poll',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify({pending:ticket})},POST_MS).then(function(r){return r.ok?r.json():null}).then(function(j){
       if(!j)return;
-      if(j.state==='ready'){clearInterval(pollTimer);pollTimer=null;try{localStorage.removeItem('gmx_pending')}catch(e){}setSession(j.session);meCache=null;renderYou();youNote('signed in as '+j.email+'.',true);loadFollows();ensurePush()}
+      if(j.state==='ready'){clearInterval(pollTimer);pollTimer=null;try{localStorage.removeItem('gmx_pending')}catch(e){}setSession(j.session);meCache=null;renderYou();justIn=true;loadFollows();ensurePush()}
       else if(j.state==='gone'){clearInterval(pollTimer);pollTimer=null;try{localStorage.removeItem('gmx_pending')}catch(e){}}
     }).catch(function(){});
   };
@@ -1280,21 +1305,32 @@ function resumeWait(){
   if(p&&p.t&&p.until>Date.now())waitForLink(p.t,Math.ceil((p.until-Date.now())/60000));
   else try{localStorage.removeItem('gmx_pending')}catch(e){}
 }
+var justIn=false, pushNow='', setupWas=null;
+/* the chip beside the auto button: who this phone is, before anyone scrolls */
+function youChip(){
+  if(!sessionToken())return '<a class="you-chip" href="#you">sign in</a>';
+  var me=meCache; return '<a class="you-chip in" href="#you">'+(me&&me.handle?'<b>@'+esc(me.handle)+'</b>':'<b>you</b>')+'</a>';
+}
 function renderYou(){
   var box=$('youbody'); if(!box||!cfg)return;
   if(!sessionToken()){
     box.innerHTML='<p class="smeta">sign in to get told by email when an ID you scanned comes out, keep your scans across phones, and put your name on the IDs you help with.</p>'+
       '<form class="form on" id="yform" autocomplete="off"><label for="y-email">email</label><input id="y-email" name="email" type="email" inputmode="email" maxlength="320" required>'+
       '<div class="row"><button class="btn red" type="submit">send me a sign-in link</button><span class="msg" id="youmsg"></span></div></form>';
+    renderAuto();
     return;
   }
   var paint=function(me){
-    box.innerHTML='<p class="smeta">signed in as '+esc(me.email)+(me.role==='verified_artist'?' · verified artist':'')+' · '+me.devices+' browser'+(me.devices===1?'':'s')+' or phone'+(me.devices===1?'':'s')+' · '+me.follows+' following</p>'+
-      '<p class="smeta" id="pushstate">notifications: checking</p>'+
-      '<form class="form on" id="hform2" autocomplete="off"><label for="y-handle">your handle, shown as credit on IDs you help name</label><input id="y-handle" name="handle" maxlength="30" value="'+esc(me.handle||'')+'" placeholder="optional">'+
-      '<div class="row"><button class="btn" type="submit">save</button><button class="btn ghost" type="button" data-you="push">turn on notifications</button><button class="btn ghost" type="button" data-you="out">sign out</button><span class="msg" id="youmsg"></span></div></form>'+
+    box.innerHTML='<div class="prof">'+(me.handle?'<span class="at">@'+esc(me.handle)+'</span>':'<span class="at none">no handle yet</span>')+
+      '<small>'+esc(me.email)+(me.role==='verified_artist'?' · verified artist':'')+'</small>'+
+      (me.handle?'<button class="chg" type="button" data-you="handle">change</button>':'')+'</div>'+
+      '<p class="stat" id="youstat"></p>'+
+      '<div id="hbox" hidden></div>'+
+      '<ol class="setup" id="setup" hidden></ol>'+
+      '<div class="tools"><button class="btn ghost" type="button" data-you="push" id="pushbtn" hidden>turn on notifications</button><button class="btn ghost" type="button" data-you="out">sign out</button><span class="msg" id="youmsg"></span></div>'+
       '<ul id="otherlist"></ul>';
-    loadServerHistory(); pushState();
+    if(justIn){justIn=false;youNote('you are in.',true)}
+    paintStat(); renderSetup(); renderAuto(); loadServerHistory(); pushState();
   };
   if(meCache){paint(meCache);return}
   fx(cfg.api_base+'/me',{headers:headers()},GET_MS).then(function(r){
@@ -1304,14 +1340,42 @@ function renderYou(){
   }).catch(function(){box.innerHTML='<p class="smeta">signed in, but the recognizer did not answer. <button class="btn ghost" type="button" data-you="out">sign out</button></p>'});
 }
 /* where this phone stands on push: permission, and a live subscription behind it */
-function pushState(){
-  var el=$('pushstate'); if(!el)return;
-  if(!('Notification' in window)||!('PushManager' in window)||!('serviceWorker' in navigator)){el.textContent='notifications: this browser cannot push. on iphone, add the app to the home screen first.';return}
-  if(Notification.permission==='denied'){el.textContent='notifications: blocked for this site in the browser settings. alerts go by email instead.';return}
-  if(Notification.permission!=='granted'){el.textContent='notifications: off on this phone. alerts go by email until you turn them on.';return}
-  navigator.serviceWorker.ready.then(function(reg){return reg.pushManager.getSubscription()}).then(function(sub){
-    el.textContent=sub?'notifications: on, this phone gets a push.':'notifications: allowed but not registered yet. tap turn on notifications.';
-  }).catch(function(){el.textContent='notifications: allowed.'});
+function pushKnown(){
+  if(!('Notification' in window)||!('PushManager' in window)||!('serviceWorker' in navigator))return Promise.resolve('none');
+  if(Notification.permission==='denied')return Promise.resolve('blocked');
+  if(Notification.permission!=='granted')return Promise.resolve('off');
+  return navigator.serviceWorker.ready.then(function(reg){return reg.pushManager.getSubscription()}).then(function(sub){return sub?'on':'allowed'}).catch(function(){return 'allowed'});
+}
+function pushState(){pushKnown().then(function(st){pushNow=st;paintStat();renderSetup()})}
+function paintStat(){
+  var el=$('youstat'),me=meCache; if(!el||!me)return;
+  var w={on:'notifications <b>on</b>',off:'notifications <b>off</b>, email instead',blocked:'notifications <b>blocked</b> here, email instead',none:'no push in this browser, email instead',allowed:'notifications <b>allowed</b>, not registered'}[pushNow]||'notifications: checking';
+  el.innerHTML=w+' · <b>'+me.follows+'</b> following · <b>'+me.devices+'</b> '+(me.devices===1?'device':'devices');
+}
+function pushSkipped(){try{return localStorage.getItem('gmx_push_skip')==='1'}catch(e){return false}}
+/* three steps, shown until all three are done, then the block is just the profile */
+function renderSetup(){
+  var me=meCache,box=$('setup'),pb=$('pushbtn'); if(!me||!box||!pushNow)return;
+  var pushDone=pushNow==='on'||me.push_subscriptions>0||pushSkipped();
+  var cannot=pushNow==='none'||pushNow==='blocked';
+  var steps=[
+    {done:!!me.handle,t:'pick your handle',p:'the name shown as credit on IDs you help name. 2 to 30 letters, digits, dots or underscores, yours alone.',
+     form:'<form class="form on" id="hform2" data-first="1" autocomplete="off"><label for="y-handle">handle</label><input id="y-handle" name="handle" maxlength="30" placeholder="yourname" required><div class="row"><button class="btn" type="submit">that is me</button><span class="msg" id="hmsg"></span></div></form>'},
+    {done:pushDone,t:'turn on notifications',p:pushNow==='none'?'this browser cannot push. on iphone, add the app to the home screen first. alerts go by email either way.':pushNow==='blocked'?'blocked for this site in the browser settings. alerts go by email either way.':'a push to this phone when an ID you follow gets a name or comes out. email otherwise.',
+     form:'<div class="row">'+(cannot?'':'<button class="btn" type="button" data-you="push">turn on</button>')+'<button class="btn ghost" type="button" data-you="skip">email is fine</button></div>'},
+    {done:(me.followed||me.follows)>0,t:'follow your first ID',p:'tap "tell me when it\'s out" on a scan, in the card or in recent scans, and it lands here.',form:''}
+  ];
+  var left=steps.filter(function(x){return !x.done}).length;
+  if(!left){if(setupWas===false)youNote('you are set.',true);setupWas=true;box.hidden=true;box.innerHTML='';if(pb)pb.hidden=!(pushNow==='off'||pushNow==='allowed');return}
+  setupWas=false; if(pb)pb.hidden=true;
+  box.innerHTML=steps.map(function(x){return '<li'+(x.done?' class="done"':'')+'><span class="t">'+x.t+'</span>'+(x.done?'':'<p>'+x.p+'</p>'+x.form)+'</li>'}).join('');
+  box.hidden=false;
+}
+function hNote(t,ok){var m=$('hmsg');if(m){m.textContent=t;m.className='msg'+(ok?' ok':'')}}
+function showHandleForm(){
+  var hb=$('hbox'); if(!hb||!meCache)return;
+  hb.innerHTML='<form class="form on" id="hform2" autocomplete="off"><label for="y-handle">new handle</label><input id="y-handle" name="handle" maxlength="30" value="'+esc(meCache.handle||'')+'"><div class="row"><button class="btn" type="submit">save</button><button class="btn ghost" type="button" data-you="hcancel">cancel</button><span class="msg" id="hmsg"></span></div></form>';
+  hb.hidden=false; try{$('y-handle').focus()}catch(e){}
 }
 /* scans from the account's other phones, the ones this phone has no row for */
 function loadServerHistory(){
@@ -1355,12 +1419,14 @@ document.addEventListener('submit',function(ev){
   }else if(f.id==='cform2'){
     ev.preventDefault(); sendCode(f);
   }else if(f.id==='hform2'){
-    ev.preventDefault(); youNote('saving');
-    fx(cfg.api_base+'/me',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify({handle:$('y-handle').value.trim()||null})},POST_MS).then(function(r){
-      if(r.status===422)return r.json().then(function(j){youNote(String(j.detail||'that handle will not do'))});
+    ev.preventDefault(); var hv=$('y-handle').value.trim();
+    if(!hv&&f.getAttribute('data-first')){hNote('type a name first');return}
+    hNote('saving');
+    fx(cfg.api_base+'/me',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify({handle:hv||null})},POST_MS).then(function(r){
+      if(r.status===422||r.status===409)return r.json().then(function(j){hNote(String(j.detail||'that handle will not do'))});
       if(!r.ok)throw new Error(r.status);
-      return r.json().then(function(me){meCache=me;youNote('saved.',true)});
-    }).catch(function(){youNote('did not save. check your signal.')});
+      return r.json().then(function(me){meCache=me;renderYou();youNote(me.handle?'you are @'+me.handle+'.':'handle cleared.',true)});
+    }).catch(function(){hNote('did not save. check your signal.')});
   }
 });
 document.addEventListener('click',function(ev){
@@ -1368,9 +1434,12 @@ document.addEventListener('click',function(ev){
   if(y){
     if(y.getAttribute('data-you')==='out'){fx(cfg.api_base+'/auth/signout',{method:'POST',headers:headers()},POST_MS).catch(function(){});setSession('');meCache=null;renderYou();loadFollows();return}
     if(y.getAttribute('data-you')==='push'){y.disabled=true;ensurePush().then(function(ok){youNote(ok?'this phone gets notified.':'notifications are off for this site, or this browser cannot push. on iphone, add the app to the home screen first.',ok);y.disabled=false;pushState()});return}
+    if(y.getAttribute('data-you')==='skip'){try{localStorage.setItem('gmx_push_skip','1')}catch(e){}renderSetup();return}
+    if(y.getAttribute('data-you')==='handle'){showHandleForm();return}
+    if(y.getAttribute('data-you')==='hcancel'){var hb=$('hbox');if(hb){hb.hidden=true;hb.innerHTML=''}return}
   }
   var u=ev.target.closest('[data-unfollow]');
-  if(u){u.disabled=true;fx(cfg.api_base+'/unfollow',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify({follow_id:u.getAttribute('data-unfollow')})},POST_MS).then(function(){loadFollows()}).catch(function(){u.disabled=false})}
+  if(u){u.disabled=true;fx(cfg.api_base+'/unfollow',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify({follow_id:u.getAttribute('data-unfollow')})},POST_MS).then(function(){meCache=null;renderYou();loadFollows()}).catch(function(){u.disabled=false})}
 });
 function onScanEnd(cur,row){
   var d=draining;
