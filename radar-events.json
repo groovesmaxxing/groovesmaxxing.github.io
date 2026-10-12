@@ -1,89 +1,8 @@
 {
-"generated": "2026-10-11T15:48:15+00:00",
-"artist_count": 688,
-"artists_with_events": 146,
+"generated": "2026-10-12T19:09:00+00:00",
+"artist_count": 704,
+"artists_with_events": 145,
 "events": [
-{
-"date": "2026-10-11",
-"event": "Bijou (21 and Over)",
-"venue": "SILO",
-"city": "Dallas",
-"region": "TX",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZ7vt",
-"artist": "BIJOU"
-},
-{
-"date": "2026-10-11",
-"event": "Cloonee - Ages 21+",
-"venue": "LIV Nightclub Las Vegas",
-"city": "Las Vegas",
-"region": "NV",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7xbfe",
-"artist": "Cloonee"
-},
-{
-"date": "2026-10-11",
-"event": "Austin City Limits Music Festival - Weekend Two",
-"venue": "Zilker Park",
-"city": "Austin",
-"region": "TX",
-"url": "https://on.fgtix.com/trk/y8SK",
-"artist": "Fcukers"
-},
-{
-"date": "2026-10-11",
-"event": "Horse Meat Disco",
-"venue": "REBEL",
-"city": "Toronto",
-"region": "ON",
-"url": "https://www.ticketweb.ca/event/horse-meat-disco-noir-inside-rebel-tickets/14310664?REFERRAL_ID=tmfeed",
-"artist": "Horse Meat Disco"
-},
-{
-"date": "2026-10-11",
-"event": "Horse Meat Disco",
-"venue": "NOIR (inside REBEL)",
-"city": "Toronto",
-"region": "ON",
-"url": "https://www.ticketweb.ca/event/horse-meat-disco-noir-inside-rebel-tickets/14310204",
-"artist": "Horse Meat Disco"
-},
-{
-"date": "2026-10-11",
-"event": "Jazzy",
-"venue": "Village Studios",
-"city": "Vancouver",
-"region": "BC",
-"url": "https://www.ticketweb.ca/event/jazzy-village-studios-tickets/14952533?REFERRAL_ID=tmfeed",
-"artist": "Jazzy"
-},
-{
-"date": "2026-10-11",
-"event": "Austin City Limits Music Festival - Weekend Two",
-"venue": "Zilker Park",
-"city": "Austin",
-"region": "TX",
-"url": "https://on.fgtix.com/trk/y8SK",
-"artist": "Parcels"
-},
-{
-"date": "2026-10-11",
-"event": "Niteharts Festival",
-"venue": "Snapdragon Stadium",
-"city": "San Diego",
-"region": "CA",
-"url": "https://on.fgtix.com/trk/4iDbc",
-"artist": "RL Grime"
-},
-{
-"date": "2026-10-11",
-"event": "Austin City Limits Music Festival - Weekend Two",
-"venue": "Zilker Park",
-"city": "Austin",
-"region": "TX",
-"url": "https://on.fgtix.com/trk/y8SK",
-"artist": "SOFI TUKKER"
-},
 {
 "date": "2026-10-12",
 "event": "Lewis OfMan",
@@ -101,15 +20,6 @@
 "region": "ON",
 "url": "https://www.ticketweb.ca/event/lewis-ofman-with-moon-king-lees-palace-tickets/14923653",
 "artist": "Lewis OfMan"
-},
-{
-"date": "2026-10-13",
-"event": "Gregory Alan Isakov - Ages 21+ Unless with a Parent or Legal Guardian",
-"venue": "Ardmore Music Hall",
-"city": "Ardmore",
-"region": "PA",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAvkAS",
-"artist": "MADI"
 },
 {
 "date": "2026-10-13",
@@ -146,15 +56,6 @@
 "region": "NY",
 "url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-10-14-2026/event/3B00643505DD82E6",
 "artist": "Jamie xx"
-},
-{
-"date": "2026-10-14",
-"event": "Madi Diaz w/ Tasha",
-"venue": "Zone One at Elsewhere",
-"city": "Brooklyn",
-"region": "NY",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAvkut",
-"artist": "MADI"
 },
 {
 "date": "2026-10-14",
@@ -2255,6 +2156,15 @@
 },
 {
 "date": "2026-11-20",
+"event": "Eastenderz, Manchester",
+"venue": "Depot Mayfield",
+"city": "Manchester",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/eastenderz-manchester-manchester-20-11-2026/event/350064F6A7984FF2",
+"artist": "Hot Since 82"
+},
+{
+"date": "2026-11-20",
 "event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
 "venue": "Kaseya Center",
 "city": "Miami",
@@ -2675,6 +2585,15 @@
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/gorgon-city-london-28-11-2026/event/1F0064A6B2303552",
 "artist": "Gorgon City"
+},
+{
+"date": "2026-11-28",
+"event": "Max Styler (18 and Over)",
+"venue": "Gallagher Square at Petco Park",
+"city": "San Diego",
+"region": "CA",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZa4V",
+"artist": "Hot Since 82"
 },
 {
 "date": "2026-11-28",
@@ -3467,6 +3386,15 @@
 "region": "CA",
 "url": "https://www.ticketmaster.com/cid-hollywood-california-01-09-2027/event/0900653032FDAFBF",
 "artist": "CID"
+},
+{
+"date": "2027-01-16",
+"event": "AYYBO",
+"venue": "History Toronto",
+"city": "Toronto",
+"region": "ON",
+"url": "https://www.ticketmaster.ca/ayybo-toronto-ontario-01-16-2027/event/10006547CBA9EEFB",
+"artist": "AYYBO"
 },
 {
 "date": "2027-01-16",

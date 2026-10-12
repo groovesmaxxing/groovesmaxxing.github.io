@@ -1524,8 +1524,8 @@
 "checked": "2026-10-01"
 },
 "MADI": {
-"id": "K8vZ91749W7",
-"checked": "2026-08-02"
+"id": null,
+"checked": "2026-10-12"
 },
 "Mahmud Orhan": {
 "id": null,
@@ -2609,7 +2609,7 @@
 },
 "Void": {
 "id": null,
-"checked": "2026-10-11"
+"checked": "2026-10-12"
 },
 "VOLAC": {
 "id": "K8vZ9179FO0",
@@ -2802,5 +2802,73 @@
 "Yuvèe": {
 "id": null,
 "checked": "2026-09-21"
+},
+"Arya Stone": {
+"id": null,
+"checked": "2026-10-12"
+},
+"Bákayan": {
+"id": null,
+"checked": "2026-10-12"
+},
+"Crewcutz": {
+"id": null,
+"checked": "2026-10-12"
+},
+"David Mackay": {
+"id": null,
+"checked": "2026-10-12"
+},
+"Hot Since 82": {
+"id": "K8vZ917o8IV",
+"checked": "2026-10-12"
+},
+"Humans Musik": {
+"id": null,
+"checked": "2026-10-12"
+},
+"Johannes Brecht": {
+"id": null,
+"checked": "2026-10-12"
+},
+"Juskidin": {
+"id": null,
+"checked": "2026-10-12"
+},
+"Maesic": {
+"id": "Z6HyzZyMZ1k34PMbx",
+"checked": "2026-10-12"
+},
+"Matt Egbert": {
+"id": null,
+"checked": "2026-10-12"
+},
+"Mitch Oliver": {
+"id": "K8vZ917jW87",
+"checked": "2026-10-12"
+},
+"Raul Vidal": {
+"id": null,
+"checked": "2026-10-12"
+},
+"Soofnic": {
+"id": null,
+"checked": "2026-10-12"
+},
+"Space Motion": {
+"id": null,
+"checked": "2026-10-12"
+},
+"Talón": {
+"id": null,
+"checked": "2026-10-12"
+},
+"WIFE MATERIAL": {
+"id": null,
+"checked": "2026-10-12"
+},
+"Zunzarren": {
+"id": null,
+"checked": "2026-10-12"
 }
 }
