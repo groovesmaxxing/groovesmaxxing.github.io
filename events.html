@@ -244,7 +244,7 @@
   <section class="hub" id="tours">
   <div class="tierline">the follow list, live</div>
   <h2 class="tier">on tour</h2>
-  <p class="lede">where the artists we follow are playing next. swept nightly from ticketmaster across all 688 names on <a href="/artists">the artists</a>, searchable by artist or city. lineups shift, so always confirm on the official link.</p>
+  <p class="lede">where the artists we follow are playing next. swept nightly from ticketmaster across all 704 names on <a href="/artists">the artists</a>, searchable by artist or city. lineups shift, so always confirm on the official link.</p>
   <p class="stamp" id="tstamp">loading the radar…</p>
   <div class="ttools">
     <input id="tq" type="search" placeholder="search an artist or a city" aria-label="search an artist or a city">
@@ -445,7 +445,7 @@
   fetch('radar-events.json').then(function(r){ return r.json(); }).then(function(data){
     all = data.events || [];
     if(data.generated){
-      stamp.textContent = 'swept nightly · last sweep ' + data.generated.slice(0,10) + ' · ' + (data.artists_with_events || 0) + ' of ' + (data.artist_count || 688) + ' artists have dates on ticketmaster';
+      stamp.textContent = 'swept nightly · last sweep ' + data.generated.slice(0,10) + ' · ' + (data.artists_with_events || 0) + ' of ' + (data.artist_count || 704) + ' artists have dates on ticketmaster';
     } else {
       stamp.textContent = 'the radar is warming up. the first nightly sweep has not run yet.';
     }
