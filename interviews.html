@@ -13,7 +13,7 @@
 <meta name="theme-color" content="#0B0B0D">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="apple-mobile-web-app-title" content="grooves">
+<meta name="apple-mobile-web-app-title" content="groovesMAXXING">
 <meta property="og:title" content="groovesMAXXING · in their own words">
 <meta property="og:description" content="the artists we follow, in their own words. 59 interviews and talk podcasts across 28 artists, newest on top, then every artist a to z.">
 <meta property="og:image" content="https://groovesmaxxing.com/og-image.png">
@@ -117,17 +117,9 @@ footer a:hover{color:var(--racing)}
 .pod .pguests a:hover{color:var(--racing);border-bottom-color:var(--racing)}
 .pod .plabel{color:#5f5f5c}
 .pod .psep{color:#3d3d42}
-/* app tab bar (phase 5, pwa shell). the same block sits on every tab page. */
-.gmx-tabs{display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(11,11,13,.96);border-top:1px solid rgba(242,242,239,.12);padding-bottom:env(safe-area-inset-bottom);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
-.gmx-tabs ul{list-style:none;margin:0 auto;padding:0;display:flex;justify-content:space-around;max-width:720px}
-.gmx-tabs li{flex:1}
-.gmx-tabs a{display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 2px 8px;min-height:54px;text-decoration:none;color:#8A8A93;font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.08em;text-transform:lowercase}
-.gmx-tabs svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.gmx-tabs a[aria-current="page"]{color:#FF1C02}
-.gmx-tabs a:hover{color:#F2F2EF}
-@media (max-width:1024px){.gmx-tabs{display:block}body{padding-bottom:calc(66px + env(safe-area-inset-bottom))}}
 </style>
 <link rel="stylesheet" href="/gmx-motion.css">
+<link rel="stylesheet" href="/gmx-nav.css">
 <link rel="stylesheet" href="/gmx-sheet.css">
 <link rel="stylesheet" href="/gmx-quick.css">
 </head>
@@ -344,20 +336,11 @@ fr.setAttribute("allow","autoplay; clipboard-write; encrypted-media; fullscreen;
 slot.appendChild(fr);slot.hidden=false;});}
 })();
 </script>
-<nav class="gmx-tabs" aria-label="app tabs">
-<ul>
-<li><a href="/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.8 11.2 12 4.4l8.2 6.8"/><path d="M6.2 9.4v10.1h11.6V9.4"/><path d="M10 19.5v-5.2h4v5.2"/></svg>home</a></li>
-<li><a href="/scan"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><circle cx="12" cy="12" r="5.4"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>scan</a></li>
-<li><a href="/sets"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="M10 8.6v6.8l5.4-3.4z"/></svg>sets</a></li>
-<li><a href="/artists"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.6" r="3.8"/><path d="M4.6 20.2c.9-3.8 3.9-5.8 7.4-5.8s6.5 2 7.4 5.8"/></svg>artists</a></li>
-<li><a href="/search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 20 20"/></svg>search</a></li>
-<li><a href="/more"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="12" r="1.4" fill="currentColor"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/><circle cx="18.5" cy="12" r="1.4" fill="currentColor"/></svg>more</a></li>
-</ul>
-</nav>
 <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})})}</script>
 <script src="/gmx-motion.js" defer></script>
 <script src="/gmx-quick.js" defer></script>
 <script src="/gmx-crate.js" defer></script>
 <script src="/gmx-sheet.js" defer></script>
+<script src="/gmx-nav.js" defer></script>
 </body>
 </html>

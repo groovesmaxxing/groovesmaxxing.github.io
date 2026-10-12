@@ -13,7 +13,7 @@
 <meta name="theme-color" content="#0B0B0D">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="apple-mobile-web-app-title" content="grooves">
+<meta name="apple-mobile-web-app-title" content="groovesMAXXING">
 <meta property="og:title" content="groovesMAXXING · sets worth your hour">
 <meta property="og:description" content="every dj set on groovesmaxxing.com in one place, 700 of them across 521 artists. newest on top, then every artist a to z. nothing plays until you tap.">
 <meta property="og:image" content="https://groovesmaxxing.com/og-image.png">
@@ -41,6 +41,12 @@ h1 span{color:var(--racing)}
 .sub{color:var(--steel);margin:14px 0 6px;max-width:640px}
 .count{font-family:'Space Mono',monospace;font-size:12px;color:var(--steel);letter-spacing:.06em}
 .tools{margin:26px 0 10px}
+.lanes{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.lc{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.06em;color:var(--steel);background:none;border:1px solid var(--line);border-radius:999px;padding:0 13px;min-height:34px;line-height:32px;cursor:pointer;text-decoration:none}
+.lc:hover,.lc:focus-visible{color:var(--racing);border-color:var(--racing);outline:none}
+.lc[aria-pressed="true"]{color:var(--racing);border-color:var(--racing)}
+body.only-tl .card:not(.has-tl){display:none}
+body.only-tl .grid:not(:has(.card.has-tl))::after{content:"no tracklist in this fold yet";font-family:'Space Mono',monospace;font-size:11.5px;color:var(--steel)}
 #q{width:100%;max-width:420px;background:#151518;border:1px solid var(--line);border-radius:999px;padding:12px 18px;color:var(--day);font-family:'Space Mono',monospace;font-size:16px}
 #q:focus{outline:none;border-color:var(--racing)}
 .g{margin-top:40px}
@@ -89,17 +95,9 @@ footer a{color:var(--steel);text-decoration:none}
 footer a:hover{color:var(--racing)}
 @media (max-width:620px){.wrap{padding:36px 16px 60px}.rail{margin:14px -16px 0;padding:8px 16px}.grid{grid-template-columns:1fr 1fr;gap:14px 10px}.card .t{font-size:13px}.set-play{width:44px;height:44px}.set-play svg{width:18px;height:18px}}
 @media (max-width:420px){.grid{grid-template-columns:1fr}}
-/* app tab bar (phase 5, pwa shell). the same block sits on every tab page. */
-.gmx-tabs{display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(11,11,13,.96);border-top:1px solid rgba(242,242,239,.12);padding-bottom:env(safe-area-inset-bottom);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
-.gmx-tabs ul{list-style:none;margin:0 auto;padding:0;display:flex;justify-content:space-around;max-width:720px}
-.gmx-tabs li{flex:1}
-.gmx-tabs a{display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 2px 8px;min-height:54px;text-decoration:none;color:#8A8A93;font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.08em;text-transform:lowercase}
-.gmx-tabs svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.gmx-tabs a[aria-current="page"]{color:#FF1C02}
-.gmx-tabs a:hover{color:#F2F2EF}
-@media (max-width:1024px){.gmx-tabs{display:block}body{padding-bottom:calc(66px + env(safe-area-inset-bottom))}}
 </style>
 <link rel="stylesheet" href="/gmx-motion.css">
+<link rel="stylesheet" href="/gmx-nav.css">
 <link rel="stylesheet" href="/gmx-sheet.css">
 <link rel="stylesheet" href="/gmx-quick.css">
 </head>
@@ -114,6 +112,7 @@ footer a:hover{color:var(--racing)}
 <p class="count">700 sets · 521 artists · 1 labels · refreshed 2026-10-08</p>
 
 <div class="tools"><input id="q" type="search" placeholder="find an artist, label or set" aria-label="search the artists, labels and set titles" autocomplete="off"></div>
+<div class="lanes" id="setfilter" role="group" aria-label="show"><button class="lc" type="button" data-f="all" aria-pressed="true">sets</button><button class="lc" type="button" data-f="tl" aria-pressed="false">tracklists</button><a class="lc" href="/tracklists/">every tracklist ↗</a><a class="lc" href="/open-ids">the open IDs ↗</a></div>
 
 <section class="g" id="newest">
 <h2>just added<span class="n">newest 12</span></h2>
@@ -714,20 +713,19 @@ footer a:hover{color:var(--racing)}
 </div>
 <!-- sets:light -->
 <script src="/gmx-sets.js" defer></script>
-<nav class="gmx-tabs" aria-label="app tabs">
-<ul>
-<li><a href="/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.8 11.2 12 4.4l8.2 6.8"/><path d="M6.2 9.4v10.1h11.6V9.4"/><path d="M10 19.5v-5.2h4v5.2"/></svg>home</a></li>
-<li><a href="/scan"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><circle cx="12" cy="12" r="5.4"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>scan</a></li>
-<li><a href="/sets" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="M10 8.6v6.8l5.4-3.4z"/></svg>sets</a></li>
-<li><a href="/artists"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.6" r="3.8"/><path d="M4.6 20.2c.9-3.8 3.9-5.8 7.4-5.8s6.5 2 7.4 5.8"/></svg>artists</a></li>
-<li><a href="/search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 20 20"/></svg>search</a></li>
-<li><a href="/more"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="12" r="1.4" fill="currentColor"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/><circle cx="18.5" cy="12" r="1.4" fill="currentColor"/></svg>more</a></li>
-</ul>
-</nav>
+<script>/* the sets and tracklists chips (shell v2, 2026-10-12): /sets is the hub under the tracklists tab. every tagged set is both, so "tracklists" keeps only the cards that link one, in the folds as they render. #tracklists opens that chip. */
+(function(){var bar=document.getElementById('setfilter');if(!bar)return;
+function markCards(){[].slice.call(document.querySelectorAll('.card')).forEach(function(c){if(c.querySelector('a.tl'))c.classList.add('has-tl')})}
+function pick(k){document.body.classList.toggle('only-tl',k==='tl');[].slice.call(bar.querySelectorAll('[data-f]')).forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-f')===k?'true':'false')})}
+bar.addEventListener('click',function(e){var b=e.target.closest('[data-f]');if(b)pick(b.getAttribute('data-f'))});
+document.addEventListener('gmx:cards',markCards);markCards();
+if(location.hash==='#tracklists')pick('tl');
+})();</script>
 <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})})}</script>
 <script src="/gmx-motion.js" defer></script>
 <script src="/gmx-quick.js" defer></script>
 <script src="/gmx-crate.js" defer></script>
 <script src="/gmx-sheet.js" defer></script>
+<script src="/gmx-nav.js" defer></script>
 </body>
 </html>

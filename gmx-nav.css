@@ -1,13 +1,89 @@
-/* groovesmaxxing shared tab bar (site navigation build, 2026-10-10). pairs with gmx-nav.js.
-   the same rules the tab pages carry inline, for every page that gets its bar from the script. */
+/* groovesmaxxing shell (shell v2, 2026-10-12). pairs with gmx-nav.js, the only tab bar on the site.
+   five tabs: home, tracklists, the raised scan button (the logo mark on a red disc), artists, more.
+   the floating search button and the search sheet it opens live here too, so a page needs only this
+   file and gmx-nav.js. brand palette, poppins and space mono, 44px targets. */
 .gmx-tabs{display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(11,11,13,.96);border-top:1px solid rgba(242,242,239,.12);padding-bottom:env(safe-area-inset-bottom);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 .gmx-tabs ul{list-style:none;margin:0 auto;padding:0;display:flex;justify-content:space-around;max-width:720px}
-.gmx-tabs li{flex:1}
-.gmx-tabs a{display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 2px 8px;min-height:54px;text-decoration:none;color:#8A8A93;font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.08em;text-transform:lowercase}
+.gmx-tabs li{flex:1;min-width:0}
+.gmx-tabs a{display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 2px 8px;min-height:54px;text-decoration:none;color:#8A8A93;font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.08em;text-transform:lowercase;white-space:nowrap;-webkit-tap-highlight-color:transparent}
 .gmx-tabs svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .gmx-tabs a[aria-current="page"]{color:#FF1C02}
 .gmx-tabs a:hover{color:#F2F2EF}
+.gmx-tabs a:focus-visible{outline:3px solid #FF1C02;outline-offset:-3px;border-radius:12px}
+/* the raised scan button: the logo mark on a red disc, lifted out of the bar. lit with a second ring on /scan */
+.gmx-tabs li.gmx-scan a{padding-top:0;margin-top:-16px}
+.gmx-tabs .gmx-disc{width:52px;height:52px;border-radius:50%;background:#FF1C02;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 4px #0B0B0D,0 10px 26px rgba(255,28,2,.42);transition:transform .15s,box-shadow .15s}
+.gmx-tabs .gmx-disc svg{width:36px;height:36px;stroke:none}
+.gmx-tabs li.gmx-scan a:hover .gmx-disc{transform:translateY(-2px)}
+.gmx-tabs li.gmx-scan a[aria-current="page"] .gmx-disc{box-shadow:0 0 0 4px #0B0B0D,0 0 0 6px #FF1C02,0 10px 26px rgba(255,28,2,.5)}
+.gmx-tabs li.gmx-scan a[aria-current="page"]{color:#FF1C02}
+/* on /scan the disc pulses gently, and a tap on it starts a scan */
+.gmx-tabs li.gmx-scan a[aria-current="page"] .gmx-disc{animation:gmx-discpulse 2.6s ease-in-out infinite}
+@keyframes gmx-discpulse{0%,100%{box-shadow:0 0 0 4px #0B0B0D,0 0 0 6px #FF1C02,0 10px 26px rgba(255,28,2,.5)}50%{box-shadow:0 0 0 4px #0B0B0D,0 0 0 9px rgba(255,28,2,.35),0 10px 30px rgba(255,28,2,.7)}}
 @media (max-width:1024px){.gmx-tabs{display:block}body{padding-bottom:calc(66px + env(safe-area-inset-bottom))}}
+@media (prefers-reduced-motion: reduce){.gmx-tabs .gmx-disc,.gmx-fab{transition:none;animation:none}}
 .gmx-skip{position:absolute;left:12px;top:-60px;z-index:80;background:#FF1C02;color:#0B0B0D;font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.08em;padding:10px 14px;border-radius:999px;text-decoration:none}.gmx-skip:focus{top:12px;outline:3px solid #F2F2EF}
 /* a loading shape for blocks that fill from json: the radio stage, the tour list */
 .gmx-skel{border-radius:16px;background:linear-gradient(90deg,rgba(242,242,239,.05),rgba(242,242,239,.11),rgba(242,242,239,.05));background-size:200% 100%;animation:gmx-shimmer 1.2s linear infinite}@keyframes gmx-shimmer{to{background-position:-200% 0}}@media (prefers-reduced-motion: reduce){.gmx-skel{animation:none}}
+
+/* the floating search button. above the tab bar on a phone, bottom right on a wide screen, and lifted
+   out of the way when the follow-along bar (#gmx-now) is showing. */
+.gmx-fab{position:fixed;right:16px;bottom:calc(84px + env(safe-area-inset-bottom));z-index:58;width:50px;height:50px;border-radius:50%;border:1px solid rgba(242,242,239,.2);background:rgba(20,20,23,.96);color:#F2F2EF;display:flex;align-items:center;justify-content:center;padding:0;margin:0;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.55);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);transition:bottom .2s,transform .15s,border-color .15s,color .15s;-webkit-tap-highlight-color:transparent}
+.gmx-fab svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.gmx-fab:hover,.gmx-fab:focus-visible{border-color:#FF1C02;color:#FF1C02;outline:none;transform:translateY(-2px)}
+html.gmx-nowon .gmx-fab{bottom:calc(138px + env(safe-area-inset-bottom))}
+/* a wide screen has no tab bar and no floating button: the search button and the logo (to /scan) sit in the header, beside the account chip (gmx-account.js) */
+@media (min-width:1025px){.gmx-fab{display:none}}
+.gmx-hdr{display:flex;align-items:center;gap:10px;flex:none}
+.gmx-hdr .gmx-hmark,.gmx-hdr .gmx-hsearch{display:none;width:36px;height:36px;border-radius:50%;align-items:center;justify-content:center;border:1px solid rgba(242,242,239,.18);background:none;color:#8A8A93;padding:0;margin:0;cursor:pointer;text-decoration:none;font:inherit}
+.gmx-hdr .gmx-hmark{background:#FF1C02;border-color:#FF1C02}
+.gmx-hdr .gmx-hmark svg{width:26px;height:26px}
+.gmx-hdr .gmx-hsearch svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.gmx-hdr .gmx-hsearch:hover,.gmx-hdr .gmx-hsearch:focus-visible{color:#FF1C02;border-color:#FF1C02;outline:none}
+.gmx-hdr .gmx-hmark:hover,.gmx-hdr .gmx-hmark:focus-visible{background:#CC1400;border-color:#CC1400;outline:none}
+@media (min-width:1025px){.gmx-hdr .gmx-hmark,.gmx-hdr .gmx-hsearch{display:flex}}
+
+/* the search sheet: full screen on a phone, a centred panel from the top on a wide screen. above the
+   tab bar (z 60), the follow-along bar (z 59) and the install nudge (z 61). */
+.gmx-quick{position:fixed;inset:0;z-index:90}
+.gmx-quick[hidden]{display:none}
+.gmx-quick-back{position:absolute;inset:0;background:rgba(11,11,13,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.gmx-quick-panel{position:relative;background:#0B0B0D;color:#F2F2EF;font-family:'Poppins',sans-serif;height:100%;display:flex;flex-direction:column;padding:max(14px,env(safe-area-inset-top)) 18px env(safe-area-inset-bottom);box-sizing:border-box}
+.gmx-quick-top{display:flex;gap:10px;align-items:center;flex:none}
+.gmx-quick-box{flex:1;min-width:0;background:#141417;border:1px solid #26262b;border-radius:14px;color:#F2F2EF;font:inherit;font-size:1.08rem;padding:14px 16px;outline:none;-webkit-appearance:none;appearance:none}
+.gmx-quick-box::-webkit-search-cancel-button{-webkit-appearance:none}
+.gmx-quick-box:focus{border-color:#FF1C02}
+.gmx-quick-x{flex:none;width:44px;height:44px;border-radius:999px;border:1px solid #26262b;background:none;color:#8A8A93;font-size:1.5rem;line-height:1;cursor:pointer}
+.gmx-quick-x:hover,.gmx-quick-x:focus-visible{color:#FF1C02;border-color:#FF1C02;outline:none}
+/* the scope chips: the tab this page sits under, and everything */
+.gmx-quick-scope{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px;flex:none}
+.gmx-quick-scope .gmx-quick-rl{margin-right:2px}
+.gmx-quick-chip{font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.04em;color:#c9c9c4;background:none;border:1px solid #26262b;border-radius:999px;padding:0 13px;min-height:36px;cursor:pointer}
+.gmx-quick-chip:hover,.gmx-quick-chip:focus-visible{color:#FF1C02;border-color:#FF1C02;outline:none}
+.gmx-quick-chip[aria-pressed="true"]{color:#FF1C02;border-color:#FF1C02}
+.gmx-quick-recent{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px;flex:none}
+.gmx-quick-recent[hidden]{display:none}
+.gmx-quick-rl{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.14em;color:#8A8A93;text-transform:lowercase;margin-right:2px}
+.gmx-quick-res{flex:1;overflow-y:auto;margin-top:6px;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+.gmx-quick-grp{font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:#FF1C02;margin:18px 0 2px;display:flex;justify-content:space-between;gap:12px}
+.gmx-quick-grp span{color:#8A8A93;letter-spacing:.06em;text-transform:none}
+.gmx-quick-hit{display:flex;align-items:baseline;gap:10px;padding:11px 8px;margin:0 -8px;border-radius:10px;border-bottom:1px solid #1b1b1f;text-decoration:none;color:#F2F2EF;min-height:44px;box-sizing:border-box}
+.gmx-quick-hit .k{flex:none;width:22px;font-size:.95rem}
+.gmx-quick-hit .n{font-weight:600;font-size:1rem;min-width:0;overflow-wrap:anywhere}
+.gmx-quick-hit .s{font-family:'Space Mono',monospace;font-size:.7rem;color:#8A8A93;letter-spacing:.03em;margin-left:auto;text-align:right;flex:none;max-width:45%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gmx-quick-hit.lit,.gmx-quick-hit:hover{background:#141417}
+.gmx-quick-hit.lit .n{color:#FF1C02}
+.gmx-quick mark{background:none;color:#FF1C02}
+.gmx-quick-none{font-family:'Space Mono',monospace;font-size:.82rem;color:#8A8A93;line-height:1.7;padding:22px 0}
+.gmx-quick-count{font-family:'Space Mono',monospace;font-size:.72rem;color:#8A8A93;letter-spacing:.04em;margin:10px 0 0;min-height:1.2em;flex:none}
+.gmx-quick-all{flex:none;align-self:flex-start;font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.06em;color:#c9c9c4;text-decoration:none;border:1px solid #26262b;border-radius:999px;padding:0 16px;min-height:40px;line-height:40px;margin:12px 0 14px}
+.gmx-quick-all:hover,.gmx-quick-all:focus-visible{color:#FF1C02;border-color:#FF1C02;outline:none}
+.gmx-quick-open,.gmx-quick-open body{overflow:hidden}
+a:focus-visible.gmx-quick-hit{outline:3px solid #FF1C02;outline-offset:-3px}
+@media (min-width:720px){
+  .gmx-quick{display:flex;align-items:flex-start;justify-content:center;padding-top:9vh}
+  .gmx-quick[hidden]{display:none}
+  .gmx-quick-panel{height:auto;max-height:78vh;width:min(640px,calc(100% - 32px));border:1px solid #26262b;border-radius:18px;padding:16px 18px 4px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+  .gmx-quick-res{max-height:52vh}
+}
+@media (max-width:640px){.gmx-quick-hit{display:grid;grid-template-columns:22px 1fr;column-gap:10px;row-gap:3px;align-items:baseline}.gmx-quick-hit .s{grid-column:2;margin-left:0;max-width:100%;text-align:left;white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:anywhere}}

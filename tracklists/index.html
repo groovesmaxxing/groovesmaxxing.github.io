@@ -7,7 +7,7 @@
 <meta name="theme-color" content="#0B0B0D">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="apple-mobile-web-app-title" content="grooves">
+<meta name="apple-mobile-web-app-title" content="groovesMAXXING">
 <title>tracklists · groovesMAXXING</title>
 <meta name="description" content="DJ set tracklists with measured timestamps, verified labels and honest blanks. every source shown.">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
@@ -84,15 +84,6 @@ td.x{overflow-wrap:anywhere}
 .lab{white-space:normal;display:inline-block;margin-left:6px}
 .sig{margin-left:4px;padding:1px 5px}
 }
-/* app tab bar (phase 5, pwa shell). the same block sits on every tab page. */
-.gmx-tabs{display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(11,11,13,.96);border-top:1px solid rgba(242,242,239,.12);padding-bottom:env(safe-area-inset-bottom);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
-.gmx-tabs ul{list-style:none;margin:0 auto;padding:0;display:flex;justify-content:space-around;max-width:720px}
-.gmx-tabs li{flex:1}
-.gmx-tabs a{display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 2px 8px;min-height:54px;text-decoration:none;color:#8A8A93;font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.08em;text-transform:lowercase}
-.gmx-tabs svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.gmx-tabs a[aria-current="page"]{color:#FF1C02}
-.gmx-tabs a:hover{color:#F2F2EF}
-@media (max-width:1024px){.gmx-tabs{display:block}body{padding-bottom:calc(66px + env(safe-area-inset-bottom))}}
 /* hub rows (2026-10-01) */
 table.tl td{vertical-align:middle}
 table.tl td.x>a.hrow{display:flex;align-items:center;gap:14px;padding:6px 0;margin:0;text-decoration:none;color:var(--day)}
@@ -380,6 +371,7 @@ tr.hid{display:none}
 }
 </script>
 <link rel="stylesheet" href="/gmx-motion.css">
+<link rel="stylesheet" href="/gmx-nav.css">
 <link rel="stylesheet" href="/gmx-quick.css">
 </head>
 <body>
@@ -445,20 +437,11 @@ tr.hid{display:none}
 </table>
 <div class="foot">something wrong or know an ID? <a href="mailto:groovesmaxxing@gmail.com">email us</a> · <a href="https://www.instagram.com/groovesmaxxing" target="_blank" rel="noopener">instagram</a><br>updated 2026-10-10</div>
 </div>
-<nav class="gmx-tabs" aria-label="app tabs">
-<ul>
-<li><a href="/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.8 11.2 12 4.4l8.2 6.8"/><path d="M6.2 9.4v10.1h11.6V9.4"/><path d="M10 19.5v-5.2h4v5.2"/></svg>home</a></li>
-<li><a href="/scan"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><circle cx="12" cy="12" r="5.4"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>scan</a></li>
-<li><a href="/sets"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="M10 8.6v6.8l5.4-3.4z"/></svg>sets</a></li>
-<li><a href="/artists"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.6" r="3.8"/><path d="M4.6 20.2c.9-3.8 3.9-5.8 7.4-5.8s6.5 2 7.4 5.8"/></svg>artists</a></li>
-<li><a href="/search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 20 20"/></svg>search</a></li>
-<li><a href="/more"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="12" r="1.4" fill="currentColor"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/><circle cx="18.5" cy="12" r="1.4" fill="currentColor"/></svg>more</a></li>
-</ul>
-</nav>
 <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})})}</script>
 <script>(function(){var b=document.getElementById('howbtn'),d=document.getElementById('howbox'),c=document.getElementById('howclose');if(!b||!d||!d.showModal){if(b)b.style.display='none';return}b.addEventListener('click',function(){d.showModal()});c.addEventListener('click',function(){d.close()});d.addEventListener('click',function(e){if(e.target===d)d.close()})})();</script>
 <script>(function(){var bar=document.getElementById('srcbar');if(!bar)return;var bs=bar.querySelectorAll('button'),rows=document.querySelectorAll('tr[data-src]');function pick(k){bs.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.k===k?'true':'false')});rows.forEach(function(r){r.classList.toggle('hid',k!=='all'&&r.dataset.src!==k)});try{history.replaceState(null,'',k==='all'?location.pathname:'#'+k)}catch(e){}}bar.classList.add('on');bs.forEach(function(b){b.addEventListener('click',function(){pick(b.dataset.k)})});var h=location.hash.slice(1);pick(h==='youtube'||h==='soundcloud'?h:'all')})();</script>
 <script src="/gmx-motion.js" defer></script>
 <script src="/gmx-quick.js" defer></script>
+<script src="/gmx-nav.js" defer></script>
 </body>
 </html>

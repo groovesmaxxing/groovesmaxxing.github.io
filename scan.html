@@ -16,7 +16,7 @@
 <meta name="theme-color" content="#0B0B0D">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="apple-mobile-web-app-title" content="grooves">
+<meta name="apple-mobile-web-app-title" content="groovesMAXXING">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap">
@@ -159,6 +159,7 @@ h1.eyebrow{margin:0;font-weight:400}
 .pendingbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;border:1px solid rgba(255,28,2,.45);border-radius:14px;padding:10px 14px;margin:0 0 18px;font-family:'Space Mono',monospace;font-size:.76rem;line-height:1.6;color:var(--day)}
 .pendingbar b{font-weight:400;color:var(--racing)}
 .pendingbar .btn{padding:7px 12px;font-size:.72rem}
+.pendingbar[hidden]{display:none}
 .session .smeta{font-family:'Space Mono',monospace;font-size:.74rem;color:var(--steel);margin:0 0 8px;letter-spacing:.04em}
 .session .when{color:var(--racing)}
 .session .stools{margin-top:12px}.session .stools .btn{padding:7px 12px;font-size:.72rem}.session .stools .msg{margin:0}
@@ -203,18 +204,10 @@ h1.eyebrow{margin:0;font-weight:400}
 .fine a:hover{color:var(--racing)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 @media (min-width:1025px){.stage{padding-top:70px}}
-/* app tab bar (phase 5, pwa shell). the same block sits on every tab page. */
-.gmx-tabs{display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(11,11,13,.96);border-top:1px solid rgba(242,242,239,.12);padding-bottom:env(safe-area-inset-bottom);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
-.gmx-tabs ul{list-style:none;margin:0 auto;padding:0;display:flex;justify-content:space-around;max-width:720px}
-.gmx-tabs li{flex:1}
-.gmx-tabs a{display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 2px 8px;min-height:54px;text-decoration:none;color:#8A8A93;font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.08em;text-transform:lowercase}
-.gmx-tabs svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.gmx-tabs a[aria-current="page"]{color:#FF1C02}
-.gmx-tabs a:hover{color:#F2F2EF}
-@media (max-width:1024px){.gmx-tabs{display:block}body{padding-bottom:calc(66px + env(safe-area-inset-bottom))}}
 </style>
 <link rel="canonical" href="https://groovesmaxxing.com/scan">
 <link rel="stylesheet" href="/gmx-motion.css">
+<link rel="stylesheet" href="/gmx-nav.css">
 <link rel="stylesheet" href="/gmx-quick.css">
 <meta property="og:image" content="https://groovesmaxxing.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -285,18 +278,9 @@ h1.eyebrow{margin:0;font-weight:400}
 
 </div>
 
-<nav class="gmx-tabs" aria-label="app tabs">
-<ul>
-<li><a href="/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.8 11.2 12 4.4l8.2 6.8"/><path d="M6.2 9.4v10.1h11.6V9.4"/><path d="M10 19.5v-5.2h4v5.2"/></svg>home</a></li>
-<li><a href="/scan" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><circle cx="12" cy="12" r="5.4"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>scan</a></li>
-<li><a href="/sets"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="M10 8.6v6.8l5.4-3.4z"/></svg>sets</a></li>
-<li><a href="/artists"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.6" r="3.8"/><path d="M4.6 20.2c.9-3.8 3.9-5.8 7.4-5.8s6.5 2 7.4 5.8"/></svg>artists</a></li>
-<li><a href="/search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 20 20"/></svg>search</a></li>
-<li><a href="/more"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="12" r="1.4" fill="currentColor"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/><circle cx="18.5" cy="12" r="1.4" fill="currentColor"/></svg>more</a></li>
-</ul>
-</nav>
 <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})})}</script>
 <script src="/gmx-clips.js"></script>
+<script src="/gmx-account.js"></script>
 <script src="/gmx-crate.js"></script>
 <script>
 (function(){
@@ -345,26 +329,18 @@ window.gmxRefreshBlocked=function(){return busy};
 })(3);
 
 /* the device id: minted once, kept on the phone. letters, digits, dash, underscore, 32 long. */
-function deviceId(){
-  var k='gmx_device', v=null;
-  try{v=localStorage.getItem(k)}catch(e){}
-  if(v&&/^[A-Za-z0-9_-]{8,64}$/.test(v))return v;
-  var b=new Uint8Array(16); (window.crypto||window.msCrypto).getRandomValues(b);
-  v=Array.prototype.map.call(b,function(x){return ('0'+x.toString(16)).slice(-2)}).join('');
-  try{localStorage.setItem(k,v)}catch(e){}
-  return v;
-}
+function deviceId(){return gmxAccount.device()}
 function headers(extra){
   var h={'X-GMX-App-Key':cfg.app_key,'X-GMX-Device':deviceId()};
   var ss=sessionToken(); if(ss)h['X-GMX-Session']=ss;
   if(extra)for(var k in extra)h[k]=extra[k];
   return h;
 }
-/* the account (2026-10-11): sign in by email link, no password. the session token lives on this
-   phone only and rides every call as X-GMX-Session, so follows, history and credit join the
-   account. nothing works worse signed out: a phone follows and gets push on its own. */
-function sessionToken(){try{return localStorage.getItem('gmx_session')||''}catch(e){return ''}}
-function setSession(t){try{if(t)localStorage.setItem('gmx_session',t);else localStorage.removeItem('gmx_session')}catch(e){}}
+/* the account (2026-10-11, shared in gmx-account.js with shell v2): sign in by email link, no password.
+   the session token lives on this phone only and rides every call as X-GMX-Session, so follows, history
+   and credit join the account. nothing works worse signed out: a phone follows and gets push on its own. */
+function sessionToken(){return gmxAccount.token()}
+function setSession(t){gmxAccount.set(t)}
 var meCache=null;
 function tick(ms){try{if(navigator.vibrate)navigator.vibrate(ms||30)}catch(e){}}
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
@@ -1155,7 +1131,7 @@ go.addEventListener('click',function(){if(busy){if(auto)autoStop('stopped');if(c
    offline: a clip recorded with no signal, or one whose upload never reached the recognizer, stays on this
    phone as a pending clip and is matched the moment the phone is back online, oldest first, one at a time.
    nothing here leaves the phone until it is online. */
-var AUTO_KEY='gmx_auto', SESSION_KEY='gmx_session', AUTO_GAP_MS=8*60000, AUTO_GAP_CAPPED_MS=20*60000, SESSION_MAX_AGE=12*3600000;
+var AUTO_KEY='gmx_auto', SESSION_KEY='gmx_tonight', AUTO_GAP_MS=8*60000, AUTO_GAP_CAPPED_MS=20*60000, SESSION_MAX_AGE=12*3600000;
 var auto=false, autoTimer=null, autoNext=0, autoTick=null, autoNote='', wake=null, draining=null, drainFailed=false, drainDone=false;
 var autobar=$('autobar'), pendingbar=$('pendingbar'), sessionEl=$('session'), sessionlist=$('sessionlist'), sessionmeta=$('sessionmeta'), sessionmsg=$('sessionmsg');
 function loadSession(){try{var s=JSON.parse(localStorage.getItem(SESSION_KEY)||'null');if(s&&s.rows)return s}catch(e){}return {start:0,rows:[]}}
@@ -1192,7 +1168,6 @@ function renderAuto(){
   var resumable=false;try{resumable=!auto&&localStorage.getItem(AUTO_KEY)==='1'&&loadSession().start&&Date.now()-loadSession().start<SESSION_MAX_AGE}catch(e){}
   var h='<button class="btn'+(auto?' on':'')+'" type="button" id="autobtn" aria-pressed="'+(auto?'true':'false')+'">'+(auto?'auto on · tap to stop':(resumable?'resume auto':'auto · for a set'))+'</button>';
   if(auto)h+='<span class="next" id="autonext"></span><button class="btn ghost" type="button" id="autonow">scan now</button>';
-  h+=youChip();
   if(autoNote)h+='<span class="note">'+esc(autoNote)+'</span>';
   autobar.innerHTML=h;
   clearInterval(autoTick);autoTick=null;
@@ -1210,24 +1185,8 @@ function followRow(cand){
   var what=cand&&cand.library_entry_id&&!(cand.artist_claim&&cand.title_claim)?'tell me when it gets a name':'tell me when it\'s out';
   return '<div class="row" id="followrow"><button class="btn" data-act="follow">'+what+'</button></div>';
 }
-function urlB64ToU8(b){var pad='='.repeat((4-b.length%4)%4),raw=atob((b+pad).replace(/-/g,'+').replace(/_/g,'/')),out=new Uint8Array(raw.length);for(var i=0;i<raw.length;i++)out[i]=raw.charCodeAt(i);return out}
-/* a push subscription for this phone: the browser's permission prompt, the recognizer's public key,
-   the subscription posted back. resolves true when the phone can be pushed, false when it cannot
-   (no permission, no service worker, iphone without the app on the home screen). never throws. */
-function ensurePush(){
-  if(!('serviceWorker' in navigator)||!('PushManager' in window)||!('Notification' in window))return Promise.resolve(false);
-  return fx(cfg.api_base+'/push/key',{headers:headers()},GET_MS).then(function(r){return r.ok?r.json():null}).then(function(k){
-    if(!k||!k.enabled||!k.public_key)return false;
-    return Notification.requestPermission().then(function(perm){
-      if(perm!=='granted')return false;
-      return navigator.serviceWorker.ready.then(function(reg){
-        return reg.pushManager.getSubscription().then(function(sub){return sub||reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:urlB64ToU8(k.public_key)})});
-      }).then(function(sub){
-        return fx(cfg.api_base+'/push/subscribe',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify({subscription:sub.toJSON()})},POST_MS).then(function(r){return r.ok});
-      });
-    });
-  }).catch(function(){return false});
-}
+/* push lives in gmx-account.js now */
+function ensurePush(){return gmxAccount.ensurePush()}
 function followNow(btn,rid,note){
   note=note||say; rid=rid||(current&&current.recognition_id);
   if(!rid){note('nothing to follow yet.');return}
@@ -1255,7 +1214,7 @@ function onCfg(){
   var q=new URLSearchParams(location.search), tok=q.get('signin');
   if(tok){
     history.replaceState(null,'',location.pathname);
-    fx(cfg.api_base+'/auth/finish',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify({token:tok})},POST_MS).then(function(r){
+    gmxAccount.finish(tok).then(function(r){
       if(r.status===410){youNote('that link is used up or too old. ask for a new one.');return}
       if(!r.ok)throw new Error(r.status);
       return r.json().then(function(j){setSession(j.session);meCache=null;renderYou();justIn=true;ensurePush()});
@@ -1276,41 +1235,18 @@ function sendCode(f){
   var m=$('codemsg'), code=($('y-code').value||'').replace(/\D/g,'');
   if(code.length!==6){m.textContent='six digits.';return}
   m.textContent='checking';
-  fx(cfg.api_base+'/auth/code',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify({email:f.dataset.email,code:code})},POST_MS).then(function(r){
+  gmxAccount.code(f.dataset.email,code).then(function(r){
     if(r.status===410){m.textContent='that code is wrong, used or too old. ask for a new one.';return}
     if(!r.ok)throw new Error(r.status);
-    return r.json().then(function(j){if(pollTimer){clearInterval(pollTimer);pollTimer=null}try{localStorage.removeItem('gmx_pending')}catch(e){}setSession(j.session);meCache=null;renderYou();justIn=true;loadFollows();ensurePush()});
+    return r.json().then(function(j){setSession(j.session);meCache=null;renderYou();justIn=true;loadFollows();ensurePush()});
   }).catch(function(){m.textContent='did not send. check your signal.'});
 }
-/* the page that asked for the link keeps a ticket and asks every few seconds whether the link was
-   tapped, in any browser. the first ready answer carries this browser's own session, so the person
-   is signed in where they started. the ticket is remembered across a reload for the link's window. */
-var pollTimer=null;
-function waitForLink(ticket,minutes){
-  try{localStorage.setItem('gmx_pending',JSON.stringify({t:ticket,until:Date.now()+minutes*60000}))}catch(e){}
-  if(pollTimer)clearInterval(pollTimer);
-  var ask=function(){
-    if(sessionToken()){clearInterval(pollTimer);pollTimer=null;return}
-    fx(cfg.api_base+'/auth/poll',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify({pending:ticket})},POST_MS).then(function(r){return r.ok?r.json():null}).then(function(j){
-      if(!j)return;
-      if(j.state==='ready'){clearInterval(pollTimer);pollTimer=null;try{localStorage.removeItem('gmx_pending')}catch(e){}setSession(j.session);meCache=null;renderYou();justIn=true;loadFollows();ensurePush()}
-      else if(j.state==='gone'){clearInterval(pollTimer);pollTimer=null;try{localStorage.removeItem('gmx_pending')}catch(e){}}
-    }).catch(function(){});
-  };
-  pollTimer=setInterval(ask,4000); ask();
-}
-function resumeWait(){
-  if(sessionToken())return;
-  var p=null;try{p=JSON.parse(localStorage.getItem('gmx_pending')||'null')}catch(e){}
-  if(p&&p.t&&p.until>Date.now())waitForLink(p.t,Math.ceil((p.until-Date.now())/60000));
-  else try{localStorage.removeItem('gmx_pending')}catch(e){}
-}
+/* the link wait (the ticket, the poll, the reload) lives in gmx-account.js now */
+function signedInByLink(){meCache=null;renderYou();justIn=true;loadFollows();ensurePush()}
+function waitForLink(ticket,minutes){gmxAccount.waitForLink(ticket,minutes,signedInByLink)}
+function resumeWait(){gmxAccount.resumeWait(signedInByLink)}
 var justIn=false, pushNow='', setupWas=null;
-/* the chip beside the auto button: who this phone is, before anyone scrolls */
-function youChip(){
-  if(!sessionToken())return '<a class="you-chip" href="#you">sign in</a>';
-  var me=meCache; return '<a class="you-chip in" href="#you">'+(me&&me.handle?'<b>@'+esc(me.handle)+'</b>':'<b>you</b>')+'</a>';
-}
+/* the chip beside the auto button moved to the header of every page (gmx-account.js, shell v2) */
 function renderYou(){
   var box=$('youbody'); if(!box||!cfg)return;
   if(!sessionToken()){
@@ -1333,19 +1269,13 @@ function renderYou(){
     paintStat(); renderSetup(); renderAuto(); loadServerHistory(); pushState();
   };
   if(meCache){paint(meCache);return}
-  fx(cfg.api_base+'/me',{headers:headers()},GET_MS).then(function(r){
-    if(r.status===401){setSession('');renderYou();return}
-    if(!r.ok)throw new Error(r.status);
-    return r.json().then(function(me){meCache=me;paint(me)});
+  gmxAccount.me(true).then(function(me){
+    if(!me){renderYou();return}
+    meCache=me;paint(me);
   }).catch(function(){box.innerHTML='<p class="smeta">signed in, but the recognizer did not answer. <button class="btn ghost" type="button" data-you="out">sign out</button></p>'});
 }
 /* where this phone stands on push: permission, and a live subscription behind it */
-function pushKnown(){
-  if(!('Notification' in window)||!('PushManager' in window)||!('serviceWorker' in navigator))return Promise.resolve('none');
-  if(Notification.permission==='denied')return Promise.resolve('blocked');
-  if(Notification.permission!=='granted')return Promise.resolve('off');
-  return navigator.serviceWorker.ready.then(function(reg){return reg.pushManager.getSubscription()}).then(function(sub){return sub?'on':'allowed'}).catch(function(){return 'allowed'});
-}
+function pushKnown(){return gmxAccount.pushState()}
 function pushState(){pushKnown().then(function(st){pushNow=st;paintStat();renderSetup()})}
 function paintStat(){
   var el=$('youstat'),me=meCache; if(!el||!me)return;
@@ -1407,7 +1337,7 @@ document.addEventListener('submit',function(ev){
   var f=ev.target;
   if(f.id==='yform'){
     ev.preventDefault(); var email=$('y-email').value.trim(); if(!email||!cfg)return; youNote('sending');
-    fx(cfg.api_base+'/auth/start',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify({email:email})},POST_MS).then(function(r){
+    gmxAccount.start(email).then(function(r){
       if(r.status===429){youNote('too many links for that address this hour.');return}
       if(r.status===422){youNote('that does not look like an email address.');return}
       if(!r.ok)throw new Error(r.status);
@@ -1422,7 +1352,7 @@ document.addEventListener('submit',function(ev){
     ev.preventDefault(); var hv=$('y-handle').value.trim();
     if(!hv&&f.getAttribute('data-first')){hNote('type a name first');return}
     hNote('saving');
-    fx(cfg.api_base+'/me',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify({handle:hv||null})},POST_MS).then(function(r){
+    gmxAccount.setHandle(hv||null).then(function(r){
       if(r.status===422||r.status===409)return r.json().then(function(j){hNote(String(j.detail||'that handle will not do'))});
       if(!r.ok)throw new Error(r.status);
       return r.json().then(function(me){meCache=me;renderYou();youNote(me.handle?'you are @'+me.handle+'.':'handle cleared.',true)});
@@ -1432,7 +1362,7 @@ document.addEventListener('submit',function(ev){
 document.addEventListener('click',function(ev){
   var y=ev.target.closest('[data-you]');
   if(y){
-    if(y.getAttribute('data-you')==='out'){fx(cfg.api_base+'/auth/signout',{method:'POST',headers:headers()},POST_MS).catch(function(){});setSession('');meCache=null;renderYou();loadFollows();return}
+    if(y.getAttribute('data-you')==='out'){gmxAccount.signout();meCache=null;renderYou();loadFollows();return}
     if(y.getAttribute('data-you')==='push'){y.disabled=true;ensurePush().then(function(ok){youNote(ok?'this phone gets notified.':'notifications are off for this site, or this browser cannot push. on iphone, add the app to the home screen first.',ok);y.disabled=false;pushState()});return}
     if(y.getAttribute('data-you')==='skip'){try{localStorage.setItem('gmx_push_skip','1')}catch(e){}renderSetup();return}
     if(y.getAttribute('data-you')==='handle'){showHandleForm();return}
@@ -1525,5 +1455,6 @@ window.gmxScanDemo=function(res){current=res;showCard(resultCard(res))};
 <script src="/gmx-motion.js" defer></script>
 <script src="/gmx-quick.js" defer></script>
 <script src="/gmx-refresh.js" defer></script>
+<script src="/gmx-nav.js" defer></script>
 </body>
 </html>
