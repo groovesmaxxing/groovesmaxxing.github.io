@@ -1,108 +1,95 @@
 {
- "generated": "2026-10-12T02:37:54Z",
+ "generated": "2026-10-12T10:38:19Z",
  "site": [
   {
    "path": "/",
    "code": 200,
-   "ms": 169,
+   "ms": 216,
    "state": "ok",
    "note": null
   },
   {
    "path": "/scan",
    "code": 200,
-   "ms": 152,
+   "ms": 148,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sets",
    "code": 200,
-   "ms": 188,
+   "ms": 110,
    "state": "ok",
    "note": null
   },
   {
    "path": "/artists",
    "code": 200,
-   "ms": 234,
+   "ms": 122,
    "state": "ok",
    "note": null
   },
   {
    "path": "/tracklists/",
    "code": 200,
-   "ms": 145,
+   "ms": 86,
    "state": "ok",
    "note": null
   },
   {
    "path": "/search-index.json",
    "code": 200,
-   "ms": 193,
+   "ms": 141,
    "state": "ok",
    "note": "generated 2026-10-12"
   },
   {
    "path": "/upcoming.json",
    "code": 200,
-   "ms": 120,
+   "ms": 178,
    "state": "ok",
    "note": "generated 2026-10-12"
   },
   {
    "path": "/radar-events.json",
    "code": 200,
-   "ms": 181,
+   "ms": 88,
    "state": "ok",
    "note": "generated 2026-10-11T15:48:15"
   },
   {
    "path": "/sitemap.xml",
    "code": 200,
-   "ms": 146,
+   "ms": 142,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sw.js",
    "code": 200,
-   "ms": 140,
+   "ms": 147,
    "state": "ok",
    "note": null
   }
  ],
  "recognizer": {
-  "state": "up",
-  "code": 200,
-  "ms": 511,
-  "health": {
-   "status": "ok",
-   "version": "0.1.1"
-  }
+  "state": "down",
+  "code": 0,
+  "ms": 122,
+  "note": "no answer: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of "
  },
  "workflows": {
   "state": "ok",
   "failed": [],
   "runs": [
    {
-    "name": "link watch",
-    "status": "completed",
-    "conclusion": "success",
-    "event": "workflow_dispatch",
-    "branch": "main",
-    "at": "2026-10-11T19:35:59Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38168621481",
-    "state": "ok"
-   },
-   {
     "name": "pages build and deployment",
     "status": "completed",
     "conclusion": "success",
     "event": "dynamic",
     "branch": "main",
-    "at": "2026-10-12T02:16:38Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38195096992",
+    "at": "2026-10-12T06:42:07Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38213592844",
     "state": "ok"
    },
    {
@@ -111,8 +98,8 @@
     "conclusion": "success",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-10-11T23:49:21Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38185700239",
+    "at": "2026-10-12T06:12:00Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38211361796",
     "state": "ok"
    },
    {
@@ -121,8 +108,8 @@
     "conclusion": "success",
     "event": "push",
     "branch": "main",
-    "at": "2026-10-12T02:17:37Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38195097151",
+    "at": "2026-10-12T06:41:13Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38213593098",
     "state": "ok"
    },
    {
@@ -131,8 +118,8 @@
     "conclusion": "success",
     "event": "push",
     "branch": "main",
-    "at": "2026-10-12T02:16:23Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38195097152",
+    "at": "2026-10-12T06:39:57Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38213593105",
     "state": "ok"
    },
    {
@@ -158,7 +145,7 @@
    {
     "state": "ok",
     "id": "F-21",
-    "text": "dropping soon says when it was last refreshed: 2026-10-09, 3 days old"
+    "text": "dropping soon says when it was last refreshed: 2026-10-12, 0 days old"
    },
    {
     "state": "ok",
@@ -192,6 +179,6 @@
    }
   ]
  },
- "state": "warn",
- "summary": "recognizer up; freshness warn"
+ "state": "down",
+ "summary": "recognizer down; freshness warn"
 }
