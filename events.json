@@ -1,6 +1,20 @@
 {
- "generated": "2026-10-12T10:38:19Z",
+ "generated": "2026-10-12T20:14:23Z",
  "events": [
+  {
+   "at": "2026-10-12T20:14:23Z",
+   "what": "recognizer",
+   "from": "down",
+   "to": "up",
+   "detail": "638 ms"
+  },
+  {
+   "at": "2026-10-12T20:14:23Z",
+   "what": "site watch",
+   "from": "down",
+   "to": "warn",
+   "detail": "recognizer up; freshness warn"
+  },
   {
    "at": "2026-10-12T10:38:19Z",
    "what": "recognizer",
