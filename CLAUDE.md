@@ -90,8 +90,8 @@ A static website. Every page is a `.html` file in this repo, written by hand or 
 
 | Workflow | When | What |
 |---|---|---|
-| `site-check.yml` | every push and pull request | preflight and headless page load check |
-| `site-data.yml` | every push to `main` | runs the `build_*.py` scripts, `lighten_sets.py`, `ensure_tags.py`, `sync_counts.py`, `crosslink_audit.py` and `share_cards.js`, then commits as `site data: derived files, tags and share cards` |
+| `site-check.yml` | every push and pull request | preflight, `harden_pages.py --check` and the headless page load check |
+| `site-data.yml` | every push to `main` | runs the `build_*.py` scripts, `lighten_sets.py`, `ensure_tags.py`, `sync_counts.py`, `crosslink_audit.py` and `share_cards.js`, then `harden_pages.py` last, then commits as `site data: derived files, tags and share cards` |
 | `events-radar.yml` | daily 09:23 UTC, or by hand | `fetch_events.py` with the `TM_API_KEY` secret, then `build_event_schema.py`. Commits as `radar: nightly events refresh` |
 | `site-watch.yml` | every 30 minutes | checks the live site's key pages, publishes to the `status` branch |
 | `link-watch.yml` | daily | checks outside links, publishes to the `status` branch |
@@ -108,11 +108,19 @@ A static website. Every page is a `.html` file in this repo, written by hand or 
 ### Page template
 
 - Each page carries its own `<style>` block with the same color tokens: `--night #0B0B0D`, `--racing #FF1C02`, `--deep #CC1400`, `--day #F2F2EF`, `--steel #8A8A93`, `--card #141417`.
-- Fonts are Poppins (400, 600, 900) and Space Mono (400, 700).
+- Fonts are Poppins (400, 600, 900) and Space Mono (400, 700), served from this site (`/gmx-fonts.css` and `fonts/`), never from Google.
 - Pages in folders use relative paths like `../favicon.svg`. Shared scripts use root paths like `/gmx-nav.js`.
 - `<title>` ends in `· groovesMAXXING`. Pages carry a meta description, Open Graph tags and a canonical URL without `.html`.
 - Copy on the site is written in lowercase.
 - `ensure_tags.py` adds the shared tags (tab bar, player, follow-along and so on) to any page missing them, so a fresh laptop-written page still gets them.
+
+### Security tags (content security policy)
+
+- Every page except the redirect stubs and the Google verification file carries a `Content-Security-Policy` meta and a referrer policy meta, written by `.github/scripts/harden_pages.py`.
+- Inline scripts are allowed by their sha256 hash, so after editing any inline script run `python3 .github/scripts/harden_pages.py` and commit the result. A stale hash fails the site check and blocks that script in browsers.
+- Do not add inline event handlers (`onclick="..."`, `onerror="..."`). Use `addEventListener`, or `data-fallback` on images.
+- The allowed outside hosts are lists at the top of `harden_pages.py` (player scripts, embed frames, form targets, scan page lookups). The recognizer host is read from `gmx-config.json`. A new embed or API host has to be added there, or the browser blocks it.
+- All GitHub Actions are pinned to commit SHAs, and Dependabot watches the pins.
 
 ### Generated sections (edit with care)
 
