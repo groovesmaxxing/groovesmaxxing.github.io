@@ -12,6 +12,11 @@ root pages with no inline tab bar: nav css/js
 """
 import glob, re
 
+def files(pattern):
+    """glob with forward slashes on every system. on windows glob returns tracklists\\index.html, so every
+    path.endswith('/index.html') and path.split('/') check below missed and the hub got the set page tags."""
+    return [p.replace('\\', '/') for p in glob.glob(pattern)]
+
 MOTION_CSS = '<link rel="stylesheet" href="/gmx-motion.css">'
 MOTION_JS = '<script src="/gmx-motion.js" defer></script>'
 T = {
@@ -48,16 +53,16 @@ def ensure(path, heads, before_motion, after_motion):
     return s != o
 
 n = 0
-for f in sorted(glob.glob('artists/*.html') + glob.glob('labels/*.html')):
+for f in sorted(files('artists/*.html') + files('labels/*.html')):
     n += ensure(f, ['player_css', 'nav_css', 'account_css'], ['player_js'], ['nav_js', 'crate_js', 'related_js', 'account_js'])
-for f in sorted(glob.glob('tracklists/*.html')):
+for f in sorted(files('tracklists/*.html')):
     if f.endswith('/index.html'): continue
     n += ensure(f, ['nav_css', 'account_css'], [], ['nav_js', 'follow_js', 'crate_js', 'related_js', 'account_js'])
 n += ensure('events.html', ['nav_css'], [], ['nav_js', 'related_js'])
 n += ensure('upcoming.html', ['nav_css', 'account_css'], [], ['nav_js', 'crate_js', 'upcoming_js', 'account_js'])
-for f in sorted(glob.glob('newsletter/*.html')):
+for f in sorted(files('newsletter/*.html')):
     n += ensure(f, ['nav_css'], [], ['nav_js'])
-for f in sorted(glob.glob('*.html')):
+for f in sorted(files('*.html')):
     s = open(f, encoding='utf-8').read()
     if 'class="gmx-tabs"' in s or 'http-equiv="refresh"' in s or f.startswith('google'): continue
     n += ensure(f, ['nav_css'], [], ['nav_js'])
@@ -126,7 +131,7 @@ def seo(path):
     if s != o: open(path, 'w', encoding='utf-8').write(s)
     return s != o
 
-for f in sorted(glob.glob('*.html') + glob.glob('artists/*.html') + glob.glob('labels/*.html') + glob.glob('tracklists/*.html') + glob.glob('newsletter/*.html')):
+for f in sorted(files('*.html') + files('artists/*.html') + files('labels/*.html') + files('tracklists/*.html') + files('newsletter/*.html')):
     n += seo(f)
 # seo (2026-10-11, video): a VideoObject on every tracklist page that embeds a youtube set, behind the
 # <!-- gmx-video --> marker, re-applied after every laptop render. the set's name, the page description,
@@ -187,7 +192,7 @@ def video(path, s):
     if clips: d['hasPart'] = clips
     return VIDEO_MARK + '\n<script type="application/ld+json">' + json.dumps(d, ensure_ascii=False).replace('</', '<\\/') + '</script>'
 
-for f in sorted(glob.glob('tracklists/*.html')):
+for f in sorted(files('tracklists/*.html')):
     if f.endswith('/index.html'): continue
     s = open(f, encoding='utf-8').read()
     if 'http-equiv="refresh"' in s or VIDEO_MARK in s: continue
@@ -197,12 +202,12 @@ for f in sorted(glob.glob('tracklists/*.html')):
 
 # quick search (ui build 1, 2026-10-11): the sheet that opens from any search link or the "/" key, on
 # every page. the full search page keeps only its own script.
-for f in sorted(glob.glob('*.html') + glob.glob('artists/*.html') + glob.glob('labels/*.html') + glob.glob('tracklists/*.html') + glob.glob('newsletter/*.html')):
+for f in sorted(files('*.html') + files('artists/*.html') + files('labels/*.html') + files('tracklists/*.html') + files('newsletter/*.html')):
     if f.startswith('google') or f == 'search.html': continue
     n += ensure(f, ['quick_css'], [], ['quick_js'])
 # bottom sheet (ui build 2, 2026-10-11): the "…" beside every heart and follow pill, so it rides on every
 # page that carries the crate, loaded right after it.
-for f in sorted(glob.glob('*.html') + glob.glob('artists/*.html') + glob.glob('labels/*.html') + glob.glob('tracklists/*.html')):
+for f in sorted(files('*.html') + files('artists/*.html') + files('labels/*.html') + files('tracklists/*.html')):
     s = open(f, encoding='utf-8').read()
     if T['crate_js'] not in s or T['sheet_js'] in s or 'http-equiv="refresh"' in s: continue
     s = s.replace(T['crate_js'], T['crate_js'] + '\n' + T['sheet_js'], 1)
