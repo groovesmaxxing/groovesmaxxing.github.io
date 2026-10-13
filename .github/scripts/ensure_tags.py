@@ -49,7 +49,7 @@ def ensure(path, heads, before_motion, after_motion):
 
 n = 0
 for f in sorted(glob.glob('artists/*.html') + glob.glob('labels/*.html')):
-    n += ensure(f, ['player_css', 'nav_css'], ['player_js'], ['nav_js', 'crate_js', 'related_js'])
+    n += ensure(f, ['player_css', 'nav_css', 'account_css'], ['player_js'], ['nav_js', 'crate_js', 'related_js', 'account_js'])
 for f in sorted(glob.glob('tracklists/*.html')):
     if f.endswith('/index.html'): continue
     n += ensure(f, ['nav_css'], [], ['nav_js', 'follow_js', 'crate_js', 'related_js'])
