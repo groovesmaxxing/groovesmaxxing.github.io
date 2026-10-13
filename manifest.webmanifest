@@ -1,6 +1,6 @@
 {
   "name": "groovesMAXXING",
-  "short_name": "groovesMAXXING",
+  "short_name": "groovesMAXX",
   "description": "scan what's playing, then the sets, the artists and the tracklists. your friend with permanent aux privileges.",
   "id": "/scan",
   "start_url": "/scan",
