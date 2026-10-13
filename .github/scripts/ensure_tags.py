@@ -63,6 +63,10 @@ for f in sorted(files('tracklists/*.html')):
 n += ensure('tracklists/index.html', ['nav_css'], [], ['nav_js', 'follow_js', 'crate_js', 'related_js'])
 n += ensure('events.html', ['nav_css'], [], ['nav_js', 'related_js'])
 n += ensure('upcoming.html', ['nav_css', 'account_css'], [], ['nav_js', 'crate_js', 'upcoming_js', 'account_js'])
+# the sets and interviews pages carry the account layer too (added by hand with the accounts build, 2026-10-12).
+# setslib.py and ivlib.py rewrite both pages from scratch, so the layer has to come back here after every render.
+for f in ['sets.html', 'interviews.html']:
+    n += ensure(f, ['account_css'], [], ['account_js'])
 for f in sorted(files('newsletter/*.html')):
     n += ensure(f, ['nav_css'], [], ['nav_js'])
 for f in sorted(files('*.html')):
