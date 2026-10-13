@@ -17,9 +17,10 @@ var ICON={
   more:'<circle cx="5.5" cy="12" r="1.4" fill="currentColor"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/><circle cx="18.5" cy="12" r="1.4" fill="currentColor"/>',
   search:'<circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 20 20"/>'
 };
-/* the logo mark from favicon.svg: three grooves, the centre, the waveform. drawn on the red disc. */
+/* the homepage logo: three red grooves, the red centre, the white waveform, on a night disc ringed in red.
+   gmx-nav.css swells the waveform and sends the grooves out in a slow ripple. */
 var WAVE='6,120 30,120 48,84 68,150 88,96 108,138 120,114 132,138 152,96 172,150 192,84 210,120 234,120';
-var MARK='<svg viewBox="0 0 240 240" aria-hidden="true"><g fill="none" stroke="#F2F2EF" stroke-linecap="round" stroke-linejoin="round" stroke-width="11"><circle cx="120" cy="120" r="104"/><circle cx="120" cy="120" r="76"/><circle cx="120" cy="120" r="48"/></g><circle cx="120" cy="120" r="20" fill="#0B0B0D"/><polyline points="'+WAVE+'" fill="none" stroke="#0B0B0D" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/><polyline points="'+WAVE+'" fill="none" stroke="#F2F2EF" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+var MARK='<svg viewBox="0 0 240 240" aria-hidden="true"><g fill="none" stroke="#FF1C02" stroke-width="10"><circle class="gx-r gx-r3" cx="120" cy="120" r="104"/><circle class="gx-r gx-r2" cx="120" cy="120" r="76"/><circle class="gx-r gx-r1" cx="120" cy="120" r="48"/></g><circle cx="120" cy="120" r="20" fill="#FF1C02"/><polyline class="gx-wv" points="'+WAVE+'" fill="none" stroke="#F2F2EF" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 var TABS=[['/','home'],['/sets','tracklists'],['/scan','scan'],['/artists','artists'],['/more','more']];
 var path=location.pathname.replace(/\.html$/,'').replace(/\/index$/,'/');
 function under(p){return path===p||path.indexOf(p+'/')===0;}
@@ -182,7 +183,7 @@ function watchNow(){
 }
 function loadAccount(){
   if(window.gmxAccount||document.querySelector('script[src^="/gmx-account.js"]'))return;
-  var s=document.createElement('script');s.src='/gmx-account.js?v=15';s.defer=true;document.head.appendChild(s);
+  var s=document.createElement('script');s.src='/gmx-account.js?v=16';s.defer=true;document.head.appendChild(s);
 }
 function mount(){
   if(document.querySelector('meta[http-equiv="refresh"]'))return;

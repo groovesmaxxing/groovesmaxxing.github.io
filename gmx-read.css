@@ -1,0 +1,81 @@
+/* readability layer (2026-10-13). loaded after every page's own <style> by ensure_tags.py, so a rule here
+   wins over the page rule with the same selector, and survives the laptop re-rendering a page.
+   one job: small print that reads on a phone.
+   - secondary text is a lighter grey on night, and a darker one on the paper sections
+   - space mono keeps the short labels (dates, chips, kickers) but loses the wide tracking and never drops
+     under about 12.5px
+   - long phrases (buttons, jump links, mono paragraphs) move to poppins, which reads faster than mono */
+:root{--steel:#A9A9B1;--read-dim:#C9C9C4}
+.day-section,.lane-vibes{--steel:#5E5E58}
+
+/* ---------- home ---------- */
+.tagline{color:var(--read-dim)}
+.mono{letter-spacing:.04em}
+.mono.eyebrow{letter-spacing:.06em}
+a.pill{font-family:'Poppins',sans-serif;font-weight:600;font-size:.95rem;letter-spacing:0;line-height:1.35;padding:13px 24px;text-wrap:balance}
+/* on a phone the stacked buttons share one width and centre their words, so the stack reads as a list */
+@media (max-width:640px){.hero-links a.pill,.fold-nav a.pill,.mix-row a.pill,#friday .fgf-cta a.pill{flex:1 1 100%;text-align:center}}
+.area-nav{gap:4px 20px}
+.area-nav a{font-family:'Poppins',sans-serif;font-weight:500;font-size:.92rem;letter-spacing:0;color:var(--read-dim);min-height:40px;padding:9px 0 4px}
+@media (min-width:641px){.hero .area-nav a{padding-left:8px;padding-right:8px}}
+.wall span,.wall a{font-family:'Poppins',sans-serif;font-weight:500;font-size:.92rem;letter-spacing:0;color:#dcdcd6}
+.wall span.hot,.wall a.hot{color:var(--racing)}
+.cluster h3{letter-spacing:.06em;font-size:.82rem}
+.wall-note{color:var(--read-dim)}
+#labels .wall-cta a,.serie a.more,#tonight a.more,#nextup a.more,body #friday .upcoming a.more,.foot-links a{font-family:'Poppins',sans-serif;font-weight:600;font-size:.95rem;letter-spacing:0}
+#tonight .drops .d,#nextup .drops .d,#tonight .drops a.go,#nextup .drops a.go,body #friday .upcoming .drops a{font-size:.82rem;letter-spacing:.02em}
+#tonight .drops .w,#nextup .drops .w{color:var(--read-dim)}
+.about-foot{color:var(--read-dim)}
+.lane .who{font-size:.8rem;letter-spacing:.02em}
+.player .note{font-size:.78rem}
+.coming{letter-spacing:.03em}
+.fold>summary .mono{font-size:.8rem}
+#gm-pv .pv-eye,#gm-pv .pv-m{font-size:.7rem;letter-spacing:.08em}
+.fine{font-size:.78rem;letter-spacing:.03em}
+.set-meta .mono{font-size:.8rem;letter-spacing:.03em}
+.day-section .set-meta .mono{color:#55554f}
+
+/* ---------- directories and profiles (artists, labels, radio, badges, newsletter, tracklists) ---------- */
+/* the small red labels: lowercase like the home page, so every page speaks the same way */
+.eyebrow,.eyebrow2{text-transform:lowercase;letter-spacing:.06em;font-size:.8rem}
+.back{letter-spacing:.03em}
+.letterhead{letter-spacing:.06em}
+.tag{font-size:.8rem;letter-spacing:.03em}
+.fact .k{font-size:.8rem;letter-spacing:.02em}
+.lk{font-size:.82rem}
+blockquote cite{font-size:.8rem}
+.dm,.lc,.azctl .azn,details.az>summary .cnt{font-size:.8rem;letter-spacing:.02em}
+.rel .t small{color:var(--read-dim)}
+/* mono paragraphs on profile pages read as poppins */
+.wip p,.subtle,.note:not(.player .note){font-family:'Poppins',sans-serif;font-size:.92rem;line-height:1.65;color:var(--read-dim);letter-spacing:0}
+.wip p b{color:var(--day);font-weight:600}
+.imeta{font-size:.8rem}
+
+/* ---------- events, upcoming, sets, interviews ---------- */
+.kicker,.L h3,.tierline,.vhead,.city,.date,.jump a,.mini .d,.wall-head,.inum,.grp{text-transform:lowercase;font-size:13px;letter-spacing:.04em}
+.chip{letter-spacing:.03em}
+.g h2 .n,h2.azh .n,details.a .n{font-size:12.5px;letter-spacing:.04em}
+.ivtab{letter-spacing:.04em}
+.v .meta{font-size:.8rem}
+.tour .go,.v .links,#tcount{font-size:.8rem}
+
+/* ---------- shared player ---------- */
+body .gmx-stage .set-meta .mono,body .gmx-stage .set-count{letter-spacing:.03em;font-size:.8rem}
+
+/* ---------- more, search and the account layer: the small section labels (scan.html and more.html carry their own fixes inline) ---------- */
+.aform label,.sounds .sl,
+.gmx-acct-ways h3,.gmx-acct-form label,.gmx-you h3,.gmx-you h4,#gmx-claims h4,#gmx-team h4{text-transform:lowercase;letter-spacing:.06em;font-size:.8rem}
+.gmx-acct-code span,.gmx-acct-code small,.gmx-badge{letter-spacing:.06em}
+.gmx-acct-sub,.gmx-acct-p.small,.gmx-acct-msg,.gmx-claim-why,.gmx-you-list small,.gmx-you-counts li,.gmx-track-tx small{font-size:.78rem}
+
+/* ---------- the "everything on this artist" block gmx-related.js adds, and the sets page cards ---------- */
+body .gmx-rel .eyebrow2,body .gmx-rel h3{text-transform:lowercase;letter-spacing:.06em;font-size:.8rem}
+body .gmx-rel .row a{font-size:.82rem}
+body .gmx-rel .row a small{font-size:.92em}
+.card .m,.card .m a{font-size:12.5px}
+.pg{font-size:13px}
+
+/* ---------- the last low-contrast spots found by the contrast sweep ---------- */
+.day-section .canon i{color:#6f6f69}
+.lane-nonspoty .who{color:#2a0400}
+.hub .fine{color:var(--steel)}

@@ -56,8 +56,9 @@ A static website. Every page is a `.html` file in this repo, written by hand or 
 
 | File | Purpose |
 |---|---|
-| `gmx-nav.js`, `gmx-nav.css` | The only tab bar, on every page: home, tracklists, scan (the raised button), artists, more. Also the floating search button. Loaded with `?v=15`, see Versioned shared files |
-| `gmx-account.js`, `gmx-account.css` | The account layer: sign in by email link or code, the sign in or @handle chip in the header, /me, the synced crate, push, and the "this is me" claim sheet on artist and label pages. Calls the recognizer at `api_base`. `gmx-account.js` is loaded with `?v=15` |
+| `gmx-nav.js`, `gmx-nav.css` | The only tab bar, on every page: home, tracklists, scan (the raised button: the homepage logo on a night disc, with the waveform swelling, the grooves lighting up from the centre and a slow red ripple), artists, more. Also the floating search button. Loaded with `?v=16`, see Versioned shared files |
+| `gmx-read.css` | The readability layer: lighter secondary grey, tighter and bigger Space Mono labels, lowercase small labels, Poppins for long button and link text. `ensure_tags.py` puts it last in every page's head so it wins over the page's own `<style>`. Loaded with `?v=1` |
+| `gmx-account.js`, `gmx-account.css` | The account layer: sign in by email link or code, the sign in or @handle chip in the header, /me, the synced crate, push, and the "this is me" claim sheet on artist and label pages. Calls the recognizer at `api_base`. `gmx-account.js` is loaded with `?v=16` |
 | `gmx-player.js`, `gmx-player.css` | The shared youtube stage that plays sets across pages |
 | `gmx-follow.js` | Follow-along tracklists, synced to the players |
 | `gmx-crate.js`, `gmx-sheet.js`, `gmx-sheet.css` | Hearts on sets and tracklist rows, and the "…" bottom sheet |
@@ -71,7 +72,7 @@ A static website. Every page is a `.html` file in this repo, written by hand or 
 | `gmx-refresh.js` | Pull to refresh inside the installed app |
 | `gmx-install.js` | "Add to home screen" nudge |
 | `gmx-clips.js`, `gmx-capture-worklet.js` | Scan page clip storage and audio capture |
-| `sw.js` | Service worker. Cache name is a versioned string (`gmx-v16` at the time of writing), bumped whenever the shell changes. Precaches the list in `precache.json` |
+| `sw.js` | Service worker. Cache name is a versioned string (`gmx-v17` at the time of writing), bumped whenever the shell changes. Precaches the list in `precache.json` |
 | `manifest.webmanifest` | Installed app settings: name `groovesMAXXING`, home screen name `groovesMAXX`, start page `/scan` |
 | `gmx-config.json` | Recognizer backend address (`api_base`) and the app key `scan.html` sends. Public on the live site by design. Do not change it without the owner |
 | `sitemap.xml`, `robots.txt`, `feed.xml` | Search engine files and the newsletter RSS feed |
@@ -118,7 +119,7 @@ A static website. Every page is a `.html` file in this repo, written by hand or 
 
 ### Versioned shared files
 
-Scripts and styles are served with a four hour browser cache, so a returning visitor can get a fresh page with a stale script. `gmx-nav.js`, `gmx-nav.css` and `gmx-account.js` are loaded with a version query (`?v=15` today) on every page. When one of them changes, bump the number in `ensure_tags.py` and `build_precache.py` (and where `gmx-nav.js` and `gmx-quick.js` inject them), and bump the `sw.js` cache name.
+Scripts and styles are served with a four hour browser cache, so a returning visitor can get a fresh page with a stale script. `gmx-nav.js`, `gmx-nav.css` and `gmx-account.js` are loaded with a version query (`?v=16` today) on every page. When one of them changes, bump the number in `ensure_tags.py` and `build_precache.py` (and where `gmx-nav.js` and `gmx-quick.js` inject them), and bump the `sw.js` cache name. `gmx-read.css` has its own version (`?v=1`), set in `READ_CSS` in `ensure_tags.py`, `build_precache.py` and `sw.js`.
 
 ### Security tags (content security policy)
 
