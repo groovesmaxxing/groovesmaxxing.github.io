@@ -3,14 +3,19 @@
    no account, no server, nothing leaves the phone. /crate lists it all, /upcoming can filter on it.
    every item carries the artist and the label it knows, so the dropping soon page can match releases to
    the crate without a lookup. vanilla, no dependencies. runs after gmx-player.js so the stages are built,
-   and listens for stages and card grids that render later. */
+   and listens for stages and card grids that render later.
+   synced since 2026-10-13 (accounts design section 1): every toggle fires a gmx:crate event and an unheart
+   leaves a tombstone in gmx_crate_rm, and gmx-account.js carries both to the account when signed in. */
 (function(){
 'use strict';
-var KEY='gmx_crate',MAX=500;
+var KEY='gmx_crate',RM='gmx_crate_rm',MAX=500;
 function load(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return []}}
 function save(list){try{localStorage.setItem(KEY,JSON.stringify(list.slice(0,MAX)))}catch(e){}}
 function has(id){return load().some(function(x){return x.id===id})}
-function toggle(item){var l=load(),i=l.findIndex(function(x){return x.id===item.id});if(i>-1)l.splice(i,1);else l.unshift(Object.assign({t:Date.now()},item));save(l);return i<0}
+function tomb(id){try{var r=JSON.parse(localStorage.getItem(RM)||'[]');r=r.filter(function(x){return x.id!==id});r.unshift({id:id,t:Date.now()});localStorage.setItem(RM,JSON.stringify(r.slice(0,MAX)))}catch(e){}}
+function toggle(item,button){var l=load(),i=l.findIndex(function(x){return x.id===item.id});if(i>-1){l.splice(i,1);tomb(item.id)}else l.unshift(Object.assign({t:Date.now()},item));save(l);
+  try{document.dispatchEvent(new CustomEvent('gmx:crate',{detail:{id:item.id,on:i<0,item:item,button:button||null}}))}catch(e){}
+  return i<0}
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 function fold(s){return String(s||'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/&/g,'and').replace(/\s+/g,' ').trim()}
 var SPLIT=/\s*(?:\bb2b\b|\bb3b\b|\bvs\.?\s|\bx\s|\band\b|\bwith\b|\bfeat\.?|\bft\.?|\+|&|,)\s*/i;
@@ -30,7 +35,7 @@ function heart(item,label){
   var make=typeof item==='function'?item:function(){return item},id=make().id;
   var b=document.createElement('button');b.type='button';b.className='gmx-heart';b.innerHTML=HEART;
   var on=has(id);b.setAttribute('aria-pressed',on?'true':'false');b.setAttribute('aria-label',(on?'in your crate: ':'add to your crate: ')+label);b.title='my crate';
-  b.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();var now=toggle(make());b.setAttribute('aria-pressed',now?'true':'false');b.setAttribute('aria-label',(now?'in your crate: ':'add to your crate: ')+label);b.classList.add('pop');setTimeout(function(){b.classList.remove('pop')},200);});
+  b.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();var now=toggle(make(),b);b.setAttribute('aria-pressed',now?'true':'false');b.setAttribute('aria-label',(now?'in your crate: ':'add to your crate: ')+label);b.classList.add('pop');setTimeout(function(){b.classList.remove('pop')},200);});
   return b;
 }
 function text(n){return n?(n.textContent||'').replace(/\s+/g,' ').trim():''}
@@ -68,9 +73,9 @@ function wireProfile(){
   var kind=sec.classList.contains('label')?'label':'artist',item={kind:kind,id:kind+':'+sec.id,title:name,url:location.pathname.replace(/\.html$/,'')};
   item[kind]=name;
   var b=document.createElement('button');b.type='button';b.className='tag gmx-follow';
-  function paint(on){b.setAttribute('aria-pressed',on?'true':'false');b.innerHTML=HEART+(on?'following':'follow');b.setAttribute('aria-label',(on?'following ':'follow ')+name+(on?', tap to stop':'')+' (saved on this phone only)')}
+  function paint(on){b.setAttribute('aria-pressed',on?'true':'false');b.innerHTML=HEART+(on?'following':'follow');b.setAttribute('aria-label',(on?'following ':'follow ')+name+(on?', tap to stop':''))}
   paint(has(item.id));
-  b.addEventListener('click',function(){var now=toggle(item);paint(now);b.classList.add('pop');setTimeout(function(){b.classList.remove('pop')},200)});
+  b.addEventListener('click',function(){var now=toggle(item,b);paint(now);b.classList.add('pop');setTimeout(function(){b.classList.remove('pop')},200)});
   meta.appendChild(b);
 }
 /* every artist and label the crate knows, folded, for the dropping soon filter */
@@ -86,4 +91,11 @@ wireSets();wireRows();wireProfile();
 document.addEventListener('gmx:stage',function(e){wireSets(e.target)});
 document.addEventListener('gmx:cards',function(e){wireSets(e.target)});
 window.gmxCrate={load:load,save:save,toggle:toggle,has:has,heart:heart,names:names,fold:fold,artistsOf:artistsOf};
+/* the account layer replaced the list: repaint every heart and pill on the page */
+document.addEventListener('gmx:crate-synced',function(){[].slice.call(document.querySelectorAll('.gmx-heart[aria-label], .gmx-follow')).forEach(function(b){
+  var s=b.closest('.set-slide, .card'),id=null;
+  if(b.classList.contains('gmx-follow')){var sec=b.closest('section.artist[id]');if(sec)id=(sec.classList.contains('label')?'label':'artist')+':'+sec.id}
+  else if(s){var f=s.querySelector('[data-yt]');if(f)id='yt:'+f.getAttribute('data-yt')}
+  if(!id)return;var on=has(id);b.setAttribute('aria-pressed',on?'true':'false');if(b.classList.contains('gmx-follow'))b.innerHTML=HEART+(on?'following':'follow');
+})});
 })();

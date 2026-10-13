@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-0JJX8TI29EgkXR7RHm+TG4p0hcuwYJkIhhOLwv+Lz94=' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-IhOievGPfHbA1PMyQ8bvU8LnTCN+hAezVf/VprIMpC4='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <link rel="manifest" href="/manifest.webmanifest">
@@ -11,7 +11,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-mobile-web-app-title" content="grooves">
 <title>groovesMAXXING · my crate</title>
-<meta name="description" content="the sets and tracks you hearted, saved on this phone only.">
+<meta name="description" content="the sets and tracks you hearted, on this phone or synced to your account.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
@@ -152,6 +152,7 @@ mark{background:none;color:var(--racing)}
 <meta name="robots" content="noindex">
 <link rel="stylesheet" href="/gmx-motion.css">
 <link rel="stylesheet" href="/gmx-quick.css">
+<link rel="stylesheet" href="/gmx-account.css">
 </head>
 <body>
 <div class="wrap">
@@ -161,7 +162,7 @@ mark{background:none;color:var(--racing)}
 <header class="mast">
 <span class="eyebrow">my crate</span>
 <h1>what you<br><span class="rd">hearted.</span></h1>
-<p class="lede">every set and track you tapped the heart on, and every artist and label you follow. it lives on this phone only, nothing is sent anywhere. open the store links, copy the list to paste wherever your playlists live, or see what's dropping from the names in here.</p>
+<p class="lede">every set and track you tapped the heart on, and every artist and label you follow. <span id="gmx-crate-sync">it lives on this phone only, nothing is sent anywhere.</span> open the store links, copy the list to paste wherever your playlists live, or see what's dropping from the names in here.</p>
 </header>
 
 <div class="ctools">
@@ -184,6 +185,7 @@ mark{background:none;color:var(--racing)}
 </div>
 
 <script src="/gmx-crate.js"></script>
+<script src="/gmx-account.js" defer></script>
 <script>
 (function(){
 var sets=document.getElementById('c-sets'),tracks=document.getElementById('c-tracks'),follow=document.getElementById('c-follow'),empty=document.getElementById('c-empty'),msg=document.getElementById('c-msg');
@@ -209,6 +211,7 @@ function render(){
   tracks.innerHTML=t.length?'<div class="letterhead">tracks · '+t.length+'</div>'+t.map(row).join(''):'';
   empty.hidden=!!l.length;
 }
+document.addEventListener('gmx:crate-synced',function(){render()});
 document.addEventListener('click',function(e){var b=e.target.closest('[data-rm]');if(!b)return;gmxCrate.toggle({id:b.getAttribute('data-rm')});render();say('removed.')});
 document.getElementById('c-copy').addEventListener('click',function(){
   var l=gmxCrate.load();if(!l.length)return say('nothing to copy.');

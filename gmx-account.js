@@ -1,22 +1,33 @@
-/* groovesmaxxing account layer (accounts design 2026-10-12, build 3b). vanilla, no dependencies.
+/* groovesmaxxing account layer (accounts design 2026-10-12, builds 2 and 3b). vanilla, no dependencies.
    the api base and the app key come from /gmx-config.json, never from this file. the session token
    lives in localStorage as gmx_session, the key scan.html already uses, so one sign-in covers the
-   whole site. this file does three things:
-     - the "this is me" button on every artist and label profile, and the sheet behind it: the GMX-
-       code, the accounts the site pins as official, the three ways to prove it, "these aren't mine"
-     - the account card on /more: sign in, the handle, the badge, my claims, the team, sign out
-     - a small api for other scripts: window.gmxAccount.{ready, token, headers, api, me, signIn, badge}
-   nothing here touches audio. a bio is read by the api, never by this page. */
+   whole site. this file does these things:
+     - the crate, synced: signed in, the phone's gmx_crate goes up as PUT /me/crate (a union, the newest
+       timestamp wins on removals) and the answer replaces it. once at boot when something changed, and
+       a moment after every heart. signed out, the crate stays on the phone as before
+     - follow an artist: the follow pill on a profile signs you in first, then POSTs /follow/artist
+     - the sign-up moments: the card after the third heart signed out, the newsletter box at sign-in,
+       the chip at the top of every page with a back row
+     - "this is me" on every artist and label profile, and the sheet behind it: the GMX- code, the
+       accounts the site pins as official, the three ways to prove it, "these aren't mine"
+     - the account card on /more: sign in, handle, badge, my claims, the team, notifications, your data
+     - a small api for other scripts: window.gmxAccount.{ready, token, headers, api, me, signIn, badge, sync}
+   calls are counted against the phone's hourly budget like a scan is, so /me is cached ten minutes and
+   the crate only goes up when it changed. nothing here touches audio. */
 (function(){
 'use strict';
 if(window.gmxAccount)return;
 var POST_MS=25000, GET_MS=8000, SESSION='gmx_session', DEVICE='gmx_device', CFGK='gmx_cfg', PENDING='gmx_pending';
-var cfg=null, cfgP=null, me=null, meP=null, pollTimer=null;
+var CRATE='gmx_crate', CRATE_RM='gmx_crate_rm', CRATE_SIG='gmx_crate_sig', ME='gmx_me', NUDGE='gmx_nudge_until', NL='gmx_nl_wanted', WANT_FOLLOW='gmx_follow_wanted';
+var ME_TTL=10*60000, SYNC_TTL=30*60000, NUDGE_DAYS=30;
+var cfg=null, cfgP=null, me=null, meP=null, pollTimer=null, syncT=null, syncing=false, syncAgain=false;
 var BADGE={verified_artist:'verified artist',verified_label:'verified label',verified_venue:'verified venue',team:'team'};
 var HOST={soundcloud:'soundcloud',instagram:'instagram',email:'mail',spotify:'spotify',bandcamp:'bandcamp',youtube:'youtube',ra:'resident advisor',beatport:'beatport',tiktok:'tiktok',x:'x',site:'site'};
+var NOTIFY=[['email','email alerts at all'],['named','an ID i scanned gets a name'],['released','a track i scanned comes out'],['artist','an artist i follow drops something'],['newsletter','fresh grooves friday']];
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 function ls(k){try{return localStorage.getItem(k)||''}catch(e){return ''}}
 function lss(k,v){try{if(v)localStorage.setItem(k,v);else localStorage.removeItem(k)}catch(e){}}
+function lsj(k){try{return JSON.parse(ls(k)||'null')}catch(e){return null}}
 function fx(url,opts,ms){
   opts=opts||{};
   if(!('AbortController' in window))return fetch(url,opts);
@@ -28,7 +39,7 @@ function loadCfg(){
   if(cfgP)return cfgP;
   cfgP=fx('/gmx-config.json',{cache:'no-store'},GET_MS).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()})
     .then(function(j){if(!j.api_base||!j.app_key)throw new Error('incomplete');cfg=j;lss(CFGK,JSON.stringify(j));return j})
-    .catch(function(e){var c=null;try{c=JSON.parse(ls(CFGK)||'null')}catch(x){}if(c&&c.api_base&&c.app_key){cfg=c;return c}cfgP=null;throw e});
+    .catch(function(e){var c=lsj(CFGK);if(c&&c.api_base&&c.app_key){cfg=c;return c}cfgP=null;throw e});
   return cfgP;
 }
 function deviceId(){
@@ -39,7 +50,7 @@ function deviceId(){
   lss(DEVICE,v);return v;
 }
 function token(){return ls(SESSION)}
-function setToken(t){lss(SESSION,t);me=null;meP=null;try{document.dispatchEvent(new CustomEvent('gmx-account',{detail:{signedIn:!!t}}))}catch(e){}}
+function setToken(t){lss(SESSION,t);me=null;meP=null;lss(ME,'');if(!t)lss(CRATE_SIG,'');try{document.dispatchEvent(new CustomEvent('gmx-account',{detail:{signedIn:!!t}}))}catch(e){}}
 function headers(extra){
   var h={'X-GMX-App-Key':cfg.app_key,'X-GMX-Device':deviceId()};
   var ss=token();if(ss)h['X-GMX-Session']=ss;
@@ -56,17 +67,23 @@ function api(path,opts){
     return fx(cfg.api_base+path,opts,(opts.method&&opts.method!=='GET')?POST_MS:GET_MS);
   });
 }
+/* who is signed in. cached ten minutes on the phone, because every call counts against the hourly budget */
 function whoami(force){
   if(!token())return Promise.resolve(null);
   if(me&&!force)return Promise.resolve(me);
+  var c=lsj(ME);
+  if(c&&c.me&&!force&&Date.now()-(c.at||0)<ME_TTL){me=c.me;return Promise.resolve(me)}
   if(meP&&!force)return meP;
   meP=api('/me').then(function(r){if(r.status===401){setToken('');return null}if(!r.ok)throw new Error(r.status);return r.json()})
-    .then(function(j){me=j;return j}).catch(function(){return null});
+    .then(function(j){me=j;lss(ME,JSON.stringify({me:j,at:Date.now()}));return j}).catch(function(){return me||((c&&c.me)||null)});
   return meP;
 }
+function remember(m){me=m;lss(ME,JSON.stringify({me:m,at:Date.now()}))}
 function badge(role){return BADGE[role]||''}
 function handleOf(url){var m=/(?:instagram\.com|soundcloud\.com)\/([^\/?#]+)/.exec(url||'');return m?'@'+m[1]:(url||'').replace(/^https?:\/\//,'').replace(/\/$/,'')}
 function short(url){return (url||'').replace(/^mailto:/,'').replace(/^https?:\/\/(www\.)?/,'').replace(/\/$/,'')}
+function onScan(){return location.pathname==='/scan'||/\/scan\.html$/.test(location.pathname)}
+function onMore(){return location.pathname==='/more'||/\/more\.html$/.test(location.pathname)}
 
 /* ---- the sheet. its own small shell, so it works on pages without gmx-sheet.css too ------------------ */
 var sheet,body,opener;
@@ -95,11 +112,18 @@ function close(){
   if(opener&&opener.focus)try{opener.focus()}catch(e){}
 }
 function note(el,t,ok){if(!el)return;el.textContent=t||'';el.className='gmx-acct-msg'+(ok?' ok':'')}
+var toastT;
+function toast(msg){
+  var t=document.querySelector('.gmx-acct-toast');
+  if(!t){t=document.createElement('div');t.className='gmx-acct-toast';t.setAttribute('role','status');document.body.appendChild(t)}
+  t.textContent=msg;t.classList.add('on');clearTimeout(toastT);toastT=setTimeout(function(){t.classList.remove('on')},2200);
+}
 
 /* ---- sign in: email link, no password. the same three doors scan.html opens ------------------------- */
 function signinForm(){
   return '<form class="gmx-acct-form" data-form="start" autocomplete="off"><label for="gmx-acct-email">email</label>'+
     '<input id="gmx-acct-email" name="email" type="email" inputmode="email" maxlength="320" required placeholder="you@example.com">'+
+    '<label class="gmx-acct-check"><input type="checkbox" name="nl"> fresh grooves friday in my inbox too</label>'+
     '<div class="gmx-acct-row"><button class="gmx-acct-btn red" type="submit">send me a sign-in link</button><span class="gmx-acct-msg"></span></div></form>';
 }
 function codeForm(email){
@@ -114,6 +138,7 @@ function wireSignin(root,done){
     var m=f.querySelector('.gmx-acct-msg');
     if(f.dataset.form==='start'){
       var email=(f.querySelector('input[name=email]').value||'').trim();if(!email)return;note(m,'sending');
+      var nl=f.querySelector('input[name=nl]');lss(NL,nl&&nl.checked?'1':'');
       api('/auth/start',{method:'POST',json:{email:email}}).then(function(r){
         if(r.status===429){note(m,'too many links for that address this hour.');return}
         if(r.status===422){note(m,'that does not look like an email address.');return}
@@ -137,7 +162,17 @@ function wireSignin(root,done){
     }
   });
 }
-function signedIn(t){if(pollTimer){clearInterval(pollTimer);pollTimer=null}lss(PENDING,'');setToken(t)}
+/* a session just opened: the crate goes up, the newsletter box is honoured, a follow that waited is made */
+function signedIn(t){
+  if(pollTimer){clearInterval(pollTimer);pollTimer=null}
+  lss(PENDING,'');setToken(t);
+  afterSignIn();
+}
+function afterSignIn(){
+  if(ls(NL)==='1'){lss(NL,'');api('/me/newsletter',{method:'POST'}).catch(function(){})}
+  var w=ls(WANT_FOLLOW);if(w){lss(WANT_FOLLOW,'');api('/follow/artist',{method:'POST',json:{slug:w}}).catch(function(){})}
+  syncCrate('sign-in');
+}
 function waitForLink(ticket,minutes,done){
   lss(PENDING,JSON.stringify({t:ticket,until:Date.now()+minutes*60000}));
   if(pollTimer)clearInterval(pollTimer);
@@ -153,13 +188,107 @@ function waitForLink(ticket,minutes,done){
 }
 function resumeWait(done){
   if(token())return;
-  var p=null;try{p=JSON.parse(ls(PENDING)||'null')}catch(e){}
+  var p=lsj(PENDING);
   if(p&&p.t&&p.until>Date.now())waitForLink(p.t,Math.ceil((p.until-Date.now())/60000),done);else lss(PENDING,'');
 }
 /* open the sign-in sheet; done runs once a session exists */
 function signIn(from,done,why){
   open('sign in',why||'email link, no password',signinForm(),from);
   wireSignin(body,function(){close();done&&done()});
+}
+
+/* ---- the crate, synced (design section 1) ------------------------------------------------------------ */
+function crateLocal(){var l=lsj(CRATE);return Array.isArray(l)?l:[]}
+function rmLocal(){var l=lsj(CRATE_RM);return Array.isArray(l)?l:[]}
+function sig(items,removed){return items.length+':'+items.slice(0,40).map(function(x){return x.id+'@'+(x.t||0)}).join(',')+'|'+removed.length}
+function norm(it){
+  var o={kind:it.kind,id:it.id,t:it.t||Date.now()};
+  ['title','sub','url','page','artist','label','links'].forEach(function(k){if(it[k]!=null)o[k]=it[k]});
+  return o;
+}
+/* PUT the phone's list, take the merged answer back. reason is for the log line only */
+function syncCrate(reason,force){
+  if(!token())return Promise.resolve(false);
+  if(syncing){syncAgain=true;return Promise.resolve(false)}
+  var items=crateLocal().slice(0,500),removed=rmLocal().slice(0,500),s=sig(items,removed),last=lsj(CRATE_SIG);
+  if(!force&&last&&last.sig===s&&Date.now()-(last.at||0)<SYNC_TTL)return Promise.resolve(false);
+  syncing=true;
+  return api('/me/crate',{method:'PUT',json:{items:items,removed:removed}}).then(function(r){
+    if(r.status===401){setToken('');return null}
+    if(!r.ok)throw new Error(r.status);
+    return r.json();
+  }).then(function(j){
+    if(!j)return false;
+    var list=(j.items||[]).map(norm);
+    lss(CRATE,JSON.stringify(list));lss(CRATE_RM,'');
+    lss(CRATE_SIG,JSON.stringify({sig:sig(list,[]),at:Date.now()}));
+    try{document.dispatchEvent(new CustomEvent('gmx:crate-synced',{detail:{count:j.count,merged:j.merged,reason:reason}}))}catch(e){}
+    return true;
+  }).catch(function(){return false}).then(function(ok){
+    syncing=false;
+    if(syncAgain){syncAgain=false;syncCrate('again')}
+    return ok;
+  });
+}
+/* every heart, follow or unheart: gmx-crate.js says so. signed in it syncs a moment later; signed out it
+   is the moment to ask, once in a while */
+function onCrateChange(e){
+  var d=e.detail||{},item=d.item||{};
+  if(token()){
+    clearTimeout(syncT);syncT=setTimeout(function(){syncCrate('heart',true)},1500);
+    if(item.kind==='artist'&&item.id){
+      var slug=String(item.id).replace(/^artist:/,'');
+      if(d.on)api('/follow/artist',{method:'POST',json:{slug:slug}}).catch(function(){});
+      else api('/follow/artist/'+encodeURIComponent(slug),{method:'DELETE'}).catch(function(){});
+    }
+    return;
+  }
+  if(!d.on)return;
+  if(item.kind==='artist'||item.kind==='label'){
+    /* moment 4: the follow signs you in first. the heart stays on the phone either way, nothing gets worse */
+    if(item.kind==='artist')lss(WANT_FOLLOW,String(item.id).replace(/^artist:/,''));
+    signIn(d.button||null,null,'sign in to follow '+(item.title||'them')+': drops and dates land in your alerts. the heart stays on this phone either way.');
+    return;
+  }
+  /* moment 1: the third heart */
+  var n=crateLocal().filter(function(x){return x.kind==='set'||x.kind==='track'}).length;
+  var until=+ls(NUDGE)||0;
+  if(n>=3&&until<Date.now())nudge();
+}
+function nudge(){
+  if(document.querySelector('.gmx-nudge'))return;
+  var c=document.createElement('div');c.className='gmx-nudge';c.setAttribute('role','status');
+  c.innerHTML='<p>save your crate to any phone. email only, no password.</p><div class="gmx-acct-row"><button type="button" class="gmx-acct-btn red" data-nudge="in">sign in</button><button type="button" class="gmx-acct-btn ghost" data-nudge="no">not now</button></div>';
+  document.body.appendChild(c);
+  c.addEventListener('click',function(e){
+    var b=e.target.closest('[data-nudge]');if(!b)return;
+    lss(NUDGE,String(Date.now()+NUDGE_DAYS*86400000));c.remove();
+    if(b.dataset.nudge==='in')signIn(null,null,'keep your crate on every phone');
+  });
+}
+/* the crate page: the line under the title says where the list lives */
+function wireCratePage(){
+  var el=document.getElementById('gmx-crate-sync');if(!el)return;
+  function paint(){
+    if(token())el.innerHTML='it is synced to your account: every phone you sign in on sees this list.';
+    else el.innerHTML='it lives on this phone only, nothing is sent anywhere. <button type="button" class="gmx-acct-link" data-signin>sign in</button> to keep it on every phone.';
+  }
+  paint();
+  el.addEventListener('click',function(e){if(e.target.closest('[data-signin]'))signIn(e.target,null,'keep your crate on every phone')});
+  document.addEventListener('gmx-account',paint);
+}
+
+/* ---- the chip at the top of a page with a back row (moment 6) ---------------------------------------- */
+function wireChip(){
+  if(onScan()||onMore())return;
+  var top=document.querySelector('.top');if(!top||top.querySelector('.gmx-chip'))return;
+  var a=document.createElement('a');a.className='gmx-chip';a.href='/more';top.appendChild(a);
+  function paint(){
+    if(!token()){a.textContent='sign in';a.classList.remove('in');return}
+    a.classList.add('in');a.innerHTML='<b>you</b>';
+    whoami().then(function(m){if(m)a.innerHTML='<b>'+esc(m.handle?'@'+m.handle:'you')+'</b>'});
+  }
+  paint();document.addEventListener('gmx-account',paint);
 }
 
 /* ---- "this is me" on a profile (design section 3) ----------------------------------------------------- */
@@ -260,32 +389,95 @@ function wireMore(){
   var box=document.getElementById('gmx-you');if(!box)return;
   function paint(){
     if(!token()){
-      box.innerHTML='<div class="gmx-you out"><h3>your account</h3><p class="gmx-acct-p">sign in to keep your crate across phones, follow artists, get told when an ID you scanned comes out, and claim your page if you are one of the '+
-        'names on here. email link, no password.</p>'+signinForm()+'</div>';
+      box.innerHTML='<div class="gmx-you out"><h3>your account</h3><p class="gmx-acct-p">sign in to keep your crate on every phone, get your name on the IDs you help find, hear first when a track you scanned comes out, '+
+        'and claim your page if you are one of the names on here. email only. no password.</p>'+signinForm()+'</div>';
       wireSignin(box,function(){paint()});
       return;
     }
     box.innerHTML='<div class="gmx-you"><p class="gmx-acct-p">one sec.</p></div>';
     whoami(true).then(function(m){
       if(!m){box.innerHTML='<div class="gmx-you"><p class="gmx-acct-p">signed in, but the recognizer did not answer. <button type="button" class="gmx-acct-link" data-out>sign out</button></p></div>';return}
+      var since=m.since?new Date(m.since):null;
       var h='<div class="gmx-you"><div class="gmx-you-head"><span class="gmx-you-at">'+(m.handle?'@'+esc(m.handle):'no handle yet')+'</span>'+(badge(m.role)?'<span class="gmx-badge">'+esc(badge(m.role))+'</span>':'')+'</div>'+
-        '<p class="gmx-acct-p small">'+esc(m.email)+' · '+(m.crate||0)+' in the crate · '+(m.artists||0)+' artists followed · '+(m.follows||0)+' open follows</p>'+
+        '<p class="gmx-acct-p small">'+esc(m.email)+(since?' · since '+since.toLocaleDateString(undefined,{month:'short',year:'numeric'}).toLowerCase():'')+'</p>'+
+        '<ul class="gmx-you-counts"><li><b>'+(m.crate||0)+'</b>in the crate</li><li><b>'+(m.artists||0)+'</b>artists followed</li><li><b>'+(m.follows||0)+'</b>IDs waited on</li></ul>'+
+        '<h4>your stuff</h4><ul class="gmx-you-list">'+
+        '<li><a href="/crate"><b>my crate</b><small>synced to every phone you sign in on</small></a></li>'+
+        '<li><a href="/scan#you"><b>scan history and follows</b><small>every device, with stop buttons</small></a></li>'+
+        '<li><a href="/scan#you"><b>handle and push on this phone</b><small>the credit on IDs, notifications here</small></a></li></ul>'+
         '<div id="gmx-claims"></div><div id="gmx-team"></div>'+
-        '<div class="gmx-acct-row"><a class="gmx-acct-btn" href="/scan#you">handle and notifications</a><button type="button" class="gmx-acct-btn ghost" data-out>sign out</button></div></div>';
+        '<h4>notifications</h4><p class="gmx-acct-p small">by email, to '+esc(m.email)+'. push is the phone\'s own switch, under scan.</p><ul class="gmx-you-switches" id="gmx-notify"></ul>'+
+        '<h4>your data</h4><ul class="gmx-you-list">'+
+        '<li><button type="button" class="gmx-acct-rowbtn" data-export><b>download my data</b><small>scans, crate, follows, claims, as one json file</small></button></li>'+
+        '<li><button type="button" class="gmx-acct-rowbtn" data-delete><b>delete my account</b><small>a mail confirms it, then it is gone for good</small></button></li></ul>'+
+        '<div id="gmx-delete"></div>'+
+        '<div class="gmx-acct-row"><button type="button" class="gmx-acct-btn ghost" data-out>sign out</button><span class="gmx-acct-msg" id="gmx-you-msg"></span></div></div>';
       box.innerHTML=h;
-      paintClaims(m);
+      paintNotify(m);paintClaims(m);
     });
   }
   box.addEventListener('click',function(e){
     var o=e.target.closest('[data-out]');if(o){api('/auth/signout',{method:'POST'}).catch(function(){});setToken('');paint();return}
+    var x=e.target.closest('[data-export]');if(x){exportData(x);return}
+    var d=e.target.closest('[data-delete]');if(d){startDelete(d);return}
+  });
+  box.addEventListener('change',function(e){
+    var sw=e.target.closest('input[data-notify]');if(!sw)return;
+    var key=sw.dataset.notify,on=sw.checked,msg=document.getElementById('gmx-you-msg');sw.disabled=true;
+    var p=key==='newsletter'?api('/me/newsletter',{method:on?'POST':'DELETE'}):api('/me',{method:'POST',json:{notify:(function(){var o={};o[key]=on;return o})()}});
+    p.then(function(r){
+      if(r.status===503){note(msg,'the newsletter switch is not wired on this deployment yet. the form below still works.');sw.checked=!on;return}
+      if(!r.ok)throw new Error(r.status);
+      return r.json().then(function(j){if(j&&j.notify)remember(j);else if(me){me.notify=me.notify||{};me.notify[key]=on;remember(me)}note(msg,'saved.',true)});
+    }).catch(function(){sw.checked=!on;note(msg,'did not save. try again in a minute.')}).then(function(){sw.disabled=false});
   });
   paint();
   document.addEventListener('gmx-account',function(){paint()});
 }
+function paintNotify(m){
+  var ul=document.getElementById('gmx-notify');if(!ul)return;
+  var n=m.notify||{};
+  ul.innerHTML=NOTIFY.map(function(x){
+    var on=n[x[0]]!==undefined?!!n[x[0]]:(x[0]!=='newsletter');
+    return '<li><label class="gmx-sw"><span class="tx">'+esc(x[1])+'</span><input type="checkbox" role="switch" data-notify="'+x[0]+'"'+(on?' checked':'')+'><span class="knob" aria-hidden="true"></span></label></li>';
+  }).join('');
+}
+function exportData(btn){
+  var msg=document.getElementById('gmx-you-msg');btn.disabled=true;note(msg,'packing it up');
+  api('/me/export').then(function(r){if(!r.ok)throw new Error(r.status);return r.blob()}).then(function(b){
+    var u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='groovesmaxxing-export.json';document.body.appendChild(a);a.click();a.remove();
+    setTimeout(function(){URL.revokeObjectURL(u)},4000);note(msg,'downloaded.',true);
+  }).catch(function(){note(msg,'could not fetch it. try again in a minute.')}).then(function(){btn.disabled=false});
+}
+function startDelete(btn){
+  var box=document.getElementById('gmx-delete'),msg=document.getElementById('gmx-you-msg');
+  if(!confirm('delete your groovesmaxxing account? we mail you a code first. nothing is deleted until you type it.'))return;
+  btn.disabled=true;note(msg,'sending the mail');
+  api('/me/delete',{method:'POST'}).then(function(r){
+    if(r.status===429){note(msg,'too many delete mails this hour.');return}
+    if(!r.ok)throw new Error(r.status);
+    return r.json().then(function(j){
+      note(msg,j.mail_sent?'sent. type the six digits from the mail here.':'the mail could not go out right now.',j.mail_sent);
+      if(!j.mail_sent)return;
+      box.innerHTML='<form class="gmx-acct-form on" data-form="delcode" autocomplete="off"><label for="gmx-acct-del">the six digits from the mail</label><input id="gmx-acct-del" inputmode="numeric" maxlength="7" autocomplete="one-time-code" placeholder="000 000">'+
+        '<div class="gmx-acct-row"><button class="gmx-acct-btn red" type="submit">delete it all</button><button class="gmx-acct-btn ghost" type="button" data-delcancel>keep my account</button></div></form>';
+      box.querySelector('[data-delcancel]').addEventListener('click',function(){box.innerHTML='';note(msg,'kept.',true)});
+      box.querySelector('form').addEventListener('submit',function(ev){
+        ev.preventDefault();var code=(box.querySelector('input').value||'').replace(/\D/g,'');if(code.length!==6){note(msg,'six digits.');return}
+        note(msg,'deleting');
+        api('/me/delete/confirm',{method:'POST',json:{code:code}}).then(function(r){
+          if(r.status===410){note(msg,'that code is wrong, used or too old. ask for a new mail.');return}
+          if(!r.ok)throw new Error(r.status);
+          return r.json().then(function(){setToken('');lss(CRATE_SIG,'');toast('your account is gone. the crate on this phone stays yours.')});
+        }).catch(function(){note(msg,'did not go through. try again in a minute.')});
+      });
+    });
+  }).catch(function(){note(msg,'the recognizer did not answer. try again in a minute.')}).then(function(){btn.disabled=false});
+}
 function paintClaims(m){
   var cl=document.getElementById('gmx-claims');if(!cl)return;
   api('/verify/mine').then(function(r){return r.ok?r.json():[]}).then(function(rows){
-    if(!rows.length){cl.innerHTML='<p class="gmx-acct-p small">an artist or a label on here? open your page and tap "this is me".</p>';return}
+    if(!rows.length){cl.innerHTML='<h4>for artists</h4><p class="gmx-acct-p small">an artist or a label on here? open your page and tap "this is me".</p>';return}
     cl.innerHTML='<h4>my claims</h4><ul class="gmx-you-list">'+rows.map(function(r){
       var st=r.state==='verified'?'verified':r.state==='revoked'?'closed':(r.needs_pipeline?'waiting on your official accounts':(r.match_result||'waiting on your proof'));
       return '<li><a href="/'+esc(r.entity_kind==='label'?'labels':'artists')+'/'+esc(r.slug)+'"><b>'+esc(r.name||r.slug)+'</b> <small>'+esc(r.kind==='team'?'team seat':r.kind)+' · '+esc(st)+'</small></a></li>';
@@ -328,9 +520,10 @@ function loadSeats(box){
 
 /* ---- boot ---------------------------------------------------------------------------------------- */
 function boot(){
-  wireProfile();wireMore();
-  if(location.pathname!=='/scan'&&!/\/scan\.html$/.test(location.pathname))resumeWait();
+  wireProfile();wireMore();wireChip();wireCratePage();
+  document.addEventListener('gmx:crate',onCrateChange);
+  if(!onScan()){resumeWait();if(token())syncCrate('boot')}
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
-window.gmxAccount={ready:loadCfg,token:token,headers:function(x){return cfg?headers(x):null},api:api,me:whoami,signIn:signIn,badge:badge,open:open,close:close};
+window.gmxAccount={ready:loadCfg,token:token,headers:function(x){return cfg?headers(x):null},api:api,me:whoami,signIn:signIn,badge:badge,open:open,close:close,sync:function(){return syncCrate('asked',true)}};
 })();
