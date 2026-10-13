@@ -111,7 +111,16 @@ function build(){
     '<button type="button" class="gmx-acct-x" data-close aria-label="close">×</button></div><div class="gmx-acct-body"></div></div>';
   document.body.appendChild(sheet);body=sheet.querySelector('.gmx-acct-body');
   sheet.addEventListener('click',function(e){if(e.target.closest('[data-close]'))close()});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&sheet&&!sheet.hidden){e.preventDefault();close()}});
+  document.addEventListener('keydown',function(e){
+    if(!sheet||sheet.hidden)return;
+    if(e.key==='Escape'){e.preventDefault();close();return}
+    /* tab and shift tab go round the open sheet, so a keyboard or a screen reader never lands on the page behind it */
+    if(e.key!=='Tab')return;
+    var f=[].filter.call(sheet.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]):not([type="hidden"]),textarea:not([disabled]),select:not([disabled]),[tabindex]:not([tabindex="-1"])'),function(x){return x.offsetParent!==null&&x.tabIndex>=0});
+    if(!f.length)return;var a=f[0],z=f[f.length-1];
+    if(!sheet.contains(document.activeElement)){e.preventDefault();a.focus();return}
+    if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}
+  });
 }
 function open(title,sub,html,from){
   if(!sheet)build();
@@ -142,12 +151,12 @@ function signinForm(){
   return '<form class="gmx-acct-form" data-form="start" autocomplete="off"><label for="gmx-acct-email">email</label>'+
     '<input id="gmx-acct-email" name="email" type="email" inputmode="email" maxlength="320" required placeholder="you@example.com">'+
     '<label class="gmx-acct-check"><input type="checkbox" name="nl"> fresh grooves friday in my inbox too</label>'+
-    '<div class="gmx-acct-row"><button class="gmx-acct-btn red" type="submit">send me a sign-in link</button><span class="gmx-acct-msg"></span></div></form>';
+    '<div class="gmx-acct-row"><button class="gmx-acct-btn red" type="submit">send me a sign-in link</button><span class="gmx-acct-msg" role="status"></span></div></form>';
 }
 function codeForm(email){
   return '<form class="gmx-acct-form on" data-form="code" data-email="'+esc(email)+'" autocomplete="off"><label for="gmx-acct-code">the six digits from the mail</label>'+
     '<input id="gmx-acct-code" name="code" inputmode="numeric" pattern="[0-9 ]*" maxlength="7" autocomplete="one-time-code" placeholder="000 000">'+
-    '<div class="gmx-acct-row"><button class="gmx-acct-btn red" type="submit">sign in</button><span class="gmx-acct-msg"></span></div>'+
+    '<div class="gmx-acct-row"><button class="gmx-acct-btn red" type="submit">sign in</button><span class="gmx-acct-msg" role="status"></span></div>'+
     '<p class="gmx-acct-p small">or tap the link in the mail, anywhere. this page signs in on its own while it stays open.</p></form>';
 }
 function wireSignin(root,done){
@@ -389,7 +398,7 @@ function renderClaim(role,name){
   if(sc)h+='<section><h3>bio code</h3><p>paste the code in the bio of '+esc(handleOf(sc))+' on soundcloud for ten minutes, then tap check.</p><div class="gmx-acct-row"><button type="button" class="gmx-acct-btn red" data-check="soundcloud_bio">check my bio</button></div></section>';
   h+='<section><h3>mail it</h3><p>mail the code to hello@groovesmaxxing.com from an address on your site or bio'+(mail?' ('+esc(short(mail))+' works)':'')+'.</p>'+
      '<div class="gmx-acct-row"><input type="email" inputmode="email" maxlength="320" placeholder="the address you will mail from" aria-label="the address you will mail from"><button type="button" class="gmx-acct-btn" data-check="email">i will mail it from here</button></div></section>';
-  h+='</div>'+last+'<p class="gmx-acct-msg" data-msg></p>';
+  h+='</div>'+last+'<p class="gmx-acct-msg" data-msg role="status"></p>';
   h+='<p class="gmx-acct-p small"><button type="button" class="gmx-acct-link" data-disown>these aren\'t mine</button></p>'+
      '<form class="gmx-acct-form" data-form="disown" hidden><label for="gmx-acct-why">which one is wrong?</label><input id="gmx-acct-why" maxlength="300" placeholder="that instagram is my old one, mine is @…"><div class="gmx-acct-row"><button class="gmx-acct-btn" type="submit">send</button></div></form>';
   set(h);
@@ -453,7 +462,7 @@ function wireMore(){
         '<li><button type="button" class="gmx-acct-rowbtn" data-export><b>download my data</b><small>scans, crate, follows, claims, as one json file</small></button></li>'+
         '<li><button type="button" class="gmx-acct-rowbtn" data-delete><b>delete my account</b><small>a mail confirms it, then it is gone for good</small></button></li></ul>'+
         '<div id="gmx-delete"></div>'+
-        '<div class="gmx-acct-row"><button type="button" class="gmx-acct-btn ghost" data-out>sign out</button><span class="gmx-acct-msg" id="gmx-you-msg"></span></div></div>';
+        '<div class="gmx-acct-row"><button type="button" class="gmx-acct-btn ghost" data-out>sign out</button><span class="gmx-acct-msg" id="gmx-you-msg" role="status"></span></div></div>';
       box.innerHTML=h;
       paintNotify(m);paintClaims(m);
     });
@@ -467,14 +476,24 @@ function wireMore(){
   paintBox();
   document.addEventListener('gmx-account',function(){paintBox()});
 }
+/* the switches' line sits right under them (2026-10-13). on /more it used to land in the account card at the top
+   of the page, off screen on a phone, so a switch that failed just flipped back with no word. every failure says
+   why, logs the status, and the fresh grooves friday switch points at the subscribe form, which does not need us. */
+function notifyMsg(sw){return document.getElementById('gmx-notify-msg')||(sw&&sw.closest('#gmx-you')&&document.getElementById('gmx-you-msg'))||msgEl()}
 function notifyChange(sw){
-    var key=sw.dataset.notify,on=sw.checked,msg=msgEl();sw.disabled=true;
-    var p=key==='newsletter'?api('/me/newsletter',{method:on?'POST':'DELETE'}):api('/me',{method:'POST',json:{notify:(function(){var o={};o[key]=on;return o})()}});
+    var key=sw.dataset.notify,on=sw.checked,msg=notifyMsg(sw),fgf=key==='newsletter';sw.disabled=true;
+    var form=fgf?(onMore()?' the subscribe form further down still works.':' the subscribe form on the more tab still works.'):'';
+    if(navigator.onLine===false){sw.checked=!on;note(msg,'you are offline, so nothing changed. try again with signal.');sw.disabled=false;return}
+    var p=fgf?api('/me/newsletter',{method:on?'POST':'DELETE'}):api('/me',{method:'POST',json:{notify:(function(){var o={};o[key]=on;return o})()}});
     p.then(function(r){
-      if(r.status===503){note(msg,'the newsletter switch is not wired on this deployment yet. the form below still works.');sw.checked=!on;return}
+      if(!r.ok)console.warn('gmx notify: '+key+' answered '+r.status);
+      if(fgf&&(r.status===503||r.status===404||r.status===501)){note(msg,'the fresh grooves friday switch is not wired up yet.'+form);sw.checked=!on;return}
+      if(r.status===401){note(msg,'your sign-in ran out. sign in again, then flip it.');sw.checked=!on;return}
+      if(r.status===429){note(msg,'too many changes this hour. try again later.'+form);sw.checked=!on;return}
       if(!r.ok)throw new Error(r.status);
-      return r.json().then(function(j){if(j&&j.notify)remember(j);else if(me){me.notify=me.notify||{};me.notify[key]=on;remember(me)}note(msg,'saved.',true)});
-    }).catch(function(){sw.checked=!on;note(msg,'did not save. try again in a minute.')}).then(function(){sw.disabled=false});
+      return r.json().catch(function(){return null}).then(function(j){if(j&&j.notify)remember(j);else if(me){me.notify=me.notify||{};me.notify[key]=on;remember(me)}
+        note(msg,fgf?(on?'saved. fresh grooves friday comes to your email every friday.':'saved. no more fresh grooves friday mail.'):'saved.',true)});
+    }).catch(function(e){console.warn('gmx notify: '+key,e);sw.checked=!on;note(msg,'did not save ('+(e&&e.message||'no answer')+').'+(form||' try again in a minute.'))}).then(function(){sw.disabled=false});
 }
 /* the shell's /more (shell v2): more.html paints the profile card itself through the api below. this fills the
    notification switches, my claims, the team and the artist tools into the rows it left for them, and wires the
@@ -499,7 +518,7 @@ function paintNotify(m){
   var n=m.notify||{};
   ul.innerHTML=NOTIFY.map(function(x){
     var on=n[x[0]]!==undefined?!!n[x[0]]:(x[0]!=='newsletter');
-    return '<li><label class="gmx-sw"><span class="tx">'+esc(x[1])+'</span><input type="checkbox" role="switch" data-notify="'+x[0]+'"'+(on?' checked':'')+'><span class="knob" aria-hidden="true"></span></label></li>';
+    return '<li><label class="gmx-sw"><span class="tx">'+esc(x[1])+(x[0]==='newsletter'?', by email':'')+'</span><input type="checkbox" role="switch" data-notify="'+x[0]+'"'+(on?' checked':'')+'><span class="knob" aria-hidden="true"></span></label></li>';
   }).join('');
 }
 function exportData(btn){
@@ -553,7 +572,7 @@ function paintTeam(owned){
   var t=document.getElementById('gmx-team');if(!t)return;
   t.innerHTML='<h4>team</h4><p class="gmx-acct-p small">a manager, a label person: invite them by email and they act for you here. they can never invite others.</p>'+owned.map(function(o){
     return '<div class="gmx-team" data-slug="'+esc(o.slug)+'"><b>'+esc(o.name||o.slug)+'</b><ul class="gmx-you-list" data-seats></ul>'+
-      '<form class="gmx-acct-form on" data-form="invite" autocomplete="off"><div class="gmx-acct-row"><input type="email" inputmode="email" maxlength="320" placeholder="their email" aria-label="their email" required><button class="gmx-acct-btn" type="submit">invite</button><span class="gmx-acct-msg"></span></div></form></div>';
+      '<form class="gmx-acct-form on" data-form="invite" autocomplete="off"><div class="gmx-acct-row"><input type="email" inputmode="email" maxlength="320" placeholder="their email" aria-label="their email" required><button class="gmx-acct-btn" type="submit">invite</button><span class="gmx-acct-msg" role="status"></span></div></form></div>';
   }).join('');
   t.querySelectorAll('.gmx-team').forEach(function(box){loadSeats(box)});
   t.addEventListener('submit',function(ev){
@@ -595,7 +614,7 @@ function trackRow(t,slug){
   }
   acts+='<button type="button" class="gmx-acct-link" data-tact="not_mine">not mine</button>';
   return '<li class="gmx-track" data-entry="'+esc(t.library_entry_id)+'" data-slug="'+esc(slug)+'"><div class="gmx-track-tx">'+head+'<small>'+esc(state)+'</small></div>'+
-    '<div class="gmx-acct-row">'+acts+'</div><div class="gmx-track-form"></div><p class="gmx-acct-msg"></p></li>';
+    '<div class="gmx-acct-row">'+acts+'</div><div class="gmx-track-form"></div><p class="gmx-acct-msg" role="status"></p></li>';
 }
 function paintTools(owned){
   var box=document.getElementById('gmx-tools');if(!box)return;
@@ -603,7 +622,7 @@ function paintTools(owned){
     owned.map(function(o){return '<div class="gmx-toolset" data-slug="'+esc(o.slug)+'"><b>'+esc(o.name||o.slug)+'</b><ul class="gmx-you-list" data-tracks><li><small>one sec.</small></li></ul>'+
       '<form class="gmx-acct-form on" data-form="sendfile" autocomplete="off"><label>send us a file to fingerprint</label>'+
       '<input type="text" name="title" maxlength="200" placeholder="artist - title (optional)"><input type="file" name="audio" accept="audio/*,.m4a,.mp3,.wav,.flac,.aiff" required>'+
-      '<div class="gmx-acct-row"><button class="gmx-acct-btn" type="submit">send it</button><span class="gmx-acct-msg"></span></div>'+
+      '<div class="gmx-acct-row"><button class="gmx-acct-btn" type="submit">send it</button><span class="gmx-acct-msg" role="status"></span></div>'+
       '<p class="gmx-acct-p small">this is the sent door: your yes to fingerprinting is logged with the file, we review it, and once accepted it is what the scan finds. nothing is fetched from anywhere.</p></form></div>'}).join('');
   box.querySelectorAll('.gmx-toolset').forEach(function(set){loadTracks(set)});
   box.addEventListener('click',function(ev){
@@ -663,22 +682,61 @@ function poll(ticket){return api('/auth/poll',{method:'POST',json:{pending:ticke
 function signout(){var p=token()?api('/auth/signout',{method:'POST'}).catch(function(){}):Promise.resolve();setToken('');return p}
 function setHandle(h){return api('/me',{method:'POST',json:{handle:h||null}}).then(function(r){if(r.ok)r.clone().json().then(remember).catch(function(){});return r})}
 /* a push subscription for this phone: the browser's permission prompt, the recognizer's public key, the
-   subscription posted back. resolves true when the phone can be pushed, false when it cannot. never throws. */
+   subscription posted back. resolves true when the phone can be pushed, false when it cannot. never throws.
+   2026-10-13: the prompt is asked first, still inside the tap. iphone and firefox only show it straight from a
+   user gesture, and the old order asked after the key fetch had landed, so on an iphone the prompt never showed
+   and the switch just said no. pushWhy() says why the last try failed, pushLine() is the line to show for it.
+   ensurePush({test:true}) sends a test notification from this phone once it is on. */
 function urlB64ToU8(b){var pad='='.repeat((4-b.length%4)%4),raw=atob((b+pad).replace(/-/g,'+').replace(/_/g,'/')),out=new Uint8Array(raw.length);for(var i=0;i<raw.length;i++)out[i]=raw.charCodeAt(i);return out}
-function ensurePush(){
-  if(!('serviceWorker' in navigator)||!('PushManager' in window)||!('Notification' in window))return Promise.resolve(false);
-  return api('/push/key').then(function(r){return r.ok?r.json():null}).then(function(k){
-    if(!k||!k.enabled||!k.public_key)return false;
-    return Notification.requestPermission().then(function(perm){
-      if(perm!=='granted')return false;
+var lastWhy='';
+function isIos(){return /iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)}
+function installed(){try{return navigator.standalone===true||matchMedia('(display-mode: standalone)').matches}catch(e){return false}}
+function askPermission(){
+  if(Notification.permission!=='default')return Promise.resolve(Notification.permission);
+  /* older safari takes a callback and returns nothing, newer browsers return a promise */
+  return new Promise(function(res){var p;try{p=Notification.requestPermission(res)}catch(e){res('default');return}if(p&&p.then)p.then(res,function(){res('default')})});
+}
+function ensurePush(opts){
+  opts=opts||{};lastWhy='';
+  function no(why,e){lastWhy=why;console.warn('gmx push: '+why,e===undefined?'':e);return false}
+  if(!('serviceWorker' in navigator)||!('PushManager' in window)||!('Notification' in window))return Promise.resolve(no(isIos()&&!installed()?'ios-browser':'unsupported'));
+  if(navigator.onLine===false)return Promise.resolve(no('offline'));
+  return askPermission().then(function(perm){
+    if(perm==='denied')return no('denied');
+    if(perm!=='granted')return no('dismissed');
+    return api('/push/key').then(function(r){if(!r.ok)return no('server-off',r.status);return r.json()}).then(function(k){
+      if(k===false)return false;
+      if(!k||!k.enabled||!k.public_key)return no('server-off');
       return navigator.serviceWorker.ready.then(function(reg){
-        return reg.pushManager.getSubscription().then(function(sub){return sub||reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:urlB64ToU8(k.public_key)})});
-      }).then(function(sub){
-        return api('/push/subscribe',{method:'POST',json:{subscription:sub.toJSON()}}).then(function(r){return r.ok});
+        return reg.pushManager.getSubscription().then(function(sub){return sub||reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:urlB64ToU8(k.public_key)})})
+        .then(function(sub){
+          return api('/push/subscribe',{method:'POST',json:{subscription:sub.toJSON()}}).then(function(r){
+            if(!r.ok)return no('save-failed',r.status);
+            if(opts.test)reg.showNotification('groovesmaxxing',{body:'test: this phone gets notified.',icon:'/icon-192.png',badge:'/icon-192.png',tag:'gmx-test',data:{url:'/more'}}).catch(function(e){console.warn('gmx push: test notification',e)});
+            return true;
+          });
+        });
       });
     });
-  }).catch(function(){return false});
+  }).catch(function(e){return no('failed',e)});
 }
+var PUSH_LINES={
+  'ios-browser':'on iphone, push only works in the installed app. tap share, then add to home screen, open groovesMAXX from there and turn this on.',
+  unsupported:'this browser cannot push. email alerts still work.',
+  offline:'you are offline. try again with signal.',
+  denied:'notifications are blocked for this site. allow them in your browser or phone settings, then tap again.',
+  dismissed:'the prompt closed without a yes, so nothing changed. tap again to get it back.',
+  'server-off':'push is not switched on for the site yet. email alerts still work.',
+  'save-failed':'the phone said yes but the subscription did not save. try again in a minute.',
+  failed:'that did not work on this phone. try again in a minute, or use email alerts.'
+};
+/* a test notification from this phone's own service worker, no server call. true when it showed. */
+function testPush(){
+  if(!('serviceWorker' in navigator)||!('Notification' in window)||Notification.permission!=='granted')return Promise.resolve(false);
+  return navigator.serviceWorker.ready.then(function(reg){return reg.showNotification('groovesmaxxing',{body:'test: this phone gets notified.',icon:'/icon-192.png',badge:'/icon-192.png',tag:'gmx-test',data:{url:'/more'}})}).then(function(){return true},function(e){console.warn('gmx push: test notification',e);return false});
+}
+function pushWhy(){return lastWhy}
+function pushLine(why){return PUSH_LINES[why]||PUSH_LINES.failed}
 /* where this phone stands on push: none, blocked, off, allowed (permission but no subscription), on */
 function pushState(){
   if(!('Notification' in window)||!('PushManager' in window)||!('serviceWorker' in navigator))return Promise.resolve('none');
@@ -695,7 +753,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 window.gmxAccount={
   ready:loadCfg,config:loadCfg,token:token,set:setSession,device:deviceId,headers:function(x){return cfg?headers(x):null},api:api,call:api,
   start:start,code:code,finish:finish,poll:poll,waitForLink:waitForLink,resumeWait:resumeWait,signout:signout,
-  me:whoami,snapshot:snapshot,setHandle:setHandle,ensurePush:ensurePush,pushState:pushState,on:function(f){subs.push(f)},paint:paint,
+  me:whoami,snapshot:snapshot,setHandle:setHandle,ensurePush:ensurePush,pushState:pushState,pushWhy:pushWhy,pushLine:pushLine,testPush:testPush,on:function(f){subs.push(f)},paint:paint,
   badge:badge,signIn:signIn,open:open,close:close,sync:function(){return syncCrate('asked',true)}
 };
 })();

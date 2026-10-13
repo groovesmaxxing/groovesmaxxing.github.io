@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com https://api.deezer.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-8nMpmJxR2jCOC/lI43rDiXpDTh/wcB9j8UWpZBu24Ug='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net https://open.spotify.com https://itunes.apple.com; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com https://api.deezer.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-izt+Qw8ZnfrR8zCEkZTV9qk44egvRJrc44vZmfXG8mY='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net https://open.spotify.com https://itunes.apple.com; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>scan · groovesMAXXING</title>
@@ -45,7 +45,8 @@ h1.eyebrow{margin:0;font-weight:400}
 .rings .r{fill:none;stroke:var(--racing);stroke-width:5}
 .rings .dot{fill:var(--racing)}
 .rings .wave{fill:none;stroke:var(--day);stroke-width:7;stroke-linejoin:round;stroke-linecap:round}
-.rings[disabled]{cursor:default}
+.rings[disabled],.rings[aria-disabled="true"]{cursor:default}
+.sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
 .tap{font-family:'Space Mono',monospace;font-size:.86rem;letter-spacing:.12em;margin-top:22px;min-height:1.4em}
 .tap b{font-weight:400;color:var(--racing)}
 .rec{display:none;align-items:center;gap:10px;font-family:'Space Mono',monospace;font-size:.86rem;letter-spacing:.1em;margin-top:22px}
@@ -208,11 +209,11 @@ details.guess[open]>summary::after{content:' \2212'}
 </style>
 <link rel="canonical" href="https://groovesmaxxing.com/scan">
 <link rel="stylesheet" href="/gmx-motion.css">
-<link rel="stylesheet" href="/gmx-nav.css?v=16">
+<link rel="stylesheet" href="/gmx-nav.css?v=17">
 <link rel="stylesheet" href="/gmx-quick.css">
 <meta property="og:image" content="https://groovesmaxxing.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="/gmx-read.css?v=2">
+<link rel="stylesheet" href="/gmx-read.css?v=3">
 </head>
 <body>
 <div class="wrap">
@@ -222,8 +223,8 @@ details.guess[open]>summary::after{content:' \2212'}
 <h1 class="eyebrow">scan</h1>
 </div>
 
-<section class="stage" id="stage" aria-live="polite">
-<button class="rings" id="go" aria-label="tap to scan">
+<section class="stage" id="stage" aria-label="scanner">
+<button class="rings" id="go" type="button" aria-label="scan what is playing" aria-describedby="stat">
 <svg viewBox="0 0 240 240" aria-hidden="true">
 <circle class="r" cx="120" cy="120" r="104"/>
 <circle class="r" cx="120" cy="120" r="76"/>
@@ -233,9 +234,10 @@ details.guess[open]>summary::after{content:' \2212'}
 </svg>
 </button>
 <div class="tap" id="tap">tap to <b>scan</b></div>
-<div class="rec" id="rec"><i></i><span id="recword">listening</span><span class="n" id="count">15</span></div>
+<div class="rec" id="rec" aria-hidden="true"><i></i><span id="recword">listening</span><span class="n" id="count">15</span></div>
 <canvas class="lvl" id="lvl" width="320" height="36" aria-hidden="true"></canvas>
-<div class="stat" id="stat" aria-live="polite"></div>
+<div class="stat" id="stat" role="status" aria-live="polite"></div>
+<p class="sr" id="scanlive" role="status" aria-live="polite" aria-atomic="true"></p>
 <button class="how" type="button" id="howbtn" aria-haspopup="dialog">how it works?</button>
 <p class="shared" id="shared" hidden></p>
 </section>
@@ -262,7 +264,7 @@ details.guess[open]>summary::after{content:' \2212'}
 <h3>tonight</h3>
 <p class="smeta" id="sessionmeta"></p>
 <ul id="sessionlist"></ul>
-<div class="row stools" id="sessiontools"><button class="btn" type="button" data-s="copy">copy the list</button><button class="btn ghost" type="button" data-s="clear">clear tonight</button><span class="msg" id="sessionmsg"></span></div>
+<div class="row stools" id="sessiontools"><button class="btn" type="button" data-s="copy">copy the list</button><button class="btn ghost" type="button" data-s="clear">clear tonight</button><span class="msg" role="status" id="sessionmsg"></span></div>
 </section>
 
 <section class="recent" id="recent">
@@ -274,7 +276,7 @@ details.guess[open]>summary::after{content:' \2212'}
 <h3>you</h3>
 <div id="youbody"><p class="smeta">sign in to get told by email when an ID you scanned comes out, keep your scans across phones, and put your name on the IDs you help with.</p>
 <form class="form on" id="yform" autocomplete="off"><label for="y-email">email</label><input id="y-email" name="email" type="email" inputmode="email" maxlength="320" required>
-<div class="row"><button class="btn red" type="submit">send me a sign-in link</button><span class="msg" id="youmsg"></span></div></form></div>
+<div class="row"><button class="btn red" type="submit">send me a sign-in link</button><span class="msg" role="status" id="youmsg"></span></div></form></div>
 <ul id="followlist" hidden></ul>
 </section>
 
@@ -282,7 +284,7 @@ details.guess[open]>summary::after{content:' \2212'}
 
 <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})})}</script>
 <script src="/gmx-clips.js"></script>
-<script src="/gmx-account.js?v=16"></script>
+<script src="/gmx-account.js?v=17"></script>
 <script src="/gmx-crate.js"></script>
 <script>
 (function(){
@@ -310,10 +312,38 @@ var $=function(id){return document.getElementById(id)};
 var stage=$('stage'), go=$('go'), tap=$('tap'), rec=$('rec'), recword=$('recword'), count=$('count'), card=$('card'), recentlist=$('recentlist');
 var stat=$('stat'), lvl=$('lvl'), stopCapture=null, timing=null, levels=[];
 function say2(html){if(stat)stat.innerHTML=html}
-function drawLevels(){
+/* the level strip (2026-10-13). it used to be drawn only when a block of mic audio landed, so whenever the audio
+   stopped coming it froze where it was: through the whole catalog check after the 15 s capture (the strip stays
+   on while finding), when an iphone pauses the audio for a call, a notification sound or a bluetooth switch, and
+   when the worklet drops. now it runs its own frame loop while the stage is listening or finding. fresh audio draws
+   the live levels. after 400 ms with no audio it eases into an idle wave that swells across the strip, and the
+   first gap logs a warning. a drawing error logs once and the next frame draws the idle wave instead of stopping.
+   under reduced motion the idle wave holds still. */
+var lvlRaf=0, lastChunk=0, lvlMix=1, lvlPrev=0, lvlStale=true, lvlErr=0;
+var lvlReduce=window.matchMedia?matchMedia('(prefers-reduced-motion: reduce)'):null;
+function lvlLive(){return stage.classList.contains('listening')||stage.classList.contains('finding')}
+function drawLevels(now,idleOnly){
   if(!lvl||!lvl.getContext)return;var g=lvl.getContext('2d'),W=lvl.width,H=lvl.height,n=60,w=W/n;g.clearRect(0,0,W,H);
-  for(var i=0;i<n;i++){var v=levels[levels.length-n+i]||0,h=Math.max(2,Math.min(H,v*H*5));g.fillStyle=i>n-4?'#FF1C02':'rgba(242,242,239,.35)';g.fillRect(i*w+1,(H-h)/2,w-2,h)}
+  var still=!!(lvlReduce&&lvlReduce.matches), t=still?0:now/1000, mix=idleOnly?1:lvlMix;
+  for(var i=0;i<n;i++){
+    var v=idleOnly?0:(levels[levels.length-n+i]||0), live=Math.max(2,Math.min(H,v*H*5));
+    /* a long travelling swell, left to right, never a beat */
+    var idle=H*(.16+.12*Math.sin(t*1.4-i*.19)+.05*Math.sin(t*.6-i*.07));
+    var h=live+(idle-live)*mix;
+    g.fillStyle=i>n-4&&mix<.5?'#FF1C02':'rgba(242,242,239,.35)';g.fillRect(i*w+1,(H-h)/2,w-2,h);
+  }
 }
+function lvlFrame(now){
+  if(!lvlLive()){lvlRaf=0;lvlMix=1;return}
+  var dt=lvlPrev?Math.min(.1,(now-lvlPrev)/1000):1/60;lvlPrev=now;
+  var stale=!lastChunk||now-lastChunk>400||stage.classList.contains('finding');
+  if(stale&&!lvlStale&&stage.classList.contains('listening'))console.warn('gmx scan: no mic audio for '+Math.round(now-lastChunk)+' ms, the level strip is idling');
+  lvlStale=stale;
+  if(lvlReduce&&lvlReduce.matches)lvlMix=stale?1:0;else lvlMix+=((stale?1:0)-lvlMix)*(1-Math.pow(1-.12,dt*60));
+  try{drawLevels(now)}catch(e){if(!lvlErr++)console.error('gmx scan: level strip',e);try{drawLevels(now,true)}catch(x){}}
+  lvlRaf=requestAnimationFrame(lvlFrame);
+}
+function lvlStart(){lastChunk=0;lvlMix=1;lvlStale=true;lvlPrev=0;if(!lvlRaf&&window.requestAnimationFrame)lvlRaf=requestAnimationFrame(lvlFrame)}
 var rings=go.querySelectorAll('.r'), wave=go.querySelector('.wave');
 var cfg=null, cfgErr=null, busy=false, heldBlob=null, heldAt=null, current=null, cancelScan=null;
 /* pull to refresh (gmx-refresh.js) stays off while listening or finding */
@@ -467,7 +497,14 @@ function clearLevel(){lv=0}
     if(p)[p.disc,p.spin,p.hole,p.wk,p.eg].concat(p.rk).forEach(function(e){e.style.opacity=0});
   }
   function hold(){ang=0; if(live())paint(1,LOOK[0],0,0,0,false,true); else idle()}
+  /* a throw inside a frame used to end the loop for good: raf stayed set, so the observer below never restarted it
+     and the record sat frozen until a reload, with nothing logged. now it logs once, drops to the idle mark and
+     the next class change starts it again. */
+  var fails=0;
   function frame(now){
+    try{step(now)}catch(e){raf=0;if(!fails++)console.error('gmx scan: button motion',e);try{idle()}catch(x){}}
+  }
+  function step(now){
     if(still()){raf=0;hold();return}
     var on=live(), dt=last?Math.min(.1,(now-last)/1000):1/60; last=now; fr++;
     if(on&&!wasOn)ts0=now; wasOn=on;
@@ -494,9 +531,9 @@ function startScan(){
   }
   busy=true; card.classList.remove('on'); current=null; dropBlob(); scanSeq++; early=null; finalDone=false; rateHit=false;
   var seq=scanSeq, nextRound=0;
-  timing={t0:Date.now(),rounds:[],first:null};levels=[];drawLevels();say2('listening');
-  stage.classList.add('listening'); go.classList.add('busy'); recword.textContent='listening'; count.textContent=String(Math.round(CAPTURE_MS/1000));
-  tap.innerHTML='tap to <b>stop</b>'; go.setAttribute('aria-label','tap to stop');
+  timing={t0:Date.now(),rounds:[],first:null};levels=[];say2('listening');
+  stage.classList.add('listening'); go.classList.add('busy'); recword.textContent='listening'; count.textContent=String(Math.round(CAPTURE_MS/1000)); lvlStart(); announce('listening');
+  tap.innerHTML='tap to <b>stop</b>'; go.setAttribute('aria-label','stop listening');
   var chunks=[], got=0, need=0, t0=0, timer=null, stream=null, ctx=null, node=null, sink=null, stopped=false, cancelled=false, sq=0, clipped=0;
   /* the screen locking mid-scan suspends the audio graph on iphone and the clip ends short. say so instead of guessing. */
   function onHide(){if(document.hidden&&!stopped){stopped=true;cancelled=true;scanSeq++;cleanup();reset();showCard(errCard('the screen went off mid-scan, so the clip stopped short. keep the phone awake and scan again.'));}}
@@ -523,6 +560,9 @@ function startScan(){
     if(!ctx)throw new Error('audio');
     return (ctx.state==='suspended'?ctx.resume():Promise.resolve()).then(function(){
       if(cancelled){cleanup();reset();return}
+      /* an iphone call, a notification sound or a bluetooth switch can pause the graph mid-scan ('interrupted' on
+         safari). log it and ask for it back. the strip idles meanwhile and the 15 s deadline below still ends the scan. */
+      ctx.onstatechange=function(){if(stopped||!ctx||ctx.state==='running'||ctx.state==='closed')return;console.warn('gmx scan: audio '+ctx.state+' mid-scan');try{ctx.resume().catch(function(e){console.warn('gmx scan: audio resume',e)})}catch(e){}};
       var src=ctx.createMediaStreamSource(st);
       need=Math.round(ctx.sampleRate*CAPTURE_MS/1000);
       function onChunk(inp){
@@ -533,7 +573,7 @@ function startScan(){
         var take=Math.min(inp.length,need-got); if(take<=0)return;
         chunks.push(new Float32Array(inp.subarray(0,take))); got+=take;
         while(!rateHit&&nextRound<ROUNDS_MS.length&&got>=Math.round(ctx.sampleRate*ROUNDS_MS[nextRound]/1000)){var at=ROUNDS_MS[nextRound++];try{earlyIdentify(wavBlob(chunks,ctx.sampleRate),seq,at)}catch(e){}}
-        var sum=0; for(var i=0;i<take;i++){var v=inp[i]; sum+=v*v; if(v>0.985||v<-0.985)clipped++;} sq+=sum; var rms=Math.sqrt(sum/take); setLevel(rms); levels.push(rms); if(levels.length>120)levels.shift(); drawLevels();
+        var sum=0; for(var i=0;i<take;i++){var v=inp[i]; sum+=v*v; if(v>0.985||v<-0.985)clipped++;} sq+=sum; var rms=Math.sqrt(sum/take); setLevel(rms); levels.push(rms); if(levels.length>120)levels.shift(); lastChunk=performance.now();
         if(got>=need)setTimeout(done,0);
       }
       /* a muted gain keeps the graph alive: a node that reaches no output is never pulled */
@@ -562,7 +602,7 @@ function startScan(){
     document.removeEventListener('visibilitychange',onHide);
     try{if(node){if(node.port){node.port.onmessage=null;node.port.close()}node.onaudioprocess=null;node.disconnect()}if(sink)sink.disconnect()}catch(e){}
     if(stream)stream.getTracks().forEach(function(t){t.stop()});
-    if(ctx&&ctx.close)ctx.close().catch(function(){});
+    if(ctx){ctx.onstatechange=null;if(ctx.close)ctx.close().catch(function(){})}
     clearLevel(); stage.classList.remove('listening');
   }
   function finishCapture(err,blob){
@@ -581,7 +621,7 @@ function startScan(){
     heldBlob=blob; identify(blob);
   }
 }
-function reset(){busy=false;cancelScan=null;stopCapture=null;go.disabled=false;go.classList.remove('busy');stage.classList.remove('listening','finding');tap.innerHTML='tap to <b>scan</b>';go.setAttribute('aria-label','tap to scan');try{onReset()}catch(e){}}
+function reset(){busy=false;cancelScan=null;stopCapture=null;go.removeAttribute('aria-disabled');go.classList.remove('busy');stage.classList.remove('listening','finding');tap.innerHTML='tap to <b>scan</b>';go.setAttribute('aria-label','scan what is playing');try{onReset()}catch(e){}}
 function dropBlob(){heldBlob=null;heldAt=null}
 
 /* identify and poll */
@@ -637,7 +677,7 @@ function earlyIdentify(blob,seq,at){
 function identify(blob){
   if(finalDone)return;
   if(!navigator.onLine&&!draining){queueClip(blob);return}
-  cancelScan=null; go.disabled=true; stage.classList.add('finding'); recword.textContent='finding it'; count.textContent='';
+  cancelScan=null; go.setAttribute('aria-disabled','true'); go.setAttribute('aria-label','finding it, one moment'); stage.classList.add('finding'); recword.textContent='finding it'; count.textContent=''; announce('finding it');
   say2('checking the catalogs');
   if(!early)showCard('<div class="skel" aria-hidden="true"><i class="a"></i><i class="b"></i><i class="c"></i><i class="d"></i></div>');
   var sentAt=null,finalRound={at:CAPTURE_MS,post:0,wait:0,answer:'…'};if(timing)timing.rounds.push(finalRound);
@@ -694,7 +734,14 @@ function identify(blob){
 /* cards */
 /* a cover that fails to load gives way to the rings (error events do not bubble, so this captures) */
 card.addEventListener('error',function(e){var t=e.target;if(t&&t.tagName==='IMG'&&t.hasAttribute('data-rings')&&t.parentNode)t.parentNode.innerHTML=ringsMark()},true);
-function showCard(html){card.innerHTML=html;card.classList.add('on');card.scrollIntoView({behavior:'smooth',block:'nearest'});if(current&&current.card&&current.card.candidate&&html.indexOf('earlynote')<0||html.indexOf('earlynote')>-1)try{enrich(current)}catch(e){}try{decorate(html.indexOf('earlynote')>-1?early:current)}catch(e){}}
+/* the live line a screen reader hears (2026-10-13): listening, finding it, then the card's headline */
+function announce(t){var l=$('scanlive');if(!l)return;l.textContent='';setTimeout(function(){l.textContent=t},60)}
+function cardSays(){
+  var h=card.querySelector('h2');if(!h)return '';
+  var kw=card.querySelector('.kw'),sub=card.querySelector('.sub,.ttl,.note');
+  return [kw&&kw.textContent,h.textContent,sub&&sub.textContent].filter(Boolean).join('. ').replace(/\s+/g,' ').trim();
+}
+function showCard(html){card.innerHTML=html;card.classList.add('on');try{var said=cardSays();if(said)announce(said)}catch(e){}card.scrollIntoView({behavior:'smooth',block:'nearest'});if(current&&current.card&&current.card.candidate&&html.indexOf('earlynote')<0||html.indexOf('earlynote')>-1)try{enrich(current)}catch(e){}try{decorate(html.indexOf('earlynote')>-1?early:current)}catch(e){}}
 /* the crate heart and the label link (crate loop build, 2026-10-11). the heart saves the match on this phone
    like a tracklist row would, with whatever store links the card has at tap time, so a link that arrives
    later from enrich() still makes it in. the label line links to our label page when there is one. */
@@ -906,7 +953,7 @@ function resultCard(cur){
   }
   out+=timingLine(cur);
   out+=whereBlock();
-  out+='<div class="msg" id="cardmsg"></div>';
+  out+='<div class="msg" id="cardmsg" role="status"></div>';
   if(c.kind==='match')out+='<div class="row"><button class="btn ghost" data-act="again">scan again</button></div>';
   return out;
 }
@@ -1196,7 +1243,7 @@ function renderHistory(){
     var acts='', btns='';
     if(r.clip&&r.id)btns='<button class="btn" data-clip="again" data-id="'+esc(r.id)+'">scan again</button>'+(r.kind!=='match'?'<button class="btn" data-clip="help" data-id="'+esc(r.id)+'">help us find it</button>':'');
     if(r.rid&&r.status!=='out now'&&(r.kind==='match'||r.kind==='guess'))btns+='<button class="btn ghost" data-follow="'+esc(r.rid)+'">tell me when it\'s out</button>';
-    if(btns)acts='<span class="acts">'+btns+'<span class="msg"></span></span>';
+    if(btns)acts='<span class="acts">'+btns+'<span class="msg" role="status"></span></span>';
     return '<li><span class="who">'+who+'</span><span class="when">'+when(r.t)+'</span>'+acts+'</li>';
   }).join('');
   linkHistoryArtists();
@@ -1345,7 +1392,7 @@ function showCodeForm(email){
   var f=$('yform'); if(!f||$('cform2'))return;
   var c=document.createElement('form'); c.className='form on'; c.id='cform2'; c.setAttribute('autocomplete','one-time-code');
   c.innerHTML='<label for="y-code">the six digits from the mail</label><input id="y-code" name="code" inputmode="numeric" pattern="[0-9 ]*" maxlength="7" autocomplete="one-time-code" placeholder="000 000">'+
-    '<div class="row"><button class="btn red" type="submit">sign in with the code</button><span class="msg" id="codemsg"></span></div>';
+    '<div class="row"><button class="btn red" type="submit">sign in with the code</button><span class="msg" role="status" id="codemsg"></span></div>';
   c.dataset.email=email; f.parentNode.insertBefore(c,f.nextSibling); $('y-code').focus();
 }
 function sendCode(f){
@@ -1371,7 +1418,7 @@ function renderYou(){
   if(!sessionToken()){
     box.innerHTML='<p class="smeta">sign in to get told by email when an ID you scanned comes out, keep your scans across phones, and put your name on the IDs you help with.</p>'+
       '<form class="form on" id="yform" autocomplete="off"><label for="y-email">email</label><input id="y-email" name="email" type="email" inputmode="email" maxlength="320" required>'+
-      '<div class="row"><button class="btn red" type="submit">send me a sign-in link</button><span class="msg" id="youmsg"></span></div></form>';
+      '<div class="row"><button class="btn red" type="submit">send me a sign-in link</button><span class="msg" role="status" id="youmsg"></span></div></form>';
     renderAuto();
     return;
   }
@@ -1382,7 +1429,7 @@ function renderYou(){
       '<p class="stat" id="youstat"></p>'+
       '<div id="hbox" hidden></div>'+
       '<ol class="setup" id="setup" hidden></ol>'+
-      '<div class="tools"><button class="btn ghost" type="button" data-you="push" id="pushbtn" hidden>turn on notifications</button><button class="btn ghost" type="button" data-you="out">sign out</button><span class="msg" id="youmsg"></span></div>'+
+      '<div class="tools"><button class="btn ghost" type="button" data-you="push" id="pushbtn" hidden>turn on notifications</button><button class="btn ghost" type="button" data-you="out">sign out</button><span class="msg" role="status" id="youmsg"></span></div>'+
       '<ul id="otherlist"></ul>';
     if(justIn){justIn=false;youNote('you are in.',true)}
     paintStat(); renderSetup(); renderAuto(); loadServerHistory(); pushState();
@@ -1409,7 +1456,7 @@ function renderSetup(){
   var cannot=pushNow==='none'||pushNow==='blocked';
   var steps=[
     {done:!!me.handle,t:'pick your handle',p:'the name shown as credit on IDs you help name. 2 to 30 letters, digits, dots or underscores, yours alone.',
-     form:'<form class="form on" id="hform2" data-first="1" autocomplete="off"><label for="y-handle">handle</label><input id="y-handle" name="handle" maxlength="30" placeholder="yourname" required><div class="row"><button class="btn" type="submit">that is me</button><span class="msg" id="hmsg"></span></div></form>'},
+     form:'<form class="form on" id="hform2" data-first="1" autocomplete="off"><label for="y-handle">handle</label><input id="y-handle" name="handle" maxlength="30" placeholder="yourname" required><div class="row"><button class="btn" type="submit">that is me</button><span class="msg" role="status" id="hmsg"></span></div></form>'},
     {done:pushDone,t:'turn on notifications',p:pushNow==='none'?'this browser cannot push. on iphone, add the app to the home screen first. alerts go by email either way.':pushNow==='blocked'?'blocked for this site in the browser settings. alerts go by email either way.':'a push to this phone when an ID you follow gets a name or comes out. email otherwise.',
      form:'<div class="row">'+(cannot?'':'<button class="btn" type="button" data-you="push">turn on</button>')+'<button class="btn ghost" type="button" data-you="skip">email is fine</button></div>'},
     {done:(me.followed||me.follows)>0,t:'follow your first ID',p:'tap "tell me when it\'s out" on a scan, in the card or in recent scans, and it lands here.',form:''}
@@ -1423,7 +1470,7 @@ function renderSetup(){
 function hNote(t,ok){var m=$('hmsg');if(m){m.textContent=t;m.className='msg'+(ok?' ok':'')}}
 function showHandleForm(){
   var hb=$('hbox'); if(!hb||!meCache)return;
-  hb.innerHTML='<form class="form on" id="hform2" autocomplete="off"><label for="y-handle">new handle</label><input id="y-handle" name="handle" maxlength="30" value="'+esc(meCache.handle||'')+'"><div class="row"><button class="btn" type="submit">save</button><button class="btn ghost" type="button" data-you="hcancel">cancel</button><span class="msg" id="hmsg"></span></div></form>';
+  hb.innerHTML='<form class="form on" id="hform2" autocomplete="off"><label for="y-handle">new handle</label><input id="y-handle" name="handle" maxlength="30" value="'+esc(meCache.handle||'')+'"><div class="row"><button class="btn" type="submit">save</button><button class="btn ghost" type="button" data-you="hcancel">cancel</button><span class="msg" role="status" id="hmsg"></span></div></form>';
   hb.hidden=false; try{$('y-handle').focus()}catch(e){}
 }
 /* scans from the account's other phones, the ones this phone has no row for */
@@ -1482,7 +1529,7 @@ document.addEventListener('click',function(ev){
   var y=ev.target.closest('[data-you]');
   if(y){
     if(y.getAttribute('data-you')==='out'){gmxAccount.signout();meCache=null;renderYou();loadFollows();return}
-    if(y.getAttribute('data-you')==='push'){y.disabled=true;ensurePush().then(function(ok){youNote(ok?'this phone gets notified.':'notifications are off for this site, or this browser cannot push. on iphone, add the app to the home screen first.',ok);y.disabled=false;pushState()});return}
+    if(y.getAttribute('data-you')==='push'){y.disabled=true;gmxAccount.ensurePush({test:true}).then(function(ok){youNote(ok?'this phone gets notified. a test just went out.':gmxAccount.pushLine(gmxAccount.pushWhy()),ok);y.disabled=false;pushState()});return}
     if(y.getAttribute('data-you')==='skip'){try{localStorage.setItem('gmx_push_skip','1')}catch(e){}renderSetup();return}
     if(y.getAttribute('data-you')==='handle'){showHandleForm();return}
     if(y.getAttribute('data-you')==='hcancel'){var hb=$('hbox');if(hb){hb.hidden=true;hb.innerHTML=''}return}
@@ -1574,6 +1621,6 @@ window.gmxScanDemo=function(res){current=res;showCard(resultCard(res))};
 <script src="/gmx-motion.js" defer></script>
 <script src="/gmx-quick.js" defer></script>
 <script src="/gmx-refresh.js" defer></script>
-<script src="/gmx-nav.js?v=16" defer></script>
+<script src="/gmx-nav.js?v=17" defer></script>
 </body>
 </html>
