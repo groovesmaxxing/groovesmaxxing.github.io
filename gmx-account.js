@@ -177,7 +177,7 @@ function short(url){return (url||'').replace(/^mailto:/,'').replace(/^https?:\/\
 /* ---- the header chip. .gmx-chip, since .gmx-acct is the sheet in gmx-account.css ---- */
 var CSS='.wrap > .top,.gmx-top{display:flex;align-items:center;justify-content:space-between;gap:12px}'+
  '.hero > .gmx-hdr.float{position:absolute;top:calc(16px + env(safe-area-inset-top));right:16px;z-index:2}'+
- '.gmx-chip{flex:none;font-family:"Space Mono",monospace;font-size:.7rem;letter-spacing:.08em;color:#8A8A93;text-decoration:none;border:1px solid rgba(242,242,239,.18);border-radius:999px;padding:0 12px;min-height:34px;line-height:32px;max-width:46vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;-webkit-tap-highlight-color:transparent}'+
+ '.gmx-chip{flex:none;position:relative;z-index:3;background:#0B0B0D;font-family:"Space Mono",monospace;font-size:.7rem;letter-spacing:.08em;color:#8A8A93;text-decoration:none;border:1px solid rgba(242,242,239,.18);border-radius:999px;padding:0 12px;min-height:34px;line-height:32px;max-width:46vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;-webkit-tap-highlight-color:transparent}'+
  '.gmx-chip.in{color:#F2F2EF;border-color:rgba(255,28,2,.5)}'+
  '.gmx-chip:hover,.gmx-chip:focus-visible{color:#FF1C02;border-color:#FF1C02;outline:none}'+
  '';
