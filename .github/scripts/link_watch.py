@@ -21,7 +21,7 @@ how it works
 hosts whose answers say nothing are skipped: instagram and tiktok answer 200 behind a login wall, x needs a
 browser, the font hosts never break. soundcloud search links always resolve. stdlib only.
 """
-import concurrent.futures, glob, html, json, os, re, sys, time, urllib.error, urllib.parse, urllib.request
+import concurrent.futures, glob, html, json, os, re, sys, time, unicodedata, urllib.error, urllib.parse, urllib.request
 from datetime import datetime, timedelta, timezone
 
 SITE = "https://groovesmaxxing.com"
@@ -43,10 +43,13 @@ ACCEPTED_MOVES = {
     "https://fancyinc.com.br/": "fancyinc.komi.io",
     "https://genesimusic.com": "genesi.komi.io",
     "https://www.dontblink.io": "dontblink.komi.io",
+    "https://noshamusica.com": "noshamusica.wordpress.com",
 }
 # reads differently: url -> the title behind it that the page keeps its own name against.
 ACCEPTED_TITLES = {
     "https://open.spotify.com/artist/4sITB0d3Uz43DKFElXk6xo": "Gabrl",  # spotify reads gabrl, the site keeps gabe cline, owner's call 2026-10-13
+    # max styler's ep, linked on its first and last track names ("Body Shake" to "Templo Disko"), checked 2026-10-13
+    "https://open.spotify.com/album/0620dMBIpjeI61scHdp9w2": "I Don't Think I Can Stop",
 }
 
 PAGES = sorted(glob.glob("*.html") + glob.glob("artists/*.html") + glob.glob("labels/*.html") + glob.glob("tracklists/*.html"))
@@ -69,8 +72,14 @@ def text_of(s):
     return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", s or ""))).strip()
 
 
+def fold(s):
+    """accents off, so Impératrice reads as Imperatrice and Bákayan as Bakayan (2026-10-13). without it an
+    accented letter splits the word in two and a right link reads as a different title."""
+    return "".join(c for c in unicodedata.normalize("NFKD", html.unescape(s or "")) if not unicodedata.combining(c))
+
+
 def tokens(s):
-    s = html.unescape(s or "").lower()
+    s = fold(s).lower()
     s = re.sub(r"\(.*?\)|\[.*?\]", " ", s)
     return {t for t in re.findall(r"[a-z0-9]+", s) if len(t) > 1 and t not in {"the", "at", "and", "live", "set", "mix", "dj", "feat", "ft", "of", "in", "from", "official", "video", "audio"}}
 
@@ -80,7 +89,7 @@ def reads_like(a, b):
     ta, tb = tokens(a), tokens(b)
     if not ta or not tb:
         return True
-    la, lb = re.sub(r"[^a-z0-9]+", "", a.lower()), re.sub(r"[^a-z0-9]+", "", b.lower())
+    la, lb = re.sub(r"[^a-z0-9]+", "", fold(a).lower()), re.sub(r"[^a-z0-9]+", "", fold(b).lower())
     if la and lb and (la in lb or lb in la):
         return True
     return len(ta & tb) / min(len(ta), len(tb)) >= 0.34
