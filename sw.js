@@ -6,7 +6,7 @@ var SHELL = ['/scan', '/more', '/gmx-clips.js', '/gmx-refresh.js', '/gmx-nav.js'
 
 var OFFLINE = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">' +
   '<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">' +
-  '<title>offline Â· groovesMAXXING</title>' +
+  '<title>offline · groovesMAXXING</title>' +
   '<style>body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#0B0B0D;color:#F2F2EF;font-family:Poppins,sans-serif;text-align:center;padding:24px}' +
   'h1{font-weight:900;font-size:2rem;margin:0 0 10px}h1 span{color:#FF1C02}p{font-family:"Space Mono",monospace;color:#8A8A93;font-size:.9rem;line-height:1.7;max-width:320px;margin:0 auto}' +
   'a{color:#FF1C02;text-decoration:none}</style></head><body><div>' +

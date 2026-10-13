@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com https://api.deezer.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-3XmoTopUUZECm6crvnxce0yj+fACIw3Q3WEoi+Wq2VQ='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net https://open.spotify.com https://itunes.apple.com; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com https://api.deezer.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-DiKkQwfpIorkuJj57eA3uj8It93FOfm34y+qF7oTpro='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net https://open.spotify.com https://itunes.apple.com; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>scan Â· groovesMAXXING</title>
+<title>scan · groovesMAXXING</title>
 <meta name="description" content="hear a track, tap once. groovesmaxxing listens for about 15 seconds and looks for it in our own library of sets first, then in the catalogs.">
-<meta property="og:title" content="scan Â· groovesMAXXING">
+<meta property="og:title" content="scan · groovesMAXXING">
 <meta property="og:description" content="hear a track, tap once. groovesmaxxing listens for about 15 seconds and looks for it in our own library of sets first, then in the catalogs.">
 <meta property="og:url" content="https://groovesmaxxing.com/scan">
 <meta name="robots" content="noindex">
@@ -63,7 +63,7 @@ h1.eyebrow{margin:0;font-weight:400}
 .hear li small{display:block;font-weight:400;color:var(--steel);font-size:.78rem;font-family:'Space Mono',monospace;margin-top:2px}
 .btn.find{color:var(--steel);border-style:dashed}
 .card .sub a.sublink,.card .lab a.sublink{color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,28,2,.45)}.card .sub a.sublink:hover,.card .lab a.sublink:hover{color:var(--racing)}
-.card h2 a.listen{color:inherit;text-decoration:none}.card h2 a.listen:hover{color:var(--racing)}.card h2 a.listen::after{content:' â†—';font-size:.6em;color:var(--racing);vertical-align:super}
+.card h2 a.listen{color:inherit;text-decoration:none}.card h2 a.listen:hover{color:var(--racing)}.card h2 a.listen::after{content:' ↗';font-size:.6em;color:var(--racing);vertical-align:super}
 .stage.finding .tap{display:none}
 .stage.listening .rec{display:flex}
 .stage.finding .rec{display:flex}
@@ -248,7 +248,7 @@ details.guess[open]>summary::after{content:' \2212'}
 <p>hearing a set? under the result, tell us which one. we send the clip once more to find the spot in it, then delete it.</p>
 <p>at a set, turn on auto. the phone scans on its own every eight minutes, keeps the screen awake, and builds tonight's list as it goes. tap the rings or the auto button to stop.</p>
 <p>no signal? the clip stays on this phone and gets matched the moment you are back online.</p>
-<p class="links"><a href="/privacy">privacy</a> Â· <a href="/more">more</a></p>
+<p class="links"><a href="/privacy">privacy</a> · <a href="/more">more</a></p>
 <button class="btn" type="button" id="howclose">close</button>
 </dialog>
 
@@ -351,8 +351,8 @@ function safeUrl(u){u=String(u==null?'':u).trim();if(!u)return '';if(/^https?:\/
 function cleanLinks(o){var r={};Object.keys(o||{}).forEach(function(k){var u=safeUrl(o[k]);if(u)r[k]=u});return r}
 function pct(n){return Math.round(Number(n)||0)+'%'}
 function slug(s){
-  s=String(s||'').toLowerCase().replace(/[Ã¸Ã˜]/g,'o');
-  try{s=s.normalize('NFKD').replace(/[Ì€-Í¯]/g,'')}catch(e){}
+  s=String(s||'').toLowerCase().replace(/[øØ]/g,'o');
+  try{s=s.normalize('NFKD').replace(/[̀-ͯ]/g,'')}catch(e){}
   return s.replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
 }
 
@@ -599,9 +599,9 @@ function pollJob(jobId,began){
    a CONFIRMED answer ends the scan at once. a LIKELY one shows and the scan keeps going for the catalogs. */
 function earlyIdentify(blob,seq,at){
   var fd=new FormData(); fd.append('audio',blob,'clip.wav'); fd.append('source','mic');
-  var began=Date.now(), sent=null, round={at:at,post:0,wait:0,answer:'â€¦'};
+  var began=Date.now(), sent=null, round={at:at,post:0,wait:0,answer:'…'};
   if(timing)timing.rounds.push(round);
-  say2('matching at <b>'+(at/1000)+' s</b>'+(timing.rounds.length>1?' Â· '+timing.rounds.slice(0,-1).map(function(r){return r.answer}).join(', '):''));
+  say2('matching at <b>'+(at/1000)+' s</b>'+(timing.rounds.length>1?' · '+timing.rounds.slice(0,-1).map(function(r){return r.answer}).join(', '):''));
   fx(cfg.api_base+'/identify',{method:'POST',headers:headers({'X-GMX-Round':'early'}),body:fd},POST_MS)
   .then(function(r){sent=Date.now();round.post=sent-began;if(r.status===429){rateHit=true;throw new Error('rate')}if(!r.ok)throw new Error('http '+r.status);return r.json()})
   .then(function(job){return pollJob(job.job_id,began)})
@@ -609,7 +609,7 @@ function earlyIdentify(blob,seq,at){
     round.wait=Date.now()-(sent||began);
     if(seq!==scanSeq||finalDone)return;
     var r=j.result||{}, c=r.card||{}, cand=c.candidate;
-    if(!cand||(cand.tier!=='LIKELY'&&cand.tier!=='CONFIRMED')){round.answer=(at/1000)+' s: nothing yet';say2('matching Â· '+timing.rounds.map(function(x){return x.answer}).join(' Â· '));return}
+    if(!cand||(cand.tier!=='LIKELY'&&cand.tier!=='CONFIRMED')){round.answer=(at/1000)+' s: nothing yet';say2('matching · '+timing.rounds.map(function(x){return x.answer}).join(' · '));return}
     var nm=nameOf(cand),who=nm?(nm.title||nm.artist):'a library entry';
     round.answer=(at/1000)+' s: '+(cand.tier==='CONFIRMED'?'sure':'close')+', '+who;
     early={job_id:j.job_id,recognition_id:r.recognition_id||j.job_id,card:{kind:'match',candidate:cand},seconds:Math.round((Date.now()-timing.t0)/100)/10,timing:timing};
@@ -639,7 +639,7 @@ function identify(blob){
   cancelScan=null; go.disabled=true; stage.classList.add('finding'); recword.textContent='finding it'; count.textContent='';
   say2('checking the catalogs');
   if(!early)showCard('<div class="skel" aria-hidden="true"><i class="a"></i><i class="b"></i><i class="c"></i><i class="d"></i></div>');
-  var sentAt=null,finalRound={at:CAPTURE_MS,post:0,wait:0,answer:'â€¦'};if(timing)timing.rounds.push(finalRound);
+  var sentAt=null,finalRound={at:CAPTURE_MS,post:0,wait:0,answer:'…'};if(timing)timing.rounds.push(finalRound);
   var fd=new FormData(); fd.append('audio',blob,'clip.'+extOf(blob)); fd.append('source','mic');
   var began=Date.now();
   fx(cfg.api_base+'/identify',{method:'POST',headers:headers(),body:fd},POST_MS)
@@ -705,7 +705,7 @@ function crateItem(cand){
   var who=nm.artist||((card.querySelector('.sub')||{}).textContent||'').trim();
   var shown=nm.lib?((card.querySelector('h2')||{}).textContent||'').trim():'';
   var title=(who?who+' - ':'')+(shown||nm.title||'unnamed library entry');
-  return {kind:'track',id:'scan:'+(foldT(who+' '+nm.title)||cand.library_id||'id'),title:title,sub:[cand.label||'',cand.status||'','found with the scan'].filter(Boolean).join(' Â· '),url:'/scan',links:links,artist:who,label:cand.label||''};
+  return {kind:'track',id:'scan:'+(foldT(who+' '+nm.title)||cand.library_id||'id'),title:title,sub:[cand.label||'',cand.status||'','found with the scan'].filter(Boolean).join(' · '),url:'/scan',links:links,artist:who,label:cand.label||''};
 }
 function decorate(cur){
   var c=cur&&cur.card&&cur.card.candidate; if(!c||cur.card.kind!=='match')return;
@@ -716,9 +716,9 @@ function decorate(cur){
   }
   var lab=card.querySelector('p.lab');
   if(lab&&c.label&&!lab.querySelector('a'))namesIndex().then(function(n){
-    var key=String(c.label).normalize('NFKD').replace(/[Ì€-Í¯]/g,'').toLowerCase().replace(/&/g,'and').replace(/\s+/g,' ').trim(),sl=n&&n.l&&n.l[key];
+    var key=String(c.label).normalize('NFKD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/&/g,'and').replace(/\s+/g,' ').trim(),sl=n&&n.l&&n.l[key];
     if(!sl||lab.querySelector('a'))return;
-    lab.innerHTML='<a class="sublink" href="/labels/'+esc(sl)+'">'+esc(c.label)+'</a>'+(c.release_date?' Â· '+esc(c.release_date):'');
+    lab.innerHTML='<a class="sublink" href="/labels/'+esc(sl)+'">'+esc(c.label)+'</a>'+(c.release_date?' · '+esc(c.release_date):'');
   });
 }
 function errCard(text){return '<p class="kw"><b>hm.</b></p><h2>that did not work.</h2><p class="note">'+esc(text)+'</p><div class="row"><button class="btn red" data-act="again">scan again</button></div>'}
@@ -828,14 +828,14 @@ function pathStep(state,label,note){return '<li class="st-'+state+'"><span class
 function pathBlock(cur){
   var c=cur.card, cand=c.candidate, t=cur.timing, s=cur.in_set, nm=cand?nameOf(cand):null;
   var secs=function(ms){return (Math.round(ms/100)/10)+' s'};
-  var heard=t&&t.first?'found in '+secs(t.first)+(t.rounds&&t.rounds.length>1?' Â· '+t.rounds.length+' rounds':''):(t?'listening':'just now');
+  var heard=t&&t.first?'found in '+secs(t.first)+(t.rounds&&t.rounds.length>1?' · '+t.rounds.length+' rounds':''):(t?'listening':'just now');
   var named,namedState,conf,confState;
   if(c.kind==='match'&&cand){
     var lib=!!(nm&&nm.lib),head=(!lib&&cand.headline)||(nm?(nm.title||nm.artist):'ID');
     if(head==='ID'){named='in our library, no name yet';namedState='now'}
-    else{named=((lib||cand.status!=='out now')?'from our library of sets':'from the catalog')+(cand.status==='unreleased'?' Â· unreleased':cand.status==='out now'?' Â· out now':'');namedState='done'}
+    else{named=((lib||cand.status!=='out now')?'from our library of sets':'from the catalog')+(cand.status==='unreleased'?' · unreleased':cand.status==='out now'?' · out now':'');namedState='done'}
     if(cand.accepted_name){conf='a person confirmed this name';confState='done'}
-    else{conf='waiting on you: thatâ€™s right, or itâ€™s actuallyâ€¦ two phones or the artist close it';confState=head==='ID'?'next':'now'}
+    else{conf='waiting on you: that’s right, or it’s actually… two phones or the artist close it';confState=head==='ID'?'next':'now'}
   }else if(c.kind==='guess'&&cand){
     named='a guess at '+pct(cand.shown_score)+', under our bar';namedState='now';
     conf='nothing to confirm until it has a name';confState='next';
@@ -844,8 +844,8 @@ function pathBlock(cur){
     conf='nothing to confirm until it has a name';confState='next';
   }
   var placed,placedState;
-  if(s&&s.set_title){placed='in '+esc(s.set_title)+(s.at?' around '+esc(s.at):'')+(s.row?' Â· the tracklist calls it '+esc(s.row):'');placedState='done'}
-  else{placed='not placed in a set yet. â€œwhere are you hearing this?â€ helps.';placedState='next'}
+  if(s&&s.set_title){placed='in '+esc(s.set_title)+(s.at?' around '+esc(s.at):'')+(s.row?' · the tracklist calls it '+esc(s.row):'');placedState='done'}
+  else{placed='not placed in a set yet. “where are you hearing this?” helps.';placedState='next'}
   return '<h3>what happens next</h3><ol class="path" id="path">'+pathStep('done','heard',esc(heard))+pathStep(namedState,'named',esc(named))+pathStep(placedState,'placed',placed)+pathStep(confState,'confirmed',conf)+'</ol>';
 }
 function markSent(verdict){
@@ -867,7 +867,7 @@ function resultCard(cur){
       var h0=(cand.heard_in||[])[0];
       out+='<p class="ttl">'+(h0?'heard in '+esc(h0.set_title)+' at '+esc(h0.at):'in our library, still unnamed')+'</p>';
     }
-    if(cand.label&&cand.status==='out now')out+='<p class="lab">'+esc(cand.label)+(cand.release_date?' Â· '+esc(cand.release_date):'')+'</p>';
+    if(cand.label&&cand.status==='out now')out+='<p class="lab">'+esc(cand.label)+(cand.release_date?' · '+esc(cand.release_date):'')+'</p>';
     out+='<p class="sure">'+sureLine(cand)+'</p>';
     out+=statusPill(cand.status);
     var links=storeRow(cand);
@@ -917,7 +917,7 @@ function resultCard(cur){
 var ART_KEY='gmx_art', tracksIdx=null;
 function artCache(){try{return JSON.parse(localStorage.getItem(ART_KEY)||'{}')}catch(e){return {}}}
 function artRemember(k,v){try{var c=artCache();c[k]=v;var ks=Object.keys(c);while(ks.length>120){delete c[ks.shift()]}localStorage.setItem(ART_KEY,JSON.stringify(c))}catch(e){}}
-function foldT(t){t=String(t||'').normalize('NFKD').replace(/[Ì€-Í¯]/g,'').toLowerCase();t=t.replace(/\((?:extended|original|radio|club|edit|mix|remix|version|feat\.?|ft\.?)[^)]*\)/g,' ').replace(/\b(extended mix|original mix|radio edit|club mix)\b/g,' ');return t.replace(/[^a-z0-9]+/g,' ').trim()}
+function foldT(t){t=String(t||'').normalize('NFKD').replace(/[̀-ͯ]/g,'').toLowerCase();t=t.replace(/\((?:extended|original|radio|club|edit|mix|remix|version|feat\.?|ft\.?)[^)]*\)/g,' ').replace(/\b(extended mix|original mix|radio edit|club mix)\b/g,' ');return t.replace(/[^a-z0-9]+/g,' ').trim()}
 function jsonp(url,ms){return new Promise(function(res,rej){var cb='gmxcb'+Date.now()+Math.floor(Math.random()*1e4),sc=document.createElement('script'),t=setTimeout(function(){done();rej(new Error('timeout'))},ms||6000);
   function done(){clearTimeout(t);delete window[cb];if(sc.parentNode)sc.parentNode.removeChild(sc)}
   window[cb]=function(d){done();res(d)};sc.src=url+(url.indexOf('?')>-1?'&':'?')+'callback='+cb;sc.onerror=function(){done();rej(new Error('jsonp'))};document.head.appendChild(sc)})}
@@ -963,7 +963,7 @@ function enrich(cur){
       }
     }
     if(hearEl&&!hearEl.children.length){
-      hearEl.innerHTML='<h3>hear it in</h3><ul class="heard hear">'+hits.map(function(r){var rl=safeUrl(r.l),ru=safeUrl(r.u);var play=rl?'<a href="'+esc(rl)+'" target="_blank" rel="noopener">play from '+esc(r.at)+' â†—</a>':esc(r.at);return '<li><a href="'+esc(ru)+'">'+esc(r.set)+'<small>'+esc(r.n)+(r.lab?' Â· '+esc(r.lab):'')+'</small></a><span class="at">'+play+'</span></li>'}).join('')+'</ul>';
+      hearEl.innerHTML='<h3>hear it in</h3><ul class="heard hear">'+hits.map(function(r){var rl=safeUrl(r.l),ru=safeUrl(r.u);var play=rl?'<a href="'+esc(rl)+'" target="_blank" rel="noopener">play from '+esc(r.at)+' ↗</a>':esc(r.at);return '<li><a href="'+esc(ru)+'">'+esc(r.set)+'<small>'+esc(r.n)+(r.lab?' · '+esc(r.lab):'')+'</small></a><span class="at">'+play+'</span></li>'}).join('')+'</ul>';
     }
   });
   if(unreleased||(c.artwork_url&&l.spotify&&l.apple))return;
@@ -999,7 +999,7 @@ function timingLine(cur){
   var secs=function(ms){return (Math.round(ms/100)/10)+' s'};
   var found=t.first?'<b>found in '+secs(t.first)+'</b>':'<b>'+secs(Date.now()-t.t0)+' end to end</b>';
   var parts=t.rounds.filter(function(r){return r.post||r.wait}).map(function(r){return (r.at/1000)+' s: up '+secs(r.post)+', match '+secs(r.wait)});
-  return '<p class="timing">'+found+(parts.length?' Â· '+parts.join(' Â· '):'')+'</p>';
+  return '<p class="timing">'+found+(parts.length?' · '+parts.join(' · '):'')+'</p>';
 }
 function correctionForm(){
   return '<form class="form" id="cform" autocomplete="off"><label for="c-artist">artist</label><input id="c-artist" name="artist_claim" maxlength="255">'+
@@ -1090,7 +1090,7 @@ var slugIndex=null;
 function checkArtistPage(artist){
   var s=slug(artist); if(!s)return;
   function show(){
-    var row=$('artistrow');if(row)row.innerHTML='<a class="btn" href="/artists/'+s+'">'+esc(artist)+' on groovesmaxxing â†’</a>';
+    var row=$('artistrow');if(row)row.innerHTML='<a class="btn" href="/artists/'+s+'">'+esc(artist)+' on groovesmaxxing →</a>';
     /* the artist line itself becomes the link to the profile */
     var sub=card.querySelector('.sub');if(sub&&!sub.querySelector('a')){var a=document.createElement('a');a.href='/artists/'+s;a.className='sublink';a.textContent=sub.textContent;sub.innerHTML='';sub.appendChild(a)}
   }
@@ -1162,7 +1162,7 @@ function sendHelp(f){
 function share(){
   if(!current||!current.card.candidate)return;
   var c=current.card.candidate, nm=nameOf(c), l=c.store_links||{};
-  var text=(nm?(nm.artist?nm.artist+' - ':'')+nm.title:'an unreleased ID')+' Â· found with the groovesmaxxing scan';
+  var text=(nm?(nm.artist?nm.artist+' - ':'')+nm.title:'an unreleased ID')+' · found with the groovesmaxxing scan';
   var url=l.spotify||l.apple||l.beatport_search||'https://groovesmaxxing.com/scan';
   if(navigator.share){navigator.share({title:'groovesMAXXING',text:text,url:url}).catch(function(){});return}
   if(navigator.clipboard){navigator.clipboard.writeText(text+' '+url).then(function(){say('copied.',true)}).catch(function(){})}
@@ -1188,8 +1188,8 @@ function renderHistory(){
   if(!h.length){recentlist.innerHTML='<li class="none">nothing scanned yet.</li>';return}
   recentlist.innerHTML=h.map(function(r){
     var who;
-    if(r.kind==='match')who='<span data-artist="'+esc(r.artist||'')+'">'+esc(r.artist||'ID')+'</span><small>'+esc(r.title||'unnamed library entry')+' Â· '+pct(r.score)+(r.secs?' Â· '+r.secs+' s':'')+'</small>';
-    else if(r.kind==='guess')who='no match<small>closest guess: '+esc((r.artist?r.artist+' - ':'')+r.title)+(r.score==null?' Â· possible match':' Â· '+pct(r.score))+'</small>';
+    if(r.kind==='match')who='<span data-artist="'+esc(r.artist||'')+'">'+esc(r.artist||'ID')+'</span><small>'+esc(r.title||'unnamed library entry')+' · '+pct(r.score)+(r.secs?' · '+r.secs+' s':'')+'</small>';
+    else if(r.kind==='guess')who='no match<small>closest guess: '+esc((r.artist?r.artist+' - ':'')+r.title)+(r.score==null?' · possible match':' · '+pct(r.score))+'</small>';
     else who='no match<small>nothing yet</small>';
     var acts='', btns='';
     if(r.clip&&r.id)btns='<button class="btn" data-clip="again" data-id="'+esc(r.id)+'">scan again</button>'+(r.kind!=='match'?'<button class="btn" data-clip="help" data-id="'+esc(r.id)+'">help us find it</button>':'');
@@ -1279,7 +1279,7 @@ function onReset(){
 function renderAuto(){
   if(!autobar)return;
   var resumable=false;try{resumable=!auto&&localStorage.getItem(AUTO_KEY)==='1'&&loadSession().start&&Date.now()-loadSession().start<SESSION_MAX_AGE}catch(e){}
-  var h='<button class="btn'+(auto?' on':'')+'" type="button" id="autobtn" aria-pressed="'+(auto?'true':'false')+'">'+(auto?'auto on Â· tap to stop':(resumable?'resume auto':'auto Â· for a set'))+'</button>';
+  var h='<button class="btn'+(auto?' on':'')+'" type="button" id="autobtn" aria-pressed="'+(auto?'true':'false')+'">'+(auto?'auto on · tap to stop':(resumable?'resume auto':'auto · for a set'))+'</button>';
   if(auto)h+='<span class="next" id="autonext"></span><button class="btn ghost" type="button" id="autonow">scan now</button>';
   if(autoNote)h+='<span class="note">'+esc(autoNote)+'</span>';
   autobar.innerHTML=h;
@@ -1373,7 +1373,7 @@ function renderYou(){
   }
   var paint=function(me){
     box.innerHTML='<div class="prof">'+(me.handle?'<span class="at">@'+esc(me.handle)+'</span>':'<span class="at none">no handle yet</span>')+
-      '<small>'+esc(me.email)+(ROLE_WORD[me.role]?' Â· '+ROLE_WORD[me.role]:'')+'</small>'+
+      '<small>'+esc(me.email)+(ROLE_WORD[me.role]?' · '+ROLE_WORD[me.role]:'')+'</small>'+
       (me.handle?'<button class="chg" type="button" data-you="handle">change</button>':'')+'</div>'+
       '<p class="stat" id="youstat"></p>'+
       '<div id="hbox" hidden></div>'+
@@ -1395,7 +1395,7 @@ function pushState(){pushKnown().then(function(st){pushNow=st;paintStat();render
 function paintStat(){
   var el=$('youstat'),me=meCache; if(!el||!me)return;
   var w={on:'notifications <b>on</b>',off:'notifications <b>off</b>, email instead',blocked:'notifications <b>blocked</b> here, email instead',none:'no push in this browser, email instead',allowed:'notifications <b>allowed</b>, not registered'}[pushNow]||'notifications: checking';
-  el.innerHTML=w+' Â· <b>'+me.follows+'</b> following Â· <b>'+me.devices+'</b> '+(me.devices===1?'device':'devices');
+  el.innerHTML=w+' · <b>'+me.follows+'</b> following · <b>'+me.devices+'</b> '+(me.devices===1?'device':'devices');
 }
 function pushSkipped(){try{return localStorage.getItem('gmx_push_skip')==='1'}catch(e){return false}}
 /* three steps, shown until all three are done, then the block is just the profile */
@@ -1430,7 +1430,7 @@ function loadServerHistory(){
     var other=rows.filter(function(r){return !r.this_device&&!mine[r.job_id]});
     if(!other.length){ul.innerHTML='';return}
     ul.innerHTML='<li class="none">from your other phones</li>'+other.slice(0,25).map(function(r){
-      var name=r.kind==='match'?esc(r.artist||'ID')+'<small>'+esc(r.title||'unnamed library entry')+(r.status?' Â· '+esc(r.status):'')+'</small>':r.kind==='guess'?'no match<small>closest guess: '+esc((r.artist?r.artist+' - ':'')+(r.title||''))+'</small>':'no match<small>'+esc(r.in_set||'nothing yet')+'</small>';
+      var name=r.kind==='match'?esc(r.artist||'ID')+'<small>'+esc(r.title||'unnamed library entry')+(r.status?' · '+esc(r.status):'')+'</small>':r.kind==='guess'?'no match<small>closest guess: '+esc((r.artist?r.artist+' - ':'')+(r.title||''))+'</small>':'no match<small>'+esc(r.in_set||'nothing yet')+'</small>';
       return '<li><span class="who">'+name+'</span><span class="when">'+when(new Date(r.at).getTime())+'</span></li>';
     }).join('');
   }).catch(function(){});
@@ -1508,9 +1508,9 @@ function renderSession(){
   var show=(s.start&&s.rows.length)||auto;
   sessionEl.hidden=!show;if(!show)return;
   var named=s.rows.filter(function(r){return r.name&&r.kind==='match'}).length;
-  sessionmeta.textContent='started '+fmtClock(s.start)+' Â· '+s.rows.length+(s.rows.length===1?' scan':' scans')+' Â· '+named+' named';
+  sessionmeta.textContent='started '+fmtClock(s.start)+' · '+s.rows.length+(s.rows.length===1?' scan':' scans')+' · '+named+' named';
   sessionlist.innerHTML=s.rows.length?s.rows.map(function(r){
-    var who=r.kind==='pending'?'kept, no signal<small>matched when you are back online</small>':r.name?(r.kind==='guess'?'<span>maybe '+esc(r.name)+'</span>':'<span>'+esc(r.name)+'</span>')+'<small>'+(r.kind==='guess'?'closest guess':pct(r.score))+(r.n>1?' Â· heard '+r.n+' times':'')+'</small>':'nothing named<small>no match</small>';
+    var who=r.kind==='pending'?'kept, no signal<small>matched when you are back online</small>':r.name?(r.kind==='guess'?'<span>maybe '+esc(r.name)+'</span>':'<span>'+esc(r.name)+'</span>')+'<small>'+(r.kind==='guess'?'closest guess':pct(r.score))+(r.n>1?' · heard '+r.n+' times':'')+'</small>':'nothing named<small>no match</small>';
     return '<li><span class="who">'+who+'</span><span class="when">+'+fmtOffset(r.off)+'</span></li>';
   }).join(''):'<li class="none">listening. the first result lands here.</li>';
 }
@@ -1519,7 +1519,7 @@ $('sessiontools').addEventListener('click',function(e){
   if(b.getAttribute('data-s')==='clear'){if(s.rows.length&&!confirm('clear tonight\'s list on this phone?'))return;saveSession({start:auto?Date.now():0,rows:[]});renderSession();sessionmsg.textContent='cleared.';return}
   var lines=s.rows.filter(function(r){return r.name}).map(function(r){return fmtOffset(r.off)+'  '+(r.kind==='guess'?'? ':'')+r.name});
   if(!lines.length){sessionmsg.textContent='nothing named yet.';return}
-  var txt='tonight with groovesmaxxing Â· '+fmtClock(s.start)+'\n'+lines.join('\n')+'\nhttps://groovesmaxxing.com/scan';
+  var txt='tonight with groovesmaxxing · '+fmtClock(s.start)+'\n'+lines.join('\n')+'\nhttps://groovesmaxxing.com/scan';
   if(navigator.clipboard)navigator.clipboard.writeText(txt).then(function(){sessionmsg.textContent='copied, '+lines.length+' lines.'},function(){sessionmsg.textContent='could not copy.'});else sessionmsg.textContent='copy is not available here.';
 });
 /* the offline queue */
@@ -1541,7 +1541,7 @@ function renderPending(){
   pendingList().then(function(p){
     pendingbar.hidden=!p.length;if(!p.length)return;
     var on=navigator.onLine;
-    pendingbar.innerHTML='<span><b>'+p.length+'</b> '+(p.length===1?'clip':'clips')+' waiting for signal'+(on?'':' Â· offline')+'</span>'+(on?'<button class="btn" type="button" id="drainbtn">'+(busy?'matchingâ€¦':'match now')+'</button>':'');
+    pendingbar.innerHTML='<span><b>'+p.length+'</b> '+(p.length===1?'clip':'clips')+' waiting for signal'+(on?'':' · offline')+'</span>'+(on?'<button class="btn" type="button" id="drainbtn">'+(busy?'matching…':'match now')+'</button>':'');
     var b=$('drainbtn');if(b)b.addEventListener('click',function(){drain()});
   });
 }
