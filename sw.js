@@ -1,7 +1,9 @@
 /* groovesmaxxing service worker (phase 5, pwa shell).
    network first, cache fallback, offline page in the voice.
    only same-origin GET requests are ever cached. the api host is never touched. */
-var CACHE = 'gmx-v16';
+/* gmx-v17 (2026-10-13): the scan page changed, catalog off after an early likely, the wake lock on every tap scan,
+   the poll cap from the job id, clipped clips go up with a note. a new name so no phone keeps the old page. */
+var CACHE = 'gmx-v17';
 var SHELL = ['/scan', '/more', '/gmx-clips.js', '/gmx-refresh.js', '/gmx-nav.js?v=15', '/gmx-nav.css?v=15', '/gmx-account.js?v=15', '/gmx-account.css','/gmx-player.js', '/gmx-player.css', '/gmx-sets.js', '/search', '/gmx-profile.css', '/gmx-label.css', '/gmx-capture-worklet.js', '/gmx-fonts.css', '/fonts/poppins-400-latin.woff2', '/fonts/poppins-600-latin.woff2', '/fonts/poppins-900-latin.woff2', '/fonts/spacemono-400-latin.woff2', '/fonts/spacemono-700-latin.woff2', '/artists-index.json', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png', '/favicon.svg'];
 
 var OFFLINE = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">' +
