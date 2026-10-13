@@ -146,7 +146,7 @@ form.nl input[type=submit]:hover{background:var(--deep);border-color:var(--deep)
 <div class="acct-only" id="acctrows">
 <h2>your stuff</h2>
 <ul class="list">
-<li><a href="/crate"><span class="tx">my crate<small>the sets and tracks you hearted. on this phone for now</small></span><span class="go">↗</span></a></li>
+<li><a href="/crate"><span class="tx">my crate<small>the sets and tracks you liked, synced to every phone you sign in on</small></span><span class="go">↗</span></a></li>
 <li><a href="/scan#recent"><span class="tx">scan history<small>this phone's scans, and the ones from your other phones under "you" on scan</small></span><span class="go">↗</span></a></li>
 <li><a href="/scan#you"><span class="tx">following<small>the IDs waiting for a name or a release, with stop buttons</small></span><span class="go">↗</span></a></li>
 <li class="soon"><span class="tx">my IDs<small>the ones you helped name, with their state</small></span><span class="go">soon</span></li>
@@ -155,9 +155,8 @@ form.nl input[type=submit]:hover{background:var(--deep);border-color:var(--deep)
 <h2>notifications</h2>
 <ul class="list">
 <li><button class="rowbtn" type="button" data-acct="push" id="pushrow"><span class="tx">push on this phone<small id="push-small">checking this phone</small></span><span class="go" id="push-go">↗</span></button></li>
-<li class="soon"><span class="tx">email alerts<small>on for now: an ID you follow gets a name or comes out</small></span><span class="go">soon</span></li>
-<li class="soon"><span class="tx">what to tell me about<small>an ID I scanned gets a name, it comes out, an artist I follow drops something, fresh grooves friday</small></span><span class="go">soon</span></li>
 </ul>
+<ul class="gmx-you-switches" id="gmx-notify" aria-label="what to tell me about, by email"></ul>
 
 <h2>for artists</h2>
 <ul class="list">
@@ -165,15 +164,17 @@ form.nl input[type=submit]:hover{background:var(--deep);border-color:var(--deep)
 </ul>
 <div id="gmx-claims"></div>
 <div id="gmx-team"></div>
+<div id="gmx-tools"></div>
 </div>
 
 <h2>privacy and data</h2>
 <ul class="list">
 <li><label class="sw" for="keepclips"><span class="tx">keep my clips<small>on this phone only. newest 20, gone after 30 days. off deletes them.</small></span><input type="checkbox" id="keepclips" role="switch"><span class="knob" aria-hidden="true"></span></label></li>
-<li class="soon acct-only"><span class="tx">download my data<small>your scans, crate and follows as a file</small></span><span class="go">soon</span></li>
+<li class="acct-only"><button class="rowbtn" type="button" data-acct="export"><span class="tx">download my data<small>your scans, crate, follows and claims as one json file</small></span><span class="go">↓</span></button></li>
 <li><button type="button" class="wipe" id="wipeall"><span class="tx">clear this phone<small>the device id, the recent scans and any kept clips. nothing on our side changes.</small></span><span class="go" id="wipemsg">✕</span></button></li>
-<li class="soon acct-only"><span class="tx">delete my account<small>a confirm by mail, then gone</small></span><span class="go">soon</span></li>
+<li class="acct-only"><button class="rowbtn" type="button" data-acct="delete"><span class="tx">delete my account<small>a confirm by mail, then gone for good</small></span><span class="go">✕</span></button></li>
 </ul>
+<div id="gmx-delete" class="acct-only"></div>
 
 <h2>app</h2>
 <ul class="list">
@@ -189,7 +190,7 @@ form.nl input[type=submit]:hover{background:var(--deep);border-color:var(--deep)
 <h2>the rest of the site</h2>
 <ul class="list">
 <li><a href="/radio"><span class="tx">radio<small>the library back to back, newest first. tap play once and let it run</small></span><span class="go">↗</span></a></li>
-<li><a href="/crate" class="out-only"><span class="tx">my crate<small>the sets and tracks you hearted, on this phone only</small></span><span class="go">↗</span></a></li>
+<li><a href="/crate" class="out-only"><span class="tx">my crate<small>the sets and tracks you liked, on this phone or synced when you sign in</small></span><span class="go">↗</span></a></li>
 <li><a href="/search"><span class="tx">search the site<small>every artist, label, set, talk, tracklist and issue, from one box</small></span><span class="go">↗</span></a></li>
 <li><a href="/labels"><span class="tx">the imprint radar<small>the labels that keep showing up when a track survives the skip test</small></span><span class="go">↗</span></a></li>
 <li><a href="/upcoming"><span class="tx">dropping soon<small>what the artists and labels have announced, dated as they said it</small></span><span class="go">↗</span></a></li>

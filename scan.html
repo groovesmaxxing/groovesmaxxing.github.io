@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com https://api.deezer.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-DiKkQwfpIorkuJj57eA3uj8It93FOfm34y+qF7oTpro='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net https://open.spotify.com https://itunes.apple.com; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com https://api.deezer.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-8nMpmJxR2jCOC/lI43rDiXpDTh/wcB9j8UWpZBu24Ug='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net https://open.spotify.com https://itunes.apple.com; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>scan · groovesMAXXING</title>
@@ -1008,7 +1008,8 @@ function correctionForm(){
     '<label for="c-ig">your instagram (optional)</label><input id="c-ig" name="ig_handle" maxlength="64" placeholder="@">'+
     '<label for="c-note">anything else</label><textarea id="c-note" name="note" maxlength="1000"></textarea>'+
     '<div class="hp" aria-hidden="true"><label for="c-web">website</label><input id="c-web" name="website" tabindex="-1" autocomplete="off"></div>'+
-    '<div class="row"><button class="btn red" type="submit">send the fix</button><button class="btn ghost" type="button" data-act="closeform">never mind</button></div></form>';
+    '<div class="row"><button class="btn red" type="submit">send the fix</button><button class="btn ghost" type="button" data-act="closeform">never mind</button></div>'+
+    (sessionToken()?'':'<p class="smeta">get credit for this: <a href="#you">sign in</a> and your handle goes on the IDs you help name.</p>')+'</form>';
 }
 function helpForm(){
   return '<form class="form" id="hform" autocomplete="off"><label for="h-venue">venue or event</label><input id="h-venue" name="venue_claim" maxlength="255">'+
@@ -1314,6 +1315,8 @@ function followNow(btn,rid,note){
         var how=pushed?'this phone gets a push':(sessionToken()?'you get an email':'turn on notifications, or sign in below for email');
         note((f.until==='named'?'we will tell you when it gets a name, and when it comes out. ':'we will tell you when it comes out. ')+how+'.',true);
         btn.textContent='following'; if(meCache){meCache.follows++;meCache.followed=(meCache.followed||0)+1;renderSetup()} loadFollows(); pushState();
+        /* accounts design, moment 2 (2026-10-13): no push on this phone and nobody signed in means the word has nowhere to go. the email box is right below */
+        if(!pushed&&!sessionToken()){var ye=$('y-email');if(ye){try{ye.scrollIntoView({block:'center',behavior:'smooth'})}catch(e){ye.scrollIntoView()}setTimeout(function(){ye.focus()},400)}}
       });
     });
   }).catch(function(){note('did not send. check your signal and try again.');btn.disabled=false});

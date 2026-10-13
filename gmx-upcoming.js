@@ -1,7 +1,7 @@
 /* groovesmaxxing dropping soon, filtered on the crate (2026-10-11). vanilla, no dependencies beyond
    gmx-crate.js. the release rows come from the laptop's upcomingpage.py and this never edits them. it adds
    a chip row under the legend: everything, or only the releases whose artist or label is in the crate
-   (hearted sets and tracks, followed artists and labels). the choice stays on this phone under
+   (liked sets and tracks, followed artists and labels). the choice stays on this phone under
    gmx_upcoming_mine, and /upcoming?mine=1 switches it on. a tier with nothing left to show folds away. */
 (function(){
 'use strict';
@@ -47,7 +47,7 @@ function start(){
     all.setAttribute('aria-pressed',on?'false':'true');mine.setAttribute('aria-pressed',on?'true':'false');
     if(on&&!hit){
       why.hidden=false;
-      why.innerHTML=n.count?'nothing on the list matches your crate yet. it matches on the artist or the label of what you hearted, and on the artists and labels you follow. keep digging and check back.':'your crate is empty on this phone. tap the heart under a set or next to a track, or follow an artist or a label on their page, and this filter wakes up. <a href="/crate">my crate</a>';
+      why.innerHTML=n.count?'nothing on the list matches your crate yet. it matches on the artist or the label of what you liked, and on the artists and labels you follow. keep digging and check back.':'your crate is empty on this phone. tap the heart under a set or next to a track, or follow an artist or a label on their page, and this filter wakes up. <a href="/crate">my crate</a>';
     }else why.hidden=true;
     try{localStorage.setItem(KEY,on?'1':'0')}catch(e){}
   }

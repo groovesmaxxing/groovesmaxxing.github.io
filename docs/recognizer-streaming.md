@@ -80,3 +80,24 @@ included:
   renders this as "hear it in" on the card. it is the one thing the phone cannot work out for an ID on
   its own, since there is no name to look up.
 - `in_set`: unchanged, the set the clip itself was scanned from, when known.
+
+## the row-named guess card (since 2026-10-13)
+
+when the clip is placed inside a set we hold a tracklist for, `in_set.row` is the named row playing at
+that second. since 2026-10-13 the server also makes that row the closest guess, so the "on the tracklist"
+line and the guess under the confidence bar never name two different records:
+
+- a `guess` or `none` card becomes `{"kind":"guess","candidate":{...}}` with `artist_claim` and
+  `title_claim` taken from the row, `headline` the title, `subline` the artist, `word` `guess`,
+  `shown_score` null, `tier` `NO MATCH`, and `confidence_line` `on the tracklist at this second`.
+  `heard_in` carries the row's own page link `[{set_title, page_url, seconds, at, deep_link}]`.
+- when the library's hash index also raised a clip whose own naming agrees with the row, the candidate
+  keeps that entry's `fingerprint_id`, `store_links`, `artwork_url` and `account_href`, named as the
+  page names it.
+- a `match` card is never replaced. a match that disagrees with the row stays a match.
+- an open `ID - ID` row names nothing, so the card is as it was and `in_set.row` is null.
+- the recognition keeps a `set_row` entry (row, card kind and name, agrees, applied) so disagreements
+  between the engines and the page can be counted. it is not sent to the phone.
+
+the phone needs no change: `placedHead` already reads `in_set.row`, the guess block already reads
+`card.candidate`, and `sureLine` already prefers `confidence_line` when it is present.
