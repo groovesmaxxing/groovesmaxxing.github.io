@@ -1,37 +1,104 @@
 {
- "generated": "2026-10-13T05:17:07Z",
+ "generated": "2026-10-13T05:28:03Z",
  "pages": 841,
  "links": {
-  "checkable": 5976,
+  "checkable": 5975,
   "by_kind": {
    "other": 2738,
    "spotify": 1730,
-   "soundcloud": 694,
+   "soundcloud": 693,
    "youtube": 814
   },
-  "checked_within_recheck": 2092,
+  "checked_within_recheck": 2791,
   "asked_this_run": 700,
-  "unknown": 102,
+  "unknown": 151,
   "budget": 700,
   "recheck_days": 10
  },
  "broken": [
   {
-   "url": "https://soundcloud.com/juliann_music",
+   "url": "https://soundcloud.com/nariman93380",
    "kind": "soundcloud",
    "code": 404,
    "note": null,
    "title": null,
    "pages": [
-    "/artists/juliann"
+    "/artists/nariman"
    ],
    "page_count": 1,
-   "checked": "2026-10-13T05:17:07Z",
-   "first_seen": "2026-10-13T05:17:07Z"
+   "checked": "2026-10-13T05:28:03Z",
+   "first_seen": "2026-10-13T05:28:03Z"
   }
  ],
- "moved": [],
- "differs": [],
+ "moved": [
+  {
+   "url": "https://noshamusica.com",
+   "kind": "other",
+   "code": 200,
+   "note": "lands on noshamusica.wordpress.com",
+   "title": null,
+   "pages": [
+    "/artists/nosha"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-13T05:28:03Z",
+   "first_seen": "2026-10-13T05:28:03Z"
+  },
+  {
+   "url": "https://odesza.co",
+   "kind": "other",
+   "code": 200,
+   "note": "lands on odesza.com",
+   "title": null,
+   "pages": [
+    "/artists/odesza"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-13T05:28:03Z",
+   "first_seen": "2026-10-13T05:28:03Z"
+  },
+  {
+   "url": "https://www.nicolasjaar.net/",
+   "kind": "other",
+   "code": 200,
+   "note": "lands on www.jaar.site",
+   "title": null,
+   "pages": [
+    "/artists/nicolas-jaar"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-13T05:28:03Z",
+   "first_seen": "2026-10-13T05:28:03Z"
+  }
+ ],
+ "differs": [
+  {
+   "url": "https://open.spotify.com/album/0620dMBIpjeI61scHdp9w2",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: \"Body Shake\" to \"Templo Disko\"",
+   "title": "I Don't Think I Can Stop",
+   "pages": [
+    "/artists/max-styler"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-13T05:28:03Z",
+   "first_seen": "2026-10-13T05:28:03Z"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=jn5nTfnysfk",
+   "kind": "youtube",
+   "code": 200,
+   "note": "page says: L Imperatrice live in Paris 2020",
+   "title": "L'Impératrice live à Paris ♕ (Tournée virtuelle 2020)",
+   "pages": [
+    "/artists/limperatrice"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-13T05:28:03Z",
+   "first_seen": "2026-10-13T05:28:03Z"
+  }
+ ],
  "anchors_broken": [],
- "summary": "1 broken, 0 moved, 0 read differently, 0 broken anchors, 2092 of 5976 links checked in the last 10 days"
+ "summary": "1 broken, 3 moved, 2 read differently, 0 broken anchors, 2791 of 5975 links checked in the last 10 days"
 }
