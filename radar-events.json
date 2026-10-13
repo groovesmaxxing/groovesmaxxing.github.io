@@ -1,17 +1,8 @@
 {
-"generated": "2026-10-12T19:09:00+00:00",
+"generated": "2026-10-13T17:01:22+00:00",
 "artist_count": 704,
-"artists_with_events": 145,
+"artists_with_events": 147,
 "events": [
-{
-"date": "2026-10-12",
-"event": "Lewis OfMan",
-"venue": "Brighton Music Hall presented by Citizens",
-"city": "Boston",
-"region": "MA",
-"url": "https://www.ticketmaster.com/lewis-ofman-boston-massachusetts-10-12-2026/event/010064B2FAA582E7",
-"artist": "Lewis OfMan"
-},
 {
 "date": "2026-10-13",
 "event": "LEWIS OFMAN with Moon King",
@@ -1526,11 +1517,11 @@
 },
 {
 "date": "2026-11-06",
-"event": "FEVER 105 PRESENTS Dan Shake, Horse Meat Disco, MiNNA, Theon Bower",
+"event": "Dan Shake, Horse Meat Disco, MiNNA, Theon Bower, Groove Theory",
 "venue": "Electric Studios",
 "city": "Sheffield",
 "region": "GB",
-"url": "https://www.universe.com/events/fever-105-presents-dan-shake-horse-meat-disco-minna-theon-bower-tickets-V52Q9K?ref=ticketmaster",
+"url": "https://www.universe.com/events/dan-shake-horse-meat-disco-minna-theon-bower-groove-theory-tickets-V52Q9K?ref=ticketmaster",
 "artist": "Horse Meat Disco"
 },
 {
@@ -2381,6 +2372,15 @@
 },
 {
 "date": "2026-11-21",
+"event": "Tom & Collins",
+"venue": "The Rooftop at Vinyl",
+"city": "Denver",
+"region": "CO",
+"url": "https://www.ticketweb.com/event/tom-collins-the-rooftop-at-vinyl-tickets/14364334",
+"artist": "Tom & Collins"
+},
+{
+"date": "2026-11-21",
 "event": "Wade Bowen - Ages 18+",
 "venue": "Billy Bob's",
 "city": "Fort Worth",
@@ -2567,6 +2567,15 @@
 "region": "CA",
 "url": "https://on.fgtix.com/trk/CFLtc",
 "artist": "Tiga"
+},
+{
+"date": "2026-11-28",
+"event": "Soundtuary",
+"venue": "LIV Nightclub Miami",
+"city": "Miami Beach",
+"region": "FL",
+"url": "https://www.ticketweb.com/event/soundtuary-liv-nightclub-miami-tickets/14377904",
+"artist": "Deep Dish"
 },
 {
 "date": "2026-11-28",
@@ -2765,6 +2774,15 @@
 "region": "CA",
 "url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-oakland-california-12-04-2026/event/1C0064B3BCEE6B02",
 "artist": "John Summit"
+},
+{
+"date": "2026-12-04",
+"event": "Kyle Watson - Ages 18+",
+"venue": "Miramar Theatre",
+"city": "Milwaukee",
+"region": "WI",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AA76x_",
+"artist": "Kyle Watson"
 },
 {
 "date": "2026-12-04",
@@ -3442,6 +3460,15 @@
 "artist": "Mousse T."
 },
 {
+"date": "2027-01-30",
+"event": "CAMELPHAT ALL NIGHT LONG",
+"venue": "O2 Victoria Warehouse Manchester",
+"city": "Manchester",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/camelphat-all-night-long-manchester-30-01-2027/event/3E00654C975C2AA1",
+"artist": "CamelPhat"
+},
+{
 "date": "2027-02-02",
 "event": "DRAMA",
 "venue": "Freo.Social",
@@ -3529,6 +3556,15 @@
 "city": "Tucson",
 "region": "AZ",
 "url": "https://www.ticketmaster.com/wade-bowen-the-version-of-me-tucson-arizona-02-13-2027/event/1900653CC15E7B4C",
+"artist": "Wade"
+},
+{
+"date": "2027-02-17",
+"event": "Wade Bowen",
+"venue": "Troubadour",
+"city": "West Hollywood",
+"region": "CA",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AA76Pp",
 "artist": "Wade"
 },
 {
