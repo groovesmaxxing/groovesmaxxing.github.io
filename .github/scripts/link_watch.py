@@ -44,6 +44,7 @@ ACCEPTED_MOVES = {
     "https://genesimusic.com": "genesi.komi.io",
     "https://www.dontblink.io": "dontblink.komi.io",
     "https://noshamusica.com": "noshamusica.wordpress.com",
+    "https://www.poloandpanmusic.com": "poloandpan.komi.io",
 }
 # reads differently: url -> the title behind it that the page keeps its own name against.
 ACCEPTED_TITLES = {
