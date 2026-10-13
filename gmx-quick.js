@@ -2,6 +2,6 @@
    and its sheet are part of the shell now. this file stays so the pages that still load it do not 404, and
    fetches the shell on a page that has nothing else to. */
 (function(){
-if(window.gmxNav||document.querySelector('script[src="/gmx-nav.js"]'))return;
-var s=document.createElement('script');s.src='/gmx-nav.js';s.defer=true;document.head.appendChild(s);
+if(window.gmxNav||document.querySelector('script[src^="/gmx-nav.js"]'))return;
+var s=document.createElement('script');s.src='/gmx-nav.js?v=15';s.defer=true;document.head.appendChild(s);
 })();

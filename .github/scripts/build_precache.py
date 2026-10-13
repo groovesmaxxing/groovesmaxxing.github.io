@@ -6,7 +6,7 @@ import glob, json
 from datetime import date
 
 urls = ['/', '/scan', '/more', '/search', '/sets', '/artists', '/events', '/radio', '/crate', '/upcoming', '/open-ids', '/tracklists/',
-        '/gmx-nav.js', '/gmx-nav.css', '/gmx-quick.js', '/gmx-quick.css', '/gmx-sheet.js', '/gmx-sheet.css','/gmx-player.js', '/gmx-player.css', '/gmx-motion.js', '/gmx-motion.css',
+        '/gmx-nav.js?v=15', '/gmx-nav.css?v=15', '/gmx-quick.js', '/gmx-quick.css', '/gmx-sheet.js', '/gmx-sheet.css','/gmx-player.js', '/gmx-player.css', '/gmx-motion.js', '/gmx-motion.css',
         '/gmx-refresh.js', '/gmx-clips.js', '/gmx-sets.js', '/gmx-follow.js', '/gmx-crate.js', '/gmx-upcoming.js', '/gmx-profile.css', '/gmx-label.css',
         '/gmx-capture-worklet.js', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png', '/favicon.svg',
         '/sets-index.json', '/set-tags.json', '/search-index.json', '/artists-index.json', '/radar-denver.json', '/names-index.json', '/related-index.json', '/gmx-related.js', '/tracks-index.json', '/open-ids.json']

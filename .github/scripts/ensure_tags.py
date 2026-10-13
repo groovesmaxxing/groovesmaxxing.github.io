@@ -16,9 +16,9 @@ MOTION_CSS = '<link rel="stylesheet" href="/gmx-motion.css">'
 MOTION_JS = '<script src="/gmx-motion.js" defer></script>'
 T = {
     'player_css': '<link rel="stylesheet" href="/gmx-player.css">',
-    'nav_css': '<link rel="stylesheet" href="/gmx-nav.css">',
+    'nav_css': '<link rel="stylesheet" href="/gmx-nav.css?v=15">',
     'player_js': '<script src="/gmx-player.js" defer></script>',
-    'nav_js': '<script src="/gmx-nav.js" defer></script>',
+    'nav_js': '<script src="/gmx-nav.js?v=15" defer></script>',
     'follow_js': '<script src="/gmx-follow.js" defer></script>',
     'crate_js': '<script src="/gmx-crate.js" defer></script>',
     'related_js': '<script src="/gmx-related.js" defer></script>',
@@ -29,7 +29,7 @@ T = {
     'sheet_js': '<script src="/gmx-sheet.js" defer></script>',
     # the account layer (2026-10-12): "this is me" on every artist and label profile
     'account_css': '<link rel="stylesheet" href="/gmx-account.css">',
-    'account_js': '<script src="/gmx-account.js" defer></script>',
+    'account_js': '<script src="/gmx-account.js?v=15" defer></script>',
 }
 
 def ensure(path, heads, before_motion, after_motion):
