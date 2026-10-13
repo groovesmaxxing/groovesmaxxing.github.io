@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0B0B0D">
 <title>AUGIS · groovesMAXXING</title>
@@ -14,10 +16,9 @@
 <meta property="og:description" content="AUGIS: house / dance-pop from france. verified links, dj sets and interviews, tracked on groovesmaxxing.">
 <meta property="og:image" content="https://groovesmaxxing.com/og/artists/augis.jpg">
 <meta name="twitter:image" content="https://groovesmaxxing.com/og/artists/augis.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" href="/fonts/poppins-400-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-400-latin.woff2" crossorigin>
+<link rel="stylesheet" href="/gmx-fonts.css">
 <style>
 :root{--night:#0B0B0D;--racing:#FF1C02;--deep:#CC1400;--day:#F2F2EF;--steel:#8A8A93;--line:#26262b;--card:#141417}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -94,7 +95,7 @@ footer{border-top:1px solid var(--line);margin-top:72px;padding:34px 0 60px}
   "sameAs": [
     "https://open.spotify.com/artist/2UlsuMqDGywuSw0FT1rfbb",
     "https://www.instagram.com/augis.music",
-    "https://soundcloud.com/vgs-augis",
+    "https://soundcloud.com/augis-music",
     "https://www.beatport.com/artist/augis/1038401"
   ]
 }
@@ -136,11 +137,11 @@ footer{border-top:1px solid var(--line);margin-top:72px;padding:34px 0 60px}
 <h2 class="vh">on spotify</h2>
 <div class="player"><iframe src="https://open.spotify.com/embed/artist/2UlsuMqDGywuSw0FT1rfbb?theme=0" loading="lazy" title="AUGIS on Spotify" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe></div>
 <h2 class="vh">on soundcloud</h2>
-<div class="player"><iframe src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fvgs-augis&color=%23ff1c02&auto_play=false&show_teaser=false" loading="lazy" title="AUGIS on SoundCloud"></iframe></div>
+<div class="player"><iframe src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Faugis-music&color=%23ff1c02&auto_play=false&show_teaser=false" loading="lazy" title="AUGIS on SoundCloud"></iframe></div>
 <div class="links">
 <a class="lk ico" href="https://open.spotify.com/artist/2UlsuMqDGywuSw0FT1rfbb" target="_blank" rel="noopener" aria-label="Spotify" title="Spotify"><svg class="lki"><use href="#i-spotify"/></svg></a>
 <a class="lk ico" href="https://www.instagram.com/augis.music" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg class="lki"><use href="#i-instagram"/></svg></a>
-<a class="lk ico" href="https://soundcloud.com/vgs-augis" target="_blank" rel="noopener" aria-label="SoundCloud" title="SoundCloud"><svg class="lki"><use href="#i-soundcloud"/></svg></a>
+<a class="lk ico" href="https://soundcloud.com/augis-music" target="_blank" rel="noopener" aria-label="SoundCloud" title="SoundCloud"><svg class="lki"><use href="#i-soundcloud"/></svg></a>
 <a class="lk ico mono2" href="https://www.beatport.com/artist/augis/1038401" target="_blank" rel="noopener" aria-label="Beatport" title="Beatport">BP</a>
 </div>
 </section>

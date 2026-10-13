@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-DBCemR6r7lLdrd3tgbifzonascw/9hnp1WIp5NQCG68=' 'sha256-Yzz0W75C/p37Mm2Y7XXlhzFXd7rSoenh66wLjKEiCa8=' 'sha256-v+W/ZvUInA8yV8kX3w9qouAoP6OPSKMlIT4mBf+oIVA='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>more · groovesMAXXING</title>
 <meta name="description" content="your groovesmaxxing account and settings, plus the rest of the site: the labels, what's dropping soon, the newsletter, the playlists, feedback, privacy and terms.">
@@ -17,10 +19,9 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-mobile-web-app-title" content="groovesMAXXING">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" href="/fonts/poppins-400-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-400-latin.woff2" crossorigin>
+<link rel="stylesheet" href="/gmx-fonts.css">
 <style>
 :root{--night:#0B0B0D;--racing:#FF1C02;--deep:#CC1400;--day:#F2F2EF;--steel:#8A8A93;--line:rgba(242,242,239,.12)}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -106,12 +107,16 @@ form.nl input[type=submit]:hover{background:var(--deep);border-color:var(--deep)
 .stats li{font-family:'Space Mono',monospace;font-size:.72rem;color:var(--steel);letter-spacing:.04em;line-height:1.5}
 .stats b{display:block;font-family:'Poppins',sans-serif;font-weight:900;font-size:1.4rem;color:var(--day);letter-spacing:-.02em}
 .how{color:var(--steel);font-size:.86rem;line-height:1.6;margin-top:4px}
+/* my claims and the team, filled by gmx-account.js under "for artists" */
+#gmx-claims h4,#gmx-team h4{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.18em;color:var(--steel);text-transform:uppercase;font-weight:400;margin:22px 0 10px}
+#gmx-claims:empty,#gmx-team:empty{display:none}
 </style>
 <link rel="canonical" href="https://groovesmaxxing.com/more">
 <link rel="alternate" type="application/rss+xml" title="fresh grooves friday" href="/feed.xml">
 <link rel="stylesheet" href="/gmx-motion.css">
 <link rel="stylesheet" href="/gmx-nav.css">
 <link rel="stylesheet" href="/gmx-quick.css">
+<link rel="stylesheet" href="/gmx-account.css">
 <meta property="og:image" content="https://groovesmaxxing.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -156,8 +161,10 @@ form.nl input[type=submit]:hover{background:var(--deep);border-color:var(--deep)
 
 <h2>for artists</h2>
 <ul class="list">
-<li class="soon" id="artistrow"><span class="tx">are you an artist? verify<small id="artist-small">prove the official instagram or soundcloud is yours, get the badge, confirm the IDs of your tracks</small></span><span class="go">soon</span></li>
+<li><a href="/artists" id="artistrow"><span class="tx">are you an artist or a label? claim your page<small id="artist-small">open your page and tap "this is me". prove the official instagram, soundcloud or mail is yours and get the badge</small></span><span class="go">↗</span></a></li>
 </ul>
+<div id="gmx-claims"></div>
+<div id="gmx-team"></div>
 </div>
 
 <h2>privacy and data</h2>
@@ -247,16 +254,17 @@ function paintOut(){document.body.classList.remove('signed-in');meNow=null;body.
 function paintIn(me){
   meNow=me;document.body.classList.add('signed-in');
   var ini=String(me.handle||me.email||'?').replace(/^@/,'').charAt(0).toUpperCase();
-  var badge=me.role==='verified_artist'?'<span class="badge">verified artist</span>':me.role==='verified_label'?'<span class="badge">verified label</span>':'';
+  var bt=A.badge(me.role),badge=bt?'<span class="badge">'+esc(bt)+'</span>':'';
   var since=me.created_at||me.member_since||me.since||'';
   var crate=0;try{crate=(JSON.parse(localStorage.getItem('gmx_crate')||'[]')||[]).length}catch(e){}
+  if(me.crate!=null&&me.crate>crate)crate=me.crate;
   var named=me.ids_named!=null?me.ids_named:(me.credits!=null?me.credits:null);
   body.innerHTML='<div class="prof" role="button" tabindex="0" data-acct="handle" aria-label="edit your handle"><span class="av" aria-hidden="true">'+esc(ini)+'</span><div class="who">'+
     (me.handle?'<div class="at">@'+esc(me.handle)+badge+'</div>':'<div class="at none">no handle yet'+badge+'</div>')+
     '<small>'+esc(me.email||'')+(since?' · since '+esc(String(since).slice(0,10)):'')+'</small><span class="hint">tap to edit your handle</span></div></div>'+
-    '<ul class="stats">'+(named!=null?'<li><b>'+esc(named)+'</b>IDs named</li>':'')+'<li><b>'+crate+'</b>in the crate</li><li><b>'+(me.follows||0)+'</b>following</li><li><b>'+(me.devices||0)+'</b>'+(me.devices===1?'device':'devices')+'</li></ul>'+
+    '<ul class="stats">'+(named!=null?'<li><b>'+esc(named)+'</b>IDs named</li>':'')+'<li><b>'+esc(crate)+'</b>in the crate</li>'+(me.artists!=null?'<li><b>'+esc(me.artists)+'</b>artists followed</li>':'')+'<li><b>'+esc(me.follows||0)+'</b>'+(me.artists!=null?'open follows':'following')+'</li><li><b>'+(me.devices||0)+'</b>'+(me.devices===1?'device':'devices')+'</li></ul>'+
     '<div id="hbox" hidden></div><p class="msg" id="youmsg"></p>';
-  var ar=$('artist-small');if(ar&&(me.role==='verified_artist'||me.role==='verified_label'))ar.textContent='verified. the badge shows on your profile and on the IDs you confirm';
+  var ar=$('artist-small');if(ar&&bt&&me.role!=='team')ar.textContent='verified. the badge shows on your profile and on the IDs you confirm. your claims and your team are below';
   if(justIn){justIn=false;note('youmsg','you are in.',true)}
   paintPush();
 }

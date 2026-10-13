@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com https://api.deezer.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-dTOLiWn0lKaAm/Rw3UvSlSTNpqs3WZDiEMsEbLGX9PI='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net https://open.spotify.com https://itunes.apple.com; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>scan · groovesMAXXING</title>
 <meta name="description" content="hear a track, tap once. groovesmaxxing listens for about 15 seconds and looks for it in our own library of sets first, then in the catalogs.">
@@ -17,10 +19,9 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-mobile-web-app-title" content="groovesMAXXING">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" href="/fonts/poppins-400-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-400-latin.woff2" crossorigin>
+<link rel="stylesheet" href="/gmx-fonts.css">
 <style>
 :root{--night:#0B0B0D;--racing:#FF1C02;--deep:#CC1400;--day:#F2F2EF;--steel:#8A8A93;--line:rgba(242,242,239,.12)}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -127,6 +128,10 @@ h1.eyebrow{margin:0;font-weight:400}
 .guess .kw{margin-bottom:6px}
 .guess .nm{font-weight:600;font-size:1.05rem;overflow-wrap:anywhere}
 .guess .pc{font-family:'Space Mono',monospace;font-size:.8rem;color:var(--steel);margin-top:3px}
+details.guess>summary{cursor:pointer;list-style:none;color:var(--steel)}
+details.guess>summary::-webkit-details-marker{display:none}
+details.guess>summary::after{content:' +';font-family:'Space Mono',monospace}
+details.guess[open]>summary::after{content:' \2212'}
 .note{color:#c9c9c4;line-height:1.65;font-size:.95rem;margin-top:8px}
 .how{margin-top:18px;background:none;border:0;color:var(--steel);font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.08em;text-decoration:underline;text-underline-offset:4px;cursor:pointer;padding:8px}
 .how:hover,.how:focus-visible{color:var(--day)}
@@ -344,6 +349,10 @@ function setSession(t){gmxAccount.set(t)}
 var meCache=null;
 function tick(ms){try{if(navigator.vibrate)navigator.vibrate(ms||30)}catch(e){}}
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+/* a link or cover is used only when it is https, http or a path on this site. anything with another
+   scheme (javascript:, data:) from a store record, a lookup or a server field becomes nothing. */
+function safeUrl(u){u=String(u==null?'':u).trim();if(!u)return '';if(/^https?:\/\//i.test(u))return u;if(/^\/\//.test(u))return '';return u.split(/[\/?#]/)[0].indexOf(':')<0?u:''}
+function cleanLinks(o){var r={};Object.keys(o||{}).forEach(function(k){var u=safeUrl(o[k]);if(u)r[k]=u});return r}
 function pct(n){return Math.round(Number(n)||0)+'%'}
 function slug(s){
   s=String(s||'').toLowerCase().replace(/[øØ]/g,'o');
@@ -595,6 +604,8 @@ function identify(blob){
 }
 
 /* cards */
+/* a cover that fails to load gives way to the rings (error events do not bubble, so this captures) */
+card.addEventListener('error',function(e){var t=e.target;if(t&&t.tagName==='IMG'&&t.hasAttribute('data-rings')&&t.parentNode)t.parentNode.innerHTML=ringsMark()},true);
 function showCard(html){card.innerHTML=html;card.classList.add('on');card.scrollIntoView({behavior:'smooth',block:'nearest'});if(current&&current.card&&current.card.candidate&&html.indexOf('earlynote')<0||html.indexOf('earlynote')>-1)try{enrich(current)}catch(e){}try{decorate(html.indexOf('earlynote')>-1?early:current)}catch(e){}}
 /* the crate heart and the label link (crate loop build, 2026-10-11). the heart saves the match on this phone
    like a tracklist row would, with whatever store links the card has at tap time, so a link that arrives
@@ -651,7 +662,8 @@ function artBlock(c){
   // the cover comes only from a store record (a released track). an unreleased ID has no cover to show,
   // so it carries the groovesmaxxing mark, the rings and the wave, with the word under it (G-MO, 2026-10-11).
   // a released track with no cover yet draws the plain rings until enrich() finds one.
-  if(c.artwork_url)return '<div class="art"><img src="'+esc(c.artwork_url)+'" alt="" loading="lazy" onerror="this.parentNode.innerHTML=ringsMark()"></div>';
+  var a=safeUrl(c.artwork_url);
+  if(a)return '<div class="art"><img src="'+esc(a)+'" alt="" loading="lazy" data-rings="1"></div>';
   if(c.released===false||(c.status&&c.status!=='out now'))return '<div class="art unrel" data-done="1">'+logoMark()+'<span class="ulbl">unreleased</span></div>';
   return '<div class="art">'+ringsMark()+'</div>';
 }
@@ -669,7 +681,7 @@ function statusPill(s){
   return '<span class="pill '+cls+'">'+esc(s||'ID')+'</span>';
 }
 function storeRow(c){
-  var l=c.store_links||{}, out='';
+  var l=cleanLinks(c.store_links), out='';
   if(l.spotify)out+='<a class="btn" href="'+esc(l.spotify)+'" target="_blank" rel="noopener">spotify</a>';
   if(l.apple)out+='<a class="btn" href="'+esc(l.apple)+'" target="_blank" rel="noopener">apple music</a>';
   if(l.beatport_search)out+='<a class="btn" href="'+esc(l.beatport_search)+'" target="_blank" rel="noopener">beatport</a>';
@@ -679,7 +691,8 @@ function heardRows(c){
   var h=c.heard_in||[]; if(!h.length)return '';
   var out='<h3>heard in</h3><ul class="heard">';
   h.slice(0,5).forEach(function(r){
-    out+='<li><a href="'+esc(r.page_url)+'">'+esc(r.set_title)+'</a><span class="at">'+(r.deep_link?'<a href="'+esc(r.deep_link)+'" target="_blank" rel="noopener">'+esc(r.at)+'</a>':esc(r.at))+'</span></li>';
+    var pu=safeUrl(r.page_url), dl=safeUrl(r.deep_link);
+    out+='<li>'+(pu?'<a href="'+esc(pu)+'">'+esc(r.set_title)+'</a>':esc(r.set_title))+'<span class="at">'+(dl?'<a href="'+esc(dl)+'" target="_blank" rel="noopener">'+esc(r.at)+'</a>':esc(r.at))+'</span></li>';
   });
   return out+'</ul>';
 }
@@ -702,8 +715,18 @@ function placedHead(cur){
   if(who&&!/^id$/i.test(who))checkArtistPage(who);
   return out;
 }
+/* does the catalog's guess name the same track as the tracklist row ("artist - title")? titles compared
+   through foldT, so a mix name or an accent is not a difference. an unnamed guess never matches */
+function guessMatchesRow(g,row){
+  if(!g||!g.title||!row)return false;
+  var parts=String(row).split(' - '),ra=parts.length>1?parts[0]:'',rt=parts.length>1?parts.slice(1).join(' - '):row;
+  if(foldT(g.title)!==foldT(rt))return false;
+  var ga=foldT(g.artist),fa=foldT(ra);
+  return !ga||!fa||fa==='id'||ga.indexOf(fa)>-1||fa.indexOf(ga)>-1;
+}
 function inSetRows(cur){
   var s=cur.in_set; if(!s||!s.set_title)return '';
+  s=Object.assign({},s,{page_url:safeUrl(s.page_url),deep_link:safeUrl(s.deep_link)});
   var name=s.page_url?'<a href="'+esc(s.page_url)+'">'+esc(s.set_title)+'</a>':(s.deep_link?'<a href="'+esc(s.deep_link)+'" target="_blank" rel="noopener">'+esc(s.set_title)+'</a>':esc(s.set_title));
   var at=s.deep_link?'<a href="'+esc(s.deep_link)+'" target="_blank" rel="noopener">around '+esc(s.at)+'</a>':'around '+esc(s.at);
   /* the tracklist's own call at that spot, so a row fixed by ear shows up here too. none on an ID row */
@@ -772,11 +795,14 @@ function resultCard(cur){
     out+=followRow(cand);
     if(sub)checkArtistPage(sub);else if(nm&&nm.artist)checkArtistPage(nm.artist);
   }else if(c.kind==='guess'&&cand){
-    var g=nameOf(cand);
-    out+=placedHead(cur)||'<p class="kw"><b>no match</b></p><h2>nothing we\'re sure of.</h2><div class="row"><button class="btn red" data-act="listen">listen again</button></div><p class="note">best on a drop or a vocal.</p>';
+    var g=nameOf(cand), placed=placedHead(cur);
+    /* the tracklist already named the row at this spot: a guess under the bar that names something else
+       folds away under its own line, the tracklist leads (G-MO, 2026-10-13). one that agrees shows as before */
+    var other=!!placed&&!guessMatchesRow(g,cur.in_set.row);
+    out+=placed||'<p class="kw"><b>no match</b></p><h2>nothing we\'re sure of.</h2><div class="row"><button class="btn red" data-act="listen">listen again</button></div><p class="note">best on a drop or a vocal.</p>';
     out+=inSetRows(cur);
-    out+='<div class="guess"><p class="kw">closest guess</p><p class="nm">'+(g?esc(g.artist)+(g.artist&&g.title?' - ':'')+esc(g.title):'an unnamed library entry')+'</p><p class="pc">'+sureLine(cand)+'</p><div id="hear"></div>';
-    out+='<div class="row"><button class="btn" data-act="confirm">that\'s right</button><button class="btn" data-act="correct">it\'s actually...</button></div></div>';
+    out+=(other?'<details class="guess"><summary class="kw">the catalog heard something else</summary>':'<div class="guess"><p class="kw">closest guess</p>')+'<p class="nm">'+(g?esc(g.artist)+(g.artist&&g.title?' - ':'')+esc(g.title):'an unnamed library entry')+'</p><p class="pc">'+sureLine(cand)+'</p><div id="hear"></div>';
+    out+='<div class="row"><button class="btn" data-act="confirm">that\'s right</button><button class="btn" data-act="correct">it\'s actually...</button></div>'+(other?'</details>':'</div>');
     out+=correctionForm();
     out+=followRow(cand);
     out+=pathBlock(cur);
@@ -819,8 +845,8 @@ function enrich(cur){
   /* an unreleased card carries no link to the song, ever (G-MO, 2026-09-27): no store button, no store cover, no store
      search. the same title on a released original must not leak its links onto an edit that is not out. */
   var unreleased=c.released===false||(c.status&&c.status!=='out now');
-  function setArt(url){if(!art||!url||art.getAttribute('data-done'))return;art.setAttribute('data-done','1');var img=document.createElement('img');img.alt='';img.loading='lazy';img.onload=function(){img.classList.add('in');art.classList.add('found')};img.onerror=function(){img.remove()};img.src=url;art.innerHTML='';art.appendChild(img)}
-  function addBtn(href,label,cls){if(!store||!href||store.querySelector('a[href="'+href+'"]'))return;var a=document.createElement('a');a.className='btn'+(cls?' '+cls:'');a.href=href;a.target='_blank';a.rel='noopener';a.textContent=label;var share=store.querySelector('[data-act="share"]');store.insertBefore(a,share||null);titleLink()}
+  function setArt(url){url=safeUrl(url);if(!art||!url||art.getAttribute('data-done'))return;art.setAttribute('data-done','1');var img=document.createElement('img');img.alt='';img.loading='lazy';img.onload=function(){img.classList.add('in');art.classList.add('found')};img.onerror=function(){img.remove()};img.src=url;art.innerHTML='';art.appendChild(img)}
+  function addBtn(href,label,cls){href=safeUrl(href);if(!store||!href||store.querySelector('a[href="'+href+'"]'))return;var a=document.createElement('a');a.className='btn'+(cls?' '+cls:'');a.href=href;a.target='_blank';a.rel='noopener';a.textContent=label;var share=store.querySelector('[data-act="share"]');store.insertBefore(a,share||null);titleLink()}
   function titleLink(){
     var h=cardEl.querySelector('h2');if(!h||h.querySelector('a'))return;
     var best=['open.spotify.com','music.apple.com','deezer.com','soundcloud.com','beatport.com'].map(function(d){var a=store&&store.querySelector('a.btn:not(.find)[href*="'+d+'"]');return a&&a.href}).filter(Boolean)[0];
@@ -850,7 +876,7 @@ function enrich(cur){
       }
     }
     if(hearEl&&!hearEl.children.length){
-      hearEl.innerHTML='<h3>hear it in</h3><ul class="heard hear">'+hits.map(function(r){var play=r.l?'<a href="'+esc(r.l)+'" target="_blank" rel="noopener">play from '+esc(r.at)+' ↗</a>':esc(r.at);return '<li><a href="'+esc(r.u)+'">'+esc(r.set)+'<small>'+esc(r.n)+(r.lab?' · '+esc(r.lab):'')+'</small></a><span class="at">'+play+'</span></li>'}).join('')+'</ul>';
+      hearEl.innerHTML='<h3>hear it in</h3><ul class="heard hear">'+hits.map(function(r){var rl=safeUrl(r.l),ru=safeUrl(r.u);var play=rl?'<a href="'+esc(rl)+'" target="_blank" rel="noopener">play from '+esc(r.at)+' ↗</a>':esc(r.at);return '<li><a href="'+esc(ru)+'">'+esc(r.set)+'<small>'+esc(r.n)+(r.lab?' · '+esc(r.lab):'')+'</small></a><span class="at">'+play+'</span></li>'}).join('')+'</ul>';
     }
   });
   if(unreleased||(c.artwork_url&&l.spotify&&l.apple))return;
@@ -1247,6 +1273,8 @@ function waitForLink(ticket,minutes){gmxAccount.waitForLink(ticket,minutes,signe
 function resumeWait(){gmxAccount.resumeWait(signedInByLink)}
 var justIn=false, pushNow='', setupWas=null;
 /* the chip beside the auto button moved to the header of every page (gmx-account.js, shell v2) */
+/* roles (2026-10-12): the badge word for User.role, the cache of the highest verified row */
+var ROLE_WORD={verified_artist:'verified artist',verified_label:'verified label',verified_venue:'verified venue',team:'team'};
 function renderYou(){
   var box=$('youbody'); if(!box||!cfg)return;
   if(!sessionToken()){
@@ -1258,7 +1286,7 @@ function renderYou(){
   }
   var paint=function(me){
     box.innerHTML='<div class="prof">'+(me.handle?'<span class="at">@'+esc(me.handle)+'</span>':'<span class="at none">no handle yet</span>')+
-      '<small>'+esc(me.email)+(me.role==='verified_artist'?' · verified artist':'')+'</small>'+
+      '<small>'+esc(me.email)+(ROLE_WORD[me.role]?' · '+ROLE_WORD[me.role]:'')+'</small>'+
       (me.handle?'<button class="chg" type="button" data-you="handle">change</button>':'')+'</div>'+
       '<p class="stat" id="youstat"></p>'+
       '<div id="hbox" hidden></div>'+

@@ -34,6 +34,21 @@ TIMEOUT = 20
 SKIP_HOSTS = {"fonts.googleapis.com", "fonts.gstatic.com", "www.instagram.com", "instagram.com", "www.tiktok.com",
               "tiktok.com", "x.com", "twitter.com", "www.facebook.com", "facebook.com", "www.youtube-nocookie.com",
               "w.soundcloud.com", "groovesmaxxing.com", "www.groovesmaxxing.com"}
+# answers checked by hand and decided fine. each one is accepted only while it reads exactly as decided,
+# so a new rename or a new destination gets flagged again.
+# moved: the artist's own domain forwarding to their link in bio page. url -> the host it lands on.
+ACCEPTED_MOVES = {
+    "https://alokmusic.com/": "alok.komi.io",
+    "https://bakermatmusic.com": "bakermat.hq.fan",
+    "https://fancyinc.com.br/": "fancyinc.komi.io",
+    "https://genesimusic.com": "genesi.komi.io",
+    "https://www.dontblink.io": "dontblink.komi.io",
+}
+# reads differently: url -> the title behind it that the page keeps its own name against.
+ACCEPTED_TITLES = {
+    "https://open.spotify.com/artist/4sITB0d3Uz43DKFElXk6xo": "Gabrl",  # spotify reads gabrl, the site keeps gabe cline, owner's call 2026-10-13
+}
+
 PAGES = sorted(glob.glob("*.html") + glob.glob("artists/*.html") + glob.glob("labels/*.html") + glob.glob("tracklists/*.html"))
 OUT = os.environ.get("LINKWATCH_OUT", "status-out")
 NOW = datetime.now(timezone.utc)
@@ -330,12 +345,13 @@ def main(offline=False):
         if rec["state"] == "broken":
             broken.append(entry(key, rec))
         elif rec["state"] == "moved":
-            moved.append(entry(key, rec))
+            if rec.get("note") != "lands on " + ACCEPTED_MOVES.get(rec["url"], ""):
+                moved.append(entry(key, rec))
         elif rec["state"] == "unknown":
             unknown += 1
         elif rec["state"] == "ok" and rec.get("title") and links[key]["names"]:
             names = links[key]["names"]
-            if not any(reads_like(rec["title"], n) for n in names):
+            if not any(reads_like(rec["title"], n) for n in names) and ACCEPTED_TITLES.get(rec["url"]) != rec["title"]:
                 differs.append(entry(key, rec, "page says: " + " | ".join(sorted(names))[:160]))
     broken.sort(key=lambda r: (-r["page_count"], r["url"]))
     moved.sort(key=lambda r: (-r["page_count"], r["url"]))
