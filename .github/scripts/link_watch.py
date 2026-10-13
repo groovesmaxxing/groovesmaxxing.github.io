@@ -51,6 +51,8 @@ ACCEPTED_TITLES = {
     "https://open.spotify.com/artist/4sITB0d3Uz43DKFElXk6xo": "Gabrl",  # spotify reads gabrl, the site keeps gabe cline, owner's call 2026-10-13
     # max styler's ep, linked on its first and last track names ("Body Shake" to "Templo Disko"), checked 2026-10-13
     "https://open.spotify.com/album/0620dMBIpjeI61scHdp9w2": "I Don't Think I Can Stop",
+    # wife material's edit, posted by the paranormal label, linked on the words "paranormal posted on soundcloud", checked 2026-10-13
+    "https://soundcloud.com/paranormalsociety/safe-and-sound-wife": "Justice - Safe and Sound (Wife Material Edit) by PARANORMAL",
 }
 
 PAGES = sorted(glob.glob("*.html") + glob.glob("artists/*.html") + glob.glob("labels/*.html") + glob.glob("tracklists/*.html"))
