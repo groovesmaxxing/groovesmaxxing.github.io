@@ -102,3 +102,14 @@
 .gmx-sw input:focus-visible+.knob{outline:3px solid #FF1C02;outline-offset:3px}
 .gmx-sw input:disabled+.knob{opacity:.5}
 @media (prefers-reduced-motion: reduce){.gmx-acct-toast,.gmx-sw .knob,.gmx-sw .knob::after{transition:none}}
+
+/* the artist tools on more (2026-10-13) */
+.gmx-toolset{margin-top:10px}
+.gmx-toolset>b{display:block;font-weight:600;margin-bottom:4px}
+.gmx-track{flex-direction:column;align-items:stretch !important}
+.gmx-track-tx b{font-weight:600}
+.gmx-track-tx small{display:block;font-family:'Space Mono',monospace;font-size:.68rem;color:#8A8A93;letter-spacing:.04em;margin-top:2px}
+.gmx-track .gmx-acct-row{margin-top:6px}
+.gmx-track-form:empty{display:none}
+.gmx-acct-form input[type=file]{padding:9px 12px;font-size:.78rem}
+.gmx-acct-form input[type=file]::file-selector-button{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.06em;border:1px solid #26262b;border-radius:999px;background:transparent;color:#F2F2EF;padding:6px 12px;margin-right:10px;cursor:pointer}

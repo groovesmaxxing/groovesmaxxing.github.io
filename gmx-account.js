@@ -11,6 +11,8 @@
      - "this is me" on every artist and label profile, and the sheet behind it: the GMX- code, the
        accounts the site pins as official, the three ways to prove it, "these aren't mine"
      - the account card on /more: sign in, handle, badge, my claims, the team, notifications, your data
+     - the artist tools on /more for verified accounts and their teams: my tracks with counts only, name
+       one, say it is out, say it is not mine, and send a file through the sent door
      - a small api for other scripts: window.gmxAccount.{ready, token, headers, api, me, signIn, badge, sync}
    calls are counted against the phone's hourly budget like a scan is, so /me is cached ten minutes and
    the crate only goes up when it changed. nothing here touches audio. */
@@ -63,6 +65,7 @@ function api(path,opts){
   return loadCfg().then(function(){
     var h=opts.headers||{};
     if(opts.json!==undefined){opts.body=JSON.stringify(opts.json);h['Content-Type']='application/json';delete opts.json}
+    /* a FormData body (the sent door) goes up as it is: the browser writes the multipart boundary */
     opts.headers=headers(h);
     return fx(cfg.api_base+path,opts,(opts.method&&opts.method!=='GET')?POST_MS:GET_MS);
   });
@@ -405,7 +408,7 @@ function wireMore(){
         '<li><a href="/crate"><b>my crate</b><small>synced to every phone you sign in on</small></a></li>'+
         '<li><a href="/scan#you"><b>scan history and follows</b><small>every device, with stop buttons</small></a></li>'+
         '<li><a href="/scan#you"><b>handle and push on this phone</b><small>the credit on IDs, notifications here</small></a></li></ul>'+
-        '<div id="gmx-claims"></div><div id="gmx-team"></div>'+
+        '<div id="gmx-claims"></div><div id="gmx-team"></div><div id="gmx-tools"></div>'+
         '<h4>notifications</h4><p class="gmx-acct-p small">by email, to '+esc(m.email)+'. push is the phone\'s own switch, under scan.</p><ul class="gmx-you-switches" id="gmx-notify"></ul>'+
         '<h4>your data</h4><ul class="gmx-you-list">'+
         '<li><button type="button" class="gmx-acct-rowbtn" data-export><b>download my data</b><small>scans, crate, follows, claims, as one json file</small></button></li>'+
@@ -484,6 +487,9 @@ function paintClaims(m){
     }).join('')+'</ul>';
     var owned=rows.filter(function(r){return r.state==='verified'&&(r.kind==='artist'||r.kind==='label')});
     if(owned.length)paintTeam(owned);
+    /* a team seat acts too, through the entity it sits on */
+    var acting=owned.concat(rows.filter(function(r){return r.state==='verified'&&r.kind==='team'}));
+    if(acting.length)paintTools(acting);
   }).catch(function(){});
 }
 function paintTeam(owned){
@@ -516,6 +522,78 @@ function loadSeats(box){
       return '<li><span><b>'+esc(s.email||s.invited_email||'')+'</b> <small>'+(s.state==='verified'?'on the team':'invited, not signed in yet')+'</small></span><button type="button" class="gmx-acct-link" data-remove="'+esc(s.role_id)+'">remove</button></li>';
     }).join(''):'<li><small>nobody yet.</small></li>';
   }).catch(function(){});
+}
+
+
+/* ---- the artist tools (design section 2): my tracks, three actions, the sent door ----------------------- */
+function trackRow(t,slug){
+  var name=t.confirmed_name||null,guess=!name&&t.name&&t.name!=='an unreleased ID'?t.name:null;
+  var head=name?'<b>'+esc(name)+'</b>':(guess?'<b>unnamed</b> <small>our guess: '+esc(guess)+'</small>':'<b>unnamed</b>');
+  var state=(t.status==='released'?'out':'unreleased')+' · '+t.scans+' scan'+(t.scans===1?'':'s')+' · '+t.waiting+' waiting'+(t.confirmed_by==='artist'?' · named by you':'');
+  var acts='';
+  if(t.status!=='released'){
+    acts+=(name&&t.confirmed_by==='artist'?'':'<button type="button" class="gmx-acct-btn" data-tact="confirm">'+(name?'that\'s right':'name it')+'</button>')+
+      '<button type="button" class="gmx-acct-btn ghost" data-tact="rename">it\'s actually…</button>'+
+      '<button type="button" class="gmx-acct-btn ghost" data-tact="out">it\'s out</button>';
+  }
+  acts+='<button type="button" class="gmx-acct-link" data-tact="not_mine">not mine</button>';
+  return '<li class="gmx-track" data-entry="'+esc(t.library_entry_id)+'" data-slug="'+esc(slug)+'"><div class="gmx-track-tx">'+head+'<small>'+esc(state)+'</small></div>'+
+    '<div class="gmx-acct-row">'+acts+'</div><div class="gmx-track-form"></div><p class="gmx-acct-msg"></p></li>';
+}
+function paintTools(owned){
+  var box=document.getElementById('gmx-tools');if(!box)return;
+  box.innerHTML='<h4>your tracks</h4><p class="gmx-acct-p small">what the library holds under your name or from your accounts. name them, say which are out, tell us which are not yours. counts only, never who scanned.</p>'+
+    owned.map(function(o){return '<div class="gmx-toolset" data-slug="'+esc(o.slug)+'"><b>'+esc(o.name||o.slug)+'</b><ul class="gmx-you-list" data-tracks><li><small>one sec.</small></li></ul>'+
+      '<form class="gmx-acct-form on" data-form="sendfile" autocomplete="off"><label>send us a file to fingerprint</label>'+
+      '<input type="text" name="title" maxlength="200" placeholder="artist - title (optional)"><input type="file" name="audio" accept="audio/*,.m4a,.mp3,.wav,.flac,.aiff" required>'+
+      '<div class="gmx-acct-row"><button class="gmx-acct-btn" type="submit">send it</button><span class="gmx-acct-msg"></span></div>'+
+      '<p class="gmx-acct-p small">this is the sent door: your yes to fingerprinting is logged with the file, we review it, and once accepted it is what the scan finds. nothing is fetched from anywhere.</p></form></div>'}).join('');
+  box.querySelectorAll('.gmx-toolset').forEach(function(set){loadTracks(set)});
+  box.addEventListener('click',function(ev){
+    var b=ev.target.closest('[data-tact]');if(!b)return;
+    var li=b.closest('.gmx-track'),form=li.querySelector('.gmx-track-form'),msg=li.querySelector('.gmx-acct-msg'),act=b.dataset.tact;
+    if(act==='rename'){form.innerHTML='<div class="gmx-acct-row"><input type="text" maxlength="512" placeholder="artist - title" aria-label="the name as it should read"><button type="button" class="gmx-acct-btn red" data-tsave="confirm">save the name</button></div>';form.querySelector('input').focus();return}
+    if(act==='out'){form.innerHTML='<div class="gmx-acct-row"><input type="url" inputmode="url" maxlength="1024" placeholder="the store link (optional)" aria-label="the store link"><button type="button" class="gmx-acct-btn red" data-tsave="released">it\'s out</button></div>';form.querySelector('input').focus();return}
+    if(act==='not_mine'&&!confirm('take this one off your list? we keep it as an unnamed id.'))return;
+    trackAct(li,act,{});
+  });
+  box.addEventListener('click',function(ev){
+    var b=ev.target.closest('[data-tsave]');if(!b)return;
+    var li=b.closest('.gmx-track'),v=(li.querySelector('.gmx-track-form input').value||'').trim();
+    trackAct(li,b.dataset.tsave,b.dataset.tsave==='confirm'?{name:v}:{url:v||null});
+  });
+  box.addEventListener('submit',function(ev){
+    var f=ev.target.closest('form[data-form=sendfile]');if(!f)return;ev.preventDefault();
+    var set=f.closest('.gmx-toolset'),m=f.querySelector('.gmx-acct-msg'),file=f.querySelector('input[name=audio]').files[0];
+    if(!file){note(m,'pick the file first.');return}
+    var fd=new FormData();fd.append('audio',file,file.name);fd.append('title',(f.querySelector('input[name=title]').value||'').trim());fd.append('slug',set.dataset.slug);
+    f.querySelector('button').disabled=true;note(m,'sending '+Math.round(file.size/1048576*10)/10+' mb');
+    api('/artist/files',{method:'POST',body:fd}).then(function(r){
+      if(r.status===413){note(m,'too big for one send. a clip of the track is enough.');return}
+      if(r.status===422||r.status===409)return r.json().then(function(j){note(m,(j.detail&&j.detail.message)||j.detail||'that did not work.')});
+      if(!r.ok)throw new Error(r.status);
+      return r.json().then(function(){note(m,'in. we fingerprint it, review it, and it joins the library once accepted.',true);f.reset()});
+    }).catch(function(){note(m,'did not send. check your signal and try again.')}).then(function(){f.querySelector('button').disabled=false});
+  });
+}
+function loadTracks(set){
+  var ul=set.querySelector('[data-tracks]');
+  api('/artist/tracks?slug='+encodeURIComponent(set.dataset.slug)).then(function(r){return r.ok?r.json():null}).then(function(j){
+    if(!j){ul.innerHTML='<li><small>could not load the list right now.</small></li>';return}
+    ul.innerHTML=j.tracks.length?j.tracks.map(function(t){return trackRow(t,j.slug)}).join(''):'<li><small>nothing under your name yet. send us a file below, or scan one of yours.</small></li>';
+  }).catch(function(){ul.innerHTML='<li><small>could not load the list right now.</small></li>'});
+}
+function trackAct(li,action,extra){
+  var msg=li.querySelector('.gmx-acct-msg'),payload=Object.assign({action:action,slug:li.dataset.slug},extra);
+  li.querySelectorAll('button').forEach(function(x){x.disabled=true});note(msg,'saving');
+  api('/artist/tracks/'+encodeURIComponent(li.dataset.entry),{method:'POST',json:payload}).then(function(r){
+    if(r.status===422||r.status===403)return r.json().then(function(j){note(msg,j.detail||'that did not work.');li.querySelectorAll('button').forEach(function(x){x.disabled=false})});
+    if(!r.ok)throw new Error(r.status);
+    return r.json().then(function(t){
+      if(action==='not_mine'){li.remove();return}
+      var fresh=document.createElement('div');fresh.innerHTML=trackRow(t,li.dataset.slug);li.replaceWith(fresh.firstChild);
+    });
+  }).catch(function(){note(msg,'did not save. try again in a minute.');li.querySelectorAll('button').forEach(function(x){x.disabled=false})});
 }
 
 /* ---- boot ---------------------------------------------------------------------------------------- */
