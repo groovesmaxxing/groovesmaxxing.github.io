@@ -1,64 +1,93 @@
 {
- "generated": "2026-10-13T06:00:14Z",
+ "generated": "2026-10-13T17:46:57Z",
  "pages": 841,
  "links": {
-  "checkable": 5975,
+  "checkable": 5973,
   "by_kind": {
-   "other": 2738,
+   "other": 2736,
    "spotify": 1730,
    "soundcloud": 693,
    "youtube": 814
   },
-  "checked_within_recheck": 4186,
+  "checked_within_recheck": 4884,
   "asked_this_run": 700,
-  "unknown": 413,
+  "unknown": 696,
   "budget": 700,
   "recheck_days": 10
  },
  "broken": [
   {
-   "url": "https://www.the-magician.com",
-   "kind": "other",
+   "url": "https://soundcloud.com/discover/sets/new-for-you::groovesmaxxing",
+   "kind": "soundcloud",
    "code": 404,
    "note": null,
    "title": null,
    "pages": [
-    "/artists/the-magician"
+    "/index"
    ],
    "page_count": 1,
-   "checked": "2026-10-13T06:00:14Z",
-   "first_seen": "2026-10-13T06:00:14Z"
+   "checked": "2026-10-13T17:46:57Z",
+   "first_seen": "2026-10-13T17:46:57Z"
   },
   {
-   "url": "https://www.tomzeta.com/",
-   "kind": "other",
+   "url": "https://soundcloud.com/discover/sets/weekly::groovesmaxxing",
+   "kind": "soundcloud",
    "code": 404,
    "note": null,
    "title": null,
    "pages": [
-    "/artists/tom-zeta"
+    "/index"
    ],
    "page_count": 1,
-   "checked": "2026-10-13T06:00:14Z",
-   "first_seen": "2026-10-13T06:00:14Z"
+   "checked": "2026-10-13T17:46:57Z",
+   "first_seen": "2026-10-13T17:46:57Z"
   }
  ],
- "moved": [],
- "differs": [
+ "moved": [
   {
-   "url": "https://soundcloud.com/paranormalsociety/safe-and-sound-wife",
-   "kind": "soundcloud",
+   "url": "https://realm-records.com",
+   "kind": "other",
    "code": 200,
-   "note": "page says: paranormal posted on soundcloud",
-   "title": "Justice - Safe and Sound (Wife Material Edit) by PARANORMAL",
+   "note": "lands on realm.komi.io",
+   "title": null,
    "pages": [
-    "/artists/wife-material"
+    "/labels/realm"
    ],
    "page_count": 1,
-   "checked": "2026-10-13T06:00:14Z",
-   "first_seen": "2026-10-13T06:00:14Z"
+   "checked": "2026-10-13T17:46:57Z",
+   "first_seen": "2026-10-13T17:46:57Z"
+  }
+ ],
+ "differs": [
+  {
+   "url": "https://soundcloud.com/iamnostatic/no-static-experts-only",
+   "kind": "soundcloud",
+   "code": 200,
+   "note": "page says: listen to the set",
+   "title": "NO STATIC @ Experts Only Festival NYC 2026 by NO STATIC",
+   "pages": [
+    "/open-ids",
+    "/tracklists/no-static-experts-only-festival-nyc-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-13T17:46:57Z",
+   "first_seen": "2026-10-13T17:46:57Z"
+  },
+  {
+   "url": "https://soundcloud.com/tobehonestmusic/experts-only-the-gorge-2026",
+   "kind": "soundcloud",
+   "code": 200,
+   "note": "page says: listen to the set",
+   "title": "Experts Only @ The Gorge 2026 by TOBEHONEST",
+   "pages": [
+    "/open-ids",
+    "/tracklists/tobehonest-experts-only-the-gorge-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-13T17:46:57Z",
+   "first_seen": "2026-10-13T17:46:57Z"
   }
  ],
  "anchors_broken": [],
- "summary": "2 broken, 0 moved, 1 read differently, 0 broken anchors, 4186 of 5975 links checked in the last 10 days"
+ "summary": "2 broken, 1 moved, 2 read differently, 0 broken anchors, 4884 of 5973 links checked in the last 10 days"
 }
