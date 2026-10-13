@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-13T05:41:53Z",
+ "generated": "2026-10-13T06:00:14Z",
  "pages": 841,
  "links": {
   "checkable": 5975,
@@ -9,56 +9,56 @@
    "soundcloud": 693,
    "youtube": 814
   },
-  "checked_within_recheck": 3488,
+  "checked_within_recheck": 4186,
   "asked_this_run": 700,
-  "unknown": 205,
+  "unknown": 413,
   "budget": 700,
   "recheck_days": 10
  },
  "broken": [
   {
-   "url": "https://soundcloud.com/slamm-966523858",
-   "kind": "soundcloud",
+   "url": "https://www.the-magician.com",
+   "kind": "other",
    "code": 404,
    "note": null,
    "title": null,
    "pages": [
-    "/artists/slamm"
+    "/artists/the-magician"
    ],
    "page_count": 1,
-   "checked": "2026-10-13T05:41:53Z",
-   "first_seen": "2026-10-13T05:41:53Z"
-  }
- ],
- "moved": [
-  {
-   "url": "https://rlgrime.com/",
-   "kind": "other",
-   "code": 200,
-   "note": "lands on rlgri.me",
-   "title": null,
-   "pages": [
-    "/artists/rl-grime"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-13T05:41:53Z",
-   "first_seen": "2026-10-13T05:41:53Z"
+   "checked": "2026-10-13T06:00:14Z",
+   "first_seen": "2026-10-13T06:00:14Z"
   },
   {
-   "url": "https://www.poloandpanmusic.com",
+   "url": "https://www.tomzeta.com/",
    "kind": "other",
-   "code": 200,
-   "note": "lands on poloandpan.komi.io",
+   "code": 404,
+   "note": null,
    "title": null,
    "pages": [
-    "/artists/polo-pan"
+    "/artists/tom-zeta"
    ],
    "page_count": 1,
-   "checked": "2026-10-13T05:41:53Z",
-   "first_seen": "2026-10-13T05:41:53Z"
+   "checked": "2026-10-13T06:00:14Z",
+   "first_seen": "2026-10-13T06:00:14Z"
   }
  ],
- "differs": [],
+ "moved": [],
+ "differs": [
+  {
+   "url": "https://soundcloud.com/paranormalsociety/safe-and-sound-wife",
+   "kind": "soundcloud",
+   "code": 200,
+   "note": "page says: paranormal posted on soundcloud",
+   "title": "Justice - Safe and Sound (Wife Material Edit) by PARANORMAL",
+   "pages": [
+    "/artists/wife-material"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-13T06:00:14Z",
+   "first_seen": "2026-10-13T06:00:14Z"
+  }
+ ],
  "anchors_broken": [],
- "summary": "1 broken, 2 moved, 0 read differently, 0 broken anchors, 3488 of 5975 links checked in the last 10 days"
+ "summary": "2 broken, 0 moved, 1 read differently, 0 broken anchors, 4186 of 5975 links checked in the last 10 days"
 }
