@@ -27,6 +27,9 @@ T = {
     'quick_js': '<script src="/gmx-quick.js" defer></script>',
     'sheet_css': '<link rel="stylesheet" href="/gmx-sheet.css">',
     'sheet_js': '<script src="/gmx-sheet.js" defer></script>',
+    # the account layer (2026-10-12): "this is me" on every artist and label profile
+    'account_css': '<link rel="stylesheet" href="/gmx-account.css">',
+    'account_js': '<script src="/gmx-account.js" defer></script>',
 }
 
 def ensure(path, heads, before_motion, after_motion):

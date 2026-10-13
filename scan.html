@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com https://api.deezer.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-ceNfG2DhACYrLUt8xY2WcddtuqworBf2W/1IvF5c/dQ='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://open.spotify.com https://itunes.apple.com https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com https://api.deezer.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-V3U9OO47MvvqGgD00awwYekAypVsBKXFZLe1iQEktN8='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net https://open.spotify.com https://itunes.apple.com; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>scan · groovesMAXXING</title>
@@ -1332,6 +1332,8 @@ function resumeWait(){
   else try{localStorage.removeItem('gmx_pending')}catch(e){}
 }
 var justIn=false, pushNow='', setupWas=null;
+/* roles (2026-10-12): the badge word for User.role, the cache of the highest verified row */
+var ROLE_WORD={verified_artist:'verified artist',verified_label:'verified label',verified_venue:'verified venue',team:'team'};
 /* the chip beside the auto button: who this phone is, before anyone scrolls */
 function youChip(){
   if(!sessionToken())return '<a class="you-chip" href="#you">sign in</a>';
@@ -1348,7 +1350,7 @@ function renderYou(){
   }
   var paint=function(me){
     box.innerHTML='<div class="prof">'+(me.handle?'<span class="at">@'+esc(me.handle)+'</span>':'<span class="at none">no handle yet</span>')+
-      '<small>'+esc(me.email)+(me.role==='verified_artist'?' · verified artist':'')+'</small>'+
+      '<small>'+esc(me.email)+(ROLE_WORD[me.role]?' · '+ROLE_WORD[me.role]:'')+'</small>'+
       (me.handle?'<button class="chg" type="button" data-you="handle">change</button>':'')+'</div>'+
       '<p class="stat" id="youstat"></p>'+
       '<div id="hbox" hidden></div>'+

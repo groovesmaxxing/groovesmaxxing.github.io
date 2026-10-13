@@ -50,7 +50,8 @@ CHARSET_RE = re.compile(r'<meta charset=[^>]*>', re.I)
 
 
 def api_hosts():
-    """the recognizer host from gmx-config.json, http and websocket, so the scan page may call it"""
+    """the recognizer host from gmx-config.json, http and websocket. every page may call it since the
+    account layer (2026-10-12): the profiles for "this is me", more for the account card, scan as before"""
     try:
         cfg = json.load(open('gmx-config.json', encoding='utf-8'))
     except Exception:
@@ -95,7 +96,7 @@ def policy(path, s):
     scripts += sorted(inline)
     if handlers:
         scripts += ["'unsafe-hashes'"] + sorted(handlers)
-    connect = ["'self'"] + (SCAN_CONNECT + api_hosts() if scan else [])
+    connect = ["'self'"] + api_hosts() + (SCAN_CONNECT if scan else [])
     return '; '.join([
         "default-src 'self'",
         "base-uri 'self'",

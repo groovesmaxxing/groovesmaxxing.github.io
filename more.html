@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-OIYxhLZb1GXW+ombvDreFMEfmZc6ATDVEELpmDYSFfs=' 'sha256-Yzz0W75C/p37Mm2Y7XXlhzFXd7rSoenh66wLjKEiCa8='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self'; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-OIYxhLZb1GXW+ombvDreFMEfmZc6ATDVEELpmDYSFfs=' 'sha256-Yzz0W75C/p37Mm2Y7XXlhzFXd7rSoenh66wLjKEiCa8='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>more · groovesMAXXING</title>
@@ -78,6 +78,7 @@ form input[type=submit]:hover{background:var(--deep);border-color:var(--deep);co
 <link rel="alternate" type="application/rss+xml" title="fresh grooves friday" href="/feed.xml">
 <link rel="stylesheet" href="/gmx-motion.css">
 <link rel="stylesheet" href="/gmx-quick.css">
+<link rel="stylesheet" href="/gmx-account.css">
 <meta property="og:image" content="https://groovesmaxxing.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -91,6 +92,8 @@ form input[type=submit]:hover{background:var(--deep);border-color:var(--deep);co
 <h1>the rest of it,<br><span class="rd">one tap away.</span></h1>
 <p class="lede">everything on the site that is not a scan, a set, an artist or a tracklist. the labels, what's dropping, the newsletter, the playlists.</p>
 </header>
+
+<div id="gmx-you"></div>
 
 <h2>dig</h2>
 <ul class="list">
@@ -160,5 +163,6 @@ form input[type=submit]:hover{background:var(--deep);border-color:var(--deep);co
 <script src="/gmx-motion.js" defer></script>
 <script src="/gmx-quick.js" defer></script>
 <script src="/gmx-refresh.js" defer></script>
+<script src="/gmx-account.js" defer></script>
 </body>
 </html>
