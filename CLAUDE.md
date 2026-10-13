@@ -36,7 +36,7 @@ A static website. Every page is a `.html` file in this repo, written by hand or 
 | `labels.html` | Label directory |
 | `sets.html` | Every DJ set. The laptop writes the full page, then `lighten_sets.py` moves the cards into `sets-index.json`, which `gmx-sets.js` loads on demand |
 | `search.html` | One search box for the whole site, reads `search-index.json` |
-| `crate.html` | The sets and tracks a visitor hearted, stored on their phone only |
+| `crate.html` | The sets and tracks a visitor liked. Kept on the phone, and synced to their account when signed in |
 | `radio.html` | The set library played back to back |
 | `open-ids.html` | Tracklist rows not identified yet, reads `open-ids.json` |
 | `interviews.html` | Interviews and talk podcasts |
@@ -46,8 +46,8 @@ A static website. Every page is a `.html` file in this repo, written by hand or 
 | `newsletter.html` | Index of newsletter issues |
 | `events.html` | The events radar: festivals and club rooms by city, plus the "on tour" section that reads `radar-events.json`. `tours.html` now redirects to `events.html#tours` |
 | `venues.html` | Denver venues |
-| `scan.html` | The music recognizer page and the installed app's start page |
-| `more.html` | Menu page for the installed app |
+| `scan.html` | The music recognizer page and the installed app's start page. When the recognizer places a clip in a set with a tracklist, the named row leads the card, and a catalog guess that disagrees folds under "the catalog heard something else" (see `docs/recognizer-streaming.md`) |
+| `more.html` | The more tab: the account card (sign in, handle, badge, claims, team), the artist tools, notification switches, download and delete my data, and settings |
 | `privacy.html`, `terms.html` | Legal pages for the scan feature |
 | `404.html` | Page shown for missing URLs |
 | `google04d31c35e73795cf.html` | Google Search Console ownership check. Do not delete |
@@ -56,11 +56,12 @@ A static website. Every page is a `.html` file in this repo, written by hand or 
 
 | File | Purpose |
 |---|---|
-| `gmx-nav.js`, `gmx-nav.css` | The tab bar on every page |
+| `gmx-nav.js`, `gmx-nav.css` | The only tab bar, on every page: home, tracklists, scan (the raised button), artists, more. Also the floating search button. Loaded with `?v=15`, see Versioned shared files |
+| `gmx-account.js`, `gmx-account.css` | The account layer: sign in by email link or code, the sign in or @handle chip in the header, /me, the synced crate, push, and the "this is me" claim sheet on artist and label pages. Calls the recognizer at `api_base`. `gmx-account.js` is loaded with `?v=15` |
 | `gmx-player.js`, `gmx-player.css` | The shared youtube stage that plays sets across pages |
 | `gmx-follow.js` | Follow-along tracklists, synced to the players |
 | `gmx-crate.js`, `gmx-sheet.js`, `gmx-sheet.css` | Hearts on sets and tracklist rows, and the "…" bottom sheet |
-| `gmx-quick.js`, `gmx-quick.css` | Quick search sheet |
+| `gmx-quick.js`, `gmx-quick.css` | The search sheet behind the floating search button, over `search-index.json`, scoped to the current tab |
 | `gmx-nextup.js` | The "next up" strip |
 | `gmx-related.js` | Cross-links everything the site holds on an artist |
 | `gmx-sets.js` | Fills the sets page from `sets-index.json` |
@@ -70,8 +71,8 @@ A static website. Every page is a `.html` file in this repo, written by hand or 
 | `gmx-refresh.js` | Pull to refresh inside the installed app |
 | `gmx-install.js` | "Add to home screen" nudge |
 | `gmx-clips.js`, `gmx-capture-worklet.js` | Scan page clip storage and audio capture |
-| `sw.js` | Service worker. Cache name is a versioned string (`gmx-v8` at the time of writing). Precaches the list in `precache.json` |
-| `manifest.webmanifest` | Installed app settings, start page `/scan` |
+| `sw.js` | Service worker. Cache name is a versioned string (`gmx-v16` at the time of writing), bumped whenever the shell changes. Precaches the list in `precache.json` |
+| `manifest.webmanifest` | Installed app settings: name `groovesMAXXING`, home screen name `groovesMAXX`, start page `/scan` |
 | `gmx-config.json` | Recognizer backend address (`api_base`) and the app key `scan.html` sends. Public on the live site by design. Do not change it without the owner |
 | `sitemap.xml`, `robots.txt`, `feed.xml` | Search engine files and the newsletter RSS feed |
 | `radar-artists.json` | Artist names the nightly tour sweep looks up |
@@ -113,14 +114,18 @@ A static website. Every page is a `.html` file in this repo, written by hand or 
 - Pages in folders use relative paths like `../favicon.svg`. Shared scripts use root paths like `/gmx-nav.js`.
 - `<title>` ends in `· groovesMAXXING`. Pages carry a meta description, Open Graph tags and a canonical URL without `.html`.
 - Copy on the site is written in lowercase.
-- `ensure_tags.py` adds the shared tags (tab bar, player, follow-along and so on) to any page missing them, so a fresh laptop-written page still gets them.
+- `ensure_tags.py` adds the shared tags (tab bar, player, follow-along, account layer and so on) to any page missing them, so a fresh laptop-written page still gets them.
+
+### Versioned shared files
+
+Scripts and styles are served with a four hour browser cache, so a returning visitor can get a fresh page with a stale script. `gmx-nav.js`, `gmx-nav.css` and `gmx-account.js` are loaded with a version query (`?v=15` today) on every page. When one of them changes, bump the number in `ensure_tags.py` and `build_precache.py` (and where `gmx-nav.js` and `gmx-quick.js` inject them), and bump the `sw.js` cache name.
 
 ### Security tags (content security policy)
 
 - Every page except the redirect stubs and the Google verification file carries a `Content-Security-Policy` meta and a referrer policy meta, written by `.github/scripts/harden_pages.py`.
 - Inline scripts are allowed by their sha256 hash, so after editing any inline script run `python3 .github/scripts/harden_pages.py` and commit the result. A stale hash fails the site check and blocks that script in browsers.
 - Do not add inline event handlers (`onclick="..."`, `onerror="..."`). Use `addEventListener`, or `data-fallback` on images.
-- The allowed outside hosts are lists at the top of `harden_pages.py` (player scripts, embed frames, form targets, scan page lookups). The recognizer host is read from `gmx-config.json`. A new embed or API host has to be added there, or the browser blocks it.
+- The allowed outside hosts are lists at the top of `harden_pages.py` (player scripts, embed frames, form targets, scan page lookups). The recognizer host is read from `gmx-config.json` and allowed on every page, because the account layer calls it everywhere. A new embed or API host has to be added there, or the browser blocks it.
 - All GitHub Actions are pinned to commit SHAs, and Dependabot watches the pins.
 
 ### Generated sections (edit with care)
