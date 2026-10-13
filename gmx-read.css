@@ -79,3 +79,25 @@ body .gmx-rel .row a small{font-size:.92em}
 .day-section .canon i{color:#6f6f69}
 .lane-nonspoty .who{color:#2a0400}
 .hub .fine{color:var(--steel)}
+
+/* ---------- desktop pass (2026-10-13) ---------- */
+/* the sign in chip sits level with the logo and search buttons beside it, and matches their 36px height */
+/* events, sets, upcoming, interviews: the back link's 34px gap moves to the header row, so the link lines up with the buttons */
+.gmx-top>.back{margin-bottom:0}
+.gmx-top:has(>.back){margin-bottom:34px}
+.gmx-hdr .gmx-chip{float:none;margin-top:0;min-height:36px;display:inline-flex;align-items:center;box-sizing:border-box;font-size:.76rem}
+/* buttons with a sentence on them read in poppins, like the home page buttons (scan, more, the account sheet) */
+.btn,.gmx-acct-btn{font-family:'Poppins',sans-serif;font-weight:600;font-size:.88rem;letter-spacing:0;line-height:1.2}
+/* a readable line length on wide screens */
+#letter .note{max-width:680px}
+.legend,.take{max-width:760px}
+/* the folded home sections: the small hint sits beside the + instead of floating mid row */
+.fold>summary .mono{margin-left:auto}
+/* the home video stages stop at a comfortable width on a big screen instead of filling it */
+@media (min-width:1025px){#library .set-stage,#podcasts .set-stage{max-width:880px}}
+/* the sets page letter bar: on a tablet or wider it wraps instead of hiding y and z behind a scrollbar you cannot see */
+@media (min-width:600px){.rail{flex-wrap:wrap}}
+@media (min-width:600px) and (max-width:820px){.rail{gap:0}.rail a,.rail span{min-width:26px}}
+/* a stage with more than 30 sets (radio has 700) drops the dots: a wall of them says nothing the "1 of 701" count
+   and the arrows do not already say */
+body .gmx-stage .set-dots:has(>button:nth-child(31)){display:none}
