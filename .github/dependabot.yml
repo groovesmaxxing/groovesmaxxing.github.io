@@ -1,0 +1,9 @@
+# keeps the pinned actions in the workflows current. the actions are pinned to commit shas (a moving tag
+# like v4 can be re-pointed by whoever holds the upstream repo), and this opens a pull request when a new
+# release lands so the pin moves on purpose. playwright is pinned by version in the workflow run lines.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
