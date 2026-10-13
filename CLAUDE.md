@@ -84,7 +84,8 @@ A static website. Every page is a `.html` file in this repo, written by hand or 
 - Every push and pull request runs `site check`: `preflight.py` (structure and brand checks over every page) and `sitecheck.js` (headless Chromium loads the main pages at phone and desktop width and fails on console errors, missing same-origin files, horizontal overflow or a missing tab bar). Outside hosts are blocked in that check.
 - Run the same checks locally: `python3 .github/scripts/preflight.py`, then serve the repo with `python3 -m http.server 8787 --bind 127.0.0.1` and run `npm install --no-save playwright@1.56.1` and `node .github/scripts/sitecheck.js`.
 - Every pull request also gets a Cloudflare Pages check.
-- UNKNOWN: which service actually serves groovesmaxxing.com. `CNAME` suggests GitHub Pages, and Cloudflare Pages is connected too. Neither service's settings are in the repo.
+- GitHub Pages builds and deploys `main` on every push (the "pages build and deployment" run in the Actions tab), using the `CNAME` file for the domain.
+- UNKNOWN: whether groovesmaxxing.com's DNS points at GitHub Pages or at Cloudflare. Neither the DNS nor either service's settings are in the repo.
 
 ### Workflows
 
