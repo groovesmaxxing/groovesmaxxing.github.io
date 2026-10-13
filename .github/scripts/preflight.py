@@ -73,6 +73,9 @@ class Balance(HTMLParser):
 def pages():
     out = []
     for f in glob.glob("**/*.html", recursive=True):
+        # forward slashes on every system. on windows glob returns artists\x.html, so the sitemap check saw
+        # every page in a folder as unlisted and printed one warning each
+        f = f.replace("\\", "/")
         if f.startswith(("node_modules/", ".github/")) or f.startswith("google"):
             continue
         out.append(f)

@@ -101,3 +101,13 @@ body .gmx-rel .row a small{font-size:.92em}
 /* a stage with more than 30 sets (radio has 700) drops the dots: a wall of them says nothing the "1 of 701" count
    and the arrows do not already say */
 body .gmx-stage .set-dots:has(>button:nth-child(31)){display:none}
+
+/* ---------- keyboard focus (2026-10-13) ----------
+   the account sheet, the header chip, the claim button, the "…" button, the floating search and its sheet marked focus with a
+   colour change alone, which is hard to spot on a phone with a keyboard and lost on some colour vision. one red
+   ring for all of them, the same ring the pages already draw. ":root body" outranks the injected chip style. */
+:root body .gmx-chip:focus-visible,:root body .gmx-claim:focus-visible,:root body .gmx-acct-x:focus-visible,
+:root body .gmx-acct-btn:focus-visible,:root body .gmx-acct-link:focus-visible,:root body .gmx-acct-rowbtn:focus-visible,
+:root body .gmx-fab:focus-visible,:root body .gmx-hdr .gmx-hsearch:focus-visible,:root body .gmx-hdr .gmx-hmark:focus-visible,
+:root body .gmx-quick-x:focus-visible,:root body .gmx-quick-chip:focus-visible,:root body .gmx-quick-all:focus-visible,:root body .gmx-more:focus-visible{outline:3px solid #FF1C02;outline-offset:3px}
+:root body .gmx-acct-form input:focus-visible,:root body .gmx-acct-row input:focus-visible,:root body .gmx-acct-check input:focus-visible{outline:3px solid #FF1C02;outline-offset:2px}

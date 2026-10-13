@@ -21,9 +21,9 @@ MOTION_CSS = '<link rel="stylesheet" href="/gmx-motion.css">'
 MOTION_JS = '<script src="/gmx-motion.js" defer></script>'
 T = {
     'player_css': '<link rel="stylesheet" href="/gmx-player.css">',
-    'nav_css': '<link rel="stylesheet" href="/gmx-nav.css?v=16">',
+    'nav_css': '<link rel="stylesheet" href="/gmx-nav.css?v=17">',
     'player_js': '<script src="/gmx-player.js" defer></script>',
-    'nav_js': '<script src="/gmx-nav.js?v=16" defer></script>',
+    'nav_js': '<script src="/gmx-nav.js?v=17" defer></script>',
     'follow_js': '<script src="/gmx-follow.js" defer></script>',
     'crate_js': '<script src="/gmx-crate.js" defer></script>',
     'related_js': '<script src="/gmx-related.js" defer></script>',
@@ -34,7 +34,7 @@ T = {
     'sheet_js': '<script src="/gmx-sheet.js" defer></script>',
     # the account layer (2026-10-12): "this is me" on every artist and label profile
     'account_css': '<link rel="stylesheet" href="/gmx-account.css">',
-    'account_js': '<script src="/gmx-account.js?v=16" defer></script>',
+    'account_js': '<script src="/gmx-account.js?v=17" defer></script>',
 }
 
 def ensure(path, heads, before_motion, after_motion):
@@ -54,7 +54,7 @@ def ensure(path, heads, before_motion, after_motion):
 
 # the readability layer (2026-10-13): on every page, as the last tag in the head, so its rules win over the
 # page's own <style> block at the same selector. a page the laptop rewrites gets it back here.
-READ_CSS = '<link rel="stylesheet" href="/gmx-read.css?v=2">'
+READ_CSS = '<link rel="stylesheet" href="/gmx-read.css?v=3">'
 def ensure_read(path):
     s = open(path, encoding='utf-8').read(); o = s
     if 'http-equiv="refresh"' in s or path.startswith('google') or '</head>' not in s: return False

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-DBCemR6r7lLdrd3tgbifzonascw/9hnp1WIp5NQCG68=' 'sha256-Yzz0W75C/p37Mm2Y7XXlhzFXd7rSoenh66wLjKEiCa8=' 'sha256-v+W/ZvUInA8yV8kX3w9qouAoP6OPSKMlIT4mBf+oIVA='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-Sh0A9iV5HHSoOndTE99YbzxjnuQdzRaGnw1h2G8CfBg=' 'sha256-Yzz0W75C/p37Mm2Y7XXlhzFXd7rSoenh66wLjKEiCa8=' 'sha256-v+W/ZvUInA8yV8kX3w9qouAoP6OPSKMlIT4mBf+oIVA='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>more · groovesMAXXING</title>
@@ -114,12 +114,12 @@ form.nl input[type=submit]:hover{background:var(--deep);border-color:var(--deep)
 <link rel="canonical" href="https://groovesmaxxing.com/more">
 <link rel="alternate" type="application/rss+xml" title="fresh grooves friday" href="/feed.xml">
 <link rel="stylesheet" href="/gmx-motion.css">
-<link rel="stylesheet" href="/gmx-nav.css?v=16">
+<link rel="stylesheet" href="/gmx-nav.css?v=17">
 <link rel="stylesheet" href="/gmx-quick.css">
 <link rel="stylesheet" href="/gmx-account.css">
 <meta property="og:image" content="https://groovesmaxxing.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="/gmx-read.css?v=2">
+<link rel="stylesheet" href="/gmx-read.css?v=3">
 </head>
 <body>
 <div class="wrap">
@@ -139,7 +139,7 @@ form.nl input[type=submit]:hover{background:var(--deep);border-color:var(--deep)
 <p class="big">sign in, and the site remembers you.</p>
 <p class="note">get told by email when an ID you scanned comes out, keep your scans and follows across phones, and put your name on the IDs you help name. no password: a link and a six-digit code by email, free, leave whenever.</p>
 <form class="aform" id="yform" autocomplete="off"><label for="y-email">email</label><input id="y-email" name="email" type="email" inputmode="email" maxlength="320" required>
-<div class="row"><button class="btn red" type="submit">send me a sign-in link</button><span class="msg" id="youmsg"></span></div></form>
+<div class="row"><button class="btn red" type="submit">send me a sign-in link</button><span class="msg" role="status" id="youmsg"></span></div></form>
 </div>
 </div>
 </section>
@@ -158,6 +158,7 @@ form.nl input[type=submit]:hover{background:var(--deep);border-color:var(--deep)
 <li><button class="rowbtn" type="button" data-acct="push" id="pushrow"><span class="tx">push on this phone<small id="push-small">checking this phone</small></span><span class="go" id="push-go">↗</span></button></li>
 </ul>
 <ul class="gmx-you-switches" id="gmx-notify" aria-label="what to tell me about, by email"></ul>
+<p class="gmx-acct-msg" id="gmx-notify-msg" role="status"></p>
 
 <h2>for artists</h2>
 <ul class="list">
@@ -221,7 +222,7 @@ form.nl input[type=submit]:hover{background:var(--deep);border-color:var(--deep)
 </div>
 <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})})}</script>
 <script src="/gmx-clips.js"></script>
-<script src="/gmx-account.js?v=16"></script>
+<script src="/gmx-account.js?v=17"></script>
 <script>(function(){var b=document.getElementById('wipeall'),m=document.getElementById('wipemsg');if(!b)return;b.addEventListener('click',function(){
   if(!confirm('clear the device id, the recent scans and any kept clips on this phone?'))return;
   var done=function(){['gmx_history','gmx_device','gmx_keep_clips','gmx_install_hide_until','gmx_cfg','gmx_me','gmx_me_at'].forEach(function(k){try{localStorage.removeItem(k)}catch(e){}});if(m)m.textContent='done';var k=document.getElementById('keepclips');if(k)k.checked=false;if(window.gmxAccount)gmxAccount.paint()};
@@ -242,14 +243,14 @@ function signupHtml(){
   return '<div class="signup"><p class="big">sign in, and the site remembers you.</p>'+
     '<p class="note">get told by email when an ID you scanned comes out, keep your scans and follows across phones, and put your name on the IDs you help name. no password: a link and a six-digit code by email, free, leave whenever.</p>'+
     '<form class="aform" id="yform" autocomplete="off"><label for="y-email">email</label><input id="y-email" name="email" type="email" inputmode="email" maxlength="320" required>'+
-    '<div class="row"><button class="btn red" type="submit">send me a sign-in link</button><span class="msg" id="youmsg"></span></div></form></div>';
+    '<div class="row"><button class="btn red" type="submit">send me a sign-in link</button><span class="msg" role="status" id="youmsg"></span></div></form></div>';
 }
 /* the code from the mail, typed here: no browser hand-off, which the gmail app on android cannot do */
 function codeForm(email){
   var f=$('yform');if(!f||$('cform2'))return;
   var c=document.createElement('form');c.className='aform';c.id='cform2';c.setAttribute('autocomplete','one-time-code');c.dataset.email=email;
   c.innerHTML='<label for="y-code">the six digits from the mail</label><input id="y-code" name="code" inputmode="numeric" pattern="[0-9 ]*" maxlength="7" autocomplete="one-time-code" placeholder="000 000">'+
-    '<div class="row"><button class="btn red" type="submit">sign in with the code</button><span class="msg" id="codemsg"></span></div>';
+    '<div class="row"><button class="btn red" type="submit">sign in with the code</button><span class="msg" role="status" id="codemsg"></span></div>';
   f.parentNode.insertBefore(c,f.nextSibling);try{$('y-code').focus()}catch(e){}
 }
 function paintOut(){document.body.classList.remove('signed-in');meNow=null;body.innerHTML=signupHtml()}
@@ -265,7 +266,7 @@ function paintIn(me){
     (me.handle?'<div class="at">@'+esc(me.handle)+badge+'</div>':'<div class="at none">no handle yet'+badge+'</div>')+
     '<small>'+esc(me.email||'')+(since?' · since '+esc(String(since).slice(0,10)):'')+'</small><span class="hint">tap to edit your handle</span></div></div>'+
     '<ul class="stats">'+(named!=null?'<li><b>'+esc(named)+'</b>IDs named</li>':'')+'<li><b>'+esc(crate)+'</b>in the crate</li>'+(me.artists!=null?'<li><b>'+esc(me.artists)+'</b>artists followed</li>':'')+'<li><b>'+esc(me.follows||0)+'</b>'+(me.artists!=null?'open follows':'following')+'</li><li><b>'+(me.devices||0)+'</b>'+(me.devices===1?'device':'devices')+'</li></ul>'+
-    '<div id="hbox" hidden></div><p class="msg" id="youmsg"></p>';
+    '<div id="hbox" hidden></div><p class="msg" role="status" id="youmsg"></p>';
   var ar=$('artist-small');if(ar&&bt&&me.role!=='team')ar.textContent='verified. the badge shows on your profile and on the IDs you confirm. your claims and your team are below';
   if(justIn){justIn=false;note('youmsg','you are in.',true)}
   paintPush();
@@ -273,7 +274,7 @@ function paintIn(me){
 function paintPush(){
   A.pushState().then(function(st){
     pushNow=st;var s=$('push-small'),g=$('push-go');if(!s||!g)return;
-    s.textContent={on:'on for this phone. a push when an ID you follow gets a name or comes out',off:'off. tap to turn on. email either way',blocked:'blocked for this site in the browser settings. email either way',none:'this browser cannot push. on iphone, add the app to the home screen first. email either way',allowed:'allowed, not registered yet. tap to finish'}[st]||'checking this phone';
+    s.textContent={on:'on for this phone. a push when an ID you follow gets a name or comes out. tap to send a test',off:'off. tap to turn on. email either way',blocked:'blocked for this site in the browser settings. email either way',none:'this browser cannot push. on iphone, add the app to the home screen first. email either way',allowed:'allowed, not registered yet. tap to finish'}[st]||'checking this phone';
     g.textContent=st==='on'?'on':(st==='none'||st==='blocked')?'email':'turn on';
   });
 }
@@ -324,14 +325,19 @@ document.addEventListener('click',function(ev){
   if(k==='handle'){
     var hb=$('hbox');if(!hb||!meNow)return;hb.hidden=false;
     hb.innerHTML='<form class="aform" id="hform2" autocomplete="off"><label for="y-handle">'+(meNow.handle?'new handle':'handle')+'</label><input id="y-handle" name="handle" maxlength="30" placeholder="yourname" value="'+esc(meNow.handle||'')+'">'+
-      '<div class="row"><button class="btn" type="submit">save</button><button class="btn ghost" type="button" data-acct="hcancel">cancel</button><span class="msg" id="hmsg"></span></div></form>';
+      '<div class="row"><button class="btn" type="submit">save</button><button class="btn ghost" type="button" data-acct="hcancel">cancel</button><span class="msg" role="status" id="hmsg"></span></div></form>';
     try{$('y-handle').focus()}catch(e){}return;
   }
   if(k==='hcancel'){var h2=$('hbox');if(h2){h2.hidden=true;h2.innerHTML=''}return}
   if(k==='push'){
-    if(pushNow==='none'||pushNow==='blocked'||pushNow==='on')return;
+    /* every tap answers right under the switches (2026-10-13). a phone that cannot push, or has it blocked, gets
+       the line saying what to do instead of a tap that did nothing. a phone already on gets a test notification. */
+    var pm=$('gmx-notify-msg');function pn(t,ok){if(pm){pm.textContent=t;pm.className='gmx-acct-msg'+(ok?' ok':'')}}
+    if(pushNow==='none'){pn(A.pushLine(/iPhone|iPad|iPod/.test(navigator.userAgent)?'ios-browser':'unsupported'));return}
+    if(pushNow==='blocked'){pn(A.pushLine('denied'));return}
     b.disabled=true;
-    A.ensurePush().then(function(ok){b.disabled=false;note('youmsg',ok?'this phone gets notified.':'notifications are off for this site, or this browser cannot push. on iphone, add the app to the home screen first.',ok);paintPush()});
+    if(pushNow==='on'){A.testPush().then(function(ok){b.disabled=false;pn(ok?'a test notification just went out. nothing showed? check do not disturb or focus mode.':A.pushLine('failed'),ok)});return}
+    A.ensurePush({test:true}).then(function(ok){b.disabled=false;pn(ok?'this phone gets notified. a test just went out.':A.pushLine(A.pushWhy()),ok);paintPush()});
   }
 });
 /* a sign-in link that lands here instead of on /scan */
@@ -351,6 +357,6 @@ A.on(function(w){if(w==='session'&&!A.token()&&document.body.classList.contains(
 <script src="/gmx-motion.js" defer></script>
 <script src="/gmx-quick.js" defer></script>
 <script src="/gmx-refresh.js" defer></script>
-<script src="/gmx-nav.js?v=16" defer></script>
+<script src="/gmx-nav.js?v=17" defer></script>
 </body>
 </html>

@@ -183,7 +183,7 @@ function watchNow(){
 }
 function loadAccount(){
   if(window.gmxAccount||document.querySelector('script[src^="/gmx-account.js"]'))return;
-  var s=document.createElement('script');s.src='/gmx-account.js?v=16';s.defer=true;document.head.appendChild(s);
+  var s=document.createElement('script');s.src='/gmx-account.js?v=17';s.defer=true;document.head.appendChild(s);
 }
 function mount(){
   if(document.querySelector('meta[http-equiv="refresh"]'))return;
