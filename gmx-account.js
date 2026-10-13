@@ -13,7 +13,9 @@
      - the account card on /more: sign in, handle, badge, my claims, the team, notifications, your data
      - the artist tools on /more for verified accounts and their teams: my tracks with counts only, name
        one, say it is out, say it is not mine, and send a file through the sent door
-     - a small api for other scripts: window.gmxAccount.{ready, token, headers, api, me, signIn, badge, sync}
+     - the header chip on every page (shell v2, 2026-10-12): "sign in" or "@handle", with the logo and the search
+       button beside it on a wide screen, into .top where a page has one, beside a bare back link, over the hero
+     - a small api for other scripts, and the sign-in calls the shell's scan.html and more.html make: window.gmxAccount below
    calls are counted against the phone's hourly budget like a scan is, so /me is cached ten minutes and
    the crate only goes up when it changed. nothing here touches audio. */
 (function(){
@@ -25,6 +27,17 @@ var ME_TTL=10*60000, SYNC_TTL=30*60000, NUDGE_DAYS=30;
 var cfg=null, cfgP=null, me=null, meP=null, pollTimer=null, syncT=null, syncing=false, syncAgain=false;
 var BADGE={verified_artist:'verified artist',verified_label:'verified label',verified_venue:'verified venue',team:'team'};
 var HOST={soundcloud:'soundcloud',instagram:'instagram',email:'mail',spotify:'spotify',bandcamp:'bandcamp',youtube:'youtube',ra:'resident advisor',beatport:'beatport',tiktok:'tiktok',x:'x',site:'site'};
+var path=location.pathname.replace(/\.html$/,''), chip=null, subs=[];
+/* the logo mark from favicon.svg, for the header on a wide screen (the same drawing gmx-nav.js puts on the scan disc) */
+var WAVE='6,120 30,120 48,84 68,150 88,96 108,138 120,114 132,138 152,96 172,150 192,84 210,120 234,120';
+var MARK='<svg viewBox="0 0 240 240" aria-hidden="true"><g fill="none" stroke="#F2F2EF" stroke-linecap="round" stroke-linejoin="round" stroke-width="11"><circle cx="120" cy="120" r="104"/><circle cx="120" cy="120" r="76"/><circle cx="120" cy="120" r="48"/></g><circle cx="120" cy="120" r="20" fill="#0B0B0D"/><polyline points="'+WAVE+'" fill="none" stroke="#0B0B0D" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/><polyline points="'+WAVE+'" fill="none" stroke="#F2F2EF" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+var CSS='.wrap > .top,.gmx-top{display:flex;align-items:center;justify-content:space-between;gap:12px}'+
+ '.hero > .gmx-hdr.float{position:absolute;top:calc(16px + env(safe-area-inset-top));right:16px;z-index:2}'+
+ '.gmx-chip{flex:none;position:relative;z-index:3;background:#0B0B0D;font-family:"Space Mono",monospace;font-size:.7rem;letter-spacing:.08em;color:#8A8A93;text-decoration:none;border:1px solid rgba(242,242,239,.18);border-radius:999px;padding:0 12px;min-height:34px;line-height:32px;max-width:46vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;-webkit-tap-highlight-color:transparent}'+
+ '.gmx-chip.in{color:#F2F2EF;border-color:rgba(255,28,2,.5)}'+
+ '.gmx-chip:hover,.gmx-chip:focus-visible{color:#FF1C02;border-color:#FF1C02;outline:none}'+
+ '';
+function fire(w){subs.forEach(function(f){try{f(w)}catch(e){}})}
 var NOTIFY=[['email','email alerts at all'],['named','an ID i scanned gets a name'],['released','a track i scanned comes out'],['artist','an artist i follow drops something'],['newsletter','fresh grooves friday']];
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 function ls(k){try{return localStorage.getItem(k)||''}catch(e){return ''}}
@@ -52,7 +65,7 @@ function deviceId(){
   lss(DEVICE,v);return v;
 }
 function token(){return ls(SESSION)}
-function setToken(t){lss(SESSION,t);me=null;meP=null;lss(ME,'');if(!t)lss(CRATE_SIG,'');try{document.dispatchEvent(new CustomEvent('gmx-account',{detail:{signedIn:!!t}}))}catch(e){}}
+function setToken(t){lss(SESSION,t);me=null;meP=null;lss(ME,'');if(!t)lss(CRATE_SIG,'');paint();fire('session');try{document.dispatchEvent(new CustomEvent('gmx-account',{detail:{signedIn:!!t}}))}catch(e){}}
 function headers(extra){
   var h={'X-GMX-App-Key':cfg.app_key,'X-GMX-Device':deviceId()};
   var ss=token();if(ss)h['X-GMX-Session']=ss;
@@ -78,10 +91,11 @@ function whoami(force){
   if(c&&c.me&&!force&&Date.now()-(c.at||0)<ME_TTL){me=c.me;return Promise.resolve(me)}
   if(meP&&!force)return meP;
   meP=api('/me').then(function(r){if(r.status===401){setToken('');return null}if(!r.ok)throw new Error(r.status);return r.json()})
-    .then(function(j){me=j;lss(ME,JSON.stringify({me:j,at:Date.now()}));return j}).catch(function(){return me||((c&&c.me)||null)});
+    .then(function(j){remember(j);return j}).catch(function(){return me||((c&&c.me)||null)});
   return meP;
 }
-function remember(m){me=m;lss(ME,JSON.stringify({me:m,at:Date.now()}))}
+function remember(m){me=m;lss(ME,JSON.stringify({me:m,at:Date.now()}));paint();fire('me')}
+function snapshot(){if(me)return me;var c=lsj(ME);return c&&c.me?c.me:null}
 function badge(role){return BADGE[role]||''}
 function handleOf(url){var m=/(?:instagram\.com|soundcloud\.com)\/([^\/?#]+)/.exec(url||'');return m?'@'+m[1]:(url||'').replace(/^https?:\/\//,'').replace(/\/$/,'')}
 function short(url){return (url||'').replace(/^mailto:/,'').replace(/^https?:\/\/(www\.)?/,'').replace(/\/$/,'')}
@@ -114,7 +128,8 @@ function close(){
   sheet.hidden=true;document.documentElement.classList.remove('gmx-acct-open');
   if(opener&&opener.focus)try{opener.focus()}catch(e){}
 }
-function note(el,t,ok){if(!el)return;el.textContent=t||'';el.className='gmx-acct-msg'+(ok?' ok':'')}
+function note(el,t,ok){if(!el)return;el.textContent=t||'';el.className=(el.id==='youmsg'?'msg':'gmx-acct-msg')+(ok?' ok':'')}
+function msgEl(){return document.getElementById('gmx-you-msg')||document.getElementById('youmsg')}
 var toastT;
 function toast(msg){
   var t=document.querySelector('.gmx-acct-toast');
@@ -282,16 +297,40 @@ function wireCratePage(){
 }
 
 /* ---- the chip at the top of a page with a back row (moment 6) ---------------------------------------- */
-function wireChip(){
-  if(onScan()||onMore())return;
-  var top=document.querySelector('.top');if(!top||top.querySelector('.gmx-chip'))return;
-  var a=document.createElement('a');a.className='gmx-chip';a.href='/more';top.appendChild(a);
-  function paint(){
-    if(!token()){a.textContent='sign in';a.classList.remove('in');return}
-    a.classList.add('in');a.innerHTML='<b>you</b>';
-    whoami().then(function(m){if(m)a.innerHTML='<b>'+esc(m.handle?'@'+m.handle:'you')+'</b>'});
+function paint(){
+  if(!chip)return;
+  var t=token(),m=snapshot();
+  chip.className='gmx-chip'+(t?' in':'');
+  chip.textContent=t?(m&&m.handle?'@'+m.handle:'you'):'sign in';
+  chip.href=onScan()?'#you':'/more#account';
+  chip.setAttribute('aria-label',t?'your account'+(m&&m.handle?', @'+m.handle:''):'sign in');
+}
+/* the header row: on a wide screen the logo (to /scan) and the search button sit beside the chip, since there is
+   no tab bar and no floating button there. gmx-nav.css hides both under 1025px. */
+function headerRow(){
+  var row=document.createElement('span');row.className='gmx-hdr';
+  if(!onScan()){var m=document.createElement('a');m.className='gmx-hmark';m.href='/scan';m.setAttribute('aria-label','scan what is playing');m.innerHTML=MARK;row.appendChild(m)}
+  if(path!=='/search'){var b=document.createElement('button');b.type='button';b.className='gmx-hsearch';b.setAttribute('aria-label','search the site');b.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 20 20"/></svg>';b.addEventListener('click',function(){if(window.gmxQuick)gmxQuick.open(b);else location.href='/search'});row.appendChild(b)}
+  chip=document.createElement('a');row.appendChild(chip);
+  return row;
+}
+function mountChip(){
+  if(chip||document.querySelector('meta[http-equiv="refresh"]')||document.querySelector('.gmx-chip'))return;
+  var st=document.createElement('style');st.textContent=CSS;document.head.appendChild(st);
+  var row=headerRow();
+  var top=document.querySelector('.wrap > .top');
+  if(top)top.appendChild(row);
+  else{
+    var back=document.querySelector('.wrap > a.back');
+    if(back){var d=document.createElement('div');d.className='gmx-top';back.parentNode.insertBefore(d,back);d.appendChild(back);d.appendChild(row)}
+    else{
+      var hero=document.querySelector('header.hero');
+      if(hero){row.className+=' float';hero.appendChild(row)}
+      else{var w=document.querySelector('.wrap')||document.body,d2=document.createElement('div');d2.className='gmx-top';d2.appendChild(row);w.insertBefore(d2,w.firstChild)}
+    }
   }
-  paint();document.addEventListener('gmx-account',paint);
+  paint();
+  if(token())whoami().then(paint);
 }
 
 /* ---- "this is me" on a profile (design section 3) ----------------------------------------------------- */
@@ -389,12 +428,12 @@ function renderClaim(role,name){
 
 /* ---- the account card on /more (design section 4) ---------------------------------------------------- */
 function wireMore(){
-  var box=document.getElementById('gmx-you');if(!box)return;
-  function paint(){
+  var box=document.getElementById('gmx-you');if(!box){wireMoreShell();return}
+  function paintBox(){
     if(!token()){
       box.innerHTML='<div class="gmx-you out"><h3>your account</h3><p class="gmx-acct-p">sign in to keep your crate on every phone, get your name on the IDs you help find, hear first when a track you scanned comes out, '+
         'and claim your page if you are one of the names on here. email only. no password.</p>'+signinForm()+'</div>';
-      wireSignin(box,function(){paint()});
+      wireSignin(box,function(){paintBox()});
       return;
     }
     box.innerHTML='<div class="gmx-you"><p class="gmx-acct-p">one sec.</p></div>';
@@ -420,22 +459,40 @@ function wireMore(){
     });
   }
   box.addEventListener('click',function(e){
-    var o=e.target.closest('[data-out]');if(o){api('/auth/signout',{method:'POST'}).catch(function(){});setToken('');paint();return}
+    var o=e.target.closest('[data-out]');if(o){api('/auth/signout',{method:'POST'}).catch(function(){});setToken('');paintBox();return}
     var x=e.target.closest('[data-export]');if(x){exportData(x);return}
     var d=e.target.closest('[data-delete]');if(d){startDelete(d);return}
   });
-  box.addEventListener('change',function(e){
-    var sw=e.target.closest('input[data-notify]');if(!sw)return;
-    var key=sw.dataset.notify,on=sw.checked,msg=document.getElementById('gmx-you-msg');sw.disabled=true;
+  box.addEventListener('change',function(e){var sw=e.target.closest('input[data-notify]');if(sw)notifyChange(sw)});
+  paintBox();
+  document.addEventListener('gmx-account',function(){paintBox()});
+}
+function notifyChange(sw){
+    var key=sw.dataset.notify,on=sw.checked,msg=msgEl();sw.disabled=true;
     var p=key==='newsletter'?api('/me/newsletter',{method:on?'POST':'DELETE'}):api('/me',{method:'POST',json:{notify:(function(){var o={};o[key]=on;return o})()}});
     p.then(function(r){
       if(r.status===503){note(msg,'the newsletter switch is not wired on this deployment yet. the form below still works.');sw.checked=!on;return}
       if(!r.ok)throw new Error(r.status);
       return r.json().then(function(j){if(j&&j.notify)remember(j);else if(me){me.notify=me.notify||{};me.notify[key]=on;remember(me)}note(msg,'saved.',true)});
     }).catch(function(){sw.checked=!on;note(msg,'did not save. try again in a minute.')}).then(function(){sw.disabled=false});
+}
+/* the shell's /more (shell v2): more.html paints the profile card itself through the api below. this fills the
+   notification switches, my claims, the team and the artist tools into the rows it left for them, and wires the
+   download and delete rows */
+function wireMoreShell(){
+  if(!document.getElementById('acctrows'))return;
+  function paintAll(){
+    var ids=['gmx-claims','gmx-team','gmx-tools','gmx-notify','gmx-delete'];
+    if(!token()){ids.forEach(function(i){var x=document.getElementById(i);if(x)x.innerHTML=''});return}
+    whoami().then(function(m){if(!m)return;if(document.getElementById('gmx-notify'))paintNotify(m);paintClaims(m)});
+  }
+  document.addEventListener('change',function(e){var sw=e.target.closest('input[data-notify]');if(sw&&!sw.closest('#gmx-you'))notifyChange(sw)});
+  document.addEventListener('click',function(e){
+    var x=e.target.closest('[data-acct="export"]');if(x){exportData(x);return}
+    var d=e.target.closest('[data-acct="delete"]');if(d)startDelete(d);
   });
-  paint();
-  document.addEventListener('gmx-account',function(){paint()});
+  paintAll();
+  document.addEventListener('gmx-account',paintAll);
 }
 function paintNotify(m){
   var ul=document.getElementById('gmx-notify');if(!ul)return;
@@ -446,14 +503,14 @@ function paintNotify(m){
   }).join('');
 }
 function exportData(btn){
-  var msg=document.getElementById('gmx-you-msg');btn.disabled=true;note(msg,'packing it up');
+  var msg=msgEl();btn.disabled=true;note(msg,'packing it up');
   api('/me/export').then(function(r){if(!r.ok)throw new Error(r.status);return r.blob()}).then(function(b){
     var u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='groovesmaxxing-export.json';document.body.appendChild(a);a.click();a.remove();
     setTimeout(function(){URL.revokeObjectURL(u)},4000);note(msg,'downloaded.',true);
   }).catch(function(){note(msg,'could not fetch it. try again in a minute.')}).then(function(){btn.disabled=false});
 }
 function startDelete(btn){
-  var box=document.getElementById('gmx-delete'),msg=document.getElementById('gmx-you-msg');
+  var box=document.getElementById('gmx-delete'),msg=msgEl();
   if(!confirm('delete your groovesmaxxing account? we mail you a code first. nothing is deleted until you type it.'))return;
   btn.disabled=true;note(msg,'sending the mail');
   api('/me/delete',{method:'POST'}).then(function(r){
@@ -480,7 +537,7 @@ function startDelete(btn){
 function paintClaims(m){
   var cl=document.getElementById('gmx-claims');if(!cl)return;
   api('/verify/mine').then(function(r){return r.ok?r.json():[]}).then(function(rows){
-    if(!rows.length){cl.innerHTML='<h4>for artists</h4><p class="gmx-acct-p small">an artist or a label on here? open your page and tap "this is me".</p>';return}
+    if(!rows.length){cl.innerHTML=document.getElementById('gmx-you')?'<h4>for artists</h4><p class="gmx-acct-p small">an artist or a label on here? open your page and tap "this is me".</p>':'';return}
     cl.innerHTML='<h4>my claims</h4><ul class="gmx-you-list">'+rows.map(function(r){
       var st=r.state==='verified'?'verified':r.state==='revoked'?'closed':(r.needs_pipeline?'waiting on your official accounts':(r.match_result||'waiting on your proof'));
       return '<li><a href="/'+esc(r.entity_kind==='label'?'labels':'artists')+'/'+esc(r.slug)+'"><b>'+esc(r.name||r.slug)+'</b> <small>'+esc(r.kind==='team'?'team seat':r.kind)+' · '+esc(st)+'</small></a></li>';
@@ -597,11 +654,48 @@ function trackAct(li,action,extra){
 }
 
 /* ---- boot ---------------------------------------------------------------------------------------- */
+/* ---- the sign-in calls scan.html and more.html make (shell v2). a Response comes back, as from api() ---------- */
+function setSession(t){if(t)signedIn(t);else setToken('')}
+function start(email){return api('/auth/start',{method:'POST',json:{email:email}})}
+function code(email,c){return api('/auth/code',{method:'POST',json:{email:email,code:c}})}
+function finish(t){return api('/auth/finish',{method:'POST',json:{token:t}})}
+function poll(ticket){return api('/auth/poll',{method:'POST',json:{pending:ticket}})}
+function signout(){var p=token()?api('/auth/signout',{method:'POST'}).catch(function(){}):Promise.resolve();setToken('');return p}
+function setHandle(h){return api('/me',{method:'POST',json:{handle:h||null}}).then(function(r){if(r.ok)r.clone().json().then(remember).catch(function(){});return r})}
+/* a push subscription for this phone: the browser's permission prompt, the recognizer's public key, the
+   subscription posted back. resolves true when the phone can be pushed, false when it cannot. never throws. */
+function urlB64ToU8(b){var pad='='.repeat((4-b.length%4)%4),raw=atob((b+pad).replace(/-/g,'+').replace(/_/g,'/')),out=new Uint8Array(raw.length);for(var i=0;i<raw.length;i++)out[i]=raw.charCodeAt(i);return out}
+function ensurePush(){
+  if(!('serviceWorker' in navigator)||!('PushManager' in window)||!('Notification' in window))return Promise.resolve(false);
+  return api('/push/key').then(function(r){return r.ok?r.json():null}).then(function(k){
+    if(!k||!k.enabled||!k.public_key)return false;
+    return Notification.requestPermission().then(function(perm){
+      if(perm!=='granted')return false;
+      return navigator.serviceWorker.ready.then(function(reg){
+        return reg.pushManager.getSubscription().then(function(sub){return sub||reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:urlB64ToU8(k.public_key)})});
+      }).then(function(sub){
+        return api('/push/subscribe',{method:'POST',json:{subscription:sub.toJSON()}}).then(function(r){return r.ok});
+      });
+    });
+  }).catch(function(){return false});
+}
+/* where this phone stands on push: none, blocked, off, allowed (permission but no subscription), on */
+function pushState(){
+  if(!('Notification' in window)||!('PushManager' in window)||!('serviceWorker' in navigator))return Promise.resolve('none');
+  if(Notification.permission==='denied')return Promise.resolve('blocked');
+  if(Notification.permission!=='granted')return Promise.resolve('off');
+  return navigator.serviceWorker.ready.then(function(reg){return reg.pushManager.getSubscription()}).then(function(sub){return sub?'on':'allowed'}).catch(function(){return 'allowed'});
+}
 function boot(){
-  wireProfile();wireMore();wireChip();wireCratePage();
+  wireProfile();wireMore();mountChip();wireCratePage();
   document.addEventListener('gmx:crate',onCrateChange);
   if(!onScan()){resumeWait();if(token())syncCrate('boot')}
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
-window.gmxAccount={ready:loadCfg,token:token,headers:function(x){return cfg?headers(x):null},api:api,me:whoami,signIn:signIn,badge:badge,open:open,close:close,sync:function(){return syncCrate('asked',true)}};
+window.gmxAccount={
+  ready:loadCfg,config:loadCfg,token:token,set:setSession,device:deviceId,headers:function(x){return cfg?headers(x):null},api:api,call:api,
+  start:start,code:code,finish:finish,poll:poll,waitForLink:waitForLink,resumeWait:resumeWait,signout:signout,
+  me:whoami,snapshot:snapshot,setHandle:setHandle,ensurePush:ensurePush,pushState:pushState,on:function(f){subs.push(f)},paint:paint,
+  badge:badge,signIn:signIn,open:open,close:close,sync:function(){return syncCrate('asked',true)}
+};
 })();

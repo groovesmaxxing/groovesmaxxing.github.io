@@ -59,7 +59,7 @@
       return;
     }
     if (ios && touch) {
-      mount('put <b>grooves</b> on your home screen, it opens straight to scan. tap ' + SHARE +
+      mount('put <b>groovesMAXXING</b> on your home screen, it opens straight to scan. tap ' + SHARE +
         ' share (on newer iphones it sits under <b>···</b>), then <b>add to home screen</b>.', false);
       return;
     }
@@ -67,7 +67,7 @@
     w.addEventListener('beforeinstallprompt', function (e) {
       e.preventDefault();
       deferred = e;
-      var box = mount('put <b>grooves</b> on your home screen, it opens straight to scan. no app store, one tap.', true);
+      var box = mount('put <b>groovesMAXXING</b> on your home screen, it opens straight to scan. no app store, one tap.', true);
       if (!box) return;
       box.querySelector('.gi-go').addEventListener('click', function () {
         if (!deferred) return;
