@@ -21,9 +21,9 @@ MOTION_CSS = '<link rel="stylesheet" href="/gmx-motion.css">'
 MOTION_JS = '<script src="/gmx-motion.js" defer></script>'
 T = {
     'player_css': '<link rel="stylesheet" href="/gmx-player.css">',
-    'nav_css': '<link rel="stylesheet" href="/gmx-nav.css?v=15">',
+    'nav_css': '<link rel="stylesheet" href="/gmx-nav.css?v=16">',
     'player_js': '<script src="/gmx-player.js" defer></script>',
-    'nav_js': '<script src="/gmx-nav.js?v=15" defer></script>',
+    'nav_js': '<script src="/gmx-nav.js?v=16" defer></script>',
     'follow_js': '<script src="/gmx-follow.js" defer></script>',
     'crate_js': '<script src="/gmx-crate.js" defer></script>',
     'related_js': '<script src="/gmx-related.js" defer></script>',
@@ -34,7 +34,7 @@ T = {
     'sheet_js': '<script src="/gmx-sheet.js" defer></script>',
     # the account layer (2026-10-12): "this is me" on every artist and label profile
     'account_css': '<link rel="stylesheet" href="/gmx-account.css">',
-    'account_js': '<script src="/gmx-account.js?v=15" defer></script>',
+    'account_js': '<script src="/gmx-account.js?v=16" defer></script>',
 }
 
 def ensure(path, heads, before_motion, after_motion):
@@ -49,6 +49,20 @@ def ensure(path, heads, before_motion, after_motion):
     if b or a:
         if MOTION_JS in s: s = s.replace(MOTION_JS, '\n'.join(b + [MOTION_JS] + a), 1)
         else: s = s.replace('</body>', '\n'.join(b + a) + '\n</body>', 1)
+    if s != o: open(path, 'w', encoding='utf-8').write(s)
+    return s != o
+
+# the readability layer (2026-10-13): on every page, as the last tag in the head, so its rules win over the
+# page's own <style> block at the same selector. a page the laptop rewrites gets it back here.
+READ_CSS = '<link rel="stylesheet" href="/gmx-read.css?v=1">'
+def ensure_read(path):
+    s = open(path, encoding='utf-8').read(); o = s
+    if 'http-equiv="refresh"' in s or path.startswith('google') or '</head>' not in s: return False
+    s = re.sub(r'\n?<link rel="stylesheet" href="/gmx-read\.css[^"]*">', '', s)
+    # harden_pages.py keeps its image fallback listener as the very last tag, so the link goes just above it
+    m = re.search(r"<script>document\.addEventListener\('error'[^\n]*</script>\n</head>", s)
+    at = m.start() if m else s.index('</head>')
+    s = s[:at] + READ_CSS + '\n' + s[at:]
     if s != o: open(path, 'w', encoding='utf-8').write(s)
     return s != o
 
@@ -80,6 +94,9 @@ for f in ['index.html', 'sets.html', 'interviews.html']:
     anchor = T['player_js'] if T['player_js'] in s else MOTION_JS
     if anchor not in s: continue
     s = s.replace(anchor, anchor + '\n' + T['crate_js'], 1); open(f, 'w', encoding='utf-8').write(s); n += 1
+
+for f in sorted(files('*.html') + files('artists/*.html') + files('labels/*.html') + files('tracklists/*.html') + files('newsletter/*.html')):
+    n += ensure_read(f)
 
 # seo (2026-10-11): the head tags the laptop templates do not write, re-applied after every render.
 #   twitter:card on every page that has an og:image, so a link pasted into x or slack unfurls large.

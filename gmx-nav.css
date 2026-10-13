@@ -1,27 +1,37 @@
 /* groovesmaxxing shell (shell v2, 2026-10-12). pairs with gmx-nav.js, the only tab bar on the site.
-   five tabs: home, tracklists, the raised scan button (the logo mark on a red disc), artists, more.
+   five tabs: home, tracklists, the raised scan button (the homepage logo on a night disc), artists, more.
    the floating search button and the search sheet it opens live here too, so a page needs only this
    file and gmx-nav.js. brand palette, poppins and space mono, 44px targets. */
 .gmx-tabs{display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(11,11,13,.96);border-top:1px solid rgba(242,242,239,.12);padding-bottom:env(safe-area-inset-bottom);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 .gmx-tabs ul{list-style:none;margin:0 auto;padding:0;display:flex;justify-content:space-around;max-width:720px}
 .gmx-tabs li{flex:1;min-width:0}
-.gmx-tabs a{display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 2px 8px;min-height:54px;text-decoration:none;color:#8A8A93;font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.08em;text-transform:lowercase;white-space:nowrap;-webkit-tap-highlight-color:transparent}
+.gmx-tabs a{display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 2px 8px;min-height:54px;text-decoration:none;color:#A9A9B1;font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.02em;text-transform:lowercase;white-space:nowrap;-webkit-tap-highlight-color:transparent}
 .gmx-tabs svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .gmx-tabs a[aria-current="page"]{color:#FF1C02}
 .gmx-tabs a:hover{color:#F2F2EF}
 .gmx-tabs a:focus-visible{outline:3px solid #FF1C02;outline-offset:-3px;border-radius:12px}
-/* the raised scan button: the logo mark on a red disc, lifted out of the bar. lit with a second ring on /scan */
+/* the raised scan button: the homepage logo (red grooves, red centre, white waveform) on a night disc, lifted
+   out of the bar. it is always alive: the waveform swells and the grooves light up from the centre
+   out, like sound leaving the speaker, and a soft red ripple rolls off the disc. slow sine swells, never a
+   heartbeat. on /scan the ring doubles and the ripple runs faster. */
 .gmx-tabs li.gmx-scan a{padding-top:0;margin-top:-16px}
-.gmx-tabs .gmx-disc{width:52px;height:52px;border-radius:50%;background:#FF1C02;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 4px #0B0B0D,0 10px 26px rgba(255,28,2,.42);transition:transform .15s,box-shadow .15s}
-.gmx-tabs .gmx-disc svg{width:36px;height:36px;stroke:none}
+.gmx-tabs .gmx-disc{position:relative;width:56px;height:56px;border-radius:50%;background:#0B0B0D;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 4px #0B0B0D,0 8px 24px rgba(255,28,2,.4);transition:transform .15s,box-shadow .15s}
+.gmx-tabs .gmx-disc svg{position:relative;z-index:1;width:50px;height:50px;stroke:none;overflow:visible}
+.gmx-tabs .gmx-disc::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #FF1C02;opacity:0;pointer-events:none;animation:gmx-ripple 3.6s cubic-bezier(.2,.6,.3,1) infinite}
 .gmx-tabs li.gmx-scan a:hover .gmx-disc{transform:translateY(-2px)}
-.gmx-tabs li.gmx-scan a[aria-current="page"] .gmx-disc{box-shadow:0 0 0 4px #0B0B0D,0 0 0 6px #FF1C02,0 10px 26px rgba(255,28,2,.5)}
 .gmx-tabs li.gmx-scan a[aria-current="page"]{color:#FF1C02}
-/* on /scan the disc pulses gently, and a tap on it starts a scan */
-.gmx-tabs li.gmx-scan a[aria-current="page"] .gmx-disc{animation:gmx-discpulse 2.6s ease-in-out infinite}
-@keyframes gmx-discpulse{0%,100%{box-shadow:0 0 0 4px #0B0B0D,0 0 0 6px #FF1C02,0 10px 26px rgba(255,28,2,.5)}50%{box-shadow:0 0 0 4px #0B0B0D,0 0 0 9px rgba(255,28,2,.35),0 10px 30px rgba(255,28,2,.7)}}
+.gmx-tabs li.gmx-scan a[aria-current="page"] .gmx-disc{box-shadow:0 0 0 4px #0B0B0D,0 0 0 6px #FF1C02,0 10px 26px rgba(255,28,2,.5)}
+.gmx-tabs li.gmx-scan a[aria-current="page"] .gmx-disc::after{animation-duration:2.2s}
+/* the mark's parts, shared by the scan disc and the header logo on a wide screen */
+.gmx-disc .gx-wv,.gmx-hmark .gx-wv{transform-box:view-box;transform-origin:120px 120px;animation:gmx-swell 2.8s ease-in-out infinite}
+.gmx-disc .gx-r,.gmx-hmark .gx-r{animation:gmx-groove 2.8s ease-in-out infinite}
+.gmx-disc .gx-r2,.gmx-hmark .gx-r2{animation-delay:.35s}
+.gmx-disc .gx-r3,.gmx-hmark .gx-r3{animation-delay:.7s}
+@keyframes gmx-swell{0%,100%{transform:scaleY(.62)}50%{transform:scaleY(1.08)}}
+@keyframes gmx-groove{0%,100%{stroke-opacity:.6}50%{stroke-opacity:1}}
+@keyframes gmx-ripple{0%{transform:scale(1);opacity:.7}70%,100%{transform:scale(1.55);opacity:0}}
 @media (max-width:1024px){.gmx-tabs{display:block}body{padding-bottom:calc(66px + env(safe-area-inset-bottom))}}
-@media (prefers-reduced-motion: reduce){.gmx-tabs .gmx-disc,.gmx-fab{transition:none;animation:none}}
+@media (prefers-reduced-motion: reduce){.gmx-tabs .gmx-disc,.gmx-fab{transition:none;animation:none}.gmx-tabs .gmx-disc::after{display:none}.gmx-disc .gx-wv,.gmx-disc .gx-r,.gmx-hmark .gx-wv,.gmx-hmark .gx-r{animation:none}}
 .gmx-skip{position:absolute;left:12px;top:-60px;z-index:80;background:#FF1C02;color:#0B0B0D;font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.08em;padding:10px 14px;border-radius:999px;text-decoration:none}.gmx-skip:focus{top:12px;outline:3px solid #F2F2EF}
 /* a loading shape for blocks that fill from json: the radio stage, the tour list */
 .gmx-skel{border-radius:16px;background:linear-gradient(90deg,rgba(242,242,239,.05),rgba(242,242,239,.11),rgba(242,242,239,.05));background-size:200% 100%;animation:gmx-shimmer 1.2s linear infinite}@keyframes gmx-shimmer{to{background-position:-200% 0}}@media (prefers-reduced-motion: reduce){.gmx-skel{animation:none}}
@@ -36,11 +46,11 @@ html.gmx-nowon .gmx-fab{bottom:calc(138px + env(safe-area-inset-bottom))}
 @media (min-width:1025px){.gmx-fab{display:none}}
 .gmx-hdr{display:flex;align-items:center;gap:10px;flex:none}
 .gmx-hdr .gmx-hmark,.gmx-hdr .gmx-hsearch{display:none;width:36px;height:36px;border-radius:50%;align-items:center;justify-content:center;border:1px solid rgba(242,242,239,.18);background:none;color:#8A8A93;padding:0;margin:0;cursor:pointer;text-decoration:none;font:inherit}
-.gmx-hdr .gmx-hmark{background:#FF1C02;border-color:#FF1C02}
-.gmx-hdr .gmx-hmark svg{width:26px;height:26px}
+.gmx-hdr .gmx-hmark{background:#0B0B0D;border-color:transparent}
+.gmx-hdr .gmx-hmark svg{width:34px;height:34px;overflow:visible}
 .gmx-hdr .gmx-hsearch svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 .gmx-hdr .gmx-hsearch:hover,.gmx-hdr .gmx-hsearch:focus-visible{color:#FF1C02;border-color:#FF1C02;outline:none}
-.gmx-hdr .gmx-hmark:hover,.gmx-hdr .gmx-hmark:focus-visible{background:#CC1400;border-color:#CC1400;outline:none}
+.gmx-hdr .gmx-hmark:hover,.gmx-hdr .gmx-hmark:focus-visible{background:#141417;box-shadow:0 0 14px rgba(255,28,2,.45);outline:none}
 @media (min-width:1025px){.gmx-hdr .gmx-hmark,.gmx-hdr .gmx-hsearch{display:flex}}
 
 /* the search sheet: full screen on a phone, a centred panel from the top on a wide screen. above the

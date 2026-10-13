@@ -34,7 +34,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .top{display:flex;justify-content:space-between;align-items:center;padding:calc(18px + env(safe-area-inset-top)) 0 0}
 .wm{font-weight:900;font-size:1.05rem;letter-spacing:-.02em;text-decoration:none}
 .wm span{color:var(--racing)}
-.eyebrow{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.34em;color:var(--racing);text-transform:uppercase}
+.eyebrow{font-family:'Space Mono',monospace;font-size:.8rem;letter-spacing:.06em;color:var(--racing);text-transform:lowercase}
 h1.eyebrow{margin:0;font-weight:400}
 
 /* the stage: rings button, label, mic text */
@@ -72,7 +72,7 @@ h1.eyebrow{margin:0;font-weight:400}
 /* result card */
 .card{display:none;border:1px solid var(--line);border-radius:22px;padding:24px 22px 20px;margin:6px 0 30px;background:rgba(242,242,239,.03)}
 .card.on{display:block}
-.card .kw{font-family:'Space Mono',monospace;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--steel)}
+.card .kw{font-family:'Space Mono',monospace;font-size:.8rem;letter-spacing:.06em;text-transform:lowercase;color:var(--steel)}
 .card .kw b{font-weight:400;color:var(--racing)}
 .card h2{font-weight:900;font-size:clamp(1.7rem,7vw,2.3rem);line-height:1.05;letter-spacing:-.02em;margin:10px 0 4px;overflow-wrap:anywhere}
 .card .ttl{font-weight:600;font-size:1.12rem;line-height:1.3;overflow-wrap:anywhere}
@@ -86,11 +86,11 @@ h1.eyebrow{margin:0;font-weight:400}
 .card .art.unrel{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px 18px 18px}
 .card .art.unrel svg{width:64%;height:auto;overflow:visible;filter:drop-shadow(0 0 14px rgba(255,28,2,.35))}
 .card .art .wave{fill:none;stroke:var(--day);stroke-width:2.9;stroke-linejoin:round;stroke-linecap:round}
-.card .art .ulbl{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--steel);margin-top:14px}
+.card .art .ulbl{font-family:'Space Mono',monospace;font-size:.8rem;letter-spacing:.06em;text-transform:lowercase;color:var(--steel);margin-top:14px}
 .card .sub{font-weight:600;font-size:1.12rem;line-height:1.3;color:var(--day);overflow-wrap:anywhere;margin-top:2px}
 .card .sure{font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.08em;color:var(--steel);margin-top:8px}
 .card .lab{font-family:'Space Mono',monospace;font-size:.8rem;color:var(--steel);margin-top:8px;letter-spacing:.04em}
-.pill{display:inline-block;font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:5px 11px;margin-top:12px;color:var(--day)}
+.pill{display:inline-block;font-family:'Space Mono',monospace;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:5px 11px;margin-top:12px;color:var(--day)}
 .pill.out{border-color:var(--racing);color:var(--racing)}
 .pill.unr{border-color:#c9c9c4}
 .row{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
@@ -99,7 +99,7 @@ h1.eyebrow{margin:0;font-weight:400}
 .btn.red{border-color:var(--racing);background:var(--racing);color:var(--night)}
 .btn.red:hover{background:var(--deep);border-color:var(--deep);color:var(--day)}
 .btn.ghost{color:var(--steel)}
-.card h3{font-family:'Space Mono',monospace;font-weight:400;font-size:.72rem;letter-spacing:.28em;color:var(--steel);text-transform:uppercase;margin:24px 0 8px}
+.card h3{font-family:'Space Mono',monospace;font-weight:400;font-size:.8rem;letter-spacing:.06em;color:var(--steel);text-transform:lowercase;margin:24px 0 8px}
 .heard{list-style:none}
 .heard li{border-top:1px solid var(--line);padding:11px 0;display:flex;justify-content:space-between;gap:12px;align-items:baseline}
 /* what happens next (ui build 4): four steps, a line down the left, the live one red */
@@ -107,7 +107,7 @@ h1.eyebrow{margin:0;font-weight:400}
 .path::before{content:"";position:absolute;left:7px;top:10px;bottom:10px;width:1px;background:var(--line)}
 .path li{position:relative;display:grid;grid-template-columns:16px 1fr;column-gap:12px;row-gap:2px;padding:7px 0;align-items:baseline}
 .path .dot{width:11px;height:11px;border-radius:50%;border:1.5px solid var(--steel);background:var(--night);margin-left:1.5px;position:relative;z-index:1;align-self:center;grid-row:1 / span 2}
-.path .lb{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--steel)}
+.path .lb{font-family:'Space Mono',monospace;font-size:.8rem;letter-spacing:.06em;text-transform:lowercase;color:var(--steel)}
 .path .nt{grid-column:2;font-size:.9rem;line-height:1.45;color:#c9c9c4;overflow-wrap:anywhere}
 .path .st-done .dot{background:var(--day);border-color:var(--day)}
 .path .st-done .lb{color:var(--day)}
@@ -140,7 +140,7 @@ details.guess[open]>summary::after{content:' \2212'}
 .howbox .btn{margin-top:18px}
 .form{display:none;border-top:1px solid var(--line);margin-top:18px;padding-top:16px}
 .form.on{display:block}
-.form label{display:block;font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.14em;color:var(--steel);text-transform:uppercase;margin:12px 0 5px}
+.form label{display:block;font-family:'Space Mono',monospace;font-size:.8rem;letter-spacing:.06em;color:var(--steel);text-transform:lowercase;margin:12px 0 5px}
 .form input,.form textarea{width:100%;background:transparent;border:2px solid var(--line);border-radius:14px;color:var(--day);font-family:'Space Mono',monospace;font-size:.9rem;padding:11px 14px}
 .form textarea{min-height:76px;resize:vertical}
 .form input:focus,.form textarea:focus{border-color:var(--racing);outline:none}
@@ -165,7 +165,7 @@ details.guess[open]>summary::after{content:' \2212'}
 .session .when{color:var(--racing)}
 .session .stools{margin-top:12px}.session .stools .btn{padding:7px 12px;font-size:.72rem}.session .stools .msg{margin:0}
 .recent{margin:10px 0 40px}
-.recent h3{font-family:'Space Mono',monospace;font-weight:400;font-size:.72rem;letter-spacing:.28em;color:var(--steel);text-transform:uppercase;margin:0 0 8px}
+.recent h3{font-family:'Space Mono',monospace;font-weight:400;font-size:.8rem;letter-spacing:.06em;color:var(--steel);text-transform:lowercase;margin:0 0 8px}
 .recent ul{list-style:none;border-top:1px solid var(--line)}
 .recent li{border-bottom:1px solid var(--line);padding:12px 0;display:flex;justify-content:space-between;gap:12px;align-items:baseline}
 .recent .who{font-weight:600;font-size:.95rem;overflow-wrap:anywhere}.recent .who a.sublink{color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,28,2,.45)}.recent .who a.sublink:hover{color:var(--racing)}
@@ -208,10 +208,11 @@ details.guess[open]>summary::after{content:' \2212'}
 </style>
 <link rel="canonical" href="https://groovesmaxxing.com/scan">
 <link rel="stylesheet" href="/gmx-motion.css">
-<link rel="stylesheet" href="/gmx-nav.css?v=15">
+<link rel="stylesheet" href="/gmx-nav.css?v=16">
 <link rel="stylesheet" href="/gmx-quick.css">
 <meta property="og:image" content="https://groovesmaxxing.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/gmx-read.css?v=1">
 </head>
 <body>
 <div class="wrap">
@@ -281,7 +282,7 @@ details.guess[open]>summary::after{content:' \2212'}
 
 <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})})}</script>
 <script src="/gmx-clips.js"></script>
-<script src="/gmx-account.js?v=15"></script>
+<script src="/gmx-account.js?v=16"></script>
 <script src="/gmx-crate.js"></script>
 <script>
 (function(){
@@ -1573,6 +1574,6 @@ window.gmxScanDemo=function(res){current=res;showCard(resultCard(res))};
 <script src="/gmx-motion.js" defer></script>
 <script src="/gmx-quick.js" defer></script>
 <script src="/gmx-refresh.js" defer></script>
-<script src="/gmx-nav.js?v=15" defer></script>
+<script src="/gmx-nav.js?v=16" defer></script>
 </body>
 </html>
