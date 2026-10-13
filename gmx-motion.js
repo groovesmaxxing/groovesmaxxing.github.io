@@ -129,9 +129,10 @@ void main(){
       const ink = rectOf([h1, back]);
       const size = 76, space = cw - ink.r;
       if (space < size + 28) { cv.style.display = 'none'; if (mark) mark.style.display = 'none'; geo = null; return; }
-      const hCss = inkRect(h1).bottom + scrollY + 14;
+      const R = size / 2, hdr = document.querySelector('.gmx-hdr'), hb = hdr ? hdr.getBoundingClientRect().bottom + scrollY : 0;  // keep clear of the account chip
+      const cy = Math.max(Math.min(inkRect(h1).bottom + scrollY + 14 - R - 6, R + 18), hb ? hb + R + 10 : 0), cx = cw - R - 16;
+      const hCss = Math.max(inkRect(h1).bottom + scrollY + 14, cy + R + 6);
       cv.style.display = ''; cv.style.height = hCss + 'px'; W = cv.width = Math.round(cw * dpr); H = cv.height = Math.round(hCss * dpr); gl.viewport(0, 0, W, H);
-      const R = size / 2, cx = cw - R - 16, cy = Math.min(hCss - R - 6, R + 18);
       Object.assign(mark.style, {display: 'block', width: size + 'px', height: size + 'px', left: (cx - R) + 'px', top: (cy - R) + 'px'});
       geo = {c: [cx * dpr, H - cy * dpr], R: R * dpr, k: 40, maxR: R * 2.6 * dpr,
              box: [((ink.l + ink.r) / 2) * dpr, H - ((ink.t + ink.b) / 2) * dpr], half: [((ink.r - ink.l) / 2 + 12) * dpr, ((ink.b - ink.t) / 2 + 8) * dpr]};
