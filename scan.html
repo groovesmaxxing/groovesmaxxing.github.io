@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com https://api.deezer.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-p1Q14k5a9GRgjvwcCBsRWRUKCmGNYS87Qucr1Qyn4dM='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://open.spotify.com https://itunes.apple.com https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com https://api.deezer.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-ceNfG2DhACYrLUt8xY2WcddtuqworBf2W/1IvF5c/dQ='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://open.spotify.com https://itunes.apple.com https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>scan · groovesMAXXING</title>
@@ -128,6 +128,10 @@ h1.eyebrow{margin:0;font-weight:400}
 .guess .kw{margin-bottom:6px}
 .guess .nm{font-weight:600;font-size:1.05rem;overflow-wrap:anywhere}
 .guess .pc{font-family:'Space Mono',monospace;font-size:.8rem;color:var(--steel);margin-top:3px}
+details.guess>summary{cursor:pointer;list-style:none;color:var(--steel)}
+details.guess>summary::-webkit-details-marker{display:none}
+details.guess>summary::after{content:' +';font-family:'Space Mono',monospace}
+details.guess[open]>summary::after{content:' \2212'}
 .note{color:#c9c9c4;line-height:1.65;font-size:.95rem;margin-top:8px}
 .how{margin-top:18px;background:none;border:0;color:var(--steel);font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.08em;text-decoration:underline;text-underline-offset:4px;cursor:pointer;padding:8px}
 .how:hover,.how:focus-visible{color:var(--day)}
@@ -735,6 +739,15 @@ function placedHead(cur){
   if(who&&!/^id$/i.test(who))checkArtistPage(who);
   return out;
 }
+/* does the catalog's guess name the same track as the tracklist row ("artist - title")? titles compared
+   through foldT, so a mix name or an accent is not a difference. an unnamed guess never matches */
+function guessMatchesRow(g,row){
+  if(!g||!g.title||!row)return false;
+  var parts=String(row).split(' - '),ra=parts.length>1?parts[0]:'',rt=parts.length>1?parts.slice(1).join(' - '):row;
+  if(foldT(g.title)!==foldT(rt))return false;
+  var ga=foldT(g.artist),fa=foldT(ra);
+  return !ga||!fa||fa==='id'||ga.indexOf(fa)>-1||fa.indexOf(ga)>-1;
+}
 function inSetRows(cur){
   var s=cur.in_set; if(!s||!s.set_title)return '';
   s=Object.assign({},s,{page_url:safeUrl(s.page_url),deep_link:safeUrl(s.deep_link)});
@@ -806,11 +819,14 @@ function resultCard(cur){
     out+=followRow(cand);
     if(sub)checkArtistPage(sub);else if(nm&&nm.artist)checkArtistPage(nm.artist);
   }else if(c.kind==='guess'&&cand){
-    var g=nameOf(cand);
-    out+=placedHead(cur)||'<p class="kw"><b>no match</b></p><h2>nothing we\'re sure of.</h2><div class="row"><button class="btn red" data-act="listen">listen again</button></div><p class="note">best on a drop or a vocal.</p>';
+    var g=nameOf(cand), placed=placedHead(cur);
+    /* the tracklist already named the row at this spot: a guess under the bar that names something else
+       folds away under its own line, the tracklist leads (G-MO, 2026-10-13). one that agrees shows as before */
+    var other=!!placed&&!guessMatchesRow(g,cur.in_set.row);
+    out+=placed||'<p class="kw"><b>no match</b></p><h2>nothing we\'re sure of.</h2><div class="row"><button class="btn red" data-act="listen">listen again</button></div><p class="note">best on a drop or a vocal.</p>';
     out+=inSetRows(cur);
-    out+='<div class="guess"><p class="kw">closest guess</p><p class="nm">'+(g?esc(g.artist)+(g.artist&&g.title?' - ':'')+esc(g.title):'an unnamed library entry')+'</p><p class="pc">'+sureLine(cand)+'</p><div id="hear"></div>';
-    out+='<div class="row"><button class="btn" data-act="confirm">that\'s right</button><button class="btn" data-act="correct">it\'s actually...</button></div></div>';
+    out+=(other?'<details class="guess"><summary class="kw">the catalog heard something else</summary>':'<div class="guess"><p class="kw">closest guess</p>')+'<p class="nm">'+(g?esc(g.artist)+(g.artist&&g.title?' - ':'')+esc(g.title):'an unnamed library entry')+'</p><p class="pc">'+sureLine(cand)+'</p><div id="hear"></div>';
+    out+='<div class="row"><button class="btn" data-act="confirm">that\'s right</button><button class="btn" data-act="correct">it\'s actually...</button></div>'+(other?'</details>':'</div>');
     out+=correctionForm();
     out+=followRow(cand);
     out+=pathBlock(cur);
