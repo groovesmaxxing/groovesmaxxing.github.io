@@ -1,12 +1,12 @@
 /* groovesmaxxing service worker (phase 5, pwa shell).
    network first, cache fallback, offline page in the voice.
    only same-origin GET requests are ever cached. the api host is never touched. */
-var CACHE = 'gmx-v13';
+var CACHE = 'gmx-v14';
 var SHELL = ['/scan', '/more', '/gmx-clips.js', '/gmx-refresh.js', '/gmx-nav.js', '/gmx-nav.css', '/gmx-account.js', '/gmx-account.css','/gmx-player.js', '/gmx-player.css', '/gmx-sets.js', '/search', '/gmx-profile.css', '/gmx-label.css', '/gmx-capture-worklet.js', '/gmx-fonts.css', '/fonts/poppins-400-latin.woff2', '/fonts/poppins-600-latin.woff2', '/fonts/poppins-900-latin.woff2', '/fonts/spacemono-400-latin.woff2', '/fonts/spacemono-700-latin.woff2', '/artists-index.json', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png', '/favicon.svg'];
 
 var OFFLINE = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">' +
   '<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">' +
-  '<title>offline · groovesMAXXING</title>' +
+  '<title>offline Â· groovesMAXXING</title>' +
   '<style>body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#0B0B0D;color:#F2F2EF;font-family:Poppins,sans-serif;text-align:center;padding:24px}' +
   'h1{font-weight:900;font-size:2rem;margin:0 0 10px}h1 span{color:#FF1C02}p{font-family:"Space Mono",monospace;color:#8A8A93;font-size:.9rem;line-height:1.7;max-width:320px;margin:0 auto}' +
   'a{color:#FF1C02;text-decoration:none}</style></head><body><div>' +

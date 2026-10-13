@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com https://api.deezer.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-dTOLiWn0lKaAm/Rw3UvSlSTNpqs3WZDiEMsEbLGX9PI='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net https://open.spotify.com https://itunes.apple.com; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com https://api.deezer.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-3XmoTopUUZECm6crvnxce0yj+fACIw3Q3WEoi+Wq2VQ='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net https://open.spotify.com https://itunes.apple.com; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>scan · groovesMAXXING</title>
+<title>scan Â· groovesMAXXING</title>
 <meta name="description" content="hear a track, tap once. groovesmaxxing listens for about 15 seconds and looks for it in our own library of sets first, then in the catalogs.">
-<meta property="og:title" content="scan · groovesMAXXING">
+<meta property="og:title" content="scan Â· groovesMAXXING">
 <meta property="og:description" content="hear a track, tap once. groovesmaxxing listens for about 15 seconds and looks for it in our own library of sets first, then in the catalogs.">
 <meta property="og:url" content="https://groovesmaxxing.com/scan">
 <meta name="robots" content="noindex">
@@ -42,13 +42,9 @@ h1.eyebrow{margin:0;font-weight:400}
 .rings{position:relative;width:236px;height:236px;border-radius:50%;display:grid;place-items:center;-webkit-tap-highlight-color:transparent;touch-action:manipulation;transition:transform .15s}
 .rings:active{transform:scale(.97)}
 .rings svg{width:100%;height:100%;display:block;overflow:visible;filter:drop-shadow(0 0 14px rgba(255,28,2,.45))}
-.rings .r{fill:none;stroke:var(--racing);stroke-width:2.1;transform-origin:50px 50px;transition:transform .12s ease-out}
+.rings .r{fill:none;stroke:var(--racing);stroke-width:5}
 .rings .dot{fill:var(--racing)}
-.rings .wave{fill:none;stroke:var(--day);stroke-width:2.9;stroke-linejoin:round;stroke-linecap:round;transform-origin:50px 50px;transition:transform .12s ease-out}
-.rings.busy .r{animation:breathe 1.6s ease-in-out infinite}
-.rings.busy .r:nth-child(2){animation-delay:.2s}
-.rings.busy .r:nth-child(3){animation-delay:.4s}
-@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.rings .wave{fill:none;stroke:var(--day);stroke-width:7;stroke-linejoin:round;stroke-linecap:round}
 .rings[disabled]{cursor:default}
 .tap{font-family:'Space Mono',monospace;font-size:.86rem;letter-spacing:.12em;margin-top:22px;min-height:1.4em}
 .tap b{font-weight:400;color:var(--racing)}
@@ -67,7 +63,7 @@ h1.eyebrow{margin:0;font-weight:400}
 .hear li small{display:block;font-weight:400;color:var(--steel);font-size:.78rem;font-family:'Space Mono',monospace;margin-top:2px}
 .btn.find{color:var(--steel);border-style:dashed}
 .card .sub a.sublink,.card .lab a.sublink{color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,28,2,.45)}.card .sub a.sublink:hover,.card .lab a.sublink:hover{color:var(--racing)}
-.card h2 a.listen{color:inherit;text-decoration:none}.card h2 a.listen:hover{color:var(--racing)}.card h2 a.listen::after{content:' ↗';font-size:.6em;color:var(--racing);vertical-align:super}
+.card h2 a.listen{color:inherit;text-decoration:none}.card h2 a.listen:hover{color:var(--racing)}.card h2 a.listen::after{content:' â†—';font-size:.6em;color:var(--racing);vertical-align:super}
 .stage.finding .tap{display:none}
 .stage.listening .rec{display:flex}
 .stage.finding .rec{display:flex}
@@ -227,12 +223,12 @@ details.guess[open]>summary::after{content:' \2212'}
 
 <section class="stage" id="stage" aria-live="polite">
 <button class="rings" id="go" aria-label="tap to scan">
-<svg viewBox="0 0 100 100" aria-hidden="true">
-<circle class="r" cx="50" cy="50" r="43.33"/>
-<circle class="r" cx="50" cy="50" r="31.67"/>
-<circle class="r" cx="50" cy="50" r="20"/>
-<circle class="dot" cx="50" cy="50" r="7.51"/>
-<polyline class="wave" points="2.5,50 12.5,50 20,36.54 28.33,59.54 36.67,43.54 45,54.38 50,48.5 55,55.21 63.33,41.71 71.67,61.88 80,34.75 87.5,50 97.5,50"/>
+<svg viewBox="0 0 240 240" aria-hidden="true">
+<circle class="r" cx="120" cy="120" r="104"/>
+<circle class="r" cx="120" cy="120" r="76"/>
+<circle class="r" cx="120" cy="120" r="48"/>
+<circle class="dot" cx="120" cy="120" r="18"/>
+<polyline class="wave" points="6,120 30,120 48,87.7 68,142.9 88,104.5 108,130.51 120,116.4 132,132.5 152,100.1 172,148.51 192,83.4 210,120 234,120"/>
 </svg>
 </button>
 <div class="tap" id="tap">tap to <b>scan</b></div>
@@ -252,7 +248,7 @@ details.guess[open]>summary::after{content:' \2212'}
 <p>hearing a set? under the result, tell us which one. we send the clip once more to find the spot in it, then delete it.</p>
 <p>at a set, turn on auto. the phone scans on its own every eight minutes, keeps the screen awake, and builds tonight's list as it goes. tap the rings or the auto button to stop.</p>
 <p>no signal? the clip stays on this phone and gets matched the moment you are back online.</p>
-<p class="links"><a href="/privacy">privacy</a> · <a href="/more">more</a></p>
+<p class="links"><a href="/privacy">privacy</a> Â· <a href="/more">more</a></p>
 <button class="btn" type="button" id="howclose">close</button>
 </dialog>
 
@@ -355,8 +351,8 @@ function safeUrl(u){u=String(u==null?'':u).trim();if(!u)return '';if(/^https?:\/
 function cleanLinks(o){var r={};Object.keys(o||{}).forEach(function(k){var u=safeUrl(o[k]);if(u)r[k]=u});return r}
 function pct(n){return Math.round(Number(n)||0)+'%'}
 function slug(s){
-  s=String(s||'').toLowerCase().replace(/[øØ]/g,'o');
-  try{s=s.normalize('NFKD').replace(/[̀-ͯ]/g,'')}catch(e){}
+  s=String(s||'').toLowerCase().replace(/[Ã¸Ã˜]/g,'o');
+  try{s=s.normalize('NFKD').replace(/[Ì€-Í¯]/g,'')}catch(e){}
   return s.replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
 }
 
@@ -391,12 +387,103 @@ function lowpass(x,rate,fc){
   var b0=k*norm, b1=2*b0, b2=b0, a1=2*(k-1)*norm, a2=(1-w/q+k)*norm, x1=0,x2=0,y1=0,y2=0;
   for(var i=0;i<x.length;i++){var xi=x[i], y=b0*xi+b1*x1+b2*x2-a1*y1-a2*y2; x2=x1;x1=xi;y2=y1;y1=y;x[i]=y;}
 }
-function setLevel(v){
-  var s=1+Math.min(.22,v*1.4);
-  for(var i=0;i<rings.length;i++)rings[i].style.transform='scale('+(1+(s-1)*(1-i*.25))+')';
-  wave.style.transform='scaleY('+(1+Math.min(.6,v*3))+')';
-}
-function clearLevel(){for(var i=0;i<rings.length;i++)rings[i].style.transform='';wave.style.transform=''}
+/* the scan button is a spinning record (S2, approved 2026-10-12). idle is the markup, the landing
+   page mark exactly. while the stage is listening or finding, act eases to 1: the record fills in,
+   spins with the mic level and steps through three looks every 1.6 s from the start of the scan.
+   the loop runs only while scanning or easing out. reduced motion gets look 1, still. */
+var lv=0;
+function setLevel(v){lv=v>0?v:0}
+function clearLevel(){lv=0}
+(function(){
+  var svg=go.querySelector('svg'), dot=go.querySelector('.dot'), NS='http://www.w3.org/2000/svg';
+  var R=[255,28,2],N=[11,11,13],W=[242,242,239],S=[180,180,175];
+  var LOOK=[{fill:R,line:W,edge:N},{fill:N,line:R,edge:W},{fill:S,line:N,edge:R}];
+  var ZIG0=wave.getAttribute('points'), ZIG=ZIG0.trim().split(/\s+/).map(function(p){return p.split(',').map(Number)});
+  var reduce=window.matchMedia?matchMedia('(prefers-reduced-motion: reduce)'):null;
+  var p=null, act=0, ang=0, sp=0, vs=0, ts0=0, last=0, fr=0, raf=0, wasOn=false;
+  function live(){return stage.classList.contains('listening')||stage.classList.contains('finding')}
+  function still(){return !!(reduce&&reduce.matches)}
+  function lerp(a,b,u){return a.map(function(x,i){return x+(b[i]-x)*u})}
+  function rgb(a,al){a=a.map(Math.round);return al==null?'rgb('+a.join(',')+')':'rgba('+a.join(',')+','+al+')'}
+  function look(t){var T=t/1.6,i=Math.floor(T),f=T-i,u=f<.8?0:(f-.8)/.2;u=u*u*(3-2*u);
+    var a=LOOK[i%3],b=LOOK[(i+1)%3];return {fill:lerp(a.fill,b.fill,u),line:lerp(a.line,b.line,u),edge:lerp(a.edge,b.edge,u)}}
+  function el(tag,at,parent,before){var e=document.createElementNS(NS,tag);for(var k in at)e.setAttribute(k,at[k]);parent.insertBefore(e,before||null);return e}
+  /* the record parts are drawn on the first scan, slotted around the idle mark: disc and grooves under
+     the rings, a dark edge under each ring and the wave, the spindle hole over the dot, the arc on top. */
+  function build(){
+    var d=el('defs',{},svg,svg.firstChild), lg=el('linearGradient',{id:'gv-sh',x1:0,y1:0,x2:1,y2:0},d);
+    [[0,0],[.5,.5],[1,0]].forEach(function(s){el('stop',{offset:s[0],'stop-color':'#fff','stop-opacity':s[1]},lg)});
+    el('circle',{cx:120,cy:120,r:110},el('clipPath',{id:'gv-c'},d));
+    el('feGaussianBlur',{stdDeviation:6},el('filter',{id:'gv-b',x:'-30%',y:'-30%',width:'160%',height:'160%'},d));
+    var f=el('filter',{id:'gv-e',x:'-20%',y:'-60%',width:'140%',height:'220%'},d), m;
+    el('feGaussianBlur',{'in':'SourceGraphic',stdDeviation:2.6,result:'b'},f); m=el('feMerge',{},f);
+    ['b','b','SourceGraphic'].forEach(function(x){el('feMergeNode',{'in':x},m)});
+    var o={}, first=rings[0];
+    o.disc=el('circle',{cx:120,cy:120,r:110},svg,first);
+    o.spin=el('g',{'clip-path':'url(#gv-c)',fill:'none'},svg,first);
+    for(var r=30;r<108;r+=3.2){if(Math.abs(r-48)<3||Math.abs(r-76)<3||Math.abs(r-104)<3)continue;el('circle',{cx:120,cy:120,r:r.toFixed(1),'stroke-width':.7,opacity:.35},o.spin)}
+    var sh=el('g',{filter:'url(#gv-b)',opacity:.55,stroke:'none'},o.spin);
+    el('path',{d:'M120 120 L120 4 A116 116 0 0 1 178 20 Z',fill:'url(#gv-sh)'},sh);
+    el('path',{d:'M120 120 L120 236 A116 116 0 0 1 62 220 Z',fill:'url(#gv-sh)'},sh);
+    o.rk=[].map.call(rings,function(c){return el('circle',{cx:120,cy:120,r:c.getAttribute('r'),fill:'none','stroke-width':9.4},svg,c)});
+    o.hole=el('circle',{cx:120,cy:120,r:4.5,fill:'#0B0B0D'},svg,wave);
+    o.wk=el('polyline',{fill:'none','stroke-width':11.4,'stroke-linecap':'round','stroke-linejoin':'round'},svg,wave);
+    o.eg=el('g',{filter:'url(#gv-e)'},svg);
+    o.arc=el('polyline',{fill:'none',stroke:'#fff','stroke-width':1.6,'stroke-linejoin':'round'},o.eg);
+    o.b1=el('polyline',{fill:'none',stroke:'#FFF6F2','stroke-width':3.2,'stroke-linecap':'round',pathLength:100,'stroke-dasharray':'7 93'},o.eg);
+    o.b2=el('polyline',{fill:'none',stroke:'#FF6A4D','stroke-width':2.4,'stroke-linecap':'round',pathLength:100,'stroke-dasharray':'5 95'},o.eg);
+    return o;
+  }
+  /* A is how far into the record, c the look, v the eased level, jv the raw level for the arc jitter */
+  function paint(A,c,t,v,jv,arcs,calm){
+    if(!p)p=build();
+    var edge=rgb(c.edge), i;
+    p.disc.style.fill=rgb(c.fill); p.disc.style.opacity=A;
+    p.spin.style.stroke=edge; p.spin.style.opacity=A; p.spin.setAttribute('transform','rotate('+ang.toFixed(1)+' 120 120)');
+    for(i=0;i<rings.length;i++){p.rk[i].style.stroke=edge;p.rk[i].style.opacity=A;rings[i].style.stroke=rgb(lerp(R,c.line,A))}
+    dot.style.fill=rgb(lerp(R,c.edge,A)); dot.setAttribute('r',(18+8*A).toFixed(2)); p.hole.style.opacity=A;
+    svg.style.filter='drop-shadow(0 0 '+(14+6*A).toFixed(1)+'px '+rgb(lerp(R,c.fill,A),.45)+')';
+    var beat=.5+.5*Math.sin(t*Math.PI*2/6);
+    var P=calm?ZIG:ZIG.map(function(q,i){if(i<2||i>ZIG.length-3)return q;
+      var k=(.8+.22*Math.sin(t*1.7-i*.62)+.08*beat)*(1+Math.min(.5,v*2.5));return [q[0],120+(q[1]-120)*(1+(k-1)*A)]});
+    var pts=P.map(function(q){return q[0].toFixed(1)+','+q[1].toFixed(1)}).join(' ');
+    wave.setAttribute('points',pts); wave.style.stroke=rgb(lerp(W,c.line,A));
+    p.wk.setAttribute('points',pts); p.wk.style.stroke=edge; p.wk.style.opacity=A;
+    p.eg.style.opacity=calm?0:A; if(calm)return;
+    p.b1.setAttribute('points',pts); p.b2.setAttribute('points',pts);
+    p.b1.setAttribute('stroke-dashoffset',(100-(t/1.1%1)*100).toFixed(2)); p.b2.setAttribute('stroke-dashoffset',(100-((t+.6)/1.7%1)*100).toFixed(2));
+    if(!arcs)return;
+    var arc=[];
+    for(i=0;i<P.length-1;i++){var a=P[i],b=P[i+1],dx=b[0]-a[0],dy=b[1]-a[1],L=Math.hypot(dx,dy)||1,nx=-dy/L,ny=dx/L,n=Math.max(2,Math.round(L/6));
+      for(var k=0;k<n;k++){var u=k/n,j=k===0?0:(Math.random()-.5)*5.5*(.6+jv*4);arc.push((a[0]+dx*u+nx*j).toFixed(1)+','+(a[1]+dy*u+ny*j).toFixed(1))}}
+    arc.push(P[P.length-1].join(',')); p.arc.setAttribute('points',arc.join(' ')); p.arc.style.opacity=(.45+Math.random()*.55).toFixed(2);
+  }
+  /* back to the markup: inline colours cleared so the stylesheet's idle mark shows, the extras hidden */
+  function idle(){
+    act=0; sp=0; vs=0; wasOn=false;
+    for(var i=0;i<rings.length;i++)rings[i].style.stroke='';
+    dot.style.fill=''; dot.setAttribute('r','18'); wave.style.stroke=''; wave.setAttribute('points',ZIG0); svg.style.filter='';
+    if(p)[p.disc,p.spin,p.hole,p.wk,p.eg].concat(p.rk).forEach(function(e){e.style.opacity=0});
+  }
+  function hold(){ang=0; if(live())paint(1,LOOK[0],0,0,0,false,true); else idle()}
+  function frame(now){
+    if(still()){raf=0;hold();return}
+    var on=live(), dt=last?Math.min(.1,(now-last)/1000):1/60; last=now; fr++;
+    if(on&&!wasOn)ts0=now; wasOn=on;
+    function ease(k){return 1-Math.pow(1-k,dt*60)}
+    act+=((on?1:0)-act)*ease(.06);
+    if(!on&&act<.002){raf=0;idle();return}
+    var jv=Math.min(.3,lv); vs+=(jv-vs)*ease(.3);
+    sp+=((on?140+vs*900:0)-sp)*ease(.05); ang=(ang+sp*dt)%360;
+    paint(act,look(on?(now-ts0)/1000:0),now/1000,vs,jv,fr%2===0,false);
+    raf=requestAnimationFrame(frame);
+  }
+  if(!window.MutationObserver)return;
+  new MutationObserver(function(){
+    if(still()){hold();return}
+    if(!raf&&live()){last=0;raf=requestAnimationFrame(frame)}
+  }).observe(stage,{attributes:true,attributeFilter:['class']});
+})();
 
 function startScan(){
   if(busy)return;
@@ -512,9 +599,9 @@ function pollJob(jobId,began){
    a CONFIRMED answer ends the scan at once. a LIKELY one shows and the scan keeps going for the catalogs. */
 function earlyIdentify(blob,seq,at){
   var fd=new FormData(); fd.append('audio',blob,'clip.wav'); fd.append('source','mic');
-  var began=Date.now(), sent=null, round={at:at,post:0,wait:0,answer:'…'};
+  var began=Date.now(), sent=null, round={at:at,post:0,wait:0,answer:'â€¦'};
   if(timing)timing.rounds.push(round);
-  say2('matching at <b>'+(at/1000)+' s</b>'+(timing.rounds.length>1?' · '+timing.rounds.slice(0,-1).map(function(r){return r.answer}).join(', '):''));
+  say2('matching at <b>'+(at/1000)+' s</b>'+(timing.rounds.length>1?' Â· '+timing.rounds.slice(0,-1).map(function(r){return r.answer}).join(', '):''));
   fx(cfg.api_base+'/identify',{method:'POST',headers:headers({'X-GMX-Round':'early'}),body:fd},POST_MS)
   .then(function(r){sent=Date.now();round.post=sent-began;if(r.status===429){rateHit=true;throw new Error('rate')}if(!r.ok)throw new Error('http '+r.status);return r.json()})
   .then(function(job){return pollJob(job.job_id,began)})
@@ -522,7 +609,7 @@ function earlyIdentify(blob,seq,at){
     round.wait=Date.now()-(sent||began);
     if(seq!==scanSeq||finalDone)return;
     var r=j.result||{}, c=r.card||{}, cand=c.candidate;
-    if(!cand||(cand.tier!=='LIKELY'&&cand.tier!=='CONFIRMED')){round.answer=(at/1000)+' s: nothing yet';say2('matching · '+timing.rounds.map(function(x){return x.answer}).join(' · '));return}
+    if(!cand||(cand.tier!=='LIKELY'&&cand.tier!=='CONFIRMED')){round.answer=(at/1000)+' s: nothing yet';say2('matching Â· '+timing.rounds.map(function(x){return x.answer}).join(' Â· '));return}
     var nm=nameOf(cand),who=nm?(nm.title||nm.artist):'a library entry';
     round.answer=(at/1000)+' s: '+(cand.tier==='CONFIRMED'?'sure':'close')+', '+who;
     early={job_id:j.job_id,recognition_id:r.recognition_id||j.job_id,card:{kind:'match',candidate:cand},seconds:Math.round((Date.now()-timing.t0)/100)/10,timing:timing};
@@ -552,7 +639,7 @@ function identify(blob){
   cancelScan=null; go.disabled=true; stage.classList.add('finding'); recword.textContent='finding it'; count.textContent='';
   say2('checking the catalogs');
   if(!early)showCard('<div class="skel" aria-hidden="true"><i class="a"></i><i class="b"></i><i class="c"></i><i class="d"></i></div>');
-  var sentAt=null,finalRound={at:CAPTURE_MS,post:0,wait:0,answer:'…'};if(timing)timing.rounds.push(finalRound);
+  var sentAt=null,finalRound={at:CAPTURE_MS,post:0,wait:0,answer:'â€¦'};if(timing)timing.rounds.push(finalRound);
   var fd=new FormData(); fd.append('audio',blob,'clip.'+extOf(blob)); fd.append('source','mic');
   var began=Date.now();
   fx(cfg.api_base+'/identify',{method:'POST',headers:headers(),body:fd},POST_MS)
@@ -618,7 +705,7 @@ function crateItem(cand){
   var who=nm.artist||((card.querySelector('.sub')||{}).textContent||'').trim();
   var shown=nm.lib?((card.querySelector('h2')||{}).textContent||'').trim():'';
   var title=(who?who+' - ':'')+(shown||nm.title||'unnamed library entry');
-  return {kind:'track',id:'scan:'+(foldT(who+' '+nm.title)||cand.library_id||'id'),title:title,sub:[cand.label||'',cand.status||'','found with the scan'].filter(Boolean).join(' · '),url:'/scan',links:links,artist:who,label:cand.label||''};
+  return {kind:'track',id:'scan:'+(foldT(who+' '+nm.title)||cand.library_id||'id'),title:title,sub:[cand.label||'',cand.status||'','found with the scan'].filter(Boolean).join(' Â· '),url:'/scan',links:links,artist:who,label:cand.label||''};
 }
 function decorate(cur){
   var c=cur&&cur.card&&cur.card.candidate; if(!c||cur.card.kind!=='match')return;
@@ -629,9 +716,9 @@ function decorate(cur){
   }
   var lab=card.querySelector('p.lab');
   if(lab&&c.label&&!lab.querySelector('a'))namesIndex().then(function(n){
-    var key=String(c.label).normalize('NFKD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/&/g,'and').replace(/\s+/g,' ').trim(),sl=n&&n.l&&n.l[key];
+    var key=String(c.label).normalize('NFKD').replace(/[Ì€-Í¯]/g,'').toLowerCase().replace(/&/g,'and').replace(/\s+/g,' ').trim(),sl=n&&n.l&&n.l[key];
     if(!sl||lab.querySelector('a'))return;
-    lab.innerHTML='<a class="sublink" href="/labels/'+esc(sl)+'">'+esc(c.label)+'</a>'+(c.release_date?' · '+esc(c.release_date):'');
+    lab.innerHTML='<a class="sublink" href="/labels/'+esc(sl)+'">'+esc(c.label)+'</a>'+(c.release_date?' Â· '+esc(c.release_date):'');
   });
 }
 function errCard(text){return '<p class="kw"><b>hm.</b></p><h2>that did not work.</h2><p class="note">'+esc(text)+'</p><div class="row"><button class="btn red" data-act="again">scan again</button></div>'}
@@ -741,14 +828,14 @@ function pathStep(state,label,note){return '<li class="st-'+state+'"><span class
 function pathBlock(cur){
   var c=cur.card, cand=c.candidate, t=cur.timing, s=cur.in_set, nm=cand?nameOf(cand):null;
   var secs=function(ms){return (Math.round(ms/100)/10)+' s'};
-  var heard=t&&t.first?'found in '+secs(t.first)+(t.rounds&&t.rounds.length>1?' · '+t.rounds.length+' rounds':''):(t?'listening':'just now');
+  var heard=t&&t.first?'found in '+secs(t.first)+(t.rounds&&t.rounds.length>1?' Â· '+t.rounds.length+' rounds':''):(t?'listening':'just now');
   var named,namedState,conf,confState;
   if(c.kind==='match'&&cand){
     var lib=!!(nm&&nm.lib),head=(!lib&&cand.headline)||(nm?(nm.title||nm.artist):'ID');
     if(head==='ID'){named='in our library, no name yet';namedState='now'}
-    else{named=((lib||cand.status!=='out now')?'from our library of sets':'from the catalog')+(cand.status==='unreleased'?' · unreleased':cand.status==='out now'?' · out now':'');namedState='done'}
+    else{named=((lib||cand.status!=='out now')?'from our library of sets':'from the catalog')+(cand.status==='unreleased'?' Â· unreleased':cand.status==='out now'?' Â· out now':'');namedState='done'}
     if(cand.accepted_name){conf='a person confirmed this name';confState='done'}
-    else{conf='waiting on you: that’s right, or it’s actually… two phones or the artist close it';confState=head==='ID'?'next':'now'}
+    else{conf='waiting on you: thatâ€™s right, or itâ€™s actuallyâ€¦ two phones or the artist close it';confState=head==='ID'?'next':'now'}
   }else if(c.kind==='guess'&&cand){
     named='a guess at '+pct(cand.shown_score)+', under our bar';namedState='now';
     conf='nothing to confirm until it has a name';confState='next';
@@ -757,8 +844,8 @@ function pathBlock(cur){
     conf='nothing to confirm until it has a name';confState='next';
   }
   var placed,placedState;
-  if(s&&s.set_title){placed='in '+esc(s.set_title)+(s.at?' around '+esc(s.at):'')+(s.row?' · the tracklist calls it '+esc(s.row):'');placedState='done'}
-  else{placed='not placed in a set yet. “where are you hearing this?” helps.';placedState='next'}
+  if(s&&s.set_title){placed='in '+esc(s.set_title)+(s.at?' around '+esc(s.at):'')+(s.row?' Â· the tracklist calls it '+esc(s.row):'');placedState='done'}
+  else{placed='not placed in a set yet. â€œwhere are you hearing this?â€ helps.';placedState='next'}
   return '<h3>what happens next</h3><ol class="path" id="path">'+pathStep('done','heard',esc(heard))+pathStep(namedState,'named',esc(named))+pathStep(placedState,'placed',placed)+pathStep(confState,'confirmed',conf)+'</ol>';
 }
 function markSent(verdict){
@@ -780,7 +867,7 @@ function resultCard(cur){
       var h0=(cand.heard_in||[])[0];
       out+='<p class="ttl">'+(h0?'heard in '+esc(h0.set_title)+' at '+esc(h0.at):'in our library, still unnamed')+'</p>';
     }
-    if(cand.label&&cand.status==='out now')out+='<p class="lab">'+esc(cand.label)+(cand.release_date?' · '+esc(cand.release_date):'')+'</p>';
+    if(cand.label&&cand.status==='out now')out+='<p class="lab">'+esc(cand.label)+(cand.release_date?' Â· '+esc(cand.release_date):'')+'</p>';
     out+='<p class="sure">'+sureLine(cand)+'</p>';
     out+=statusPill(cand.status);
     var links=storeRow(cand);
@@ -830,7 +917,7 @@ function resultCard(cur){
 var ART_KEY='gmx_art', tracksIdx=null;
 function artCache(){try{return JSON.parse(localStorage.getItem(ART_KEY)||'{}')}catch(e){return {}}}
 function artRemember(k,v){try{var c=artCache();c[k]=v;var ks=Object.keys(c);while(ks.length>120){delete c[ks.shift()]}localStorage.setItem(ART_KEY,JSON.stringify(c))}catch(e){}}
-function foldT(t){t=String(t||'').normalize('NFKD').replace(/[̀-ͯ]/g,'').toLowerCase();t=t.replace(/\((?:extended|original|radio|club|edit|mix|remix|version|feat\.?|ft\.?)[^)]*\)/g,' ').replace(/\b(extended mix|original mix|radio edit|club mix)\b/g,' ');return t.replace(/[^a-z0-9]+/g,' ').trim()}
+function foldT(t){t=String(t||'').normalize('NFKD').replace(/[Ì€-Í¯]/g,'').toLowerCase();t=t.replace(/\((?:extended|original|radio|club|edit|mix|remix|version|feat\.?|ft\.?)[^)]*\)/g,' ').replace(/\b(extended mix|original mix|radio edit|club mix)\b/g,' ');return t.replace(/[^a-z0-9]+/g,' ').trim()}
 function jsonp(url,ms){return new Promise(function(res,rej){var cb='gmxcb'+Date.now()+Math.floor(Math.random()*1e4),sc=document.createElement('script'),t=setTimeout(function(){done();rej(new Error('timeout'))},ms||6000);
   function done(){clearTimeout(t);delete window[cb];if(sc.parentNode)sc.parentNode.removeChild(sc)}
   window[cb]=function(d){done();res(d)};sc.src=url+(url.indexOf('?')>-1?'&':'?')+'callback='+cb;sc.onerror=function(){done();rej(new Error('jsonp'))};document.head.appendChild(sc)})}
@@ -876,7 +963,7 @@ function enrich(cur){
       }
     }
     if(hearEl&&!hearEl.children.length){
-      hearEl.innerHTML='<h3>hear it in</h3><ul class="heard hear">'+hits.map(function(r){var rl=safeUrl(r.l),ru=safeUrl(r.u);var play=rl?'<a href="'+esc(rl)+'" target="_blank" rel="noopener">play from '+esc(r.at)+' ↗</a>':esc(r.at);return '<li><a href="'+esc(ru)+'">'+esc(r.set)+'<small>'+esc(r.n)+(r.lab?' · '+esc(r.lab):'')+'</small></a><span class="at">'+play+'</span></li>'}).join('')+'</ul>';
+      hearEl.innerHTML='<h3>hear it in</h3><ul class="heard hear">'+hits.map(function(r){var rl=safeUrl(r.l),ru=safeUrl(r.u);var play=rl?'<a href="'+esc(rl)+'" target="_blank" rel="noopener">play from '+esc(r.at)+' â†—</a>':esc(r.at);return '<li><a href="'+esc(ru)+'">'+esc(r.set)+'<small>'+esc(r.n)+(r.lab?' Â· '+esc(r.lab):'')+'</small></a><span class="at">'+play+'</span></li>'}).join('')+'</ul>';
     }
   });
   if(unreleased||(c.artwork_url&&l.spotify&&l.apple))return;
@@ -912,7 +999,7 @@ function timingLine(cur){
   var secs=function(ms){return (Math.round(ms/100)/10)+' s'};
   var found=t.first?'<b>found in '+secs(t.first)+'</b>':'<b>'+secs(Date.now()-t.t0)+' end to end</b>';
   var parts=t.rounds.filter(function(r){return r.post||r.wait}).map(function(r){return (r.at/1000)+' s: up '+secs(r.post)+', match '+secs(r.wait)});
-  return '<p class="timing">'+found+(parts.length?' · '+parts.join(' · '):'')+'</p>';
+  return '<p class="timing">'+found+(parts.length?' Â· '+parts.join(' Â· '):'')+'</p>';
 }
 function correctionForm(){
   return '<form class="form" id="cform" autocomplete="off"><label for="c-artist">artist</label><input id="c-artist" name="artist_claim" maxlength="255">'+
@@ -1003,7 +1090,7 @@ var slugIndex=null;
 function checkArtistPage(artist){
   var s=slug(artist); if(!s)return;
   function show(){
-    var row=$('artistrow');if(row)row.innerHTML='<a class="btn" href="/artists/'+s+'">'+esc(artist)+' on groovesmaxxing →</a>';
+    var row=$('artistrow');if(row)row.innerHTML='<a class="btn" href="/artists/'+s+'">'+esc(artist)+' on groovesmaxxing â†’</a>';
     /* the artist line itself becomes the link to the profile */
     var sub=card.querySelector('.sub');if(sub&&!sub.querySelector('a')){var a=document.createElement('a');a.href='/artists/'+s;a.className='sublink';a.textContent=sub.textContent;sub.innerHTML='';sub.appendChild(a)}
   }
@@ -1075,7 +1162,7 @@ function sendHelp(f){
 function share(){
   if(!current||!current.card.candidate)return;
   var c=current.card.candidate, nm=nameOf(c), l=c.store_links||{};
-  var text=(nm?(nm.artist?nm.artist+' - ':'')+nm.title:'an unreleased ID')+' · found with the groovesmaxxing scan';
+  var text=(nm?(nm.artist?nm.artist+' - ':'')+nm.title:'an unreleased ID')+' Â· found with the groovesmaxxing scan';
   var url=l.spotify||l.apple||l.beatport_search||'https://groovesmaxxing.com/scan';
   if(navigator.share){navigator.share({title:'groovesMAXXING',text:text,url:url}).catch(function(){});return}
   if(navigator.clipboard){navigator.clipboard.writeText(text+' '+url).then(function(){say('copied.',true)}).catch(function(){})}
@@ -1101,8 +1188,8 @@ function renderHistory(){
   if(!h.length){recentlist.innerHTML='<li class="none">nothing scanned yet.</li>';return}
   recentlist.innerHTML=h.map(function(r){
     var who;
-    if(r.kind==='match')who='<span data-artist="'+esc(r.artist||'')+'">'+esc(r.artist||'ID')+'</span><small>'+esc(r.title||'unnamed library entry')+' · '+pct(r.score)+(r.secs?' · '+r.secs+' s':'')+'</small>';
-    else if(r.kind==='guess')who='no match<small>closest guess: '+esc((r.artist?r.artist+' - ':'')+r.title)+(r.score==null?' · possible match':' · '+pct(r.score))+'</small>';
+    if(r.kind==='match')who='<span data-artist="'+esc(r.artist||'')+'">'+esc(r.artist||'ID')+'</span><small>'+esc(r.title||'unnamed library entry')+' Â· '+pct(r.score)+(r.secs?' Â· '+r.secs+' s':'')+'</small>';
+    else if(r.kind==='guess')who='no match<small>closest guess: '+esc((r.artist?r.artist+' - ':'')+r.title)+(r.score==null?' Â· possible match':' Â· '+pct(r.score))+'</small>';
     else who='no match<small>nothing yet</small>';
     var acts='', btns='';
     if(r.clip&&r.id)btns='<button class="btn" data-clip="again" data-id="'+esc(r.id)+'">scan again</button>'+(r.kind!=='match'?'<button class="btn" data-clip="help" data-id="'+esc(r.id)+'">help us find it</button>':'');
@@ -1192,7 +1279,7 @@ function onReset(){
 function renderAuto(){
   if(!autobar)return;
   var resumable=false;try{resumable=!auto&&localStorage.getItem(AUTO_KEY)==='1'&&loadSession().start&&Date.now()-loadSession().start<SESSION_MAX_AGE}catch(e){}
-  var h='<button class="btn'+(auto?' on':'')+'" type="button" id="autobtn" aria-pressed="'+(auto?'true':'false')+'">'+(auto?'auto on · tap to stop':(resumable?'resume auto':'auto · for a set'))+'</button>';
+  var h='<button class="btn'+(auto?' on':'')+'" type="button" id="autobtn" aria-pressed="'+(auto?'true':'false')+'">'+(auto?'auto on Â· tap to stop':(resumable?'resume auto':'auto Â· for a set'))+'</button>';
   if(auto)h+='<span class="next" id="autonext"></span><button class="btn ghost" type="button" id="autonow">scan now</button>';
   if(autoNote)h+='<span class="note">'+esc(autoNote)+'</span>';
   autobar.innerHTML=h;
@@ -1286,7 +1373,7 @@ function renderYou(){
   }
   var paint=function(me){
     box.innerHTML='<div class="prof">'+(me.handle?'<span class="at">@'+esc(me.handle)+'</span>':'<span class="at none">no handle yet</span>')+
-      '<small>'+esc(me.email)+(ROLE_WORD[me.role]?' · '+ROLE_WORD[me.role]:'')+'</small>'+
+      '<small>'+esc(me.email)+(ROLE_WORD[me.role]?' Â· '+ROLE_WORD[me.role]:'')+'</small>'+
       (me.handle?'<button class="chg" type="button" data-you="handle">change</button>':'')+'</div>'+
       '<p class="stat" id="youstat"></p>'+
       '<div id="hbox" hidden></div>'+
@@ -1308,7 +1395,7 @@ function pushState(){pushKnown().then(function(st){pushNow=st;paintStat();render
 function paintStat(){
   var el=$('youstat'),me=meCache; if(!el||!me)return;
   var w={on:'notifications <b>on</b>',off:'notifications <b>off</b>, email instead',blocked:'notifications <b>blocked</b> here, email instead',none:'no push in this browser, email instead',allowed:'notifications <b>allowed</b>, not registered'}[pushNow]||'notifications: checking';
-  el.innerHTML=w+' · <b>'+me.follows+'</b> following · <b>'+me.devices+'</b> '+(me.devices===1?'device':'devices');
+  el.innerHTML=w+' Â· <b>'+me.follows+'</b> following Â· <b>'+me.devices+'</b> '+(me.devices===1?'device':'devices');
 }
 function pushSkipped(){try{return localStorage.getItem('gmx_push_skip')==='1'}catch(e){return false}}
 /* three steps, shown until all three are done, then the block is just the profile */
@@ -1343,7 +1430,7 @@ function loadServerHistory(){
     var other=rows.filter(function(r){return !r.this_device&&!mine[r.job_id]});
     if(!other.length){ul.innerHTML='';return}
     ul.innerHTML='<li class="none">from your other phones</li>'+other.slice(0,25).map(function(r){
-      var name=r.kind==='match'?esc(r.artist||'ID')+'<small>'+esc(r.title||'unnamed library entry')+(r.status?' · '+esc(r.status):'')+'</small>':r.kind==='guess'?'no match<small>closest guess: '+esc((r.artist?r.artist+' - ':'')+(r.title||''))+'</small>':'no match<small>'+esc(r.in_set||'nothing yet')+'</small>';
+      var name=r.kind==='match'?esc(r.artist||'ID')+'<small>'+esc(r.title||'unnamed library entry')+(r.status?' Â· '+esc(r.status):'')+'</small>':r.kind==='guess'?'no match<small>closest guess: '+esc((r.artist?r.artist+' - ':'')+(r.title||''))+'</small>':'no match<small>'+esc(r.in_set||'nothing yet')+'</small>';
       return '<li><span class="who">'+name+'</span><span class="when">'+when(new Date(r.at).getTime())+'</span></li>';
     }).join('');
   }).catch(function(){});
@@ -1421,9 +1508,9 @@ function renderSession(){
   var show=(s.start&&s.rows.length)||auto;
   sessionEl.hidden=!show;if(!show)return;
   var named=s.rows.filter(function(r){return r.name&&r.kind==='match'}).length;
-  sessionmeta.textContent='started '+fmtClock(s.start)+' · '+s.rows.length+(s.rows.length===1?' scan':' scans')+' · '+named+' named';
+  sessionmeta.textContent='started '+fmtClock(s.start)+' Â· '+s.rows.length+(s.rows.length===1?' scan':' scans')+' Â· '+named+' named';
   sessionlist.innerHTML=s.rows.length?s.rows.map(function(r){
-    var who=r.kind==='pending'?'kept, no signal<small>matched when you are back online</small>':r.name?(r.kind==='guess'?'<span>maybe '+esc(r.name)+'</span>':'<span>'+esc(r.name)+'</span>')+'<small>'+(r.kind==='guess'?'closest guess':pct(r.score))+(r.n>1?' · heard '+r.n+' times':'')+'</small>':'nothing named<small>no match</small>';
+    var who=r.kind==='pending'?'kept, no signal<small>matched when you are back online</small>':r.name?(r.kind==='guess'?'<span>maybe '+esc(r.name)+'</span>':'<span>'+esc(r.name)+'</span>')+'<small>'+(r.kind==='guess'?'closest guess':pct(r.score))+(r.n>1?' Â· heard '+r.n+' times':'')+'</small>':'nothing named<small>no match</small>';
     return '<li><span class="who">'+who+'</span><span class="when">+'+fmtOffset(r.off)+'</span></li>';
   }).join(''):'<li class="none">listening. the first result lands here.</li>';
 }
@@ -1432,7 +1519,7 @@ $('sessiontools').addEventListener('click',function(e){
   if(b.getAttribute('data-s')==='clear'){if(s.rows.length&&!confirm('clear tonight\'s list on this phone?'))return;saveSession({start:auto?Date.now():0,rows:[]});renderSession();sessionmsg.textContent='cleared.';return}
   var lines=s.rows.filter(function(r){return r.name}).map(function(r){return fmtOffset(r.off)+'  '+(r.kind==='guess'?'? ':'')+r.name});
   if(!lines.length){sessionmsg.textContent='nothing named yet.';return}
-  var txt='tonight with groovesmaxxing · '+fmtClock(s.start)+'\n'+lines.join('\n')+'\nhttps://groovesmaxxing.com/scan';
+  var txt='tonight with groovesmaxxing Â· '+fmtClock(s.start)+'\n'+lines.join('\n')+'\nhttps://groovesmaxxing.com/scan';
   if(navigator.clipboard)navigator.clipboard.writeText(txt).then(function(){sessionmsg.textContent='copied, '+lines.length+' lines.'},function(){sessionmsg.textContent='could not copy.'});else sessionmsg.textContent='copy is not available here.';
 });
 /* the offline queue */
@@ -1454,7 +1541,7 @@ function renderPending(){
   pendingList().then(function(p){
     pendingbar.hidden=!p.length;if(!p.length)return;
     var on=navigator.onLine;
-    pendingbar.innerHTML='<span><b>'+p.length+'</b> '+(p.length===1?'clip':'clips')+' waiting for signal'+(on?'':' · offline')+'</span>'+(on?'<button class="btn" type="button" id="drainbtn">'+(busy?'matching…':'match now')+'</button>':'');
+    pendingbar.innerHTML='<span><b>'+p.length+'</b> '+(p.length===1?'clip':'clips')+' waiting for signal'+(on?'':' Â· offline')+'</span>'+(on?'<button class="btn" type="button" id="drainbtn">'+(busy?'matchingâ€¦':'match now')+'</button>':'');
     var b=$('drainbtn');if(b)b.addEventListener('click',function(){drain()});
   });
 }
