@@ -220,7 +220,7 @@ form.nl input[type=submit]:hover{background:var(--deep);border-color:var(--deep)
 </div>
 <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})})}</script>
 <script src="/gmx-clips.js"></script>
-<script src="/gmx-account.js"></script>
+<script src="/gmx-account.js?v=15"></script>
 <script>(function(){var b=document.getElementById('wipeall'),m=document.getElementById('wipemsg');if(!b)return;b.addEventListener('click',function(){
   if(!confirm('clear the device id, the recent scans and any kept clips on this phone?'))return;
   var done=function(){['gmx_history','gmx_device','gmx_keep_clips','gmx_install_hide_until','gmx_cfg','gmx_me','gmx_me_at'].forEach(function(k){try{localStorage.removeItem(k)}catch(e){}});if(m)m.textContent='done';var k=document.getElementById('keepclips');if(k)k.checked=false;if(window.gmxAccount)gmxAccount.paint()};
