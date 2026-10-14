@@ -174,9 +174,9 @@ mark{background:none;color:var(--racing)}
 </style>
 <link rel="canonical" href="https://groovesmaxxing.com/open-ids">
 <link rel="stylesheet" href="/gmx-motion.css">
-<link rel="stylesheet" href="/gmx-nav.css?v=17">
+<link rel="stylesheet" href="/gmx-nav.css?v=18">
 <link rel="stylesheet" href="/gmx-quick.css">
-<link rel="stylesheet" href="/gmx-read.css?v=3">
+<link rel="stylesheet" href="/gmx-read.css?v=6">
 </head>
 <body>
 <div class="wrap">
@@ -186,7 +186,8 @@ mark{background:none;color:var(--racing)}
 <header class="mast">
 <span class="eyebrow">the open IDs</span>
 <h1>the ones we<br><span class="rd">couldn't name.</span></h1>
-<p class="lede">every row in our tracklists that still says ID. the timestamp is measured, the link opens the set right there, and nothing is guessed at. know one? tell us and it goes up with your name on it.</p>
+<p class="lede">every tracklist row that still says ID. the link opens the set at that second. know one? tell us and it goes up with your name on it.</p>
+<div data-more="fold" data-more-label="more"><p class="lede">the timestamp is measured and nothing is guessed at.</p></div>
 </header>
 
 <p class="stat" id="stat"><!-- open-ids stat start --><b>248</b> open across <b>38</b> of 40 tracklists · rebuilt on every update, last 2026-10-14<!-- open-ids stat end --></p>
@@ -305,8 +306,9 @@ fetch('/tracks-index.json').then(function(r){return r.json()}).then(function(j){
 
 <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})})}</script>
 <script src="/gmx-motion.js" defer></script>
+<script src="/gmx-more.js?v=2" defer></script>
 <script src="/gmx-quick.js" defer></script>
 <script src="/gmx-refresh.js" defer></script>
-<script src="/gmx-nav.js?v=17" defer></script>
+<script src="/gmx-nav.js?v=18" defer></script>
 </body>
 </html>

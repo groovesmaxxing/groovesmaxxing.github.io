@@ -21,9 +21,9 @@ MOTION_CSS = '<link rel="stylesheet" href="/gmx-motion.css">'
 MOTION_JS = '<script src="/gmx-motion.js" defer></script>'
 T = {
     'player_css': '<link rel="stylesheet" href="/gmx-player.css">',
-    'nav_css': '<link rel="stylesheet" href="/gmx-nav.css?v=17">',
+    'nav_css': '<link rel="stylesheet" href="/gmx-nav.css?v=18">',
     'player_js': '<script src="/gmx-player.js" defer></script>',
-    'nav_js': '<script src="/gmx-nav.js?v=17" defer></script>',
+    'nav_js': '<script src="/gmx-nav.js?v=18" defer></script>',
     'follow_js': '<script src="/gmx-follow.js" defer></script>',
     'crate_js': '<script src="/gmx-crate.js" defer></script>',
     'related_js': '<script src="/gmx-related.js" defer></script>',
@@ -35,6 +35,10 @@ T = {
     # the account layer (2026-10-12): "this is me" on every artist and label profile
     'account_css': '<link rel="stylesheet" href="/gmx-account.css">',
     'account_js': '<script src="/gmx-account.js?v=17" defer></script>',
+    # the "more" expander (2026-10-14): any element with data-more collapses behind one button
+    'more_js': '<script src="/gmx-more.js?v=2" defer></script>',
+    # the name reels on the home page (2026-10-14)
+    'reel_js': '<script src="/gmx-reel.js?v=1" defer></script>',
 }
 
 def ensure(path, heads, before_motion, after_motion):
@@ -54,7 +58,7 @@ def ensure(path, heads, before_motion, after_motion):
 
 # the readability layer (2026-10-13): on every page, as the last tag in the head, so its rules win over the
 # page's own <style> block at the same selector. a page the laptop rewrites gets it back here.
-READ_CSS = '<link rel="stylesheet" href="/gmx-read.css?v=3">'
+READ_CSS = '<link rel="stylesheet" href="/gmx-read.css?v=6">'
 def ensure_read(path):
     s = open(path, encoding='utf-8').read(); o = s
     if 'http-equiv="refresh"' in s or path.startswith('google') or '</head>' not in s: return False
@@ -238,4 +242,101 @@ for f in sorted(files('*.html') + files('artists/*.html') + files('labels/*.html
     if T['sheet_css'] not in s:
         s = s.replace(MOTION_CSS, MOTION_CSS + '\n' + T['sheet_css'], 1) if MOTION_CSS in s else s.replace('</head>', T['sheet_css'] + '\n</head>', 1)
     open(f, 'w', encoding='utf-8').write(s); n += 1
+# the tracklists hub (2026-10-14): the tracklists tab opens here, so the list leads, newest first, and the
+# rest of the tracklists area folds under it. tracklistpage.py writes the hub on the laptop, so both are
+# re-applied after every render. rows sort by the tagged date in their .dt span (no year, so a date later
+# in the year than today counts as last year). a row without one keeps the date of the row above it, and
+# equal dates keep the laptop's order.
+import datetime
+HUB_MARK = '<!-- gmx-hub-more -->'
+HUB_MORE = HUB_MARK + """
+<div class="hub-more" data-more="fold" data-more-label="more in tracklists">
+<nav class="hub-links" aria-label="more in tracklists">
+<a href="/sets">every set, a to z</a>
+<a href="/radio">radio: the library back to back</a>
+<a href="/open-ids">the open IDs</a>
+<a href="/interviews">interviews and talks</a>
+</nav>
+</div>"""
+_MON = {m: i for i, m in enumerate('jan feb mar apr may jun jul aug sep oct nov dec'.split(), 1)}
+def hub(path='tracklists/index.html'):
+    try: s = open(path, encoding='utf-8').read()
+    except OSError: return False
+    o = s
+    m = re.search(r'(<table class="tl">\n?)(.*?)(</table>)', s, re.S)
+    if m:
+        rows = re.findall(r'<tr\b.*?</tr>\n?', m.group(2), re.S)
+        if rows and ''.join(rows).strip() == m.group(2).strip():
+            today, last, keyed = datetime.date.today(), None, []
+            for i, r in enumerate(rows):
+                d = re.search(r'<span class="dt">([a-z]{3}) (\d{1,2})</span>', r)
+                if d and d.group(1) in _MON:
+                    mo, dy = _MON[d.group(1)], int(d.group(2))
+                    yr = today.year - 1 if (mo, dy) > (today.month, today.day) else today.year
+                    last = (yr, mo, dy)
+                keyed.append(((last or (9999, 0, 0)), i, r if r.endswith('\n') else r + '\n'))
+            keyed.sort(key=lambda k: (tuple(-x for x in k[0]), k[1]))
+            s = s[:m.start(2)] + ''.join(k[2] for k in keyed) + s[m.end(2):]
+    if HUB_MARK not in s and '</table>' in s:
+        s = s.replace('</table>', '</table>\n' + HUB_MORE, 1)
+    if s != o: open(path, 'w', encoding='utf-8').write(s)
+    return s != o
+n += hub()
+# the artists tab, layout a (owner's pick, 2026-10-14): names first. the a to z rail moves into the sticky
+# search bar, the page intro moves under the list, and every row gets a small lettered disc (the site holds
+# no artist photos). the roster script writes artists.html on the laptop, so this is re-applied after every
+# render. the look lives in gmx-read.css.
+def artists_dir(path='artists.html'):
+    try: s = open(path, encoding='utf-8').read()
+    except OSError: return False
+    o = s
+    rail = re.search(r'\n?<div class="rail">.*?</div>', s, re.S)
+    chips = re.search(r'<div class="searchbar">.*?<div class="lanechips">.*?</div>', s, re.S)
+    if rail and chips and rail.start() > chips.end():
+        s = s.replace(rail.group(0), '', 1)
+        s = s[:chips.end()] + '\n' + rail.group(0).strip() + s[chips.end():]
+    # the intro (owner's call, 2026-10-14): "who we play", then two closed rows, the work in progress note
+    # and how to search, all above the search bar. rebuilt from whatever the page holds, so the counts and
+    # the contact links stay the roster script's own.
+    mast = re.search(r'\n?<header class="mast"[^>]*>.*?</header>', s, re.S)
+    if mast and 'data-gmx="artists-mast"' not in mast.group(0):
+        t = mast.group(0)
+        def num(pat, dflt=''):
+            m = re.search(pat, t)
+            return m.group(1) if m else dflt
+        full = num(r'(\d[\d,]*) full profiles')
+        names = num(r'(\d[\d,]*) names')
+        labels = num(r'the (\d[\d,]*) labels')
+        mail = re.search(r'<a href="mailto:[^"]+">[^<]+</a>', t)
+        ig = re.search(r'<a href="https://www\.instagram\.com/groovesmaxxing/?"[^>]*>@groovesmaxxing</a>', t)
+        reach = ' '.join(x for x in [mail.group(0) if mail else '', 'or' if mail and ig else '', ig.group(0) if ig else ''] if x)
+        block = ('<header class="mast" data-gmx="artists-mast">\n<h1>who we play</h1>\n'
+            '<details class="gmx-fold"><summary>this page is a work in progress</summary><div class="gmx-fold-body">\n'
+            '<p>every fact here is on the record and sourced. where an artist told their own story, we use their words, not ours. no filler, no press-release copy.</p>\n'
+            + ('<p>%s full profiles are written, and every one of the %s names has at least a starter page. ' % (full, names) if full and names else '<p>')
+            + 'every fact was checked against a source before it went up. even so, sources contradict each other more often than you would think, and some of what we hold is out of date.</p>\n'
+            '<p><b>got something wrong about you or your music? tell us and we fix it fast.</b>' + (' ' + reach + '.' if reach else '') + '</p>\n'
+            '</div></details>\n'
+            '<details class="gmx-fold"><summary>how to search</summary><div class="gmx-fold-body">\n'
+            '<p>type a name, a city or a sound. bumpy and vibes filter by lane. tap a letter to jump to it.</p>\n'
+            '<p>tap any badge on a profile to see who else wears it, or browse <a href="/badges">the badge map</a>.'
+            + (' the %s labels have <a href="/labels">their own index</a>.' % labels if labels else '') + '</p>\n'
+            '</div></details>\n</header>')
+        s = s.replace(mast.group(0), '', 1)
+        bar = s.index('<div class="searchbar">')
+        s = s[:bar] + block + '\n\n' + s[bar:]
+    def disc(m):
+        name = _html.unescape(re.sub(r'<[^>]+>', '', m.group(2))).strip()
+        ch = name[:1] or '#'
+        return m.group(1) + '<span class="dav" aria-hidden="true">' + _html.escape(ch.upper()) + '</span>' + m.group(0)[len(m.group(1)):]
+    s = re.sub(r'(<a class="drow"[^>]*>)(?!<span class="dav")(?:<span class="dlane">[^<]*</span>)?<span class="dn">(.*?)</span>', disc, s)
+    if s != o: open(path, 'w', encoding='utf-8').write(s)
+    return s != o
+n += artists_dir()
+# the "more" expander (2026-10-14): on every page, so a data-more attribute works wherever it lands
+for f in sorted(files('*.html') + files('artists/*.html') + files('labels/*.html') + files('tracklists/*.html') + files('newsletter/*.html')):
+    # scan.html stays out: the recognizer page is its own build and carries no data-more blocks
+    if f.startswith('google') or f == 'scan.html': continue
+    n += ensure(f, [], [], ['more_js'])
+n += ensure('index.html', [], [], ['reel_js'])
 print('ensure_tags:', n, 'pages touched')

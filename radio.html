@@ -130,10 +130,10 @@ mark{background:none;color:var(--racing)}
 <link rel="canonical" href="https://groovesmaxxing.com/radio">
 <link rel="stylesheet" href="/gmx-player.css">
 <link rel="stylesheet" href="/gmx-motion.css">
-<link rel="stylesheet" href="/gmx-nav.css?v=17">
+<link rel="stylesheet" href="/gmx-nav.css?v=18">
 <link rel="stylesheet" href="/gmx-sheet.css">
 <link rel="stylesheet" href="/gmx-quick.css">
-<link rel="stylesheet" href="/gmx-read.css?v=3">
+<link rel="stylesheet" href="/gmx-read.css?v=6">
 </head>
 <body>
 <div class="wrap">
@@ -143,11 +143,13 @@ mark{background:none;color:var(--racing)}
 <header class="mast">
 <span class="eyebrow">radio</span>
 <h1>the library,<br><span class="rd">back to back.</span></h1>
-<p class="lede">every set on the site, newest first, one after the other. tap play once and let it run. the arrows skip, the dots jump. nothing plays until you tap.</p>
+<p class="lede">every set on the site, newest first, back to back. tap play once and let it run.</p>
+<div data-more="fold" data-more-label="more"><p class="lede">the arrows skip, the dots jump. nothing plays until you tap.</p></div>
 </header>
 
 <div id="stage-wrap"><div class="gmx-skel" style="aspect-ratio:16/9" aria-hidden="true"></div><p class="radio-note" id="radio-note">loading the library…</p></div>
-<p class="radio-note">the order is newest first by the month on each card. a set with no month on its card plays last. the same sets live on <a href="/sets">the sets page</a>, where you can pick an artist.</p>
+<p class="radio-note">newest first by the month on each card. sets with no month play last.</p>
+<div data-more="fold" data-more-label="more"><p class="radio-note">the same sets live on <a href="/sets">the sets page</a>, where you can pick an artist.</p></div>
 
 <footer>
 <p class="fine">groovesMAXXING · <a href="/sets">the sets</a> · <a href="/search">search</a> · <a href="/artists">the artists</a></p>
@@ -184,10 +186,11 @@ Promise.all([fetch('/sets-index.json').then(function(r){return r.json()}),ready]
 
 <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})})}</script>
 <script src="/gmx-motion.js" defer></script>
+<script src="/gmx-more.js?v=2" defer></script>
 <script src="/gmx-quick.js" defer></script>
 <script src="/gmx-crate.js" defer></script>
 <script src="/gmx-sheet.js" defer></script>
 <script src="/gmx-refresh.js" defer></script>
-<script src="/gmx-nav.js?v=17" defer></script>
+<script src="/gmx-nav.js?v=18" defer></script>
 </body>
 </html>

@@ -111,3 +111,138 @@ body .gmx-stage .set-dots:has(>button:nth-child(31)){display:none}
 :root body .gmx-fab:focus-visible,:root body .gmx-hdr .gmx-hsearch:focus-visible,:root body .gmx-hdr .gmx-hmark:focus-visible,
 :root body .gmx-quick-x:focus-visible,:root body .gmx-quick-chip:focus-visible,:root body .gmx-quick-all:focus-visible,:root body .gmx-more:focus-visible{outline:3px solid #FF1C02;outline-offset:3px}
 :root body .gmx-acct-form input:focus-visible,:root body .gmx-acct-row input:focus-visible,:root body .gmx-acct-check input:focus-visible{outline:3px solid #FF1C02;outline-offset:2px}
+
+/* ---------- the "more" expander (gmx-more.js, 2026-10-14) ---------- */
+.gmx-more-clip{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:var(--more-lines,3);line-clamp:var(--more-lines,3);overflow:hidden}
+[data-more-hide],[data-more="fold"][hidden]{display:none!important}
+.gmx-more-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;margin:6px 0 2px;padding:10px 18px;border:1px solid rgba(255,28,2,.45);border-radius:999px;background:transparent;color:var(--day,#F2F2EF);font:600 .92rem/1.2 'Poppins',sans-serif;letter-spacing:0;text-transform:lowercase;cursor:pointer}
+.gmx-more-btn::after{content:'';width:7px;height:7px;border-right:2px solid var(--racing,#FF1C02);border-bottom:2px solid var(--racing,#FF1C02);transform:translateY(-2px) rotate(45deg);transition:transform .2s}
+.gmx-more-btn[aria-expanded="true"]::after{transform:translateY(2px) rotate(-135deg)}
+.gmx-more-btn:hover{border-color:var(--racing,#FF1C02)}
+.gmx-more-btn:focus-visible{outline:2px solid var(--racing,#FF1C02);outline-offset:3px}
+.day-section .gmx-more-btn{color:var(--night,#0B0B0D)}
+@media (prefers-reduced-motion:reduce){.gmx-more-btn::after{transition:none}}
+
+/* ---------- home on a phone: the first screen is the music (2026-10-14) ----------
+   the hero shrinks to the logo and the socials, the page links fold behind "every page", and the
+   sets come straight after, then your crate, friday and the denver dates. the deal folds too. */
+.hero-more{display:contents}
+@media (max-width:640px){
+  body:has(>header.hero){display:flex;flex-direction:column}
+  body:has(>header.hero)>*{order:9}
+  body:has(>header.hero)>header.hero{order:0;min-height:0;padding:34px 20px 22px}
+  body:has(>header.hero)>#library{order:1}
+  body:has(>header.hero)>#nextup{order:2}
+  body:has(>header.hero)>#friday{order:3}
+  body:has(>header.hero)>#tonight{order:4}
+  body:has(>header.hero)>#about{order:5}
+  .hero .mark{width:min(34vw,150px);margin-bottom:14px}
+  .hero .wordmark{font-size:clamp(2rem,10vw,2.6rem)}
+  .hero .tagline{margin-top:6px}
+  .hero .icon-row{margin-top:18px;gap:10px}
+  .hero-more{display:block;width:100%}
+  .hero .gmx-more-btn{margin-top:14px}
+  .hero-more .hero-links{margin-top:16px}
+  body:has(>header.hero)>#library{padding-top:36px}
+  #about .gmx-more-btn{margin-top:10px}
+}
+
+/* ---------- the tracklists hub: the tracklists tab lands here, the rest of the area folds under the list ---------- */
+.hub-more{margin-top:18px}
+.hub-links{display:grid;gap:0;margin:6px 0 4px}
+.hub-links a{display:flex;align-items:center;min-height:48px;padding:10px 2px;border-top:1px solid #26262b;color:var(--day,#F2F2EF);text-decoration:none;font:500 .95rem/1.3 'Poppins',sans-serif}
+.hub-links a:last-child{border-bottom:1px solid #26262b}
+.hub-links a::after{content:'→';margin-left:auto;color:var(--racing,#FF1C02)}
+/* the tagline and its chart stay on one line on a phone (owner's call, 2026-10-14) */
+@media (max-width:640px){.hero .tagline{white-space:nowrap;letter-spacing:0;font-size:min(3.25vw,15px);max-width:100%}}
+
+/* ---------- the artists tab, layout a (owner's pick, 2026-10-14) ----------
+   names first: one sticky bar holds the search, the lanes and the a to z, the letters fold, every row is a
+   big tap target with a lettered disc, and wider screens pour each open letter into columns. */
+.wrap:has(#az-open){max-width:1180px}
+.wrap:has(#az-open) .top{padding:22px 0 0}
+.wrap:has(#az-open) .searchbar{padding:12px 0 8px;margin-top:6px}
+.wrap:has(#az-open) .searchbar input{padding:12px 16px;font-size:1rem}
+.wrap:has(#az-open) .lanechips{margin-top:8px}
+.searchbar .rail{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;gap:2px;margin:8px -4px 0;padding:0 4px;-webkit-overflow-scrolling:touch}
+.searchbar .rail::-webkit-scrollbar{display:none}
+.searchbar .rail a{flex:none;min-width:34px;min-height:36px;font-size:.82rem;color:var(--read-dim)}
+.searchbar .rail a:hover,.searchbar .rail a:focus-visible{color:var(--racing)}
+.wrap:has(#az-open) .azctl{margin:10px 0 0}
+.wrap:has(#az-open) details.az>summary{scroll-margin-top:200px}
+.wrap:has(#az-open) .letterhead{scroll-margin-top:200px}
+.wrap:has(#az-open) .drow{align-items:center;min-height:52px;padding:8px 2px;gap:12px;break-inside:avoid}
+.wrap:has(#az-open) .drow .dav{order:0;flex:none;width:32px;height:32px;border-radius:50%;background:var(--card);border:1px solid #33333a;display:grid;place-items:center;font:900 .74rem/1 'Poppins',sans-serif;color:var(--racing)}
+.wrap:has(#az-open) .drow .dn{order:1;min-width:0;overflow-wrap:anywhere}
+.wrap:has(#az-open) .drow .dm{display:none}
+.wrap:has(#az-open) .drow .dlane{order:2;margin-left:auto;width:auto;text-align:right}
+@media (min-width:700px){
+  .wrap:has(#az-open) details.az .azin{column-width:230px;column-gap:28px}
+  .wrap:has(#az-open) details.az .drow:last-child{border-bottom:1px solid #1b1b1f}
+}
+.gmx-more-btn.q{border:0;border-radius:6px;padding:10px 2px;margin:2px 0;min-height:44px;color:var(--racing,#FF1C02);font-size:.88rem}
+.gmx-more-btn.q::after{width:6px;height:6px}
+.day-section .gmx-more-btn.q{color:var(--deep,#CC1400)}
+
+/* ---------- section titles and edges, every page but home (owner's call, 2026-10-14) ----------
+   a section title always outranks the rows under it: bold poppins in day white, a step above row text.
+   the more page's lists become panels with a border, so you can see where one ends and the next starts. */
+body:not(:has(>header.hero)):not(:has(.aname)) .wrap h2:not(.tier):not(.azh):not(.vh){font-family:'Poppins',sans-serif;font-weight:800;font-size:1.22rem;line-height:1.2;letter-spacing:-.01em;color:var(--day);text-transform:lowercase;margin:40px 0 12px}
+body:not(:has(>header.hero)):not(:has(.aname)) .wrap h2:not(.tier):not(.azh):not(.vh) .n,body:not(:has(>header.hero)):not(:has(.aname)) .wrap h2:not(.tier):not(.azh):not(.vh) small{font-family:'Space Mono',monospace;font-weight:400;font-size:.78rem;color:var(--steel);letter-spacing:.03em;margin-left:8px}
+body .gmx-rel h3{font-family:'Poppins',sans-serif;font-weight:800;font-size:1.05rem;letter-spacing:0;color:var(--day);text-transform:lowercase;margin:26px 0 10px}
+/* the more page: each list is a panel */
+.wrap .list{border:1px solid #2a2a30;border-radius:18px;background:var(--card,#141417);padding:0 16px;overflow:hidden}
+.wrap .list li:last-child{border-bottom:0}
+.wrap .list li{border-color:#232328}
+.wrap .list a,.wrap .list .rowbtn,.wrap .list .wipe,.wrap .list label.sw{padding-top:15px;padding-bottom:15px}
+.wrap .list small{font-size:.84rem;line-height:1.45;margin-top:3px}
+.gmx-you-switches{border:1px solid #2a2a30;border-radius:18px;background:var(--card,#141417);padding:0 16px;margin-top:10px}
+.gmx-you-switches:empty{display:none}
+.acct .card{border-color:#2a2a30}
+
+/* ---------- the closed row (details.gmx-fold): a full-width row, title left, red chevron right ---------- */
+details.gmx-fold{border:1px solid #2a2a30;border-radius:14px;background:var(--card,#141417);margin:10px 0 0}
+details.gmx-fold>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:50px;padding:12px 16px;font:600 .98rem/1.3 'Poppins',sans-serif;color:var(--day)}
+details.gmx-fold>summary::-webkit-details-marker{display:none}
+details.gmx-fold>summary::after{content:'';flex:none;width:8px;height:8px;border-right:2px solid var(--racing,#FF1C02);border-bottom:2px solid var(--racing,#FF1C02);transform:translateY(-2px) rotate(45deg);transition:transform .2s}
+details.gmx-fold[open]>summary::after{transform:translateY(2px) rotate(-135deg)}
+details.gmx-fold>summary:focus-visible{outline:2px solid var(--racing,#FF1C02);outline-offset:2px;border-radius:14px}
+.gmx-fold-body{padding:0 16px 14px;display:grid;gap:10px}
+.gmx-fold-body p{margin:0;font-size:.92rem;line-height:1.6;color:var(--read-dim)}
+.gmx-fold-body b{color:var(--day)}
+.gmx-fold-body a{color:var(--day);text-decoration:underline;text-decoration-color:#55555c;text-underline-offset:3px}
+@media (prefers-reduced-motion:reduce){details.gmx-fold>summary::after{transition:none}}
+
+/* ---------- the artists intro: "who we play", the two closed rows, then the names ---------- */
+.mast[data-gmx="artists-mast"]{padding:18px 0 4px}
+.mast[data-gmx="artists-mast"] h1{font-size:clamp(2rem,8vw,2.8rem);margin:0 0 8px}
+
+/* ---------- home: the name reels (build_reels.py writes them, gmx-reel.js loops them) ----------
+   bigger name, more tracks on our playlists (artists) or more tracks through the skip test (labels). */
+.reel{display:grid;gap:6px;margin:22px 0 18px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.reel-row{overflow-x:auto;scrollbar-width:none}
+.reel-row::-webkit-scrollbar{display:none}
+.reel-track{display:flex;align-items:baseline;gap:6px 22px;width:max-content;padding:2px 0}
+.reel-track a{white-space:nowrap;text-decoration:none;font-family:'Poppins',sans-serif;letter-spacing:-.01em;line-height:1.25;color:var(--day)}
+.reel-track a:hover{color:var(--racing)}
+.reel-track .r4{font-size:1.9rem;font-weight:900;color:var(--racing)}
+.reel-track .r3{font-size:1.45rem;font-weight:800}
+.reel-track .r2{font-size:1.12rem;font-weight:700}
+.reel-track .r1{font-size:.95rem;font-weight:600;color:var(--read-dim)}
+.reel-track .r0{font-size:.82rem;font-weight:500;color:var(--steel)}
+.day-section .reel-track a{color:var(--night)}
+.day-section .reel-track .r4{color:var(--deep)}
+.day-section .reel-track .r1{color:#3c3c38}
+.day-section .reel-track .r0{color:#5E5E58}
+.reel-on .reel-row{overflow:hidden}
+.reel-on .reel-track{animation:gmx-reel linear infinite}
+.reel-on .reel-row:nth-child(even) .reel-track{animation-direction:reverse}
+.reel-on .reel-row:hover .reel-track,.reel-on .reel-row:active .reel-track{animation-play-state:paused}
+@keyframes gmx-reel{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.reel-track{animation:none!important}}
+#labels .reel+div[data-more],#labels .gmx-more-btn{margin-top:4px}
+
+/* the library wears the logo drawn for the paper */
+.lib-mark{display:block;width:64px;height:64px;margin:0 0 12px}
+/* a title over plain paragraphs (privacy, terms) gets a rule above it, so each section has a clear start */
+body:not(:has(>header.hero)):not(:has(.aname)) .wrap h2:not(.tier):not(.azh):not(.vh):has(+p){border-top:1px solid #2a2a30;padding-top:26px}
