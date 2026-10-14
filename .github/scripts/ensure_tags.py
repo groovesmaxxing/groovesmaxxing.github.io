@@ -56,7 +56,7 @@ def ensure(path, heads, before_motion, after_motion):
 
 # the readability layer (2026-10-13): on every page, as the last tag in the head, so its rules win over the
 # page's own <style> block at the same selector. a page the laptop rewrites gets it back here.
-READ_CSS = '<link rel="stylesheet" href="/gmx-read.css?v=4">'
+READ_CSS = '<link rel="stylesheet" href="/gmx-read.css?v=5">'
 def ensure_read(path):
     s = open(path, encoding='utf-8').read(); o = s
     if 'http-equiv="refresh"' in s or path.startswith('google') or '</head>' not in s: return False
@@ -280,6 +280,34 @@ def hub(path='tracklists/index.html'):
     if s != o: open(path, 'w', encoding='utf-8').write(s)
     return s != o
 n += hub()
+# the artists tab, layout a (owner's pick, 2026-10-14): names first. the a to z rail moves into the sticky
+# search bar, the page intro moves under the list, and every row gets a small lettered disc (the site holds
+# no artist photos). the roster script writes artists.html on the laptop, so this is re-applied after every
+# render. the look lives in gmx-read.css.
+def artists_dir(path='artists.html'):
+    try: s = open(path, encoding='utf-8').read()
+    except OSError: return False
+    o = s
+    rail = re.search(r'\n?<div class="rail">.*?</div>', s, re.S)
+    chips = re.search(r'<div class="searchbar">.*?<div class="lanechips">.*?</div>', s, re.S)
+    if rail and chips and rail.start() > chips.end():
+        s = s.replace(rail.group(0), '', 1)
+        s = s[:chips.end()] + '\n' + rail.group(0).strip() + s[chips.end():]
+    mast = re.search(r'\n?<header class="mast">.*?</header>', s, re.S)
+    nores = s.find('<p class="nores">')
+    if mast and nores > -1 and mast.start() < nores:
+        block = mast.group(0).strip()
+        s = s.replace(mast.group(0), '', 1)
+        end = s.index('</p>', s.find('<p class="nores">')) + 4
+        s = s[:end] + '\n\n' + block + s[end:]
+    def disc(m):
+        name = _html.unescape(re.sub(r'<[^>]+>', '', m.group(2))).strip()
+        ch = name[:1] or '#'
+        return m.group(1) + '<span class="dav" aria-hidden="true">' + _html.escape(ch.upper()) + '</span>' + m.group(0)[len(m.group(1)):]
+    s = re.sub(r'(<a class="drow"[^>]*>)(?!<span class="dav")(?:<span class="dlane">[^<]*</span>)?<span class="dn">(.*?)</span>', disc, s)
+    if s != o: open(path, 'w', encoding='utf-8').write(s)
+    return s != o
+n += artists_dir()
 # the "more" expander (2026-10-14): on every page, so a data-more attribute works wherever it lands
 for f in sorted(files('*.html') + files('artists/*.html') + files('labels/*.html') + files('tracklists/*.html') + files('newsletter/*.html')):
     # scan.html stays out: the recognizer page is its own build and carries no data-more blocks
