@@ -1,73 +1,73 @@
 {
- "generated": "2026-10-14T01:09:06Z",
+ "generated": "2026-10-14T12:49:52Z",
  "site": [
   {
    "path": "/",
    "code": 200,
-   "ms": 381,
+   "ms": 344,
    "state": "ok",
    "note": null
   },
   {
    "path": "/scan",
    "code": 200,
-   "ms": 337,
+   "ms": 264,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sets",
    "code": 200,
-   "ms": 300,
+   "ms": 253,
    "state": "ok",
    "note": null
   },
   {
    "path": "/artists",
    "code": 200,
-   "ms": 405,
+   "ms": 221,
    "state": "ok",
    "note": null
   },
   {
    "path": "/tracklists/",
    "code": 200,
-   "ms": 349,
+   "ms": 221,
    "state": "ok",
    "note": null
   },
   {
    "path": "/search-index.json",
    "code": 200,
-   "ms": 376,
+   "ms": 204,
    "state": "ok",
    "note": "generated 2026-10-14"
   },
   {
    "path": "/upcoming.json",
    "code": 200,
-   "ms": 242,
+   "ms": 159,
    "state": "ok",
    "note": "generated 2026-10-14"
   },
   {
    "path": "/radar-events.json",
    "code": 200,
-   "ms": 339,
+   "ms": 150,
    "state": "ok",
    "note": "generated 2026-10-13T17:01:22"
   },
   {
    "path": "/sitemap.xml",
    "code": 200,
-   "ms": 156,
+   "ms": 530,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sw.js",
    "code": 200,
-   "ms": 349,
+   "ms": 131,
    "state": "ok",
    "note": null
   }
@@ -75,7 +75,7 @@
  "recognizer": {
   "state": "down",
   "code": 0,
-  "ms": 65,
+  "ms": 44,
   "note": "no answer: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of "
  },
  "workflows": {
@@ -103,6 +103,16 @@
     "state": "ok"
    },
    {
+    "name": "github_actions in /. - Update #1626651189",
+    "status": "completed",
+    "conclusion": "success",
+    "event": "dynamic",
+    "branch": "main",
+    "at": "2026-10-14T11:28:43Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38556748469",
+    "state": "ok"
+   },
+   {
     "name": "link watch",
     "status": "completed",
     "conclusion": "success",
@@ -118,8 +128,8 @@
     "conclusion": "success",
     "event": "dynamic",
     "branch": "main",
-    "at": "2026-10-14T00:16:59Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38489192490",
+    "at": "2026-10-14T03:44:11Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38507713211",
     "state": "ok"
    },
    {
@@ -128,18 +138,18 @@
     "conclusion": "success",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-10-13T23:46:01Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38486200009",
+    "at": "2026-10-14T05:04:45Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38514703023",
     "state": "ok"
    },
    {
     "name": "site check",
     "status": "completed",
     "conclusion": "success",
-    "event": "pull_request",
-    "branch": "claude/compassionate-cray-x4a2uo",
-    "at": "2026-10-14T01:03:47Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38493441026",
+    "event": "push",
+    "branch": "main",
+    "at": "2026-10-14T03:45:35Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38507713614",
     "state": "ok"
    },
    {
@@ -148,8 +158,8 @@
     "conclusion": "success",
     "event": "push",
     "branch": "main",
-    "at": "2026-10-14T00:16:16Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38489108404",
+    "at": "2026-10-14T03:44:03Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38507713611",
     "state": "ok"
    }
   ]
