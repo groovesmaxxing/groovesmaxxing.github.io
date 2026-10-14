@@ -21,7 +21,7 @@ var ICON={
    gmx-nav.css swells the waveform and sends the grooves out in a slow ripple. */
 var WAVE='6,120 30,120 48,84 68,150 88,96 108,138 120,114 132,138 152,96 172,150 192,84 210,120 234,120';
 var MARK='<svg viewBox="0 0 240 240" aria-hidden="true"><g fill="none" stroke="#FF1C02" stroke-width="10"><circle class="gx-r gx-r3" cx="120" cy="120" r="104"/><circle class="gx-r gx-r2" cx="120" cy="120" r="76"/><circle class="gx-r gx-r1" cx="120" cy="120" r="48"/></g><circle cx="120" cy="120" r="20" fill="#FF1C02"/><polyline class="gx-wv" points="'+WAVE+'" fill="none" stroke="#F2F2EF" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-var TABS=[['/','home'],['/sets','tracklists'],['/scan','scan'],['/artists','artists'],['/more','more']];
+var TABS=[['/','home'],['/tracklists/','tracklists'],['/scan','scan'],['/artists','artists'],['/more','more']];
 var path=location.pathname.replace(/\.html$/,'').replace(/\/index$/,'/');
 function under(p){return path===p||path.indexOf(p+'/')===0;}
 /* the active-state rules: which tab a page sits under */

@@ -21,9 +21,9 @@ MOTION_CSS = '<link rel="stylesheet" href="/gmx-motion.css">'
 MOTION_JS = '<script src="/gmx-motion.js" defer></script>'
 T = {
     'player_css': '<link rel="stylesheet" href="/gmx-player.css">',
-    'nav_css': '<link rel="stylesheet" href="/gmx-nav.css?v=17">',
+    'nav_css': '<link rel="stylesheet" href="/gmx-nav.css?v=18">',
     'player_js': '<script src="/gmx-player.js" defer></script>',
-    'nav_js': '<script src="/gmx-nav.js?v=17" defer></script>',
+    'nav_js': '<script src="/gmx-nav.js?v=18" defer></script>',
     'follow_js': '<script src="/gmx-follow.js" defer></script>',
     'crate_js': '<script src="/gmx-crate.js" defer></script>',
     'related_js': '<script src="/gmx-related.js" defer></script>',
@@ -35,6 +35,8 @@ T = {
     # the account layer (2026-10-12): "this is me" on every artist and label profile
     'account_css': '<link rel="stylesheet" href="/gmx-account.css">',
     'account_js': '<script src="/gmx-account.js?v=17" defer></script>',
+    # the "more" expander (2026-10-14): any element with data-more collapses behind one button
+    'more_js': '<script src="/gmx-more.js?v=1" defer></script>',
 }
 
 def ensure(path, heads, before_motion, after_motion):
@@ -54,7 +56,7 @@ def ensure(path, heads, before_motion, after_motion):
 
 # the readability layer (2026-10-13): on every page, as the last tag in the head, so its rules win over the
 # page's own <style> block at the same selector. a page the laptop rewrites gets it back here.
-READ_CSS = '<link rel="stylesheet" href="/gmx-read.css?v=3">'
+READ_CSS = '<link rel="stylesheet" href="/gmx-read.css?v=4">'
 def ensure_read(path):
     s = open(path, encoding='utf-8').read(); o = s
     if 'http-equiv="refresh"' in s or path.startswith('google') or '</head>' not in s: return False
@@ -238,4 +240,49 @@ for f in sorted(files('*.html') + files('artists/*.html') + files('labels/*.html
     if T['sheet_css'] not in s:
         s = s.replace(MOTION_CSS, MOTION_CSS + '\n' + T['sheet_css'], 1) if MOTION_CSS in s else s.replace('</head>', T['sheet_css'] + '\n</head>', 1)
     open(f, 'w', encoding='utf-8').write(s); n += 1
+# the tracklists hub (2026-10-14): the tracklists tab opens here, so the list leads, newest first, and the
+# rest of the tracklists area folds under it. tracklistpage.py writes the hub on the laptop, so both are
+# re-applied after every render. rows sort by the tagged date in their .dt span (no year, so a date later
+# in the year than today counts as last year). a row without one keeps the date of the row above it, and
+# equal dates keep the laptop's order.
+import datetime
+HUB_MARK = '<!-- gmx-hub-more -->'
+HUB_MORE = HUB_MARK + """
+<div class="hub-more" data-more="fold" data-more-label="more in tracklists">
+<nav class="hub-links" aria-label="more in tracklists">
+<a href="/sets">every set, a to z</a>
+<a href="/radio">radio: the library back to back</a>
+<a href="/open-ids">the open IDs</a>
+<a href="/interviews">interviews and talks</a>
+</nav>
+</div>"""
+_MON = {m: i for i, m in enumerate('jan feb mar apr may jun jul aug sep oct nov dec'.split(), 1)}
+def hub(path='tracklists/index.html'):
+    try: s = open(path, encoding='utf-8').read()
+    except OSError: return False
+    o = s
+    m = re.search(r'(<table class="tl">\n?)(.*?)(</table>)', s, re.S)
+    if m:
+        rows = re.findall(r'<tr\b.*?</tr>\n?', m.group(2), re.S)
+        if rows and ''.join(rows).strip() == m.group(2).strip():
+            today, last, keyed = datetime.date.today(), None, []
+            for i, r in enumerate(rows):
+                d = re.search(r'<span class="dt">([a-z]{3}) (\d{1,2})</span>', r)
+                if d and d.group(1) in _MON:
+                    mo, dy = _MON[d.group(1)], int(d.group(2))
+                    yr = today.year - 1 if (mo, dy) > (today.month, today.day) else today.year
+                    last = (yr, mo, dy)
+                keyed.append(((last or (9999, 0, 0)), i, r if r.endswith('\n') else r + '\n'))
+            keyed.sort(key=lambda k: (tuple(-x for x in k[0]), k[1]))
+            s = s[:m.start(2)] + ''.join(k[2] for k in keyed) + s[m.end(2):]
+    if HUB_MARK not in s and '</table>' in s:
+        s = s.replace('</table>', '</table>\n' + HUB_MORE, 1)
+    if s != o: open(path, 'w', encoding='utf-8').write(s)
+    return s != o
+n += hub()
+# the "more" expander (2026-10-14): on every page, so a data-more attribute works wherever it lands
+for f in sorted(files('*.html') + files('artists/*.html') + files('labels/*.html') + files('tracklists/*.html') + files('newsletter/*.html')):
+    # scan.html stays out: the recognizer page is its own build and carries no data-more blocks
+    if f.startswith('google') or f == 'scan.html': continue
+    n += ensure(f, [], [], ['more_js'])
 print('ensure_tags:', n, 'pages touched')
