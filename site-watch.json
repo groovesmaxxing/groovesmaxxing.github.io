@@ -1,86 +1,91 @@
 {
- "generated": "2026-10-14T12:49:52Z",
+ "generated": "2026-10-14T17:57:32Z",
  "site": [
   {
    "path": "/",
    "code": 200,
-   "ms": 344,
+   "ms": 179,
    "state": "ok",
    "note": null
   },
   {
    "path": "/scan",
    "code": 200,
-   "ms": 264,
+   "ms": 156,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sets",
    "code": 200,
-   "ms": 253,
+   "ms": 162,
    "state": "ok",
    "note": null
   },
   {
    "path": "/artists",
    "code": 200,
-   "ms": 221,
+   "ms": 212,
    "state": "ok",
    "note": null
   },
   {
    "path": "/tracklists/",
    "code": 200,
-   "ms": 221,
+   "ms": 81,
    "state": "ok",
    "note": null
   },
   {
    "path": "/search-index.json",
    "code": 200,
-   "ms": 204,
+   "ms": 152,
    "state": "ok",
    "note": "generated 2026-10-14"
   },
   {
    "path": "/upcoming.json",
    "code": 200,
-   "ms": 159,
+   "ms": 101,
    "state": "ok",
    "note": "generated 2026-10-14"
   },
   {
    "path": "/radar-events.json",
    "code": 200,
-   "ms": 150,
+   "ms": 307,
    "state": "ok",
-   "note": "generated 2026-10-13T17:01:22"
+   "note": "generated 2026-10-14T14:34:49"
   },
   {
    "path": "/sitemap.xml",
    "code": 200,
-   "ms": 530,
+   "ms": 103,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sw.js",
    "code": 200,
-   "ms": 131,
+   "ms": 125,
    "state": "ok",
    "note": null
   }
  ],
  "recognizer": {
-  "state": "down",
-  "code": 0,
-  "ms": 44,
-  "note": "no answer: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of "
+  "state": "up",
+  "code": 200,
+  "ms": 606,
+  "health": {
+   "status": "ok",
+   "version": "0.1.1"
+  }
  },
  "workflows": {
-  "state": "ok",
-  "failed": [],
+  "state": "failed",
+  "failed": [
+   "recognizer uptime"
+  ],
   "runs": [
    {
     "name": "events radar sweep",
@@ -88,8 +93,8 @@
     "conclusion": "success",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-10-13T17:01:33Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38434890230",
+    "at": "2026-10-14T14:34:54Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38581403455",
     "state": "ok"
    },
    {
@@ -118,8 +123,8 @@
     "conclusion": "success",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-10-13T17:47:23Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38441406654",
+    "at": "2026-10-14T15:26:46Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38589309590",
     "state": "ok"
    },
    {
@@ -128,19 +133,19 @@
     "conclusion": "success",
     "event": "dynamic",
     "branch": "main",
-    "at": "2026-10-14T03:44:11Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38507713211",
+    "at": "2026-10-14T14:36:23Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38581784667",
     "state": "ok"
    },
    {
     "name": "recognizer uptime",
     "status": "completed",
-    "conclusion": "success",
+    "conclusion": "failure",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-10-14T05:04:45Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38514703023",
-    "state": "ok"
+    "at": "2026-10-14T13:51:34Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38575355102",
+    "state": "failed"
    },
    {
     "name": "site check",
@@ -185,12 +190,12 @@
    {
     "state": "ok",
     "id": "F-30",
-    "text": "the events radar data is refreshed nightly: 2026-10-13, 1 days old"
+    "text": "the events radar data is refreshed nightly: 2026-10-14, 0 days old"
    },
    {
     "state": "ok",
     "id": "F-31",
-    "text": "the denver radar data is refreshed nightly: 2026-10-13, 1 days old"
+    "text": "the denver radar data is refreshed nightly: 2026-10-14, 0 days old"
    },
    {
     "state": "ok",
@@ -209,6 +214,6 @@
    }
   ]
  },
- "state": "down",
- "summary": "recognizer down; freshness warn"
+ "state": "wrong",
+ "summary": "recognizer up; failed workflows: recognizer uptime; freshness warn"
 }
