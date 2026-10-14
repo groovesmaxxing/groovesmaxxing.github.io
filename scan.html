@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com https://api.deezer.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-GSaL4TSI0RNJXr+B/eJSBu7FrlOmgMDSHALfSk6ZBFE='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net https://open.spotify.com https://itunes.apple.com; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com https://api.deezer.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-ToqxwFvX53Zdurfp5+uqmquPogxsjmzdWs8Wj0T8dOk='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net https://open.spotify.com https://itunes.apple.com; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>scan · groovesMAXXING</title>
@@ -293,8 +293,9 @@ details.guess[open]>summary::after{content:' \2212'}
    the api base and the app key come from /gmx-config.json, never from this file. */
 var CAPTURE_MS=15000, ROUNDS_MS=[5000,9000,12000], POLL_MS=350, POLL_CAP_MS=30000, HISTORY_MAX=50;
 /* speed build, 2026-10-11: library rounds at 5, 9 and 12 s, the scan stops on the first sure match, the live level
-   strip and the status line keep the screen honest, the card says how long it took. three rounds plus the final clip
-   is four requests a scan, so the api's thirty an hour per phone covers seven scans. a 429 on any round stops the rest. */
+   strip and the status line keep the screen honest, the card says how long it took. a 429 on any round stops the rest.
+   the cap (2026-10-13): the early rounds count in a window of their own on the api, so the three rounds never eat
+   into the full scans, and the full round runs against ninety an hour per phone now, not thirty. */
 
 var POST_MS=25000, GET_MS=8000;   /* every request has a deadline, so a dead cell link never leaves the page spinning */
 /* site review build, 2026-10-11: audio worklet capture, request deadlines, config retry, level checks, one poll loop */
@@ -305,8 +306,9 @@ function fx(url,opts,ms){
   opts.signal=ac.signal;
   return fetch(url,opts).then(function(r){clearTimeout(t);return r},function(e){clearTimeout(t);throw (e&&e.name==='AbortError')?new Error('timeout'):e});
 }
-/* phase 7 DECISION 9: at 8 s the page posts what it has as an early, library-only round and keeps
-   listening. a LIKELY or better answer shows at once, the 15 s scan replaces it when it names something. */
+/* phase 7 DECISION 9: at each of ROUNDS_MS (5, 9 and 12 s since the speed build) the page posts what it has as an
+   early, library-only round and keeps listening. a LIKELY or better answer shows at once, the 15 s scan replaces it
+   when it names something. since 2026-10-13 a LIKELY also turns the catalog off for the 15 s round (see identify). */
 var scanSeq=0, early=null, finalDone=false, rateHit=false;
 var $=function(id){return document.getElementById(id)};
 var stage=$('stage'), go=$('go'), tap=$('tap'), rec=$('rec'), recword=$('recword'), count=$('count'), card=$('card'), recentlist=$('recentlist');
@@ -352,7 +354,7 @@ function lvlFrame(now){
 }
 function lvlStart(){lastChunk=0;lvlMix=1;lvlStale=true;lvlPrev=0;if(!lvlRaf&&window.requestAnimationFrame)lvlRaf=requestAnimationFrame(lvlFrame)}
 var rings=go.querySelectorAll('.r'), wave=go.querySelector('.wave');
-var cfg=null, cfgErr=null, busy=false, heldBlob=null, heldAt=null, current=null, cancelScan=null;
+var cfg=null, cfgErr=null, busy=false, heldBlob=null, heldAt=null, heldLoud=false, current=null, cancelScan=null;
 /* pull to refresh (gmx-refresh.js) stays off while listening or finding */
 window.gmxRefreshBlocked=function(){return busy};
 
@@ -537,6 +539,9 @@ function startScan(){
     showCard(errCard("this browser can't record audio. on iphone use safari, on android use chrome, then add the app to your home screen."));return;
   }
   busy=true; card.classList.remove('on'); current=null; dropBlob(); scanSeq++; early=null; finalDone=false; rateHit=false;
+  /* the screen stays awake from the tap until the card is final or the scan is cancelled (2026-10-13): a phone that
+     dims at ten seconds used to cut the clip short on the lock. reset() lets it go, auto mode keeps its own. */
+  wakeOn();
   var seq=scanSeq, nextRound=0;
   timing={t0:Date.now(),rounds:[],first:null};levels=[];say2('listening');
   stage.classList.add('listening'); go.classList.add('busy'); recword.textContent='listening'; count.textContent=String(Math.round(CAPTURE_MS/1000)); lvlStart(); announce('listening');
@@ -550,14 +555,16 @@ function startScan(){
   /* a second tap while listening throws the clip away and goes back to tap to scan. */
   cancelScan=function(){ if(cancelled||stopped)return; cancelled=true; stopped=true; scanSeq++; tick(20); cleanup(); reset(); };
   /* a sure match from an early round ends the scan right there */
-  stopCapture=function(){ if(stopped)return; stopped=true; cleanup(); };
+  stopCapture=function(){ if(stopped)return; stopped=true; heldLoud=got>0&&clipped/got>0.02; cleanup(); };
   function done(){
     if(stopped)return; stopped=true;
     var rate=ctx.sampleRate;
     if(got<=rate*2)return finishCapture(new Error('silent'));
     var rms=Math.sqrt(sq/got);
-    if(clipped/got>0.02)return finishCapture(new Error('loud'));      /* more than two percent of samples at the rail */
     if(rms<0.004)return finishCapture(new Error('quiet'));           /* about the noise floor of a phone mic in a quiet room */
+    /* a clipped clip goes up anyway (2026-10-13): more than two percent of samples at the rail used to be refused as
+       too loud, and by a club speaker that was most of them. the card carries a note that the answer may be rough. */
+    heldLoud=clipped/got>0.02;
     finishCapture(null,wavBlob(chunks,rate));
   }
   navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false},video:false})
@@ -620,7 +627,6 @@ function startScan(){
       if(auto&&(name==='NotAllowedError'||name==='SecurityError'))autoStop('auto stopped: this phone wants a tap before each scan');
       var m= name==='NotAllowedError'||name==='SecurityError' ? (/iPhone|iPad|iPod/.test(navigator.userAgent) ? 'the mic is blocked. open iphone settings, find safari (under apps on newer iphones), set microphone to ask or allow, then try again.' : 'the mic is blocked. allow the microphone for groovesmaxxing.com in your browser settings and try again.')
            : name==='NotFoundError' ? 'no microphone found on this device.'
-           : (err&&err.message==='loud') ? 'that was too loud for the mic and the clip clipped. move back a little or cover the mic less, then scan again.'
            : (err&&err.message==='quiet') ? 'the mic barely heard anything. get closer to the speaker and scan again.'
            : 'the clip did not record. try again.';
       showCard(errCard(m)); reset(); return;
@@ -628,18 +634,23 @@ function startScan(){
     heldBlob=blob; identify(blob);
   }
 }
-function reset(){busy=false;cancelScan=null;stopCapture=null;go.removeAttribute('aria-disabled');go.classList.remove('busy');stage.classList.remove('listening','finding');tap.innerHTML='tap to <b>scan</b>';go.setAttribute('aria-label','scan what is playing');try{onReset()}catch(e){}}
-function dropBlob(){heldBlob=null;heldAt=null}
+function reset(){busy=false;cancelScan=null;stopCapture=null;go.removeAttribute('aria-disabled');go.classList.remove('busy');stage.classList.remove('listening','finding');tap.innerHTML='tap to <b>scan</b>';go.setAttribute('aria-label','scan what is playing');if(!auto)wakeOff();try{onReset()}catch(e){}}
+function dropBlob(){heldBlob=null;heldAt=null;heldLoud=false}
 
 /* identify and poll */
-function pollJob(jobId,began){
+/* the poll cap (2026-10-13): POLL_CAP_MS runs from the moment the POST answered with a job id, not from the start of
+   the upload, so a slow cell upload no longer eats the wait. past the cap the job gets one last look before the page
+   says it took too long, so a job that finished while the last tick was in flight still renders its card. every GET
+   keeps its own deadline (GET_MS). */
+function pollJob(jobId){
+  var began=Date.now(), last=false;
   return new Promise(function(res,rej){
     (function poll(){
-      if(Date.now()-began>POLL_CAP_MS)return rej(new Error('slow'));
+      if(Date.now()-began>POLL_CAP_MS){if(last)return rej(new Error('slow'));last=true}
       fx(cfg.api_base+'/jobs/'+encodeURIComponent(jobId),{headers:headers()},GET_MS)
       .then(function(r){if(r.status>=500)throw new Error('server');if(!r.ok)throw new Error('http '+r.status);return r.json()})
-      .then(function(j){ if(j.state==='done')return res(j); if(j.state==='failed')return rej(new Error('failed')); setTimeout(poll,POLL_MS); })
-      .catch(function(e){ if(Date.now()-began>POLL_CAP_MS)rej(e); else setTimeout(poll,POLL_MS); });
+      .then(function(j){ if(j.state==='done')return res(j); if(j.state==='failed')return rej(new Error('failed')); if(last)return rej(new Error('slow')); setTimeout(poll,POLL_MS); })
+      .catch(function(e){ if(last)rej(e); else setTimeout(poll,POLL_MS); });
     })();
   });
 }
@@ -652,7 +663,7 @@ function earlyIdentify(blob,seq,at){
   say2('matching at <b>'+(at/1000)+' s</b>'+(timing.rounds.length>1?' · '+timing.rounds.slice(0,-1).map(function(r){return r.answer}).join(', '):''));
   fx(cfg.api_base+'/identify',{method:'POST',headers:headers({'X-GMX-Round':'early'}),body:fd},POST_MS)
   .then(function(r){sent=Date.now();round.post=sent-began;if(r.status===429){rateHit=true;throw new Error('rate')}if(!r.ok)throw new Error('http '+r.status);return r.json()})
-  .then(function(job){return pollJob(job.job_id,began)})
+  .then(function(job){return pollJob(job.job_id)})
   .then(function(j){
     round.wait=Date.now()-(sent||began);
     if(seq!==scanSeq||finalDone)return;
@@ -666,7 +677,7 @@ function earlyIdentify(blob,seq,at){
     if(cand.tier==='CONFIRMED'){
       /* done: stop the mic, skip the catalogs, keep the clip we have for corrections and the set hint */
       finalDone=true; heldBlob=blob; if(stopCapture)stopCapture();
-      current.hint_ref=current.recognition_id; current.in_set=r.in_set||null;
+      current.hint_ref=current.recognition_id; current.in_set=r.in_set||null; current.loud=heldLoud;
       var keep=!!(window.gmxClips&&gmxClips.on()&&heldBlob);
       if(keep)gmxClips.put({id:current.job_id,t:Date.now(),blob:heldBlob,recognition_id:current.recognition_id,kind:'match'}).catch(function(){});
       say2('got it at <b>'+(at/1000)+' s</b>');
@@ -675,12 +686,15 @@ function earlyIdentify(blob,seq,at){
     say2('close at <b>'+(at/1000)+' s</b>, still listening for a sure one');
     showCard('<p class="kw" id="earlynote">still listening</p>'+resultCard(early));
   }).catch(function(e){
-    /* a 429 means this phone spent its thirty requests for the hour. no more rounds this scan, the final clip still goes. */
+    /* a 429 means this phone spent its early rounds for the hour (their own window on the api, ninety since
+       2026-10-13). no more rounds this scan, the final clip still goes. */
     var capped=e&&e.message==='rate';
     round.answer=(at/1000)+' s: '+(capped?'hourly cap':'no answer');
     if(capped&&seq===scanSeq&&!finalDone)say2('this phone hit the hourly scan cap, one last try at 15 s');
   });
 }
+/* the best early card so far is a likely one. a sure one ends the scan before the 15 s round is ever posted */
+function earlyLikely(){var c=early&&early.card&&early.card.candidate;return !!(c&&(c.tier==='LIKELY'||c.tier==='CONFIRMED'))}
 function identify(blob){
   if(finalDone)return;
   if(!navigator.onLine&&!draining){queueClip(blob);return}
@@ -690,16 +704,30 @@ function identify(blob){
   var sentAt=null,finalRound={at:CAPTURE_MS,post:0,wait:0,answer:'…'};if(timing)timing.rounds.push(finalRound);
   var fd=new FormData(); fd.append('audio',blob,'clip.'+extOf(blob)); fd.append('source','mic');
   var began=Date.now();
-  fx(cfg.api_base+'/identify',{method:'POST',headers:headers(),body:fd},POST_MS)
-  .then(function(r){
-    sentAt=Date.now();finalRound.post=sentAt-began;
-    if(r.status===429)throw new Error('rate');
-    if(r.status===401)throw new Error('key');
-    if(r.status>=500)throw new Error('server');
-    if(!r.ok)throw new Error('http '+r.status);
-    return r.json();
-  })
-  .then(function(job){return pollJob(job.job_id,began)})
+  /* catalog off after an early likely (2026-10-13): when an early round already came back LIKELY, the 15 s round
+     asks the api to skip the paid catalog call (X-GMX-Catalog: off). the library, the hash index and the set match
+     still run on the full clip, so the likely can still rise to a sure one; only the ACRCloud and AudD spend is
+     saved. the header goes on no other path. an api without the matching guard refuses the header, as a 401 or as
+     a failed preflight that the browser reports as a network error, and either answer re-posts once without the
+     header so the scan goes on as before. a stalled upload (timeout) is not retried. */
+  function post(withHeader){
+    return fx(cfg.api_base+'/identify',{method:'POST',headers:headers(withHeader?{'X-GMX-Catalog':'off'}:null),body:fd},POST_MS)
+    .then(function(r){
+      if(withHeader&&r.status===401)return post(false);
+      sentAt=Date.now();finalRound.post=sentAt-began;
+      if(r.status===429)throw new Error('rate');
+      if(r.status===401)throw new Error('key');
+      if(r.status>=500)throw new Error('server');
+      if(!r.ok)throw new Error('http '+r.status);
+      if(withHeader)finalRound.catalog='off'; /* stamped only once the api took the post, so a refused round never reads catalog off (2026-10-13) */
+      return r.json();
+    },function(e){
+      if(withHeader&&!(e&&e.message==='timeout'))return post(false);
+      throw e;
+    });
+  }
+  post(earlyLikely())
+  .then(function(job){return pollJob(job.job_id)})
   .then(function(j){
     var r=j.result||{}, c=r.card||{kind:'none'};
     finalRound.wait=Date.now()-(sentAt||began);finalRound.answer='15 s: '+(c.kind==='match'?'match':c.kind==='guess'?'a guess':'nothing');
@@ -713,6 +741,7 @@ function identify(blob){
     current.hint_ref=r.recognition_id||j.job_id;
     /* the set this clip sits in, when the server already knows it and the set is public */
     current.in_set=r.in_set||null;
+    current.loud=heldLoud;
     /* keep my clips (DECISION 12): the switch under more, the clip stays on this phone */
     var keep=!!(window.gmxClips&&gmxClips.on()&&heldBlob);
     if(keep)gmxClips.put({id:current.job_id,t:Date.now(),blob:heldBlob,recognition_id:current.recognition_id,kind:c.kind}).catch(function(){});
@@ -721,7 +750,7 @@ function identify(blob){
   .catch(function(e){
     if(finalDone)return;
     finalDone=true; say2('');
-    if(early){current=early;showCard(resultCard(current));remember(current,false);reset();return}
+    if(early){current=early;current.loud=heldLoud;showCard(resultCard(current));remember(current,false);reset();return}
     var m=e&&e.message||'';
     if(m==='rate')rateHit=true;
     var netErr=!/^(rate|slow|key|failed|server|http )/.test(m);
@@ -958,6 +987,8 @@ function resultCard(cur){
     out+=helpForm();
     out+=followRow(null);
   }
+  /* the clip hit the rail for more than two percent of its samples (2026-10-13): it went up anyway, the card says so */
+  if(cur.loud)out+='<p class="note">that one was loud and the clip clipped, so the answer may be rough.</p>';
   out+=timingLine(cur);
   out+=whereBlock();
   out+='<div class="msg" id="cardmsg" role="status"></div>';
@@ -1053,7 +1084,7 @@ function timingLine(cur){
   var t=cur.timing;if(!t||!t.rounds.length)return '';
   var secs=function(ms){return (Math.round(ms/100)/10)+' s'};
   var found=t.first?'<b>found in '+secs(t.first)+'</b>':'<b>'+secs(Date.now()-t.t0)+' end to end</b>';
-  var parts=t.rounds.filter(function(r){return r.post||r.wait}).map(function(r){return (r.at/1000)+' s: up '+secs(r.post)+', match '+secs(r.wait)});
+  var parts=t.rounds.filter(function(r){return r.post||r.wait}).map(function(r){return (r.at/1000)+' s: up '+secs(r.post)+', match '+secs(r.wait)+(r.catalog==='off'?', catalog off':'')});
   return '<p class="timing">'+found+(parts.length?' · '+parts.join(' · '):'')+'</p>';
 }
 function correctionForm(){
@@ -1272,7 +1303,7 @@ recentlist.addEventListener('click',function(ev){
   gmxClips.get(id).then(function(rec){
     if(!rec||!rec.blob){note('that clip is gone.');return}
     if(act==='again'){
-      busy=true; card.classList.remove('on'); current=null; heldBlob=rec.blob; heldAt=new Date(rec.t).toISOString();
+      busy=true; card.classList.remove('on'); current=null; heldBlob=rec.blob; heldAt=new Date(rec.t).toISOString(); heldLoud=false;
       scanSeq++; early=null; finalDone=false; rateHit=false; timing={t0:Date.now(),rounds:[],first:null};
       go.classList.add('busy'); window.scrollTo({top:0,behavior:'smooth'}); identify(rec.blob); return;
     }
@@ -1307,9 +1338,22 @@ function loadSession(){try{var s=JSON.parse(localStorage.getItem(SESSION_KEY)||'
 function saveSession(s){try{localStorage.setItem(SESSION_KEY,JSON.stringify(s))}catch(e){}}
 function fmtOffset(ms){var t=Math.max(0,Math.round(ms/1000)),h=Math.floor(t/3600),m=Math.floor(t%3600/60),x=t%60;return (h?h+':'+('0'+m).slice(-2):String(m))+':'+('0'+x).slice(-2)}
 function fmtClock(t){try{return new Date(t).toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'}).toLowerCase()}catch(e){return ''}}
-/* the screen stays on while auto runs, where the browser allows it */
-function wakeOn(){if(!('wakeLock' in navigator)||wake)return;navigator.wakeLock.request('screen').then(function(w){wake=w;w.addEventListener('release',function(){wake=null})}).catch(function(){})}
-function wakeOff(){if(wake){try{wake.release()}catch(e){}wake=null}}
+/* the screen stays on while auto runs, and from 2026-10-13 through every tap scan too, where the browser allows it.
+   the lock api may be missing, refuse, or throw (an old webview, a battery setting), and none of that may touch the
+   scan, so every call is wrapped. wakeWant remembers whether a lock is still wanted when a slow request lands after
+   the scan already ended, so it is let go at once instead of holding the screen. */
+var wakeWant=false;
+function wakeOn(){
+  wakeWant=true; if(wake)return;
+  try{
+    if(!navigator.wakeLock||!navigator.wakeLock.request)return;
+    navigator.wakeLock.request('screen').then(function(w){
+      if(!wakeWant||wake){try{w.release()}catch(e){}return}
+      wake=w; w.addEventListener('release',function(){if(wake===w)wake=null});
+    }).catch(function(){});
+  }catch(e){}
+}
+function wakeOff(){wakeWant=false;if(wake){var w=wake;wake=null;try{w.release()}catch(e){}}}
 document.addEventListener('visibilitychange',function(){if(!document.hidden&&auto)wakeOn()});
 function autoStart(){
   var s=loadSession();if(!s.start||Date.now()-s.start>SESSION_MAX_AGE){s={start:Date.now(),rows:[]};saveSession(s)}
@@ -1608,7 +1652,7 @@ function drain(){
   pendingList().then(function(p){
     if(!p.length){renderPending();return}
     var rec=p[0];draining=rec;drainDone=false;drainFailed=false;
-    busy=true;card.classList.remove('on');current=null;heldBlob=rec.blob;heldAt=rec.heard_at||new Date(rec.t).toISOString();
+    busy=true;card.classList.remove('on');current=null;heldBlob=rec.blob;heldAt=rec.heard_at||new Date(rec.t).toISOString();heldLoud=false;
     scanSeq++;early=null;finalDone=false;rateHit=false;timing={t0:Date.now(),rounds:[],first:null};
     go.classList.add('busy');say2('matching a clip from '+when(rec.t));renderPending();
     identify(rec.blob);

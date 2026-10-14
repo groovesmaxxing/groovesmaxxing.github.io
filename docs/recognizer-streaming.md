@@ -2,7 +2,8 @@
 
 the phone side of the scan is built for this already. the server side lives on the laptop host and is the
 half still to build. until it exists the phone falls back to the round-based flow (library rounds at 5, 9 and 12
-seconds, catalogs at 15, four requests a scan against the thirty an hour per phone), which works against the server as it is today.
+seconds in a window of their own, the catalogs at 15 unless an early round already came back likely, that full
+round against ninety an hour per phone since 2026-10-13), which works against the server as it is today.
 
 ## why
 
