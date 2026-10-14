@@ -46,7 +46,7 @@ A static website. Every page is a `.html` file in this repo, written by hand or 
 | `newsletter.html` | Index of newsletter issues |
 | `events.html` | The events radar: festivals and club rooms by city, plus the "on tour" section that reads `radar-events.json`. `tours.html` now redirects to `events.html#tours` |
 | `venues.html` | Denver venues |
-| `scan.html` | The music recognizer page and the installed app's start page. When the recognizer places a clip in a set with a tracklist, the named row leads the card, and a catalog guess that disagrees folds under "the catalog heard something else" (see `docs/recognizer-streaming.md`). The level strip under the button runs its own frame loop: live mic levels while audio arrives, an idle wave when it stops (the catalog check, an iphone audio interruption), still under reduced motion. Draw errors and audio gaps log to the console as `gmx scan:` instead of freezing it. Screen readers hear listening, finding it and the result through the hidden `#scanlive` region |
+| `scan.html` | The music recognizer page and the installed app's start page. When the recognizer places a clip in a set with a tracklist, the named row leads the card, and a catalog guess that disagrees folds under "the catalog heard something else" (see `docs/recognizer-streaming.md`). The level strip under the button runs its own frame loop: live mic levels on a decibel scale with a slow auto gain while audio arrives (an iphone mic with gain control off is quiet, so a straight scale reads flat), an idle wave when it stops (the catalog check, an iphone audio interruption), still under reduced motion. Draw errors and audio gaps log to the console as `gmx scan:` instead of freezing it. Screen readers hear listening, finding it and the result through the hidden `#scanlive` region |
 | `more.html` | The more tab: the account card (sign in, handle, badge, claims, team), the artist tools, notification switches, download and delete my data, and settings. The fresh grooves friday switch is email (the recognizer's `/me/newsletter`), not push. Push asks for permission first, inside the tap, because iphone and firefox only show the prompt from a direct tap. Every switch answers in `#gmx-notify-msg` right under the switches, and push sends a test notification once it is on |
 | `privacy.html`, `terms.html` | Legal pages for the scan feature |
 | `404.html` | Page shown for missing URLs |
@@ -72,7 +72,7 @@ A static website. Every page is a `.html` file in this repo, written by hand or 
 | `gmx-refresh.js` | Pull to refresh inside the installed app |
 | `gmx-install.js` | "Add to home screen" nudge |
 | `gmx-clips.js`, `gmx-capture-worklet.js` | Scan page clip storage and audio capture |
-| `sw.js` | Service worker. Cache name is a versioned string (`gmx-v19` at the time of writing), bumped whenever the shell changes. Precaches the list in `precache.json` |
+| `sw.js` | Service worker. Cache name is a versioned string (`gmx-v20` at the time of writing), bumped whenever the shell changes. Precaches the list in `precache.json` |
 | `manifest.webmanifest` | Installed app settings: name `groovesMAXXING`, home screen name `groovesMAXX`, start page `/scan` |
 | `gmx-config.json` | Recognizer backend address (`api_base`) and the app key `scan.html` sends. Public on the live site by design. Do not change it without the owner |
 | `sitemap.xml`, `robots.txt`, `feed.xml` | Search engine files and the newsletter RSS feed |
