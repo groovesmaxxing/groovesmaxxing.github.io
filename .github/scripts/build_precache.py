@@ -11,7 +11,7 @@ urls = ['/', '/scan', '/more', '/search', '/sets', '/artists', '/events', '/radi
         '/gmx-capture-worklet.js', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png', '/favicon.svg',
         '/sets-index.json', '/set-tags.json', '/search-index.json', '/artists-index.json', '/radar-denver.json', '/names-index.json', '/related-index.json', '/gmx-related.js', '/tracks-index.json', '/open-ids.json']
 urls += ['/upcoming.json', '/gmx-nextup.js']   # the home page's next up band (ui build 3)
-urls += ['/gmx-read.css?v=6']   # the readability layer on every page (2026-10-13)
+urls += ['/gmx-read.css?v=8']   # the readability layer on every page (2026-10-13)
 urls += ['/gmx-more.js?v=2', '/gmx-reel.js?v=1']   # the "more" expander on every page (2026-10-14)
 urls += ['/gmx-fonts.css'] + ['/' + f for f in sorted(glob.glob('fonts/*.woff2'))]
 for f in sorted(glob.glob('tracklists/*.html')):
