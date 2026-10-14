@@ -1,17 +1,17 @@
 {
- "generated": "2026-10-13T17:46:57Z",
+ "generated": "2026-10-14T15:26:28Z",
  "pages": 841,
  "links": {
-  "checkable": 5973,
+  "checkable": 5988,
   "by_kind": {
-   "other": 2736,
-   "spotify": 1730,
+   "other": 2762,
+   "spotify": 1719,
    "soundcloud": 693,
    "youtube": 814
   },
-  "checked_within_recheck": 4884,
+  "checked_within_recheck": 5572,
   "asked_this_run": 700,
-  "unknown": 696,
+  "unknown": 1195,
   "budget": 700,
   "recheck_days": 10
  },
@@ -60,6 +60,163 @@
  ],
  "differs": [
   {
+   "url": "https://open.spotify.com/track/0lJhaNv0sqOCqIs5HFbkbu",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "She Can Love U",
+   "pages": [
+    "/tracklists/dedro-live-potbellys-tallahassee",
+    "/tracklists/peace-control-la-siesta-x-playa-padre-marbella-2026",
+    "/tracklists/rafael-la-siesta-x-playa-padre-marbella-2026"
+   ],
+   "page_count": 3,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/3x6CEyquRREaQ9ZBbBhrGe",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Ghost Dance",
+   "pages": [
+    "/tracklists/gabss-the-terrace-club-space-miami-2026",
+    "/tracklists/peace-control-la-siesta-x-playa-padre-marbella-2026",
+    "/tracklists/rafael-la-siesta-x-playa-padre-marbella-2026"
+   ],
+   "page_count": 3,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/6dL7IcJKZsMk2ClvsW65GX",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Baby Do You Wanna Bump",
+   "pages": [
+    "/tracklists/dedro-live-potbellys-tallahassee",
+    "/tracklists/dedro-live-sound-nightclub-los-angeles",
+    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
+   ],
+   "page_count": 3,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/0kl6Ozan3fuUdCl6TlB15v",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Talk To You (ft. 54 Ultra)",
+   "pages": [
+    "/tracklists/cloonee-live-at-red-rocks",
+    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/1JbwbMympf1OOsrMR5EDFK",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Freaky Housy - Original Mix",
+   "pages": [
+    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026",
+    "/tracklists/pedroz-the-terrace-club-space-miami"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/23khOJxVCE4SEDYCf4mZb8",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Never Leave U",
+   "pages": [
+    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026",
+    "/tracklists/peace-control-la-siesta-x-playa-padre-marbella-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/36SPvhQxKM4APeG7yo1mDQ",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Blues",
+   "pages": [
+    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026",
+    "/tracklists/yamagucci-friends-la-2026-strange-house"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/4QNEi4zAOm0FwfwJXLgp7s",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "My Life Is A Disco (In The Mix)",
+   "pages": [
+    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026",
+    "/tracklists/layton-giordani-electric-island-toronto-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/6H3Qhv1dzL5pbtrQ7Kh7Cx",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Show U Sexy",
+   "pages": [
+    "/tracklists/dedro-live-potbellys-tallahassee",
+    "/tracklists/dedro-live-sound-nightclub-los-angeles"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/6TWbY1dq8eYtFiMiGdBlOa",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Free Your Mind",
+   "pages": [
+    "/tracklists/cloonee-live-at-red-rocks",
+    "/tracklists/rafael-la-siesta-x-playa-padre-marbella-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/7vRkobG4GCbCTPxzewbdlF",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Terapia",
+   "pages": [
+    "/tracklists/dedro-live-potbellys-tallahassee",
+    "/tracklists/dedro-live-sound-nightclub-los-angeles"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
    "url": "https://soundcloud.com/iamnostatic/no-static-experts-only",
    "kind": "soundcloud",
    "code": 200,
@@ -86,8 +243,1776 @@
    "page_count": 2,
    "checked": "2026-10-13T17:46:57Z",
    "first_seen": "2026-10-13T17:46:57Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/05gPN6Pk39xUarweAgkYLu",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Red Light - Original Mix",
+   "pages": [
+    "/tracklists/hot-since-82-mixmag-lab-london"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/0I339khW5qfWuaaiYRopUV",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Voices - Riva Starr Remix",
+   "pages": [
+    "/tracklists/lp-giobbi-at-coachella-2026-quasar-stage"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/0KYLNnpsPe1cn2HJtPpvAT",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Bad Bitch",
+   "pages": [
+    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/0UUcK8m7Q7cNFiuSvHs3Ty",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Obreros",
+   "pages": [
+    "/tracklists/joseph-capriati-3-5-hour-dj-set-live-from-metamorfosi-at-amnesia-ibiza"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/0ZFqqr5USoYxuojSD2Onrb",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Witch Doctor - Hot Since 82 Remix",
+   "pages": [
+    "/tracklists/hot-since-82-mixmag-lab-london"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/0aqTrc8P25XJJbnKgaFG0Z",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Pam Pam - Panna (BR) Remix",
+   "pages": [
+    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/0jTiq8JxBK2pZ3xiFQc5Bo",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Paris Dub 1",
+   "pages": [
+    "/tracklists/dedro-live-potbellys-tallahassee"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/0jeMKIHXINpsn6b7Ym9A9h",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Act of God - CamelPhat Remix",
+   "pages": [
+    "/tracklists/layton-giordani-electric-island-toronto-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/0kFcrBBZ9yD8Yd1nLGgrMN",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "L'amour (AFIN Remix)",
+   "pages": [
+    "/tracklists/gabbs-circoloco-dc-10-ibiza-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/0oGMcA12to3LVj0l0nVXFM",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Two Aladins",
+   "pages": [
+    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/0zKsNJbYwvNTpePcwra0Qq",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "PYHU (Put Your Hands Up)",
+   "pages": [
+    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/10RUTUaJB4CdTfHsn8mMmr",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Callin",
+   "pages": [
+    "/tracklists/dedro-live-sound-nightclub-los-angeles"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/11FvxxICgpWZafrlkAfFo2",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Salsa Del 78",
+   "pages": [
+    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/1FUUe1VbjWakX9nFfd0Qki",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Andalucia",
+   "pages": [
+    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/1G5WT4MAGKWLdYsxSMbGPv",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Sexy People",
+   "pages": [
+    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/1LldihpfcYdxAnCigKijW2",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Sippin' Yak",
+   "pages": [
+    "/tracklists/cloonee-live-at-red-rocks"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/1Oka1iKmhLiHvQohbQyvta",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Spirit Higher",
+   "pages": [
+    "/tracklists/lp-giobbi-at-coachella-2026-quasar-stage"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/1OlS7vWAKZEeoNgIp3JvE2",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Passion",
+   "pages": [
+    "/tracklists/dedro-live-sound-nightclub-los-angeles"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/1PZPA6FBRwhKrKNxs592WK",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Pressure",
+   "pages": [
+    "/tracklists/gabss-the-terrace-club-space-miami-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/1SqHcDudA8IaVanKMayoeq",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Tangerine Beam",
+   "pages": [
+    "/tracklists/lp-giobbi-at-coachella-2026-quasar-stage"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/1WTwQNFh3pTu3FbYRY5GTk",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Saxisfaction",
+   "pages": [
+    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/1dbQNSAXlOEtngcIZAOfPO",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Buddy",
+   "pages": [
+    "/tracklists/cloonee-live-at-red-rocks"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/1m8qbseW8yMcRDNiIjyijT",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Out of My Mind - Rello Remix",
+   "pages": [
+    "/tracklists/cloonee-live-at-red-rocks"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/1rpdapoYtP0nk1zK01FZT9",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Work",
+   "pages": [
+    "/tracklists/gabss-the-terrace-club-space-miami-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/20Roe0czA0RVSwYhtRIFcz",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Hold It Down (DARE)",
+   "pages": [
+    "/tracklists/gabss-the-terrace-club-space-miami-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/25DgjoTlKK8KjstM4cZ8L2",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Movin' To The Sun",
+   "pages": [
+    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/26EARfSu4b4dUhNDkfCRbP",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Only You",
+   "pages": [
+    "/tracklists/lp-giobbi-at-coachella-2026-quasar-stage"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/27iPn1w9duP0Yoe4R627ag",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Needin' U - Club Mix",
+   "pages": [
+    "/tracklists/hot-since-82-mixmag-lab-london"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/2CharB9rwsKVfZi0V22OF5",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "4 AM Jammin'",
+   "pages": [
+    "/tracklists/gabss-the-terrace-club-space-miami-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/2KVAO2OAH6a9Tr2DqYL65g",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "CORAÇAO - 20th Anniversary Mix",
+   "pages": [
+    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/2NOfaoUyMBxdjKpICgogPr",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Seshy Fodder",
+   "pages": [
+    "/tracklists/lp-giobbi-at-coachella-2026-quasar-stage"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/2OejjIQHB7W9vKB5gHj6Ln",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Love Story - Bushwacka! Remix",
+   "pages": [
+    "/tracklists/hot-since-82-mixmag-lab-london"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/2RfUM4uLhghpQPFSSrETlZ",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Toda La Noche",
+   "pages": [
+    "/tracklists/joseph-capriati-3-5-hour-dj-set-live-from-metamorfosi-at-amnesia-ibiza"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/2W9cgPhvERaeE0BnM3CsKd",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Where She Come From",
+   "pages": [
+    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/2a28OspY80WeudpFUro4wq",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Watching Me",
+   "pages": [
+    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/2egODvG6mhAshf9nKYZaBy",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Zebadam Sheli - Landau & JONAH. Remix",
+   "pages": [
+    "/tracklists/gabss-the-terrace-club-space-miami-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/2iamvJ8dFSfapKYEtEYFun",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "una noche con hugel",
+   "pages": [
+    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/2kAjEH6vpzYTrp5vRnJkBE",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Everybody Dance (M.A.S. Club Vocal)",
+   "pages": [
+    "/tracklists/dedro-live-potbellys-tallahassee"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/2lqLdJYbtmzkBlE2uwzstA",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Margherita",
+   "pages": [
+    "/tracklists/cloonee-live-at-red-rocks"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/2nUmDEc3Z9zhikN5XW3ShA",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Rak",
+   "pages": [
+    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/2oUC4kqIDUz98Wb6EvXuKF",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "6 Pack",
+   "pages": [
+    "/tracklists/gabss-the-terrace-club-space-miami-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/2pBhu8kD1BQ2FZSjMQwGTd",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Straight Through",
+   "pages": [
+    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/2prdDujVEcx4mlYNQWiFiq",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Let Me Love You For Tonight - Radio Edit",
+   "pages": [
+    "/tracklists/hot-since-82-mixmag-lab-london"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/30LAaJpoP4d1GCw0HQl171",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Work It Out",
+   "pages": [
+    "/tracklists/dedro-live-sound-nightclub-los-angeles"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/36rvoxEgyNrLUICpelUWbv",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Wet White",
+   "pages": [
+    "/tracklists/cloonee-live-at-red-rocks"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/39SY52L2wO1puZJtPzAXF8",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Bahia",
+   "pages": [
+    "/tracklists/joseph-capriati-3-5-hour-dj-set-live-from-metamorfosi-at-amnesia-ibiza"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/3ISqUJgszdv0r51jRBM2aZ",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Breath",
+   "pages": [
+    "/tracklists/joseph-capriati-3-5-hour-dj-set-live-from-metamorfosi-at-amnesia-ibiza"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/3MWFwvyHV6qnF0jc86XRWd",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Infinity",
+   "pages": [
+    "/tracklists/luch-solomun-1-pacha-ibiza-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/3SpcfxRXhMzWdDGaFVVgbh",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Come A Lil Closer",
+   "pages": [
+    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/3TuTCDcZ4xSNXc2irypqLG",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Nirvana",
+   "pages": [
+    "/tracklists/gabss-the-terrace-club-space-miami-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/3VXS9UeUSCtSVxJ03soUnU",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Trip Guide",
+   "pages": [
+    "/tracklists/gabss-the-terrace-club-space-miami-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/3Y8kVHQYaOMQ96nLaPJjEF",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "I Just Can't Stop",
+   "pages": [
+    "/tracklists/gabss-the-terrace-club-space-miami-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/3ZNwW4qOJSKV6tNouPWA8z",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Give It to You - Extended Mix",
+   "pages": [
+    "/tracklists/gabss-the-terrace-club-space-miami-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/3akxqZriRs4lfcM6AKr7wb",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Flor de Lima",
+   "pages": [
+    "/tracklists/joseph-capriati-3-5-hour-dj-set-live-from-metamorfosi-at-amnesia-ibiza"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/3etpVoJvsNwq0YaVaNf34v",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Keep Moving",
+   "pages": [
+    "/tracklists/lp-giobbi-at-coachella-2026-quasar-stage"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/3h4n8fSWr0aWjsYWJQKqbE",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Backroom",
+   "pages": [
+    "/tracklists/dedro-live-potbellys-tallahassee"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/3u6vAEVPE9KpaPCkDcfG68",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Bring the Bit Back",
+   "pages": [
+    "/tracklists/lp-giobbi-at-coachella-2026-quasar-stage"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/3ujrcEQnHj6SSo3aiG7jXk",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Jumpin",
+   "pages": [
+    "/tracklists/layton-giordani-electric-island-toronto-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/3yVqNA9S8luw1wAUPbLwNH",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "I’ll Stand By You",
+   "pages": [
+    "/tracklists/lp-giobbi-at-coachella-2026-quasar-stage"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/40BWBGY2aCj9mXOQ8v51oZ",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Bullseye - PAX 'VAults' Remix",
+   "pages": [
+    "/tracklists/hot-since-82-mixmag-lab-london"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/44dmEDGGUHYjDKrJ9FjI8W",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Electrolatino (Ricardo Villalobos' 'Lecktro Cariño Remix)",
+   "pages": [
+    "/tracklists/joseph-capriati-3-5-hour-dj-set-live-from-metamorfosi-at-amnesia-ibiza"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/48xRhdgmS5bt1mb4Bb8acy",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Beledna",
+   "pages": [
+    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/4BnF9lzg2f7kc7wxydPhby",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Sun is Shining (Lovelee Dae)",
+   "pages": [
+    "/tracklists/joseph-capriati-3-5-hour-dj-set-live-from-metamorfosi-at-amnesia-ibiza"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/4DrySMD0HTndt7wzDqfXJN",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Dynamite (feat. Sebastian)",
+   "pages": [
+    "/tracklists/gabss-the-terrace-club-space-miami-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/4E33qsdeCnm9proSoGeydZ",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Shanti",
+   "pages": [
+    "/tracklists/gabss-the-terrace-club-space-miami-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/4KUvvPHDP6QEjs1T4ZIvA6",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Party Started (feat. French Caviar)",
+   "pages": [
+    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/4MfnjKc5Bbj82VAPri65oE",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "The City",
+   "pages": [
+    "/tracklists/gabbs-circoloco-dc-10-ibiza-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/4O0XsCmf5dQLgq8htoq2oD",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Qualified",
+   "pages": [
+    "/tracklists/lp-giobbi-at-coachella-2026-quasar-stage"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/4QSoifvNrnkZpY2Qo5Ej3a",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Cuba Libre",
+   "pages": [
+    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/4RUVPmcdtJPEZvtyZ0kXzr",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Indie Fever",
+   "pages": [
+    "/tracklists/gabss-the-terrace-club-space-miami-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/4SevuM9vs3a3RcKBPPfpym",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "When It Kicks",
+   "pages": [
+    "/tracklists/layton-giordani-electric-island-toronto-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/4dpnQ8gVjBDyfErDCSS4ny",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Dream - Radio Edit",
+   "pages": [
+    "/tracklists/luch-solomun-1-pacha-ibiza-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/4dur2KLFeJqJ5pSKUbvrrO",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Feeling High",
+   "pages": [
+    "/tracklists/gabss-the-terrace-club-space-miami-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/4fJj5d2sms5UUsFyvrNjwr",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Whisper To Me",
+   "pages": [
+    "/tracklists/dedro-live-potbellys-tallahassee"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/4kh3BO905A2aAY17lug2eV",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Phantom",
+   "pages": [
+    "/tracklists/layton-giordani-electric-island-toronto-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/50s2Y4Hy5xJjOxEDChXAtK",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Second Story",
+   "pages": [
+    "/tracklists/lp-giobbi-at-coachella-2026-quasar-stage"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/51ebEtVMk572G7rln7lims",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Stay Sexy",
+   "pages": [
+    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/51fWmafrGqiOscbPpphuxy",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Habibi",
+   "pages": [
+    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/53CEQFNvQMt1sZBpERLmB1",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Disco Whoops",
+   "pages": [
+    "/tracklists/joseph-capriati-3-5-hour-dj-set-live-from-metamorfosi-at-amnesia-ibiza"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/55IFdkZVVpOlIW5EGGmaSB",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Goddamn",
+   "pages": [
+    "/tracklists/gabss-the-terrace-club-space-miami-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/597jh9luOjizLDQcr2uqzS",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Apologize - Radio Edit",
+   "pages": [
+    "/tracklists/hot-since-82-mixmag-lab-london"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/5AgNkXIiKzHsYQ3ajRQeKd",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "LOST IN THE ABYSS",
+   "pages": [
+    "/tracklists/gabbs-circoloco-dc-10-ibiza-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/5GF2vx97YyGFJJU5QNVi4U",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Conga",
+   "pages": [
+    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/5GJOjRmmIraPHpOJ5AACnz",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Boogie For Real",
+   "pages": [
+    "/tracklists/joseph-capriati-3-5-hour-dj-set-live-from-metamorfosi-at-amnesia-ibiza"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/5GjUhwxykUVYCYkiNo4BEM",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Strobe",
+   "pages": [
+    "/tracklists/cloonee-live-at-red-rocks"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/5HWqGGcKN3zFPG3Hg7fhuY",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Soul Brother - Superlover Remix",
+   "pages": [
+    "/tracklists/hot-since-82-mixmag-lab-london"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/5IbW5MAnH4oMYAyYrlPFuR",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Rate One",
+   "pages": [
+    "/tracklists/gabss-the-terrace-club-space-miami-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/5IfNZTkOyR712prgRJj2tj",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Sound Check One",
+   "pages": [
+    "/tracklists/hot-since-82-mixmag-lab-london"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/5PL7k9QH7Kj7B4527dHvon",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "La Verdolaga",
+   "pages": [
+    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/5Ppe0zxjQk1qh3bOxp9W0z",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Do You Feel Me - Dosem Remix",
+   "pages": [
+    "/tracklists/lp-giobbi-at-coachella-2026-quasar-stage"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/5QkiSO3BAlSF2Ig1BBr6Dk",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "This Time",
+   "pages": [
+    "/tracklists/hot-since-82-mixmag-lab-london"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/5TgCphtajmULAxrXNm6AEk",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Labirinto Babylonia",
+   "pages": [
+    "/tracklists/dedro-live-sound-nightclub-los-angeles"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/5bUNDjp6keNuG1ejQLLlet",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Retro Dance",
+   "pages": [
+    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/5cxUWmOYFJdG23J8lgvSA5",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Bumpy",
+   "pages": [
+    "/tracklists/joseph-capriati-3-5-hour-dj-set-live-from-metamorfosi-at-amnesia-ibiza"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/5dy1bdvVpdW62kizAWUACU",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Mobile Groove",
+   "pages": [
+    "/tracklists/dedro-live-sound-nightclub-los-angeles"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/5g2kpb9lFUVq8W0fwKdTvx",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Feel My Body - Radio Edit",
+   "pages": [
+    "/tracklists/luch-solomun-1-pacha-ibiza-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/5lXfwFlQywqVHvLsjdRWnu",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Panjab",
+   "pages": [
+    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/5nPbKG04fhLkIAjcPFaZq7",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "I Adore You (feat. Daecolm)",
+   "pages": [
+    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/5vr0XoNiWgg06iq8j8rLsY",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Shine",
+   "pages": [
+    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/5yvCgre7udUxMAYBPzBbdl",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Kids",
+   "pages": [
+    "/tracklists/hot-since-82-mixmag-lab-london"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/6095KwBabA6UMHb4huVDCC",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Carla Next Door",
+   "pages": [
+    "/tracklists/dedro-live-sound-nightclub-los-angeles"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/6DFHSmlrZLDZnXV5kTTMF6",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "PATT (Party All The Time) - Adam Beyer, Layton Giordani & Green Velvet Remix",
+   "pages": [
+    "/tracklists/layton-giordani-electric-island-toronto-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/6EPtlEa8dOxe3wu0yH1I7u",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Psycho X Girlfriend",
+   "pages": [
+    "/tracklists/joseph-capriati-3-5-hour-dj-set-live-from-metamorfosi-at-amnesia-ibiza"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/6EU7JdX5M9kFQ5GUeAuONA",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Bounce - Edit",
+   "pages": [
+    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/6HyArG727PICJL6PWaBVD6",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "All We Got",
+   "pages": [
+    "/tracklists/lp-giobbi-at-coachella-2026-quasar-stage"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/6KwS5hoHrQ6LQuerWbkikq",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Taste",
+   "pages": [
+    "/tracklists/dedro-live-sound-nightclub-los-angeles"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/6NcwFe672oyEggiSHtQ8Pj",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Feels Much Better - Extended Mix",
+   "pages": [
+    "/tracklists/hot-since-82-mixmag-lab-london"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/6RmHESttla4I4g4vr0NLkQ",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Stunner",
+   "pages": [
+    "/tracklists/dedro-live-sound-nightclub-los-angeles"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/6StpgnOEYq3E6YS6BfedK2",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Meet Again",
+   "pages": [
+    "/tracklists/layton-giordani-electric-island-toronto-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/6XzM8wBEznCteSOdeHMyTE",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Jolene - Destructo Remix",
+   "pages": [
+    "/tracklists/hot-since-82-mixmag-lab-london"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/6aZo38cKJR9dP2AZz6WJM7",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Supernatural",
+   "pages": [
+    "/tracklists/gabss-the-terrace-club-space-miami-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/6b5IJEVYFEZ1YkgZ0oXaJK",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Final Credits",
+   "pages": [
+    "/tracklists/joseph-capriati-3-5-hour-dj-set-live-from-metamorfosi-at-amnesia-ibiza"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/6dgQdSWXtRENcRv4t05lFA",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Music Is Moving",
+   "pages": [
+    "/tracklists/gabbs-circoloco-dc-10-ibiza-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/6ezSDn5MebV28YCPQbUWux",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "The Beat",
+   "pages": [
+    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/6fa0YsNr84wlIiBj2o9EzA",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Neon Bounce",
+   "pages": [
+    "/tracklists/lp-giobbi-at-coachella-2026-quasar-stage"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/6hJArtLxhxRWesWSmVGX4M",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Magic - Extended Mix",
+   "pages": [
+    "/tracklists/gabss-the-terrace-club-space-miami-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/6jHTGiWhmM8JVTJTSJI4XT",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Step, Step",
+   "pages": [
+    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/6oeyxVDr0YDZO5rXywPf7x",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Like This",
+   "pages": [
+    "/tracklists/joseph-capriati-3-5-hour-dj-set-live-from-metamorfosi-at-amnesia-ibiza"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/709bplIm1PlcSDGIpL4mJ1",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Aeroplane Mode - Original Mix",
+   "pages": [
+    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/766wUCKpJzyHOLr8ULy8AG",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "We Dance All Night",
+   "pages": [
+    "/tracklists/gabss-the-terrace-club-space-miami-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/7BpyfQEmvi0sUmOq29plEE",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "You Don't Know Me (feat. Duane Harden) - Radio Edit",
+   "pages": [
+    "/tracklists/joseph-capriati-3-5-hour-dj-set-live-from-metamorfosi-at-amnesia-ibiza"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/7CBJoTWCIbf04C7tFyZtmF",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Activate",
+   "pages": [
+    "/tracklists/hot-since-82-mixmag-lab-london"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/7CDXUYEVUm1SwPC4aVueX6",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Don't Stop",
+   "pages": [
+    "/tracklists/hot-since-82-mixmag-lab-london"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/7JvaT4FTTF0aYyacmfbHRY",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "One Question",
+   "pages": [
+    "/tracklists/cloonee-live-at-red-rocks"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/7a48ajadY78uU8FpZAUIna",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Beat Goes On - In da Club",
+   "pages": [
+    "/tracklists/gabss-the-terrace-club-space-miami-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/7cpxE8PO1Rqn9fd29RQ62O",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Watch The Time - LondonGround Remix",
+   "pages": [
+    "/tracklists/dedro-live-sound-nightclub-los-angeles"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/7e4zDInS6tA2jwzphvs2Ay",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Jamaican (Bam Bam)",
+   "pages": [
+    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/7khzIPpqJO6NY6gxE4unIB",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Like An Eagle",
+   "pages": [
+    "/tracklists/dedro-live-sound-nightclub-los-angeles"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/7laeN7Ppp9HUaBu4R6x2gS",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Runaway - Reboot Rebeef Mix",
+   "pages": [
+    "/tracklists/joseph-capriati-3-5-hour-dj-set-live-from-metamorfosi-at-amnesia-ibiza"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/7xwHG2xruveDvwHnj8kZon",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "You Are",
+   "pages": [
+    "/tracklists/lp-giobbi-at-coachella-2026-quasar-stage"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://soundcloud.com/frankyrizardo/shinjuku",
+   "kind": "soundcloud",
+   "code": 200,
+   "note": "page says: listen on soundcloud",
+   "title": "Shinjuku by Franky Rizardo",
+   "pages": [
+    "/tracklists/pedroz-the-terrace-club-space-miami"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://soundcloud.com/julianfijma/julian-fijma-get-stupid-teaser",
+   "kind": "soundcloud",
+   "code": 200,
+   "note": "page says: listen on soundcloud",
+   "title": "Julian Fijma - Get Stupid by Julian Fijma",
+   "pages": [
+    "/tracklists/pedroz-the-terrace-club-space-miami"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://soundcloud.com/marcolys/marco-lys-the-story-continues",
+   "kind": "soundcloud",
+   "code": 200,
+   "note": "page says: listen on soundcloud",
+   "title": "The Story Continues by Marco Lys",
+   "pages": [
+    "/tracklists/pedroz-the-terrace-club-space-miami"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://soundcloud.com/pedroztheboy/giveittome",
+   "kind": "soundcloud",
+   "code": 200,
+   "note": "page says: listen on soundcloud",
+   "title": "Pedroz - Give It To Me (FREE DOWNLOAD) by Pedroz",
+   "pages": [
+    "/tracklists/pedroz-the-terrace-club-space-miami"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://soundcloud.com/pedroztheboy/goodies",
+   "kind": "soundcloud",
+   "code": 200,
+   "note": "page says: listen on soundcloud",
+   "title": "Pedroz & GREG - Goodies by Pedroz",
+   "pages": [
+    "/tracklists/pedroz-the-terrace-club-space-miami"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://soundcloud.com/tobehonestmusic/no-lames",
+   "kind": "soundcloud",
+   "code": 200,
+   "note": "page says: listen on soundcloud",
+   "title": "No Lames by TOBEHONEST",
+   "pages": [
+    "/tracklists/pedroz-the-terrace-club-space-miami"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
   }
  ],
  "anchors_broken": [],
- "summary": "2 broken, 1 moved, 2 read differently, 0 broken anchors, 4884 of 5973 links checked in the last 10 days"
+ "summary": "2 broken, 1 moved, 149 read differently, 0 broken anchors, 5572 of 5988 links checked in the last 10 days"
 }
