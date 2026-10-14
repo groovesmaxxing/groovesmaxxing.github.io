@@ -124,9 +124,8 @@ body .gmx-stage .set-dots:has(>button:nth-child(31)){display:none}
 @media (prefers-reduced-motion:reduce){.gmx-more-btn::after{transition:none}}
 
 /* ---------- home on a phone: the first screen is the music (2026-10-14) ----------
-   the hero shrinks to the logo and the socials, the page links fold behind "every page", and the
-   sets come straight after, then your crate, friday and the denver dates. the deal folds too. */
-.hero-more{display:contents}
+   the hero shrinks, its page links stay open (owner's call, 2026-10-14), then the sets, your crate, friday and the
+   denver dates. about groovesMAXXING sits last, just above the footer. */
 @media (max-width:640px){
   body:has(>header.hero){display:flex;flex-direction:column}
   body:has(>header.hero)>*{order:9}
@@ -135,16 +134,13 @@ body .gmx-stage .set-dots:has(>button:nth-child(31)){display:none}
   body:has(>header.hero)>#nextup{order:2}
   body:has(>header.hero)>#friday{order:3}
   body:has(>header.hero)>#tonight{order:4}
-  body:has(>header.hero)>#about{order:5}
+  body:has(>header.hero)>#about{order:10}
+  body:has(>header.hero)>footer{order:11}
   .hero .mark{width:min(34vw,150px);margin-bottom:14px}
   .hero .wordmark{font-size:clamp(2rem,10vw,2.6rem)}
   .hero .tagline{margin-top:6px}
   .hero .icon-row{margin-top:18px;gap:10px}
-  .hero-more{display:block;width:100%}
-  .hero .gmx-more-btn{margin-top:14px}
-  .hero-more .hero-links{margin-top:16px}
   body:has(>header.hero)>#library{padding-top:36px}
-  #about .gmx-more-btn{margin-top:10px}
 }
 
 /* ---------- the tracklists hub: the tracklists tab lands here, the rest of the area folds under the list ---------- */
@@ -246,3 +242,14 @@ details.gmx-fold>summary:focus-visible{outline:2px solid var(--racing,#FF1C02);o
 .lib-mark{display:block;width:64px;height:64px;margin:0 0 12px}
 /* a title over plain paragraphs (privacy, terms) gets a rule above it, so each section has a clear start */
 body:not(:has(>header.hero)):not(:has(.aname)) .wrap h2:not(.tier):not(.azh):not(.vh):has(+p){border-top:1px solid #2a2a30;padding-top:26px}
+
+/* ---------- home hero: smaller page buttons, tracklists first, and the area links as neat boxes (2026-10-14) ---------- */
+.hero .area-nav{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;width:100%;max-width:760px;margin-top:18px}
+.hero .area-nav a,.gmx-motion .hero .area-nav a{display:flex;align-items:center;justify-content:center;text-align:center;min-height:44px;padding:8px 10px;border:1px solid #2c2c31;border-radius:12px;background:rgba(20,20,23,.88);font-size:.86rem;line-height:1.25;color:var(--day);border-bottom:1px solid #2c2c31}
+.hero .area-nav a:hover,.hero .area-nav a:focus-visible{border-color:var(--racing);color:var(--day);background-color:rgba(20,20,23,.88)}
+@media (max-width:640px){
+  .hero .hero-links{display:grid;grid-template-columns:1fr;gap:8px;width:100%;margin-top:18px}
+  .hero .hero-links a.pill{padding:9px 14px;font-size:.86rem;min-height:42px;display:flex;align-items:center;justify-content:center}
+  .hero .area-nav{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:12px}
+}
+.eyebrow .caps,.eyebrow2 .caps{text-transform:none}
