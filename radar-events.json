@@ -1,44 +1,8 @@
 {
-"generated": "2026-10-13T17:01:22+00:00",
+"generated": "2026-10-14T14:34:49+00:00",
 "artist_count": 704,
-"artists_with_events": 147,
+"artists_with_events": 149,
 "events": [
-{
-"date": "2026-10-13",
-"event": "LEWIS OFMAN with Moon King",
-"venue": "Lee's Palace",
-"city": "Toronto",
-"region": "ON",
-"url": "https://www.ticketweb.ca/event/lewis-ofman-with-moon-king-lees-palace-tickets/14923653",
-"artist": "Lewis OfMan"
-},
-{
-"date": "2026-10-13",
-"event": "Rhye en Ciudad de México",
-"venue": "Pepsi Center",
-"city": "México",
-"region": "CDMX",
-"url": "https://www.ticketmaster.com.mx/rhye-en-ciudad-de-mexico-mexico-13-10-2026/event/140064C495C15362",
-"artist": "Rhye"
-},
-{
-"date": "2026-10-13",
-"event": "The Jungle Giants",
-"venue": "Fortune Sound Club",
-"city": "Vancouver",
-"region": "BC",
-"url": "https://www.ticketweb.ca/event/the-jungle-giants-fortune-sound-club-tickets/14927263?REFERRAL_ID=tmfeed",
-"artist": "The Jungle Giants"
-},
-{
-"date": "2026-10-13",
-"event": "Tinlicker North America 2026",
-"venue": "Knitting Factory - Boise",
-"city": "Boise",
-"region": "ID",
-"url": "https://www.ticketmaster.com/tinlicker-north-america-2026-boise-idaho-10-13-2026/event/1E006491AA08B6F8",
-"artist": "Tinlicker"
-},
 {
 "date": "2026-10-14",
 "event": "Harry Styles: Together, Together",
@@ -1145,6 +1109,15 @@
 "region": "CO",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7-3bb",
 "artist": "Matroda"
+},
+{
+"date": "2026-10-30",
+"event": "Monolink (hybrid) & The Blaze - Ages 21+",
+"venue": "Pier 48",
+"city": "San Francisco",
+"region": "CA",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAe_7N",
+"artist": "Monolink"
 },
 {
 "date": "2026-10-30",
@@ -2966,6 +2939,15 @@
 },
 {
 "date": "2026-12-11",
+"event": "Beltran",
+"venue": "Fillmore Auditorium (Denver)",
+"city": "Denver",
+"region": "CO",
+"url": "https://www.ticketmaster.com/beltran-denver-colorado-12-11-2026/event/1E00654915345B6B",
+"artist": "Beltran"
+},
+{
+"date": "2026-12-11",
 "event": "Bob Moses (18+ Event)",
 "venue": "ReelWorks Denver",
 "city": "Denver",
@@ -3305,6 +3287,15 @@
 "region": "CA",
 "url": "https://on.fgtix.com/trk/SMhQ",
 "artist": "James Hype"
+},
+{
+"date": "2026-12-31",
+"event": "Jamie XX - Ages 21+",
+"venue": "Pier 48",
+"city": "San Francisco",
+"region": "CA",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAeboU",
+"artist": "Jamie xx"
 },
 {
 "date": "2026-12-31",

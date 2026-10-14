@@ -1,5 +1,5 @@
 {
-"generated": "2026-10-13T17:01:22+00:00",
+"generated": "2026-10-14T14:34:49+00:00",
 "events": [
 {
 "date": "2026-10-17",
@@ -35,6 +35,13 @@
 "venue": "Ogden Theatre",
 "city": "Denver",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1AAv4Fd"
+},
+{
+"date": "2026-12-11",
+"artist": "Beltran",
+"venue": "Fillmore Auditorium (Denver)",
+"city": "Denver",
+"url": "https://www.ticketmaster.com/beltran-denver-colorado-12-11-2026/event/1E00654915345B6B"
 },
 {
 "date": "2026-12-11",
