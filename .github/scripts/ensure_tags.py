@@ -58,7 +58,7 @@ def ensure(path, heads, before_motion, after_motion):
 
 # the readability layer (2026-10-13): on every page, as the last tag in the head, so its rules win over the
 # page's own <style> block at the same selector. a page the laptop rewrites gets it back here.
-READ_CSS = '<link rel="stylesheet" href="/gmx-read.css?v=7">'
+READ_CSS = '<link rel="stylesheet" href="/gmx-read.css?v=8">'
 def ensure_read(path):
     s = open(path, encoding='utf-8').read(); o = s
     if 'http-equiv="refresh"' in s or path.startswith('google') or '</head>' not in s: return False

@@ -253,3 +253,10 @@ body:not(:has(>header.hero)):not(:has(.aname)) .wrap h2:not(.tier):not(.azh):not
   .hero .area-nav{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:12px}
 }
 .eyebrow .caps,.eyebrow2 .caps{text-transform:none}
+/* the seven social icons stay on one row on a phone (owner's call, 2026-10-14): each one sized from the screen width */
+@media (max-width:640px){
+  .icon-row{flex-wrap:nowrap;gap:8px;justify-content:center}
+  .icon-row .icon-btn{flex:none;--ib:min(48px,calc((100vw - 88px) / 7));width:var(--ib);height:var(--ib)}
+  .icon-row:has(>:nth-child(8)) .icon-btn{--ib:min(48px,calc((100vw - 96px) / 8))}
+  .icon-row .icon-btn svg{width:calc(var(--ib) * .44);height:calc(var(--ib) * .44)}
+}
