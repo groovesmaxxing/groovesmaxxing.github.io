@@ -1,91 +1,86 @@
 {
- "generated": "2026-10-13T21:56:47Z",
+ "generated": "2026-10-14T01:09:06Z",
  "site": [
   {
    "path": "/",
    "code": 200,
-   "ms": 422,
+   "ms": 381,
    "state": "ok",
    "note": null
   },
   {
    "path": "/scan",
    "code": 200,
-   "ms": 312,
+   "ms": 337,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sets",
    "code": 200,
-   "ms": 239,
+   "ms": 300,
    "state": "ok",
    "note": null
   },
   {
    "path": "/artists",
    "code": 200,
-   "ms": 361,
+   "ms": 405,
    "state": "ok",
    "note": null
   },
   {
    "path": "/tracklists/",
    "code": 200,
-   "ms": 212,
+   "ms": 349,
    "state": "ok",
    "note": null
   },
   {
    "path": "/search-index.json",
    "code": 200,
-   "ms": 414,
+   "ms": 376,
    "state": "ok",
-   "note": "generated 2026-10-13"
+   "note": "generated 2026-10-14"
   },
   {
    "path": "/upcoming.json",
    "code": 200,
-   "ms": 320,
+   "ms": 242,
    "state": "ok",
-   "note": "generated 2026-10-13"
+   "note": "generated 2026-10-14"
   },
   {
    "path": "/radar-events.json",
    "code": 200,
-   "ms": 351,
+   "ms": 339,
    "state": "ok",
    "note": "generated 2026-10-13T17:01:22"
   },
   {
    "path": "/sitemap.xml",
    "code": 200,
-   "ms": 223,
+   "ms": 156,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sw.js",
    "code": 200,
-   "ms": 191,
+   "ms": 349,
    "state": "ok",
    "note": null
   }
  ],
  "recognizer": {
-  "state": "up",
-  "code": 200,
-  "ms": 506,
-  "health": {
-   "status": "ok",
-   "version": "0.1.1"
-  }
+  "state": "down",
+  "code": 0,
+  "ms": 65,
+  "note": "no answer: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of "
  },
  "workflows": {
-  "state": "failed",
-  "failed": [
-   "site check"
-  ],
+  "state": "ok",
+  "failed": [],
   "runs": [
    {
     "name": "events radar sweep",
@@ -123,8 +118,8 @@
     "conclusion": "success",
     "event": "dynamic",
     "branch": "main",
-    "at": "2026-10-13T19:09:45Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38452525035",
+    "at": "2026-10-14T00:16:59Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38489192490",
     "state": "ok"
    },
    {
@@ -133,19 +128,19 @@
     "conclusion": "success",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-10-13T19:22:47Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38454344976",
+    "at": "2026-10-13T23:46:01Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38486200009",
     "state": "ok"
    },
    {
     "name": "site check",
     "status": "completed",
-    "conclusion": "failure",
-    "event": "push",
-    "branch": "main",
-    "at": "2026-10-13T19:10:33Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38452450395",
-    "state": "failed"
+    "conclusion": "success",
+    "event": "pull_request",
+    "branch": "claude/compassionate-cray-x4a2uo",
+    "at": "2026-10-14T01:03:47Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38493441026",
+    "state": "ok"
    },
    {
     "name": "site data",
@@ -153,8 +148,8 @@
     "conclusion": "success",
     "event": "push",
     "branch": "main",
-    "at": "2026-10-13T19:09:00Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38452450427",
+    "at": "2026-10-14T00:16:16Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38489108404",
     "state": "ok"
    }
   ]
@@ -165,37 +160,37 @@
    {
     "state": "warn",
     "id": "F-18",
-    "text": "friday.html carries the newest week: 2026-10-02, 11 days old"
+    "text": "friday.html carries the newest week: 2026-10-02, 12 days old"
    },
    {
     "state": "ok",
     "id": "F-21",
-    "text": "dropping soon says when it was last refreshed: 2026-10-13, 0 days old"
+    "text": "dropping soon says when it was last refreshed: 2026-10-13, 1 days old"
    },
    {
     "state": "ok",
     "id": "F-24",
-    "text": "the newsletter hub carries the newest issue: 2026-10-09, 4 days old"
+    "text": "the newsletter hub carries the newest issue: 2026-10-09, 5 days old"
    },
    {
     "state": "ok",
     "id": "F-30",
-    "text": "the events radar data is refreshed nightly: 2026-10-13, 0 days old"
+    "text": "the events radar data is refreshed nightly: 2026-10-13, 1 days old"
    },
    {
     "state": "ok",
     "id": "F-31",
-    "text": "the denver radar data is refreshed nightly: 2026-10-13, 0 days old"
+    "text": "the denver radar data is refreshed nightly: 2026-10-13, 1 days old"
    },
    {
     "state": "ok",
     "id": "F-32",
-    "text": "the tracks index was rebuilt after the newest tracklist: 2026-10-13, 0 days old"
+    "text": "the tracks index was rebuilt after the newest tracklist: 2026-10-14, 0 days old"
    },
    {
     "state": "ok",
     "id": "F-33",
-    "text": "upcoming.json (the home page's next up band) was rebuilt after the newest dropping soon render: 2026-10-13, 0 days old"
+    "text": "upcoming.json (the home page's next up band) was rebuilt after the newest dropping soon render: 2026-10-14, 0 days old"
    },
    {
     "state": "ok",
@@ -204,6 +199,6 @@
    }
   ]
  },
- "state": "wrong",
- "summary": "recognizer up; failed workflows: site check; freshness warn"
+ "state": "down",
+ "summary": "recognizer down; freshness warn"
 }
