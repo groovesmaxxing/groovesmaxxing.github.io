@@ -18,6 +18,8 @@ function btn(el,label){
     el.__gmxMoreBtn=b;
   }
   b.__label=label;
+  /* a plain "more" under a line of text is a quiet red link. a named fold ("every page", "the deal") keeps the pill */
+  if(label==='more')b.classList.add('q');
   if(!b.parentNode){
     var mode=el.getAttribute('data-more');
     if(mode==='fold')el.parentNode.insertBefore(b,el);else el.parentNode.insertBefore(b,el.nextSibling);
@@ -29,7 +31,7 @@ function set(el,open){
   if(!b)return;
   b.setAttribute('aria-expanded',open?'true':'false');
   el.classList.toggle('gmx-more-open',open);
-  if(mode==='fold'){el.hidden=!open;b.textContent=(open?'hide ':'')+b.__label;return}
+  if(mode==='fold'){el.hidden=!open;b.textContent=open?(b.__label==='more'?'less':'hide '+b.__label):b.__label;return}
   if(mode==='items'){
     var kids=el.children,n=+el.getAttribute('data-more-items')||6;
     for(var i=n;i<kids.length;i++){if(open)kids[i].removeAttribute('data-more-hide');else kids[i].setAttribute('data-more-hide','')}

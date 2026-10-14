@@ -155,7 +155,8 @@ mark{background:none;color:var(--racing)}
 <header class="mast">
 <span class="eyebrow">my crate</span>
 <h1>what you<br><span class="rd">liked.</span></h1>
-<p class="lede">every set and track you tapped the heart on, and every artist and label you follow. <span id="gmx-crate-sync">it lives on this phone only, nothing is sent anywhere.</span> open the store links, copy the list to paste wherever your playlists live, or see what's dropping from the names in here.</p>
+<p class="lede">every set and track you hearted, and every artist and label you follow. <span id="gmx-crate-sync">it lives on this phone only, nothing is sent anywhere.</span></p>
+<div data-more="fold" data-more-label="more"><p class="lede">open the store links, copy the list to paste wherever your playlists live, or see what's dropping from the names in here.</p></div>
 </header>
 
 <div class="ctools">
@@ -169,7 +170,7 @@ mark{background:none;color:var(--racing)}
 <div id="c-follow"></div>
 <div id="c-sets"></div>
 <div id="c-tracks"></div>
-<p class="cempty" id="c-empty" hidden>nothing in the crate yet. tap the heart under any set on the <a href="/">home page</a>, on an artist page, on <a href="/sets">the sets</a> or on <a href="/radio">radio</a>, tap follow on any <a href="/artists">artist</a> or <a href="/labels">label</a> page, and heart any track on a <a href="/tracklists/">tracklist</a>.</p>
+<p class="cempty" id="c-empty" hidden>nothing in the crate yet. tap the heart on any set or <a href="/tracklists/">tracklist</a> row, or follow an <a href="/artists">artist</a> or <a href="/labels">label</a>.</p>
 
 <footer>
 <p class="fine">groovesMAXXING · <a href="/sets">the sets</a> · <a href="/tracklists/">tracklists</a> · <a href="/search">search</a></p>
@@ -223,7 +224,7 @@ render();
 
 <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})})}</script>
 <script src="/gmx-motion.js" defer></script>
-<script src="/gmx-more.js?v=1" defer></script>
+<script src="/gmx-more.js?v=2" defer></script>
 <script src="/gmx-quick.js" defer></script>
 <script src="/gmx-refresh.js" defer></script>
 <script src="/gmx-nav.js?v=18" defer></script>

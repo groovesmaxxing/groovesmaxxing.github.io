@@ -181,3 +181,6 @@ body .gmx-stage .set-dots:has(>button:nth-child(31)){display:none}
   .wrap:has(#az-open) details.az .azin{column-width:230px;column-gap:28px}
   .wrap:has(#az-open) details.az .drow:last-child{border-bottom:1px solid #1b1b1f}
 }
+.gmx-more-btn.q{border:0;border-radius:6px;padding:10px 2px;margin:2px 0;min-height:44px;color:var(--racing,#FF1C02);font-size:.88rem}
+.gmx-more-btn.q::after{width:6px;height:6px}
+.day-section .gmx-more-btn.q{color:var(--deep,#CC1400)}

@@ -36,7 +36,7 @@ T = {
     'account_css': '<link rel="stylesheet" href="/gmx-account.css">',
     'account_js': '<script src="/gmx-account.js?v=17" defer></script>',
     # the "more" expander (2026-10-14): any element with data-more collapses behind one button
-    'more_js': '<script src="/gmx-more.js?v=1" defer></script>',
+    'more_js': '<script src="/gmx-more.js?v=2" defer></script>',
 }
 
 def ensure(path, heads, before_motion, after_motion):

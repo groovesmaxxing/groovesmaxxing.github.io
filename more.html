@@ -129,7 +129,7 @@ form.nl input[type=submit]:hover{background:var(--deep);border-color:var(--deep)
 <header class="mast">
 <span class="eyebrow">more</span>
 <h1>the rest of it,<br><span class="rd">one tap away.</span></h1>
-<p class="lede">your account and the settings, then everything on the site that is not a scan, a set, an artist or a tracklist.</p>
+<p class="lede">your account and settings, then everything else on the site.</p>
 </header>
 
 <section class="acct" id="account" aria-labelledby="accth">
@@ -204,7 +204,7 @@ form.nl input[type=submit]:hover{background:var(--deep);border-color:var(--deep)
 </ul>
 
 <h2>the newsletter</h2>
-<p class="note">fresh grooves friday in your inbox. the releases that survived the week, an artist worth knowing, where they're playing next. free, no spam, leave whenever.</p>
+<p class="note">fresh grooves friday in your inbox: the releases that survived the week, an artist worth knowing, where they're playing next. free, leave whenever.</p>
 <form action="https://buttondown.com/api/emails/embed-subscribe/groovesmaxxed" method="post" class="nl embeddable-buttondown-form">
 <label for="bd-email">email</label>
 <input type="email" name="email" id="bd-email" placeholder="you@example.com" required>
@@ -214,7 +214,8 @@ form.nl input[type=submit]:hover{background:var(--deep);border-color:var(--deep)
 <p class="note"><a href="/newsletter">read past issues →</a>, in full, no signup needed. or follow them in a reader: <a href="/feed.xml">rss feed</a>.</p>
 
 <h2 id="about">about</h2>
-<p class="note">we listen to everything. you get the good stuff. house, techno and indie dance, curated like a friend texting you bangers. no label pays for a spot, no promo pool, no pay-to-play. if it's here, it goes.</p>
+<p class="note">we listen to everything. you get the good stuff. house, techno and indie dance, curated like a friend texting you bangers.</p>
+<div data-more="fold" data-more-label="more"><p class="note">no label pays for a spot, no promo pool, no pay-to-play. if it's here, it goes.</p></div>
 <p class="note">the scan listens for about 15 seconds and looks for the track in our own library of sets first, then in the catalogs. nothing is ever marked confirmed, and every result has a button to tell us we got it wrong.</p>
 
 <p class="fine">© 2026 groovesmaxxing · vibes + grooves maxxing 📈 · made with love, zero budget</p>
@@ -355,7 +356,7 @@ A.on(function(w){if(w==='session'&&!A.token()&&document.body.classList.contains(
 })();
 </script>
 <script src="/gmx-motion.js" defer></script>
-<script src="/gmx-more.js?v=1" defer></script>
+<script src="/gmx-more.js?v=2" defer></script>
 <script src="/gmx-quick.js" defer></script>
 <script src="/gmx-refresh.js" defer></script>
 <script src="/gmx-nav.js?v=18" defer></script>

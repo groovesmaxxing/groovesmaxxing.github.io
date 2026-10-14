@@ -460,7 +460,7 @@ tr.hid{display:none}
 <script>(function(){var b=document.getElementById('howbtn'),d=document.getElementById('howbox'),c=document.getElementById('howclose');if(!b||!d||!d.showModal){if(b)b.style.display='none';return}b.addEventListener('click',function(){d.showModal()});c.addEventListener('click',function(){d.close()});d.addEventListener('click',function(e){if(e.target===d)d.close()})})();</script>
 <script>(function(){var bar=document.getElementById('srcbar');if(!bar)return;var bs=bar.querySelectorAll('button'),rows=document.querySelectorAll('tr[data-src]');function pick(k){bs.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.k===k?'true':'false')});rows.forEach(function(r){r.classList.toggle('hid',k!=='all'&&r.dataset.src!==k)});try{history.replaceState(null,'',k==='all'?location.pathname:'#'+k)}catch(e){}}bar.classList.add('on');bs.forEach(function(b){b.addEventListener('click',function(){pick(b.dataset.k)})});var h=location.hash.slice(1);pick(h==='youtube'||h==='soundcloud'?h:'all')})();</script>
 <script src="/gmx-motion.js" defer></script>
-<script src="/gmx-more.js?v=1" defer></script>
+<script src="/gmx-more.js?v=2" defer></script>
 <script src="/gmx-follow.js" defer></script>
 <script src="/gmx-crate.js" defer></script>
 <script src="/gmx-sheet.js" defer></script>
