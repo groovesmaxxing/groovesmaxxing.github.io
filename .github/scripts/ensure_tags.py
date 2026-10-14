@@ -37,6 +37,8 @@ T = {
     'account_js': '<script src="/gmx-account.js?v=17" defer></script>',
     # the "more" expander (2026-10-14): any element with data-more collapses behind one button
     'more_js': '<script src="/gmx-more.js?v=2" defer></script>',
+    # the name reels on the home page (2026-10-14)
+    'reel_js': '<script src="/gmx-reel.js?v=1" defer></script>',
 }
 
 def ensure(path, heads, before_motion, after_motion):
@@ -56,7 +58,7 @@ def ensure(path, heads, before_motion, after_motion):
 
 # the readability layer (2026-10-13): on every page, as the last tag in the head, so its rules win over the
 # page's own <style> block at the same selector. a page the laptop rewrites gets it back here.
-READ_CSS = '<link rel="stylesheet" href="/gmx-read.css?v=5">'
+READ_CSS = '<link rel="stylesheet" href="/gmx-read.css?v=6">'
 def ensure_read(path):
     s = open(path, encoding='utf-8').read(); o = s
     if 'http-equiv="refresh"' in s or path.startswith('google') or '</head>' not in s: return False
@@ -293,13 +295,36 @@ def artists_dir(path='artists.html'):
     if rail and chips and rail.start() > chips.end():
         s = s.replace(rail.group(0), '', 1)
         s = s[:chips.end()] + '\n' + rail.group(0).strip() + s[chips.end():]
-    mast = re.search(r'\n?<header class="mast">.*?</header>', s, re.S)
-    nores = s.find('<p class="nores">')
-    if mast and nores > -1 and mast.start() < nores:
-        block = mast.group(0).strip()
+    # the intro (owner's call, 2026-10-14): "who we play", then two closed rows, the work in progress note
+    # and how to search, all above the search bar. rebuilt from whatever the page holds, so the counts and
+    # the contact links stay the roster script's own.
+    mast = re.search(r'\n?<header class="mast"[^>]*>.*?</header>', s, re.S)
+    if mast and 'data-gmx="artists-mast"' not in mast.group(0):
+        t = mast.group(0)
+        def num(pat, dflt=''):
+            m = re.search(pat, t)
+            return m.group(1) if m else dflt
+        full = num(r'(\d[\d,]*) full profiles')
+        names = num(r'(\d[\d,]*) names')
+        labels = num(r'the (\d[\d,]*) labels')
+        mail = re.search(r'<a href="mailto:[^"]+">[^<]+</a>', t)
+        ig = re.search(r'<a href="https://www\.instagram\.com/groovesmaxxing/?"[^>]*>@groovesmaxxing</a>', t)
+        reach = ' '.join(x for x in [mail.group(0) if mail else '', 'or' if mail and ig else '', ig.group(0) if ig else ''] if x)
+        block = ('<header class="mast" data-gmx="artists-mast">\n<h1>who we play</h1>\n'
+            '<details class="gmx-fold"><summary>this page is a work in progress</summary><div class="gmx-fold-body">\n'
+            '<p>every fact here is on the record and sourced. where an artist told their own story, we use their words, not ours. no filler, no press-release copy.</p>\n'
+            + ('<p>%s full profiles are written, and every one of the %s names has at least a starter page. ' % (full, names) if full and names else '<p>')
+            + 'every fact was checked against a source before it went up. even so, sources contradict each other more often than you would think, and some of what we hold is out of date.</p>\n'
+            '<p><b>got something wrong about you or your music? tell us and we fix it fast.</b>' + (' ' + reach + '.' if reach else '') + '</p>\n'
+            '</div></details>\n'
+            '<details class="gmx-fold"><summary>how to search</summary><div class="gmx-fold-body">\n'
+            '<p>type a name, a city or a sound. bumpy and vibes filter by lane. tap a letter to jump to it.</p>\n'
+            '<p>tap any badge on a profile to see who else wears it, or browse <a href="/badges">the badge map</a>.'
+            + (' the %s labels have <a href="/labels">their own index</a>.' % labels if labels else '') + '</p>\n'
+            '</div></details>\n</header>')
         s = s.replace(mast.group(0), '', 1)
-        end = s.index('</p>', s.find('<p class="nores">')) + 4
-        s = s[:end] + '\n\n' + block + s[end:]
+        bar = s.index('<div class="searchbar">')
+        s = s[:bar] + block + '\n\n' + s[bar:]
     def disc(m):
         name = _html.unescape(re.sub(r'<[^>]+>', '', m.group(2))).strip()
         ch = name[:1] or '#'
@@ -313,4 +338,5 @@ for f in sorted(files('*.html') + files('artists/*.html') + files('labels/*.html
     # scan.html stays out: the recognizer page is its own build and carries no data-more blocks
     if f.startswith('google') or f == 'scan.html': continue
     n += ensure(f, [], [], ['more_js'])
+n += ensure('index.html', [], [], ['reel_js'])
 print('ensure_tags:', n, 'pages touched')

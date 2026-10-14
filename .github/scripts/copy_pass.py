@@ -20,16 +20,7 @@ def more(tag_open, inner):
 
 # (file, old pattern, new text). in the new text {1}, {2} are the numbers the old line had.
 RULES = [
-    ('artists.html',
-     r'<p class="lede">every fact on this page is publicly on the record and sourced\. where someone told their own story, we use their words instead of ours\. no filler, no press-release copy\.</p>',
-     '<p class="lede">every fact here is on the record and sourced. where an artist told their own story, we use their words.</p>'),
-    ('artists.html',
-     r'<p>this page is a work in progress\. ' + N + r' full profiles are written, and every one of the ' + N + r' names now has at least a starter page, and every fact on them was checked against a source before it went up\. even so, sources contradict each other more often than you would think, and some of what we hold is simply out of date\. <b>if we got something wrong about you or your music, tell us and we will fix it fast\.</b> (<a href="mailto:[^"]+">[^<]+</a>) or (<a href="https://www\.instagram\.com/groovesmaxxing/?"[^>]*>@groovesmaxxing</a>)\.</p>',
-     '<p>a work in progress: {1} full profiles, and a starter page for all {2} names. <b>got something wrong about you? tell us and we fix it fast.</b> {3} or {4}.</p>'
-     + more('<p>', 'every fact was checked against a source before it went up. even so, sources contradict each other more often than you would think, and some of what we hold is out of date.')),
-    ('artists.html',
-     r'<p class="note">tap any badge on a profile to see who else wears it, or browse them all on (<a href="/badges">)the badge map</a>\. the roster now lives here\. the ' + N + r' labels have (<a href="/labels">their own index</a>)\.</p>',
-     '<p class="note">tap any badge on a profile to see who else wears it, or browse {1}the badge map</a>. the {2} labels have {3}.</p>'),
+    # the artists intro (lede, work in progress, badges line) is rebuilt by ensure_tags.py into two closed rows
     ('artists.html',
      r"<p class=\"note\">quotes are verbatim from the artists' own public posts and interviews, spelling and all\. every artist has a page now, " + N + r' starters left to grow into full profiles\.</p>',
      "<p class=\"note\">quotes are verbatim from the artists' own posts and interviews, spelling and all. {1} starter pages left to grow.</p>"),

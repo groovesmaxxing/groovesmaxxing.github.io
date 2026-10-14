@@ -176,7 +176,6 @@ body .gmx-stage .set-dots:has(>button:nth-child(31)){display:none}
 .wrap:has(#az-open) .drow .dn{order:1;min-width:0;overflow-wrap:anywhere}
 .wrap:has(#az-open) .drow .dm{display:none}
 .wrap:has(#az-open) .drow .dlane{order:2;margin-left:auto;width:auto;text-align:right}
-.wrap:has(#az-open) .mast{padding:48px 0 0;border-top:1px solid var(--line);margin-top:40px}
 @media (min-width:700px){
   .wrap:has(#az-open) details.az .azin{column-width:230px;column-gap:28px}
   .wrap:has(#az-open) details.az .drow:last-child{border-bottom:1px solid #1b1b1f}
@@ -184,3 +183,66 @@ body .gmx-stage .set-dots:has(>button:nth-child(31)){display:none}
 .gmx-more-btn.q{border:0;border-radius:6px;padding:10px 2px;margin:2px 0;min-height:44px;color:var(--racing,#FF1C02);font-size:.88rem}
 .gmx-more-btn.q::after{width:6px;height:6px}
 .day-section .gmx-more-btn.q{color:var(--deep,#CC1400)}
+
+/* ---------- section titles and edges, every page but home (owner's call, 2026-10-14) ----------
+   a section title always outranks the rows under it: bold poppins in day white, a step above row text.
+   the more page's lists become panels with a border, so you can see where one ends and the next starts. */
+body:not(:has(>header.hero)):not(:has(.aname)) .wrap h2:not(.tier):not(.azh):not(.vh){font-family:'Poppins',sans-serif;font-weight:800;font-size:1.22rem;line-height:1.2;letter-spacing:-.01em;color:var(--day);text-transform:lowercase;margin:40px 0 12px}
+body:not(:has(>header.hero)):not(:has(.aname)) .wrap h2:not(.tier):not(.azh):not(.vh) .n,body:not(:has(>header.hero)):not(:has(.aname)) .wrap h2:not(.tier):not(.azh):not(.vh) small{font-family:'Space Mono',monospace;font-weight:400;font-size:.78rem;color:var(--steel);letter-spacing:.03em;margin-left:8px}
+body .gmx-rel h3{font-family:'Poppins',sans-serif;font-weight:800;font-size:1.05rem;letter-spacing:0;color:var(--day);text-transform:lowercase;margin:26px 0 10px}
+/* the more page: each list is a panel */
+.wrap .list{border:1px solid #2a2a30;border-radius:18px;background:var(--card,#141417);padding:0 16px;overflow:hidden}
+.wrap .list li:last-child{border-bottom:0}
+.wrap .list li{border-color:#232328}
+.wrap .list a,.wrap .list .rowbtn,.wrap .list .wipe,.wrap .list label.sw{padding-top:15px;padding-bottom:15px}
+.wrap .list small{font-size:.84rem;line-height:1.45;margin-top:3px}
+.gmx-you-switches{border:1px solid #2a2a30;border-radius:18px;background:var(--card,#141417);padding:0 16px;margin-top:10px}
+.gmx-you-switches:empty{display:none}
+.acct .card{border-color:#2a2a30}
+
+/* ---------- the closed row (details.gmx-fold): a full-width row, title left, red chevron right ---------- */
+details.gmx-fold{border:1px solid #2a2a30;border-radius:14px;background:var(--card,#141417);margin:10px 0 0}
+details.gmx-fold>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:50px;padding:12px 16px;font:600 .98rem/1.3 'Poppins',sans-serif;color:var(--day)}
+details.gmx-fold>summary::-webkit-details-marker{display:none}
+details.gmx-fold>summary::after{content:'';flex:none;width:8px;height:8px;border-right:2px solid var(--racing,#FF1C02);border-bottom:2px solid var(--racing,#FF1C02);transform:translateY(-2px) rotate(45deg);transition:transform .2s}
+details.gmx-fold[open]>summary::after{transform:translateY(2px) rotate(-135deg)}
+details.gmx-fold>summary:focus-visible{outline:2px solid var(--racing,#FF1C02);outline-offset:2px;border-radius:14px}
+.gmx-fold-body{padding:0 16px 14px;display:grid;gap:10px}
+.gmx-fold-body p{margin:0;font-size:.92rem;line-height:1.6;color:var(--read-dim)}
+.gmx-fold-body b{color:var(--day)}
+.gmx-fold-body a{color:var(--day);text-decoration:underline;text-decoration-color:#55555c;text-underline-offset:3px}
+@media (prefers-reduced-motion:reduce){details.gmx-fold>summary::after{transition:none}}
+
+/* ---------- the artists intro: "who we play", the two closed rows, then the names ---------- */
+.mast[data-gmx="artists-mast"]{padding:18px 0 4px}
+.mast[data-gmx="artists-mast"] h1{font-size:clamp(2rem,8vw,2.8rem);margin:0 0 8px}
+
+/* ---------- home: the name reels (build_reels.py writes them, gmx-reel.js loops them) ----------
+   bigger name, more tracks on our playlists (artists) or more tracks through the skip test (labels). */
+.reel{display:grid;gap:6px;margin:22px 0 18px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.reel-row{overflow-x:auto;scrollbar-width:none}
+.reel-row::-webkit-scrollbar{display:none}
+.reel-track{display:flex;align-items:baseline;gap:6px 22px;width:max-content;padding:2px 0}
+.reel-track a{white-space:nowrap;text-decoration:none;font-family:'Poppins',sans-serif;letter-spacing:-.01em;line-height:1.25;color:var(--day)}
+.reel-track a:hover{color:var(--racing)}
+.reel-track .r4{font-size:1.9rem;font-weight:900;color:var(--racing)}
+.reel-track .r3{font-size:1.45rem;font-weight:800}
+.reel-track .r2{font-size:1.12rem;font-weight:700}
+.reel-track .r1{font-size:.95rem;font-weight:600;color:var(--read-dim)}
+.reel-track .r0{font-size:.82rem;font-weight:500;color:var(--steel)}
+.day-section .reel-track a{color:var(--night)}
+.day-section .reel-track .r4{color:var(--deep)}
+.day-section .reel-track .r1{color:#3c3c38}
+.day-section .reel-track .r0{color:#5E5E58}
+.reel-on .reel-row{overflow:hidden}
+.reel-on .reel-track{animation:gmx-reel linear infinite}
+.reel-on .reel-row:nth-child(even) .reel-track{animation-direction:reverse}
+.reel-on .reel-row:hover .reel-track,.reel-on .reel-row:active .reel-track{animation-play-state:paused}
+@keyframes gmx-reel{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.reel-track{animation:none!important}}
+#labels .reel+div[data-more],#labels .gmx-more-btn{margin-top:4px}
+
+/* the library wears the logo drawn for the paper */
+.lib-mark{display:block;width:64px;height:64px;margin:0 0 12px}
+/* a title over plain paragraphs (privacy, terms) gets a rule above it, so each section has a clear start */
+body:not(:has(>header.hero)):not(:has(.aname)) .wrap h2:not(.tier):not(.azh):not(.vh):has(+p){border-top:1px solid #2a2a30;padding-top:26px}
