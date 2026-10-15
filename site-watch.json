@@ -1,73 +1,73 @@
 {
- "generated": "2026-10-14T21:35:58Z",
+ "generated": "2026-10-15T04:30:24Z",
  "site": [
   {
    "path": "/",
    "code": 200,
-   "ms": 491,
+   "ms": 154,
    "state": "ok",
    "note": null
   },
   {
    "path": "/scan",
    "code": 200,
-   "ms": 115,
+   "ms": 110,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sets",
    "code": 200,
-   "ms": 155,
+   "ms": 106,
    "state": "ok",
    "note": null
   },
   {
    "path": "/artists",
    "code": 200,
-   "ms": 142,
+   "ms": 133,
    "state": "ok",
    "note": null
   },
   {
    "path": "/tracklists/",
    "code": 200,
-   "ms": 114,
+   "ms": 87,
    "state": "ok",
    "note": null
   },
   {
    "path": "/search-index.json",
    "code": 200,
-   "ms": 81,
+   "ms": 149,
    "state": "ok",
-   "note": "generated 2026-10-14"
+   "note": "generated 2026-10-15"
   },
   {
    "path": "/upcoming.json",
    "code": 200,
-   "ms": 81,
+   "ms": 114,
    "state": "ok",
-   "note": "generated 2026-10-14"
+   "note": "generated 2026-10-15"
   },
   {
    "path": "/radar-events.json",
    "code": 200,
-   "ms": 174,
+   "ms": 93,
    "state": "ok",
    "note": "generated 2026-10-14T14:34:49"
   },
   {
    "path": "/sitemap.xml",
    "code": 200,
-   "ms": 117,
+   "ms": 98,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sw.js",
    "code": 200,
-   "ms": 104,
+   "ms": 73,
    "state": "ok",
    "note": null
   }
@@ -75,7 +75,7 @@
  "recognizer": {
   "state": "up",
   "code": 200,
-  "ms": 556,
+  "ms": 547,
   "health": {
    "status": "ok",
    "version": "0.1.1"
@@ -131,8 +131,8 @@
     "conclusion": "success",
     "event": "dynamic",
     "branch": "main",
-    "at": "2026-10-14T18:14:54Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38613333644",
+    "at": "2026-10-15T02:48:21Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38672866209",
     "state": "ok"
    },
    {
@@ -141,8 +141,8 @@
     "conclusion": "success",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-10-14T20:15:41Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38630526647",
+    "at": "2026-10-14T23:19:12Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38653313674",
     "state": "ok"
    },
    {
@@ -151,8 +151,8 @@
     "conclusion": "success",
     "event": "push",
     "branch": "main",
-    "at": "2026-10-14T18:15:28Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38613333285",
+    "at": "2026-10-15T02:49:46Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38672866633",
     "state": "ok"
    },
    {
@@ -161,8 +161,8 @@
     "conclusion": "success",
     "event": "push",
     "branch": "main",
-    "at": "2026-10-14T18:14:13Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38613333361",
+    "at": "2026-10-15T02:48:14Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38672866582",
     "state": "ok"
    }
   ]
@@ -173,37 +173,37 @@
    {
     "state": "warn",
     "id": "F-18",
-    "text": "friday.html carries the newest week: 2026-10-02, 12 days old"
+    "text": "friday.html carries the newest week: 2026-10-02, 13 days old"
    },
    {
     "state": "ok",
     "id": "F-21",
-    "text": "dropping soon says when it was last refreshed: 2026-10-13, 1 days old"
+    "text": "dropping soon says when it was last refreshed: 2026-10-13, 2 days old"
    },
    {
     "state": "ok",
     "id": "F-24",
-    "text": "the newsletter hub carries the newest issue: 2026-10-09, 5 days old"
+    "text": "the newsletter hub carries the newest issue: 2026-10-09, 6 days old"
    },
    {
     "state": "ok",
     "id": "F-30",
-    "text": "the events radar data is refreshed nightly: 2026-10-14, 0 days old"
+    "text": "the events radar data is refreshed nightly: 2026-10-14, 1 days old"
    },
    {
     "state": "ok",
     "id": "F-31",
-    "text": "the denver radar data is refreshed nightly: 2026-10-14, 0 days old"
+    "text": "the denver radar data is refreshed nightly: 2026-10-14, 1 days old"
    },
    {
     "state": "ok",
     "id": "F-32",
-    "text": "the tracks index was rebuilt after the newest tracklist: 2026-10-14, 0 days old"
+    "text": "the tracks index was rebuilt after the newest tracklist: 2026-10-15, 0 days old"
    },
    {
     "state": "ok",
     "id": "F-33",
-    "text": "upcoming.json (the home page's next up band) was rebuilt after the newest dropping soon render: 2026-10-14, 0 days old"
+    "text": "upcoming.json (the home page's next up band) was rebuilt after the newest dropping soon render: 2026-10-15, 0 days old"
    },
    {
     "state": "ok",
