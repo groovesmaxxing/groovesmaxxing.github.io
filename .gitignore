@@ -7,6 +7,8 @@
 # the cowork app mirrors its outputs folder into this clone. never part of the site.
 *.bak
 *.bak_*
+# claude code subagent definitions for local sessions. never part of the site.
+.claude/
 Claude outputs/
 __pycache__/
 node_modules/
