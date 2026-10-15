@@ -1,44 +1,8 @@
 {
-"generated": "2026-10-14T14:34:49+00:00",
+"generated": "2026-10-15T14:14:39+00:00",
 "artist_count": 704,
 "artists_with_events": 149,
 "events": [
-{
-"date": "2026-10-14",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-10-14-2026/event/3B00643505DD82E6",
-"artist": "Jamie xx"
-},
-{
-"date": "2026-10-14",
-"event": "Hellogoodbye + Man Man",
-"venue": "Brudenell Social Club",
-"city": "Leeds",
-"region": "GB",
-"url": "https://www.universe.com/events/hellogoodbye-man-man-tickets-C7G4ZV?ref=ticketmaster",
-"artist": "MAN"
-},
-{
-"date": "2026-10-14",
-"event": "Parcels",
-"venue": "The Eastern-GA",
-"city": "Atlanta",
-"region": "GA",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7xF0x",
-"artist": "Parcels"
-},
-{
-"date": "2026-10-14",
-"event": "Prospa",
-"venue": "Shrine Expo Hall",
-"city": "Los Angeles",
-"region": "CA",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7P9f-",
-"artist": "Prospa"
-},
 {
 "date": "2026-10-15",
 "event": "Prospa present Prophecy (18+ Event)",
@@ -2209,6 +2173,15 @@
 "artist": "The Botanist"
 },
 {
+"date": "2026-11-20",
+"event": "Westend - Ages 21+",
+"venue": "1015 Folsom",
+"city": "San Francisco",
+"region": "CA",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZyPM",
+"artist": "Westend"
+},
+{
 "date": "2026-11-21",
 "event": "Festival Zamna Montréal",
 "venue": "Hall Est du Stade olympique",
@@ -3145,6 +3118,15 @@
 "artist": "Tobiahs"
 },
 {
+"date": "2026-12-26",
+"event": "Chris Lake (NYW)",
+"venue": "Echostage",
+"city": "Washington",
+"region": "DC",
+"url": "https://www.ticketmaster.com/chris-lake-nyw-washington-district-of-columbia-12-26-2026/event/1500654E93FD5090",
+"artist": "Chris Lake"
+},
+{
 "date": "2026-12-27",
 "event": "Dombresky (18 and Over)",
 "venue": "DUCTWORK - Houston",
@@ -3712,6 +3694,96 @@
 "artist": "Jonathan"
 },
 {
+"date": "2027-03-26",
+"event": "Ultra Music Festival",
+"venue": "FPL Solar Amphitheater at Bayfront Park",
+"city": "Miami",
+"region": "FL",
+"url": "https://on.fgtix.com/trk/DDCK",
+"artist": "Adam Beyer"
+},
+{
+"date": "2027-03-26",
+"event": "Ultra Music Festival",
+"venue": "FPL Solar Amphitheater at Bayfront Park",
+"city": "Miami",
+"region": "FL",
+"url": "https://on.fgtix.com/trk/DDCK",
+"artist": "Dom Dolla"
+},
+{
+"date": "2027-03-26",
+"event": "Ultra Music Festival",
+"venue": "FPL Solar Amphitheater at Bayfront Park",
+"city": "Miami",
+"region": "FL",
+"url": "https://on.fgtix.com/trk/DDCK",
+"artist": "Mau P"
+},
+{
+"date": "2027-03-26",
+"event": "Ultra Music Festival",
+"venue": "FPL Solar Amphitheater at Bayfront Park",
+"city": "Miami",
+"region": "FL",
+"url": "https://on.fgtix.com/trk/DDCK",
+"artist": "Michael Bibi"
+},
+{
+"date": "2027-03-26",
+"event": "Ultra Music Festival",
+"venue": "FPL Solar Amphitheater at Bayfront Park",
+"city": "Miami",
+"region": "FL",
+"url": "https://on.fgtix.com/trk/DDCK",
+"artist": "SOFI TUKKER"
+},
+{
+"date": "2027-03-26",
+"event": "Ultra Music Festival",
+"venue": "FPL Solar Amphitheater at Bayfront Park",
+"city": "Miami",
+"region": "FL",
+"url": "https://on.fgtix.com/trk/DDCK",
+"artist": "it's murph"
+},
+{
+"date": "2027-03-27",
+"event": "Ultra Music Festival",
+"venue": "FPL Solar Amphitheater at Bayfront Park",
+"city": "Miami",
+"region": "FL",
+"url": "https://on.fgtix.com/trk/DDCK",
+"artist": "Adam Beyer"
+},
+{
+"date": "2027-03-27",
+"event": "Ultra Music Festival",
+"venue": "FPL Solar Amphitheater at Bayfront Park",
+"city": "Miami",
+"region": "FL",
+"url": "https://on.fgtix.com/trk/DDCK",
+"artist": "Dom Dolla"
+},
+{
+"date": "2027-03-27",
+"event": "Ultra Music Festival",
+"venue": "FPL Solar Amphitheater at Bayfront Park",
+"city": "Miami",
+"region": "FL",
+"url": "https://on.fgtix.com/trk/DDCK",
+"artist": "Mau P"
+},
+{
+"date": "2027-03-27",
+"event": "Ultra Music Festival",
+"venue": "FPL Solar Amphitheater at Bayfront Park",
+"city": "Miami",
+"region": "FL",
+"url": "https://on.fgtix.com/trk/DDCK",
+"artist": "Michael Bibi"
+},
+{
 "date": "2027-03-27",
 "event": "Sidepiece w/ Ship Wrek",
 "venue": "Red Rocks Amphitheatre",
@@ -3719,6 +3791,78 @@
 "region": "CO",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1AAekP6",
 "artist": "SIDEPIECE"
+},
+{
+"date": "2027-03-27",
+"event": "Ultra Music Festival",
+"venue": "FPL Solar Amphitheater at Bayfront Park",
+"city": "Miami",
+"region": "FL",
+"url": "https://on.fgtix.com/trk/DDCK",
+"artist": "SOFI TUKKER"
+},
+{
+"date": "2027-03-27",
+"event": "Ultra Music Festival",
+"venue": "FPL Solar Amphitheater at Bayfront Park",
+"city": "Miami",
+"region": "FL",
+"url": "https://on.fgtix.com/trk/DDCK",
+"artist": "it's murph"
+},
+{
+"date": "2027-03-28",
+"event": "Ultra Music Festival",
+"venue": "FPL Solar Amphitheater at Bayfront Park",
+"city": "Miami",
+"region": "FL",
+"url": "https://on.fgtix.com/trk/DDCK",
+"artist": "Adam Beyer"
+},
+{
+"date": "2027-03-28",
+"event": "Ultra Music Festival",
+"venue": "FPL Solar Amphitheater at Bayfront Park",
+"city": "Miami",
+"region": "FL",
+"url": "https://on.fgtix.com/trk/DDCK",
+"artist": "Dom Dolla"
+},
+{
+"date": "2027-03-28",
+"event": "Ultra Music Festival",
+"venue": "FPL Solar Amphitheater at Bayfront Park",
+"city": "Miami",
+"region": "FL",
+"url": "https://on.fgtix.com/trk/DDCK",
+"artist": "Mau P"
+},
+{
+"date": "2027-03-28",
+"event": "Ultra Music Festival",
+"venue": "FPL Solar Amphitheater at Bayfront Park",
+"city": "Miami",
+"region": "FL",
+"url": "https://on.fgtix.com/trk/DDCK",
+"artist": "Michael Bibi"
+},
+{
+"date": "2027-03-28",
+"event": "Ultra Music Festival",
+"venue": "FPL Solar Amphitheater at Bayfront Park",
+"city": "Miami",
+"region": "FL",
+"url": "https://on.fgtix.com/trk/DDCK",
+"artist": "SOFI TUKKER"
+},
+{
+"date": "2027-03-28",
+"event": "Ultra Music Festival",
+"venue": "FPL Solar Amphitheater at Bayfront Park",
+"city": "Miami",
+"region": "FL",
+"url": "https://on.fgtix.com/trk/DDCK",
+"artist": "it's murph"
 },
 {
 "date": "2027-05-29",
@@ -3790,6 +3934,24 @@
 "city": "London",
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/josh-baker-b2b-kettama-b2b-prospa-london-04-07-2027/event/3700653CA09C1F1E",
+"artist": "Prospa"
+},
+{
+"date": "2027-08-27",
+"event": "Creamfields 2027 - Friday - Gold",
+"venue": "Daresbury",
+"city": "Cheshire",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/creamfields-2027-friday-gold-cheshire-27-08-2027/event/3700651BB0F07BE4",
+"artist": "Josh Baker"
+},
+{
+"date": "2027-08-27",
+"event": "Creamfields 2027 - Friday - Gold",
+"venue": "Daresbury",
+"city": "Cheshire",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/creamfields-2027-friday-gold-cheshire-27-08-2027/event/3700651BB0F07BE4",
 "artist": "Prospa"
 }
 ]
