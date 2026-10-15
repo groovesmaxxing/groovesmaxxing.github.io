@@ -1,73 +1,73 @@
 {
- "generated": "2026-10-15T18:36:29Z",
+ "generated": "2026-10-15T21:45:42Z",
  "site": [
   {
    "path": "/",
    "code": 200,
-   "ms": 366,
+   "ms": 504,
    "state": "ok",
    "note": null
   },
   {
    "path": "/scan",
    "code": 200,
-   "ms": 211,
+   "ms": 351,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sets",
    "code": 200,
-   "ms": 325,
+   "ms": 370,
    "state": "ok",
    "note": null
   },
   {
    "path": "/artists",
    "code": 200,
-   "ms": 363,
+   "ms": 346,
    "state": "ok",
    "note": null
   },
   {
    "path": "/tracklists/",
    "code": 200,
-   "ms": 199,
+   "ms": 321,
    "state": "ok",
    "note": null
   },
   {
    "path": "/search-index.json",
    "code": 200,
-   "ms": 232,
+   "ms": 252,
    "state": "ok",
    "note": "generated 2026-10-15"
   },
   {
    "path": "/upcoming.json",
    "code": 200,
-   "ms": 150,
+   "ms": 190,
    "state": "ok",
    "note": "generated 2026-10-15"
   },
   {
    "path": "/radar-events.json",
    "code": 200,
-   "ms": 512,
+   "ms": 285,
    "state": "ok",
    "note": "generated 2026-10-15T14:14:39"
   },
   {
    "path": "/sitemap.xml",
    "code": 200,
-   "ms": 208,
+   "ms": 239,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sw.js",
    "code": 200,
-   "ms": 196,
+   "ms": 254,
    "state": "ok",
    "note": null
   }
@@ -75,12 +75,14 @@
  "recognizer": {
   "state": "down",
   "code": 0,
-  "ms": 35,
+  "ms": 5,
   "note": "no answer: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of "
  },
  "workflows": {
-  "state": "ok",
-  "failed": [],
+  "state": "failed",
+  "failed": [
+   "recognizer uptime"
+  ],
   "runs": [
    {
     "name": "events radar sweep",
@@ -135,12 +137,12 @@
    {
     "name": "recognizer uptime",
     "status": "completed",
-    "conclusion": "success",
+    "conclusion": "failure",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-10-15T13:33:06Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38743634251",
-    "state": "ok"
+    "at": "2026-10-15T19:56:23Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38797892731",
+    "state": "failed"
    },
    {
     "name": "site check",
@@ -210,5 +212,5 @@
   ]
  },
  "state": "down",
- "summary": "recognizer down; freshness warn"
+ "summary": "recognizer down; failed workflows: recognizer uptime; freshness warn"
 }
