@@ -1,6 +1,20 @@
 {
- "generated": "2026-10-15T21:45:42Z",
+ "generated": "2026-10-16T00:18:42Z",
  "events": [
+  {
+   "at": "2026-10-16T00:18:42Z",
+   "what": "recognizer",
+   "from": "down",
+   "to": "up",
+   "detail": "687 ms"
+  },
+  {
+   "at": "2026-10-16T00:18:42Z",
+   "what": "site watch",
+   "from": "down",
+   "to": "wrong",
+   "detail": "recognizer up; failed workflows: recognizer uptime; freshness warn"
+  },
   {
    "at": "2026-10-15T21:45:42Z",
    "what": "workflow recognizer uptime",

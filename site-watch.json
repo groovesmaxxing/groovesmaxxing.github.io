@@ -1,82 +1,85 @@
 {
- "generated": "2026-10-15T21:45:42Z",
+ "generated": "2026-10-16T00:18:42Z",
  "site": [
   {
    "path": "/",
    "code": 200,
-   "ms": 504,
+   "ms": 301,
    "state": "ok",
    "note": null
   },
   {
    "path": "/scan",
    "code": 200,
-   "ms": 351,
+   "ms": 225,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sets",
    "code": 200,
-   "ms": 370,
+   "ms": 191,
    "state": "ok",
    "note": null
   },
   {
    "path": "/artists",
    "code": 200,
-   "ms": 346,
+   "ms": 315,
    "state": "ok",
    "note": null
   },
   {
    "path": "/tracklists/",
    "code": 200,
-   "ms": 321,
+   "ms": 159,
    "state": "ok",
    "note": null
   },
   {
    "path": "/search-index.json",
    "code": 200,
-   "ms": 252,
+   "ms": 273,
    "state": "ok",
    "note": "generated 2026-10-15"
   },
   {
    "path": "/upcoming.json",
    "code": 200,
-   "ms": 190,
+   "ms": 169,
    "state": "ok",
    "note": "generated 2026-10-15"
   },
   {
    "path": "/radar-events.json",
    "code": 200,
-   "ms": 285,
+   "ms": 231,
    "state": "ok",
    "note": "generated 2026-10-15T14:14:39"
   },
   {
    "path": "/sitemap.xml",
    "code": 200,
-   "ms": 239,
+   "ms": 176,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sw.js",
    "code": 200,
-   "ms": 254,
+   "ms": 191,
    "state": "ok",
    "note": null
   }
  ],
  "recognizer": {
-  "state": "down",
-  "code": 0,
-  "ms": 5,
-  "note": "no answer: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of "
+  "state": "up",
+  "code": 200,
+  "ms": 687,
+  "health": {
+   "status": "ok",
+   "version": "0.1.1"
+  }
  },
  "workflows": {
   "state": "failed",
@@ -140,8 +143,8 @@
     "conclusion": "failure",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-10-15T19:56:23Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38797892731",
+    "at": "2026-10-15T23:07:40Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38821639994",
     "state": "failed"
    },
    {
@@ -172,37 +175,37 @@
    {
     "state": "warn",
     "id": "F-18",
-    "text": "friday.html carries the newest week: 2026-10-02, 13 days old"
+    "text": "friday.html carries the newest week: 2026-10-02, 14 days old"
    },
    {
     "state": "ok",
     "id": "F-21",
-    "text": "dropping soon says when it was last refreshed: 2026-10-13, 2 days old"
+    "text": "dropping soon says when it was last refreshed: 2026-10-13, 3 days old"
    },
    {
     "state": "ok",
     "id": "F-24",
-    "text": "the newsletter hub carries the newest issue: 2026-10-09, 6 days old"
+    "text": "the newsletter hub carries the newest issue: 2026-10-09, 7 days old"
    },
    {
     "state": "ok",
     "id": "F-30",
-    "text": "the events radar data is refreshed nightly: 2026-10-15, 0 days old"
+    "text": "the events radar data is refreshed nightly: 2026-10-15, 1 days old"
    },
    {
     "state": "ok",
     "id": "F-31",
-    "text": "the denver radar data is refreshed nightly: 2026-10-15, 0 days old"
+    "text": "the denver radar data is refreshed nightly: 2026-10-15, 1 days old"
    },
    {
     "state": "ok",
     "id": "F-32",
-    "text": "the tracks index was rebuilt after the newest tracklist: 2026-10-15, 0 days old"
+    "text": "the tracks index was rebuilt after the newest tracklist: 2026-10-15, 1 days old"
    },
    {
     "state": "ok",
     "id": "F-33",
-    "text": "upcoming.json (the home page's next up band) was rebuilt after the newest dropping soon render: 2026-10-15, 0 days old"
+    "text": "upcoming.json (the home page's next up band) was rebuilt after the newest dropping soon render: 2026-10-15, 1 days old"
    },
    {
     "state": "ok",
@@ -211,6 +214,6 @@
    }
   ]
  },
- "state": "down",
- "summary": "recognizer down; failed workflows: recognizer uptime; freshness warn"
+ "state": "wrong",
+ "summary": "recognizer up; failed workflows: recognizer uptime; freshness warn"
 }
