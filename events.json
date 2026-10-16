@@ -1,6 +1,34 @@
 {
- "generated": "2026-10-16T14:46:22Z",
+ "generated": "2026-10-16T18:45:51Z",
  "events": [
+  {
+   "at": "2026-10-16T18:45:51Z",
+   "what": "workflow freshness",
+   "from": "ok",
+   "to": "failed",
+   "detail": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38943838094"
+  },
+  {
+   "at": "2026-10-16T18:45:51Z",
+   "what": "freshness F-18",
+   "from": "warn",
+   "to": "ok",
+   "detail": "friday.html carries the newest week: 2026-10-09, 7 days old"
+  },
+  {
+   "at": "2026-10-16T18:45:51Z",
+   "what": "freshness F-40",
+   "from": "ok",
+   "to": "fail",
+   "detail": "the artist count on the home page and the artist index equals the number of profiles: 709 profiles, but artists-index.json says [708]"
+  },
+  {
+   "at": "2026-10-16T18:45:51Z",
+   "what": "site watch",
+   "from": "warn",
+   "to": "wrong",
+   "detail": "recognizer up; failed workflows: freshness; freshness fail"
+  },
   {
    "at": "2026-10-16T04:56:21Z",
    "what": "workflow recognizer uptime",
