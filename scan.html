@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com https://api.deezer.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-lPoEI+Xn7BRwALwP4uoV9HYtw+Jq43oCMMfND5L38Yo='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net https://open.spotify.com https://itunes.apple.com; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com https://api.deezer.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-d8NzDvIVWR1t3ykJ1+jTGFX7wNSTnelaC+KAYGhKhjM='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net https://open.spotify.com https://itunes.apple.com; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>scan · groovesMAXXING</title>
@@ -1238,13 +1238,37 @@ function sendHelp(f){
   fd.append('recognition_id',current.recognition_id); if(heldAt)fd.append('heard_at',heldAt);
   ['venue_claim','dj_claim','city_claim','note'].forEach(function(k){var v=f[k].value.trim();if(v)fd.append(k,v)});
   say('keeping it');
+  var jid=current.job_id;
   fx(cfg.api_base+'/contribute',{method:'POST',headers:headers(),body:fd},POST_MS)
   .then(function(r){
     if(r.status===429){say('too many this hour, try later.');return}
+    if(r.status>=400&&r.status<500)return refusal(r).then(function(x){say(refusedLine(x));markRow(jid,x)});
     if(!r.ok)throw new Error(r.status);
     say('kept. we keep hunting. gone the day we find it, or after 12 months.',true);
-    f.classList.remove('on'); dropBlob();
+    markRow(jid,null); f.classList.remove('on'); dropBlob();
   }).catch(function(){say('did not send. check your signal and try again.')});
+}
+/* a refused keep (2026-10-16, the club space test): every keep came back 422 from 10-11 to 10-16 because the page
+   sent no door, and the page said "check your signal", so it read as bad reception and nobody looked. a 4xx is the
+   app saying no, not the network: the line names the status and the api's reason, the clip stays held so a fixed
+   page or a second try can still send it, and the row in the list carries the status and the reason. a 5xx or a
+   dead link keeps the retry wording. */
+function refusal(r){
+  return r.json().then(function(j){
+    var d=j&&j.detail;
+    if(Array.isArray(d))d=d.map(function(x){return (x&&x.msg)||''}).join('; ');
+    else if(d&&typeof d==='object')d=d.message||'';
+    return String(d||'');
+  },function(){return ''}).then(function(d){return {status:r.status,detail:d.slice(0,160)}});
+}
+function refusedLine(x){return 'the app refused it ('+x.status+(x.detail?': '+x.detail:'')+'). the clip stays on this phone.'}
+/* the status rides on the scan's row: x is {status,detail} for a refusal, null clears it once a send lands */
+function markRow(id,x,quiet){
+  if(!id)return;
+  var h=loadHistory();
+  for(var i=0;i<h.length;i++){if(h[i].id===id){if(x)h[i].sent={status:x.status,detail:x.detail,at:Date.now()};else delete h[i].sent;break}}
+  try{localStorage.setItem('gmx_history',JSON.stringify(h))}catch(e){}
+  if(!quiet)renderHistory();   /* the row's own buttons pass quiet, so the note they are writing is not wiped */
 }
 function share(){
   if(!current||!current.card.candidate)return;
@@ -1278,6 +1302,7 @@ function renderHistory(){
     if(r.kind==='match')who='<span data-artist="'+esc(r.artist||'')+'">'+esc(r.artist||'ID')+'</span><small>'+esc(r.title||'unnamed library entry')+' · '+pct(r.score)+(r.secs?' · '+r.secs+' s':'')+'</small>';
     else if(r.kind==='guess')who='no match<small>closest guess: '+esc((r.artist?r.artist+' - ':'')+r.title)+(r.score==null?' · possible match':' · '+pct(r.score))+'</small>';
     else who='no match<small>nothing yet</small>';
+    if(r.sent&&r.sent.status)who+='<small>not kept, the app refused it ('+esc(String(r.sent.status))+(r.sent.detail?': '+esc(r.sent.detail):'')+')</small>';
     var acts='', btns='';
     if(r.clip&&r.id)btns='<button class="btn" data-clip="again" data-id="'+esc(r.id)+'">scan again</button>'+(r.kind!=='match'?'<button class="btn" data-clip="help" data-id="'+esc(r.id)+'">help us find it</button>':'');
     if(r.rid&&r.status!=='out now'&&(r.kind==='match'||r.kind==='guess'))btns+='<button class="btn ghost" data-follow="'+esc(r.rid)+'">tell me when it\'s out</button>';
@@ -1315,8 +1340,9 @@ recentlist.addEventListener('click',function(ev){
       fx(cfg.api_base+'/contribute',{method:'POST',headers:headers(),body:fd},POST_MS).then(function(r){
         if(r.status===429){note('too many this hour, try later.');return}
         if(r.status===409){note('already sent.');return}
+        if(r.status>=400&&r.status<500)return refusal(r).then(function(x){markRow(id,x,true);note(refusedLine(x))});
         if(!r.ok)throw new Error(r.status);
-        note('kept. we keep hunting.',true);
+        markRow(id,null,true); note('kept. we keep hunting.',true);
       }).catch(function(){note('did not send. check your signal.')});
     }
   }).catch(function(){note('that clip is gone.')});
