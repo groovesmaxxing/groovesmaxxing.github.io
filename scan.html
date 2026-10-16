@@ -1234,7 +1234,7 @@ function sendHelp(f){
   if(!current||!heldBlob){say('the clip is gone, scan again first.');return}
   var ext=extOf(heldBlob);
   var fd=new FormData();
-  fd.append('kind','mic_capture_optin'); fd.append('audio',heldBlob,'clip.'+ext);
+  fd.append('kind','mic_capture_optin'); fd.append('door','user'); fd.append('audio',heldBlob,'clip.'+ext);
   fd.append('recognition_id',current.recognition_id); if(heldAt)fd.append('heard_at',heldAt);
   ['venue_claim','dj_claim','city_claim','note'].forEach(function(k){var v=f[k].value.trim();if(v)fd.append(k,v)});
   say('keeping it');
@@ -1309,7 +1309,7 @@ recentlist.addEventListener('click',function(ev){
     }
     if(act==='help'){
       if(!rec.recognition_id){note('nothing to attach it to.');return}
-      var fd=new FormData(); fd.append('kind','mic_capture_optin'); fd.append('audio',rec.blob,'clip.'+extOf(rec.blob));
+      var fd=new FormData(); fd.append('kind','mic_capture_optin'); fd.append('door','user'); fd.append('audio',rec.blob,'clip.'+extOf(rec.blob));
       fd.append('recognition_id',rec.recognition_id); fd.append('heard_at',new Date(rec.t).toISOString());
       note('sending');
       fx(cfg.api_base+'/contribute',{method:'POST',headers:headers(),body:fd},POST_MS).then(function(r){
