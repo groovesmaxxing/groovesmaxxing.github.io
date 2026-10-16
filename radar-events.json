@@ -1,26 +1,8 @@
 {
-"generated": "2026-10-15T14:14:39+00:00",
+"generated": "2026-10-16T14:02:13+00:00",
 "artist_count": 704,
-"artists_with_events": 149,
+"artists_with_events": 153,
 "events": [
-{
-"date": "2026-10-15",
-"event": "Prospa present Prophecy (18+ Event)",
-"venue": "Shrine Expo Hall",
-"city": "Los Angeles",
-"region": "CA",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7P87E",
-"artist": "Prospa"
-},
-{
-"date": "2026-10-15",
-"event": "Tinlicker",
-"venue": "McMenamins Crystal Ballroom",
-"city": "Portland",
-"region": "OR",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A70Z_x",
-"artist": "Tinlicker"
-},
 {
 "date": "2026-10-16",
 "event": "Black Coffee",
@@ -1085,15 +1067,6 @@
 },
 {
 "date": "2026-10-30",
-"event": "SOFI TUKKER Presents: ANIMAL TALK",
-"venue": "Teatro Estudio Cavaret",
-"city": "Zapopan",
-"region": "JAL",
-"url": "https://www.ticketmaster.com.mx/sofi-tukker-presents-animal-talk-zapopan-30-10-2026/event/3D00649BADDC31F8",
-"artist": "SOFI TUKKER"
-},
-{
-"date": "2026-10-30",
 "event": "TCHAMI @ Mayberry",
 "venue": "",
 "city": "",
@@ -1289,15 +1262,6 @@
 "region": "CA",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZxo3",
 "artist": "RL Grime"
-},
-{
-"date": "2026-10-31",
-"event": "SOFI TUKKER Presents: ANIMAL TALK",
-"venue": "Pepsi Center",
-"city": "México",
-"region": "CDMX",
-"url": "https://www.ticketmaster.com.mx/sofi-tukker-presents-animal-talk-mexico-31-10-2026/event/1400649BE774AFFB",
-"artist": "SOFI TUKKER"
 },
 {
 "date": "2026-10-31",
@@ -2831,6 +2795,15 @@
 },
 {
 "date": "2026-12-05",
+"event": "San Pacho",
+"venue": "Time Nightclub",
+"city": "Costa Mesa",
+"region": "CA",
+"url": "https://www.ticketweb.com/event/san-pacho-time-nightclub-tickets/14384044",
+"artist": "San Pacho"
+},
+{
+"date": "2026-12-05",
 "event": "it's murph (18+)",
 "venue": "Bill Graham Civic Auditorium",
 "city": "San Francisco",
@@ -3128,6 +3101,24 @@
 },
 {
 "date": "2026-12-27",
+"event": "WHP presents: Kaluki",
+"venue": "Depot Mayfield",
+"city": "Manchester",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/whp-presents-kaluki-manchester-27-12-2026/event/3500653DC7A3CAF2",
+"artist": "ALISHA"
+},
+{
+"date": "2026-12-27",
+"event": "WHP presents: Kaluki",
+"venue": "Depot Mayfield",
+"city": "Manchester",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/whp-presents-kaluki-manchester-27-12-2026/event/3500653DC7A3CAF2",
+"artist": "Ben Sterling"
+},
+{
+"date": "2026-12-27",
 "event": "Dombresky (18 and Over)",
 "venue": "DUCTWORK - Houston",
 "city": "Houston",
@@ -3143,6 +3134,33 @@
 "region": "DC",
 "url": "https://www.ticketmaster.com/fisher-nyw-washington-district-of-columbia-12-27-2026/event/15006548727E3285",
 "artist": "FISHER"
+},
+{
+"date": "2026-12-27",
+"event": "WHP presents: Kaluki",
+"venue": "Depot Mayfield",
+"city": "Manchester",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/whp-presents-kaluki-manchester-27-12-2026/event/3500653DC7A3CAF2",
+"artist": "Manda Moor"
+},
+{
+"date": "2026-12-27",
+"event": "WHP presents: Kaluki",
+"venue": "Depot Mayfield",
+"city": "Manchester",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/whp-presents-kaluki-manchester-27-12-2026/event/3500653DC7A3CAF2",
+"artist": "Mau P"
+},
+{
+"date": "2026-12-27",
+"event": "WHP presents: Kaluki",
+"venue": "Depot Mayfield",
+"city": "Manchester",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/whp-presents-kaluki-manchester-27-12-2026/event/3500653DC7A3CAF2",
+"artist": "Sidney Charles"
 },
 {
 "date": "2026-12-28",
@@ -3694,6 +3712,42 @@
 "artist": "Jonathan"
 },
 {
+"date": "2027-03-18",
+"event": "Elderbrook - Heart On A Wire Tour",
+"venue": "History Ottawa",
+"city": "Ottawa",
+"region": "ON",
+"url": "https://www.ticketmaster.ca/elderbrook-heart-on-a-wire-tour-ottawa-ontario-03-18-2027/event/3100654E8F3F35CB",
+"artist": "Elderbrook"
+},
+{
+"date": "2027-03-19",
+"event": "Elderbrook - Heart On A Wire Tour",
+"venue": "MTELUS",
+"city": "Montreal",
+"region": "QC",
+"url": "https://www.ticketmaster.ca/elderbrook-heart-on-a-wire-tour-montreal-quebec-03-19-2027/event/31006548A4185690",
+"artist": "Elderbrook"
+},
+{
+"date": "2027-03-24",
+"event": "Elderbrook - Heart On A Wire Tour",
+"venue": "State Theatre",
+"city": "Portland",
+"region": "ME",
+"url": "https://www.ticketmaster.com/elderbrook-heart-on-a-wire-tour-portland-maine-03-24-2027/event/01006546BB8F52E9",
+"artist": "Elderbrook"
+},
+{
+"date": "2027-03-24",
+"event": "SOFI TUKKER Presents: ANIMAL TALK",
+"venue": "Teatro Estudio Cavaret",
+"city": "Zapopan",
+"region": "JAL",
+"url": "https://www.ticketmaster.com.mx/sofi-tukker-presents-animal-talk-zapopan-24-03-2027/event/3D00649BADDC31F8",
+"artist": "SOFI TUKKER"
+},
+{
 "date": "2027-03-26",
 "event": "Ultra Music Festival",
 "venue": "FPL Solar Amphitheater at Bayfront Park",
@@ -3710,6 +3764,15 @@
 "region": "FL",
 "url": "https://on.fgtix.com/trk/DDCK",
 "artist": "Dom Dolla"
+},
+{
+"date": "2027-03-26",
+"event": "Elderbrook - Heart On A Wire Tour",
+"venue": "The Fillmore Philadelphia",
+"city": "Philadelphia",
+"region": "PA",
+"url": "https://www.ticketmaster.com/elderbrook-heart-on-a-wire-tour-philadelphia-pennsylvania-03-26-2027/event/02006547A3B87563",
+"artist": "Elderbrook"
 },
 {
 "date": "2027-03-26",
@@ -3736,6 +3799,15 @@
 "city": "Miami",
 "region": "FL",
 "url": "https://on.fgtix.com/trk/DDCK",
+"artist": "SOFI TUKKER"
+},
+{
+"date": "2027-03-26",
+"event": "SOFI TUKKER Presents: ANIMAL TALK",
+"venue": "Pepsi Center",
+"city": "México",
+"region": "CDMX",
+"url": "https://www.ticketmaster.com.mx/sofi-tukker-presents-animal-talk-mexico-26-03-2027/event/1400649BE774AFFB",
 "artist": "SOFI TUKKER"
 },
 {
@@ -3865,6 +3937,33 @@
 "artist": "it's murph"
 },
 {
+"date": "2027-03-30",
+"event": "Elderbrook - Heart On A Wire Tour",
+"venue": "Old National Centre",
+"city": "Indianapolis",
+"region": "IN",
+"url": "https://www.ticketmaster.com/elderbrook-heart-on-a-wire-tour-indianapolis-indiana-03-30-2027/event/0500654DBAD0D199",
+"artist": "Elderbrook"
+},
+{
+"date": "2027-05-01",
+"event": "Cloonee",
+"venue": "Red Rocks Amphitheatre",
+"city": "Morrison",
+"region": "CO",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AA7F7a",
+"artist": "Cloonee"
+},
+{
+"date": "2027-05-15",
+"event": "Where We Belong Festival 2027",
+"venue": "Canon's Marsh Amphitheatre",
+"city": "Bristol",
+"region": "GB",
+"url": "https://www.universe.com/events/where-we-belong-festival-2027-tickets-1J3K04?ref=ticketmaster",
+"artist": "Horse Meat Disco"
+},
+{
 "date": "2027-05-29",
 "event": "Odd Mob",
 "venue": "Capital One City Parks Foundation SummerStage",
@@ -3883,6 +3982,60 @@
 "artist": "San Pacho"
 },
 {
+"date": "2027-06-18",
+"event": "Pete Tong",
+"venue": "Dreamland",
+"city": "Margate",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/pete-tong-margate-18-06-2027/event/35006527DFFA3A5E",
+"artist": "Horse Meat Disco"
+},
+{
+"date": "2027-06-18",
+"event": "Pete Tong",
+"venue": "Dreamland",
+"city": "Margate",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/pete-tong-margate-18-06-2027/event/35006527DFFA3A5E",
+"artist": "Pete Tong"
+},
+{
+"date": "2027-06-19",
+"event": "Pete Tong - Thetford High Lodge",
+"venue": "High Lodge, Thetford Forest",
+"city": "Thetford",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/pete-tong-thetford-high-lodge-thetford-19-06-2027/event/37006541ECD275FF",
+"artist": "Pete Tong"
+},
+{
+"date": "2027-06-20",
+"event": "Pete Tong - Delamere Forest",
+"venue": "Delamere Forest",
+"city": "Northwich",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/pete-tong-delamere-forest-northwich-20-06-2027/event/37006532A9D12F07",
+"artist": "Pete Tong"
+},
+{
+"date": "2027-06-24",
+"event": "Pete Tong - Cannock Chase",
+"venue": "Cannock Chase Forest",
+"city": "Rugeley",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/pete-tong-cannock-chase-rugeley-24-06-2027/event/37006532A165255F",
+"artist": "Pete Tong"
+},
+{
+"date": "2027-06-26",
+"event": "Pete Tong - Westonbirt Arboretum - Bus",
+"venue": "Westonbirt Arboretum",
+"city": "Gloucestershire",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/pete-tong-westonbirt-arboretum-bus-gloucestershire-26-06-2027/event/37006545F9408B1E",
+"artist": "Pete Tong"
+},
+{
 "date": "2027-07-02",
 "event": "Josh Baker b2b Kettama b2b Prospa",
 "venue": "Finsbury Park",
@@ -3947,12 +4100,39 @@
 },
 {
 "date": "2027-08-27",
+"event": "Pete Tong",
+"venue": "Colchester Castle Park",
+"city": "Colchester",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/pete-tong-colchester-27-08-2027/event/3500652BBB374BF6",
+"artist": "Pete Tong"
+},
+{
+"date": "2027-08-27",
 "event": "Creamfields 2027 - Friday - Gold",
 "venue": "Daresbury",
 "city": "Cheshire",
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/creamfields-2027-friday-gold-cheshire-27-08-2027/event/3700651BB0F07BE4",
 "artist": "Prospa"
+},
+{
+"date": "2027-08-29",
+"event": "Pete Tong Classical",
+"venue": "The Piece Hall",
+"city": "Halifax",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/pete-tong-classical-halifax-29-08-2027/event/35006526A993157A",
+"artist": "Mousse T."
+},
+{
+"date": "2027-08-29",
+"event": "Pete Tong Classical",
+"venue": "The Piece Hall",
+"city": "Halifax",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/pete-tong-classical-halifax-29-08-2027/event/35006526A993157A",
+"artist": "Pete Tong"
 }
 ]
 }
