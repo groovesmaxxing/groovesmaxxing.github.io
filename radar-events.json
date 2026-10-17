@@ -1,233 +1,8 @@
 {
-"generated": "2026-10-16T14:02:13+00:00",
+"generated": "2026-10-17T13:02:02+00:00",
 "artist_count": 704,
-"artists_with_events": 153,
+"artists_with_events": 152,
 "events": [
-{
-"date": "2026-10-16",
-"event": "Black Coffee",
-"venue": "LIV Nightclub Miami",
-"city": "Miami Beach",
-"region": "FL",
-"url": "https://www.ticketweb.com/event/black-coffee-liv-nightclub-miami-tickets/14322564",
-"artist": "Black Coffee"
-},
-{
-"date": "2026-10-16",
-"event": "Bob Moses (club set) - Ages 18+",
-"venue": "SILO",
-"city": "Dallas",
-"region": "TX",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZ6Of",
-"artist": "Bob Moses"
-},
-{
-"date": "2026-10-16",
-"event": "Cid: Out of Service Tour - Moved To Main Floor",
-"venue": "Commonwealth Bar",
-"city": "Calgary",
-"region": "AB",
-"url": "https://www.ticketweb.ca/event/cid-out-of-service-tour-commonwealth-bar-stage-tickets/14238184?REFERRAL_ID=tmfeed",
-"artist": "CID"
-},
-{
-"date": "2026-10-16",
-"event": "III Points",
-"venue": "Mana Wynwood Convention Center",
-"city": "Miami",
-"region": "FL",
-"url": "https://on.fgtix.com/trk/cp4M",
-"artist": "Cloonee"
-},
-{
-"date": "2026-10-16",
-"event": "Crooked Colours - Dirt Road Gold Album Tour",
-"venue": "Freo.Social",
-"city": "Fremantle",
-"region": "WA",
-"url": "https://www.moshtix.com.au/v2/event/crooked-colours-dirt-road-gold-album-tour/196218",
-"artist": "Crooked Colours"
-},
-{
-"date": "2026-10-16",
-"event": "III Points",
-"venue": "Mana Wynwood Convention Center",
-"city": "Miami",
-"region": "FL",
-"url": "https://on.fgtix.com/trk/cp4M",
-"artist": "Disco Lines"
-},
-{
-"date": "2026-10-16",
-"event": "Dom Dolla (18 and Over)",
-"venue": "Cow Palace",
-"city": "Daly City",
-"region": "CA",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7JeGd",
-"artist": "Dom Dolla"
-},
-{
-"date": "2026-10-16",
-"event": "Fisher (16 and Over)",
-"venue": "Forest Hills Stadium",
-"city": "Forest Hills",
-"region": "NY",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7P-u7",
-"artist": "FISHER"
-},
-{
-"date": "2026-10-16",
-"event": "Hugel - Lima",
-"venue": "Paradiso Lima",
-"city": "",
-"region": "LIM",
-"url": "https://www.ticketmaster.pe/event/hugel-lima-venta-general",
-"artist": "HUGEL"
-},
-{
-"date": "2026-10-16",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-10-16-2026/event/3B00643505EE82F4",
-"artist": "Jamie xx"
-},
-{
-"date": "2026-10-16",
-"event": "Deorro: Botas y Rave",
-"venue": "The Cosmopolitan of Las Vegas",
-"city": "Las Vegas",
-"region": "NV",
-"url": "https://www.ticketmaster.com/deorro-botas-y-rave-las-vegas-nevada-10-16-2026/event/17006522D17A3722",
-"artist": "Juos"
-},
-{
-"date": "2026-10-16",
-"event": "KCRW Presents: Lewis OfMan",
-"venue": "Teragram Ballroom",
-"city": "Los Angeles",
-"region": "CA",
-"url": "https://www.ticketmaster.com/kcrw-presents-lewis-ofman-los-angeles-california-10-16-2026/event/090064AE4A252F6B",
-"artist": "Lewis OfMan"
-},
-{
-"date": "2026-10-16",
-"event": "Music On - Ages 21+",
-"venue": "Pacha New York",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAv3pK",
-"artist": "Marco Carola"
-},
-{
-"date": "2026-10-16",
-"event": "III Points",
-"venue": "Mana Wynwood Convention Center",
-"city": "Miami",
-"region": "FL",
-"url": "https://on.fgtix.com/trk/cp4M",
-"artist": "Max Styler"
-},
-{
-"date": "2026-10-16",
-"event": "SOFI TUKKER Presents: ANIMAL TALK",
-"venue": "The Anthem",
-"city": "Washington",
-"region": "DC",
-"url": "https://www.ticketmaster.com/sofi-tukker-presents-animal-talk-washington-district-of-columbia-10-16-2026/event/1500648EC77AA65F",
-"artist": "Nala"
-},
-{
-"date": "2026-10-16",
-"event": "III Points",
-"venue": "Mana Wynwood Convention Center",
-"city": "Miami",
-"region": "FL",
-"url": "https://on.fgtix.com/trk/cp4M",
-"artist": "Odd Mob"
-},
-{
-"date": "2026-10-16",
-"event": "III Points",
-"venue": "Mana Wynwood Convention Center",
-"city": "Miami",
-"region": "FL",
-"url": "https://on.fgtix.com/trk/cp4M",
-"artist": "PAWSA"
-},
-{
-"date": "2026-10-16",
-"event": "III Points",
-"venue": "Mana Wynwood Convention Center",
-"city": "Miami",
-"region": "FL",
-"url": "https://on.fgtix.com/trk/cp4M",
-"artist": "Parcels"
-},
-{
-"date": "2026-10-16",
-"event": "SOFI TUKKER Presents: ANIMAL TALK",
-"venue": "The Anthem",
-"city": "Washington",
-"region": "DC",
-"url": "https://www.ticketmaster.com/sofi-tukker-presents-animal-talk-washington-district-of-columbia-10-16-2026/event/1500648EC77AA65F",
-"artist": "SOFI TUKKER"
-},
-{
-"date": "2026-10-16",
-"event": "The Jungle Giants w/ Morning Silk",
-"venue": "Great American Music Hall",
-"city": "San Francisco",
-"region": "CA",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAe4_O",
-"artist": "The Jungle Giants"
-},
-{
-"date": "2026-10-16",
-"event": "Tinlicker",
-"venue": "Vogue Theatre-BC",
-"city": "Vancouver",
-"region": "BC",
-"url": "https://www.ticketmaster.ca/event/Z7r9jZ1A70ZGs",
-"artist": "Tinlicker"
-},
-{
-"date": "2026-10-16",
-"event": "III Points",
-"venue": "Mana Wynwood Convention Center",
-"city": "Miami",
-"region": "FL",
-"url": "https://on.fgtix.com/trk/cp4M",
-"artist": "Vintage Culture"
-},
-{
-"date": "2026-10-16",
-"event": "Walker & Royce",
-"venue": "Royale Boston",
-"city": "Boston",
-"region": "MA",
-"url": "https://www.ticketweb.com/event/walker-royce-royale-boston-tickets/14327994?REFERRAL_ID=tmfeed",
-"artist": "Walker & Royce"
-},
-{
-"date": "2026-10-16",
-"event": "Westend - Ages 21+",
-"venue": "LIV Nightclub Las Vegas",
-"city": "Las Vegas",
-"region": "NV",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZp4S",
-"artist": "Westend"
-},
-{
-"date": "2026-10-16",
-"event": "Zhu - Ages 16+",
-"venue": "Mesa Amphitheatre",
-"city": "Mesa",
-"region": "AZ",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAv8qx",
-"artist": "ZHU"
-},
 {
 "date": "2026-10-17",
 "event": "III Points",
@@ -680,6 +455,15 @@
 },
 {
 "date": "2026-10-23",
+"event": "Into the Woods (ADE) FRIDAY",
+"venue": "NDSM Werf",
+"city": "Amsterdam",
+"region": "NL",
+"url": "https://www.universe.com/events/into-the-woods-ade-friday-tickets-FLN8VX?ref=ticketmaster",
+"artist": "Marsolo"
+},
+{
+"date": "2026-10-23",
 "event": "Get Physical!",
 "venue": "Melkweg",
 "city": "Amsterdam",
@@ -704,6 +488,15 @@
 "region": "DC",
 "url": "https://www.ticketmaster.com/chris-lorenzo-washington-district-of-columbia-10-23-2026/event/150065032DB3603A",
 "artist": "Ragie Ban"
+},
+{
+"date": "2026-10-23",
+"event": "Into the Woods (ADE) FRIDAY",
+"venue": "NDSM Werf",
+"city": "Amsterdam",
+"region": "NL",
+"url": "https://www.universe.com/events/into-the-woods-ade-friday-tickets-FLN8VX?ref=ticketmaster",
+"artist": "Sidney Charles"
 },
 {
 "date": "2026-10-23",
@@ -812,6 +605,15 @@
 "region": "TX",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1AAvt0z",
 "artist": "Odd Mob"
+},
+{
+"date": "2026-10-24",
+"event": "Into the Woods (ADE) SATURDAY",
+"venue": "NDSM Werf",
+"city": "Amsterdam",
+"region": "NL",
+"url": "https://www.universe.com/events/into-the-woods-ade-saturday-tickets-XN2GYC?ref=ticketmaster",
+"artist": "Ranger Trucco"
 },
 {
 "date": "2026-10-24",
@@ -3152,6 +2954,15 @@
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/whp-presents-kaluki-manchester-27-12-2026/event/3500653DC7A3CAF2",
 "artist": "Mau P"
+},
+{
+"date": "2026-12-27",
+"event": "Sofi Tukker",
+"venue": "SILO",
+"city": "Dallas",
+"region": "TX",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AA78-w",
+"artist": "SOFI TUKKER"
 },
 {
 "date": "2026-12-27",
