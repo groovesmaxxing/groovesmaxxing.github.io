@@ -1,90 +1,88 @@
 {
- "generated": "2026-10-18T04:20:21Z",
+ "generated": "2026-10-18T13:11:37Z",
  "site": [
   {
    "path": "/",
    "code": 200,
-   "ms": 230,
+   "ms": 295,
    "state": "ok",
    "note": null
   },
   {
    "path": "/scan",
    "code": 200,
-   "ms": 205,
+   "ms": 168,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sets",
    "code": 200,
-   "ms": 207,
+   "ms": 159,
    "state": "ok",
    "note": null
   },
   {
    "path": "/artists",
    "code": 200,
-   "ms": 198,
+   "ms": 168,
    "state": "ok",
    "note": null
   },
   {
    "path": "/tracklists/",
    "code": 200,
-   "ms": 182,
+   "ms": 128,
    "state": "ok",
    "note": null
   },
   {
    "path": "/search-index.json",
    "code": 200,
-   "ms": 277,
+   "ms": 172,
    "state": "ok",
    "note": "generated 2026-10-16"
   },
   {
    "path": "/upcoming.json",
    "code": 200,
-   "ms": 157,
+   "ms": 127,
    "state": "ok",
    "note": "generated 2026-10-16"
   },
   {
    "path": "/radar-events.json",
    "code": 200,
-   "ms": 224,
+   "ms": 167,
    "state": "ok",
    "note": "generated 2026-10-17T13:02:02"
   },
   {
    "path": "/sitemap.xml",
    "code": 200,
-   "ms": 169,
+   "ms": 133,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sw.js",
    "code": 200,
-   "ms": 169,
+   "ms": 103,
    "state": "ok",
    "note": null
   }
  ],
  "recognizer": {
-  "state": "up",
-  "code": 200,
-  "ms": 741,
-  "health": {
-   "status": "ok",
-   "version": "0.1.1"
-  }
+  "state": "down",
+  "code": 0,
+  "ms": 92,
+  "note": "no answer: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of "
  },
  "workflows": {
   "state": "failed",
   "failed": [
-   "freshness"
+   "freshness",
+   "recognizer uptime"
   ],
   "runs": [
    {
@@ -130,12 +128,12 @@
    {
     "name": "recognizer uptime",
     "status": "completed",
-    "conclusion": "success",
+    "conclusion": "failure",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-10-17T22:27:46Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/39075156427",
-    "state": "ok"
+    "at": "2026-10-18T12:40:26Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/39128255930",
+    "state": "failed"
    },
    {
     "name": "site check",
@@ -204,6 +202,6 @@
    }
   ]
  },
- "state": "wrong",
- "summary": "recognizer up; failed workflows: freshness; freshness fail"
+ "state": "down",
+ "summary": "recognizer down; failed workflows: freshness, recognizer uptime; freshness fail"
 }
