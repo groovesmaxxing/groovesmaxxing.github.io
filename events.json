@@ -1,6 +1,13 @@
 {
- "generated": "2026-10-18T19:23:34Z",
+ "generated": "2026-10-19T00:09:01Z",
  "events": [
+  {
+   "at": "2026-10-19T00:09:01Z",
+   "what": "freshness F-18",
+   "from": "ok",
+   "to": "warn",
+   "detail": "friday.html carries the newest week: 2026-10-09, 10 days old"
+  },
   {
    "at": "2026-10-18T13:11:37Z",
    "what": "recognizer",
