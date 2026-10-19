@@ -1,53 +1,8 @@
 {
-"generated": "2026-10-18T13:22:58+00:00",
+"generated": "2026-10-19T16:33:08+00:00",
 "artist_count": 704,
-"artists_with_events": 148,
+"artists_with_events": 149,
 "events": [
-{
-"date": "2026-10-18",
-"event": "Black Coffee (18+ Event)",
-"venue": "Navy Pier",
-"city": "Chicago",
-"region": "IL",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAeZaV",
-"artist": "Black Coffee"
-},
-{
-"date": "2026-10-18",
-"event": "Open Air Season Closing ft. Marco Carola, PAWSA - Ages 21+",
-"venue": "Pacha New York",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAvx7A",
-"artist": "Marco Carola"
-},
-{
-"date": "2026-10-18",
-"event": "THE JUNGLE GIANTS",
-"venue": "Crescent Ballroom",
-"city": "Phoenix",
-"region": "AZ",
-"url": "https://www.ticketweb.com/event/the-jungle-giants-crescent-ballroom-tickets/14932713",
-"artist": "The Jungle Giants"
-},
-{
-"date": "2026-10-18",
-"event": "Vintage Culture - Ages 21+",
-"venue": "Walter WhereHouse",
-"city": "Phoenix",
-"region": "AZ",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAvZ-7",
-"artist": "Vintage Culture"
-},
-{
-"date": "2026-10-18",
-"event": "It's Murph - Ages 18+",
-"venue": "Shrine Expo Hall",
-"city": "Los Angeles",
-"region": "CA",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7JFaA",
-"artist": "it's murph"
-},
 {
 "date": "2026-10-21",
 "event": "Black Coffee",
@@ -1661,12 +1616,30 @@
 },
 {
 "date": "2026-11-20",
+"event": "Max Dean B2B Luke Dean - Australia Tour",
+"venue": "",
+"city": "",
+"region": "",
+"url": "https://www.moshtix.com.au/v2/event/max-dean-b2b-luke-dean-australia-tour/200969",
+"artist": "Luke Dean"
+},
+{
+"date": "2026-11-20",
 "event": "MARCO CAROLA PRESENTS MUSIC ON | PACHA ICONS",
 "venue": "FIVE Luxe JBR",
 "city": "Dubai",
 "region": "AE",
 "url": "https://www.ticketmaster.ae/event/marco-carola-presents-music-on-%7C-pacha-icons-tickets/448640469",
 "artist": "Marco Carola"
+},
+{
+"date": "2026-11-20",
+"event": "Max Dean B2B Luke Dean - Australia Tour",
+"venue": "",
+"city": "",
+"region": "",
+"url": "https://www.moshtix.com.au/v2/event/max-dean-b2b-luke-dean-australia-tour/200969",
+"artist": "Max Dean"
 },
 {
 "date": "2026-11-20",
@@ -2885,6 +2858,15 @@
 },
 {
 "date": "2026-12-31",
+"event": "New Year's Eve with KÍLA",
+"venue": "Monroes",
+"city": "Galway",
+"region": "GW",
+"url": "https://www.universe.com/events/new-years-eve-with-kila-tickets-2N04HC?ref=ticketmaster",
+"artist": "KILA"
+},
+{
+"date": "2026-12-31",
 "event": "New Year's Eve: Defected + Glitterbox",
 "venue": "Depot Mayfield",
 "city": "Manchester",
@@ -3605,11 +3587,11 @@
 },
 {
 "date": "2027-06-24",
-"event": "Pete Tong - Cannock Chase",
+"event": "Pete Tong - Cannock Chase Forest",
 "venue": "Cannock Chase Forest",
 "city": "Rugeley",
 "region": "GB",
-"url": "https://www.ticketmaster.co.uk/pete-tong-cannock-chase-rugeley-24-06-2027/event/37006532A165255F",
+"url": "https://www.ticketmaster.co.uk/pete-tong-cannock-chase-forest-rugeley-24-06-2027/event/37006532A165255F",
 "artist": "Pete Tong"
 },
 {
