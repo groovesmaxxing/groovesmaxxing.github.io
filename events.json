@@ -1,6 +1,20 @@
 {
- "generated": "2026-10-19T11:11:55Z",
+ "generated": "2026-10-19T17:44:21Z",
  "events": [
+  {
+   "at": "2026-10-19T17:44:21Z",
+   "what": "recognizer",
+   "from": "down",
+   "to": "up",
+   "detail": "429 ms"
+  },
+  {
+   "at": "2026-10-19T17:44:21Z",
+   "what": "site watch",
+   "from": "down",
+   "to": "wrong",
+   "detail": "recognizer up; failed workflows: freshness, recognizer uptime; freshness fail"
+  },
   {
    "at": "2026-10-19T00:09:01Z",
    "what": "freshness F-18",
