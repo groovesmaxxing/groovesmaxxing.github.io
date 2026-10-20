@@ -1,7 +1,7 @@
 {
-"generated": "2026-10-19T16:33:08+00:00",
+"generated": "2026-10-20T14:22:41+00:00",
 "artist_count": 704,
-"artists_with_events": 149,
+"artists_with_events": 150,
 "events": [
 {
 "date": "2026-10-21",
@@ -1364,6 +1364,15 @@
 },
 {
 "date": "2026-11-14",
+"event": "Elderbrook",
+"venue": "Marquee New York",
+"city": "New York",
+"region": "NY",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAv4pb",
+"artist": "Elderbrook"
+},
+{
+"date": "2026-11-14",
 "event": "Luminosity pres. Factor B - Theatre of The Mind",
 "venue": "Melkweg",
 "city": "Amsterdam",
@@ -2027,6 +2036,15 @@
 "region": "CA",
 "url": "https://on.fgtix.com/trk/CFLtc",
 "artist": "Tiga"
+},
+{
+"date": "2026-11-28",
+"event": "Babylon Picks: Al-Qasar feat. BaBa ZuLa",
+"venue": "Babylon",
+"city": "İstanbul",
+"region": "TR",
+"url": "https://www.biletix.com/performance/5POL0/001/TURKIYE/tr",
+"artist": "BABA"
 },
 {
 "date": "2026-11-28",
@@ -2822,6 +2840,15 @@
 },
 {
 "date": "2026-12-31",
+"event": "Cloonee (NYE)",
+"venue": "Echostage",
+"city": "Washington",
+"region": "DC",
+"url": "https://www.ticketmaster.com/cloonee-nye-washington-district-of-columbia-12-31-2026/event/150065514FA9457A",
+"artist": "Cloonee"
+},
+{
+"date": "2026-12-31",
 "event": "New Year's Eve: Defected + Glitterbox",
 "venue": "Depot Mayfield",
 "city": "Manchester",
@@ -2837,6 +2864,15 @@
 "region": "VIC",
 "url": "https://www.moshtix.com.au/v2/event/new-year-s-at-the-bowl/199647",
 "artist": "Flight Facilities"
+},
+{
+"date": "2026-12-31",
+"event": "Cloonee (NYE)",
+"venue": "Echostage",
+"city": "Washington",
+"region": "DC",
+"url": "https://www.ticketmaster.com/cloonee-nye-washington-district-of-columbia-12-31-2026/event/150065514FA9457A",
+"artist": "GREG 99"
 },
 {
 "date": "2026-12-31",
@@ -2947,6 +2983,15 @@
 "artist": "Elderbrook"
 },
 {
+"date": "2027-01-01",
+"event": "Wax Motif",
+"venue": "Time Nightclub",
+"city": "Costa Mesa",
+"region": "CA",
+"url": "https://www.ticketweb.com/event/wax-motif-time-nightclub-tickets/14391524",
+"artist": "WAX MOTIF"
+},
+{
 "date": "2027-01-03",
 "event": "Rufus Du Sol (21 and Over)",
 "venue": "Pier 80 - San Francisco",
@@ -3028,6 +3073,15 @@
 "artist": "CamelPhat"
 },
 {
+"date": "2027-01-30",
+"event": "MAU P PRESENTS: GENERATION REBRAND",
+"venue": "BMO Stadium",
+"city": "Los Angeles",
+"region": "CA",
+"url": "https://www.ticketmaster.com/mau-p-presents-generation-rebrand-los-angeles-california-01-30-2027/event/0A006550EE2DDD30",
+"artist": "Mau P"
+},
+{
 "date": "2027-02-02",
 "event": "DRAMA",
 "venue": "Freo.Social",
@@ -3053,6 +3107,15 @@
 "region": "VIC",
 "url": "https://www.moshtix.com.au/v2/event/drama-usa-/200689",
 "artist": "DRAMA"
+},
+{
+"date": "2027-02-06",
+"event": "D.O.D",
+"venue": "Echostage",
+"city": "Washington",
+"region": "DC",
+"url": "https://www.ticketmaster.com/dod-washington-district-of-columbia-02-06-2027/event/1500654FE913F59F",
+"artist": "D.O.D"
 },
 {
 "date": "2027-02-06",
@@ -3262,6 +3325,24 @@
 "artist": "John Summit"
 },
 {
+"date": "2027-03-05",
+"event": "Glitterbox Sydney 2027",
+"venue": "Home the Venue",
+"city": "Darling Harbour",
+"region": "NSW",
+"url": "https://www.moshtix.com.au/v2/event/glitterbox-sydney-2027/200370",
+"artist": "Horse Meat Disco"
+},
+{
+"date": "2027-03-06",
+"event": "Glitterbox Adelaide 2027",
+"venue": "Hindley St Music Hall",
+"city": "Adelaide",
+"region": "SA",
+"url": "https://www.moshtix.com.au/v2/event/glitterbox-adelaide-2027/200655",
+"artist": "Horse Meat Disco"
+},
+{
 "date": "2027-03-06",
 "event": "Layton Giordani ( 18+ )",
 "venue": "Big Night Live",
@@ -3269,6 +3350,33 @@
 "region": "MA",
 "url": "https://www.ticketmaster.com/layton-giordani-18-boston-massachusetts-03-06-2027/event/0100652436FFA004",
 "artist": "Layton Giordani"
+},
+{
+"date": "2027-03-12",
+"event": "D.O.D",
+"venue": "REBEL",
+"city": "Toronto",
+"region": "ON",
+"url": "https://www.ticketweb.ca/event/dod-rebel-tickets/14385514",
+"artist": "D.O.D"
+},
+{
+"date": "2027-03-12",
+"event": "Glitterbox Melbourne 2027",
+"venue": "Chasers Nightclub South Yarra ",
+"city": "South Yarra",
+"region": "VIC",
+"url": "https://www.moshtix.com.au/v2/event/glitterbox-melbourne-2027/200383",
+"artist": "Horse Meat Disco"
+},
+{
+"date": "2027-03-13",
+"event": "Glitterbox Byron Bay 2027",
+"venue": "The Beach Hotel",
+"city": "Byron Bay",
+"region": "NSW",
+"url": "https://www.moshtix.com.au/v2/event/glitterbox-byron-bay-2027/200650",
+"artist": "Horse Meat Disco"
 },
 {
 "date": "2027-03-17",
@@ -3551,56 +3659,56 @@
 },
 {
 "date": "2027-06-18",
-"event": "Pete Tong",
+"event": "Pete Tong Ibiza Classics",
 "venue": "Dreamland",
 "city": "Margate",
 "region": "GB",
-"url": "https://www.ticketmaster.co.uk/pete-tong-margate-18-06-2027/event/35006527DFFA3A5E",
+"url": "https://www.ticketmaster.co.uk/pete-tong-ibiza-classics-margate-18-06-2027/event/35006527DFFA3A5E",
 "artist": "Horse Meat Disco"
 },
 {
 "date": "2027-06-18",
-"event": "Pete Tong",
+"event": "Pete Tong Ibiza Classics",
 "venue": "Dreamland",
 "city": "Margate",
 "region": "GB",
-"url": "https://www.ticketmaster.co.uk/pete-tong-margate-18-06-2027/event/35006527DFFA3A5E",
+"url": "https://www.ticketmaster.co.uk/pete-tong-ibiza-classics-margate-18-06-2027/event/35006527DFFA3A5E",
 "artist": "Pete Tong"
 },
 {
 "date": "2027-06-19",
-"event": "Pete Tong - Thetford High Lodge",
+"event": "Pete Tong Ibiza Classics - Thetford High Lodge",
 "venue": "High Lodge, Thetford Forest",
 "city": "Thetford",
 "region": "GB",
-"url": "https://www.ticketmaster.co.uk/pete-tong-thetford-high-lodge-thetford-19-06-2027/event/37006541ECD275FF",
+"url": "https://www.ticketmaster.co.uk/pete-tong-ibiza-classics-thetford-high-thetford-19-06-2027/event/37006541ECD275FF",
 "artist": "Pete Tong"
 },
 {
 "date": "2027-06-20",
-"event": "Pete Tong - Delamere Forest",
+"event": "Pete Tong Ibiza Classics  - Delamere Forest",
 "venue": "Delamere Forest",
 "city": "Northwich",
 "region": "GB",
-"url": "https://www.ticketmaster.co.uk/pete-tong-delamere-forest-northwich-20-06-2027/event/37006532A9D12F07",
+"url": "https://www.ticketmaster.co.uk/pete-tong-ibiza-classics-delamere-forest-northwich-20-06-2027/event/37006532A9D12F07",
 "artist": "Pete Tong"
 },
 {
 "date": "2027-06-24",
-"event": "Pete Tong - Cannock Chase Forest",
+"event": "Pete Tong Ibiza Classics  - Cannock Chase Forest",
 "venue": "Cannock Chase Forest",
 "city": "Rugeley",
 "region": "GB",
-"url": "https://www.ticketmaster.co.uk/pete-tong-cannock-chase-forest-rugeley-24-06-2027/event/37006532A165255F",
+"url": "https://www.ticketmaster.co.uk/pete-tong-ibiza-classics-cannock-chase-rugeley-24-06-2027/event/37006532A165255F",
 "artist": "Pete Tong"
 },
 {
 "date": "2027-06-26",
-"event": "Pete Tong - Westonbirt Arboretum - Bus",
+"event": "Pete Tong Ibiza Classics  - Westonbirt Arboretum - Bus",
 "venue": "Westonbirt Arboretum",
 "city": "Gloucestershire",
 "region": "GB",
-"url": "https://www.ticketmaster.co.uk/pete-tong-westonbirt-arboretum-bus-gloucestershire-26-06-2027/event/37006545F9408B1E",
+"url": "https://www.ticketmaster.co.uk/pete-tong-ibiza-classics-westonbirt-arboretum-gloucestershire-26-06-2027/event/37006545F9408B1E",
 "artist": "Pete Tong"
 },
 {
@@ -3668,11 +3776,11 @@
 },
 {
 "date": "2027-08-27",
-"event": "Pete Tong",
+"event": "Pete Tong Ibiza Classics",
 "venue": "Colchester Castle Park",
 "city": "Colchester",
 "region": "GB",
-"url": "https://www.ticketmaster.co.uk/pete-tong-colchester-27-08-2027/event/3500652BBB374BF6",
+"url": "https://www.ticketmaster.co.uk/pete-tong-ibiza-classics-colchester-27-08-2027/event/3500652BBB374BF6",
 "artist": "Pete Tong"
 },
 {
@@ -3686,20 +3794,20 @@
 },
 {
 "date": "2027-08-29",
-"event": "Pete Tong Classical",
+"event": "Pete Tong Ibiza Classics",
 "venue": "The Piece Hall",
 "city": "Halifax",
 "region": "GB",
-"url": "https://www.ticketmaster.co.uk/pete-tong-classical-halifax-29-08-2027/event/35006526A993157A",
+"url": "https://www.ticketmaster.co.uk/pete-tong-ibiza-classics-halifax-29-08-2027/event/35006526A993157A",
 "artist": "Mousse T."
 },
 {
 "date": "2027-08-29",
-"event": "Pete Tong Classical",
+"event": "Pete Tong Ibiza Classics",
 "venue": "The Piece Hall",
 "city": "Halifax",
 "region": "GB",
-"url": "https://www.ticketmaster.co.uk/pete-tong-classical-halifax-29-08-2027/event/35006526A993157A",
+"url": "https://www.ticketmaster.co.uk/pete-tong-ibiza-classics-halifax-29-08-2027/event/35006526A993157A",
 "artist": "Pete Tong"
 }
 ]
