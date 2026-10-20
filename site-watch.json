@@ -1,87 +1,91 @@
 {
- "generated": "2026-10-20T01:13:20Z",
+ "generated": "2026-10-20T06:32:03Z",
  "site": [
   {
    "path": "/",
    "code": 200,
-   "ms": 267,
+   "ms": 139,
    "state": "ok",
    "note": null
   },
   {
    "path": "/scan",
    "code": 200,
-   "ms": 240,
+   "ms": 100,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sets",
    "code": 200,
-   "ms": 208,
+   "ms": 182,
    "state": "ok",
    "note": null
   },
   {
    "path": "/artists",
    "code": 200,
-   "ms": 193,
+   "ms": 203,
    "state": "ok",
    "note": null
   },
   {
    "path": "/tracklists/",
    "code": 200,
-   "ms": 186,
+   "ms": 149,
    "state": "ok",
    "note": null
   },
   {
    "path": "/search-index.json",
    "code": 200,
-   "ms": 226,
+   "ms": 160,
    "state": "ok",
-   "note": "generated 2026-10-16"
+   "note": "generated 2026-10-20"
   },
   {
    "path": "/upcoming.json",
    "code": 200,
-   "ms": 231,
+   "ms": 175,
    "state": "ok",
-   "note": "generated 2026-10-16"
+   "note": "generated 2026-10-20"
   },
   {
    "path": "/radar-events.json",
    "code": 200,
-   "ms": 196,
+   "ms": 95,
    "state": "ok",
    "note": "generated 2026-10-19T16:33:08"
   },
   {
    "path": "/sitemap.xml",
    "code": 200,
-   "ms": 191,
+   "ms": 140,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sw.js",
    "code": 200,
-   "ms": 151,
+   "ms": 100,
    "state": "ok",
    "note": null
   }
  ],
  "recognizer": {
-  "state": "down",
-  "code": 0,
-  "ms": 95,
-  "note": "no answer: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of "
+  "state": "up",
+  "code": 200,
+  "ms": 427,
+  "health": {
+   "status": "ok",
+   "version": "0.1.2"
+  }
  },
  "workflows": {
   "state": "failed",
   "failed": [
-   "freshness"
+   "freshness",
+   "site check"
   ],
   "runs": [
    {
@@ -130,8 +134,8 @@
     "conclusion": "success",
     "event": "dynamic",
     "branch": "main",
-    "at": "2026-10-19T16:42:54Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/39286352849",
+    "at": "2026-10-20T04:34:49Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/39370255418",
     "state": "ok"
    },
    {
@@ -140,19 +144,19 @@
     "conclusion": "success",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-10-19T21:09:55Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/39325291720",
+    "at": "2026-10-20T05:01:51Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/39372682191",
     "state": "ok"
    },
    {
     "name": "site check",
     "status": "completed",
-    "conclusion": "success",
+    "conclusion": "failure",
     "event": "push",
     "branch": "main",
-    "at": "2026-10-16T18:11:39Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38945164533",
-    "state": "ok"
+    "at": "2026-10-20T04:33:51Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/39370207853",
+    "state": "failed"
    },
    {
     "name": "site data",
@@ -160,8 +164,8 @@
     "conclusion": "success",
     "event": "push",
     "branch": "main",
-    "at": "2026-10-16T18:10:03Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/38945164602",
+    "at": "2026-10-20T04:34:02Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/39370207873",
     "state": "ok"
    }
   ]
@@ -197,20 +201,20 @@
    {
     "state": "ok",
     "id": "F-32",
-    "text": "the tracks index was rebuilt after the newest tracklist: 2026-10-16, 4 days old"
+    "text": "the tracks index was rebuilt after the newest tracklist: 2026-10-20, 0 days old"
    },
    {
     "state": "ok",
     "id": "F-33",
-    "text": "upcoming.json (the home page's next up band) was rebuilt after the newest dropping soon render: 2026-10-16, 4 days old"
+    "text": "upcoming.json (the home page's next up band) was rebuilt after the newest dropping soon render: 2026-10-20, 0 days old"
    },
    {
     "state": "fail",
     "id": "F-40",
-    "text": "the artist count on the home page and the artist index equals the number of profiles: 709 profiles, but artists-index.json says [708]"
+    "text": "the artist count on the home page and the artist index equals the number of profiles: 712 profiles, but artists-index.json says [708]"
    }
   ]
  },
- "state": "down",
- "summary": "recognizer down; failed workflows: freshness; freshness fail"
+ "state": "wrong",
+ "summary": "recognizer up; failed workflows: freshness, site check; freshness fail"
 }
