@@ -1,5 +1,5 @@
 {
-"generated": "2026-10-20T14:22:41+00:00",
+"generated": "2026-10-21T14:33:42+00:00",
 "artist_count": 704,
 "artists_with_events": 150,
 "events": [
@@ -185,7 +185,7 @@
 },
 {
 "date": "2026-10-23",
-"event": "Into the Woods (ADE) FRIDAY",
+"event": "Into the Woods ADE FRIDAY",
 "venue": "NDSM Werf",
 "city": "Amsterdam",
 "region": "NL",
@@ -221,7 +221,7 @@
 },
 {
 "date": "2026-10-23",
-"event": "Into the Woods (ADE) FRIDAY",
+"event": "Into the Woods ADE FRIDAY",
 "venue": "NDSM Werf",
 "city": "Amsterdam",
 "region": "NL",
@@ -338,7 +338,7 @@
 },
 {
 "date": "2026-10-24",
-"event": "Into the Woods (ADE) SATURDAY",
+"event": "Into the Woods ADE SATURDAY",
 "venue": "NDSM Werf",
 "city": "Amsterdam",
 "region": "NL",
@@ -2489,11 +2489,11 @@
 },
 {
 "date": "2026-12-11",
-"event": "ARK: MYD",
+"event": "ARK: MYD, supports: Primadoma & Cougar",
 "venue": "Hydrozagadka",
 "city": "Warsaw",
 "region": "PL",
-"url": "https://www.ticketmaster.pl/event/ark-myd-tickets/1883563107?language=en-us",
+"url": "https://www.ticketmaster.pl/event/ark-myd-supports-primadoma--cougar-tickets/1883563107?language=en-us",
 "artist": "Myd"
 },
 {
@@ -2939,6 +2939,15 @@
 },
 {
 "date": "2026-12-31",
+"event": "RL Grime",
+"venue": "Academy LA",
+"city": "Los Angeles",
+"region": "CA",
+"url": "https://www.ticketweb.com/event/rl-grime-academy-la-tickets/14357144",
+"artist": "RL Grime"
+},
+{
+"date": "2026-12-31",
 "event": "Insomniac Countdown",
 "venue": "NOS Events Center",
 "city": "San Bernardino",
@@ -3010,6 +3019,15 @@
 "artist": "CID"
 },
 {
+"date": "2027-01-15",
+"event": "Chris Lorenzo",
+"venue": "History Toronto",
+"city": "Toronto",
+"region": "ON",
+"url": "https://www.ticketmaster.ca/chris-lorenzo-toronto-ontario-01-15-2027/event/10006550124F29C5",
+"artist": "Chris Lorenzo"
+},
+{
 "date": "2027-01-16",
 "event": "AYYBO",
 "venue": "History Toronto",
@@ -3061,6 +3079,24 @@
 "city": "Braddon",
 "region": "ACT",
 "url": "https://www.moshtix.com.au/v2/event/lot33-reunion-presents-mousse-t-germany-/201148",
+"artist": "Mousse T."
+},
+{
+"date": "2027-01-23",
+"event": "TMRW Music & One Hit pres. BRIGHTER DAZE Sydney",
+"venue": "Greenwood Hotel",
+"city": "North Sydney",
+"region": "NSW",
+"url": "https://www.moshtix.com.au/v2/event/tmrw-music-one-hit-pres-brighter-daze-sydney/201289",
+"artist": "Mousse T."
+},
+{
+"date": "2027-01-24",
+"event": "TMRW Music & One Hit pres. BRIGHTER DAZE Melbourne",
+"venue": "Bourke Street Courtyard",
+"city": "Melbourne",
+"region": "VIC",
+"url": "https://www.moshtix.com.au/v2/event/tmrw-music-one-hit-pres-brighter-daze-melbourne/201293",
 "artist": "Mousse T."
 },
 {
@@ -3224,6 +3260,15 @@
 "region": "DE",
 "url": "https://www.ticketmaster.de/event/john-summit--europe-ctrl-escape-tour-tickets/704561120?language=en-us",
 "artist": "John Summit"
+},
+{
+"date": "2027-02-19",
+"event": "Josh Baker [SOLD OUT]",
+"venue": "The Roundhouse UNSW",
+"city": "Kensington",
+"region": "NSW",
+"url": "https://www.moshtix.com.au/v2/event/josh-baker-sold-out-/201392",
+"artist": "Josh Baker"
 },
 {
 "date": "2027-02-19",
@@ -3620,6 +3665,24 @@
 "region": "IN",
 "url": "https://www.ticketmaster.com/elderbrook-heart-on-a-wire-tour-indianapolis-indiana-03-30-2027/event/0500654DBAD0D199",
 "artist": "Elderbrook"
+},
+{
+"date": "2027-04-03",
+"event": "Elderbrook - Heart On A Wire Tour",
+"venue": "Red Rocks Amphitheatre",
+"city": "Morrison",
+"region": "CO",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AA7O1F",
+"artist": "Elderbrook"
+},
+{
+"date": "2027-04-03",
+"event": "Elderbrook - Heart On A Wire Tour",
+"venue": "Red Rocks Amphitheatre",
+"city": "Morrison",
+"region": "CO",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AA7O1F",
+"artist": "Mindchatter"
 },
 {
 "date": "2027-05-01",
