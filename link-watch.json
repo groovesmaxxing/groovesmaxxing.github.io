@@ -1,17 +1,17 @@
 {
- "generated": "2026-10-20T15:21:05Z",
- "pages": 855,
+ "generated": "2026-10-21T15:34:18Z",
+ "pages": 856,
  "links": {
-  "checkable": 6490,
+  "checkable": 6663,
   "by_kind": {
-   "other": 3134,
-   "spotify": 1833,
-   "soundcloud": 704,
-   "youtube": 819
+   "other": 3211,
+   "spotify": 1903,
+   "soundcloud": 729,
+   "youtube": 820
   },
-  "checked_within_recheck": 6490,
-  "asked_this_run": 638,
-  "unknown": 170,
+  "checked_within_recheck": 6663,
+  "asked_this_run": 173,
+  "unknown": 172,
   "budget": 700,
   "recheck_days": 10
  },
@@ -60,6 +60,23 @@
  ],
  "differs": [
   {
+   "url": "https://open.spotify.com/track/6dL7IcJKZsMk2ClvsW65GX",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Baby Do You Wanna Bump",
+   "pages": [
+    "/tracklists/camelphat-audio-obscura-at-the-loft-amsterdam-2026",
+    "/tracklists/dedro-live-potbellys-tallahassee",
+    "/tracklists/dedro-live-sound-nightclub-los-angeles",
+    "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set",
+    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
+   ],
+   "page_count": 5,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
    "url": "https://open.spotify.com/track/0lJhaNv0sqOCqIs5HFbkbu",
    "kind": "spotify",
    "code": 200,
@@ -105,19 +122,18 @@
    "first_seen": "2026-10-17T13:53:46Z"
   },
   {
-   "url": "https://open.spotify.com/track/6dL7IcJKZsMk2ClvsW65GX",
+   "url": "https://open.spotify.com/track/0TDns54iwyRgdvfcOEBSzE",
    "kind": "spotify",
    "code": 200,
    "note": "page says: listen on spotify",
-   "title": "Baby Do You Wanna Bump",
+   "title": "Dicktator - Club Mix",
    "pages": [
-    "/tracklists/dedro-live-potbellys-tallahassee",
-    "/tracklists/dedro-live-sound-nightclub-los-angeles",
-    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
+    "/tracklists/camelphat-audio-obscura-at-the-loft-amsterdam-2026",
+    "/tracklists/luch-solomun-1-pacha-ibiza-2026"
    ],
-   "page_count": 3,
-   "checked": "2026-10-14T15:26:28Z",
-   "first_seen": "2026-10-14T15:26:28Z"
+   "page_count": 2,
+   "checked": "2026-10-17T13:53:46Z",
+   "first_seen": "2026-10-17T13:53:46Z"
   },
   {
    "url": "https://open.spotify.com/track/0kl6Ozan3fuUdCl6TlB15v",
@@ -134,6 +150,34 @@
    "first_seen": "2026-10-14T15:26:28Z"
   },
   {
+   "url": "https://open.spotify.com/track/0niU8VMrQzSNhrmsiLlmeS",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Shinjuku",
+   "pages": [
+    "/tracklists/camelphat-audio-obscura-at-the-loft-amsterdam-2026",
+    "/tracklists/pedroz-the-terrace-club-space-miami"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-19T17:08:37Z",
+   "first_seen": "2026-10-19T17:08:37Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/1EPJvABmhKAXlMn9FpPuGs",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Uh Oh! (feat. Benni Ola)",
+   "pages": [
+    "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set",
+    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-15T15:18:47Z",
+   "first_seen": "2026-10-15T15:18:47Z"
+  },
+  {
    "url": "https://open.spotify.com/track/1JbwbMympf1OOsrMR5EDFK",
    "kind": "spotify",
    "code": 200,
@@ -146,6 +190,20 @@
    "page_count": 2,
    "checked": "2026-10-14T15:26:28Z",
    "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/1Re64v11j6NhuJG9LAEiGR",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Troublemakers",
+   "pages": [
+    "/tracklists/notre-dame-paranormal-la-clairiere-paris-2026",
+    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-15T15:18:47Z",
+   "first_seen": "2026-10-15T15:18:47Z"
   },
   {
    "url": "https://open.spotify.com/track/23khOJxVCE4SEDYCf4mZb8",
@@ -176,6 +234,62 @@
    "first_seen": "2026-10-19T17:08:37Z"
   },
   {
+   "url": "https://open.spotify.com/track/2PM8jCZ2lnC1YTHkiQC8Rl",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Let's Freak",
+   "pages": [
+    "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set",
+    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-15T15:18:47Z",
+   "first_seen": "2026-10-15T15:18:47Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/2PfHWYV43Tq5M2PDw2qb0Z",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Shepard's Tone",
+   "pages": [
+    "/tracklists/camelphat-audio-obscura-at-the-loft-amsterdam-2026",
+    "/tracklists/luch-solomun-1-pacha-ibiza-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-17T13:53:46Z",
+   "first_seen": "2026-10-17T13:53:46Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/2W4mlR0U56xRM0wyhuyIej",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Move Baby",
+   "pages": [
+    "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set",
+    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-15T15:18:47Z",
+   "first_seen": "2026-10-15T15:18:47Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/2X3MVthrKaaP8RbrEen8UJ",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Hands Up",
+   "pages": [
+    "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set",
+    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-15T15:18:47Z",
+   "first_seen": "2026-10-15T15:18:47Z"
+  },
+  {
    "url": "https://open.spotify.com/track/36SPvhQxKM4APeG7yo1mDQ",
    "kind": "spotify",
    "code": 200,
@@ -188,6 +302,34 @@
    "page_count": 2,
    "checked": "2026-10-14T15:26:28Z",
    "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/3ISqUJgszdv0r51jRBM2aZ",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Breath",
+   "pages": [
+    "/tracklists/joseph-capriati-3-5-hour-dj-set-live-from-metamorfosi-at-amnesia-ibiza",
+    "/tracklists/notre-dame-paranormal-la-clairiere-paris-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-21T15:34:18Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/3Tkuw1bnb4Gh2dXeepGolN",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Watch Me",
+   "pages": [
+    "/tracklists/notre-dame-paranormal-la-clairiere-paris-2026",
+    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-15T15:18:47Z",
+   "first_seen": "2026-10-21T15:34:18Z"
   },
   {
    "url": "https://open.spotify.com/track/4QNEi4zAOm0FwfwJXLgp7s",
@@ -204,6 +346,34 @@
    "first_seen": "2026-10-14T15:26:28Z"
   },
   {
+   "url": "https://open.spotify.com/track/4WHvIDcDOcAVrsI5BxPGBM",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Beat Goes On",
+   "pages": [
+    "/tracklists/adam-ten-sunset-brunch-electronik-barcelona-2026",
+    "/tracklists/camelphat-audio-obscura-at-the-loft-amsterdam-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-19T17:08:37Z",
+   "first_seen": "2026-10-21T15:34:18Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/59Omhh3MqpuvUXvVoRdiBH",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Do You",
+   "pages": [
+    "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set",
+    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-15T15:18:47Z",
+   "first_seen": "2026-10-21T15:34:18Z"
+  },
+  {
    "url": "https://open.spotify.com/track/5En5NBj78F8H6KfKYIhvud",
    "kind": "spotify",
    "code": 200,
@@ -218,6 +388,34 @@
    "first_seen": "2026-10-17T13:53:46Z"
   },
   {
+   "url": "https://open.spotify.com/track/5b7NyzEznqgaOyEeufJbFr",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Nobody Told Me",
+   "pages": [
+    "/tracklists/notre-dame-paranormal-la-clairiere-paris-2026",
+    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-15T15:18:47Z",
+   "first_seen": "2026-10-21T15:34:18Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/5cefCIhgIJgsG3r3LcRmwB",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Freaky 1",
+   "pages": [
+    "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set",
+    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-15T15:18:47Z",
+   "first_seen": "2026-10-21T15:34:18Z"
+  },
+  {
    "url": "https://open.spotify.com/track/5iX0VDC8l5Vl0Ae4XN6Tiz",
    "kind": "spotify",
    "code": 200,
@@ -230,6 +428,20 @@
    "page_count": 2,
    "checked": "2026-10-16T14:58:58Z",
    "first_seen": "2026-10-16T14:58:58Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/5m2QzOlDZWRpJO8VEZ9PtF",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "MC Space",
+   "pages": [
+    "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set",
+    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-15T15:18:47Z",
+   "first_seen": "2026-10-21T15:34:18Z"
   },
   {
    "url": "https://open.spotify.com/track/5rsbEsAcHDNMS6HmWKvZ4m",
@@ -288,6 +500,20 @@
    "first_seen": "2026-10-14T15:26:28Z"
   },
   {
+   "url": "https://open.spotify.com/track/70GhuhvcdqzNnnUMzRQgGc",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Fever",
+   "pages": [
+    "/friday",
+    "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-16T14:58:58Z",
+   "first_seen": "2026-10-21T15:34:18Z"
+  },
+  {
    "url": "https://open.spotify.com/track/7KLsZrIzZc4S3sy3dYiX1g",
    "kind": "spotify",
    "code": 200,
@@ -316,6 +542,62 @@
    "first_seen": "2026-10-14T15:26:28Z"
   },
   {
+   "url": "https://soundcloud.com/diynamic-music/notre-dame-nobody-told-me-1",
+   "kind": "soundcloud",
+   "code": 200,
+   "note": "page says: listen on soundcloud",
+   "title": "Notre Dame - Nobody Told Me by Diynamic Music",
+   "pages": [
+    "/tracklists/notre-dame-paranormal-la-clairiere-paris-2026",
+    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-15T15:18:47Z",
+   "first_seen": "2026-10-21T15:34:18Z"
+  },
+  {
+   "url": "https://soundcloud.com/diynamic-music/notre-dame-troublemakers-2",
+   "kind": "soundcloud",
+   "code": 200,
+   "note": "page says: listen on soundcloud",
+   "title": "Notre Dame - Troublemakers by Diynamic Music",
+   "pages": [
+    "/tracklists/notre-dame-paranormal-la-clairiere-paris-2026",
+    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-15T15:18:47Z",
+   "first_seen": "2026-10-21T15:34:18Z"
+  },
+  {
+   "url": "https://soundcloud.com/diynamic-music/notre-dame-watch-me-3",
+   "kind": "soundcloud",
+   "code": 200,
+   "note": "page says: listen on soundcloud",
+   "title": "Notre Dame - Watch Me by Diynamic Music",
+   "pages": [
+    "/tracklists/notre-dame-paranormal-la-clairiere-paris-2026",
+    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-15T15:18:47Z",
+   "first_seen": "2026-10-21T15:34:18Z"
+  },
+  {
+   "url": "https://soundcloud.com/frankyrizardo/shinjuku",
+   "kind": "soundcloud",
+   "code": 200,
+   "note": "page says: listen on soundcloud",
+   "title": "Shinjuku by Franky Rizardo",
+   "pages": [
+    "/tracklists/camelphat-audio-obscura-at-the-loft-amsterdam-2026",
+    "/tracklists/pedroz-the-terrace-club-space-miami"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-14T15:26:28Z",
+   "first_seen": "2026-10-21T15:34:18Z"
+  },
+  {
    "url": "https://soundcloud.com/iamnostatic/no-static-experts-only",
    "kind": "soundcloud",
    "code": 200,
@@ -330,6 +612,34 @@
    "first_seen": "2026-10-13T17:46:57Z"
   },
   {
+   "url": "https://soundcloud.com/maxstyler/freaky-1",
+   "kind": "soundcloud",
+   "code": 200,
+   "note": "page says: listen on soundcloud",
+   "title": "Freaky 1 by Max Styler",
+   "pages": [
+    "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set",
+    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-15T15:18:47Z",
+   "first_seen": "2026-10-21T15:34:18Z"
+  },
+  {
+   "url": "https://soundcloud.com/maxstyler/uh-oh-feat-benni-ola",
+   "kind": "soundcloud",
+   "code": 200,
+   "note": "page says: listen on soundcloud",
+   "title": "Uh Oh! (feat. Benni Ola) by Max Styler",
+   "pages": [
+    "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set",
+    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-15T15:18:47Z",
+   "first_seen": "2026-10-21T15:34:18Z"
+  },
+  {
    "url": "https://soundcloud.com/tobehonestmusic/experts-only-the-gorge-2026",
    "kind": "soundcloud",
    "code": 200,
@@ -342,6 +652,34 @@
    "page_count": 2,
    "checked": "2026-10-13T17:46:57Z",
    "first_seen": "2026-10-13T17:46:57Z"
+  },
+  {
+   "url": "https://soundcloud.com/vintageculturemusic/do-you",
+   "kind": "soundcloud",
+   "code": 200,
+   "note": "page says: listen on soundcloud",
+   "title": "Do You by Vintage Culture",
+   "pages": [
+    "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set",
+    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-15T15:18:47Z",
+   "first_seen": "2026-10-21T15:34:18Z"
+  },
+  {
+   "url": "https://soundcloud.com/volkoder/move-baby",
+   "kind": "soundcloud",
+   "code": 200,
+   "note": "page says: listen on soundcloud",
+   "title": "Move Baby by Volkoder",
+   "pages": [
+    "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set",
+    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-15T15:18:47Z",
+   "first_seen": "2026-10-21T15:34:18Z"
   },
   {
    "url": "https://open.spotify.com/album/0AvMPWqojhPSyjbd9bAnrI",
@@ -617,6 +955,19 @@
    "first_seen": "2026-10-19T17:08:37Z"
   },
   {
+   "url": "https://open.spotify.com/track/01CKAEZULi2Ddw4Xg4rDr7",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Brain Machine",
+   "pages": [
+    "/tracklists/camelphat-audio-obscura-at-the-loft-amsterdam-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-21T15:34:18Z",
+   "first_seen": "2026-10-21T15:34:18Z"
+  },
+  {
    "url": "https://open.spotify.com/track/01oER9KGGTA0oLr01oDig5",
    "kind": "spotify",
    "code": 200,
@@ -628,6 +979,32 @@
    "page_count": 1,
    "checked": "2026-10-15T15:18:47Z",
    "first_seen": "2026-10-15T15:18:47Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/05BsBK4EG1yakbUamQwNI0",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Put Up Your Hands",
+   "pages": [
+    "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-21T15:34:18Z",
+   "first_seen": "2026-10-21T15:34:18Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/05UGoyJblonfzRuR9BHivU",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Guilty Pleasures",
+   "pages": [
+    "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-21T15:34:18Z",
+   "first_seen": "2026-10-21T15:34:18Z"
   },
   {
    "url": "https://open.spotify.com/track/05gPN6Pk39xUarweAgkYLu",
@@ -654,6 +1031,19 @@
    "page_count": 1,
    "checked": "2026-10-19T17:08:37Z",
    "first_seen": "2026-10-19T17:08:37Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/09u9pyJURzsHf2XbtMm03C",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Controller",
+   "pages": [
+    "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-21T15:34:18Z",
+   "first_seen": "2026-10-21T15:34:18Z"
   },
   {
    "url": "https://open.spotify.com/track/0AXbv98ajINQ60GASMLjXy",
@@ -734,6 +1124,19 @@
    "first_seen": "2026-10-17T13:53:46Z"
   },
   {
+   "url": "https://open.spotify.com/track/0Hef4IF1GguNCf4zBGCDsu",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "F To This Beat",
+   "pages": [
+    "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-21T15:34:18Z",
+   "first_seen": "2026-10-21T15:34:18Z"
+  },
+  {
    "url": "https://open.spotify.com/track/0I339khW5qfWuaaiYRopUV",
    "kind": "spotify",
    "code": 200,
@@ -771,6 +1174,19 @@
    "page_count": 1,
    "checked": "2026-10-15T15:18:47Z",
    "first_seen": "2026-10-15T15:18:47Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/0KIhLAkHfL9fvgn0yy1qsU",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "The One",
+   "pages": [
+    "/tracklists/camelphat-audio-obscura-at-the-loft-amsterdam-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-21T15:34:18Z",
+   "first_seen": "2026-10-21T15:34:18Z"
   },
   {
    "url": "https://open.spotify.com/track/0KYLNnpsPe1cn2HJtPpvAT",
@@ -823,19 +1239,6 @@
    "page_count": 1,
    "checked": "2026-10-15T15:18:47Z",
    "first_seen": "2026-10-15T15:18:47Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/0TDns54iwyRgdvfcOEBSzE",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Dicktator - Club Mix",
-   "pages": [
-    "/tracklists/luch-solomun-1-pacha-ibiza-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-17T13:53:46Z",
-   "first_seen": "2026-10-17T13:53:46Z"
   },
   {
    "url": "https://open.spotify.com/track/0UUcK8m7Q7cNFiuSvHs3Ty",
@@ -942,6 +1345,32 @@
    "first_seen": "2026-10-19T17:08:37Z"
   },
   {
+   "url": "https://open.spotify.com/track/0ZpDdIM6ANpu5HEU9DgjFO",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "RED LINE",
+   "pages": [
+    "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-21T15:34:18Z",
+   "first_seen": "2026-10-21T15:34:18Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/0aVrpFRLlrd5zVyPXWP3mS",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Miracle",
+   "pages": [
+    "/tracklists/camelphat-audio-obscura-at-the-loft-amsterdam-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-21T15:34:18Z",
+   "first_seen": "2026-10-21T15:34:18Z"
+  },
+  {
    "url": "https://open.spotify.com/track/0aqTrc8P25XJJbnKgaFG0Z",
    "kind": "spotify",
    "code": 200,
@@ -966,6 +1395,19 @@
    "page_count": 1,
    "checked": "2026-10-15T15:18:47Z",
    "first_seen": "2026-10-15T15:18:47Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/0bc2eo4im4AUnYgE2Kdl9A",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Rock the Beat",
+   "pages": [
+    "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-21T15:34:18Z",
+   "first_seen": "2026-10-21T15:34:18Z"
   },
   {
    "url": "https://open.spotify.com/track/0dWmUCTIBA6UOVjCWtbodc",
@@ -1070,19 +1512,6 @@
    "page_count": 1,
    "checked": "2026-10-15T15:18:47Z",
    "first_seen": "2026-10-15T15:18:47Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/0niU8VMrQzSNhrmsiLlmeS",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Shinjuku",
-   "pages": [
-    "/tracklists/pedroz-the-terrace-club-space-miami"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-19T17:08:37Z",
-   "first_seen": "2026-10-19T17:08:37Z"
   },
   {
    "url": "https://open.spotify.com/track/0oGMcA12to3LVj0l0nVXFM",
@@ -1202,6 +1631,32 @@
    "first_seen": "2026-10-17T13:53:46Z"
   },
   {
+   "url": "https://open.spotify.com/track/18EeBWSKOK4YYJt58QRThS",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Keep It Coming",
+   "pages": [
+    "/tracklists/notre-dame-paranormal-la-clairiere-paris-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-21T15:34:18Z",
+   "first_seen": "2026-10-21T15:34:18Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/18o8InV501O1NhjQAstfOw",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Red Room",
+   "pages": [
+    "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-21T15:34:18Z",
+   "first_seen": "2026-10-21T15:34:18Z"
+  },
+  {
    "url": "https://open.spotify.com/track/1C64MJBqmR3kl32px5BX3r",
    "kind": "spotify",
    "code": 200,
@@ -1254,17 +1709,17 @@
    "first_seen": "2026-10-15T15:18:47Z"
   },
   {
-   "url": "https://open.spotify.com/track/1EPJvABmhKAXlMn9FpPuGs",
+   "url": "https://open.spotify.com/track/1E17lM70NcSvMdDfeAaFJP",
    "kind": "spotify",
    "code": 200,
    "note": "page says: listen on spotify",
-   "title": "Uh Oh! (feat. Benni Ola)",
+   "title": "This Is Not The James Brown",
    "pages": [
-    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
+    "/tracklists/camelphat-audio-obscura-at-the-loft-amsterdam-2026"
    ],
    "page_count": 1,
-   "checked": "2026-10-15T15:18:47Z",
-   "first_seen": "2026-10-15T15:18:47Z"
+   "checked": "2026-10-21T15:34:18Z",
+   "first_seen": "2026-10-21T15:34:18Z"
   },
   {
    "url": "https://open.spotify.com/track/1ETsp0TFf8fHK77ibwe1xw",
@@ -1488,19 +1943,6 @@
    "first_seen": "2026-10-15T15:18:47Z"
   },
   {
-   "url": "https://open.spotify.com/track/1Re64v11j6NhuJG9LAEiGR",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Troublemakers",
-   "pages": [
-    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-15T15:18:47Z",
-   "first_seen": "2026-10-15T15:18:47Z"
-  },
-  {
    "url": "https://open.spotify.com/track/1SbDWaKSqQz3RjjINLUgI0",
    "kind": "spotify",
    "code": 200,
@@ -1525,6 +1967,32 @@
    "page_count": 1,
    "checked": "2026-10-14T15:26:28Z",
    "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/1TJNlmRZvUusHR7UGCbjFi",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Citizen 99",
+   "pages": [
+    "/tracklists/notre-dame-paranormal-la-clairiere-paris-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-21T15:34:18Z",
+   "first_seen": "2026-10-21T15:34:18Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/1TtkiapicAnn1NxK2aARnp",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Flex",
+   "pages": [
+    "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-21T15:34:18Z",
+   "first_seen": "2026-10-21T15:34:18Z"
   },
   {
    "url": "https://open.spotify.com/track/1UCMRqsSF2UXXGxDlKZfc4",
@@ -1618,6 +2086,19 @@
    "first_seen": "2026-10-14T15:26:28Z"
   },
   {
+   "url": "https://open.spotify.com/track/1kQtOJe9IRov5wbptujbga",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Final Move",
+   "pages": [
+    "/tracklists/notre-dame-paranormal-la-clairiere-paris-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-21T15:34:18Z",
+   "first_seen": "2026-10-21T15:34:18Z"
+  },
+  {
    "url": "https://open.spotify.com/track/1m8qbseW8yMcRDNiIjyijT",
    "kind": "spotify",
    "code": 200,
@@ -1629,6 +2110,19 @@
    "page_count": 1,
    "checked": "2026-10-14T15:26:28Z",
    "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/1n24YdnZ25XwWlizL6iU1I",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Searching",
+   "pages": [
+    "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-21T15:34:18Z",
+   "first_seen": "2026-10-21T15:34:18Z"
   },
   {
    "url": "https://open.spotify.com/track/1ohssfxlMrf20TTrYMf53I",
@@ -1709,6 +2203,19 @@
    "first_seen": "2026-10-15T15:18:47Z"
   },
   {
+   "url": "https://open.spotify.com/track/1w4ovi2ob7kOujP5COL8v7",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Feel So Right",
+   "pages": [
+    "/tracklists/camelphat-audio-obscura-at-the-loft-amsterdam-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-21T15:34:18Z",
+   "first_seen": "2026-10-21T15:34:18Z"
+  },
+  {
    "url": "https://open.spotify.com/track/1x90FCATqSYyKxEj9R4GUx",
    "kind": "spotify",
    "code": 200,
@@ -1746,6 +2253,19 @@
    "page_count": 1,
    "checked": "2026-10-14T15:26:28Z",
    "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/21gMbdNtW8Za7QOdTmWa5G",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Think Too Much",
+   "pages": [
+    "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-21T15:34:18Z",
+   "first_seen": "2026-10-21T15:34:18Z"
   },
   {
    "url": "https://open.spotify.com/track/22pC8m4kzjrMQRJXYg0usw",
@@ -1878,6 +2398,19 @@
    "first_seen": "2026-10-19T17:08:37Z"
   },
   {
+   "url": "https://open.spotify.com/track/2CHLVs4PKvmXP8kEr5e3pf",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Lets Get Ill",
+   "pages": [
+    "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-21T15:34:18Z",
+   "first_seen": "2026-10-21T15:34:18Z"
+  },
+  {
    "url": "https://open.spotify.com/track/2CharB9rwsKVfZi0V22OF5",
    "kind": "spotify",
    "code": 200,
@@ -1982,6 +2515,19 @@
    "first_seen": "2026-10-17T13:53:46Z"
   },
   {
+   "url": "https://open.spotify.com/track/2KMQQ1yvUUOgVjGDBStDRp",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "GRIT",
+   "pages": [
+    "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set"
+   ],
+   "page_count": 1,
+   "checked": "2026-10-21T15:34:18Z",
+   "first_seen": "2026-10-21T15:34:18Z"
+  },
+  {
    "url": "https://open.spotify.com/track/2KVAO2OAH6a9Tr2DqYL65g",
    "kind": "spotify",
    "code": 200,
@@ -2060,32 +2606,6 @@
    "first_seen": "2026-10-14T15:26:28Z"
   },
   {
-   "url": "https://open.spotify.com/track/2PM8jCZ2lnC1YTHkiQC8Rl",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Let's Freak",
-   "pages": [
-    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-15T15:18:47Z",
-   "first_seen": "2026-10-15T15:18:47Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2PfHWYV43Tq5M2PDw2qb0Z",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Shepard's Tone",
-   "pages": [
-    "/tracklists/luch-solomun-1-pacha-ibiza-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-17T13:53:46Z",
-   "first_seen": "2026-10-17T13:53:46Z"
-  },
-  {
    "url": "https://open.spotify.com/track/2RABldLaNL1HlSVhufVoxz",
    "kind": "spotify",
    "code": 200,
@@ -2138,19 +2658,6 @@
    "first_seen": "2026-10-15T15:18:47Z"
   },
   {
-   "url": "https://open.spotify.com/track/2W4mlR0U56xRM0wyhuyIej",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Move Baby",
-   "pages": [
-    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-15T15:18:47Z",
-   "first_seen": "2026-10-15T15:18:47Z"
-  },
-  {
    "url": "https://open.spotify.com/track/2W9cgPhvERaeE0BnM3CsKd",
    "kind": "spotify",
    "code": 200,
@@ -2162,19 +2669,6 @@
    "page_count": 1,
    "checked": "2026-10-14T15:26:28Z",
    "first_seen": "2026-10-14T15:26:28Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2X3MVthrKaaP8RbrEen8UJ",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Hands Up",
-   "pages": [
-    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-15T15:18:47Z",
-   "first_seen": "2026-10-15T15:18:47Z"
   },
   {
    "url": "https://open.spotify.com/track/2YJUD7E1muMf10UkCjN3lc",
@@ -2214,476 +2708,8 @@
    "page_count": 1,
    "checked": "2026-10-15T15:18:47Z",
    "first_seen": "2026-10-15T15:18:47Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2a28OspY80WeudpFUro4wq",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Watching Me",
-   "pages": [
-    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-14T15:26:28Z",
-   "first_seen": "2026-10-14T15:26:28Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2egODvG6mhAshf9nKYZaBy",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Zebadam Sheli - Landau & JONAH. Remix",
-   "pages": [
-    "/tracklists/gabss-the-terrace-club-space-miami-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-14T15:26:28Z",
-   "first_seen": "2026-10-14T15:26:28Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2fWyCaf8OQViWejIesNwPE",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Feel The Funk",
-   "pages": [
-    "/tracklists/pedroz-the-terrace-club-space-miami"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-19T17:08:37Z",
-   "first_seen": "2026-10-19T17:08:37Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2fpqOMU1KzyBAHlAZdFtQa",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Laser Mood - Original Mix",
-   "pages": [
-    "/tracklists/pedroz-the-terrace-club-space-miami"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-19T17:08:37Z",
-   "first_seen": "2026-10-19T17:08:37Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2hGl07Awr2vKzoxHdsqzXi",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Big Booty",
-   "pages": [
-    "/tracklists/adam-ten-sunset-brunch-electronik-barcelona-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-19T17:08:37Z",
-   "first_seen": "2026-10-19T17:08:37Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2haLuiwhDxjtHu4VyUrblV",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Rhythm Travelers",
-   "pages": [
-    "/tracklists/luch-solomun-1-pacha-ibiza-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-17T13:53:46Z",
-   "first_seen": "2026-10-17T13:53:46Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2hins9cH9m8KjulLxCTMPx",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Sexy M.F.",
-   "pages": [
-    "/tracklists/peace-control-la-siesta-x-playa-padre-marbella-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-17T13:53:46Z",
-   "first_seen": "2026-10-17T13:53:46Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2iamvJ8dFSfapKYEtEYFun",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "una noche con hugel",
-   "pages": [
-    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-14T15:26:28Z",
-   "first_seen": "2026-10-14T15:26:28Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2kAjEH6vpzYTrp5vRnJkBE",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Everybody Dance (M.A.S. Club Vocal)",
-   "pages": [
-    "/tracklists/dedro-live-potbellys-tallahassee"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-14T15:26:28Z",
-   "first_seen": "2026-10-14T15:26:28Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2kE485HNcHk9ARMDaTv1wh",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Future Avenue",
-   "pages": [
-    "/tracklists/luch-solomun-1-pacha-ibiza-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-17T13:53:46Z",
-   "first_seen": "2026-10-17T13:53:46Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2kbxYgr5tyQLX0U48U7SsS",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Natural Flow - Hobin Rude Remix",
-   "pages": [
-    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-15T15:18:47Z",
-   "first_seen": "2026-10-15T15:18:47Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2lqLdJYbtmzkBlE2uwzstA",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Margherita",
-   "pages": [
-    "/tracklists/cloonee-live-at-red-rocks"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-14T15:26:28Z",
-   "first_seen": "2026-10-14T15:26:28Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2nUmDEc3Z9zhikN5XW3ShA",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Rak",
-   "pages": [
-    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-14T15:26:28Z",
-   "first_seen": "2026-10-14T15:26:28Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2oUC4kqIDUz98Wb6EvXuKF",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "6 Pack",
-   "pages": [
-    "/tracklists/gabss-the-terrace-club-space-miami-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-14T15:26:28Z",
-   "first_seen": "2026-10-14T15:26:28Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2pBhu8kD1BQ2FZSjMQwGTd",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Straight Through",
-   "pages": [
-    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-14T15:26:28Z",
-   "first_seen": "2026-10-14T15:26:28Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2prdDujVEcx4mlYNQWiFiq",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Let Me Love You For Tonight - Radio Edit",
-   "pages": [
-    "/tracklists/hot-since-82-mixmag-lab-london"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-14T15:26:28Z",
-   "first_seen": "2026-10-14T15:26:28Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2qYImzePUoEyPryH9fK1GE",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Veamos",
-   "pages": [
-    "/tracklists/luch-solomun-1-pacha-ibiza-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-17T13:53:46Z",
-   "first_seen": "2026-10-17T13:53:46Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2tO3U2jgLcDxWUozFpwWWs",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Crew Love",
-   "pages": [
-    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-15T15:18:47Z",
-   "first_seen": "2026-10-15T15:18:47Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2v6dhOorR9v3U344UJEkmi",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Just - Patrice Baumel Remix",
-   "pages": [
-    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-15T15:18:47Z",
-   "first_seen": "2026-10-15T15:18:47Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2wUlYDGGXlSvm2NkGj0Qio",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Personal Jesus",
-   "pages": [
-    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-15T15:18:47Z",
-   "first_seen": "2026-10-15T15:18:47Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2y843ilveQ0tO7er9q8haK",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Next to Me - Vintage Culture Remix",
-   "pages": [
-    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-15T15:18:47Z",
-   "first_seen": "2026-10-15T15:18:47Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/30LAaJpoP4d1GCw0HQl171",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Work It Out",
-   "pages": [
-    "/tracklists/dedro-live-sound-nightclub-los-angeles"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-14T15:26:28Z",
-   "first_seen": "2026-10-14T15:26:28Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/32k4O0obawEvBMbJ9vurX0",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Copal - Hidden Empire 20yrs SVT Remix",
-   "pages": [
-    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-15T15:18:47Z",
-   "first_seen": "2026-10-15T15:18:47Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/333Kt2zzWgHpW0BJtyPXiY",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: watch the set on spotify",
-   "title": "Max Styler - Live at Portola Music Festival",
-   "pages": [
-    "/tracklists/max-styler-portola-music-festival-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-16T14:58:58Z",
-   "first_seen": "2026-10-16T14:58:58Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/35BrsBOmMBDLppJbbymXye",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Fact",
-   "pages": [
-    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-15T15:18:47Z",
-   "first_seen": "2026-10-15T15:18:47Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/36rvoxEgyNrLUICpelUWbv",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Wet White",
-   "pages": [
-    "/tracklists/cloonee-live-at-red-rocks"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-14T15:26:28Z",
-   "first_seen": "2026-10-14T15:26:28Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/37hKRdwd8UTbxlL2c7p9KB",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Therapy",
-   "pages": [
-    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-15T15:18:47Z",
-   "first_seen": "2026-10-15T15:18:47Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/39SY52L2wO1puZJtPzAXF8",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Bahia",
-   "pages": [
-    "/tracklists/joseph-capriati-3-5-hour-dj-set-live-from-metamorfosi-at-amnesia-ibiza"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-14T15:26:28Z",
-   "first_seen": "2026-10-14T15:26:28Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/3ApJMBV3TjMQpn5T6Y6iX6",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Burning Sun",
-   "pages": [
-    "/tracklists/monolink-long-feng-burning-man-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-17T13:53:46Z",
-   "first_seen": "2026-10-17T13:53:46Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/3B82rCeX1aIZGC19Hf85fh",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Conjure Dreams",
-   "pages": [
-    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-15T15:18:47Z",
-   "first_seen": "2026-10-15T15:18:47Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/3Cht3h4CcNbfyjcy3esZjc",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Cheek - Soundstream Remix",
-   "pages": [
-    "/tracklists/seth-troxler-vs-mochakk-circoloco-dc-10-ibiza-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-19T17:08:37Z",
-   "first_seen": "2026-10-19T17:08:37Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/3Ez4SedGdkpkNInPsz7moZ",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "The Dream",
-   "pages": [
-    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-15T15:18:47Z",
-   "first_seen": "2026-10-15T15:18:47Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/3FnXzf2stxCZgwhEnqL46N",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Urano Beatz",
-   "pages": [
-    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-15T15:18:47Z",
-   "first_seen": "2026-10-15T15:18:47Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/3GjQ7r5SWFnMMbwfp22aF3",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "You Gonna Want Me",
-   "pages": [
-    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-15T15:18:47Z",
-   "first_seen": "2026-10-15T15:18:47Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/3HP6fuMyiakxcFr5iviDKY",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Mumble",
-   "pages": [
-    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-15T15:18:47Z",
-   "first_seen": "2026-10-15T15:18:47Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/3I2KrZaa1IwKtJTibCKsAg",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "The Poem",
-   "pages": [
-    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-15T15:18:47Z",
-   "first_seen": "2026-10-15T15:18:47Z"
   }
  ],
  "anchors_broken": [],
- "summary": "2 broken, 1 moved, 450 read differently, 0 broken anchors, 6490 of 6490 links checked in the last 10 days"
+ "summary": "2 broken, 1 moved, 530 read differently, 0 broken anchors, 6663 of 6663 links checked in the last 10 days"
 }
