@@ -1,17 +1,17 @@
 {
- "generated": "2026-10-21T15:34:18Z",
- "pages": 856,
+ "generated": "2026-10-22T15:35:56Z",
+ "pages": 857,
  "links": {
-  "checkable": 6663,
+  "checkable": 6680,
   "by_kind": {
-   "other": 3211,
-   "spotify": 1903,
-   "soundcloud": 729,
-   "youtube": 820
+   "other": 3217,
+   "spotify": 1907,
+   "soundcloud": 735,
+   "youtube": 821
   },
-  "checked_within_recheck": 6663,
-  "asked_this_run": 173,
-  "unknown": 172,
+  "checked_within_recheck": 6680,
+  "asked_this_run": 700,
+  "unknown": 173,
   "budget": 700,
   "recheck_days": 10
  },
@@ -26,7 +26,7 @@
     "/index"
    ],
    "page_count": 1,
-   "checked": "2026-10-19T17:08:37Z",
+   "checked": "2026-10-22T15:35:56Z",
    "first_seen": "2026-10-13T17:46:57Z"
   },
   {
@@ -39,7 +39,7 @@
     "/index"
    ],
    "page_count": 1,
-   "checked": "2026-10-19T17:08:37Z",
+   "checked": "2026-10-22T15:35:56Z",
    "first_seen": "2026-10-13T17:46:57Z"
   }
  ],
@@ -54,7 +54,7 @@
     "/labels/realm"
    ],
    "page_count": 1,
-   "checked": "2026-10-19T17:08:37Z",
+   "checked": "2026-10-22T15:35:56Z",
    "first_seen": "2026-10-13T17:46:57Z"
   }
  ],
@@ -540,6 +540,20 @@
    "page_count": 2,
    "checked": "2026-10-14T15:26:28Z",
    "first_seen": "2026-10-14T15:26:28Z"
+  },
+  {
+   "url": "https://soundcloud.com/adamten/beat-goes-on-extended-mix",
+   "kind": "soundcloud",
+   "code": 200,
+   "note": "page says: listen on soundcloud",
+   "title": "Beat Goes On (Extended Mix) by Adam Ten",
+   "pages": [
+    "/tracklists/adam-ten-sunset-brunch-electronik-barcelona-2026",
+    "/tracklists/camelphat-audio-obscura-at-the-loft-amsterdam-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-21T15:34:18Z",
+   "first_seen": "2026-10-22T15:35:56Z"
   },
   {
    "url": "https://soundcloud.com/diynamic-music/notre-dame-nobody-told-me-1",
@@ -2695,21 +2709,8 @@
    "page_count": 1,
    "checked": "2026-10-15T15:18:47Z",
    "first_seen": "2026-10-15T15:18:47Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2ZOGQx9wkbpvzp6JXU8QLk",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Lotus",
-   "pages": [
-    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-15T15:18:47Z",
-   "first_seen": "2026-10-15T15:18:47Z"
   }
  ],
  "anchors_broken": [],
- "summary": "2 broken, 1 moved, 530 read differently, 0 broken anchors, 6663 of 6663 links checked in the last 10 days"
+ "summary": "2 broken, 1 moved, 538 read differently, 0 broken anchors, 6680 of 6680 links checked in the last 10 days"
 }
