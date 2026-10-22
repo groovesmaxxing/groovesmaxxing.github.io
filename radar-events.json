@@ -1,35 +1,8 @@
 {
-"generated": "2026-10-21T14:33:42+00:00",
+"generated": "2026-10-22T14:35:19+00:00",
 "artist_count": 704,
-"artists_with_events": 150,
+"artists_with_events": 149,
 "events": [
-{
-"date": "2026-10-21",
-"event": "Black Coffee",
-"venue": "Ziggo Dome",
-"city": "Amsterdam",
-"region": "NL",
-"url": "https://www.ticketmaster.nl/event/black-coffee-tickets/1367624216?language=en-us",
-"artist": "Black Coffee"
-},
-{
-"date": "2026-10-21",
-"event": "Black Coffee | Venue Premium Packages",
-"venue": "Ziggo Dome Club",
-"city": "Amsterdam",
-"region": "NL",
-"url": "https://www.ticketmaster.nl/event/black-coffee-%7C-venue-premium-packages-tickets/1286275434?language=en-us",
-"artist": "Black Coffee"
-},
-{
-"date": "2026-10-21",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-10-21-2026/event/3B0064350690838A",
-"artist": "Jamie xx"
-},
 {
 "date": "2026-10-22",
 "event": "Colorize: 15 Years - ADE",
@@ -2191,6 +2164,15 @@
 "artist": "Lee Burridge"
 },
 {
+"date": "2026-12-03",
+"event": "Prospa",
+"venue": "LIV Nightclub Miami",
+"city": "Miami Beach",
+"region": "FL",
+"url": "https://www.ticketweb.com/event/prospa-liv-nightclub-miami-tickets/15050793",
+"artist": "Prospa"
+},
+{
 "date": "2026-12-04",
 "event": "Anyma presents ÆDEN",
 "venue": "YAS GATEWAY PARK NORTH",
@@ -2279,6 +2261,15 @@
 "region": "DC",
 "url": "https://www.ticketmaster.com/max-styler-extended-set-washington-district-of-columbia-12-04-2026/event/1500650E172BFB30",
 "artist": "Max Styler"
+},
+{
+"date": "2026-12-04",
+"event": "Pawsa",
+"venue": "LIV Nightclub Miami",
+"city": "Miami Beach",
+"region": "FL",
+"url": "https://www.ticketweb.com/event/pawsa-liv-nightclub-miami-tickets/15050803",
+"artist": "PAWSA"
 },
 {
 "date": "2026-12-04",
