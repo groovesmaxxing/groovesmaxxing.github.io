@@ -1,6 +1,20 @@
 {
- "generated": "2026-10-22T23:33:13Z",
+ "generated": "2026-10-23T07:22:55Z",
  "events": [
+  {
+   "at": "2026-10-23T07:22:55Z",
+   "what": "recognizer",
+   "from": "up",
+   "to": "down",
+   "detail": "no answer: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of "
+  },
+  {
+   "at": "2026-10-23T07:22:55Z",
+   "what": "site watch",
+   "from": "wrong",
+   "to": "down",
+   "detail": "recognizer down; failed workflows: freshness; freshness fail"
+  },
   {
    "at": "2026-10-22T23:33:13Z",
    "what": "recognizer",
