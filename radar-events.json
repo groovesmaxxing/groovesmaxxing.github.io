@@ -1,44 +1,8 @@
 {
-"generated": "2026-10-22T14:35:19+00:00",
+"generated": "2026-10-23T14:18:30+00:00",
 "artist_count": 704,
-"artists_with_events": 149,
+"artists_with_events": 147,
 "events": [
-{
-"date": "2026-10-22",
-"event": "Colorize: 15 Years - ADE",
-"venue": "",
-"city": "",
-"region": "",
-"url": "https://www.universe.com/events/colorize-15-years-ade-tickets-3YSZGL?ref=ticketmaster",
-"artist": "Estiva"
-},
-{
-"date": "2026-10-22",
-"event": "MEDUZA",
-"venue": "Melkweg",
-"city": "Amsterdam",
-"region": "NL",
-"url": "https://www.ticketmaster.nl/event/meduza-tickets/1899883751?language=en-us",
-"artist": "MEDUZA"
-},
-{
-"date": "2026-10-22",
-"event": "Stavroz",
-"venue": "Le Studio TD",
-"city": "Montreal",
-"region": "QC",
-"url": "https://www.ticketmaster.ca/stavroz-montreal-quebec-10-22-2026/event/3100651FDB017FF0",
-"artist": "Stavroz"
-},
-{
-"date": "2026-10-22",
-"event": "The Jungle Giants w/ Morning Silk",
-"venue": "Antone's Nightclub",
-"city": "Austin",
-"region": "TX",
-"url": "https://www.ticketmaster.com/the-jungle-giants-w-morning-silk-austin-texas-10-22-2026/event/3A0064AF0B1A8172",
-"artist": "The Jungle Giants"
-},
 {
 "date": "2026-10-23",
 "event": "Acraze - Ages 18+",
@@ -3101,11 +3065,11 @@
 },
 {
 "date": "2027-01-30",
-"event": "MAU P PRESENTS: GENERATION REBRAND",
+"event": "MAU P PRESENTS: GENERATION REBRAND (18 and Over)",
 "venue": "BMO Stadium",
 "city": "Los Angeles",
 "region": "CA",
-"url": "https://www.ticketmaster.com/mau-p-presents-generation-rebrand-los-angeles-california-01-30-2027/event/0A006550EE2DDD30",
+"url": "https://www.ticketmaster.com/mau-p-presents-generation-rebrand-18-los-angeles-california-01-30-2027/event/0A006550EE2DDD30",
 "artist": "Mau P"
 },
 {
@@ -3361,6 +3325,15 @@
 "artist": "John Summit"
 },
 {
+"date": "2027-02-27",
+"event": "San Antonio Stock Show & Rodeo Finals Followed By Wade Bowen",
+"venue": "Frost Bank Center",
+"city": "San Antonio",
+"region": "TX",
+"url": "https://www.ticketmaster.com/san-antonio-stock-show-rodeo-finals-san-antonio-texas-02-27-2027/event/3A006507AA7DACB7",
+"artist": "Wade"
+},
+{
 "date": "2027-03-05",
 "event": "Glitterbox Sydney 2027",
 "venue": "Home the Venue",
@@ -3458,6 +3431,15 @@
 "region": "JAL",
 "url": "https://www.ticketmaster.com.mx/sofi-tukker-presents-animal-talk-zapopan-24-03-2027/event/3D00649BADDC31F8",
 "artist": "SOFI TUKKER"
+},
+{
+"date": "2027-03-25",
+"event": "Elderbrook w/ Arlo",
+"venue": "Roadrunner-Boston",
+"city": "Boston",
+"region": "MA",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AA74uY",
+"artist": "Elderbrook"
 },
 {
 "date": "2027-03-26",
