@@ -1,6 +1,20 @@
 {
- "generated": "2026-10-23T07:22:55Z",
+ "generated": "2026-10-23T12:50:29Z",
  "events": [
+  {
+   "at": "2026-10-23T12:50:29Z",
+   "what": "recognizer",
+   "from": "down",
+   "to": "up",
+   "detail": "638 ms"
+  },
+  {
+   "at": "2026-10-23T12:50:29Z",
+   "what": "site watch",
+   "from": "down",
+   "to": "wrong",
+   "detail": "recognizer up; failed workflows: freshness; freshness fail"
+  },
   {
    "at": "2026-10-23T07:22:55Z",
    "what": "recognizer",
