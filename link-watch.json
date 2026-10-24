@@ -1,17 +1,17 @@
 {
- "generated": "2026-10-23T15:25:25Z",
+ "generated": "2026-10-24T14:06:24Z",
  "pages": 860,
  "links": {
-  "checkable": 6747,
+  "checkable": 6765,
   "by_kind": {
-   "other": 3254,
-   "spotify": 1934,
+   "other": 3229,
+   "spotify": 1977,
    "soundcloud": 738,
    "youtube": 821
   },
-  "checked_within_recheck": 4278,
+  "checked_within_recheck": 4530,
   "asked_this_run": 700,
-  "unknown": 177,
+  "unknown": 178,
   "budget": 700,
   "recheck_days": 10
  },
@@ -2733,5 +2733,5 @@
   }
  ],
  "anchors_broken": [],
- "summary": "3 broken, 1 moved, 569 read differently, 0 broken anchors, 4278 of 6747 links checked in the last 10 days"
+ "summary": "3 broken, 1 moved, 568 read differently, 0 broken anchors, 4530 of 6765 links checked in the last 10 days"
 }
