@@ -1,179 +1,8 @@
 {
-"generated": "2026-10-23T14:18:30+00:00",
+"generated": "2026-10-24T13:24:52+00:00",
 "artist_count": 704,
-"artists_with_events": 147,
+"artists_with_events": 144,
 "events": [
-{
-"date": "2026-10-23",
-"event": "Acraze - Ages 18+",
-"venue": "Magic Stick",
-"city": "Detroit",
-"region": "MI",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZ-PN",
-"artist": "ACRAZE"
-},
-{
-"date": "2026-10-23",
-"event": "ALISHA - Concourse Only",
-"venue": "Depot Mayfield",
-"city": "Manchester",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/alisha-concourse-only-manchester-23-10-2026/event/350064EACF98D046",
-"artist": "ALISHA"
-},
-{
-"date": "2026-10-23",
-"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
-"venue": "Centre Bell",
-"city": "Montreal",
-"region": "QC",
-"url": "https://www.ticketmaster.ca/john-summit-ctrl-escape-arena-tour-montreal-quebec-10-23-2026/event/310064B3DA7587CE",
-"artist": "Alok"
-},
-{
-"date": "2026-10-23",
-"event": "CID (21 and Over)",
-"venue": "1015 Folsom",
-"city": "San Francisco",
-"region": "CA",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZI-J",
-"artist": "CID"
-},
-{
-"date": "2026-10-23",
-"event": "Channel Tres",
-"venue": "Shrine Expo Hall",
-"city": "Los Angeles",
-"region": "CA",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A709vt",
-"artist": "Channel Tres"
-},
-{
-"date": "2026-10-23",
-"event": "Chris Lorenzo",
-"venue": "Echostage",
-"city": "Washington",
-"region": "DC",
-"url": "https://www.ticketmaster.com/chris-lorenzo-washington-district-of-columbia-10-23-2026/event/150065032DB3603A",
-"artist": "Chris Lorenzo"
-},
-{
-"date": "2026-10-23",
-"event": "DRAMA (18+ Event)",
-"venue": "Warehouse215",
-"city": "Phoenix",
-"region": "AZ",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZMJ9",
-"artist": "DRAMA"
-},
-{
-"date": "2026-10-23",
-"event": "Dom Dolla - Ages 18+",
-"venue": "The Pinnacle - TN",
-"city": "Nashville",
-"region": "TN",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7Jf8d",
-"artist": "Dom Dolla"
-},
-{
-"date": "2026-10-23",
-"event": "Hulaween",
-"venue": "Spirit of the Suwannee Music Park and Campground",
-"city": "Live Oak",
-"region": "FL",
-"url": "https://on.fgtix.com/trk/Yb64b",
-"artist": "Green Velvet"
-},
-{
-"date": "2026-10-23",
-"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
-"venue": "Centre Bell",
-"city": "Montreal",
-"region": "QC",
-"url": "https://www.ticketmaster.ca/john-summit-ctrl-escape-arena-tour-montreal-quebec-10-23-2026/event/310064B3DA7587CE",
-"artist": "Jackie Hollander"
-},
-{
-"date": "2026-10-23",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-10-23-2026/event/3B006435069E8398",
-"artist": "Jamie xx"
-},
-{
-"date": "2026-10-23",
-"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
-"venue": "Centre Bell",
-"city": "Montreal",
-"region": "QC",
-"url": "https://www.ticketmaster.ca/john-summit-ctrl-escape-arena-tour-montreal-quebec-10-23-2026/event/310064B3DA7587CE",
-"artist": "John Summit"
-},
-{
-"date": "2026-10-23",
-"event": "IMANU PRESENTS DE_VERTE",
-"venue": "Melkweg",
-"city": "Amsterdam",
-"region": "NL",
-"url": "https://www.ticketmaster.nl/event/imanu-presents-de_verte-tickets/742730013?language=en-us",
-"artist": "Kaskade"
-},
-{
-"date": "2026-10-23",
-"event": "Into the Woods ADE FRIDAY",
-"venue": "NDSM Werf",
-"city": "Amsterdam",
-"region": "NL",
-"url": "https://www.universe.com/events/into-the-woods-ade-friday-tickets-FLN8VX?ref=ticketmaster",
-"artist": "Marsolo"
-},
-{
-"date": "2026-10-23",
-"event": "Get Physical!",
-"venue": "Melkweg",
-"city": "Amsterdam",
-"region": "NL",
-"url": "https://www.ticketmaster.nl/event/get-physical-tickets/1325285153?language=en-us",
-"artist": "Monkey Safari"
-},
-{
-"date": "2026-10-23",
-"event": "Odd Mob (16 and Over)",
-"venue": "Mission Ballroom",
-"city": "Denver",
-"region": "CO",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7-Yas",
-"artist": "Odd Mob"
-},
-{
-"date": "2026-10-23",
-"event": "Chris Lorenzo",
-"venue": "Echostage",
-"city": "Washington",
-"region": "DC",
-"url": "https://www.ticketmaster.com/chris-lorenzo-washington-district-of-columbia-10-23-2026/event/150065032DB3603A",
-"artist": "Ragie Ban"
-},
-{
-"date": "2026-10-23",
-"event": "Into the Woods ADE FRIDAY",
-"venue": "NDSM Werf",
-"city": "Amsterdam",
-"region": "NL",
-"url": "https://www.universe.com/events/into-the-woods-ade-friday-tickets-FLN8VX?ref=ticketmaster",
-"artist": "Sidney Charles"
-},
-{
-"date": "2026-10-23",
-"event": "Walker and Royce",
-"venue": "Electric City",
-"city": "Buffalo",
-"region": "NY",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZ0bd",
-"artist": "Walker & Royce"
-},
 {
 "date": "2026-10-24",
 "event": "AYYBO [GLOW OFF:SITE]",
@@ -2945,6 +2774,15 @@
 "region": "NSW",
 "url": "https://www.moshtix.com.au/v2/event/field-day-2027/199201",
 "artist": "Elderbrook"
+},
+{
+"date": "2027-01-01",
+"event": "Insomniac Presents: Fisher (18+)",
+"venue": "WAMU Theater",
+"city": "Seattle",
+"region": "WA",
+"url": "https://www.ticketmaster.com/insomniac-presents-fisher-18-seattle-washington-01-01-2027/event/0F0065559F599F04",
+"artist": "FISHER"
 },
 {
 "date": "2027-01-01",
