@@ -1,73 +1,73 @@
 {
- "generated": "2026-10-23T23:58:19Z",
+ "generated": "2026-10-24T09:04:39Z",
  "site": [
   {
    "path": "/",
    "code": 200,
-   "ms": 250,
+   "ms": 212,
    "state": "ok",
    "note": null
   },
   {
    "path": "/scan",
    "code": 200,
-   "ms": 133,
+   "ms": 141,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sets",
    "code": 200,
-   "ms": 136,
+   "ms": 147,
    "state": "ok",
    "note": null
   },
   {
    "path": "/artists",
    "code": 200,
-   "ms": 147,
+   "ms": 138,
    "state": "ok",
    "note": null
   },
   {
    "path": "/tracklists/",
    "code": 200,
-   "ms": 120,
+   "ms": 141,
    "state": "ok",
    "note": null
   },
   {
    "path": "/search-index.json",
    "code": 200,
-   "ms": 195,
+   "ms": 124,
    "state": "ok",
    "note": "generated 2026-10-23"
   },
   {
    "path": "/upcoming.json",
    "code": 200,
-   "ms": 104,
+   "ms": 200,
    "state": "ok",
    "note": "generated 2026-10-23"
   },
   {
    "path": "/radar-events.json",
    "code": 200,
-   "ms": 163,
+   "ms": 123,
    "state": "ok",
    "note": "generated 2026-10-23T14:18:30"
   },
   {
    "path": "/sitemap.xml",
    "code": 200,
-   "ms": 169,
+   "ms": 123,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sw.js",
    "code": 200,
-   "ms": 127,
+   "ms": 120,
    "state": "ok",
    "note": null
   }
@@ -75,13 +75,14 @@
  "recognizer": {
   "state": "down",
   "code": 0,
-  "ms": 94,
-  "note": "no answer: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of "
+  "ms": 118,
+  "note": "no answer: <urlopen error [Errno -2] Name or service not known>"
  },
  "workflows": {
   "state": "failed",
   "failed": [
    "freshness",
+   "recognizer uptime",
    "site check"
   ],
   "runs": [
@@ -128,12 +129,12 @@
    {
     "name": "recognizer uptime",
     "status": "completed",
-    "conclusion": "success",
+    "conclusion": "failure",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-10-23T23:14:34Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/40038519961",
-    "state": "ok"
+    "at": "2026-10-24T04:49:03Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/40063821512",
+    "state": "failed"
    },
    {
     "name": "site check",
@@ -163,37 +164,37 @@
    {
     "state": "warn",
     "id": "F-18",
-    "text": "friday.html carries the newest week: 2026-10-09, 14 days old"
+    "text": "friday.html carries the newest week: 2026-10-09, 15 days old"
    },
    {
     "state": "ok",
     "id": "F-21",
-    "text": "dropping soon says when it was last refreshed: 2026-10-23, 0 days old"
+    "text": "dropping soon says when it was last refreshed: 2026-10-23, 1 days old"
    },
    {
     "state": "ok",
     "id": "F-24",
-    "text": "the newsletter hub carries the newest issue: 2026-10-23, 0 days old"
+    "text": "the newsletter hub carries the newest issue: 2026-10-23, 1 days old"
    },
    {
     "state": "ok",
     "id": "F-30",
-    "text": "the events radar data is refreshed nightly: 2026-10-23, 0 days old"
+    "text": "the events radar data is refreshed nightly: 2026-10-23, 1 days old"
    },
    {
     "state": "ok",
     "id": "F-31",
-    "text": "the denver radar data is refreshed nightly: 2026-10-23, 0 days old"
+    "text": "the denver radar data is refreshed nightly: 2026-10-23, 1 days old"
    },
    {
     "state": "ok",
     "id": "F-32",
-    "text": "the tracks index was rebuilt after the newest tracklist: 2026-10-23, 0 days old"
+    "text": "the tracks index was rebuilt after the newest tracklist: 2026-10-23, 1 days old"
    },
    {
     "state": "ok",
     "id": "F-33",
-    "text": "upcoming.json (the home page's next up band) was rebuilt after the newest dropping soon render: 2026-10-23, 0 days old"
+    "text": "upcoming.json (the home page's next up band) was rebuilt after the newest dropping soon render: 2026-10-23, 1 days old"
    },
    {
     "state": "fail",
@@ -203,5 +204,5 @@
   ]
  },
  "state": "down",
- "summary": "recognizer down; failed workflows: freshness, site check; freshness fail"
+ "summary": "recognizer down; failed workflows: freshness, recognizer uptime, site check; freshness fail"
 }
