@@ -1,73 +1,73 @@
 {
- "generated": "2026-10-26T01:37:45Z",
+ "generated": "2026-10-26T07:43:12Z",
  "site": [
   {
    "path": "/",
    "code": 200,
-   "ms": 309,
+   "ms": 190,
    "state": "ok",
    "note": null
   },
   {
    "path": "/scan",
    "code": 200,
-   "ms": 107,
+   "ms": 92,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sets",
    "code": 200,
-   "ms": 82,
+   "ms": 115,
    "state": "ok",
    "note": null
   },
   {
    "path": "/artists",
    "code": 200,
-   "ms": 102,
+   "ms": 114,
    "state": "ok",
    "note": null
   },
   {
    "path": "/tracklists/",
    "code": 200,
-   "ms": 103,
+   "ms": 80,
    "state": "ok",
    "note": null
   },
   {
    "path": "/search-index.json",
    "code": 200,
-   "ms": 114,
+   "ms": 109,
    "state": "ok",
    "note": "generated 2026-10-23"
   },
   {
    "path": "/upcoming.json",
    "code": 200,
-   "ms": 67,
+   "ms": 65,
    "state": "ok",
    "note": "generated 2026-10-23"
   },
   {
    "path": "/radar-events.json",
    "code": 200,
-   "ms": 236,
+   "ms": 102,
    "state": "ok",
    "note": "generated 2026-10-25T13:46:55"
   },
   {
    "path": "/sitemap.xml",
    "code": 200,
-   "ms": 150,
+   "ms": 76,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sw.js",
    "code": 200,
-   "ms": 85,
+   "ms": 63,
    "state": "ok",
    "note": null
   }
@@ -75,7 +75,7 @@
  "recognizer": {
   "state": "up",
   "code": 200,
-  "ms": 567,
+  "ms": 620,
   "health": {
    "status": "ok",
    "version": "0.1.2"
@@ -134,8 +134,8 @@
     "conclusion": "success",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-10-25T22:40:20Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/40241273433",
+    "at": "2026-10-26T05:01:16Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/40272020754",
     "state": "ok"
    },
    {
