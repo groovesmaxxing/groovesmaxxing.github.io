@@ -1,6 +1,13 @@
 {
- "generated": "2026-10-25T20:45:08Z",
+ "generated": "2026-10-26T01:37:45Z",
  "events": [
+  {
+   "at": "2026-10-26T01:37:45Z",
+   "what": "freshness F-18",
+   "from": "warn",
+   "to": "fail",
+   "detail": "friday.html carries the newest week: 2026-10-09, 17 days old (limit 16)"
+  },
   {
    "at": "2026-10-24T19:25:44Z",
    "what": "workflow recognizer uptime",
