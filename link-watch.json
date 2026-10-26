@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-25T14:32:55Z",
+ "generated": "2026-10-26T16:57:08Z",
  "pages": 860,
  "links": {
   "checkable": 6765,
@@ -9,9 +9,9 @@
    "soundcloud": 738,
    "youtube": 821
   },
-  "checked_within_recheck": 5031,
+  "checked_within_recheck": 5002,
   "asked_this_run": 700,
-  "unknown": 182,
+  "unknown": 185,
   "budget": 700,
   "recheck_days": 10
  },
@@ -2733,5 +2733,5 @@
   }
  ],
  "anchors_broken": [],
- "summary": "3 broken, 1 moved, 568 read differently, 0 broken anchors, 5031 of 6765 links checked in the last 10 days"
+ "summary": "3 broken, 1 moved, 568 read differently, 0 broken anchors, 5002 of 6765 links checked in the last 10 days"
 }
