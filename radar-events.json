@@ -1,44 +1,8 @@
 {
-"generated": "2026-10-25T13:46:55+00:00",
+"generated": "2026-10-26T16:12:19+00:00",
 "artist_count": 704,
 "artists_with_events": 143,
 "events": [
-{
-"date": "2026-10-25",
-"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
-"venue": "Scotiabank Arena",
-"city": "Toronto",
-"region": "ON",
-"url": "https://www.ticketmaster.ca/john-summit-ctrl-escape-arena-tour-toronto-ontario-10-25-2026/event/100064B3A9BBACE6",
-"artist": "Alok"
-},
-{
-"date": "2026-10-25",
-"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
-"venue": "Scotiabank Arena",
-"city": "Toronto",
-"region": "ON",
-"url": "https://www.ticketmaster.ca/john-summit-ctrl-escape-arena-tour-toronto-ontario-10-25-2026/event/100064B3A9BBACE6",
-"artist": "Jackie Hollander"
-},
-{
-"date": "2026-10-25",
-"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
-"venue": "Scotiabank Arena",
-"city": "Toronto",
-"region": "ON",
-"url": "https://www.ticketmaster.ca/john-summit-ctrl-escape-arena-tour-toronto-ontario-10-25-2026/event/100064B3A9BBACE6",
-"artist": "John Summit"
-},
-{
-"date": "2026-10-25",
-"event": "Zhu",
-"venue": "The Concourse Project",
-"city": "Austin",
-"region": "TX",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A70auE",
-"artist": "ZHU"
-},
 {
 "date": "2026-10-28",
 "event": "Harry Styles: Together, Together",
@@ -352,6 +316,15 @@
 "city": "Washington",
 "region": "DC",
 "url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-washington-district-of-columbia-10-31-2026/event/1500645AF59A3A74",
+"artist": "John Summit"
+},
+{
+"date": "2026-10-31",
+"event": "John Summit (21+)",
+"venue": "Echostage",
+"city": "Washington",
+"region": "DC",
+"url": "https://www.ticketmaster.com/john-summit-21-washington-district-of-columbia-10-31-2026/event/1500655A77C22AB8",
 "artist": "John Summit"
 },
 {
@@ -762,7 +735,7 @@
 {
 "date": "2026-11-07",
 "event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
-"venue": "Dickies Arena",
+"venue": "Ariat Arena",
 "city": "Fort Worth",
 "region": "TX",
 "url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-fort-worth-texas-11-07-2026/event/0C0064B3CF15B693",
@@ -771,7 +744,7 @@
 {
 "date": "2026-11-07",
 "event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
-"venue": "Dickies Arena",
+"venue": "Ariat Arena",
 "city": "Fort Worth",
 "region": "TX",
 "url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-fort-worth-texas-11-07-2026/event/0C0064B3CF15B693",
@@ -807,7 +780,7 @@
 {
 "date": "2026-11-07",
 "event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
-"venue": "Dickies Arena",
+"venue": "Ariat Arena",
 "city": "Fort Worth",
 "region": "TX",
 "url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-fort-worth-texas-11-07-2026/event/0C0064B3CF15B693",
@@ -834,7 +807,7 @@
 {
 "date": "2026-11-08",
 "event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
-"venue": "Dickies Arena",
+"venue": "Ariat Arena",
 "city": "Fort Worth",
 "region": "TX",
 "url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-fort-worth-texas-11-08-2026/event/0C0064B49E2D86C5",
@@ -843,7 +816,7 @@
 {
 "date": "2026-11-08",
 "event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
-"venue": "Dickies Arena",
+"venue": "Ariat Arena",
 "city": "Fort Worth",
 "region": "TX",
 "url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-fort-worth-texas-11-08-2026/event/0C0064B49E2D86C5",
@@ -852,7 +825,7 @@
 {
 "date": "2026-11-08",
 "event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
-"venue": "Dickies Arena",
+"venue": "Ariat Arena",
 "city": "Fort Worth",
 "region": "TX",
 "url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-fort-worth-texas-11-08-2026/event/0C0064B49E2D86C5",
@@ -3512,6 +3485,15 @@
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/josh-baker-b2b-kettama-b2b-prospa-london-04-07-2027/event/3700653CA09C1F1E",
 "artist": "Prospa"
+},
+{
+"date": "2027-08-07",
+"event": "Franky Rizardo",
+"venue": "Cardiff Castle",
+"city": "Cardiff",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/franky-rizardo-cardiff-07-08-2027/event/1F00655794A82E80",
+"artist": "Franky Rizardo"
 },
 {
 "date": "2027-08-27",
