@@ -1,73 +1,73 @@
 {
- "generated": "2026-10-26T07:43:12Z",
+ "generated": "2026-10-26T15:07:06Z",
  "site": [
   {
    "path": "/",
    "code": 200,
-   "ms": 190,
+   "ms": 236,
    "state": "ok",
    "note": null
   },
   {
    "path": "/scan",
    "code": 200,
-   "ms": 92,
+   "ms": 165,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sets",
    "code": 200,
-   "ms": 115,
+   "ms": 139,
    "state": "ok",
    "note": null
   },
   {
    "path": "/artists",
    "code": 200,
-   "ms": 114,
+   "ms": 223,
    "state": "ok",
    "note": null
   },
   {
    "path": "/tracklists/",
    "code": 200,
-   "ms": 80,
+   "ms": 276,
    "state": "ok",
    "note": null
   },
   {
    "path": "/search-index.json",
    "code": 200,
-   "ms": 109,
+   "ms": 147,
    "state": "ok",
    "note": "generated 2026-10-23"
   },
   {
    "path": "/upcoming.json",
    "code": 200,
-   "ms": 65,
+   "ms": 108,
    "state": "ok",
    "note": "generated 2026-10-23"
   },
   {
    "path": "/radar-events.json",
    "code": 200,
-   "ms": 102,
+   "ms": 221,
    "state": "ok",
    "note": "generated 2026-10-25T13:46:55"
   },
   {
    "path": "/sitemap.xml",
    "code": 200,
-   "ms": 76,
+   "ms": 137,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sw.js",
    "code": 200,
-   "ms": 63,
+   "ms": 141,
    "state": "ok",
    "note": null
   }
@@ -75,7 +75,7 @@
  "recognizer": {
   "state": "up",
   "code": 200,
-  "ms": 620,
+  "ms": 776,
   "health": {
    "status": "ok",
    "version": "0.1.2"
