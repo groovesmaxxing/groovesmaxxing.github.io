@@ -72,13 +72,23 @@
   // the site hard-codes racing red in svg attributes (marks, zigzags, the scan disc) and in a few stylesheet rules, where
   // the --racing swap can't reach. G-MO 2026-10-27: "still a lot of red". rewrite those to the halloween orange, and keep
   // watching, since gmx-motion.js and the carousels add marks after load.
-  var REDS = /#ff1c02|#cc1400|rgba?\(\s*255\s*,\s*28\s*,\s*2\b|rgba?\(\s*204\s*,\s*20\s*,\s*0\b/gi;
-  function swapRed(v) { return v.replace(REDS, function (m) { return /cc1400|204/i.test(m) ? (m[0] === '#' ? DEEP : m.replace(/204\s*,\s*20\s*,\s*0/, '224,85,0')) : (m[0] === '#' ? ORANGE : m.replace(/255\s*,\s*28\s*,\s*2/, '255,106,0')); }); }
+  // the red also hides url-encoded (%23ff1c02): the zigzag under every section heading is a data: svg in the stylesheet,
+  // and the soundcloud players take their colour from a color= query on the iframe src. both are matched here too.
+  var REDS = /(#|%23)ff1c02|(#|%23)cc1400|rgba?\(\s*255\s*,\s*28\s*,\s*2\b|rgba?\(\s*204\s*,\s*20\s*,\s*0\b/gi;
+  function swapRed(v) {
+    return v.replace(REDS, function (m) {
+      var deep = /cc1400|204/i.test(m), hex = deep ? DEEP : ORANGE;
+      if (m[0] === '#') return hex;
+      if (m[0] === '%') return '%23' + hex.slice(1);
+      return deep ? m.replace(/204\s*,\s*20\s*,\s*0/, '224,85,0') : m.replace(/255\s*,\s*28\s*,\s*2/, '255,106,0');
+    });
+  }
   function recolorNode(n) {
     if (n.nodeType !== 1) return;
-    var all = [n].concat([].slice.call(n.querySelectorAll('[fill],[stroke],[stop-color],[style],[color]')));
+    var all = [n].concat([].slice.call(n.querySelectorAll('[fill],[stroke],[stop-color],[style],[color],iframe[src*="%23"]')));
     all.forEach(function (e) {
-      ['fill', 'stroke', 'stop-color', 'style', 'color'].forEach(function (a) {
+      ['fill', 'stroke', 'stop-color', 'style', 'color', 'src'].forEach(function (a) {
+        if (a === 'src' && e.tagName !== 'IFRAME') return;                          // only the embeds carry a colour in src
         var v = e.getAttribute && e.getAttribute(a); if (v && REDS.test(v)) { REDS.lastIndex = 0; e.setAttribute(a, swapRed(v)); } REDS.lastIndex = 0;
       });
     });
