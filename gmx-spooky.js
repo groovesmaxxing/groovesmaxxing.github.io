@@ -1,6 +1,6 @@
 /* gmx-spooky.js — temporary halloween skin for groovesmaxxing.com (spooky szn 2026).
    self-switching: runs only until END, then does nothing, so it can ship early and never needs a revert to go dark.
-   level 1 "crawl": orange accents, corner cobwebs, a few spiders walking the page, the carved grin (logo A) in the hero, the featured sets swapped for ones recorded on halloween.
+   level 1 "crawl": orange accents, corner cobwebs, a few spiders walking the page, the original mark carved and lit from inside (logo C2a) in the hero, the featured sets swapped for ones recorded on halloween.
    level 2 "drop": + spiders lowering on silk from the top, bats crossing the hero now and then.
    level 3 "haunt": + low fog along the bottom, headings flicker like a dying bulb once in a while.
    respects prefers-reduced-motion (webs and colors only). visitors can turn it off: the 🕸 toggle, kept in localStorage.
@@ -12,6 +12,7 @@
   if (q == null && new Date() > END) return;
   try { if (q == null && localStorage.getItem('gmx-spooky-off') === '1') LEVEL = 0; } catch (e) {}
   var ORANGE = '#FF6A00', DEEP = '#E05500', NIGHT = '#0B0B0D', DAY = '#F2F2EF';
+  var BODY = (location.search.match(/[?&]spookybody=(\w+)/) || [])[1] || window.GMX_SPOOKY_BODY || 'keep';
   var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function css(t) { var s = document.createElement('style'); s.id = 'gmx-spooky-css'; s.textContent = t; document.head.appendChild(s); }
@@ -31,15 +32,16 @@
       return '<path d="' + d + '"/>';
     }).join('') + '</svg>';
 
-  // the carved grin (logo option A): only the light through the cuts, our waveform as the teeth. black, white, orange only.
-  var GRIN = '<path d="M38 92 L104 108 L96 72 Z"/><path d="M202 92 L136 108 L144 72 Z"/>' +
-    '<path d="M6 130 L30 130 L48 98 L68 160 L88 106 L108 150 L120 128 L132 150 L152 106 L172 160 L192 98 L210 130 L234 130 C214 196 26 196 6 130 Z"/>';
-  var JACK = '<svg class="mark gmx-jack" viewBox="0 0 240 240" role="img" aria-label="groovesMAXXING, carved">' +
-    '<defs><radialGradient id="gmxfire" cx="50%" cy="60%" r="60%"><stop offset="0" stop-color="#FFF4E6"/><stop offset=".25" stop-color="#FFC27A"/><stop offset=".6" stop-color="' + ORANGE + '"/><stop offset="1" stop-color="#7A2A00"/></radialGradient>' +
-    '<filter id="gmxglow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="9" result="b"/><feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="s"/><feMerge><feMergeNode in="b"/><feMergeNode in="s"/><feMergeNode in="SourceGraphic"/></feMerge></filter>' +
-    '<filter id="gmxrough"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="3"/></filter></defs>' +
-    '<g filter="url(#gmxglow)"><g filter="url(#gmxrough)" fill="url(#gmxfire)">' + GRIN + '</g></g>' +
-    '<g fill="#000"><path d="M86 174 L97 154 L107 175 Z"/><path d="M133 175 L143 154 L154 174 Z"/></g></svg>';
+  // the hero mark, carved (logo C2a, G-MO 2026-10-27): the original rings, center and waveform, lit from inside,
+  // the candle showing under the waveform teeth. no eyes. black, white, orange only.
+  var JACK = '<svg class="mark gmx-jack" viewBox="0 0 240 240" role="img" aria-label="groovesmaxxing logo, carved for halloween">' +
+    '<defs><radialGradient id="gmxfire" cx="50%" cy="45%" r="65%"><stop offset="0" stop-color="#FFF4E6"/><stop offset=".3" stop-color="#FFC27A"/><stop offset=".65" stop-color="' + ORANGE + '"/><stop offset="1" stop-color="#7A2A00"/></radialGradient>' +
+    '<radialGradient id="gmxinner" cx="50%" cy="55%" r="50%"><stop offset="0" stop-color="' + ORANGE + '" stop-opacity=".55"/><stop offset="1" stop-color="' + ORANGE + '" stop-opacity="0"/></radialGradient>' +
+    '<filter id="gmxglow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>' +
+    '<circle cx="120" cy="120" r="102" fill="url(#gmxinner)"/>' +
+    '<path fill="url(#gmxfire)" filter="url(#gmxglow)" d="M30 120 L48 84 L68 150 L88 96 L108 138 L120 114 L132 138 L152 96 L172 150 L192 84 L210 120 Q120 214 30 120 Z"/>' +
+    '<g fill="none" stroke="' + ORANGE + '" stroke-width="5"><circle cx="120" cy="120" r="104"/><circle cx="120" cy="120" r="76"/><circle cx="120" cy="120" r="48"/></g>' +
+    '<polyline points="6,120 30,120 48,84 68,150 88,96 108,138 120,114 132,138 152,96 172,150 192,84 210,120 234,120" fill="none" stroke="' + DAY + '" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
   // this week's featured sets: recorded on halloween, legit channels only (own channel or tier A), house and techno lane
   var SETS = [
@@ -82,6 +84,15 @@
       '@keyframes gmxfog{to{transform:translateX(6%)}}' +
       '.gmx-flicker{animation:gmxflick 7s infinite}@keyframes gmxflick{0%,91%,100%{opacity:1}92%{opacity:.25}93%{opacity:1}95%{opacity:.4}96%{opacity:1}}'
     );
+    // spooky type everywhere: the drippy display face (same as the carousels) on headings, the wordmark and buttons,
+    // an eerie typewriter on every mono label. body copy follows BODY: 'typewriter' or 'keep' (poppins, easiest to read).
+    css(
+      "@font-face{font-family:'GMX Spooky';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/rubikwetpaint-latin.woff2) format('woff2')}" +
+      "@font-face{font-family:'GMX Typewriter';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/specialelite-latin.woff2) format('woff2')}" +
+      "h1,h2,h3,h4,h5,.wordmark,.gmx-hdr,.gmx-hdr *,.pill,button:not(.set-facade),.set-meta .t,.gmx-tabs,.gmx-tabs *,.lane h3,.canon h3{font-family:'GMX Spooky','Poppins',sans-serif!important;font-weight:400!important;letter-spacing:.01em}" +
+      ".mono,.eyebrow,code,kbd,time,.set-meta .mono,[class*='mono']{font-family:'GMX Typewriter','Space Mono',monospace!important}" +
+      (BODY === 'typewriter' ? "body,p,li,td,input,textarea,select{font-family:'GMX Typewriter','Poppins',sans-serif!important}" : '')
+    );
     document.body.appendChild(el('div', { class: 'gmx-web l', 'aria-hidden': 'true' }, WEB));
     document.body.appendChild(el('div', { class: 'gmx-web r', 'aria-hidden': 'true' }, WEB));
     var m = document.querySelector('.hero .mark');
@@ -104,6 +115,26 @@
     for (var i = 0; i < n; i++) sp.push(spawn());
     if (LEVEL >= 2) for (i = 0; i < (W < 700 ? 1 : 2); i++) sp.push({ silk: true, x: 80 + Math.random() * (W - 160), y: -10, top: 0, goal: 120 + Math.random() * H * .5, v: .5, r: 5, t: 0, dir: 1, wait: 200 + Math.random() * 400 });
     var bats = [], nextBat = 400;
+    // ghosts (G-MO 2026-10-27): every 10 to 20 s one fades in near an edge, sways and drifts up for ~7 s, then fades.
+    // pale and see-through so text stays readable, and it fades faster when the cursor gets close.
+    var ghosts = [], nextGhost = /[?&]ghostnow/.test(location.search) ? 10 : 240;   // ?ghostnow spawns one at once, for previews
+    function ghost(o) {
+      var t = o.t, life = o.life, k = t < 60 ? t / 60 : t > life - 80 ? (life - t) / 80 : 1, a = Math.max(0, k) * o.alpha;
+      if (a <= 0) return;
+      x.save(); x.translate(o.x + Math.sin(t * .03) * 10, o.y); x.rotate(Math.sin(t * .025) * .08); var s = o.s;
+      x.globalAlpha = a; x.fillStyle = '#F2F2EF'; x.shadowColor = 'rgba(242,242,239,.6)'; x.shadowBlur = 14;
+      x.beginPath(); x.moveTo(-s, s * .2); x.arc(0, s * .2 - s * .1, s, Math.PI, 0);          // the dome
+      x.lineTo(s, s * 1.3);
+      for (var i = 0; i < 4; i++) {                                                          // the wavy hem
+        var x0 = s - i * s / 2, w = Math.sin(t * .12 + i) * s * .12;
+        x.quadraticCurveTo(x0 - s / 4, s * 1.55 + w, x0 - s / 2, s * 1.3);
+      }
+      x.closePath(); x.fill(); x.shadowBlur = 0;
+      x.fillStyle = '#0B0B0D'; x.globalAlpha = Math.min(1, a * 1.6);
+      x.beginPath(); x.ellipse(-s * .35, -s * .05, s * .13, s * .2, 0, 0, 7); x.ellipse(s * .35, -s * .05, s * .13, s * .2, 0, 0, 7); x.fill();
+      x.beginPath(); x.ellipse(0, s * .45, s * .1, s * .14, 0, 0, 7); x.fill();
+      x.restore();
+    }
     function spider(s) {
       x.save(); x.translate(s.x, s.y); x.rotate(s.silk ? Math.PI / 2 : s.a); var r = s.r, g = Math.sin(s.t * .35);
       // two passes, a pale rim then the black spider, so it reads on the night sections and the paper ones
@@ -151,6 +182,16 @@
       if (LEVEL >= 2 && --nextBat <= 0) { var hero = document.querySelector('.hero'), hb = hero ? hero.getBoundingClientRect() : { top: 0, bottom: H * .5 };
         if (hb.bottom > 80) bats.push({ x: -40, y: Math.max(40, hb.top + 60 + Math.random() * Math.max(60, hb.bottom - hb.top - 160)), vx: 2.6 + Math.random() * 1.4, s: 10 + Math.random() * 8, t: 0, wob: Math.random() * 6 });
         nextBat = 500 + Math.random() * 700; }
+      if (--nextGhost <= 0) {
+        var side = Math.random() < .5, gs = (W < 700 ? 16 : 22) + Math.random() * 10;
+        ghosts.push({ x: side ? 40 + Math.random() * W * .22 : W - 40 - Math.random() * W * .22, y: H * (.3 + Math.random() * .5), s: gs, t: 0, life: 420, vy: -.25 - Math.random() * .2, alpha: .5 + Math.random() * .2 });
+        nextGhost = 600 + Math.random() * 600;
+      }
+      ghosts = ghosts.filter(function (o) {
+        o.t++; o.y += o.vy;
+        if (Math.hypot(o.x - mouse.x, o.y - mouse.y) < 110 && o.t < o.life - 80) o.t = o.life - 80;   // shy: it fades when you get close
+        ghost(o); return o.t < o.life;
+      });
       bats = bats.filter(function (b) { b.x += b.vx; b.t += 1; b.y += Math.sin(b.t * .05 + b.wob) * .8; bat(b); return b.x < W + 60; });
       requestAnimationFrame(tick);
     })();
