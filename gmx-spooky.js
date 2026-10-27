@@ -102,6 +102,12 @@
     addEventListener('load', recolorSheets);                                       // late stylesheets
   }
 
+  var FAVICON = "data:image/svg+xml,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 240\"%3E%3Cdefs%3E%3CradialGradient id=\"f\" cx=\"50%25\" cy=\"40%25\" r=\"70%25\"%3E%3Cstop offset=\"0\" stop-color=\"%23FFF4E6\"/%3E%3Cstop offset=\".35\" stop-color=\"%23FFC27A\"/%3E%3Cstop offset=\".7\" stop-color=\"%23FF6A00\"/%3E%3Cstop offset=\"1\" stop-color=\"%239A3600\"/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx=\"120\" cy=\"120\" r=\"118\" fill=\"%230B0B0D\"/%3E%3Cpath fill=\"url%28%23f%29\" d=\"M30 120 L48 84 L68 150 L88 96 L108 138 L120 114 L132 138 L152 96 L172 150 L192 84 L210 120 Q120 214 30 120 Z\"/%3E%3Ccircle cx=\"120\" cy=\"120\" r=\"100\" fill=\"none\" stroke=\"%23FF6A00\" stroke-width=\"16\"/%3E%3Cpolyline points=\"6%2C120 30%2C120 48%2C84 68%2C150 88%2C96 108%2C138 120%2C114 132%2C138 152%2C96 172%2C150 192%2C84 210%2C120 234%2C120\" fill=\"none\" stroke=\"%23F2F2EF\" stroke-width=\"16\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/%3E%3Cg transform=\"translate%28150%2C2%29 scale%28.36%29\"%3E%3Cpath fill=\"%230B0B0D\" d=\"M28 236 L28 106 A92 92 0 0 1 212 106 L212 236 Z\"/%3E%3Cpath fill=\"%23F2F2EF\" d=\"M40 230 L40 110 A80 80 0 0 1 200 110 L200 230 L180 210 L160 230 L140 210 L120 230 L100 210 L80 230 L60 210 Z\"/%3E%3Cellipse cx=\"92\" cy=\"118\" rx=\"16\" ry=\"24\" fill=\"%230B0B0D\"/%3E%3Cellipse cx=\"148\" cy=\"118\" rx=\"16\" ry=\"24\" fill=\"%230B0B0D\"/%3E%3Cellipse cx=\"120\" cy=\"170\" rx=\"12\" ry=\"16\" fill=\"%23FF6A00\"/%3E%3C/g%3E%3C/svg%3E";
+  function favicon() {
+    [].forEach.call(document.querySelectorAll('link[rel~="icon"]'), function (l) { if (!/apple/.test(l.rel)) l.remove(); });
+    var l = document.createElement('link'); l.rel = 'icon'; l.type = 'image/svg+xml'; l.href = FAVICON; document.head.appendChild(l);
+  }
+
   function base() {
     var r = document.documentElement.style; r.setProperty('--racing', ORANGE); r.setProperty('--deep', DEEP);
     r.setProperty('--steel', DAY); r.setProperty('--paper', DAY);                 // black, white, orange only (G-MO 2026-10-27)
@@ -148,9 +154,9 @@
     for (var i = 0; i < n; i++) sp.push(spawn());
     if (LEVEL >= 2) for (i = 0; i < (W < 700 ? 1 : 2); i++) sp.push({ silk: true, x: 80 + Math.random() * (W - 160), y: -10, top: 0, goal: 120 + Math.random() * H * .5, v: .5, r: 5, t: 0, dir: 1, wait: 200 + Math.random() * 400 });
     var bats = [], nextBat = 400;
-    // ghosts (G-MO 2026-10-27): every 10 to 20 s one fades in near an edge, sways and drifts up for ~7 s, then fades.
+    // ghosts (G-MO 2026-10-27): every 5 to 8 s one fades in near an edge, sways and drifts up for ~7 s, then fades.
     // pale and see-through so text stays readable, and it fades faster when the cursor gets close.
-    var ghosts = [], nextGhost = /[?&]ghostnow/.test(location.search) ? 10 : 240;   // ?ghostnow spawns one at once, for previews
+    var ghosts = [], nextGhost = /[?&]ghostnow/.test(location.search) ? 10 : 120;   // ?ghostnow spawns one at once, for previews
     function ghost(o) {
       var t = o.t, life = o.life, k = t < 60 ? t / 60 : t > life - 80 ? (life - t) / 80 : 1, a = Math.max(0, k) * o.alpha;
       if (a <= 0) return;
@@ -218,7 +224,7 @@
       if (--nextGhost <= 0) {
         var side = Math.random() < .5, gs = (W < 700 ? 16 : 22) + Math.random() * 10;
         ghosts.push({ x: side ? 40 + Math.random() * W * .22 : W - 40 - Math.random() * W * .22, y: H * (.3 + Math.random() * .5), s: gs, t: 0, life: 420, vy: -.25 - Math.random() * .2, alpha: .5 + Math.random() * .2 });
-        nextGhost = 600 + Math.random() * 600;
+        nextGhost = 300 + Math.random() * 180;                                     // every 5 to 8 s at 60 fps
       }
       ghosts = ghosts.filter(function (o) {
         o.t++; o.y += o.vy;
@@ -236,7 +242,7 @@
   }
 
   function go() {
-    if (LEVEL) { base(); recolor(); if (!still) { critters(); if (LEVEL >= 3) haunt(); } }
+    if (LEVEL) { base(); recolor(); favicon(); if (!still) { critters(); if (LEVEL >= 3) haunt(); } }
     toggle();
   }
   if (LEVEL) { if (document.readyState === 'loading') document.addEventListener('readystatechange', function () { if (document.readyState === 'interactive') halloweenSets(); }); else halloweenSets(); }
