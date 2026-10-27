@@ -1,73 +1,73 @@
 {
- "generated": "2026-10-27T04:54:41Z",
+ "generated": "2026-10-27T15:59:44Z",
  "site": [
   {
    "path": "/",
    "code": 200,
-   "ms": 202,
+   "ms": 225,
    "state": "ok",
    "note": null
   },
   {
    "path": "/scan",
    "code": 200,
-   "ms": 95,
+   "ms": 199,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sets",
    "code": 200,
-   "ms": 115,
+   "ms": 175,
    "state": "ok",
    "note": null
   },
   {
    "path": "/artists",
    "code": 200,
-   "ms": 91,
+   "ms": 210,
    "state": "ok",
    "note": null
   },
   {
    "path": "/tracklists/",
    "code": 200,
-   "ms": 133,
+   "ms": 151,
    "state": "ok",
    "note": null
   },
   {
    "path": "/search-index.json",
    "code": 200,
-   "ms": 92,
+   "ms": 281,
    "state": "ok",
    "note": "generated 2026-10-27"
   },
   {
    "path": "/upcoming.json",
    "code": 200,
-   "ms": 71,
+   "ms": 163,
    "state": "ok",
    "note": "generated 2026-10-27"
   },
   {
    "path": "/radar-events.json",
    "code": 200,
-   "ms": 90,
+   "ms": 281,
    "state": "ok",
-   "note": "generated 2026-10-26T16:12:19"
+   "note": "generated 2026-10-27T15:25:53"
   },
   {
    "path": "/sitemap.xml",
    "code": 200,
-   "ms": 86,
+   "ms": 172,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sw.js",
    "code": 200,
-   "ms": 73,
+   "ms": 182,
    "state": "ok",
    "note": null
   }
@@ -75,7 +75,7 @@
  "recognizer": {
   "state": "up",
   "code": 200,
-  "ms": 515,
+  "ms": 582,
   "health": {
    "status": "ok",
    "version": "0.1.2"
@@ -84,7 +84,8 @@
  "workflows": {
   "state": "failed",
   "failed": [
-   "freshness"
+   "freshness",
+   "link watch"
   ],
   "runs": [
    {
@@ -93,8 +94,8 @@
     "conclusion": "success",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-10-26T16:12:24Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/40356423598",
+    "at": "2026-10-27T15:25:58Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/40530526318",
     "state": "ok"
    },
    {
@@ -119,13 +120,13 @@
    },
    {
     "name": "link watch",
-    "status": "completed",
-    "conclusion": "success",
+    "status": "pending",
+    "conclusion": null,
     "event": "schedule",
     "branch": "main",
-    "at": "2026-10-26T16:57:47Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/40364002261",
-    "state": "ok"
+    "at": "2026-10-27T15:59:38Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/40536484456",
+    "state": "failed"
    },
    {
     "name": "pages build and deployment",
@@ -133,8 +134,8 @@
     "conclusion": "success",
     "event": "dynamic",
     "branch": "main",
-    "at": "2026-10-27T03:04:39Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/40441964671",
+    "at": "2026-10-27T15:26:50Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/40530907542",
     "state": "ok"
    },
    {
@@ -143,8 +144,8 @@
     "conclusion": "success",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-10-26T21:06:01Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/40401429296",
+    "at": "2026-10-27T14:41:11Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/40523468478",
     "state": "ok"
    },
    {
@@ -190,12 +191,12 @@
    {
     "state": "ok",
     "id": "F-30",
-    "text": "the events radar data is refreshed nightly: 2026-10-26, 1 days old"
+    "text": "the events radar data is refreshed nightly: 2026-10-27, 0 days old"
    },
    {
     "state": "ok",
     "id": "F-31",
-    "text": "the denver radar data is refreshed nightly: 2026-10-26, 1 days old"
+    "text": "the denver radar data is refreshed nightly: 2026-10-27, 0 days old"
    },
    {
     "state": "ok",
@@ -215,5 +216,5 @@
   ]
  },
  "state": "wrong",
- "summary": "recognizer up; failed workflows: freshness"
+ "summary": "recognizer up; failed workflows: freshness, link watch"
 }
