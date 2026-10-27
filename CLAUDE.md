@@ -17,7 +17,7 @@ A static website. Every page is a `.html` file in this repo, written by hand or 
 
 | Folder | What it holds |
 |---|---|
-| `artists/` | One page per artist (708 profiles plus 4 redirect pages), for example `artists/adam-ten.html` |
+| `artists/` | One page per artist (718 profiles plus 4 redirect pages), for example `artists/adam-ten.html` |
 | `labels/` | One page per record label (71 pages) |
 | `tracklists/` | One page per DJ set tracklist, plus `tracklists/index.html` |
 | `newsletter/` | Archived Fresh Grooves Friday issues, `fgf-001.html` and so on |
@@ -148,7 +148,7 @@ A moved page stays as a tiny redirect with `<meta http-equiv="refresh">`, a cano
 
 ### Counts written into the copy
 
-- The artist count on `index.html` ("N artists") and `artists.html` ("N names") is set by `sync_counts.py` from the number of non-redirect pages in `artists/`. Do not bump it by hand.
+- The artist count on `index.html` ("N artists") and `artists.html` ("N names") is set by `sync_counts.py` from the number of non-redirect pages in `artists/`. Do not bump it by hand. The same script rewrites `artists-index.json` (the slug list `scan.html` reads to link a recognized artist) from those pages.
 - Other counts are still typed by hand, for example "all N names" in the on tour section of `events.html`, which must match the length of `radar-artists.json`.
 
 ### Commit messages
