@@ -69,6 +69,39 @@
     var h = rail.closest('section') && rail.closest('section').querySelector('h2'); if (h) h.textContent = 'recorded on halloween';
   }
 
+  // the site hard-codes racing red in svg attributes (marks, zigzags, the scan disc) and in a few stylesheet rules, where
+  // the --racing swap can't reach. G-MO 2026-10-27: "still a lot of red". rewrite those to the halloween orange, and keep
+  // watching, since gmx-motion.js and the carousels add marks after load.
+  var REDS = /#ff1c02|#cc1400|rgba?\(\s*255\s*,\s*28\s*,\s*2\b|rgba?\(\s*204\s*,\s*20\s*,\s*0\b/gi;
+  function swapRed(v) { return v.replace(REDS, function (m) { return /cc1400|204/i.test(m) ? (m[0] === '#' ? DEEP : m.replace(/204\s*,\s*20\s*,\s*0/, '224,85,0')) : (m[0] === '#' ? ORANGE : m.replace(/255\s*,\s*28\s*,\s*2/, '255,106,0')); }); }
+  function recolorNode(n) {
+    if (n.nodeType !== 1) return;
+    var all = [n].concat([].slice.call(n.querySelectorAll('[fill],[stroke],[stop-color],[style],[color]')));
+    all.forEach(function (e) {
+      ['fill', 'stroke', 'stop-color', 'style', 'color'].forEach(function (a) {
+        var v = e.getAttribute && e.getAttribute(a); if (v && REDS.test(v)) { REDS.lastIndex = 0; e.setAttribute(a, swapRed(v)); } REDS.lastIndex = 0;
+      });
+    });
+  }
+  function recolorSheets() {
+    [].forEach.call(document.styleSheets, function (sh) {
+      var rules; try { rules = sh.cssRules; } catch (e) { return; }                // cross-origin sheets are skipped
+      [].forEach.call(rules || [], function walk(r) {
+        if (r.cssRules && r.cssRules.length) [].forEach.call(r.cssRules, walk);   // every rule has a cssRules list now (css nesting), often empty
+        if (!r.style || !REDS.test(r.style.cssText)) { REDS.lastIndex = 0; return; } REDS.lastIndex = 0;
+        for (var i = 0; i < r.style.length; i++) { var k = r.style[i], v = r.style.getPropertyValue(k); if (REDS.test(v)) { REDS.lastIndex = 0; r.style.setProperty(k, swapRed(v), r.style.getPropertyPriority(k)); } REDS.lastIndex = 0; }
+      });
+    });
+  }
+  function recolor() {
+    recolorSheets(); recolorNode(document.body);
+    new MutationObserver(function (ms) { ms.forEach(function (m) {
+      if (m.type === 'attributes') { var v = m.target.getAttribute(m.attributeName); if (v && REDS.test(v)) { REDS.lastIndex = 0; m.target.setAttribute(m.attributeName, swapRed(v)); } REDS.lastIndex = 0; }
+      else [].forEach.call(m.addedNodes, recolorNode);
+    }); }).observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['style', 'fill', 'stroke', 'stop-color'] });
+    addEventListener('load', recolorSheets);                                       // late stylesheets
+  }
+
   function base() {
     var r = document.documentElement.style; r.setProperty('--racing', ORANGE); r.setProperty('--deep', DEEP);
     r.setProperty('--steel', DAY); r.setProperty('--paper', DAY);                 // black, white, orange only (G-MO 2026-10-27)
@@ -79,7 +112,7 @@
       '#gmx-spooky-canvas{position:fixed;inset:0;pointer-events:none;z-index:39}' +
       '.gmx-jack{animation:gmxcandle 3.2s infinite}@keyframes gmxcandle{0%,100%{filter:brightness(1)}8%{filter:brightness(.8)}10%{filter:brightness(1.08)}43%{filter:brightness(.9)}45%{filter:brightness(1.05)}71%{filter:brightness(.76)}73%{filter:brightness(1)}}' +
       // the ripple shader, the corner marks, the header mark and the scan disc hard-code racing red, this turns them pumpkin
-      '.hero .hero-fx,.gmx-cfx,.gmx-cmark,.gmx-hmark,.lib-mark,.gmx-scan,.gmx-disc{filter:hue-rotate(20deg) saturate(1.15)}' +
+      '.hero .hero-fx,.gmx-cfx,canvas.gmx-cfx{filter:hue-rotate(20deg) saturate(1.15)!important}' +
       '.gmx-fog{position:fixed;left:-10%;right:-10%;bottom:-40px;height:180px;pointer-events:none;z-index:38;background:radial-gradient(60% 70% at 30% 100%,rgba(242,242,239,.10),transparent 70%),radial-gradient(50% 60% at 75% 100%,rgba(242,242,239,.08),transparent 70%);animation:gmxfog 18s ease-in-out infinite alternate}' +
       '@keyframes gmxfog{to{transform:translateX(6%)}}' +
       '.gmx-flicker{animation:gmxflick 7s infinite}@keyframes gmxflick{0%,91%,100%{opacity:1}92%{opacity:.25}93%{opacity:1}95%{opacity:.4}96%{opacity:1}}'
@@ -203,7 +236,7 @@
   }
 
   function go() {
-    if (LEVEL) { base(); if (!still) { critters(); if (LEVEL >= 3) haunt(); } }
+    if (LEVEL) { base(); recolor(); if (!still) { critters(); if (LEVEL >= 3) haunt(); } }
     toggle();
   }
   if (LEVEL) { if (document.readyState === 'loading') document.addEventListener('readystatechange', function () { if (document.readyState === 'interactive') halloweenSets(); }); else halloweenSets(); }
