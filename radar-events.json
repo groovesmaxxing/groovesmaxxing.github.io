@@ -1,7 +1,7 @@
 {
-"generated": "2026-10-27T15:25:53+00:00",
+"generated": "2026-10-28T16:09:11+00:00",
 "artist_count": 704,
-"artists_with_events": 143,
+"artists_with_events": 145,
 "events": [
 {
 "date": "2026-10-28",
@@ -905,6 +905,15 @@
 },
 {
 "date": "2026-11-13",
+"event": "Sammy Virji (18+)",
+"venue": "Bill Graham Civic Auditorium",
+"city": "San Francisco",
+"region": "CA",
+"url": "https://www.ticketmaster.com/sammy-virji-18-san-francisco-california-11-13-2026/event/1C00655AD92A87A2",
+"artist": "Sammy Virji"
+},
+{
+"date": "2026-11-13",
 "event": "Tobiahs",
 "venue": "The Opera House",
 "city": "Toronto",
@@ -1199,6 +1208,15 @@
 "region": "CDMX",
 "url": "https://www.ticketmaster.com.mx/individual-general-corona-capital-2026-mexico-20-11-2026/event/14006499FA57F0FC",
 "artist": "Fcukers"
+},
+{
+"date": "2026-11-20",
+"event": "Hans Glader - ages 21+",
+"venue": "The Midway",
+"city": "San Francisco",
+"region": "CA",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAvtv7",
+"artist": "Hans Glader"
 },
 {
 "date": "2026-11-20",
@@ -1940,6 +1958,15 @@
 },
 {
 "date": "2026-12-04",
+"event": "Sammy Virji [Concourse Only]",
+"venue": "Depot Mayfield",
+"city": "Manchester",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/sammy-virji-concourse-only-manchester-04-12-2026/event/3500655BBACB5C2F",
+"artist": "Sammy Virji"
+},
+{
+"date": "2026-12-04",
 "event": "D.O.D",
 "venue": "NX",
 "city": "Newcastle Upon Tyne",
@@ -2165,6 +2192,15 @@
 },
 {
 "date": "2026-12-12",
+"event": "Rossi.",
+"venue": "The Church Nightclub",
+"city": "Denver",
+"region": "CO",
+"url": "https://www.ticketweb.com/event/rossi-the-church-nightclub-tickets/14395974",
+"artist": "Rossi."
+},
+{
+"date": "2026-12-12",
 "event": "SIDEPIECE - 12.12.26 @ The Bluestone - Columbus, OH",
 "venue": "Forum Columbus",
 "city": "Columbus",
@@ -2315,6 +2351,15 @@
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/whp-presents-kaluki-manchester-27-12-2026/event/3500653DC7A3CAF2",
 "artist": "Ben Sterling"
+},
+{
+"date": "2026-12-27",
+"event": "Chris Lake ( 21+ )",
+"venue": "Big Night Live",
+"city": "Boston",
+"region": "MA",
+"url": "https://www.ticketmaster.com/chris-lake-21-boston-massachusetts-12-27-2026/event/0100655BDC423B57",
+"artist": "Chris Lake"
 },
 {
 "date": "2026-12-27",
@@ -2803,6 +2848,15 @@
 "artist": "DRAMA"
 },
 {
+"date": "2027-02-06",
+"event": "Julian Fijma",
+"venue": "The Limelight 1",
+"city": "Belfast",
+"region": "GB",
+"url": "https://www.ticketmaster.ie/julian-fijma-belfast-06-02-2027/event/38006555AA521534",
+"artist": "Julian Fijma"
+},
+{
 "date": "2027-02-11",
 "event": "JOHN SUMMIT – EUROPE CTRL ESCAPE ARENA TOUR",
 "venue": "COS Torwar",
@@ -3011,6 +3065,15 @@
 },
 {
 "date": "2027-02-27",
+"event": "Julian Fijma",
+"venue": "Electric Brixton",
+"city": "London",
+"region": "GB",
+"url": "https://www.universe.com/events/julian-fijma-tickets-ZY1KS9?ref=ticketmaster",
+"artist": "Julian Fijma"
+},
+{
+"date": "2027-02-27",
 "event": "San Antonio Stock Show & Rodeo Finals Followed By Wade Bowen",
 "venue": "Frost Bank Center",
 "city": "San Antonio",
@@ -3098,6 +3161,15 @@
 "region": "QC",
 "url": "https://www.ticketmaster.ca/elderbrook-heart-on-a-wire-tour-montreal-quebec-03-19-2027/event/31006548A4185690",
 "artist": "Elderbrook"
+},
+{
+"date": "2027-03-19",
+"event": "Julian Fijma",
+"venue": "NX",
+"city": "Newcastle Upon Tyne",
+"region": "GB",
+"url": "https://www.universe.com/events/julian-fijma-tickets-5LV230?ref=ticketmaster",
+"artist": "Julian Fijma"
 },
 {
 "date": "2027-03-24",
@@ -3323,6 +3395,15 @@
 "region": "IN",
 "url": "https://www.ticketmaster.com/elderbrook-heart-on-a-wire-tour-indianapolis-indiana-03-30-2027/event/0500654DBAD0D199",
 "artist": "Elderbrook"
+},
+{
+"date": "2027-04-02",
+"event": "Nora En Pure Presents Purified Red Rocks",
+"venue": "Red Rocks Amphitheatre",
+"city": "Morrison",
+"region": "CO",
+"url": "https://www.axs.com/events/1673859/nora-en-pure-presents-purified-red-rocks-tickets",
+"artist": "YOTTO"
 },
 {
 "date": "2027-04-03",
