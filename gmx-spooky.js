@@ -30,7 +30,7 @@
     b.onclick = function () { try { localStorage.setItem('gmx-spooky-off', LEVEL ? '1' : '0'); } catch (e) {} location.reload(); };
     /* styled here, not in base(), so the button looks the same when the skin is off and it is the way back on */
     var s = document.createElement('style'); s.id = 'gmx-spooky-toggle-css';
-    s.textContent = '#gmx-spooky-toggle{flex:none;position:relative;z-index:3;display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;padding:0;margin:0;border-radius:50%;border:1px solid rgba(255,106,0,.5);background:rgba(11,11,13,.8);color:' + (LEVEL ? ORANGE : '#8A8A93') + ';line-height:1;cursor:pointer}' +
+    s.textContent = '#gmx-spooky-toggle{flex:none;position:relative;z-index:3;display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;padding:0;margin:0;border-radius:50%;border:1px solid rgba(255,106,0,.5);background:rgba(11,11,13,.8);color:' + (LEVEL ? ORANGE : '#8A8A93') + ';line-height:1;cursor:pointer}' +
       '#gmx-spooky-toggle:hover,#gmx-spooky-toggle:focus-visible{border-color:' + ORANGE + ';color:' + ORANGE + ';outline:none}' +
       '#gmx-spooky-toggle.fixed{position:fixed;right:12px;top:calc(12px + env(safe-area-inset-top));z-index:60}';
     document.head.appendChild(s);

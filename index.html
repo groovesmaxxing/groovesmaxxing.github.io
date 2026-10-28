@@ -80,7 +80,7 @@ h2{font-weight:900;font-size:clamp(1.9rem,4.5vw,2.8rem);line-height:1.1;margin-b
 .lane{border-radius:18px;padding:30px 26px;display:flex;flex-direction:column;gap:10px;min-height:230px}
 .lane h3{font-weight:900;font-size:1.6rem}
 .lane p{font-size:.95rem}
-.lane .who{font-family:'Space Mono',monospace;font-size:.74rem;letter-spacing:.06em;margin-top:auto;line-height:1.8}
+.lane .who{font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.06em;margin-top:auto;line-height:1.8}
 .lane-vibes{background:var(--paper);color:var(--night)}
 .lane-vibes h3{color:var(--deep)}
 .lane-bumpy{background:#151518;border:1px solid #26262b}
@@ -112,9 +112,9 @@ h2{font-weight:900;font-size:clamp(1.9rem,4.5vw,2.8rem);line-height:1.1;margin-b
 .player::before{content:"";position:absolute;inset:-14%;z-index:-2;background-image:var(--cover);background-size:cover;background-position:center;filter:blur(22px) saturate(1.35) brightness(var(--lift,1));opacity:.75}
 .player::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(165deg,rgba(11,11,13,.20) 0%,rgba(11,11,13,.44) 55%,rgba(11,11,13,.62) 100%)}
 .player:hover{border-color:rgba(255,28,2,.45);transform:translateY(-2px)}
-.player h4{font-weight:900;margin-bottom:10px;font-size:1.05rem;text-shadow:0 2px 14px rgba(0,0,0,.65)}
+.player h3{font-weight:900;margin-bottom:10px;font-size:1.05rem;text-shadow:0 2px 14px rgba(0,0,0,.65)}
 .player iframe{border-radius:14px;border:0;width:100%;box-shadow:0 14px 40px rgba(0,0,0,.45)}
-.player .note{font-family:'Space Mono',monospace;font-size:.72rem;color:#b0b0b8;margin-top:8px;text-shadow:0 1px 10px rgba(0,0,0,.6)}
+.player .note{font-family:'Space Mono',monospace;font-size:.75rem;color:#b0b0b8;margin-top:8px;text-shadow:0 1px 10px rgba(0,0,0,.6)}
 @media (prefers-reduced-motion:reduce){.player{transition:none}.player:hover{transform:none}}
 .mix-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:34px}
 .mix-row .mono{color:var(--steel);letter-spacing:.08em}
@@ -132,6 +132,7 @@ h2{font-weight:900;font-size:clamp(1.9rem,4.5vw,2.8rem);line-height:1.1;margin-b
 .set-facade:hover .set-play{background:var(--deep);transform:translate(-50%,-50%) scale(1.07)}
 .set-dots{display:flex;gap:8px;justify-content:center;margin-top:20px}
 .set-dots button{width:8px;height:8px;padding:0;border:0;border-radius:999px;background:#c9c9c2;cursor:pointer;transition:width .25s,background .25s}
+.set-dots button{position:relative}.set-dots button::before{content:"";position:absolute;inset:-16px -6px}  /* a 40px hit area on the 8px carousel dots (site review item 8) */
 .set-dots button[aria-current="true"]{background:var(--racing);width:24px}
 .video-frame{position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;background:#e3e3de}
 .video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
@@ -147,7 +148,7 @@ h2{font-weight:900;font-size:clamp(1.9rem,4.5vw,2.8rem);line-height:1.1;margin-b
 .wall a.hot:hover{background:var(--racing);color:#fff}
 .wall span.hot,.wall a.hot{border-color:var(--racing);color:var(--racing)}
 .wall-group{margin-top:30px}
-.wall-head{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--steel);margin-bottom:2px}
+.wall-head{font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:var(--steel);margin-bottom:2px}
 .wall-group .wall{margin-top:12px}
 .wall-note{margin-top:24px;color:var(--steel);font-size:.92rem;max-width:640px}
 #labels .wall-cta{margin-top:18px}
@@ -164,17 +165,17 @@ h2{font-weight:900;font-size:clamp(1.9rem,4.5vw,2.8rem);line-height:1.1;margin-b
 
 /* area nav + hover previews */
 .area-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:2px 18px;margin-top:24px;max-width:760px}
-.area-nav a{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.12em;text-decoration:none;color:var(--steel);border-bottom:1px solid transparent;display:inline-block;padding:8px 0;min-height:34px;padding-bottom:3px;transition:color .18s,border-color .18s}
+.area-nav a{font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.12em;text-decoration:none;color:var(--steel);border-bottom:1px solid transparent;display:inline-block;padding:8px 0;min-height:34px;padding-bottom:3px;transition:color .18s,border-color .18s}
 .area-nav a:hover,.area-nav a:focus-visible{color:var(--day);border-bottom-color:var(--racing)}
 .area-nav .off{color:var(--racing)}
 #gm-pv{position:fixed;z-index:60;width:262px;background:#141416;border:1px solid rgba(255,28,2,.45);border-radius:14px;padding:14px 16px;box-shadow:0 18px 44px rgba(0,0,0,.55);opacity:0;transform:translateY(6px);pointer-events:none;transition:opacity .16s ease,transform .16s ease}
 #gm-pv.on{opacity:1;transform:translateY(0)}
-#gm-pv .pv-eye{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.16em;color:var(--racing);display:block;margin-bottom:7px}
+#gm-pv .pv-eye{font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.16em;color:var(--racing);display:block;margin-bottom:7px}
 #gm-pv .pv-t{font-weight:900;font-size:1rem;line-height:1.2;color:var(--day);display:block;margin-bottom:6px}
 #gm-pv .pv-d{font-size:.82rem;line-height:1.45;color:#c9c9c4;display:block}
-#gm-pv .pv-m{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.1em;color:var(--steel);display:block;margin-top:10px;border-top:1px solid rgba(255,255,255,.12);padding-top:8px}
+#gm-pv .pv-m{font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.1em;color:var(--steel);display:block;margin-top:10px;border-top:1px solid rgba(255,255,255,.12);padding-top:8px}
 @media (hover:none){#gm-pv{display:none}}
-@media (max-width:620px){.area-nav{gap:0 12px}.area-nav a{font-size:.74rem;padding:9px 0}}
+@media (max-width:620px){.area-nav{gap:0 12px}.area-nav a{font-size:.75rem;padding:9px 0}}
 #tonight{padding-top:0}
 #tonight .drops{list-style:none;padding:0;margin:14px 0 0;max-width:760px}
 #tonight .drops li{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;padding:10px 0;border-top:1px solid #26262b;font-size:.95rem}
@@ -214,7 +215,7 @@ footer{padding:70px 0 50px;text-align:center}
 .foot-links{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;margin:22px 0 30px}
 .foot-links a{font-family:'Space Mono',monospace;font-size:.82rem;letter-spacing:.12em;text-decoration:none;border-bottom:2px solid var(--racing);padding-bottom:3px}
 .foot-links a:hover{color:var(--racing)}
-.fine{color:var(--steel);font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.08em}
+.fine{color:var(--steel);font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.08em}
 #letter form{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px;max-width:520px}
 #letter label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 #letter input[type=email]{flex:1;min-width:220px;background:#151518;border:1px solid #2c2c31;border-radius:999px;padding:12px 18px;color:var(--day);font-family:'Space Mono',monospace;font-size:.85rem}
@@ -230,6 +231,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--racing);outline-off
 .hero > :not(.hero-fx){position:relative;z-index:1}
 .hero .mark{width:min(64vw,330px);margin-bottom:30px;overflow:visible}
 .hero .wordmark{font-size:clamp(2.6rem,9vw,7.6rem)}
+/* a laptop screen (wide but under 900px tall) sees the mark, the wordmark and the four pills without scrolling (site review item 11) */
+@media (min-width:641px) and (max-height:900px){.hero{min-height:0;padding:36px 24px 30px}.hero .mark{width:min(26vw,170px);margin-bottom:16px}.hero .wordmark{font-size:clamp(2.4rem,6.4vw,4.8rem)}.hero .tagline{margin-bottom:0}.hero .hero-links{margin-top:24px}}
 .hero .max{transition:text-shadow .08s linear}
 .hero .pill:not(.solid){background:rgba(11,11,13,.82)}
 .hero .icon-btn{background:rgba(11,11,13,.85)}
@@ -311,7 +314,7 @@ footer svg{animation:gmx-beat 6s ease-in-out infinite}
 </style>
 <link rel="canonical" href="https://groovesmaxxing.com/">
 <link rel="alternate" type="application/rss+xml" title="fresh grooves friday" href="/feed.xml">
-<link rel="stylesheet" href="/gmx-player.css">
+<link rel="stylesheet" href="/gmx-player.css?v=2">
   <!-- gmx-seo start -->
   <script type="application/ld+json">
 {
@@ -356,10 +359,10 @@ footer svg{animation:gmx-beat 6s ease-in-out infinite}
   </script>
   <!-- gmx-seo end -->
 <link rel="stylesheet" href="/gmx-quick.css">
-<link rel="stylesheet" href="/gmx-sheet.css">
-<link rel="stylesheet" href="/gmx-nav.css?v=19">
-<script src="/gmx-spooky.js?v=3"></script><!-- halloween skin, runs until 2026-11-02 then does nothing -->
-<link rel="stylesheet" href="/gmx-read.css?v=8">
+<link rel="stylesheet" href="/gmx-sheet.css?v=2">
+<link rel="stylesheet" href="/gmx-nav.css?v=20">
+<script src="/gmx-spooky.js?v=4"></script><!-- halloween skin, runs until 2026-11-02 then does nothing -->
+<link rel="stylesheet" href="/gmx-read.css?v=9">
 <script>document.addEventListener('error',function(e){var t=e.target;if(t&&t.tagName==='IMG'&&t.getAttribute('data-fallback')){t.src=t.getAttribute('data-fallback');t.removeAttribute('data-fallback')}},true)</script>
 </head>
 <body>
@@ -1686,42 +1689,42 @@ fill="none" stroke="#F2F2EF" stroke-width="7" stroke-linecap="round" stroke-line
 <p class="note" style="margin:4px 0 20px">crate rule: grooves added weekly. the freshest adds live at the bottom of each crate ↓</p>
 <div class="players">
 <div class="player" style="--cover:url('media/covers/good-vibe-juice.jpg')">
-<h4>good vibe juice 🧃</h4>
+<h3>good vibe juice 🧃</h3>
 <iframe src="https://open.spotify.com/embed/playlist/0cJazkJ5pLBDxCJ8HRe4vx?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="good vibe juice playlist on Spotify"></iframe>
 <p class="note">509 tracks of sunshine</p>
 </div>
 <div class="player" style="--cover:url('media/covers/bumpy.jpg')">
-<h4>bumpy 🚧</h4>
+<h3>bumpy 🚧</h3>
 <iframe src="https://open.spotify.com/embed/playlist/4DfpAcNe8ezmDJYIsF2TEE?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="bumpy playlist on Spotify"></iframe>
 <p class="note">536 tracks for the night shift</p>
 </div>
 <div class="player" style="--cover:url('media/covers/waaavy.jpg')">
-<h4>waaavy 🌊</h4>
+<h3>waaavy 🌊</h3>
 <iframe src="https://open.spotify.com/embed/playlist/351sXMbk8NYd1nK3lVnSK2?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="waaavy playlist on Spotify"></iframe>
 <p class="note">622 tracks, the long swim</p>
 </div>
 <div class="player" style="--cover:url('media/covers/wen-playa.jpg')">
-<h4>wen playa 🌴</h4>
+<h3>wen playa 🌴</h3>
 <iframe src="https://open.spotify.com/embed/playlist/71z0Gztn3USCi5tTPAZqVf?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="wen playa playlist on Spotify"></iframe>
 <p class="note">231 tracks for golden hour</p>
 </div>
 <div class="player" style="--cover:url('media/covers/new-releases.jpg');--lift:2.4">
-<h4>new house releases</h4>
+<h3>new house releases</h3>
 <iframe src="https://open.spotify.com/embed/playlist/2XHhZCbEuUQhKwBK1G2gji?theme=0" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="new house releases playlist on Spotify"></iframe>
 <p class="note">what just dropped, while it's still warm</p>
 </div>
 <div class="player" style="--cover:url('media/covers/contraband-grooves.jpg');--lift:2.4">
-<h4>contraband grooves 💎</h4>
+<h3>contraband grooves 💎</h3>
 <iframe src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fgroovesmaxxing%2Fsets%2Fcontratbandgrooves&color=%23ff1c02&auto_play=false&show_teaser=false" height="352" loading="lazy" title="contraband grooves playlist on SoundCloud"></iframe>
 <p class="note">100+ edits you can't stream anywhere else</p>
 </div>
 <div class="player" style="--cover:url('media/covers/dj-sets.jpg');--lift:2.4">
-<h4>dj sets 🎛️</h4>
+<h3>dj sets 🎛️</h3>
 <iframe src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fgroovesmaxxing%2Fsets%2Fdj-sets&color=%23ff1c02&auto_play=false&show_teaser=false" height="352" loading="lazy" title="dj sets playlist on SoundCloud"></iframe>
 <p class="note">5 mixes, front to back</p>
 </div>
 <div class="player" style="--cover:url('media/covers/radio-sets.jpg');--lift:2.4">
-<h4>radio sets 📻</h4>
+<h3>radio sets 📻</h3>
 <iframe src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fgroovesmaxxing%2Fsets%2Fradio-sets&color=%23ff1c02&auto_play=false&show_teaser=false" height="352" loading="lazy" title="radio sets playlist on SoundCloud"></iframe>
 <p class="note">4 hours off the airwaves</p>
 </div>
@@ -1834,8 +1837,8 @@ fetch('/radar-denver.json').then(function(r){if(!r.ok)throw new Error(r.status);
 </script>
 <script src="/gmx-player.js" defer></script>
 <script src="/gmx-crate.js" defer></script>
-<script src="/gmx-account.js?v=18" defer></script>
-<script src="/gmx-sheet.js" defer></script>
+<script src="/gmx-account.js?v=19" defer></script>
+<script src="/gmx-sheet.js?v=2" defer></script>
 <script src="/gmx-nextup.js" defer></script>
 <script>
 (function(){

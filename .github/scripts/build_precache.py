@@ -6,12 +6,12 @@ import glob, json
 from datetime import date
 
 urls = ['/', '/scan', '/more', '/search', '/sets', '/artists', '/events', '/radio', '/crate', '/upcoming', '/open-ids', '/tracklists/',
-        '/gmx-nav.js?v=20', '/gmx-nav.css?v=19', '/gmx-quick.js', '/gmx-quick.css', '/gmx-sheet.js', '/gmx-sheet.css','/gmx-player.js', '/gmx-player.css', '/gmx-motion.js', '/gmx-motion.css',
-        '/gmx-refresh.js', '/gmx-clips.js', '/gmx-sets.js', '/gmx-follow.js', '/gmx-crate.js', '/gmx-upcoming.js', '/gmx-profile.css', '/gmx-label.css',
+        '/gmx-nav.js?v=20', '/gmx-nav.css?v=20', '/gmx-quick.js', '/gmx-quick.css', '/gmx-sheet.js?v=2', '/gmx-sheet.css?v=2','/gmx-player.js', '/gmx-player.css?v=2', '/gmx-motion.js', '/gmx-motion.css',
+        '/gmx-refresh.js', '/gmx-clips.js', '/gmx-sets.js', '/gmx-follow.js', '/gmx-crate.js', '/gmx-upcoming.js', '/gmx-profile.css?v=2', '/gmx-label.css?v=2',
         '/gmx-capture-worklet.js', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png', '/favicon.svg',
         '/sets-index.json', '/set-tags.json', '/search-index.json', '/artists-index.json', '/radar-denver.json', '/names-index.json', '/related-index.json', '/gmx-related.js', '/tracks-index.json', '/open-ids.json']
 urls += ['/upcoming.json', '/gmx-nextup.js']   # the home page's next up band (ui build 3)
-urls += ['/gmx-read.css?v=8']   # the readability layer on every page (2026-10-13)
+urls += ['/gmx-read.css?v=9']   # the readability layer on every page (2026-10-13)
 urls += ['/gmx-more.js?v=2', '/gmx-reel.js?v=1']   # the "more" expander on every page (2026-10-14)
 urls += ['/gmx-fonts.css'] + ['/' + f for f in sorted(glob.glob('fonts/*.woff2'))]
 for f in sorted(glob.glob('tracklists/*.html')):

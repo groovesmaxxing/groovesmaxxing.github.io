@@ -5,7 +5,7 @@
 .gmx-tabs{display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(11,11,13,.96);border-top:1px solid rgba(242,242,239,.12);padding-bottom:env(safe-area-inset-bottom);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 .gmx-tabs ul{list-style:none;margin:0 auto;padding:0;display:flex;justify-content:space-around;max-width:720px}
 .gmx-tabs li{flex:1;min-width:0}
-.gmx-tabs a{display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 2px 8px;min-height:54px;text-decoration:none;color:#A9A9B1;font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.02em;text-transform:lowercase;white-space:nowrap;-webkit-tap-highlight-color:transparent}
+.gmx-tabs a{display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 2px 8px;min-height:54px;text-decoration:none;color:#A9A9B1;font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.02em;text-transform:lowercase;white-space:nowrap;-webkit-tap-highlight-color:transparent}
 .gmx-tabs svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .gmx-tabs a[aria-current="page"]{color:#FF1C02}
 .gmx-tabs a:hover{color:#F2F2EF}
@@ -49,7 +49,7 @@ html.gmx-nowon .gmx-fab{bottom:calc(138px + env(safe-area-inset-bottom))}
 /* a wide screen has no tab bar and no floating button: the search button and the logo (to /, the way home) sit in the header, beside the account chip (gmx-account.js) */
 @media (min-width:1025px){.gmx-fab{display:none}}
 .gmx-hdr{display:flex;align-items:center;gap:10px;flex:none}
-.gmx-hdr .gmx-hmark,.gmx-hdr .gmx-hsearch{display:none;width:36px;height:36px;border-radius:50%;align-items:center;justify-content:center;border:1px solid rgba(242,242,239,.18);background:none;color:#8A8A93;padding:0;margin:0;cursor:pointer;text-decoration:none;font:inherit}
+.gmx-hdr .gmx-hmark,.gmx-hdr .gmx-hsearch{display:none;width:40px;height:40px;border-radius:50%;align-items:center;justify-content:center;border:1px solid rgba(242,242,239,.18);background:none;color:#8A8A93;padding:0;margin:0;cursor:pointer;text-decoration:none;font:inherit}
 .gmx-hdr .gmx-hmark{background:#0B0B0D;border-color:transparent}
 .gmx-hdr .gmx-hmark svg{width:34px;height:34px;overflow:visible}
 .gmx-hdr .gmx-hsearch svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
@@ -59,6 +59,7 @@ html.gmx-nowon .gmx-fab{bottom:calc(138px + env(safe-area-inset-bottom))}
 /* the back row: "← groovesmaxxing" first on every page, then the section crumb (all artists, all tracklists, the sets).
    the crumb hides on a phone, where the tab bar already covers it, so the row never wraps beside the chip. */
 .gmx-crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;min-width:0}
+.gmx-crumbs a{display:inline-flex;align-items:center;min-height:40px}  /* 40px hit area on the back row (site review item 8) */
 .gmx-crumbs .gmx-crumb2::before{content:"·";margin-right:12px;color:#8A8A93}
 @media (max-width:640px){.gmx-crumbs .gmx-crumb2{display:none}}
 
@@ -77,24 +78,24 @@ html.gmx-nowon .gmx-fab{bottom:calc(138px + env(safe-area-inset-bottom))}
 /* the scope chips: the tab this page sits under, and everything */
 .gmx-quick-scope{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px;flex:none}
 .gmx-quick-scope .gmx-quick-rl{margin-right:2px}
-.gmx-quick-chip{font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.04em;color:#c9c9c4;background:none;border:1px solid #26262b;border-radius:999px;padding:0 13px;min-height:36px;cursor:pointer}
+.gmx-quick-chip{font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.04em;color:#c9c9c4;background:none;border:1px solid #26262b;border-radius:999px;padding:0 13px;min-height:40px;cursor:pointer}
 .gmx-quick-chip:hover,.gmx-quick-chip:focus-visible{color:#FF1C02;border-color:#FF1C02;outline:none}
 .gmx-quick-chip[aria-pressed="true"]{color:#FF1C02;border-color:#FF1C02}
 .gmx-quick-recent{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px;flex:none}
 .gmx-quick-recent[hidden]{display:none}
-.gmx-quick-rl{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.14em;color:#8A8A93;text-transform:lowercase;margin-right:2px}
+.gmx-quick-rl{font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.14em;color:#8A8A93;text-transform:lowercase;margin-right:2px}
 .gmx-quick-res{flex:1;overflow-y:auto;margin-top:6px;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
-.gmx-quick-grp{font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:#FF1C02;margin:18px 0 2px;display:flex;justify-content:space-between;gap:12px}
+.gmx-quick-grp{font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:#FF1C02;margin:18px 0 2px;display:flex;justify-content:space-between;gap:12px}
 .gmx-quick-grp span{color:#8A8A93;letter-spacing:.06em;text-transform:none}
 .gmx-quick-hit{display:flex;align-items:baseline;gap:10px;padding:11px 8px;margin:0 -8px;border-radius:10px;border-bottom:1px solid #1b1b1f;text-decoration:none;color:#F2F2EF;min-height:44px;box-sizing:border-box}
 .gmx-quick-hit .k{flex:none;width:22px;font-size:.95rem}
 .gmx-quick-hit .n{font-weight:600;font-size:1rem;min-width:0;overflow-wrap:anywhere}
-.gmx-quick-hit .s{font-family:'Space Mono',monospace;font-size:.7rem;color:#8A8A93;letter-spacing:.03em;margin-left:auto;text-align:right;flex:none;max-width:45%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gmx-quick-hit .s{font-family:'Space Mono',monospace;font-size:.75rem;color:#8A8A93;letter-spacing:.03em;margin-left:auto;text-align:right;flex:none;max-width:45%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .gmx-quick-hit.lit,.gmx-quick-hit:hover{background:#141417}
 .gmx-quick-hit.lit .n{color:#FF1C02}
 .gmx-quick mark{background:none;color:#FF1C02}
 .gmx-quick-none{font-family:'Space Mono',monospace;font-size:.82rem;color:#8A8A93;line-height:1.7;padding:22px 0}
-.gmx-quick-count{font-family:'Space Mono',monospace;font-size:.72rem;color:#8A8A93;letter-spacing:.04em;margin:10px 0 0;min-height:1.2em;flex:none}
+.gmx-quick-count{font-family:'Space Mono',monospace;font-size:.75rem;color:#8A8A93;letter-spacing:.04em;margin:10px 0 0;min-height:1.2em;flex:none}
 .gmx-quick-all{flex:none;align-self:flex-start;font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.06em;color:#c9c9c4;text-decoration:none;border:1px solid #26262b;border-radius:999px;padding:0 16px;min-height:40px;line-height:40px;margin:12px 0 14px}
 .gmx-quick-all:hover,.gmx-quick-all:focus-visible{color:#FF1C02;border-color:#FF1C02;outline:none}
 .gmx-quick-open,.gmx-quick-open body{overflow:hidden}

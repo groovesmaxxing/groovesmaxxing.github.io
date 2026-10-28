@@ -365,7 +365,7 @@ function wireProfile(){
 function markMine(kind,slug,wrap){
   api('/verify/mine').then(function(r){return r.ok?r.json():[]}).then(function(rows){
     var mine=rows.filter(function(x){return x.kind===kind&&x.slug===slug&&x.state==='verified'})[0];
-    if(mine)wrap.innerHTML='<span class="gmx-claim on">✓ '+esc(badge(kind==='label'?'verified_label':'verified_artist'))+'</span><span class="gmx-claim-why">this is your page.</span>';
+    if(mine){wrap.classList.add('mine');wrap.innerHTML='<span class="gmx-claim on">✓ '+esc(badge(kind==='label'?'verified_label':'verified_artist'))+'</span><span class="gmx-claim-why">this is your page.</span>'}
   }).catch(function(){});
 }
 function claim(kind,slug,name,from){

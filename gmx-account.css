@@ -1,11 +1,12 @@
 /* groovesmaxxing account layer (accounts design 2026-10-12, build 3b): the "this is me" button on a
    profile, the sheet behind it, the account card on /more. palette and type as the rest of the site:
    night, racing, day, steel, Poppins and Space Mono. */
-.gmx-claim-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin:-8px 0 26px}
+.gmx-claim-row{display:none}  /* site review item 9: the claim lives in the "..." sheet now; the row shows only once the page is verified yours */
+.gmx-claim-row.mine{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin:-8px 0 26px}
 .gmx-claim{font-family:'Space Mono',monospace;font-size:.79rem;letter-spacing:.04em;color:#F2F2EF;background:none;border:1px dashed #8A8A93;border-radius:999px;padding:9px 16px;cursor:pointer;transition:border-color .15s,color .15s}
 .gmx-claim:hover,.gmx-claim:focus-visible{border-color:#FF1C02;color:#FF1C02;outline:none}
 .gmx-claim.on{border-style:solid;border-color:#FF1C02;color:#FF1C02;cursor:default}
-.gmx-claim-why{font-family:'Space Mono',monospace;font-size:.72rem;color:#8A8A93;letter-spacing:.04em}
+.gmx-claim-why{font-family:'Space Mono',monospace;font-size:.75rem;color:#8A8A93;letter-spacing:.04em}
 
 .gmx-acct{position:fixed;inset:0;z-index:86;display:flex;align-items:flex-end;justify-content:center}
 .gmx-acct[hidden]{display:none}
@@ -16,7 +17,7 @@
 .gmx-acct-head{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px}
 .gmx-acct-tx{flex:1;min-width:0}
 .gmx-acct-title{font-weight:900;font-size:1.12rem;line-height:1.25;letter-spacing:-.01em;margin:0;overflow-wrap:anywhere;color:#F2F2EF}
-.gmx-acct-sub{font-family:'Space Mono',monospace;font-size:.72rem;color:#8A8A93;letter-spacing:.04em;margin:5px 0 0;line-height:1.5}
+.gmx-acct-sub{font-family:'Space Mono',monospace;font-size:.75rem;color:#8A8A93;letter-spacing:.04em;margin:5px 0 0;line-height:1.5}
 .gmx-acct-sub[hidden]{display:none}
 .gmx-acct-x{flex:none;width:44px;height:44px;border-radius:999px;border:1px solid #26262b;background:none;color:#8A8A93;font-size:1.5rem;line-height:1;cursor:pointer}
 .gmx-acct-x:hover,.gmx-acct-x:focus-visible{color:#F2F2EF;border-color:#8A8A93;outline:none}
@@ -29,16 +30,16 @@
 @media (prefers-reduced-motion: reduce){.gmx-acct-panel{animation:none}}
 
 .gmx-acct-p{color:#c9c9c4;font-size:.96rem;line-height:1.65;margin:0 0 12px}
-.gmx-acct-p.small{font-family:'Space Mono',monospace;font-size:.72rem;color:#8A8A93;letter-spacing:.03em;line-height:1.7}
+.gmx-acct-p.small{font-family:'Space Mono',monospace;font-size:.75rem;color:#8A8A93;letter-spacing:.03em;line-height:1.7}
 .gmx-acct-code{display:flex;flex-direction:column;align-items:flex-start;gap:4px;margin:4px 0 16px;padding:14px 16px;border:1px solid #26262b;border-radius:14px;background:#0B0B0D}
-.gmx-acct-code span,.gmx-acct-code small{font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.2em;color:#8A8A93;text-transform:uppercase}
+.gmx-acct-code span,.gmx-acct-code small{font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.2em;color:#8A8A93;text-transform:uppercase}
 .gmx-acct-code b{font-family:'Space Mono',monospace;font-weight:700;font-size:clamp(1.6rem,7vw,2.2rem);letter-spacing:.12em;color:#FF1C02;user-select:all;-webkit-user-select:all}
 .gmx-acct-pins{list-style:none;margin:0 0 14px;padding:0;border-top:1px solid #1f1f23}
 .gmx-acct-pins li{display:flex;gap:12px;align-items:baseline;padding:8px 0;border-bottom:1px solid #1f1f23;font-size:.9rem}
-.gmx-acct-pins b{font-family:'Space Mono',monospace;font-weight:400;font-size:.7rem;letter-spacing:.08em;color:#FF1C02;flex:none;min-width:88px;text-transform:lowercase}
+.gmx-acct-pins b{font-family:'Space Mono',monospace;font-weight:400;font-size:.75rem;letter-spacing:.08em;color:#FF1C02;flex:none;min-width:88px;text-transform:lowercase}
 .gmx-acct-pins span{color:#c9c9c4;overflow-wrap:anywhere}
 .gmx-acct-ways section{padding:12px 0;border-top:1px solid #1f1f23}
-.gmx-acct-ways h3{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.16em;color:#8A8A93;text-transform:uppercase;margin:0 0 6px;font-weight:400}
+.gmx-acct-ways h3{font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.16em;color:#8A8A93;text-transform:uppercase;margin:0 0 6px;font-weight:400}
 .gmx-acct-ways p{color:#c9c9c4;font-size:.92rem;line-height:1.6;margin:0 0 8px}
 .gmx-acct-ways b{color:#F2F2EF;font-weight:600}
 .gmx-acct-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:8px}
@@ -50,43 +51,43 @@
 .gmx-acct-btn:disabled{opacity:.5;cursor:default}
 .gmx-acct-link{background:none;border:0;padding:0;font:inherit;color:#8A8A93;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 .gmx-acct-link:hover,.gmx-acct-link:focus-visible{color:#FF1C02;outline:none}
-.gmx-acct-msg{font-family:'Space Mono',monospace;font-size:.74rem;color:#8A8A93;letter-spacing:.03em;line-height:1.6;margin:8px 0 0;flex-basis:100%}
+.gmx-acct-msg{font-family:'Space Mono',monospace;font-size:.75rem;color:#8A8A93;letter-spacing:.03em;line-height:1.6;margin:8px 0 0;flex-basis:100%}
 .gmx-acct-msg.ok{color:#F2F2EF}
 .gmx-acct-msg:empty{display:none}
-.gmx-acct-form label{display:block;font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.14em;color:#8A8A93;text-transform:uppercase;margin:10px 0 5px}
+.gmx-acct-form label{display:block;font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.14em;color:#8A8A93;text-transform:uppercase;margin:10px 0 5px}
 .gmx-acct-form input,.gmx-acct-row input{flex:1;min-width:0;width:100%;background:transparent;border:2px solid #26262b;border-radius:14px;color:#F2F2EF;font-family:'Space Mono',monospace;font-size:.9rem;padding:11px 14px;box-sizing:border-box}
 .gmx-acct-row input{width:auto;min-width:200px}
 .gmx-acct-form input:focus,.gmx-acct-row input:focus{border-color:#FF1C02;outline:none}
 .gmx-acct-form[hidden]{display:none}
 
 .gmx-you{border:1px solid #26262b;border-radius:18px;padding:18px 18px 16px;margin:4px 0 8px;background:#141417}
-.gmx-you h3,.gmx-you h4{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.18em;color:#FF1C02;text-transform:uppercase;font-weight:400;margin:0 0 10px}
+.gmx-you h3,.gmx-you h4{font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.18em;color:#FF1C02;text-transform:uppercase;font-weight:400;margin:0 0 10px}
 .gmx-you h4{margin-top:18px;color:#8A8A93}
 .gmx-you-head{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:6px}
 .gmx-you-at{font-weight:900;font-size:1.35rem;letter-spacing:-.01em;color:#F2F2EF}
-.gmx-badge{font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.12em;color:#0B0B0D;background:#FF1C02;border-radius:999px;padding:5px 10px;text-transform:lowercase}
+.gmx-badge{font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.12em;color:#0B0B0D;background:#FF1C02;border-radius:999px;padding:5px 10px;text-transform:lowercase}
 .gmx-you-list{list-style:none;margin:0;padding:0;border-top:1px solid #1f1f23}
 .gmx-you-list li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #1f1f23}
 .gmx-you-list a{text-decoration:none;color:#F2F2EF;flex:1;min-width:0}
 .gmx-you-list b{font-weight:600}
-.gmx-you-list small{display:block;font-family:'Space Mono',monospace;font-size:.68rem;color:#8A8A93;letter-spacing:.04em;margin-top:2px}
+.gmx-you-list small{display:block;font-family:'Space Mono',monospace;font-size:.75rem;color:#8A8A93;letter-spacing:.04em;margin-top:2px}
 .gmx-team{margin-top:10px}
 .gmx-team>b{display:block;font-weight:600;margin-bottom:4px}
 
 /* build 2's site side (2026-10-13): the chip on a back row, the third-heart card, the toast, the switches */
-.top .gmx-chip{float:right;font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.06em;color:#8A8A93;text-decoration:none;border:1px solid #26262b;border-radius:999px;padding:7px 12px;line-height:1;margin-top:-6px;transition:color .15s,border-color .15s}
+.top .gmx-chip{float:right;font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.06em;color:#8A8A93;text-decoration:none;border:1px solid #26262b;border-radius:999px;padding:7px 12px;line-height:1;margin-top:-6px;transition:color .15s,border-color .15s}
 .top .gmx-chip:hover,.top .gmx-chip:focus-visible{color:#F2F2EF;border-color:#FF1C02;outline:none}
 .top .gmx-chip.in{color:#F2F2EF;border-color:#8A8A93}
 .top .gmx-chip b{font-weight:700}
 .gmx-nudge{position:fixed;left:12px;right:12px;bottom:calc(78px + env(safe-area-inset-bottom));z-index:70;background:#141417;color:#F2F2EF;border:1px solid #26262b;border-radius:16px;padding:14px 16px;box-shadow:0 14px 40px rgba(0,0,0,.45);font-family:'Poppins',sans-serif}
 .gmx-nudge p{margin:0 0 4px;font-size:.95rem;line-height:1.5}
 @media (min-width:720px){.gmx-nudge{left:auto;right:24px;bottom:24px;width:360px}}
-.gmx-acct-toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom));transform:translate(-50%,8px);background:#F2F2EF;color:#0B0B0D;font-family:'Space Mono',monospace;font-size:.74rem;letter-spacing:.04em;padding:10px 14px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:90;max-width:calc(100% - 32px);text-align:center}
+.gmx-acct-toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom));transform:translate(-50%,8px);background:#F2F2EF;color:#0B0B0D;font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.04em;padding:10px 14px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:90;max-width:calc(100% - 32px);text-align:center}
 .gmx-acct-toast.on{opacity:1;transform:translate(-50%,0)}
 .gmx-acct-check{display:flex;align-items:center;gap:10px;margin:12px 0 2px;font-size:.92rem;color:#c9c9c4;cursor:pointer}
 .gmx-acct-check input{width:18px;height:18px;accent-color:#FF1C02;margin:0;flex:none}
 .gmx-you-counts{list-style:none;display:flex;gap:18px;margin:4px 0 6px;padding:0;flex-wrap:wrap}
-.gmx-you-counts li{font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.06em;color:#8A8A93;display:flex;flex-direction:column;gap:2px}
+.gmx-you-counts li{font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.06em;color:#8A8A93;display:flex;flex-direction:column;gap:2px}
 .gmx-you-counts b{font-family:'Poppins',sans-serif;font-weight:900;font-size:1.3rem;letter-spacing:-.01em;color:#F2F2EF}
 .gmx-you-list li .gmx-acct-rowbtn{display:block;width:100%;background:none;border:0;padding:0;font:inherit;color:#F2F2EF;text-align:left;cursor:pointer}
 .gmx-acct-rowbtn b{font-weight:600}
@@ -108,8 +109,8 @@
 .gmx-toolset>b{display:block;font-weight:600;margin-bottom:4px}
 .gmx-track{flex-direction:column;align-items:stretch !important}
 .gmx-track-tx b{font-weight:600}
-.gmx-track-tx small{display:block;font-family:'Space Mono',monospace;font-size:.68rem;color:#8A8A93;letter-spacing:.04em;margin-top:2px}
+.gmx-track-tx small{display:block;font-family:'Space Mono',monospace;font-size:.75rem;color:#8A8A93;letter-spacing:.04em;margin-top:2px}
 .gmx-track .gmx-acct-row{margin-top:6px}
 .gmx-track-form:empty{display:none}
 .gmx-acct-form input[type=file]{padding:9px 12px;font-size:.78rem}
-.gmx-acct-form input[type=file]::file-selector-button{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.06em;border:1px solid #26262b;border-radius:999px;background:transparent;color:#F2F2EF;padding:6px 12px;margin-right:10px;cursor:pointer}
+.gmx-acct-form input[type=file]::file-selector-button{font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.06em;border:1px solid #26262b;border-radius:999px;background:transparent;color:#F2F2EF;padding:6px 12px;margin-right:10px;cursor:pointer}

@@ -1,12 +1,12 @@
 /* groovesmaxxing bottom sheet (ui build 2, 2026-10-11). pairs with gmx-sheet.js. the "…" button sits
    beside a heart or a follow pill; the sheet rises from the bottom on a phone and sits as a small panel
    on a wide screen. above the tab bar (60) and the follow-along bar (59), under quick search (90). */
-.gmx-more{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;border:1px solid rgba(242,242,239,.18);background:transparent;cursor:pointer;padding:0;color:#8A8A93;flex:none;vertical-align:middle;margin-left:6px;transition:color .15s,border-color .15s}
+.gmx-more{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:1px solid rgba(242,242,239,.18);background:transparent;cursor:pointer;padding:0;color:#8A8A93;flex:none;vertical-align:middle;margin-left:6px;transition:color .15s,border-color .15s}
 .gmx-more svg{width:18px;height:18px;fill:currentColor}
 .gmx-more:hover,.gmx-more:focus-visible{color:#F2F2EF;border-color:#FF1C02;outline:none}
-.card .gmx-more{width:34px;height:34px;margin-top:8px}
-td.x .gmx-more{width:30px;height:30px;margin-left:6px}td.x .gmx-more svg{width:15px;height:15px}
-.meta .gmx-more{height:34px;width:34px}
+.card .gmx-more{width:40px;height:40px;margin-top:8px}
+td.x .gmx-more{width:36px;height:36px;margin-left:6px}td.x .gmx-more svg{width:15px;height:15px}
+.meta .gmx-more{height:40px;width:40px}
 .gmx-sheet{position:fixed;inset:0;z-index:85;display:flex;align-items:flex-end;justify-content:center}
 .gmx-sheet[hidden]{display:none}
 .gmx-sheet-back{position:absolute;inset:0;background:rgba(11,11,13,.66);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
@@ -16,7 +16,7 @@ td.x .gmx-more{width:30px;height:30px;margin-left:6px}td.x .gmx-more svg{width:1
 .gmx-sheet-head{display:flex;align-items:flex-start;gap:12px;margin-bottom:8px}
 .gmx-sheet-tx{flex:1;min-width:0}
 .gmx-sheet-title{font-weight:900;font-size:1.12rem;line-height:1.25;letter-spacing:-.01em;margin:0;overflow-wrap:anywhere}
-.gmx-sheet-sub{font-family:'Space Mono',monospace;font-size:.72rem;color:#8A8A93;letter-spacing:.04em;margin:5px 0 0;line-height:1.5}
+.gmx-sheet-sub{font-family:'Space Mono',monospace;font-size:.75rem;color:#8A8A93;letter-spacing:.04em;margin:5px 0 0;line-height:1.5}
 .gmx-sheet-sub[hidden]{display:none}
 .gmx-sheet-x{flex:none;width:44px;height:44px;border-radius:999px;border:1px solid #26262b;background:none;color:#8A8A93;font-size:1.5rem;line-height:1;cursor:pointer}
 .gmx-sheet-x:hover,.gmx-sheet-x:focus-visible{color:#FF1C02;border-color:#FF1C02;outline:none}
@@ -25,7 +25,7 @@ td.x .gmx-more{width:30px;height:30px;margin-left:6px}td.x .gmx-more svg{width:1
 .gmx-sheet-act:last-child{border-bottom:0}
 .gmx-sheet-act svg{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;color:#8A8A93}
 .gmx-sheet-act .l{flex:1;min-width:0;overflow-wrap:anywhere}
-.gmx-sheet-act .n{font-family:'Space Mono',monospace;font-size:.7rem;color:#8A8A93;letter-spacing:.04em;flex:none}
+.gmx-sheet-act .n{font-family:'Space Mono',monospace;font-size:.75rem;color:#8A8A93;letter-spacing:.04em;flex:none}
 .gmx-sheet-act:hover,.gmx-sheet-act:focus-visible{background:#1b1b1f;outline:none}
 .gmx-sheet-act.on,.gmx-sheet-act.on svg{color:#FF1C02}
 .gmx-sheet-act.on svg path{fill:#FF1C02}

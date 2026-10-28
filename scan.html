@@ -32,8 +32,8 @@ a{color:inherit}
 a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--racing);outline-offset:3px}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .top{display:flex;justify-content:space-between;align-items:center;padding:calc(18px + env(safe-area-inset-top)) 0 0}
-.wm{font-weight:900;font-size:1.05rem;letter-spacing:-.02em;text-decoration:none}
-.wm span{color:var(--racing)}
+.back{display:inline-flex;align-items:center;min-height:40px;font-family:'Space Mono',monospace;font-size:.82rem;color:var(--steel);text-decoration:none;letter-spacing:.04em}
+.back:hover{color:var(--racing)}
 .eyebrow{font-family:'Space Mono',monospace;font-size:.8rem;letter-spacing:.06em;color:var(--racing);text-transform:lowercase}
 h1.eyebrow{margin:0;font-weight:400}
 
@@ -55,11 +55,11 @@ h1.eyebrow{margin:0;font-weight:400}
 .rec .n{color:var(--racing);min-width:2ch;text-align:right}
 .mic{color:#c9c9c4;font-size:.98rem;line-height:1.65;max-width:400px;margin-top:22px}
 .lvl{display:none;width:min(320px,100%);height:36px;margin-top:14px;opacity:.9}.stage.listening .lvl,.stage.finding .lvl{display:block}
-.stat{font-family:'Space Mono',monospace;font-size:.74rem;letter-spacing:.06em;color:var(--steel);margin-top:12px;min-height:1.3em;max-width:360px;line-height:1.6}.stat b{font-weight:400;color:var(--racing)}
+.stat{font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.06em;color:var(--steel);margin-top:12px;min-height:1.3em;max-width:360px;line-height:1.6}.stat b{font-weight:400;color:var(--racing)}
 .card.on{animation:cardin .32s cubic-bezier(.2,.7,.2,1)}@keyframes cardin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 .skel{display:grid;gap:12px}.skel i{display:block;border-radius:10px;background:linear-gradient(90deg,rgba(242,242,239,.05),rgba(242,242,239,.12),rgba(242,242,239,.05));background-size:200% 100%;animation:shimmer 1.2s linear infinite}
 @keyframes shimmer{to{background-position:-200% 0}}.skel .a{width:min(100%,220px);aspect-ratio:1;margin:0 auto}.skel .b{height:34px;width:70%}.skel .c{height:18px;width:45%}.skel .d{height:40px;width:100%;border-radius:999px}
-.timing{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.06em;color:var(--steel);margin-top:14px;line-height:1.7}.timing b{font-weight:400;color:var(--day)}
+.timing{font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.06em;color:var(--steel);margin-top:14px;line-height:1.7}.timing b{font-weight:400;color:var(--day)}
 .card .art img{opacity:0;transition:opacity .4s}.card .art img.in{opacity:1}.card .art.found{border-color:rgba(255,28,2,.45)}
 .hear li small{display:block;font-weight:400;color:var(--steel);font-size:.78rem;font-family:'Space Mono',monospace;margin-top:2px}
 .btn.find{color:var(--steel);border-style:dashed}
@@ -91,7 +91,7 @@ h1.eyebrow{margin:0;font-weight:400}
 .card .sub{font-weight:600;font-size:1.12rem;line-height:1.3;color:var(--day);overflow-wrap:anywhere;margin-top:2px}
 .card .sure{font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.08em;color:var(--steel);margin-top:8px}
 .card .lab{font-family:'Space Mono',monospace;font-size:.8rem;color:var(--steel);margin-top:8px;letter-spacing:.04em}
-.pill{display:inline-block;font-family:'Space Mono',monospace;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:5px 11px;margin-top:12px;color:var(--day)}
+.pill{display:inline-block;font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:5px 11px;margin-top:12px;color:var(--day)}
 .pill.out{border-color:var(--racing);color:var(--racing)}
 .pill.unr{border-color:#c9c9c4}
 .row{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
@@ -155,39 +155,39 @@ details.guess[open]>summary::after{content:' \2212'}
 /* recent */
 .autobar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;margin:-6px 0 14px;min-height:0}
 .autobar .btn.on{border-color:var(--racing);color:var(--racing)}
-.autobar .next{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.06em;color:var(--steel)}
+.autobar .next{font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.06em;color:var(--steel)}
 .autobar .next b{font-weight:400;color:var(--day)}
-.autobar .note{flex-basis:100%;text-align:center;font-family:'Space Mono',monospace;font-size:.72rem;color:var(--steel);line-height:1.6}
+.autobar .note{flex-basis:100%;text-align:center;font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel);line-height:1.6}
 .pendingbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;border:1px solid rgba(255,28,2,.45);border-radius:14px;padding:10px 14px;margin:0 0 18px;font-family:'Space Mono',monospace;font-size:.76rem;line-height:1.6;color:var(--day)}
 .pendingbar b{font-weight:400;color:var(--racing)}
-.pendingbar .btn{padding:7px 12px;font-size:.72rem}
+.pendingbar .btn{padding:7px 12px;font-size:.75rem}
 .pendingbar[hidden]{display:none}
-.session .smeta{font-family:'Space Mono',monospace;font-size:.74rem;color:var(--steel);margin:0 0 8px;letter-spacing:.04em}
+.session .smeta{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel);margin:0 0 8px;letter-spacing:.04em}
 .session .when{color:var(--racing)}
-.session .stools{margin-top:12px}.session .stools .btn{padding:7px 12px;font-size:.72rem}.session .stools .msg{margin:0}
+.session .stools{margin-top:12px}.session .stools .btn{padding:7px 12px;font-size:.75rem}.session .stools .msg{margin:0}
 .recent{margin:10px 0 40px}
 .recent h3{font-family:'Space Mono',monospace;font-weight:400;font-size:.8rem;letter-spacing:.06em;color:var(--steel);text-transform:lowercase;margin:0 0 8px}
 .recent ul{list-style:none;border-top:1px solid var(--line)}
 .recent li{border-bottom:1px solid var(--line);padding:12px 0;display:flex;justify-content:space-between;gap:12px;align-items:baseline}
 .recent .who{font-weight:600;font-size:.95rem;overflow-wrap:anywhere}.recent .who a.sublink{color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,28,2,.45)}.recent .who a.sublink:hover{color:var(--racing)}
 .recent .who small{display:block;font-weight:400;color:var(--steel);font-size:.82rem}
-.recent .when{font-family:'Space Mono',monospace;font-size:.74rem;color:var(--steel);flex:none}
+.recent .when{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel);flex:none}
 .recent .none{color:var(--steel);font-family:'Space Mono',monospace;font-size:.82rem;padding:12px 0}
 .recent li{flex-wrap:wrap}
 .recent .acts{flex-basis:100%;display:flex;gap:8px;align-items:center;margin-top:4px}
-.recent .acts .btn{padding:7px 12px;font-size:.72rem}
+.recent .acts .btn{padding:7px 12px;font-size:.75rem}
 .recent .acts .msg{margin:0}
 .you .prof{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin:2px 0 6px}
 .you .prof .at{font-weight:700;font-size:1.4rem;letter-spacing:-.01em;overflow-wrap:anywhere;line-height:1.2}
 .you .prof .at.none{font-weight:400;font-size:1rem;color:var(--steel)}
-.you .prof small{font-family:'Space Mono',monospace;font-size:.72rem;color:var(--steel);letter-spacing:.04em;overflow-wrap:anywhere}
-.you .prof .chg{font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.1em;color:var(--steel);background:none;border:0;border-bottom:1px solid var(--line);padding:0 0 1px;cursor:pointer}
+.you .prof small{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel);letter-spacing:.04em;overflow-wrap:anywhere}
+.you .prof .chg{font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.1em;color:var(--steel);background:none;border:0;border-bottom:1px solid var(--line);padding:0 0 1px;cursor:pointer}
 .you .prof .chg:hover{color:var(--racing);border-color:var(--racing)}
-.you .stat{font-family:'Space Mono',monospace;font-size:.74rem;color:var(--steel);letter-spacing:.04em;line-height:1.7;margin:0 0 6px;max-width:none;min-height:0}
+.you .stat{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel);letter-spacing:.04em;line-height:1.7;margin:0 0 6px;max-width:none;min-height:0}
 .you .stat b{font-weight:400;color:var(--day)}
 .you .setup{counter-reset:s;margin:10px 0 0}
 .you .setup li{display:block;padding:12px 0 12px 34px;position:relative}
-.you .setup li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:12px;width:20px;height:20px;border:2px solid var(--line);border-radius:50%;font-family:'Space Mono',monospace;font-size:.64rem;display:flex;align-items:center;justify-content:center;color:var(--steel)}
+.you .setup li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:12px;width:20px;height:20px;border:2px solid var(--line);border-radius:50%;font-family:'Space Mono',monospace;font-size:.75rem;display:flex;align-items:center;justify-content:center;color:var(--steel)}
 .you .setup li.done::before{content:'\2713';border-color:var(--racing);color:var(--racing)}
 .you .setup .t{font-weight:600;font-size:.92rem}
 .you .setup li.done .t{color:var(--steel);font-weight:400}
@@ -195,13 +195,13 @@ details.guess[open]>summary::after{content:' \2212'}
 .you .setup .form,.you #hbox .form{border-top:0;margin:8px 0 0;padding-top:0}
 .you .setup .form label{margin-top:0}
 .you .setup .row,.you .tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px}
-.you .setup .row .btn,.you .tools .btn,.you #hbox .btn{padding:7px 12px;font-size:.72rem}
+.you .setup .row .btn,.you .tools .btn,.you #hbox .btn{padding:7px 12px;font-size:.75rem}
 .you .setup .msg,.you .tools .msg,.you #hbox .msg{margin:0;flex-basis:100%}
 .you .tools{margin-top:14px}
-.autobar .you-chip{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.06em;color:var(--steel);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:7px 11px;line-height:1;max-width:46vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.autobar .you-chip{font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.06em;color:var(--steel);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:7px 11px;line-height:1;max-width:46vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .autobar .you-chip b{font-weight:400;color:var(--day)}
 .autobar .you-chip.in{border-color:rgba(255,28,2,.45)}
-.fine{font-family:'Space Mono',monospace;font-size:.74rem;color:var(--steel);letter-spacing:.04em;line-height:1.8;margin:10px 0 40px}
+.fine{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel);letter-spacing:.04em;line-height:1.8;margin:10px 0 40px}
 .fine a{text-decoration:none}
 .fine a:hover{color:var(--racing)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
@@ -209,17 +209,17 @@ details.guess[open]>summary::after{content:' \2212'}
 </style>
 <link rel="canonical" href="https://groovesmaxxing.com/scan">
 <link rel="stylesheet" href="/gmx-motion.css">
-<link rel="stylesheet" href="/gmx-nav.css?v=19">
+<link rel="stylesheet" href="/gmx-nav.css?v=20">
 <link rel="stylesheet" href="/gmx-quick.css">
 <meta property="og:image" content="https://groovesmaxxing.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="/gmx-read.css?v=8">
+<link rel="stylesheet" href="/gmx-read.css?v=9">
 </head>
 <body>
 <div class="wrap">
 
 <div class="top">
-<a class="wm" href="/">grooves<span>MAXXING</span></a>
+<a class="back" href="/">← groovesmaxxing</a>
 <h1 class="eyebrow">scan</h1>
 </div>
 
@@ -284,7 +284,7 @@ details.guess[open]>summary::after{content:' \2212'}
 
 <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})})}</script>
 <script src="/gmx-clips.js"></script>
-<script src="/gmx-account.js?v=18"></script>
+<script src="/gmx-account.js?v=19"></script>
 <script src="/gmx-crate.js"></script>
 <script>
 (function(){

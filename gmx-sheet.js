@@ -123,6 +123,8 @@ function profileModel(sec){
   var pill=sec.querySelector('.gmx-follow');
   if(pill){var on=pill.getAttribute('aria-pressed')==='true';acts.push({icon:'person',label:on?'following, tap to stop':'follow '+name,pressed:on,onClick:function(){pill.click()}})}
   [].slice.call(sec.querySelectorAll('.links a[href]')).forEach(function(a){var l=(a.getAttribute('aria-label')||a.getAttribute('title')||text(a)).replace(/\s*[↗→]\s*$/,'');if(l)acts.push({icon:'link',label:l,href:a.getAttribute('href'),external:/^https?:/.test(a.getAttribute('href'))})});
+  var claim=document.querySelector('.gmx-claim-row:not(.mine) .gmx-claim');  /* "this is me" lives here now (site review item 9) */
+  if(claim)acts.push({icon:'person',label:kind==='label'?'run this label? claim the page':'this is me: claim this page',onClick:function(){claim.click()}});
   acts.push({icon:'share',label:'share this page',onClick:share(name+' on groovesmaxxing',location.pathname.replace(/\.html$/,''))});
   acts.push({icon:'scan',label:'scan what is playing',href:'/scan'});
   return {title:name,sub:kind==='label'?'label':'artist',actions:acts};

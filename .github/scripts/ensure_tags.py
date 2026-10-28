@@ -20,8 +20,8 @@ def files(pattern):
 MOTION_CSS = '<link rel="stylesheet" href="/gmx-motion.css">'
 MOTION_JS = '<script src="/gmx-motion.js" defer></script>'
 T = {
-    'player_css': '<link rel="stylesheet" href="/gmx-player.css">',
-    'nav_css': '<link rel="stylesheet" href="/gmx-nav.css?v=19">',
+    'player_css': '<link rel="stylesheet" href="/gmx-player.css?v=2">',
+    'nav_css': '<link rel="stylesheet" href="/gmx-nav.css?v=20">',
     'player_js': '<script src="/gmx-player.js" defer></script>',
     'nav_js': '<script src="/gmx-nav.js?v=20" defer></script>',
     'follow_js': '<script src="/gmx-follow.js" defer></script>',
@@ -30,11 +30,11 @@ T = {
     'upcoming_js': '<script src="/gmx-upcoming.js" defer></script>',
     'quick_css': '<link rel="stylesheet" href="/gmx-quick.css">',
     'quick_js': '<script src="/gmx-quick.js" defer></script>',
-    'sheet_css': '<link rel="stylesheet" href="/gmx-sheet.css">',
-    'sheet_js': '<script src="/gmx-sheet.js" defer></script>',
+    'sheet_css': '<link rel="stylesheet" href="/gmx-sheet.css?v=2">',
+    'sheet_js': '<script src="/gmx-sheet.js?v=2" defer></script>',
     # the account layer (2026-10-12): "this is me" on every artist and label profile
-    'account_css': '<link rel="stylesheet" href="/gmx-account.css">',
-    'account_js': '<script src="/gmx-account.js?v=18" defer></script>',
+    'account_css': '<link rel="stylesheet" href="/gmx-account.css?v=2">',
+    'account_js': '<script src="/gmx-account.js?v=19" defer></script>',
     # the "more" expander (2026-10-14): any element with data-more collapses behind one button
     'more_js': '<script src="/gmx-more.js?v=2" defer></script>',
     # the name reels on the home page (2026-10-14)
@@ -58,7 +58,7 @@ def ensure(path, heads, before_motion, after_motion):
 
 # the readability layer (2026-10-13): on every page, as the last tag in the head, so its rules win over the
 # page's own <style> block at the same selector. a page the laptop rewrites gets it back here.
-READ_CSS = '<link rel="stylesheet" href="/gmx-read.css?v=8">'
+READ_CSS = '<link rel="stylesheet" href="/gmx-read.css?v=9">'
 def ensure_read(path):
     s = open(path, encoding='utf-8').read(); o = s
     if 'http-equiv="refresh"' in s or path.startswith('google') or '</head>' not in s: return False
