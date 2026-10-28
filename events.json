@@ -1,6 +1,20 @@
 {
- "generated": "2026-10-27T20:37:53Z",
+ "generated": "2026-10-28T06:13:09Z",
  "events": [
+  {
+   "at": "2026-10-28T06:13:09Z",
+   "what": "page /scan",
+   "from": "ok",
+   "to": "wrong",
+   "detail": "missing gmx-config.json"
+  },
+  {
+   "at": "2026-10-28T06:13:09Z",
+   "what": "freshness F-40",
+   "from": "ok",
+   "to": "fail",
+   "detail": "the artist count on the home page and the artist index equals the number of profiles: 718 profiles, but artists.html says []"
+  },
   {
    "at": "2026-10-27T20:37:53Z",
    "what": "workflow freshness",
