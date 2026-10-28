@@ -20,12 +20,18 @@
   function el(tag, attrs, html) { var e = document.createElement(tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (html) e.innerHTML = html; return e; }
 
   function toggle() {
-    var b = el('button', { id: 'gmx-spooky-toggle', type: 'button', 'aria-label': LEVEL ? 'turn off halloween mode' : 'turn on halloween mode', title: 'halloween mode' }, '🕸');
+    /* the glyph is a drawn web, not the 🕸 emoji: that one is dark grey in the system emoji font and vanished on the
+       dark header. orange while the skin is on, dim while it is off, so the button also shows the state. */
+    var ICON = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">' +
+      '<path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/>' +
+      '<path d="M12 6.5q3.9 1.6 5.5 5.5-1.6 3.9-5.5 5.5-3.9-1.6-5.5-5.5 1.6-3.9 5.5-5.5z"/>' +
+      '<path d="M12 9.5q2.2.9 2.5 2.5-.3 1.6-2.5 2.5-2.2-.9-2.5-2.5.3-1.6 2.5-2.5z"/></svg>';
+    var b = el('button', { id: 'gmx-spooky-toggle', type: 'button', 'aria-label': LEVEL ? 'turn off halloween mode' : 'turn on halloween mode', title: LEVEL ? 'halloween mode: on' : 'halloween mode: off' }, ICON);
     b.onclick = function () { try { localStorage.setItem('gmx-spooky-off', LEVEL ? '1' : '0'); } catch (e) {} location.reload(); };
     /* styled here, not in base(), so the button looks the same when the skin is off and it is the way back on */
     var s = document.createElement('style'); s.id = 'gmx-spooky-toggle-css';
-    s.textContent = '#gmx-spooky-toggle{flex:none;position:relative;z-index:3;width:34px;height:34px;padding:0;margin:0;border-radius:50%;border:1px solid rgba(255,106,0,.5);background:rgba(11,11,13,.8);font-size:16px;line-height:1;cursor:pointer}' +
-      '#gmx-spooky-toggle:hover,#gmx-spooky-toggle:focus-visible{border-color:' + ORANGE + ';outline:none}' +
+    s.textContent = '#gmx-spooky-toggle{flex:none;position:relative;z-index:3;display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;padding:0;margin:0;border-radius:50%;border:1px solid rgba(255,106,0,.5);background:rgba(11,11,13,.8);color:' + (LEVEL ? ORANGE : '#8A8A93') + ';line-height:1;cursor:pointer}' +
+      '#gmx-spooky-toggle:hover,#gmx-spooky-toggle:focus-visible{border-color:' + ORANGE + ';color:' + ORANGE + ';outline:none}' +
       '#gmx-spooky-toggle.fixed{position:fixed;right:12px;top:calc(12px + env(safe-area-inset-top));z-index:60}';
     document.head.appendChild(s);
     /* into the header row (.gmx-hdr, painted by gmx-account.js once the shell has loaded it), before the chip.

@@ -2,7 +2,7 @@
    network first, cache fallback, offline page in the voice.
    only same-origin GET requests are ever cached. the api host is never touched. */
 var CACHE = 'gmx-v29';
-var SHELL = ['/scan', '/more', '/gmx-clips.js', '/gmx-refresh.js', '/gmx-nav.js?v=19', '/gmx-nav.css?v=18', '/gmx-account.js?v=17', '/gmx-account.css', '/gmx-read.css?v=8', '/gmx-more.js?v=2','/gmx-player.js', '/gmx-player.css', '/gmx-sets.js', '/search', '/gmx-profile.css', '/gmx-label.css', '/gmx-capture-worklet.js', '/gmx-fonts.css', '/fonts/poppins-400-latin.woff2', '/fonts/poppins-600-latin.woff2', '/fonts/poppins-900-latin.woff2', '/fonts/spacemono-400-latin.woff2', '/fonts/spacemono-700-latin.woff2', '/artists-index.json', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png', '/favicon.svg'];
+var SHELL = ['/scan', '/more', '/gmx-clips.js', '/gmx-refresh.js', '/gmx-nav.js?v=20', '/gmx-nav.css?v=19', '/gmx-account.js?v=18', '/gmx-account.css', '/gmx-read.css?v=8', '/gmx-more.js?v=2','/gmx-player.js', '/gmx-player.css', '/gmx-sets.js', '/search', '/gmx-profile.css', '/gmx-label.css', '/gmx-capture-worklet.js', '/gmx-fonts.css', '/fonts/poppins-400-latin.woff2', '/fonts/poppins-600-latin.woff2', '/fonts/poppins-900-latin.woff2', '/fonts/spacemono-400-latin.woff2', '/fonts/spacemono-700-latin.woff2', '/artists-index.json', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png', '/favicon.svg'];
 
 var OFFLINE = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">' +
   '<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">' +

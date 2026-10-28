@@ -8,7 +8,7 @@
    "/" and ctrl/cmd+k open the sheet, as before. a plain tap on any /search link opens it too; a modified
    click (cmd, ctrl, shift, middle) still opens /search in a tab. on /search itself the button focuses the box. */
 /* halloween skin (2026-10-27): every page that loads the shell also gets /gmx-spooky.js, which switches itself off after 2026-11-02. index.html loads it in its head instead, so its set swap lands before the carousel starts. */
-if (!document.querySelector('script[src^="/gmx-spooky.js"]')) { var gmxSpk = document.createElement('script'); gmxSpk.src = '/gmx-spooky.js?v=2'; document.head.appendChild(gmxSpk); }
+if (!document.querySelector('script[src^="/gmx-spooky.js"]')) { var gmxSpk = document.createElement('script'); gmxSpk.src = '/gmx-spooky.js?v=3'; document.head.appendChild(gmxSpk); }
 
 (function(){
 'use strict';
@@ -191,7 +191,7 @@ function watchNow(){
 }
 function loadAccount(){
   if(window.gmxAccount||document.querySelector('script[src^="/gmx-account.js"]'))return;
-  var s=document.createElement('script');s.src='/gmx-account.js?v=17';s.defer=true;document.head.appendChild(s);
+  var s=document.createElement('script');s.src='/gmx-account.js?v=18';s.defer=true;document.head.appendChild(s);
 }
 function mount(){
   if(document.querySelector('meta[http-equiv="refresh"]'))return;
