@@ -581,6 +581,32 @@ function heardRows(c){
   });
   return out+'</ul>';
 }
+/* the card reads the track (recognizer packet 7, 2026-10-28; the wording is DECISION 11, approved 2026-10-28 as
+   written): three lines from fields the recognizer sends as data. other_sets is every place the recording was
+   heard, folded by set and second with how many people heard it there (placements, sightings and our own
+   tracklist rows), so it replaces the heard-in list when present. the sets line counts sets other than the one
+   this scan sits in, and shows from two up, since the approved sentence is plural. the eta line shows on an
+   unreleased track only. the named-by line maps the recognizer's named_by kind to the five approved phrases and
+   says nothing for any other kind. */
+var NAMED_BY={artist:'named by the artist',label:'named by the label',catalog:'named from the release',tracklist:'named from a tracklist',owner:'named by groovesmaxxing'};
+function trackRows(c,cur){
+  if(!c||!c.track_id)return '';
+  var out='', sets=c.other_sets||[];
+  var n=c.sets_count||0, here=cur&&cur.in_set&&cur.in_set.set_title;
+  if(here&&sets.some(function(r){return r.set_title===here}))n-=1;
+  if(n>=2)out+='<p class="ttl">also played in '+n+' other sets</p>';
+  if(c.status==='unreleased')out+='<p class="ttl">'+(c.release_date?'due out '+esc(c.release_date):'release date not known yet')+'</p>';
+  if(c.named_by&&NAMED_BY[c.named_by])out+='<p class="ttl">'+NAMED_BY[c.named_by]+'</p>';
+  if(sets.length){
+    out+='<h3>heard in</h3><ul class="heard">';
+    sets.slice(0,5).forEach(function(r){
+      var pu=safeUrl(r.page_url), dl=safeUrl(r.deep_link);
+      out+='<li>'+(pu?'<a href="'+esc(pu)+'">'+esc(r.set_title)+'</a>':esc(r.set_title))+'<span class="at">'+(dl?'<a href="'+esc(dl)+'" target="_blank" rel="noopener">'+esc(r.at)+'</a>':esc(r.at))+(r.people>1?' ('+esc(r.people)+')':'')+'</span></li>';
+    });
+    out+='</ul>';
+  }
+  return out;
+}
 /* "you're listening to": the set and the spot, straight from the scan, no typing. it only
    comes back for a set that already has its page here or sits on the dj's, label's, venue's
    or festival's own channel. */
@@ -668,11 +694,12 @@ function resultCard(cur){
     if(cand.label&&cand.status==='out now')out+='<p class="lab">'+esc(cand.label)+(cand.release_date?' · '+esc(cand.release_date):'')+'</p>';
     out+='<p class="sure">'+sureLine(cand)+'</p>';
     out+=statusPill(cand.status);
+    out+=trackRows(cand,cur);
     var links=storeRow(cand);
     out+='<div class="row" id="storerow">'+links+'<button class="btn" data-act="share">share</button></div>';
     out+='<div class="row" id="artistrow"></div>';
     out+=inSetRows(cur);
-    out+=heardRows(cand);
+    out+=(cand.other_sets&&cand.other_sets.length)?'':heardRows(cand);
     out+='<div id="hear"></div>';
     out+=pathBlock(cur);
     out+='<h3>right?</h3><div class="row"><button class="btn red" data-act="confirm">that\'s right</button><button class="btn" data-act="correct">it\'s actually...</button></div>';
@@ -1019,7 +1046,7 @@ function renderHistory(){
     if(r.sent&&r.sent.status)who+='<small>not kept, the app refused it ('+esc(String(r.sent.status))+(r.sent.detail?': '+esc(r.sent.detail):'')+')</small>';
     var acts='', btns='';
     if(r.clip&&r.id)btns='<button class="btn" data-clip="again" data-id="'+esc(r.id)+'">scan again</button>'+(r.kind!=='match'?'<button class="btn" data-clip="help" data-id="'+esc(r.id)+'">help us find it</button>':'');
-    if(r.rid&&r.status!=='out now'&&(r.kind==='match'||r.kind==='guess'))btns+='<button class="btn ghost" data-follow="'+esc(r.rid)+'">tell me when it\'s out</button>';
+    if(r.rid&&r.status!=='out now'&&(r.kind==='match'||r.kind==='guess'))btns+='<button class="btn ghost" data-follow="'+esc(r.rid)+'">tell me when it drops</button>';
     if(btns)acts='<span class="acts">'+btns+'<span class="msg" role="status"></span></span>';
     return '<li><span class="who">'+who+'</span><span class="when">'+when(r.t)+'</span>'+acts+'</li>';
   }).join('');
@@ -1132,10 +1159,10 @@ autobar.addEventListener('click',function(e){
   if(b.id==='autonow'){if(!busy){clearTimeout(autoTimer);autoTimer=null;startScan()}}
 });
 /* tonight: every result while a session is open, with its offset from the start. a repeat of the last row counts up instead of repeating. */
-/* ---- tell me when it's out, and the account (2026-10-11) ---- */
+/* ---- tell me when it drops (the follow control, reworded by DECISION 11 on 2026-10-28), and the account (2026-10-11) ---- */
 function followRow(cand){
   if(cand&&cand.status==='out now')return '';
-  var what=cand&&cand.library_entry_id&&!(cand.artist_claim&&cand.title_claim)?'tell me when it gets a name':'tell me when it\'s out';
+  var what=cand&&cand.library_entry_id&&!(cand.artist_claim&&cand.title_claim)?'tell me when it gets a name':'tell me when it drops';
   return '<div class="row" id="followrow"><button class="btn" data-act="follow">'+what+'</button></div>';
 }
 /* push lives in gmx-account.js now */
@@ -1250,7 +1277,7 @@ function renderSetup(){
      form:'<form class="form on" id="hform2" data-first="1" autocomplete="off"><label for="y-handle">handle</label><input id="y-handle" name="handle" maxlength="30" placeholder="yourname" required><div class="row"><button class="btn" type="submit">that is me</button><span class="msg" role="status" id="hmsg"></span></div></form>'},
     {done:pushDone,t:'turn on notifications',p:pushNow==='none'?'this browser cannot push. on iphone, add the app to the home screen first. alerts go by email either way.':pushNow==='blocked'?'blocked for this site in the browser settings. alerts go by email either way.':'a push to this phone when an ID you follow gets a name or comes out. email otherwise.',
      form:'<div class="row">'+(cannot?'':'<button class="btn" type="button" data-you="push">turn on</button>')+'<button class="btn ghost" type="button" data-you="skip">email is fine</button></div>'},
-    {done:(me.followed||me.follows)>0,t:'follow your first ID',p:'tap "tell me when it\'s out" on a scan, in the card or in recent scans, and it lands here.',form:''}
+    {done:(me.followed||me.follows)>0,t:'follow your first ID',p:'tap "tell me when it drops" on a scan, in the card or in recent scans, and it lands here.',form:''}
   ];
   var left=steps.filter(function(x){return !x.done}).length;
   if(!left){if(setupWas===false)youNote('you are set.',true);setupWas=true;box.hidden=true;box.innerHTML='';if(pb)pb.hidden=!(pushNow==='off'||pushNow==='allowed');return}
@@ -1282,7 +1309,7 @@ function loadFollows(){
   fx(cfg.api_base+'/follows',{headers:headers()},GET_MS).then(function(r){return r.ok?r.json():[]}).then(function(rows){
     rows=rows.filter(function(f){return f.state!=='cancelled'});
     ul.hidden=false;
-    if(!rows.length){ul.innerHTML='<li class="none">waiting on nothing yet. tap "tell me when it\'s out" on a scan and it lands here.</li>';return}
+    if(!rows.length){ul.innerHTML='<li class="none">waiting on nothing yet. tap "tell me when it drops" on a scan and it lands here.</li>';return}
     ul.innerHTML='<li class="none">waiting on</li>'+rows.slice(0,30).map(function(f){
       var st=f.state==='notified'?'out now':f.named?'named, waiting for the release':f.until==='named'?'waiting for a name':'waiting for the release';
       var nm=f.url&&f.state==='notified'?'<a href="'+esc(f.url)+'" target="_blank" rel="noopener">'+esc(f.name||'an ID')+'</a>':esc(f.name||'an ID');
