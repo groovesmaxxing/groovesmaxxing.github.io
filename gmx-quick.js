@@ -3,5 +3,5 @@
    fetches the shell on a page that has nothing else to. */
 (function(){
 if(window.gmxNav||document.querySelector('script[src^="/gmx-nav.js"]'))return;
-var s=document.createElement('script');s.src='/gmx-nav.js?v=20';s.defer=true;document.head.appendChild(s);
+var s=document.createElement('script');s.src='/gmx-nav.js?v=21';s.defer=true;document.head.appendChild(s);
 })();
