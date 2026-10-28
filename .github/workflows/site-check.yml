@@ -12,6 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 2
+      - name: a shared script or stylesheet that changed moved to a fresh ?v= tag (Pages caches them 4 hours)
+        run: python3 .github/scripts/asset_tags.py --range ${{ github.event.before || 'HEAD~1' }}..${{ github.sha }}
       - name: preflight (tags, links, anchors, embeds, noopener, fonts, json-ld, sitemap, banned strings)
         env:
           BANNED_STRINGS: ${{ secrets.BANNED_STRINGS }}
