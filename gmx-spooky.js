@@ -3,7 +3,8 @@
    level 1 "crawl": orange accents, corner cobwebs, a few spiders walking the page, the original mark carved and lit from inside (logo C2a) in the hero, the featured sets swapped for ones recorded on halloween.
    level 2 "drop": + spiders lowering on silk from the top, bats crossing the hero now and then.
    level 3 "haunt": + low fog along the bottom, headings flicker like a dying bulb once in a while.
-   respects prefers-reduced-motion (webs and colors only). visitors can turn it off: the 🕸 toggle, kept in localStorage.
+   respects prefers-reduced-motion (webs and colors only). visitors can turn it off: the 🕸 toggle in the header row beside the
+   sign-in chip (it used to float bottom-left, where a resting thumb switched it off: site review 2026-10-27), kept in localStorage.
    preview a level with ?spooky=1|2|3, force off with ?spooky=0. */
 (function () {
   var END = new Date('2026-11-02T06:00:00Z');                       // the morning after halloween, US time
@@ -19,9 +20,21 @@
   function el(tag, attrs, html) { var e = document.createElement(tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (html) e.innerHTML = html; return e; }
 
   function toggle() {
-    var b = el('button', { id: 'gmx-spooky-toggle', 'aria-label': LEVEL ? 'turn off halloween mode' : 'turn on halloween mode', title: 'halloween mode' }, '🕸');
+    var b = el('button', { id: 'gmx-spooky-toggle', type: 'button', 'aria-label': LEVEL ? 'turn off halloween mode' : 'turn on halloween mode', title: 'halloween mode' }, '🕸');
     b.onclick = function () { try { localStorage.setItem('gmx-spooky-off', LEVEL ? '1' : '0'); } catch (e) {} location.reload(); };
-    document.body.appendChild(b);
+    /* styled here, not in base(), so the button looks the same when the skin is off and it is the way back on */
+    var s = document.createElement('style'); s.id = 'gmx-spooky-toggle-css';
+    s.textContent = '#gmx-spooky-toggle{flex:none;position:relative;z-index:3;width:34px;height:34px;padding:0;margin:0;border-radius:50%;border:1px solid rgba(255,106,0,.5);background:rgba(11,11,13,.8);font-size:16px;line-height:1;cursor:pointer}' +
+      '#gmx-spooky-toggle:hover,#gmx-spooky-toggle:focus-visible{border-color:' + ORANGE + ';outline:none}' +
+      '#gmx-spooky-toggle.fixed{position:fixed;right:12px;top:calc(12px + env(safe-area-inset-top));z-index:60}';
+    document.head.appendChild(s);
+    /* into the header row (.gmx-hdr, painted by gmx-account.js once the shell has loaded it), before the chip.
+       a page without one after six seconds gets the button fixed at the top right, still out of the thumb zone. */
+    function place() { var row = document.querySelector('.gmx-hdr'); if (!row) return false; row.insertBefore(b, row.querySelector('.gmx-chip')); return true; }
+    if (place()) return;
+    var mo = window.MutationObserver ? new MutationObserver(function () { if (place()) { mo.disconnect(); clearTimeout(t); } }) : null;
+    if (mo) mo.observe(document.body, { childList: true, subtree: true });
+    var t = setTimeout(function () { if (mo) mo.disconnect(); if (!b.parentNode) { b.className = 'fixed'; document.body.appendChild(b); } }, 6000);
   }
 
   var WEB = '<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round">' +
@@ -124,7 +137,6 @@
     css(
       '.gmx-web{position:fixed;top:0;width:min(26vw,190px);height:min(26vw,190px);color:rgba(242,242,239,.22);pointer-events:none;z-index:40}' +
       '.gmx-web.l{left:0}.gmx-web.r{right:0;transform:scaleX(-1)}' +
-      '#gmx-spooky-toggle{position:fixed;left:12px;bottom:84px;z-index:60;width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,106,0,.5);background:rgba(11,11,13,.8);font-size:18px;cursor:pointer}' +
       '#gmx-spooky-canvas{position:fixed;inset:0;pointer-events:none;z-index:39}' +
       '.gmx-jack{animation:gmxcandle 3.2s infinite}@keyframes gmxcandle{0%,100%{filter:brightness(1)}8%{filter:brightness(.8)}10%{filter:brightness(1.08)}43%{filter:brightness(.9)}45%{filter:brightness(1.05)}71%{filter:brightness(.76)}73%{filter:brightness(1)}}' +
       // the ripple shader, the corner marks, the header mark and the scan disc hard-code racing red, this turns them pumpkin

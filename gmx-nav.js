@@ -29,6 +29,7 @@ var path=location.pathname.replace(/\.html$/,'').replace(/\/index$/,'/');
 function under(p){return path===p||path.indexOf(p+'/')===0;}
 /* the active-state rules: which tab a page sits under */
 function tabOf(){
+  if(document.body&&document.body.classList.contains('gmx-404'))return null; /* the 404 page sits under no tab, whatever path it was served at */
   if(path==='/')return 'home';
   if(path==='/scan')return 'scan';
   if(under('/sets')||under('/tracklists')||path==='/interviews'||path==='/radio'||path==='/open-ids')return 'tracklists';
@@ -166,9 +167,13 @@ document.addEventListener('keydown',function(e){
   if((e.key==='k'||e.key==='K')&&(e.metaKey||e.ctrlKey)){e.preventDefault();if(sheet&&!sheet.hidden)close();else open();return}
   if(e.key==='/'&&!e.metaKey&&!e.ctrlKey&&!e.altKey&&!typing(e.target)&&!(sheet&&!sheet.hidden)){e.preventDefault();open()}
 });
-/* the floating search button, and the lift while the follow-along bar is on */
+/* the floating search button, and the lift while the follow-along bar is on. the pages that already have a
+   search box of their own go without it, and html.gmx-fab-on tells gmx-nav.css to end the page above it. */
+var NOFAB=['/artists','/sets','/search','/radio'];
 function buildFab(){
   var old=document.querySelector('.gmx-fab');if(old)old.parentNode.removeChild(old);
+  if(NOFAB.indexOf(path)>-1)return;
+  document.documentElement.classList.add('gmx-fab-on');
   var b=document.createElement('button');b.type='button';b.className='gmx-fab';b.setAttribute('aria-label','search the site');b.setAttribute('data-gmx-quick','');
   b.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true">'+ICON.search+'</svg>';
   b.addEventListener('click',function(){open(b)});

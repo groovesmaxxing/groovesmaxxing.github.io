@@ -31,18 +31,22 @@
 @keyframes gmx-groove{0%,100%{stroke-opacity:.6}50%{stroke-opacity:1}}
 @keyframes gmx-ripple{0%{transform:scale(1);opacity:.7}70%,100%{transform:scale(1.55);opacity:0}}
 @media (max-width:1024px){.gmx-tabs{display:block}body{padding-bottom:calc(66px + env(safe-area-inset-bottom))}}
+/* while the floating search button is on the page (html.gmx-fab-on, set by gmx-nav.js) the page ends above it: the
+   button's top sits 134px up (84px + 50px), so the last row is never under it (site review 2026-10-27, item 1) */
+@media (max-width:1024px){html.gmx-fab-on body{padding-bottom:calc(150px + env(safe-area-inset-bottom))}}
 @media (prefers-reduced-motion: reduce){.gmx-tabs .gmx-disc,.gmx-fab{transition:none;animation:none}.gmx-tabs .gmx-disc::after{display:none}.gmx-disc .gx-wv,.gmx-disc .gx-r,.gmx-hmark .gx-wv,.gmx-hmark .gx-r{animation:none}}
 .gmx-skip{position:absolute;left:12px;top:-60px;z-index:80;background:#FF1C02;color:#0B0B0D;font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.08em;padding:10px 14px;border-radius:999px;text-decoration:none}.gmx-skip:focus{top:12px;outline:3px solid #F2F2EF}
 /* a loading shape for blocks that fill from json: the radio stage, the tour list */
 .gmx-skel{border-radius:16px;background:linear-gradient(90deg,rgba(242,242,239,.05),rgba(242,242,239,.11),rgba(242,242,239,.05));background-size:200% 100%;animation:gmx-shimmer 1.2s linear infinite}@keyframes gmx-shimmer{to{background-position:-200% 0}}@media (prefers-reduced-motion: reduce){.gmx-skel{animation:none}}
 
 /* the floating search button. above the tab bar on a phone, bottom right on a wide screen, and lifted
-   out of the way when the follow-along bar (#gmx-now) is showing. */
+   out of the way when the follow-along bar (#gmx-now) is showing. gmx-nav.js leaves it off the pages that
+   already have a search box (/artists, /sets, /search, /radio). */
 .gmx-fab{position:fixed;right:16px;bottom:calc(84px + env(safe-area-inset-bottom));z-index:58;width:50px;height:50px;border-radius:50%;border:1px solid rgba(242,242,239,.2);background:rgba(20,20,23,.96);color:#F2F2EF;display:flex;align-items:center;justify-content:center;padding:0;margin:0;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.55);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);transition:bottom .2s,transform .15s,border-color .15s,color .15s;-webkit-tap-highlight-color:transparent}
 .gmx-fab svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 .gmx-fab:hover,.gmx-fab:focus-visible{border-color:#FF1C02;color:#FF1C02;outline:none;transform:translateY(-2px)}
 html.gmx-nowon .gmx-fab{bottom:calc(138px + env(safe-area-inset-bottom))}
-/* a wide screen has no tab bar and no floating button: the search button and the logo (to /scan) sit in the header, beside the account chip (gmx-account.js) */
+/* a wide screen has no tab bar and no floating button: the search button and the logo (to /, the way home) sit in the header, beside the account chip (gmx-account.js) */
 @media (min-width:1025px){.gmx-fab{display:none}}
 .gmx-hdr{display:flex;align-items:center;gap:10px;flex:none}
 .gmx-hdr .gmx-hmark,.gmx-hdr .gmx-hsearch{display:none;width:36px;height:36px;border-radius:50%;align-items:center;justify-content:center;border:1px solid rgba(242,242,239,.18);background:none;color:#8A8A93;padding:0;margin:0;cursor:pointer;text-decoration:none;font:inherit}
@@ -52,6 +56,11 @@ html.gmx-nowon .gmx-fab{bottom:calc(138px + env(safe-area-inset-bottom))}
 .gmx-hdr .gmx-hsearch:hover,.gmx-hdr .gmx-hsearch:focus-visible{color:#FF1C02;border-color:#FF1C02;outline:none}
 .gmx-hdr .gmx-hmark:hover,.gmx-hdr .gmx-hmark:focus-visible{background:#141417;box-shadow:0 0 14px rgba(255,28,2,.45);outline:none}
 @media (min-width:1025px){.gmx-hdr .gmx-hmark,.gmx-hdr .gmx-hsearch{display:flex}}
+/* the back row: "← groovesmaxxing" first on every page, then the section crumb (all artists, all tracklists, the sets).
+   the crumb hides on a phone, where the tab bar already covers it, so the row never wraps beside the chip. */
+.gmx-crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;min-width:0}
+.gmx-crumbs .gmx-crumb2::before{content:"·";margin-right:12px;color:#8A8A93}
+@media (max-width:640px){.gmx-crumbs .gmx-crumb2{display:none}}
 
 /* the search sheet: full screen on a phone, a centred panel from the top on a wide screen. above the
    tab bar (z 60), the follow-along bar (z 59) and the install nudge (z 61). */

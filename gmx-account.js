@@ -314,11 +314,11 @@ function paint(){
   chip.href=onScan()?'#you':'/more#account';
   chip.setAttribute('aria-label',t?'your account'+(m&&m.handle?', @'+m.handle:''):'sign in');
 }
-/* the header row: on a wide screen the logo (to /scan) and the search button sit beside the chip, since there is
-   no tab bar and no floating button there. gmx-nav.css hides both under 1025px. */
+/* the header row: on a wide screen the logo (to /, the way home: there is no tab bar there) and the search button sit
+   beside the chip, since there is no tab bar and no floating button there. gmx-nav.css hides both under 1025px. */
 function headerRow(){
   var row=document.createElement('span');row.className='gmx-hdr';
-  if(!onScan()){var m=document.createElement('a');m.className='gmx-hmark';m.href='/scan';m.setAttribute('aria-label','scan what is playing');m.innerHTML=MARK;row.appendChild(m)}
+  if(!onScan()){var m=document.createElement('a');m.className='gmx-hmark';m.href='/';m.setAttribute('aria-label','groovesmaxxing home');m.innerHTML=MARK;row.appendChild(m)}
   if(path!=='/search'){var b=document.createElement('button');b.type='button';b.className='gmx-hsearch';b.setAttribute('aria-label','search the site');b.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 20 20"/></svg>';b.addEventListener('click',function(){if(window.gmxQuick)gmxQuick.open(b);else location.href='/search'});row.appendChild(b)}
   chip=document.createElement('a');row.appendChild(chip);
   return row;
