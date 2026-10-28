@@ -726,7 +726,10 @@ function resultCard(cur){
     out+=pathBlock(cur);
     out+='<h3>help us find it?</h3><div class="row"><button class="btn" data-act="help">help us find it?</button><button class="btn ghost" data-act="again">no thanks, scan again</button></div>';
     out+=helpForm();
-    out+=followRow(null);
+    /* E6c (2026-10-28): a "nothing yet" card has nothing to follow until the clip is kept. the api kept the
+       closest library entry's fingerprint on a NO MATCH row and "tell me when it drops" followed a record at
+       18 (two live follows did). the slot fills after the keep lands (followAfterKeep), never before */
+    out+='<div id="followslot"></div>';
   }
   /* the clip hit the rail for more than two percent of its samples (2026-10-13): it went up anyway, the card says so */
   if(cur.loud)out+='<p class="note">that one was loud and the clip clipped, so the answer may be rough.</p>';
@@ -986,7 +989,7 @@ function sendHelp(f){
     if(r.status>=400&&r.status<500)return refusal(r).then(function(x){say(refusedLine(x));markRow(jid,x)});
     if(!r.ok)throw new Error(r.status);
     say('kept. we keep hunting. gone the day we find it, or after 12 months.',true);
-    markRow(jid,null); f.classList.remove('on'); dropBlob();
+    markRow(jid,null); f.classList.remove('on'); dropBlob(); followAfterKeep(jid);
   }).catch(function(){say('did not send. check your signal and try again.')});
 }
 /* a refused keep (2026-10-16, the club space test): every keep came back 422 from 10-11 to 10-16 because the page
@@ -1007,7 +1010,7 @@ function refusedLine(x){return 'the app refused it ('+x.status+(x.detail?': '+x.
 function markRow(id,x,quiet){
   if(!id)return;
   var h=loadHistory();
-  for(var i=0;i<h.length;i++){if(h[i].id===id){if(x)h[i].sent={status:x.status,detail:x.detail,at:Date.now()};else delete h[i].sent;break}}
+  for(var i=0;i<h.length;i++){if(h[i].id===id){if(x)h[i].sent={status:x.status,detail:x.detail,at:Date.now()};else{delete h[i].sent;h[i].kept=true}break}}
   try{localStorage.setItem('gmx_history',JSON.stringify(h))}catch(e){}
   if(!quiet)renderHistory();   /* the row's own buttons pass quiet, so the note they are writing is not wiped */
 }
@@ -1046,7 +1049,8 @@ function renderHistory(){
     if(r.sent&&r.sent.status)who+='<small>not kept, the app refused it ('+esc(String(r.sent.status))+(r.sent.detail?': '+esc(r.sent.detail):'')+')</small>';
     var acts='', btns='';
     if(r.clip&&r.id)btns='<button class="btn" data-clip="again" data-id="'+esc(r.id)+'">scan again</button>'+(r.kind!=='match'?'<button class="btn" data-clip="help" data-id="'+esc(r.id)+'">help us find it</button>':'');
-    if(r.rid&&r.status!=='out now'&&(r.kind==='match'||r.kind==='guess'))btns+='<button class="btn ghost" data-follow="'+esc(r.rid)+'">tell me when it drops</button>';
+    /* E6c: a no-match row can follow only the clip it kept (r.kept, set by markRow when a keep lands) */
+    if(r.rid&&r.status!=='out now'&&(r.kind==='match'||r.kind==='guess'||r.kept))btns+='<button class="btn ghost" data-follow="'+esc(r.rid)+'">tell me when it drops</button>';
     if(btns)acts='<span class="acts">'+btns+'<span class="msg" role="status"></span></span>';
     return '<li><span class="who">'+who+'</span><span class="when">'+when(r.t)+'</span>'+acts+'</li>';
   }).join('');
@@ -1164,6 +1168,13 @@ function followRow(cand){
   if(cand&&cand.status==='out now')return '';
   var what=cand&&cand.library_entry_id&&!(cand.artist_claim&&cand.title_claim)?'tell me when it gets a name':'tell me when it drops';
   return '<div class="row" id="followrow"><button class="btn" data-act="follow">'+what+'</button></div>';
+}
+/* E6c: the "nothing yet" card gets its follow button only once the keep landed (sendHelp), and only while the
+   card still shows the scan the keep belongs to. the kept clip is what the follow waits on: when it lands in
+   the library the api moves the follow to the entry (a follow is not a name, the two-signal rule holds) */
+function followAfterKeep(jid){
+  var slot=$('followslot'); if(!slot||!current||current.job_id!==jid)return;
+  slot.innerHTML=followRow(null);
 }
 /* push lives in gmx-account.js now */
 function ensurePush(){return gmxAccount.ensurePush()}
