@@ -23,7 +23,7 @@ T = {
     'player_css': '<link rel="stylesheet" href="/gmx-player.css">',
     'nav_css': '<link rel="stylesheet" href="/gmx-nav.css?v=18">',
     'player_js': '<script src="/gmx-player.js" defer></script>',
-    'nav_js': '<script src="/gmx-nav.js?v=18" defer></script>',
+    'nav_js': '<script src="/gmx-nav.js?v=19" defer></script>',
     'follow_js': '<script src="/gmx-follow.js" defer></script>',
     'crate_js': '<script src="/gmx-crate.js" defer></script>',
     'related_js': '<script src="/gmx-related.js" defer></script>',
