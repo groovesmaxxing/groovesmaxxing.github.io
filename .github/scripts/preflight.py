@@ -16,11 +16,16 @@ FAIL blocks the push. WARN prints and passes. the checks:
   sitemap    every sitemap url resolves to a file, and every indexable root page is in the sitemap
   banned     BANNED_STRINGS (env, comma separated, set as a repo secret) never appear in any tracked text
              file. the string itself is never printed, only the file and line.
+  export     tracklists/_export/index.json, when the recognizer's export is there (2026-10-28, packet 10 of the
+             ecosystem architecture, decision 12: the sidecar cycle): warns when the export is older than a week,
+             when a sidecar it lists is missing, and for every set whose rows differ from the page, name one of
+             its ID rows or are not on it. never fails: the pages are still written by hand this cycle.
 
 usage: python3 .github/scripts/preflight.py            (the whole tree)
        python3 .github/scripts/preflight.py --diff-head (files changed since HEAD, for a local run)
 """
 import glob, html, json, os, re, subprocess, sys
+from datetime import date
 from html.parser import HTMLParser
 
 VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"}
@@ -197,6 +202,45 @@ def check_sitemap(page_list, redirects):
             warn("sitemap.xml", "indexable page not listed: %s" % f)
 
 
+EXPORT_INDEX = os.path.join("tracklists", "_export", "index.json")
+EXPORT_MAX_DAYS = 7
+
+
+def check_export():
+    """the recognizer's export next to the tracklist pages: its age, its files, and what it would change"""
+    if not os.path.exists(EXPORT_INDEX):
+        return
+    try:
+        doc = json.load(open(EXPORT_INDEX, encoding="utf-8"))
+    except ValueError as e:
+        fail(EXPORT_INDEX, "does not parse: %s" % e)
+        return
+    gen = str(doc.get("generated_at") or "")[:10]
+    try:
+        age = (date.today() - date.fromisoformat(gen)).days
+    except ValueError:
+        age = None
+    if age is None:
+        warn(EXPORT_INDEX, "no generated_at date")
+    elif age > EXPORT_MAX_DAYS:
+        warn(EXPORT_INDEX, "the export is %d days old, over %d: run tools/site_export.py --write in the recognizer repo" % (age, EXPORT_MAX_DAYS))
+    for s in doc.get("sets") or []:
+        f = os.path.join(os.path.dirname(EXPORT_INDEX), s.get("file") or "")
+        if not s.get("file") or not os.path.exists(f):
+            warn(f or EXPORT_INDEX, "sidecar missing for %s" % s.get("set_key"))
+            continue
+        d = s.get("diff") or {}
+        parts = []
+        if d.get("differs"):
+            parts.append("%d differ" % d["differs"])
+        if d.get("names_an_id_row"):
+            parts.append("%d name an ID row" % d["names_an_id_row"])
+        if d.get("new"):
+            parts.append("%d not on the page" % d["new"])
+        if parts:
+            warn(f, "the recognizer's rows: " + ", ".join(parts) + " (read the sidecar before the next page edit)")
+
+
 def check_banned():
     raw = os.environ.get("BANNED_STRINGS", "")
     needles = [n.strip() for n in re.split(r"[,\n]", raw) if n.strip()]
@@ -237,6 +281,7 @@ def main(argv):
     if "--diff-head" not in argv:
         check_sitemap(pages(), redirects)
     check_banned()
+    check_export()
     for w in warns:
         print("WARN", w)
     for x in fails:
