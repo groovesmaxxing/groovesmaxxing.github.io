@@ -1,26 +1,8 @@
 {
-"generated": "2026-10-28T16:09:11+00:00",
+"generated": "2026-10-29T16:15:09+00:00",
 "artist_count": 704,
-"artists_with_events": 145,
+"artists_with_events": 148,
 "events": [
-{
-"date": "2026-10-28",
-"event": "Harry Styles: Together, Together",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-new-york-new-york-10-28-2026/event/3B00643506BF83B6",
-"artist": "Jamie xx"
-},
-{
-"date": "2026-10-28",
-"event": "Koe Wetzel w/ Wade Bowen",
-"venue": "Red Rocks Amphitheatre",
-"city": "Morrison",
-"region": "CO",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7-0GF",
-"artist": "Wade"
-},
 {
 "date": "2026-10-29",
 "event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
@@ -1202,6 +1184,15 @@
 },
 {
 "date": "2026-11-20",
+"event": "FRIDAY GA - T-MOBILE ZONE AT SPHERE",
+"venue": "T-Mobile Zone at Sphere",
+"city": "Las Vegas",
+"region": "NV",
+"url": "https://www.ticketmaster.com/friday-ga-tmobile-zone-at-sphere-las-vegas-nevada-11-20-2026/event/17006505EE664A88",
+"artist": "Disclosure"
+},
+{
+"date": "2026-11-20",
 "event": "Individual General Corona Capital 2026",
 "venue": "Autodromo Hnos. Rodriguez",
 "city": "México",
@@ -1760,6 +1751,15 @@
 },
 {
 "date": "2026-11-28",
+"event": "Bohemia Presents Mita Gami",
+"venue": "Bohemia Beach Club | FIVE Palm",
+"city": "Dubai",
+"region": "AE",
+"url": "https://www.ticketmaster.ae/event/bohemia-presents-mita-gami-tickets/1704519432",
+"artist": "Mita Gami"
+},
+{
+"date": "2026-11-28",
 "event": "Skyline Saturdays Presents RAFAEL",
 "venue": "The Penthouse | FIVE Palm",
 "city": "Dubai",
@@ -2153,6 +2153,15 @@
 "region": "PL",
 "url": "https://www.ticketmaster.pl/event/ark-myd-supports-primadoma--cougar-tickets/1883563107?language=en-us",
 "artist": "Myd"
+},
+{
+"date": "2026-12-11",
+"event": "OMAR+",
+"venue": "The Limelight 1",
+"city": "Belfast",
+"region": "GB",
+"url": "https://www.ticketmaster.ie/omar-belfast-11-12-2026/event/3800655D86E41447",
+"artist": "Omar+"
 },
 {
 "date": "2026-12-11",
@@ -2686,6 +2695,15 @@
 "artist": "WAX MOTIF"
 },
 {
+"date": "2027-01-02",
+"event": "Polo and Pan",
+"venue": "Berhta",
+"city": "Washington",
+"region": "DC",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AA7sqA",
+"artist": "Polo & Pan"
+},
+{
 "date": "2027-01-03",
 "event": "Rufus Du Sol (21 and Over)",
 "venue": "Pier 80 - San Francisco",
@@ -2819,6 +2837,15 @@
 "region": "QLD",
 "url": "https://www.ticketmaster.com.au/drama-brisbane-04-02-2027/event/25006538C0C84CA6",
 "artist": "DRAMA"
+},
+{
+"date": "2027-02-05",
+"event": "D.O.D - Ages 18+",
+"venue": "Royal Oak Music Theatre",
+"city": "Royal Oak",
+"region": "MI",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AA7EfM",
+"artist": "D.O.D"
 },
 {
 "date": "2027-02-05",
