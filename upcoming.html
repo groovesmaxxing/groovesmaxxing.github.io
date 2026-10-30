@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0B0B0D">
 <title>dropping soon · groovesMAXXING</title>
@@ -13,12 +15,12 @@
 <meta property="og:title" content="groovesMAXXING · dropping soon">
 <meta property="og:description" content="what's dropping soon in house, techno and indie dance, announced by the artists and labels themselves.">
 <meta property="og:image" content="https://groovesmaxxing.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
 <meta property="og:url" content="https://groovesmaxxing.com/upcoming">
 <meta property="og:type" content="website">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" href="/fonts/poppins-400-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-400-latin.woff2" crossorigin>
+<link rel="stylesheet" href="/gmx-fonts.css">
 <style>
   :root{
     --night:#0B0B0D; --card:#141417; --card2:#1a1a1f; --line:#2a2a31;
@@ -861,6 +863,11 @@
 }
 </script>
 <link rel="stylesheet" href="/gmx-motion.css">
+<link rel="stylesheet" href="/gmx-sheet.css?v=2">
+<link rel="stylesheet" href="/gmx-quick.css">
+<link rel="stylesheet" href="/gmx-nav.css?v=20">
+<link rel="stylesheet" href="/gmx-account.css?v=2">
+<link rel="stylesheet" href="/gmx-read.css?v=9">
 </head>
 <body>
 <div class="wrap">
@@ -869,8 +876,9 @@
 
   <div class="kicker">release radar · refreshed as we hear it</div>
   <h1>what's <span>dropping</span> soon</h1>
-  <p class="sub">the releases the artist or the label announced themselves, dated as they said it. every link goes to their own page to pre-save, pre-order or listen.</p>
-  <p class="legend"><b>🔴</b> = heavy rotation artist · dates move, the artist's own post is always the truth · 43 on the list</p>
+  <p class="sub">the releases the artist or label announced themselves, dated as they said it.</p>
+<div data-more="fold" data-more-label="more"><p class="sub">every link goes to their own page to pre-save, pre-order or listen.</p></div>
+  <p class="legend"><b>🔴</b> = heavy rotation artist. dates move, the artist's own post is the truth. 43 on the list.</p>
 
 <!-- upcoming:start -->
   <div class="tierline">this week</div>
@@ -1149,5 +1157,12 @@
   <footer>groovesmaxxing dropping soon · refreshed as we hear it · last refresh 30 oct 2026</footer>
 </div>
 <script src="/gmx-motion.js" defer></script>
+<script src="/gmx-more.js?v=2" defer></script>
+<script src="/gmx-quick.js?v=2" defer></script>
+<script src="/gmx-nav.js?v=21" defer></script>
+<script src="/gmx-crate.js" defer></script>
+<script src="/gmx-sheet.js?v=2" defer></script>
+<script src="/gmx-upcoming.js" defer></script>
+<script src="/gmx-account.js?v=19" defer></script>
 </body>
 </html>
