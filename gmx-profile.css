@@ -84,3 +84,9 @@ a.tag.badge:hover{color:var(--racing);border-color:var(--racing)}
 .meta .tag.badge.fp a{position:relative}.meta .tag.badge.fp a::after{content:"";position:absolute;inset:-11px -8px}
 .bio p a,.subtle a,p.fine a{padding:9px 0}
 .rel .l a{display:inline-flex;align-items:center;min-height:40px;margin:-3px 0}
+/* songstats badges */
+.tag.badge.ss{color:var(--day);border-color:rgba(242,242,239,.34);background:rgba(242,242,239,.05);display:inline-flex;align-items:baseline}
+.tag.badge.ss a{text-decoration:none;color:inherit;position:relative;z-index:1}
+.tag.badge.ss a:not(.via):hover{color:var(--racing)}
+.tag.badge.ss .via{font-size:.6rem;letter-spacing:.04em;color:var(--steel);margin-left:8px;padding-left:8px;border-left:1px solid rgba(242,242,239,.2)}
+.tag.badge.ss .via:hover{color:var(--racing)}
