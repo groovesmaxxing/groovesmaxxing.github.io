@@ -3397,6 +3397,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://groovesmaxxing.com/artists/reznik</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://groovesmaxxing.com/artists/rhye</loc>
     <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
@@ -3507,6 +3513,12 @@
   <url>
     <loc>https://groovesmaxxing.com/artists/sam-zloty</loc>
     <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://groovesmaxxing.com/artists/samm-be</loc>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -4624,4 +4636,5 @@
 <url><loc>https://groovesmaxxing.com/tracklists/mau-p-xxx-radio-204</loc><lastmod>2026-10-30</lastmod></url>
 <url><loc>https://groovesmaxxing.com/tracklists/the-doorman-odd-mob-support-the-rechabite-perth-2026</loc><lastmod>2026-10-30</lastmod></url>
 <url><loc>https://groovesmaxxing.com/tracklists/ayybo-lollapalooza-chicago-2026</loc><lastmod>2026-10-30</lastmod></url>
+<url><loc>https://groovesmaxxing.com/tracklists/reznik-samm-wecandance-beachfestival</loc><lastmod>2026-10-30</lastmod></url>
 </urlset>
