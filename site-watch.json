@@ -1,89 +1,92 @@
 {
- "generated": "2026-10-30T23:42:32Z",
+ "generated": "2026-10-31T05:26:30Z",
  "site": [
   {
    "path": "/",
    "code": 200,
-   "ms": 393,
+   "ms": 148,
    "state": "ok",
    "note": null
   },
   {
    "path": "/scan",
    "code": 200,
-   "ms": 171,
+   "ms": 92,
    "state": "wrong",
    "note": "missing gmx-config.json"
   },
   {
    "path": "/sets",
    "code": 200,
-   "ms": 139,
+   "ms": 107,
    "state": "ok",
    "note": null
   },
   {
    "path": "/artists",
    "code": 200,
-   "ms": 255,
+   "ms": 154,
    "state": "ok",
    "note": null
   },
   {
    "path": "/tracklists/",
    "code": 200,
-   "ms": 219,
+   "ms": 111,
    "state": "ok",
    "note": null
   },
   {
    "path": "/search-index.json",
    "code": 200,
-   "ms": 267,
+   "ms": 334,
    "state": "ok",
-   "note": "generated 2026-10-30"
+   "note": "generated 2026-10-31"
   },
   {
    "path": "/upcoming.json",
    "code": 200,
-   "ms": 180,
+   "ms": 216,
    "state": "ok",
-   "note": "generated 2026-10-30"
+   "note": "generated 2026-10-31"
   },
   {
    "path": "/radar-events.json",
    "code": 200,
-   "ms": 434,
+   "ms": 151,
    "state": "ok",
    "note": "generated 2026-10-30T16:00:53"
   },
   {
    "path": "/sitemap.xml",
    "code": 200,
-   "ms": 237,
+   "ms": 100,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sw.js",
    "code": 200,
-   "ms": 211,
+   "ms": 92,
    "state": "ok",
    "note": null
   }
  ],
  "recognizer": {
-  "state": "down",
-  "code": 0,
-  "ms": 5,
-  "note": "no answer: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of "
+  "state": "up",
+  "code": 200,
+  "ms": 1063,
+  "health": {
+   "status": "ok",
+   "version": "0.1.2",
+   "mail": true
+  }
  },
  "workflows": {
   "state": "failed",
   "failed": [
    "freshness",
-   "recognizer uptime",
-   "site check"
+   "recognizer uptime"
   ],
   "runs": [
    {
@@ -122,8 +125,8 @@
     "conclusion": "success",
     "event": "dynamic",
     "branch": "main",
-    "at": "2026-10-30T23:16:39Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/41143359912",
+    "at": "2026-10-31T02:01:30Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/41157995352",
     "state": "ok"
    },
    {
@@ -139,12 +142,12 @@
    {
     "name": "site check",
     "status": "completed",
-    "conclusion": "failure",
+    "conclusion": "success",
     "event": "push",
     "branch": "main",
-    "at": "2026-10-30T23:16:56Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/41143296304",
-    "state": "failed"
+    "at": "2026-10-31T02:03:00Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/41157995522",
+    "state": "ok"
    },
    {
     "name": "site data",
@@ -152,8 +155,8 @@
     "conclusion": "success",
     "event": "push",
     "branch": "main",
-    "at": "2026-10-30T23:15:27Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/41143296290",
+    "at": "2026-10-31T02:01:17Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/41157995558",
     "state": "ok"
    }
   ]
@@ -164,37 +167,37 @@
    {
     "state": "ok",
     "id": "F-18",
-    "text": "friday.html carries the newest week: 2026-10-23, 7 days old"
+    "text": "friday.html carries the newest week: 2026-10-23, 8 days old"
    },
    {
     "state": "ok",
     "id": "F-21",
-    "text": "dropping soon says when it was last refreshed: 2026-10-30, 0 days old"
+    "text": "dropping soon says when it was last refreshed: 2026-10-30, 1 days old"
    },
    {
     "state": "ok",
     "id": "F-24",
-    "text": "the newsletter hub carries the newest issue: 2026-10-23, 7 days old"
+    "text": "the newsletter hub carries the newest issue: 2026-10-23, 8 days old"
    },
    {
     "state": "ok",
     "id": "F-30",
-    "text": "the events radar data is refreshed nightly: 2026-10-30, 0 days old"
+    "text": "the events radar data is refreshed nightly: 2026-10-30, 1 days old"
    },
    {
     "state": "ok",
     "id": "F-31",
-    "text": "the denver radar data is refreshed nightly: 2026-10-30, 0 days old"
+    "text": "the denver radar data is refreshed nightly: 2026-10-30, 1 days old"
    },
    {
     "state": "ok",
     "id": "F-32",
-    "text": "the tracks index was rebuilt after the newest tracklist: 2026-10-30, 0 days old"
+    "text": "the tracks index was rebuilt after the newest tracklist: 2026-10-31, 0 days old"
    },
    {
     "state": "ok",
     "id": "F-33",
-    "text": "upcoming.json (the home page's next up band) was rebuilt after the newest dropping soon render: 2026-10-30, 0 days old"
+    "text": "upcoming.json (the home page's next up band) was rebuilt after the newest dropping soon render: 2026-10-31, 0 days old"
    },
    {
     "state": "fail",
@@ -203,6 +206,6 @@
    }
   ]
  },
- "state": "down",
- "summary": "site pages wrong: /scan; recognizer down; failed workflows: freshness, recognizer uptime, site check; freshness fail"
+ "state": "wrong",
+ "summary": "site pages wrong: /scan; recognizer up; failed workflows: freshness, recognizer uptime; freshness fail"
 }
