@@ -1,125 +1,8 @@
 {
-"generated": "2026-10-30T16:00:53+00:00",
+"generated": "2026-10-31T15:27:28+00:00",
 "artist_count": 704,
 "artists_with_events": 147,
 "events": [
-{
-"date": "2026-10-30",
-"event": "Adriatique (18 and Over)",
-"venue": "SILO",
-"city": "Dallas",
-"region": "TX",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZ7vw",
-"artist": "Adriatique"
-},
-{
-"date": "2026-10-30",
-"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
-"venue": "Bryce Jordan Center",
-"city": "University Park",
-"region": "PA",
-"url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-university-park-pennsylvania-10-30-2026/event/020064B2C916ABB2",
-"artist": "Alok"
-},
-{
-"date": "2026-10-30",
-"event": "Escape",
-"venue": "NOS Events Center",
-"city": "San Bernardino",
-"region": "CA",
-"url": "https://on.fgtix.com/trk/Ni5m",
-"artist": "Cloonee"
-},
-{
-"date": "2026-10-30",
-"event": "Crooked Colours 'Dirt Road Gold' Album Tour",
-"venue": "Lion Arts Factory",
-"city": "Adelaide",
-"region": "SA",
-"url": "https://www.moshtix.com.au/v2/event/crooked-colours-dirt-road-gold-album-tour/196192",
-"artist": "Crooked Colours"
-},
-{
-"date": "2026-10-30",
-"event": "Devault x Fallon - Ages 18+",
-"venue": "Magic Stick",
-"city": "Detroit",
-"region": "MI",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7J6A4",
-"artist": "Devault"
-},
-{
-"date": "2026-10-30",
-"event": "Dom Dolla",
-"venue": "Navy Pier",
-"city": "Chicago",
-"region": "IL",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7P38v",
-"artist": "Dom Dolla"
-},
-{
-"date": "2026-10-30",
-"event": "Dombresky (21 and Over)",
-"venue": "The Concourse Project",
-"city": "Austin",
-"region": "TX",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7PyqZ",
-"artist": "Dombresky"
-},
-{
-"date": "2026-10-30",
-"event": "Harry Styles: Together, Together. Harryween.",
-"venue": "Madison Square Garden",
-"city": "New York",
-"region": "NY",
-"url": "https://www.ticketmaster.com/harry-styles-together-together-harryween-new-york-new-york-10-30-2026/event/3B00643506CF83CB",
-"artist": "Jamie xx"
-},
-{
-"date": "2026-10-30",
-"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
-"venue": "Bryce Jordan Center",
-"city": "University Park",
-"region": "PA",
-"url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-university-park-pennsylvania-10-30-2026/event/020064B2C916ABB2",
-"artist": "John Summit"
-},
-{
-"date": "2026-10-30",
-"event": "Meduza - Ages 18+",
-"venue": "KC Live!",
-"city": "Kansas City",
-"region": "MO",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7JFqa",
-"artist": "MEDUZA"
-},
-{
-"date": "2026-10-30",
-"event": "Matroda - Ages 16+",
-"venue": "Mission Ballroom",
-"city": "Denver",
-"region": "CO",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7-3bb",
-"artist": "Matroda"
-},
-{
-"date": "2026-10-30",
-"event": "Monolink (hybrid) & The Blaze - Ages 21+",
-"venue": "Pier 48",
-"city": "San Francisco",
-"region": "CA",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAe_7N",
-"artist": "Monolink"
-},
-{
-"date": "2026-10-30",
-"event": "TCHAMI @ Mayberry",
-"venue": "",
-"city": "",
-"region": "",
-"url": "https://www.moshtix.com.au/v2/event/tchami-mayberry/199889",
-"artist": "Tchami"
-},
 {
 "date": "2026-10-31",
 "event": "Haunted Superclub Día 2 pres. Adam Beyer",
@@ -128,15 +11,6 @@
 "region": "LIM",
 "url": "https://www.ticketmaster.pe/event/haunted-superclub-dia-2-pres-adam-beyer-venta-general",
 "artist": "Adam Beyer"
-},
-{
-"date": "2026-10-31",
-"event": "Adam Port @ Pacha ICONS",
-"venue": "FIVE Luxe JBR",
-"city": "Dubai",
-"region": "AE",
-"url": "https://www.ticketmaster.ae/event/adam-port--pacha-icons-tickets/311421936",
-"artist": "Adam Port"
 },
 {
 "date": "2026-10-31",
@@ -1544,6 +1418,15 @@
 },
 {
 "date": "2026-11-27",
+"event": "Ruze & Ryan Resso",
+"venue": "Electric Studios",
+"city": "Sheffield",
+"region": "GB",
+"url": "https://www.universe.com/events/ruze-ryan-resso-tickets-DXLNJQ?ref=ticketmaster",
+"artist": "RUZE"
+},
+{
+"date": "2026-11-27",
 "event": "WHP presents: 20 years of The Warehouse Project",
 "venue": "Depot Mayfield",
 "city": "Manchester",
@@ -2353,6 +2236,15 @@
 "artist": "Sidney Charles"
 },
 {
+"date": "2026-12-27",
+"event": "WHP presents: Kaluki",
+"venue": "Depot Mayfield",
+"city": "Manchester",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/whp-presents-kaluki-manchester-27-12-2026/event/3500653DC7A3CAF2",
+"artist": "Us Two"
+},
+{
 "date": "2026-12-28",
 "event": "Lakes Festival 2026",
 "venue": "Hagley Park Entertainment Triangle",
@@ -2686,6 +2578,15 @@
 "artist": "Twin Diplomacy"
 },
 {
+"date": "2027-01-21",
+"event": "FLAMINGO PIER (LIVE). WOVEN TOGETHER ALBUM RELEASE TOUR.",
+"venue": "Lansdowne Hotel",
+"city": "Sydney",
+"region": "NSW",
+"url": "https://www.moshtix.com.au/v2/event/flamingo-pier-live-woven-together-album-release-tour-/201798",
+"artist": "Flamingo Pier"
+},
+{
 "date": "2027-01-22",
 "event": "CLAPTONE with Torren Foot & LIZA",
 "venue": "The Beach Hotel",
@@ -2702,6 +2603,15 @@
 "region": "NSW",
 "url": "https://www.moshtix.com.au/v2/event/claptone-with-torren-foot-liza/200903",
 "artist": "Torren Foot"
+},
+{
+"date": "2027-01-23",
+"event": "FLAMINGO PIER (LIVE). WOVEN TOGETHER ALBUM RELEASE TOUR.",
+"venue": "The Night Cat",
+"city": "Fitzroy",
+"region": "VIC",
+"url": "https://www.moshtix.com.au/v2/event/flamingo-pier-live-woven-together-album-release-tour-/201809",
+"artist": "Flamingo Pier"
 },
 {
 "date": "2027-01-23",
