@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-/n5d80Qa3HmJQHHsC4ZmiUfetYy6h5l12QBX0po1LFs=' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-RoTAk5VX34ZTGW5mxqfMTQkIX2Ytv2mE8Bca37HyXyU='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <link rel="manifest" href="/manifest.webmanifest">
@@ -174,7 +174,8 @@ Promise.all([fetch('/sets-index.json').then(function(r){return r.json()}),ready]
   items.sort(function(a,b){return b.when-a.when||a.who.localeCompare(b.who)});
   if(!items.length||!window.gmxPlayer){note.textContent='the library did not load. refresh and try again.';return}
   var stage=document.createElement('div');stage.className='set-stage';stage.setAttribute('data-label','set');stage.setAttribute('data-radio','1');
-  var vp=document.createElement('div');vp.className='set-viewport';var rail=document.createElement('div');rail.className='set-rail';
+  /* the halloween skin (gmx-spooky.js) swaps the first set rail it finds for its ten halloween sets. here that rail is the whole library, so it is marked done and the swap passes it by */
+  var vp=document.createElement('div');vp.className='set-viewport';var rail=document.createElement('div');rail.className='set-rail';rail.setAttribute('data-spooky','skip');
   items.forEach(function(it){rail.appendChild(gmxPlayer.slide({id:it.id,title:it.title,cap:it.cap,img:''}))});
   vp.appendChild(rail);stage.appendChild(vp);wrap.innerHTML='';wrap.appendChild(stage);
   gmxPlayer.run(stage);
