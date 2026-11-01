@@ -7,7 +7,7 @@
    sign-in chip (it used to float bottom-left, where a resting thumb switched it off: site review 2026-10-27), kept in localStorage.
    preview a level with ?spooky=1|2|3, force off with ?spooky=0. */
 (function () {
-  var END = new Date('2026-11-01T06:00:00Z');                       // midnight after halloween, mountain time (still MDT)
+  var END = new Date('2026-11-01T04:30:00Z');                       // graduated early, 22:30 mountain on halloween night (G-MO's call)
   var q = (location.search.match(/[?&]spooky=(\d)/) || [])[1];
   var LEVEL = q != null ? +q : (window.GMX_SPOOKY_LEVEL || 2);
   if (q == null && new Date() > END) return;

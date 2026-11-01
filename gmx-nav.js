@@ -7,8 +7,8 @@
    paints the "sign in" or "@handle" chip into the header of every page.
    "/" and ctrl/cmd+k open the sheet, as before. a plain tap on any /search link opens it too; a modified
    click (cmd, ctrl, shift, middle) still opens /search in a tab. on /search itself the button focuses the box. */
-/* halloween skin (2026-10-27): every page that loads the shell also gets /gmx-spooky.js, which switches itself off at midnight after halloween (2026-11-01 06:00 utc). index.html loads it in its head instead, so its set swap lands before the carousel starts. */
-if (!document.querySelector('script[src^="/gmx-spooky.js"]')) { var gmxSpk = document.createElement('script'); gmxSpk.src = '/gmx-spooky.js?v=5'; document.head.appendChild(gmxSpk); }
+/* halloween skin (2026-10-27): every page that loads the shell also gets /gmx-spooky.js, which switched itself off on 2026-11-01 04:30 utc and now does nothing. index.html loads it in its head instead, so its set swap lands before the carousel starts. */
+if (!document.querySelector('script[src^="/gmx-spooky.js"]')) { var gmxSpk = document.createElement('script'); gmxSpk.src = '/gmx-spooky.js?v=6'; document.head.appendChild(gmxSpk); }
 
 (function(){
 'use strict';
