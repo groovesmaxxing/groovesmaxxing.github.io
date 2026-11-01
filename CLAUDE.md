@@ -44,6 +44,7 @@ A static website. Every page is a `.html` file in this repo, written by hand or 
 | `upcoming.html` | Releases dropping soon |
 | `friday.html` | The weekly Fresh Grooves Friday release list |
 | `newsletter.html` | Index of newsletter issues |
+| `calendar.html` | The festival calendar: the year's big events worldwide on a world map, a year grid and a month by month list, plus the subscribable `calendar.ics`. The cards, map outline and JSON-LD sit between `calendar-land`, `calendar-list` and `calendar-ld` markers written by `GMX_tools\calendarpage.py` from `GMX_tools\calendar_events.json` on the owner's laptop, so change the source and rerun, never the cards. The page script reads the cards, it has no data file of its own |
 | `events.html` | The events radar: festivals and club rooms by city, plus the "on tour" section that reads `radar-events.json`. `tours.html` now redirects to `events.html#tours` |
 | `venues.html` | Denver venues |
 | `scan.html` | The music recognizer page and the installed app's start page. When the recognizer places a clip in a set with a tracklist, the named row leads the card, and a catalog guess that disagrees folds under "the catalog heard something else" (see `docs/recognizer-streaming.md`). The level strip under the button runs its own frame loop: live mic levels on a decibel scale with a slow auto gain while audio arrives (an iphone mic with gain control off is quiet, so a straight scale reads flat), an idle wave when it stops (the catalog check, an iphone audio interruption), still under reduced motion. Draw errors and audio gaps log to the console as `gmx scan:` instead of freezing it. Screen readers hear listening, finding it and the result through the hidden `#scanlive` region. Every tap scan keeps the screen awake until the card is final. After an early round comes back likely, the 15 s round sends `X-GMX-Catalog: off` so the paid catalogs are skipped (re-posted without it if the api refuses). A clipped clip still goes up and the card says the answer may be rough |
@@ -136,6 +137,7 @@ Blocks wrapped in marker comments are written by scripts:
 - `<!-- gmx-seo start -->` / `<!-- gmx-seo end -->` (about 751 pages)
 - `<!-- sets:start -->` / `<!-- sets:end -->` (about 522 pages)
 - `<!-- upcoming:start -->`, `<!-- tracklists:start -->`, `<!-- interviews:start -->`
+- `<!-- calendar-land:start -->`, `<!-- calendar-list:start -->`, `<!-- calendar-ld:start -->` on `calendar.html`
 - On the homepage: `sets-pool`, `sets-dots`, `iv-pool`, `iv-dots`, `upcoming`
 
 Hand edits inside them will be overwritten. Leave the markers in place.

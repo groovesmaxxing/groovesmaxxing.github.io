@@ -40,6 +40,11 @@
   .sub{color:var(--steel);margin:14px 0 6px;max-width:620px}
   .legend{font-family:'Space Mono',monospace;font-size:12px;color:var(--steel);margin-bottom:34px}
   .legend b{color:var(--racing);font-weight:700}
+  .calcard{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--racing);border-radius:14px;padding:16px 20px;margin:-12px 0 34px}
+  .calcard:hover{background:var(--card2);border-color:var(--racing)}
+  .calcard .k{display:block;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--racing)}
+  .calcard b{display:block;font-weight:900;font-size:19px;margin:2px 0}
+  .calcard .s{display:block;color:var(--steel);font-size:13.5px}
 
   .tierline{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--racing);margin-top:44px}
   h2.tier{font-weight:900;font-size:clamp(24px,4.5vw,32px);letter-spacing:-.01em;margin:4px 0}
@@ -126,9 +131,11 @@
   <div class="kicker">events radar · the radar, on tour and denver venues</div>
   <h1>where the <span>grooves</span> are</h1>
   <p class="sub">the us house, techno and indie dance calendar through december 2026. the big ones worth the trip, and the underground worth staying out for.</p>
-  <nav class="jump" aria-label="sections"><a href="#radar">the radar</a><a href="#tours">on tour</a><a href="#venues">denver venues</a></nav>
+  <nav class="jump" aria-label="sections"><a href="#radar">the radar</a><a href="#tours">on tour</a><a href="#venues">denver venues</a><a href="/calendar">the calendar</a></nav>
 
   <p class="legend"><b>🔴</b> = a roster artist is on the bill. lineups shift, so confirm on the official link.</p>
+
+  <a class="calcard" href="/calendar"><span class="k">new · the calendar</span><b>the whole year, on a map</b><span class="s">coachella, burning man, tomorrowland and every festival worth the trip through 2027, on a world map and a year calendar you can subscribe to →</span></a>
 
   <section class="hub" id="radar">
   <!-- ================= TIER 1 ================= -->

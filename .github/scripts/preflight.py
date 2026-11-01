@@ -90,7 +90,7 @@ def pages():
 def local_target(href, frm):
     """the file a local href points at, or None when it is not local. '/scan' -> scan.html, '/tracklists/' -> index."""
     h = href.split("#")[0].split("?")[0]
-    if not h or h.startswith(("http://", "https://", "mailto:", "tel:", "data:", "javascript:", "//")):
+    if not h or h.startswith(("http://", "https://", "mailto:", "tel:", "webcal:", "data:", "javascript:", "//")):
         return None
     if h.startswith("/"):
         p = h.lstrip("/")

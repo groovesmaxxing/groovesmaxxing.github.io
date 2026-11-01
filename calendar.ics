@@ -1,0 +1,596 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//groovesMAXXING//calendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:groovesMAXXING calendar
+X-WR-CALDESC:the dance music year\, festivals\, burns and city weeks. groov
+ esmaxxing.com/calendar
+REFRESH-INTERVAL;VALUE=DURATION:P1D
+X-PUBLISHED-TTL:P1D
+BEGIN:VEVENT
+UID:midburn-2026-2026-11-02@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20261102
+DTEND;VALUE=DATE:20261108
+SUMMARY:Midburn 2026
+LOCATION:Negev desert\, Sde Boker\, Israel
+URL:https://www.midburn.org/en
+DESCRIPTION:A Burning Man regional in the desert. A city the participants b
+ uild themselves\, no headliners.\nhttps://www.midburn.org/en\nvia https://
+ groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:edc-orlando-2026-2026-11-06@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20261106
+DTEND;VALUE=DATE:20261109
+SUMMARY:EDC Orlando 2026
+LOCATION:Tinker Field\, Orlando\, FL\, USA
+URL:https://orlando.edc.com/
+DESCRIPTION:The main stage is not why you go. Plan the weekend around the h
+ ouse and techno undercard on the smaller stages.\nhttps://orlando.edc.com/
+ \nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:seismic-2026-2026-11-13@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20261113
+DTEND;VALUE=DATE:20261116
+SUMMARY:Seismic Dance Event 2026 · 9.0
+LOCATION:The Concourse Project\, Austin\, TX\, USA
+URL:https://www.seismicdanceevent.com/
+DESCRIPTION:Austin's boutique house and techno weekend. Three days inside o
+ ne club complex and no walking between stages.\nhttps://www.seismicdanceev
+ ent.com/\nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:strawberry-fields-2026-2026-11-20@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261123
+SUMMARY:Strawberry Fields 2026
+LOCATION:The Wildlands\, Tocumwal\, NSW\, Australia
+URL:https://www.strawberryfields.com.au/
+DESCRIPTION:Camping by the Murray River. House\, techno\, disco and the wei
+ rd stuff.\nhttps://www.strawberryfields.com.au/\nvia https://groovesmaxxin
+ g.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:harbourlife-2026-2026-11-21@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+SUMMARY:Harbourlife 2026
+LOCATION:Fleet Steps\, Mrs Macquaries Point\, Sydney\, NSW\, Australia
+URL:https://www.harbourlife.com.au/
+DESCRIPTION:An afternoon of house on the steps over Sydney Harbour\, 2pm to
+  10pm\, with Honey Dijon headlining.\nhttps://www.harbourlife.com.au/\nvia
+  https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:art-basel-2026-2026-12-02@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20261202
+DTEND;VALUE=DATE:20261207
+SUMMARY:Art Basel Miami Beach 2026 · Miami Art Week
+LOCATION:Miami Beach Convention Center\, Miami Beach\, FL\, USA
+URL:https://www.artbasel.com/miami-beach
+DESCRIPTION:The fair is the excuse. Art week fills Miami with club nights a
+ nd pop-up parties from Wednesday to Sunday.\nhttps://www.artbasel.com/miam
+ i-beach\nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:wonderfruit-2026-2026-12-03@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20261203
+DTEND;VALUE=DATE:20261208
+SUMMARY:Wonderfruit 2026
+LOCATION:The Fields at Siam Country Club\, Pattaya\, Thailand
+URL:https://www.wonderfruit.co/
+DESCRIPTION:Art\, music and a field outside Pattaya for five days. A week e
+ arlier than usual this year.\nhttps://www.wonderfruit.co/\nvia https://gro
+ ovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:tomorrowland-thailand-2026-2026-12-11@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20261211
+DTEND;VALUE=DATE:20261214
+SUMMARY:Tomorrowland Thailand 2026
+LOCATION:Wisdom Valley\, Pattaya\, Thailand
+URL:https://www.tomorrowland.com/
+DESCRIPTION:The first full Tomorrowland in Asia. Sold out\, waiting list on
+ ly.\nhttps://www.tomorrowland.com/\nvia https://groovesmaxxing.com/calenda
+ r
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:proper-nye-2026-2026-12-31@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20261231
+DTEND;VALUE=DATE:20270102
+SUMMARY:Proper NYE / NYD 2026-27
+LOCATION:Petco Park\, San Diego\, CA\, USA
+URL:https://www.propernye.com/
+DESCRIPTION:FNGRS CRSSD's two days in the ballpark\, 21+. The way to close 
+ the year on the west coast.\nhttps://www.propernye.com/\nvia https://groov
+ esmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:zamna-tulum-2026-2026-12-31@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20261231
+DTEND;VALUE=DATE:20270111
+SUMMARY:Zamna Tulum 2026-27 season · 10 years
+LOCATION:Zamna Tulum\, Tulum\, Quintana Roo\, Mexico
+URL:https://zamnafestival.com/
+DESCRIPTION:Ten nights in the jungle for the tenth anniversary. Anyma\, Bla
+ ck Coffee\, Adriatique and Adam Port are all on the season calendar.\nhttp
+ s://zamnafestival.com/\nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:field-day-sydney-2027-2027-01-01@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270101
+DTEND;VALUE=DATE:20270102
+SUMMARY:Field Day 2027 · Sydney
+LOCATION:The Domain\, Sydney\, NSW\, Australia
+URL:https://www.fieldday.com.au/
+DESCRIPTION:New Year's Day in The Domain. Mall Grab and Boys Noize are on t
+ he bill.\nhttps://www.fieldday.com.au/\nvia https://groovesmaxxing.com/cal
+ endar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:day-zero-2027-2027-01-09@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270109
+DTEND;VALUE=DATE:20270110
+SUMMARY:Day Zero 2027 · Tulum
+LOCATION:Location revealed closer to the date\, Tulum\, Quintana Roo\, Mexi
+ co
+URL:https://dayzerofestival.com/
+DESCRIPTION:Damian Lazarus's sunset to sunrise night in the Tulum jungle. T
+ he location stays a secret until it doesn't.\nhttps://dayzerofestival.com/
+ \nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:groove-cruise-2027-2027-01-21@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270121
+DTEND;VALUE=DATE:20270126
+SUMMARY:Groove Cruise Miami 2027
+LOCATION:Allure of the Seas\, from PortMiami\, Miami\, FL\, USA
+URL:https://www.groovecruise.com/
+DESCRIPTION:Four nights of house and techno at sea. Sold out\, so it's a wa
+ itlist hunt.\nhttps://www.groovecruise.com/\nvia https://groovesmaxxing.co
+ m/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:kiwiburn-2027-2027-01-27@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270127
+DTEND;VALUE=DATE:20270202
+SUMMARY:Kiwiburn 2027
+LOCATION:Hunterville site\, Hunterville\, New Zealand
+URL:https://kiwiburn.com/
+DESCRIPTION:New Zealand's Burning Man regional\, near Hunterville. It's sum
+ mer down there\, remember.\nhttps://kiwiburn.com/\nvia https://groovesmaxx
+ ing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:bahidora-2027-2027-02-12@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270212
+DTEND;VALUE=DATE:20270215
+SUMMARY:Bahidorá 2027 · 15 years
+LOCATION:Las Estacas\, Tlaltizapán\, Morelos\, Mexico
+URL:https://bahidora.com/
+DESCRIPTION:The river festival at Las Estacas turns fifteen. Floating down 
+ the river between sets is the whole point.\nhttps://bahidora.com/\nvia htt
+ ps://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:edc-mexico-2027-2027-02-19@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270219
+DTEND;VALUE=DATE:20270222
+SUMMARY:EDC Mexico 2027
+LOCATION:Autódromo Hermanos Rodríguez\, Mexico City\, CDMX\, Mexico
+URL:https://mexico.edc.com/
+DESCRIPTION:Insomniac's carnival at the Mexico City racetrack. Big on the m
+ ain stage\, so map the house and techno stages early.\nhttps://mexico.edc.
+ com/\nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:pitch-2027-2027-03-05@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270305
+DTEND;VALUE=DATE:20270310
+SUMMARY:Pitch Music & Arts 2027 · 10 years
+LOCATION:Foothills of Gariwerd\, Moyston\, VIC\, Australia
+URL:https://www.pitchfestival.com.au/
+DESCRIPTION:Ten years at the foot of the Grampians. Australia's techno pilg
+ rimage.\nhttps://www.pitchfestival.com.au/\nvia https://groovesmaxxing.com
+ /calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:tomorrowland-winter-2027-2027-03-20@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270320
+DTEND;VALUE=DATE:20270328
+SUMMARY:Tomorrowland Winter 2027
+LOCATION:Alpe d'Huez ski resort\, Alpe d'Huez\, France
+URL:https://www.tomorrowland.com/
+DESCRIPTION:Tomorrowland on skis\, a full week in the French Alps. Après w
+ ith a much bigger soundsystem.\nhttps://www.tomorrowland.com/\nvia https:/
+ /groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:mmw-2027-2027-03-22@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270322
+DTEND;VALUE=DATE:20270329
+SUMMARY:Miami Music Week 2027
+LOCATION:Clubs and hotels citywide\, Miami\, FL\, USA
+URL:https://www.miamiandbeaches.com/events/miami-music-week-guide
+DESCRIPTION:The week Miami turns into one long pool party. The label showca
+ ses and the hotel parties are the real festival.\nhttps://www.miamiandbeac
+ hes.com/events/miami-music-week-guide\nvia https://groovesmaxxing.com/cale
+ ndar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:dgtl-2027-2027-03-26@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270326
+DTEND;VALUE=DATE:20270329
+SUMMARY:DGTL Amsterdam 2027
+LOCATION:NDSM Docklands\, Amsterdam\, Netherlands
+URL:https://dgtl-festival.com/en/dgtl-amsterdam/
+DESCRIPTION:Easter weekend at the old NDSM shipyard. House and techno with 
+ a sustainability obsession.\nhttps://dgtl-festival.com/en/dgtl-amsterdam/\
+ nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:ultra-2027-2027-03-26@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270326
+DTEND;VALUE=DATE:20270329
+SUMMARY:Ultra Music Festival 2027
+LOCATION:Bayfront Park\, Miami\, FL\, USA
+URL:https://www.ultramusicfestival.com/
+DESCRIPTION:Three days in Bayfront Park to close Miami Music Week. The main
+  stage is EDM\, the Resistance stage is where the techno lives.\nhttps://w
+ ww.ultramusicfestival.com/\nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:time-warp-2027-2027-04-03@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270403
+DTEND;VALUE=DATE:20270405
+SUMMARY:Time Warp 2027 · Mannheim
+LOCATION:Maimarkthalle\, Mannheim\, Germany
+URL:https://www.time-warp.de/
+DESCRIPTION:Nineteen hours across five floors\, one Saturday into Sunday. T
+ he techno institution that does not do half measures.\nhttps://www.time-wa
+ rp.de/\nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:coachella-2027-w1-2027-04-09@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270409
+DTEND;VALUE=DATE:20270412
+SUMMARY:Coachella 2027 · weekend 1
+LOCATION:Empire Polo Club\, Indio\, CA\, USA
+URL:https://www.coachella.com/
+DESCRIPTION:The desert one. The lineup isn't out yet\, but the house and te
+ chno crowd always ends up living in the Sahara and the Yuma tents.\nhttps:
+ //www.coachella.com/\nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:coachella-2027-w2-2027-04-16@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270416
+DTEND;VALUE=DATE:20270419
+SUMMARY:Coachella 2027 · weekend 2
+LOCATION:Empire Polo Club\, Indio\, CA\, USA
+URL:https://www.coachella.com/
+DESCRIPTION:Same lineup as weekend one\, a week later on the same polo fiel
+ ds.\nhttps://www.coachella.com/\nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:rainbow-disco-club-2027-2027-04-16@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270416
+DTEND;VALUE=DATE:20270419
+SUMMARY:Rainbow Disco Club 2027
+LOCATION:Higashi-Izu Cross Country Course\, Higashi-Izu\, Shizuoka\, Japan
+URL:https://www.rainbowdiscoclub.com/
+DESCRIPTION:House and disco in the hills of the Izu peninsula. Some ticket 
+ types are already gone.\nhttps://www.rainbowdiscoclub.com/\nvia https://gr
+ oovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:tomorrowland-brasil-2027-2027-04-30@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270430
+DTEND;VALUE=DATE:20270503
+SUMMARY:Tomorrowland Brasil 2027
+LOCATION:Parque Maeda\, Itu\, SP\, Brazil
+URL:https://brasil.tomorrowland.com/
+DESCRIPTION:The Tomorrowland stage builds land in Itu\, inland from São Pa
+ ulo. Lineup still to come.\nhttps://brasil.tomorrowland.com/\nvia https://
+ groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:edc-las-vegas-2027-dusk-2027-05-14@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270514
+DTEND;VALUE=DATE:20270517
+SUMMARY:EDC Las Vegas 2027 · Dusk weekend
+LOCATION:Las Vegas Motor Speedway\, Las Vegas\, NV\, USA
+URL:https://lasvegas.edc.com/
+DESCRIPTION:EDC goes two weekends in 2027 with the same lineup both times. 
+ This is the first one.\nhttps://lasvegas.edc.com/\nvia https://groovesmaxx
+ ing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:upclose-2027-2027-05-15@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270515
+DTEND;VALUE=DATE:20270517
+SUMMARY:Awakenings UpClose 2027
+LOCATION:Houtrak\, Spaarnwoude\, Spaarnwoude\, Netherlands
+URL:https://www.awakenings.com/en/
+DESCRIPTION:Awakenings in spring\, in the park just outside Amsterdam. The 
+ warm-up for the summer weekend.\nhttps://www.awakenings.com/en/\nvia https
+ ://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lentekabinet-2027-2027-05-15@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270515
+DTEND;VALUE=DATE:20270517
+SUMMARY:Lentekabinet 2027
+LOCATION:Het Twiske\, Oostzaan\, Netherlands
+URL:https://www.dekmantel.com/
+DESCRIPTION:Dekmantel's spring open air\, same weekend as UpClose. Amsterda
+ m does not do quiet weekends in May.\nhttps://www.dekmantel.com/\nvia http
+ s://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:edc-las-vegas-2027-dawn-2027-05-21@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270521
+DTEND;VALUE=DATE:20270524
+SUMMARY:EDC Las Vegas 2027 · Dawn weekend
+LOCATION:Las Vegas Motor Speedway\, Las Vegas\, NV\, USA
+URL:https://lasvegas.edc.com/
+DESCRIPTION:The second weekend at the Speedway. Same lineup\, a week later\
+ , and the same advice: live at the house and techno stages.\nhttps://lasve
+ gas.edc.com/\nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lib-2027-2027-05-26@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270526
+DTEND;VALUE=DATE:20270531
+SUMMARY:Lightning in a Bottle 2027
+LOCATION:Buena Vista Aquatic Recreation Area\, Buena Vista Lake\, CA\, USA
+URL:https://www.libfestival.org/
+DESCRIPTION:Five days of camping by the lake. Skip the bass stage and chase
+  the house and sunrise sets.\nhttps://www.libfestival.org/\nvia https://gr
+ oovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:field-day-london-2027-2027-05-29@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270529
+DTEND;VALUE=DATE:20270530
+SUMMARY:Field Day 2027 · London
+LOCATION:South London park\, named closer to the date\, London\, UK
+URL:https://www.fielddayfestivals.com/
+DESCRIPTION:One day of house\, techno and the leftfield stuff in South Lond
+ on.\nhttps://www.fielddayfestivals.com/\nvia https://groovesmaxxing.com/ca
+ lendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:movement-2027-2027-05-29@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270529
+DTEND;VALUE=DATE:20270601
+SUMMARY:Movement 2027
+LOCATION:Hart Plaza\, Detroit\, MI\, USA
+URL:https://movementfestival.com/
+DESCRIPTION:Techno in the city that made it\, Memorial Day weekend on the r
+ iverfront. Tickets are already on sale.\nhttps://movementfestival.com/\nvi
+ a https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:primavera-2027-2027-06-02@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270602
+DTEND;VALUE=DATE:20270607
+SUMMARY:Primavera Sound 2027 · Barcelona
+LOCATION:Parc del Fòrum\, Barcelona\, Spain
+URL:https://www.primaverasound.com/en/barcelona
+DESCRIPTION:Barcelona's big indie week by the sea. Not a dance festival\, b
+ ut the late electronic stages earn the flight.\nhttps://www.primaverasound
+ .com/en/barcelona\nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:glastonbury-2027-2027-06-23@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270623
+DTEND;VALUE=DATE:20270628
+SUMMARY:Glastonbury 2027
+LOCATION:Worthy Farm\, Pilton\, Somerset\, UK
+URL:https://www.glastonburyfestivals.co.uk/
+DESCRIPTION:Back after the 2026 fallow year. The late night corners of the 
+ farm are where a house head disappears for five days.\nhttps://www.glaston
+ buryfestivals.co.uk/\nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:hideout-2027-2027-06-29@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270629
+DTEND;VALUE=DATE:20270703
+SUMMARY:Hideout 2027
+LOCATION:Zrće Beach\, Novalja\, Pag\, Croatia
+URL:https://hideoutfestival.com/
+DESCRIPTION:Pool parties\, boat parties and beach clubs on Pag. The UK club
+  crowd's summer holiday.\nhttps://hideoutfestival.com/\nvia https://groove
+ smaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:kappa-2027-2027-07-02@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270702
+DTEND;VALUE=DATE:20270705
+SUMMARY:Kappa FuturFestival 2027
+LOCATION:Parco Dora\, Turin\, Italy
+URL:https://www.kappafuturfestival.it/
+DESCRIPTION:Turin's house and techno weekend in a park built around old ste
+ elworks. Daytime\, sweaty\, Italian crowds that know every drop.\nhttps://
+ www.kappafuturfestival.it/\nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:awakenings-2027-2027-07-09@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270709
+DTEND;VALUE=DATE:20270712
+SUMMARY:Awakenings Festival 2027
+LOCATION:Beekse Bergen\, Hilvarenbeek\, Netherlands
+URL:https://www.awakenings.com/en/
+DESCRIPTION:The Netherlands' big techno weekend. Three days\, hard hats on.
+ \nhttps://www.awakenings.com/en/\nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:dekmantel-2027-2027-07-29@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270729
+DTEND;VALUE=DATE:20270803
+SUMMARY:Dekmantel Festival 2027
+LOCATION:Amsterdamse Bos\, Amsterdam\, Netherlands
+URL:https://www.dekmantel.com/
+DESCRIPTION:The forest festival. House\, techno and the deep cuts in the Am
+ sterdamse Bos\, with club nights all over the city.\nhttps://www.dekmantel
+ .com/\nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:houghton-2027-2027-08-05@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270805
+DTEND;VALUE=DATE:20270809
+SUMMARY:Houghton 2027
+LOCATION:Houghton Hall\, Houghton\, Norfolk\, UK
+URL:http://houghtonfestival.co.uk/
+DESCRIPTION:The underground weekend in the grounds of a country estate. Lon
+ g sets\, no rush.\nhttp://houghtonfestival.co.uk/\nvia https://groovesmaxx
+ ing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:dekmantel-selectors-2027-2027-08-19@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270819
+DTEND;VALUE=DATE:20270824
+SUMMARY:Dekmantel Selectors 2027
+LOCATION:The Garden Resort\, Tisno\, Croatia
+URL:https://www.dekmantel.com/
+DESCRIPTION:Dekmantel on the Adriatic. The selectors bring the records you 
+ did not know you needed.\nhttps://www.dekmantel.com/\nvia https://groovesm
+ axxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:creamfields-2027-2027-08-26@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270826
+DTEND;VALUE=DATE:20270830
+SUMMARY:Creamfields 2027
+LOCATION:Daresbury Estate\, Daresbury\, Cheshire\, UK
+URL:https://www.creamfields.com/
+DESCRIPTION:The UK's big bank holiday dance weekend. Plan around the house 
+ and techno tents.\nhttps://www.creamfields.com/\nvia https://groovesmaxxin
+ g.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lost-village-2027-2027-08-26@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270826
+DTEND;VALUE=DATE:20270830
+SUMMARY:Lost Village 2027
+LOCATION:Norton Disney\, Lincoln\, Lincolnshire\, UK
+URL:https://www.lostvillagefestival.com/
+DESCRIPTION:The forest one\, same weekend as Creamfields. House\, techno an
+ d indie dance inside a storybook set.\nhttps://www.lostvillagefestival.com
+ /\nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:burning-man-2027-2027-08-29@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20270829
+DTEND;VALUE=DATE:20270907
+SUMMARY:Burning Man 2027 · Spellbound
+LOCATION:Black Rock City\, Black Rock Desert\, NV\, USA
+URL:https://burningman.org/
+DESCRIPTION:Black Rock City rises again and the theme is Spellbound. A deep
+  playa sunrise set is still the best dance floor on earth.\nhttps://burnin
+ gman.org/\nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:ade-2027-2027-10-20@groovesmaxxing.com
+DTSTAMP:20261031T000000Z
+DTSTART;VALUE=DATE:20271020
+DTEND;VALUE=DATE:20271025
+SUMMARY:Amsterdam Dance Event 2027
+LOCATION:Clubs and venues citywide\, Amsterdam\, Netherlands
+URL:https://www.amsterdam-dance-event.nl/en/
+DESCRIPTION:Five days\, hundreds of parties\, one city. The conference by d
+ ay and every club in Amsterdam by night.\nhttps://www.amsterdam-dance-even
+ t.nl/en/\nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR
