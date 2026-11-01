@@ -23,7 +23,7 @@ var ICON={
 /* the homepage logo: three red grooves, the red centre, the white waveform, on a night disc ringed in red.
    gmx-nav.css swells the waveform and sends the grooves out in a slow ripple. */
 var WAVE='6,120 30,120 48,84 68,150 88,96 108,138 120,114 132,138 152,96 172,150 192,84 210,120 234,120';
-var MARK='<svg viewBox="0 0 240 240" aria-hidden="true"><g fill="none" stroke="#FF1C02" stroke-width="10"><circle class="gx-r gx-r3" cx="120" cy="120" r="104"/><circle class="gx-r gx-r2" cx="120" cy="120" r="76"/><circle class="gx-r gx-r1" cx="120" cy="120" r="48"/></g><circle cx="120" cy="120" r="20" fill="#FF1C02"/><polyline class="gx-wv" points="'+WAVE+'" fill="none" stroke="#F2F2EF" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+var MARK='<svg viewBox="0 0 240 240" aria-hidden="true"><g class="gx-r gx-r3" fill="none"><circle cx="120" cy="120" r="100" stroke="#8A8A93" stroke-width="17"/><circle cx="120" cy="120" r="100" stroke="#FF1C02" stroke-width="11"/></g><g class="gx-r gx-r2" fill="none"><circle cx="120" cy="120" r="58" stroke="#8A8A93" stroke-width="17"/><circle cx="120" cy="120" r="58" stroke="#FF1C02" stroke-width="11"/></g><circle cx="120" cy="120" r="25" fill="#8A8A93"/><circle cx="120" cy="120" r="20" fill="#FF1C02"/><polyline class="gx-wv" points="'+WAVE+'" fill="none" stroke="#0B0B0D" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/><polyline class="gx-wv" points="'+WAVE+'" fill="none" stroke="#FFFFFF" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 var TABS=[['/','home'],['/tracklists/','tracklists'],['/scan','scan'],['/artists','artists'],['/more','more']];
 var path=location.pathname.replace(/\.html$/,'').replace(/\/index$/,'/');
 function under(p){return path===p||path.indexOf(p+'/')===0;}
@@ -191,7 +191,7 @@ function watchNow(){
 }
 function loadAccount(){
   if(window.gmxAccount||document.querySelector('script[src^="/gmx-account.js"]'))return;
-  var s=document.createElement('script');s.src='/gmx-account.js?v=19';s.defer=true;document.head.appendChild(s);
+  var s=document.createElement('script');s.src='/gmx-account.js?v=20';s.defer=true;document.head.appendChild(s);
 }
 function mount(){
   if(document.querySelector('meta[http-equiv="refresh"]'))return;

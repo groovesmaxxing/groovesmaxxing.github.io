@@ -25,9 +25,9 @@ import base64, glob, hashlib, html, json, re, sys
 
 CHECK = '--check' in sys.argv
 
-FONT_CSS = '<link rel="stylesheet" href="/gmx-fonts.css">'
+FONT_CSS = '<link rel="stylesheet" href="/gmx-fonts.css?v=2">'
 FONT_PRELOAD = ['<link rel="preload" as="font" type="font/woff2" href="/fonts/poppins-400-latin.woff2" crossorigin>',
-                '<link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-400-latin.woff2" crossorigin>']
+                '<link rel="preload" as="font" type="font/woff2" href="/fonts/jetbrainsmono-600-latin.woff2" crossorigin>']
 REFERRER = '<meta name="referrer" content="strict-origin-when-cross-origin">'
 
 # the player apis gmx-player.js and gmx-follow.js load as scripts

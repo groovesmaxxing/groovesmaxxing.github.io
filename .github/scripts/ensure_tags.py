@@ -17,24 +17,24 @@ def files(pattern):
     path.endswith('/index.html') and path.split('/') check below missed and the hub got the set page tags."""
     return [p.replace('\\', '/') for p in glob.glob(pattern)]
 
-MOTION_CSS = '<link rel="stylesheet" href="/gmx-motion.css">'
-MOTION_JS = '<script src="/gmx-motion.js" defer></script>'
+MOTION_CSS = '<link rel="stylesheet" href="/gmx-motion.css?v=2">'
+MOTION_JS = '<script src="/gmx-motion.js?v=2" defer></script>'
 T = {
     'player_css': '<link rel="stylesheet" href="/gmx-player.css?v=2">',
     'nav_css': '<link rel="stylesheet" href="/gmx-nav.css?v=20">',
     'player_js': '<script src="/gmx-player.js" defer></script>',
-    'nav_js': '<script src="/gmx-nav.js?v=23" defer></script>',
+    'nav_js': '<script src="/gmx-nav.js?v=24" defer></script>',
     'follow_js': '<script src="/gmx-follow.js" defer></script>',
     'crate_js': '<script src="/gmx-crate.js" defer></script>',
     'related_js': '<script src="/gmx-related.js" defer></script>',
     'upcoming_js': '<script src="/gmx-upcoming.js" defer></script>',
     'quick_css': '<link rel="stylesheet" href="/gmx-quick.css">',
-    'quick_js': '<script src="/gmx-quick.js?v=4" defer></script>',
+    'quick_js': '<script src="/gmx-quick.js?v=5" defer></script>',
     'sheet_css': '<link rel="stylesheet" href="/gmx-sheet.css?v=2">',
     'sheet_js': '<script src="/gmx-sheet.js?v=2" defer></script>',
     # the account layer (2026-10-12): "this is me" on every artist and label profile
     'account_css': '<link rel="stylesheet" href="/gmx-account.css?v=2">',
-    'account_js': '<script src="/gmx-account.js?v=19" defer></script>',
+    'account_js': '<script src="/gmx-account.js?v=20" defer></script>',
     # the "more" expander (2026-10-14): any element with data-more collapses behind one button
     'more_js': '<script src="/gmx-more.js?v=2" defer></script>',
     # the name reels on the home page (2026-10-14)
