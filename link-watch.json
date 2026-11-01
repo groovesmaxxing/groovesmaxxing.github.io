@@ -1,17 +1,17 @@
 {
- "generated": "2026-10-31T15:51:03Z",
- "pages": 875,
+ "generated": "2026-11-01T16:54:37Z",
+ "pages": 876,
  "links": {
-  "checkable": 7377,
+  "checkable": 7496,
   "by_kind": {
-   "other": 3387,
-   "spotify": 2374,
-   "soundcloud": 788,
+   "other": 3489,
+   "spotify": 2390,
+   "soundcloud": 789,
    "youtube": 828
   },
-  "checked_within_recheck": 6971,
+  "checked_within_recheck": 6972,
   "asked_this_run": 700,
-  "unknown": 923,
+  "unknown": 935,
   "budget": 700,
   "recheck_days": 10
  },
@@ -41,6 +41,19 @@
    "page_count": 1,
    "checked": "2026-10-22T15:35:56Z",
    "first_seen": "2026-10-13T17:46:57Z"
+  },
+  {
+   "url": "https://www.fielddayfestivals.com/",
+   "kind": "other",
+   "code": 404,
+   "note": null,
+   "title": null,
+   "pages": [
+    "/calendar"
+   ],
+   "page_count": 1,
+   "checked": "2026-11-01T16:54:37Z",
+   "first_seen": "2026-11-01T16:54:37Z"
   },
   {
    "url": "https://www.youtube.com/@gabrl_music",
@@ -119,6 +132,21 @@
    "first_seen": "2026-10-17T13:53:46Z"
   },
   {
+   "url": "https://open.spotify.com/track/6LpbTB4QYX68oKwO0PCTWd",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Stay",
+   "pages": [
+    "/friday",
+    "/tracklists/me-vs-rampa-circoloco-dc-10-ibiza-2026",
+    "/tracklists/tom-collins-pink-mammoth-burning-man-2026"
+   ],
+   "page_count": 3,
+   "checked": "2026-10-29T17:03:34Z",
+   "first_seen": "2026-10-16T14:58:58Z"
+  },
+  {
    "url": "https://open.spotify.com/track/6jtVPskUWZSDBtotyrfzzX",
    "kind": "spotify",
    "code": 200,
@@ -175,7 +203,7 @@
     "/tracklists/notre-dame-paranormal-la-clairiere-paris-2026"
    ],
    "page_count": 3,
-   "checked": "2026-10-21T15:34:18Z",
+   "checked": "2026-11-01T16:54:37Z",
    "first_seen": "2026-10-23T15:25:25Z"
   },
   {
@@ -441,7 +469,7 @@
     "/tracklists/luch-gozar-night-2-polyforum-siqueiros-mexico-city-2026"
    ],
    "page_count": 2,
-   "checked": "2026-10-21T15:34:18Z",
+   "checked": "2026-11-01T16:54:37Z",
    "first_seen": "2026-10-31T15:51:03Z"
   },
   {
@@ -557,6 +585,20 @@
    "first_seen": "2026-10-23T15:25:25Z"
   },
   {
+   "url": "https://open.spotify.com/track/630kViXMlTZk6koSsZTc9z",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "War",
+   "pages": [
+    "/tracklists/luch-solomun-1-pacha-ibiza-2026",
+    "/tracklists/tom-collins-pink-mammoth-burning-man-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-30T16:48:35Z",
+   "first_seen": "2026-11-01T16:54:37Z"
+  },
+  {
    "url": "https://open.spotify.com/track/6H3Qhv1dzL5pbtrQ7Kh7Cx",
    "kind": "spotify",
    "code": 200,
@@ -571,20 +613,6 @@
    "first_seen": "2026-10-14T15:26:28Z"
   },
   {
-   "url": "https://open.spotify.com/track/6LpbTB4QYX68oKwO0PCTWd",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Stay",
-   "pages": [
-    "/friday",
-    "/tracklists/me-vs-rampa-circoloco-dc-10-ibiza-2026"
-   ],
-   "page_count": 2,
-   "checked": "2026-10-29T17:03:34Z",
-   "first_seen": "2026-10-16T14:58:58Z"
-  },
-  {
    "url": "https://open.spotify.com/track/6XqRL8W59LbyLuIQ7wyjON",
    "kind": "spotify",
    "code": 200,
@@ -595,7 +623,7 @@
     "/tracklists/notre-dame-paranormal-la-clairiere-paris-2026"
    ],
    "page_count": 2,
-   "checked": "2026-10-21T15:34:18Z",
+   "checked": "2026-11-01T16:54:37Z",
    "first_seen": "2026-10-23T15:25:25Z"
   },
   {
@@ -679,7 +707,7 @@
     "/tracklists/camelphat-audio-obscura-at-the-loft-amsterdam-2026"
    ],
    "page_count": 2,
-   "checked": "2026-10-21T15:34:18Z",
+   "checked": "2026-11-01T16:54:37Z",
    "first_seen": "2026-10-22T15:35:56Z"
   },
   {
@@ -749,7 +777,7 @@
     "/tracklists/seth-troxler-vs-mochakk-circoloco-dc-10-ibiza-2026"
    ],
    "page_count": 2,
-   "checked": "2026-10-21T15:34:18Z",
+   "checked": "2026-11-01T16:54:37Z",
    "first_seen": "2026-10-23T15:25:25Z"
   },
   {
@@ -833,7 +861,7 @@
     "/tracklists/notre-dame-paranormal-la-clairiere-paris-2026"
    ],
    "page_count": 2,
-   "checked": "2026-10-21T15:34:18Z",
+   "checked": "2026-11-01T16:54:37Z",
    "first_seen": "2026-10-23T15:25:25Z"
   },
   {
@@ -861,7 +889,7 @@
     "/tracklists/luch-gozar-night-2-polyforum-siqueiros-mexico-city-2026"
    ],
    "page_count": 2,
-   "checked": "2026-10-21T15:34:18Z",
+   "checked": "2026-11-01T16:54:37Z",
    "first_seen": "2026-10-31T15:51:03Z"
   },
   {
@@ -1012,7 +1040,7 @@
     "/tracklists/camelphat-audio-obscura-at-the-loft-amsterdam-2026"
    ],
    "page_count": 1,
-   "checked": "2026-10-21T15:34:18Z",
+   "checked": "2026-11-01T16:54:37Z",
    "first_seen": "2026-10-21T15:34:18Z"
   },
   {
@@ -1051,7 +1079,7 @@
     "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set"
    ],
    "page_count": 1,
-   "checked": "2026-10-21T15:34:18Z",
+   "checked": "2026-11-01T16:54:37Z",
    "first_seen": "2026-10-21T15:34:18Z"
   },
   {
@@ -1064,7 +1092,7 @@
     "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set"
    ],
    "page_count": 1,
-   "checked": "2026-10-21T15:34:18Z",
+   "checked": "2026-11-01T16:54:37Z",
    "first_seen": "2026-10-21T15:34:18Z"
   },
   {
@@ -1116,8 +1144,21 @@
     "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set"
    ],
    "page_count": 1,
-   "checked": "2026-10-21T15:34:18Z",
+   "checked": "2026-11-01T16:54:37Z",
    "first_seen": "2026-10-21T15:34:18Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/0AD7UhlCamDxHqV9pOfdfc",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Milkshake",
+   "pages": [
+    "/tracklists/tom-collins-pink-mammoth-burning-man-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-11-01T16:54:37Z",
+   "first_seen": "2026-11-01T16:54:37Z"
   },
   {
    "url": "https://open.spotify.com/track/0AXbv98ajINQ60GASMLjXy",
@@ -1246,7 +1287,7 @@
     "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set"
    ],
    "page_count": 1,
-   "checked": "2026-10-21T15:34:18Z",
+   "checked": "2026-11-01T16:54:37Z",
    "first_seen": "2026-10-21T15:34:18Z"
   },
   {
@@ -1298,7 +1339,7 @@
     "/tracklists/camelphat-audio-obscura-at-the-loft-amsterdam-2026"
    ],
    "page_count": 1,
-   "checked": "2026-10-21T15:34:18Z",
+   "checked": "2026-11-01T16:54:37Z",
    "first_seen": "2026-10-21T15:34:18Z"
   },
   {
@@ -1467,7 +1508,7 @@
     "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set"
    ],
    "page_count": 1,
-   "checked": "2026-10-21T15:34:18Z",
+   "checked": "2026-11-01T16:54:37Z",
    "first_seen": "2026-10-21T15:34:18Z"
   },
   {
@@ -1493,7 +1534,7 @@
     "/tracklists/camelphat-audio-obscura-at-the-loft-amsterdam-2026"
    ],
    "page_count": 1,
-   "checked": "2026-10-21T15:34:18Z",
+   "checked": "2026-11-01T16:54:37Z",
    "first_seen": "2026-10-21T15:34:18Z"
   },
   {
@@ -1519,7 +1560,7 @@
     "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set"
    ],
    "page_count": 1,
-   "checked": "2026-10-21T15:34:18Z",
+   "checked": "2026-11-01T16:54:37Z",
    "first_seen": "2026-10-21T15:34:18Z"
   },
   {
@@ -1560,6 +1601,19 @@
    "page_count": 1,
    "checked": "2026-10-29T17:03:34Z",
    "first_seen": "2026-10-15T15:18:47Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/0gbFEO8EcSzbGIf4SJR47P",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Dancing Shoes",
+   "pages": [
+    "/tracklists/tom-collins-pink-mammoth-burning-man-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-11-01T16:54:37Z",
+   "first_seen": "2026-11-01T16:54:37Z"
   },
   {
    "url": "https://open.spotify.com/track/0hMX0WnzLZrFOxcAzb0GdW",
@@ -1692,6 +1746,19 @@
    "first_seen": "2026-10-31T15:51:03Z"
   },
   {
+   "url": "https://open.spotify.com/track/0uLnOjsyJwuA11XATQqDnc",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "String Theory",
+   "pages": [
+    "/tracklists/tom-collins-pink-mammoth-burning-man-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-11-01T16:54:37Z",
+   "first_seen": "2026-11-01T16:54:37Z"
+  },
+  {
    "url": "https://open.spotify.com/track/0ud7ma9G6buYyqfaeGRG4Y",
    "kind": "spotify",
    "code": 200,
@@ -1792,7 +1859,7 @@
     "/tracklists/notre-dame-paranormal-la-clairiere-paris-2026"
    ],
    "page_count": 1,
-   "checked": "2026-10-21T15:34:18Z",
+   "checked": "2026-11-01T16:54:37Z",
    "first_seen": "2026-10-21T15:34:18Z"
   },
   {
@@ -1805,7 +1872,7 @@
     "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set"
    ],
    "page_count": 1,
-   "checked": "2026-10-21T15:34:18Z",
+   "checked": "2026-11-01T16:54:37Z",
    "first_seen": "2026-10-21T15:34:18Z"
   },
   {
@@ -1896,7 +1963,7 @@
     "/tracklists/camelphat-audio-obscura-at-the-loft-amsterdam-2026"
    ],
    "page_count": 1,
-   "checked": "2026-10-21T15:34:18Z",
+   "checked": "2026-11-01T16:54:37Z",
    "first_seen": "2026-10-21T15:34:18Z"
   },
   {
@@ -2108,6 +2175,19 @@
    "first_seen": "2026-10-19T17:08:37Z"
   },
   {
+   "url": "https://open.spotify.com/track/1TFqvGbt1P4nUxAg1aEsiU",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Je Suis Music",
+   "pages": [
+    "/tracklists/tom-collins-pink-mammoth-burning-man-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-11-01T16:54:37Z",
+   "first_seen": "2026-11-01T16:54:37Z"
+  },
+  {
    "url": "https://open.spotify.com/track/1TJNlmRZvUusHR7UGCbjFi",
    "kind": "spotify",
    "code": 200,
@@ -2117,7 +2197,7 @@
     "/tracklists/notre-dame-paranormal-la-clairiere-paris-2026"
    ],
    "page_count": 1,
-   "checked": "2026-10-21T15:34:18Z",
+   "checked": "2026-11-01T16:54:37Z",
    "first_seen": "2026-10-21T15:34:18Z"
   },
   {
@@ -2130,7 +2210,7 @@
     "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set"
    ],
    "page_count": 1,
-   "checked": "2026-10-21T15:34:18Z",
+   "checked": "2026-11-01T16:54:37Z",
    "first_seen": "2026-10-21T15:34:18Z"
   },
   {
@@ -2225,6 +2305,19 @@
    "first_seen": "2026-10-14T15:26:28Z"
   },
   {
+   "url": "https://open.spotify.com/track/1hsaCWfjxr5JfrN08L8Qg0",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "I Gave You the Sky feat. JAW",
+   "pages": [
+    "/tracklists/tom-collins-pink-mammoth-burning-man-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-11-01T16:54:37Z",
+   "first_seen": "2026-11-01T16:54:37Z"
+  },
+  {
    "url": "https://open.spotify.com/track/1kQtOJe9IRov5wbptujbga",
    "kind": "spotify",
    "code": 200,
@@ -2234,7 +2327,7 @@
     "/tracklists/notre-dame-paranormal-la-clairiere-paris-2026"
    ],
    "page_count": 1,
-   "checked": "2026-10-21T15:34:18Z",
+   "checked": "2026-11-01T16:54:37Z",
    "first_seen": "2026-10-21T15:34:18Z"
   },
   {
@@ -2247,7 +2340,7 @@
     "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set"
    ],
    "page_count": 1,
-   "checked": "2026-10-21T15:34:18Z",
+   "checked": "2026-11-01T16:54:37Z",
    "first_seen": "2026-10-21T15:34:18Z"
   },
   {
@@ -2338,7 +2431,7 @@
     "/tracklists/camelphat-audio-obscura-at-the-loft-amsterdam-2026"
    ],
    "page_count": 1,
-   "checked": "2026-10-21T15:34:18Z",
+   "checked": "2026-11-01T16:54:37Z",
    "first_seen": "2026-10-21T15:34:18Z"
   },
   {
@@ -2403,7 +2496,7 @@
     "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set"
    ],
    "page_count": 1,
-   "checked": "2026-10-21T15:34:18Z",
+   "checked": "2026-11-01T16:54:37Z",
    "first_seen": "2026-10-21T15:34:18Z"
   },
   {
@@ -2546,7 +2639,7 @@
     "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set"
    ],
    "page_count": 1,
-   "checked": "2026-10-21T15:34:18Z",
+   "checked": "2026-11-01T16:54:37Z",
    "first_seen": "2026-10-21T15:34:18Z"
   },
   {
@@ -2665,86 +2758,8 @@
    "page_count": 1,
    "checked": "2026-10-30T16:48:35Z",
    "first_seen": "2026-10-17T13:53:46Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2K4ZCttA5SRyfDqmEzINfv",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Love Me",
-   "pages": [
-    "/tracklists/patrick-topping-msu-zagreb-panic-room-croatia-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-31T15:51:03Z",
-   "first_seen": "2026-10-31T15:51:03Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2KMQQ1yvUUOgVjGDBStDRp",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "GRIT",
-   "pages": [
-    "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-21T15:34:18Z",
-   "first_seen": "2026-10-28T16:48:23Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2KVAO2OAH6a9Tr2DqYL65g",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "CORAÇAO - 20th Anniversary Mix",
-   "pages": [
-    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-28T16:48:23Z",
-   "first_seen": "2026-10-28T16:48:23Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2Ko7SQwmyqzIrsPbm0xuXk",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Halfway Crooks",
-   "pages": [
-    "/tracklists/ben-sterling-b2b-beltran-portola-music-festival-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-23T15:25:25Z",
-   "first_seen": "2026-10-28T16:48:23Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2Ll6gBvEOvytlQc1d7N6Hu",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Discombobulated",
-   "pages": [
-    "/tracklists/me-vs-rampa-circoloco-dc-10-ibiza-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-30T16:48:35Z",
-   "first_seen": "2026-10-28T16:48:23Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2LvrJFOTo9rLYkfGhDcOQV",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Ride (feat. Karen Harding)",
-   "pages": [
-    "/tracklists/yamagucci-friends-la-2026-strange-house"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-29T17:03:34Z",
-   "first_seen": "2026-10-28T16:48:23Z"
   }
  ],
  "anchors_broken": [],
- "summary": "3 broken, 1 moved, 558 read differently, 0 broken anchors, 6971 of 7377 links checked in the last 10 days"
+ "summary": "4 broken, 1 moved, 574 read differently, 0 broken anchors, 6972 of 7496 links checked in the last 10 days"
 }
