@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-bRbqNtUV4NwlOhVE0seqeoy+k7WKVeGh71rFxWZkrbk=' 'sha256-cWTFkN49hfniMXKiA3denM0pl/xAQoEjDVEP0ub/TAs=' 'sha256-gpATKpbKKXaJsF69za3CJv/CbIYzKKxOxlfuN55g2hk=' 'sha256-kyM7dkb3y1ELE+98FMxrw9l9wpgzbzH2Qx+gVQW8sww=' 'sha256-r7XuVzKXfolLhSAT9S8X5u0GwYuMQckB9Vraa1u8vJg='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-bRbqNtUV4NwlOhVE0seqeoy+k7WKVeGh71rFxWZkrbk=' 'sha256-gpATKpbKKXaJsF69za3CJv/CbIYzKKxOxlfuN55g2hk=' 'sha256-kyM7dkb3y1ELE+98FMxrw9l9wpgzbzH2Qx+gVQW8sww=' 'sha256-r7XuVzKXfolLhSAT9S8X5u0GwYuMQckB9Vraa1u8vJg=' 'sha256-xlLXZD62/jHt/XFN7VS5Ko4PMG6Vn67pTFT1B4GyinM='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <link rel="manifest" href="/manifest.webmanifest">
@@ -233,7 +233,14 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--racing);outline-off
 .hero .wordmark{font-size:clamp(2.6rem,9vw,7.6rem)}
 /* a laptop screen (wide but under 900px tall) sees the mark, the wordmark and the four pills without scrolling (site review item 11) */
 @media (min-width:641px) and (max-height:900px){.hero{min-height:0;padding:36px 24px 30px}.hero .mark{width:min(26vw,170px);margin-bottom:16px}.hero .wordmark{font-size:clamp(2.4rem,6.4vw,4.8rem)}.hero .tagline{margin-bottom:0}.hero .hero-links{margin-top:24px}}
-.hero .max{transition:text-shadow .08s linear}
+/* style b5 with logo 10a2 (2026-10-31): fine strands inside the wordmark, white rimmed red and red rimmed white, each word
+   glowing its own colour; the hero circles and pills ring white with a red rim, the logo's edge carried into the page */
+.hero .wordmark{white-space:nowrap}
+.hero .wordmark .gv,.hero .wordmark .max{display:inline-block;color:transparent;-webkit-background-clip:text;background-clip:text}
+.hero .wordmark .gv{background-image:repeating-linear-gradient(to bottom,transparent 0 .04em,rgba(11,11,13,.92) .04em .055em),linear-gradient(#FFFFFF,#FFFFFF);filter:drop-shadow(.016em 0 0 #FF1C02) drop-shadow(-.016em 0 0 #FF1C02) drop-shadow(0 .016em 0 #FF1C02) drop-shadow(0 -.016em 0 #FF1C02) drop-shadow(0 0 .06em rgba(255,255,255,.5))}
+.hero .wordmark .max{background-image:repeating-linear-gradient(to bottom,transparent 0 .04em,rgba(11,11,13,.92) .04em .055em),linear-gradient(#FF1C02,#FF1C02);filter:drop-shadow(.016em 0 0 #FFFFFF) drop-shadow(-.016em 0 0 #FFFFFF) drop-shadow(0 .016em 0 #FFFFFF) drop-shadow(0 -.016em 0 #FFFFFF) drop-shadow(0 0 .06em rgba(255,28,2,.6))}
+.hero .icon-btn,.hero .pill:not(.solid){border-color:#FFFFFF;box-shadow:0 0 0 2px #FF1C02}
+.hero .pill.solid{box-shadow:0 0 0 2px #FFFFFF}
 .hero .pill:not(.solid){background:rgba(11,11,13,.82)}
 .hero .icon-btn{background:rgba(11,11,13,.85)}
 .hero .icon-btn:hover{background:var(--racing)}
@@ -368,17 +375,30 @@ footer svg{animation:gmx-beat 6s ease-in-out infinite}
 <body>
 
 <header class="hero">
-<svg class="mark" viewBox="0 0 240 240" role="img" aria-label="groovesmaxxing logo: vinyl grooves crossed by a waveform">
-<g class="rings" fill="none" stroke="#FF1C02" stroke-width="5">
-<circle cx="120" cy="120" r="104"/>
-<circle cx="120" cy="120" r="76"/>
-<circle cx="120" cy="120" r="48"/>
-</g>
-<circle cx="120" cy="120" r="18" fill="#FF1C02"/>
-<polyline points="6,120 30,120 48,84 68,150 88,96 108,138 120,114 132,138 152,96 172,150 192,84 210,120 234,120"
-fill="none" stroke="#F2F2EF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<svg class="mark" viewBox="0 0 240 240" role="img" aria-label="groovesmaxxing logo: vinyl grooves crossed by a glowing waveform ribbon">
+<defs><filter id="gmx-mk-glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2.8"/></filter>
+<mask id="gmx-mk-cut" maskUnits="userSpaceOnUse" x="0" y="0" width="240" height="240"><rect width="240" height="240" fill="#fff"/><polygon points="6.00,120.00 30.00,120.00 48.00,84.00 68.00,90.00 88.00,96.00 108.00,102.00 120.00,114.00 132.00,102.00 152.00,96.00 172.00,90.00 192.00,84.00 210.00,120.00 234.00,120.00 234.00,120.00 210.00,120.00 192.00,156.00 172.00,150.00 152.00,144.00 132.00,138.00 120.00,126.00 108.00,138.00 88.00,144.00 68.00,150.00 48.00,156.00 30.00,120.00 6.00,120.00" fill="#000" stroke="#000" stroke-width="11" stroke-linejoin="round"/></mask></defs>
+<g mask="url(#gmx-mk-cut)"><g class="rings" fill="none">
+<circle cx="120" cy="120" r="104" stroke="#8A8A93" stroke-width="8.4"/><circle cx="120" cy="120" r="104" stroke="#FF1C02" stroke-width="5"/>
+<circle cx="120" cy="120" r="76" stroke="#8A8A93" stroke-width="8.4"/><circle cx="120" cy="120" r="76" stroke="#FF1C02" stroke-width="5"/>
+<circle cx="120" cy="120" r="48" stroke="#8A8A93" stroke-width="8.4"/><circle cx="120" cy="120" r="48" stroke="#FF1C02" stroke-width="5"/>
+</g><circle cx="120" cy="120" r="19.7" fill="#8A8A93"/><circle cx="120" cy="120" r="18" fill="#FF1C02"/></g>
+<g filter="url(#gmx-mk-glow)" opacity=".9"><polyline points="6.00,120.00 30.00,120.00 48.00,84.00 68.00,150.00 88.00,96.00 108.00,138.00 120.00,114.00 132.00,138.00 152.00,96.00 172.00,150.00 192.00,84.00 210.00,120.00 234.00,120.00" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></g>
+<polyline points="6.00,120.00 30.00,120.00 48.00,156.00 68.00,90.00 88.00,144.00 108.00,102.00 120.00,126.00 132.00,102.00 152.00,144.00 172.00,90.00 192.00,156.00 210.00,120.00 234.00,120.00" fill="none" stroke="#FF1C02" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="6.00,120.00 30.00,120.00 48.00,150.00 68.00,95.00 88.00,140.00 108.00,105.00 120.00,125.00 132.00,105.00 152.00,140.00 172.00,95.00 192.00,150.00 210.00,120.00 234.00,120.00" fill="none" stroke="#FF5E4B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="6.00,120.00 30.00,120.00 48.00,144.00 68.00,100.00 88.00,136.00 108.00,108.00 120.00,124.00 132.00,108.00 152.00,136.00 172.00,100.00 192.00,144.00 210.00,120.00 234.00,120.00" fill="none" stroke="#FF7969" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="6.00,120.00 30.00,120.00 48.00,138.00 68.00,105.00 88.00,132.00 108.00,111.00 120.00,123.00 132.00,111.00 152.00,132.00 172.00,105.00 192.00,138.00 210.00,120.00 234.00,120.00" fill="none" stroke="#FF8E80" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="6.00,120.00 30.00,120.00 48.00,132.00 68.00,110.00 88.00,128.00 108.00,114.00 120.00,122.00 132.00,114.00 152.00,128.00 172.00,110.00 192.00,132.00 210.00,120.00 234.00,120.00" fill="none" stroke="#FF9F94" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="6.00,120.00 30.00,120.00 48.00,126.00 68.00,115.00 88.00,124.00 108.00,117.00 120.00,121.00 132.00,117.00 152.00,124.00 172.00,115.00 192.00,126.00 210.00,120.00 234.00,120.00" fill="none" stroke="#FFAFA5" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="6.00,120.00 30.00,120.00 48.00,120.00 68.00,120.00 88.00,120.00 108.00,120.00 120.00,120.00 132.00,120.00 152.00,120.00 172.00,120.00 192.00,120.00 210.00,120.00 234.00,120.00" fill="none" stroke="#FFBDB5" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="6.00,120.00 30.00,120.00 48.00,114.00 68.00,125.00 88.00,116.00 108.00,123.00 120.00,119.00 132.00,123.00 152.00,116.00 172.00,125.00 192.00,114.00 210.00,120.00 234.00,120.00" fill="none" stroke="#FFC9C3" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="6.00,120.00 30.00,120.00 48.00,108.00 68.00,130.00 88.00,112.00 108.00,126.00 120.00,118.00 132.00,126.00 152.00,112.00 172.00,130.00 192.00,108.00 210.00,120.00 234.00,120.00" fill="none" stroke="#FFD5D1" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="6.00,120.00 30.00,120.00 48.00,102.00 68.00,135.00 88.00,108.00 108.00,129.00 120.00,117.00 132.00,129.00 152.00,108.00 172.00,135.00 192.00,102.00 210.00,120.00 234.00,120.00" fill="none" stroke="#FFE1DD" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="6.00,120.00 30.00,120.00 48.00,96.00 68.00,140.00 88.00,104.00 108.00,132.00 120.00,116.00 132.00,132.00 152.00,104.00 172.00,140.00 192.00,96.00 210.00,120.00 234.00,120.00" fill="none" stroke="#FFEBE9" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="6.00,120.00 30.00,120.00 48.00,90.00 68.00,145.00 88.00,100.00 108.00,135.00 120.00,115.00 132.00,135.00 152.00,100.00 172.00,145.00 192.00,90.00 210.00,120.00 234.00,120.00" fill="none" stroke="#FFF5F4" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="6.00,120.00 30.00,120.00 48.00,84.00 68.00,150.00 88.00,96.00 108.00,138.00 120.00,114.00 132.00,138.00 152.00,96.00 172.00,150.00 192.00,84.00 210.00,120.00 234.00,120.00" fill="none" stroke="#FFFFFF" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
-<h1 class="wordmark">grooves<span class="max">MAXXING</span></h1>
+<h1 class="wordmark"><span class="gv">grooves</span><span class="max">MAXXING</span></h1>
 <p class="tagline">your friend with permanent aux privileges 📈</p>
 <nav class="icon-row" aria-label="main links">
 <a class="icon-btn" href="https://open.spotify.com/user/1266604545" target="_blank" rel="noopener" aria-label="spotify profile" title="spotify">
@@ -2100,8 +2120,9 @@ void main(){
   /* ---------- hero: halftone pulse field + living logo ---------- */
   const hero = document.querySelector('.hero'); if (!hero) return;
   const mark = hero.querySelector('.mark'), word = hero.querySelector('.wordmark'), maxEl = hero.querySelector('.max');
-  const wave = mark && mark.querySelector('polyline'), dot = mark && mark.querySelector(':scope > circle');
-  const base = wave ? wave.getAttribute('points').trim().split(/\s+/).map(p => p.split(',').map(Number)) : [];
+  /* logo 10a2 (2026-10-31): the waveform is a ribbon of 14 lines (13 strands and a glow), every one moved by the same rolling wave */
+  const waves = mark ? Array.from(mark.querySelectorAll('polyline')) : [], wave = waves[0], dot = mark && mark.querySelector(':scope > circle');
+  const bases = waves.map(w => w.getAttribute('points').trim().split(/\s+/).map(p => p.split(',').map(Number)));
 
   const cv = document.createElement('canvas'); cv.className = 'hero-fx'; cv.setAttribute('aria-hidden', 'true');
   hero.prepend(cv);
@@ -2191,13 +2212,10 @@ void main(){
       cv.classList.add('on');
     }
     if (wave && !RM) {
-      wave.setAttribute('points', base.map(([x, y], i) => {
-        if (i < 2 || i > base.length - 3) return x + ',' + y;
-        const k = 0.8 + 0.22 * Math.sin(t * 1.7 - i * 0.62) + 0.08 * b;   // a wave rolling through the line
-        return x + ',' + (120 + (y - 120) * k).toFixed(1);
-      }).join(' '));
+      const ks = bases[0].map((_, i) => 0.8 + 0.22 * Math.sin(t * 1.7 - i * 0.62) + 0.08 * b);   // a wave rolling through the line
+      waves.forEach((w, j) => w.setAttribute('points', bases[j].map(([x, y], i) =>
+        (i < 2 || i > bases[j].length - 3) ? x + ',' + y : x + ',' + (120 + (y - 120) * ks[i]).toFixed(1)).join(' ')));
       if (dot) dot.setAttribute('r', (18 + 2.5 * b).toFixed(2));
-      if (maxEl) maxEl.style.textShadow = `0 0 ${(18 * b).toFixed(1)}px rgba(255,28,2,${(0.3 * b).toFixed(2)})`;
     }
   }
   function loop(now){
