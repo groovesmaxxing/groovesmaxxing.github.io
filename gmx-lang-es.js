@@ -163,6 +163,9 @@ words:{
 'On watch, no date to list yet:':'En la mira, sin fecha todavía:','Nothing on that filter yet. Try another area or kind.':'Nada con ese filtro todavía. Prueba otra zona u otro tipo.',
 'How this calendar is built:':'Cómo se arma este calendario:',
 "the big dance music events of the world, filtered through the groovesmaxxing taste (house, tech house, techno, indie dance and the burns), checked against each event's own page or its official announcement. A date that is not out yet is never guessed. Those rows sit on their usual month, dashed, until the event announces. The club nights and every tour date for the artists we follow live on the":'los grandes eventos de música electrónica del mundo, filtrados por el gusto groovesmaxxing (house, tech house, techno, indie dance y los burns), cotejados con la página de cada evento o con su anuncio oficial. Una fecha que todavía no sale nunca se adivina. Esas filas se quedan en su mes de siempre, punteadas, hasta que el evento anuncia. Las noches de club y cada fecha de gira de los artistas que seguimos viven en el',
+/* the festival calendar page, our artists layer (2026-11-02): the chip, the card row, the legend, the pin and pop lines */
+'our artists':'nuestros artistas','our artists:':'nuestros artistas:','our artists play':'tocan los nuestros',
+'1 from our pages plays here':'1 de nuestras páginas toca aquí',
 },
 scoped:[
 /* the festival calendar page (2026-11-01): the weekday initials on the year grid, monday first, read by position */
@@ -174,6 +177,8 @@ scoped:[
  'released on it':'lanzaron aquí','not the same as':'no confundir con'}]
 ],
 rules:[
+/* the festival calendar page, our artists layer (2026-11-02): the pin and pop count */
+['(\\d+) from our pages play here','$1 de nuestras páginas tocan aquí'],
 /* the festival calendar page (2026-11-01): the card dates (Nov 2–7, Dec 31 – Jan 1), the grid and scrubber labels, the counts line and the source line */
 ['(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) (\\d{1,2})–(\\d{1,2})','$2–$3 ~1'],
 ['(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) (\\d{1,2}) – (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) (\\d{1,2})','$2 ~1 – $4 ~3'],

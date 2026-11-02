@@ -11,7 +11,7 @@
 if (!document.querySelector('script[src^="/gmx-spooky.js"]')) { var gmxSpk = document.createElement('script'); gmxSpk.src = '/gmx-spooky.js?v=6'; document.head.appendChild(gmxSpk); }
 /* language switch (2026-11-01): every page that loads the shell also gets /gmx-lang.js, the en / es circle in the header
    row and the swap of the site's own words. its dictionary file loads only for a visitor who picked another language. */
-if (!document.querySelector('script[src^="/gmx-lang.js"]')) { var gmxLng = document.createElement('script'); gmxLng.src = '/gmx-lang.js?v=3'; document.head.appendChild(gmxLng); }
+if (!document.querySelector('script[src^="/gmx-lang.js"]')) { var gmxLng = document.createElement('script'); gmxLng.src = '/gmx-lang.js?v=4'; document.head.appendChild(gmxLng); }
 
 (function(){
 'use strict';
