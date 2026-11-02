@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-lUvp6Iag/coLvfjnSVWtTDDgHOus2q9d1h19XyEBCIA='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-Vs/YM/n3WXppKkXXQfKEXdI0OqXN/spHdFCtBuM3/A0='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0B0B0D">
@@ -70,12 +70,15 @@
   #dots circle{fill:var(--steel);fill-opacity:.42}
   .grat{fill:none;stroke:#26262b;stroke-width:1;stroke-dasharray:2 5;vector-effect:non-scaling-stroke}
   .pin{cursor:pointer}
+  .pin .hit{fill:transparent;stroke:none;pointer-events:all}
   .pin .b{transform-box:fill-box;transform-origin:center;animation:pop .5s cubic-bezier(.2,1.5,.4,1) both}
   .pin .dot{fill:var(--racing);stroke:var(--night);stroke-width:1.4}
   .pin.tba .dot{fill:var(--night);stroke:var(--racing);stroke-width:1.6;stroke-dasharray:2.4 1.7}
   .pin .ring{fill:none;stroke:var(--racing);stroke-width:1.1;opacity:0;transform-box:fill-box;transform-origin:center;animation:ping 3.2s ease-out infinite}
   .pin.tba .ring{display:none}
   .pin.next .ring{stroke-width:2}
+  .pin.cl .dot{stroke:var(--day);stroke-width:1.6}
+  .pin .b.still{animation:none}
   .pin .cnt{font-family:'Space Mono',monospace;font-size:7.5px;font-weight:700;fill:#fff;text-anchor:middle;pointer-events:none}
   .pin.tba .cnt{fill:var(--racing)}
   .pin:hover .dot,.pin.hl .dot,.pin.sel .dot{fill:var(--day);stroke:var(--racing)}
@@ -191,7 +194,10 @@
     .bar{margin:26px -16px 0;padding:10px 16px}
     #calmap{aspect-ratio:auto;height:360px}
     .mapui{top:10px;left:10px;right:10px}
-    .mapui .jumps,.ticks{display:none}
+    .ticks{display:none}
+    .mapui .jumps .mbtn:not([data-jump="all"]){display:none}
+    .mbtn{min-height:40px;min-width:40px}
+    .pop .x{width:40px;height:40px;top:4px;right:6px}
     .legend{display:none}
     .pop{left:10px!important;right:10px;top:auto!important;bottom:10px;width:auto;max-height:62%}
     .scrub{grid-template-columns:auto minmax(0,1fr)}
@@ -245,7 +251,7 @@
   <section class="sec" id="map">
   <div class="tierline">the map</div>
   <h2 class="tier">where the year goes</h2>
-  <p class="tiersub">Solid pins have dates. Dashed ones are waiting on the announcement. Tap a pin for what's on there.</p>
+  <p class="tiersub">Solid pins have dates. Dashed ones are waiting on the announcement. Tap a pin for what's on there, a numbered one zooms in until its places come apart.</p>
   <div class="map" id="calmapbox">
     <svg id="calmap" viewBox="0 0 1000 466" data-h="466" role="group" aria-label="world map of the calendar's events" xmlns="http://www.w3.org/2000/svg">
       <defs><pattern id="dots" patternUnits="userSpaceOnUse" width="4" height="4"><circle cx="2" cy="2" r="1.1"/></pattern></defs>
@@ -907,6 +913,11 @@
   var GROUP = {festival:'festival', burn:'burn', conference:'week', 'art-week':'week', season:'week', nye:'nye'};
   var BOX = {americas:[138.9,92.7,272.2,373.3], europe:[469.4,101.2,116.7,92.3], world:[533.3,154,466.7,282.2]};
   var MH = +svg.getAttribute('data-h') || 466, WMIN = 14;
+  // where a phone opens: the viewer's part of the world, read from the time zone, never from a location prompt
+  var REG = {na:[144.4,132.5,183.3,139.6], la:[266.7,252.5,144.4,163.1], eu:[466.7,97.0,122.2,93.3], me:[566.7,160.9,105.6,102.9],
+    af:[450.0,180.7,211.1,215.4], as:[680.6,154.0,225.0,171.1], oc:[805.6,313.9,194.4,122.3]};
+  // px: pins closer than this on screen fold into one, which a tap zooms apart. a finger needs more room than a mouse
+  var CL = (window.matchMedia && matchMedia('(pointer: coarse)').matches) ? 20 : 12;
   var reduce = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
   var box = document.getElementById('calmapbox'), pinLayer = document.getElementById('pins'), pop = document.getElementById('calpop');
   var pat = document.getElementById('dots'), patDot = pat.firstElementChild, hint = document.getElementById('calhint');
@@ -1035,14 +1046,14 @@
   function fly(n, done){
     cancelAnimationFrame(anim);
     var asp = aspect(); n = clamp({x:n.x, y:n.y, w:n.w});
-    if(reduce){ setVB(n); if(done) done(); return; }
+    if(reduce){ setVB(n); settle(); if(done) done(); return; }
     var f = {cx:vb.x + vb.w / 2, cy:vb.y + vb.h / 2, w:vb.w}, t = {cx:n.x + n.w / 2, cy:n.y + n.h / 2, w:n.w}, t0 = 0;
     function step(ts){
       if(!t0) t0 = ts;
       var k = Math.min(1, (ts - t0) / 700), e = k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
       var w = f.w * Math.pow(t.w / f.w, e), cx = f.cx + (t.cx - f.cx) * e, cy = f.cy + (t.cy - f.cy) * e;
       setVB({x:cx - w / 2, y:cy - w * asp / 2, w:w});
-      if(k < 1) anim = requestAnimationFrame(step); else if(done) done();
+      if(k < 1) anim = requestAnimationFrame(step); else { settle(); if(done) done(); }
     }
     anim = requestAnimationFrame(step);
   }
@@ -1052,40 +1063,78 @@
     setVB({x:mx - px * u2, y:my - py * u2, w:w});
   }
   function jump(area){ fly(area === 'all' || !BOX[area] ? worldView() : fitBox(BOX[area])); }
+  function region(){
+    var z = '';
+    try { z = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch(err){}
+    if(/^America\/(Argentina|Sao_Paulo|Bahia|Fortaleza|Recife|Belem|Manaus|Cuiaba|Campo_Grande|Porto_Velho|Boa_Vista|Rio_Branco|Maceio|Araguaina|Santarem|Noronha|Eirunepe|Lima|Bogota|Caracas|Santiago|Punta_Arenas|La_Paz|Montevideo|Asuncion|Guayaquil|Paramaribo|Cayenne|Guyana)/.test(z)) return 'la';
+    if(/^(America\/|Pacific\/Honolulu|Atlantic\/Bermuda)/.test(z)) return 'na';
+    if(/^(Europe|Atlantic)\//.test(z)) return 'eu';
+    if(/^Asia\/(Jerusalem|Tel_Aviv|Gaza|Hebron|Beirut|Amman|Damascus|Baghdad|Riyadh|Kuwait|Bahrain|Qatar|Dubai|Muscat|Aden|Tehran|Yerevan|Baku|Tbilisi|Nicosia|Famagusta)/.test(z)) return 'me';
+    if(/^Asia\//.test(z)) return 'as';
+    if(/^(Africa|Indian)\//.test(z)) return 'af';
+    if(/^(Australia|Pacific)\//.test(z)) return 'oc';
+    return '';
+  }
+  function homeView(){
+    // a wide screen holds the whole world. a phone opens on the viewer's region, with world one tap away
+    var asp = aspect(), w = Math.min(1000, MH / asp), b = REG[region()];
+    if(w >= 600 || !b) return worldView();
+    hint.textContent = 'your part of the world · tap world for all of it';
+    return fitBox(b);
+  }
 
   // ---- pins ----
   var pins = [];
   function circle(r, cls){ var c = document.createElementNS(NS, 'circle'); c.setAttribute('r', r); c.setAttribute('class', cls); return c; }
-  function drawPins(){
+  function drawPins(quiet){
+    // pins fold into one when they sit within CL px of each other at this zoom, so a phone never shows a pile.
+    // a quiet redraw (after a zoom) keeps the pop animation off; a filter change plays it.
     while(pinLayer.firstChild) pinLayer.removeChild(pinLayer.firstChild);
     pins = [];
-    var groups = {}, order = [];
+    var u = upp(), r = CL * u, groups = [];
+    clusterU = u;
     evs.forEach(function(v){
       if(!v.on) return;
-      var key = Math.round(v.x) + ',' + Math.round(v.y);
-      if(!groups[key]){ groups[key] = {x:v.x, y:v.y, list:[]}; order.push(key); }
-      groups[key].list.push(v);
+      for(var i = 0; i < groups.length; i++){
+        var g = groups[i];
+        if(Math.hypot(g.x - v.x, g.y - v.y) < r){
+          g.list.push(v); g.sx += v.x; g.sy += v.y; g.x = g.sx / g.list.length; g.y = g.sy / g.list.length;
+          return;
+        }
+      }
+      groups.push({x:v.x, y:v.y, sx:v.x, sy:v.y, list:[v]});
     });
-    order.sort(function(a, b){ return groups[a].y - groups[b].y; });
-    order.forEach(function(key, i){
-      var g = groups[key], n = g.list.length;
+    groups.sort(function(a, b){ return a.y - b.y; });
+    groups.forEach(function(g, i){
+      var n = g.list.length;
       var tba = g.list.every(function(v){ return v.tba; }), next = nextUp && g.list.indexOf(nextUp) > -1;
-      var names = [];
-      g.list.forEach(function(v){ if(names.indexOf(v.n) < 0) names.push(v.n); });
-      var label = names.slice(0, 3).join(', ') + (names.length > 3 ? ' and ' + (names.length - 3) + ' more' : '') + ' · ' + g.list[0].c;
+      // the smallest gap between two different places in the group. zero means one place, and a tap opens the card
+      g.gap = 0;
+      for(var a = 0; a < n; a++) for(var b2 = a + 1; b2 < n; b2++){
+        var d = Math.hypot(g.list[a].x - g.list[b2].x, g.list[a].y - g.list[b2].y);
+        if(d > 0.5 && (!g.gap || d < g.gap)) g.gap = d;
+      }
+      var names = [], cs = [];
+      g.list.forEach(function(v){ if(names.indexOf(v.n) < 0) names.push(v.n); if(cs.indexOf(v.c) < 0) cs.push(v.c); });
+      var label = names.slice(0, 3).join(', ') + (names.length > 3 ? ' and ' + (names.length - 3) + ' more' : '') + ' · ' +
+        (g.gap ? cs.slice(0, 2).join(' + ') + (cs.length > 2 ? ' + more' : '') + ' · tap to zoom in' : g.list[0].c);
       var el = document.createElementNS(NS, 'g');
-      el.setAttribute('class', 'pin' + (tba ? ' tba' : '') + (next ? ' next' : ''));
+      el.setAttribute('class', 'pin' + (tba ? ' tba' : '') + (next ? ' next' : '') + (g.gap ? ' cl' : ''));
       el.setAttribute('tabindex', '0'); el.setAttribute('role', 'button'); el.setAttribute('aria-label', label);
       var title = document.createElementNS(NS, 'title'); title.textContent = label; el.appendChild(title);
-      var b = document.createElementNS(NS, 'g'); b.setAttribute('class', 'b');
-      b.style.animationDelay = Math.min(i * 14, 600) + 'ms';
+      var b = document.createElementNS(NS, 'g'); b.setAttribute('class', 'b' + (quiet ? ' still' : ''));
+      if(!quiet) b.style.animationDelay = Math.min(i * 14, 600) + 'ms';
       var ring = circle(9, 'ring'); ring.style.animationDelay = ((i * 437) % 3200) + 'ms';
-      b.appendChild(ring); b.appendChild(circle(n > 1 ? 6.4 : 4.8, 'dot'));
+      b.appendChild(circle(14, 'hit')); b.appendChild(ring); b.appendChild(circle(n > 1 ? 6.4 : 4.8, 'dot'));
       if(n > 1){ var c = document.createElementNS(NS, 'text'); c.setAttribute('class', 'cnt'); c.setAttribute('dy', '.35em'); c.textContent = n; b.appendChild(c); }
       el.appendChild(b); el._g = g; g.el = el;
       pinLayer.appendChild(el); pins.push(g);
     });
     placePins();
+    if(!pop.hidden && pop._g){
+      var keep = groupOf(pop._g.list[0]);
+      if(keep){ pop._g = keep; keep.el.classList.add('sel'); placePop(keep); } else closePop();
+    }
   }
   function placePins(){
     var s = upp();
@@ -1096,6 +1145,20 @@
     pins.forEach(function(g){ g.el.classList.remove('hl'); });
     if(!on) return;
     list.forEach(function(v){ var g = groupOf(v); if(g) g.el.classList.add('hl'); });
+  }
+  // after a zoom the fold changes, so the pins are drawn again quietly once the zoom moved enough to matter
+  var clusterU = 0, settleT = 0;
+  function settle(){ var u = upp(); if(Math.abs(u - clusterU) > clusterU * 0.12) drawPins(true); }
+  function tapPin(g){
+    if(g.gap && vb.w > WMIN + 0.5){ closePop(); splitCluster(g); } else openPop(g);
+  }
+  function splitCluster(g){
+    // zoom to the members with room around them: the farthest pair always comes apart, a tight pair waits for the next tap
+    var x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
+    g.list.forEach(function(v){ x0 = Math.min(x0, v.x); x1 = Math.max(x1, v.x); y0 = Math.min(y0, v.y); y1 = Math.max(y1, v.y); });
+    var asp = aspect(), bw = Math.max((x1 - x0) * 1.6, (y1 - y0) * 1.6 / asp) + 3;
+    var w = Math.max(WMIN, Math.min(vb.w / 1.3, bw));
+    fly({x:(x0 + x1) / 2 - w / 2, y:(y0 + y1) / 2 - w * asp / 2, w:w});
   }
 
   // ---- the pop card ----
@@ -1164,17 +1227,17 @@
     }
     if(moved){ var u2 = upp(); setVB({x:vb.x - (e.clientX - prev.x) * u2, y:vb.y - (e.clientY - prev.y) * u2, w:vb.w}); }
   });
-  function lift(e){ delete ptrs[e.pointerId]; pinch = null; if(!Object.keys(ptrs).length) svg.classList.remove('drag'); }
+  function lift(e){ delete ptrs[e.pointerId]; pinch = null; if(!Object.keys(ptrs).length){ svg.classList.remove('drag'); settle(); } }
   svg.addEventListener('pointerup', lift);
   svg.addEventListener('pointercancel', lift);
   svg.addEventListener('click', function(e){
     if(moved){ moved = false; return; }
     var p = e.target.closest('.pin');
-    if(p) openPop(p._g); else closePop();
+    if(p) tapPin(p._g); else closePop();
   });
   svg.addEventListener('keydown', function(e){
     var p = e.target.closest && e.target.closest('.pin');
-    if(p && (e.key === 'Enter' || e.key === ' ')){ e.preventDefault(); openPop(p._g); }
+    if(p && (e.key === 'Enter' || e.key === ' ')){ e.preventDefault(); tapPin(p._g); }
   });
   var hintT = 0;
   svg.addEventListener('wheel', function(e){
@@ -1185,6 +1248,7 @@
     e.preventDefault(); cancelAnimationFrame(anim);
     var r = rect();
     zoomAt(Math.exp(-e.deltaY * (e.deltaMode ? 0.05 : 0.0025)), e.clientX - r.left, e.clientY - r.top);
+    clearTimeout(settleT); settleT = setTimeout(settle, 160);
   }, {passive:false});
   box.addEventListener('click', function(e){
     var j = e.target.closest('[data-jump]'), z = e.target.closest('[data-zoom]');
@@ -1316,11 +1380,11 @@
     if(f === 'a') jump(v);
   });
   var resizeT = 0;
-  window.addEventListener('resize', function(){ clearTimeout(resizeT); resizeT = setTimeout(function(){ lastU = 0; setVB({x:vb.x, y:vb.y, w:vb.w}); }, 120); });
+  window.addEventListener('resize', function(){ clearTimeout(resizeT); resizeT = setTimeout(function(){ lastU = 0; setVB({x:vb.x, y:vb.y, w:vb.w}); settle(); }, 120); });
 
   readHash();
+  setVB(F.a !== 'all' && BOX[F.a] ? fitBox(BOX[F.a]) : homeView());
   apply(true);
-  setVB(F.a !== 'all' && BOX[F.a] ? fitBox(BOX[F.a]) : worldView());
 })();
 </script>
 <script src="/gmx-motion.js?v=2" defer></script>
