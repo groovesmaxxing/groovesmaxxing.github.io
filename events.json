@@ -1,6 +1,20 @@
 {
- "generated": "2026-11-01T18:31:33Z",
+ "generated": "2026-11-02T01:46:00Z",
  "events": [
+  {
+   "at": "2026-11-02T01:46:00Z",
+   "what": "freshness F-18",
+   "from": "ok",
+   "to": "warn",
+   "detail": "friday.html carries the newest week: 2026-10-23, 10 days old"
+  },
+  {
+   "at": "2026-11-02T01:46:00Z",
+   "what": "freshness F-24",
+   "from": "ok",
+   "to": "warn",
+   "detail": "the newsletter hub carries the newest issue: 2026-10-23, 10 days old"
+  },
   {
    "at": "2026-10-31T11:09:59Z",
    "what": "workflow recognizer uptime",
