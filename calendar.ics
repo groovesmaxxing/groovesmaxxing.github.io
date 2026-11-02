@@ -1157,6 +1157,19 @@ DESCRIPTION:The Netherlands' big techno weekend. Three days\, hard hats on.
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:dirtybird-campout-2027-2027-07-15@groovesmaxxing.com
+DTSTAMP:20261102T000000Z
+DTSTART;VALUE=DATE:20270715
+DTEND;VALUE=DATE:20270719
+SUMMARY:Dirtybird Campout x Northern Nights 2027
+LOCATION:Cook's Valley Campground\, Piercy\, CA\, USA
+URL:https://www.northernnights.org/
+DESCRIPTION:Dirtybird's camp weekend joined up with Northern Nights in the 
+ redwoods on the Eel River. Bouncy\, silly\, very good.\nhttps://www.northe
+ rnnights.org/\nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:dekmantel-2027-2027-07-29@groovesmaxxing.com
 DTSTAMP:20261102T000000Z
 DTSTART;VALUE=DATE:20270729
@@ -1193,6 +1206,19 @@ URL:https://www.dekmantel.com/
 DESCRIPTION:Dekmantel on the Adriatic. The selectors bring the records you 
  did not know you needed.\nhttps://www.dekmantel.com/\nvia https://groovesm
  axxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:mutek-2027-2027-08-24@groovesmaxxing.com
+DTSTAMP:20261102T000000Z
+DTSTART;VALUE=DATE:20270824
+DTEND;VALUE=DATE:20270830
+SUMMARY:MUTEK Montréal 2027
+LOCATION:Venues across the city\, Montréal\, QC\, Canada
+URL:https://montreal.mutek.org/
+DESCRIPTION:Montréal's electronic music and digital arts week. Come for th
+ e techno showcases\, stay for the stuff nobody can file under a genre.\nht
+ tps://montreal.mutek.org/\nvia https://groovesmaxxing.com/calendar
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
