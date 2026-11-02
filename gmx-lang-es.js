@@ -1,4 +1,4 @@
-/* groovesmaxxing spanish (mexico), phase 1 (2026-11-01): the site's own words, read by gmx-lang.js.
+/* groovesmaxxing spanish (mexico), phase 1 (2026-11-01) + the festival calendar page (2026-11-02): the site's own words, read by gmx-lang.js.
    tú, lowercase, the brand's energy. never translated: artist, label, venue, playlist and series names
    (good vibe juice, bumpy, waaavy, wen playa, new house releases, fresh grooves friday, contraband grooves).
    words: exact strings. scoped: exact strings that only count inside a selector (the fact keys on a profile,
@@ -136,9 +136,37 @@ words:{
 /* buttons and headings painted on several pages */
 'tickets':'boletos','follow':'seguir','this is me':'soy yo','also on the site':'también en el sitio','heard in these sets':'sonó en estos sets','on these labels':'en estas disqueras',
 'the scenes':'las escenas','by tier':'por nivel','every set, a to z':'cada set, de la a a la z','every artist, a to z':'cada artista, de la a a la z','interviews and talks':'entrevistas y pláticas',
-"what's":'lo que','dropping':'sale','out now':'ya salió','no date yet':'sin fecha todavía','sets worth':'sets que valen','your hour':'tu hora','just added':'recién agregados'
+"what's":'lo que','dropping':'sale','out now':'ya salió','no date yet':'sin fecha todavía','sets worth':'sets que valen','your hour':'tu hora','just added':'recién agregados',
+/* the festival calendar page (2026-11-01): kicker, headings, chips, badges, buttons and the map's own words.
+   takes, patterns and the on-watch lines stay english. */
+'festival calendar':'calendario de festivales','the year in':'el año en','the year in grooves':'el año en grooves','groovesmaxxing calendar':'calendario groovesmaxxing',
+'every festival, burn and city week worth planning a year around. coachella to tomorrowland, black rock city to the tulum jungle. on a map, on a calendar, one tap from your own.':'cada festival, burn y semana de ciudad que vale la pena planear con un año de anticipación. de coachella a tomorrowland, de black rock city a la selva de tulum. en un mapa, en un calendario, a un toque del tuyo.',
+'subscribe to the calendar':'suscríbete al calendario','add it to google':'agrégalo a google','filter the calendar':'filtra el calendario',
+'everywhere':'todo el mundo','the americas':'las américas','europe':'europa','the rest of the world':'el resto del mundo',
+'every kind':'de todo tipo','festivals':'festivales','weeks + seasons':'semanas + temporadas',"new year's":'año nuevo',
+'the map':'el mapa','where the year goes':'por dónde va el año',
+"Solid pins have dates. Dashed ones are waiting on the announcement. Tap a pin for what's on there, a numbered one zooms in until its places come apart.":'Los pines sólidos tienen fecha. Los punteados esperan el anuncio. Toca un pin para ver qué hay ahí, uno con número acerca el mapa hasta que sus lugares se separan.',
+'world':'mundo','americas':'américas','the rest':'el resto','jump to':'ir a','zoom in':'acercar','zoom out':'alejar','close':'cerrar',
+'drag to move':'arrastra para mover','pinch or ctrl + scroll to zoom':'pellizca o ctrl + scroll para acercar',
+'dates out':'con fecha','dates tba':'fecha por anunciar','confirmed':'confirmado',
+"world map of the calendar's events":'mapa mundial de los eventos del calendario','events at this place':'eventos en este lugar','tap to zoom in':'toca para acercar',
+'your part of the world':'tu parte del mundo','tap world for all of it':'toca mundo para verlo todo','the card':'la tarjeta',
+'play the year':'dale play al año','pause':'pausa','all year':'todo el año','one day':'un día','the year':'el año','the year at a glance':'el año de un vistazo',
+'pick a month, all the way left is the whole year':'elige un mes, hasta la izquierda es todo el año',
+"Lit days have something on, the brighter red ones have more than one. Tap a day for what's on it, tap a month to put it on the map.":'Los días encendidos tienen algo, los de rojo más vivo tienen más de uno. Toca un día para ver qué hay, toca un mes para ponerlo en el mapa.',
+'the list':'la lista','month by month':'mes por mes',
+"Dates come from each event's own site or its official announcement. Lineups and dates move, so the official link is the truth.":'Las fechas vienen del sitio de cada evento o de su anuncio oficial. Los lineups y las fechas se mueven, así que el enlace oficial es la verdad.',
+'january':'enero','february':'febrero','march':'marzo','april':'abril','may':'mayo','june':'junio','july':'julio','august':'agosto','september':'septiembre','october':'octubre','november':'noviembre','december':'diciembre',
+'jan':'ene','apr':'abr','aug':'ago','dec':'dic',
+'art week':'semana de arte','club season':'temporada de club','conference':'conferencia',
+'on the map':'en el mapa','add to calendar':'agregar al calendario',
+'On watch, no date to list yet:':'En la mira, sin fecha todavía:','Nothing on that filter yet. Try another area or kind.':'Nada con ese filtro todavía. Prueba otra zona u otro tipo.',
+'How this calendar is built:':'Cómo se arma este calendario:',
+"the big dance music events of the world, filtered through the groovesmaxxing taste (house, tech house, techno, indie dance and the burns), checked against each event's own page or its official announcement. A date that is not out yet is never guessed. Those rows sit on their usual month, dashed, until the event announces. The club nights and every tour date for the artists we follow live on the":'los grandes eventos de música electrónica del mundo, filtrados por el gusto groovesmaxxing (house, tech house, techno, indie dance y los burns), cotejados con la página de cada evento o con su anuncio oficial. Una fecha que todavía no sale nunca se adivina. Esas filas se quedan en su mes de siempre, punteadas, hasta que el evento anuncia. Las noches de club y cada fecha de gira de los artistas que seguimos viven en el',
 },
 scoped:[
+/* the festival calendar page (2026-11-01): the weekday initials on the year grid, monday first, read by position */
+['.mmg .w:nth-child(1)',{'m':'l'}],['.mmg .w:nth-child(2)',{'t':'m'}],['.mmg .w:nth-child(3)',{'w':'m'}],['.mmg .w:nth-child(4)',{'t':'j'}],['.mmg .w:nth-child(5)',{'f':'v'}],['.mmg .w:nth-child(7)',{'s':'d'}],
 /* the fact keys on a profile: short words that are also prose fragments elsewhere */
 ['.k',{'from':'de','based':'base','runs':'dirige','founded':'fundó','genre':'género','status':'estado','latest':'lo último',
  'biggest record':'su track más grande','signature record':'su track insignia','key record':'track clave','broke through':'despegó con',
@@ -146,6 +174,19 @@ scoped:[
  'released on it':'lanzaron aquí','not the same as':'no confundir con'}]
 ],
 rules:[
+/* the festival calendar page (2026-11-01): the card dates (Nov 2–7, Dec 31 – Jan 1), the grid and scrubber labels, the counts line and the source line */
+['(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) (\\d{1,2})–(\\d{1,2})','$2–$3 ~1'],
+['(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) (\\d{1,2}) – (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) (\\d{1,2})','$2 ~1 – $4 ~3'],
+['(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) (\\d{1,2})','$2 ~1'],
+['(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec) (\\d{1,2}), 1 event','$2 ~1, 1 evento'],
+['(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec) (\\d{1,2}), (\\d+) events','$2 ~1, $3 eventos'],
+['may (\\d{4})','mayo $1'],
+['(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec) (\\d{4})','~1 $2'],
+['(january|february|march|april|may|june|july|august|september|october|november|december) (\\d{4})','~1 $2'],
+['(\\d+) with dates, (\\d+) tba','$1 con fecha, $2 por anunciar'],
+['(\\d+) tba','$1 sin fecha'],
+['dates checked (\\d{1,2}) (jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec) (\\d{4})','fechas revisadas el $1 ~2 $3'],
+['dates via (.+)','fechas vía $1'],
 ['(mon|tue|wed|thu|fri|sat|sun) (\\d{1,2}) (jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)','~1 $2 ~3'],
 ['(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec) (\\d{4})','~1 $2'],
 ['(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec) (\\d{1,2})','$2 ~1'],
