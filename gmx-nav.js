@@ -11,7 +11,7 @@
 if (!document.querySelector('script[src^="/gmx-spooky.js"]')) { var gmxSpk = document.createElement('script'); gmxSpk.src = '/gmx-spooky.js?v=6'; document.head.appendChild(gmxSpk); }
 /* language switch (2026-11-01): every page that loads the shell also gets /gmx-lang.js, the en / es circle in the header
    row and the swap of the site's own words. its dictionary file loads only for a visitor who picked another language. */
-if (!document.querySelector('script[src^="/gmx-lang.js"]')) { var gmxLng = document.createElement('script'); gmxLng.src = '/gmx-lang.js?v=1'; document.head.appendChild(gmxLng); }
+if (!document.querySelector('script[src^="/gmx-lang.js"]')) { var gmxLng = document.createElement('script'); gmxLng.src = '/gmx-lang.js?v=2'; document.head.appendChild(gmxLng); }
 
 (function(){
 'use strict';
@@ -37,7 +37,7 @@ function tabOf(){
   if(path==='/scan')return 'scan';
   if(under('/sets')||under('/tracklists')||path==='/interviews'||path==='/radio'||path==='/open-ids')return 'tracklists';
   if(under('/artists')||under('/labels')||path==='/roster'||path==='/badges')return 'artists';
-  if(under('/more')||under('/newsletter')||under('/upcoming')||path==='/events'||path==='/tours'||path==='/venues'||path==='/friday'||path==='/privacy'||path==='/terms'||path==='/crate'||path==='/search')return 'more';
+  if(under('/more')||under('/newsletter')||under('/upcoming')||path==='/events'||path==='/calendar'||path==='/tours'||path==='/venues'||path==='/friday'||path==='/privacy'||path==='/terms'||path==='/crate'||path==='/search')return 'more';
   return null;
 }
 var tab=tabOf();
