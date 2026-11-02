@@ -1,7 +1,7 @@
 {
-"generated": "2026-11-01T16:07:20+00:00",
+"generated": "2026-11-02T19:35:00+00:00",
 "artist_count": 704,
-"artists_with_events": 140,
+"artists_with_events": 141,
 "events": [
 {
 "date": "2026-11-03",
@@ -1408,6 +1408,15 @@
 "artist": "Lee Burridge"
 },
 {
+"date": "2026-12-02",
+"event": "SG Lewis (18+ Event)",
+"venue": "ZeyZey Miami",
+"city": "Miami",
+"region": "FL",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AA7Ufy",
+"artist": "SG Lewis"
+},
+{
 "date": "2026-12-03",
 "event": "Prospa",
 "venue": "LIV Nightclub Miami",
@@ -1778,6 +1787,15 @@
 },
 {
 "date": "2026-12-12",
+"event": "Defected Sydney 2026",
+"venue": "ivy Sydney",
+"city": "Sydney",
+"region": "NSW",
+"url": "https://www.moshtix.com.au/v2/event/defected-sydney-2026/198268",
+"artist": "David Penn"
+},
+{
+"date": "2026-12-12",
 "event": "JOHN SUMMIT - CTRL ESCAPE TOUR",
 "venue": "Los Angeles Memorial Coliseum",
 "city": "Los Angeles",
@@ -2075,6 +2093,15 @@
 },
 {
 "date": "2026-12-30",
+"event": "Odd Mob | The Official Afterparty",
+"venue": "CODA",
+"city": "Toronto",
+"region": "ON",
+"url": "https://www.ticketweb.ca/event/odd-mob-the-official-coda-tickets/14402294",
+"artist": "Odd Mob"
+},
+{
+"date": "2026-12-30",
 "event": "Eternal NYE",
 "venue": "Orlando Amphitheater at the Central Florida Fair",
 "city": "Orlando",
@@ -2243,6 +2270,15 @@
 "region": "CA",
 "url": "https://on.fgtix.com/trk/SMhQ",
 "artist": "Tchami"
+},
+{
+"date": "2026-12-31",
+"event": "NYE w/ Tinlicker (DJ Set)",
+"venue": "O2 Victoria Warehouse Manchester",
+"city": "Manchester",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/nye-w-tinlicker-dj-set-manchester-31-12-2026/event/3E00655EE7CEA5DA",
+"artist": "Tinlicker"
 },
 {
 "date": "2026-12-31",
