@@ -10,7 +10,7 @@ REFRESH-INTERVAL;VALUE=DURATION:P1D
 X-PUBLISHED-TTL:P1D
 BEGIN:VEVENT
 UID:midburn-2026-2026-11-02@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20261102
 DTEND;VALUE=DATE:20261108
 SUMMARY:Midburn 2026
@@ -23,7 +23,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:edc-orlando-2026-2026-11-06@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20261106
 DTEND;VALUE=DATE:20261109
 SUMMARY:EDC Orlando 2026
@@ -35,8 +35,92 @@ DESCRIPTION:The main stage is not why you go. Plan the weekend around the h
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:mutek-mx-2026-2026-11-06@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20261106
+DTEND;VALUE=DATE:20261109
+SUMMARY:MUTEK MX 22nd edition\, closing weekend
+LOCATION:Clubs\, cinemas and bars across Roma\, Condesa and the city center
+ \, Mexico City\, CDMX\, Mexico
+URL:https://mexico.mutek.org/en
+DESCRIPTION:Closing weekend of the 22nd MUTEK in Mexico City\, with the Noc
+ turne club night on the 6th and shows spread over Roma and Condesa venues\
+ , leaning electronic and audiovisual more than straight house.\nhttps://me
+ xico.mutek.org/en\nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:soma-festival-2026-2026-11-06@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20261106
+DTEND;VALUE=DATE:20261110
+SUMMARY:Soma Festival 3rd
+LOCATION:Nacki Nacki Farm\, Mount Adrah\, NSW\, Australia
+URL:https://soma-festival.com
+DESCRIPTION:A left-field club bill with Simo Cell\, Piezo\, Reptant and HTR
+ K on one site in the Riverina\, so more electro and techno than house.\nht
+ tps://soma-festival.com\nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:ultra-mexico-2026-2026-11-07@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20261107
+DTEND;VALUE=DATE:20261109
+SUMMARY:Ultra Mexico 2026
+LOCATION:Estadio Banorte\, Mexico City\, CDMX\, Mexico
+URL:https://ultramexico.com
+DESCRIPTION:Mainstage EDM in a stadium\, but the undercard earns it. Eric P
+ rydz\, ARTBAT\, Boris Brejcha\, CamelPhat\, Boys Noize and Miss Monique\, 
+ with bass acts on the same poster.\nhttps://ultramexico.com\nvia https://g
+ roovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:ondalinda-careyes-2026-2026-11-12@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20261112
+DTEND;VALUE=DATE:20261116
+SUMMARY:Ondalinda x Careyes 10th anniversary\, Cosmic Code
+LOCATION:Costa Careyes (Playa Zyanya\, Polo Fields\, Cabeza de Indio)\, Car
+ eyes\, Jal.\, Mexico
+URL:https://www.ondalinda.com/festivals/careyes/
+DESCRIPTION:Tenth anniversary of the Careyes beach gathering\, three nights
+  in different spots on a private coastal estate in a burn adjacent setting
+ \, lineup not out yet.\nhttps://www.ondalinda.com/festivals/careyes/\nvia 
+ https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:dgtl-bengaluru-2026-2026-11-13@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20261113
+DTEND;VALUE=DATE:20261115
+SUMMARY:DGTL Bengaluru 2026
+LOCATION:The LaLiT Ashok\, Bengaluru\, Karnataka\, India
+URL:https://dgtl-festival.com/en/dgtl-bengaluru/
+DESCRIPTION:Nina Kraviz\, Qrion\, Colyn and Vladimir Dubyshkin play DGTL's 
+ Bengaluru edition across two afternoons and nights.\nhttps://dgtl-festival
+ .com/en/dgtl-bengaluru/\nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:kappa-futurfestival-mexico-2026-2026-11-13@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20261113
+DTEND;VALUE=DATE:20261115
+SUMMARY:Kappa FuturFestival Mexico 2026\, first edition outside Europe
+LOCATION:Parque Fundidora\, Monterrey\, N.L.\, Mexico
+URL:https://futurfestival.mx
+DESCRIPTION:Turin's festival makes its first stop outside Europe with Âme 
+ b2b Marcel Dettmann\, Carl Craig b2b Moodymann\, Maceo Plex b2b Tiga\, Dix
+ on and Damian Lazarus.\nhttps://futurfestival.mx\nvia https://groovesmaxxi
+ ng.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:seismic-2026-2026-11-13@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20261113
 DTEND;VALUE=DATE:20261116
 SUMMARY:Seismic Dance Event 2026 · 9.0
@@ -48,8 +132,109 @@ DESCRIPTION:Austin's boutique house and techno weekend. Three days inside o
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:subsonic-music-festival-2026-2026-11-13@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20261113
+DTEND;VALUE=DATE:20261116
+SUMMARY:Subsonic Music Festival 17th
+LOCATION:Riverwood Downs Mountain Resort\, Monkerai\, NSW\, Australia
+URL:https://www.subsonicmusic.com.au
+DESCRIPTION:A Guy Called Gerald\, Steve Bug\, Henry Saiz and Peter Van Hoes
+ en across four stages in the Barrington Tops foothills\, with numbers capp
+ ed this year.\nhttps://www.subsonicmusic.com.au\nvia https://groovesmaxxin
+ g.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:caprisono-2026-2026-11-14@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261116
+SUMMARY:CAPRÍSONO 2026
+LOCATION:La Gran Palapa\, Milpa Alta\, CDMX\, Mexico
+URL:https://mundocapricho.mx
+DESCRIPTION:Small two day party in the hills of Milpa Alta with a mostly ho
+ use\, techno and deep minimal bill including Swati\, Yentl and Abxent\, pl
+ us some ambient and breaks.\nhttps://mundocapricho.mx\nvia https://grooves
+ maxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:creamfields-argentina-2026-2026-11-14@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261115
+SUMMARY:Creamfields Argentina 2026
+LOCATION:Parque de la Ciudad\, Buenos Aires\, Buenos Aires\, Argentina
+URL:https://www.cronica.com.ar/elcanaldelamusica/noticias/creamfields-2026-
+ vuelve-a-buenos-aires-cuando-sera-y-como-conseguir-entradas-para-el-megafe
+ stival-electronico-4316/
+DESCRIPTION:Mainstage EDM is on the bill\, but the undercard earns it with 
+ Sven Väth\, Kölsch\, Innellea\, Nic Fanciulli and Enrico Sangiuliano beh
+ ind Charlotte de Witte and FISHER\nhttps://www.cronica.com.ar/elcanaldelam
+ usica/noticias/creamfields-2026-vuelve-a-buenos-aires-cuando-sera-y-como-c
+ onseguir-entradas-para-el-megafestival-electronico-4316/\nvia https://groo
+ vesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:creamfields-chile-2026-2026-11-14@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261116
+SUMMARY:Creamfields Chile 2026
+LOCATION:Club Hípico de Santiago\, Santiago\, Región Metropolitana\, Chil
+ e
+URL:https://creamfields.cl
+DESCRIPTION:Mainstage EDM names like Calvin Harris and Hardwell\, but the b
+ ill earns it with Charlotte de Witte\, Boris Brejcha\, FISHER and Hugel am
+ ong 80 plus acts\nhttps://creamfields.cl\nvia https://groovesmaxxing.com/c
+ alendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:dgtl-goa-2026-2026-11-14@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261116
+SUMMARY:DGTL Goa 2026
+LOCATION:W Goa\, Vagator\, Goa\, India
+URL:https://dgtl-festival.com/en/dgtl-goa/
+DESCRIPTION:The Mumbai edition now sits on a Goa beachfront with Nina Kravi
+ z\, Qrion\, Colyn and Sublime Sound.\nhttps://dgtl-festival.com/en/dgtl-go
+ a/\nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:shi-fu-miz-2026-2026-11-14@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261115
+SUMMARY:Shi Fu Miz Festival 10th anniversary
+LOCATION:Tai Tong Organic EcoPark\, Yuen Long\, New Territories\, Hong Kong
+URL:https://shifumiz.com
+DESCRIPTION:Chez Damier\, Dr. Rubinstein\, DJ MARIA. and Mr Ho spread over 
+ house\, techno and ambient stages for the tenth anniversary in a valley ou
+ tside Yuen Long.\nhttps://shifumiz.com\nvia https://groovesmaxxing.com/cal
+ endar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:mutek-japan-2026-2026-11-20@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261124
+SUMMARY:MUTEK.JP 11th
+LOCATION:MoN Takanawa: The Museum of Narratives\, Tokyo\, Tokyo\, Japan
+URL:https://tokyo.mutek.org/en
+DESCRIPTION:Plastikman's first Japan show in 16 years closes the weekend an
+ d Max Cooper headlines\, though the program leans audiovisual more than cl
+ ub.\nhttps://tokyo.mutek.org/en\nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:strawberry-fields-2026-2026-11-20@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20261120
 DTEND;VALUE=DATE:20261123
 SUMMARY:Strawberry Fields 2026
@@ -61,8 +246,35 @@ DESCRIPTION:Camping by the Murray River. House\, techno\, disco and the wei
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:time-warp-mexico-2026-2026-11-20@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261122
+SUMMARY:Time Warp Mexico 2026\, first Mexico edition
+LOCATION:Expo Santa Fe\, Mexico City\, CDMX\, Mexico
+URL:https://timewarp.de
+DESCRIPTION:First Mexico edition of the German techno brand with Charlotte 
+ de Witte\, Adam Beyer\, Amelie Lens\, Dixon\, Kobosil\, FJAAK\, Seth Troxl
+ er and Black Coffee over two nights.\nhttps://timewarp.de\nvia https://gro
+ ovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:zamna-sharm-el-sheikh-2026-2026-11-20@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261123
+SUMMARY:Zamna Sharm El-Sheikh 2026
+LOCATION:Khoroum Valley\, Sharm El Sheikh\, South Sinai\, Egypt
+URL:https://zamnafestival.com
+DESCRIPTION:Sasha & John Digweed\, Marco Carola\, CamelPhat\, Mind Against 
+ and Korolova play three days in a Sinai desert valley.\nhttps://zamnafesti
+ val.com\nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:harbourlife-2026-2026-11-21@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20261121
 DTEND;VALUE=DATE:20261122
 SUMMARY:Harbourlife 2026
@@ -74,8 +286,22 @@ DESCRIPTION:An afternoon of house on the steps over Sydney Harbour\, 2pm to
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:kolour-15-years-2026-2026-11-21@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+SUMMARY:Kolour 15 Years 15th anniversary
+LOCATION:Cloud 11 Park\, Bangkok\, Bangkok\, Thailand
+URL:https://wearekolour.com/
+DESCRIPTION:Richie Hawtin and Nora En Pure headline the 15th anniversary of
+  Bangkok's long running house and techno promoter\, a park rave with a mal
+ l afterparty.\nhttps://wearekolour.com/\nvia https://groovesmaxxing.com/ca
+ lendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:art-basel-2026-2026-12-02@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20261202
 DTEND;VALUE=DATE:20261207
 SUMMARY:Art Basel Miami Beach 2026 · Miami Art Week
@@ -88,7 +314,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:wonderfruit-2026-2026-12-03@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20261203
 DTEND;VALUE=DATE:20261208
 SUMMARY:Wonderfruit 2026
@@ -100,8 +326,37 @@ DESCRIPTION:Art\, music and a field outside Pattaya for five days. A week e
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:awakenings-exo-colombia-2026-2026-12-04@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20261204
+DTEND;VALUE=DATE:20261206
+SUMMARY:Awakenings EXO Colombia 2026
+LOCATION:Coliseo MedPlus\, Bogotá\, Cundinamarca\, Colombia
+URL:https://www.awakenings.com/en/events/2026/12/awakenings-exo-colombia/37
+ 5067/
+DESCRIPTION:Overnight techno from 5pm to 5am with Len Faki\, Ellen Allien\,
+  Enrico Sangiuliano\, Planetary Assault Systems and Indira Paganotto\nhttp
+ s://www.awakenings.com/en/events/2026/12/awakenings-exo-colombia/375067/\n
+ via https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:echoes-of-earth-2026-2026-12-05@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261207
+SUMMARY:Echoes of Earth 10th
+LOCATION:Foothills of Nandi Hills\, Bengaluru\, Karnataka\, India
+URL:https://echoesofearth.com/
+DESCRIPTION:Joris Voorn\, MEUTE and Arjun Vagale b2b Anyasa cover the elect
+ ronic side of a two day bill that also has Thievery Corporation and Yussef
+  Dayes.\nhttps://echoesofearth.com/\nvia https://groovesmaxxing.com/calend
+ ar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:tomorrowland-thailand-2026-2026-12-11@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20261211
 DTEND;VALUE=DATE:20261214
 SUMMARY:Tomorrowland Thailand 2026
@@ -113,8 +368,130 @@ DESCRIPTION:The first full Tomorrowland in Asia. Sold out\, waiting list on
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:sirius-2026-2026-12-12@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20261212
+DTEND;VALUE=DATE:20261213
+SUMMARY:Sirius 2026
+LOCATION:Parque Norte\, Medellín\, Antioquia\, Colombia
+URL:https://linktr.ee/dreamingfestival
+DESCRIPTION:One day techno open air at Parque Norte from the Dreaming Festi
+ val team\, lineup not published on the ticket page yet\nhttps://linktr.ee/
+ dreamingfestival\nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:zamna-lima-2026-2026-12-12@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20261212
+DTEND;VALUE=DATE:20261213
+SUMMARY:Zamna Lima 2026
+LOCATION:Centro Cultural Deportivo Lima\, Lima\, Lima\, Peru
+URL:https://zamnafestival.com
+DESCRIPTION:Zamna's house and techno brand on the Lima coast\, one day\, li
+ neup not announced yet\nhttps://zamnafestival.com\nvia https://groovesmaxx
+ ing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:cardume-nye-2026-2026-12-26@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20261226
+DTEND;VALUE=DATE:20270103
+SUMMARY:Cardume NYE 2026/27
+LOCATION:Canoa Quebrada beach\, Aracati\, CE\, Brazil
+URL:https://cardume.co
+DESCRIPTION:Queer focused house festival on the Canoa Quebrada beach\, line
+ up not out yet\nhttps://cardume.co\nvia https://groovesmaxxing.com/calenda
+ r
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:mareh-festival-2026-2026-12-26@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20261226
+DTEND;VALUE=DATE:20270103
+SUMMARY:Mareh Festival 2026/27
+LOCATION:Beachfront site in Fortim\, Fortim\, CE\, Brazil
+URL:https://www.mareh.com.br/
+DESCRIPTION:Disco and house week on the Ceará coast with Colleen Cosmo Mur
+ phy\, Jacques Renault\, Eric Duncan and Garage Disco among 32 names so far
+ \nhttps://www.mareh.com.br/\nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:reveillon-carneiros-2026-2026-12-26@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20261226
+DTEND;VALUE=DATE:20270103
+SUMMARY:Réveillon Carneiros 2026/27
+LOCATION:Praia dos Carneiros\, Tamandaré\, PE\, Brazil
+URL:https://reveilloncarneiros.com
+DESCRIPTION:Eight days on a Pernambuco beach with 94 acts\, the house and t
+ echno side has Black Coffee\, Adriatique with Vintage Culture\, Kerri Chan
+ dler\, Jamie Jones and Michael Bibi\nhttps://reveilloncarneiros.com\nvia h
+ ttps://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:beyond-the-valley-2026-2026-12-28@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20261228
+DTEND;VALUE=DATE:20270102
+SUMMARY:Beyond The Valley 2026-27
+LOCATION:Barunah Plains\, Hesse\, VIC\, Australia
+URL:https://beyondthevalley.com.au
+DESCRIPTION:KI/KI\, Overmono\, Armand Van Helden\, Job Jobse and Hannah Lai
+ ng sit under John Summit\, Black Eyed Peas and Skepta\, and it is sold out
+  with a waitlist.\nhttps://beyondthevalley.com.au\nvia https://groovesmaxx
+ ing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:lost-paradise-2026-2026-12-28@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20261228
+DTEND;VALUE=DATE:20270102
+SUMMARY:Lost Paradise 2026-27
+LOCATION:Glenworth Valley\, Glenworth Valley\, NSW\, Australia
+URL:https://lostparadise.com.au
+DESCRIPTION:Overmono\, KI/KI\, Armand Van Helden\, Partiboi69 and Rossi. pl
+ ay a bush New Year's week on the NSW Central Coast\, with John Summit and 
+ Skepta on top.\nhttps://lostparadise.com.au\nvia https://groovesmaxxing.co
+ m/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:new-years-at-the-bowl-2026-2026-12-31@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20261231
+DTEND;VALUE=DATE:20270101
+SUMMARY:New Year's at the Bowl 2nd
+LOCATION:Sidney Myer Music Bowl and Kings Domain gardens\, Melbourne\, VIC\
+ , Australia
+URL:https://www.nyatthebowl.com.au/
+DESCRIPTION:Helena Hauff\, Todd Terje\, DJ Seinfeld and CC:DISCO! share a t
+ hree stage park bill that Major Lazer tops\, so go for the undercard.\nhtt
+ ps://www.nyatthebowl.com.au/\nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:ppp-nye-2026-2026-12-31@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20261231
+DTEND;VALUE=DATE:20270102
+SUMMARY:Papaya Playa Project NYE 2026-2027
+LOCATION:Papaya Playa Project\, Tulum\, Q. Roo\, Mexico
+URL:https://www.papayaplayaproject.com
+DESCRIPTION:Beachfront New Year's Eve at the Tulum venue with electronic mu
+ sic\, live acts and a midnight ceremony\, no artists named yet and last ye
+ ar's night had Jan Blomqvist with Acid Pauli and SABO.\nhttps://www.papaya
+ playaproject.com\nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:proper-nye-2026-2026-12-31@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20261231
 DTEND;VALUE=DATE:20270102
 SUMMARY:Proper NYE / NYD 2026-27
@@ -126,8 +503,49 @@ DESCRIPTION:FNGRS CRSSD's two days in the ballpark\, 21+. The way to close
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:savaya-bali-nye-2026-2026-12-31@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20261231
+DTEND;VALUE=DATE:20270101
+SUMMARY:Savaya Bali NYE Carl Cox b2b Nic Fanciulli
+LOCATION:Savaya Bali\, Uluwatu\, Bali\, Indonesia
+URL:https://www.savaya.com
+DESCRIPTION:Carl Cox b2b Nic Fanciulli from 3am to sunrise on a Uluwatu cli
+ fftop\, after Prospa at midnight.\nhttps://www.savaya.com\nvia https://gro
+ ovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:sin-censura-nye-2026-2026-12-31@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20261231
+DTEND;VALUE=DATE:20270102
+SUMMARY:Sin Censura NYE Festival New Year's Eve 2026
+LOCATION:Private open air site near Puerto Escondido (revealed the day befo
+ re)\, Puerto Escondido\, Oax.\, Mexico
+URL:https://www.ticketfairy.com/event/NYE
+DESCRIPTION:Sixteen hour New Year's party outside Puerto Escondido on three
+  stages of house\, techno and minimal\, lineup still to come.\nhttps://www
+ .ticketfairy.com/event/NYE\nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:wildlands-brisbane-2026-2026-12-31@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20261231
+DTEND;VALUE=DATE:20270101
+SUMMARY:Wildlands Brisbane 2026-27
+LOCATION:Brisbane Showgrounds\, Brisbane\, QLD\, Australia
+URL:https://wildlandsfestival.com.au
+DESCRIPTION:John Summit and Skepta headline\, but Anetha b2b SPFDJ\, Layton
+  Giordani\, benwal b2b Kyle Starkey\, Overmono and KI/KI make the undercar
+ d a real techno and club bill.\nhttps://wildlandsfestival.com.au\nvia http
+ s://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:zamna-tulum-2026-2026-12-31@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20261231
 DTEND;VALUE=DATE:20270111
 SUMMARY:Zamna Tulum 2026-27 season · 10 years
@@ -139,8 +557,22 @@ DESCRIPTION:Ten nights in the jungle for the tenth anniversary. Anyma\, Bla
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:elrow-sydney-xxl-2026-2026-12-31@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20261231
+DTEND;VALUE=DATE:20270101
+SUMMARY:elrow Sydney XXL 2026
+LOCATION:Bondi Beach Park and Bondi Pavilion\, Sydney\, NSW\, Australia
+URL:https://fuzzy.com.au/events/elrow/
+DESCRIPTION:Kölsch\, Arielle Free and William Kiss carry a Bondi beach hou
+ se party that Meduza and Belters Only top\, so it is fun house more than a
+  deep room.\nhttps://fuzzy.com.au/events/elrow/\nvia https://groovesmaxxin
+ g.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:field-day-sydney-2027-2027-01-01@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20270101
 DTEND;VALUE=DATE:20270102
 SUMMARY:Field Day 2027 · Sydney
@@ -152,8 +584,50 @@ DESCRIPTION:New Year's Day in The Domain. Mall Grab and Boys Noize are on t
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:let-them-eat-cake-nyd-2027-2027-01-01@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20270101
+DTEND;VALUE=DATE:20270102
+SUMMARY:Let Them Eat Cake NYD 14th
+LOCATION:The Nursery at Flemington\, Melbourne\, VIC\, Australia
+URL:https://www.ltecnyd.com
+DESCRIPTION:Anetha\, Boys Noize\, Joy Orbison\, Chaos In The CBD and Partib
+ oi69 on New Year's Day in a Melbourne racecourse park.\nhttps://www.ltecny
+ d.com\nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:wildlands-perth-2027-2027-01-02@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20270102
+DTEND;VALUE=DATE:20270103
+SUMMARY:Wildlands Perth 2026-27
+LOCATION:Arena Joondalup\, Perth\, WA\, Australia
+URL:https://wildlandsfestival.com.au
+DESCRIPTION:Same one day bill as Brisbane with Anetha b2b SPFDJ\, Layton Gi
+ ordani\, Overmono and KI/KI under John Summit and Skepta\, plus Perth only
+  sets from Groove Junction and KT.\nhttps://wildlandsfestival.com.au\nvia 
+ https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:5th-element-puerto-rico-2027-2027-01-07@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20270107
+DTEND;VALUE=DATE:20270112
+SUMMARY:The 5th Element Festival 2027\, second Puerto Rico edition
+LOCATION:Venues across San Juan and Isla Verde (not yet announced)\, San Ju
+ an\, PR\, Puerto Rico
+URL:https://the5thelementfestival.com
+DESCRIPTION:Five day house and techno run across San Juan and Isla Verde wi
+ th Danny Tenaglia\, Dubfire\, Nicole Moudaber\, Shonky\, Joseph Capriati a
+ nd Traumer in the first phase.\nhttps://the5thelementfestival.com\nvia htt
+ ps://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:day-zero-2027-2027-01-09@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20270109
 DTEND;VALUE=DATE:20270110
 SUMMARY:Day Zero 2027 · Tulum
@@ -167,7 +641,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:groove-cruise-2027-2027-01-21@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20270121
 DTEND;VALUE=DATE:20270126
 SUMMARY:Groove Cruise Miami 2027
@@ -179,8 +653,22 @@ DESCRIPTION:Four nights of house and techno at sea. Sold out\, so it's a wa
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:dreamsea-sonica-2027-2027-01-22@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20270122
+DTEND;VALUE=DATE:20270124
+SUMMARY:Dreamsea Sonica 2027
+LOCATION:Dreamsea Surf Camp\, Tamarindo\, Guanacaste\, Costa Rica
+URL:https://dreamseacostarica.com/dreamsea-sonica/
+DESCRIPTION:Two days of house\, techno and organic sets at a jungle surf ca
+ mp by Tamarindo\, with M.A.N.D.Y. and Hector Couto on last year's bill and
+  the 2027 lineup not out yet.\nhttps://dreamseacostarica.com/dreamsea-soni
+ ca/\nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:kiwiburn-2027-2027-01-27@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20270127
 DTEND;VALUE=DATE:20270202
 SUMMARY:Kiwiburn 2027
@@ -192,8 +680,21 @@ DESCRIPTION:New Zealand's Burning Man regional\, near Hunterville. It's sum
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:zamna-phuket-2027-2027-01-29@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20270129
+DTEND;VALUE=DATE:20270131
+SUMMARY:Zamna Phuket debut
+LOCATION:Yeden Gardens\, Takua Thung\, Phang Nga\, Thailand
+URL:https://zamnafestival.com
+DESCRIPTION:Zamna's Tulum house and techno brand makes its Phuket debut on 
+ a Phang Nga estate\, with the lineup still to be announced.\nhttps://zamna
+ festival.com\nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:bahidora-2027-2027-02-12@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20270212
 DTEND;VALUE=DATE:20270215
 SUMMARY:Bahidorá 2027 · 15 years
@@ -205,8 +706,21 @@ DESCRIPTION:The river festival at Las Estacas turns fifteen. Floating down
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:baum-festival-2027-2027-02-12@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20270212
+DTEND;VALUE=DATE:20270214
+SUMMARY:Baum Festival 2027
+LOCATION:Corferias\, Bogotá\, Cundinamarca\, Colombia
+URL:https://www.baumfestival.com
+DESCRIPTION:Two indoor days at Corferias on what Baum bills as Colombia's b
+ iggest dance floor\, 2027 lineup not out yet\nhttps://www.baumfestival.com
+ \nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:edc-mexico-2027-2027-02-19@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20270219
 DTEND;VALUE=DATE:20270222
 SUMMARY:EDC Mexico 2027
@@ -218,8 +732,50 @@ DESCRIPTION:Insomniac's carnival at the Mexico City racetrack. Big on the m
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:black-coffee-weekender-2027-2027-02-26@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20270226
+DTEND;VALUE=DATE:20270301
+SUMMARY:Black Coffee Weekender 2027
+LOCATION:The Ostrich (main event 27 Feb)\, Philadelphia\, Cape Town\, Weste
+ rn Cape\, South Africa
+URL:https://blackcoffeeweekender.com
+DESCRIPTION:Black Coffee and Dixon are confirmed so far for a Cape Town wee
+ kend of Afro house and deep house at The Ostrich.\nhttps://blackcoffeeweek
+ ender.com\nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:snow-machine-hakuba-2027-2027-03-02@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20270302
+DTEND;VALUE=DATE:20270308
+SUMMARY:Snow Machine Hakuba 2027
+LOCATION:Main Arena\, Happo Village\, Hakuba\, Nagano\, Japan
+URL:https://hakuba.snow-machine.com
+DESCRIPTION:Ben Böhmer\, Deep Dish\, Christian Smith\, Patrick Topping\, K
+ ettama and Duke Dumont at a ski resort\, with some drum and bass on the si
+ de.\nhttps://hakuba.snow-machine.com\nvia https://groovesmaxxing.com/calen
+ dar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:bonanza-festival-2027-2027-03-03@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20270303
+DTEND;VALUE=DATE:20270309
+SUMMARY:Bonanza Festival 2027
+LOCATION:Río Hostel\, Buritaca\, Magdalena\, Colombia
+URL:https://bonanzafestival.co
+DESCRIPTION:Six days of underground house and techno in the Colombian jungl
+ e near Santa Marta\, first wave includes Shanti Celeste\, Silkie\, Nicola 
+ Cruz and Lakuti and Tama Sumo\nhttps://bonanzafestival.co\nvia https://gro
+ ovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:pitch-2027-2027-03-05@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20270305
 DTEND;VALUE=DATE:20270310
 SUMMARY:Pitch Music & Arts 2027 · 10 years
@@ -231,8 +787,52 @@ DESCRIPTION:Ten years at the foot of the Grampians. Australia's techno pilg
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:fairyland-2027-2027-03-11@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20270311
+DTEND;VALUE=DATE:20270315
+SUMMARY:Fairyland Music Festival 2027
+LOCATION:Mantamar Beach Club\, Puerto Vallarta\, Jal.\, Mexico
+URL:https://fairylandfestival.com/
+DESCRIPTION:Queer house festival on the Puerto Vallarta beachfront with a b
+ ill of house veterans\, Barbara Tucker\, Tedd Patterson\, Harry Romero\, R
+ alphi Rosario and Russell Small\, and no single headliner.\nhttps://fairyl
+ andfestival.com/\nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:sxm-festival-2027-2027-03-17@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20270317
+DTEND;VALUE=DATE:20270322
+SUMMARY:SXM Festival 10th edition
+LOCATION:5+ venues across the island (beaches\, villas\, clubs)\, Saint Mar
+ tin / Sint Maarten\, Saint Martin / Sint Maarten\, Saint Martin
+URL:https://sxmfestival.com
+DESCRIPTION:Five days of house and techno spread over a Caribbean island\, 
+ with Sasha\, Guy Gerber\, Patrick Topping\, Dennis Cruz and Franky Rizardo
+  in the first lineup.\nhttps://sxmfestival.com\nvia https://groovesmaxxing
+ .com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:estereo-picnic-2027-2027-03-19@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20270319
+DTEND;VALUE=DATE:20270322
+SUMMARY:Festival Estéreo Picnic 2027
+LOCATION:Parque Metropolitano Simón Bolívar\, Bogotá\, Cundinamarca\, Co
+ lombia
+URL:https://www.festivalestereopicnic.com
+DESCRIPTION:Rock\, pop and rap festival whose electronic side earns it\, wi
+ th Amelie Lens\, Nina Kraviz\, Four Tet\, Bicep\, Boys Noize and Sammy Vir
+ ji\nhttps://www.festivalestereopicnic.com\nvia https://groovesmaxxing.com/
+ calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:tomorrowland-winter-2027-2027-03-20@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20270320
 DTEND;VALUE=DATE:20270328
 SUMMARY:Tomorrowland Winter 2027
@@ -245,7 +845,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:mmw-2027-2027-03-22@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20270322
 DTEND;VALUE=DATE:20270329
 SUMMARY:Miami Music Week 2027
@@ -259,7 +859,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:dgtl-2027-2027-03-26@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20270326
 DTEND;VALUE=DATE:20270329
 SUMMARY:DGTL Amsterdam 2027
@@ -272,7 +872,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:ultra-2027-2027-03-26@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20270326
 DTEND;VALUE=DATE:20270329
 SUMMARY:Ultra Music Festival 2027
@@ -285,7 +885,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:time-warp-2027-2027-04-03@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20270403
 DTEND;VALUE=DATE:20270405
 SUMMARY:Time Warp 2027 · Mannheim
@@ -298,7 +898,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:coachella-2027-w1-2027-04-09@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20270409
 DTEND;VALUE=DATE:20270412
 SUMMARY:Coachella 2027 · weekend 1
@@ -310,8 +910,22 @@ DESCRIPTION:The desert one. The lineup isn't out yet\, but the house and te
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:gop-tun-festival-2027-2027-04-09@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20270409
+DTEND;VALUE=DATE:20270411
+SUMMARY:Gop Tun Festival 2027
+LOCATION:Mercado Livre Arena Pacaembu\, São Paulo\, SP\, Brazil
+URL:https://goptunfestival.com.br/
+DESCRIPTION:Independent São Paulo electronic festival with a club leaning 
+ bill\, past editions had Avalon Emerson and Marcellus Pittman\, 2027 lineu
+ p not out yet\nhttps://goptunfestival.com.br/\nvia https://groovesmaxxing.
+ com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:coachella-2027-w2-2027-04-16@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20270416
 DTEND;VALUE=DATE:20270419
 SUMMARY:Coachella 2027 · weekend 2
@@ -323,7 +937,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:rainbow-disco-club-2027-2027-04-16@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20270416
 DTEND;VALUE=DATE:20270419
 SUMMARY:Rainbow Disco Club 2027
@@ -336,7 +950,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:tomorrowland-brasil-2027-2027-04-30@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20270430
 DTEND;VALUE=DATE:20270503
 SUMMARY:Tomorrowland Brasil 2027
@@ -349,7 +963,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:edc-las-vegas-2027-dusk-2027-05-14@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20270514
 DTEND;VALUE=DATE:20270517
 SUMMARY:EDC Las Vegas 2027 · Dusk weekend
@@ -362,7 +976,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:upclose-2027-2027-05-15@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20270515
 DTEND;VALUE=DATE:20270517
 SUMMARY:Awakenings UpClose 2027
@@ -375,7 +989,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:lentekabinet-2027-2027-05-15@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20270515
 DTEND;VALUE=DATE:20270517
 SUMMARY:Lentekabinet 2027
@@ -387,8 +1001,21 @@ DESCRIPTION:Dekmantel's spring open air\, same weekend as UpClose. Amsterda
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:zamna-colombia-2027-2027-05-15@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20270515
+DTEND;VALUE=DATE:20270516
+SUMMARY:Zamna Colombia 2027
+LOCATION:Jardín Botánico de Medellín\, Medellín\, Antioquia\, Colombia
+URL:https://www.zamnafestival.com/events/zamna-colombia
+DESCRIPTION:Zamna's Tulum house and techno format in the Medellín botanica
+ l garden\, daytime start\, lineup not announced yet\nhttps://www.zamnafest
+ ival.com/events/zamna-colombia\nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:edc-las-vegas-2027-dawn-2027-05-21@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20270521
 DTEND;VALUE=DATE:20270524
 SUMMARY:EDC Las Vegas 2027 · Dawn weekend
@@ -400,8 +1027,22 @@ DESCRIPTION:The second weekend at the Speedway. Same lineup\, a week later\
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:zamna-giza-2027-2027-05-21@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20270521
+DTEND;VALUE=DATE:20270522
+SUMMARY:Zamna Giza 10th anniversary world tour
+LOCATION:The Great Pyramids of Giza\, Giza\, Giza Governorate\, Egypt
+URL:https://zamnafestival.com/events/zamna-giza-2027
+DESCRIPTION:Zamna's third Egypt edition beneath the pyramids with a 1\,000 
+ capacity and no artists named yet\, so the draw is the setting and the bra
+ nd.\nhttps://zamnafestival.com/events/zamna-giza-2027\nvia https://grooves
+ maxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:lib-2027-2027-05-26@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20270526
 DTEND;VALUE=DATE:20270531
 SUMMARY:Lightning in a Bottle 2027
@@ -414,7 +1055,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:field-day-london-2027-2027-05-29@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20270529
 DTEND;VALUE=DATE:20270530
 SUMMARY:Field Day 2027 · London
@@ -427,7 +1068,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:movement-2027-2027-05-29@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20270529
 DTEND;VALUE=DATE:20270601
 SUMMARY:Movement 2027
@@ -440,7 +1081,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:primavera-2027-2027-06-02@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20270602
 DTEND;VALUE=DATE:20270607
 SUMMARY:Primavera Sound 2027 · Barcelona
@@ -453,7 +1094,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:glastonbury-2027-2027-06-23@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20270623
 DTEND;VALUE=DATE:20270628
 SUMMARY:Glastonbury 2027
@@ -466,7 +1107,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:hideout-2027-2027-06-29@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20270629
 DTEND;VALUE=DATE:20270703
 SUMMARY:Hideout 2027
@@ -479,7 +1120,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:kappa-2027-2027-07-02@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20270702
 DTEND;VALUE=DATE:20270705
 SUMMARY:Kappa FuturFestival 2027
@@ -492,7 +1133,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:awakenings-2027-2027-07-09@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20270709
 DTEND;VALUE=DATE:20270712
 SUMMARY:Awakenings Festival 2027
@@ -504,7 +1145,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:dekmantel-2027-2027-07-29@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20270729
 DTEND;VALUE=DATE:20270803
 SUMMARY:Dekmantel Festival 2027
@@ -517,7 +1158,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:houghton-2027-2027-08-05@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20270805
 DTEND;VALUE=DATE:20270809
 SUMMARY:Houghton 2027
@@ -530,7 +1171,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:dekmantel-selectors-2027-2027-08-19@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20270819
 DTEND;VALUE=DATE:20270824
 SUMMARY:Dekmantel Selectors 2027
@@ -543,7 +1184,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:creamfields-2027-2027-08-26@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20270826
 DTEND;VALUE=DATE:20270830
 SUMMARY:Creamfields 2027
@@ -556,7 +1197,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:lost-village-2027-2027-08-26@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20270826
 DTEND;VALUE=DATE:20270830
 SUMMARY:Lost Village 2027
@@ -569,7 +1210,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:burning-man-2027-2027-08-29@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20270829
 DTEND;VALUE=DATE:20270907
 SUMMARY:Burning Man 2027 · Spellbound
@@ -582,7 +1223,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
 UID:ade-2027-2027-10-20@groovesmaxxing.com
-DTSTAMP:20261031T000000Z
+DTSTAMP:20261101T000000Z
 DTSTART;VALUE=DATE:20271020
 DTEND;VALUE=DATE:20271025
 SUMMARY:Amsterdam Dance Event 2027
@@ -591,6 +1232,19 @@ URL:https://www.amsterdam-dance-event.nl/en/
 DESCRIPTION:Five days\, hundreds of parties\, one city. The conference by d
  ay and every club in Amsterdam by night.\nhttps://www.amsterdam-dance-even
  t.nl/en/\nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:starlight-festival-2027-2027-11-05@groovesmaxxing.com
+DTSTAMP:20261101T000000Z
+DTSTART;VALUE=DATE:20271105
+DTEND;VALUE=DATE:20271107
+SUMMARY:Starlight Festival 2nd
+LOCATION:The Great Pyramids of Giza\, Giza\, Giza Governorate\, Egypt
+URL:https://starlight-festival.org
+DESCRIPTION:EXIT's pyramids festival returns after a sold out debut that bo
+ oked Adriatique\, Pete Tong and Michael Bibi\, with no 2027 lineup yet.\nh
+ ttps://starlight-festival.org\nvia https://groovesmaxxing.com/calendar
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR
