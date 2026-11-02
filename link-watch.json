@@ -1,17 +1,17 @@
 {
- "generated": "2026-11-01T16:54:37Z",
- "pages": 876,
+ "generated": "2026-11-02T20:29:27Z",
+ "pages": 877,
  "links": {
-  "checkable": 7496,
+  "checkable": 7635,
   "by_kind": {
-   "other": 3489,
-   "spotify": 2390,
-   "soundcloud": 789,
-   "youtube": 828
+   "other": 3597,
+   "spotify": 2408,
+   "soundcloud": 801,
+   "youtube": 829
   },
-  "checked_within_recheck": 6972,
+  "checked_within_recheck": 6974,
   "asked_this_run": 700,
-  "unknown": 935,
+  "unknown": 938,
   "budget": 700,
   "recheck_days": 10
  },
@@ -26,7 +26,7 @@
     "/index"
    ],
    "page_count": 1,
-   "checked": "2026-10-22T15:35:56Z",
+   "checked": "2026-11-02T20:29:27Z",
    "first_seen": "2026-10-13T17:46:57Z"
   },
   {
@@ -39,8 +39,21 @@
     "/index"
    ],
    "page_count": 1,
-   "checked": "2026-10-22T15:35:56Z",
+   "checked": "2026-11-02T20:29:27Z",
    "first_seen": "2026-10-13T17:46:57Z"
+  },
+  {
+   "url": "https://www.audiobullys.co.uk/",
+   "kind": "other",
+   "code": 404,
+   "note": null,
+   "title": null,
+   "pages": [
+    "/artists/audio-bullys"
+   ],
+   "page_count": 1,
+   "checked": "2026-11-02T20:29:27Z",
+   "first_seen": "2026-11-02T20:29:27Z"
   },
   {
    "url": "https://www.fielddayfestivals.com/",
@@ -54,6 +67,19 @@
    "page_count": 1,
    "checked": "2026-11-01T16:54:37Z",
    "first_seen": "2026-11-01T16:54:37Z"
+  },
+  {
+   "url": "https://www.puntoticket.com/anuncio-fecha-venta-de-entradas",
+   "kind": "other",
+   "code": 404,
+   "note": null,
+   "title": null,
+   "pages": [
+    "/calendar"
+   ],
+   "page_count": 1,
+   "checked": "2026-11-02T20:29:27Z",
+   "first_seen": "2026-11-02T20:29:27Z"
   },
   {
    "url": "https://www.youtube.com/@gabrl_music",
@@ -71,6 +97,33 @@
  ],
  "moved": [
   {
+   "url": "https://upthestuss.com",
+   "kind": "other",
+   "code": 200,
+   "note": "lands on www.chrisstassy.com",
+   "title": null,
+   "pages": [
+    "/artists/kolter",
+    "/artists/m-high"
+   ],
+   "page_count": 2,
+   "checked": "2026-11-02T20:29:27Z",
+   "first_seen": "2026-11-02T20:29:27Z"
+  },
+  {
+   "url": "https://creamfields.cl",
+   "kind": "other",
+   "code": 200,
+   "note": "lands on www.puntoticket.com",
+   "title": null,
+   "pages": [
+    "/calendar"
+   ],
+   "page_count": 1,
+   "checked": "2026-11-02T20:29:27Z",
+   "first_seen": "2026-11-02T20:29:27Z"
+  },
+  {
    "url": "https://realm-records.com",
    "kind": "other",
    "code": 200,
@@ -80,8 +133,21 @@
     "/labels/realm"
    ],
    "page_count": 1,
-   "checked": "2026-10-22T15:35:56Z",
+   "checked": "2026-11-02T20:29:27Z",
    "first_seen": "2026-10-13T17:46:57Z"
+  },
+  {
+   "url": "https://www.papayaplayaproject.com",
+   "kind": "other",
+   "code": 200,
+   "note": "lands on www.pppfromdaytonight.mx",
+   "title": null,
+   "pages": [
+    "/calendar"
+   ],
+   "page_count": 1,
+   "checked": "2026-11-02T20:29:27Z",
+   "first_seen": "2026-11-02T20:29:27Z"
   }
  ],
  "differs": [
@@ -235,6 +301,20 @@
    "first_seen": "2026-10-19T17:08:37Z"
   },
   {
+   "url": "https://open.spotify.com/track/0r9uFqP5srMqWEkrBfWyjD",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Zoolander",
+   "pages": [
+    "/friday",
+    "/tracklists/disco-lines-club-space-miami-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-27T16:00:06Z",
+   "first_seen": "2026-11-02T20:29:27Z"
+  },
+  {
    "url": "https://open.spotify.com/track/0z5NYyTxDQwhrbNOM7FLtr",
    "kind": "spotify",
    "code": 200,
@@ -247,6 +327,20 @@
    "page_count": 2,
    "checked": "2026-10-31T15:51:03Z",
    "first_seen": "2026-10-31T15:51:03Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/18o8InV501O1NhjQAstfOw",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Red Room",
+   "pages": [
+    "/tracklists/disco-lines-club-space-miami-2026",
+    "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set"
+   ],
+   "page_count": 2,
+   "checked": "2026-11-01T16:54:37Z",
+   "first_seen": "2026-10-21T15:34:18Z"
   },
   {
    "url": "https://open.spotify.com/track/1EPJvABmhKAXlMn9FpPuGs",
@@ -399,7 +493,7 @@
     "/tracklists/ayybo-lollapalooza-chicago-2026"
    ],
    "page_count": 2,
-   "checked": "2026-10-22T15:35:56Z",
+   "checked": "2026-11-02T20:29:27Z",
    "first_seen": "2026-10-29T17:03:34Z"
   },
   {
@@ -693,7 +787,7 @@
     "/tracklists/ayybo-lollapalooza-chicago-2026"
    ],
    "page_count": 2,
-   "checked": "2026-10-22T15:35:56Z",
+   "checked": "2026-11-02T20:29:27Z",
    "first_seen": "2026-10-31T15:51:03Z"
   },
   {
@@ -735,7 +829,7 @@
     "/tracklists/ayybo-lollapalooza-chicago-2026"
    ],
    "page_count": 2,
-   "checked": "2026-10-22T15:35:56Z",
+   "checked": "2026-11-02T20:29:27Z",
    "first_seen": "2026-10-31T15:51:03Z"
   },
   {
@@ -749,7 +843,7 @@
     "/tracklists/ayybo-lollapalooza-chicago-2026"
    ],
    "page_count": 2,
-   "checked": "2026-10-22T15:35:56Z",
+   "checked": "2026-11-02T20:29:27Z",
    "first_seen": "2026-10-31T15:51:03Z"
   },
   {
@@ -779,6 +873,20 @@
    "page_count": 2,
    "checked": "2026-11-01T16:54:37Z",
    "first_seen": "2026-10-23T15:25:25Z"
+  },
+  {
+   "url": "https://soundcloud.com/discipmusic/discip-red-room",
+   "kind": "soundcloud",
+   "code": 200,
+   "note": "page says: listen on soundcloud",
+   "title": "Discip - Red Room by Discip",
+   "pages": [
+    "/tracklists/disco-lines-club-space-miami-2026",
+    "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set"
+   ],
+   "page_count": 2,
+   "checked": "2026-11-01T16:54:37Z",
+   "first_seen": "2026-11-02T20:29:27Z"
   },
   {
    "url": "https://soundcloud.com/diynamic-music/notre-dame-nobody-told-me-1",
@@ -903,7 +1011,7 @@
     "/tracklists/luch-gozar-night-2-polyforum-siqueiros-mexico-city-2026"
    ],
    "page_count": 2,
-   "checked": "2026-10-22T15:35:56Z",
+   "checked": "2026-11-02T20:29:27Z",
    "first_seen": "2026-10-31T15:51:03Z"
   },
   {
@@ -1380,6 +1488,19 @@
    "page_count": 1,
    "checked": "2026-10-29T17:03:34Z",
    "first_seen": "2026-10-15T15:18:47Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/0QXVkiL7TBOlaGY4Utfu49",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "DON'T KILL THE PARTY (feat. Shoreline Mafia, Quavo & Juicy J)",
+   "pages": [
+    "/tracklists/disco-lines-club-space-miami-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-11-02T20:29:27Z",
+   "first_seen": "2026-11-02T20:29:27Z"
   },
   {
    "url": "https://open.spotify.com/track/0QZdbOtajbimysXPJDkU3H",
@@ -1863,19 +1984,6 @@
    "first_seen": "2026-10-21T15:34:18Z"
   },
   {
-   "url": "https://open.spotify.com/track/18o8InV501O1NhjQAstfOw",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Red Room",
-   "pages": [
-    "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set"
-   ],
-   "page_count": 1,
-   "checked": "2026-11-01T16:54:37Z",
-   "first_seen": "2026-10-21T15:34:18Z"
-  },
-  {
    "url": "https://open.spotify.com/track/1BnQgaLw0rVJ1rMtPculcs",
    "kind": "spotify",
    "code": 200,
@@ -2279,6 +2387,19 @@
    "first_seen": "2026-10-15T15:18:47Z"
   },
   {
+   "url": "https://open.spotify.com/track/1b6EQMrjfbXn1EOGJV1IED",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Nun Major (feat. OTXBOYZ) [Disco Lines & TOBEHONEST REMIX]",
+   "pages": [
+    "/tracklists/disco-lines-club-space-miami-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-11-02T20:29:27Z",
+   "first_seen": "2026-11-02T20:29:27Z"
+  },
+  {
    "url": "https://open.spotify.com/track/1d0chkqxqe2hIst3kh5JaE",
    "kind": "spotify",
    "code": 200,
@@ -2591,6 +2712,19 @@
    "first_seen": "2026-10-31T15:51:03Z"
   },
   {
+   "url": "https://open.spotify.com/track/2AJ8OYa9kLdieL7oOZCy4b",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Nineteen 84",
+   "pages": [
+    "/tracklists/disco-lines-club-space-miami-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-11-02T20:29:27Z",
+   "first_seen": "2026-11-02T20:29:27Z"
+  },
+  {
    "url": "https://open.spotify.com/track/2AYebbKenqjmq5pOsn7L2o",
    "kind": "spotify",
    "code": 200,
@@ -2693,73 +2827,8 @@
    "page_count": 1,
    "checked": "2026-10-30T16:48:35Z",
    "first_seen": "2026-10-17T13:53:46Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2G6AM2rmjjJcyiOvizYawc",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Mi Combi",
-   "pages": [
-    "/tracklists/mason-collective-live-at-destino-music-on-ibiza-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-30T16:48:35Z",
-   "first_seen": "2026-10-17T13:53:46Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2GKlRj4MKgcctXk6QU0zT7",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "NOCAMPOBELO - Extended Mix",
-   "pages": [
-    "/tracklists/ben-sterling-b2b-beltran-portola-music-festival-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-23T15:25:25Z",
-   "first_seen": "2026-10-23T15:25:25Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2HEOa6H915OJhRoKmIj3B9",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "In White Rooms",
-   "pages": [
-    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-29T17:03:34Z",
-   "first_seen": "2026-10-15T15:18:47Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2IVH2T2MdIOSBgp39A12Nc",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Forever Mover",
-   "pages": [
-    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-29T17:03:34Z",
-   "first_seen": "2026-10-15T15:18:47Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2JUpfuOQhMYwfLJ7On3lOy",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Now You Know",
-   "pages": [
-    "/tracklists/luch-solomun-1-pacha-ibiza-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-30T16:48:35Z",
-   "first_seen": "2026-10-17T13:53:46Z"
   }
  ],
  "anchors_broken": [],
- "summary": "4 broken, 1 moved, 574 read differently, 0 broken anchors, 6972 of 7496 links checked in the last 10 days"
+ "summary": "6 broken, 4 moved, 605 read differently, 0 broken anchors, 6974 of 7635 links checked in the last 10 days"
 }
