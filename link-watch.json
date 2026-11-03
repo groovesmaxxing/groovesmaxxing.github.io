@@ -1,17 +1,17 @@
 {
- "generated": "2026-11-02T20:29:27Z",
- "pages": 877,
+ "generated": "2026-11-03T18:00:35Z",
+ "pages": 880,
  "links": {
-  "checkable": 7635,
+  "checkable": 7705,
   "by_kind": {
-   "other": 3597,
-   "spotify": 2408,
-   "soundcloud": 801,
-   "youtube": 829
+   "other": 3637,
+   "spotify": 2431,
+   "soundcloud": 807,
+   "youtube": 830
   },
-  "checked_within_recheck": 6974,
+  "checked_within_recheck": 6993,
   "asked_this_run": 700,
-  "unknown": 938,
+  "unknown": 936,
   "budget": 700,
   "recheck_days": 10
  },
@@ -91,7 +91,7 @@
     "/artists/gabe-cline"
    ],
    "page_count": 1,
-   "checked": "2026-10-23T15:25:25Z",
+   "checked": "2026-11-03T18:00:35Z",
    "first_seen": "2026-10-23T15:25:25Z"
   }
  ],
@@ -168,6 +168,22 @@
    "first_seen": "2026-10-17T13:53:46Z"
   },
   {
+   "url": "https://open.spotify.com/track/6LpbTB4QYX68oKwO0PCTWd",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Stay",
+   "pages": [
+    "/friday",
+    "/tracklists/me-vs-rampa-circoloco-dc-10-ibiza-2026",
+    "/tracklists/tom-collins-long-feng-burning-man-2026",
+    "/tracklists/tom-collins-pink-mammoth-burning-man-2026"
+   ],
+   "page_count": 4,
+   "checked": "2026-10-29T17:03:34Z",
+   "first_seen": "2026-10-16T14:58:58Z"
+  },
+  {
    "url": "https://open.spotify.com/track/2PfHWYV43Tq5M2PDw2qb0Z",
    "kind": "spotify",
    "code": 200,
@@ -196,21 +212,6 @@
    "page_count": 3,
    "checked": "2026-10-30T16:48:35Z",
    "first_seen": "2026-10-17T13:53:46Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/6LpbTB4QYX68oKwO0PCTWd",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Stay",
-   "pages": [
-    "/friday",
-    "/tracklists/me-vs-rampa-circoloco-dc-10-ibiza-2026",
-    "/tracklists/tom-collins-pink-mammoth-burning-man-2026"
-   ],
-   "page_count": 3,
-   "checked": "2026-10-29T17:03:34Z",
-   "first_seen": "2026-10-16T14:58:58Z"
   },
   {
    "url": "https://open.spotify.com/track/6jtVPskUWZSDBtotyrfzzX",
@@ -273,6 +274,20 @@
    "first_seen": "2026-10-23T15:25:25Z"
   },
   {
+   "url": "https://open.spotify.com/track/0RWYzt8kP2N12SxqbyIHPC",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Pressure",
+   "pages": [
+    "/friday",
+    "/tracklists/tom-collins-long-feng-burning-man-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-28T16:48:23Z",
+   "first_seen": "2026-11-03T18:00:35Z"
+  },
+  {
    "url": "https://open.spotify.com/track/0TDns54iwyRgdvfcOEBSzE",
    "kind": "spotify",
    "code": 200,
@@ -299,6 +314,20 @@
    "page_count": 2,
    "checked": "2026-10-30T16:48:35Z",
    "first_seen": "2026-10-19T17:08:37Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/0gbFEO8EcSzbGIf4SJR47P",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Dancing Shoes",
+   "pages": [
+    "/tracklists/tom-collins-long-feng-burning-man-2026",
+    "/tracklists/tom-collins-pink-mammoth-burning-man-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-11-01T16:54:37Z",
+   "first_seen": "2026-11-01T16:54:37Z"
   },
   {
    "url": "https://open.spotify.com/track/0r9uFqP5srMqWEkrBfWyjD",
@@ -509,6 +538,20 @@
    "page_count": 2,
    "checked": "2026-10-29T17:03:34Z",
    "first_seen": "2026-10-21T15:34:18Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/3aKeZ75NMlUdk75F3N8mix",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "dissolve",
+   "pages": [
+    "/friday",
+    "/tracklists/lp-giobbi-wollman-rink-we-belong-here-central-park-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-29T17:03:34Z",
+   "first_seen": "2026-11-03T18:00:35Z"
   },
   {
    "url": "https://open.spotify.com/track/3kzRcHrVmwOBpYmC5bKjfl",
@@ -1057,6 +1100,20 @@
    "first_seen": "2026-10-30T16:48:35Z"
   },
   {
+   "url": "https://soundcloud.com/officialhadarnoy/love-lockdown-n-o-y-guy-katch",
+   "kind": "soundcloud",
+   "code": 200,
+   "note": "page says: listen on soundcloud",
+   "title": "Love Lockdown (N.O.Y & Guy Katch Edit) [FREE DL] by N.O.Y",
+   "pages": [
+    "/tracklists/ayybo-lollapalooza-chicago-2026",
+    "/tracklists/tom-collins-long-feng-burning-man-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-10-31T15:51:03Z",
+   "first_seen": "2026-11-03T18:00:35Z"
+  },
+  {
    "url": "https://soundcloud.com/pawsa/pick-up-the-phone-feat-nate-dogg",
    "kind": "soundcloud",
    "code": 200,
@@ -1083,6 +1140,20 @@
    "page_count": 2,
    "checked": "2026-10-28T16:48:23Z",
    "first_seen": "2026-10-13T17:46:57Z"
+  },
+  {
+   "url": "https://soundcloud.com/tomanmusic/toman-space-miami-26-09-2026",
+   "kind": "soundcloud",
+   "code": 200,
+   "note": "page says: listen to the set",
+   "title": "Toman @ SPACE MIAMI 26-09-2026 by TOMAN",
+   "pages": [
+    "/open-ids",
+    "/tracklists/toman-flow-club-space-miami-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-11-03T18:00:35Z",
+   "first_seen": "2026-11-03T18:00:35Z"
   },
   {
    "url": "https://soundcloud.com/vintageculturemusic/do-you",
@@ -1165,6 +1236,19 @@
    "first_seen": "2026-10-15T15:18:47Z"
   },
   {
+   "url": "https://open.spotify.com/track/02K93YKyLxK8xCY2C4ePtI",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Back In The Dance",
+   "pages": [
+    "/tracklists/toman-flow-club-space-miami-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-11-03T18:00:35Z",
+   "first_seen": "2026-11-03T18:00:35Z"
+  },
+  {
    "url": "https://open.spotify.com/track/036GfxwaAOxESUIbvhxK83",
    "kind": "spotify",
    "code": 200,
@@ -1213,7 +1297,7 @@
     "/tracklists/brunello-portola-music-festival-2026"
    ],
    "page_count": 1,
-   "checked": "2026-10-23T15:25:25Z",
+   "checked": "2026-11-03T18:00:35Z",
    "first_seen": "2026-10-23T15:25:25Z"
   },
   {
@@ -1226,8 +1310,21 @@
     "/tracklists/ben-sterling-b2b-beltran-portola-music-festival-2026"
    ],
    "page_count": 1,
-   "checked": "2026-10-23T15:25:25Z",
+   "checked": "2026-11-03T18:00:35Z",
    "first_seen": "2026-10-23T15:25:25Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/09WiBVowNXacBhTCtzoY5z",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "House Party",
+   "pages": [
+    "/tracklists/toman-flow-club-space-miami-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-11-03T18:00:35Z",
+   "first_seen": "2026-11-03T18:00:35Z"
   },
   {
    "url": "https://open.spotify.com/track/09m1TcymsKszj3ito4Hmp7",
@@ -1525,7 +1622,7 @@
     "/tracklists/ben-sterling-b2b-beltran-portola-music-festival-2026"
    ],
    "page_count": 1,
-   "checked": "2026-10-23T15:25:25Z",
+   "checked": "2026-11-03T18:00:35Z",
    "first_seen": "2026-10-23T15:25:25Z"
   },
   {
@@ -1724,17 +1821,17 @@
    "first_seen": "2026-10-15T15:18:47Z"
   },
   {
-   "url": "https://open.spotify.com/track/0gbFEO8EcSzbGIf4SJR47P",
+   "url": "https://open.spotify.com/track/0gWzN2GodTViME3dP9AVVu",
    "kind": "spotify",
    "code": 200,
    "note": "page says: listen on spotify",
-   "title": "Dancing Shoes",
+   "title": "Lost In Music",
    "pages": [
-    "/tracklists/tom-collins-pink-mammoth-burning-man-2026"
+    "/tracklists/lp-giobbi-wollman-rink-we-belong-here-central-park-2026"
    ],
    "page_count": 1,
-   "checked": "2026-11-01T16:54:37Z",
-   "first_seen": "2026-11-01T16:54:37Z"
+   "checked": "2026-11-03T18:00:35Z",
+   "first_seen": "2026-11-03T18:00:35Z"
   },
   {
    "url": "https://open.spotify.com/track/0hMX0WnzLZrFOxcAzb0GdW",
@@ -2214,7 +2311,7 @@
     "/tracklists/ben-sterling-b2b-beltran-portola-music-festival-2026"
    ],
    "page_count": 1,
-   "checked": "2026-10-23T15:25:25Z",
+   "checked": "2026-11-03T18:00:35Z",
    "first_seen": "2026-10-23T15:25:25Z"
   },
   {
@@ -2361,6 +2458,19 @@
    "first_seen": "2026-10-31T15:51:03Z"
   },
   {
+   "url": "https://open.spotify.com/track/1YwMy0WJxhByh2AlWin53z",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "People 2 Dance",
+   "pages": [
+    "/tracklists/toman-flow-club-space-miami-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-11-03T18:00:35Z",
+   "first_seen": "2026-11-03T18:00:35Z"
+  },
+  {
    "url": "https://open.spotify.com/track/1ZPWAzSLLoFzUtTqYAsmeK",
    "kind": "spotify",
    "code": 200,
@@ -2411,6 +2521,19 @@
    "page_count": 1,
    "checked": "2026-10-29T17:03:34Z",
    "first_seen": "2026-10-15T15:18:47Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/1dODQqLzbfB6IHNirEhfv1",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Guacamole",
+   "pages": [
+    "/tracklists/toman-flow-club-space-miami-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-11-03T18:00:35Z",
+   "first_seen": "2026-11-03T18:00:35Z"
   },
   {
    "url": "https://open.spotify.com/track/1dbQNSAXlOEtngcIZAOfPO",
@@ -2515,6 +2638,19 @@
    "page_count": 1,
    "checked": "2026-10-30T16:48:35Z",
    "first_seen": "2026-10-17T13:53:46Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/1uIxnAIIdGF7aCfEl0Qigp",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "XXX",
+   "pages": [
+    "/tracklists/lp-giobbi-wollman-rink-we-belong-here-central-park-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-11-03T18:00:35Z",
+   "first_seen": "2026-11-03T18:00:35Z"
   },
   {
    "url": "https://open.spotify.com/track/1usiuSVFycv5m0dqF4ORyK",
@@ -2697,138 +2833,8 @@
    "page_count": 1,
    "checked": "2026-10-30T16:48:35Z",
    "first_seen": "2026-10-19T17:08:37Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/29vo9RUjxgZWXWGTpD8f4m",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Turn off the Lights (feat. Alexis Roberts)",
-   "pages": [
-    "/tracklists/fisher-chris-lake-under-construction-head-trip-indio-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-31T15:51:03Z",
-   "first_seen": "2026-10-31T15:51:03Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2AJ8OYa9kLdieL7oOZCy4b",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Nineteen 84",
-   "pages": [
-    "/tracklists/disco-lines-club-space-miami-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-11-02T20:29:27Z",
-   "first_seen": "2026-11-02T20:29:27Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2AYebbKenqjmq5pOsn7L2o",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Italian Job",
-   "pages": [
-    "/tracklists/pedroz-the-terrace-club-space-miami"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-30T16:48:35Z",
-   "first_seen": "2026-10-19T17:08:37Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2B2JWsTwPdyTjI5xXNRITF",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Moderation - Original Mix",
-   "pages": [
-    "/tracklists/the-doorman-odd-mob-support-the-rechabite-perth-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-31T15:51:03Z",
-   "first_seen": "2026-10-31T15:51:03Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2BEdmFTKUv0Yxwwdjj7vZg",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "SINK",
-   "pages": [
-    "/tracklists/fisher-chris-lake-under-construction-head-trip-indio-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-31T15:51:03Z",
-   "first_seen": "2026-10-31T15:51:03Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2CHLVs4PKvmXP8kEr5e3pf",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Lets Get Ill",
-   "pages": [
-    "/tracklists/vintage-culture-the-terrace-club-space-miami-5h-sunrise-set"
-   ],
-   "page_count": 1,
-   "checked": "2026-11-01T16:54:37Z",
-   "first_seen": "2026-10-21T15:34:18Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2D6lZhRZq21cVjFYEAHGd2",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "AZYBU",
-   "pages": [
-    "/tracklists/luch-gozar-night-2-polyforum-siqueiros-mexico-city-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-31T15:51:03Z",
-   "first_seen": "2026-10-31T15:51:03Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2EFwTNvahjuWiSghwA2J4K",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "What You Running From",
-   "pages": [
-    "/tracklists/monolink-long-feng-burning-man-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-30T16:48:35Z",
-   "first_seen": "2026-10-17T13:53:46Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2EfWuPVCltKrbAaQJCpKTl",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Lovin' Sun - Renato Cohen Remix",
-   "pages": [
-    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-29T17:03:34Z",
-   "first_seen": "2026-10-15T15:18:47Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2EnahSR2aXehRs9V6gKv74",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Powerful Play",
-   "pages": [
-    "/tracklists/monolink-long-feng-burning-man-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-30T16:48:35Z",
-   "first_seen": "2026-10-17T13:53:46Z"
   }
  ],
  "anchors_broken": [],
- "summary": "6 broken, 4 moved, 605 read differently, 0 broken anchors, 6974 of 7635 links checked in the last 10 days"
+ "summary": "6 broken, 4 moved, 635 read differently, 0 broken anchors, 6993 of 7705 links checked in the last 10 days"
 }
