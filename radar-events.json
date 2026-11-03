@@ -1,7 +1,7 @@
 {
-"generated": "2026-11-02T19:35:00+00:00",
+"generated": "2026-11-03T17:09:37+00:00",
 "artist_count": 704,
-"artists_with_events": 141,
+"artists_with_events": 142,
 "events": [
 {
 "date": "2026-11-03",
@@ -1130,11 +1130,11 @@
 },
 {
 "date": "2026-11-27",
-"event": "ARK: Goodboys Live",
+"event": "*CANCELLED* ARK: Goodboys Live",
 "venue": "Niebo",
 "city": "Warsaw",
 "region": "PL",
-"url": "https://www.ticketmaster.pl/event/ark-goodboys-live-tickets/2014988157?language=en-us",
+"url": "https://www.ticketmaster.pl/event/cancelled-ark-goodboys-live-tickets/2014988157?language=en-us",
 "artist": "Goodboys"
 },
 {
@@ -2408,6 +2408,15 @@
 },
 {
 "date": "2027-01-22",
+"event": "Infected Mushroom",
+"venue": "MTELUS",
+"city": "Montreal",
+"region": "QC",
+"url": "https://www.ticketmaster.ca/infected-mushroom-montreal-quebec-01-22-2027/event/3100655DC04DC168",
+"artist": "Infected Mushroom"
+},
+{
+"date": "2027-01-22",
 "event": "CLAPTONE with Torren Foot & LIZA",
 "venue": "The Beach Hotel",
 "city": "Byron Bay",
@@ -3107,6 +3116,15 @@
 "region": "CO",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1AA7F7a",
 "artist": "Cloonee"
+},
+{
+"date": "2027-05-08",
+"event": "Mau P Presents Generation Rebrand",
+"venue": "Navy Pier",
+"city": "Chicago",
+"region": "IL",
+"url": "https://www.tixr.com/groups/navypiereventcenter/events/mau-p-213232",
+"artist": "Mau P"
 },
 {
 "date": "2027-05-15",
