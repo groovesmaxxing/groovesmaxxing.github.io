@@ -1,4 +1,4 @@
-/* groovesmaxxing spanish (mexico), phase 1 (2026-11-01) + the festival calendar page (2026-11-02): the site's own words, read by gmx-lang.js.
+/* groovesmaxxing spanish (mexico), phase 1 (2026-11-01) + the festival calendar page (2026-11-02) + the moods page (2026-11-04): the site's own words, read by gmx-lang.js.
    tú, lowercase, the brand's energy. never translated: artist, label, venue, playlist and series names
    (good vibe juice, bumpy, waaavy, wen playa, new house releases, fresh grooves friday, contraband grooves).
    words: exact strings. scoped: exact strings that only count inside a selector (the fact keys on a profile,
@@ -189,11 +189,63 @@ words:{
 'only what an artist or a label announced themselves, or a store pre-order page. anything we hear in a set, a comment or a tracklist stays in the crate until the artist says so. we listen to everything. you get the good stuff.':'solo lo que un artista o una disquera anunció, o una página de preventa en tienda. lo que escuchamos en un set, un comentario o un tracklist se queda en el crate hasta que el artista lo dice. escuchamos todo. a ti te llega lo bueno.',
 'nothing here matches your crate yet. it matches on the artist or the label of what you liked, and on the artists and labels you follow. keep digging and check back.':'nada de aquí coincide con tu crate todavía. coincide por el artista o la disquera de lo que te gustó, y por los artistas y disqueras que sigues. sigue buscando y vuelve.',
 'your crate is empty on this phone. tap the heart under a set or next to a track, or follow an artist or a label on their page, and this filter wakes up.':'tu crate está vacío en este celular. toca el corazón debajo de un set o junto a un track, o sigue a un artista o una disquera en su página, y este filtro despierta.',
+/* the moods page (2026-11-04): the more page row */
+'the mood picker':'elige tu mood',
+'pick a mood, get 30 tracks from our playlists':'elige un mood y llévate 30 tracks de nuestras playlists',
 },
 scoped:[
 /* dropping soon (2026-11-04): the calendar chip beside each date, weekday and month short */
 ['.ur-cal',{mon:'lun',tue:'mar',wed:'mié',thu:'jue',fri:'vie',sat:'sáb',sun:'dom','in':'en',
  jan:'ene',feb:'feb',mar:'mar',apr:'abr',may:'may',jun:'jun',jul:'jul',aug:'ago',sep:'sep',oct:'oct',nov:'nov',dec:'dic'}],
+/* the moods page (2026-11-04): every word on the page, scoped to its .mzp wrap, since vibes, chill, morning,
+   fresh, go and like are lane names or prose fragments elsewhere on the site */
+['.mzp',{
+'mood picker':'elige tu mood',
+'what\'s the':'¿cuál es el',
+'pick one or type your own. you get 30 tracks from our four playlists, every one out now and one tap from spotify.':'elige uno o escribe el tuyo. te damos 30 tracks de nuestras cuatro playlists, todos ya salieron y están a un toque de spotify.',
+'type a mood':'escribe un mood',
+'sunday morning, late night drive, 122 bpm, like adriatique':'domingo en la mañana, manejar de noche, 122 bpm, como adriatique',
+'go':'dale',
+'how it works':'cómo funciona',
+'every track comes from one of our four playlists: good vibe juice, bumpy, waaavy and wen playa. we only add what survives a week of listening, so nothing here is filler, and nothing is unreleased.':'cada track viene de una de nuestras cuatro playlists: good vibe juice, bumpy, waaavy y wen playa. solo agregamos lo que sobrevive una semana de escucha, así que aquí no hay relleno ni nada que no haya salido.',
+'each mood is a rule over those playlists, plus the tempo, key and genre where we know them. type a feeling, a place, a genre, a tempo like 122 bpm, or an artist we play. it all runs in your browser, nothing you type is sent anywhere.':'cada mood es una regla sobre esas playlists, más el tempo, la tonalidad y el género cuando los sabemos. escribe un sentimiento, un lugar, un género, un tempo como 122 bpm o un artista que ponemos. todo corre en tu navegador, nada de lo que escribes se manda a ningún lado.',
+'want them in spotify? copy the links, open a playlist in the spotify desktop app and paste.':'¿los quieres en spotify? copia los links, abre una playlist en la app de spotify para escritorio y pega.',
+'vibes':'buena vibra',
+'at the beach':'en la playa',
+'morning':'en la mañana',
+'late night':'de madrugada',
+'get bumpy':'pa\'l antro',
+'chill':'tranqui',
+'spooky':'tenebroso',
+'fresh':'lo más nuevo',
+'sunshine, straight from good vibe juice.':'puro sol, directo de good vibe juice.',
+'golden hour. wen playa first, then the warm end of good vibe juice.':'hora dorada. primero wen playa, luego lo más cálido de good vibe juice.',
+'slow, bright and mostly in a major key. coffee in hand.':'lento, luminoso y casi todo en tono mayor. con el café en la mano.',
+'after midnight. darker and deeper, from the night shift in bumpy.':'después de medianoche. más oscuro y más profundo, del turno de noche de bumpy.',
+'the club end of bumpy. tech house and house that move a room.':'el lado de club de bumpy. tech house y house que mueven la pista.',
+'the long swim. waaavy and the slow end of good vibe juice.':'para nadar largo. waaavy y lo más lento de good vibe juice.',
+'dark indie dance with a grin. Paranormal, Mellow Circus and a few we picked by hand.':'indie dance oscuro con una sonrisa. Paranormal, Mellow Circus y unos cuantos que elegimos a mano.',
+'added to good vibe juice or bumpy in the last five weeks. the week\'s survivors.':'agregados a good vibe juice o bumpy en las últimas cinco semanas. los que sobrevivieron la semana.',
+'picked for the hour. tap another mood or type your own.':'elegido para esta hora. toca otro mood o escribe el tuyo.',
+'reading it as':'lo leímos como',
+'like':'como',
+'loosened the genre to fill the list.':'aflojamos el género para llenar la lista.',
+'loosened the tempo to fill the list.':'aflojamos el tempo para llenar la lista.',
+'shuffle':'mezclar',
+'shuffle again':'mezclar otra vez',
+'copy the spotify links':'copiar los links de spotify',
+'share this list':'compartir esta lista',
+'copied. open a playlist in the spotify desktop app and paste them in.':'copiados. abre una playlist en la app de spotify para escritorio y pégalos.',
+'link copied.':'link copiado.',
+'copy is not available here.':'copiar no está disponible aquí.',
+'heard in a set':'sonó en un set',
+'added':'agregado',
+'loading the catalog…':'cargando el catálogo…',
+'no dubstep, riddim or brostep here, ever. try one of these:':'aquí nunca hay dubstep, riddim ni brostep. prueba uno de estos:',
+'nothing in our playlists matches that yet. try one of these:':'nada en nuestras playlists coincide con eso todavía. prueba uno de estos:',
+'the catalog did not load. check your connection and try again.':'el catálogo no cargó. revisa tu conexión e inténtalo otra vez.',
+'try again':'intentar otra vez'
+}],
 /* the festival calendar page (2026-11-01): the weekday initials on the year grid, monday first, read by position */
 ['.mmg .w:nth-child(1)',{'m':'l'}],['.mmg .w:nth-child(2)',{'t':'m'}],['.mmg .w:nth-child(3)',{'w':'m'}],['.mmg .w:nth-child(4)',{'t':'j'}],['.mmg .w:nth-child(5)',{'f':'v'}],['.mmg .w:nth-child(7)',{'s':'d'}],
 /* the fact keys on a profile: short words that are also prose fragments elsewhere */
@@ -216,6 +268,9 @@ rules:[
 ['that’s the ([^·]+)','hasta aquí: ~1'],['nothing in the ([^·]+)','nada en: ~1'],
 ['(\\d+) more further out','$1 más adelante'],['(\\d+) more further back','$1 más atrás'],
 ['last refresh (\\d{1,2}) (jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec) (\\d{4})','última actualización $1 ~2 $3'],
+/* the moods page (2026-11-04): the count line and the catalog line */
+['(\\d+) tracks · picked from ([\\d,]+)','$1 tracks · elegidos de $2'],
+['([\\d,]+) tracks · built (\\d{4}-\\d\\d-\\d\\d)','$1 tracks · armado el $2'],
 /* the festival calendar page, our artists layer (2026-11-02): the pin and pop count */
 ['(\\d+) from our pages play here','$1 de nuestras páginas tocan aquí'],
 /* the festival calendar page (2026-11-01): the card dates (Nov 2–7, Dec 31 – Jan 1), the grid and scrubber labels, the counts line and the source line */

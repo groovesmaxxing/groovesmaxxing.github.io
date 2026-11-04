@@ -42,6 +42,7 @@ A static website. Every page is a `.html` file in this repo, written by hand or 
 | `interviews.html` | Interviews and talk podcasts |
 | `badges.html` | Badges shown on artist pages |
 | `upcoming.html` | Releases dropping soon |
+| `moods.html` | The mood picker: starter chips (vibes, at the beach, morning, late night, get bumpy, chill, fresh, spooky in October) and a free-text box over the four lane playlists. Filled in the browser by `gmx-moods.js` from `moods-index.json`, which `moodindex.py` writes on the owner's laptop from local files (released tracks only, one version per song, mood rules plus a hand overrides file). Rerun it after the lane dumps refresh, then commit the json. The site-data workflow never touches it |
 | `friday.html` | The weekly Fresh Grooves Friday release list |
 | `newsletter.html` | Index of newsletter issues |
 | `calendar.html` | The festival calendar: the year's big events worldwide on a world map, a year grid and a month by month list, plus the subscribable `calendar.ics`. The cards, map outline and JSON-LD sit between `calendar-land`, `calendar-list` and `calendar-ld` markers written by `GMX_tools\calendarpage.py` from `GMX_tools\calendar_events.json` on the owner's laptop, so change the source and rerun, never the cards. The page script reads the cards, it has no data file of its own |
@@ -68,6 +69,7 @@ A static website. Every page is a `.html` file in this repo, written by hand or 
 | `gmx-related.js` | Cross-links everything the site holds on an artist |
 | `gmx-sets.js` | Fills the sets page from `sets-index.json` |
 | `gmx-upcoming.js` | Dropping soon, filtered on the visitor's crate |
+| `gmx-moods.js` | The mood picker on `moods.html`: reads `moods-index.json`, parses a typed mood in english or spanish, builds a seeded 30-track list, keeps the pick in the address hash |
 | `gmx-profile.css`, `gmx-label.css` | Shared artist and label profile styles |
 | `gmx-motion.css`, `gmx-motion.js` | Page motion kit. The homepage keeps its own inline copy |
 | `gmx-refresh.js` | Pull to refresh inside the installed app |
