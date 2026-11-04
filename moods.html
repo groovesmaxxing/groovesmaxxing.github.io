@@ -20,9 +20,10 @@
 <meta property="og:type" content="website">
 <link rel="preload" as="font" type="font/woff2" href="/fonts/poppins-400-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/fonts/jetbrainsmono-600-latin.woff2" crossorigin>
+<link rel="preload" as="fetch" href="/moods-index.json" crossorigin>
 <link rel="stylesheet" href="/gmx-fonts.css?v=2">
 <style>
-:root{--night:#0B0B0D;--card:#141417;--card2:#1a1a1f;--line:#26262b;--racing:#FF1C02;--deep:#CC1400;--day:#F2F2EF;--steel:#8A8A93}
+:root{--night:#0B0B0D;--card:#141417;--card2:#1a1a1f;--line:#26262b;--racing:#FF1C02;--deep:#CC1400;--day:#F2F2EF;--steel:#8A8A93;color-scheme:dark}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--night);color:var(--day);font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased}
 a{color:inherit}
@@ -42,17 +43,19 @@ h1 .rd{color:var(--racing)}
 .mz-ask{display:flex;gap:8px}
 .mz-ask input{flex:1;min-width:0;background:var(--card);border:1px solid var(--line);border-radius:10px;color:var(--day);font-family:'Poppins',sans-serif;font-size:1.05rem;padding:13px 16px;outline:none;-webkit-appearance:none;appearance:none}
 .mz-ask input:focus{border-color:var(--racing)}
+.mz-ask input:focus-visible{outline:3px solid var(--racing);outline-offset:3px}
 .mz-ask input::placeholder{color:#74747d}
 .mz-go{flex:none;background:var(--racing);color:#fff;border:0;border-radius:10px;font-family:'Space Mono',monospace;font-weight:700;font-size:.9rem;letter-spacing:.04em;padding:0 22px;cursor:pointer;min-height:50px}
 .mz-go:hover{background:var(--deep)}
 .mz-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.lc{font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.04em;color:#c9c9c4;border:1px solid var(--line);border-radius:999px;padding:8px 15px;cursor:pointer;background:none;min-height:40px}
+.lc{font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.04em;color:#c9c9c4;border:1px solid var(--line);border-radius:999px;padding:8px 15px;cursor:pointer;background:none;min-height:44px}
 .lc:hover{color:var(--day);border-color:#4a4a52}
 .lc[aria-pressed="true"]{color:var(--racing);border-color:var(--racing)}
 .mz-res{margin-top:34px;min-height:50vh}
 .mz-state{font-family:'Space Mono',monospace;font-size:.85rem;color:var(--steel);padding:24px 0;line-height:1.7}
 .mz-state a{color:#cfcfc9}
 .mz-head{border-top:1px solid var(--line);padding-top:24px}
+.mz-head,.mz-empty{scroll-margin-top:12px}
 .mz-t{font-weight:900;font-size:clamp(1.9rem,5.4vw,2.5rem);line-height:1.05;letter-spacing:-.02em;text-transform:lowercase;overflow-wrap:anywhere}
 .mz-t.mz-q{font-size:clamp(1.5rem,4.6vw,2.1rem)}
 .mz-d{color:#c9c9c4;margin-top:8px;max-width:620px;line-height:1.55}
@@ -71,13 +74,15 @@ h1 .rd{color:var(--racing)}
 .mz-m{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.02em;color:var(--steel);line-height:1.6;margin-top:6px;overflow-wrap:anywhere}
 .mz-m i{font-style:normal}
 .mz-m .nb,.mz-m .ln{white-space:nowrap}
-.mz-m .ln{color:#cfcfc9;text-decoration:none;border-bottom:1px solid #3a3a40}
+.mz-m .ln{color:#cfcfc9;text-decoration:none;border-bottom:1px solid #3a3a40;position:relative}
+/* the playlist links sit in a 15 px line: a larger hit area around each, with no change to the layout */
+.mz-m .ln::after{content:'';position:absolute;left:-4px;right:-4px;top:-15px;bottom:-15px}
 .mz-m .ln:hover{color:var(--racing);border-bottom-color:var(--racing)}
 .mz-m .nw{color:var(--racing)}
 .mz-l{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
-.mz-l a{display:inline-flex;align-items:center;min-height:32px;font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.03em;text-decoration:none;color:#c9c9c4;border:1px solid var(--line);border-radius:999px;padding:4px 12px}
+.mz-l a{position:relative;display:inline-flex;align-items:center;min-height:44px;font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.03em;text-decoration:none;color:#c9c9c4;border:1px solid var(--line);border-radius:999px;padding:4px 14px}
 .mz-l a:hover{color:var(--racing);border-color:var(--racing)}
-.mz-row .gmx-heart{margin-top:2px}
+.mz-row .gmx-heart{margin-top:2px;width:44px;height:44px}
 .mz-foot{margin-top:20px}
 .mz-empty{border-top:1px solid var(--line);padding-top:24px}
 .mz-empty p{color:#c9c9c4;line-height:1.6;margin-bottom:14px;max-width:560px}
@@ -113,7 +118,7 @@ footer{border-top:1px solid var(--line);margin-top:56px;padding:30px 0 60px}
 <div class="mz" id="mz" role="region" aria-label="mood picker">
 <form class="mz-ask" id="mz-ask" role="search" action="/moods">
 <label class="vh" for="mz-q">type a mood</label>
-<input id="mz-q" name="q" type="search" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="go" maxlength="120" placeholder="sunday morning, late night drive, 122 bpm, like adriatique">
+<input id="mz-q" name="q" type="search" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="go" maxlength="120" placeholder="beach, 122 bpm, adriatique">
 <button type="submit" class="mz-go">go</button>
 </form>
 <div class="mz-chips" id="mz-chips" role="group" aria-label="moods">

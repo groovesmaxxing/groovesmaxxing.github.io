@@ -81,7 +81,7 @@ A static website. Every page is a `.html` file in this repo, written by hand or 
 | `sitemap.xml`, `robots.txt`, `feed.xml` | Search engine files and the newsletter RSS feed |
 | `radar-artists.json` | Artist names the nightly tour sweep looks up |
 | `radar-attractions.json`, `radar-events.json`, `radar-denver.json` | Written by the nightly sweep. Do not hand-edit |
-| `*-index.json`, `open-ids.json`, `upcoming.json`, `precache.json`, `set-tags.json` | Derived files written by the `site-data` workflow. Do not hand-edit |
+| `*-index.json`, `open-ids.json`, `upcoming.json`, `precache.json`, `set-tags.json` | Derived files written by the `site-data` workflow. Do not hand-edit. Except `moods-index.json`, which `moodindex.py` writes on the owner's laptop (see `moods.html` above) |
 
 ## Build, deploy and automation
 

@@ -13,15 +13,16 @@ var root=document.getElementById('mz');if(!root)return;
 var chipsEl=document.getElementById('mz-chips'),res=document.getElementById('mz-res'),form=document.getElementById('mz-ask'),
     input=document.getElementById('mz-q'),live=document.getElementById('mz-live'),metaEl=document.getElementById('mz-meta');
 var D=null,loading=null,names=null,cur=null,MOOD={},GW={},NEVER=[],ALL=[];
-var N=30,PER_ARTIST=2,PRIMARY=6;
+var N=30,PER_ARTIST=2,PER_FILL=3,PRIMARY=6;
 var C={sp:0,t:1,a:2,l:3,g:4,ag:5,b:6,k:7,ln:8,f:9,r:10,bp:11,dz:12,ar:13,h:14};
 var STOP={};('a an the and or for to of in on at with my me i some music songs song tracks track playlist mix mood moods vibe something '+
   'give want need please like que el la los las un una unos unas de del y o para por con mi musica cancion canciones algo dame quiero tracks rolas').split(' ').forEach(function(w){STOP[w]=1});
 var MON=['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
 
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
-/* the same fold as moodindex.py: accents off, lowercase, anything not a letter or digit is a space */
-function fold(s){return String(s||'').normalize('NFKD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim()}
+/* the same fold as moodindex.py: letters NFKD leaves alone first (JØRD -> jord, DA$ON -> dason), then accents
+   off, lowercase, anything not a letter or digit is a space */
+function fold(s){return String(s||'').replace(/[øØ]/g,'o').replace(/[æÆ]/g,'ae').replace(/ß/g,'ss').replace(/[đĐ]/g,'d').replace(/[łŁ]/g,'l').replace(/\$/g,'s').normalize('NFKD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim()}
 function normLabel(s){
   s=String(s||'').toLowerCase().split(/\s+\/\s+contains|,?\s+a division of/)[0].replace(/\(.*?\)/g,' ');
   return fold(s.replace(/\b(records|recordings|records limited|music|musique|ltd|llc|inc|limited)\b\.?/g,' '));
@@ -52,55 +53,74 @@ function load(){
   }).catch(function(e){loading=null;throw e});
   return loading;
 }
-/* every artist and label name in the catalog, folded, to the rows that carry it */
+/* every artist and label name in the catalog, folded, to the rows that carry it. raw keeps each artist name as
+   typed (lowercase), so a short or symbol name (&ME, Oi, MØ) is found whole. t is the song titles, folded */
 function nameIndex(){
   if(names)return names;
-  names={a:{},l:{},an:{},ln:{}};
+  names={a:{},l:{},an:{},ln:{},raw:{},t:{}};
   D.rows.forEach(function(r,i){
-    r[C.a].split(', ').forEach(function(n){var f=fold(n);if(f.length<2||/^\d+$/.test(f))return;(names.a[f]=names.a[f]||[]).push(i);names.an[f]=n});
+    r[C.a].split(', ').forEach(function(n){var f=fold(n);if(f.length<2||/^\d+$/.test(f))return;(names.a[f]=names.a[f]||[]).push(i);names.an[f]=n;names.raw[n.toLowerCase().trim()]=f});
     var l=normLabel(r[C.l]);if(l.length>=3){(names.l[l]=names.l[l]||[]).push(i);if(!names.ln[l])names.ln[l]=r[C.l]}
+    var tt=fold(r[C.t].split(' - ')[0].replace(/\s*[(\[][^)\]]*[)\]]/g,''));if(tt.length>=4)(names.t[tt]=names.t[tt]||[]).push(i);
   });
   return names;
 }
 
 /* ---- reading what was typed ---- */
 function parse(q){
-  var raw=String(q||'').toLowerCase().slice(0,120),p={moods:[],genres:[],gw:[],bpm:null,artists:[],labels:[],never:null};
-  var fq=' '+fold(raw)+' ';
-  for(var n=0;n<NEVER.length;n++)if(fq.indexOf(' '+NEVER[n]+' ')>-1){p.never=NEVER[n];return p}
+  var raw=String(q||'').toLowerCase().slice(0,120),p={moods:[],genres:[],gw:[],bpm:null,artists:[],labels:[],titles:[],never:null};
+  var ix=nameIndex();
+  function add(list,v){if(list.indexOf(v)<0)list.push(v)}
   var m=raw.match(/\b(\d{2,3})\s*(?:-|–|—|to|a)\s*(\d{2,3})(?:\s*bpm)?\b/);
   if(m&&+m[1]>=60&&+m[2]<=200){p.bpm=[Math.min(+m[1],+m[2]),Math.max(+m[1],+m[2])];raw=raw.replace(m[0],' ')}
   else{m=raw.match(/\b(\d{2,3})\s*bpm\b/)||raw.match(/(?:^|\s)(\d{3})(?=\s|$)/);
     if(m&&+m[1]>=70&&+m[1]<=180){p.bpm=[+m[1]-3,+m[1]+3];raw=raw.replace(m[0],' ')}}
-  var ix=nameIndex(),toks=fold(raw).split(' ').filter(Boolean),rest=[],i=0;
-  function add(list,v){if(list.indexOf(v)<0)list.push(v)}
+  /* a short or symbol name typed whole (&ME, Oi, AB, MØ) is that artist, before any word is read */
+  var whole=raw.trim(),wf=fold(whole);
+  if(wf&&!MOOD[wf]&&!GW[wf]){var hit=ix.raw[whole]||(wf.length<3&&ix.a[wf]?wf:null);if(hit&&ix.a[hit]){add(p.artists,hit);return p}}
+  /* fq is what the never guard reads: the words left once the names are taken out (The Temper Trap is not trap) */
+  var fq=' '+wf+' ',toks=wf.split(' ').filter(Boolean),rest=[],restAll=[],i=0;
+  function took(ph){fq=fq.replace(' '+ph+' ',' ')}
   while(i<toks.length){
-    var took=0;
-    for(var k=Math.min(4,toks.length-i);k>=1&&!took;k--){
+    var tk=0;
+    for(var k=Math.min(4,toks.length-i);k>=1&&!tk;k--){
       var ph=toks.slice(i,i+k).join(' ');
-      if(MOOD[ph]){add(p.moods,MOOD[ph]);took=k}
-      else if(GW[ph]){GW[ph].forEach(function(g){add(p.genres,g)});add(p.gw,ph);took=k}
-      else if(ph.length>=3&&!STOP[ph]&&ix.a[ph]){add(p.artists,ph);took=k}
-      else if(ph.length>=3&&!STOP[ph]&&ix.l[ph]){add(p.labels,ph);took=k}
+      if(MOOD[ph]){add(p.moods,MOOD[ph]);tk=k}
+      else if(GW[ph]){GW[ph].forEach(function(g){add(p.genres,g)});add(p.gw,ph);tk=k}
+      else if(ph.length>=3&&!STOP[ph]&&ix.a[ph]){add(p.artists,ph);took(ph);tk=k}
+      else if(ph.length>=3&&!STOP[ph]&&ix.l[ph]){add(p.labels,ph);took(ph);tk=k}
     }
-    if(took)i+=took;else{if(!STOP[toks[i]])rest.push(toks[i]);i++}
+    if(tk)i+=tk;else{restAll.push(toks[i]);if(!STOP[toks[i]])rest.push(toks[i]);i++}
   }
-  /* what is left: a name typed in part (lake, magician). a whole-word run inside one to three names counts */
+  /* a song title from the catalog, the whole query or what is left beside an artist ('adriatique catch the light'):
+     it stands for its artist, the song itself first. before the part-name step, so 'catch the light' is the
+     Adriatique song, not the Catch & Release label. a mood or genre word in the query keeps the chip reading */
+  var tq=restAll.join(' ');
+  if(tq.length>=4&&(!hasFacet(p)||(p.artists.length&&!p.moods.length&&!p.genres.length))&&NEVER.indexOf(tq)<0&&ix.t[tq]&&ix.t[tq].length<=4){
+    ix.t[tq].forEach(function(r){add(p.titles,r);add(p.artists,lead(r))});
+    return p;
+  }
+  /* what is left: a name typed in part (lake, magician, crosstown). a whole-word run inside one to three artist
+     names counts, or else inside one to three labels for the whole leftover, one label for a single word */
   var left=rest.join(' ');
-  function partial(ph){
-    if(ph.length<4)return false;
-    var hits=Object.keys(ix.a).filter(function(nm){return (' '+nm+' ').indexOf(' '+ph+' ')>-1});
-    if(hits.length&&hits.length<=3){hits.forEach(function(h){add(p.artists,h)});return true}
+  function within(keys,ph){return keys.filter(function(nm){return (' '+nm+' ').indexOf(' '+ph+' ')>-1})}
+  function partial(ph,maxLabels){
+    if(ph.length<4||NEVER.indexOf(ph)>-1)return false;
+    var hits=within(Object.keys(ix.a),ph);
+    if(hits.length&&hits.length<=3){hits.forEach(function(h){add(p.artists,h)});took(ph);return true}
+    hits=within(Object.keys(ix.l),ph);
+    if(hits.length&&hits.length<=maxLabels){hits.forEach(function(h){add(p.labels,h)});took(ph);return true}
     return false;
   }
-  if(left&&!partial(left))rest.forEach(partial);
+  if(left&&!partial(left,3))rest.forEach(function(t){partial(t,1)});
+  for(var n=0;n<NEVER.length;n++)if(fq.indexOf(' '+NEVER[n]+' ')>-1){p.never=NEVER[n];return p}
   return p;
 }
 function hasFacet(p){return p.moods.length||p.genres.length||p.bpm||p.artists.length||p.labels.length}
 
 /* ---- the pool for a pick ---- */
 function candidates(st){
-  var out={title:'',desc:'',read:null,primary:[],pool:[],size:0,relaxed:[],state:''};
+  var out={title:'',desc:'',read:null,primary:[],pin:[],pool:[],size:0,relaxed:[],state:''};
   if(st.mood){
     var c=chip(st.mood);if(!c){out.state='none';return out}
     out.title=c.en;out.desc=c.d;out.pool=poolOf(c).slice();out.size=out.pool.length;
@@ -134,34 +154,52 @@ function candidates(st){
     Object.keys(mine).forEach(function(i){var r=D.rows[i],l=normLabel(r[C.l]);if(l)labs[l]=1;if(r[C.g])gen[r[C.g]]=1;if(r[C.ag])gen[r[C.ag]]=1});
     var sec=list.filter(function(i){if(mine[i])return false;var r=D.rows[i];return labs[normLabel(r[C.l])]||gen[r[C.g]]||gen[r[C.ag]]});
     if(sec.length<N&&p.moods.length){var s2={};sec.forEach(function(i){s2[i]=1});list.forEach(function(i){if(!mine[i]&&!s2[i])sec.push(i)})}
-    out.primary=prim;out.pool=sec;out.size=prim.length+sec.length;
+    out.primary=prim;out.pin=p.titles.slice();out.pool=sec;out.size=prim.length+sec.length;
   }else{out.pool=list;out.size=list.length}
   if(!out.size)out.state='none';
   return out;
 }
 
-/* ---- the pick: a seeded shuffle that leans on the rank, two per artist at most, never the same one back to back ---- */
+/* ---- the pick: a seeded shuffle that leans on the rank, two per artist at most (three in a small pool),
+   never the same one back to back unless one artist is all that is left ---- */
+function spread(l,head){
+  /* keeps the order, but no lead artist twice in a row. an artist holding more than half of what is left goes now,
+     or it would end up back to back at the end */
+  var left=l.slice(),o=(head||[]).slice();
+  while(left.length){
+    var prev=o.length?lead(o[o.length-1]):null,cnt={},top=null,k=-1,j;
+    left.forEach(function(i){var a=lead(i);cnt[a]=(cnt[a]||0)+1;if(top===null||cnt[a]>cnt[top])top=a});
+    if(top!==prev&&cnt[top]*2>left.length)for(j=0;j<left.length;j++)if(lead(left[j])===top){k=j;break}
+    if(k<0)for(j=0;j<left.length;j++)if(lead(left[j])!==prev){k=j;break}
+    o.push(left.splice(k<0?0:k,1)[0]);
+  }
+  return o;
+}
 function pick(cand,seed){
   var R=rng(seed),pool=cand.pool,H=Math.max(24,pool.length/5),per={},out=[];
-  var prim=cand.primary.slice();
+  var prim=cand.primary.slice(),pin={};
   for(var j=prim.length-1;j>0;j--){var x=Math.floor(R()*(j+1)),t=prim[j];prim[j]=prim[x];prim[x]=t}
-  prim=prim.slice(0,PRIMARY);
+  /* a typed song title: that song leads */
+  cand.pin.forEach(function(i){pin[i]=1});
+  prim=cand.pin.concat(prim.filter(function(i){return !pin[i]})).slice(0,PRIMARY);
   var keyed=pool.map(function(i,pos){return [i,Math.pow(R(),1+pos/H)]}).sort(function(a,b){return b[1]-a[1]});
   var rest=[],skipped=[];
   for(var k=0;k<keyed.length&&rest.length<N-prim.length;k++){var i=keyed[k][0],a=lead(i);if((per[a]||0)>=PER_ARTIST){skipped.push(i);continue}per[a]=(per[a]||0)+1;rest.push(i)}
-  /* a small pool (spooky, one label) would come out thin under the cap: the rest of it fills in */
-  for(var f=0;f<skipped.length&&rest.length<N-prim.length;f++)rest.push(skipped[f]);
+  /* a small pool (spooky, one label) would come out thin under the cap: what was skipped fills in, three per
+     artist at most. the list can come out shorter than 30, and the count line says so */
+  for(var f=0;f<skipped.length&&rest.length<N-prim.length;f++){var a2=lead(skipped[f]);if((per[a2]||0)<PER_FILL){per[a2]=(per[a2]||0)+1;rest.push(skipped[f])}}
   /* the asked-for artist every third row, the rest around it */
   var pi=0,ri=0;
   while(pi<prim.length||ri<rest.length){if(pi<prim.length&&(out.length%3===0||ri>=rest.length))out.push(prim[pi++]);else out.push(rest[ri++])}
-  for(var n=1;n<out.length;n++){if(lead(out[n])===lead(out[n-1])){for(var m=n+1;m<out.length;m++){if(lead(out[m])!==lead(out[n-1])){var s=out[n];out[n]=out[m];out[m]=s;break}}}}
-  return out;
+  return pin[out[0]]?spread(out.slice(1),[out[0]]):spread(out);
 }
 
 /* ---- painting ---- */
 function chipBtn(c,on){return '<button type="button" class="lc" data-mood="'+esc(c.id)+'" aria-pressed="'+(on?'true':'false')+'">'+esc(c.en)+'</button>'}
 function paintChips(){
+  var a=document.activeElement,keep=a&&chipsEl.contains(a)?a.getAttribute('data-mood'):null;
   chipsEl.innerHTML=D.chips.filter(function(c){return inSeason(c)&&poolOf(c).length}).map(function(c){return chipBtn(c,cur&&cur.mood===c.id)}).join('');
+  if(keep){var b=chipsEl.querySelector('[data-mood="'+keep+'"]');if(b)b.focus({preventScroll:true})}
 }
 function suggest(ids){return '<div class="mz-sug">'+ids.map(chip).filter(Boolean).map(function(c){return chipBtn(c,false)}).join('')+'</div>'}
 function month(iso){var p=iso.split('-');return MON[+p[1]-1]+' '+p[0]}
@@ -191,6 +229,7 @@ function readLine(p){
   p.gw.forEach(function(g){bits.push('<span class="pill" translate="no">'+esc(g)+'</span>')});
   if(p.bpm)bits.push('<span class="pill" translate="no">'+p.bpm[0]+'–'+p.bpm[1]+' bpm</span>');
   var ix=nameIndex();
+  p.titles.forEach(function(i){bits.push('<span class="pill" translate="no">“'+esc(D.rows[i][C.t])+'”</span>')});
   p.artists.forEach(function(a){bits.push('<span class="pill"><span>like</span> <span translate="no">'+esc(ix.an[a]||a)+'</span></span>')});
   p.labels.forEach(function(l){bits.push('<span class="pill" translate="no">'+esc(ix.ln[l]||l)+'</span>')});
   return bits.length?'<p class="mz-read"><span>reading it as</span> '+bits.join(' ')+'</p>':'';
@@ -204,15 +243,28 @@ function hearts(){
     li.appendChild(gmxCrate.heart({kind:'track',id:'sp:'+r[C.sp],title:r[C.a]+' - '+r[C.t],sub:r[C.l]||'',links:links,artist:r[C.a],label:r[C.l]||''},r[C.a]+' - '+r[C.t]));
   });
 }
+/* a repaint replaces the button that had focus: it goes back to the same control (or the chip just picked), so
+   the next tab does not start over at the top of the page */
+function refocus(act){
+  if(!act)return;
+  var t=act==='mood'?chipsEl.querySelector('[aria-pressed="true"]'):res.querySelector('.mz-tools [data-act="'+act+'"]')||res.querySelector('[data-act="'+act+'"]');
+  if(t)t.focus({preventScroll:true});
+}
+/* the same words twice in a row are read again: the live region is emptied first */
+var liveT=0;
+function announce(t){clearTimeout(liveT);live.textContent='';liveT=setTimeout(function(){live.textContent=t},60)}
 function render(st){
+  var fe=document.activeElement,act=fe&&res.contains(fe)?(fe.getAttribute('data-act')||(fe.hasAttribute('data-mood')?'mood':null)):null;
   cur=st;paintChips();
   if(!st.mood&&input.value!==st.q)input.value=st.q||'';
-  var c=candidates(st),h='';
+  var c=candidates(st),h='',msg;
   if(c.state==='never'){
-    res.innerHTML='<div class="mz-empty"><p>no dubstep, riddim or brostep here, ever. try one of these:</p>'+suggest(['late-night','get-bumpy'])+'</div>';live.textContent='';return;
+    msg='no dubstep, riddim or brostep here, ever. try one of these:';
+    res.innerHTML='<div class="mz-empty"><p>'+msg+'</p>'+suggest(['late-night','get-bumpy'])+'</div>';announce(msg);refocus(act);return;
   }
   if(c.state==='none'){
-    res.innerHTML='<div class="mz-empty"><p>nothing in our playlists matches that yet. try one of these:</p>'+suggest(['late-night','at-the-beach','vibes'])+'</div>';live.textContent='';return;
+    msg='nothing in our playlists matches that yet. try one of these:';
+    res.innerHTML='<div class="mz-empty"><p>'+msg+'</p>'+suggest(['late-night','at-the-beach','vibes'])+'</div>';announce(msg);refocus(act);return;
   }
   var list=pick(c,st.seed);
   var count=list.length+' tracks · picked from '+c.size.toLocaleString('en-US');
@@ -227,8 +279,15 @@ function render(st){
      '<ol class="mz-list">'+list.map(function(i,n){return row(i,n+1)}).join('')+'</ol>'+
      (c.size>list.length?'<div class="mz-foot"><button type="button" class="lc" data-act="shuffle">shuffle again</button></div>':'');
   res.innerHTML=h;res.setAttribute('data-list',list.join(','));
-  live.textContent=count;
+  announce(count);
   hearts();
+  refocus(act);
+}
+/* on a phone the list starts below the fold: after a tap or a typed mood, bring its head into view */
+function reveal(){
+  var t=res.querySelector('.mz-head,.mz-empty');if(!t)return;
+  var r=t.getBoundingClientRect();
+  if(r.top>innerHeight*.6||r.top<0)t.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
 }
 
 /* ---- the address hash ---- */
@@ -267,7 +326,7 @@ function copy(text,ok){
 root.addEventListener('click',function(e){
   var b=e.target.closest('[data-mood],[data-act]');if(!b||!root.contains(b))return;
   var act=b.getAttribute('data-act');
-  if(b.hasAttribute('data-mood')){input.value='';go({mood:b.getAttribute('data-mood'),q:'',seed:newSeed()},true);return}
+  if(b.hasAttribute('data-mood')){input.value='';go({mood:b.getAttribute('data-mood'),q:'',seed:newSeed()},true);reveal();return}
   if(act==='retry'){boot();return}
   if(!cur)return;
   if(act==='shuffle'){go({mood:cur.mood,q:cur.q,seed:newSeed()},false);var t=res.querySelector('.mz-head');if(t&&b.closest('.mz-foot'))t.scrollIntoView({block:'start'});return}
@@ -280,7 +339,8 @@ root.addEventListener('click',function(e){
 form.addEventListener('submit',function(e){
   e.preventDefault();var q=input.value.trim().slice(0,120);
   if(!q){input.focus();return}
-  load().then(function(){go({mood:null,q:q,seed:newSeed()},true)},function(){});
+  /* a phone keyboard closes so the list can show. a keyboard user keeps the focus in the box */
+  load().then(function(){go({mood:null,q:q,seed:newSeed()},true);if(matchMedia('(pointer: coarse)').matches)input.blur();reveal()},function(){});
 });
 window.addEventListener('popstate',function(){if(D)render(readHash()||auto())});
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();

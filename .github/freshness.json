@@ -68,6 +68,15 @@
    "fail_days": 21
   },
   {
+   "id": "F-42",
+   "what": "moods-index.json (the mood picker) was rebuilt from the lane dumps. moodindex.py runs on the laptop, nothing schedules it yet",
+   "file": "moods-index.json",
+   "test": "generated",
+   "key": "generated",
+   "warn_days": 10,
+   "fail_days": 21
+  },
+  {
    "id": "F-40",
    "what": "the artist count on the home page and the artist index equals the number of profiles",
    "test": "counts_agree",

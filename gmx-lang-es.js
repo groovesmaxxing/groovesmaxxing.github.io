@@ -191,6 +191,8 @@ words:{
 'your crate is empty on this phone. tap the heart under a set or next to a track, or follow an artist or a label on their page, and this filter wakes up.':'tu crate está vacío en este celular. toca el corazón debajo de un set o junto a un track, o sigue a un artista o una disquera en su página, y este filtro despierta.',
 /* the moods page (2026-11-04): the more page row */
 'the mood picker':'elige tu mood',
+/* the moods page tab title (the <title> is outside .mzp) */
+'mood picker':'elige tu mood',
 'pick a mood, get 30 tracks from our playlists':'elige un mood y llévate 30 tracks de nuestras playlists',
 },
 scoped:[
@@ -204,7 +206,7 @@ scoped:[
 'what\'s the':'¿cuál es el',
 'pick one or type your own. you get 30 tracks from our four playlists, every one out now and one tap from spotify.':'elige uno o escribe el tuyo. te damos 30 tracks de nuestras cuatro playlists, todos ya salieron y están a un toque de spotify.',
 'type a mood':'escribe un mood',
-'sunday morning, late night drive, 122 bpm, like adriatique':'domingo en la mañana, manejar de noche, 122 bpm, como adriatique',
+'beach, 122 bpm, adriatique':'playa, 122 bpm, adriatique',
 'go':'dale',
 'how it works':'cómo funciona',
 'every track comes from one of our four playlists: good vibe juice, bumpy, waaavy and wen playa. we only add what survives a week of listening, so nothing here is filler, and nothing is unreleased.':'cada track viene de una de nuestras cuatro playlists: good vibe juice, bumpy, waaavy y wen playa. solo agregamos lo que sobrevive una semana de escucha, así que aquí no hay relleno ni nada que no haya salido.',
