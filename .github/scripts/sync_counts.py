@@ -2,17 +2,18 @@
 """sync_counts: the published artist count, written from one source instead of bumped by hand.
 
 the number of artist profiles (artists/*.html that are not redirects) is the count. every spot that states it
-is rewritten to match: the "N artists" lines on index.html (ten of them today) and the "N names" line on
-artists.html. artists-index.json, the slug list the scan app reads, is rebuilt from the same pages, and only when
-its count or its slugs differ, so its generated date means the last time the list actually changed. nothing else
-on those pages is touched. prints what changed, or that nothing did. runs in the site-data workflow on every
-push, so a new profile page bumps the count on its own. stdlib only."""
+is rewritten to match: the "N artists" lines on index.html (nine of them today). artists.html counts its names
+in the browser since the 10-27 site review, so it has no spot. artists-index.json, the slug list the scan app
+reads, is rebuilt from the same pages, and only when its count or its slugs differ, so its generated date means
+the last time the list actually changed. nothing else on those pages is touched. prints what changed, or that
+nothing did. runs in the site-data workflow on every push, so a new profile page bumps the count on its own.
+stdlib only."""
 import datetime, glob, json, os, re
 
 slugs = sorted(os.path.splitext(os.path.basename(f))[0] for f in glob.glob("artists/*.html")
                if 'http-equiv="refresh"' not in open(f, encoding="utf-8").read())
 count = len(slugs)
-SPOTS = [("index.html", r"(?<!\d)(\d{3,4})( artists\b)"), ("artists.html", r"(?<!\d)(\d{3,4})( names\b)")]
+SPOTS = [("index.html", r"(?<!\d)(\d{3,4})( artists\b)")]
 changed = 0
 for path, pat in SPOTS:
     s = open(path, encoding="utf-8").read()

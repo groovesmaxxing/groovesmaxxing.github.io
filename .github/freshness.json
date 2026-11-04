@@ -78,17 +78,13 @@
   },
   {
    "id": "F-40",
-   "what": "the artist count on the home page and the artist index equals the number of profiles",
+   "what": "the artist count on the home page and in artists-index.json equals the number of profiles",
    "test": "counts_agree",
    "expected": "artist_pages",
    "spots": [
     {
      "file": "index.html",
      "pattern": "(?<!\\d)(\\d{3,4}) artists"
-    },
-    {
-     "file": "artists.html",
-     "pattern": "(\\d+) names"
     },
     {
      "file": "artists-index.json",
