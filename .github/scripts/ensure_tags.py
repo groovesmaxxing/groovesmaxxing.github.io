@@ -23,13 +23,13 @@ T = {
     'player_css': '<link rel="stylesheet" href="/gmx-player.css?v=2">',
     'nav_css': '<link rel="stylesheet" href="/gmx-nav.css?v=20">',
     'player_js': '<script src="/gmx-player.js" defer></script>',
-    'nav_js': '<script src="/gmx-nav.js?v=28" defer></script>',
+    'nav_js': '<script src="/gmx-nav.js?v=29" defer></script>',
     'follow_js': '<script src="/gmx-follow.js" defer></script>',
     'crate_js': '<script src="/gmx-crate.js" defer></script>',
     'related_js': '<script src="/gmx-related.js" defer></script>',
-    'upcoming_js': '<script src="/gmx-upcoming.js" defer></script>',
+    'upcoming_js': '<script src="/gmx-upcoming.js?v=2" defer></script>',   # v2: tabs and the show menu (2026-11-04)
     'quick_css': '<link rel="stylesheet" href="/gmx-quick.css">',
-    'quick_js': '<script src="/gmx-quick.js?v=9" defer></script>',
+    'quick_js': '<script src="/gmx-quick.js?v=10" defer></script>',
     'sheet_css': '<link rel="stylesheet" href="/gmx-sheet.css?v=2">',
     'sheet_js': '<script src="/gmx-sheet.js?v=2" defer></script>',
     # the account layer (2026-10-12): "this is me" on every artist and label profile
@@ -80,6 +80,15 @@ for f in sorted(files('tracklists/*.html')):
 # and "…" menus on every row (owner's call, 2026-10-12). tracklistpage.py writes the hub without them.
 n += ensure('tracklists/index.html', ['nav_css'], [], ['nav_js', 'follow_js', 'crate_js', 'related_js'])
 n += ensure('events.html', ['nav_css'], [], ['nav_js', 'related_js'])
+# an older gmx-upcoming.js tag is swapped for the current one where it stands, so the page never runs two of
+# them and the script order (crate before upcoming) survives every ?v= bump
+_u = open('upcoming.html', encoding='utf-8').read()
+_k = [0]
+def _swap(m):
+    _k[0] += 1
+    return T['upcoming_js'] + (m.group(1) or '') if _k[0] == 1 else ''
+_v = re.sub(r'<script src="/gmx-upcoming\.js(?:\?v=\d+)?" defer></script>(\r?\n)?', _swap, _u)
+if _v != _u: open('upcoming.html', 'w', encoding='utf-8').write(_v); n += 1
 n += ensure('upcoming.html', ['nav_css', 'account_css'], [], ['nav_js', 'crate_js', 'upcoming_js', 'account_js'])
 # the sets and interviews pages carry the account layer too (added by hand with the accounts build, 2026-10-12).
 # setslib.py and ivlib.py rewrite both pages from scratch, so the layer has to come back here after every render.

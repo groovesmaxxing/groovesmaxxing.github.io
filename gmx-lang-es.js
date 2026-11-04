@@ -166,8 +166,34 @@ words:{
 /* the festival calendar page, our artists layer (2026-11-02): the chip, the card row, the legend, the pin and pop lines */
 'our artists':'nuestros artistas','our artists:':'nuestros artistas:','our artists play':'tocan los nuestros',
 '1 from our pages plays here':'1 de nuestras páginas toca aquí',
+/* dropping soon with tabs (2026-11-04): the tabs, the show menu, the line, the dates, the rows, the boxes, the home strip link */
+'released':'ya salieron','show':'ver','everyone':'todos','look further':'mira más','fold it back up':'ciérralo',
+'next 2 weeks':'próximas 2 semanas','next month':'próximo mes','next 3 months':'próximos 3 meses',
+'last week':'última semana','last 2 weeks':'últimas 2 semanas','last month':'último mes','last 3 months':'últimos 3 meses',
+'releases':'lanzamientos','whose releases':'de quién','1 release':'1 lanzamiento',
+'today':'hoy','tomorrow':'mañana','yesterday':'ayer','out early':'salió antes','a week ago':'hace una semana',
+'just released':'recién salidos','release day':'día de salida',
+'on beatport':'en beatport','listen':'escuchar','the announcement':'el anuncio','on instagram':'en instagram','link':'enlace',
+'label tba':'disquera por anunciar','various artists':'varios artistas','album':'álbum',
+'soonest first. a release stays here through its own day, then moves to released.':'lo más próximo primero. un lanzamiento se queda aquí hasta su día, luego pasa a ya salieron.',
+'out now, newest first, the last 3 months. tap through and listen.':'ya salieron, lo más nuevo primero, los últimos 3 meses. toca y escucha.',
+'nothing dated right now. check back friday.':'nada con fecha por ahora. vuelve el viernes.',
+'nothing released yet. check back after friday.':'nada ha salido todavía. vuelve después del viernes.',
+'named by the artist or the label, no date given yet':'anunciados por el artista o la disquera, todavía sin fecha',
+'release radar':'radar de lanzamientos','refreshed as we hear it':'se actualiza conforme nos enteramos','groovesmaxxing dropping soon':'groovesmaxxing sale pronto',
+'the releases the artist or label announced themselves, dated as they said it.':'los lanzamientos que el artista o la disquera anunciaron, con la fecha que ellos dieron.',
+'every link goes to their own page to pre-save, pre-order or listen.':'cada enlace va a su propia página para pre-guardar, comprar en preventa o escuchar.',
+"heavy rotation artist. dates move, the artist's own post is the truth.":'artista en heavy rotation. las fechas cambian, el post del artista es la verdad.',
+"spotted a wrong date, a wrong name, or something that shouldn't be here?":'¿viste una fecha mal, un nombre mal o algo que no debería estar aquí?',
+'tell us on instagram':'avísanos en instagram',"and we'll fix it asap":'y lo corregimos cuanto antes','how this list is built:':'cómo se arma esta lista:',
+'only what an artist or a label announced themselves, or a store pre-order page. anything we hear in a set, a comment or a tracklist stays in the crate until the artist says so. we listen to everything. you get the good stuff.':'solo lo que un artista o una disquera anunció, o una página de preventa en tienda. lo que escuchamos en un set, un comentario o un tracklist se queda en el crate hasta que el artista lo dice. escuchamos todo. a ti te llega lo bueno.',
+'nothing here matches your crate yet. it matches on the artist or the label of what you liked, and on the artists and labels you follow. keep digging and check back.':'nada de aquí coincide con tu crate todavía. coincide por el artista o la disquera de lo que te gustó, y por los artistas y disqueras que sigues. sigue buscando y vuelve.',
+'your crate is empty on this phone. tap the heart under a set or next to a track, or follow an artist or a label on their page, and this filter wakes up.':'tu crate está vacío en este celular. toca el corazón debajo de un set o junto a un track, o sigue a un artista o una disquera en su página, y este filtro despierta.',
 },
 scoped:[
+/* dropping soon (2026-11-04): the calendar chip beside each date, weekday and month short */
+['.ur-cal',{mon:'lun',tue:'mar',wed:'mié',thu:'jue',fri:'vie',sat:'sáb',sun:'dom','in':'en',
+ jan:'ene',feb:'feb',mar:'mar',apr:'abr',may:'may',jun:'jun',jul:'jul',aug:'ago',sep:'sep',oct:'oct',nov:'nov',dec:'dic'}],
 /* the festival calendar page (2026-11-01): the weekday initials on the year grid, monday first, read by position */
 ['.mmg .w:nth-child(1)',{'m':'l'}],['.mmg .w:nth-child(2)',{'t':'m'}],['.mmg .w:nth-child(3)',{'w':'m'}],['.mmg .w:nth-child(4)',{'t':'j'}],['.mmg .w:nth-child(5)',{'f':'v'}],['.mmg .w:nth-child(7)',{'s':'d'}],
 /* the fact keys on a profile: short words that are also prose fragments elsewhere */
@@ -177,6 +203,19 @@ scoped:[
  'released on it':'lanzaron aquí','not the same as':'no confundir con'}]
 ],
 rules:[
+/* dropping soon (2026-11-04): the relative days, the long dates, the counts, the folds, the line and the footer stamp */
+['this (monday|tuesday|wednesday|thursday|friday|saturday|sunday)','este ~1'],
+['next (monday|tuesday|wednesday|thursday|friday|saturday|sunday)','el próximo ~1'],
+['last (monday|tuesday|wednesday|thursday|friday|saturday|sunday)','el ~1 pasado'],
+['in (\\d+) weeks','en $1 semanas'],['(\\d+) weeks ago','hace $1 semanas'],
+['(monday|tuesday|wednesday|thursday|friday|saturday|sunday) (\\d{1,2}) (january|february|march|april|may|june|july|august|september|october|november|december)','~1 $2 de ~3'],
+['sometime in (january|february|march|april|may|june|july|august|september|october|november|december)','en algún momento de ~1'],
+['(\\d+) releases','$1 lanzamientos'],['(\\d+) of (\\d+) releases?','$1 de $2 lanzamientos'],['(\\d+) cuts','$1 tracks'],
+['(\\d+) more on (monday|tuesday|wednesday|thursday|friday|saturday|sunday) (\\d{1,2}) (january|february|march|april|may|june|july|august|september|october|november|december)','$1 más el ~2 $3 de ~4'],
+['(\\d+) more in (january|february|march|april|may|june|july|august|september|october|november|december)','$1 más en ~2'],
+['that’s the ([^·]+)','hasta aquí: ~1'],['nothing in the ([^·]+)','nada en: ~1'],
+['(\\d+) more further out','$1 más adelante'],['(\\d+) more further back','$1 más atrás'],
+['last refresh (\\d{1,2}) (jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec) (\\d{4})','última actualización $1 ~2 $3'],
 /* the festival calendar page, our artists layer (2026-11-02): the pin and pop count */
 ['(\\d+) from our pages play here','$1 de nuestras páginas tocan aquí'],
 /* the festival calendar page (2026-11-01): the card dates (Nov 2–7, Dec 31 – Jan 1), the grid and scrubber labels, the counts line and the source line */
@@ -220,6 +259,7 @@ rules:[
 ],
 terms:{
 mon:'lun',tue:'mar',wed:'mié',thu:'jue',fri:'vie',sat:'sáb',sun:'dom',
+monday:'lunes',tuesday:'martes',wednesday:'miércoles',thursday:'jueves',friday:'viernes',saturday:'sábado',sunday:'domingo',
 jan:'ene',feb:'feb',mar:'mar',apr:'abr',may:'may',jun:'jun',jul:'jul',aug:'ago',sep:'sep',oct:'oct',nov:'nov',dec:'dic',
 Jan:'ene',Feb:'feb',Mar:'mar',Apr:'abr',May:'may',Jun:'jun',Jul:'jul',Aug:'ago',Sep:'sep',Oct:'oct',Nov:'nov',Dec:'dic',
 tracklists:'los tracklists',artists:'los artistas'

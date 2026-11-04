@@ -102,6 +102,14 @@ const fs=require('fs');try{fs.mkdirSync('shots',{recursive:true})}catch(e){}
         await p.waitForTimeout(600);
         const u=await p.evaluate(()=>({bar:!!document.querySelector('.gmx-mine'),chips:document.querySelectorAll('.gmx-mine button').length}));
         log(u.bar&&u.chips===2,path+': the crate filter bar is present ('+u.chips+' chips)');
+        // tabs (2026-11-04): dropping soon shows first, the released tab swaps the panels, the show menu has its options
+        const t=await p.evaluate(()=>{const tabs=[...document.querySelectorAll('.ur-tabs [role="tab"]')],sel=document.querySelector('.ur-rng select');
+          const first=tabs.length===2&&tabs[0].getAttribute('aria-selected')==='true'&&!document.getElementById('soon').hidden&&document.getElementById('released').hidden;
+          if(tabs[1])tabs[1].click();
+          const swapped=!!tabs[1]&&tabs[1].getAttribute('aria-selected')==='true'&&document.getElementById('soon').hidden&&!document.getElementById('released').hidden;
+          if(tabs[0])tabs[0].click();
+          return {tabs:tabs.length,first:first,swapped:swapped,options:sel?sel.options.length:0}});
+        log(t.tabs===2&&t.first&&t.swapped&&t.options===4,path+': two tabs, dropping soon first, released swaps the panels, show menu with '+t.options+' options');
       }
       if(path==='/artists/adam-ten.html'){
         const f=await p.evaluate(()=>!!document.querySelector('section.artist .meta .gmx-follow'));

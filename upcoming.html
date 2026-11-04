@@ -2,12 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
-<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0B0B0D">
 <title>dropping soon · groovesMAXXING</title>
-<meta name="description" content="what's dropping soon in house, techno and indie dance. announced by the artists and labels themselves, dated as they said it, with pre-save links straight to their pages.">
+<meta name="description" content="what's dropping soon in house, techno and indie dance, and what just came out. announced by the artists and labels themselves, dated as they said it, with pre-save links straight to their pages.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
@@ -15,21 +13,21 @@
 <meta property="og:title" content="groovesMAXXING · dropping soon">
 <meta property="og:description" content="what's dropping soon in house, techno and indie dance, announced by the artists and labels themselves.">
 <meta property="og:image" content="https://groovesmaxxing.com/og-image.png">
-<meta name="twitter:card" content="summary_large_image">
 <meta property="og:url" content="https://groovesmaxxing.com/upcoming">
 <meta property="og:type" content="website">
-<link rel="preload" as="font" type="font/woff2" href="/fonts/poppins-400-latin.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="/fonts/jetbrainsmono-600-latin.woff2" crossorigin>
-<link rel="stylesheet" href="/gmx-fonts.css?v=2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --night:#0B0B0D; --card:#141417; --card2:#1a1a1f; --line:#2a2a31;
-    --racing:#FF1C02; --deep:#CC1400; --day:#F2F2EF; --steel:#8A8A93;
+    --racing:#FF1C02; --deep:#CC1400; --day:#F2F2EF; --steel:#8A8A93; --soft:#C9C9C4;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   body{background:var(--night);color:var(--day);font-family:'Poppins',sans-serif;line-height:1.6}
   a{color:inherit}
-  a:focus-visible{outline:3px solid var(--racing);outline-offset:3px}
+  a:focus-visible,button:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--racing);outline-offset:3px}
   .wrap{max-width:840px;margin:0 auto;padding:52px 24px 80px}
   .back{font-family:'Space Mono',monospace;font-size:.8rem;letter-spacing:.12em;text-decoration:none;color:var(--steel);display:inline-block;margin-bottom:34px}
   .back:hover{color:var(--racing)}
@@ -37,28 +35,96 @@
   h1{font-weight:900;font-size:clamp(36px,8vw,60px);letter-spacing:-.02em;line-height:.98;text-transform:lowercase}
   h1 span{color:var(--racing)}
   .sub{color:var(--steel);margin:14px 0 6px;max-width:620px}
-  .legend{font-family:'Space Mono',monospace;font-size:12px;color:var(--steel);margin-bottom:34px}
+  .legend{font-family:'Space Mono',monospace;font-size:12px;color:var(--steel);margin-bottom:26px}
   .legend b{color:var(--racing);font-weight:700}
-  .tierline{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--racing);margin-top:44px}
-  h2.tier{font-weight:900;font-size:clamp(24px,4.5vw,32px);letter-spacing:-.01em;margin:4px 0}
-  .tiersub{color:var(--steel);font-size:14px;margin-bottom:18px}
-  .ev{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin-bottom:12px;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:baseline}
-  .ev.hot{border-left:3px solid var(--racing)}
-  .date{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--racing);flex:0 0 118px}
-  .ev h3{font-size:18px;font-weight:900;margin:0;flex:1 1 260px;min-width:0}
-  .ev h3 small{display:block;font-size:14px;font-weight:400;color:var(--day)}
-  .where{font-size:13.5px;color:var(--steel);flex:1 1 180px}
   .canon{color:var(--racing);font-weight:700}
-  .ev a.go{font-family:'Space Mono',monospace;font-size:12.5px;color:var(--racing);text-decoration:none;white-space:nowrap}
-  .ev a.go:hover{text-decoration:underline}
-  .empty{color:var(--steel);font-size:14px;margin-bottom:12px}
-  .fix{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-top:36px;font-size:14px}
+  .empty{color:var(--steel);font-size:14px;margin:0 0 22px}
+  .gmx-hidden{display:none !important}
+  /* the two tabs: jump links on the page, tabs once gmx-upcoming.js runs */
+  .ur-tabs{display:flex;gap:4px;padding:4px;max-width:440px;margin:0 0 14px;background:var(--card);border:1px solid var(--line);border-radius:999px}
+  .ur-tab{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:8px 14px;border-radius:999px;text-decoration:none;font-weight:600;font-size:15px;color:var(--steel);white-space:nowrap}
+  .ur-tab b{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:var(--racing)}
+  .ur-tab:hover{color:var(--day)}
+  .ur-tab[aria-selected="true"]{background:var(--racing);color:var(--night)}
+  .ur-tab[aria-selected="true"] b{color:var(--night)}
+  /* the show menu and the crate chips, both added by gmx-upcoming.js */
+  .ur-ctl{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin:0 0 28px}
+  .ur-rng{display:inline-flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:13px;color:var(--steel)}
+  .ur-rng select{appearance:none;-webkit-appearance:none;min-height:44px;padding:8px 38px 8px 16px;border:1px solid var(--line);border-radius:999px;color:var(--day);font:600 14px 'Poppins',sans-serif;cursor:pointer;background:var(--card) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23FF1C02' stroke-width='2'/%3E%3C/svg%3E") no-repeat right 15px center}
+  .ur-rng select:hover{border-color:var(--racing)}
+  .gmx-mine{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+  .gmx-mine button{font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.04em;color:var(--steel);border:1px solid var(--line);border-radius:999px;padding:7px 14px;cursor:pointer;background:none;min-height:40px}
+  .gmx-mine button[aria-pressed="true"]{color:var(--racing);border-color:var(--racing)}
+  .gmx-mine button b{font-weight:400;color:inherit;margin-left:6px;opacity:.75}
+  .gmx-mine .why{flex-basis:100%;font-family:'Space Mono',monospace;font-size:.74rem;color:var(--steel);line-height:1.7}
+  .gmx-mine .why a{color:var(--soft)}
+  /* a tab's own heading reads on the page without the script, and only to screen readers with it */
+  .ur-ph{font-weight:900;font-size:clamp(24px,4.5vw,32px);letter-spacing:-.01em;margin:34px 0 4px}
+  .ur-js .ur-ph{position:absolute;width:1px;height:1px;margin:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .ur-pn{color:var(--steel);font-size:14px;max-width:620px;margin:0 0 24px}
+  /* one date: a calendar chip and the day in words, then its releases in one card */
+  .ur-day{margin:0 0 28px}
+  .ur-dh{display:flex;align-items:center;gap:14px;margin:0 0 10px}
+  .ur-cal{flex:0 0 56px;height:60px;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1;background:var(--card);border:1px solid var(--line);border-radius:12px}
+  .ur-cal span{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.04em;color:var(--steel)}
+  .ur-cal .ur-dw{color:var(--racing)}
+  .ur-cal b{font-size:23px;font-weight:900;margin:3px 0}
+  .ur-day.ur-now .ur-cal{background:var(--racing);border-color:var(--racing)}
+  .ur-day.ur-now .ur-cal span,.ur-day.ur-now .ur-cal b{color:var(--night)}
+  .ur-dt{flex:1;min-width:0;font-size:inherit;font-weight:inherit}
+  .ur-rel{display:block;font-weight:900;font-size:20px;line-height:1.2}
+  .ur-dd{display:block;font-family:'Space Mono',monospace;font-size:12.5px;color:var(--steel);margin-top:2px}
+  .ur-dd:empty{display:none}
+  .ur-n{font-family:'Space Mono',monospace;font-size:12.5px;color:var(--steel);white-space:nowrap}
+  .ur-list{list-style:none;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  /* a row: title and artists, then label and kind, the link to the right of both (beside the label line on a phone) */
+  .ur-list .ev{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"h go" "m go";column-gap:16px;align-items:center;padding:14px 18px;border-top:1px solid var(--line)}
+  .ur-list .ev:first-child{border-top:0}
+  .ur-list .ev:hover{background:var(--card2)}
+  .ur-list .ev.gmx-lift:hover{transform:none;box-shadow:none}
+  .ur-list .ev.hot,.ur-list .ev.hot.gmx-lift:hover{box-shadow:inset 3px 0 0 var(--racing)}
+  .ev h4{grid-area:h;font-size:16.5px;font-weight:700;line-height:1.3;overflow-wrap:anywhere}
+  .ev h4 small{display:block;margin-top:2px;font-size:14px;font-weight:400;color:var(--soft)}
+  .ev h4 small a{text-decoration:underline;text-decoration-color:var(--racing);text-underline-offset:3px}
+  .ev .where{grid-area:m;margin-top:5px;font-size:13px;color:var(--steel)}
+  .ur-k{display:inline-block;padding:0 8px;border:1px solid var(--line);border-radius:999px;font-family:'Space Mono',monospace;font-size:11.5px;line-height:1.55;color:var(--day);vertical-align:1px}
+  .ur-k.big{border-color:var(--racing);color:var(--racing)}
+  .ur-c{white-space:nowrap}
+  .ev a.go{grid-area:go;justify-self:end;display:inline-flex;align-items:center;min-height:36px;padding:6px 14px;border:1px solid rgba(255,28,2,.5);border-radius:999px;font-family:'Space Mono',monospace;font-size:12.5px;color:var(--racing);text-decoration:none;white-space:nowrap}
+  .ev a.go:hover{background:var(--racing);color:var(--night)}
+  /* the fold under a big date, and no date yet at the bottom of dropping soon */
+  .ur-more>summary,.ur-tba>summary{list-style:none;cursor:pointer}
+  .ur-more>summary::-webkit-details-marker,.ur-tba>summary::-webkit-details-marker{display:none}
+  .ur-more>summary::after,.ur-tba>summary::after{content:'▾';margin-left:8px;color:var(--racing)}
+  .ur-more[open]>summary::after,.ur-tba[open]>summary::after{content:'▴'}
+  .ur-more{margin-top:10px}
+  .ur-more>summary{display:inline-flex;align-items:center;min-height:40px;padding:6px 16px;border:1px dashed var(--line);border-radius:999px;font-family:'Space Mono',monospace;font-size:12.5px;color:var(--steel)}
+  .ur-more>summary:hover{color:var(--day);border-color:var(--steel)}
+  .ur-more .ur-list{margin-top:10px}
+  .ur-fold{display:inline-flex;align-items:center;min-height:40px;margin-top:10px;padding:6px 16px;border:1px dashed var(--line);border-radius:999px;background:none;color:var(--steel);font-family:'Space Mono',monospace;font-size:12.5px;cursor:pointer}
+  .ur-fold:hover{color:var(--day);border-color:var(--steel)}
+  .ur-tba{margin:34px 0 0;border:1px dashed var(--line);border-radius:14px}
+  .ur-tba>summary{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;padding:16px 20px}
+  .ur-tba>summary b{order:0;font-weight:900;font-size:20px}
+  .ur-tba>summary .ur-n{order:1}
+  .ur-tba>summary::after{order:2;margin-left:auto}
+  .ur-tba>summary .ur-why{order:3;flex-basis:100%;font-size:13.5px;color:var(--steel)}
+  .ur-tba .ur-list{background:transparent;border:0;border-top:1px dashed var(--line);border-radius:0}
+  /* the line: where the show menu stops, and how much is past it */
+  .ur-line[hidden]{display:none}
+  .ur-line{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 16px;margin:0 0 8px;padding:18px 0 4px;border-top:1px dashed var(--line);font-family:'Space Mono',monospace;font-size:12.5px;color:var(--steel);text-align:center}
+  .ur-line button{min-height:40px;padding:8px 18px;border:1px solid var(--racing);border-radius:999px;background:none;color:var(--day);font:600 14px 'Poppins',sans-serif;cursor:pointer}
+  .ur-line button:hover{background:var(--racing);color:var(--night)}
+  .fix{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-top:40px;font-size:14px}
   .fix a{color:var(--racing);text-decoration:none}
   .fix a:hover{text-decoration:underline}
   .method{background:var(--card2);border:1px dashed var(--line);border-radius:12px;padding:18px 20px;margin-top:16px;font-size:13px;color:var(--steel)}
   .method b{color:var(--day)}
   footer{margin-top:34px;padding-top:18px;border-top:1px solid var(--line);color:var(--steel);font-size:12.5px;font-family:'Space Mono',monospace}
-  @media (max-width:520px){.wrap{padding:36px 16px 64px}.ev{padding:14px 16px;gap:4px 12px}.date{flex-basis:100%}.where{flex-basis:100%}}
+  @media (max-width:520px){.wrap{padding:36px 16px 64px}.ur-tabs{max-width:none}.ur-tab{font-size:14px;padding:8px 10px}
+    .ur-dh{gap:12px}.ur-cal{flex-basis:50px;height:54px}.ur-cal b{font-size:20px}.ur-rel{font-size:18px}
+    .ur-list .ev{grid-template-areas:"h h" "m go";column-gap:10px;padding:13px 14px}
+    .ev a.go{align-self:end;min-height:32px;padding:4px 12px;font-size:12px}.ur-tba>summary{padding:14px 16px}}
 </style>
 <link rel="canonical" href="https://groovesmaxxing.com/upcoming">
 <script type="application/ld+json">
@@ -67,7 +133,7 @@
  "@type": "ItemList",
  "name": "dropping soon on groovesmaxxing",
  "url": "https://groovesmaxxing.com/upcoming",
- "numberOfItems": 43,
+ "numberOfItems": 27,
  "itemListElement": [
   {
    "@type": "ListItem",
@@ -131,6 +197,25 @@
    "position": 4,
    "item": {
     "@type": "MusicAlbum",
+    "name": "No Brakes / Miss Booty",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "Viot"
+    },
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "Black Book Records"
+    },
+    "url": "https://www.instagram.com/p/DfQAosQh7CJ/"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 5,
+   "item": {
+    "@type": "MusicAlbum",
     "name": "Wow",
     "byArtist": {
      "@type": "MusicGroup",
@@ -147,7 +232,7 @@
   },
   {
    "@type": "ListItem",
-   "position": 5,
+   "position": 6,
    "item": {
     "@type": "MusicAlbum",
     "name": "Lick Ya (Modegroove Remix 2026)",
@@ -166,7 +251,7 @@
   },
   {
    "@type": "ListItem",
-   "position": 6,
+   "position": 7,
    "item": {
     "@type": "MusicAlbum",
     "name": "Acid All Night",
@@ -179,81 +264,12 @@
     "publisher": {
      "@type": "Organization",
      "name": "Nu Moda"
-    },
-    "url": "https://www.instagram.com/direct/t/120350279356999/"
-   }
-  },
-  {
-   "@type": "ListItem",
-   "position": 7,
-   "item": {
-    "@type": "MusicAlbum",
-    "name": "Fast Life",
-    "byArtist": {
-     "@type": "MusicGroup",
-     "name": "Juany Bravo, Carl Dutt & Dr. Chaii"
-    },
-    "albumReleaseType": "https://schema.org/SingleRelease",
-    "url": "https://music.apple.com/us/album/fast-life/6802959263?i=6802959264&uo=4"
+    }
    }
   },
   {
    "@type": "ListItem",
    "position": 8,
-   "item": {
-    "@type": "MusicAlbum",
-    "name": "Rhythm Talk",
-    "byArtist": {
-     "@type": "MusicGroup",
-     "name": "Gianni Firmaio"
-    },
-    "albumReleaseType": "https://schema.org/SingleRelease",
-    "publisher": {
-     "@type": "Organization",
-     "name": "VISYØN"
-    },
-    "url": "https://soundcloud.com/listen-to-flow/franky-rizardo-861062620"
-   }
-  },
-  {
-   "@type": "ListItem",
-   "position": 9,
-   "item": {
-    "@type": "MusicAlbum",
-    "name": "Bassline",
-    "byArtist": {
-     "@type": "MusicGroup",
-     "name": "Majestic, Layton Giordani, Jungle 70, HILLS (US)"
-    },
-    "albumReleaseType": "https://schema.org/SingleRelease",
-    "publisher": {
-     "@type": "Organization",
-     "name": "MADMINDS"
-    },
-    "url": "https://www.beatport.com/release/bassline/7474253"
-   }
-  },
-  {
-   "@type": "ListItem",
-   "position": 10,
-   "item": {
-    "@type": "MusicAlbum",
-    "name": "Boogie",
-    "byArtist": {
-     "@type": "MusicGroup",
-     "name": "Pysh, Karpinsky, Novikov (ofc)"
-    },
-    "albumReleaseType": "https://schema.org/EPRelease",
-    "publisher": {
-     "@type": "Organization",
-     "name": "Magician On Duty"
-    },
-    "url": "https://www.beatport.com/release/boogie/7340960"
-   }
-  },
-  {
-   "@type": "ListItem",
-   "position": 11,
    "item": {
     "@type": "MusicAlbum",
     "name": "In N Out / Dream Girl",
@@ -271,43 +287,25 @@
   },
   {
    "@type": "ListItem",
-   "position": 12,
+   "position": 9,
    "item": {
     "@type": "MusicAlbum",
-    "name": "Miami Vice",
+    "name": "Gatitooo / Persona (Amine K Remix)",
     "byArtist": {
      "@type": "MusicGroup",
-     "name": "Mark Knight, DJ PP, James Hurr"
+     "name": "Raul Vidal, Orkun Bozdemir, BATU (TR)"
     },
     "albumReleaseType": "https://schema.org/SingleRelease",
     "publisher": {
      "@type": "Organization",
-     "name": "Toolroom"
+     "name": "Madorasindahouse Records"
     },
-    "url": "https://www.beatport.com/release/miami-vice/7420613"
+    "url": "https://www.beatport.com/release/gatitooo-persona-amine-k-remix/7500305"
    }
   },
   {
    "@type": "ListItem",
-   "position": 13,
-   "item": {
-    "@type": "MusicAlbum",
-    "name": "Resist The System",
-    "byArtist": {
-     "@type": "MusicGroup",
-     "name": "Shilla, FRANCO BA"
-    },
-    "albumReleaseType": "https://schema.org/EPRelease",
-    "publisher": {
-     "@type": "Organization",
-     "name": "MADMINDS"
-    },
-    "url": "https://www.beatport.com/release/resist-the-system/7423405"
-   }
-  },
-  {
-   "@type": "ListItem",
-   "position": 14,
+   "position": 10,
    "item": {
     "@type": "MusicAlbum",
     "name": "Beatbox Rocker",
@@ -325,25 +323,25 @@
   },
   {
    "@type": "ListItem",
-   "position": 15,
+   "position": 11,
    "item": {
     "@type": "MusicAlbum",
-    "name": "Ladies",
+    "name": "Miami Vice",
     "byArtist": {
      "@type": "MusicGroup",
-     "name": "PRIMO (IL)"
+     "name": "Mark Knight, DJ PP, James Hurr"
     },
-    "albumReleaseType": "https://schema.org/EPRelease",
+    "albumReleaseType": "https://schema.org/SingleRelease",
     "publisher": {
      "@type": "Organization",
-     "name": "Treep Records"
+     "name": "Toolroom"
     },
-    "url": "https://www.beatport.com/release/ladies/7449163"
+    "url": "https://www.beatport.com/release/miami-vice/7420613"
    }
   },
   {
    "@type": "ListItem",
-   "position": 16,
+   "position": 12,
    "item": {
     "@type": "MusicAlbum",
     "name": "Fra Mørket Til Lys",
@@ -361,7 +359,7 @@
   },
   {
    "@type": "ListItem",
-   "position": 17,
+   "position": 13,
    "item": {
     "@type": "MusicAlbum",
     "name": "Across The Room",
@@ -379,20 +377,92 @@
   },
   {
    "@type": "ListItem",
+   "position": 14,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Ladies",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "PRIMO (IL)"
+    },
+    "albumReleaseType": "https://schema.org/EPRelease",
+    "publisher": {
+     "@type": "Organization",
+     "name": "Treep Records"
+    },
+    "url": "https://www.beatport.com/release/ladies/7449163"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 15,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Boogie",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "Pysh, Karpinsky, Novikov (ofc)"
+    },
+    "albumReleaseType": "https://schema.org/EPRelease",
+    "publisher": {
+     "@type": "Organization",
+     "name": "Magician On Duty"
+    },
+    "url": "https://www.beatport.com/release/boogie/7340960"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 16,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Resist The System",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "Shilla, FRANCO BA"
+    },
+    "albumReleaseType": "https://schema.org/EPRelease",
+    "publisher": {
+     "@type": "Organization",
+     "name": "MADMINDS"
+    },
+    "url": "https://www.beatport.com/release/resist-the-system/7423405"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 17,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Rockin Down The House - Amsterdam 2026",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "Various Artists"
+    },
+    "albumReleaseType": "https://schema.org/CompilationAlbum",
+    "publisher": {
+     "@type": "Organization",
+     "name": "Club Session"
+    },
+    "url": "https://www.beatport.com/release/rockin-down-the-house-amsterdam-2026/7488700"
+   }
+  },
+  {
+   "@type": "ListItem",
    "position": 18,
    "item": {
     "@type": "MusicAlbum",
-    "name": "Gatitooo / Persona (Amine K Remix)",
+    "name": "Senta Fogueta",
     "byArtist": {
      "@type": "MusicGroup",
-     "name": "Raul Vidal, Orkun Bozdemir, BATU (TR)"
+     "name": "BELLA BACKE"
     },
     "albumReleaseType": "https://schema.org/SingleRelease",
     "publisher": {
      "@type": "Organization",
-     "name": "Madorasindahouse Records"
+     "name": "Club Sweat"
     },
-    "url": "https://www.beatport.com/release/gatitooo-persona-amine-k-remix/7500305"
+    "url": "https://www.beatport.com/release/senta-fogueta-extended-mix/7430298"
    }
   },
   {
@@ -414,17 +484,17 @@
    "position": 20,
    "item": {
     "@type": "MusicAlbum",
-    "name": "Senta Fogueta",
+    "name": "Rhythm Talk",
     "byArtist": {
      "@type": "MusicGroup",
-     "name": "BELLA BACKE"
+     "name": "Gianni Firmaio"
     },
     "albumReleaseType": "https://schema.org/SingleRelease",
     "publisher": {
      "@type": "Organization",
-     "name": "Club Sweat"
+     "name": "VISYØN"
     },
-    "url": "https://www.beatport.com/release/senta-fogueta-extended-mix/7430298"
+    "url": "https://soundcloud.com/listen-to-flow/franky-rizardo-861062620"
    }
   },
   {
@@ -432,17 +502,13 @@
    "position": 21,
    "item": {
     "@type": "MusicAlbum",
-    "name": "Rockin Down The House - Amsterdam 2026",
+    "name": "Fast Life",
     "byArtist": {
      "@type": "MusicGroup",
-     "name": "Various Artists"
+     "name": "Juany Bravo, Carl Dutt & Dr. Chaii"
     },
-    "albumReleaseType": "https://schema.org/CompilationAlbum",
-    "publisher": {
-     "@type": "Organization",
-     "name": "Club Session"
-    },
-    "url": "https://www.beatport.com/release/rockin-down-the-house-amsterdam-2026/7488700"
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "url": "https://music.apple.com/us/album/fast-life/6802959263?i=6802959264&uo=4"
    }
   },
   {
@@ -450,18 +516,17 @@
    "position": 22,
    "item": {
     "@type": "MusicAlbum",
-    "name": "Talking Slow",
+    "name": "Bassline",
     "byArtist": {
      "@type": "MusicGroup",
-     "name": "Bontan"
+     "name": "Majestic, Layton Giordani, Jungle 70, HILLS (US)"
     },
     "albumReleaseType": "https://schema.org/SingleRelease",
-    "datePublished": "2026-10-23",
     "publisher": {
      "@type": "Organization",
-     "name": "Hot Creations"
+     "name": "MADMINDS"
     },
-    "url": "https://open.spotify.com/track/5KmU1Uqh0YCSRBsMDZuDkY"
+    "url": "https://www.beatport.com/release/bassline/7474253"
    }
   },
   {
@@ -469,18 +534,18 @@
    "position": 23,
    "item": {
     "@type": "MusicAlbum",
-    "name": "Late Night Visions (Extended Mix)",
+    "name": "Time after Time Re: INSCTed",
     "byArtist": {
      "@type": "MusicGroup",
-     "name": "Mishell, Yuvèe"
+     "name": "Hartmut Kiss, Insct"
     },
     "albumReleaseType": "https://schema.org/SingleRelease",
-    "datePublished": "2026-10-23",
+    "datePublished": "2026-10-30",
     "publisher": {
      "@type": "Organization",
-     "name": "DHB Records"
+     "name": "INSCT"
     },
-    "url": "https://open.spotify.com/track/2TKoG89yiwU6Ep7MIkLcRY"
+    "url": "https://www.beatport.com/release/time-after-time-re-inscted/7389794"
    }
   },
   {
@@ -488,18 +553,18 @@
    "position": 24,
    "item": {
     "@type": "MusicAlbum",
-    "name": "Jack the Ripper",
+    "name": "Canyon",
     "byArtist": {
      "@type": "MusicGroup",
-     "name": "Jet BLVCK, Blaze Orange, Fugacity"
+     "name": "Jones Meadow"
     },
-    "albumReleaseType": "https://schema.org/EPRelease",
-    "datePublished": "2026-10-23",
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-10-30",
     "publisher": {
      "@type": "Organization",
-     "name": "Liftoff Recordings"
+     "name": "Meadow Sound"
     },
-    "url": "https://open.spotify.com/track/0YsVftovRzp3MXIToWe6ji"
+    "url": "https://www.beatport.com/release/canyon/7560406"
    }
   },
   {
@@ -507,18 +572,18 @@
    "position": 25,
    "item": {
     "@type": "MusicAlbum",
-    "name": "I Found A Bassline",
+    "name": "Nayara",
     "byArtist": {
      "@type": "MusicGroup",
-     "name": "Funkatron"
+     "name": "German Brigante, CATMOONK"
     },
-    "albumReleaseType": "https://schema.org/SingleRelease",
-    "datePublished": "2026-10-23",
+    "albumReleaseType": "https://schema.org/EPRelease",
+    "datePublished": "2026-10-30",
     "publisher": {
      "@type": "Organization",
-     "name": "Metropolitan Music"
+     "name": "Dancepush"
     },
-    "url": "https://open.spotify.com/track/60Pzw3YmirHwXHq78KRE3z"
+    "url": "https://www.beatport.com/release/nayara/7561157"
    }
   },
   {
@@ -526,18 +591,18 @@
    "position": 26,
    "item": {
     "@type": "MusicAlbum",
-    "name": "After Ego",
+    "name": "Warehouse Vibration",
     "byArtist": {
      "@type": "MusicGroup",
-     "name": "Notre Dame"
+     "name": "DJ PP"
     },
-    "albumReleaseType": "https://schema.org/EPRelease",
-    "datePublished": "2026-10-23",
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-10-30",
     "publisher": {
      "@type": "Organization",
-     "name": "Paranormal"
+     "name": "Big Love Trax"
     },
-    "url": "https://open.spotify.com/track/4nlJJRvHkoXY1c4YrTP4uT"
+    "url": "https://www.beatport.com/release/warehouse-vibration/7584169"
    }
   },
   {
@@ -545,329 +610,24 @@
    "position": 27,
    "item": {
     "@type": "MusicAlbum",
-    "name": "Where Do We Go?",
+    "name": "Vision EP",
     "byArtist": {
      "@type": "MusicGroup",
-     "name": "Damian Lazarus, Kenny Glasgow"
-    },
-    "albumReleaseType": "https://schema.org/SingleRelease",
-    "datePublished": "2026-10-23",
-    "publisher": {
-     "@type": "Organization",
-     "name": "Crosstown Rebels"
-    },
-    "url": "https://open.spotify.com/track/6iEwwHRDSYUcz5YWPJzgLL"
-   }
-  },
-  {
-   "@type": "ListItem",
-   "position": 28,
-   "item": {
-    "@type": "MusicAlbum",
-    "name": "Move XX",
-    "byArtist": {
-     "@type": "MusicGroup",
-     "name": "Berin, AVISHEK"
-    },
-    "albumReleaseType": "https://schema.org/SingleRelease",
-    "datePublished": "2026-10-23",
-    "publisher": {
-     "@type": "Organization",
-     "name": "NoType Records"
-    },
-    "url": "https://open.spotify.com/track/07rt8V6QgSQ5F4M56mbPQn"
-   }
-  },
-  {
-   "@type": "ListItem",
-   "position": 29,
-   "item": {
-    "@type": "MusicAlbum",
-    "name": "Supersonic",
-    "byArtist": {
-     "@type": "MusicGroup",
-     "name": "Soar, Brandon Caballero, XTK"
-    },
-    "albumReleaseType": "https://schema.org/SingleRelease",
-    "datePublished": "2026-10-23",
-    "publisher": {
-     "@type": "Organization",
-     "name": "South Of Saturn"
-    },
-    "url": "https://open.spotify.com/track/6jGKEaTyVRNfPzLuwqIEJA"
-   }
-  },
-  {
-   "@type": "ListItem",
-   "position": 30,
-   "item": {
-    "@type": "MusicAlbum",
-    "name": "We Control (Extended Mix)",
-    "byArtist": {
-     "@type": "MusicGroup",
-     "name": "Nikita Grib"
-    },
-    "albumReleaseType": "https://schema.org/SingleRelease",
-    "datePublished": "2026-10-23",
-    "publisher": {
-     "@type": "Organization",
-     "name": "Glasgow Underground"
-    },
-    "url": "https://open.spotify.com/track/5udkG9OeJqM8OPAAl1DW57"
-   }
-  },
-  {
-   "@type": "ListItem",
-   "position": 31,
-   "item": {
-    "@type": "MusicAlbum",
-    "name": "5432 (Extended Mix)",
-    "byArtist": {
-     "@type": "MusicGroup",
-     "name": "Sasha GiGi"
-    },
-    "albumReleaseType": "https://schema.org/SingleRelease",
-    "datePublished": "2026-10-23",
-    "publisher": {
-     "@type": "Organization",
-     "name": "Club Sweat"
-    },
-    "url": "https://open.spotify.com/track/3LLUfZMrbA7sTxGaZXUpVE"
-   }
-  },
-  {
-   "@type": "ListItem",
-   "position": 32,
-   "item": {
-    "@type": "MusicAlbum",
-    "name": "I Brought The Jungle (Extended Mix)",
-    "byArtist": {
-     "@type": "MusicGroup",
-     "name": "The Deepshakerz, Xander Pratt, Juany Bravo"
-    },
-    "albumReleaseType": "https://schema.org/SingleRelease",
-    "datePublished": "2026-10-23",
-    "publisher": {
-     "@type": "Organization",
-     "name": "Make The Girls Dance Records"
-    },
-    "url": "https://open.spotify.com/track/1xfqluw4FwEVrSn34BqPKR"
-   }
-  },
-  {
-   "@type": "ListItem",
-   "position": 33,
-   "item": {
-    "@type": "MusicAlbum",
-    "name": "Afro Revenge (Extended Mix)",
-    "byArtist": {
-     "@type": "MusicGroup",
-     "name": "Tom Enzy"
-    },
-    "albumReleaseType": "https://schema.org/SingleRelease",
-    "datePublished": "2026-10-23",
-    "publisher": {
-     "@type": "Organization",
-     "name": "Make The Girls Dance Records"
-    },
-    "url": "https://open.spotify.com/track/6hB47IIUoOFLAyqJSlSlCn"
-   }
-  },
-  {
-   "@type": "ListItem",
-   "position": 34,
-   "item": {
-    "@type": "MusicAlbum",
-    "name": "This Feeling",
-    "byArtist": {
-     "@type": "MusicGroup",
-     "name": "A-Trak, JØRD, Brothers Macklovitch, Crackazat"
+     "name": "The Magician, JØRD, Moscoman"
     },
     "albumReleaseType": "https://schema.org/EPRelease",
-    "datePublished": "2026-10-23",
+    "datePublished": "2026-10-30",
     "publisher": {
      "@type": "Organization",
-     "name": "Fool's Gold Records"
+     "name": "Diynamic"
     },
-    "url": "https://open.spotify.com/track/7qisTY4SHxIj38XRkY8BH7"
-   }
-  },
-  {
-   "@type": "ListItem",
-   "position": 35,
-   "item": {
-    "@type": "MusicAlbum",
-    "name": "The Rain",
-    "byArtist": {
-     "@type": "MusicGroup",
-     "name": "Catarsis (MX), Nico Aguilar, ddanroue"
-    },
-    "albumReleaseType": "https://schema.org/SingleRelease",
-    "datePublished": "2026-10-23",
-    "publisher": {
-     "@type": "Organization",
-     "name": "Gratitude Records"
-    },
-    "url": "https://open.spotify.com/track/1DEyTdz3ZQ59V101XD021p"
-   }
-  },
-  {
-   "@type": "ListItem",
-   "position": 36,
-   "item": {
-    "@type": "MusicAlbum",
-    "name": "The Pressure (Extended Mix)",
-    "byArtist": {
-     "@type": "MusicGroup",
-     "name": "GUDFELLA, Louis III, Airrica"
-    },
-    "albumReleaseType": "https://schema.org/SingleRelease",
-    "datePublished": "2026-10-23",
-    "publisher": {
-     "@type": "Organization",
-     "name": "THRIVE MUSIC"
-    },
-    "url": "https://open.spotify.com/track/4tkSvmWpeoFHJVWLKKKxsu"
-   }
-  },
-  {
-   "@type": "ListItem",
-   "position": 37,
-   "item": {
-    "@type": "MusicAlbum",
-    "name": "Runnin'",
-    "byArtist": {
-     "@type": "MusicGroup",
-     "name": "Dennis Quin"
-    },
-    "albumReleaseType": "https://schema.org/SingleRelease",
-    "datePublished": "2026-10-23",
-    "publisher": {
-     "@type": "Organization",
-     "name": "tszr"
-    },
-    "url": "https://open.spotify.com/track/0YBhS04scosEHosyns63qs"
-   }
-  },
-  {
-   "@type": "ListItem",
-   "position": 38,
-   "item": {
-    "@type": "MusicAlbum",
-    "name": "Om Namah Shivaya",
-    "byArtist": {
-     "@type": "MusicGroup",
-     "name": "Javica"
-    },
-    "albumReleaseType": "https://schema.org/EPRelease",
-    "datePublished": "2026-10-23",
-    "publisher": {
-     "@type": "Organization",
-     "name": "TWO NAME"
-    },
-    "url": "https://open.spotify.com/track/0CV3tDxdcy6iaCMOIItBx6"
-   }
-  },
-  {
-   "@type": "ListItem",
-   "position": 39,
-   "item": {
-    "@type": "MusicAlbum",
-    "name": "Acid",
-    "byArtist": {
-     "@type": "MusicGroup",
-     "name": "Sulim, Dr.Luxe"
-    },
-    "albumReleaseType": "https://schema.org/SingleRelease",
-    "datePublished": "2026-10-23",
-    "publisher": {
-     "@type": "Organization",
-     "name": "TWO NAME"
-    },
-    "url": "https://open.spotify.com/track/4G6E0egcZ1CYT4EPJfBZOo"
-   }
-  },
-  {
-   "@type": "ListItem",
-   "position": 40,
-   "item": {
-    "@type": "MusicAlbum",
-    "name": "Dame Duro",
-    "byArtist": {
-     "@type": "MusicGroup",
-     "name": "INSIDIA, Hi-Tech Dj's"
-    },
-    "albumReleaseType": "https://schema.org/EPRelease",
-    "datePublished": "2026-10-23",
-    "publisher": {
-     "@type": "Organization",
-     "name": "ULTIMA"
-    },
-    "url": "https://open.spotify.com/track/4G2ybE6Ss2eYkRKmhHucLT"
-   }
-  },
-  {
-   "@type": "ListItem",
-   "position": 41,
-   "item": {
-    "@type": "MusicAlbum",
-    "name": "Obsession (feat. Ty Dolla $ign)",
-    "byArtist": {
-     "@type": "MusicGroup",
-     "name": "MK, Ty Dolla $ign"
-    },
-    "albumReleaseType": "https://schema.org/SingleRelease",
-    "datePublished": "2026-10-23",
-    "publisher": {
-     "@type": "Organization",
-     "name": "Ultra Records"
-    },
-    "url": "https://open.spotify.com/track/7AeYzaNo7vH5AoNOA25yO4"
-   }
-  },
-  {
-   "@type": "ListItem",
-   "position": 42,
-   "item": {
-    "@type": "MusicAlbum",
-    "name": "Tripping The Funk",
-    "byArtist": {
-     "@type": "MusicGroup",
-     "name": "DvirNuns & Cristian Viviano"
-    },
-    "albumReleaseType": "https://schema.org/SingleRelease",
-    "datePublished": "2026-10-23",
-    "url": "https://open.spotify.com/track/67D7QvA0sjUHRxbL618CnP"
-   }
-  },
-  {
-   "@type": "ListItem",
-   "position": 43,
-   "item": {
-    "@type": "MusicAlbum",
-    "name": "Good Time",
-    "byArtist": {
-     "@type": "MusicGroup",
-     "name": "Highlite"
-    },
-    "albumReleaseType": "https://schema.org/SingleRelease",
-    "datePublished": "2026-10-23",
-    "publisher": {
-     "@type": "Organization",
-     "name": "When Stars Align"
-    },
-    "url": "https://open.spotify.com/track/0bo0aeIKSdH8C9tb4cdO3a"
+    "url": "https://www.beatport.com/release/vision-ep/7607317"
    }
   }
  ]
 }
 </script>
 <link rel="stylesheet" href="/gmx-motion.css?v=2">
-<link rel="stylesheet" href="/gmx-sheet.css?v=2">
-<link rel="stylesheet" href="/gmx-quick.css">
-<link rel="stylesheet" href="/gmx-nav.css?v=20">
-<link rel="stylesheet" href="/gmx-account.css?v=2">
-<link rel="stylesheet" href="/gmx-read.css?v=9">
 </head>
 <body>
 <div class="wrap">
@@ -878,291 +638,1787 @@
   <h1>what's <span>dropping</span> soon</h1>
   <p class="sub">the releases the artist or label announced themselves, dated as they said it.</p>
 <div data-more="fold" data-more-label="more"><p class="sub">every link goes to their own page to pre-save, pre-order or listen.</p></div>
-  <p class="legend"><b>🔴</b> = heavy rotation artist. dates move, the artist's own post is the truth. 43 on the list.</p>
+  <p class="legend"><b>🔴</b> = heavy rotation artist. dates move, the artist's own post is the truth.</p>
 
 <!-- upcoming:start -->
-  <div class="tierline">this week</div>
-  <h2 class="tier">out now</h2>
-  <p class="tiersub">landed in the last seven days. tap through and listen.</p>
-  <div class="ev">
-    <div class="date">out now</div>
-    <h3>Talking Slow <small>Bontan</small></h3>
-    <div class="where">Hot Creations · single</div>
-    <a class="go" href="https://open.spotify.com/track/5KmU1Uqh0YCSRBsMDZuDkY" target="_blank" rel="noopener">listen →</a>
+<div class="ur-tabs">
+  <a class="ur-tab" href="#soon" data-tab="soon">dropping soon <b>22</b></a>
+  <a class="ur-tab" href="#released" data-tab="released">released <b>292</b></a>
+</div>
+<section class="ur-panel" id="soon" aria-labelledby="h-soon">
+  <h2 class="ur-ph" id="h-soon">dropping soon</h2>
+  <p class="ur-pn">soonest first. a release stays here through its own day, then moves to released.</p>
+  <div class="ur-day" data-iso="2026-11-06">
+    <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">fri</span><b>6</b><span class="ur-mo">nov</span></div><h3 class="ur-dt"><span class="ur-rel">friday 6 november</span><span class="ur-dd"></span></h3><span class="ur-n">4 releases</span></div>
+    <ul class="ur-list">
+      <li class="ev" data-iso="2026-11-06">
+        <h4>Confess (Groove P Remix) <small><a href="/artists/atfc">ATFC</a>, Seamus Haji</small></h4>
+        <div class="where">Big Love Music · <span class="ur-k">remix</span></div>
+        <a class="go" href="https://www.beatport.com/release/confess-groove-p-remix/7575682" target="_blank" rel="noopener">pre-order →</a>
+      </li>
+      <li class="ev" data-iso="2026-11-06">
+        <h4>Without U (Extended Mix) <small><a href="/artists/calussa">Calussa</a>, Grace Arribas</small></h4>
+        <div class="where">Kazbah Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/without-u-extended-mix/7576570" target="_blank" rel="noopener">pre-order →</a>
+      </li>
+      <li class="ev" data-iso="2026-11-06">
+        <h4>Nothing But Me <small>Cor.Ece, A Joyful Noise</small></h4>
+        <div class="where">Razor-N-Tape Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/nothing-but-me/7502191" target="_blank" rel="noopener">pre-order →</a>
+      </li>
+      <li class="ev" data-iso="2026-11-06">
+        <h4>No Brakes / Miss Booty <small>Viot</small></h4>
+        <div class="where">Black Book Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.instagram.com/p/DfQAosQh7CJ/" target="_blank" rel="noopener">the announcement →</a>
+      </li>
+    </ul>
   </div>
-  <div class="ev">
-    <div class="date">out now</div>
-    <h3>Late Night Visions (Extended Mix) <small>Mishell, Yuvèe</small></h3>
-    <div class="where">DHB Records · single</div>
-    <a class="go" href="https://open.spotify.com/track/2TKoG89yiwU6Ep7MIkLcRY" target="_blank" rel="noopener">listen →</a>
+  <div class="ur-day" data-iso="2026-11-13">
+    <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">fri</span><b>13</b><span class="ur-mo">nov</span></div><h3 class="ur-dt"><span class="ur-rel">friday 13 november</span><span class="ur-dd"></span></h3><span class="ur-n">2 releases</span></div>
+    <ul class="ur-list">
+      <li class="ev" data-iso="2026-11-13">
+        <h4>Wow <small>Jude &amp; Frank, Patrizio Exclusive</small></h4>
+        <div class="where">Stereo Productions America · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/6pZMFRvDYknfEmSTVZCVKJ" target="_blank" rel="noopener">pre-save →</a>
+      </li>
+      <li class="ev" data-iso="2026-11-13">
+        <h4>Lick Ya (Modegroove Remix 2026) <small>The Cube Guys, ATFC, Modegroove</small></h4>
+        <div class="where">Cube Productions S.r.l. / Black Rock Music · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/0z5NYyTxDQwhrbNOM7FLtr" target="_blank" rel="noopener">pre-save →</a>
+      </li>
+    </ul>
   </div>
-  <div class="ev">
-    <div class="date">out now</div>
-    <h3>Jack the Ripper <small>Jet BLVCK, Blaze Orange, Fugacity</small></h3>
-    <div class="where">Liftoff Recordings · ep · 3 cuts</div>
-    <a class="go" href="https://open.spotify.com/track/0YsVftovRzp3MXIToWe6ji" target="_blank" rel="noopener">listen →</a>
+  <div class="ur-day" data-iso="2026-11-20">
+    <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">fri</span><b>20</b><span class="ur-mo">nov</span></div><h3 class="ur-dt"><span class="ur-rel">friday 20 november</span><span class="ur-dd"></span></h3><span class="ur-n">1 release</span></div>
+    <ul class="ur-list">
+      <li class="ev" data-iso="2026-11-20">
+        <h4>Acid All Night <small><a href="/artists/fancy-inc">Fancy Inc</a> &amp; Knorst</small></h4>
+        <div class="where">Nu Moda · <span class="ur-k">single</span></div>
+      </li>
+    </ul>
   </div>
-  <div class="ev">
-    <div class="date">out now</div>
-    <h3>I Found A Bassline <small>Funkatron</small></h3>
-    <div class="where">Metropolitan Music · single</div>
-    <a class="go" href="https://open.spotify.com/track/60Pzw3YmirHwXHq78KRE3z" target="_blank" rel="noopener">listen →</a>
+  <details class="ur-tba"><summary><b>no date yet</b><span class="ur-n">15 releases</span><span class="ur-why">named by the artist or the label, no date given yet</span></summary>
+    <ul class="ur-list">
+      <li class="ev">
+        <h4>In N Out / Dream Girl <small><a href="/artists/braydon-terzo">Braydon Terzo</a></small></h4>
+        <div class="where">Roots Recordings · <span class="ur-k big">ep</span> · <span class="ur-c">2 cuts</span></div>
+        <a class="go" href="https://www.beatport.com/release/in-n-out-dream-girl/7418479" target="_blank" rel="noopener">pre-order →</a>
+      </li>
+      <li class="ev">
+        <h4>Gatitooo / Persona (Amine K Remix) <small><a href="/artists/raul-vidal">Raul Vidal</a>, Orkun Bozdemir, BATU (TR)</small></h4>
+        <div class="where">Madorasindahouse Records · <span class="ur-k">remix</span> · <span class="ur-c">2 cuts</span></div>
+        <a class="go" href="https://www.beatport.com/release/gatitooo-persona-amine-k-remix/7500305" target="_blank" rel="noopener">pre-order →</a>
+      </li>
+      <li class="ev">
+        <h4>Beatbox Rocker <small><a href="/artists/chasewest">CHASEWEST</a>, Dan Molinari</small></h4>
+        <div class="where">Chaste Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/beatbox-rocker/7442820" target="_blank" rel="noopener">pre-order →</a>
+      </li>
+      <li class="ev">
+        <h4>Miami Vice <small>Mark Knight, <a href="/artists/dj-pp">DJ PP</a>, James Hurr</small></h4>
+        <div class="where">Toolroom · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/miami-vice/7420613" target="_blank" rel="noopener">pre-order →</a>
+      </li>
+      <li class="ev">
+        <h4>Fra Mørket Til Lys <small>Kris Berle, Biljana Pais</small></h4>
+        <div class="where">Magician On Duty · <span class="ur-k big">ep</span> · <span class="ur-c">2 cuts</span></div>
+        <a class="go" href="https://www.beatport.com/release/fra-morket-til-lys/7347128" target="_blank" rel="noopener">pre-order →</a>
+      </li>
+      <li class="ev">
+        <h4>Across The Room <small>Malikk</small></h4>
+        <div class="where">8Bit · <span class="ur-k big">ep</span> · <span class="ur-c">2 cuts</span></div>
+        <a class="go" href="https://www.beatport.com/release/across-the-room/7463191" target="_blank" rel="noopener">pre-order →</a>
+      </li>
+      <li class="ev">
+        <h4>Ladies <small>PRIMO (IL)</small></h4>
+        <div class="where">Treep Records · <span class="ur-k big">ep</span> · <span class="ur-c">2 cuts</span></div>
+        <a class="go" href="https://www.beatport.com/release/ladies/7449163" target="_blank" rel="noopener">pre-order →</a>
+      </li>
+      <li class="ev">
+        <h4>Boogie <small>Pysh, Karpinsky, Novikov (ofc)</small></h4>
+        <div class="where">Magician On Duty · <span class="ur-k big">ep</span> · <span class="ur-c">4 cuts</span></div>
+        <a class="go" href="https://www.beatport.com/release/boogie/7340960" target="_blank" rel="noopener">pre-order →</a>
+      </li>
+      <li class="ev">
+        <h4>Resist The System <small>Shilla, FRANCO BA</small></h4>
+        <div class="where">MADMINDS · <span class="ur-k big">ep</span> · <span class="ur-c">3 cuts</span></div>
+        <a class="go" href="https://www.beatport.com/release/resist-the-system/7423405" target="_blank" rel="noopener">pre-order →</a>
+      </li>
+      <li class="ev">
+        <h4>Rockin Down The House - Amsterdam 2026 <small>Various Artists</small></h4>
+        <div class="where">Club Session · <span class="ur-k big">various artists</span> · <span class="ur-c">15 cuts</span></div>
+        <a class="go" href="https://www.beatport.com/release/rockin-down-the-house-amsterdam-2026/7488700" target="_blank" rel="noopener">pre-order →</a>
+      </li>
+      <li class="ev">
+        <h4>Senta Fogueta <small>BELLA BACKE</small></h4>
+        <div class="where">Club Sweat · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/senta-fogueta-extended-mix/7430298" target="_blank" rel="noopener">pre-order →</a>
+      </li>
+      <li class="ev">
+        <h4>Satisfaction (TOBEHONEST Edit) <small>Benny Benassi pres. The Biz</small></h4>
+        <div class="where">label tba · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.instagram.com/p/DeNCe0WgbLf/" target="_blank" rel="noopener">the announcement →</a>
+      </li>
+      <li class="ev">
+        <h4>Rhythm Talk <small>Gianni Firmaio</small></h4>
+        <div class="where">VISYØN · <span class="ur-k">single</span></div>
+        <a class="go" href="https://soundcloud.com/listen-to-flow/franky-rizardo-861062620" target="_blank" rel="noopener">link →</a>
+      </li>
+      <li class="ev">
+        <h4>Fast Life <small>Juany Bravo, Carl Dutt &amp; Dr. Chaii</small></h4>
+        <div class="where">label tba · <span class="ur-k">single</span></div>
+        <a class="go" href="https://music.apple.com/us/album/fast-life/6802959263?i=6802959264&amp;uo=4" target="_blank" rel="noopener">pre-save →</a>
+      </li>
+      <li class="ev">
+        <h4>Bassline <small>Majestic, Layton Giordani, Jungle 70, HILLS (US)</small></h4>
+        <div class="where">MADMINDS · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/bassline/7474253" target="_blank" rel="noopener">pre-order →</a>
+      </li>
+    </ul>
+  </details>
+</section>
+<section class="ur-panel" id="released" aria-labelledby="h-released">
+  <h2 class="ur-ph" id="h-released">released</h2>
+  <p class="ur-pn">out now, newest first, the last 3 months. tap through and listen.</p>
+  <div class="ur-day" data-iso="2026-10-30">
+    <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">fri</span><b>30</b><span class="ur-mo">oct</span></div><h3 class="ur-dt"><span class="ur-rel">friday 30 october</span><span class="ur-dd"></span></h3><span class="ur-n">5 releases</span></div>
+    <ul class="ur-list">
+      <li class="ev" data-iso="2026-10-30" data-out="1">
+        <h4>Nayara <small><a href="/artists/german-brigante">German Brigante</a>, CATMOONK</small></h4>
+        <div class="where">Dancepush · <span class="ur-k big">ep</span> · <span class="ur-c">10 cuts</span></div>
+        <a class="go" href="https://www.beatport.com/release/nayara/7561157" target="_blank" rel="noopener">on beatport →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-30" data-out="1">
+        <h4>Time after Time Re: INSCTed <small><a href="/artists/hartmut-kiss">Hartmut Kiss</a>, Insct</small></h4>
+        <div class="where">INSCT · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/time-after-time-re-inscted/7389794" target="_blank" rel="noopener">on beatport →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-30" data-out="1">
+        <h4>Canyon <small><a href="/artists/jones-meadow">Jones Meadow</a></small></h4>
+        <div class="where">Meadow Sound · <span class="ur-k">single</span> · <span class="ur-c">2 cuts</span></div>
+        <a class="go" href="https://www.beatport.com/release/canyon/7560406" target="_blank" rel="noopener">on beatport →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-30" data-out="1">
+        <h4>Vision EP <small>The Magician, JØRD, Moscoman</small></h4>
+        <div class="where">Diynamic · <span class="ur-k big">ep</span> · <span class="ur-c">3 cuts</span></div>
+        <a class="go" href="https://www.beatport.com/release/vision-ep/7607317" target="_blank" rel="noopener">on beatport →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-30" data-out="1">
+        <h4>Warehouse Vibration <small>DJ PP</small></h4>
+        <div class="where">Big Love Trax · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/warehouse-vibration/7584169" target="_blank" rel="noopener">on beatport →</a>
+      </li>
+    </ul>
   </div>
-  <div class="ev hot">
-    <div class="date">out now</div>
-    <h3>After Ego <span class="canon">🔴</span> <small>Notre Dame</small></h3>
-    <div class="where">Paranormal · ep · 3 cuts</div>
-    <a class="go" href="https://open.spotify.com/track/4nlJJRvHkoXY1c4YrTP4uT" target="_blank" rel="noopener">listen →</a>
+  <div class="ur-day" data-iso="2026-10-23">
+    <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">fri</span><b>23</b><span class="ur-mo">oct</span></div><h3 class="ur-dt"><span class="ur-rel">friday 23 october</span><span class="ur-dd"></span></h3><span class="ur-n">22 releases</span></div>
+    <ul class="ur-list">
+      <li class="ev hot" data-iso="2026-10-23" data-out="1">
+        <h4>After Ego <span class="canon">🔴</span> <small><a href="/artists/notre-dame">Notre Dame</a></small></h4>
+        <div class="where">Paranormal · <span class="ur-k big">ep</span> · <span class="ur-c">3 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/track/4nlJJRvHkoXY1c4YrTP4uT" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-23" data-out="1">
+        <h4>Jack the Ripper <small>Jet BLVCK, <a href="/artists/blaze-orange">Blaze Orange</a>, Fugacity</small></h4>
+        <div class="where">Liftoff Recordings · <span class="ur-k big">ep</span> · <span class="ur-c">3 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/track/0YsVftovRzp3MXIToWe6ji" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-23" data-out="1">
+        <h4>The Rain <small><a href="/artists/catarsis-mx">Catarsis (MX)</a>, Nico Aguilar, ddanroue</small></h4>
+        <div class="where">Gratitude Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/1DEyTdz3ZQ59V101XD021p" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-23" data-out="1">
+        <h4>I Found A Bassline <small><a href="/artists/funkatron">Funkatron</a></small></h4>
+        <div class="where">Metropolitan Music · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/60Pzw3YmirHwXHq78KRE3z" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-23" data-out="1">
+        <h4>Late Night Visions (Extended Mix) <small><a href="/artists/mishell">Mishell</a>, Yuvèe</small></h4>
+        <div class="where">DHB Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/2TKoG89yiwU6Ep7MIkLcRY" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-23" data-out="1">
+        <h4>This Feeling <small>A-Trak, JØRD, Brothers Macklovitch, Crackazat</small></h4>
+        <div class="where">Fool's Gold Records · <span class="ur-k big">ep</span> · <span class="ur-c">4 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/track/7qisTY4SHxIj38XRkY8BH7" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-23" data-out="1">
+        <h4>Dame Duro <small>INSIDIA, Hi-Tech Dj's</small></h4>
+        <div class="where">ULTIMA · <span class="ur-k big">ep</span> · <span class="ur-c">3 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/track/4G2ybE6Ss2eYkRKmhHucLT" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-23" data-out="1">
+        <h4>Om Namah Shivaya <small>Javica</small></h4>
+        <div class="where">TWO NAME · <span class="ur-k big">ep</span> · <span class="ur-c">3 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/track/0CV3tDxdcy6iaCMOIItBx6" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-23" data-out="1">
+        <h4>Move XX <small>Berin, AVISHEK</small></h4>
+        <div class="where">NoType Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/07rt8V6QgSQ5F4M56mbPQn" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-23" data-out="1">
+        <h4>Talking Slow <small>Bontan</small></h4>
+        <div class="where">Hot Creations · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/5KmU1Uqh0YCSRBsMDZuDkY" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-23" data-out="1">
+        <h4>Where Do We Go? <small>Damian Lazarus, Kenny Glasgow</small></h4>
+        <div class="where">Crosstown Rebels · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/6iEwwHRDSYUcz5YWPJzgLL" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-23" data-out="1">
+        <h4>Runnin' <small>Dennis Quin</small></h4>
+        <div class="where">tszr · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/0YBhS04scosEHosyns63qs" target="_blank" rel="noopener">listen →</a>
+      </li>
+    </ul>
+    <details class="ur-more"><summary>10 more on friday 23 october</summary>
+    <ul class="ur-list">
+      <li class="ev" data-iso="2026-10-23" data-out="1">
+        <h4>Tripping The Funk <small>DvirNuns &amp; Cristian Viviano</small></h4>
+        <div class="where">label tba · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/67D7QvA0sjUHRxbL618CnP" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-23" data-out="1">
+        <h4>The Pressure (Extended Mix) <small>GUDFELLA, Louis III, Airrica</small></h4>
+        <div class="where">THRIVE MUSIC · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/4tkSvmWpeoFHJVWLKKKxsu" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-23" data-out="1">
+        <h4>Good Time <small>Highlite</small></h4>
+        <div class="where">When Stars Align · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/0bo0aeIKSdH8C9tb4cdO3a" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-23" data-out="1">
+        <h4>Obsession (feat. Ty Dolla $ign) <small>MK, Ty Dolla $ign</small></h4>
+        <div class="where">Ultra Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/7AeYzaNo7vH5AoNOA25yO4" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-23" data-out="1">
+        <h4>We Control (Extended Mix) <small>Nikita Grib</small></h4>
+        <div class="where">Glasgow Underground · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/5udkG9OeJqM8OPAAl1DW57" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-23" data-out="1">
+        <h4>5432 (Extended Mix) <small>Sasha GiGi</small></h4>
+        <div class="where">Club Sweat · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/3LLUfZMrbA7sTxGaZXUpVE" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-23" data-out="1">
+        <h4>Supersonic <small>Soar, Brandon Caballero, XTK</small></h4>
+        <div class="where">South Of Saturn · <span class="ur-k">single</span> · <span class="ur-c">2 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/track/6jGKEaTyVRNfPzLuwqIEJA" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-23" data-out="1">
+        <h4>Acid <small>Sulim, Dr.Luxe</small></h4>
+        <div class="where">TWO NAME · <span class="ur-k">single</span> · <span class="ur-c">2 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/track/4G6E0egcZ1CYT4EPJfBZOo" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-23" data-out="1">
+        <h4>I Brought The Jungle (Extended Mix) <small>The Deepshakerz, Xander Pratt, Juany Bravo</small></h4>
+        <div class="where">Make The Girls Dance Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/1xfqluw4FwEVrSn34BqPKR" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-23" data-out="1">
+        <h4>Afro Revenge (Extended Mix) <small>Tom Enzy</small></h4>
+        <div class="where">Make The Girls Dance Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/6hB47IIUoOFLAyqJSlSlCn" target="_blank" rel="noopener">listen →</a>
+      </li>
+    </ul>
+    </details>
   </div>
-  <div class="ev">
-    <div class="date">out now</div>
-    <h3>Where Do We Go? <small>Damian Lazarus, Kenny Glasgow</small></h3>
-    <div class="where">Crosstown Rebels · single</div>
-    <a class="go" href="https://open.spotify.com/track/6iEwwHRDSYUcz5YWPJzgLL" target="_blank" rel="noopener">listen →</a>
+  <div class="ur-day" data-iso="2026-10-22">
+    <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">thu</span><b>22</b><span class="ur-mo">oct</span></div><h3 class="ur-dt"><span class="ur-rel">thursday 22 october</span><span class="ur-dd"></span></h3><span class="ur-n">1 release</span></div>
+    <ul class="ur-list">
+      <li class="ev" data-iso="2026-10-22" data-out="1">
+        <h4>Gossip (Extended Mix) <small>LO'99</small></h4>
+        <div class="where">Club Sweat · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/1Aj2EE6mpKzPMIwgmRZE5N" target="_blank" rel="noopener">listen →</a>
+      </li>
+    </ul>
   </div>
-  <div class="ev">
-    <div class="date">out now</div>
-    <h3>Move XX <small>Berin, AVISHEK</small></h3>
-    <div class="where">NoType Records · single</div>
-    <a class="go" href="https://open.spotify.com/track/07rt8V6QgSQ5F4M56mbPQn" target="_blank" rel="noopener">listen →</a>
+  <div class="ur-day" data-iso="2026-10-21">
+    <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">wed</span><b>21</b><span class="ur-mo">oct</span></div><h3 class="ur-dt"><span class="ur-rel">wednesday 21 october</span><span class="ur-dd"></span></h3><span class="ur-n">1 release</span></div>
+    <ul class="ur-list">
+      <li class="ev" data-iso="2026-10-21" data-out="1">
+        <h4>U Wanna <small><a href="/artists/mitch-oliver">Mitch Oliver</a></small></h4>
+        <div class="where">SLAPPED · <span class="ur-k">single</span> · <span class="ur-c">2 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/track/2GDqlmI6kMuFUzsvJI9IZZ" target="_blank" rel="noopener">listen →</a>
+      </li>
+    </ul>
   </div>
-  <div class="ev">
-    <div class="date">out now</div>
-    <h3>Supersonic <small>Soar, Brandon Caballero, XTK</small></h3>
-    <div class="where">South Of Saturn · single · 2 cuts</div>
-    <a class="go" href="https://open.spotify.com/track/6jGKEaTyVRNfPzLuwqIEJA" target="_blank" rel="noopener">listen →</a>
+  <div class="ur-day" data-iso="2026-10-20">
+    <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">tue</span><b>20</b><span class="ur-mo">oct</span></div><h3 class="ur-dt"><span class="ur-rel">tuesday 20 october</span><span class="ur-dd"></span></h3><span class="ur-n">1 release</span></div>
+    <ul class="ur-list">
+      <li class="ev" data-iso="2026-10-20" data-out="1">
+        <h4>Weapon X <small>Jaguar</small></h4>
+        <div class="where">IN / ROTATION (Insomniac Records) · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/5vShG2bZbMpYWJ7EA4e3pp" target="_blank" rel="noopener">listen →</a>
+      </li>
+    </ul>
   </div>
-  <div class="ev">
-    <div class="date">out now</div>
-    <h3>We Control (Extended Mix) <small>Nikita Grib</small></h3>
-    <div class="where">Glasgow Underground · single</div>
-    <a class="go" href="https://open.spotify.com/track/5udkG9OeJqM8OPAAl1DW57" target="_blank" rel="noopener">listen →</a>
+  <div class="ur-day" data-iso="2026-10-16">
+    <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">fri</span><b>16</b><span class="ur-mo">oct</span></div><h3 class="ur-dt"><span class="ur-rel">friday 16 october</span><span class="ur-dd"></span></h3><span class="ur-n">35 releases</span></div>
+    <ul class="ur-list">
+      <li class="ev hot" data-iso="2026-10-16" data-out="1">
+        <h4>H.O.U.S.E (Extended Mix) <span class="canon">🔴</span> <small>Snoop Dogg, HUGEL</small></h4>
+        <div class="where">Make The Girls Dance Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/1BTZKp1hBSeApqQh1ngqpZ" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-16" data-out="1">
+        <h4>Off To Paradise <small><a href="/artists/ethyene">Ethyène</a></small></h4>
+        <div class="where">Lisztomania Records · <span class="ur-k big">ep</span> · <span class="ur-c">4 cuts</span></div>
+        <a class="go" href="https://www.beatport.com/release/off-to-paradise/7563913" target="_blank" rel="noopener">on beatport →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-16" data-out="1">
+        <h4>Shiny Disco <small><a href="/artists/flamme">FLAMME</a></small></h4>
+        <div class="where">BODEGA · <span class="ur-k big">ep</span> · <span class="ur-c">2 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/track/4dm7Sf9stzgD0mGGjIsjMx" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-16" data-out="1">
+        <h4>Danzatoria <small><a href="/artists/piem">Piem</a></small></h4>
+        <div class="where">PVCLB · <span class="ur-k big">ep</span> · <span class="ur-c">4 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/track/417cJqfATAv0oVKZElrjFO" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-16" data-out="1">
+        <h4>Disco In My Head (Extended Mix) <small>Antdot, <a href="/artists/vinter">Vinter (BR)</a>, ANY ZEE</small></h4>
+        <div class="where">Helix Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/2GrU6EPYBO3yg3GMGcBI2r" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-16" data-out="1">
+        <h4>Hands <small><a href="/artists/buka">Buka</a>, ITAYGA</small></h4>
+        <div class="where">ABRA X · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/0UxCHsWjt2UnaOopyNYuUI" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-16" data-out="1">
+        <h4>Much More <small><a href="/artists/cabizbajo">Cabizbajo</a></small></h4>
+        <div class="where">Terms &amp; Conditions Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/6X7N2qDs7XWeqnqyWlECpJ" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-16" data-out="1">
+        <h4>People In The Back <small>Charlotte Moss, <a href="/artists/bruno-furlan">Bruno Furlan</a></small></h4>
+        <div class="where">Golden Recordings · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/3o1rdK4SipPibK1ZVPHnUO" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-16" data-out="1">
+        <h4>High Class <small><a href="/artists/chasewest">CHASEWEST</a></small></h4>
+        <div class="where">Chaste Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/06DkHLbgIlfPGxe6YDS3Ph" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-16" data-out="1">
+        <h4>It's a new Day RE: INSCTED <small><a href="/artists/hartmut-kiss">Hartmut Kiss</a>, Insct</small></h4>
+        <div class="where">INSCT · <span class="ur-k">single</span> · <span class="ur-c">2 cuts</span></div>
+        <a class="go" href="https://www.beatport.com/release/its-a-new-day-re-inscted/7503171" target="_blank" rel="noopener">on beatport →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-16" data-out="1">
+        <h4>Pump The Stereo <small><a href="/artists/raul-vidal">Raul Vidal</a></small></h4>
+        <div class="where">PARASOL RECORDS · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/6FVIQOsD08pAAHJVIo2p0U" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-16" data-out="1">
+        <h4>Round &amp; Round (Extended Mix) <small>RUMPUS, <a href="/artists/n2n">N2N</a></small></h4>
+        <div class="where">THRIVE MUSIC · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/58l6WcfGQUVqa84HdrAodB" target="_blank" rel="noopener">listen →</a>
+      </li>
+    </ul>
+    <details class="ur-more"><summary>23 more on friday 16 october</summary>
+    <ul class="ur-list">
+      <li class="ev" data-iso="2026-10-16" data-out="1">
+        <h4>Still Fest <small><a href="/artists/sedat">Sedat</a></small></h4>
+        <div class="where">Headonism Noir · <span class="ur-k">single</span> · <span class="ur-c">2 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/track/2b7AATD1N4ShnAFMJOAtVR" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-16" data-out="1">
+        <h4>Higher <small><a href="/artists/steve-lawler">Steve Lawler</a></small></h4>
+        <div class="where">Places &amp; Spaces · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/2V0Shtecb62rcUd2Urs5dC" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-16" data-out="1">
+        <h4>Thang Up! <small><a href="/artists/the-botanist">The Botanist</a></small></h4>
+        <div class="where">Collecting Dots · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/3lQeVbLf2bKCKEzvXfDcIl" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-16" data-out="1">
+        <h4>Downshift EP <small>Simon Kidzoo</small></h4>
+        <div class="where">Metamorfosi Records · <span class="ur-k big">ep</span> · <span class="ur-c">3 cuts</span></div>
+        <a class="go" href="https://www.beatport.com/release/downshift-ep/7421628" target="_blank" rel="noopener">on beatport →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-16" data-out="1">
+        <h4>Woop Woop EP <small>Space Motion</small></h4>
+        <div class="where">Diynamic · <span class="ur-k big">ep</span> · <span class="ur-c">3 cuts</span></div>
+        <a class="go" href="https://www.beatport.com/release/woop-woop-ep/7568703" target="_blank" rel="noopener">on beatport →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-16" data-out="1">
+        <h4>In A Dream (Kevin McKay Extended Remix) <small>Mallin</small></h4>
+        <div class="where">Glasgow Underground · <span class="ur-k">remix</span></div>
+        <a class="go" href="https://open.spotify.com/track/612ehssKDkty7a22FQMxQK" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-16" data-out="1">
+        <h4>Beso <small>Ares Carter</small></h4>
+        <div class="where">tszr · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/0PqAzlMrQmIW5GqiKFBfoY" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-16" data-out="1">
+        <h4>Stay Dangerous <small>AVA LI</small></h4>
+        <div class="where">Headonism · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/6mWbgFUIyHt0wzjoj43STA" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-16" data-out="1">
+        <h4>Baila <small>Blackmaill</small></h4>
+        <div class="where">ULTIMA · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/1XTpA5bAnhX7PEirW9Aaz5" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-16" data-out="1">
+        <h4>R U Ready <small>Capitan Anderson</small></h4>
+        <div class="where">TWO NAME · <span class="ur-k">single</span> · <span class="ur-c">2 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/track/3J10U2PqnL7wTfA8kWiKFX" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-16" data-out="1">
+        <h4>Pluto <small>Cees</small></h4>
+        <div class="where">ICONYC · <span class="ur-k">single</span> · <span class="ur-c">2 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/track/5A8Hx4Ly6fILjtmD6VUOKr" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-16" data-out="1">
+        <h4>Tena Macas (Extended Mix) <small>DiMO (BG)</small></h4>
+        <div class="where">Make The Girls Dance Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/tena-macas-extended-mix/7454110" target="_blank" rel="noopener">on beatport →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-16" data-out="1">
+        <h4>Brrr <small>GROSSOMODDO</small></h4>
+        <div class="where">North Drum · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/brrr/7501418" target="_blank" rel="noopener">on beatport →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-16" data-out="1">
+        <h4>I Want It All <small>Jom&amp;Terry</small></h4>
+        <div class="where">TWO NAME · <span class="ur-k">single</span> · <span class="ur-c">2 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/track/1h67wEtGjxcHzkMVS6yjlK" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-16" data-out="1">
+        <h4>Staring At The Sun <small>Laurel, FISHER (OZ)</small></h4>
+        <div class="where">Catch &amp; Release · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/staring-at-the-sun/7570378" target="_blank" rel="noopener">on beatport →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-16" data-out="1">
+        <h4>313 <small>Matthew Dear, RUZE</small></h4>
+        <div class="where">tszr · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/08nAH7ZAxpc0qFAresvFrr" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-16" data-out="1">
+        <h4>Get' Them <small>MERCHII</small></h4>
+        <div class="where">Treep Records · <span class="ur-k">single</span> · <span class="ur-c">2 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/track/7zc7syGMgHu2s1ATGnFFx0" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-16" data-out="1">
+        <h4>Faithful <small>No One Knows, Sarria, MAXI MERAKI</small></h4>
+        <div class="where">Radiate Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/3D52NJnWDmkRWJBiXMwAA3" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-16" data-out="1">
+        <h4>Crumb House <small>Nopopstar</small></h4>
+        <div class="where">TWO NAME · <span class="ur-k">single</span> · <span class="ur-c">2 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/track/7lpVeGzXndzSRLu6CmGeSL" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-16" data-out="1">
+        <h4>Down Now I'm Up <small>Shaded</small></h4>
+        <div class="where">South Of Saturn · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/1ztcLMwNJ77qPvStFtMs39" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-16" data-out="1">
+        <h4>Pressure Meditation <small>Take Note</small></h4>
+        <div class="where">Hood Politics Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/6jCvAK2iMWh27xZJ3pkUs2" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-16" data-out="1">
+        <h4>Body <small>The Bloody Beetroots, Nala</small></h4>
+        <div class="where">Mi Domina · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/4AaIxGkrWS5rQeDoE9k1Hx" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-16" data-out="1">
+        <h4>Technophobic <small>Westend, Modapit</small></h4>
+        <div class="where">Trace Amounts · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/3pIO1TRLTvHfYsGcjr1ZNp" target="_blank" rel="noopener">listen →</a>
+      </li>
+    </ul>
+    </details>
   </div>
-  <div class="ev">
-    <div class="date">out now</div>
-    <h3>5432 (Extended Mix) <small>Sasha GiGi</small></h3>
-    <div class="where">Club Sweat · single</div>
-    <a class="go" href="https://open.spotify.com/track/3LLUfZMrbA7sTxGaZXUpVE" target="_blank" rel="noopener">listen →</a>
+  <div class="ur-day" data-iso="2026-10-15">
+    <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">thu</span><b>15</b><span class="ur-mo">oct</span></div><h3 class="ur-dt"><span class="ur-rel">thursday 15 october</span><span class="ur-dd"></span></h3><span class="ur-n">2 releases</span></div>
+    <ul class="ur-list">
+      <li class="ev" data-iso="2026-10-15" data-out="1">
+        <h4>About You <small>Blanco K, <a href="/artists/funkatron">Funkatron</a></small></h4>
+        <div class="where">Disco K Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/679GlqzrBvAOpsfMecjfcr" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-15" data-out="1">
+        <h4>Hold That Gal <small><a href="/artists/redux-saints">Redux Saints</a></small></h4>
+        <div class="where">Deep Tech Los Angeles Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/0lGADfBZq4YmHqoAqq1FRl" target="_blank" rel="noopener">listen →</a>
+      </li>
+    </ul>
   </div>
-  <div class="ev">
-    <div class="date">out now</div>
-    <h3>I Brought The Jungle (Extended Mix) <small>The Deepshakerz, Xander Pratt, Juany Bravo</small></h3>
-    <div class="where">Make The Girls Dance Records · single</div>
-    <a class="go" href="https://open.spotify.com/track/1xfqluw4FwEVrSn34BqPKR" target="_blank" rel="noopener">listen →</a>
+  <div class="ur-day" data-iso="2026-10-13">
+    <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">tue</span><b>13</b><span class="ur-mo">oct</span></div><h3 class="ur-dt"><span class="ur-rel">tuesday 13 october</span><span class="ur-dd"></span></h3><span class="ur-n">4 releases</span></div>
+    <ul class="ur-list">
+      <li class="ev" data-iso="2026-10-13" data-out="1">
+        <h4>Lost in the View <small><a href="/artists/elderbrook">Elderbrook</a></small></h4>
+        <div class="where">Counter Records · <span class="ur-k big">ep</span></div>
+        <a class="go" href="https://open.spotify.com/album/1vpGoAyG0cM09957pdjc02" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-13" data-out="1">
+        <h4>Automatic / Time To Connect <small>Ben Van Kuringen</small></h4>
+        <div class="where">IN / ROTATION (Insomniac Records) · <span class="ur-k">single</span> · <span class="ur-c">2 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/album/7aeDtyQ6spcZ1ElGn1XTZk" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-13" data-out="1">
+        <h4>Automatic <small>Ben Van Kuringen</small></h4>
+        <div class="where">IN / ROTATION (Insomniac Records) · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/0kp59i1R8prdUnqvpxxQEz" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-13" data-out="1">
+        <h4>Oldskool <small>Jeno</small></h4>
+        <div class="where">IN / ROTATION (Insomniac Records) · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/3jqkSYjOCDlNz4XEhYChOy" target="_blank" rel="noopener">listen →</a>
+      </li>
+    </ul>
   </div>
-  <div class="ev">
-    <div class="date">out now</div>
-    <h3>Afro Revenge (Extended Mix) <small>Tom Enzy</small></h3>
-    <div class="where">Make The Girls Dance Records · single</div>
-    <a class="go" href="https://open.spotify.com/track/6hB47IIUoOFLAyqJSlSlCn" target="_blank" rel="noopener">listen →</a>
+  <div class="ur-day" data-iso="2026-10-12">
+    <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">mon</span><b>12</b><span class="ur-mo">oct</span></div><h3 class="ur-dt"><span class="ur-rel">monday 12 october</span><span class="ur-dd"></span></h3><span class="ur-n">1 release</span></div>
+    <ul class="ur-list">
+      <li class="ev" data-iso="2026-10-12" data-out="1">
+        <h4>Toolroom Radio EP863: ESSEL <small><a href="/artists/essel">ESSEL</a></small></h4>
+        <div class="where">Toolroom · <span class="ur-k big">album</span></div>
+        <a class="go" href="https://open.spotify.com/album/4LQstkYZGExskKka0iLz0J" target="_blank" rel="noopener">listen →</a>
+      </li>
+    </ul>
   </div>
-  <div class="ev">
-    <div class="date">out now</div>
-    <h3>This Feeling <small>A-Trak, JØRD, Brothers Macklovitch, Crackazat</small></h3>
-    <div class="where">Fool's Gold Records · ep · 4 cuts</div>
-    <a class="go" href="https://open.spotify.com/track/7qisTY4SHxIj38XRkY8BH7" target="_blank" rel="noopener">listen →</a>
+  <div class="ur-day" data-iso="2026-10-11">
+    <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">sun</span><b>11</b><span class="ur-mo">oct</span></div><h3 class="ur-dt"><span class="ur-rel">sunday 11 october</span><span class="ur-dd"></span></h3><span class="ur-n">1 release</span></div>
+    <ul class="ur-list">
+      <li class="ev" data-iso="2026-10-11" data-out="1">
+        <h4>Musa <small>Gil Ron Shama, <a href="/artists/laroz">Laroz</a></small></h4>
+        <div class="where">NaNa Disc · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/1M2C7Aj986KDC9ryHPuChP" target="_blank" rel="noopener">listen →</a>
+      </li>
+    </ul>
   </div>
-  <div class="ev">
-    <div class="date">out now</div>
-    <h3>The Rain <small>Catarsis (MX), Nico Aguilar, ddanroue</small></h3>
-    <div class="where">Gratitude Records · single</div>
-    <a class="go" href="https://open.spotify.com/track/1DEyTdz3ZQ59V101XD021p" target="_blank" rel="noopener">listen →</a>
+  <div class="ur-day" data-iso="2026-10-09">
+    <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">fri</span><b>9</b><span class="ur-mo">oct</span></div><h3 class="ur-dt"><span class="ur-rel">friday 9 october</span><span class="ur-dd"></span></h3><span class="ur-n">90 releases</span></div>
+    <ul class="ur-list">
+      <li class="ev hot" data-iso="2026-10-09" data-out="1">
+        <h4>Looking For You (Extended Mix) <span class="canon">🔴</span> <small><a href="/artists/mita-gami">Mita Gami</a></small></h4>
+        <div class="where">Maccabi House · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/7njAlusJWPMvC6RTSWMlYs" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Woven Together <small><a href="/artists/flamingo-pier">Flamingo Pier</a></small></h4>
+        <div class="where">Flamingo Pier · <span class="ur-k big">album</span></div>
+        <a class="go" href="https://open.spotify.com/album/625vJfl9vVeAsp7gqXEJez" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Certified Lover EP <small><a href="/artists/aitor-astiz">Aitor Astiz</a></small></h4>
+        <div class="where">Moan · <span class="ur-k big">ep</span></div>
+        <a class="go" href="https://open.spotify.com/album/0nrWeP47OfIBqepuiwluE3" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>EP <small><a href="/artists/armand-van-helden">Armand Van Helden</a></small></h4>
+        <div class="where">Strictly Rhythm Records · <span class="ur-k big">ep</span></div>
+        <a class="go" href="https://open.spotify.com/album/6j1gTvozi7We8tXtKqS1f1" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>BND Projects Vol 6 <small>Babs Presents, <a href="/artists/dennis-quin">Dennis Quin</a>, Lenny Fontana, Mike Delgado</small></h4>
+        <div class="where">Body'N Deep · <span class="ur-k big">ep</span></div>
+        <a class="go" href="https://open.spotify.com/album/6kbYRL5XmhF2cdkXS5QvmL" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Deep Breath <small>Jamek Ortega, <a href="/artists/juno-de">JUNO (DE)</a></small></h4>
+        <div class="where">Crosstown Rebels · <span class="ur-k big">ep</span> · <span class="ur-c">2 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/track/3c0Y6HZbXhUXm0FZZ6goJQ" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Conga Dream <small><a href="/artists/roman-flugel">Roman Flügel</a>, Zillas on Acid</small></h4>
+        <div class="where">Sister Midnight · <span class="ur-k big">ep</span></div>
+        <a class="go" href="https://open.spotify.com/album/3o80LQDMsfep5TAfXcpq6L" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>In My Drama <small>Twolate</small></h4>
+        <div class="where">Whippin · <span class="ur-k big">ep</span> · <span class="ur-c">3 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/track/6qDpkRiyA4udO55bQ0nP3x" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>What About Me <small><a href="/artists/babert">Babert</a></small></h4>
+        <div class="where">Disco Revenge · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/5ppOyoNmpw7h1G7rRO5Zmp" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Flame <small><a href="/artists/club-de-combat">Clüb De Combat</a></small></h4>
+        <div class="where">FIGHTCLUB · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/3yufNOpToYmNr26FrXswJb" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>No Rush <small><a href="/artists/deeper-purpose">Deeper Purpose</a>, Ribguga</small></h4>
+        <div class="where">Myth of NYX · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/5KoOTiWTuiUDZ4GNlB3uXU" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Got To Do <small><a href="/artists/disco-lines">Disco Lines</a></small></h4>
+        <div class="where">Queens Road / Good Good / 10K · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/20TS1WaOBsMkzH0zdOeevB" target="_blank" rel="noopener">listen →</a>
+      </li>
+    </ul>
+    <details class="ur-more"><summary>78 more on friday 9 october</summary>
+    <ul class="ur-list">
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>WHERE DO WE BEGIN <small><a href="/artists/dont-blink">DONT BLINK</a></small></h4>
+        <div class="where">STEREOHYPE · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/1GSr2RJ2YhM09zHs4Egc0N" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Give It To Me Baby <small><a href="/artists/eats-everything">Eats Everything</a>, Love Revolution, History Of Rave</small></h4>
+        <div class="where">Armada Music · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/63GALsbl3eYJSIMjtw7qFt" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Kinda Like That <small><a href="/artists/emily-nash">Emily Nash</a></small></h4>
+        <div class="where">HOUSE RULES RECORDS · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/18gbqRJp8J7EPO0wdfiNLB" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Night Mode <small><a href="/artists/firza">FIRZA</a></small></h4>
+        <div class="where">LTF Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/1l5W0UOQc208kUawKibHrj" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Red Button (Extended Mix) <small>Flowdan, <a href="/artists/genesi">GENESI (ITA)</a>, Djammin</small></h4>
+        <div class="where">Disorder · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/red-button-extended-mix/7570097" target="_blank" rel="noopener">on beatport →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Red Button <small><a href="/artists/genesi">GENESI</a>, Djammin, Flowdan</small></h4>
+        <div class="where">Disorder Artist &amp; Label Services · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/4Z4AfZDZaKxU0Wl0sFjNaD" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Tonight <small><a href="/artists/gold-lemonade">Gold Lemonade</a></small></h4>
+        <div class="where">Critically Amused · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/3xpS5PdaKsoNMQ48Bs1h2t" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Silent Sparks <small>Hakan Akkus, <a href="/artists/sedat">Sedat</a></small></h4>
+        <div class="where">SSL Music · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/7ml3zZvcvI57nd4dIdd0r2" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Never Stop <small><a href="/artists/joey-london-style">Joey London Style</a>, Pheelo</small></h4>
+        <div class="where">Spinnin' Deep · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/6cvhugvu7B0tBi8hZKmbcb" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Desire <small><a href="/artists/jon-k">Jon.K</a>, Gran Dios</small></h4>
+        <div class="where">Somatique Music · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/1O8FUb89ftP3hdGXUYLY9B" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Club 100 <small><a href="/artists/ken-work">Ken@Work</a></small></h4>
+        <div class="where">Over The Top · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/69rKK4UXozMvvHkvdglS8q" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Gimme Love <small><a href="/artists/konstantin-kobra">Konstantin Kobra</a></small></h4>
+        <div class="where">Go Deeva Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/3Gl7Hp7s8R9MvdFGl2zDJU" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>10% <small>Kyle Walker, Nate Katz, <a href="/artists/benni-ola">Benni Ola</a></small></h4>
+        <div class="where">Factory 93 Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/7zff9PZSklUgVlzlKDUcSW" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Future Fear (Killen. Remix) <small><a href="/artists/lykke-li">Lykke Li</a>, Killen.</small></h4>
+        <div class="where">Futures Music Group · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/1Q6YhtlLEAsJ111kfpKsG4" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Operator <small>Møsard</small></h4>
+        <div class="where">Ursul · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/123QsZjuaseAVRXkhUBWkU" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Spell It Out <small><a href="/artists/mati-astroza">Mati Astroza</a></small></h4>
+        <div class="where">Tape Noise · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/08L5J7UftUcLmIC8v2Ll9N" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Mirror <small><a href="/artists/messous">Méssous</a></small></h4>
+        <div class="where">Messy Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/3QTOck3XlXHlOMPmwUxd4i" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Shake <small><a href="/artists/michael-gray">Michael Gray</a>, Tania Foster</small></h4>
+        <div class="where">Sultra Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/6bvhISt8sMsMd5odHlO2ua" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Red Flags (feat. Baby Volcano) <small><a href="/artists/nosi">Nosi</a></small></h4>
+        <div class="where">Beast Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/3Uz1dy3Qro0QExP28yas0J" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Back N Forth <small>Öwnboss, <a href="/artists/esse">ESSE</a></small></h4>
+        <div class="where">Hexagon · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/4szzAQHOUhzZzRoSWI5vuD" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Jus Hit Me <small><a href="/artists/risk-assessment">Risk Assessment</a></small></h4>
+        <div class="where">Stereo:type · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/3A1lWi7YxSo2oHB29jh08J" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Static In My Brain <small><a href="/artists/seolo">Seolo</a>, Sz_Becca</small></h4>
+        <div class="where">H! Music · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/6DmheuwBFlN8WT3rXWQAln" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Faceless <small><a href="/artists/spacewalk">SPACEWALK</a></small></h4>
+        <div class="where">MONTA · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/4hIfdQnfRVnbAyY1r8saRn" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Fruto do Mar <small><a href="/artists/sterium">Sterium</a></small></h4>
+        <div class="where">Bongo · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/5rY8vwvLH2AJNAe4Fetl5a" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>ECSTASY SURROUNDS ME (Remixes) <small><a href="/artists/tiga">Tiga</a></small></h4>
+        <div class="where">Secret City Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/4OacwFQiqFB3a7ol1l5MOz" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>In My Drama <small><a href="/artists/twolate-ita">TWOLATE (ITA)</a></small></h4>
+        <div class="where">Whippin · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/0CCMYCqhmmaTwiTamLrOGm" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>We Could Be Lost <small><a href="/artists/whomadewho">WhoMadeWho</a></small></h4>
+        <div class="where">Maison Arts · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/6BhIPqjTvWExNpJGwqTSsL" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Smiling <small><a href="/artists/zaro">ZARO</a>, Kashovski</small></h4>
+        <div class="where">Calamar Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/5wfKbyJNXx9RAzqPUdhqe3" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Against The World <small><a href="/artists/zuezeu">zuezeu</a>, Jaki Nelson</small></h4>
+        <div class="where">More Life · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/4AlyjbgbV2Rf6X1uoDAQvu" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Moonlight EP <small>Eric Luttrell</small></h4>
+        <div class="where">Anjunadeep · <span class="ur-k big">album</span></div>
+        <a class="go" href="https://open.spotify.com/album/5YvygnqRYhfF8KkbIOCc00" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>No Effort <small>AIRBENDER (IL)</small></h4>
+        <div class="where">Top Board · <span class="ur-k big">ep</span> · <span class="ur-c">3 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/track/1JtXy5PtkS0bGXpDDgsf3g" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Movement EP <small>Chris Avantgarde, Benni Ola, Linska, DEPARTAMENTO, Franksy</small></h4>
+        <div class="where">Diynamic Music · <span class="ur-k big">ep</span> · <span class="ur-c">2 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/album/1TELAVQkMosWbsgwWJTiVf" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>You Could Be the One <small>Gerry Gonza</small></h4>
+        <div class="where">Club Sweat · <span class="ur-k big">ep</span> · <span class="ur-c">3 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/track/6cM1fZEjJo8UsgpqKDo52P" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Hypnotherapy <small>Iorie, Franca</small></h4>
+        <div class="where">Kiosk I.D. · <span class="ur-k big">ep</span> · <span class="ur-c">4 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/track/0Y4cLg66LFPZt9O2Ig5Ld8" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Evry Nite <small>JAYØH (US)</small></h4>
+        <div class="where">TWO NAME · <span class="ur-k big">ep</span> · <span class="ur-c">2 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/track/0OIJyZh4QF5kG406CeGQqN" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Sad Songs / Same as It Ever Was <small>Left Ear Right</small></h4>
+        <div class="where">TWO NAME · <span class="ur-k big">ep</span> · <span class="ur-c">4 cuts</span></div>
+        <a class="go" href="https://www.beatport.com/release/sad-songs-same-as-it-ever-was/7309662" target="_blank" rel="noopener">on beatport →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>That's Right / I Don't Care <small>Marco Faraone</small></h4>
+        <div class="where">Metamorfosi Records · <span class="ur-k big">ep</span> · <span class="ur-c">2 cuts</span></div>
+        <a class="go" href="https://www.beatport.com/release/thats-right-i-dont-care/7448747" target="_blank" rel="noopener">on beatport →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Boost <small>Nobe, Alexandr Craft</small></h4>
+        <div class="where">Headonism · <span class="ur-k big">ep</span> · <span class="ur-c">2 cuts</span></div>
+        <a class="go" href="https://www.beatport.com/release/boost/7545898" target="_blank" rel="noopener">on beatport →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>True Faith <small>Psycho Radio, Vito Raisi, Darren Barley</small></h4>
+        <div class="where">TWO NAME · <span class="ur-k big">ep</span> · <span class="ur-c">2 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/track/4IX4XcvsBfqVi7esWDblbM" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>FLOORWORK VOL. 1 <small>various</small></h4>
+        <div class="where">1001 Recordings · <span class="ur-k big">various artists</span> · <span class="ur-c">7 cuts</span></div>
+        <a class="go" href="https://www.beatport.com/release/floorwork-vol-1/7542486" target="_blank" rel="noopener">on beatport →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Disco Moods <small>various</small></h4>
+        <div class="where">Mood Child · <span class="ur-k big">various artists</span> · <span class="ur-c">6 cuts</span></div>
+        <a class="go" href="https://www.beatport.com/release/disco-moods/7549591" target="_blank" rel="noopener">on beatport →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Caliente (Ramon Bedoya &amp; Pablo Lopera Remix) <small>Arema Arega, PAUZA</small></h4>
+        <div class="where">Get Physical Music · <span class="ur-k">remix</span> · <span class="ur-c">2 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/track/14KIpLroJ96bldz26FTsew" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>4Get The Girl (GUDFELLA &amp; Jackie Hollander Remix) <small>Route 94</small></h4>
+        <div class="where">Defected · <span class="ur-k">remix</span></div>
+        <a class="go" href="https://open.spotify.com/track/5vv3aCayCpAU6tfOZRRJMx" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Back On Cigarettes <small>ABEL</small></h4>
+        <div class="where">Thrive Music · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/3HJwaNuyPAirYVZpAOOxah" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>No Effort <small>AIRBENDER</small></h4>
+        <div class="where">Top Board · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/6LTEULa0Q6bNehiywQ350p" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Cold <small>Âme, Jeannel</small></h4>
+        <div class="where">Innervisions · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/4Fuz9hNtZGdHExeggwFeha" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Stay Low <small>Amour Propre</small></h4>
+        <div class="where">1001 Recordings · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/4NcvY3Di6xsVUzyibDDiGE" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>The Morning After <small>Andrea Oliva</small></h4>
+        <div class="where">When Stars Align · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/6bSuMy3Cm3irNAa0WF1PwA" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Overstep <small>Bryson Hill</small></h4>
+        <div class="where">Three Six Zero Recordings · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/0Bagv53AXE4Z8pIX9ix1xO" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Mode Vision <small>CH@NC3, JEZZ</small></h4>
+        <div class="where">Insomniac Records / Disorder · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/7HoK6TRhSmf897K3GtStys" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Frequency <small>Dimension, Eli Brown</small></h4>
+        <div class="where">Insomniac Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/2X9niMzzXId2fNe3wu6l2e" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>You Know My Name <small>ERASR</small></h4>
+        <div class="where">Repopulate Mars · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/0202ThB0Z2xvMBni66qt23" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Caravan <small>ESH</small></h4>
+        <div class="where">Glasgow Underground · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/1RaGTwngpWN9UxzwU0zgsv" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Need <small>Ferreck Dawn</small></h4>
+        <div class="where">Toolroom · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/4Xrhh1KIHnF75euIaB5R2G" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>You Could Be the One <small>Gerry Gonza, Moonbootica</small></h4>
+        <div class="where">Club Sweat · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/0bNjuHKpSZ2baHS0K2Kn2Y" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Be With Me <small>Jordan Peak</small></h4>
+        <div class="where">PIV · <span class="ur-k">single</span> · <span class="ur-c">2 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/album/3Bg6vIcIN4l36wx5OGvR4A" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Dissing (feat. JR.black) <small>JR.keazy</small></h4>
+        <div class="where">GDB Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/4Pl7xfZxQXB3fT7Nco76an" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Not Your Baby <small>Juicy Romance</small></h4>
+        <div class="where">Higher Ground · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/3zLsWKhV4XPLNqqQms9zsd" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Obsidian <small>Kevin de Vries, Juan Elvadin</small></h4>
+        <div class="where">Drumcode · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/275PPpRQ8N7EqbAqk45Tmy" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Human After All <small>Layla Benitez</small></h4>
+        <div class="where">1001 Recordings · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/1Lgd5w6d7W5GCjvefzsxWl" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>WITH ME <small>Lille, K.ONE</small></h4>
+        <div class="where">IN / ROTATION (Insomniac Records) · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/3eg2QBxDikEW2uRqtlpSBm" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Movement EP <small>Linska</small></h4>
+        <div class="where">Diynamic · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.instagram.com/p/DeHNt0PIc2Y/" target="_blank" rel="noopener">the announcement →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Unf*ck Your Mind <small>Marten Hørger</small></h4>
+        <div class="where">Catch &amp; Release · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/61k7kUIyRX5tEBuMFuVygX" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Unf*ck Your Mind <small>Marten Horger</small></h4>
+        <div class="where">Catch &amp; Release · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/unfck-your-mind/7550569" target="_blank" rel="noopener">on beatport →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Believe It <small>Martin Trevy</small></h4>
+        <div class="where">1001 Recordings · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/1DQxUqUuMtAC1dbQIbkTPQ" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Future <small>MODBIT, Alex Merkush</small></h4>
+        <div class="where">Bunny Tiger · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/0UHjkaW53f5C2oycwQYmyW" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Keep You Warm <small>Mojjo, Bhaskar</small></h4>
+        <div class="where">Glasgow Underground · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/4VbujqPAbep2ZKmhPRdW7B" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Pon De River (Extended Mix) <small>Mydoz</small></h4>
+        <div class="where">Make The Girls Dance Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/3GyTzWEue4AwB9pa51O0vi" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Heaven <small>Prince Fatty, The Vision, Andreya Triana</small></h4>
+        <div class="where">Defected Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/5HqanSPzMAG1WJfgcla971" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Mind Games <small>Rebuke</small></h4>
+        <div class="where">tszr · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/2TfiDekCXdz2MeXo4hsDOn" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Back On Cigarettes (Extended Mix) <small>Sabrina Morreno, ABEL (UK)</small></h4>
+        <div class="where">THRIVE MUSIC · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/12hE795Q5HUfR4KFaNPeai" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Paradise <small>Sam Divine</small></h4>
+        <div class="where">Defected Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/7DNuAigObZNoSIs1IUGjF0" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>I Don't Care <small>SOLIM</small></h4>
+        <div class="where">Exx Underground · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/4ZvEnKEaVJbApeKNY7nSir" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>We Have to Love <small>The North, BoriQue</small></h4>
+        <div class="where">ULTIMA · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/3m3xT6NF4FPiMyJp8DQNlC" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>No Matter What <small>Tim Grand</small></h4>
+        <div class="where">AETERNA Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/1kxm0a425j4XfpjoREszrD" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Stay Here <small>Tim Hanmann</small></h4>
+        <div class="where">Headonism Noir · <span class="ur-k">single</span> · <span class="ur-c">2 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/album/5qyhv6RE4mGYy7cHLhaLew" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Lunes Azul <small>Underground System, A Joyful Noise</small></h4>
+        <div class="where">Razor-N-Tape · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/lunes-azul/7502162" target="_blank" rel="noopener">on beatport →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-09" data-out="1">
+        <h4>Burn <small>VXSION</small></h4>
+        <div class="where">Magnifik Music · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/1kYoPatTvba7wf81ffgbTJ" target="_blank" rel="noopener">listen →</a>
+      </li>
+    </ul>
+    </details>
   </div>
-  <div class="ev">
-    <div class="date">out now</div>
-    <h3>The Pressure (Extended Mix) <small>GUDFELLA, Louis III, Airrica</small></h3>
-    <div class="where">THRIVE MUSIC · single</div>
-    <a class="go" href="https://open.spotify.com/track/4tkSvmWpeoFHJVWLKKKxsu" target="_blank" rel="noopener">listen →</a>
+  <div class="ur-day" data-iso="2026-10-08">
+    <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">thu</span><b>8</b><span class="ur-mo">oct</span></div><h3 class="ur-dt"><span class="ur-rel">thursday 8 october</span><span class="ur-dd"></span></h3><span class="ur-n">4 releases</span></div>
+    <ul class="ur-list">
+      <li class="ev" data-iso="2026-10-08" data-out="1">
+        <h4>MOST WANTED <small><a href="/artists/angelo-ferreri">Angelo Ferreri</a>, Pietro Over Jack, Foo Funkers</small></h4>
+        <div class="where">RAP JACK MUSIC · <span class="ur-k big">album</span> · <span class="ur-c">10 cuts</span></div>
+        <a class="go" href="https://www.beatport.com/release/most-wanted/7496566" target="_blank" rel="noopener">on beatport →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-08" data-out="1">
+        <h4>Across the Floor <small><a href="/artists/soofnic">Soofnic</a>, Q.U.A.K.E, L'CORE</small></h4>
+        <div class="where">Late Exit · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/4KWc4z1uWYiEpuD4KmVLMd" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-08" data-out="1">
+        <h4>Mysterium Aeternitatis <small>Aeterna</small></h4>
+        <div class="where">Aeterna Records · <span class="ur-k big">album</span></div>
+        <a class="go" href="https://open.spotify.com/album/0973eufaGJyZ1mMsrxw6rt" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-08" data-out="1">
+        <h4>Sueños Acústicos, Rarezas y otras Realidades Paralelas <small>Aves Migratorias</small></h4>
+        <div class="where">Abracadabra Music · <span class="ur-k big">album</span></div>
+        <a class="go" href="https://open.spotify.com/album/4npqMRr81gwhQ7KKfVeXEC" target="_blank" rel="noopener">listen →</a>
+      </li>
+    </ul>
   </div>
-  <div class="ev">
-    <div class="date">out now</div>
-    <h3>Runnin' <small>Dennis Quin</small></h3>
-    <div class="where">tszr · single</div>
-    <a class="go" href="https://open.spotify.com/track/0YBhS04scosEHosyns63qs" target="_blank" rel="noopener">listen →</a>
+  <div class="ur-day" data-iso="2026-10-07">
+    <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">wed</span><b>7</b><span class="ur-mo">oct</span></div><h3 class="ur-dt"><span class="ur-rel">wednesday 7 october</span><span class="ur-dd"></span></h3><span class="ur-n">2 releases</span></div>
+    <ul class="ur-list">
+      <li class="ev" data-iso="2026-10-07" data-out="1">
+        <h4>Say My Name <small>Tomas Briski</small></h4>
+        <div class="where">Marginalia · <span class="ur-k">remix</span> · <span class="ur-c">5 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/track/2xkOhF41aTj9RFrIc7KS8d" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-07" data-out="1">
+        <h4>Rhyme Design <small>Watermat, James Mac</small></h4>
+        <div class="where">Club Sweat · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/3SvDuzaGxpzsaq892Ue6ag" target="_blank" rel="noopener">listen →</a>
+      </li>
+    </ul>
   </div>
-  <div class="ev">
-    <div class="date">out now</div>
-    <h3>Om Namah Shivaya <small>Javica</small></h3>
-    <div class="where">TWO NAME · ep · 3 cuts</div>
-    <a class="go" href="https://open.spotify.com/track/0CV3tDxdcy6iaCMOIItBx6" target="_blank" rel="noopener">listen →</a>
+  <div class="ur-day" data-iso="2026-10-06">
+    <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">tue</span><b>6</b><span class="ur-mo">oct</span></div><h3 class="ur-dt"><span class="ur-rel">tuesday 6 october</span><span class="ur-dd"></span></h3><span class="ur-n">4 releases</span></div>
+    <ul class="ur-list">
+      <li class="ev" data-iso="2026-10-06" data-out="1">
+        <h4>Are You Still You? <small><a href="/artists/cloonee">Cloonee</a></small></h4>
+        <div class="where">Good Music for Bad People · <span class="ur-k big">album</span> · <span class="ur-c">16 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/album/3SBdqRaqdqhTvvewlVoCQN" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-06" data-out="1">
+        <h4>All In My Head <small><a href="/artists/essel">ESSEL</a>, 3DAH!</small></h4>
+        <div class="where">3 Beat · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/6nAng2TThnzqzH2sISSvnQ" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-06" data-out="1">
+        <h4>All In My Head (Extended) <small><a href="/artists/essel">ESSEL</a>, 3DAH!</small></h4>
+        <div class="where">3 Beat · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/26dtRbMswtfAWANGJ0mSky" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-06" data-out="1">
+        <h4>El Poeta <small>Aves Migratorias</small></h4>
+        <div class="where">Abracadabra Music · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/54xfaKWw1LK1nHpGXP8DzT" target="_blank" rel="noopener">listen →</a>
+      </li>
+    </ul>
   </div>
-  <div class="ev">
-    <div class="date">out now</div>
-    <h3>Acid <small>Sulim, Dr.Luxe</small></h3>
-    <div class="where">TWO NAME · single · 2 cuts</div>
-    <a class="go" href="https://open.spotify.com/track/4G6E0egcZ1CYT4EPJfBZOo" target="_blank" rel="noopener">listen →</a>
+  <div class="ur-day" data-iso="2026-10-05">
+    <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">mon</span><b>5</b><span class="ur-mo">oct</span></div><h3 class="ur-dt"><span class="ur-rel">monday 5 october</span><span class="ur-dd"></span></h3><span class="ur-n">11 releases</span></div>
+    <ul class="ur-list">
+      <li class="ev hot" data-iso="2026-10-05" data-out="1">
+        <h4>Paradise <span class="canon">🔴</span> <small><a href="/artists/cloonee">Cloonee</a>, Chris Lake</small></h4>
+        <div class="where">Good Music for Bad People · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/2noGWf8EaYvz0QeRV9r9er" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-05" data-out="1">
+        <h4>True Love Never Dies <small><a href="/artists/cloonee">Cloonee</a>, Fallon</small></h4>
+        <div class="where">Good Music for Bad People · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/1N5doALvVbBahrF1P9x2RZ" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-05" data-out="1">
+        <h4>Back Of My Mind <small><a href="/artists/cloonee">Cloonee</a>, Galo</small></h4>
+        <div class="where">Good Music for Bad People · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/24Eezl80q5gOOKvdUKvec7" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-05" data-out="1">
+        <h4>Kill The Noise (Interlude) <small><a href="/artists/cloonee">Cloonee</a>, Harvey Whyte</small></h4>
+        <div class="where">Good Music for Bad People · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/6TMfSTyQby8SHQ7oOQXDac" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-05" data-out="1">
+        <h4>It's Time <small>Cloonee, <a href="/artists/joseph-capriati">Joseph Capriati</a></small></h4>
+        <div class="where">Good Music for Bad People · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/7LcgPKw1L4Ikfim1OpcBhu" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-05" data-out="1">
+        <h4>What Would I Do <small><a href="/artists/cloonee">Cloonee</a>, Ranger Trucco</small></h4>
+        <div class="where">Good Music for Bad People · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/3FKyqDC277334ASiZbTJpb" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-05" data-out="1">
+        <h4>Catch Me In Amsterdam <small><a href="/artists/cloonee">Cloonee</a>, Sirolf (NL)</small></h4>
+        <div class="where">Good Music for Bad People · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/64CxRDbmKHcuym2WqbU4iI" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-05" data-out="1">
+        <h4>3:30AM <small>Cloonee, <a href="/artists/sosa">SOSA</a></small></h4>
+        <div class="where">Good Music for Bad People · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/4nG9jtQqelNp5pceDWmuiK" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-05" data-out="1">
+        <h4>Nobody Likes The Records That You Play <small><a href="/artists/cloonee">Cloonee</a>, Tocadisco</small></h4>
+        <div class="where">Good Music for Bad People · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/3butB4mwYS0dpGAI5MqBAv" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-05" data-out="1">
+        <h4>Stop Me <small><a href="/artists/essel">ESSEL</a>, 3DAH!</small></h4>
+        <div class="where">3 Beat · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/6oiyC4FdChMmJAMYt5R6AJ" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-05" data-out="1">
+        <h4>Toolroom Radio EP862: Illyus Barrientos <small>Illyus Barrientos</small></h4>
+        <div class="where">Toolroom · <span class="ur-k big">album</span></div>
+        <a class="go" href="https://open.spotify.com/album/2oRuBqUo4aFHRxHnIfhOHh" target="_blank" rel="noopener">listen →</a>
+      </li>
+    </ul>
   </div>
-  <div class="ev">
-    <div class="date">out now</div>
-    <h3>Dame Duro <small>INSIDIA, Hi-Tech Dj's</small></h3>
-    <div class="where">ULTIMA · ep · 3 cuts</div>
-    <a class="go" href="https://open.spotify.com/track/4G2ybE6Ss2eYkRKmhHucLT" target="_blank" rel="noopener">listen →</a>
+  <div class="ur-day" data-iso="2026-10-02">
+    <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">fri</span><b>2</b><span class="ur-mo">oct</span></div><h3 class="ur-dt"><span class="ur-rel">friday 2 october</span><span class="ur-dd"></span></h3><span class="ur-n">65 releases</span></div>
+    <ul class="ur-list">
+      <li class="ev hot" data-iso="2026-10-02" data-out="1">
+        <h4>DANGER DANGER <span class="canon">🔴</span> <small>Dom Dolla, <a href="/artists/solomun">Solomun</a>, Skepta</small></h4>
+        <div class="where">Three Six Zero Recordings/Columbia Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/5frqtNLrJTwv3Yi1IOaloO" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Trips &amp; Waves <small><a href="/artists/the-anahit">The Anahit</a></small></h4>
+        <div class="where">Schubert Music Library · <span class="ur-k big">album</span></div>
+        <a class="go" href="https://open.spotify.com/album/0QErVRTdGZdTXJD37Jtw09" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Marido Dansa EP <small><a href="/artists/franky-rizardo">Franky Rizardo</a></small></h4>
+        <div class="where">LTF Records · <span class="ur-k big">ep</span></div>
+        <a class="go" href="https://open.spotify.com/album/02sORmDFuuqhc9JLzUJT6p" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Beat Boyz EP <small><a href="/artists/kidoo">Kidoo</a></small></h4>
+        <div class="where">Factory 93 Records · <span class="ur-k big">ep</span></div>
+        <a class="go" href="https://open.spotify.com/album/50azxHIPAStLVFTawcQC5J" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Blessed <small>SARRIA, <a href="/artists/no-one-knows">No One Knows</a></small></h4>
+        <div class="where">RED ROOM · <span class="ur-k big">ep</span></div>
+        <a class="go" href="https://open.spotify.com/album/6KBSueg6q8DYeT0SGZC99j" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Do You Remember the Club? <small><a href="/artists/babert">Babert</a></small></h4>
+        <div class="where">Disco Revenge · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/3iwpCN0zMFZyP346IItxiK" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Gangsta (Mandragora Remix) <small><a href="/artists/channel-tres">Channel Tres</a>, Mandragora</small></h4>
+        <div class="where">Alta Music Group · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/6umqY2T54aIV7oOnHtmmRy" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Twice As Nice <small>D.O.D, <a href="/artists/armand-van-helden">Armand Van Helden</a>, Sam Harper</small></h4>
+        <div class="where">Armada Music · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/4y0R1nqcF9uKO9zjKCFUAU" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>This Is How <small><a href="/artists/david-mackay">David Mackay</a>, Meloko</small></h4>
+        <div class="where">Three Six Zero Recordings · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/4MxMklhEbl1N3aN6kOrRhT" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Work With Me <small><a href="/artists/green-velvet">Green Velvet</a>, Detlef</small></h4>
+        <div class="where">Trick · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/6kg0BEzaA54IF254NH4Km8" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>The Goods EP <small>GS5, <a href="/artists/matt-egbert">Matt Egbert</a></small></h4>
+        <div class="where">Reprieve Records · <span class="ur-k">single</span> · <span class="ur-c">2 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/album/4dttjIHNpjxJP4nrze839I" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Imagine <small><a href="/artists/humans-musik">Humans Musik</a>, Talón</small></h4>
+        <div class="where">Unreleased Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/6IFN2BWD2hmNoi1KbBlV2G" target="_blank" rel="noopener">listen →</a>
+      </li>
+    </ul>
+    <details class="ur-more"><summary>53 more on friday 2 october</summary>
+    <ul class="ur-list">
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Savage Flow <small><a href="/artists/iglesias">Iglesias</a></small></h4>
+        <div class="where">Elrow Music · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/3q0fdWhFAEanOJWgfrPSzQ" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>High but Low <small><a href="/artists/insct">INSCT</a>, Johnny Chicago, Hartmut Kiss</small></h4>
+        <div class="where">INSCT · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/6MX0NvhINRKbZVdrA2uYuI" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Pump In <small><a href="/artists/jon-k">Jon.K</a>, Gran Dios</small></h4>
+        <div class="where">Somatique Music · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/28viL6CavlJZzZRtEt1nZN" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Souvenir <small><a href="/artists/josh-baker">Josh Baker</a>, rhys from the sticks</small></h4>
+        <div class="where">Baker's Dozen · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/6H5KAhqf2zsAE0y1mMLrgU" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Body <small><a href="/artists/jude-frank">Jude &amp; Frank</a></small></h4>
+        <div class="where">Nervous Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/0fQ8tjKRB7mJAvHJmWZ7VW" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Room Shake <small><a href="/artists/juntaro">JUNTARO</a>, HERZEN</small></h4>
+        <div class="where">TMRW Music · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/18hyukQy0se1TR1YAbvPp3" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Tryin' To Make It Real <small><a href="/artists/ken-work">Ken@Work</a></small></h4>
+        <div class="where">Pink Funk · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/3mQBCNaCNPuxUHVYzj51Vk" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Fool Proof <small><a href="/artists/lee-foss">Lee Foss</a>, Kosmo Kint</small></h4>
+        <div class="where">Three Six Zero Recordings · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/7kDqMUWxjViqAv5USZa8ig" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Get Down <small><a href="/artists/mahmut-orhan">Mahmut Orhan</a>, Francis Mercier</small></h4>
+        <div class="where">Ultra Records, LLC · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/69rkRq3gEQpP4N5DmKRHS4" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Too Bad <small><a href="/artists/marco-lys">Marco Lys</a>, The Melody Men</small></h4>
+        <div class="where">Altra Moda Music · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/1ur9Q1p7npQOA7dds6wMq9" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Real Badman <small><a href="/artists/mitch-oliver">Mitch Oliver</a></small></h4>
+        <div class="where">SLAPPED · <span class="ur-k">single</span> · <span class="ur-c">2 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/album/6EurrxRTQN65rfhtGQfXgk" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Real Badman (Bákayan Remix) <small>Mitch Oliver, <a href="/artists/bakayan">Bákayan</a></small></h4>
+        <div class="where">SLAPPED · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/6sdXBhgFkWDrC04j6Vjzgl" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Empty Room (Vocal Mix) <small><a href="/artists/needs-no-sleep">Needs No Sleep</a></small></h4>
+        <div class="where">Up All Night Recordings · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/53Xkfa8Wzj2WjtiwH4R5a1" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Let You Go <small><a href="/artists/orsay">Orsay</a></small></h4>
+        <div class="where">X Recordings · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/3lhQcYpk03OY2f5XOoF5R9" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Mi Casa <small><a href="/artists/patrick-topping">Patrick Topping</a></small></h4>
+        <div class="where">Diynamic Music · <span class="ur-k">single</span> · <span class="ur-c">4 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/album/2zSH8i7T0nR7jMvV17dnjO" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>On The Nature of Daylight <small><a href="/artists/pete-tong">Pete Tong</a>, Kölsch</small></h4>
+        <div class="where">Ministry of Sound Recordings · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/3pKgMneLiOBin4ygIyoKki" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Time To Move <small>Pinco, <a href="/artists/roiko-rh">Roiko (RH)</a></small></h4>
+        <div class="where">Glasgow Underground · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/15AD6vEGZNQRrpIBhdNoDY" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Painkillers (Plastic Robots Remix) <small><a href="/artists/plastic-robots">Plastic Robots</a>, Art Attack</small></h4>
+        <div class="where">Warbeats Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/6gIp64Q7bFZof3TjYxoH8S" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Test My Luck <small><a href="/artists/purple-disco-machine">Purple Disco Machine</a>, MEEK</small></h4>
+        <div class="where">Columbia Local · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/1NcMnjYjCpiiVKpLFvpFbc" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>I Found U <small><a href="/artists/qubiko">Qubiko</a>, TOMY (IT)</small></h4>
+        <div class="where">Umani Wax · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/6MjQErE2xaFmOQhsF7MjAr" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Dramma <small>R3HAB, <a href="/artists/artbat">ARTBAT</a></small></h4>
+        <div class="where">UPPERGROUND · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/0fqD0NWfRlK9GMa6CwxgSF" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Never Crash <small><a href="/artists/rafael-cerato">Rafael Cerato</a></small></h4>
+        <div class="where">Catch &amp; Release · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/4jBbHw1xY7l0F51Wv4Cmlc" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Gatitooo <small><a href="/artists/raul-vidal">Raul Vidal</a></small></h4>
+        <div class="where">Madorasindahouse Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/2bDMNjpsYJttj5kteosduk" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Bad Girl <small><a href="/artists/sielo">Sielo</a>, HERZEN</small></h4>
+        <div class="where">Uprise Music · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/7rhxqpGAdjCmHhBPZDyD4I" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>On My Own <small><a href="/artists/siggy-freud">Siggy Freud</a></small></h4>
+        <div class="where">Freudian · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/5WwLuJd5LfUi4xJs2xb7Vj" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Free <small><a href="/artists/solardo">Solardo</a>, Maur</small></h4>
+        <div class="where">Rendezvous Sound · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/51Zm9rqVaFJss3lBKkSbpF" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Release My Mind <small><a href="/artists/t-markakis">T.Markakis</a></small></h4>
+        <div class="where">Phoenix Soul · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/362NRrTd2bGNIxKuzrgtd6" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Walk Away <small><a href="/artists/tough-art">Tough Art</a></small></h4>
+        <div class="where">Repopulate Mars · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/7DsgVdORKmjRp2AKEkq2x1" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>LIKE ME <small><a href="/artists/vylow">Vylow</a></small></h4>
+        <div class="where">ERRORR · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/7ryaaW1D55dorWL8oUmCp6" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Hot Girl Walk <small>WELKER, <a href="/artists/no-static">NO STATIC</a></small></h4>
+        <div class="where">IN / ROTATION (Insomniac Records) · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/5GUlkDaeCQeSCr2JUcp9yp" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Lava Core / Blue <small><a href="/artists/yuvee">Yuvèe</a>, Oi</small></h4>
+        <div class="where">No Drama · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/38Ge90PoedWZiMnWBC7QFE" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Miracle <small><a href="/artists/yvvan-back">Yvvan Back</a></small></h4>
+        <div class="where">There Was Jack · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/7izQsdPrLDZBWBf5CRQ6tf" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Shelter 35 <small>Timmy Regisford</small></h4>
+        <div class="where">Nervous Records · <span class="ur-k big">album</span></div>
+        <a class="go" href="https://open.spotify.com/album/04ze5xj0lIuMqjLo2EQnYj" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>The Nervous Chill EP <small>Crackazat</small></h4>
+        <div class="where">Nervous Records · <span class="ur-k big">ep</span></div>
+        <a class="go" href="https://open.spotify.com/album/4L6YMfbdBfa5vly6pBFzAn" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Astro Danza EP <small>Dennis Liber, Yasmin Kademian, Cham, Anoraak</small></h4>
+        <div class="where">Razor-N-Tape · <span class="ur-k big">ep</span> · <span class="ur-c">5 cuts</span></div>
+        <a class="go" href="https://www.beatport.com/release/astro-danza-ep/7447585" target="_blank" rel="noopener">on beatport →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Groove Rosarino EP <small>Nacho Scoppa</small></h4>
+        <div class="where">Hellbent Records · <span class="ur-k big">ep</span></div>
+        <a class="go" href="https://open.spotify.com/album/74xOcP8fjAnR6j0FN6VCqA" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Neverending Summer EP <small>Ryan Davis</small></h4>
+        <div class="where">Anjunadeep · <span class="ur-k big">ep</span></div>
+        <a class="go" href="https://open.spotify.com/album/639ELUYZrXH2DVK4VuHGyA" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Dot By Dot <small>Various Artists</small></h4>
+        <div class="where">Collecting Dots · <span class="ur-k big">ep</span></div>
+        <a class="go" href="https://open.spotify.com/album/2U9FTSkb0IpWeVZLZqnMzs" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Voltage EP <small>Who Else, Zagitar</small></h4>
+        <div class="where">Nu Moda · <span class="ur-k big">ep</span> · <span class="ur-c">3 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/album/4YYbIuH07Ojzsmf7pscsl9" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>I Disappear Again <small>AJIM, Moydart</small></h4>
+        <div class="where">Glasgow Underground · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/i-disappear-again-extended-mix/7490945" target="_blank" rel="noopener">on beatport →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>What You Talking 'Bout <small>Arielle Free, Airwolf Paradise, KLP</small></h4>
+        <div class="where">Gudu Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/6JNZofZ1bRcmHh3lmpmNhZ" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Electronic Mode <small>b.Fonki</small></h4>
+        <div class="where">Revival New York · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/0wQ7SprzroGJfPdH3e5kq0" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Touch Me <small>CHARMUR</small></h4>
+        <div class="where">Musical Freedom · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/5wqCvgmEbRB32JdkQ5W9Hv" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Dope <small>DEFLEE, Volobotti</small></h4>
+        <div class="where">Headonism · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/2lM30mk9o6yX7Txbrvffw5" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Stomp Stomp Turn <small>Got Dem Blues</small></h4>
+        <div class="where">GDB Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/6sK75tadonF7j12oEUy52M" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Open Wide <small>Justus, DJ Hyperactive</small></h4>
+        <div class="where">MADMINDS · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/3gBZyJhoP8p1HPiaZdtwRd" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Fever <small>MAGNUS</small></h4>
+        <div class="where">affairs · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/3V7rsahr3hBhFiqGDWu5Hh" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Faith <small>Moontalk</small></h4>
+        <div class="where">Thrive Music · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/27AbcLAF0lCkCjM6eJ7cVO" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Hit That <small>Novikov (ofc)</small></h4>
+        <div class="where">Headonism Noir · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/2mOmS8FL9SBZZasuHcGT7i" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Prison dorée <small>Soul</small></h4>
+        <div class="where">BODEGA · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/5d7lKWMkHGMy7xxxV8MUdv" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Don't Talk <small>SUBZ (LB)</small></h4>
+        <div class="where">Exx Underground · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/5RDe92GXGrQVmTLnPj2hYk" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>No Brakes / I Don't See The Feeling <small>TONI SIZER, KIRRU, Aleksandra Moon, Asara</small></h4>
+        <div class="where">Bunny Tiger · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/1uUs5PaoL5xixoeheppUcC" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-02" data-out="1">
+        <h4>Burnin' Deep <small>Wh0</small></h4>
+        <div class="where">Toolroom · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/4WbRtbkL52F4XOgZ5LCzPE" target="_blank" rel="noopener">listen →</a>
+      </li>
+    </ul>
+    </details>
   </div>
-  <div class="ev">
-    <div class="date">out now</div>
-    <h3>Obsession (feat. Ty Dolla $ign) <small>MK, Ty Dolla $ign</small></h3>
-    <div class="where">Ultra Records · single</div>
-    <a class="go" href="https://open.spotify.com/track/7AeYzaNo7vH5AoNOA25yO4" target="_blank" rel="noopener">listen →</a>
+  <div class="ur-day" data-iso="2026-10-01">
+    <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">thu</span><b>1</b><span class="ur-mo">oct</span></div><h3 class="ur-dt"><span class="ur-rel">thursday 1 october</span><span class="ur-dd"></span></h3><span class="ur-n">3 releases</span></div>
+    <ul class="ur-list">
+      <li class="ev" data-iso="2026-10-01" data-out="1">
+        <h4>2Gether <small>Death on the Balcony, DOTB, <a href="/artists/mitch-oliver">Mitch Oliver</a>, Zone+</small></h4>
+        <div class="where">Narratives · <span class="ur-k big">ep</span> · <span class="ur-c">4 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/album/0wwuXzSu76sgc8cJxk9wEf" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-01" data-out="1">
+        <h4>Lost In Music <small>Oliver Heldens, <a href="/artists/will-clarke">Will Clarke</a></small></h4>
+        <div class="where">Époque · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/1mevpy036HSDdm5oJydjKt" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-10-01" data-out="1">
+        <h4>Houston <small>Ciarán</small></h4>
+        <div class="where">Ninja Tune · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/3T1BwJ9nC5UVAPXBhDtr2Q" target="_blank" rel="noopener">listen →</a>
+      </li>
+    </ul>
   </div>
-  <div class="ev">
-    <div class="date">out now</div>
-    <h3>Tripping The Funk <small>DvirNuns &amp; Cristian Viviano</small></h3>
-    <div class="where">label tba · single</div>
-    <a class="go" href="https://open.spotify.com/track/67D7QvA0sjUHRxbL618CnP" target="_blank" rel="noopener">listen →</a>
+  <div class="ur-day" data-iso="2026-09-29">
+    <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">tue</span><b>29</b><span class="ur-mo">sep</span></div><h3 class="ur-dt"><span class="ur-rel">tuesday 29 september</span><span class="ur-dd"></span></h3><span class="ur-n">1 release</span></div>
+    <ul class="ur-list">
+      <li class="ev" data-iso="2026-09-29" data-out="1">
+        <h4>Hot Girl Walk <small>NO STATIC, WELKER (BR)</small></h4>
+        <div class="where">IN / ROTATION · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/hot-girl-walk/7384482" target="_blank" rel="noopener">on beatport →</a>
+      </li>
+    </ul>
   </div>
-  <div class="ev">
-    <div class="date">out now</div>
-    <h3>Good Time <small>Highlite</small></h3>
-    <div class="where">When Stars Align · single</div>
-    <a class="go" href="https://open.spotify.com/track/0bo0aeIKSdH8C9tb4cdO3a" target="_blank" rel="noopener">listen →</a>
+  <div class="ur-day" data-iso="2026-09-26">
+    <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">sat</span><b>26</b><span class="ur-mo">sep</span></div><h3 class="ur-dt"><span class="ur-rel">saturday 26 september</span><span class="ur-dd"></span></h3><span class="ur-n">1 release</span></div>
+    <ul class="ur-list">
+      <li class="ev" data-iso="2026-09-26" data-out="1">
+        <h4>Rumors <small>Gabe Cline</small></h4>
+        <div class="where">Descending Order · <span class="ur-k big">ep</span></div>
+        <a class="go" href="https://open.spotify.com/track/0CXTwPMK2W0QLIqHHg0yAM" target="_blank" rel="noopener">listen →</a>
+      </li>
+    </ul>
   </div>
-  <div class="tierline">on the way</div>
-  <h2 class="tier">dropping soon</h2>
-  <p class="tiersub">announced by the artist or the label, dated as they said it.</p>
-  <div class="ev">
-    <div class="date">fri 6 nov</div>
-    <h3>Nothing But Me <small>Cor.Ece, A Joyful Noise</small></h3>
-    <div class="where">Razor-N-Tape Records · single</div>
-    <a class="go" href="https://www.beatport.com/release/nothing-but-me/7502191" target="_blank" rel="noopener">pre-order →</a>
+  <div class="ur-day" data-iso="2026-09-25">
+    <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">fri</span><b>25</b><span class="ur-mo">sep</span></div><h3 class="ur-dt"><span class="ur-rel">friday 25 september</span><span class="ur-dd"></span></h3><span class="ur-n">2 releases</span></div>
+    <ul class="ur-list">
+      <li class="ev" data-iso="2026-09-25" data-out="1">
+        <h4>Alive On Arrival <small>Melé</small></h4>
+        <div class="where">Defected · <span class="ur-k big">album</span> · <span class="ur-c">14 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/album/7ofloReOMVkpkX5PvMd6v3" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-09-25" data-out="1">
+        <h4>Némesis <small>Franco Schmidt</small></h4>
+        <div class="where">Hot Creations · <span class="ur-k big">ep</span> · <span class="ur-c">2 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/album/433KDx1TH8nsAc2WmWKi3y" target="_blank" rel="noopener">listen →</a>
+      </li>
+    </ul>
   </div>
-  <div class="ev">
-    <div class="date">fri 6 nov</div>
-    <h3>Confess (Groove P Remix) <small>ATFC, Seamus Haji</small></h3>
-    <div class="where">Big Love Music · remix</div>
-    <a class="go" href="https://www.beatport.com/release/confess-groove-p-remix/7575682" target="_blank" rel="noopener">pre-order →</a>
+  <div class="ur-day" data-iso="2026-09-22">
+    <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">tue</span><b>22</b><span class="ur-mo">sep</span></div><h3 class="ur-dt"><span class="ur-rel">tuesday 22 september</span><span class="ur-dd"></span></h3><span class="ur-n">1 release</span></div>
+    <ul class="ur-list">
+      <li class="ev" data-iso="2026-09-22" data-out="1">
+        <h4>MONSTER <small>Dec Duffy</small></h4>
+        <div class="where">IN / ROTATION · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/7B3mFQG13wjgDkew7mMU0O" target="_blank" rel="noopener">listen →</a>
+      </li>
+    </ul>
   </div>
-  <div class="ev">
-    <div class="date">fri 6 nov</div>
-    <h3>Without U (Extended Mix) <small>Calussa, Grace Arribas</small></h3>
-    <div class="where">Kazbah Records · single</div>
-    <a class="go" href="https://www.beatport.com/release/without-u-extended-mix/7576570" target="_blank" rel="noopener">pre-order →</a>
+  <div class="ur-day" data-iso="2026-09-18">
+    <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">fri</span><b>18</b><span class="ur-mo">sep</span></div><h3 class="ur-dt"><span class="ur-rel">friday 18 september</span><span class="ur-dd"></span></h3><span class="ur-n">8 releases</span></div>
+    <ul class="ur-list">
+      <li class="ev" data-iso="2026-09-18" data-out="1">
+        <h4>Colossal <small><a href="/artists/sonickraft">Sonickraft</a></small></h4>
+        <div class="where">Diynamic · <span class="ur-k big">ep</span> · <span class="ur-c">2 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/album/6MQN4WaPgJPBjMbtujDsb3" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-09-18" data-out="1">
+        <h4>This Thing <small><a href="/artists/tom-collins">Tom &amp; Collins</a></small></h4>
+        <div class="where">Club Sweat · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/label/club-sweat/30552/releases" target="_blank" rel="noopener">on beatport →</a>
+      </li>
+      <li class="ev" data-iso="2026-09-18" data-out="1">
+        <h4>Liquid Lovers <small>Cour T.</small></h4>
+        <div class="where">Collecting Dots · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/label/collecting-dots/126941/releases" target="_blank" rel="noopener">on beatport →</a>
+      </li>
+      <li class="ev" data-iso="2026-09-18" data-out="1">
+        <h4>Rebolando <small>HIGHLITE</small></h4>
+        <div class="where">Nomo Music · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/4NhDe4ruxNVqbXPrSaU7en" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-09-18" data-out="1">
+        <h4>Freak <small>Ink, Mesto</small></h4>
+        <div class="where">Experts Only · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/1pJQFno9DA8ghYWMecImct" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-09-18" data-out="1">
+        <h4>Into Your Soul <small>Marvin Sykes</small></h4>
+        <div class="where">Glasgow Underground · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/label/glasgow-underground/14542/releases" target="_blank" rel="noopener">on beatport →</a>
+      </li>
+      <li class="ev" data-iso="2026-09-18" data-out="1">
+        <h4>Pop This <small>Öwnboss</small></h4>
+        <div class="where">Catch &amp; Release · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/label/catch-and-release/71740/releases" target="_blank" rel="noopener">on beatport →</a>
+      </li>
+      <li class="ev" data-iso="2026-09-18" data-out="1">
+        <h4>Funky Pills <small>SAGMO</small></h4>
+        <div class="where">Maccabi House · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/0fu49YdqMH11j0f7W9RJyM" target="_blank" rel="noopener">listen →</a>
+      </li>
+    </ul>
   </div>
-  <div class="ev">
-    <div class="date">fri 13 nov</div>
-    <h3>Wow <small>Jude &amp; Frank, Patrizio Exclusive</small></h3>
-    <div class="where">Stereo Productions America · single</div>
-    <a class="go" href="https://open.spotify.com/track/6pZMFRvDYknfEmSTVZCVKJ" target="_blank" rel="noopener">pre-save →</a>
+  <div class="ur-day" data-iso="2026-09-15">
+    <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">tue</span><b>15</b><span class="ur-mo">sep</span></div><h3 class="ur-dt"><span class="ur-rel">tuesday 15 september</span><span class="ur-dd"></span></h3><span class="ur-n">1 release</span></div>
+    <ul class="ur-list">
+      <li class="ev" data-iso="2026-09-15" data-out="1">
+        <h4>No Phone Party <small><a href="/artists/gabss">Gabss</a>, Talón</small></h4>
+        <div class="where">IN / ROTATION · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/6m32mRhSnHe5NuQLmNwbv9" target="_blank" rel="noopener">listen →</a>
+      </li>
+    </ul>
   </div>
-  <div class="ev">
-    <div class="date">fri 13 nov</div>
-    <h3>Lick Ya (Modegroove Remix 2026) <small>The Cube Guys, ATFC, Modegroove</small></h3>
-    <div class="where">Cube Productions S.r.l. / Black Rock Music · single</div>
-    <a class="go" href="https://open.spotify.com/track/0z5NYyTxDQwhrbNOM7FLtr" target="_blank" rel="noopener">pre-save →</a>
+  <div class="ur-day" data-iso="2026-09-11">
+    <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">fri</span><b>11</b><span class="ur-mo">sep</span></div><h3 class="ur-dt"><span class="ur-rel">friday 11 september</span><span class="ur-dd"></span></h3><span class="ur-n">11 releases</span></div>
+    <ul class="ur-list">
+      <li class="ev hot" data-iso="2026-09-11" data-out="1">
+        <h4>Girlfriend <span class="canon">🔴</span> <small><a href="/artists/broken-hill">Broken Hill</a></small></h4>
+        <div class="where">Rendezvous Sound · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/4f55Lbpnr8Hjv3M8Wi3JTF" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-09-11" data-out="1">
+        <h4>Step To The Floor <small><a href="/artists/dansyn">Dansyn</a>, Voltech</small></h4>
+        <div class="where">1001 Recordings / Tomorrowland Music · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/7ssvTvHXo0pqfcfPmfM21P" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-09-11" data-out="1">
+        <h4>Say What <small><a href="/artists/kevin-mckay">Kevin McKay</a></small></h4>
+        <div class="where">Glasgow Underground · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/5mmJeBRdnzmXr0u0pKMJL2" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-09-11" data-out="1">
+        <h4>The City / All I Want <small><a href="/artists/kimonos">KIMONOS</a>, Amour Propre</small></h4>
+        <div class="where">Nu Moda · <span class="ur-k">single</span> · <span class="ur-c">2 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/track/6cRPrKsD1dgTEYhC7fc5VG" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-09-11" data-out="1">
+        <h4>Footprints LP <small>Prunk</small></h4>
+        <div class="where">PIV · <span class="ur-k big">album</span> · <span class="ur-c">16 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/track/1M1Iz6mKQmyjQhdZnZjfA4" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-09-11" data-out="1">
+        <h4>Bounce <small>GARTY</small></h4>
+        <div class="where">Headonism Noir · <span class="ur-k big">ep</span> · <span class="ur-c">2 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/track/0ctfFbazHe3MdVoUx0vgkk" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-09-11" data-out="1">
+        <h4>Funky Soul EP <small>Rhoowax</small></h4>
+        <div class="where">Club Sweat · <span class="ur-k big">ep</span> · <span class="ur-c">3 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/track/5d0vOL9zUDlLxYsWP5YLvq" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-09-11" data-out="1">
+        <h4>Maple Syrup <small>AIRBENDER</small></h4>
+        <div class="where">Headonism · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/5fjyxzGMY66v89pQoQowUr" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-09-11" data-out="1">
+        <h4>Push The Tempo <small>Denis Sulta, Capri</small></h4>
+        <div class="where">Defected · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/57LMnOWONP6EpFPAGThXgM" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-09-11" data-out="1">
+        <h4>The Cure &amp; The Cause <small>Fish Go Deep, Tracey K, SHY FX</small></h4>
+        <div class="where">Defected · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/5j8Tyb0Ik16cSotK4nIH4I" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-09-11" data-out="1">
+        <h4>Legacy (Assanssan) <small>Rooléh</small></h4>
+        <div class="where">Three Six Zero Recordings · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/2i1aetB4r2OfsJ73ZC86dh" target="_blank" rel="noopener">listen →</a>
+      </li>
+    </ul>
   </div>
-  <div class="ev">
-    <div class="date">fri 20 nov</div>
-    <h3>Acid All Night <small>Fancy Inc &amp; Knorst</small></h3>
-    <div class="where">Nu Moda · single</div>
-    <a class="go" href="https://www.instagram.com/direct/t/120350279356999/" target="_blank" rel="noopener">on instagram →</a>
+  <div class="ur-day" data-iso="2026-09-10">
+    <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">thu</span><b>10</b><span class="ur-mo">sep</span></div><h3 class="ur-dt"><span class="ur-rel">thursday 10 september</span><span class="ur-dd"></span></h3><span class="ur-n">1 release</span></div>
+    <ul class="ur-list">
+      <li class="ev" data-iso="2026-09-10" data-out="1">
+        <h4>I Need Your Lovin' <small><a href="/artists/matroda">Matroda</a></small></h4>
+        <div class="where">Insomniac Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/5Tjkz9SXrtWdwQmEm11ZPS" target="_blank" rel="noopener">listen →</a>
+      </li>
+    </ul>
   </div>
-  <div class="tierline">named, not dated</div>
-  <h2 class="tier">no date yet</h2>
-  <p class="tiersub">announced by the artist or the label, no date given yet.</p>
-  <div class="ev">
-    <div class="date">date tba</div>
-    <h3>Fast Life <small>Juany Bravo, Carl Dutt &amp; Dr. Chaii</small></h3>
-    <div class="where">label tba · single</div>
-    <a class="go" href="https://music.apple.com/us/album/fast-life/6802959263?i=6802959264&amp;uo=4" target="_blank" rel="noopener">pre-save →</a>
+  <div class="ur-day" data-iso="2026-09-09">
+    <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">wed</span><b>9</b><span class="ur-mo">sep</span></div><h3 class="ur-dt"><span class="ur-rel">wednesday 9 september</span><span class="ur-dd"></span></h3><span class="ur-n">3 releases</span></div>
+    <ul class="ur-list">
+      <li class="ev" data-iso="2026-09-09" data-out="1">
+        <h4>Landlords Nightmare <small><a href="/artists/camelphat">CamelPhat</a></small></h4>
+        <div class="where">Diynamic · <span class="ur-k big">ep</span> · <span class="ur-c">2 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/album/2FT5DYdQQPQWmuhlEkUsij" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-09-09" data-out="1">
+        <h4>MilliON Me <small>NIIKO X SWAE, <a href="/artists/dj-susan">DJ Susan</a></small></h4>
+        <div class="where">Hood Politics · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/08AXTbBi7NgjAFoovjulPd" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-09-09" data-out="1">
+        <h4>Workout Series Vol. 25 <small>various</small></h4>
+        <div class="where">Club Sweat · <span class="ur-k big">various artists</span> · <span class="ur-c">4 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/album/7F4W5YLJWEnorhfNkWHzSw" target="_blank" rel="noopener">listen →</a>
+      </li>
+    </ul>
   </div>
-  <div class="ev">
-    <div class="date">date tba</div>
-    <h3>Rhythm Talk <small>Gianni Firmaio</small></h3>
-    <div class="where">VISYØN · single</div>
-    <a class="go" href="https://soundcloud.com/listen-to-flow/franky-rizardo-861062620" target="_blank" rel="noopener">link →</a>
+  <div class="ur-day" data-iso="2026-09-08">
+    <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">tue</span><b>8</b><span class="ur-mo">sep</span></div><h3 class="ur-dt"><span class="ur-rel">tuesday 8 september</span><span class="ur-dd"></span></h3><span class="ur-n">1 release</span></div>
+    <ul class="ur-list">
+      <li class="ev" data-iso="2026-09-08" data-out="1">
+        <h4>Azul <small>Ammo Avenue</small></h4>
+        <div class="where">IN / ROTATION · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/album/2fvMZfG6VrZ947BY15dVha" target="_blank" rel="noopener">listen →</a>
+      </li>
+    </ul>
   </div>
-  <div class="ev">
-    <div class="date">date tba</div>
-    <h3>Bassline <small>Majestic, Layton Giordani, Jungle 70, HILLS (US)</small></h3>
-    <div class="where">MADMINDS · single</div>
-    <a class="go" href="https://www.beatport.com/release/bassline/7474253" target="_blank" rel="noopener">pre-order →</a>
+  <div class="ur-day" data-iso="2026-09-07">
+    <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">mon</span><b>7</b><span class="ur-mo">sep</span></div><h3 class="ur-dt"><span class="ur-rel">monday 7 september</span><span class="ur-dd"></span></h3><span class="ur-n">1 release</span></div>
+    <ul class="ur-list">
+      <li class="ev" data-iso="2026-09-07" data-out="1">
+        <h4>Italiani Brava Gente <small>Sueño, Giorgio Lopez</small></h4>
+        <div class="where">Toy Tonics · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/7aY1J3SF9md0q3UfoUsuaP" target="_blank" rel="noopener">listen →</a>
+      </li>
+    </ul>
   </div>
-  <div class="ev">
-    <div class="date">date tba</div>
-    <h3>Boogie <small>Pysh, Karpinsky, Novikov (ofc)</small></h3>
-    <div class="where">Magician On Duty · ep · 4 cuts</div>
-    <a class="go" href="https://www.beatport.com/release/boogie/7340960" target="_blank" rel="noopener">pre-order →</a>
+  <div class="ur-day" data-iso="2026-09-04">
+    <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">fri</span><b>4</b><span class="ur-mo">sep</span></div><h3 class="ur-dt"><span class="ur-rel">friday 4 september</span><span class="ur-dd"></span></h3><span class="ur-n">6 releases</span></div>
+    <ul class="ur-list">
+      <li class="ev" data-iso="2026-09-04" data-out="1">
+        <h4>Obsessions <small><a href="/artists/hot-since-82">Hot Since 82</a></small></h4>
+        <div class="where">Knee Deep In Sound · <span class="ur-k big">album</span> · <span class="ur-c">14 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/album/470qxohAZhjO90CdzyRdoh" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-09-04" data-out="1">
+        <h4>Rolling Dice <small><a href="/artists/eats-everything">Eats Everything</a></small></h4>
+        <div class="where">Three Six Zero Recordings · <span class="ur-k">single</span></div>
+      </li>
+      <li class="ev" data-iso="2026-09-04" data-out="1">
+        <h4>Rockstar EP <small>Alphadog</small></h4>
+        <div class="where">Diynamic · <span class="ur-k big">ep</span> · <span class="ur-c">3 cuts</span></div>
+        <a class="go" href="https://www.instagram.com/p/Dc3B7MWDd2x/" target="_blank" rel="noopener">the announcement →</a>
+      </li>
+      <li class="ev" data-iso="2026-09-04" data-out="1">
+        <h4>There's Truth In Gospel (Remixes) <small>various</small></h4>
+        <div class="where">Razor-N-Tape · <span class="ur-k">remix</span> · <span class="ur-c">5 cuts</span></div>
+        <a class="go" href="https://open.spotify.com/album/7a0DAfmdHghq8iGdkQMinf" target="_blank" rel="noopener">listen →</a>
+      </li>
+      <li class="ev" data-iso="2026-09-04" data-out="1">
+        <h4>Damaged <small>Eli Brown</small></h4>
+        <div class="where">Insomniac Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.instagram.com/p/DczHK5OyM3-/" target="_blank" rel="noopener">the announcement →</a>
+      </li>
+      <li class="ev" data-iso="2026-09-04" data-out="1">
+        <h4>Champagne <small>Sonat Cay</small></h4>
+        <div class="where">Headonism · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.instagram.com/p/Dc3ZTMfMGDk/" target="_blank" rel="noopener">the announcement →</a>
+      </li>
+    </ul>
   </div>
-  <div class="ev">
-    <div class="date">date tba</div>
-    <h3>In N Out / Dream Girl <small>Braydon Terzo</small></h3>
-    <div class="where">Roots Recordings · ep · 2 cuts</div>
-    <a class="go" href="https://www.beatport.com/release/in-n-out-dream-girl/7418479" target="_blank" rel="noopener">pre-order →</a>
+  <div class="ur-day" data-iso="2026-09-01">
+    <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">tue</span><b>1</b><span class="ur-mo">sep</span></div><h3 class="ur-dt"><span class="ur-rel">tuesday 1 september</span><span class="ur-dd"></span></h3><span class="ur-n">1 release</span></div>
+    <ul class="ur-list">
+      <li class="ev" data-iso="2026-09-01" data-out="1">
+        <h4>M.U.S.I.C <small>Radio Cargo</small></h4>
+        <div class="where">IN / ROTATION · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.instagram.com/inrotationmusic/" target="_blank" rel="noopener">on instagram →</a>
+      </li>
+    </ul>
   </div>
-  <div class="ev">
-    <div class="date">date tba</div>
-    <h3>Miami Vice <small>Mark Knight, DJ PP, James Hurr</small></h3>
-    <div class="where">Toolroom · single</div>
-    <a class="go" href="https://www.beatport.com/release/miami-vice/7420613" target="_blank" rel="noopener">pre-order →</a>
+  <div class="ur-day" data-iso="2026-08-28">
+    <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">fri</span><b>28</b><span class="ur-mo">aug</span></div><h3 class="ur-dt"><span class="ur-rel">friday 28 august</span><span class="ur-dd"></span></h3><span class="ur-n">2 releases</span></div>
+    <ul class="ur-list">
+      <li class="ev" data-iso="2026-08-28" data-out="1">
+        <h4>All Stars 12 <small>various</small></h4>
+        <div class="where">Maccabi House · <span class="ur-k big">various artists</span> · <span class="ur-c">4 cuts</span></div>
+        <a class="go" href="https://www.instagram.com/maccabihouse/" target="_blank" rel="noopener">on instagram →</a>
+      </li>
+      <li class="ev" data-iso="2026-08-28" data-out="1">
+        <h4>She Can Love U <small>Rafael &amp; Toni B</small></h4>
+        <div class="where">@tszrecordings · <span class="ur-k">single</span></div>
+        <a class="go" href="https://open.spotify.com/track/0lJhaNv0sqOCqIs5HFbkbu" target="_blank" rel="noopener">listen →</a>
+      </li>
+    </ul>
   </div>
-  <div class="ev">
-    <div class="date">date tba</div>
-    <h3>Resist The System <small>Shilla, FRANCO BA</small></h3>
-    <div class="where">MADMINDS · ep · 3 cuts</div>
-    <a class="go" href="https://www.beatport.com/release/resist-the-system/7423405" target="_blank" rel="noopener">pre-order →</a>
-  </div>
-  <div class="ev">
-    <div class="date">date tba</div>
-    <h3>Beatbox Rocker <small>CHASEWEST, Dan Molinari</small></h3>
-    <div class="where">Chaste Records · single</div>
-    <a class="go" href="https://www.beatport.com/release/beatbox-rocker/7442820" target="_blank" rel="noopener">pre-order →</a>
-  </div>
-  <div class="ev">
-    <div class="date">date tba</div>
-    <h3>Ladies <small>PRIMO (IL)</small></h3>
-    <div class="where">Treep Records · ep · 2 cuts</div>
-    <a class="go" href="https://www.beatport.com/release/ladies/7449163" target="_blank" rel="noopener">pre-order →</a>
-  </div>
-  <div class="ev">
-    <div class="date">date tba</div>
-    <h3>Fra Mørket Til Lys <small>Kris Berle, Biljana Pais</small></h3>
-    <div class="where">Magician On Duty · ep · 2 cuts</div>
-    <a class="go" href="https://www.beatport.com/release/fra-morket-til-lys/7347128" target="_blank" rel="noopener">pre-order →</a>
-  </div>
-  <div class="ev">
-    <div class="date">date tba</div>
-    <h3>Across The Room <small>Malikk</small></h3>
-    <div class="where">8Bit · ep · 2 cuts</div>
-    <a class="go" href="https://www.beatport.com/release/across-the-room/7463191" target="_blank" rel="noopener">pre-order →</a>
-  </div>
-  <div class="ev">
-    <div class="date">date tba</div>
-    <h3>Gatitooo / Persona (Amine K Remix) <small>Raul Vidal, Orkun Bozdemir, BATU (TR)</small></h3>
-    <div class="where">Madorasindahouse Records · remix · 2 cuts</div>
-    <a class="go" href="https://www.beatport.com/release/gatitooo-persona-amine-k-remix/7500305" target="_blank" rel="noopener">pre-order →</a>
-  </div>
-  <div class="ev">
-    <div class="date">date tba</div>
-    <h3>Satisfaction (TOBEHONEST Edit) <small>Benny Benassi pres. The Biz</small></h3>
-    <div class="where">label tba · single</div>
-    <a class="go" href="https://www.instagram.com/p/DeNCe0WgbLf/" target="_blank" rel="noopener">the announcement →</a>
-  </div>
-  <div class="ev">
-    <div class="date">date tba</div>
-    <h3>Senta Fogueta <small>BELLA BACKE</small></h3>
-    <div class="where">Club Sweat · single</div>
-    <a class="go" href="https://www.beatport.com/release/senta-fogueta-extended-mix/7430298" target="_blank" rel="noopener">pre-order →</a>
-  </div>
-  <div class="ev">
-    <div class="date">date tba</div>
-    <h3>Rockin Down The House - Amsterdam 2026 <small>Various Artists</small></h3>
-    <div class="where">Club Session · various artists · 15 cuts</div>
-    <a class="go" href="https://www.beatport.com/release/rockin-down-the-house-amsterdam-2026/7488700" target="_blank" rel="noopener">pre-order →</a>
-  </div>
+</section>
 <!-- upcoming:end -->
 
   <div class="fix">spotted a wrong date, a wrong name, or something that shouldn't be here? <a href="https://www.instagram.com/groovesmaxxing/" target="_blank" rel="noopener">tell us on instagram</a> and we'll fix it asap 🤝</div>
 
   <div class="method"><b>how this list is built:</b> only what an artist or a label announced themselves, or a store pre-order page. anything we hear in a set, a comment or a tracklist stays in the crate until the artist says so. we listen to everything. you get the good stuff.</div>
 
-  <footer>groovesmaxxing dropping soon · refreshed as we hear it · last refresh 30 oct 2026</footer>
+  <footer>groovesmaxxing dropping soon · refreshed as we hear it · last refresh 4 nov 2026</footer>
 </div>
 <script src="/gmx-motion.js?v=2" defer></script>
-<script src="/gmx-more.js?v=2" defer></script>
-<script src="/gmx-quick.js?v=9" defer></script>
-<script src="/gmx-nav.js?v=28" defer></script>
-<script src="/gmx-crate.js" defer></script>
-<script src="/gmx-sheet.js?v=2" defer></script>
-<script src="/gmx-upcoming.js" defer></script>
-<script src="/gmx-account.js?v=20" defer></script>
 </body>
 </html>

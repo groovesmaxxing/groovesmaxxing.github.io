@@ -13,7 +13,7 @@ if(window.gmxLang)return;
 /* [code, <html lang>, the circle's label in its own language] */
 var LANGS=[['en','en','language: english, tap for español'],['es','es-MX','idioma: español, toca para english']];
 /* the dictionary files, tagged like every shared script: change the file, change its tag here, then this file's tag */
-var FILES={es:'/gmx-lang-es.js?v=4'};
+var FILES={es:'/gmx-lang-es.js?v=5'};
 var KEY='gmx-lang',ATTRS=['aria-label','placeholder','title','alt'];
 var SKIP='script,style,textarea,code,pre,svg,[translate="no"],.notranslate,.gmx-lang';
 var html=document.documentElement,SRC=html.getAttribute('lang')||'en';
