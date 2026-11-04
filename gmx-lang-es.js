@@ -230,7 +230,7 @@ scoped:[
 'added to good vibe juice or bumpy in the last five weeks. the week\'s survivors.':'agregados a good vibe juice o bumpy en las últimas cinco semanas. los que sobrevivieron la semana.',
 'picked for the hour. tap another mood or type your own.':'elegido para esta hora. toca otro mood o escribe el tuyo.',
 'reading it as':'lo leímos como',
-'like':'como',
+'like':'estilo',
 'loosened the genre to fill the list.':'aflojamos el género para llenar la lista.',
 'loosened the tempo to fill the list.':'aflojamos el tempo para llenar la lista.',
 'shuffle':'mezclar',

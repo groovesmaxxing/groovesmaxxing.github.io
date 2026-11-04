@@ -342,6 +342,7 @@ form.addEventListener('submit',function(e){
   /* a phone keyboard closes so the list can show. a keyboard user keeps the focus in the box */
   load().then(function(){go({mood:null,q:q,seed:newSeed()},true);if(matchMedia('(pointer: coarse)').matches)input.blur();reveal()},function(){});
 });
-window.addEventListener('popstate',function(){if(D)render(readHash()||auto())});
+/* back or forward: the box shows what the restored list was built from (empty for a mood chip) */
+window.addEventListener('popstate',function(){if(!D)return;var st=readHash()||auto();input.value=st.q||'';render(st)});
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
 })();
