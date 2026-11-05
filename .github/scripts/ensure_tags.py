@@ -41,9 +41,29 @@ T = {
     'reel_js': '<script src="/gmx-reel.js?v=1" defer></script>',
 }
 
+# an older or repeated copy of a tagged shared tag (2026-11-05): a page the laptop wrote with last month's ?v=
+# used to get the current tag added beside the old one and load two builds (artists/ozzy.html, nav v28 and v32).
+# so before anything is added, the first copy of each tagged asset becomes the current tag where it stands and
+# any later copy goes. an asset with no ?v= is left to the add step as before.
+def _tag_rx(tag):
+    name = re.search(r'/(gmx-[a-z-]+\.(?:js|css))', tag).group(1)
+    if tag.startswith('<script'):
+        return re.compile(r'<script src="/' + re.escape(name) + r'(?:\?v=\d+)?" defer></script>(\r?\n)?')
+    return re.compile(r'<link rel="stylesheet" href="/' + re.escape(name) + r'(?:\?v=\d+)?">(\r?\n)?')
+TAGGED = [(_tag_rx(v), v) for v in T.values() if '?v=' in v]
+def normalize(s):
+    for rx, cur in TAGGED:
+        seen = [0]
+        def swap(m):
+            seen[0] += 1
+            return cur + (m.group(1) or '') if seen[0] == 1 else ''
+        s = rx.sub(swap, s)
+    return s
+
 def ensure(path, heads, before_motion, after_motion):
     s = open(path, encoding='utf-8').read(); o = s
     if 'http-equiv="refresh"' in s: return False
+    s = normalize(s)
     add = [T[k] for k in heads if T[k] not in s]
     if add:
         if MOTION_CSS in s: s = s.replace(MOTION_CSS, MOTION_CSS + '\n' + '\n'.join(add), 1)
