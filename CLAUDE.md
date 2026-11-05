@@ -6,7 +6,7 @@ Guide to the groovesmaxxing.com website repo. Everything here was read from the 
 
 A static website. Every page is a `.html` file in this repo, written by hand or by scripts on the owner's laptop. There is no framework, no committed `package.json` and no bundler. Pages are served as committed, except that the `site-data` workflow rebuilds derived files on every push to `main` (see Automation).
 
-- Live domain: `groovesmaxxing.com` (set by the `CNAME` file)
+- Live domain: `groovesmaxxing.com`, served by the Cloudflare Pages project `groovesmaxxing`. The `CNAME` file only names the domain for the github.io fallback.
 - GitHub repo: `groovesmaxxing/groovesmaxxing.github.io`
 - Default branch: `main`
 - Other long-lived branch: `status`, an orphan branch holding only the feeds the Desk page reads (`site-watch.json`, `link-watch.json` and its cache). Written by `.github/scripts/status_publish.sh`. Never merge it into `main`.
@@ -88,8 +88,8 @@ A static website. Every page is a `.html` file in this repo, written by hand or 
 - Every push and pull request runs `site check`: `preflight.py` (structure and brand checks over every page) and `sitecheck.js` (headless Chromium loads the main pages at phone and desktop width and fails on console errors, missing same-origin files, horizontal overflow or a missing tab bar). Outside hosts are blocked in that check.
 - Run the same checks locally: `python3 .github/scripts/preflight.py`, then serve the repo with `python3 -m http.server 8787 --bind 127.0.0.1` and run `npm install --no-save playwright@1.56.1` and `node .github/scripts/sitecheck.js`.
 - Every pull request also gets a Cloudflare Pages check.
-- GitHub Pages builds and deploys `main` on every push (the "pages build and deployment" run in the Actions tab), using the `CNAME` file for the domain.
-- UNKNOWN: whether groovesmaxxing.com's DNS points at GitHub Pages or at Cloudflare. Neither the DNS nor either service's settings are in the repo.
+- Cloudflare Pages builds and deploys `main` on every push and serves groovesmaxxing.com. GitHub Pages still runs its own "pages build and deployment" from the same pushes to groovesmaxxing.github.io, which redirects to the domain. Nobody visits it.
+- DNS is in Cloudflare, not the repo: the apex and www are proxied CNAMEs to `groovesmaxxing.pages.dev`. Two redirect rules live in the dashboard (2026-11-05): www 301s to the apex, and one retired doc path 301s to `/`. A file removed from the repo can keep serving from the Pages edge cache for up to seven days, and the zone purge button does not reach that cache, a redirect rule does.
 
 ### Workflows
 
