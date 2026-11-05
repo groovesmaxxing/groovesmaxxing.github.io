@@ -25,8 +25,13 @@ always, a failure here must not block the site. stdlib only.
 runs at the end of the derived files step in site-data.yml (after sync_counts.py, before crosslink_audit.py)
 and after build_event_schema.py in events-radar.yml, both from the repo root.
 
-usage: python3 .github/scripts/sitemap_lastmod.py           (write)
-       python3 .github/scripts/sitemap_lastmod.py --check   (print what would change, write nothing)
+the <footer> block and the <span class="gmx-flinks"> link run are left out of the hash too (2026-11-05, seo
+P1-6a): they are the same links on hundreds of pages, so a change there would date every page at once.
+
+usage: python3 .github/scripts/sitemap_lastmod.py                (write)
+       python3 .github/scripts/sitemap_lastmod.py --check        (print what would change, write nothing)
+       python3 .github/scripts/sitemap_lastmod.py --rebaseline   (rehash every page into the baseline and move
+                                                                  no dates, after a change to what the hash reads)
 """
 import hashlib, json, os, re, sys
 from datetime import date
@@ -69,6 +74,11 @@ def body_hash(text):
     # harden_pages.py runs after this script and turns these handlers into data-fallback attributes, so the
     # hash reads them the hardened way and a page the laptop wrote hashes the same before and after harden
     text = THUMB_RE.sub(lambda m: ' data-fallback="' + m.group(1) + '"', text)
+    # the footer is boilerplate, a link run shared by hundreds of pages, so a change to it is not a change to
+    # the page. set pages carry the same run in a span inside their foot div, so that goes too, with the
+    # line break ensure_tags.py puts in front of it, or adding the span would still move the hash
+    text = re.sub(r"<footer\b[^>]*>.*?</footer>", "", text, flags=re.S | re.I)
+    text = re.sub(r'(?:<br\s*/?>\s*)?<span class="gmx-flinks">.*?</span>', "", text, flags=re.S | re.I)
     text = re.sub(r"(<script\b[^>]*>)(.*?)</script>", _keep_or_drop_script, text, flags=re.S | re.I)
     text = re.sub(r"<link\b[^>]*>", "", text, flags=re.I)
     text = re.sub(r"<meta\b[^>]*>", "", text, flags=re.I)
@@ -162,9 +172,42 @@ def run(check):
         save_baseline(new_hashes)
 
 
+def rebaseline():
+    """every hash recomputed with the current body_hash and written, no lastmod moves. for the run after a
+    change to body_hash itself, so the new rule does not read as an edit to every page"""
+    with open(SITEMAP, encoding="utf-8", newline="") as fh:
+        sm = fh.read()
+    locs = [l.strip() for l in re.findall(r"<loc>(.*?)</loc>", sm, re.S)]
+    baseline = load_baseline()
+    new_hashes = {}
+    changed, fresh, no_file = 0, 0, 0
+    for loc in locs:
+        f = page_for(loc)
+        if not f:
+            no_file += 1
+            if loc in baseline:
+                new_hashes[loc] = baseline[loc]   # kept for the same reason run() keeps it
+            continue
+        with open(f, encoding="utf-8", errors="replace") as fh:
+            h = body_hash(fh.read())
+        new_hashes[loc] = h
+        if loc not in baseline:
+            fresh += 1
+        elif baseline[loc] != h:
+            changed += 1
+    dropped = sum(1 for k in baseline if k not in new_hashes)
+    save_baseline(new_hashes)
+    print("sitemap lastmod: --rebaseline, %d hashes changed, %d new, %d dropped, %d loc(s) without a file, no dates moved"
+          % (changed, fresh, dropped, no_file))
+
+
 def main(argv):
     check = "--check" in argv
     try:
+        # --check wins when both are passed, so a dry run never writes the baseline
+        if "--rebaseline" in argv and not check:
+            rebaseline()
+            return 0
         run(check)
     except Exception as e:   # noqa: BLE001, a failure here must not block the site
         print("sitemap lastmod: failed, nothing changed: %s: %s" % (type(e).__name__, e))

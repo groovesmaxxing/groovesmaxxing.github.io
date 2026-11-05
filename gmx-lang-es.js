@@ -16,7 +16,7 @@ words:{
 'labels':'disqueras','talks':'pláticas',
 'sign in':'iniciar sesión','you':'tú','your account':'tu cuenta','groovesmaxxing home':'inicio de groovesmaxxing',
 /* the shell on every page */
-'the roster':'el roster','the radar':'el radar','the sets':'los sets','previous':'anterior','next':'siguiente',
+'the roster':'el roster','the radar':'el radar','the sets':'los sets','the labels':'las disqueras','the tracklists':'los tracklists','pick a mood':'elige un mood','open IDs':'IDs abiertos','dj support':'apoyo de djs','previous':'anterior','next':'siguiente',
 'all artists':'todos los artistas','all labels':'todas las disqueras','all tracklists':'todos los tracklists','every tracklist':'cada tracklist',
 'main links':'enlaces principales','social links':'redes sociales','spotify profile':'perfil de spotify',
 'email groovesmaxxing':'escríbele a groovesmaxxing','say hi':'saluda',

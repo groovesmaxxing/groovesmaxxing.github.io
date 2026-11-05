@@ -7,7 +7,8 @@ def text(s): return re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]+>', ' ', s 
 def fold(s): return re.sub(r'\s+', ' ', unicodedata.normalize('NFKD', s or '').encode('ascii', 'ignore').decode().lower().replace('&', 'and')).strip()
 names = {fold(text(m.group(2))): m.group(1) for m in re.finditer(r'<a class="drow" href="/artists/([^"]+)"[^>]*>.*?<span class="dn">(.*?)</span>', open('artists.html', encoding='utf-8').read(), re.S)}
 profiles = {f[8:-5]: open(f, encoding='utf-8').read() for f in glob.glob('artists/*.html')}
-profiles = {k: v for k, v in profiles.items() if 'http-equiv' not in v}
+# only the refresh value marks a stub, the csp meta on every page also says http-equiv
+profiles = {k: v for k, v in profiles.items() if 'http-equiv="refresh"' not in v}
 rel = json.load(open('related-index.json', encoding='utf-8'))
 tl = sets = talks = labs = 0
 for slug, me in rel.items():
@@ -17,7 +18,9 @@ for slug, me in rel.items():
     talks += sum(1 for x in me['talks'] if 'data-yt="%s"' % x[0] not in p)
     labs += sum(1 for x in me['lab'] if 'href="%s"' % x[0] not in p)
 ev = open('events.html', encoding='utf-8').read()
-bold = [s for s in re.findall(r'<strong>(.*?)</strong>', ev) if names.get(fold(text(s)))]
+SPLIT = re.compile(r'\s+(?:b2b|b3b|vs\.?|x|and|with|feat\.?|ft\.?|\+|&|,)\s+', re.I)
+# a strong already holding a link is done, and each b2b half counts on its own, as copy_pass.py links them
+bold = [s for s in re.findall(r'<strong>(.*?)</strong>', ev, re.S) if '<a' not in s and any(names.get(fold(text(p))) in profiles for p in SPLIT.split(s))]
 print('cross-link audit (gaps in the generated pages, all covered in the browser by gmx-related.js)')
 print('  tagged tracklists missing from the headliner profile: %d' % tl)
 print('  sets on the sets page missing from the artist profile: %d' % sets)

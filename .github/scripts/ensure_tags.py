@@ -23,13 +23,13 @@ T = {
     'player_css': '<link rel="stylesheet" href="/gmx-player.css?v=2">',
     'nav_css': '<link rel="stylesheet" href="/gmx-nav.css?v=20">',
     'player_js': '<script src="/gmx-player.js" defer></script>',
-    'nav_js': '<script src="/gmx-nav.js?v=31" defer></script>',
+    'nav_js': '<script src="/gmx-nav.js?v=32" defer></script>',
     'follow_js': '<script src="/gmx-follow.js" defer></script>',
     'crate_js': '<script src="/gmx-crate.js" defer></script>',
     'related_js': '<script src="/gmx-related.js" defer></script>',
     'upcoming_js': '<script src="/gmx-upcoming.js?v=2" defer></script>',   # v2: tabs and the show menu (2026-11-04)
     'quick_css': '<link rel="stylesheet" href="/gmx-quick.css">',
-    'quick_js': '<script src="/gmx-quick.js?v=12" defer></script>',
+    'quick_js': '<script src="/gmx-quick.js?v=13" defer></script>',
     'sheet_css': '<link rel="stylesheet" href="/gmx-sheet.css?v=2">',
     'sheet_js': '<script src="/gmx-sheet.js?v=2" defer></script>',
     # the account layer (2026-10-12): "this is me" on every artist and label profile
@@ -341,7 +341,63 @@ def artists_dir(path='artists.html'):
     s = re.sub(r'(<a class="drow"[^>]*>)(?!<span class="dav")(?:<span class="dlane">[^<]*</span>)?<span class="dn">(.*?)</span>', disc, s)
     if s != o: open(path, 'w', encoding='utf-8').write(s)
     return s != o
+# the shared footer link run (2026-11-05, seo P1-6a): crawlers and fetchers that do not run the tab bar
+# script see no route between sections, so every profile, set page and issue carries the same plain links
+# in its markup. the laptop templates write the old four link footer (or none on set pages), so the run is
+# put back here after every render. hubs keep their own footers.
+FLINKS = ('groovesMAXXING · <a href="/">home</a> · <a href="/artists">the roster</a> · <a href="/labels">the labels</a>'
+    ' · <a href="/tracklists/">the tracklists</a> · <a href="/sets">the sets</a> · <a href="/events">the radar</a>'
+    ' · <a href="/upcoming">dropping soon</a> · <a href="/newsletter">the newsletter</a>'
+    ' · <a href="/calendar">the calendar</a> · <a href="/moods">pick a mood</a>')
+FLINKS_OLD = ['<p class="fine">groovesMAXXING · <a href="/">home</a> · <a href="%s">the roster</a> · <a href="/events">the radar</a> · <a href="/sets">the sets</a></p>' % h
+    for h in ('/artists', '/roster')]
+# the set pages close on a foot div that ends with the instagram link. the match may not cross a </div>, so
+# a foot div without that link is left alone instead of swallowing the rest of the page
+FOOT_RE = re.compile(r'<div class="foot">(?:(?!</div>).)*?instagram</a>\s*(?=</div>)', re.S)
+
+def footer_links():
+    changed, odd = 0, 0
+    def pages(pattern, skip_index=False):
+        for f in sorted(files(pattern)):
+            if f.split('/')[-1].startswith('google') or (skip_index and f.endswith('/index.html')): continue
+            # newline='' keeps each file's own line ends, so a windows run does not turn lf pages into crlf
+            try: s = open(f, encoding='utf-8', newline='').read()
+            except OSError: continue
+            if 'http-equiv="refresh"' in s: continue
+            yield f, s
+    def write(f, s):
+        try:
+            with open(f, 'w', encoding='utf-8', newline='') as fh: fh.write(s)
+            return True
+        except OSError:
+            return False
+    new_p = '<p class="fine">' + FLINKS + '</p>'
+    for f, s in list(pages('artists/*.html')) + list(pages('labels/*.html')):
+        if new_p in s: continue
+        hits = [o for o in FLINKS_OLD if s.count(o) == 1]
+        if len(hits) != 1 or sum(s.count(o) for o in FLINKS_OLD) != 1:
+            odd += 1; continue
+        changed += write(f, s.replace(hits[0], new_p, 1))
+    for f, s in pages('tracklists/*.html', skip_index=True):
+        if 'class="gmx-flinks"' in s: continue
+        m = FOOT_RE.search(s)
+        if not m:
+            odd += 1; continue
+        changed += write(f, s[:m.end()] + '<br><span class="gmx-flinks">' + FLINKS + '</span>' + s[m.end():])
+    for f, s in pages('newsletter/*.html'):
+        if 'gmx-flinks' in s: continue
+        if s.count('</footer>') != 1:
+            odd += 1; continue
+        # its own line, after the issue paragraph, so newsletterarchive.py still finds that paragraph untouched
+        at = s.index('</footer>')
+        nl = '\r\n' if '\r\n' in s else '\n'
+        lead = '' if s[:at].endswith(('\n', '\r')) else nl
+        changed += write(f, s[:at] + lead + '<p class="fine gmx-flinks">' + FLINKS + '</p>' + nl + s[at:])
+    if odd:
+        print('ensure_tags: footer links skipped', odd, 'page(s) without the expected footer')
+    return changed
 n += artists_dir()
+n += footer_links()
 # the "more" expander (2026-10-14): on every page, so a data-more attribute works wherever it lands
 for f in sorted(files('*.html') + files('artists/*.html') + files('labels/*.html') + files('tracklists/*.html') + files('newsletter/*.html')):
     # scan.html stays out: the recognizer page is its own build and carries no data-more blocks

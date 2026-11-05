@@ -6,8 +6,9 @@ upcomingpage.py), so a hand edit would come back on the next render. each rule m
 its numbers left loose (counts and issue numbers move), and writes the new one. what was cut but still
 worth reading sits right under it in a data-more="fold" block, so gmx-more.js shows a "more" button.
 a rule whose old line is gone does nothing, so the pass is safe to run any number of times. stdlib only.
-runs in site-data after ensure_tags.py and before sync_counts.py."""
-import re
+runs in site-data after ensure_tags.py and before sync_counts.py. build_related.py runs earlier in the
+same job, so names-index.json is there for the radar links."""
+import html, json, re, unicodedata
 
 N = r'(\d[\d,]*)'   # a number that moves
 
@@ -165,5 +166,51 @@ try:
     if n: open('events.html', 'w', encoding='utf-8').write(t); changed['events.html'] = changed.get('events.html', 0) + n
 except OSError:
     pass
+
+# radar: the bolded roster names get their profile link in the html itself, so crawlers and no-js readers
+# see it too. the split, text and fold are copies of build_related.py so a name here matches its index key.
+SPLIT = re.compile(r'\s+(?:b2b|b3b|vs\.?|x|and|with|feat\.?|ft\.?|\+|&|,)\s+', re.I)
+SPLIT_KEEP = re.compile('(' + SPLIT.pattern + ')', re.I)   # same split, the separators kept so the text survives
+def text(s): return re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]+>', ' ', s or ''))).strip()
+def fold(s): return re.sub(r'\s+', ' ', unicodedata.normalize('NFKD', s or '').encode('ascii', 'ignore').decode().lower().replace('&', 'and')).strip()
+RADAR = re.compile(r'(<section class="hub" id="radar">)(.*?)(</section>)', re.S)
+STRONG = re.compile(r'<strong>(.*?)</strong>', re.S)
+live = {}
+
+
+def live_page(slug):
+    """a renamed artist leaves a refresh stub behind, and a link there is a hop for nothing. the csp meta on
+    every page also says http-equiv, so only the refresh value marks a stub"""
+    if slug not in live:
+        try: live[slug] = 'http-equiv="refresh"' not in open('artists/%s.html' % slug, encoding='utf-8').read()
+        except OSError: live[slug] = False
+    return live[slug]
+
+
+def link_strong(m, idx, hits):
+    inner = m.group(1)
+    if '<a' in inner: return m.group(0)   # already linked, by this pass or by hand, so a rerun leaves it
+    parts, made = SPLIT_KEEP.split(inner), 0
+    for i in range(0, len(parts), 2):
+        piece = parts[i]
+        name = piece.strip()
+        slug = idx.get(fold(text(name)))
+        if not name or not slug or not live_page(slug): continue
+        lead, trail = piece[:len(piece) - len(piece.lstrip())], piece[len(piece.rstrip()):]
+        parts[i] = '%s<a class="gmx-ar" href="/artists/%s">%s</a>%s' % (lead, slug, name, trail)
+        made += 1
+    if not made: return m.group(0)
+    hits.append(made)
+    return '<strong>' + ''.join(parts) + '</strong>'
+
+
+try:
+    idx = json.load(open('names-index.json', encoding='utf-8'))['a']
+    s = open('events.html', encoding='utf-8').read()
+    hits = []
+    t = RADAR.sub(lambda r: r.group(1) + STRONG.sub(lambda m: link_strong(m, idx, hits), r.group(2)) + r.group(3), s, count=1)
+    if t != s: open('events.html', 'w', encoding='utf-8').write(t); changed['events.html'] = changed.get('events.html', 0) + len(hits)
+except (OSError, ValueError, KeyError):
+    pass   # no index yet, or a broken one, so the radar waits for the next run and gmx-related.js links it live
 
 print('copy_pass:', ', '.join('%s %d' % kv for kv in sorted(changed.items())) or 'nothing to change')
