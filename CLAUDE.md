@@ -17,8 +17,8 @@ A static website. Every page is a `.html` file in this repo, written by hand or 
 
 | Folder | What it holds |
 |---|---|
-| `artists/` | One page per artist (708 profiles plus 4 redirect pages), for example `artists/adam-ten.html` |
-| `labels/` | One page per record label (71 pages) |
+| `artists/` | One page per artist (the count is whatever `.github/scripts/sync_counts.py` prints, redirect pages not counted), for example `artists/adam-ten.html` |
+| `labels/` | One page per record label (no count kept here, run `ls labels/*.html`) |
 | `tracklists/` | One page per DJ set tracklist, plus `tracklists/index.html` |
 | `newsletter/` | Archived Fresh Grooves Friday issues, `fgf-001.html` and so on |
 | `media/covers/` | Playlist cover images used by `index.html` |
@@ -75,7 +75,7 @@ A static website. Every page is a `.html` file in this repo, written by hand or 
 | `gmx-refresh.js` | Pull to refresh inside the installed app |
 | `gmx-install.js` | "Add to home screen" nudge |
 | `gmx-clips.js`, `gmx-capture-worklet.js` | Scan page clip storage and audio capture |
-| `sw.js` | Service worker. Cache name is a versioned string (`gmx-v21` at the time of writing), bumped whenever the shell changes. Precaches the list in `precache.json` |
+| `sw.js` | Service worker. Cache name is a versioned string (read `CACHE` at the top of `sw.js` for the current name), bumped whenever the shell changes. Precaches the list in `precache.json` |
 | `manifest.webmanifest` | Installed app settings: name `groovesMAXXING`, home screen name `groovesMAXX`, start page `/scan` |
 | `gmx-config.json` | Recognizer backend address (`api_base`) and the app key `scan.html` sends. Public on the live site by design. Do not change it without the owner |
 | `sitemap.xml`, `robots.txt`, `feed.xml` | Search engine files and the newsletter RSS feed |
@@ -122,7 +122,7 @@ A static website. Every page is a `.html` file in this repo, written by hand or 
 
 ### Versioned shared files
 
-Scripts and styles are served with a four hour browser cache, so a returning visitor can get a fresh page with a stale script. `gmx-nav.js`, `gmx-nav.css` and `gmx-account.js` are loaded with a version query (`?v=17` today) on every page. When one of them changes, bump the number in `ensure_tags.py` and `build_precache.py` (and where `gmx-nav.js` and `gmx-quick.js` inject them), and bump the `sw.js` cache name. `gmx-read.css` has its own version (`?v=3`), set in `READ_CSS` in `ensure_tags.py`, `build_precache.py` and `sw.js`.
+Scripts and styles are served with a four hour browser cache, so a returning visitor can get a fresh page with a stale script. `gmx-nav.js`, `gmx-nav.css` and `gmx-account.js` are loaded with a version query (read the current numbers in `ensure_tags.py`, `bump_asset.py` moves them) on every page. When one of them changes, bump the number in `ensure_tags.py` and `build_precache.py` (and where `gmx-nav.js` and `gmx-quick.js` inject them), and bump the `sw.js` cache name. `gmx-read.css` has its own version (read it from `READ_CSS`), set in `READ_CSS` in `ensure_tags.py`, `build_precache.py` and `sw.js`.
 
 ### Security tags (content security policy)
 
@@ -136,13 +136,13 @@ Scripts and styles are served with a four hour browser cache, so a returning vis
 
 Blocks wrapped in marker comments are written by scripts:
 
-- `<!-- gmx-seo start -->` / `<!-- gmx-seo end -->` (about 751 pages)
-- `<!-- sets:start -->` / `<!-- sets:end -->` (about 522 pages)
-- `<!-- upcoming:start -->`, `<!-- tracklists:start -->`, `<!-- interviews:start -->`
-- `<!-- calendar-land:start -->`, `<!-- calendar-list:start -->`, `<!-- calendar-ld:start -->` on `calendar.html`
-- On the homepage: `sets-pool`, `sets-dots`, `iv-pool`, `iv-dots`, `upcoming`
+- `<!-- gmx-seo start -->` / `<!-- gmx-seo end -->` (no standing script writes it. It comes from the page template and the SEO lane, so check before trusting a bulk edit)
+- `<!-- sets:start -->` / `<!-- sets:end -->` (written by `GMX_tools\profilesync.py`. `GMX_tools\setslib.py add` places a set)
+- `<!-- upcoming:start -->` (`GMX_tools\upcomingpage.py`), `<!-- tracklists:start -->` (`GMX_tools\profilesync.py`), `<!-- interviews:start -->` (`GMX_tools\profilesync.py` and `setslib.py`)
+- `<!-- calendar-land:start -->`, `<!-- calendar-list:start -->`, `<!-- calendar-ld:start -->` on `calendar.html` (`GMX_tools\calendarpage.py`)
+- On the homepage: `sets-pool` and `sets-dots` (`GMX_tools\setslib.py`), `iv-pool` and `iv-dots` (`GMX_tools\ivlib.py`), `upcoming` (`GMX_tools\upcomingpage.py`)
 
-Hand edits inside them will be overwritten. Leave the markers in place.
+Hand edits inside them will be overwritten. Leave the markers in place. Page counts for a block are not kept here, count the markers with grep.
 
 - UNKNOWN: the scripts that fill these blocks live on the owner's laptop, not in this repo. `.gitignore` names `sitelink_tracklists.py` and `site_edit.py`.
 
