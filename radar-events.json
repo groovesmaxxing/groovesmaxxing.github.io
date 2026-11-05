@@ -1,5 +1,5 @@
 {
-"generated": "2026-11-04T17:21:06+00:00",
+"generated": "2026-11-05T17:29:22+00:00",
 "artist_count": 704,
 "artists_with_events": 144,
 "events": [
@@ -2567,6 +2567,15 @@
 "region": "VIC",
 "url": "https://www.moshtix.com.au/v2/event/drama-usa-/200689",
 "artist": "DRAMA"
+},
+{
+"date": "2027-02-05",
+"event": "Wade Bowen",
+"venue": "Cain's Ballroom",
+"city": "Tulsa",
+"region": "OK",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AA7Vvo",
+"artist": "Wade"
 },
 {
 "date": "2027-02-06",
