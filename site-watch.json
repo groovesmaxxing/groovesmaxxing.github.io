@@ -1,73 +1,73 @@
 {
- "generated": "2026-11-05T00:19:12Z",
+ "generated": "2026-11-05T07:18:59Z",
  "site": [
   {
    "path": "/",
    "code": 200,
-   "ms": 258,
+   "ms": 374,
    "state": "ok",
    "note": null
   },
   {
    "path": "/scan",
    "code": 200,
-   "ms": 195,
+   "ms": 175,
    "state": "wrong",
    "note": "missing gmx-config.json"
   },
   {
    "path": "/sets",
    "code": 200,
-   "ms": 235,
+   "ms": 164,
    "state": "ok",
    "note": null
   },
   {
    "path": "/artists",
    "code": 200,
-   "ms": 233,
+   "ms": 218,
    "state": "ok",
    "note": null
   },
   {
    "path": "/tracklists/",
    "code": 200,
-   "ms": 154,
+   "ms": 214,
    "state": "ok",
    "note": null
   },
   {
    "path": "/search-index.json",
    "code": 200,
-   "ms": 232,
+   "ms": 189,
    "state": "ok",
-   "note": "generated 2026-11-04"
+   "note": "generated 2026-11-05"
   },
   {
    "path": "/upcoming.json",
    "code": 200,
-   "ms": 179,
+   "ms": 159,
    "state": "ok",
-   "note": "generated 2026-11-04"
+   "note": "generated 2026-11-05"
   },
   {
    "path": "/radar-events.json",
    "code": 200,
-   "ms": 128,
+   "ms": 185,
    "state": "ok",
    "note": "generated 2026-11-04T17:21:06"
   },
   {
    "path": "/sitemap.xml",
    "code": 200,
-   "ms": 150,
+   "ms": 176,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sw.js",
    "code": 200,
-   "ms": 124,
+   "ms": 176,
    "state": "ok",
    "note": null
   }
@@ -75,7 +75,7 @@
  "recognizer": {
   "state": "up",
   "code": 200,
-  "ms": 499,
+  "ms": 502,
   "health": {
    "status": "ok",
    "version": "0.1.2",
@@ -107,16 +107,6 @@
     "state": "ok"
    },
    {
-    "name": "github_actions in /. - Update #1676054773",
-    "status": "completed",
-    "conclusion": "success",
-    "event": "dynamic",
-    "branch": "main",
-    "at": "2026-11-03T00:48:08Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/41555337761",
-    "state": "ok"
-   },
-   {
     "name": "link watch",
     "status": "completed",
     "conclusion": "success",
@@ -132,8 +122,8 @@
     "conclusion": "success",
     "event": "dynamic",
     "branch": "main",
-    "at": "2026-11-04T21:21:36Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/41915125882",
+    "at": "2026-11-05T02:04:50Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/41952691027",
     "state": "ok"
    },
    {
@@ -142,8 +132,8 @@
     "conclusion": "success",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-11-04T19:54:40Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/41901462291",
+    "at": "2026-11-05T00:56:43Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/41945013399",
     "state": "ok"
    },
    {
@@ -152,8 +142,8 @@
     "conclusion": "success",
     "event": "push",
     "branch": "main",
-    "at": "2026-11-04T21:22:23Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/41915127198",
+    "at": "2026-11-05T02:05:29Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/41952619258",
     "state": "ok"
    },
    {
@@ -162,8 +152,8 @@
     "conclusion": "success",
     "event": "push",
     "branch": "main",
-    "at": "2026-11-04T21:20:46Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/41915127204",
+    "at": "2026-11-05T02:03:57Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/41952619272",
     "state": "ok"
    }
   ]
@@ -199,12 +189,12 @@
    {
     "state": "ok",
     "id": "F-32",
-    "text": "the tracks index was rebuilt after the newest tracklist: 2026-11-04, 1 days old"
+    "text": "the tracks index was rebuilt after the newest tracklist: 2026-11-05, 0 days old"
    },
    {
     "state": "ok",
     "id": "F-33",
-    "text": "upcoming.json (the home page's next up band) was rebuilt after the newest dropping soon render: 2026-11-04, 1 days old"
+    "text": "upcoming.json (the home page's next up band) was rebuilt after the newest dropping soon render: 2026-11-05, 0 days old"
    },
    {
     "state": "ok",
@@ -214,7 +204,7 @@
    {
     "state": "ok",
     "id": "F-40",
-    "text": "the artist count on the home page and in artists-index.json equals the number of profiles: 722 everywhere"
+    "text": "the artist count on the home page and in artists-index.json equals the number of profiles: 738 everywhere"
    }
   ]
  },
