@@ -42,6 +42,7 @@ jobs:
           python3 .github/scripts/ensure_tags.py
           python3 .github/scripts/copy_pass.py
           python3 .github/scripts/sync_counts.py
+          python3 .github/scripts/sitemap_lastmod.py
           python3 .github/scripts/crosslink_audit.py
 
       - name: share cards (only the pages whose name or subtitle changed)

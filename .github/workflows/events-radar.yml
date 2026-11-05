@@ -26,9 +26,12 @@ jobs:
       - name: the events page's schema (the next dates as MusicEvent rows a crawler can read)
         run: python3 .github/scripts/build_event_schema.py
 
+      - name: the sitemap dates (the events page moved, so its lastmod moves with it)
+        run: python3 .github/scripts/sitemap_lastmod.py
+
       - name: commit refreshed data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add radar-events.json radar-attractions.json radar-denver.json events.html
+          git add radar-events.json radar-attractions.json radar-denver.json events.html sitemap.xml .github/sitemap-hashes.json
           git diff --staged --quiet || (git commit -m "radar: nightly events refresh" && git push)

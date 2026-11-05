@@ -97,12 +97,19 @@ A static website. Every page is a `.html` file in this repo, written by hand or 
 | Workflow | When | What |
 |---|---|---|
 | `site-check.yml` | every push and pull request | preflight, `harden_pages.py --check` and the headless page load check |
-| `site-data.yml` | every push to `main` | runs the `build_*.py` scripts, `lighten_sets.py`, `ensure_tags.py`, `sync_counts.py`, `crosslink_audit.py` and `share_cards.js`, then `harden_pages.py` last, then commits as `site data: derived files, tags and share cards` |
-| `events-radar.yml` | daily 09:23 UTC, or by hand | `fetch_events.py` with the `TM_API_KEY` secret, then `build_event_schema.py`. Commits as `radar: nightly events refresh` |
+| `site-data.yml` | every push to `main` | runs the `build_*.py` scripts, `lighten_sets.py`, `ensure_tags.py`, `sync_counts.py`, `sitemap_lastmod.py`, `crosslink_audit.py` and `share_cards.js`, then `harden_pages.py` last, then commits as `site data: derived files, tags and share cards` |
+| `events-radar.yml` | daily 09:23 UTC, or by hand | `fetch_events.py` with the `TM_API_KEY` secret, then `build_event_schema.py` and `sitemap_lastmod.py`. Commits as `radar: nightly events refresh` |
 | `site-watch.yml` | every 30 minutes | checks the live site's key pages, publishes to the `status` branch |
 | `link-watch.yml` | daily | checks outside links, publishes to the `status` branch |
 | `uptime.yml` | every 4 hours | checks the recognizer at `api_base` from `gmx-config.json` answers |
 | `freshness.yml` | daily | checks the rows in `.github/freshness.json` and fails when one is too old |
+
+### Sitemap dates
+
+- `.github/scripts/sitemap_lastmod.py` owns every `<lastmod>` in `sitemap.xml` that the laptop renderers miss. It runs at the end of the derived files step in `site-data.yml` and after `build_event_schema.py` in `events-radar.yml`, and it always exits 0.
+- It dates from content, not from git: each page's body is hashed with every `<script>` (except inline `application/ld+json`, which is content), every `<link>` and `<meta>` tag and the `?v=N` queries removed, then compared with the baseline in `.github/sitemap-hashes.json` (`{loc: sha}`, written by the script, do not hand-edit). A changed hash sets that page's lastmod to today's UTC date.
+- First-run rule: a loc with no baseline gets its hash recorded and its lastmod left alone, so the first run changes no dates. Baseline entries whose loc left the sitemap are dropped. `python3 .github/scripts/sitemap_lastmod.py --check` prints what would change and writes nothing.
+- The laptop renderers bump lastmod for the pages they write through `GMX_tools/sitelinks.bump_lastmod` (matched by the exact `<loc>`, CRLF kept), so both sides agree on the same entry and the same date format.
 
 ### Events radar
 
