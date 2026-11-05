@@ -29,7 +29,7 @@ T = {
     'related_js': '<script src="/gmx-related.js" defer></script>',
     'upcoming_js': '<script src="/gmx-upcoming.js?v=2" defer></script>',   # v2: tabs and the show menu (2026-11-04)
     'quick_css': '<link rel="stylesheet" href="/gmx-quick.css">',
-    'quick_js': '<script src="/gmx-quick.js?v=11" defer></script>',
+    'quick_js': '<script src="/gmx-quick.js?v=12" defer></script>',
     'sheet_css': '<link rel="stylesheet" href="/gmx-sheet.css?v=2">',
     'sheet_js': '<script src="/gmx-sheet.js?v=2" defer></script>',
     # the account layer (2026-10-12): "this is me" on every artist and label profile
