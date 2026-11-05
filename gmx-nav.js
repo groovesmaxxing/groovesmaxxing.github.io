@@ -7,8 +7,7 @@
    paints the "sign in" or "@handle" chip into the header of every page.
    "/" and ctrl/cmd+k open the sheet, as before. a plain tap on any /search link opens it too; a modified
    click (cmd, ctrl, shift, middle) still opens /search in a tab. on /search itself the button focuses the box. */
-/* halloween skin (2026-10-27): every page that loads the shell also gets /gmx-spooky.js, which switched itself off on 2026-11-01 04:30 utc and now does nothing. index.html loads it in its head instead, so its set swap lands before the carousel starts. */
-if (!document.querySelector('script[src^="/gmx-spooky.js"]')) { var gmxSpk = document.createElement('script'); gmxSpk.src = '/gmx-spooky.js?v=6'; document.head.appendChild(gmxSpk); }
+/* halloween skin (2026-10-27 to 2026-11-01): the shell no longer loads /gmx-spooky.js; the file stays in the repo and index.html still carries its own tag for next october. */
 /* language switch (2026-11-01): every page that loads the shell also gets /gmx-lang.js, the en / es circle in the header
    row and the swap of the site's own words. its dictionary file loads only for a visitor who picked another language. */
 if (!document.querySelector('script[src^="/gmx-lang.js"]')) { var gmxLng = document.createElement('script'); gmxLng.src = '/gmx-lang.js?v=6'; document.head.appendChild(gmxLng); }
