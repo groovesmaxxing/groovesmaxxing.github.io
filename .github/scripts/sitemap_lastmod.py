@@ -71,6 +71,10 @@ THUMB_RE = re.compile(r'\sonerror="this\.onerror=null;this\.src=\'([^\'"]+)\'"')
 
 def body_hash(text):
     """sha256 of the page with the shared and security tags removed and whitespace collapsed"""
+    # the related block related_slots.py writes into artist profiles is derived from other pages (their
+    # tracklists, sets and label pages), so a change to it is not a change to this page. it goes first,
+    # before anything else is stripped, and pages without the block hash exactly as before
+    text = re.sub(r"<!-- related:start -->.*?<!-- related:end -->", "", text, flags=re.S)
     # harden_pages.py runs after this script and turns these handlers into data-fallback attributes, so the
     # hash reads them the hardened way and a page the laptop wrote hashes the same before and after harden
     text = THUMB_RE.sub(lambda m: ' data-fallback="' + m.group(1) + '"', text)
