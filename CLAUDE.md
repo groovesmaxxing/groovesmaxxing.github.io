@@ -171,3 +171,11 @@ Short and lowercase, often starting with an area and a colon: `radar:`, `upcomin
 2. Add it to `sitemap.xml` and link it from `artists.html`.
 3. Add the name to `radar-artists.json`, update "all N names" in `events.html`, and check the Ticketmaster match. Use `OVERRIDES` when it is wrong.
 4. Push. `site-data` updates the artist counts and derived files.
+
+### Overnight runs
+
+Overnight Claude runs work on `overnight/<topic>_<date>` branches, each in a worktree under `C:\Users\guill\develop\gmx-site-wt-*`. No launcher file exists for them: each run is started by hand with a prompt, so this section is where the rule lives, and the prompt should repeat it.
+
+1. Last step of every overnight run, after the final commit and a clean preflight: `git push -u origin <branch>` for every branch the run made. A pushed overnight branch is a backup, not a deploy; only `main` goes live. (2026-11-02: 73 patches on four branches sat only in the develop clone until the 11-04 audit pushed them.)
+2. An overnight run never pushes `main`. Merging waits for the owner's yes.
+3. When a run changes a shared `gmx-*.js` or `gmx-*.css`, move its `?v=` with `python3 .github/scripts/bump_asset.py <asset>` (clean tree required) and commit the result.
