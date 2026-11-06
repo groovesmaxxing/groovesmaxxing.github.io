@@ -27,7 +27,7 @@ T = {
     'follow_js': '<script src="/gmx-follow.js" defer></script>',
     'crate_js': '<script src="/gmx-crate.js" defer></script>',
     'related_js': '<script src="/gmx-related.js" defer></script>',
-    'upcoming_js': '<script src="/gmx-upcoming.js?v=2" defer></script>',   # v2: tabs and the show menu (2026-11-04)
+    'upcoming_js': '<script src="/gmx-upcoming.js?v=3" defer></script>',   # v3: monday graduation (2026-11-05), v2 tabs and the show menu
     'quick_css': '<link rel="stylesheet" href="/gmx-quick.css">',
     'quick_js': '<script src="/gmx-quick.js?v=13" defer></script>',
     'sheet_css': '<link rel="stylesheet" href="/gmx-sheet.css?v=2">',

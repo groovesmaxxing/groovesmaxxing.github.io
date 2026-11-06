@@ -1,7 +1,9 @@
-/* groovesmaxxing dropping soon (2026-10-11, tabs and the show menu 2026-11-04). vanilla, no dependencies.
-   the release rows come from the laptop's upcomingpage.py and this never changes what they say. it adds:
-   - tabs: dropping soon and released. a release stays under dropping soon through its own day, then
-     graduates. the page is not rebuilt at midnight, so the graduation happens here: the day after, a row the
+/* groovesmaxxing dropping soon (2026-10-11, tabs and the show menu 2026-11-04, monday graduation 2026-11-05).
+   vanilla, no dependencies. the release rows come from the laptop's upcomingpage.py and this never changes
+   what they say. it adds:
+   - tabs: dropping soon and released. a release stays under dropping soon through the sunday after its day
+     (G-MO 2026-11-05), reading "out friday" with its chip from the day after, then graduates on monday
+     morning. the page is not rebuilt at midnight, so the graduation happens here: on that monday, a row the
      store had already confirmed when the page was built (data-out) moves to released, and a row it had not
      leaves the page until the store pass and the next build decide. /upcoming#released opens the second tab.
    - a show menu per tab, how far ahead or how far back. the dates past it hide, and the line under the
@@ -28,8 +30,8 @@ function put(k,v){try{localStorage.setItem(k,v)}catch(e){}}
 function midnight(){var t=new Date();t.setHours(0,0,0,0);return t}
 function dateOf(iso){var p=iso.split('-');return new Date(+p[0],+p[1]-1,p[2]?+p[2]:1)}
 function days(iso){return Math.round((dateOf(iso)-midnight())/86400000)}
-/* a date is past once its day is over, a month once the month is */
-function past(iso){if(iso.length===10)return days(iso)<0;if(iso.length===7){var p=iso.split('-');return new Date(+p[0],+p[1],1)<=midnight()}return false}
+/* a date is past once the monday after it has come (sun +1, mon +7, fri +3), a month once the month is */
+function past(iso){if(iso.length===10){var d=dateOf(iso);d.setDate(d.getDate()+((8-d.getDay())%7||7));return midnight()>=d}if(iso.length===7){var p=iso.split('-');return new Date(+p[0],+p[1],1)<=midnight()}return false}
 function rel(iso,released){
   var n=days(iso),wd=WD[dateOf(iso).getDay()],w;
   if(n===0)return 'today';
@@ -39,6 +41,7 @@ function rel(iso,released){
     if(n>-7)return 'last '+wd;
     w=Math.round(-n/7);return w===1?'a week ago':w+' weeks ago';
   }
+  if(n<0&&!past(iso))return 'out '+wd;   /* its release week, still under dropping soon */
   if(n===1)return 'tomorrow';
   return n<7?'this '+wd:n<14?'next '+wd:'in '+Math.round(n/7)+' weeks';
 }
@@ -88,7 +91,7 @@ function start(){
   tabCount();
   function tabCount(){KEYS.forEach(function(k){var b=bar.querySelector('[data-tab="'+k+'"] b');if(b)b.textContent=panels[k].querySelectorAll('.ev').length})}
 
-  /* the dates: relative day, today's chip, and on its day a pre-order is the release page */
+  /* the dates: relative day, today's chip, and in its release week a pre-order is the release page */
   var groups={soon:[],released:[]};
   KEYS.forEach(function(k){
     [].forEach.call(panels[k].querySelectorAll('.ur-day'),function(el){
@@ -96,7 +99,7 @@ function start(){
       if(iso.length===10){
         var r=el.querySelector('.ur-rel'),d=el.querySelector('.ur-dd'),n=days(iso),say=rel(iso,k==='released');
         if(r&&d){if(n>-7&&n<14){d.textContent=text(r);r.textContent=say}else d.textContent=say}
-        if(n===0){
+        if(k==='released'?n===0:n<=0&&!past(iso)){
           el.classList.add('ur-now');
           [].forEach.call(el.querySelectorAll('a.go'),function(a){var t=text(a);if(t==='pre-order →')a.textContent='on beatport →';else if(t==='pre-save →')a.textContent='listen →'});
         }
