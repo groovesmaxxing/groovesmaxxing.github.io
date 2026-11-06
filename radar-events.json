@@ -1,44 +1,8 @@
 {
-"generated": "2026-11-05T17:29:22+00:00",
+"generated": "2026-11-06T16:50:02+00:00",
 "artist_count": 704,
-"artists_with_events": 144,
+"artists_with_events": 143,
 "events": [
-{
-"date": "2026-11-05",
-"event": "Moby (18+)",
-"venue": "Bill Graham Civic Auditorium",
-"city": "San Francisco",
-"region": "CA",
-"url": "https://www.ticketmaster.com/moby-18-san-francisco-california-11-05-2026/event/1C006515F9551DE3",
-"artist": "Azzecca"
-},
-{
-"date": "2026-11-05",
-"event": "Thundercat: Distracted AF Tour",
-"venue": "The Fillmore New Orleans",
-"city": "New Orleans",
-"region": "LA",
-"url": "https://www.ticketmaster.com/thundercat-distracted-af-tour-new-orleans-louisiana-11-05-2026/event/1B0064E9979F7FCA",
-"artist": "Channel Tres"
-},
-{
-"date": "2026-11-05",
-"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
-"venue": "Toyota Center",
-"city": "Houston",
-"region": "TX",
-"url": "https://www.toyotacenter.com/events/detail/john-summit",
-"artist": "John Summit"
-},
-{
-"date": "2026-11-05",
-"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
-"venue": "Toyota Center - TX",
-"city": "Houston",
-"region": "TX",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A70t74",
-"artist": "John Summit"
-},
 {
 "date": "2026-11-06",
 "event": "ARTBAT",
@@ -434,6 +398,15 @@
 "region": "TX",
 "url": "https://www.universe.com/events/breakaway-houston-2026-tickets-PM7CTR?ref=ticketmaster",
 "artist": "Cloonee"
+},
+{
+"date": "2026-11-13",
+"event": "D.O.D (18+)",
+"venue": "DUCTWORK - Houston",
+"city": "Houston",
+"region": "TX",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAAv_J",
+"artist": "D.O.D"
 },
 {
 "date": "2026-11-13",
@@ -2201,6 +2174,15 @@
 },
 {
 "date": "2026-12-31",
+"event": "Dom Dolla",
+"venue": "Factory Town",
+"city": "Miami",
+"region": "FL",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAAvbz",
+"artist": "Dom Dolla"
+},
+{
+"date": "2026-12-31",
 "event": "New Year's Eve: Defected + Glitterbox",
 "venue": "Depot Mayfield",
 "city": "Manchester",
@@ -3181,6 +3163,69 @@
 "artist": "Mindchatter"
 },
 {
+"date": "2027-04-20",
+"event": "Midnight Generation - Rooted Tour 2027",
+"venue": "Summit Music Hall",
+"city": "Denver",
+"region": "CO",
+"url": "https://www.ticketmaster.com/midnight-generation-rooted-tour-2027-denver-colorado-04-20-2027/event/1E006563D14254CD",
+"artist": "Midnight Generation"
+},
+{
+"date": "2027-04-23",
+"event": "Midnight Generation - Rooted Tour 2027",
+"venue": "The Echo Lounge & Music Hall",
+"city": "Dallas",
+"region": "TX",
+"url": "https://www.ticketmaster.com/midnight-generation-rooted-tour-2027-dallas-texas-04-23-2027/event/0C006564EED22237",
+"artist": "Midnight Generation"
+},
+{
+"date": "2027-04-24",
+"event": "Midnight Generation - Rooted Tour 2027",
+"venue": "Scoot Inn",
+"city": "Austin",
+"region": "TX",
+"url": "https://www.ticketmaster.com/midnight-generation-rooted-tour-2027-austin-texas-04-24-2027/event/3A00656201D5F224",
+"artist": "Midnight Generation"
+},
+{
+"date": "2027-04-25",
+"event": "Midnight Generation - Rooted Tour 2027",
+"venue": "House of Blues Houston",
+"city": "Houston",
+"region": "TX",
+"url": "https://www.ticketmaster.com/midnight-generation-rooted-tour-2027-houston-texas-04-25-2027/event/3A006564C01F8F3F",
+"artist": "Midnight Generation"
+},
+{
+"date": "2027-04-27",
+"event": "Midnight Generation - Rooted Tour 2027",
+"venue": "The Masquerade - Hell",
+"city": "Atlanta",
+"region": "GA",
+"url": "https://www.ticketmaster.com/midnight-generation-rooted-tour-2027-atlanta-georgia-04-27-2027/event/0E006565B508DD4A",
+"artist": "Midnight Generation"
+},
+{
+"date": "2027-04-29",
+"event": "Midnight Generation",
+"venue": "Howard Theatre",
+"city": "Washington",
+"region": "DC",
+"url": "https://www.ticketweb.com/event/midnight-generation-howard-theatre-tickets/14420914",
+"artist": "Midnight Generation"
+},
+{
+"date": "2027-04-30",
+"event": "Midnight Generation - Rooted Tour 2027",
+"venue": "Irving Plaza Powered By Verizon 5G",
+"city": "New York",
+"region": "NY",
+"url": "https://www.ticketmaster.com/midnight-generation-rooted-tour-2027-new-york-new-york-04-30-2027/event/0000656415657F97",
+"artist": "Midnight Generation"
+},
+{
 "date": "2027-05-01",
 "event": "Cloonee",
 "venue": "Red Rocks Amphitheatre",
@@ -3188,6 +3233,33 @@
 "region": "CO",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1AA7F7a",
 "artist": "Cloonee"
+},
+{
+"date": "2027-05-03",
+"event": "Midnight Generation - Rooted Tour 2027",
+"venue": "Brighton Music Hall presented by Citizens",
+"city": "Boston",
+"region": "MA",
+"url": "https://www.ticketmaster.com/midnight-generation-rooted-tour-2027-boston-massachusetts-05-03-2027/event/01006564B0238BE7",
+"artist": "Midnight Generation"
+},
+{
+"date": "2027-05-04",
+"event": "Midnight Generation - Rooted Tour 2027",
+"venue": "Le Studio TD",
+"city": "Montreal",
+"region": "QC",
+"url": "https://www.ticketmaster.ca/midnight-generation-rooted-tour-2027-montreal-quebec-05-04-2027/event/31006563D568619D",
+"artist": "Midnight Generation"
+},
+{
+"date": "2027-05-06",
+"event": "Midnight Generation - Rooted Tour 2027",
+"venue": "The Opera House",
+"city": "Toronto",
+"region": "ON",
+"url": "https://www.ticketmaster.ca/midnight-generation-rooted-tour-2027-toronto-ontario-05-06-2027/event/10006564C31EC736",
+"artist": "Midnight Generation"
 },
 {
 "date": "2027-05-08",
@@ -3199,6 +3271,33 @@
 "artist": "Mau P"
 },
 {
+"date": "2027-05-08",
+"event": "Midnight Generation - Rooted Tour 2027",
+"venue": "House of Blues Chicago",
+"city": "Chicago",
+"region": "IL",
+"url": "https://www.ticketmaster.com/midnight-generation-rooted-tour-2027-chicago-illinois-05-08-2027/event/040065621F04B09A",
+"artist": "Midnight Generation"
+},
+{
+"date": "2027-05-12",
+"event": "Midnight Generation - Rooted Tour 2027",
+"venue": "The Complex",
+"city": "Salt Lake City",
+"region": "UT",
+"url": "https://www.axs.com/events/1690554/midnight-generation-tickets",
+"artist": "Midnight Generation"
+},
+{
+"date": "2027-05-14",
+"event": "Midnight Generation - Rooted Tour 2027",
+"venue": "Revolution Hall",
+"city": "Portland",
+"region": "OR",
+"url": "https://www.etix.com/ticket/p/84156917/midnight-generation-rooted-tour-2027-portland-revolution-hall",
+"artist": "Midnight Generation"
+},
+{
 "date": "2027-05-15",
 "event": "Where We Belong Festival 2027",
 "venue": "Canon's Marsh Amphitheatre",
@@ -3206,6 +3305,60 @@
 "region": "GB",
 "url": "https://www.universe.com/events/where-we-belong-festival-2027-tickets-1J3K04?ref=ticketmaster",
 "artist": "Horse Meat Disco"
+},
+{
+"date": "2027-05-15",
+"event": "Midnight Generation - Rooted Tour 2027",
+"venue": "Commodore Ballroom",
+"city": "Vancouver",
+"region": "BC",
+"url": "https://www.ticketmaster.ca/midnight-generation-rooted-tour-2027-vancouver-british-columbia-05-15-2027/event/110065637B4C25E9",
+"artist": "Midnight Generation"
+},
+{
+"date": "2027-05-19",
+"event": "Midnight Generation - Rooted Tour 2027",
+"venue": "The Fillmore",
+"city": "San Francisco",
+"region": "CA",
+"url": "https://www.ticketmaster.com/midnight-generation-rooted-tour-2027-san-francisco-california-05-19-2027/event/1C0065630B2A416B",
+"artist": "Midnight Generation"
+},
+{
+"date": "2027-05-21",
+"event": "Midnight Generation - Rooted Tour 2027",
+"venue": "The Belasco",
+"city": "Los Angeles",
+"region": "CA",
+"url": "https://www.ticketmaster.com/midnight-generation-rooted-tour-2027-los-angeles-california-05-21-2027/event/09006564A205805E",
+"artist": "Midnight Generation"
+},
+{
+"date": "2027-05-22",
+"event": "Midnight Generation - Rooted Tour 2027",
+"venue": "The Observatory North Park",
+"city": "San Diego",
+"region": "CA",
+"url": "https://www.ticketmaster.com/midnight-generation-rooted-tour-2027-san-diego-california-05-22-2027/event/0B006563A3EA2E8C",
+"artist": "Midnight Generation"
+},
+{
+"date": "2027-05-23",
+"event": "MIDNIGHT GENERATION",
+"venue": "Crescent Ballroom",
+"city": "Phoenix",
+"region": "AZ",
+"url": "https://www.ticketweb.com/event/midnight-generation-crescent-ballroom-tickets/14421614",
+"artist": "Midnight Generation"
+},
+{
+"date": "2027-05-27",
+"event": "Midnight Generation",
+"venue": "Escenario GNP Seguros",
+"city": "Monterrey",
+"region": "NL",
+"url": "https://www.ticketmaster.com.mx/midnight-generation-monterrey-27-05-2027/event/14006564BCD99119",
+"artist": "Midnight Generation"
 },
 {
 "date": "2027-05-29",
@@ -3224,6 +3377,15 @@
 "region": "NY",
 "url": "https://www.ticketmaster.com/odd-mob-new-york-new-york-05-29-2027/event/00006436DE90D883",
 "artist": "San Pacho"
+},
+{
+"date": "2027-06-09",
+"event": "Midnight Generation - Rooted Tour",
+"venue": "Auditorio Nacional",
+"city": "Ciudad de México",
+"region": "CDMX",
+"url": "https://www.ticketmaster.com.mx/midnight-generation-rooted-tour-ciudad-de-mexico-09-06-2027/event/3D006564C1589B2F",
+"artist": "Midnight Generation"
 },
 {
 "date": "2027-06-18",
@@ -3343,6 +3505,15 @@
 "artist": "Franky Rizardo"
 },
 {
+"date": "2027-08-07",
+"event": "Hugel Make The Girls Dance on the Thames",
+"venue": "",
+"city": "",
+"region": "",
+"url": "https://www.universe.com/events/hugel-make-the-girls-dance-on-the-thames-tickets-8MV9NZ?ref=ticketmaster",
+"artist": "HUGEL"
+},
+{
 "date": "2027-08-27",
 "event": "Creamfields 2027 - Friday - Gold",
 "venue": "Daresbury",
@@ -3386,6 +3557,78 @@
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/pete-tong-ibiza-classics-halifax-29-08-2027/event/35006526A993157A",
 "artist": "Pete Tong"
+},
+{
+"date": "2027-08-31",
+"event": "Midnight Generation",
+"venue": "Village Underground",
+"city": "London",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/midnight-generation-london-31-08-2027/event/35006564957142B8",
+"artist": "Midnight Generation"
+},
+{
+"date": "2027-09-02",
+"event": "Midnight Generation - Rooted Tour 2027",
+"venue": "",
+"city": "Düsseldorf",
+"region": "DE",
+"url": "https://www.ticketmaster.de/event/midnight-generation-rooted-tour-2027-tickets/197534999?language=en-us",
+"artist": "Midnight Generation"
+},
+{
+"date": "2027-09-04",
+"event": "Midnight Generation - Rooted Tour 2027",
+"venue": "Melkweg",
+"city": "Amsterdam",
+"region": "NL",
+"url": "https://www.ticketmaster.nl/event/midnight-generation-rooted-tour-2027-tickets/1011798857?language=en-us",
+"artist": "Midnight Generation"
+},
+{
+"date": "2027-09-06",
+"event": "Midnight Generation - Rooted Tour 2027",
+"venue": "",
+"city": "Berlin",
+"region": "DE",
+"url": "https://www.ticketmaster.de/event/midnight-generation-rooted-tour-2027-tickets/736456049?language=en-us",
+"artist": "Midnight Generation"
+},
+{
+"date": "2027-09-08",
+"event": "Midnight Generation - Rooted Tour 2027",
+"venue": "Dynamo Saal",
+"city": "Zürich",
+"region": "CH",
+"url": "https://www.ticketmaster.ch/event/midnight-generation-rooted-tour-2027-tickets/1337147401?language=en-us",
+"artist": "Midnight Generation"
+},
+{
+"date": "2027-09-09",
+"event": "Midnight Generation - Rooted Tour 2027",
+"venue": "Circolo Magnolia",
+"city": "Segrate (Milano)",
+"region": "IT",
+"url": "https://www.ticketmaster.it/biglietti/midnight-generation-rooted-tour-2027-segrate-milano-09-09-2027/event/zklcm4bbg38r",
+"artist": "Midnight Generation"
+},
+{
+"date": "2027-09-11",
+"event": "Midnight Generation - Rooted Tour 2027",
+"venue": "Sala Razzmatazz 1",
+"city": "Barcelona",
+"region": "ES",
+"url": "https://www.ticketmaster.es/event/midnight-generation-rooted-tour-2027-tickets/1482160120?language=en-us",
+"artist": "Midnight Generation"
+},
+{
+"date": "2027-09-12",
+"event": "Midnight Generation - Rooted Tour 2027",
+"venue": "La Riviera",
+"city": "Madrid",
+"region": "ES",
+"url": "https://www.ticketmaster.es/event/midnight-generation-rooted-tour-2027-tickets/329718134?language=en-us",
+"artist": "Midnight Generation"
 }
 ]
 }

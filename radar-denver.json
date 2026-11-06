@@ -1,5 +1,5 @@
 {
-"generated": "2026-11-05T17:29:22+00:00",
+"generated": "2026-11-06T16:50:02+00:00",
 "events": [
 {
 "date": "2026-11-21",
@@ -63,6 +63,13 @@
 "venue": "Red Rocks Amphitheatre",
 "city": "Morrison",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1AA7O1F"
+},
+{
+"date": "2027-04-20",
+"artist": "Midnight Generation",
+"venue": "Summit Music Hall",
+"city": "Denver",
+"url": "https://www.ticketmaster.com/midnight-generation-rooted-tour-2027-denver-colorado-04-20-2027/event/1E006563D14254CD"
 },
 {
 "date": "2027-05-01",
