@@ -413,7 +413,7 @@ function identify(blob){
   if(finalDone)return;
   if(!navigator.onLine&&!draining){queueClip(blob);return}
   cancelScan=null; go.setAttribute('aria-disabled','true'); go.setAttribute('aria-label','finding it, one moment'); stage.classList.add('finding'); recword.textContent='finding it'; count.textContent=''; announce('finding it');
-  say2('checking the catalogs');
+  say2(auto?'checking our library':'checking the catalogs');
   if(!early)showCard('<div class="skel" aria-hidden="true"><i class="a"></i><i class="b"></i><i class="c"></i><i class="d"></i></div>');
   var sentAt=null,finalRound={at:CAPTURE_MS,post:0,wait:0,answer:'…'};if(timing)timing.rounds.push(finalRound);
   var fd=new FormData(); fd.append('audio',blob,'clip.'+extOf(blob)); fd.append('source','mic');
@@ -423,7 +423,9 @@ function identify(blob){
      still run on the full clip, so the likely can still rise to a sure one; only the ACRCloud and AudD spend is
      saved. the header goes on no other path. an api without the matching guard refuses the header, as a 401 or as
      a failed preflight that the browser reports as a network error, and either answer re-posts once without the
-     header so the scan goes on as before. a stalled upload (timeout) is not retried. */
+     header so the scan goes on as before. a stalled upload (timeout) is not retried.
+     auto (2026-11-06): every scan while auto runs is library only too, so a phone left on through a set, or many
+     of them, never spends the catalogs. a tap with auto off still checks them. */
   function post(withHeader){
     return fx(cfg.api_base+'/identify',{method:'POST',headers:headers(withHeader?{'X-GMX-Catalog':'off'}:null),body:fd},POST_MS)
     .then(function(r){
@@ -440,7 +442,7 @@ function identify(blob){
       throw e;
     });
   }
-  post(earlyLikely())
+  post(auto||earlyLikely())
   .then(function(job){return pollJob(job.job_id)})
   .then(function(j){
     var r=j.result||{}, c=r.card||{kind:'none'};
