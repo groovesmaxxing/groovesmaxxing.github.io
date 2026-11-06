@@ -1,73 +1,73 @@
 {
- "generated": "2026-11-06T17:25:25Z",
+ "generated": "2026-11-06T22:20:38Z",
  "site": [
   {
    "path": "/",
    "code": 200,
-   "ms": 286,
+   "ms": 245,
    "state": "ok",
    "note": null
   },
   {
    "path": "/scan",
    "code": 200,
-   "ms": 172,
+   "ms": 131,
    "state": "wrong",
    "note": "missing gmx-config.json"
   },
   {
    "path": "/sets",
    "code": 200,
-   "ms": 176,
+   "ms": 277,
    "state": "ok",
    "note": null
   },
   {
    "path": "/artists",
    "code": 200,
-   "ms": 198,
+   "ms": 114,
    "state": "ok",
    "note": null
   },
   {
    "path": "/tracklists/",
    "code": 200,
-   "ms": 127,
+   "ms": 154,
    "state": "ok",
    "note": null
   },
   {
    "path": "/search-index.json",
    "code": 200,
-   "ms": 191,
+   "ms": 365,
    "state": "ok",
    "note": "generated 2026-11-06"
   },
   {
    "path": "/upcoming.json",
    "code": 200,
-   "ms": 162,
+   "ms": 156,
    "state": "ok",
    "note": "generated 2026-11-06"
   },
   {
    "path": "/radar-events.json",
    "code": 200,
-   "ms": 232,
+   "ms": 176,
    "state": "ok",
    "note": "generated 2026-11-06T16:50:02"
   },
   {
    "path": "/sitemap.xml",
    "code": 200,
-   "ms": 258,
+   "ms": 285,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sw.js",
    "code": 200,
-   "ms": 170,
+   "ms": 155,
    "state": "ok",
    "note": null
   }
@@ -75,7 +75,7 @@
  "recognizer": {
   "state": "up",
   "code": 200,
-  "ms": 1100,
+  "ms": 642,
   "health": {
    "status": "ok",
    "version": "0.1.2",
@@ -83,8 +83,10 @@
   }
  },
  "workflows": {
-  "state": "ok",
-  "failed": [],
+  "state": "failed",
+  "failed": [
+   "site check"
+  ],
   "runs": [
    {
     "name": "events radar sweep",
@@ -97,13 +99,33 @@
     "state": "ok"
    },
    {
+    "name": "freshness",
+    "status": "completed",
+    "conclusion": "success",
+    "event": "schedule",
+    "branch": "main",
+    "at": "2026-11-06T20:24:55Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/42288130515",
+    "state": "ok"
+   },
+   {
+    "name": "link watch",
+    "status": "completed",
+    "conclusion": "success",
+    "event": "schedule",
+    "branch": "main",
+    "at": "2026-11-06T17:40:39Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/42263657722",
+    "state": "ok"
+   },
+   {
     "name": "pages build and deployment",
     "status": "completed",
     "conclusion": "success",
     "event": "dynamic",
     "branch": "main",
-    "at": "2026-11-06T17:19:01Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/42259675114",
+    "at": "2026-11-06T22:07:15Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/42302098968",
     "state": "ok"
    },
    {
@@ -112,19 +134,19 @@
     "conclusion": "success",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-11-06T16:01:40Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/42248457748",
+    "at": "2026-11-06T21:38:34Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/42298380606",
     "state": "ok"
    },
    {
     "name": "site check",
     "status": "completed",
-    "conclusion": "success",
+    "conclusion": "failure",
     "event": "push",
     "branch": "main",
-    "at": "2026-11-06T16:59:20Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/42257106626",
-    "state": "ok"
+    "at": "2026-11-06T22:06:08Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/42302015319",
+    "state": "failed"
    },
    {
     "name": "site data",
@@ -132,8 +154,8 @@
     "conclusion": "success",
     "event": "push",
     "branch": "main",
-    "at": "2026-11-06T17:13:42Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/42257106521",
+    "at": "2026-11-06T22:06:27Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/42302015456",
     "state": "ok"
    }
   ]
@@ -189,5 +211,5 @@
   ]
  },
  "state": "wrong",
- "summary": "site pages wrong: /scan; recognizer up; freshness warn"
+ "summary": "site pages wrong: /scan; recognizer up; failed workflows: site check; freshness warn"
 }
