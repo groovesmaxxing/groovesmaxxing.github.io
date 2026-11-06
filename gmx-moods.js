@@ -6,12 +6,22 @@
    the mood, the typed words and the shuffle seed sit in the address hash (#mood=late-night&s=123 or
    #q=sunday%20morning&s=123), so a shared link rebuilds the same list. the hash never reaches a server.
    the page's own words go through gmx-lang.js (the moods page block in gmx-lang-es.js, scoped to .mzp).
-   track, artist and label names carry translate="no". hearts come from gmx-crate.js when it is on the page. */
+   track, artist and label names carry translate="no". hearts come from gmx-crate.js when it is on the page.
+   v2 (2026-11-06), the when chips: a second chip row under the moods (daytime, night, late, from D.when), one on
+   at a time, tap it again to clear, kept in the hash as when=<id> (#mood=late-night&when=late&s=7). with one on,
+   a set card sits above the list: up to three sets from D.setcards tagged for that hour, ranked by how many of
+   their released tracklist rows sit in the mood's pool (ov), whether the dj has a track in it (djp), a tracklist
+   (tl) and a 60 to 180 minute length, ties broken by the list's seed. a row heard in a set of that hour shows a
+   badge in place of its heard-in link. the track list itself is the same with or without a when chip. the payload
+   keys are when, txt, setcards and a slot id as the third element of each sets entry. the new words ship in both
+   languages in the payload, not in gmx-lang-es.js: the new nodes carry translate="no" so the dictionary pass
+   leaves them alone, and they repaint in the other language when gmx-lang.js changes <html lang>. */
 (function(){
 'use strict';
 var root=document.getElementById('mz');if(!root)return;
 var chipsEl=document.getElementById('mz-chips'),res=document.getElementById('mz-res'),form=document.getElementById('mz-ask'),
-    input=document.getElementById('mz-q'),live=document.getElementById('mz-live'),metaEl=document.getElementById('mz-meta');
+    input=document.getElementById('mz-q'),live=document.getElementById('mz-live'),metaEl=document.getElementById('mz-meta'),
+    whenEl=document.getElementById('mz-when');
 var D=null,loading=null,names=null,cur=null,MOOD={},GW={},NEVER=[],ALL=[];
 var N=30,PER_ARTIST=2,PER_FILL=3,PRIMARY=6;
 var C={sp:0,t:1,a:2,l:3,g:4,ag:5,b:6,k:7,ln:8,f:9,r:10,bp:11,dz:12,ar:13,h:14};
@@ -32,6 +42,13 @@ function newSeed(){return 1+Math.floor(Math.random()*99999)}
 function today(){var d=new Date();return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2)}
 function daysSince(iso){var p=iso.split('-');return Math.floor((Date.now()-new Date(+p[0],p[1]-1,+p[2]).getTime())/864e5)}
 function chip(id){for(var i=0;i<D.chips.length;i++)if(D.chips[i].id===id)return D.chips[i];return null}
+/* the when chips and the set card: their words come from the payload ({en,es}), read in the language <html lang>
+   says at paint time (es and es-MX are spanish) */
+function lang(){return /^es\b/i.test(document.documentElement.getAttribute('lang')||'')?'es':'en'}
+function word(o){return o?o[lang()]||o.en||'':''}
+function T(k){return word(D.txt&&D.txt[k])}
+function whenOf(id){var w=D.when||[];for(var i=0;i<w.length;i++)if(w[i].id===id)return w[i];return null}
+function hasWhen(){return !!(D&&D.when&&D.when.length&&D.txt)}
 function inSeason(c){if(!c.season)return true;var md=today().slice(5);return c.season[0]<=c.season[1]?md>=c.season[0]&&md<=c.season[1]:md>=c.season[0]||md<=c.season[1]}
 function poolOf(c){
   if(c.pool)return c.pool;
@@ -201,6 +218,39 @@ function paintChips(){
   chipsEl.innerHTML=D.chips.filter(function(c){return inSeason(c)&&poolOf(c).length}).map(function(c){return chipBtn(c,cur&&cur.mood===c.id)}).join('');
   if(keep){var b=chipsEl.querySelector('[data-mood="'+keep+'"]');if(b)b.focus({preventScroll:true})}
 }
+function paintWhen(){
+  if(!whenEl)return;
+  if(!hasWhen()){whenEl.hidden=true;return}
+  var a=document.activeElement,keep=a&&whenEl.contains(a)?a.getAttribute('data-when'):null;
+  whenEl.setAttribute('aria-label',T('when_label'));
+  whenEl.innerHTML=D.when.map(function(w){var on=cur&&cur.when===w.id;
+    return '<button type="button" class="lc" data-when="'+esc(w.id)+'" aria-pressed="'+(on?'true':'false')+'" title="'+esc(word(w.d))+'">'+esc(word(w))+'</button>'}).join('');
+  whenEl.hidden=false;
+  if(keep){var b=whenEl.querySelector('[data-when="'+keep+'"]');if(b)b.focus({preventScroll:true})}
+}
+/* the set card: the sets tagged for the hour, the ones that play the mood first. the mood is the chip that is on,
+   or the first mood read from what was typed */
+function setRow(s){
+  var m=[],a=(s.ar||[]).length?D.artists[s.ar[0]]:null,yt=/^https?:/.test(s.u||'');
+  if(s.dj)m.push(a?'<a href="'+esc(a[1])+'">'+esc(s.dj)+'</a>':'<span>'+esc(s.dj)+'</span>');
+  if(s.min>0)m.push('<span class="nb">'+s.min+' '+esc(T('min'))+'</span>');
+  if(s.flag==='open_to_close')m.push('<span class="nb fl">'+esc(T('open_to_close'))+'</span>');
+  if(s.tl)m.push('<a class="nb" href="'+esc(s.u)+'">'+esc(T('tracklist'))+' →</a>');
+  return '<li class="mz-sr"><a class="mz-st" href="'+esc(s.u)+'"'+(yt?' target="_blank" rel="noopener"':'')+'>'+esc(s.t)+(yt?' ↗':'')+'</a>'+
+    (m.length?'<div class="mz-sm">'+m.join('')+'</div>':'')+'</li>';
+}
+function setCard(st,c){
+  if(!st.when||!hasWhen()||!D.setcards||!whenOf(st.when))return '';
+  var mood=st.mood||(c&&c.read&&c.read.moods.length?c.read.moods[0]:null),R=rng(st.seed),list=[];
+  D.setcards.forEach(function(s){if(s.slot===st.when)list.push(s)});
+  if(!list.length)return '<div class="mz-set mz-set-0" translate="no"><p class="mz-set-none">'+esc(T('set_none'))+'</p></div>';
+  var keyed=list.map(function(s){
+    var sc=(mood?3*((s.ov&&s.ov[mood])||0)+((s.djp||[]).indexOf(mood)>-1?2:0):0)+(s.tl?1:0)+(s.min>=60&&s.min<=180?1:0);
+    return [s,sc,R()]}).sort(function(a,b){return b[1]-a[1]||b[2]-a[2]});
+  return '<div class="mz-set" translate="no" role="group" aria-label="'+esc(T('set_head'))+'"><p class="mz-set-h">'+esc(T('set_head'))+'</p>'+
+    '<p class="mz-set-s">'+esc(T('set_sub').replace('{n}',list.length.toLocaleString(lang()==='es'?'es-MX':'en-US')))+'</p>'+
+    '<ol class="mz-set-l">'+keyed.slice(0,3).map(function(k){return setRow(k[0])}).join('')+'</ol></div>';
+}
 function suggest(ids){return '<div class="mz-sug">'+ids.map(chip).filter(Boolean).map(function(c){return chipBtn(c,false)}).join('')+'</div>'}
 function month(iso){var p=iso.split('-');return MON[+p[1]-1]+' '+p[0]}
 function day(iso){var p=iso.split('-');return MON[+p[1]-1]+' '+(+p[2])}
@@ -217,7 +267,10 @@ function row(i,n){
   if(r[C.bp])l.push('<a href="https://www.beatport.com/track/'+esc(r[C.bp])+'" target="_blank" rel="noopener">beatport ↗</a>');
   if(r[C.dz])l.push('<a href="https://www.deezer.com/track/'+esc(r[C.dz])+'" target="_blank" rel="noopener">deezer ↗</a>');
   (r[C.ar]||[]).forEach(function(a){var s=D.artists[a];if(s)l.push('<a href="'+esc(s[1])+'"><span translate="no">'+esc(s[0])+'</span>&nbsp;→</a>')});
-  if(r[C.h]){var s=D.sets[r[C.h][0]];if(s)l.push('<a href="'+esc(s[1]+(r[C.h][1]?'#'+r[C.h][1]:''))+'" title="'+esc(s[0])+'">heard in a set →</a>')}
+  if(r[C.h]){var s=D.sets[r[C.h][0]],w=s&&cur&&cur.when&&s[2]===cur.when&&hasWhen()?whenOf(cur.when):null;
+    /* a when chip on and this set tagged for that hour: the badge takes the place of the heard-in link */
+    if(w)l.push('<a class="mz-bdg" href="'+esc(s[1]+(r[C.h][1]?'#'+r[C.h][1]:''))+'" title="'+esc(s[0])+'" translate="no">'+esc(T('badge').replace('{slot}',word(w)))+'</a>');
+    else if(s)l.push('<a href="'+esc(s[1]+(r[C.h][1]?'#'+r[C.h][1]:''))+'" title="'+esc(s[0])+'">heard in a set →</a>')}
   return '<li class="mz-row" data-i="'+i+'"><span class="mz-i" aria-hidden="true">'+('0'+n).slice(-2)+'</span><div class="mz-b">'+
     '<div class="mz-tt" translate="no">'+esc(r[C.t])+'</div><div class="mz-ar" translate="no">'+esc(r[C.a])+'</div>'+
     (m.length?'<div class="mz-m">'+m.join('<i aria-hidden="true"> · </i>')+'</div>':'')+
@@ -253,18 +306,18 @@ function refocus(act){
 /* the same words twice in a row are read again: the live region is emptied first */
 var liveT=0;
 function announce(t){clearTimeout(liveT);live.textContent='';liveT=setTimeout(function(){live.textContent=t},60)}
-function render(st){
+function render(st,quiet){
   var fe=document.activeElement,act=fe&&res.contains(fe)?(fe.getAttribute('data-act')||(fe.hasAttribute('data-mood')?'mood':null)):null;
-  cur=st;paintChips();
+  cur=st;paintChips();paintWhen();
   if(!st.mood&&input.value!==st.q)input.value=st.q||'';
-  var c=candidates(st),h='',msg;
+  var c=candidates(st),h=setCard(st,c),msg;
   if(c.state==='never'){
     msg='no dubstep, riddim or brostep here, ever. try one of these:';
-    res.innerHTML='<div class="mz-empty"><p>'+msg+'</p>'+suggest(['late-night','get-bumpy'])+'</div>';announce(msg);refocus(act);return;
+    res.innerHTML=h+'<div class="mz-empty"><p>'+msg+'</p>'+suggest(['late-night','get-bumpy'])+'</div>';if(!quiet)announce(msg);refocus(act);return;
   }
   if(c.state==='none'){
     msg='nothing in our playlists matches that yet. try one of these:';
-    res.innerHTML='<div class="mz-empty"><p>'+msg+'</p>'+suggest(['late-night','at-the-beach','vibes'])+'</div>';announce(msg);refocus(act);return;
+    res.innerHTML=h+'<div class="mz-empty"><p>'+msg+'</p>'+suggest(['late-night','at-the-beach','vibes'])+'</div>';if(!quiet)announce(msg);refocus(act);return;
   }
   var list=pick(c,st.seed);
   var count=list.length+' tracks · picked from '+c.size.toLocaleString('en-US');
@@ -279,13 +332,13 @@ function render(st){
      '<ol class="mz-list">'+list.map(function(i,n){return row(i,n+1)}).join('')+'</ol>'+
      (c.size>list.length?'<div class="mz-foot"><button type="button" class="lc" data-act="shuffle">shuffle again</button></div>':'');
   res.innerHTML=h;res.setAttribute('data-list',list.join(','));
-  announce(count);
+  if(!quiet)announce(count);
   hearts();
   refocus(act);
 }
 /* on a phone the list starts below the fold: after a tap or a typed mood, bring its head into view */
 function reveal(){
-  var t=res.querySelector('.mz-head,.mz-empty');if(!t)return;
+  var t=res.querySelector('.mz-set,.mz-head,.mz-empty');if(!t)return;
   var r=t.getBoundingClientRect();
   if(r.top>innerHeight*.6||r.top<0)t.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
 }
@@ -295,11 +348,14 @@ function readHash(){
   var h=location.hash.replace(/^#/,''),o={};if(!h)return null;
   h.split('&').forEach(function(kv){var k=kv.indexOf('=');if(k>0){try{o[kv.slice(0,k)]=decodeURIComponent(kv.slice(k+1).replace(/\+/g,' '))}catch(e){}}});
   var seed=parseInt(o.s,10);seed=seed>0&&seed<1e9?seed:newSeed();
-  if(o.mood&&chip(o.mood))return {mood:o.mood,q:'',seed:seed};
-  if(o.q&&o.q.trim())return {mood:null,q:o.q.trim().slice(0,120),seed:seed};
+  var wh=o.when&&whenOf(o.when)?o.when:null;
+  if(o.mood&&chip(o.mood))return {mood:o.mood,q:'',seed:seed,when:wh};
+  if(o.q&&o.q.trim())return {mood:null,q:o.q.trim().slice(0,120),seed:seed,when:wh};
+  /* a when with no mood: the mood for the hour, as with no hash */
+  if(wh){var st=auto();st.seed=seed;st.when=wh;return st}
   return null;
 }
-function hashOf(st){return '#'+(st.mood?'mood='+encodeURIComponent(st.mood):'q='+encodeURIComponent(st.q))+'&s='+st.seed}
+function hashOf(st){return '#'+(st.mood?'mood='+encodeURIComponent(st.mood):'q='+encodeURIComponent(st.q))+(st.when?'&when='+encodeURIComponent(st.when):'')+'&s='+st.seed}
 function go(st,push){
   try{history[push?'pushState':'replaceState'](null,'',location.pathname+location.search+hashOf(st))}catch(e){}
   render(st);
@@ -311,6 +367,9 @@ function start(){
   if(metaEl)metaEl.textContent=D.count.toLocaleString('en-US')+' tracks · built '+D.generated;
   render(readHash()||auto());
 }
+var lastLang=lang();
+if(window.MutationObserver)new MutationObserver(function(){var l=lang();if(l===lastLang)return;lastLang=l;if(cur&&hasWhen())render(cur,true)})
+  .observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
 function boot(){
   res.innerHTML='<p class="mz-state">loading the catalog…</p>';
   load().then(start,function(){
@@ -324,12 +383,15 @@ function copy(text,ok){
   else say('copy is not available here.');
 }
 root.addEventListener('click',function(e){
-  var b=e.target.closest('[data-mood],[data-act]');if(!b||!root.contains(b))return;
+  var b=e.target.closest('[data-mood],[data-act],[data-when]');if(!b||!root.contains(b))return;
   var act=b.getAttribute('data-act');
-  if(b.hasAttribute('data-mood')){input.value='';go({mood:b.getAttribute('data-mood'),q:'',seed:newSeed()},true);reveal();return}
+  if(b.hasAttribute('data-mood')){input.value='';go({mood:b.getAttribute('data-mood'),q:'',seed:newSeed(),when:cur?cur.when:null},true);reveal();return}
+  /* a when chip keeps the list (same mood, words and seed): only the card and the badges change. tap again to clear */
+  if(b.hasAttribute('data-when')){if(!cur)return;var wid=b.getAttribute('data-when');
+    go({mood:cur.mood,q:cur.q,seed:cur.seed,auto:cur.auto,when:cur.when===wid?null:wid},true);return}
   if(act==='retry'){boot();return}
   if(!cur)return;
-  if(act==='shuffle'){go({mood:cur.mood,q:cur.q,seed:newSeed()},false);var t=res.querySelector('.mz-head');if(t&&b.closest('.mz-foot'))t.scrollIntoView({block:'start'});return}
+  if(act==='shuffle'){go({mood:cur.mood,q:cur.q,seed:newSeed(),when:cur.when},false);var t=res.querySelector('.mz-head');if(t&&b.closest('.mz-foot'))t.scrollIntoView({block:'start'});return}
   if(act==='copy'){var ids=(res.getAttribute('data-list')||'').split(',').filter(Boolean);
     copy(ids.map(function(i){return 'https://open.spotify.com/track/'+D.rows[+i][C.sp]}).join('\n'),'copied. open a playlist in the spotify desktop app and paste them in.');return}
   if(act==='share'){
@@ -340,7 +402,7 @@ form.addEventListener('submit',function(e){
   e.preventDefault();var q=input.value.trim().slice(0,120);
   if(!q){input.focus();return}
   /* a phone keyboard closes so the list can show. a keyboard user keeps the focus in the box */
-  load().then(function(){go({mood:null,q:q,seed:newSeed()},true);if(matchMedia('(pointer: coarse)').matches)input.blur();reveal()},function(){});
+  load().then(function(){go({mood:null,q:q,seed:newSeed(),when:cur?cur.when:null},true);if(matchMedia('(pointer: coarse)').matches)input.blur();reveal()},function(){});
 });
 /* back or forward: the box shows what the restored list was built from (empty for a mood chip) */
 window.addEventListener('popstate',function(){if(!D)return;var st=readHash()||auto();input.value=st.q||'';render(st)});
