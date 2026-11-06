@@ -2,8 +2,6 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
-<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0B0B0D">
 <title>dropping soon · groovesMAXXING</title>
@@ -15,12 +13,12 @@
 <meta property="og:title" content="dropping soon · groovesMAXXING">
 <meta property="og:description" content="what's dropping soon in house, techno and indie dance, and what just came out. dated the way the artists and labels said it, pre-save links included.">
 <meta property="og:image" content="https://groovesmaxxing.com/og-image.png">
-<meta name="twitter:card" content="summary_large_image">
 <meta property="og:url" content="https://groovesmaxxing.com/upcoming">
 <meta property="og:type" content="website">
-<link rel="preload" as="font" type="font/woff2" href="/fonts/poppins-400-latin.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="/fonts/jetbrainsmono-600-latin.woff2" crossorigin>
-<link rel="stylesheet" href="/gmx-fonts.css?v=2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --night:#0B0B0D; --card:#141417; --card2:#1a1a1f; --line:#2a2a31;
@@ -103,6 +101,32 @@
   .ur-more>summary{display:inline-flex;align-items:center;min-height:40px;padding:6px 16px;border:1px dashed var(--line);border-radius:999px;font-family:'Space Mono',monospace;font-size:12.5px;color:var(--steel)}
   .ur-more>summary:hover{color:var(--day);border-color:var(--steel)}
   .ur-more .ur-list{margin-top:10px}
+  /* one label with five or more rows on a date: one row that opens to its releases (2026-11-05) */
+  .ur-label>summary,.ur-tracks>summary{list-style:none;cursor:pointer}
+  .ur-label>summary::-webkit-details-marker,.ur-tracks>summary::-webkit-details-marker{display:none}
+  .ur-label>summary::after,.ur-tracks>summary::after{content:'▾';color:var(--racing);transition:transform .15s}
+  .ur-label[open]>summary::after,.ur-tracks[open]>summary::after{transform:rotate(180deg)}
+  .ur-list>.ur-lab{border-top:1px solid var(--line)}
+  .ur-list>.ur-lab:first-child{border-top:0}
+  .ur-label>summary{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:16px;align-items:center;padding:14px 18px}
+  .ur-label>summary::after{justify-self:end;display:inline-flex;align-items:center;justify-content:center;min-width:36px;min-height:36px;border:1px dashed var(--line);border-radius:999px;font-size:14px}
+  .ur-label>summary:hover{background:var(--card2)}
+  .ur-label>summary:hover::after{border-color:var(--steel)}
+  .ur-lab.hot>.ur-label>summary{box-shadow:inset 3px 0 0 var(--racing)}
+  .ur-lh{min-width:0}
+  .ur-lh b{display:block;font-size:16.5px;font-weight:700;line-height:1.3;overflow-wrap:anywhere}
+  .ur-lh small{display:block;margin-top:2px;font-family:'Space Mono',monospace;font-size:12.5px;color:var(--steel)}
+  .ur-label .ur-list{background:transparent;border:0;border-top:1px dashed var(--line);border-radius:0}
+  .ur-label .ur-list .ev{padding-left:30px}
+  /* an EP, album or VA row: its tracks under the row, from the beatport release */
+  .ev .ur-tracks{grid-column:1/-1;margin-top:8px}
+  .ev .ur-tracks.gmx-hidden{display:block !important}
+  .ur-tracks>summary{display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:4px 14px;border:1px dashed var(--line);border-radius:999px;font-family:'Space Mono',monospace;font-size:12px;color:var(--steel)}
+  .ur-tracks>summary:hover{color:var(--day);border-color:var(--steel)}
+  .ur-tracks ol{list-style:decimal;margin:8px 0 2px;padding-left:24px;font-size:13.5px;line-height:1.45;color:var(--soft)}
+  .ur-tracks li{padding:3px 0;overflow-wrap:anywhere}
+  .ur-tracks li::marker{font-family:'Space Mono',monospace;font-size:11.5px;color:var(--steel)}
+  .ur-bk{margin-left:6px;font-family:'Space Mono',monospace;font-size:11.5px;color:var(--steel);white-space:nowrap}
   .ur-fold{display:inline-flex;align-items:center;min-height:40px;margin-top:10px;padding:6px 16px;border:1px dashed var(--line);border-radius:999px;background:none;color:var(--steel);font-family:'Space Mono',monospace;font-size:12.5px;cursor:pointer}
   .ur-fold:hover{color:var(--day);border-color:var(--steel)}
   .ur-tba{margin:34px 0 0;border:1px dashed var(--line);border-radius:14px}
@@ -126,7 +150,8 @@
   @media (max-width:520px){.wrap{padding:36px 16px 64px}.ur-tabs{max-width:none}.ur-tab{font-size:14px;padding:8px 10px}
     .ur-dh{gap:12px}.ur-cal{flex-basis:50px;height:54px}.ur-cal b{font-size:20px}.ur-rel{font-size:18px}
     .ur-list .ev{grid-template-areas:"h h" "m go";column-gap:10px;padding:13px 14px}
-    .ev a.go{align-self:end;min-height:32px;padding:4px 12px;font-size:12px}.ur-tba>summary{padding:14px 16px}}
+    .ev a.go{align-self:end;min-height:32px;padding:4px 12px;font-size:12px}.ur-tba>summary{padding:14px 16px}
+    .ur-label>summary{column-gap:10px;padding:13px 14px}.ur-label .ur-list .ev{padding-left:22px}.ur-tracks ol{padding-left:20px}}
 </style>
 <link rel="canonical" href="https://groovesmaxxing.com/upcoming">
 <script type="application/ld+json">
@@ -135,11 +160,49 @@
  "@type": "ItemList",
  "name": "dropping soon on groovesmaxxing",
  "url": "https://groovesmaxxing.com/upcoming",
- "numberOfItems": 27,
+ "numberOfItems": 78,
  "itemListElement": [
   {
    "@type": "ListItem",
    "position": 1,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Everyday (Extended)",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "Tom Caruso"
+    },
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-11-05",
+    "publisher": {
+     "@type": "Organization",
+     "name": "Cultivate Records"
+    },
+    "url": "https://www.beatport.com/release/everyday-extended/7595866"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Sundown Rituals Vol. 3",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "various"
+    },
+    "albumReleaseType": "https://schema.org/CompilationAlbum",
+    "datePublished": "2026-11-05",
+    "publisher": {
+     "@type": "Organization",
+     "name": "Variety Music"
+    },
+    "url": "https://www.beatport.com/release/sundown-rituals-vol-3/7602191"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 3,
    "item": {
     "@type": "MusicAlbum",
     "name": "Nothing But Me",
@@ -158,7 +221,7 @@
   },
   {
    "@type": "ListItem",
-   "position": 2,
+   "position": 4,
    "item": {
     "@type": "MusicAlbum",
     "name": "Confess (Groove P Remix)",
@@ -177,7 +240,7 @@
   },
   {
    "@type": "ListItem",
-   "position": 3,
+   "position": 5,
    "item": {
     "@type": "MusicAlbum",
     "name": "Without U (Extended Mix)",
@@ -196,7 +259,7 @@
   },
   {
    "@type": "ListItem",
-   "position": 4,
+   "position": 6,
    "item": {
     "@type": "MusicAlbum",
     "name": "No Brakes / Miss Booty",
@@ -204,18 +267,949 @@
      "@type": "MusicGroup",
      "name": "Viot"
     },
-    "albumReleaseType": "https://schema.org/SingleRelease",
+    "albumReleaseType": "https://schema.org/EPRelease",
     "datePublished": "2026-11-06",
     "publisher": {
      "@type": "Organization",
      "name": "Black Book Records"
     },
-    "url": "https://www.instagram.com/p/DfQAosQh7CJ/"
+    "url": "https://www.beatport.com/release/no-brakes-miss-booty/7629107"
    }
   },
   {
    "@type": "ListItem",
-   "position": 5,
+   "position": 7,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Ritmo",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "Bruno Furlan"
+    },
+    "albumReleaseType": "https://schema.org/EPRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "A-Trak & Friends"
+    },
+    "url": "https://www.beatport.com/release/ritmo/7608549"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 8,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Shake It",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "Jewel Kid, James Hurr"
+    },
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "Alleanza"
+    },
+    "url": "https://www.beatport.com/release/shake-it/7620416"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 9,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Baby Baby Baby",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "Chapter & Verse"
+    },
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "ATOM."
+    },
+    "url": "https://www.beatport.com/release/baby-baby-baby/7624191"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 10,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Hey Y'all",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "SNOOKO, Julian Sacheli"
+    },
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "Catch & Release"
+    },
+    "url": "https://www.beatport.com/release/hey-yall/7607878"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 11,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Watch Me Dunk (Extended Mix)",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "Ardalan, Shaded"
+    },
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "Club Sweat"
+    },
+    "url": "https://www.beatport.com/release/watch-me-dunk-extended-mix/7609078"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 12,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Wasting Time",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "Monolink, CIOZ"
+    },
+    "albumReleaseType": "https://schema.org/EPRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "Crosstown Rebels"
+    },
+    "url": "https://www.beatport.com/release/wasting-time/7610529"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 13,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Sin Tocarla",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "Cristian Viviano, Heartless House"
+    },
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "Descending Order"
+    },
+    "url": "https://www.beatport.com/release/sin-tocarla/7649148"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 14,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "30 Years of Drumcode",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "various"
+    },
+    "albumReleaseType": "https://schema.org/CompilationAlbum",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "Drumcode"
+    },
+    "url": "https://www.beatport.com/release/30-years-of-drumcode/7659035"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 15,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Angola",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": ".EXA, ESSE (US)"
+    },
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "ESSEntial."
+    },
+    "url": "https://www.beatport.com/release/angola/7655469"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 16,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Bolado",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "ESSE (US), EAZY (US)"
+    },
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "ESSEntial."
+    },
+    "url": "https://www.beatport.com/release/bolado/7650811"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 17,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "ESSEnce",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "various"
+    },
+    "albumReleaseType": "https://schema.org/CompilationAlbum",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "ESSEntial."
+    },
+    "url": "https://www.beatport.com/release/essence/7650601"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 18,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "FUNKTION",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "Ryan Shepherd, ESSE (US)"
+    },
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "ESSEntial."
+    },
+    "url": "https://www.beatport.com/release/funktion/7651007"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 19,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Get Down",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "Rich DietZ, ESSE (US)"
+    },
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "ESSEntial."
+    },
+    "url": "https://www.beatport.com/release/get-down/7651122"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 20,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "House Me",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "Daniel Etienne, ESSE (US)"
+    },
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "ESSEntial."
+    },
+    "url": "https://www.beatport.com/release/house-me/7651088"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 21,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "I Can't Take it",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "Mike Epsse, ESSE (US)"
+    },
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "ESSEntial."
+    },
+    "url": "https://www.beatport.com/release/i-cant-take-it/7650849"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 22,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "I Love It",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "Azooland, ESSE (US), August (CH)"
+    },
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "ESSEntial."
+    },
+    "url": "https://www.beatport.com/release/i-love-it/7650766"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 23,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Ice Me",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "LA Riots, ESSE (US)"
+    },
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "ESSEntial."
+    },
+    "url": "https://www.beatport.com/release/ice-me/7651114"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 24,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "JUMP",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "Buitano, ESSE (US)"
+    },
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "ESSEntial."
+    },
+    "url": "https://www.beatport.com/release/jump/7650984"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 25,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Make It Move",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "Suburbia, ESSE (US)"
+    },
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "ESSEntial."
+    },
+    "url": "https://www.beatport.com/release/make-it-move/7651028"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 26,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Shake Ya Hips",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "Kiro Prime, ESSE (US)"
+    },
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "ESSEntial."
+    },
+    "url": "https://www.beatport.com/release/shake-ya-hips/7650709"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 27,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Take Control",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "ESSE (US), Jus Ron"
+    },
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "ESSEntial."
+    },
+    "url": "https://www.beatport.com/release/take-control/7651063"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 28,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Work It Baby",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "BLDR, ESSE (US), KOSK"
+    },
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "ESSEntial."
+    },
+    "url": "https://www.beatport.com/release/work-it-baby/7650935"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 29,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "On My Mind (Extended Mix)",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "Kevin McKay"
+    },
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "Glasgow Underground"
+    },
+    "url": "https://www.beatport.com/release/on-my-mind-extended-mix/7651014"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 30,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Groove Culture DUBs, Vol. 1",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "various"
+    },
+    "albumReleaseType": "https://schema.org/CompilationAlbum",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "Groove Culture"
+    },
+    "url": "https://www.beatport.com/release/groove-culture-dubs-vol-1/7585677"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 31,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Million Dollar Bill (Micky More & Andy Tee Mixes)",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "Amanda Wilson"
+    },
+    "albumReleaseType": "https://schema.org/EPRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "Groove Culture"
+    },
+    "url": "https://www.beatport.com/release/million-dollar-bill-micky-more-andy-tee-mixes/7488650"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 32,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Pa' La Calle (Dale) (Extended Mix)",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "Andruss, Juos"
+    },
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "Helix Records"
+    },
+    "url": "https://www.beatport.com/release/pa-la-calle-dale-extended-mix/7599404"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 33,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Fall In Love (Extended Mix)",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "Emily Nash"
+    },
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "HOUSE RULES RECORDS"
+    },
+    "url": "https://www.beatport.com/release/fall-in-love-extended-mix/7592511"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 34,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Love Is The Dance",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "various"
+    },
+    "albumReleaseType": "https://schema.org/CompilationAlbum",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "Innervisions"
+    },
+    "url": "https://www.beatport.com/release/love-is-the-dance/7442546"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 35,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Don't Call Me (feat. EVALINA)",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "CID, EVALINA, Evalina Whedon"
+    },
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "Insomniac Records"
+    },
+    "url": "https://www.beatport.com/release/dont-call-me-feat-evalina/7613020"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 36,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Blinded By The Lights",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "Kryder, Cammie Robinson"
+    },
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "Kryteria Records"
+    },
+    "url": "https://www.beatport.com/release/blinded-by-the-lights/7587780"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 37,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Disco Forever, Vol. 10",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "various"
+    },
+    "albumReleaseType": "https://schema.org/CompilationAlbum",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "LW Recordings"
+    },
+    "url": "https://www.beatport.com/release/disco-forever-vol-10/7589396"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 38,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "4EVER",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "STAY GOLDEN, Belyi, Kirr"
+    },
+    "albumReleaseType": "https://schema.org/EPRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "m.MESSIAH"
+    },
+    "url": "https://www.beatport.com/release/4ever/7595728"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 39,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Slow Steps (Extended Mix)",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "IVRISH"
+    },
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "Maccabi House"
+    },
+    "url": "https://www.beatport.com/release/slow-steps-extended-mix/7657784"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 40,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Slow My Routine EP",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "Rafael Cerato, Humans Musik, Chamo (AR)"
+    },
+    "albumReleaseType": "https://schema.org/EPRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "MADMINDS"
+    },
+    "url": "https://www.beatport.com/release/slow-my-routine-ep/7653026"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 41,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Corner Pieces, Vol. 1",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "various"
+    },
+    "albumReleaseType": "https://schema.org/CompilationAlbum",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "Mirage Records"
+    },
+    "url": "https://www.beatport.com/release/corner-pieces-vol-1/7648438"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 42,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Give It Up",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "Sebb Junior"
+    },
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "Miura Records"
+    },
+    "url": "https://www.beatport.com/release/give-it-up/7558600"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 43,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "So High",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "Mad.Again, ANY ZEE"
+    },
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "neXup recz"
+    },
+    "url": "https://www.beatport.com/release/so-high/7572946"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 44,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Switch On EP",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "Joyce Muniz, VNSSA"
+    },
+    "albumReleaseType": "https://schema.org/EPRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "Pets Recordings"
+    },
+    "url": "https://www.beatport.com/release/switch-on-ep/7603508"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 45,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Mio Cuore",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "T.Markakis"
+    },
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "Phoenix Music"
+    },
+    "url": "https://www.beatport.com/release/mio-cuore/7624464"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 46,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "30 years at play",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "various"
+    },
+    "albumReleaseType": "https://schema.org/CompilationAlbum",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "Play Records"
+    },
+    "url": "https://www.beatport.com/release/30-years-at-play/7585941"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 47,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Lost In Time (Blaze Orange Remix)",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "RAYMA"
+    },
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "Raticle Records"
+    },
+    "url": "https://www.beatport.com/release/lost-in-time-blaze-orange-remix/7654908"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 48,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Repopulate Stars Planet Rumba Vol. 3",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "various"
+    },
+    "albumReleaseType": "https://schema.org/CompilationAlbum",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "Repopulate Mars"
+    },
+    "url": "https://www.beatport.com/release/repopulate-stars-planet-rumba-vol-3/7642842"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 49,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "The Chug (Extended Mix)",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "Deep Dish, Steve “Silk” Hurley"
+    },
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "Saved Records"
+    },
+    "url": "https://www.beatport.com/release/the-chug-extended-mix/7653851"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 50,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Rolling EP",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "Space Motion"
+    },
+    "albumReleaseType": "https://schema.org/EPRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "Space Motion Records"
+    },
+    "url": "https://www.beatport.com/release/rolling-ep/7655267"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 51,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "On Repeat",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "Avilo, Wenzday"
+    },
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "Strangelove Recordings"
+    },
+    "url": "https://www.beatport.com/release/on-repeat/7593919"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 52,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "You Can't Stop The Groove",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "Ken@Work"
+    },
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "Tasty Recordings"
+    },
+    "url": "https://www.beatport.com/release/you-cant-stop-the-groove/7560585"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 53,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "I Know What You Like",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "Husky"
+    },
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "The Anchor Records"
+    },
+    "url": "https://www.beatport.com/release/i-know-what-you-like/7599140"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 54,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Mi Amor",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "7 SKIES, Sadie Rose Van, ARTBAT"
+    },
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "UPPERGROUND"
+    },
+    "url": "https://www.beatport.com/release/mi-amor/7636448"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 55,
+   "item": {
+    "@type": "MusicAlbum",
+    "name": "Try Mode",
+    "byArtist": {
+     "@type": "MusicGroup",
+     "name": "HUNTER (TN), Yakuza&Goys"
+    },
+    "albumReleaseType": "https://schema.org/SingleRelease",
+    "datePublished": "2026-11-06",
+    "publisher": {
+     "@type": "Organization",
+     "name": "VETRA Records"
+    },
+    "url": "https://www.beatport.com/release/try-mode/7602076"
+   }
+  },
+  {
+   "@type": "ListItem",
+   "position": 56,
    "item": {
     "@type": "MusicAlbum",
     "name": "Wow",
@@ -234,7 +1228,7 @@
   },
   {
    "@type": "ListItem",
-   "position": 6,
+   "position": 57,
    "item": {
     "@type": "MusicAlbum",
     "name": "Lick Ya (Modegroove Remix 2026)",
@@ -253,7 +1247,7 @@
   },
   {
    "@type": "ListItem",
-   "position": 7,
+   "position": 58,
    "item": {
     "@type": "MusicAlbum",
     "name": "Acid All Night",
@@ -271,7 +1265,7 @@
   },
   {
    "@type": "ListItem",
-   "position": 8,
+   "position": 59,
    "item": {
     "@type": "MusicAlbum",
     "name": "In N Out / Dream Girl",
@@ -289,7 +1283,7 @@
   },
   {
    "@type": "ListItem",
-   "position": 9,
+   "position": 60,
    "item": {
     "@type": "MusicAlbum",
     "name": "Gatitooo / Persona (Amine K Remix)",
@@ -307,7 +1301,7 @@
   },
   {
    "@type": "ListItem",
-   "position": 10,
+   "position": 61,
    "item": {
     "@type": "MusicAlbum",
     "name": "Beatbox Rocker",
@@ -325,7 +1319,7 @@
   },
   {
    "@type": "ListItem",
-   "position": 11,
+   "position": 62,
    "item": {
     "@type": "MusicAlbum",
     "name": "Miami Vice",
@@ -343,7 +1337,7 @@
   },
   {
    "@type": "ListItem",
-   "position": 12,
+   "position": 63,
    "item": {
     "@type": "MusicAlbum",
     "name": "Fra Mørket Til Lys",
@@ -361,7 +1355,7 @@
   },
   {
    "@type": "ListItem",
-   "position": 13,
+   "position": 64,
    "item": {
     "@type": "MusicAlbum",
     "name": "Across The Room",
@@ -379,7 +1373,7 @@
   },
   {
    "@type": "ListItem",
-   "position": 14,
+   "position": 65,
    "item": {
     "@type": "MusicAlbum",
     "name": "Ladies",
@@ -397,7 +1391,7 @@
   },
   {
    "@type": "ListItem",
-   "position": 15,
+   "position": 66,
    "item": {
     "@type": "MusicAlbum",
     "name": "Boogie",
@@ -415,7 +1409,7 @@
   },
   {
    "@type": "ListItem",
-   "position": 16,
+   "position": 67,
    "item": {
     "@type": "MusicAlbum",
     "name": "Resist The System",
@@ -433,7 +1427,7 @@
   },
   {
    "@type": "ListItem",
-   "position": 17,
+   "position": 68,
    "item": {
     "@type": "MusicAlbum",
     "name": "Rockin Down The House - Amsterdam 2026",
@@ -451,7 +1445,7 @@
   },
   {
    "@type": "ListItem",
-   "position": 18,
+   "position": 69,
    "item": {
     "@type": "MusicAlbum",
     "name": "Senta Fogueta",
@@ -469,7 +1463,7 @@
   },
   {
    "@type": "ListItem",
-   "position": 19,
+   "position": 70,
    "item": {
     "@type": "MusicAlbum",
     "name": "Satisfaction (TOBEHONEST Edit)",
@@ -483,7 +1477,7 @@
   },
   {
    "@type": "ListItem",
-   "position": 20,
+   "position": 71,
    "item": {
     "@type": "MusicAlbum",
     "name": "Rhythm Talk",
@@ -501,7 +1495,7 @@
   },
   {
    "@type": "ListItem",
-   "position": 21,
+   "position": 72,
    "item": {
     "@type": "MusicAlbum",
     "name": "Fast Life",
@@ -515,7 +1509,7 @@
   },
   {
    "@type": "ListItem",
-   "position": 22,
+   "position": 73,
    "item": {
     "@type": "MusicAlbum",
     "name": "Bassline",
@@ -533,7 +1527,7 @@
   },
   {
    "@type": "ListItem",
-   "position": 23,
+   "position": 74,
    "item": {
     "@type": "MusicAlbum",
     "name": "Time after Time Re: INSCTed",
@@ -552,7 +1546,7 @@
   },
   {
    "@type": "ListItem",
-   "position": 24,
+   "position": 75,
    "item": {
     "@type": "MusicAlbum",
     "name": "Canyon",
@@ -571,7 +1565,7 @@
   },
   {
    "@type": "ListItem",
-   "position": 25,
+   "position": 76,
    "item": {
     "@type": "MusicAlbum",
     "name": "Nayara",
@@ -590,7 +1584,7 @@
   },
   {
    "@type": "ListItem",
-   "position": 26,
+   "position": 77,
    "item": {
     "@type": "MusicAlbum",
     "name": "Warehouse Vibration",
@@ -609,7 +1603,7 @@
   },
   {
    "@type": "ListItem",
-   "position": 27,
+   "position": 78,
    "item": {
     "@type": "MusicAlbum",
     "name": "Vision EP",
@@ -630,11 +1624,6 @@
 }
 </script>
 <link rel="stylesheet" href="/gmx-motion.css?v=2">
-<link rel="stylesheet" href="/gmx-sheet.css?v=2">
-<link rel="stylesheet" href="/gmx-quick.css">
-<link rel="stylesheet" href="/gmx-nav.css?v=20">
-<link rel="stylesheet" href="/gmx-account.css?v=2">
-<link rel="stylesheet" href="/gmx-read.css?v=9">
 </head>
 <body>
 <div class="wrap">
@@ -649,14 +1638,47 @@
 
 <!-- upcoming:start -->
 <div class="ur-tabs">
-  <a class="ur-tab" href="#soon" data-tab="soon">dropping soon <b>22</b></a>
+  <a class="ur-tab" href="#soon" data-tab="soon">dropping soon <b>73</b></a>
   <a class="ur-tab" href="#released" data-tab="released">released <b>292</b></a>
 </div>
 <section class="ur-panel" id="soon" aria-labelledby="h-soon">
   <h2 class="ur-ph" id="h-soon">dropping soon</h2>
   <p class="ur-pn">soonest first. a release stays here through its own day, then moves to released.</p>
+  <div class="ur-day" data-iso="2026-11-05">
+    <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">thu</span><b>5</b><span class="ur-mo">nov</span></div><h3 class="ur-dt"><span class="ur-rel">thursday 5 november</span><span class="ur-dd"></span></h3><span class="ur-n">2 releases</span></div>
+    <ul class="ur-list">
+      <li class="ev" data-iso="2026-11-05">
+        <h4>Sundown Rituals Vol. 3 <small>various</small></h4>
+        <div class="where">Variety Music · <span class="ur-k big">various artists</span></div>
+        <a class="go" href="https://www.beatport.com/release/sundown-rituals-vol-3/7602191" target="_blank" rel="noopener">on beatport →</a>
+        <details class="ur-tracks"><summary>14 tracks</summary>
+          <ol>
+            <li>Gorge · Tiago (Original Mix) <span class="ur-bk">124 bpm · C minor</span></li>
+            <li>Jiggler · Delight (Extended Mix) <span class="ur-bk">124 bpm · C major</span></li>
+            <li>Narik · Loneliness (Alex Connors Extended Sunset Mix) <span class="ur-bk">124 bpm · C major</span></li>
+            <li>Patrick De Ville · Take Me Away (Danjo (ITA) Remix) <span class="ur-bk">122 bpm · G minor</span></li>
+            <li>BiGz, Elo · Beautiful Africa feat. Farafi (Alex Doering Remix) <span class="ur-bk">122 bpm · Gb major</span></li>
+            <li>ivory white · Tanganyika (Extended) <span class="ur-bk">123 bpm · D major</span></li>
+            <li>David Kassi · Midnight Love (Soire Remix) <span class="ur-bk">120 bpm · Gb minor</span></li>
+            <li>Elliot Moriarty · Feels Like (Original Mix) <span class="ur-bk">122 bpm · E minor</span></li>
+            <li>Alice DiMar · Savanna Savage (Ainalog Extended Remix) <span class="ur-bk">95 bpm · A major</span></li>
+            <li>VieL · Karma (Chris Bravo Remix) <span class="ur-bk">121 bpm · D minor</span></li>
+            <li>Ainalog · Lost or Found (Extended Mix) <span class="ur-bk">127 bpm · Eb major</span></li>
+            <li>Aeron (DE) · Mantra (Original Mix) <span class="ur-bk">90 bpm · Gb minor</span></li>
+            <li>BiG AL, Kiano · Over The Sunset (Sunset Mix) <span class="ur-bk">120 bpm · G major</span></li>
+            <li>Downpour · Salvation (Original Mix) <span class="ur-bk">124 bpm · G major</span></li>
+          </ol>
+        </details>
+      </li>
+      <li class="ev" data-iso="2026-11-05">
+        <h4>Everyday (Extended) <small>Tom Caruso</small></h4>
+        <div class="where">Cultivate Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/everyday-extended/7595866" target="_blank" rel="noopener">on beatport →</a>
+      </li>
+    </ul>
+  </div>
   <div class="ur-day" data-iso="2026-11-06">
-    <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">fri</span><b>6</b><span class="ur-mo">nov</span></div><h3 class="ur-dt"><span class="ur-rel">friday 6 november</span><span class="ur-dd"></span></h3><span class="ur-n">4 releases</span></div>
+    <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">fri</span><b>6</b><span class="ur-mo">nov</span></div><h3 class="ur-dt"><span class="ur-rel">friday 6 november</span><span class="ur-dd"></span></h3><span class="ur-n">53 releases</span></div>
     <ul class="ur-list">
       <li class="ev" data-iso="2026-11-06">
         <h4>Confess (Groove P Remix) <small><a href="/artists/atfc">ATFC</a>, Seamus Haji</small></h4>
@@ -669,16 +1691,475 @@
         <a class="go" href="https://www.beatport.com/release/without-u-extended-mix/7576570" target="_blank" rel="noopener">pre-order →</a>
       </li>
       <li class="ev" data-iso="2026-11-06">
+        <h4>Million Dollar Bill (Micky More &amp; Andy Tee Mixes) <small>Amanda Wilson</small></h4>
+        <div class="where">Groove Culture · <span class="ur-k big">ep</span></div>
+        <a class="go" href="https://www.beatport.com/release/million-dollar-bill-micky-more-andy-tee-mixes/7488650" target="_blank" rel="noopener">pre-order →</a>
+        <details class="ur-tracks"><summary>3 tracks</summary>
+          <ol>
+            <li>Amanda Wilson · Million Dollar Bill (Micky More &amp; Andy Tee Extended) <span class="ur-bk">122 bpm · A major</span></li>
+            <li>Amanda Wilson · Million Dollar Bill (Micky More &amp; Andy Tee Dub) <span class="ur-bk">122 bpm · A major</span></li>
+            <li>Amanda Wilson · Million Dollar Bill (Micky More &amp; Andy Tee Instrumental) <span class="ur-bk">122 bpm · A major</span></li>
+          </ol>
+        </details>
+      </li>
+      <li class="ev" data-iso="2026-11-06">
+        <h4>Ritmo <small>Bruno Furlan</small></h4>
+        <div class="where">A-Trak &amp; Friends · <span class="ur-k big">ep</span></div>
+        <a class="go" href="https://www.beatport.com/release/ritmo/7608549" target="_blank" rel="noopener">pre-order →</a>
+        <details class="ur-tracks"><summary>2 tracks</summary>
+          <ol>
+            <li>Bruno Furlan · Ritmo (Original Mix) <span class="ur-bk">130 bpm · E minor</span></li>
+            <li>Bruno Furlan · Ritmo (Extended Mix) <span class="ur-bk">130 bpm · C minor</span></li>
+          </ol>
+        </details>
+      </li>
+      <li class="ev" data-iso="2026-11-06">
+        <h4>Switch On EP <small>Joyce Muniz, VNSSA</small></h4>
+        <div class="where">Pets Recordings · <span class="ur-k big">ep</span></div>
+        <a class="go" href="https://www.beatport.com/release/switch-on-ep/7603508" target="_blank" rel="noopener">pre-order →</a>
+        <details class="ur-tracks"><summary>2 tracks</summary>
+          <ol>
+            <li>Joyce Muniz, VNSSA · Switch On  (Original Mix) <span class="ur-bk">128 bpm · C major</span></li>
+            <li>Joyce Muniz, VNSSA · Switch On  (Maltitz Remix) <span class="ur-bk">128 bpm · C minor</span></li>
+          </ol>
+        </details>
+      </li>
+      <li class="ev" data-iso="2026-11-06">
+        <h4>Wasting Time <small>Monolink, CIOZ</small></h4>
+        <div class="where">Crosstown Rebels · <span class="ur-k big">ep</span></div>
+        <a class="go" href="https://www.beatport.com/release/wasting-time/7610529" target="_blank" rel="noopener">pre-order →</a>
+        <details class="ur-tracks"><summary>2 tracks</summary>
+          <ol>
+            <li>Monolink, CIOZ · Wasting Time (Original Mix) <span class="ur-bk">124 bpm · Db minor</span></li>
+            <li>Monolink, CIOZ · Dont Talk To Me (OMRI. Remix) <span class="ur-bk">128 bpm · C minor</span></li>
+          </ol>
+        </details>
+      </li>
+      <li class="ev" data-iso="2026-11-06">
+        <h4>Slow My Routine EP <small>Rafael Cerato, Humans Musik, Chamo (AR)</small></h4>
+        <div class="where">MADMINDS · <span class="ur-k big">ep</span></div>
+        <a class="go" href="https://www.beatport.com/release/slow-my-routine-ep/7653026" target="_blank" rel="noopener">pre-order →</a>
+        <details class="ur-tracks"><summary>2 tracks</summary>
+          <ol>
+            <li>Rafael Cerato, Humans Musik · Routine (Extended Mix) <span class="ur-bk">128 bpm · B minor</span></li>
+            <li>Rafael Cerato, Chamo (AR) · Slow It (Extended Mix) <span class="ur-bk">132 bpm · C major</span></li>
+          </ol>
+        </details>
+      </li>
+      <li class="ev" data-iso="2026-11-06">
+        <h4>Rolling EP <small>Space Motion</small></h4>
+        <div class="where">Space Motion Records · <span class="ur-k big">ep</span></div>
+        <a class="go" href="https://www.beatport.com/release/rolling-ep/7655267" target="_blank" rel="noopener">pre-order →</a>
+        <details class="ur-tracks"><summary>3 tracks</summary>
+          <ol>
+            <li>Space Motion · Rolling  (Original Mix) <span class="ur-bk">130 bpm · Bb major</span></li>
+            <li>Space Motion · Pew Pew  (Original Mix) <span class="ur-bk">128 bpm · A major</span></li>
+            <li>Space Motion · I Can Feel It  (Original Mix) <span class="ur-bk">123 bpm · D major</span></li>
+          </ol>
+        </details>
+      </li>
+      <li class="ev" data-iso="2026-11-06">
+        <h4>4EVER <small>STAY GOLDEN, Belyi, Kirr</small></h4>
+        <div class="where">m.MESSIAH · <span class="ur-k big">ep</span></div>
+        <a class="go" href="https://www.beatport.com/release/4ever/7595728" target="_blank" rel="noopener">pre-order →</a>
+        <details class="ur-tracks"><summary>2 tracks</summary>
+          <ol>
+            <li>STAY GOLDEN, Belyi · 4EVER (Extended Mix) <span class="ur-bk">125 bpm · G major</span></li>
+            <li>Kirr, STAY GOLDEN, Belyi · Bali Dance (Extended Mix) <span class="ur-bk">125 bpm · G major</span></li>
+          </ol>
+        </details>
+      </li>
+      <li class="ev" data-iso="2026-11-06">
+        <h4>No Brakes / Miss Booty <small>Viot</small></h4>
+        <div class="where">Black Book Records · <span class="ur-k big">ep</span></div>
+        <a class="go" href="https://www.beatport.com/release/no-brakes-miss-booty/7629107" target="_blank" rel="noopener">pre-order →</a>
+        <details class="ur-tracks"><summary>2 tracks</summary>
+          <ol>
+            <li>Viot · No Brakes  (Extended Mix) <span class="ur-bk">128 bpm · Ab minor</span></li>
+            <li>Viot · Miss Booty  (Extended Mix) <span class="ur-bk">128 bpm · F major</span></li>
+          </ol>
+        </details>
+      </li>
+      <li class="ev" data-iso="2026-11-06">
+        <h4>30 Years of Drumcode <small>various</small></h4>
+        <div class="where">Drumcode · <span class="ur-k big">various artists</span></div>
+        <a class="go" href="https://www.beatport.com/release/30-years-of-drumcode/7659035" target="_blank" rel="noopener">pre-order →</a>
+        <details class="ur-tracks"><summary>20 tracks</summary>
+          <ol>
+            <li>Maceo Plex · Conjure Dreams (Adam Beyer &amp; Bart Skils Remix) <span class="ur-bk">130 bpm · D major</span></li>
+            <li>Enrico Sangiuliano · Blooming Era (Sam Kitt Remix) <span class="ur-bk">135 bpm · Gb minor</span></li>
+            <li>Adam Beyer, Green Velvet, Layton Giordani · Space Date (HNTR &amp; KASIA Remix) <span class="ur-bk">132 bpm · Bb major</span></li>
+            <li>Adam Beyer, Joseph Capriati · Congenial Endeavor (Veerus &amp; Mattia Saviolo Remix) <span class="ur-bk">135 bpm · F major</span></li>
+            <li>Adam Beyer, Bart Skils · Your Mind (Dok &amp; Martin Remix) <span class="ur-bk">135 bpm · F minor</span></li>
+            <li>Adam Beyer, Lenk · DC01, Pt. 1 (Jesper Dahlbäck Remix) <span class="ur-bk">67 bpm · D minor</span></li>
+            <li>Adam Beyer · Don't Go (2026 Mix) <span class="ur-bk">133 bpm · F major</span></li>
+            <li>Victor Ruiz · Love Story (2026 Mix) <span class="ur-bk">130 bpm · A minor</span></li>
+            <li>Amelie Lens · In Silence (2026 Mix) <span class="ur-bk">140 bpm · Db major</span></li>
+            <li>HI-LO, DJ Deeon · WANNA GO BANG (feat. DJ Deeon) (2026 Mix) <span class="ur-bk">132 bpm · G major</span></li>
+            <li>Mark Reeve · Far Away (2026 Mix) <span class="ur-bk">132 bpm · Bb minor</span></li>
+            <li>Sam Paganini · Dusty (2026 Mix) <span class="ur-bk">138 bpm · Db minor</span></li>
+            <li>Alan Fitzpatrick · Skeksis (2026 Mix) <span class="ur-bk">142 bpm · Eb major</span></li>
+            <li>Wehbba · Eclipse (2026 Mix) <span class="ur-bk">132 bpm · A major</span></li>
+            <li>Julian Jeweil · Mars (2026 Mix) <span class="ur-bk">140 bpm · F minor</span></li>
+            <li>Christian Smith, John Selway · Total Departure (2026 Mix) <span class="ur-bk">69 bpm · Eb major</span></li>
+            <li>Nicole Moudaber · I Know Where I've Been (2026 Mix) <span class="ur-bk">130 bpm · E major</span></li>
+            <li>Cevin Fisher, Charles D (USA) · Traction (The Way We Used to Do It) (2026 Mix) <span class="ur-bk">135 bpm · B major</span></li>
+            <li>Joel Mull · Rimson (2026 Mix) <span class="ur-bk">134 bpm · Gb major</span></li>
+            <li>Tiger Stripes · Until the Early Light (2026 Mix) <span class="ur-bk">128 bpm · B minor</span></li>
+          </ol>
+        </details>
+      </li>
+      <li class="ur-lab"><details class="ur-label"><summary><span class="ur-lh"><b>ESSEntial.</b><small>14 releases</small></span></summary>
+        <ul class="ur-list">
+          <li class="ev" data-iso="2026-11-06">
+            <h4>ESSEnce <small>various</small></h4>
+            <div class="where">ESSEntial. · <span class="ur-k big">various artists</span></div>
+            <a class="go" href="https://www.beatport.com/release/essence/7650601" target="_blank" rel="noopener">pre-order →</a>
+            <details class="ur-tracks"><summary>13 tracks</summary>
+              <ol>
+                <li>Kiro Prime, ESSE (US) · Shake Ya Hips (Original Mix) <span class="ur-bk">126 bpm · F major</span></li>
+                <li>Azooland, ESSE (US), August (CH) · I Love It (Original Mix) <span class="ur-bk">132 bpm · E major</span></li>
+                <li>ESSE (US), EAZY (US) · Bolado (Original Mix) <span class="ur-bk">130 bpm · D major</span></li>
+                <li>Mike Epsse, ESSE (US) · I Can't Take it (Original Mix) <span class="ur-bk">130 bpm · G major</span></li>
+                <li>BLDR, ESSE (US), KOSK · Work It Baby (Original Mix) <span class="ur-bk">130 bpm · F major</span></li>
+                <li>Buitano, ESSE (US) · JUMP (Original Mix) <span class="ur-bk">130 bpm · G major</span></li>
+                <li>Ryan Shepherd, ESSE (US) · FUNKTION (Original Mix) <span class="ur-bk">130 bpm · E major</span></li>
+                <li>Suburbia, ESSE (US) · Make It Move (Original Mix) <span class="ur-bk">132 bpm · F major</span></li>
+                <li>ESSE (US), Jus Ron · Take Control (Original Mix) <span class="ur-bk">130 bpm · E minor</span></li>
+                <li>Daniel Etienne, ESSE (US) · House Me (Original Mix) <span class="ur-bk">130 bpm · G major</span></li>
+                <li>LA Riots, ESSE (US) · Ice Me (Original Mix) <span class="ur-bk">130 bpm · B minor</span></li>
+                <li>Rich DietZ, ESSE (US) · Get Down (Original Mix) <span class="ur-bk">130 bpm · G major</span></li>
+                <li>.EXA, ESSE (US) · Angola (Original Mix) <span class="ur-bk">130 bpm · F minor</span></li>
+              </ol>
+            </details>
+          </li>
+          <li class="ev" data-iso="2026-11-06">
+            <h4>I Love It <small>Azooland, ESSE (US), August (CH)</small></h4>
+            <div class="where">ESSEntial. · <span class="ur-k">single</span></div>
+            <a class="go" href="https://www.beatport.com/release/i-love-it/7650766" target="_blank" rel="noopener">pre-order →</a>
+          </li>
+          <li class="ev" data-iso="2026-11-06">
+            <h4>Work It Baby <small>BLDR, ESSE (US), KOSK</small></h4>
+            <div class="where">ESSEntial. · <span class="ur-k">single</span></div>
+            <a class="go" href="https://www.beatport.com/release/work-it-baby/7650935" target="_blank" rel="noopener">pre-order →</a>
+          </li>
+          <li class="ev" data-iso="2026-11-06">
+            <h4>JUMP <small>Buitano, ESSE (US)</small></h4>
+            <div class="where">ESSEntial. · <span class="ur-k">single</span></div>
+            <a class="go" href="https://www.beatport.com/release/jump/7650984" target="_blank" rel="noopener">pre-order →</a>
+          </li>
+          <li class="ev" data-iso="2026-11-06">
+            <h4>House Me <small>Daniel Etienne, ESSE (US)</small></h4>
+            <div class="where">ESSEntial. · <span class="ur-k">single</span></div>
+            <a class="go" href="https://www.beatport.com/release/house-me/7651088" target="_blank" rel="noopener">pre-order →</a>
+          </li>
+          <li class="ev" data-iso="2026-11-06">
+            <h4>Bolado <small>ESSE (US), EAZY (US)</small></h4>
+            <div class="where">ESSEntial. · <span class="ur-k">single</span></div>
+            <a class="go" href="https://www.beatport.com/release/bolado/7650811" target="_blank" rel="noopener">pre-order →</a>
+          </li>
+          <li class="ev" data-iso="2026-11-06">
+            <h4>Take Control <small>ESSE (US), Jus Ron</small></h4>
+            <div class="where">ESSEntial. · <span class="ur-k">single</span></div>
+            <a class="go" href="https://www.beatport.com/release/take-control/7651063" target="_blank" rel="noopener">pre-order →</a>
+          </li>
+          <li class="ev" data-iso="2026-11-06">
+            <h4>Angola <small>.EXA, ESSE (US)</small></h4>
+            <div class="where">ESSEntial. · <span class="ur-k">single</span></div>
+            <a class="go" href="https://www.beatport.com/release/angola/7655469" target="_blank" rel="noopener">pre-order →</a>
+          </li>
+          <li class="ev" data-iso="2026-11-06">
+            <h4>Shake Ya Hips <small>Kiro Prime, ESSE (US)</small></h4>
+            <div class="where">ESSEntial. · <span class="ur-k">single</span></div>
+            <a class="go" href="https://www.beatport.com/release/shake-ya-hips/7650709" target="_blank" rel="noopener">pre-order →</a>
+          </li>
+          <li class="ev" data-iso="2026-11-06">
+            <h4>Ice Me <small>LA Riots, ESSE (US)</small></h4>
+            <div class="where">ESSEntial. · <span class="ur-k">single</span></div>
+            <a class="go" href="https://www.beatport.com/release/ice-me/7651114" target="_blank" rel="noopener">pre-order →</a>
+          </li>
+          <li class="ev" data-iso="2026-11-06">
+            <h4>I Can't Take it <small>Mike Epsse, ESSE (US)</small></h4>
+            <div class="where">ESSEntial. · <span class="ur-k">single</span></div>
+            <a class="go" href="https://www.beatport.com/release/i-cant-take-it/7650849" target="_blank" rel="noopener">pre-order →</a>
+          </li>
+          <li class="ev" data-iso="2026-11-06">
+            <h4>Get Down <small>Rich DietZ, ESSE (US)</small></h4>
+            <div class="where">ESSEntial. · <span class="ur-k">single</span></div>
+            <a class="go" href="https://www.beatport.com/release/get-down/7651122" target="_blank" rel="noopener">pre-order →</a>
+          </li>
+          <li class="ev" data-iso="2026-11-06">
+            <h4>FUNKTION <small>Ryan Shepherd, ESSE (US)</small></h4>
+            <div class="where">ESSEntial. · <span class="ur-k">single</span></div>
+            <a class="go" href="https://www.beatport.com/release/funktion/7651007" target="_blank" rel="noopener">pre-order →</a>
+          </li>
+          <li class="ev" data-iso="2026-11-06">
+            <h4>Make It Move <small>Suburbia, ESSE (US)</small></h4>
+            <div class="where">ESSEntial. · <span class="ur-k">single</span></div>
+            <a class="go" href="https://www.beatport.com/release/make-it-move/7651028" target="_blank" rel="noopener">pre-order →</a>
+          </li>
+        </ul>
+      </details></li>
+    </ul>
+    <details class="ur-more"><summary>28 more on friday 6 november</summary>
+    <ul class="ur-list">
+      <li class="ev" data-iso="2026-11-06">
+        <h4>Groove Culture DUBs, Vol. 1 <small>various</small></h4>
+        <div class="where">Groove Culture · <span class="ur-k big">various artists</span></div>
+        <a class="go" href="https://www.beatport.com/release/groove-culture-dubs-vol-1/7585677" target="_blank" rel="noopener">pre-order →</a>
+        <details class="ur-tracks"><summary>25 tracks</summary>
+          <ol>
+            <li>Angela Johnson, Micky More &amp; Andy Tee · Can I (Show You Real Love) (Full Intention Dub) <span class="ur-bk">123 bpm · Gb major</span></li>
+            <li>Jestofunk, Jocelyn Brown · Special Love (Micky More &amp; Andy Tee Club Dub) <span class="ur-bk">122 bpm · G minor</span></li>
+            <li>Kathy Brown · Last Time (Micky More &amp; Andy Tee Club Dub) <span class="ur-bk">122 bpm · E minor</span></li>
+            <li>Double Dee, Dany · Found Love (Dimitri from Paris Dubstrumental Mix) <span class="ur-bk">125 bpm · Eb minor</span></li>
+            <li>Sheree Hicks, Micky More &amp; Andy Tee · Look Ahead (Dub) <span class="ur-bk">124 bpm · Bb minor</span></li>
+            <li>Amanda Wilson · Million Dollar Bill (Micky More &amp; Andy Tee Dub) <span class="ur-bk">122 bpm · A major</span></li>
+            <li>Angela Johnson, Derrick McKenzie · On My Way Out (Michael Gray Remix Dub) <span class="ur-bk">122 bpm · Gb major</span></li>
+            <li>Fatimah Provillon, Micky More &amp; Andy Tee · All The People (Sax Dub) <span class="ur-bk">123 bpm · Bb minor</span></li>
+            <li>Reverendos Of Soul · Love Will Set U Free (Micky More &amp; Andy Tee Dub Mix) <span class="ur-bk">122 bpm · E minor</span></li>
+            <li>Luca Martini, Nina Moon · Desire (Gianni Bini Dub) <span class="ur-bk">125 bpm · Bb minor</span></li>
+            <li>Woody Bianchi, Harlem Hustlers · Take Me Higher (Higher Dub Edit) <span class="ur-bk">124 bpm · F minor</span></li>
+            <li>Heston, Reverendos Of Soul · Love Is All Around (Micky More &amp; Andy Tee Dub) <span class="ur-bk">122 bpm · E minor</span></li>
+            <li>Gianni Bini, Memi P. · Love Of My Life (Dub Mix) <span class="ur-bk">125 bpm · Bb major</span></li>
+            <li>Audiowhores, Angela Johnson · Touch The Ground (Audiowhores Dub) <span class="ur-bk">125 bpm · E minor</span></li>
+            <li>Alex Di Stefano, Pj D'arpino, Fatimah Provillon · He's Alright (Gianni Bini Funky Invasion Dub) <span class="ur-bk">124 bpm · C major</span></li>
+            <li>Danny Losito, Serge Funk · Lost Without You (Bass &amp; Drum Mix) <span class="ur-bk">123 bpm · Ab major</span></li>
+            <li>Woody Bianchi, Harlem Hustlers · Feel It (Dub Mix) <span class="ur-bk">124 bpm · E minor</span></li>
+            <li>Da Funk Junkies, DiscoGalactiX · Holding On (Dub Mix) <span class="ur-bk">125 bpm · Eb major</span></li>
+            <li>Da Lukas · Supergood (Dub Mix) <span class="ur-bk">120 bpm · Ab minor</span></li>
+            <li>Birdee · Elevate Higher (Dub Mix) <span class="ur-bk">123 bpm · C minor</span></li>
+            <li>Memi P., Gisele Jackson · Make It On My Own (Gianni Bini Gold Times Dub) <span class="ur-bk">122 bpm · Bb minor</span></li>
+            <li>DJ Fudge, Ralph Session, Chinua Hawk · Golden (Nyc Dub Mix) <span class="ur-bk">124 bpm · E minor</span></li>
+            <li>Andrea Tomei · With You (Dub Mix) <span class="ur-bk">124 bpm · Ab major</span></li>
+            <li>Memi P. · Don't Wanna Believe (Gianni Bini Dub Mix) <span class="ur-bk">125 bpm · Eb minor</span></li>
+            <li>Burke, FUNKYBEAT · What Is Real? (Dub Mix) <span class="ur-bk">118 bpm · E minor</span></li>
+          </ol>
+        </details>
+      </li>
+      <li class="ev" data-iso="2026-11-06">
+        <h4>Love Is The Dance <small>various</small></h4>
+        <div class="where">Innervisions · <span class="ur-k big">various artists</span></div>
+        <a class="go" href="https://www.beatport.com/release/love-is-the-dance/7442546" target="_blank" rel="noopener">pre-order →</a>
+        <details class="ur-tracks"><summary>13 tracks</summary>
+          <ol>
+            <li>Âme, Trikk, Jens Kuross · Wasted Time (Original Mix) <span class="ur-bk">92 bpm · E minor</span></li>
+            <li>Âme, Trikk, Jens Kuross · Don't Waste My Time (Original Mix) <span class="ur-bk">124 bpm · E minor</span></li>
+            <li>Âme, Jeannel · Cold (Original Mix) <span class="ur-bk">127 bpm · C minor</span></li>
+            <li>Âme, Henrik Schwarz, Trikk · Factor It (Original Mix) <span class="ur-bk">116 bpm · Ab minor</span></li>
+            <li>Âme, Busiswa · Pha (Original Mix) <span class="ur-bk">94 bpm · E minor</span></li>
+            <li>Âme, Busiswa · Pha Na Pha (Original Mix) <span class="ur-bk">125 bpm · E minor</span></li>
+            <li>Âme, Meredi · Water Be My Crown (Original Mix) <span class="ur-bk">116 bpm · E minor</span></li>
+            <li>Âme · Topanga (Original Mix) <span class="ur-bk">111 bpm · D minor</span></li>
+            <li>Âme, RY X · Love Is The Dance (Original Mix) <span class="ur-bk">126 bpm · D minor</span></li>
+            <li>Âme, Curses · Shadow Of Love (Original Mix) <span class="ur-bk">125 bpm · G major</span></li>
+            <li>Âme, Rhye · Raw (Original Mix) <span class="ur-bk">108 bpm · E minor</span></li>
+            <li>Âme · Asa (Original Mix) <span class="ur-bk">128 bpm · Eb minor</span></li>
+            <li>Âme, KÁRYYN · Of Courage (Original Mix) <span class="ur-bk">120 bpm · G minor</span></li>
+          </ol>
+        </details>
+      </li>
+      <li class="ev" data-iso="2026-11-06">
+        <h4>Disco Forever, Vol. 10 <small>various</small></h4>
+        <div class="where">LW Recordings · <span class="ur-k big">various artists</span></div>
+        <a class="go" href="https://www.beatport.com/release/disco-forever-vol-10/7589396" target="_blank" rel="noopener">pre-order →</a>
+        <details class="ur-tracks"><summary>25 tracks</summary>
+          <ol>
+            <li>Jamantek · Indian Summer  (Original Mix) <span class="ur-bk">115 bpm · G minor</span></li>
+            <li>P-SOL · Saturday Night  (Original Mix) <span class="ur-bk">106 bpm · E minor</span></li>
+            <li>Ken@Work · Jazz Corner Of The World  (Original Mix) <span class="ur-bk">118 bpm · G minor</span></li>
+            <li>Deep Soul Connection, Heidi Fox · High On Love  (Club Mix) <span class="ur-bk">120 bpm · G major</span></li>
+            <li>C. Da Afro · In Da Disco City  (Original Mix) <span class="ur-bk">118 bpm · B minor</span></li>
+            <li>Disco Milieu · Love Affair  (Original Mix) <span class="ur-bk">122 bpm · A minor</span></li>
+            <li>Introverted Funk · Starlight (Instrumental) (Instrumental) <span class="ur-bk">120 bpm · Eb minor</span></li>
+            <li>Paco Caniza · No, No, No  (Original Mix) <span class="ur-bk">124 bpm · A major</span></li>
+            <li>Aig · The Rising Wave  (Q-Green Dub Remix) <span class="ur-bk">124 bpm · D major</span></li>
+            <li>Larry Funk · Crazy Horns  (Original Mix) <span class="ur-bk">121 bpm · Bb minor</span></li>
+            <li>Daisuke Miyamoto · Need You  (Original Mix) <span class="ur-bk">117 bpm · E minor</span></li>
+            <li>Nico Cortazzo · Oh Honey  (Original Mix) <span class="ur-bk">120 bpm · E major</span></li>
+            <li>Boogietraxx, SCHROEDS · Somebody Knew  (Original Mix) <span class="ur-bk">130 bpm · Bb minor</span></li>
+            <li>George Kelly · For Your Love  (Original Mix) <span class="ur-bk">126 bpm · E minor</span></li>
+            <li>Antonio Santana · Soja Soul  (Original Mix) <span class="ur-bk">124 bpm · F minor</span></li>
+            <li>Leg Warmers · Feels So Real (So In Love)  (Demarkus Lewis Extended Mix) <span class="ur-bk">120 bpm · D major</span></li>
+            <li>DJ Popinjay · Sun, Sax &amp; Beats  (Radio Edit) <span class="ur-bk">124 bpm · C major</span></li>
+            <li>Dj Chilly-T · Ain't No Doubt  (Original Mix) <span class="ur-bk">125 bpm · G minor</span></li>
+            <li>Vecna · Make It  (Original Mix) <span class="ur-bk">130 bpm · D minor</span></li>
+            <li>Bustafunk · Tha Preechaa  (Mercer Remix) <span class="ur-bk">125 bpm · G major</span></li>
+            <li>GooDisco · Get Up Off Your Love  (Radio Edit) <span class="ur-bk">122 bpm · B minor</span></li>
+            <li>D.P.V. · Pool Party  (Radio Edit) <span class="ur-bk">122 bpm · E minor</span></li>
+            <li>Harlem Dance Club · On The Lips  (Original Mix) <span class="ur-bk">125 bpm · E major</span></li>
+            <li>Alexny · Moto Moto  (Original Mix) <span class="ur-bk">118 bpm · Gb minor</span></li>
+            <li>Gigi el Amoroso · Motion &amp; silence  (Club mix) <span class="ur-bk">110 bpm · Ab major</span></li>
+          </ol>
+        </details>
+      </li>
+      <li class="ev" data-iso="2026-11-06">
+        <h4>Corner Pieces, Vol. 1 <small>various</small></h4>
+        <div class="where">Mirage Records · <span class="ur-k big">various artists</span></div>
+        <a class="go" href="https://www.beatport.com/release/corner-pieces-vol-1/7648438" target="_blank" rel="noopener">pre-order →</a>
+        <details class="ur-tracks"><summary>5 tracks</summary>
+          <ol>
+            <li>Julian Daumas · Ok Stop (Extended Mix) <span class="ur-bk">127 bpm · A minor</span></li>
+            <li>Kashovski · Audio (Extended Mix) <span class="ur-bk">128 bpm · G minor</span></li>
+            <li>Niv Yefet, STATE (UK) · Bounce That (Extended Mix) <span class="ur-bk">126 bpm · G major</span></li>
+            <li>SIB · Diga (Extended Mix) <span class="ur-bk">125 bpm · F minor</span></li>
+            <li>Baruck, SKAR (FR) · Maxim (Extended Mix) <span class="ur-bk">124 bpm · D minor</span></li>
+          </ol>
+        </details>
+      </li>
+      <li class="ev" data-iso="2026-11-06">
+        <h4>30 years at play <small>various</small></h4>
+        <div class="where">Play Records · <span class="ur-k big">various artists</span></div>
+        <a class="go" href="https://www.beatport.com/release/30-years-at-play/7585941" target="_blank" rel="noopener">pre-order →</a>
+        <details class="ur-tracks"><summary>13 tracks</summary>
+          <ol>
+            <li>Melleny Melody, The Pop Machine · Bad Girl  (Sean Dimitrie &amp; Todd Connell Big Time Remix) <span class="ur-bk">128 bpm · B minor</span></li>
+            <li>Princess Superstar, Melleefresh · Let's Do It Together  (SuperFresh Mix) <span class="ur-bk">128 bpm · Bb minor</span></li>
+            <li>Mark Oliver, Adam K, Melleefresh, Billy Newton-Davis · In Out  (Original Mix) <span class="ur-bk">128 bpm · Bb minor</span></li>
+            <li>deadmau5, Billy Newton-Davis · All You Ever Want  (Crazibiza Vocal Remix) <span class="ur-bk">128 bpm · G minor</span></li>
+            <li>Melleefresh, Dirty 30 · Beautiful, Rich &amp; Horny  (deadmau5 Remix) <span class="ur-bk">132 bpm · D major</span></li>
+            <li>Melleefresh, deadmau5 · Hey Baby  (Olav Basoski Remix) <span class="ur-bk">128 bpm · D major</span></li>
+            <li>deadmau5 · Dr. Funkenstein  (Melleefresh vs Jerome Robins Remix) <span class="ur-bk">124 bpm · Ab minor</span></li>
+            <li>deadmau5 · 1981  (Weekend Heroes Remix) <span class="ur-bk">128 bpm · C major</span></li>
+            <li>deadmau5 · Faxing Berlin  (Chris Lake Edit) <span class="ur-bk">128 bpm · D minor</span></li>
+            <li>Melleefresh · Intuition  (Alex Kenji Remix) <span class="ur-bk">128 bpm · C minor</span></li>
+            <li>Melleefresh, Boy Pussy · Bitches 'N' Whores  (dj genderfluid Eurodance Remix) <span class="ur-bk">138 bpm · B minor</span></li>
+            <li>Melleefresh · Hey Baby Redux  (Tech Us Out Remix) <span class="ur-bk">135 bpm · Db minor</span></li>
+            <li>Kardano, Dtaborah · DJ Play Those Records  (Jason Hersco Remix) <span class="ur-bk">123 bpm · Bb minor</span></li>
+          </ol>
+        </details>
+      </li>
+      <li class="ev" data-iso="2026-11-06">
+        <h4>Repopulate Stars Planet Rumba Vol. 3 <small>various</small></h4>
+        <div class="where">Repopulate Mars · <span class="ur-k big">various artists</span></div>
+        <a class="go" href="https://www.beatport.com/release/repopulate-stars-planet-rumba-vol-3/7642842" target="_blank" rel="noopener">pre-order →</a>
+        <details class="ur-tracks"><summary>10 tracks</summary>
+          <ol>
+            <li>Jarv Music, TheConnect · De Magazine (Original Mix) <span class="ur-bk">96 bpm · Ab minor</span></li>
+            <li>Sabrosura Boyz, Giovanni Nuñez · Pa Pa (Original Mix) <span class="ur-bk">126 bpm · G minor</span></li>
+            <li>Lvndo, Panna (BR) · Empurra (Original Mix) <span class="ur-bk">130 bpm · G minor</span></li>
+            <li>Ricky Bobi · Quebec (Original Mix) <span class="ur-bk">128 bpm · F minor</span></li>
+            <li>Tito Alvarez, Kike Moreno · Sound Like (Original Mix) <span class="ur-bk">128 bpm · D minor</span></li>
+            <li>FEFO (IT) · Ester (Original Mix) <span class="ur-bk">128 bpm · E minor</span></li>
+            <li>Emmanuel Callejas, Yuli Builes · Low (Original Mix) <span class="ur-bk">130 bpm · G major</span></li>
+            <li>Amal Nemer · Enamorar (Original Mix) <span class="ur-bk">131 bpm · B minor</span></li>
+            <li>IDNAS · El Coco (Original Mix) <span class="ur-bk">128 bpm · E minor</span></li>
+            <li>Erick Cz, César Guardia, Juan Velasquez · Pingale (Original Mix) <span class="ur-bk">130 bpm · C minor</span></li>
+          </ol>
+        </details>
+      </li>
+      <li class="ev" data-iso="2026-11-06">
+        <h4>Mi Amor <small>7 SKIES, Sadie Rose Van, ARTBAT</small></h4>
+        <div class="where">UPPERGROUND · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/mi-amor/7636448" target="_blank" rel="noopener">pre-order →</a>
+      </li>
+      <li class="ev" data-iso="2026-11-06">
+        <h4>Pa' La Calle (Dale) (Extended Mix) <small>Andruss, Juos</small></h4>
+        <div class="where">Helix Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/pa-la-calle-dale-extended-mix/7599404" target="_blank" rel="noopener">pre-order →</a>
+      </li>
+      <li class="ev" data-iso="2026-11-06">
+        <h4>Watch Me Dunk (Extended Mix) <small>Ardalan, Shaded</small></h4>
+        <div class="where">Club Sweat · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/watch-me-dunk-extended-mix/7609078" target="_blank" rel="noopener">pre-order →</a>
+      </li>
+      <li class="ev" data-iso="2026-11-06">
+        <h4>On Repeat <small>Avilo, Wenzday</small></h4>
+        <div class="where">Strangelove Recordings · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/on-repeat/7593919" target="_blank" rel="noopener">pre-order →</a>
+      </li>
+      <li class="ev" data-iso="2026-11-06">
+        <h4>Baby Baby Baby <small>Chapter &amp; Verse</small></h4>
+        <div class="where">ATOM. · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/baby-baby-baby/7624191" target="_blank" rel="noopener">pre-order →</a>
+      </li>
+      <li class="ev" data-iso="2026-11-06">
+        <h4>Don't Call Me (feat. EVALINA) <small>CID, EVALINA, Evalina Whedon</small></h4>
+        <div class="where">Insomniac Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/dont-call-me-feat-evalina/7613020" target="_blank" rel="noopener">pre-order →</a>
+      </li>
+      <li class="ev" data-iso="2026-11-06">
         <h4>Nothing But Me <small>Cor.Ece, A Joyful Noise</small></h4>
         <div class="where">Razor-N-Tape Records · <span class="ur-k">single</span></div>
         <a class="go" href="https://www.beatport.com/release/nothing-but-me/7502191" target="_blank" rel="noopener">pre-order →</a>
       </li>
       <li class="ev" data-iso="2026-11-06">
-        <h4>No Brakes / Miss Booty <small>Viot</small></h4>
-        <div class="where">Black Book Records · <span class="ur-k">single</span></div>
-        <a class="go" href="https://www.instagram.com/p/DfQAosQh7CJ/" target="_blank" rel="noopener">the announcement →</a>
+        <h4>Sin Tocarla <small>Cristian Viviano, Heartless House</small></h4>
+        <div class="where">Descending Order · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/sin-tocarla/7649148" target="_blank" rel="noopener">pre-order →</a>
+      </li>
+      <li class="ev" data-iso="2026-11-06">
+        <h4>The Chug (Extended Mix) <small>Deep Dish, Steve “Silk” Hurley</small></h4>
+        <div class="where">Saved Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/the-chug-extended-mix/7653851" target="_blank" rel="noopener">pre-order →</a>
+      </li>
+      <li class="ev" data-iso="2026-11-06">
+        <h4>Fall In Love (Extended Mix) <small>Emily Nash</small></h4>
+        <div class="where">HOUSE RULES RECORDS · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/fall-in-love-extended-mix/7592511" target="_blank" rel="noopener">pre-order →</a>
+      </li>
+      <li class="ev" data-iso="2026-11-06">
+        <h4>Try Mode <small>HUNTER (TN), Yakuza&amp;Goys</small></h4>
+        <div class="where">VETRA Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/try-mode/7602076" target="_blank" rel="noopener">pre-order →</a>
+      </li>
+      <li class="ev" data-iso="2026-11-06">
+        <h4>I Know What You Like <small>Husky</small></h4>
+        <div class="where">The Anchor Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/i-know-what-you-like/7599140" target="_blank" rel="noopener">pre-order →</a>
+      </li>
+      <li class="ev" data-iso="2026-11-06">
+        <h4>Slow Steps (Extended Mix) <small>IVRISH</small></h4>
+        <div class="where">Maccabi House · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/slow-steps-extended-mix/7657784" target="_blank" rel="noopener">pre-order →</a>
+      </li>
+      <li class="ev" data-iso="2026-11-06">
+        <h4>Shake It <small>Jewel Kid, James Hurr</small></h4>
+        <div class="where">Alleanza · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/shake-it/7620416" target="_blank" rel="noopener">pre-order →</a>
+      </li>
+      <li class="ev" data-iso="2026-11-06">
+        <h4>You Can't Stop The Groove <small>Ken@Work</small></h4>
+        <div class="where">Tasty Recordings · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/you-cant-stop-the-groove/7560585" target="_blank" rel="noopener">pre-order →</a>
+      </li>
+      <li class="ev" data-iso="2026-11-06">
+        <h4>On My Mind (Extended Mix) <small>Kevin McKay</small></h4>
+        <div class="where">Glasgow Underground · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/on-my-mind-extended-mix/7651014" target="_blank" rel="noopener">pre-order →</a>
+      </li>
+      <li class="ev" data-iso="2026-11-06">
+        <h4>Blinded By The Lights <small>Kryder, Cammie Robinson</small></h4>
+        <div class="where">Kryteria Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/blinded-by-the-lights/7587780" target="_blank" rel="noopener">pre-order →</a>
+      </li>
+      <li class="ev" data-iso="2026-11-06">
+        <h4>So High <small>Mad.Again, ANY ZEE</small></h4>
+        <div class="where">neXup recz · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/so-high/7572946" target="_blank" rel="noopener">pre-order →</a>
+      </li>
+      <li class="ev" data-iso="2026-11-06">
+        <h4>Lost In Time (Blaze Orange Remix) <small>RAYMA</small></h4>
+        <div class="where">Raticle Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/lost-in-time-blaze-orange-remix/7654908" target="_blank" rel="noopener">pre-order →</a>
+      </li>
+      <li class="ev" data-iso="2026-11-06">
+        <h4>Give It Up <small>Sebb Junior</small></h4>
+        <div class="where">Miura Records · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/give-it-up/7558600" target="_blank" rel="noopener">pre-order →</a>
+      </li>
+      <li class="ev" data-iso="2026-11-06">
+        <h4>Hey Y'all <small>SNOOKO, Julian Sacheli</small></h4>
+        <div class="where">Catch &amp; Release · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/hey-yall/7607878" target="_blank" rel="noopener">pre-order →</a>
+      </li>
+      <li class="ev" data-iso="2026-11-06">
+        <h4>Mio Cuore <small>T.Markakis</small></h4>
+        <div class="where">Phoenix Music · <span class="ur-k">single</span></div>
+        <a class="go" href="https://www.beatport.com/release/mio-cuore/7624464" target="_blank" rel="noopener">pre-order →</a>
       </li>
     </ul>
+    </details>
   </div>
   <div class="ur-day" data-iso="2026-11-13">
     <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">fri</span><b>13</b><span class="ur-mo">nov</span></div><h3 class="ur-dt"><span class="ur-rel">friday 13 november</span><span class="ur-dd"></span></h3><span class="ur-n">2 releases</span></div>
@@ -794,6 +2275,20 @@
         <h4>Nayara <small><a href="/artists/german-brigante">German Brigante</a>, CATMOONK</small></h4>
         <div class="where">Dancepush · <span class="ur-k big">ep</span> · <span class="ur-c">10 cuts</span></div>
         <a class="go" href="https://www.beatport.com/release/nayara/7561157" target="_blank" rel="noopener">on beatport →</a>
+        <details class="ur-tracks"><summary>10 tracks</summary>
+          <ol>
+            <li>German Brigante · Overthink (Original Mix) <span class="ur-bk">123 bpm · G major</span></li>
+            <li>German Brigante, CATMOONK · Nayara (Original Mix) <span class="ur-bk">122 bpm · A minor</span></li>
+            <li>German Brigante · Kamino (Original Mix) <span class="ur-bk">123 bpm · C major</span></li>
+            <li>German Brigante · I'm Not Like You (Original Mix) <span class="ur-bk">122 bpm · Eb minor</span></li>
+            <li>German Brigante · Overthink (Extended Mix) <span class="ur-bk">123 bpm · G major</span></li>
+            <li>German Brigante, CATMOONK · Nayara (Extended Mix) <span class="ur-bk">122 bpm · A minor</span></li>
+            <li>German Brigante · Kamino (Extended Mix) <span class="ur-bk">123 bpm · C major</span></li>
+            <li>German Brigante · Overthink (Dub Mix) <span class="ur-bk">123 bpm · G major</span></li>
+            <li>German Brigante, CATMOONK · Nayara (Dub Mix) <span class="ur-bk">122 bpm · A minor</span></li>
+            <li>German Brigante · I'm Not Like You (Dub Mix) <span class="ur-bk">119 bpm · Eb minor</span></li>
+          </ol>
+        </details>
       </li>
       <li class="ev" data-iso="2026-10-30" data-out="1">
         <h4>Time after Time Re: INSCTed <small><a href="/artists/hartmut-kiss">Hartmut Kiss</a>, Insct</small></h4>
@@ -809,6 +2304,13 @@
         <h4>Vision EP <small>The Magician, JØRD, Moscoman</small></h4>
         <div class="where">Diynamic · <span class="ur-k big">ep</span> · <span class="ur-c">3 cuts</span></div>
         <a class="go" href="https://www.beatport.com/release/vision-ep/7607317" target="_blank" rel="noopener">on beatport →</a>
+        <details class="ur-tracks"><summary>3 tracks</summary>
+          <ol>
+            <li>The Magician, JØRD · Vision (Original Mix) <span class="ur-bk">127 bpm · E minor</span></li>
+            <li>The Magician, JØRD · Legend (Original Mix) <span class="ur-bk">127 bpm · A minor</span></li>
+            <li>The Magician, Moscoman · Early Access (Original Mix) <span class="ur-bk">127 bpm · E minor</span></li>
+          </ol>
+        </details>
       </li>
       <li class="ev" data-iso="2026-10-30" data-out="1">
         <h4>Warehouse Vibration <small>DJ PP</small></h4>
@@ -978,6 +2480,14 @@
         <h4>Off To Paradise <small><a href="/artists/ethyene">Ethyène</a></small></h4>
         <div class="where">Lisztomania Records · <span class="ur-k big">ep</span> · <span class="ur-c">4 cuts</span></div>
         <a class="go" href="https://www.beatport.com/release/off-to-paradise/7563913" target="_blank" rel="noopener">on beatport →</a>
+        <details class="ur-tracks"><summary>4 tracks</summary>
+          <ol>
+            <li>Ethyène · Off To Paradise  (Original Mix) <span class="ur-bk">123 bpm · C minor</span></li>
+            <li>Ethyène · Mostely Lonely  (Original Mix) <span class="ur-bk">124 bpm · A minor</span></li>
+            <li>Ethyène · Mostely Lonely  (S3A Transition Remix) <span class="ur-bk">128 bpm · Ab minor</span></li>
+            <li>Ethyène · Drive You Crazy  (Original Mix) <span class="ur-bk">123 bpm · C minor</span></li>
+          </ol>
+        </details>
       </li>
       <li class="ev" data-iso="2026-10-16" data-out="1">
         <h4>Shiny Disco <small><a href="/artists/flamme">FLAMME</a></small></h4>
@@ -1737,51 +3247,55 @@
   <div class="ur-day" data-iso="2026-10-05">
     <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">mon</span><b>5</b><span class="ur-mo">oct</span></div><h3 class="ur-dt"><span class="ur-rel">monday 5 october</span><span class="ur-dd"></span></h3><span class="ur-n">11 releases</span></div>
     <ul class="ur-list">
-      <li class="ev hot" data-iso="2026-10-05" data-out="1">
-        <h4>Paradise <span class="canon">🔴</span> <small><a href="/artists/cloonee">Cloonee</a>, Chris Lake</small></h4>
-        <div class="where">Good Music for Bad People · <span class="ur-k">single</span></div>
-        <a class="go" href="https://open.spotify.com/album/2noGWf8EaYvz0QeRV9r9er" target="_blank" rel="noopener">listen →</a>
-      </li>
-      <li class="ev" data-iso="2026-10-05" data-out="1">
-        <h4>True Love Never Dies <small><a href="/artists/cloonee">Cloonee</a>, Fallon</small></h4>
-        <div class="where">Good Music for Bad People · <span class="ur-k">single</span></div>
-        <a class="go" href="https://open.spotify.com/album/1N5doALvVbBahrF1P9x2RZ" target="_blank" rel="noopener">listen →</a>
-      </li>
-      <li class="ev" data-iso="2026-10-05" data-out="1">
-        <h4>Back Of My Mind <small><a href="/artists/cloonee">Cloonee</a>, Galo</small></h4>
-        <div class="where">Good Music for Bad People · <span class="ur-k">single</span></div>
-        <a class="go" href="https://open.spotify.com/album/24Eezl80q5gOOKvdUKvec7" target="_blank" rel="noopener">listen →</a>
-      </li>
-      <li class="ev" data-iso="2026-10-05" data-out="1">
-        <h4>Kill The Noise (Interlude) <small><a href="/artists/cloonee">Cloonee</a>, Harvey Whyte</small></h4>
-        <div class="where">Good Music for Bad People · <span class="ur-k">single</span></div>
-        <a class="go" href="https://open.spotify.com/album/6TMfSTyQby8SHQ7oOQXDac" target="_blank" rel="noopener">listen →</a>
-      </li>
-      <li class="ev" data-iso="2026-10-05" data-out="1">
-        <h4>It's Time <small>Cloonee, <a href="/artists/joseph-capriati">Joseph Capriati</a></small></h4>
-        <div class="where">Good Music for Bad People · <span class="ur-k">single</span></div>
-        <a class="go" href="https://open.spotify.com/album/7LcgPKw1L4Ikfim1OpcBhu" target="_blank" rel="noopener">listen →</a>
-      </li>
-      <li class="ev" data-iso="2026-10-05" data-out="1">
-        <h4>What Would I Do <small><a href="/artists/cloonee">Cloonee</a>, Ranger Trucco</small></h4>
-        <div class="where">Good Music for Bad People · <span class="ur-k">single</span></div>
-        <a class="go" href="https://open.spotify.com/album/3FKyqDC277334ASiZbTJpb" target="_blank" rel="noopener">listen →</a>
-      </li>
-      <li class="ev" data-iso="2026-10-05" data-out="1">
-        <h4>Catch Me In Amsterdam <small><a href="/artists/cloonee">Cloonee</a>, Sirolf (NL)</small></h4>
-        <div class="where">Good Music for Bad People · <span class="ur-k">single</span></div>
-        <a class="go" href="https://open.spotify.com/album/64CxRDbmKHcuym2WqbU4iI" target="_blank" rel="noopener">listen →</a>
-      </li>
-      <li class="ev" data-iso="2026-10-05" data-out="1">
-        <h4>3:30AM <small>Cloonee, <a href="/artists/sosa">SOSA</a></small></h4>
-        <div class="where">Good Music for Bad People · <span class="ur-k">single</span></div>
-        <a class="go" href="https://open.spotify.com/album/4nG9jtQqelNp5pceDWmuiK" target="_blank" rel="noopener">listen →</a>
-      </li>
-      <li class="ev" data-iso="2026-10-05" data-out="1">
-        <h4>Nobody Likes The Records That You Play <small><a href="/artists/cloonee">Cloonee</a>, Tocadisco</small></h4>
-        <div class="where">Good Music for Bad People · <span class="ur-k">single</span></div>
-        <a class="go" href="https://open.spotify.com/album/3butB4mwYS0dpGAI5MqBAv" target="_blank" rel="noopener">listen →</a>
-      </li>
+      <li class="ur-lab hot"><details class="ur-label"><summary><span class="ur-lh"><b>Good Music for Bad People</b><small>9 releases</small></span></summary>
+        <ul class="ur-list">
+          <li class="ev hot" data-iso="2026-10-05" data-out="1">
+            <h4>Paradise <span class="canon">🔴</span> <small><a href="/artists/cloonee">Cloonee</a>, Chris Lake</small></h4>
+            <div class="where">Good Music for Bad People · <span class="ur-k">single</span></div>
+            <a class="go" href="https://open.spotify.com/album/2noGWf8EaYvz0QeRV9r9er" target="_blank" rel="noopener">listen →</a>
+          </li>
+          <li class="ev" data-iso="2026-10-05" data-out="1">
+            <h4>True Love Never Dies <small><a href="/artists/cloonee">Cloonee</a>, Fallon</small></h4>
+            <div class="where">Good Music for Bad People · <span class="ur-k">single</span></div>
+            <a class="go" href="https://open.spotify.com/album/1N5doALvVbBahrF1P9x2RZ" target="_blank" rel="noopener">listen →</a>
+          </li>
+          <li class="ev" data-iso="2026-10-05" data-out="1">
+            <h4>Back Of My Mind <small><a href="/artists/cloonee">Cloonee</a>, Galo</small></h4>
+            <div class="where">Good Music for Bad People · <span class="ur-k">single</span></div>
+            <a class="go" href="https://open.spotify.com/album/24Eezl80q5gOOKvdUKvec7" target="_blank" rel="noopener">listen →</a>
+          </li>
+          <li class="ev" data-iso="2026-10-05" data-out="1">
+            <h4>Kill The Noise (Interlude) <small><a href="/artists/cloonee">Cloonee</a>, Harvey Whyte</small></h4>
+            <div class="where">Good Music for Bad People · <span class="ur-k">single</span></div>
+            <a class="go" href="https://open.spotify.com/album/6TMfSTyQby8SHQ7oOQXDac" target="_blank" rel="noopener">listen →</a>
+          </li>
+          <li class="ev" data-iso="2026-10-05" data-out="1">
+            <h4>It's Time <small>Cloonee, <a href="/artists/joseph-capriati">Joseph Capriati</a></small></h4>
+            <div class="where">Good Music for Bad People · <span class="ur-k">single</span></div>
+            <a class="go" href="https://open.spotify.com/album/7LcgPKw1L4Ikfim1OpcBhu" target="_blank" rel="noopener">listen →</a>
+          </li>
+          <li class="ev" data-iso="2026-10-05" data-out="1">
+            <h4>What Would I Do <small><a href="/artists/cloonee">Cloonee</a>, Ranger Trucco</small></h4>
+            <div class="where">Good Music for Bad People · <span class="ur-k">single</span></div>
+            <a class="go" href="https://open.spotify.com/album/3FKyqDC277334ASiZbTJpb" target="_blank" rel="noopener">listen →</a>
+          </li>
+          <li class="ev" data-iso="2026-10-05" data-out="1">
+            <h4>Catch Me In Amsterdam <small><a href="/artists/cloonee">Cloonee</a>, Sirolf (NL)</small></h4>
+            <div class="where">Good Music for Bad People · <span class="ur-k">single</span></div>
+            <a class="go" href="https://open.spotify.com/album/64CxRDbmKHcuym2WqbU4iI" target="_blank" rel="noopener">listen →</a>
+          </li>
+          <li class="ev" data-iso="2026-10-05" data-out="1">
+            <h4>3:30AM <small>Cloonee, <a href="/artists/sosa">SOSA</a></small></h4>
+            <div class="where">Good Music for Bad People · <span class="ur-k">single</span></div>
+            <a class="go" href="https://open.spotify.com/album/4nG9jtQqelNp5pceDWmuiK" target="_blank" rel="noopener">listen →</a>
+          </li>
+          <li class="ev" data-iso="2026-10-05" data-out="1">
+            <h4>Nobody Likes The Records That You Play <small><a href="/artists/cloonee">Cloonee</a>, Tocadisco</small></h4>
+            <div class="where">Good Music for Bad People · <span class="ur-k">single</span></div>
+            <a class="go" href="https://open.spotify.com/album/3butB4mwYS0dpGAI5MqBAv" target="_blank" rel="noopener">listen →</a>
+          </li>
+        </ul>
+      </details></li>
       <li class="ev" data-iso="2026-10-05" data-out="1">
         <h4>Stop Me <small><a href="/artists/essel">ESSEL</a>, 3DAH!</small></h4>
         <div class="where">3 Beat · <span class="ur-k">single</span></div>
@@ -2424,15 +3938,8 @@
 
   <div class="method"><b>how this list is built:</b> only what an artist or a label announced themselves, or a store pre-order page. anything we hear in a set, a comment or a tracklist stays in the crate until the artist says so. we listen to everything. you get the good stuff.</div>
 
-  <footer>groovesmaxxing dropping soon · refreshed as we hear it · last refresh 4 nov 2026</footer>
+  <footer>groovesmaxxing dropping soon · refreshed as we hear it · last refresh 5 nov 2026</footer>
 </div>
 <script src="/gmx-motion.js?v=2" defer></script>
-<script src="/gmx-more.js?v=2" defer></script>
-<script src="/gmx-quick.js?v=13" defer></script>
-<script src="/gmx-nav.js?v=32" defer></script>
-<script src="/gmx-crate.js" defer></script>
-<script src="/gmx-sheet.js?v=2" defer></script>
-<script src="/gmx-upcoming.js?v=2" defer></script>
-<script src="/gmx-account.js?v=20" defer></script>
 </body>
 </html>
