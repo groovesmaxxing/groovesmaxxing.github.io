@@ -44,7 +44,13 @@ h1.eyebrow{margin:0;font-weight:400}
 .rings svg{width:100%;height:100%;display:block;overflow:visible;filter:drop-shadow(0 0 14px rgba(255,28,2,.45))}
 .rings .r{fill:none;stroke:var(--racing);stroke-width:5}
 .rings .dot{fill:var(--racing)}
-.rings .wave{fill:none;stroke:var(--day);stroke-width:7;stroke-linejoin:round;stroke-linecap:round}
+.rings .wave{fill:none;stroke:#fff;stroke-width:4.4;stroke-linejoin:round;stroke-linecap:round}
+/* 2026-11-06: the 10a2 mark at rest (steel rims, the ribbon, the cut). While listening the animation in
+   gmx-scan.js owns the rings, the dot and the wave as before, so the idle extras step aside. */
+.rings .rim{fill:none;stroke:var(--steel);stroke-width:8.4}.rings .rimdot{fill:var(--steel)}
+.stage.listening .rings .wave,.stage.finding .rings .wave{stroke-width:7}
+.stage.listening .rings .ribbon,.stage.finding .rings .ribbon,.stage.listening .rings .rim,.stage.finding .rings .rim,.stage.listening .rings .rimdot,.stage.finding .rings .rimdot{display:none}
+.stage.listening .rings [mask],.stage.finding .rings [mask]{mask:none}
 .rings[disabled],.rings[aria-disabled="true"]{cursor:default}
 .sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
 .tap{font-family:'Space Mono',monospace;font-size:.86rem;letter-spacing:.12em;margin-top:22px;min-height:1.4em}
@@ -226,11 +232,26 @@ details.guess[open]>summary::after{content:' \2212'}
 <section class="stage" id="stage" aria-label="scanner">
 <button class="rings" id="go" type="button" aria-label="scan what is playing" aria-describedby="stat">
 <svg viewBox="0 0 240 240" aria-hidden="true">
-<circle class="r" cx="120" cy="120" r="104"/>
-<circle class="r" cx="120" cy="120" r="76"/>
-<circle class="r" cx="120" cy="120" r="48"/>
-<circle class="dot" cx="120" cy="120" r="18"/>
-<polyline class="wave" points="6,120 30,120 48,87.7 68,142.9 88,104.5 108,130.51 120,116.4 132,132.5 152,100.1 172,148.51 192,83.4 210,120 234,120"/>
+<defs><filter id="gmx-sc-glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2.8"/></filter><mask id="gmx-sc-cut" maskUnits="userSpaceOnUse" x="0" y="0" width="240" height="240"><rect width="240" height="240" fill="#fff"/><polygon points="6.00,120.00 30.00,120.00 48.00,84.00 68.00,90.00 88.00,96.00 108.00,102.00 120.00,114.00 132.00,102.00 152.00,96.00 172.00,90.00 192.00,84.00 210.00,120.00 234.00,120.00 234.00,120.00 210.00,120.00 192.00,156.00 172.00,150.00 152.00,144.00 132.00,138.00 120.00,126.00 108.00,138.00 88.00,144.00 68.00,150.00 48.00,156.00 30.00,120.00 6.00,120.00" fill="#000"/></mask></defs>
+<circle class="rim" cx="120" cy="120" r="104" mask="url(#gmx-sc-cut)"/><circle class="r" cx="120" cy="120" r="104" mask="url(#gmx-sc-cut)"/>
+<circle class="rim" cx="120" cy="120" r="76" mask="url(#gmx-sc-cut)"/><circle class="r" cx="120" cy="120" r="76" mask="url(#gmx-sc-cut)"/>
+<circle class="rim" cx="120" cy="120" r="48" mask="url(#gmx-sc-cut)"/><circle class="r" cx="120" cy="120" r="48" mask="url(#gmx-sc-cut)"/>
+<circle class="rimdot" cx="120" cy="120" r="19.7" mask="url(#gmx-sc-cut)"/><circle class="dot" cx="120" cy="120" r="18" mask="url(#gmx-sc-cut)"/>
+<g class="ribbon"><g filter="url(#gmx-sc-glow)" opacity=".9"><polyline points="6.00,120.00 30.00,120.00 48.00,84.00 68.00,150.00 88.00,96.00 108.00,138.00 120.00,114.00 132.00,138.00 152.00,96.00 172.00,150.00 192.00,84.00 210.00,120.00 234.00,120.00" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></g>
+<polyline points="6.00,120.00 30.00,120.00 48.00,156.00 68.00,90.00 88.00,144.00 108.00,102.00 120.00,126.00 132.00,102.00 152.00,144.00 172.00,90.00 192.00,156.00 210.00,120.00 234.00,120.00" fill="none" stroke="#FF1C02" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="6.00,120.00 30.00,120.00 48.00,150.00 68.00,95.00 88.00,140.00 108.00,105.00 120.00,125.00 132.00,105.00 152.00,140.00 172.00,95.00 192.00,150.00 210.00,120.00 234.00,120.00" fill="none" stroke="#FF5E4B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="6.00,120.00 30.00,120.00 48.00,144.00 68.00,100.00 88.00,136.00 108.00,108.00 120.00,124.00 132.00,108.00 152.00,136.00 172.00,100.00 192.00,144.00 210.00,120.00 234.00,120.00" fill="none" stroke="#FF7969" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="6.00,120.00 30.00,120.00 48.00,138.00 68.00,105.00 88.00,132.00 108.00,111.00 120.00,123.00 132.00,111.00 152.00,132.00 172.00,105.00 192.00,138.00 210.00,120.00 234.00,120.00" fill="none" stroke="#FF8E80" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="6.00,120.00 30.00,120.00 48.00,132.00 68.00,110.00 88.00,128.00 108.00,114.00 120.00,122.00 132.00,114.00 152.00,128.00 172.00,110.00 192.00,132.00 210.00,120.00 234.00,120.00" fill="none" stroke="#FF9F94" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="6.00,120.00 30.00,120.00 48.00,126.00 68.00,115.00 88.00,124.00 108.00,117.00 120.00,121.00 132.00,117.00 152.00,124.00 172.00,115.00 192.00,126.00 210.00,120.00 234.00,120.00" fill="none" stroke="#FFAFA5" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="6.00,120.00 30.00,120.00 48.00,120.00 68.00,120.00 88.00,120.00 108.00,120.00 120.00,120.00 132.00,120.00 152.00,120.00 172.00,120.00 192.00,120.00 210.00,120.00 234.00,120.00" fill="none" stroke="#FFBDB5" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="6.00,120.00 30.00,120.00 48.00,114.00 68.00,125.00 88.00,116.00 108.00,123.00 120.00,119.00 132.00,123.00 152.00,116.00 172.00,125.00 192.00,114.00 210.00,120.00 234.00,120.00" fill="none" stroke="#FFC9C3" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="6.00,120.00 30.00,120.00 48.00,108.00 68.00,130.00 88.00,112.00 108.00,126.00 120.00,118.00 132.00,126.00 152.00,112.00 172.00,130.00 192.00,108.00 210.00,120.00 234.00,120.00" fill="none" stroke="#FFD5D1" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="6.00,120.00 30.00,120.00 48.00,102.00 68.00,135.00 88.00,108.00 108.00,129.00 120.00,117.00 132.00,129.00 152.00,108.00 172.00,135.00 192.00,102.00 210.00,120.00 234.00,120.00" fill="none" stroke="#FFE1DD" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="6.00,120.00 30.00,120.00 48.00,96.00 68.00,140.00 88.00,104.00 108.00,132.00 120.00,116.00 132.00,132.00 152.00,104.00 172.00,140.00 192.00,96.00 210.00,120.00 234.00,120.00" fill="none" stroke="#FFEBE9" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="6.00,120.00 30.00,120.00 48.00,90.00 68.00,145.00 88.00,100.00 108.00,135.00 120.00,115.00 132.00,135.00 152.00,100.00 172.00,145.00 192.00,90.00 210.00,120.00 234.00,120.00" fill="none" stroke="#FFF5F4" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<polyline class="wave" points="6.00,120.00 30.00,120.00 48.00,84.00 68.00,150.00 88.00,96.00 108.00,138.00 120.00,114.00 132.00,138.00 152.00,96.00 172.00,150.00 192.00,84.00 210.00,120.00 234.00,120.00"/>
 </svg>
 </button>
 <div class="tap" id="tap">tap to <b>scan</b></div>
@@ -286,7 +307,7 @@ details.guess[open]>summary::after{content:' \2212'}
 <script src="/gmx-clips.js"></script>
 <script src="/gmx-account.js?v=20"></script>
 <script src="/gmx-crate.js"></script>
-<script src="/gmx-scan.js?v=2"></script>
+<script src="/gmx-scan.js?v=3"></script>
 <script src="/gmx-install.js" defer></script>
 <script src="/gmx-motion.js?v=2" defer></script>
 <script src="/gmx-quick.js?v=13" defer></script>
