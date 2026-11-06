@@ -490,7 +490,7 @@ function identify(blob){
             : m==='server' ? 'the recognizer answered but is failing on its end. give it a minute and try again.'
             : m==='timeout' ? 'the upload stalled. check your signal and try again.'
             : 'could not reach the recognizer. check your signal and try again.';
-    showCard(errCard(text)); reset();
+    showCard(errCard(text,!!heldBlob&&/^(slow|failed|server|timeout)$/.test(m))); reset();
   });
 }
 
@@ -532,7 +532,9 @@ function decorate(cur){
     lab.innerHTML='<a class="sublink" href="/labels/'+esc(sl)+'">'+esc(c.label)+'</a>'+(c.release_date?' · '+esc(c.release_date):'');
   });
 }
-function errCard(text){return '<p class="kw"><b>hm.</b></p><h2>that did not work.</h2><p class="note">'+esc(text)+'</p><div class="row"><button class="btn red" data-act="again">scan again</button></div>'}
+/* 2026-11-06 (architect pass item 8): resend offers the clip already recorded, for a failure on our
+   side, so a slow or failing recognizer does not cost the moment. never for the hourly cap or a refused key. */
+function errCard(text,resend){return '<p class="kw"><b>hm.</b></p><h2>that did not work.</h2><p class="note">'+esc(text)+'</p><div class="row">'+(resend?'<button class="btn red" data-act="resend">try this clip again</button><button class="btn ghost" data-act="again">scan again</button>':'<button class="btn red" data-act="again">scan again</button>')+'</div>'}
 
 /* a refsync library entry (a reference clip the laptop contributed from an id upload) carries its file name and
    notes as the title and "refsync <poster>" as the artist. the card shows the caption as the title, nobody as the
@@ -950,6 +952,13 @@ card.addEventListener('click',function(ev){
   var act=b.getAttribute('data-act');
   if(act==='where'){openWhere();return}
   if(act==='again'){card.classList.remove('on');card.innerHTML='';dropBlob();current=null;window.scrollTo({top:0,behavior:'smooth'});return}
+  if(act==='resend'){
+    /* the same clip as a new post, the way a kept clip's scan again posts it (recentlist below) */
+    if(busy)return; if(!heldBlob){showCard(errCard('the clip is gone. scan again.'));return}
+    busy=true; card.classList.remove('on'); current=null;
+    scanSeq++; early=null; finalDone=false; rateHit=false; timing={t0:Date.now(),rounds:[],first:null};
+    go.classList.add('busy'); window.scrollTo({top:0,behavior:'smooth'}); identify(heldBlob); return;
+  }
 if(act==='listen'){card.classList.remove('on');card.innerHTML='';dropBlob();current=null;window.scrollTo({top:0,behavior:'smooth'});startScan();return}
   if(act==='share'){share();return}
   if(act==='confirm'){sendCorrection({verdict:'confirm'});return}
