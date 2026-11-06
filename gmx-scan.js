@@ -369,7 +369,13 @@ function pollJob(jobId){
   });
 }
 /* the early rounds: library only on the server, never a catalog call. quiet on any failure.
-   a CONFIRMED answer ends the scan at once. a LIKELY one shows and the scan keeps going for the catalogs. */
+   a CONFIRMED answer ends the scan at once. a LIKELY one shows and the scan keeps going for the catalogs.
+   2026-11-06 (architect pass item 5): two early rounds naming the same recording at least AGREE_GAP_MS apart
+   end the scan too, the card keeping the server's own tier word. the windows overlap (each round re-sends the
+   capture from the start), so agreement is not a second signal and never relabels a likely as sure. the
+   10-03 venue probe: an 8 s LIKELY was right 5 of 5, and the 3 that came back the same at 15 s were all right. */
+var AGREE_GAP_MS=4000;
+function candKey(c){var nm=nameOf(c);return c.fingerprint_id||c.library_entry_id||(nm&&(nm.artist||'')+'|'+(nm.title||''))||null}
 function earlyIdentify(blob,seq,at){
   var fd=new FormData(); fd.append('audio',blob,'clip.wav'); fd.append('source','mic');
   var began=Date.now(), sent=null, round={at:at,post:0,wait:0,answer:'…'};
@@ -384,17 +390,22 @@ function earlyIdentify(blob,seq,at){
     var r=j.result||{}, c=r.card||{}, cand=c.candidate;
     if(!cand||(cand.tier!=='LIKELY'&&cand.tier!=='CONFIRMED')){round.answer=(at/1000)+' s: nothing yet';say2('matching · '+timing.rounds.map(function(x){return x.answer}).join(' · '));return}
     var nm=nameOf(cand),who=nm?(nm.title||nm.artist):'a library entry';
-    round.answer=(at/1000)+' s: '+(cand.tier==='CONFIRMED'?'sure':'close')+', '+who;
-    early={job_id:j.job_id,recognition_id:r.recognition_id||j.job_id,card:{kind:'match',candidate:cand},seconds:Math.round((Date.now()-timing.t0)/100)/10,timing:timing};
+    var key=candKey(cand), prev=early, same=!!(key&&prev&&prev.key===key), firstAt=same?prev.firstAt:at;
+    var agreed=cand.tier==='LIKELY'&&same&&Math.abs(at-firstAt)>=AGREE_GAP_MS;
+    round.answer=(at/1000)+' s: '+(cand.tier==='CONFIRMED'?'sure':(agreed?'close again':'close'))+', '+who;
+    early={job_id:j.job_id,recognition_id:r.recognition_id||j.job_id,card:{kind:'match',candidate:cand},seconds:Math.round((Date.now()-timing.t0)/100)/10,timing:timing,key:key,firstAt:firstAt};
     if(!timing.first)timing.first=Date.now()-timing.t0;
     current=early; tick(40);
-    if(cand.tier==='CONFIRMED'){
-      /* done: stop the mic, skip the catalogs, keep the clip we have for corrections and the set hint */
+    if(cand.tier==='CONFIRMED'||agreed){
+      /* done: stop the mic, skip the catalogs, keep the clip we have for corrections and the set hint.
+         agreed: two rounds named it, so the 15 s post would only re-ask the library (it goes catalog off after
+         a likely) on the same audio; the card keeps the likely word */
+      if(agreed)timing.agreed={first:firstAt,again:at};
       finalDone=true; heldBlob=blob; if(stopCapture)stopCapture();
       current.hint_ref=current.recognition_id; current.in_set=r.in_set||null; current.loud=heldLoud;
       var keep=!!(window.gmxClips&&gmxClips.on()&&heldBlob);
       if(keep)gmxClips.put({id:current.job_id,t:Date.now(),blob:heldBlob,recognition_id:current.recognition_id,kind:'match'}).catch(function(){});
-      say2('got it at <b>'+(at/1000)+' s</b>');
+      say2(agreed?'close twice, at <b>'+(Math.min(firstAt,at)/1000)+' s</b> and <b>'+(Math.max(firstAt,at)/1000)+' s</b>':'got it at <b>'+(at/1000)+' s</b>');
       showCard(resultCard(current)); remember(current,keep); reset(); return;
     }
     say2('close at <b>'+(at/1000)+' s</b>, still listening for a sure one');
