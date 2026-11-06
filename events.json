@@ -1,6 +1,13 @@
 {
- "generated": "2026-11-06T09:47:54Z",
+ "generated": "2026-11-06T17:25:25Z",
  "events": [
+  {
+   "at": "2026-11-06T17:25:25Z",
+   "what": "freshness F-24",
+   "from": "warn",
+   "to": "ok",
+   "detail": "the newsletter hub carries the newest issue: 2026-11-06, 0 days old"
+  },
   {
    "at": "2026-11-05T00:19:12Z",
    "what": "workflow freshness",
