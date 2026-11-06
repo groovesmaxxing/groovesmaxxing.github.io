@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com https://embed.beatport.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0B0B0D">
@@ -129,6 +129,14 @@
   .ur-tracks li{padding:3px 0;overflow-wrap:anywhere}
   .ur-tracks li::marker{font-family:'Space Mono',monospace;font-size:11.5px;color:var(--steel)}
   .ur-bk{margin-left:6px;font-family:'Space Mono',monospace;font-size:11.5px;color:var(--steel);white-space:nowrap}
+  /* the sample pill: a link to the beatport track, beatport's own player under it once gmx-upcoming.js runs */
+  .ur-play{display:inline-block;margin-left:6px;padding:1px 9px;border:1px solid rgba(255,28,2,.5);border-radius:999px;font-family:'Space Mono',monospace;font-size:11.5px;line-height:1.5;color:var(--racing);text-decoration:none;white-space:nowrap}
+  .ur-play:hover{border-color:var(--racing)}
+  .ur-play[aria-expanded=true]{background:var(--racing);border-color:var(--racing);color:var(--night)}
+  .ev>.ur-play{grid-column:1/-1;justify-self:start;margin:8px 0 0}
+  .ev>.ur-embed{grid-column:1/-1}
+  .ur-embed{margin:.4rem 0 .2rem}
+  .ur-embed iframe{width:100%;height:162px;border:0;border-radius:8px;display:block;overflow:hidden}
   .ur-fold{display:inline-flex;align-items:center;min-height:40px;margin-top:10px;padding:6px 16px;border:1px dashed var(--line);border-radius:999px;background:none;color:var(--steel);font-family:'Space Mono',monospace;font-size:12.5px;cursor:pointer}
   .ur-fold:hover{color:var(--day);border-color:var(--steel)}
   .ur-tba{margin:34px 0 0;border:1px dashed var(--line);border-radius:14px}
@@ -1669,7 +1677,7 @@
 </div>
 <section class="ur-panel" id="soon" aria-labelledby="h-soon">
   <h2 class="ur-ph" id="h-soon">dropping soon</h2>
-  <p class="ur-pn">soonest first. a release stays here through its own day, then moves to released.</p>
+  <p class="ur-pn">soonest first. a release stays here through the weekend after its day, then moves to released on monday.</p>
   <div class="ur-day" data-iso="2026-11-05">
     <div class="ur-dh"><div class="ur-cal" aria-hidden="true"><span class="ur-dw">thu</span><b>5</b><span class="ur-mo">nov</span></div><h3 class="ur-dt"><span class="ur-rel">thursday 5 november</span><span class="ur-dd"></span></h3><span class="ur-n">2 releases</span></div>
     <ul class="ur-list">
@@ -1679,20 +1687,20 @@
         <a class="go" href="https://www.beatport.com/release/sundown-rituals-vol-3/7602191" target="_blank" rel="noopener">on beatport →</a>
         <details class="ur-tracks"><summary>14 tracks</summary>
           <ol>
-            <li>Gorge · Tiago (Original Mix) <span class="ur-bk">124 bpm · C minor</span></li>
-            <li>Jiggler · Delight (Extended Mix) <span class="ur-bk">124 bpm · C major</span></li>
-            <li>Narik · Loneliness (Alex Connors Extended Sunset Mix) <span class="ur-bk">124 bpm · C major</span></li>
-            <li>Patrick De Ville · Take Me Away (Danjo (ITA) Remix) <span class="ur-bk">122 bpm · G minor</span></li>
-            <li>BiGz, Elo · Beautiful Africa feat. Farafi (Alex Doering Remix) <span class="ur-bk">122 bpm · Gb major</span></li>
-            <li>ivory white · Tanganyika (Extended) <span class="ur-bk">123 bpm · D major</span></li>
-            <li>David Kassi · Midnight Love (Soire Remix) <span class="ur-bk">120 bpm · Gb minor</span></li>
-            <li>Elliot Moriarty · Feels Like (Original Mix) <span class="ur-bk">122 bpm · E minor</span></li>
-            <li>Alice DiMar · Savanna Savage (Ainalog Extended Remix) <span class="ur-bk">95 bpm · A major</span></li>
-            <li>VieL · Karma (Chris Bravo Remix) <span class="ur-bk">121 bpm · D minor</span></li>
-            <li>Ainalog · Lost or Found (Extended Mix) <span class="ur-bk">127 bpm · Eb major</span></li>
-            <li>Aeron (DE) · Mantra (Original Mix) <span class="ur-bk">90 bpm · Gb minor</span></li>
-            <li>BiG AL, Kiano · Over The Sunset (Sunset Mix) <span class="ur-bk">120 bpm · G major</span></li>
-            <li>Downpour · Salvation (Original Mix) <span class="ur-bk">124 bpm · G major</span></li>
+            <li>Gorge · Tiago (Original Mix) <span class="ur-bk">124 bpm · C minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31010044" data-bp="31010044" rel="noopener">sample ▸</a></li>
+            <li>Jiggler · Delight (Extended Mix) <span class="ur-bk">124 bpm · C major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31010045" data-bp="31010045" rel="noopener">sample ▸</a></li>
+            <li>Narik · Loneliness (Alex Connors Extended Sunset Mix) <span class="ur-bk">124 bpm · C major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31010046" data-bp="31010046" rel="noopener">sample ▸</a></li>
+            <li>Patrick De Ville · Take Me Away (Danjo (ITA) Remix) <span class="ur-bk">122 bpm · G minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31010047" data-bp="31010047" rel="noopener">sample ▸</a></li>
+            <li>BiGz, Elo · Beautiful Africa feat. Farafi (Alex Doering Remix) <span class="ur-bk">122 bpm · Gb major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31010048" data-bp="31010048" rel="noopener">sample ▸</a></li>
+            <li>ivory white · Tanganyika (Extended) <span class="ur-bk">123 bpm · D major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31010049" data-bp="31010049" rel="noopener">sample ▸</a></li>
+            <li>David Kassi · Midnight Love (Soire Remix) <span class="ur-bk">120 bpm · Gb minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31010050" data-bp="31010050" rel="noopener">sample ▸</a></li>
+            <li>Elliot Moriarty · Feels Like (Original Mix) <span class="ur-bk">122 bpm · E minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31010051" data-bp="31010051" rel="noopener">sample ▸</a></li>
+            <li>Alice DiMar · Savanna Savage (Ainalog Extended Remix) <span class="ur-bk">95 bpm · A major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31010052" data-bp="31010052" rel="noopener">sample ▸</a></li>
+            <li>VieL · Karma (Chris Bravo Remix) <span class="ur-bk">121 bpm · D minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31010053" data-bp="31010053" rel="noopener">sample ▸</a></li>
+            <li>Ainalog · Lost or Found (Extended Mix) <span class="ur-bk">127 bpm · Eb major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31010054" data-bp="31010054" rel="noopener">sample ▸</a></li>
+            <li>Aeron (DE) · Mantra (Original Mix) <span class="ur-bk">90 bpm · Gb minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31010055" data-bp="31010055" rel="noopener">sample ▸</a></li>
+            <li>BiG AL, Kiano · Over The Sunset (Sunset Mix) <span class="ur-bk">120 bpm · G major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31010056" data-bp="31010056" rel="noopener">sample ▸</a></li>
+            <li>Downpour · Salvation (Original Mix) <span class="ur-bk">124 bpm · G major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31010057" data-bp="31010057" rel="noopener">sample ▸</a></li>
           </ol>
         </details>
       </li>
@@ -1700,6 +1708,7 @@
         <h4>Everyday (Extended) <small>Tom Caruso</small></h4>
         <div class="where">Cultivate Records · <span class="ur-k">single</span></div>
         <a class="go" href="https://www.beatport.com/release/everyday-extended/7595866" target="_blank" rel="noopener">on beatport →</a>
+        <a class="ur-play" href="https://www.beatport.com/track/x/30993881" data-bp="30993881" rel="noopener">sample ▸</a>
       </li>
     </ul>
   </div>
@@ -1710,11 +1719,13 @@
         <h4>Confess (Groove P Remix) <small><a href="/artists/atfc">ATFC</a>, Seamus Haji</small></h4>
         <div class="where">Big Love Music · <span class="ur-k">remix</span></div>
         <a class="go" href="https://www.beatport.com/release/confess-groove-p-remix/7575682" target="_blank" rel="noopener">pre-order →</a>
+        <a class="ur-play" href="https://www.beatport.com/track/x/30940272" data-bp="30940272" rel="noopener">sample ▸</a>
       </li>
       <li class="ev" data-iso="2026-11-06">
         <h4>Without U (Extended Mix) <small><a href="/artists/calussa">Calussa</a>, Grace Arribas</small></h4>
         <div class="where">Kazbah Records · <span class="ur-k">single</span></div>
         <a class="go" href="https://www.beatport.com/release/without-u-extended-mix/7576570" target="_blank" rel="noopener">pre-order →</a>
+        <a class="ur-play" href="https://www.beatport.com/track/x/30942331" data-bp="30942331" rel="noopener">sample ▸</a>
       </li>
       <li class="ev" data-iso="2026-11-06">
         <h4>Million Dollar Bill (Micky More &amp; Andy Tee Mixes) <small>Amanda Wilson</small></h4>
@@ -1722,9 +1733,9 @@
         <a class="go" href="https://www.beatport.com/release/million-dollar-bill-micky-more-andy-tee-mixes/7488650" target="_blank" rel="noopener">pre-order →</a>
         <details class="ur-tracks"><summary>3 tracks</summary>
           <ol>
-            <li>Amanda Wilson · Million Dollar Bill (Micky More &amp; Andy Tee Extended) <span class="ur-bk">122 bpm · A major</span></li>
-            <li>Amanda Wilson · Million Dollar Bill (Micky More &amp; Andy Tee Dub) <span class="ur-bk">122 bpm · A major</span></li>
-            <li>Amanda Wilson · Million Dollar Bill (Micky More &amp; Andy Tee Instrumental) <span class="ur-bk">122 bpm · A major</span></li>
+            <li>Amanda Wilson · Million Dollar Bill (Micky More &amp; Andy Tee Extended) <span class="ur-bk">122 bpm · A major</span> <a class="ur-play" href="https://www.beatport.com/track/x/30703211" data-bp="30703211" rel="noopener">sample ▸</a></li>
+            <li>Amanda Wilson · Million Dollar Bill (Micky More &amp; Andy Tee Dub) <span class="ur-bk">122 bpm · A major</span> <a class="ur-play" href="https://www.beatport.com/track/x/30703215" data-bp="30703215" rel="noopener">sample ▸</a></li>
+            <li>Amanda Wilson · Million Dollar Bill (Micky More &amp; Andy Tee Instrumental) <span class="ur-bk">122 bpm · A major</span> <a class="ur-play" href="https://www.beatport.com/track/x/30703218" data-bp="30703218" rel="noopener">sample ▸</a></li>
           </ol>
         </details>
       </li>
@@ -1734,8 +1745,8 @@
         <a class="go" href="https://www.beatport.com/release/ritmo/7608549" target="_blank" rel="noopener">pre-order →</a>
         <details class="ur-tracks"><summary>2 tracks</summary>
           <ol>
-            <li>Bruno Furlan · Ritmo (Original Mix) <span class="ur-bk">130 bpm · E minor</span></li>
-            <li>Bruno Furlan · Ritmo (Extended Mix) <span class="ur-bk">130 bpm · C minor</span></li>
+            <li>Bruno Furlan · Ritmo (Original Mix) <span class="ur-bk">130 bpm · E minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31027092" data-bp="31027092" rel="noopener">sample ▸</a></li>
+            <li>Bruno Furlan · Ritmo (Extended Mix) <span class="ur-bk">130 bpm · C minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31027093" data-bp="31027093" rel="noopener">sample ▸</a></li>
           </ol>
         </details>
       </li>
@@ -1750,8 +1761,8 @@
         <a class="go" href="https://www.beatport.com/release/switch-on-ep/7603508" target="_blank" rel="noopener">pre-order →</a>
         <details class="ur-tracks"><summary>2 tracks</summary>
           <ol>
-            <li>Joyce Muniz, VNSSA · Switch On  (Original Mix) <span class="ur-bk">128 bpm · C major</span></li>
-            <li>Joyce Muniz, VNSSA · Switch On  (Maltitz Remix) <span class="ur-bk">128 bpm · C minor</span></li>
+            <li>Joyce Muniz, VNSSA · Switch On  (Original Mix) <span class="ur-bk">128 bpm · C major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31014130" data-bp="31014130" rel="noopener">sample ▸</a></li>
+            <li>Joyce Muniz, VNSSA · Switch On  (Maltitz Remix) <span class="ur-bk">128 bpm · C minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31014131" data-bp="31014131" rel="noopener">sample ▸</a></li>
           </ol>
         </details>
       </li>
@@ -1761,8 +1772,8 @@
         <a class="go" href="https://www.beatport.com/release/wasting-time/7610529" target="_blank" rel="noopener">pre-order →</a>
         <details class="ur-tracks"><summary>2 tracks</summary>
           <ol>
-            <li>Monolink, CIOZ · Wasting Time (Original Mix) <span class="ur-bk">124 bpm · Db minor</span></li>
-            <li>Monolink, CIOZ · Dont Talk To Me (OMRI. Remix) <span class="ur-bk">128 bpm · C minor</span></li>
+            <li>Monolink, CIOZ · Wasting Time (Original Mix) <span class="ur-bk">124 bpm · Db minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31032382" data-bp="31032382" rel="noopener">sample ▸</a></li>
+            <li>Monolink, CIOZ · Dont Talk To Me (OMRI. Remix) <span class="ur-bk">128 bpm · C minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31032383" data-bp="31032383" rel="noopener">sample ▸</a></li>
           </ol>
         </details>
       </li>
@@ -1772,8 +1783,8 @@
         <a class="go" href="https://www.beatport.com/release/slow-my-routine-ep/7653026" target="_blank" rel="noopener">pre-order →</a>
         <details class="ur-tracks"><summary>2 tracks</summary>
           <ol>
-            <li>Rafael Cerato, Humans Musik · Routine (Extended Mix) <span class="ur-bk">128 bpm · B minor</span></li>
-            <li>Rafael Cerato, Chamo (AR) · Slow It (Extended Mix) <span class="ur-bk">132 bpm · C major</span></li>
+            <li>Rafael Cerato, Humans Musik · Routine (Extended Mix) <span class="ur-bk">128 bpm · B minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31145759" data-bp="31145759" rel="noopener">sample ▸</a></li>
+            <li>Rafael Cerato, Chamo (AR) · Slow It (Extended Mix) <span class="ur-bk">132 bpm · C major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31145762" data-bp="31145762" rel="noopener">sample ▸</a></li>
           </ol>
         </details>
       </li>
@@ -1783,9 +1794,9 @@
         <a class="go" href="https://www.beatport.com/release/rolling-ep/7655267" target="_blank" rel="noopener">pre-order →</a>
         <details class="ur-tracks"><summary>3 tracks</summary>
           <ol>
-            <li>Space Motion · Rolling  (Original Mix) <span class="ur-bk">130 bpm · Bb major</span></li>
-            <li>Space Motion · Pew Pew  (Original Mix) <span class="ur-bk">128 bpm · A major</span></li>
-            <li>Space Motion · I Can Feel It  (Original Mix) <span class="ur-bk">123 bpm · D major</span></li>
+            <li>Space Motion · Rolling  (Original Mix) <span class="ur-bk">130 bpm · Bb major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31151880" data-bp="31151880" rel="noopener">sample ▸</a></li>
+            <li>Space Motion · Pew Pew  (Original Mix) <span class="ur-bk">128 bpm · A major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31151881" data-bp="31151881" rel="noopener">sample ▸</a></li>
+            <li>Space Motion · I Can Feel It  (Original Mix) <span class="ur-bk">123 bpm · D major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31151883" data-bp="31151883" rel="noopener">sample ▸</a></li>
           </ol>
         </details>
       </li>
@@ -1795,8 +1806,8 @@
         <a class="go" href="https://www.beatport.com/release/4ever/7595728" target="_blank" rel="noopener">pre-order →</a>
         <details class="ur-tracks"><summary>2 tracks</summary>
           <ol>
-            <li>STAY GOLDEN, Belyi · 4EVER (Extended Mix) <span class="ur-bk">125 bpm · G major</span></li>
-            <li>Kirr, STAY GOLDEN, Belyi · Bali Dance (Extended Mix) <span class="ur-bk">125 bpm · G major</span></li>
+            <li>STAY GOLDEN, Belyi · 4EVER (Extended Mix) <span class="ur-bk">125 bpm · G major</span> <a class="ur-play" href="https://www.beatport.com/track/x/30993613" data-bp="30993613" rel="noopener">sample ▸</a></li>
+            <li>Kirr, STAY GOLDEN, Belyi · Bali Dance (Extended Mix) <span class="ur-bk">125 bpm · G major</span> <a class="ur-play" href="https://www.beatport.com/track/x/30993614" data-bp="30993614" rel="noopener">sample ▸</a></li>
           </ol>
         </details>
       </li>
@@ -1806,8 +1817,8 @@
         <a class="go" href="https://www.beatport.com/release/no-brakes-miss-booty/7629107" target="_blank" rel="noopener">pre-order →</a>
         <details class="ur-tracks"><summary>2 tracks</summary>
           <ol>
-            <li>Viot · No Brakes  (Extended Mix) <span class="ur-bk">128 bpm · Ab minor</span></li>
-            <li>Viot · Miss Booty  (Extended Mix) <span class="ur-bk">128 bpm · F major</span></li>
+            <li>Viot · No Brakes  (Extended Mix) <span class="ur-bk">128 bpm · Ab minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31081063" data-bp="31081063" rel="noopener">sample ▸</a></li>
+            <li>Viot · Miss Booty  (Extended Mix) <span class="ur-bk">128 bpm · F major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31081064" data-bp="31081064" rel="noopener">sample ▸</a></li>
           </ol>
         </details>
       </li>
@@ -1817,26 +1828,26 @@
         <a class="go" href="https://www.beatport.com/release/30-years-of-drumcode/7659035" target="_blank" rel="noopener">pre-order →</a>
         <details class="ur-tracks"><summary>20 tracks</summary>
           <ol>
-            <li>Maceo Plex · Conjure Dreams (Adam Beyer &amp; Bart Skils Remix) <span class="ur-bk">130 bpm · D major</span></li>
-            <li>Enrico Sangiuliano · Blooming Era (Sam Kitt Remix) <span class="ur-bk">135 bpm · Gb minor</span></li>
-            <li>Adam Beyer, Green Velvet, Layton Giordani · Space Date (HNTR &amp; KASIA Remix) <span class="ur-bk">132 bpm · Bb major</span></li>
-            <li>Adam Beyer, Joseph Capriati · Congenial Endeavor (Veerus &amp; Mattia Saviolo Remix) <span class="ur-bk">135 bpm · F major</span></li>
-            <li>Adam Beyer, Bart Skils · Your Mind (Dok &amp; Martin Remix) <span class="ur-bk">135 bpm · F minor</span></li>
-            <li>Adam Beyer, Lenk · DC01, Pt. 1 (Jesper Dahlbäck Remix) <span class="ur-bk">67 bpm · D minor</span></li>
-            <li>Adam Beyer · Don't Go (2026 Mix) <span class="ur-bk">133 bpm · F major</span></li>
-            <li>Victor Ruiz · Love Story (2026 Mix) <span class="ur-bk">130 bpm · A minor</span></li>
-            <li>Amelie Lens · In Silence (2026 Mix) <span class="ur-bk">140 bpm · Db major</span></li>
-            <li>HI-LO, DJ Deeon · WANNA GO BANG (feat. DJ Deeon) (2026 Mix) <span class="ur-bk">132 bpm · G major</span></li>
-            <li>Mark Reeve · Far Away (2026 Mix) <span class="ur-bk">132 bpm · Bb minor</span></li>
-            <li>Sam Paganini · Dusty (2026 Mix) <span class="ur-bk">138 bpm · Db minor</span></li>
-            <li>Alan Fitzpatrick · Skeksis (2026 Mix) <span class="ur-bk">142 bpm · Eb major</span></li>
-            <li>Wehbba · Eclipse (2026 Mix) <span class="ur-bk">132 bpm · A major</span></li>
-            <li>Julian Jeweil · Mars (2026 Mix) <span class="ur-bk">140 bpm · F minor</span></li>
-            <li>Christian Smith, John Selway · Total Departure (2026 Mix) <span class="ur-bk">69 bpm · Eb major</span></li>
-            <li>Nicole Moudaber · I Know Where I've Been (2026 Mix) <span class="ur-bk">130 bpm · E major</span></li>
-            <li>Cevin Fisher, Charles D (USA) · Traction (The Way We Used to Do It) (2026 Mix) <span class="ur-bk">135 bpm · B major</span></li>
-            <li>Joel Mull · Rimson (2026 Mix) <span class="ur-bk">134 bpm · Gb major</span></li>
-            <li>Tiger Stripes · Until the Early Light (2026 Mix) <span class="ur-bk">128 bpm · B minor</span></li>
+            <li>Maceo Plex · Conjure Dreams (Adam Beyer &amp; Bart Skils Remix) <span class="ur-bk">130 bpm · D major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31162256" data-bp="31162256" rel="noopener">sample ▸</a></li>
+            <li>Enrico Sangiuliano · Blooming Era (Sam Kitt Remix) <span class="ur-bk">135 bpm · Gb minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31162257" data-bp="31162257" rel="noopener">sample ▸</a></li>
+            <li>Adam Beyer, Green Velvet, Layton Giordani · Space Date (HNTR &amp; KASIA Remix) <span class="ur-bk">132 bpm · Bb major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31162258" data-bp="31162258" rel="noopener">sample ▸</a></li>
+            <li>Adam Beyer, Joseph Capriati · Congenial Endeavor (Veerus &amp; Mattia Saviolo Remix) <span class="ur-bk">135 bpm · F major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31162259" data-bp="31162259" rel="noopener">sample ▸</a></li>
+            <li>Adam Beyer, Bart Skils · Your Mind (Dok &amp; Martin Remix) <span class="ur-bk">135 bpm · F minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31162260" data-bp="31162260" rel="noopener">sample ▸</a></li>
+            <li>Adam Beyer, Lenk · DC01, Pt. 1 (Jesper Dahlbäck Remix) <span class="ur-bk">67 bpm · D minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31162261" data-bp="31162261" rel="noopener">sample ▸</a></li>
+            <li>Adam Beyer · Don't Go (2026 Mix) <span class="ur-bk">133 bpm · F major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31162262" data-bp="31162262" rel="noopener">sample ▸</a></li>
+            <li>Victor Ruiz · Love Story (2026 Mix) <span class="ur-bk">130 bpm · A minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31162263" data-bp="31162263" rel="noopener">sample ▸</a></li>
+            <li>Amelie Lens · In Silence (2026 Mix) <span class="ur-bk">140 bpm · Db major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31162264" data-bp="31162264" rel="noopener">sample ▸</a></li>
+            <li>HI-LO, DJ Deeon · WANNA GO BANG (feat. DJ Deeon) (2026 Mix) <span class="ur-bk">132 bpm · G major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31162265" data-bp="31162265" rel="noopener">sample ▸</a></li>
+            <li>Mark Reeve · Far Away (2026 Mix) <span class="ur-bk">132 bpm · Bb minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31162266" data-bp="31162266" rel="noopener">sample ▸</a></li>
+            <li>Sam Paganini · Dusty (2026 Mix) <span class="ur-bk">138 bpm · Db minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31162267" data-bp="31162267" rel="noopener">sample ▸</a></li>
+            <li>Alan Fitzpatrick · Skeksis (2026 Mix) <span class="ur-bk">142 bpm · Eb major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31162268" data-bp="31162268" rel="noopener">sample ▸</a></li>
+            <li>Wehbba · Eclipse (2026 Mix) <span class="ur-bk">132 bpm · A major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31162269" data-bp="31162269" rel="noopener">sample ▸</a></li>
+            <li>Julian Jeweil · Mars (2026 Mix) <span class="ur-bk">140 bpm · F minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31162270" data-bp="31162270" rel="noopener">sample ▸</a></li>
+            <li>Christian Smith, John Selway · Total Departure (2026 Mix) <span class="ur-bk">69 bpm · Eb major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31162271" data-bp="31162271" rel="noopener">sample ▸</a></li>
+            <li>Nicole Moudaber · I Know Where I've Been (2026 Mix) <span class="ur-bk">130 bpm · E major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31162272" data-bp="31162272" rel="noopener">sample ▸</a></li>
+            <li>Cevin Fisher, Charles D (USA) · Traction (The Way We Used to Do It) (2026 Mix) <span class="ur-bk">135 bpm · B major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31162273" data-bp="31162273" rel="noopener">sample ▸</a></li>
+            <li>Joel Mull · Rimson (2026 Mix) <span class="ur-bk">134 bpm · Gb major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31162274" data-bp="31162274" rel="noopener">sample ▸</a></li>
+            <li>Tiger Stripes · Until the Early Light (2026 Mix) <span class="ur-bk">128 bpm · B minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31162275" data-bp="31162275" rel="noopener">sample ▸</a></li>
           </ol>
         </details>
       </li>
@@ -1851,19 +1862,19 @@
             <a class="go" href="https://www.beatport.com/release/essence/7650601" target="_blank" rel="noopener">pre-order →</a>
             <details class="ur-tracks"><summary>13 tracks</summary>
               <ol>
-                <li>Kiro Prime, ESSE (US) · Shake Ya Hips (Original Mix) <span class="ur-bk">126 bpm · F major</span></li>
-                <li>Azooland, ESSE (US), August (CH) · I Love It (Original Mix) <span class="ur-bk">132 bpm · E major</span></li>
-                <li>ESSE (US), EAZY (US) · Bolado (Original Mix) <span class="ur-bk">130 bpm · D major</span></li>
-                <li>Mike Epsse, ESSE (US) · I Can't Take it (Original Mix) <span class="ur-bk">130 bpm · G major</span></li>
-                <li>BLDR, ESSE (US), KOSK · Work It Baby (Original Mix) <span class="ur-bk">130 bpm · F major</span></li>
-                <li>Buitano, ESSE (US) · JUMP (Original Mix) <span class="ur-bk">130 bpm · G major</span></li>
-                <li>Ryan Shepherd, ESSE (US) · FUNKTION (Original Mix) <span class="ur-bk">130 bpm · E major</span></li>
-                <li>Suburbia, ESSE (US) · Make It Move (Original Mix) <span class="ur-bk">132 bpm · F major</span></li>
-                <li>ESSE (US), Jus Ron · Take Control (Original Mix) <span class="ur-bk">130 bpm · E minor</span></li>
-                <li>Daniel Etienne, ESSE (US) · House Me (Original Mix) <span class="ur-bk">130 bpm · G major</span></li>
-                <li>LA Riots, ESSE (US) · Ice Me (Original Mix) <span class="ur-bk">130 bpm · B minor</span></li>
-                <li>Rich DietZ, ESSE (US) · Get Down (Original Mix) <span class="ur-bk">130 bpm · G major</span></li>
-                <li>.EXA, ESSE (US) · Angola (Original Mix) <span class="ur-bk">130 bpm · F minor</span></li>
+                <li>Kiro Prime, ESSE (US) · Shake Ya Hips (Original Mix) <span class="ur-bk">126 bpm · F major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31137788" data-bp="31137788" rel="noopener">sample ▸</a></li>
+                <li>Azooland, ESSE (US), August (CH) · I Love It (Original Mix) <span class="ur-bk">132 bpm · E major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31137789" data-bp="31137789" rel="noopener">sample ▸</a></li>
+                <li>ESSE (US), EAZY (US) · Bolado (Original Mix) <span class="ur-bk">130 bpm · D major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31137790" data-bp="31137790" rel="noopener">sample ▸</a></li>
+                <li>Mike Epsse, ESSE (US) · I Can't Take it (Original Mix) <span class="ur-bk">130 bpm · G major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31137791" data-bp="31137791" rel="noopener">sample ▸</a></li>
+                <li>BLDR, ESSE (US), KOSK · Work It Baby (Original Mix) <span class="ur-bk">130 bpm · F major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31137792" data-bp="31137792" rel="noopener">sample ▸</a></li>
+                <li>Buitano, ESSE (US) · JUMP (Original Mix) <span class="ur-bk">130 bpm · G major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31137793" data-bp="31137793" rel="noopener">sample ▸</a></li>
+                <li>Ryan Shepherd, ESSE (US) · FUNKTION (Original Mix) <span class="ur-bk">130 bpm · E major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31137794" data-bp="31137794" rel="noopener">sample ▸</a></li>
+                <li>Suburbia, ESSE (US) · Make It Move (Original Mix) <span class="ur-bk">132 bpm · F major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31137795" data-bp="31137795" rel="noopener">sample ▸</a></li>
+                <li>ESSE (US), Jus Ron · Take Control (Original Mix) <span class="ur-bk">130 bpm · E minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31137796" data-bp="31137796" rel="noopener">sample ▸</a></li>
+                <li>Daniel Etienne, ESSE (US) · House Me (Original Mix) <span class="ur-bk">130 bpm · G major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31137797" data-bp="31137797" rel="noopener">sample ▸</a></li>
+                <li>LA Riots, ESSE (US) · Ice Me (Original Mix) <span class="ur-bk">130 bpm · B minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31137798" data-bp="31137798" rel="noopener">sample ▸</a></li>
+                <li>Rich DietZ, ESSE (US) · Get Down (Original Mix) <span class="ur-bk">130 bpm · G major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31137799" data-bp="31137799" rel="noopener">sample ▸</a></li>
+                <li>.EXA, ESSE (US) · Angola (Original Mix) <span class="ur-bk">130 bpm · F minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31137800" data-bp="31137800" rel="noopener">sample ▸</a></li>
               </ol>
             </details>
           </li>
@@ -1871,66 +1882,79 @@
             <h4>I Love It <small>Azooland, ESSE (US), August (CH)</small></h4>
             <div class="where">ESSEntial. · <span class="ur-k">single</span></div>
             <a class="go" href="https://www.beatport.com/release/i-love-it/7650766" target="_blank" rel="noopener">pre-order →</a>
+            <a class="ur-play" href="https://www.beatport.com/track/x/31138742" data-bp="31138742" rel="noopener">sample ▸</a>
           </li>
           <li class="ev" data-iso="2026-11-06">
             <h4>Work It Baby <small>BLDR, ESSE (US), KOSK</small></h4>
             <div class="where">ESSEntial. · <span class="ur-k">single</span></div>
             <a class="go" href="https://www.beatport.com/release/work-it-baby/7650935" target="_blank" rel="noopener">pre-order →</a>
+            <a class="ur-play" href="https://www.beatport.com/track/x/31139800" data-bp="31139800" rel="noopener">sample ▸</a>
           </li>
           <li class="ev" data-iso="2026-11-06">
             <h4>JUMP <small>Buitano, ESSE (US)</small></h4>
             <div class="where">ESSEntial. · <span class="ur-k">single</span></div>
             <a class="go" href="https://www.beatport.com/release/jump/7650984" target="_blank" rel="noopener">pre-order →</a>
+            <a class="ur-play" href="https://www.beatport.com/track/x/31140158" data-bp="31140158" rel="noopener">sample ▸</a>
           </li>
           <li class="ev" data-iso="2026-11-06">
             <h4>House Me <small>Daniel Etienne, ESSE (US)</small></h4>
             <div class="where">ESSEntial. · <span class="ur-k">single</span></div>
             <a class="go" href="https://www.beatport.com/release/house-me/7651088" target="_blank" rel="noopener">pre-order →</a>
+            <a class="ur-play" href="https://www.beatport.com/track/x/31140488" data-bp="31140488" rel="noopener">sample ▸</a>
           </li>
           <li class="ev" data-iso="2026-11-06">
             <h4>Bolado <small>ESSE (US), EAZY (US)</small></h4>
             <div class="where">ESSEntial. · <span class="ur-k">single</span></div>
             <a class="go" href="https://www.beatport.com/release/bolado/7650811" target="_blank" rel="noopener">pre-order →</a>
+            <a class="ur-play" href="https://www.beatport.com/track/x/31139137" data-bp="31139137" rel="noopener">sample ▸</a>
           </li>
           <li class="ev" data-iso="2026-11-06">
             <h4>Take Control <small>ESSE (US), Jus Ron</small></h4>
             <div class="where">ESSEntial. · <span class="ur-k">single</span></div>
             <a class="go" href="https://www.beatport.com/release/take-control/7651063" target="_blank" rel="noopener">pre-order →</a>
+            <a class="ur-play" href="https://www.beatport.com/track/x/31140438" data-bp="31140438" rel="noopener">sample ▸</a>
           </li>
           <li class="ev" data-iso="2026-11-06">
             <h4>Angola <small>.EXA, ESSE (US)</small></h4>
             <div class="where">ESSEntial. · <span class="ur-k">single</span></div>
             <a class="go" href="https://www.beatport.com/release/angola/7655469" target="_blank" rel="noopener">pre-order →</a>
+            <a class="ur-play" href="https://www.beatport.com/track/x/31152672" data-bp="31152672" rel="noopener">sample ▸</a>
           </li>
           <li class="ev" data-iso="2026-11-06">
             <h4>Shake Ya Hips <small>Kiro Prime, ESSE (US)</small></h4>
             <div class="where">ESSEntial. · <span class="ur-k">single</span></div>
             <a class="go" href="https://www.beatport.com/release/shake-ya-hips/7650709" target="_blank" rel="noopener">pre-order →</a>
+            <a class="ur-play" href="https://www.beatport.com/track/x/31138446" data-bp="31138446" rel="noopener">sample ▸</a>
           </li>
           <li class="ev" data-iso="2026-11-06">
             <h4>Ice Me <small>LA Riots, ESSE (US)</small></h4>
             <div class="where">ESSEntial. · <span class="ur-k">single</span></div>
             <a class="go" href="https://www.beatport.com/release/ice-me/7651114" target="_blank" rel="noopener">pre-order →</a>
+            <a class="ur-play" href="https://www.beatport.com/track/x/31140589" data-bp="31140589" rel="noopener">sample ▸</a>
           </li>
           <li class="ev" data-iso="2026-11-06">
             <h4>I Can't Take it <small>Mike Epsse, ESSE (US)</small></h4>
             <div class="where">ESSEntial. · <span class="ur-k">single</span></div>
             <a class="go" href="https://www.beatport.com/release/i-cant-take-it/7650849" target="_blank" rel="noopener">pre-order →</a>
+            <a class="ur-play" href="https://www.beatport.com/track/x/31139356" data-bp="31139356" rel="noopener">sample ▸</a>
           </li>
           <li class="ev" data-iso="2026-11-06">
             <h4>Get Down <small>Rich DietZ, ESSE (US)</small></h4>
             <div class="where">ESSEntial. · <span class="ur-k">single</span></div>
             <a class="go" href="https://www.beatport.com/release/get-down/7651122" target="_blank" rel="noopener">pre-order →</a>
+            <a class="ur-play" href="https://www.beatport.com/track/x/31140602" data-bp="31140602" rel="noopener">sample ▸</a>
           </li>
           <li class="ev" data-iso="2026-11-06">
             <h4>FUNKTION <small>Ryan Shepherd, ESSE (US)</small></h4>
             <div class="where">ESSEntial. · <span class="ur-k">single</span></div>
             <a class="go" href="https://www.beatport.com/release/funktion/7651007" target="_blank" rel="noopener">pre-order →</a>
+            <a class="ur-play" href="https://www.beatport.com/track/x/31140316" data-bp="31140316" rel="noopener">sample ▸</a>
           </li>
           <li class="ev" data-iso="2026-11-06">
             <h4>Make It Move <small>Suburbia, ESSE (US)</small></h4>
             <div class="where">ESSEntial. · <span class="ur-k">single</span></div>
             <a class="go" href="https://www.beatport.com/release/make-it-move/7651028" target="_blank" rel="noopener">pre-order →</a>
+            <a class="ur-play" href="https://www.beatport.com/track/x/31140348" data-bp="31140348" rel="noopener">sample ▸</a>
           </li>
         </ul>
       </details></li>
@@ -1940,31 +1964,31 @@
         <a class="go" href="https://www.beatport.com/release/groove-culture-dubs-vol-1/7585677" target="_blank" rel="noopener">pre-order →</a>
         <details class="ur-tracks"><summary>25 tracks</summary>
           <ol>
-            <li>Angela Johnson, Micky More &amp; Andy Tee · Can I (Show You Real Love) (Full Intention Dub) <span class="ur-bk">123 bpm · Gb major</span></li>
-            <li>Jestofunk, Jocelyn Brown · Special Love (Micky More &amp; Andy Tee Club Dub) <span class="ur-bk">122 bpm · G minor</span></li>
-            <li>Kathy Brown · Last Time (Micky More &amp; Andy Tee Club Dub) <span class="ur-bk">122 bpm · E minor</span></li>
-            <li>Double Dee, Dany · Found Love (Dimitri from Paris Dubstrumental Mix) <span class="ur-bk">125 bpm · Eb minor</span></li>
-            <li>Sheree Hicks, Micky More &amp; Andy Tee · Look Ahead (Dub) <span class="ur-bk">124 bpm · Bb minor</span></li>
-            <li>Amanda Wilson · Million Dollar Bill (Micky More &amp; Andy Tee Dub) <span class="ur-bk">122 bpm · A major</span></li>
-            <li>Angela Johnson, Derrick McKenzie · On My Way Out (Michael Gray Remix Dub) <span class="ur-bk">122 bpm · Gb major</span></li>
-            <li>Fatimah Provillon, Micky More &amp; Andy Tee · All The People (Sax Dub) <span class="ur-bk">123 bpm · Bb minor</span></li>
-            <li>Reverendos Of Soul · Love Will Set U Free (Micky More &amp; Andy Tee Dub Mix) <span class="ur-bk">122 bpm · E minor</span></li>
-            <li>Luca Martini, Nina Moon · Desire (Gianni Bini Dub) <span class="ur-bk">125 bpm · Bb minor</span></li>
-            <li>Woody Bianchi, Harlem Hustlers · Take Me Higher (Higher Dub Edit) <span class="ur-bk">124 bpm · F minor</span></li>
-            <li>Heston, Reverendos Of Soul · Love Is All Around (Micky More &amp; Andy Tee Dub) <span class="ur-bk">122 bpm · E minor</span></li>
-            <li>Gianni Bini, Memi P. · Love Of My Life (Dub Mix) <span class="ur-bk">125 bpm · Bb major</span></li>
-            <li>Audiowhores, Angela Johnson · Touch The Ground (Audiowhores Dub) <span class="ur-bk">125 bpm · E minor</span></li>
-            <li>Alex Di Stefano, Pj D'arpino, Fatimah Provillon · He's Alright (Gianni Bini Funky Invasion Dub) <span class="ur-bk">124 bpm · C major</span></li>
-            <li>Danny Losito, Serge Funk · Lost Without You (Bass &amp; Drum Mix) <span class="ur-bk">123 bpm · Ab major</span></li>
-            <li>Woody Bianchi, Harlem Hustlers · Feel It (Dub Mix) <span class="ur-bk">124 bpm · E minor</span></li>
-            <li>Da Funk Junkies, DiscoGalactiX · Holding On (Dub Mix) <span class="ur-bk">125 bpm · Eb major</span></li>
-            <li>Da Lukas · Supergood (Dub Mix) <span class="ur-bk">120 bpm · Ab minor</span></li>
-            <li>Birdee · Elevate Higher (Dub Mix) <span class="ur-bk">123 bpm · C minor</span></li>
-            <li>Memi P., Gisele Jackson · Make It On My Own (Gianni Bini Gold Times Dub) <span class="ur-bk">122 bpm · Bb minor</span></li>
-            <li>DJ Fudge, Ralph Session, Chinua Hawk · Golden (Nyc Dub Mix) <span class="ur-bk">124 bpm · E minor</span></li>
-            <li>Andrea Tomei · With You (Dub Mix) <span class="ur-bk">124 bpm · Ab major</span></li>
-            <li>Memi P. · Don't Wanna Believe (Gianni Bini Dub Mix) <span class="ur-bk">125 bpm · Eb minor</span></li>
-            <li>Burke, FUNKYBEAT · What Is Real? (Dub Mix) <span class="ur-bk">118 bpm · E minor</span></li>
+            <li>Angela Johnson, Micky More &amp; Andy Tee · Can I (Show You Real Love) (Full Intention Dub) <span class="ur-bk">123 bpm · Gb major</span> <a class="ur-play" href="https://www.beatport.com/track/x/30963905" data-bp="30963905" rel="noopener">sample ▸</a></li>
+            <li>Jestofunk, Jocelyn Brown · Special Love (Micky More &amp; Andy Tee Club Dub) <span class="ur-bk">122 bpm · G minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30963906" data-bp="30963906" rel="noopener">sample ▸</a></li>
+            <li>Kathy Brown · Last Time (Micky More &amp; Andy Tee Club Dub) <span class="ur-bk">122 bpm · E minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30963907" data-bp="30963907" rel="noopener">sample ▸</a></li>
+            <li>Double Dee, Dany · Found Love (Dimitri from Paris Dubstrumental Mix) <span class="ur-bk">125 bpm · Eb minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30963908" data-bp="30963908" rel="noopener">sample ▸</a></li>
+            <li>Sheree Hicks, Micky More &amp; Andy Tee · Look Ahead (Dub) <span class="ur-bk">124 bpm · Bb minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30963909" data-bp="30963909" rel="noopener">sample ▸</a></li>
+            <li>Amanda Wilson · Million Dollar Bill (Micky More &amp; Andy Tee Dub) <span class="ur-bk">122 bpm · A major</span> <a class="ur-play" href="https://www.beatport.com/track/x/30963910" data-bp="30963910" rel="noopener">sample ▸</a></li>
+            <li>Angela Johnson, Derrick McKenzie · On My Way Out (Michael Gray Remix Dub) <span class="ur-bk">122 bpm · Gb major</span> <a class="ur-play" href="https://www.beatport.com/track/x/30963911" data-bp="30963911" rel="noopener">sample ▸</a></li>
+            <li>Fatimah Provillon, Micky More &amp; Andy Tee · All The People (Sax Dub) <span class="ur-bk">123 bpm · Bb minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30963912" data-bp="30963912" rel="noopener">sample ▸</a></li>
+            <li>Reverendos Of Soul · Love Will Set U Free (Micky More &amp; Andy Tee Dub Mix) <span class="ur-bk">122 bpm · E minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30963913" data-bp="30963913" rel="noopener">sample ▸</a></li>
+            <li>Luca Martini, Nina Moon · Desire (Gianni Bini Dub) <span class="ur-bk">125 bpm · Bb minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30963914" data-bp="30963914" rel="noopener">sample ▸</a></li>
+            <li>Woody Bianchi, Harlem Hustlers · Take Me Higher (Higher Dub Edit) <span class="ur-bk">124 bpm · F minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30963915" data-bp="30963915" rel="noopener">sample ▸</a></li>
+            <li>Heston, Reverendos Of Soul · Love Is All Around (Micky More &amp; Andy Tee Dub) <span class="ur-bk">122 bpm · E minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30963916" data-bp="30963916" rel="noopener">sample ▸</a></li>
+            <li>Gianni Bini, Memi P. · Love Of My Life (Dub Mix) <span class="ur-bk">125 bpm · Bb major</span> <a class="ur-play" href="https://www.beatport.com/track/x/30963917" data-bp="30963917" rel="noopener">sample ▸</a></li>
+            <li>Audiowhores, Angela Johnson · Touch The Ground (Audiowhores Dub) <span class="ur-bk">125 bpm · E minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30963918" data-bp="30963918" rel="noopener">sample ▸</a></li>
+            <li>Alex Di Stefano, Pj D'arpino, Fatimah Provillon · He's Alright (Gianni Bini Funky Invasion Dub) <span class="ur-bk">124 bpm · C major</span> <a class="ur-play" href="https://www.beatport.com/track/x/30963919" data-bp="30963919" rel="noopener">sample ▸</a></li>
+            <li>Danny Losito, Serge Funk · Lost Without You (Bass &amp; Drum Mix) <span class="ur-bk">123 bpm · Ab major</span> <a class="ur-play" href="https://www.beatport.com/track/x/30963920" data-bp="30963920" rel="noopener">sample ▸</a></li>
+            <li>Woody Bianchi, Harlem Hustlers · Feel It (Dub Mix) <span class="ur-bk">124 bpm · E minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30963921" data-bp="30963921" rel="noopener">sample ▸</a></li>
+            <li>Da Funk Junkies, DiscoGalactiX · Holding On (Dub Mix) <span class="ur-bk">125 bpm · Eb major</span> <a class="ur-play" href="https://www.beatport.com/track/x/30963922" data-bp="30963922" rel="noopener">sample ▸</a></li>
+            <li>Da Lukas · Supergood (Dub Mix) <span class="ur-bk">120 bpm · Ab minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30963923" data-bp="30963923" rel="noopener">sample ▸</a></li>
+            <li>Birdee · Elevate Higher (Dub Mix) <span class="ur-bk">123 bpm · C minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30963924" data-bp="30963924" rel="noopener">sample ▸</a></li>
+            <li>Memi P., Gisele Jackson · Make It On My Own (Gianni Bini Gold Times Dub) <span class="ur-bk">122 bpm · Bb minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30963925" data-bp="30963925" rel="noopener">sample ▸</a></li>
+            <li>DJ Fudge, Ralph Session, Chinua Hawk · Golden (Nyc Dub Mix) <span class="ur-bk">124 bpm · E minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30963926" data-bp="30963926" rel="noopener">sample ▸</a></li>
+            <li>Andrea Tomei · With You (Dub Mix) <span class="ur-bk">124 bpm · Ab major</span> <a class="ur-play" href="https://www.beatport.com/track/x/30963927" data-bp="30963927" rel="noopener">sample ▸</a></li>
+            <li>Memi P. · Don't Wanna Believe (Gianni Bini Dub Mix) <span class="ur-bk">125 bpm · Eb minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30963928" data-bp="30963928" rel="noopener">sample ▸</a></li>
+            <li>Burke, FUNKYBEAT · What Is Real? (Dub Mix) <span class="ur-bk">118 bpm · E minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30963929" data-bp="30963929" rel="noopener">sample ▸</a></li>
           </ol>
         </details>
       </li>
@@ -1974,19 +1998,19 @@
         <a class="go" href="https://www.beatport.com/release/love-is-the-dance/7442546" target="_blank" rel="noopener">pre-order →</a>
         <details class="ur-tracks"><summary>13 tracks</summary>
           <ol>
-            <li>Âme, Trikk, Jens Kuross · Wasted Time (Original Mix) <span class="ur-bk">92 bpm · E minor</span></li>
-            <li>Âme, Trikk, Jens Kuross · Don't Waste My Time (Original Mix) <span class="ur-bk">124 bpm · E minor</span></li>
-            <li>Âme, Jeannel · Cold (Original Mix) <span class="ur-bk">127 bpm · C minor</span></li>
-            <li>Âme, Henrik Schwarz, Trikk · Factor It (Original Mix) <span class="ur-bk">116 bpm · Ab minor</span></li>
-            <li>Âme, Busiswa · Pha (Original Mix) <span class="ur-bk">94 bpm · E minor</span></li>
-            <li>Âme, Busiswa · Pha Na Pha (Original Mix) <span class="ur-bk">125 bpm · E minor</span></li>
-            <li>Âme, Meredi · Water Be My Crown (Original Mix) <span class="ur-bk">116 bpm · E minor</span></li>
-            <li>Âme · Topanga (Original Mix) <span class="ur-bk">111 bpm · D minor</span></li>
-            <li>Âme, RY X · Love Is The Dance (Original Mix) <span class="ur-bk">126 bpm · D minor</span></li>
-            <li>Âme, Curses · Shadow Of Love (Original Mix) <span class="ur-bk">125 bpm · G major</span></li>
-            <li>Âme, Rhye · Raw (Original Mix) <span class="ur-bk">108 bpm · E minor</span></li>
-            <li>Âme · Asa (Original Mix) <span class="ur-bk">128 bpm · Eb minor</span></li>
-            <li>Âme, KÁRYYN · Of Courage (Original Mix) <span class="ur-bk">120 bpm · G minor</span></li>
+            <li>Âme, Trikk, Jens Kuross · Wasted Time (Original Mix) <span class="ur-bk">92 bpm · E minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30539536" data-bp="30539536" rel="noopener">sample ▸</a></li>
+            <li>Âme, Trikk, Jens Kuross · Don't Waste My Time (Original Mix) <span class="ur-bk">124 bpm · E minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30539537" data-bp="30539537" rel="noopener">sample ▸</a></li>
+            <li>Âme, Jeannel · Cold (Original Mix) <span class="ur-bk">127 bpm · C minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30539538" data-bp="30539538" rel="noopener">sample ▸</a></li>
+            <li>Âme, Henrik Schwarz, Trikk · Factor It (Original Mix) <span class="ur-bk">116 bpm · Ab minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30539539" data-bp="30539539" rel="noopener">sample ▸</a></li>
+            <li>Âme, Busiswa · Pha (Original Mix) <span class="ur-bk">94 bpm · E minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30539540" data-bp="30539540" rel="noopener">sample ▸</a></li>
+            <li>Âme, Busiswa · Pha Na Pha (Original Mix) <span class="ur-bk">125 bpm · E minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30539541" data-bp="30539541" rel="noopener">sample ▸</a></li>
+            <li>Âme, Meredi · Water Be My Crown (Original Mix) <span class="ur-bk">116 bpm · E minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30539542" data-bp="30539542" rel="noopener">sample ▸</a></li>
+            <li>Âme · Topanga (Original Mix) <span class="ur-bk">111 bpm · D minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30539543" data-bp="30539543" rel="noopener">sample ▸</a></li>
+            <li>Âme, RY X · Love Is The Dance (Original Mix) <span class="ur-bk">126 bpm · D minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30539544" data-bp="30539544" rel="noopener">sample ▸</a></li>
+            <li>Âme, Curses · Shadow Of Love (Original Mix) <span class="ur-bk">125 bpm · G major</span> <a class="ur-play" href="https://www.beatport.com/track/x/30539545" data-bp="30539545" rel="noopener">sample ▸</a></li>
+            <li>Âme, Rhye · Raw (Original Mix) <span class="ur-bk">108 bpm · E minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30539546" data-bp="30539546" rel="noopener">sample ▸</a></li>
+            <li>Âme · Asa (Original Mix) <span class="ur-bk">128 bpm · Eb minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30539547" data-bp="30539547" rel="noopener">sample ▸</a></li>
+            <li>Âme, KÁRYYN · Of Courage (Original Mix) <span class="ur-bk">120 bpm · G minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30539548" data-bp="30539548" rel="noopener">sample ▸</a></li>
           </ol>
         </details>
       </li>
@@ -1996,31 +2020,31 @@
         <a class="go" href="https://www.beatport.com/release/disco-forever-vol-10/7589396" target="_blank" rel="noopener">pre-order →</a>
         <details class="ur-tracks"><summary>25 tracks</summary>
           <ol>
-            <li>Jamantek · Indian Summer  (Original Mix) <span class="ur-bk">115 bpm · G minor</span></li>
-            <li>P-SOL · Saturday Night  (Original Mix) <span class="ur-bk">106 bpm · E minor</span></li>
-            <li>Ken@Work · Jazz Corner Of The World  (Original Mix) <span class="ur-bk">118 bpm · G minor</span></li>
-            <li>Deep Soul Connection, Heidi Fox · High On Love  (Club Mix) <span class="ur-bk">120 bpm · G major</span></li>
-            <li>C. Da Afro · In Da Disco City  (Original Mix) <span class="ur-bk">118 bpm · B minor</span></li>
-            <li>Disco Milieu · Love Affair  (Original Mix) <span class="ur-bk">122 bpm · A minor</span></li>
-            <li>Introverted Funk · Starlight (Instrumental) (Instrumental) <span class="ur-bk">120 bpm · Eb minor</span></li>
-            <li>Paco Caniza · No, No, No  (Original Mix) <span class="ur-bk">124 bpm · A major</span></li>
-            <li>Aig · The Rising Wave  (Q-Green Dub Remix) <span class="ur-bk">124 bpm · D major</span></li>
-            <li>Larry Funk · Crazy Horns  (Original Mix) <span class="ur-bk">121 bpm · Bb minor</span></li>
-            <li>Daisuke Miyamoto · Need You  (Original Mix) <span class="ur-bk">117 bpm · E minor</span></li>
-            <li>Nico Cortazzo · Oh Honey  (Original Mix) <span class="ur-bk">120 bpm · E major</span></li>
-            <li>Boogietraxx, SCHROEDS · Somebody Knew  (Original Mix) <span class="ur-bk">130 bpm · Bb minor</span></li>
-            <li>George Kelly · For Your Love  (Original Mix) <span class="ur-bk">126 bpm · E minor</span></li>
-            <li>Antonio Santana · Soja Soul  (Original Mix) <span class="ur-bk">124 bpm · F minor</span></li>
-            <li>Leg Warmers · Feels So Real (So In Love)  (Demarkus Lewis Extended Mix) <span class="ur-bk">120 bpm · D major</span></li>
-            <li>DJ Popinjay · Sun, Sax &amp; Beats  (Radio Edit) <span class="ur-bk">124 bpm · C major</span></li>
-            <li>Dj Chilly-T · Ain't No Doubt  (Original Mix) <span class="ur-bk">125 bpm · G minor</span></li>
-            <li>Vecna · Make It  (Original Mix) <span class="ur-bk">130 bpm · D minor</span></li>
-            <li>Bustafunk · Tha Preechaa  (Mercer Remix) <span class="ur-bk">125 bpm · G major</span></li>
-            <li>GooDisco · Get Up Off Your Love  (Radio Edit) <span class="ur-bk">122 bpm · B minor</span></li>
-            <li>D.P.V. · Pool Party  (Radio Edit) <span class="ur-bk">122 bpm · E minor</span></li>
-            <li>Harlem Dance Club · On The Lips  (Original Mix) <span class="ur-bk">125 bpm · E major</span></li>
-            <li>Alexny · Moto Moto  (Original Mix) <span class="ur-bk">118 bpm · Gb minor</span></li>
-            <li>Gigi el Amoroso · Motion &amp; silence  (Club mix) <span class="ur-bk">110 bpm · Ab major</span></li>
+            <li>Jamantek · Indian Summer  (Original Mix) <span class="ur-bk">115 bpm · G minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30975801" data-bp="30975801" rel="noopener">sample ▸</a></li>
+            <li>P-SOL · Saturday Night  (Original Mix) <span class="ur-bk">106 bpm · E minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30975802" data-bp="30975802" rel="noopener">sample ▸</a></li>
+            <li>Ken@Work · Jazz Corner Of The World  (Original Mix) <span class="ur-bk">118 bpm · G minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30975804" data-bp="30975804" rel="noopener">sample ▸</a></li>
+            <li>Deep Soul Connection, Heidi Fox · High On Love  (Club Mix) <span class="ur-bk">120 bpm · G major</span> <a class="ur-play" href="https://www.beatport.com/track/x/30975805" data-bp="30975805" rel="noopener">sample ▸</a></li>
+            <li>C. Da Afro · In Da Disco City  (Original Mix) <span class="ur-bk">118 bpm · B minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30975806" data-bp="30975806" rel="noopener">sample ▸</a></li>
+            <li>Disco Milieu · Love Affair  (Original Mix) <span class="ur-bk">122 bpm · A minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30975808" data-bp="30975808" rel="noopener">sample ▸</a></li>
+            <li>Introverted Funk · Starlight (Instrumental) (Instrumental) <span class="ur-bk">120 bpm · Eb minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30975809" data-bp="30975809" rel="noopener">sample ▸</a></li>
+            <li>Paco Caniza · No, No, No  (Original Mix) <span class="ur-bk">124 bpm · A major</span> <a class="ur-play" href="https://www.beatport.com/track/x/30975810" data-bp="30975810" rel="noopener">sample ▸</a></li>
+            <li>Aig · The Rising Wave  (Q-Green Dub Remix) <span class="ur-bk">124 bpm · D major</span> <a class="ur-play" href="https://www.beatport.com/track/x/30975811" data-bp="30975811" rel="noopener">sample ▸</a></li>
+            <li>Larry Funk · Crazy Horns  (Original Mix) <span class="ur-bk">121 bpm · Bb minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30975812" data-bp="30975812" rel="noopener">sample ▸</a></li>
+            <li>Daisuke Miyamoto · Need You  (Original Mix) <span class="ur-bk">117 bpm · E minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30975813" data-bp="30975813" rel="noopener">sample ▸</a></li>
+            <li>Nico Cortazzo · Oh Honey  (Original Mix) <span class="ur-bk">120 bpm · E major</span> <a class="ur-play" href="https://www.beatport.com/track/x/30975814" data-bp="30975814" rel="noopener">sample ▸</a></li>
+            <li>Boogietraxx, SCHROEDS · Somebody Knew  (Original Mix) <span class="ur-bk">130 bpm · Bb minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30975815" data-bp="30975815" rel="noopener">sample ▸</a></li>
+            <li>George Kelly · For Your Love  (Original Mix) <span class="ur-bk">126 bpm · E minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30975816" data-bp="30975816" rel="noopener">sample ▸</a></li>
+            <li>Antonio Santana · Soja Soul  (Original Mix) <span class="ur-bk">124 bpm · F minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30975817" data-bp="30975817" rel="noopener">sample ▸</a></li>
+            <li>Leg Warmers · Feels So Real (So In Love)  (Demarkus Lewis Extended Mix) <span class="ur-bk">120 bpm · D major</span> <a class="ur-play" href="https://www.beatport.com/track/x/30975818" data-bp="30975818" rel="noopener">sample ▸</a></li>
+            <li>DJ Popinjay · Sun, Sax &amp; Beats  (Radio Edit) <span class="ur-bk">124 bpm · C major</span> <a class="ur-play" href="https://www.beatport.com/track/x/30975819" data-bp="30975819" rel="noopener">sample ▸</a></li>
+            <li>Dj Chilly-T · Ain't No Doubt  (Original Mix) <span class="ur-bk">125 bpm · G minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30975820" data-bp="30975820" rel="noopener">sample ▸</a></li>
+            <li>Vecna · Make It  (Original Mix) <span class="ur-bk">130 bpm · D minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30975821" data-bp="30975821" rel="noopener">sample ▸</a></li>
+            <li>Bustafunk · Tha Preechaa  (Mercer Remix) <span class="ur-bk">125 bpm · G major</span> <a class="ur-play" href="https://www.beatport.com/track/x/30975822" data-bp="30975822" rel="noopener">sample ▸</a></li>
+            <li>GooDisco · Get Up Off Your Love  (Radio Edit) <span class="ur-bk">122 bpm · B minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30975823" data-bp="30975823" rel="noopener">sample ▸</a></li>
+            <li>D.P.V. · Pool Party  (Radio Edit) <span class="ur-bk">122 bpm · E minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30975824" data-bp="30975824" rel="noopener">sample ▸</a></li>
+            <li>Harlem Dance Club · On The Lips  (Original Mix) <span class="ur-bk">125 bpm · E major</span> <a class="ur-play" href="https://www.beatport.com/track/x/30975826" data-bp="30975826" rel="noopener">sample ▸</a></li>
+            <li>Alexny · Moto Moto  (Original Mix) <span class="ur-bk">118 bpm · Gb minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30975827" data-bp="30975827" rel="noopener">sample ▸</a></li>
+            <li>Gigi el Amoroso · Motion &amp; silence  (Club mix) <span class="ur-bk">110 bpm · Ab major</span> <a class="ur-play" href="https://www.beatport.com/track/x/30975828" data-bp="30975828" rel="noopener">sample ▸</a></li>
           </ol>
         </details>
       </li>
@@ -2030,11 +2054,11 @@
         <a class="go" href="https://www.beatport.com/release/corner-pieces-vol-1/7648438" target="_blank" rel="noopener">pre-order →</a>
         <details class="ur-tracks"><summary>5 tracks</summary>
           <ol>
-            <li>Julian Daumas · Ok Stop (Extended Mix) <span class="ur-bk">127 bpm · A minor</span></li>
-            <li>Kashovski · Audio (Extended Mix) <span class="ur-bk">128 bpm · G minor</span></li>
-            <li>Niv Yefet, STATE (UK) · Bounce That (Extended Mix) <span class="ur-bk">126 bpm · G major</span></li>
-            <li>SIB · Diga (Extended Mix) <span class="ur-bk">125 bpm · F minor</span></li>
-            <li>Baruck, SKAR (FR) · Maxim (Extended Mix) <span class="ur-bk">124 bpm · D minor</span></li>
+            <li>Julian Daumas · Ok Stop (Extended Mix) <span class="ur-bk">127 bpm · A minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31131037" data-bp="31131037" rel="noopener">sample ▸</a></li>
+            <li>Kashovski · Audio (Extended Mix) <span class="ur-bk">128 bpm · G minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31131038" data-bp="31131038" rel="noopener">sample ▸</a></li>
+            <li>Niv Yefet, STATE (UK) · Bounce That (Extended Mix) <span class="ur-bk">126 bpm · G major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31131039" data-bp="31131039" rel="noopener">sample ▸</a></li>
+            <li>SIB · Diga (Extended Mix) <span class="ur-bk">125 bpm · F minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31131040" data-bp="31131040" rel="noopener">sample ▸</a></li>
+            <li>Baruck, SKAR (FR) · Maxim (Extended Mix) <span class="ur-bk">124 bpm · D minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31131041" data-bp="31131041" rel="noopener">sample ▸</a></li>
           </ol>
         </details>
       </li>
@@ -2044,19 +2068,19 @@
         <a class="go" href="https://www.beatport.com/release/30-years-at-play/7585941" target="_blank" rel="noopener">pre-order →</a>
         <details class="ur-tracks"><summary>13 tracks</summary>
           <ol>
-            <li>Melleny Melody, The Pop Machine · Bad Girl  (Sean Dimitrie &amp; Todd Connell Big Time Remix) <span class="ur-bk">128 bpm · B minor</span></li>
-            <li>Princess Superstar, Melleefresh · Let's Do It Together  (SuperFresh Mix) <span class="ur-bk">128 bpm · Bb minor</span></li>
-            <li>Mark Oliver, Adam K, Melleefresh, Billy Newton-Davis · In Out  (Original Mix) <span class="ur-bk">128 bpm · Bb minor</span></li>
-            <li>deadmau5, Billy Newton-Davis · All You Ever Want  (Crazibiza Vocal Remix) <span class="ur-bk">128 bpm · G minor</span></li>
-            <li>Melleefresh, Dirty 30 · Beautiful, Rich &amp; Horny  (deadmau5 Remix) <span class="ur-bk">132 bpm · D major</span></li>
-            <li>Melleefresh, deadmau5 · Hey Baby  (Olav Basoski Remix) <span class="ur-bk">128 bpm · D major</span></li>
-            <li>deadmau5 · Dr. Funkenstein  (Melleefresh vs Jerome Robins Remix) <span class="ur-bk">124 bpm · Ab minor</span></li>
-            <li>deadmau5 · 1981  (Weekend Heroes Remix) <span class="ur-bk">128 bpm · C major</span></li>
-            <li>deadmau5 · Faxing Berlin  (Chris Lake Edit) <span class="ur-bk">128 bpm · D minor</span></li>
-            <li>Melleefresh · Intuition  (Alex Kenji Remix) <span class="ur-bk">128 bpm · C minor</span></li>
-            <li>Melleefresh, Boy Pussy · Bitches 'N' Whores  (dj genderfluid Eurodance Remix) <span class="ur-bk">138 bpm · B minor</span></li>
-            <li>Melleefresh · Hey Baby Redux  (Tech Us Out Remix) <span class="ur-bk">135 bpm · Db minor</span></li>
-            <li>Kardano, Dtaborah · DJ Play Those Records  (Jason Hersco Remix) <span class="ur-bk">123 bpm · Bb minor</span></li>
+            <li>Melleny Melody, The Pop Machine · Bad Girl  (Sean Dimitrie &amp; Todd Connell Big Time Remix) <span class="ur-bk">128 bpm · B minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30964416" data-bp="30964416" rel="noopener">sample ▸</a></li>
+            <li>Princess Superstar, Melleefresh · Let's Do It Together  (SuperFresh Mix) <span class="ur-bk">128 bpm · Bb minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30964417" data-bp="30964417" rel="noopener">sample ▸</a></li>
+            <li>Mark Oliver, Adam K, Melleefresh, Billy Newton-Davis · In Out  (Original Mix) <span class="ur-bk">128 bpm · Bb minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30964418" data-bp="30964418" rel="noopener">sample ▸</a></li>
+            <li>deadmau5, Billy Newton-Davis · All You Ever Want  (Crazibiza Vocal Remix) <span class="ur-bk">128 bpm · G minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30964419" data-bp="30964419" rel="noopener">sample ▸</a></li>
+            <li>Melleefresh, Dirty 30 · Beautiful, Rich &amp; Horny  (deadmau5 Remix) <span class="ur-bk">132 bpm · D major</span> <a class="ur-play" href="https://www.beatport.com/track/x/30964420" data-bp="30964420" rel="noopener">sample ▸</a></li>
+            <li>Melleefresh, deadmau5 · Hey Baby  (Olav Basoski Remix) <span class="ur-bk">128 bpm · D major</span> <a class="ur-play" href="https://www.beatport.com/track/x/30964421" data-bp="30964421" rel="noopener">sample ▸</a></li>
+            <li>deadmau5 · Dr. Funkenstein  (Melleefresh vs Jerome Robins Remix) <span class="ur-bk">124 bpm · Ab minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30964422" data-bp="30964422" rel="noopener">sample ▸</a></li>
+            <li>deadmau5 · 1981  (Weekend Heroes Remix) <span class="ur-bk">128 bpm · C major</span> <a class="ur-play" href="https://www.beatport.com/track/x/30964423" data-bp="30964423" rel="noopener">sample ▸</a></li>
+            <li>deadmau5 · Faxing Berlin  (Chris Lake Edit) <span class="ur-bk">128 bpm · D minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30964424" data-bp="30964424" rel="noopener">sample ▸</a></li>
+            <li>Melleefresh · Intuition  (Alex Kenji Remix) <span class="ur-bk">128 bpm · C minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30964425" data-bp="30964425" rel="noopener">sample ▸</a></li>
+            <li>Melleefresh, Boy Pussy · Bitches 'N' Whores  (dj genderfluid Eurodance Remix) <span class="ur-bk">138 bpm · B minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30964426" data-bp="30964426" rel="noopener">sample ▸</a></li>
+            <li>Melleefresh · Hey Baby Redux  (Tech Us Out Remix) <span class="ur-bk">135 bpm · Db minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30964427" data-bp="30964427" rel="noopener">sample ▸</a></li>
+            <li>Kardano, Dtaborah · DJ Play Those Records  (Jason Hersco Remix) <span class="ur-bk">123 bpm · Bb minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30964428" data-bp="30964428" rel="noopener">sample ▸</a></li>
           </ol>
         </details>
       </li>
@@ -2066,16 +2090,16 @@
         <a class="go" href="https://www.beatport.com/release/repopulate-stars-planet-rumba-vol-3/7642842" target="_blank" rel="noopener">pre-order →</a>
         <details class="ur-tracks"><summary>10 tracks</summary>
           <ol>
-            <li>Jarv Music, TheConnect · De Magazine (Original Mix) <span class="ur-bk">96 bpm · Ab minor</span></li>
-            <li>Sabrosura Boyz, Giovanni Nuñez · Pa Pa (Original Mix) <span class="ur-bk">126 bpm · G minor</span></li>
-            <li>Lvndo, Panna (BR) · Empurra (Original Mix) <span class="ur-bk">130 bpm · G minor</span></li>
-            <li>Ricky Bobi · Quebec (Original Mix) <span class="ur-bk">128 bpm · F minor</span></li>
-            <li>Tito Alvarez, Kike Moreno · Sound Like (Original Mix) <span class="ur-bk">128 bpm · D minor</span></li>
-            <li>FEFO (IT) · Ester (Original Mix) <span class="ur-bk">128 bpm · E minor</span></li>
-            <li>Emmanuel Callejas, Yuli Builes · Low (Original Mix) <span class="ur-bk">130 bpm · G major</span></li>
-            <li>Amal Nemer · Enamorar (Original Mix) <span class="ur-bk">131 bpm · B minor</span></li>
-            <li>IDNAS · El Coco (Original Mix) <span class="ur-bk">128 bpm · E minor</span></li>
-            <li>Erick Cz, César Guardia, Juan Velasquez · Pingale (Original Mix) <span class="ur-bk">130 bpm · C minor</span></li>
+            <li>Jarv Music, TheConnect · De Magazine (Original Mix) <span class="ur-bk">96 bpm · Ab minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31119483" data-bp="31119483" rel="noopener">sample ▸</a></li>
+            <li>Sabrosura Boyz, Giovanni Nuñez · Pa Pa (Original Mix) <span class="ur-bk">126 bpm · G minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31119484" data-bp="31119484" rel="noopener">sample ▸</a></li>
+            <li>Lvndo, Panna (BR) · Empurra (Original Mix) <span class="ur-bk">130 bpm · G minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31119485" data-bp="31119485" rel="noopener">sample ▸</a></li>
+            <li>Ricky Bobi · Quebec (Original Mix) <span class="ur-bk">128 bpm · F minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31119486" data-bp="31119486" rel="noopener">sample ▸</a></li>
+            <li>Tito Alvarez, Kike Moreno · Sound Like (Original Mix) <span class="ur-bk">128 bpm · D minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31119487" data-bp="31119487" rel="noopener">sample ▸</a></li>
+            <li>FEFO (IT) · Ester (Original Mix) <span class="ur-bk">128 bpm · E minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31119488" data-bp="31119488" rel="noopener">sample ▸</a></li>
+            <li>Emmanuel Callejas, Yuli Builes · Low (Original Mix) <span class="ur-bk">130 bpm · G major</span> <a class="ur-play" href="https://www.beatport.com/track/x/31119489" data-bp="31119489" rel="noopener">sample ▸</a></li>
+            <li>Amal Nemer · Enamorar (Original Mix) <span class="ur-bk">131 bpm · B minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31119490" data-bp="31119490" rel="noopener">sample ▸</a></li>
+            <li>IDNAS · El Coco (Original Mix) <span class="ur-bk">128 bpm · E minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31119491" data-bp="31119491" rel="noopener">sample ▸</a></li>
+            <li>Erick Cz, César Guardia, Juan Velasquez · Pingale (Original Mix) <span class="ur-bk">130 bpm · C minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31119492" data-bp="31119492" rel="noopener">sample ▸</a></li>
           </ol>
         </details>
       </li>
@@ -2083,111 +2107,133 @@
         <h4>Mi Amor <small>7 SKIES, Sadie Rose Van, ARTBAT</small></h4>
         <div class="where">UPPERGROUND · <span class="ur-k">single</span></div>
         <a class="go" href="https://www.beatport.com/release/mi-amor/7636448" target="_blank" rel="noopener">pre-order →</a>
+        <a class="ur-play" href="https://www.beatport.com/track/x/31100845" data-bp="31100845" rel="noopener">sample ▸</a>
       </li>
       <li class="ev" data-iso="2026-11-06">
         <h4>Pa' La Calle (Dale) (Extended Mix) <small>Andruss, Juos</small></h4>
         <div class="where">Helix Records · <span class="ur-k">single</span></div>
         <a class="go" href="https://www.beatport.com/release/pa-la-calle-dale-extended-mix/7599404" target="_blank" rel="noopener">pre-order →</a>
+        <a class="ur-play" href="https://www.beatport.com/track/x/31002772" data-bp="31002772" rel="noopener">sample ▸</a>
       </li>
       <li class="ev" data-iso="2026-11-06">
         <h4>Watch Me Dunk (Extended Mix) <small>Ardalan, Shaded</small></h4>
         <div class="where">Club Sweat · <span class="ur-k">single</span></div>
         <a class="go" href="https://www.beatport.com/release/watch-me-dunk-extended-mix/7609078" target="_blank" rel="noopener">pre-order →</a>
+        <a class="ur-play" href="https://www.beatport.com/track/x/31028742" data-bp="31028742" rel="noopener">sample ▸</a>
       </li>
       <li class="ev" data-iso="2026-11-06">
         <h4>Baby Baby Baby <small>Chapter &amp; Verse</small></h4>
         <div class="where">ATOM. · <span class="ur-k">single</span></div>
         <a class="go" href="https://www.beatport.com/release/baby-baby-baby/7624191" target="_blank" rel="noopener">pre-order →</a>
+        <a class="ur-play" href="https://www.beatport.com/track/x/31068535" data-bp="31068535" rel="noopener">sample ▸</a>
       </li>
       <li class="ev" data-iso="2026-11-06">
         <h4>Don't Call Me (feat. EVALINA) <small>CID, EVALINA, Evalina Whedon</small></h4>
         <div class="where">Insomniac Records · <span class="ur-k">single</span></div>
         <a class="go" href="https://www.beatport.com/release/dont-call-me-feat-evalina/7613020" target="_blank" rel="noopener">pre-order →</a>
+        <a class="ur-play" href="https://www.beatport.com/track/x/31038394" data-bp="31038394" rel="noopener">sample ▸</a>
       </li>
       <li class="ev" data-iso="2026-11-06">
         <h4>Nothing But Me <small>Cor.Ece, A Joyful Noise</small></h4>
         <div class="where">Razor-N-Tape Records · <span class="ur-k">single</span></div>
         <a class="go" href="https://www.beatport.com/release/nothing-but-me/7502191" target="_blank" rel="noopener">pre-order →</a>
+        <a class="ur-play" href="https://www.beatport.com/track/x/30746342" data-bp="30746342" rel="noopener">sample ▸</a>
       </li>
       <li class="ev" data-iso="2026-11-06">
         <h4>Sin Tocarla <small>Cristian Viviano, Heartless House</small></h4>
         <div class="where">Descending Order · <span class="ur-k">single</span></div>
         <a class="go" href="https://www.beatport.com/release/sin-tocarla/7649148" target="_blank" rel="noopener">pre-order →</a>
+        <a class="ur-play" href="https://www.beatport.com/track/x/31132613" data-bp="31132613" rel="noopener">sample ▸</a>
       </li>
       <li class="ev" data-iso="2026-11-06">
         <h4>The Chug (Extended Mix) <small>Deep Dish, Steve “Silk” Hurley</small></h4>
         <div class="where">Saved Records · <span class="ur-k">single</span></div>
         <a class="go" href="https://www.beatport.com/release/the-chug-extended-mix/7653851" target="_blank" rel="noopener">pre-order →</a>
+        <a class="ur-play" href="https://www.beatport.com/track/x/31148428" data-bp="31148428" rel="noopener">sample ▸</a>
       </li>
       <li class="ev" data-iso="2026-11-06">
         <h4>Fall In Love (Extended Mix) <small>Emily Nash</small></h4>
         <div class="where">HOUSE RULES RECORDS · <span class="ur-k">single</span></div>
         <a class="go" href="https://www.beatport.com/release/fall-in-love-extended-mix/7592511" target="_blank" rel="noopener">pre-order →</a>
+        <a class="ur-play" href="https://www.beatport.com/track/x/30984785" data-bp="30984785" rel="noopener">sample ▸</a>
       </li>
       <li class="ev" data-iso="2026-11-06">
         <h4>Try Mode <small>HUNTER (TN), Yakuza&amp;Goys</small></h4>
         <div class="where">VETRA Records · <span class="ur-k">single</span></div>
         <a class="go" href="https://www.beatport.com/release/try-mode/7602076" target="_blank" rel="noopener">pre-order →</a>
+        <a class="ur-play" href="https://www.beatport.com/track/x/31009798" data-bp="31009798" rel="noopener">sample ▸</a>
       </li>
       <li class="ev" data-iso="2026-11-06">
         <h4>I Know What You Like <small>Husky</small></h4>
         <div class="where">The Anchor Records · <span class="ur-k">single</span></div>
         <a class="go" href="https://www.beatport.com/release/i-know-what-you-like/7599140" target="_blank" rel="noopener">pre-order →</a>
+        <a class="ur-play" href="https://www.beatport.com/track/x/31002075" data-bp="31002075" rel="noopener">sample ▸</a>
       </li>
       <li class="ev" data-iso="2026-11-06">
         <h4>Slow Steps <small>Ivrish</small></h4>
         <div class="where">Maccabi House · <span class="ur-k">single</span></div>
         <a class="go" href="https://www.beatport.com/release/slow-steps-extended-mix/7657784" target="_blank" rel="noopener">pre-order →</a>
+        <a class="ur-play" href="https://www.beatport.com/track/x/31159165" data-bp="31159165" rel="noopener">sample ▸</a>
       </li>
       <li class="ev" data-iso="2026-11-06">
         <h4>Shake It <small>Jewel Kid, James Hurr</small></h4>
         <div class="where">Alleanza · <span class="ur-k">single</span></div>
         <a class="go" href="https://www.beatport.com/release/shake-it/7620416" target="_blank" rel="noopener">pre-order →</a>
+        <a class="ur-play" href="https://www.beatport.com/track/x/31059441" data-bp="31059441" rel="noopener">sample ▸</a>
       </li>
       <li class="ev" data-iso="2026-11-06">
         <h4>You Can't Stop The Groove <small>Ken@Work</small></h4>
         <div class="where">Tasty Recordings · <span class="ur-k">single</span></div>
         <a class="go" href="https://www.beatport.com/release/you-cant-stop-the-groove/7560585" target="_blank" rel="noopener">pre-order →</a>
+        <a class="ur-play" href="https://www.beatport.com/track/x/30898909" data-bp="30898909" rel="noopener">sample ▸</a>
       </li>
       <li class="ev" data-iso="2026-11-06">
         <h4>On My Mind (Extended Mix) <small>Kevin McKay</small></h4>
         <div class="where">Glasgow Underground · <span class="ur-k">single</span></div>
         <a class="go" href="https://www.beatport.com/release/on-my-mind-extended-mix/7651014" target="_blank" rel="noopener">pre-order →</a>
+        <a class="ur-play" href="https://www.beatport.com/track/x/31140328" data-bp="31140328" rel="noopener">sample ▸</a>
       </li>
       <li class="ev" data-iso="2026-11-06">
         <h4>Blinded By The Lights <small>Kryder, Cammie Robinson</small></h4>
         <div class="where">Kryteria Records · <span class="ur-k">single</span></div>
         <a class="go" href="https://www.beatport.com/release/blinded-by-the-lights/7587780" target="_blank" rel="noopener">pre-order →</a>
+        <a class="ur-play" href="https://www.beatport.com/track/x/30970574" data-bp="30970574" rel="noopener">sample ▸</a>
       </li>
       <li class="ev" data-iso="2026-11-06">
         <h4>So High <small>Mad.Again, ANY ZEE</small></h4>
         <div class="where">neXup recz · <span class="ur-k">single</span></div>
         <a class="go" href="https://www.beatport.com/release/so-high/7572946" target="_blank" rel="noopener">pre-order →</a>
+        <a class="ur-play" href="https://www.beatport.com/track/x/30933609" data-bp="30933609" rel="noopener">sample ▸</a>
       </li>
       <li class="ev" data-iso="2026-11-06">
         <h4>Lost In Time (Blaze Orange Remix) <small>RAYMA</small></h4>
         <div class="where">Raticle Records · <span class="ur-k">single</span></div>
         <a class="go" href="https://www.beatport.com/release/lost-in-time-blaze-orange-remix/7654908" target="_blank" rel="noopener">pre-order →</a>
+        <a class="ur-play" href="https://www.beatport.com/track/x/31150919" data-bp="31150919" rel="noopener">sample ▸</a>
       </li>
       <li class="ev" data-iso="2026-11-06">
         <h4>Give It Up <small>Sebb Junior</small></h4>
         <div class="where">Miura Records · <span class="ur-k">single</span></div>
         <a class="go" href="https://www.beatport.com/release/give-it-up/7558600" target="_blank" rel="noopener">pre-order →</a>
+        <a class="ur-play" href="https://www.beatport.com/track/x/30892812" data-bp="30892812" rel="noopener">sample ▸</a>
       </li>
       <li class="ev" data-iso="2026-11-06">
         <h4>Hey Y'all <small>SNOOKO, Julian Sacheli</small></h4>
         <div class="where">Catch &amp; Release · <span class="ur-k">single</span></div>
         <a class="go" href="https://www.beatport.com/release/hey-yall/7607878" target="_blank" rel="noopener">pre-order →</a>
+        <a class="ur-play" href="https://www.beatport.com/track/x/31025243" data-bp="31025243" rel="noopener">sample ▸</a>
       </li>
       <li class="ev" data-iso="2026-11-06">
         <h4>Mio Cuore <small>T.Markakis</small></h4>
         <div class="where">Phoenix Music · <span class="ur-k">single</span></div>
         <a class="go" href="https://www.beatport.com/release/mio-cuore/7624464" target="_blank" rel="noopener">pre-order →</a>
+        <a class="ur-play" href="https://www.beatport.com/track/x/31069277" data-bp="31069277" rel="noopener">sample ▸</a>
       </li>
       <li class="ev" data-iso="2026-11-06">
         <h4>On Repeat <small>Wenzday &amp; Avilo</small></h4>
         <div class="where">Strange Love Records · <span class="ur-k">single</span></div>
         <a class="go" href="https://www.beatport.com/release/on-repeat/7593919" target="_blank" rel="noopener">pre-order →</a>
+        <a class="ur-play" href="https://www.beatport.com/track/x/30988632" data-bp="30988632" rel="noopener">sample ▸</a>
       </li>
     </ul>
     </details>
@@ -2308,16 +2354,16 @@
         <a class="go" href="https://www.beatport.com/release/nayara/7561157" target="_blank" rel="noopener">on beatport →</a>
         <details class="ur-tracks"><summary>10 tracks</summary>
           <ol>
-            <li>German Brigante · Overthink (Original Mix) <span class="ur-bk">123 bpm · G major</span></li>
-            <li>German Brigante, CATMOONK · Nayara (Original Mix) <span class="ur-bk">122 bpm · A minor</span></li>
-            <li>German Brigante · Kamino (Original Mix) <span class="ur-bk">123 bpm · C major</span></li>
-            <li>German Brigante · I'm Not Like You (Original Mix) <span class="ur-bk">122 bpm · Eb minor</span></li>
-            <li>German Brigante · Overthink (Extended Mix) <span class="ur-bk">123 bpm · G major</span></li>
-            <li>German Brigante, CATMOONK · Nayara (Extended Mix) <span class="ur-bk">122 bpm · A minor</span></li>
-            <li>German Brigante · Kamino (Extended Mix) <span class="ur-bk">123 bpm · C major</span></li>
-            <li>German Brigante · Overthink (Dub Mix) <span class="ur-bk">123 bpm · G major</span></li>
-            <li>German Brigante, CATMOONK · Nayara (Dub Mix) <span class="ur-bk">122 bpm · A minor</span></li>
-            <li>German Brigante · I'm Not Like You (Dub Mix) <span class="ur-bk">119 bpm · Eb minor</span></li>
+            <li>German Brigante · Overthink (Original Mix) <span class="ur-bk">123 bpm · G major</span> <a class="ur-play" href="https://www.beatport.com/track/x/30900595" data-bp="30900595" rel="noopener">sample ▸</a></li>
+            <li>German Brigante, CATMOONK · Nayara (Original Mix) <span class="ur-bk">122 bpm · A minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30900596" data-bp="30900596" rel="noopener">sample ▸</a></li>
+            <li>German Brigante · Kamino (Original Mix) <span class="ur-bk">123 bpm · C major</span> <a class="ur-play" href="https://www.beatport.com/track/x/30900597" data-bp="30900597" rel="noopener">sample ▸</a></li>
+            <li>German Brigante · I'm Not Like You (Original Mix) <span class="ur-bk">122 bpm · Eb minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30900598" data-bp="30900598" rel="noopener">sample ▸</a></li>
+            <li>German Brigante · Overthink (Extended Mix) <span class="ur-bk">123 bpm · G major</span> <a class="ur-play" href="https://www.beatport.com/track/x/30900599" data-bp="30900599" rel="noopener">sample ▸</a></li>
+            <li>German Brigante, CATMOONK · Nayara (Extended Mix) <span class="ur-bk">122 bpm · A minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30900600" data-bp="30900600" rel="noopener">sample ▸</a></li>
+            <li>German Brigante · Kamino (Extended Mix) <span class="ur-bk">123 bpm · C major</span> <a class="ur-play" href="https://www.beatport.com/track/x/30900601" data-bp="30900601" rel="noopener">sample ▸</a></li>
+            <li>German Brigante · Overthink (Dub Mix) <span class="ur-bk">123 bpm · G major</span> <a class="ur-play" href="https://www.beatport.com/track/x/30900602" data-bp="30900602" rel="noopener">sample ▸</a></li>
+            <li>German Brigante, CATMOONK · Nayara (Dub Mix) <span class="ur-bk">122 bpm · A minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30900603" data-bp="30900603" rel="noopener">sample ▸</a></li>
+            <li>German Brigante · I'm Not Like You (Dub Mix) <span class="ur-bk">119 bpm · Eb minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30900604" data-bp="30900604" rel="noopener">sample ▸</a></li>
           </ol>
         </details>
       </li>
@@ -2325,11 +2371,13 @@
         <h4>Time after Time Re: INSCTed <small><a href="/artists/hartmut-kiss">Hartmut Kiss</a>, Insct</small></h4>
         <div class="where">INSCT · <span class="ur-k">single</span></div>
         <a class="go" href="https://www.beatport.com/release/time-after-time-re-inscted/7389794" target="_blank" rel="noopener">on beatport →</a>
+        <a class="ur-play" href="https://www.beatport.com/track/x/30366989" data-bp="30366989" rel="noopener">sample ▸</a>
       </li>
       <li class="ev" data-iso="2026-10-30" data-out="1">
         <h4>Canyon <small><a href="/artists/jones-meadow">Jones Meadow</a></small></h4>
         <div class="where">Meadow Sound · <span class="ur-k">single</span> · <span class="ur-c">2 cuts</span></div>
         <a class="go" href="https://www.beatport.com/release/canyon/7560406" target="_blank" rel="noopener">on beatport →</a>
+        <a class="ur-play" href="https://www.beatport.com/track/x/30898429" data-bp="30898429" rel="noopener">sample ▸</a>
       </li>
       <li class="ev" data-iso="2026-10-30" data-out="1">
         <h4>Vision EP <small>The Magician, JØRD, Moscoman</small></h4>
@@ -2337,9 +2385,9 @@
         <a class="go" href="https://www.beatport.com/release/vision-ep/7607317" target="_blank" rel="noopener">on beatport →</a>
         <details class="ur-tracks"><summary>3 tracks</summary>
           <ol>
-            <li>The Magician, JØRD · Vision (Original Mix) <span class="ur-bk">127 bpm · E minor</span></li>
-            <li>The Magician, JØRD · Legend (Original Mix) <span class="ur-bk">127 bpm · A minor</span></li>
-            <li>The Magician, Moscoman · Early Access (Original Mix) <span class="ur-bk">127 bpm · E minor</span></li>
+            <li>The Magician, JØRD · Vision (Original Mix) <span class="ur-bk">127 bpm · E minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31023826" data-bp="31023826" rel="noopener">sample ▸</a></li>
+            <li>The Magician, JØRD · Legend (Original Mix) <span class="ur-bk">127 bpm · A minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31023827" data-bp="31023827" rel="noopener">sample ▸</a></li>
+            <li>The Magician, Moscoman · Early Access (Original Mix) <span class="ur-bk">127 bpm · E minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/31023828" data-bp="31023828" rel="noopener">sample ▸</a></li>
           </ol>
         </details>
       </li>
@@ -2347,6 +2395,7 @@
         <h4>Warehouse Vibration <small>DJ PP</small></h4>
         <div class="where">Big Love Trax · <span class="ur-k">single</span></div>
         <a class="go" href="https://www.beatport.com/release/warehouse-vibration/7584169" target="_blank" rel="noopener">on beatport →</a>
+        <a class="ur-play" href="https://www.beatport.com/track/x/30959894" data-bp="30959894" rel="noopener">sample ▸</a>
       </li>
     </ul>
   </div>
@@ -2513,10 +2562,10 @@
         <a class="go" href="https://www.beatport.com/release/off-to-paradise/7563913" target="_blank" rel="noopener">on beatport →</a>
         <details class="ur-tracks"><summary>4 tracks</summary>
           <ol>
-            <li>Ethyène · Off To Paradise  (Original Mix) <span class="ur-bk">123 bpm · C minor</span></li>
-            <li>Ethyène · Mostely Lonely  (Original Mix) <span class="ur-bk">124 bpm · A minor</span></li>
-            <li>Ethyène · Mostely Lonely  (S3A Transition Remix) <span class="ur-bk">128 bpm · Ab minor</span></li>
-            <li>Ethyène · Drive You Crazy  (Original Mix) <span class="ur-bk">123 bpm · C minor</span></li>
+            <li>Ethyène · Off To Paradise  (Original Mix) <span class="ur-bk">123 bpm · C minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30907973" data-bp="30907973" rel="noopener">sample ▸</a></li>
+            <li>Ethyène · Mostely Lonely  (Original Mix) <span class="ur-bk">124 bpm · A minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30907974" data-bp="30907974" rel="noopener">sample ▸</a></li>
+            <li>Ethyène · Mostely Lonely  (S3A Transition Remix) <span class="ur-bk">128 bpm · Ab minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30907975" data-bp="30907975" rel="noopener">sample ▸</a></li>
+            <li>Ethyène · Drive You Crazy  (Original Mix) <span class="ur-bk">123 bpm · C minor</span> <a class="ur-play" href="https://www.beatport.com/track/x/30907976" data-bp="30907976" rel="noopener">sample ▸</a></li>
           </ol>
         </details>
       </li>
@@ -3973,11 +4022,11 @@
 </div>
 <script src="/gmx-motion.js?v=2" defer></script>
 <script src="/gmx-more.js?v=2" defer></script>
-<script src="/gmx-quick.js?v=13" defer></script>
-<script src="/gmx-nav.js?v=32" defer></script>
+<script src="/gmx-quick.js?v=14" defer></script>
+<script src="/gmx-nav.js?v=33" defer></script>
 <script src="/gmx-crate.js" defer></script>
 <script src="/gmx-sheet.js?v=2" defer></script>
-<script src="/gmx-upcoming.js?v=3" defer></script>
+<script src="/gmx-upcoming.js?v=4" defer></script>
 <script src="/gmx-account.js?v=20" defer></script>
 </body>
 </html>

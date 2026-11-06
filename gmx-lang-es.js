@@ -174,8 +174,11 @@ words:{
 'today':'hoy','tomorrow':'mañana','yesterday':'ayer','out early':'salió antes','a week ago':'hace una semana',
 'just released':'recién salidos','release day':'día de salida',
 'on beatport':'en beatport','listen':'escuchar','the announcement':'el anuncio','on instagram':'en instagram','link':'enlace',
+/* dropping soon (2026-11-05): the sample pill and its beatport player */
+'sample':'muestra',
+'beatport sample':'muestra de beatport',
 'label tba':'disquera por anunciar','various artists':'varios artistas','album':'álbum',
-'soonest first. a release stays here through its own day, then moves to released.':'lo más próximo primero. un lanzamiento se queda aquí hasta su día, luego pasa a ya salieron.',
+'soonest first. a release stays here through the weekend after its day, then moves to released on monday.':'lo más próximo primero. un lanzamiento se queda aquí hasta el fin de semana después de su día, luego pasa a ya salieron el lunes.',
 'out now, newest first, the last 3 months. tap through and listen.':'ya salieron, lo más nuevo primero, los últimos 3 meses. toca y escucha.',
 'nothing dated right now. check back friday.':'nada con fecha por ahora. vuelve el viernes.',
 'nothing released yet. check back after friday.':'nada ha salido todavía. vuelve después del viernes.',

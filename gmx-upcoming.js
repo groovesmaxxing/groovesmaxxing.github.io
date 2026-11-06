@@ -15,6 +15,8 @@
    - the crate chips (with gmx-crate.js): everyone, or only the releases whose artist or label is in the
      crate (liked sets and tracks, followed artists and labels). the choice stays under gmx_upcoming_mine,
      /upcoming?mine=1 switches it on, and a crate synced from the account reapplies it.
+   - the sample player (2026-11-05): a tap on a sample pill (a.ur-play, a link to the beatport track) loads
+     beatport's own embed at the end of its li, one open at a time, a second tap closes it.
    without this script both lists read in full, one under the other. */
 (function(){
 'use strict';
@@ -162,6 +164,7 @@ function start(){
   /* the crate filter opens folds to show what it found, and closes the ones it opened when it is off */
   function openFor(d){if(!d.open){d.open=true;opened.push(d)}}
   function apply(){
+    closeAll();
     var p=panels[cur],opt=MENU[cur][idx[cur]],lim=opt[0],names=mine&&crate?crate.names():null;
     meta.forEach(function(m){m.ev.classList.toggle('gmx-hidden',!!names&&!matches(m,names))});
     if(!names&&opened.length){opened.forEach(function(d){d.open=false});opened=[]}
@@ -219,7 +222,7 @@ function start(){
     if(!apply()&&!picked[cur]&&!mine)while(idx[cur]<MENU[cur].length-1){idx[cur]++;sel.value=String(idx[cur]);if(apply())break}
   }
   function go(k,focus){show(k,focus);try{history.replaceState(null,'',k==='released'?'#released':location.pathname+location.search)}catch(e){}}
-  bar.addEventListener('click',function(e){var t=e.target.closest('[data-tab]');if(!t)return;e.preventDefault();go(t.getAttribute('data-tab'))});
+  bar.addEventListener('click',function(e){var t=e.target.closest('[data-tab]');if(!t)return;e.preventDefault();closeAll();go(t.getAttribute('data-tab'))});
   bar.addEventListener('keydown',function(e){
     if(['ArrowLeft','ArrowRight','Home','End'].indexOf(e.key)<0)return;e.preventDefault();
     go(e.key==='Home'?'soon':e.key==='End'?'released':cur==='soon'?'released':'soon',true);
@@ -238,6 +241,27 @@ function start(){
       if(Math.abs(window.pageYOffset-y0)<2||Math.abs(panels.released.getBoundingClientRect().top)<4)top();
     },0)});
   }
+
+  /* the sample player: beatport's embed, loaded only on a tap, inside the pill's li (a track, or a single's row) */
+  function closePlay(a){
+    var li=a.closest('li');
+    if(li)[].slice.call(li.children).forEach(function(c){if(c.classList.contains('ur-embed'))li.removeChild(c)});
+    a.setAttribute('aria-expanded','false');a.textContent='sample ▸';
+  }
+  /* a hidden embed keeps playing: a tab switch, a filter or show change, or a closed fold stops every open one */
+  function closeAll(el){[].forEach.call((el||wrap).querySelectorAll('a.ur-play[aria-expanded="true"]'),closePlay)}
+  wrap.addEventListener('toggle',function(e){var d=e.target;if(d&&d.tagName==='DETAILS'&&!d.open)closeAll(d)},true);
+  wrap.addEventListener('click',function(e){
+    var a=e.target.closest('a.ur-play'),id=a&&a.getAttribute('data-bp'),li=a&&a.closest('li');
+    if(!a||!li||!/^\d+$/.test(id||''))return;
+    e.preventDefault();
+    if(a.getAttribute('aria-expanded')==='true'){closePlay(a);return}
+    closeAll();
+    var box=document.createElement('div');box.className='ur-embed';
+    box.innerHTML='<iframe src="https://embed.beatport.com/?id='+id+'&type=track" title="beatport sample" loading="lazy" scrolling="no" allow="autoplay"></iframe>';
+    li.appendChild(box);
+    a.setAttribute('aria-expanded','true');a.textContent='close ▴';
+  });
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
 })();

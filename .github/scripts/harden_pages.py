@@ -34,7 +34,7 @@ REFERRER = '<meta name="referrer" content="strict-origin-when-cross-origin">'
 SCRIPT_HOSTS = ['https://www.youtube.com', 'https://w.soundcloud.com']
 # the embeds the pages frame
 FRAME_HOSTS = ['https://open.spotify.com', 'https://w.soundcloud.com', 'https://www.youtube-nocookie.com',
-               'https://www.youtube.com', 'https://www.instagram.com']
+               'https://www.youtube.com', 'https://www.instagram.com', 'https://embed.beatport.com']
 # the newsletter signup form posts here (both buttondown domains: the post and the thank-you redirect)
 FORM_HOSTS = ['https://buttondown.com', 'https://buttondown.email']
 # the scan page only: the cover and store-link lookups, and deezer's jsonp (its api has no cors)

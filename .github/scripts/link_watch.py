@@ -136,6 +136,8 @@ def classify(url):
         if u.path.startswith("/search"):
             return "skip", url
         return "soundcloud", "https://soundcloud.com" + u.path.rstrip("/")
+    if host in ("www.beatport.com", "beatport.com") and u.path.startswith("/track/x/"):
+        return "skip", url   # the sample pills on /upcoming, and beatport walls scripted hits anyway
     if host in SKIP_HOSTS or not host:
         return "skip", url
     if host.endswith("youtube.com") or host.endswith("youtube-nocookie.com"):
