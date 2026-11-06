@@ -233,16 +233,38 @@ function clearLevel(){lv=0}
     if(on&&!wasOn)ts0=now; wasOn=on;
     function ease(k){return 1-Math.pow(1-k,dt*60)}
     act+=((on?1:0)-act)*ease(.06);
-    if(!on&&act<.002){raf=0;idle();return}
+    if(!on&&act<.002){raf=0;idle();rouse();return}
     var jv=Math.min(.3,lv); vs+=(jv-vs)*ease(.3);
     sp+=((on?140+vs*900:0)-sp)*ease(.05); ang=(ang+sp*dt)%360;
     paint(act,look(on?(now-ts0)/1000:0),now/1000,vs,jv,fr%2===0,false);
     raf=requestAnimationFrame(frame);
   }
+  /* 2026-11-06: the resting mark breathes like the landing page's living logo (index.html, logo 10a2): one rolling
+     wave through the ribbon's strands and the white wave, and the dot swelling on a slow 6 s beat. it runs only at
+     rest, on screen and in a visible tab; a scan's own frame loop owns the mark while listening or finding, and
+     reduced motion keeps the mark still. */
+  var rib=[].slice.call(go.querySelectorAll('.ribbon polyline')).concat([wave]);
+  var RB=rib.map(function(e){return e.getAttribute('points').trim().split(/\s+/).map(function(q){return q.split(',').map(Number)})});
+  var iraf=0, it0=0, seen=true;
+  function rest(){rib.forEach(function(e,j){e.setAttribute('points',RB[j].map(function(q){return q.join(',')}).join(' '))});dot.setAttribute('r','18')}
+  function breathe(now){
+    if(raf||live()||still()||document.hidden||!seen){iraf=0;if(!raf&&!live())rest();return}
+    var t=(now-it0)/1000, beat=.5+.5*Math.sin(t*Math.PI*2/6);
+    var ks=RB[0].map(function(_,i){return .8+.22*Math.sin(t*1.7-i*.62)+.08*beat});
+    rib.forEach(function(e,j){var B=RB[j];e.setAttribute('points',B.map(function(q,i){return (i<2||i>B.length-3)?q[0]+','+q[1]:q[0]+','+(120+(q[1]-120)*ks[i]).toFixed(1)}).join(' '))});
+    dot.setAttribute('r',(18+2.5*beat).toFixed(2));
+    iraf=requestAnimationFrame(breathe);
+  }
+  function rouse(){if(!iraf&&!raf&&!live()&&!still()&&!document.hidden&&seen&&window.requestAnimationFrame){if(!it0)it0=performance.now();iraf=requestAnimationFrame(breathe)}}
+  document.addEventListener('visibilitychange',rouse);
+  if(window.IntersectionObserver)new IntersectionObserver(function(es){seen=es[es.length-1].isIntersecting;rouse()}).observe(go);
+  if(reduce&&reduce.addEventListener)reduce.addEventListener('change',function(){if(still())rest();rouse()});
+  rouse();
   if(!window.MutationObserver)return;
   new MutationObserver(function(){
     if(still()){hold();return}
     if(!raf&&live()){last=0;raf=requestAnimationFrame(frame)}
+    rouse();
   }).observe(stage,{attributes:true,attributeFilter:['class']});
 })();
 
