@@ -13,7 +13,7 @@ urls = ['/', '/scan', '/more', '/search', '/sets', '/artists', '/events', '/radi
 urls += ['/upcoming.json', '/gmx-nextup.js']   # the home page's next up band (ui build 3)
 urls += ['/gmx-read.css?v=9']   # the readability layer on every page (2026-10-13)
 urls += ['/gmx-more.js?v=2', '/gmx-reel.js?v=1']   # the "more" expander on every page (2026-10-14)
-urls += ['/moods', '/moods-index.json', '/gmx-moods.js?v=2']   # the mood picker (2026-11-04), its catalog is written on the laptop by moodindex.py
+urls += ['/moods', '/moods-index.json', '/gmx-moods.js?v=3']   # the mood picker (2026-11-04), its catalog is written on the laptop by moodindex.py
 urls += ['/gmx-fonts.css?v=2'] + ['/' + f for f in sorted(glob.glob('fonts/*.woff2'))]
 for f in sorted(glob.glob('tracklists/*.html')):
     if f.endswith('/index.html'): continue

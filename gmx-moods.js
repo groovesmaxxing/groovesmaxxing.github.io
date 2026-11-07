@@ -15,7 +15,13 @@
    badge in place of its heard-in link. the track list itself is the same with or without a when chip. the payload
    keys are when, txt, setcards and a slot id as the third element of each sets entry. the new words ship in both
    languages in the payload, not in gmx-lang-es.js: the new nodes carry translate="no" so the dictionary pass
-   leaves them alone, and they repaint in the other language when gmx-lang.js changes <html lang>. */
+   leaves them alone, and they repaint in the other language when gmx-lang.js changes <html lang>.
+   v3 (2026-11-07), discovery rows and the daily playlists: a fresh chip tap (a tap, a hash with a mood and no s=,
+   the mood for the hour) is seeded by the local date (dateSeed, YYYYMMDD), so everyone gets the same list that day
+   and moodplaylists.py writes that same list to the chip's Spotify playlist at 00:20. shuffle still rolls a random
+   seed. a row with C.dc = 1 is a discovery row (one of our artists, in no lane): at most 10 in a 30-row list, the
+   overflow skipped like the per-artist cap, and it shows a small "new to us" marker (D.txt.disc). a chip with pl
+   (its playlist id) shows a playlist button in the tools row while that chip is on. */
 (function(){
 'use strict';
 var root=document.getElementById('mz');if(!root)return;
@@ -24,7 +30,7 @@ var chipsEl=document.getElementById('mz-chips'),res=document.getElementById('mz-
     whenEl=document.getElementById('mz-when');
 var D=null,loading=null,names=null,cur=null,MOOD={},GW={},NEVER=[],ALL=[];
 var N=30,PER_ARTIST=2,PER_FILL=3,PRIMARY=6;
-var C={sp:0,t:1,a:2,l:3,g:4,ag:5,b:6,k:7,ln:8,f:9,r:10,bp:11,dz:12,ar:13,h:14};
+var C={sp:0,t:1,a:2,l:3,g:4,ag:5,b:6,k:7,ln:8,f:9,r:10,bp:11,dz:12,ar:13,h:14,dc:15},MAX_DISC=10;
 var STOP={};('a an the and or for to of in on at with my me i some music songs song tracks track playlist mix mood moods vibe something '+
   'give want need please like que el la los las un una unos unas de del y o para por con mi musica cancion canciones algo dame quiero tracks rolas').split(' ').forEach(function(w){STOP[w]=1});
 var MON=['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
@@ -39,6 +45,8 @@ function normLabel(s){
 }
 function rng(seed){var a=seed>>>0;return function(){a=(a+0x6D2B79F5)>>>0;var t=a;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return((t^(t>>>14))>>>0)/4294967296}}
 function newSeed(){return 1+Math.floor(Math.random()*99999)}
+/* the day's seed: the local date as YYYYMMDD. moodplaylists.py ports this, keep the two in step */
+function dateSeed(){var d=new Date();return d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate()}
 function today(){var d=new Date();return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2)}
 function daysSince(iso){var p=iso.split('-');return Math.floor((Date.now()-new Date(+p[0],p[1]-1,+p[2]).getTime())/864e5)}
 function chip(id){for(var i=0;i<D.chips.length;i++)if(D.chips[i].id===id)return D.chips[i];return null}
@@ -199,12 +207,16 @@ function pick(cand,seed){
   /* a typed song title: that song leads */
   cand.pin.forEach(function(i){pin[i]=1});
   prim=cand.pin.concat(prim.filter(function(i){return !pin[i]})).slice(0,PRIMARY);
+  /* discovery rows (C.dc): at most MAX_DISC in the list, the overflow is skipped like the per-artist cap */
+  var dn=0;prim.forEach(function(i){if(D.rows[i][C.dc]===1)dn++});
   var keyed=pool.map(function(i,pos){return [i,Math.pow(R(),1+pos/H)]}).sort(function(a,b){return b[1]-a[1]});
   var rest=[],skipped=[];
-  for(var k=0;k<keyed.length&&rest.length<N-prim.length;k++){var i=keyed[k][0],a=lead(i);if((per[a]||0)>=PER_ARTIST){skipped.push(i);continue}per[a]=(per[a]||0)+1;rest.push(i)}
+  for(var k=0;k<keyed.length&&rest.length<N-prim.length;k++){var i=keyed[k][0],a=lead(i),dc=D.rows[i][C.dc]===1;
+    if((per[a]||0)>=PER_ARTIST||(dc&&dn>=MAX_DISC)){skipped.push(i);continue}per[a]=(per[a]||0)+1;if(dc)dn++;rest.push(i)}
   /* a small pool (spooky, one label) would come out thin under the cap: what was skipped fills in, three per
      artist at most. the list can come out shorter than 30, and the count line says so */
-  for(var f=0;f<skipped.length&&rest.length<N-prim.length;f++){var a2=lead(skipped[f]);if((per[a2]||0)<PER_FILL){per[a2]=(per[a2]||0)+1;rest.push(skipped[f])}}
+  for(var f=0;f<skipped.length&&rest.length<N-prim.length;f++){var a2=lead(skipped[f]),dc2=D.rows[skipped[f]][C.dc]===1;
+    if((per[a2]||0)<PER_FILL&&!(dc2&&dn>=MAX_DISC)){per[a2]=(per[a2]||0)+1;if(dc2)dn++;rest.push(skipped[f])}}
   /* the asked-for artist every third row, the rest around it */
   var pi=0,ri=0;
   while(pi<prim.length||ri<rest.length){if(pi<prim.length&&(out.length%3===0||ri>=rest.length))out.push(prim[pi++]);else out.push(rest[ri++])}
@@ -251,11 +263,18 @@ function setCard(st,c){
     '<p class="mz-set-s">'+esc(T('set_sub').replace('{n}',list.length.toLocaleString(lang()==='es'?'es-MX':'en-US')))+'</p>'+
     '<ol class="mz-set-l">'+keyed.slice(0,3).map(function(k){return setRow(k[0])}).join('')+'</ol></div>';
 }
+/* the chip's daily playlist on spotify (D.chips[i].pl): today's seed is the list the playlist holds */
+function plBtn(st){
+  var c=st.mood&&!st.q?chip(st.mood):null;if(!c||!c.pl||!D.txt||!D.txt.pl_today)return '';
+  var t=st.seed===dateSeed()?T('pl_today'):T('pl_chip').replace('{chip}',lang()==='es'?c.es||c.en:c.en);
+  return '<a class="lc mz-pl" href="https://open.spotify.com/playlist/'+esc(c.pl)+'" target="_blank" rel="noopener" translate="no">'+esc(t)+' ↗</a>';
+}
 function suggest(ids){return '<div class="mz-sug">'+ids.map(chip).filter(Boolean).map(function(c){return chipBtn(c,false)}).join('')+'</div>'}
 function month(iso){var p=iso.split('-');return MON[+p[1]-1]+' '+p[0]}
 function day(iso){var p=iso.split('-');return MON[+p[1]-1]+' '+(+p[2])}
 function row(i,n){
   var r=D.rows[i],sp=r[C.sp],m=[],l=[];
+  if(r[C.dc]===1&&D.txt&&D.txt.disc)m.push('<span class="nb nw mz-new" translate="no">'+esc(T('disc'))+'</span>');
   if(r[C.l])m.push('<span translate="no">'+esc(r[C.l])+'</span>');
   if(r[C.g])m.push('<span class="nb" translate="no">'+esc(D.genres[r[C.g]])+'</span>');
   if(r[C.b])m.push('<span class="nb" translate="no">'+r[C.b]+' bpm</span>');
@@ -327,7 +346,7 @@ function render(st,quiet){
      (st.auto?'<p class="mz-auto">picked for the hour. tap another mood or type your own.</p>':'')+
      c.relaxed.map(function(x){return '<p class="mz-auto">loosened the '+x+' to fill the list.</p>'}).join('')+
      '<p class="mz-n">'+count+'</p></div>'+
-     '<div class="mz-tools"><button type="button" class="lc" data-act="shuffle">shuffle</button><button type="button" class="lc" data-act="copy">copy the spotify links</button><button type="button" class="lc" data-act="share">share this list</button></div>'+
+     '<div class="mz-tools"><button type="button" class="lc" data-act="shuffle">shuffle</button><button type="button" class="lc" data-act="copy">copy the spotify links</button><button type="button" class="lc" data-act="share">share this list</button>'+plBtn(st)+'</div>'+
      '<p class="mz-msg" id="mz-msg" role="status"></p>'+
      '<ol class="mz-list">'+list.map(function(i,n){return row(i,n+1)}).join('')+'</ol>'+
      (c.size>list.length?'<div class="mz-foot"><button type="button" class="lc" data-act="shuffle">shuffle again</button></div>':'');
@@ -347,7 +366,8 @@ function reveal(){
 function readHash(){
   var h=location.hash.replace(/^#/,''),o={};if(!h)return null;
   h.split('&').forEach(function(kv){var k=kv.indexOf('=');if(k>0){try{o[kv.slice(0,k)]=decodeURIComponent(kv.slice(k+1).replace(/\+/g,' '))}catch(e){}}});
-  var seed=parseInt(o.s,10);seed=seed>0&&seed<1e9?seed:newSeed();
+  /* no s= : a mood (or the mood for the hour) gets the day's seed, typed words a random one */
+  var seed=parseInt(o.s,10);seed=seed>0&&seed<1e9?seed:(o.q&&o.q.trim()&&!o.mood?newSeed():dateSeed());
   var wh=o.when&&whenOf(o.when)?o.when:null;
   if(o.mood&&chip(o.mood))return {mood:o.mood,q:'',seed:seed,when:wh};
   if(o.q&&o.q.trim())return {mood:null,q:o.q.trim().slice(0,120),seed:seed,when:wh};
@@ -362,7 +382,7 @@ function go(st,push){
 }
 /* no hash: a mood for the hour it is where the visitor is */
 function byHour(){var h=new Date().getHours();return h>=5&&h<10?'morning':h>=10&&h<17?'vibes':h>=17&&h<20?'at-the-beach':h>=20&&h<23?'get-bumpy':'late-night'}
-function auto(){var id=byHour(),c=chip(id);if(!c||!poolOf(c).length)id='vibes';return {mood:id,q:'',seed:newSeed(),auto:true}}
+function auto(){var id=byHour(),c=chip(id);if(!c||!poolOf(c).length)id='vibes';return {mood:id,q:'',seed:dateSeed(),auto:true}}
 function start(){
   if(metaEl)metaEl.textContent=D.count.toLocaleString('en-US')+' tracks · built '+D.generated;
   render(readHash()||auto());
@@ -385,7 +405,7 @@ function copy(text,ok){
 root.addEventListener('click',function(e){
   var b=e.target.closest('[data-mood],[data-act],[data-when]');if(!b||!root.contains(b))return;
   var act=b.getAttribute('data-act');
-  if(b.hasAttribute('data-mood')){input.value='';go({mood:b.getAttribute('data-mood'),q:'',seed:newSeed(),when:cur?cur.when:null},true);reveal();return}
+  if(b.hasAttribute('data-mood')){input.value='';go({mood:b.getAttribute('data-mood'),q:'',seed:dateSeed(),when:cur?cur.when:null},true);reveal();return}
   /* a when chip keeps the list (same mood, words and seed): only the card and the badges change. tap again to clear */
   if(b.hasAttribute('data-when')){if(!cur)return;var wid=b.getAttribute('data-when');
     go({mood:cur.mood,q:cur.q,seed:cur.seed,auto:cur.auto,when:cur.when===wid?null:wid},true);return}
