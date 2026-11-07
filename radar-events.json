@@ -1,179 +1,8 @@
 {
-"generated": "2026-11-06T16:50:02+00:00",
+"generated": "2026-11-07T15:44:48+00:00",
 "artist_count": 704,
-"artists_with_events": 143,
+"artists_with_events": 140,
 "events": [
-{
-"date": "2026-11-06",
-"event": "ARTBAT",
-"venue": "REBEL",
-"city": "Toronto",
-"region": "ON",
-"url": "https://www.ticketweb.ca/event/artbat-rebel-tickets/14287174",
-"artist": "ARTBAT"
-},
-{
-"date": "2026-11-06",
-"event": "Adriatique - Ages 21+",
-"venue": "The Midway",
-"city": "San Francisco",
-"region": "CA",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZsO6",
-"artist": "Adriatique"
-},
-{
-"date": "2026-11-06",
-"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
-"venue": "Moody Center ATX",
-"city": "Austin",
-"region": "TX",
-"url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-austin-texas-11-06-2026/event/3A0064B3DA33FD80",
-"artist": "Alok"
-},
-{
-"date": "2026-11-06",
-"event": "CID [GLOW OFF:SITE]",
-"venue": "Dock5",
-"city": "Washington",
-"region": "DC",
-"url": "https://www.ticketmaster.com/cid-glow-offsite-washington-district-of-columbia-11-06-2026/event/1500651E44631FE8",
-"artist": "CID"
-},
-{
-"date": "2026-11-06",
-"event": "CamelPhat",
-"venue": "Royale Boston",
-"city": "Boston",
-"region": "MA",
-"url": "https://www.ticketweb.com/event/camelphat-royale-boston-tickets/14328034?REFERRAL_ID=tmfeed",
-"artist": "CamelPhat"
-},
-{
-"date": "2026-11-06",
-"event": "EDC Orlando",
-"venue": "Tinker Field",
-"city": "Orlando",
-"region": "FL",
-"url": "https://on.fgtix.com/trk/8uFM",
-"artist": "Chris Lorenzo"
-},
-{
-"date": "2026-11-06",
-"event": "Gorgon City",
-"venue": "The Palace Theatre",
-"city": "Calgary",
-"region": "AB",
-"url": "https://www.ticketweb.ca/event/gorgon-city-the-palace-theatre-tickets/14284114?REFERRAL_ID=tmfeed",
-"artist": "Gorgon City"
-},
-{
-"date": "2026-11-06",
-"event": "HUGEL PRESENTS MAKE THE GIRLS DANCE",
-"venue": "The Rady Shell at Jacobs Park",
-"city": "San Diego",
-"region": "CA",
-"url": "https://www.ticketmaster.com/hugel-presents-make-the-girls-dance-san-diego-california-11-06-2026/event/0A00652809C3AB63",
-"artist": "HUGEL"
-},
-{
-"date": "2026-11-06",
-"event": "Dan Shake, Horse Meat Disco, MiNNA, Theon Bower, Groove Theory",
-"venue": "Electric Studios",
-"city": "Sheffield",
-"region": "GB",
-"url": "https://www.universe.com/events/dan-shake-horse-meat-disco-minna-theon-bower-groove-theory-tickets-V52Q9K?ref=ticketmaster",
-"artist": "Horse Meat Disco"
-},
-{
-"date": "2026-11-06",
-"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
-"venue": "Moody Center ATX",
-"city": "Austin",
-"region": "TX",
-"url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-austin-texas-11-06-2026/event/3A0064B3DA33FD80",
-"artist": "Jackie Hollander"
-},
-{
-"date": "2026-11-06",
-"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
-"venue": "Moody Center ATX",
-"city": "Austin",
-"region": "TX",
-"url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-austin-texas-11-06-2026/event/3A0064B3DA33FD80",
-"artist": "John Summit"
-},
-{
-"date": "2026-11-06",
-"event": "EDC Orlando",
-"venue": "Tinker Field",
-"city": "Orlando",
-"region": "FL",
-"url": "https://on.fgtix.com/trk/8uFM",
-"artist": "Josh Baker"
-},
-{
-"date": "2026-11-06",
-"event": "Meduza (21 and Over)",
-"venue": "The Ave Live",
-"city": "Philadelphia",
-"region": "PA",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAvfZy",
-"artist": "MEDUZA"
-},
-{
-"date": "2026-11-06",
-"event": "EDC Orlando",
-"venue": "Tinker Field",
-"city": "Orlando",
-"region": "FL",
-"url": "https://on.fgtix.com/trk/8uFM",
-"artist": "Mau P"
-},
-{
-"date": "2026-11-06",
-"event": "Carl Cox",
-"venue": "Hollywood Palladium",
-"city": "Hollywood",
-"region": "CA",
-"url": "https://www.ticketmaster.com/carl-cox-hollywood-california-11-06-2026/event/09006503777A2802",
-"artist": "OMRI."
-},
-{
-"date": "2026-11-06",
-"event": "CID [GLOW OFF:SITE]",
-"venue": "Dock5",
-"city": "Washington",
-"region": "DC",
-"url": "https://www.ticketmaster.com/cid-glow-offsite-washington-district-of-columbia-11-06-2026/event/1500651E44631FE8",
-"artist": "Pedroz"
-},
-{
-"date": "2026-11-06",
-"event": "EDC Orlando",
-"venue": "Tinker Field",
-"city": "Orlando",
-"region": "FL",
-"url": "https://on.fgtix.com/trk/8uFM",
-"artist": "Prospa"
-},
-{
-"date": "2026-11-06",
-"event": "Sammy Virji: North America Tour 2026 Part 2",
-"venue": "PNE Forum",
-"city": "Vancouver",
-"region": "BC",
-"url": "https://www.ticketleader.ca/events/detail/svirji",
-"artist": "Sammy Virji"
-},
-{
-"date": "2026-11-06",
-"event": "Wuki",
-"venue": "The Bellwether",
-"city": "Los Angeles",
-"region": "CA",
-"url": "https://www.ticketmaster.com/wuki-los-angeles-california-11-06-2026/event/090064F2E3C5FA19",
-"artist": "Wuki"
-},
 {
 "date": "2026-11-07",
 "event": "EDC Orlando",
@@ -218,15 +47,6 @@
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/la-discotheque-festival-manchester-manchester-07-11-2026/event/350064F5E3BC79E6",
 "artist": "Dombresky"
-},
-{
-"date": "2026-11-07",
-"event": "TAB Champions Stakes Day - The Dining Room",
-"venue": "Flemington Racecourse",
-"city": "Flemington",
-"region": "VIC",
-"url": "https://www.ticketmaster.com.au/tab-champions-stakes-day-the-dining-flemington-07-11-2026/event/250064F5D5235758",
-"artist": "FISHER"
 },
 {
 "date": "2026-11-07",
@@ -410,11 +230,11 @@
 },
 {
 "date": "2026-11-13",
-"event": "DJ Tennis",
+"event": "DJ Tennis | 4AM License",
 "venue": "CODA",
 "city": "Toronto",
 "region": "ON",
-"url": "https://www.ticketweb.ca/event/dj-tennis-coda-tickets/14277864",
+"url": "https://www.ticketweb.ca/event/dj-tennis-4am-license-coda-tickets/14277864",
 "artist": "DJ Tennis"
 },
 {
@@ -527,11 +347,11 @@
 },
 {
 "date": "2026-11-14",
-"event": "Biscits",
+"event": "Biscits | 4AM License",
 "venue": "CODA",
 "city": "Toronto",
 "region": "ON",
-"url": "https://www.ticketweb.ca/event/biscits-coda-tickets/15047583",
+"url": "https://www.ticketweb.ca/event/biscits-4am-license-coda-tickets/15047583",
 "artist": "Biscits"
 },
 {
@@ -743,6 +563,15 @@
 },
 {
 "date": "2026-11-20",
+"event": "Biscits",
+"venue": "9th and Jackson",
+"city": "Phoenix",
+"region": "AZ",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AA7obM",
+"artist": "Biscits"
+},
+{
+"date": "2026-11-20",
 "event": "Eastenderz, Manchester",
 "venue": "Depot Mayfield",
 "city": "Manchester",
@@ -884,6 +713,15 @@
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/eastenderz-manchester-manchester-20-11-2026/event/350064F6A7984FF2",
 "artist": "SOSA"
+},
+{
+"date": "2026-11-20",
+"event": "Carl Cox - Club Darc Season 2  - Ages 21+",
+"venue": "Pier 48",
+"city": "San Francisco",
+"region": "CA",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AA7yJa",
+"artist": "Seth Troxler"
 },
 {
 "date": "2026-11-20",
@@ -2102,6 +1940,15 @@
 },
 {
 "date": "2026-12-30",
+"event": "Mindchatter (DJ Set)",
+"venue": "Outset",
+"city": "Chicago",
+"region": "IL",
+"url": "https://www.ticketmaster.com/mindchatter-dj-set-chicago-illinois-12-30-2026/event/040065667B152CFF",
+"artist": "Mindchatter"
+},
+{
+"date": "2026-12-30",
 "event": "Odd Mob",
 "venue": "History Toronto",
 "city": "Toronto",
@@ -3262,6 +3109,24 @@
 "artist": "Midnight Generation"
 },
 {
+"date": "2027-05-07",
+"event": "Mau P",
+"venue": "Roadrunner-Boston",
+"city": "Boston",
+"region": "MA",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AA7zqp",
+"artist": "Mau P"
+},
+{
+"date": "2027-05-08",
+"event": "Mau P Presents Generation Rebrand (18+ Event)",
+"venue": "Festival Hall At Navy Pier",
+"city": "Chicago",
+"region": "IL",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AA7UPd",
+"artist": "Mau P"
+},
+{
 "date": "2027-05-08",
 "event": "Mau P Presents Generation Rebrand",
 "venue": "Navy Pier",
@@ -3316,6 +3181,15 @@
 "artist": "Midnight Generation"
 },
 {
+"date": "2027-05-16",
+"event": "Midnight Generation - Rooted Tour 2027",
+"venue": "The Crocodile",
+"city": "Seattle",
+"region": "WA",
+"url": "https://app.opendate.io/e/midnight-generation-rooted-tour-2027-may-16-2027-729129",
+"artist": "Midnight Generation"
+},
+{
 "date": "2027-05-19",
 "event": "Midnight Generation - Rooted Tour 2027",
 "venue": "The Fillmore",
@@ -3344,11 +3218,11 @@
 },
 {
 "date": "2027-05-23",
-"event": "MIDNIGHT GENERATION",
+"event": "MIDNIGHT GENERATION - ​​​​​​​ROOTED TOUR 2027",
 "venue": "Crescent Ballroom",
 "city": "Phoenix",
 "region": "AZ",
-"url": "https://www.ticketweb.com/event/midnight-generation-crescent-ballroom-tickets/14421614",
+"url": "https://www.ticketweb.com/event/midnight-generation-rooted-crescent-ballroom-tickets/14421614",
 "artist": "Midnight Generation"
 },
 {
