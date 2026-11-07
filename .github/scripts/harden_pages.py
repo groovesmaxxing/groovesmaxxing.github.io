@@ -116,7 +116,11 @@ def policy(path, s):
 
 
 THUMB_RE = re.compile(r'\sonerror="this\.onerror=null;this\.src=\'([^\'"]+)\'"')
+# the load half: i.ytimg answers a missing thumbnail size (sddefault.webp, maxresdefault) with a 404 whose body is a
+# 120x90 grey placeholder. chrome renders it and never fires error, so a 120 px wide load also takes the fallback.
 FALLBACK_JS = ("document.addEventListener('error',function(e){var t=e.target;if(t&&t.tagName==='IMG'&&t.getAttribute('data-fallback'))"
+               "{t.src=t.getAttribute('data-fallback');t.removeAttribute('data-fallback')}},true);"
+               "document.addEventListener('load',function(e){var t=e.target;if(t&&t.tagName==='IMG'&&t.naturalWidth<=120&&t.getAttribute('data-fallback'))"
                "{t.src=t.getAttribute('data-fallback');t.removeAttribute('data-fallback')}},true)")
 FALLBACK_TAG = '<script>' + FALLBACK_JS + '</script>'
 OLD_FALLBACK_RE = re.compile(r'[ \t]*<script>document\.addEventListener\(\'error\',function\(e\)\{var t=e\.target;if\(t&&t\.tagName===\'IMG\'&&t\.getAttribute\(\'data-fallback\'\)\).*?</script>\n?', re.S)
