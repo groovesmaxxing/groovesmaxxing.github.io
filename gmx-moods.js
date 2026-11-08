@@ -21,7 +21,11 @@
    and moodplaylists.py writes that same list to the chip's Spotify playlist at 00:20. shuffle still rolls a random
    seed. a row with C.dc = 1 is a discovery row (one of our artists, in no lane): at most 10 in a 30-row list, the
    overflow skipped like the per-artist cap, and it shows a small "new to us" marker (D.txt.disc). a chip with pl
-   (its playlist id) shows a playlist button in the tools row while that chip is on. */
+   (its playlist id) shows a playlist button in the tools row while that chip is on.
+   v4 (2026-11-07), the visual pass: mood tiles with the playlist covers (tileBtn), the when chips as one switch,
+   the playlist as the one big button with shuffle, copy and share as icons, and two-line rows with the track's
+   cover (C.art, a 24-hex image hash from moodart.py) that open on tap for the label, sound, dates and links.
+   the list itself (candidates, pick, the seeds, the hash) is unchanged, so moodplaylists.py still matches it. */
 (function(){
 'use strict';
 var root=document.getElementById('mz');if(!root)return;
@@ -30,7 +34,7 @@ var chipsEl=document.getElementById('mz-chips'),res=document.getElementById('mz-
     whenEl=document.getElementById('mz-when');
 var D=null,loading=null,names=null,cur=null,MOOD={},GW={},NEVER=[],ALL=[];
 var N=30,PER_ARTIST=2,PER_FILL=3,PRIMARY=6;
-var C={sp:0,t:1,a:2,l:3,g:4,ag:5,b:6,k:7,ln:8,f:9,r:10,bp:11,dz:12,ar:13,h:14,dc:15},MAX_DISC=10;
+var C={sp:0,t:1,a:2,l:3,g:4,ag:5,b:6,k:7,ln:8,f:9,r:10,bp:11,dz:12,ar:13,h:14,dc:15,art:16},MAX_DISC=10;
 var STOP={};('a an the and or for to of in on at with my me i some music songs song tracks track playlist mix mood moods vibe something '+
   'give want need please like que el la los las un una unos unas de del y o para por con mi musica cancion canciones algo dame quiero tracks rolas').split(' ').forEach(function(w){STOP[w]=1});
 var MON=['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
@@ -225,18 +229,32 @@ function pick(cand,seed){
 
 /* ---- painting ---- */
 function chipBtn(c,on){return '<button type="button" class="lc" data-mood="'+esc(c.id)+'" aria-pressed="'+(on?'true':'false')+'">'+esc(c.en)+'</button>'}
+/* v4 (2026-11-07), the visual pass: the moods are tiles carrying the daily playlist's cover (TILES lists the ones
+   with art in /media/covers/moods/), a mood without art (spooky) is a type tile. its name is the button's label */
+var TILES={'vibes':1,'at-the-beach':1,'morning':1,'late-night':1,'get-bumpy':1,'chill':1,'fresh':1};
+function tileBtn(c,on){
+  var nm=lang()==='es'?c.es||c.en:c.en;
+  return '<button type="button" class="tile'+(TILES[c.id]?'':' tx')+'" data-mood="'+esc(c.id)+'" aria-pressed="'+(on?'true':'false')+'" aria-label="'+esc(nm)+'" translate="no">'+
+    (TILES[c.id]?'<img src="/media/covers/moods/'+esc(c.id)+'.jpg" alt="" width="112" height="112" decoding="async">':'<span>'+esc(nm)+'</span>')+'</button>';
+}
 function paintChips(){
   var a=document.activeElement,keep=a&&chipsEl.contains(a)?a.getAttribute('data-mood'):null;
-  chipsEl.innerHTML=D.chips.filter(function(c){return inSeason(c)&&poolOf(c).length}).map(function(c){return chipBtn(c,cur&&cur.mood===c.id)}).join('');
+  chipsEl.innerHTML=D.chips.filter(function(c){return inSeason(c)&&poolOf(c).length}).map(function(c){return tileBtn(c,cur&&cur.mood===c.id)}).join('');
   if(keep){var b=chipsEl.querySelector('[data-mood="'+keep+'"]');if(b)b.focus({preventScroll:true})}
+  /* the picked tile slides into view in the swipe row, without moving the page */
+  var on=chipsEl.querySelector('[aria-pressed="true"]');
+  if(on&&chipsEl.scrollWidth>chipsEl.clientWidth){var tr=on.getBoundingClientRect(),cr=chipsEl.getBoundingClientRect();
+    if(tr.left<cr.left||tr.right>cr.right)chipsEl.scrollLeft+=tr.left-cr.left-(cr.width-tr.width)/2}
 }
+var WHEN_ICO={day:'☀',night:'☾',late:'✦'};
 function paintWhen(){
   if(!whenEl)return;
   if(!hasWhen()){whenEl.hidden=true;return}
   var a=document.activeElement,keep=a&&whenEl.contains(a)?a.getAttribute('data-when'):null;
   whenEl.setAttribute('aria-label',T('when_label'));
   whenEl.innerHTML=D.when.map(function(w){var on=cur&&cur.when===w.id;
-    return '<button type="button" class="lc" data-when="'+esc(w.id)+'" aria-pressed="'+(on?'true':'false')+'" title="'+esc(word(w.d))+'">'+esc(word(w))+'</button>'}).join('');
+    return '<button type="button" class="sg" data-when="'+esc(w.id)+'" aria-pressed="'+(on?'true':'false')+'" title="'+esc(word(w.d))+'">'+
+      (WHEN_ICO[w.id]?'<span aria-hidden="true">'+WHEN_ICO[w.id]+'</span> ':'')+esc(word(w))+'</button>'}).join('');
   whenEl.hidden=false;
   if(keep){var b=whenEl.querySelector('[data-when="'+keep+'"]');if(b)b.focus({preventScroll:true})}
 }
@@ -264,17 +282,35 @@ function setCard(st,c){
     '<ol class="mz-set-l">'+keyed.slice(0,3).map(function(k){return setRow(k[0])}).join('')+'</ol></div>';
 }
 /* the chip's daily playlist on spotify (D.chips[i].pl): today's seed is the list the playlist holds */
+/* v4: the playlist is the one big button. today's list is the playlist, so it says play on spotify; a shuffled
+   list says which playlist it opens, since the playlist holds today's list, not this one */
+function TX(k,en){return (D.txt&&D.txt[k]&&T(k))||en}
 function plBtn(st){
   var c=st.mood&&!st.q?chip(st.mood):null;if(!c||!c.pl||!D.txt||!D.txt.pl_today)return '';
-  var t=st.seed===dateSeed()?T('pl_today'):T('pl_chip').replace('{chip}',lang()==='es'?c.es||c.en:c.en);
-  return '<a class="lc mz-pl" href="https://open.spotify.com/playlist/'+esc(c.pl)+'" target="_blank" rel="noopener" translate="no">'+esc(t)+' ↗</a>';
+  var t=st.seed===dateSeed()?TX('play','play on spotify'):TX('pl_short','today’s playlist');
+  return '<a class="mz-play" href="https://open.spotify.com/playlist/'+esc(c.pl)+'" target="_blank" rel="noopener" translate="no">'+ICO.play+'<span>'+esc(t)+'</span></a>';
+}
+var ICO={
+  play:'<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M7 4l13 8-13 8z" fill="currentColor"/></svg>',
+  shuffle:'<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>',
+  copy:'<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg>',
+  share:'<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13M7 8l5-5 5 5M5 14v6h14v-6"/></svg>',
+  chev:'<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>'
+};
+function icoBtn(act,k,en){var t=TX(k,en);return '<button type="button" class="mz-ib" data-act="'+act+'" aria-label="'+esc(t)+'" title="'+esc(t)+'" translate="no">'+ICO[act]+'</button>'}
+/* the lanes as their emoji in the closed row (good vibe juice, bumpy, waaavy, wen playa, the D.lanes order) */
+var LANE_EMO=['🧃','🚧','🌊','🌴'];
+/* the row's cover from its art hash (C.art): 64 px, 300 px for a dense screen. no hash, a drawn record */
+function art(h){
+  if(!h)return '<span class="mz-art mz-art0" aria-hidden="true"></span>';
+  var u='https://i.scdn.co/image/ab67616d';
+  return '<img class="mz-art" src="'+u+'00004851'+esc(h)+'" srcset="'+u+'00004851'+esc(h)+' 1x, '+u+'00001e02'+esc(h)+' 2x" alt="" width="52" height="52" loading="lazy" decoding="async">';
 }
 function suggest(ids){return '<div class="mz-sug">'+ids.map(chip).filter(Boolean).map(function(c){return chipBtn(c,false)}).join('')+'</div>'}
 function month(iso){var p=iso.split('-');return MON[+p[1]-1]+' '+p[0]}
 function day(iso){var p=iso.split('-');return MON[+p[1]-1]+' '+(+p[2])}
 function row(i,n){
   var r=D.rows[i],sp=r[C.sp],m=[],l=[];
-  if(r[C.dc]===1&&D.txt&&D.txt.disc)m.push('<span class="nb nw mz-new" translate="no">'+esc(T('disc'))+'</span>');
   if(r[C.l])m.push('<span translate="no">'+esc(r[C.l])+'</span>');
   if(r[C.g])m.push('<span class="nb" translate="no">'+esc(D.genres[r[C.g]])+'</span>');
   if(r[C.b])m.push('<span class="nb" translate="no">'+r[C.b]+' bpm</span>');
@@ -290,9 +326,15 @@ function row(i,n){
     /* a when chip on and this set tagged for that hour: the badge takes the place of the heard-in link */
     if(w)l.push('<a class="mz-bdg" href="'+esc(s[1]+(r[C.h][1]?'#'+r[C.h][1]:''))+'" title="'+esc(s[0])+'" translate="no">'+esc(T('badge').replace('{slot}',word(w)))+'</a>');
     else if(s)l.push('<a href="'+esc(s[1]+(r[C.h][1]?'#'+r[C.h][1]:''))+'" title="'+esc(s[0])+'">heard in a set →</a>')}
-  return '<li class="mz-row" data-i="'+i+'"><span class="mz-i" aria-hidden="true">'+('0'+n).slice(-2)+'</span><div class="mz-b">'+
-    '<div class="mz-tt" translate="no">'+esc(r[C.t])+'</div><div class="mz-ar" translate="no">'+esc(r[C.a])+'</div>'+
-    (m.length?'<div class="mz-m">'+m.join('<i aria-hidden="true"> · </i>')+'</div>':'')+
+  /* v4: a closed row is the cover, the title and the artists, the lanes as emoji and a 🎧 when it was heard in a set.
+     the row is a button: it opens the label, sound and dates line and the links under it */
+  var emo=[],names=[];D.lanes.forEach(function(ln,b){if(r[C.ln]&(1<<b)){emo.push(LANE_EMO[b]||'');names.push(ln[0])}});
+  if(r[C.h])emo.push('🎧');
+  var nw=r[C.dc]===1&&D.txt&&D.txt.disc?'<span class="mz-new" translate="no">'+esc(T('disc'))+'</span>':'';
+  return '<li class="mz-row" data-i="'+i+'"><button type="button" class="mz-rb" aria-expanded="false" aria-controls="mz-x'+n+'" aria-label="'+esc(r[C.t]+', '+r[C.a])+'">'+
+    art(r[C.art])+'<span class="mz-b"><span class="mz-tt" translate="no">'+esc(r[C.t])+'</span><span class="mz-ar" translate="no">'+esc(r[C.a])+'</span>'+nw+'</span>'+
+    '<span class="mz-em" aria-hidden="true" title="'+esc(names.join(', '))+'">'+emo.join('')+'</span></button>'+
+    '<div class="mz-x" id="mz-x'+n+'" hidden>'+(m.length?'<div class="mz-m">'+m.join('<i aria-hidden="true"> · </i>')+'</div>':'')+
     '<div class="mz-l">'+l.join('')+'</div></div></li>';
 }
 function readLine(p){
@@ -343,10 +385,12 @@ function render(st,quiet){
   /* a heading role, not an h2: gmx-read.css restyles every .wrap h2 as a section rule */
   h+='<div class="mz-head">'+(st.mood?'<div class="mz-t" role="heading" aria-level="2">'+esc(c.title)+'</div>':'<div class="mz-t mz-q" role="heading" aria-level="2" translate="no">“'+esc(c.title)+'”</div>')+
      (c.desc?'<p class="mz-d">'+esc(c.desc)+'</p>':'')+(c.read?readLine(c.read):'')+
-     (st.auto?'<p class="mz-auto">picked for the hour. tap another mood or type your own.</p>':'')+
      c.relaxed.map(function(x){return '<p class="mz-auto">loosened the '+x+' to fill the list.</p>'}).join('')+
      '<p class="mz-n">'+count+'</p></div>'+
-     '<div class="mz-tools"><button type="button" class="lc" data-act="shuffle">shuffle</button><button type="button" class="lc" data-act="copy">copy the spotify links</button><button type="button" class="lc" data-act="share">share this list</button>'+plBtn(st)+'</div>'+
+     /* v4: one big button (the playlist, or copy the links for a typed list), the rest as icons */
+     (function(){var pl=plBtn(st);
+       return '<div class="mz-tools">'+(pl||'<button type="button" class="mz-play" data-act="copy">'+ICO.copy+'<span>copy the spotify links</span></button>')+
+         icoBtn('shuffle','a_shuffle','shuffle')+(pl?icoBtn('copy','a_copy','copy the spotify links'):'')+icoBtn('share','a_share','share this list')+'</div>'})()+
      '<p class="mz-msg" id="mz-msg" role="status"></p>'+
      '<ol class="mz-list">'+list.map(function(i,n){return row(i,n+1)}).join('')+'</ol>'+
      (c.size>list.length?'<div class="mz-foot"><button type="button" class="lc" data-act="shuffle">shuffle again</button></div>':'');
@@ -403,6 +447,10 @@ function copy(text,ok){
   else say('copy is not available here.');
 }
 root.addEventListener('click',function(e){
+  /* v4: a row opens and closes in place */
+  var rb=e.target.closest('.mz-rb');
+  if(rb&&root.contains(rb)){var x=document.getElementById(rb.getAttribute('aria-controls')),open=rb.getAttribute('aria-expanded')!=='true';
+    rb.setAttribute('aria-expanded',open?'true':'false');if(x)x.hidden=!open;rb.parentNode.classList.toggle('open',open);return}
   var b=e.target.closest('[data-mood],[data-act],[data-when]');if(!b||!root.contains(b))return;
   var act=b.getAttribute('data-act');
   if(b.hasAttribute('data-mood')){input.value='';go({mood:b.getAttribute('data-mood'),q:'',seed:dateSeed(),when:cur?cur.when:null},true);reveal();return}
