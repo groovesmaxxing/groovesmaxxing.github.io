@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-LDHLWTb+rWUj7vPpcETqLvFNWKN+x6N1ZXMjh6zcNks='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com https://embed.beatport.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-jdIkufksA0utEmJZL/kdgDOpzJAVH6xNyQemamNsDCY='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com https://embed.beatport.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <link rel="manifest" href="/manifest.webmanifest">
@@ -163,7 +163,7 @@ details.az .drow:last-child{border-bottom:0}
 
 <section class="bsec" id="most-played">
 <div class="letterhead">🔥 most played · 13</div>
-<p class="bnote">the ten artists with the most tracks across our playlists.</p>
+<p class="bnote">the artists with the most tracks across our playlists: the top ten, plus everyone tied with tenth.</p>
 <a class="drow" href="/artists/max-styler"><span class="dlane">🚧</span><span class="dn">Max Styler</span><span class="dm">28 tracks</span></a>
 <a class="drow" href="/artists/rafael"><span class="dlane"></span><span class="dn">Rafael</span><span class="dm">23 tracks</span></a>
 <a class="drow" href="/artists/adam-ten"><span class="dlane"></span><span class="dn">Adam Ten</span><span class="dm">20 tracks</span></a>
@@ -2128,7 +2128,7 @@ details.az .drow:last-child{border-bottom:0}
 (function(){
   var secs=[].slice.call(document.querySelectorAll('.bsec')),nav=[].slice.call(document.querySelectorAll('.bnav a')),all=document.getElementById('showall');
   function apply(){
-    var id=decodeURIComponent(location.hash.slice(1)),hit=null;
+    var id=location.hash.slice(1),hit=null;try{id=decodeURIComponent(id)}catch(e){}
     secs.forEach(function(s){if(s.id===id)hit=s});
     var el=document.getElementById(id);if(el&&!hit){var p=el.closest('.bsec');if(p)hit=p}
     secs.forEach(function(s){s.style.display=!hit||s===hit?'':'none'});

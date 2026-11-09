@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-H6+h8mUmpgLboSEIG0RMKrlvii1KCo2OtpIdfxNTUwA=' 'sha256-sMiZHl83IqX4xdem1GRLbjb+PAmOjkkDe5MQS9Nh9JY='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com https://embed.beatport.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-5rOJXZQKkbULn0LZ685Nn3rvj5O3mQO+77OzIfe/hJ8=' 'sha256-sMiZHl83IqX4xdem1GRLbjb+PAmOjkkDe5MQS9Nh9JY='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com https://embed.beatport.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0B0B0D">
@@ -50,7 +50,12 @@
   h2.tier{font-weight:900;font-size:clamp(24px,4.5vw,32px);letter-spacing:-.01em;margin:4px 0}
   .tiersub{color:var(--steel);font-size:14px;margin-bottom:18px}
 
-  .ev{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-bottom:12px}
+  .ev{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-bottom:12px;scroll-margin-top:90px}
+  .ev .go.cal{margin-left:14px}
+  button.go.share{position:relative;background:none;border:0;padding:0;margin-left:14px;font-family:'Space Mono',monospace;font-size:12.5px;color:var(--racing);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+  button.go.share::before{content:"";position:absolute;inset:-12px -6px}
+  .tour button.go.share{font-size:.75rem;margin-left:0}
+  #tmore{margin:12px 0 4px}
   .ev.hot{border-left:3px solid var(--racing)}
   .date{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--racing)}
   .ev h3{font-size:19px;font-weight:900;margin:3px 0 2px}
@@ -143,7 +148,7 @@
   <h2 class="tier">the big ones</h2>
   <p class="tiersub">Festival-scale, across the US, in date order.</p>
 
-  <div class="ev hot" data-end="2026-09-27">
+  <div class="ev hot" id="ev-crssd-fall" data-end="2026-09-27">
     <div class="date">Sep 26–27</div>
     <h3>CRSSD Festival · Fall <span class="canon">🔴</span></h3>
     <div class="where">Waterfront Park · San Diego, CA · 21+</div>
@@ -152,7 +157,7 @@
     <a class="go" href="https://www.crssdfest.com/" target="_blank" rel="noopener">crssdfest.com →</a>
   </div>
 
-  <div class="ev hot" data-end="2026-09-27">
+  <div class="ev hot" id="ev-portola" data-end="2026-09-27">
     <div class="date">Sep 26–27 · same weekend</div>
     <h3>Portola <span class="canon">🔴</span></h3>
     <div class="where">Pier 80 · San Francisco, CA</div>
@@ -161,7 +166,7 @@
     <a class="go" href="https://portolamusicfestival.com/" target="_blank" rel="noopener">portolamusicfestival.com →</a>
   </div>
 
-  <div class="ev hot" data-end="2026-10-17">
+  <div class="ev hot" id="ev-iii-points" data-end="2026-10-17">
     <div class="date">Oct 16–17</div>
     <h3>III Points <span class="canon">🔴</span></h3>
     <div class="where">Mana Wynwood · Miami, FL</div>
@@ -170,31 +175,34 @@
     <a class="go" href="https://www.iiipoints.com/" target="_blank" rel="noopener">iiipoints.com →</a>
   </div>
 
-  <div class="ev" data-end="2026-11-08">
+  <div class="ev" id="ev-edc-orlando" data-cal="e-edc-orlando-2026" data-end="2026-11-08">
     <div class="date">Nov 6–8</div>
     <h3>EDC Orlando <span class="canon">🔴</span></h3>
     <div class="where">Tinker Field · Orlando, FL</div>
     <div class="who"><strong><a class="gmx-ar" href="/artists/ayybo">AYYBO</a></strong> <span class="canon">🔴</span> · <strong><a class="gmx-ar" href="/artists/mau-p">Mau P</a></strong> <span class="canon">🔴</span> · <strong><a class="gmx-ar" href="/artists/prospa">Prospa</a> b2b <a class="gmx-ar" href="/artists/josh-baker">Josh Baker</a></strong> <span class="canon">🔴</span> · <strong><a class="gmx-ar" href="/artists/sidney-charles">Sidney Charles</a></strong> <span class="canon">🔴</span> · <strong><a class="gmx-ar" href="/artists/dennis-cruz">Dennis Cruz</a></strong> <span class="canon">🔴</span> · <strong><a class="gmx-ar" href="/artists/franky-rizardo">Franky Rizardo</a></strong> <span class="canon">🔴</span> · <strong><a class="gmx-ar" href="/artists/kaskade">Kaskade</a></strong> <span class="canon">🔴</span> · <strong><a class="gmx-ar" href="/artists/meduza">Meduza</a></strong> <span class="canon">🔴</span> · <strong><a class="gmx-ar" href="/artists/brunello">Brunello</a></strong> <span class="canon">🔴</span> · Boys Noize b2b Brutalismus 3000 · Marlon Hoffstadt · I Hate Models · Klangkuenstler · KI/KI</div>
     <p class="take" data-more data-more-lines="2">The main stage is not why you go. The house and techno undercard is deep this year, so plan the weekend around the smaller stages and skip the fireworks.</p>
     <a class="go" href="https://orlando.edc.com/" target="_blank" rel="noopener">orlando.edc.com →</a>
+    <a class="go cal" href="/calendar#e-edc-orlando-2026">on the calendar →</a>
   </div>
 
-  <div class="ev hot" data-end="2026-11-15">
+  <div class="ev hot" id="ev-seismic" data-cal="e-seismic-2026" data-end="2026-11-15">
     <div class="date">Nov 13–15</div>
     <h3>Seismic Dance Event <span class="canon">🔴</span></h3>
     <div class="where">The Concourse Project · Austin, TX</div>
     <div class="who"><strong><a class="gmx-ar" href="/artists/max-styler">Max Styler</a></strong> <span class="canon">🔴</span> · <strong><a class="gmx-ar" href="/artists/volkoder">Volkoder</a></strong> <span class="canon">🔴</span> · <strong><a class="gmx-ar" href="/artists/layton-giordani">Layton Giordani</a></strong> <span class="canon">🔴</span> · <strong><a class="gmx-ar" href="/artists/chris-lorenzo">Chris Lorenzo</a></strong> <span class="canon">🔴</span> · <strong><a class="gmx-ar" href="/artists/brunello">Brunello</a></strong> <span class="canon">🔴</span> · <strong><a class="gmx-ar" href="/artists/adam-sellouk">Adam Sellouk</a></strong> <span class="canon">🔴</span> · <strong><a class="gmx-ar" href="/artists/sg-lewis">SG Lewis</a></strong> <span class="canon">🔴</span> · <strong><a class="gmx-ar" href="/artists/kamino">Kamino</a></strong> <span class="canon">🔴</span> · <strong><a class="gmx-ar" href="/artists/devault">Devault</a></strong> <span class="canon">🔴</span> · Sara Landry · VTSS · Chris Liebing · Brutalismus 3000 · Porter Robinson (dj set) · Above &amp; Beyond</div>
     <p class="take" data-more data-more-lines="2">Austin's boutique house and techno weekend, three days inside one club complex. Two heavy-rotation names on the same bill and no walking between stages.</p>
     <a class="go" href="https://www.seismicdanceevent.com/" target="_blank" rel="noopener">seismicdanceevent.com →</a>
+    <a class="go cal" href="/calendar#e-seismic-2026">on the calendar →</a>
   </div>
 
-  <div class="ev" data-end="2027-01-01">
+  <div class="ev" id="ev-proper-nye" data-cal="e-proper-nye-2026" data-end="2027-01-01">
     <div class="date">Dec 31 – Jan 1</div>
     <h3>Proper NYE / NYD</h3>
     <div class="where">Petco Park · San Diego, CA · 21+</div>
     <div class="who"><span class="m">Lineup loads on the official site and is not readable here yet. Names land in this card once they are.</span></div>
     <p class="take" data-more data-more-lines="2">FNGRS CRSSD's two-day new year in the ballpark. The way to close the year on the west coast, and the first thing on next year's radar.</p>
     <a class="go" href="https://www.propernye.com/" target="_blank" rel="noopener">propernye.com →</a>
+    <a class="go cal" href="/calendar#e-proper-nye-2026">on the calendar →</a>
   </div>
 
   <!-- ================= TIER 2 ================= -->
@@ -423,7 +431,11 @@
   var all = [];
   var denverOn = false;
 
-  function esc(s){ var d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
+  function esc(s){ var d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML.replace(/"/g, '&quot;').replace(/'/g, '&#39;'); }
+  function todayIso(){ var t = new Date(); return t.getFullYear() + '-' + ('0' + (t.getMonth() + 1)).slice(-2) + '-' + ('0' + t.getDate()).slice(-2); }
+  /* the event name only when it says more than the artist's own name (a festival, a series) */
+  function evName(e){ var ev = e.event || '', a = (e.artist || '').toLowerCase(); return ev && a && ev.toLowerCase().indexOf(a) < 0 ? ev : ''; }
+  var FIRST = 60, expanded = false;
 
   function fmtDate(iso){
     if(!iso) return 'tba';
@@ -433,23 +445,59 @@
   }
 
   function render(){
-    var term = (q.value || '').toLowerCase().trim();
+    var term = (q.value || '').toLowerCase().trim(), today = todayIso();
     var rows = all.filter(function(e){
+      if(e.date && e.date < today) return false;
       if(denverOn && (e.city || '').toLowerCase() !== 'denver' && (e.city || '').toLowerCase() !== 'morrison' && (e.city || '').toLowerCase() !== 'englewood') return false;
       if(!term) return true;
-      return (e.artist || '').toLowerCase().indexOf(term) > -1 || (e.city || '').toLowerCase().indexOf(term) > -1 || (e.venue || '').toLowerCase().indexOf(term) > -1;
+      return (e.artist || '').toLowerCase().indexOf(term) > -1 || (e.city || '').toLowerCase().indexOf(term) > -1 || (e.venue || '').toLowerCase().indexOf(term) > -1 || (e.event || '').toLowerCase().indexOf(term) > -1;
     });
-    list.innerHTML = rows.slice(0, 1000).map(function(e){
+    var shown = expanded ? rows : rows.slice(0, FIRST);
+    shownRows = shown;
+    list.innerHTML = shown.map(function(e, i){
       var where = [e.city, e.region].filter(Boolean).join(', ');
-      var place = [e.venue, where].filter(Boolean).join(' · ') || 'venue tba';
-      return '<div class="tour"><span class="d">' + esc(fmtDate(e.date)) + '</span><span class="a">' + esc(e.artist) + '</span><span class="w">' + esc(place) + '</span>' + (e.url ? '<a class="go" href="' + esc(e.url) + '" target="_blank" rel="noopener">tickets ↗</a>' : '') + '</div>';
+      var place = [evName(e), e.venue, where].filter(Boolean).join(' · ') || 'venue tba';
+      var url = /^https?:\/\//i.test(e.url || '') ? e.url : '';
+      return '<div class="tour"><span class="d">' + esc(fmtDate(e.date)) + '</span><span class="a">' + esc(e.artist) + '</span><span class="w">' + esc(place) + '</span>' + (url ? '<a class="go" href="' + esc(url) + '" target="_blank" rel="noopener">tickets ↗</a><button type="button" class="go share" data-i="' + i + '" aria-label="share ' + esc(e.artist) + ', ' + esc(fmtDate(e.date)) + '">share</button>' : '') + '</div>';
     }).join('');
-    count.textContent = rows.length ? rows.length + ' shows' + (rows.length > 1000 ? ', showing the first 1000' : '') : '';
+    count.textContent = rows.length ? rows.length + ' shows' : '';
+    more.hidden = expanded || rows.length <= FIRST;
+    more.textContent = 'all ' + rows.length + ' shows';
     empty.style.display = rows.length ? 'none' : 'block';
   }
 
+  /* share: gmx-sheet.js when the page has it (it loads deferred, so this is read at tap time), else the phone's
+     share sheet, else the clipboard. a tour row shares its ticket link, a festival card its place on this page */
+  var shownRows = [];
+  function share(o, b){
+    if(window.gmxSheet && gmxSheet.share){ gmxSheet.share(o, b); return; }
+    var u = new URL(o.url, location.href).href, t = o.text || '';
+    function clip(){ if(navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t ? t + ' ' + u : u).then(function(){ b.textContent = 'link copied'; setTimeout(function(){ b.textContent = 'share'; }, 1600); }, function(){}); }
+    if(navigator.share){ try { navigator.share({ title: 'groovesMAXXING', text: t, url: u }).catch(function(e){ if(!e || e.name !== 'AbortError') clip(); }); } catch(e){ clip(); } return; }
+    clip();
+  }
+  function plain(n){ return n ? n.textContent.replace(/[\u{1F300}-\u{1FAFF}☀-➿]/gu, '').replace(/\s+/g, ' ').trim() : ''; }
+  list.addEventListener('click', function(ev){
+    var b = ev.target.closest('button.share'); if(!b) return;
+    var e = shownRows[+b.getAttribute('data-i')]; if(!e || !/^https?:\/\//i.test(e.url || '')) return;
+    var where = [e.city, e.region].filter(Boolean).join(', ');
+    share({ text: [e.artist, fmtDate(e.date), [evName(e), e.venue, where].filter(Boolean).join(', ')].filter(Boolean).join(' · '), url: e.url }, b);
+  });
+  [].forEach.call(document.querySelectorAll('.ev[id]'), function(card){
+    var h = card.querySelector('h3'); if(!h || card.querySelector('button.share')) return;
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'go share'; b.textContent = 'share';
+    b.setAttribute('aria-label', 'share ' + plain(h));
+    b.addEventListener('click', function(){ share({ text: [plain(h), plain(card.querySelector('.date')), plain(card.querySelector('.where'))].filter(Boolean).join(' · '), url: '/events#' + card.id }, b); });
+    card.appendChild(b);
+  });
+
+  var more = document.createElement('button');
+  more.type = 'button'; more.className = 'chip'; more.id = 'tmore'; more.hidden = true;
+  list.parentNode.insertBefore(more, list.nextSibling);
+  more.addEventListener('click', function(){ expanded = true; render(); });
+  den.setAttribute('aria-pressed', 'false');
   q.addEventListener('input', render);
-  den.addEventListener('click', function(){ denverOn = !denverOn; den.className = 'chip' + (denverOn ? ' on' : ''); render(); });
+  den.addEventListener('click', function(){ denverOn = !denverOn; den.className = 'chip' + (denverOn ? ' on' : ''); den.setAttribute('aria-pressed', denverOn ? 'true' : 'false'); render(); });
 
   fetch('radar-events.json').then(function(r){ return r.json(); }).then(function(data){
     all = data.events || [];
@@ -460,7 +508,7 @@
     }
     render();
   }).catch(function(){
-    stamp.textContent = 'could not load the radar data. refresh, or check back in a minute.';
+    stamp.textContent = navigator.onLine === false ? 'no signal, so the tour dates cannot load. they come back when you are online.' : 'could not load the radar data. refresh, or check back in a minute.';
     empty.style.display = 'block';
   });
 })();

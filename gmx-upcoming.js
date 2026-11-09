@@ -17,6 +17,11 @@
      /upcoming?mine=1 switches it on, and a crate synced from the account reapplies it.
    - the sample player (2026-11-05): a tap on a sample pill (a.ur-play, a link to the beatport track) loads
      beatport's own embed at the end of its li, one open at a time, a second tap closes it.
+   - web review 2026-11-09: each sample pill is named for its track (play the sample · <track>) with a 44px hit
+     area; label names in the where line link to the label page when the site has one; every row gets an id
+     (r-<title and artists>) so /upcoming#r-... opens its tab and fold and scrolls to it; a row with no store link
+     gets a beatport search (released) or says no link yet; the released tab points at the friday list and the
+     picks. the css for these is injected here so a rebuild of upcoming.html keeps it.
    without this script both lists read in full, one under the other. */
 (function(){
 'use strict';
@@ -47,6 +52,23 @@ function rel(iso,released){
   if(n===1)return 'tomorrow';
   return n<7?'this '+wd:n<14?'next '+wd:'in '+Math.round(n/7)+' weeks';
 }
+/* named nfold: start() has its own local fold (the crate's), which would shadow this one inside it */
+function nfold(s){return String(s||'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/&/g,'and').replace(/\s+/g,' ').trim()}
+var CSS='.ur-play{position:relative}.ur-play::before{content:"";position:absolute;inset:-12px -4px}'+
+  '.ur-hub a,.ev .where a.gmx-ar{color:inherit;text-decoration:underline;text-underline-offset:3px}.ur-hub a{color:var(--racing);white-space:nowrap}'+
+  '.ev.ur-hit{outline:2px solid var(--racing);outline-offset:4px;border-radius:8px}.ur-nolink{color:var(--steel)}'+
+  '.gmx-mine button b{opacity:1}';
+function css(){if(document.getElementById('ur-js-css'))return;var st=document.createElement('style');st.id='ur-js-css';st.textContent=CSS;document.head.appendChild(st)}
+/* the track a sample pill plays: a release's own row reads its h4, a track row the text before the bpm */
+function trackOf(a){
+  var li=a.closest('li'),t='';if(!li)return '';
+  if(li.classList.contains('ev'))return text(li.querySelector('h4'));
+  for(var n=li.firstChild;n;n=n.nextSibling){if(n.nodeType===1&&(n.classList.contains('ur-bk')||n.classList.contains('ur-play')))break;t+=n.textContent}
+  return t.replace(/\s+/g,' ').trim();
+}
+/* ' · ' on purpose: gmx-lang.js translates each segment on its own, so the words change and the track stays */
+function playName(a,open){if(a._t==null)a._t=trackOf(a);a.setAttribute('aria-label',(open?'close the sample':'play the sample')+(a._t?' · '+a._t:''))}
+function slug(s){return nfold(s).replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,80)}
 function nWord(n){return n+(n===1?' release':' releases')}
 function list(rows){var u=document.createElement('ul');u.className='ur-list';rows.forEach(function(r){u.appendChild(r)});return u}
 /* rebuild one date's rows: the first twelve in the card, the rest behind a fold, the count beside the date */
@@ -66,8 +88,39 @@ function start(){
   var wrap=document.querySelector('.wrap'),bar=document.querySelector('.ur-tabs');
   var panels={soon:document.getElementById('soon'),released:document.getElementById('released')};
   if(!wrap||!bar||!panels.soon||!panels.released||bar.getAttribute('role'))return;
-  wrap.classList.add('ur-js');
+  wrap.classList.add('ur-js');css();
   var KEYS=['soon','released'];
+
+  /* ids, so one release can be linked: r-<title and artists>, a repeat gets -2, -3 */
+  var seen={};
+  [].forEach.call(wrap.querySelectorAll('.ur-panel .ev'),function(ev){
+    if(!ev.id){var b='r-'+(slug(text(ev.querySelector('h4')))||'release'),id=b,i=1;while(seen[id]||document.getElementById(id))id=b+'-'+(++i);ev.id=id}
+    seen[ev.id]=1;
+    /* a row with no store link: a beatport search once it is out, a plain word before */
+    if(!ev.querySelector('a.go')){
+      var h4=ev.querySelector('h4'),q=((h4&&h4.firstChild&&h4.firstChild.nodeType===3?h4.firstChild.nodeValue:'')+' '+text(ev.querySelector('h4 small'))).replace(/\s+/g,' ').trim();
+      if(ev.getAttribute('data-out')==='1'){var g=document.createElement('a');g.className='go';g.href='https://www.beatport.com/search?q='+encodeURIComponent(q);g.target='_blank';g.rel='noopener';g.textContent='search beatport →';ev.appendChild(g)}
+      else{var w=document.createElement('span');w.className='go ur-nolink';w.textContent='no link yet';ev.appendChild(w)}
+    }
+  });
+  [].forEach.call(wrap.querySelectorAll('a.ur-play'),function(a){playName(a,a.getAttribute('aria-expanded')==='true')});
+  /* the released tab points at the verified weekly list and the picks */
+  var rpn=panels.released.querySelector('.ur-pn');
+  if(rpn&&!panels.released.querySelector('.ur-hub')){
+    var hub=document.createElement('p');hub.className='ur-pn ur-hub';
+    hub.innerHTML='the verified weekly list: <a href="/friday">fresh grooves friday →</a> · <a href="/picks">how our picks did →</a>';
+    rpn.parentNode.insertBefore(hub,rpn.nextSibling);
+  }
+  /* label names link to the label page when the site has one */
+  fetch('/names-index.json',{credentials:'same-origin'}).then(function(r){return r.ok?r.json():null}).then(function(n){
+    if(!n||!n.l)return;
+    [].forEach.call(wrap.querySelectorAll('.ur-panel .ev .where'),function(w){
+      var t=w.firstChild;if(!t||t.nodeType!==3)return;
+      var v=t.nodeValue,i=v.indexOf(' · '),lab=(i<0?v:v.slice(0,i)).trim(),s=lab&&n.l[nfold(lab)];if(!s)return;
+      var a=document.createElement('a');a.className='gmx-ar';a.href='/labels/'+s;a.textContent=lab;
+      w.insertBefore(a,t);t.nodeValue=v.slice(v.indexOf(lab)+lab.length);
+    });
+  }).catch(function(){});
 
   /* graduation: a dropping soon date that is over moves its confirmed rows to released, newest first */
   [].slice.call(panels.soon.querySelectorAll('.ur-day')).forEach(function(el){
@@ -228,8 +281,21 @@ function start(){
     go(e.key==='Home'?'soon':e.key==='End'?'released':cur==='soon'?'released':'soon',true);
   });
   /* only the tab hashes switch tabs, the skip link (#gmx-main) and others are left alone */
-  window.addEventListener('hashchange',function(){var h=location.hash;if(h&&h!=='#released'&&h!=='#soon')return;var k=h==='#released'?'released':'soon';if(k!==cur)show(k)});
-  show(location.hash==='#released'?'released':'soon');
+  /* a row hash (#r-...) opens that row's tab, widens the range just enough, opens its fold and scrolls to it */
+  function row(h){
+    var ev=/^#r-[a-z0-9-]+$/.test(h)&&document.getElementById(h.slice(1));
+    var pn=ev&&ev.closest('.ur-panel');if(!pn||!panels[pn.id])return false;
+    if(mine&&crate&&!matches(meta.filter(function(m){return m.ev===ev})[0]||{artists:[]},crate.names()))mine=false;
+    show(pn.id);
+    while(ev.closest('.gmx-hidden')&&idx[cur]<MENU[cur].length-1){idx[cur]++;sel.value=String(idx[cur]);apply()}
+    for(var d=ev.parentElement;d&&d!==wrap;d=d.parentElement)if(d.tagName==='DETAILS'&&!d.open)d.open=true;
+    [].forEach.call(wrap.querySelectorAll('.ur-hit'),function(x){x.classList.remove('ur-hit')});
+    ev.classList.add('ur-hit');
+    setTimeout(function(){ev.scrollIntoView({block:'center'})},0);
+    return true;
+  }
+  window.addEventListener('hashchange',function(){var h=location.hash;if(/^#r-/.test(h)){row(h);return}if(h&&h!=='#released'&&h!=='#soon')return;var k=h==='#released'?'released':'soon';if(k!==cur)show(k)});
+  if(!row(location.hash))show(location.hash==='#released'?'released':'soon');
   /* /upcoming#released lands on the panel with the tabs scrolled away: bring them into view, on a fresh visit only,
      so a reload or a back keeps where the reader was */
   var nav=(window.performance&&performance.getEntriesByType&&performance.getEntriesByType('navigation')[0])||{};
@@ -246,7 +312,7 @@ function start(){
   function closePlay(a){
     var li=a.closest('li');
     if(li)[].slice.call(li.children).forEach(function(c){if(c.classList.contains('ur-embed'))li.removeChild(c)});
-    a.setAttribute('aria-expanded','false');a.textContent='sample ▸';
+    a.setAttribute('aria-expanded','false');a.textContent='sample ▸';playName(a,false);
   }
   /* a hidden embed keeps playing: a tab switch, a filter or show change, or a closed fold stops every open one */
   function closeAll(el){[].forEach.call((el||wrap).querySelectorAll('a.ur-play[aria-expanded="true"]'),closePlay)}
@@ -258,9 +324,11 @@ function start(){
     if(a.getAttribute('aria-expanded')==='true'){closePlay(a);return}
     closeAll();
     var box=document.createElement('div');box.className='ur-embed';
-    box.innerHTML='<iframe src="https://embed.beatport.com/?id='+id+'&type=track" title="beatport sample" loading="lazy" scrolling="no" allow="autoplay"></iframe>';
-    li.appendChild(box);
-    a.setAttribute('aria-expanded','true');a.textContent='close ▴';
+    var fr=document.createElement('iframe');fr.src='https://embed.beatport.com/?id='+id+'&type=track';
+    if(a._t==null)a._t=trackOf(a);
+    fr.title='beatport sample'+(a._t?' · '+a._t:'');fr.setAttribute('loading','lazy');fr.setAttribute('scrolling','no');fr.setAttribute('allow','autoplay');
+    box.appendChild(fr);li.appendChild(box);
+    a.setAttribute('aria-expanded','true');a.textContent='close ▴';playName(a,true);
   });
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();

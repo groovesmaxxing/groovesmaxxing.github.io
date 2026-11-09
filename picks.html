@@ -64,7 +64,10 @@
   .method a{color:var(--day);text-decoration:none;border-bottom:1px solid var(--line)}
   .method a:hover{color:var(--racing);border-color:var(--racing)}
   footer{margin-top:34px;padding-top:18px;border-top:1px solid var(--line);color:var(--steel);font-size:12.5px;font-family:'Space Mono',monospace}
-  footer a{color:var(--day);text-decoration:none}
+  footer a{color:var(--day);text-decoration:underline;text-underline-offset:3px}
+  .back:has(+.fwd){margin-bottom:12px}.back.fwd{display:table}
+  .hubs{margin-top:22px;font-family:'Space Mono',monospace;font-size:12.5px;color:var(--steel)}
+  .hubs a{color:var(--day);text-decoration:underline;text-underline-offset:3px}
   footer a:hover{color:var(--racing)}
   @media (max-width:520px){.wrap{padding:36px 16px 64px}.ev{padding:14px 16px;gap:4px 12px}.rank{flex-basis:100%}.where{flex-basis:100%}}
   .wrap.pks{max-width:1040px}
@@ -124,7 +127,7 @@
 </head>
 <body>
 <div class="wrap pks">
-  <a class="back" href="/">← groovesmaxxing</a>
+  <a class="back" href="/">← groovesmaxxing</a><a class="back fwd" href="/friday">fresh grooves friday →</a>
   <div class="kicker">picks · monthly</div>
   <h1>the picks <span>scoreboard</span></h1>
   <p class="sub">every record we picked in a month, read again when the month ends. did the djs and the editors catch up? the misses stay on the page next to the hits.</p>
@@ -309,11 +312,14 @@
 
   <div class="fix">spotted a wrong name or a record that shouldn't be here? <a href="https://www.instagram.com/groovesmaxxing/" target="_blank" rel="noopener">tell us on instagram</a> and we'll fix it asap 🤝</div>
 
-  <div class="method"><b>how the scoreboard is read:</b> a pick is a record we added to good vibe juice or bumpy for fresh grooves friday that month, plus five we name by hand. on the day we pick it we note its dj support tier (how many different djs played it in published sets, counted by songstats) and its editorial playlist adds. when the month ends we read it again. a hit moved up a dj support tier, entered a beatport top 20 or got a new spotify editorial add. a move gained 5 or more djs or 2 or more editorial adds. flat means neither, with the record out two weeks or more. too soon means it came out under two weeks before the month ended, so it carries into the next read. dates read month.day. tiers and counts only, never dj names or set lists.</div>
+  <div class="method"><b>how the scoreboard is read:</b> a pick is a record we added to good vibe juice or bumpy for fresh grooves friday that month, plus five we name by hand. on the day we pick it we note its dj support tier (how many different djs played it in published sets, counted by songstats) and its editorial playlist adds. when the month ends we read it again. a hit moved up a dj support tier, entered a beatport top 20 or got a new spotify editorial add. a move gained 5 or more djs or 2 or more editorial adds. flat means neither, with the record out two weeks or more. too soon means it came out under two weeks before the month ended, so it carries into the next read. dates read month.day. tiers and counts only, never dj names or set lists. <span>a dash means songstats has no data for that record yet.</span></div>
+
+  <p class="hubs">groovesMAXXING · <a href="/">home</a> · <a href="/friday">fresh grooves friday</a> · <a href="/upcoming">dropping soon</a> · <a href="/newsletter">the newsletter</a></p>
 
   <footer>groovesmaxxing picks scoreboard · read again at every month end · last refresh 8 nov 2026 · dj support <a href="https://songstats.com/" target="_blank" rel="noopener">via songstats</a></footer>
 </div>
 <script src="/gmx-motion.js?v=2" defer></script>
+<script src="/gmx-hubs.js?v=1" defer></script>
 <script src="/gmx-more.js?v=2" defer></script>
 <script src="/gmx-quick.js?v=17" defer></script>
 <script src="/gmx-nav.js?v=36" defer></script>
