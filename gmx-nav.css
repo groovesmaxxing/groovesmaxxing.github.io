@@ -36,6 +36,7 @@
 @media (max-width:1024px){html.gmx-fab-on body{padding-bottom:calc(150px + env(safe-area-inset-bottom))}}
 @media (prefers-reduced-motion: reduce){.gmx-tabs .gmx-disc,.gmx-fab{transition:none;animation:none}.gmx-tabs .gmx-disc::after{display:none}.gmx-disc .gx-wv,.gmx-disc .gx-r,.gmx-hmark .gx-wv,.gmx-hmark .gx-r{animation:none}}
 .gmx-skip{position:absolute;left:12px;top:-60px;z-index:80;background:#FF1C02;color:#0B0B0D;font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.08em;padding:10px 14px;border-radius:999px;text-decoration:none}.gmx-skip:focus{top:12px;outline:3px solid #F2F2EF}
+.gmx-skip-to:focus{outline:none}
 /* a loading shape for blocks that fill from json: the radio stage, the tour list */
 .gmx-skel{border-radius:16px;background:linear-gradient(90deg,rgba(242,242,239,.05),rgba(242,242,239,.11),rgba(242,242,239,.05));background-size:200% 100%;animation:gmx-shimmer 1.2s linear infinite}@keyframes gmx-shimmer{to{background-position:-200% 0}}@media (prefers-reduced-motion: reduce){.gmx-skel{animation:none}}
 
@@ -56,6 +57,14 @@ html.gmx-nowon .gmx-fab{bottom:calc(138px + env(safe-area-inset-bottom))}
 .gmx-hdr .gmx-hsearch:hover,.gmx-hdr .gmx-hsearch:focus-visible{color:#FF1C02;border-color:#FF1C02;outline:none}
 .gmx-hdr .gmx-hmark:hover,.gmx-hdr .gmx-hmark:focus-visible{background:#141417;box-shadow:0 0 14px rgba(255,28,2,.45);outline:none}
 @media (min-width:1025px){.gmx-hdr .gmx-hmark,.gmx-hdr .gmx-hsearch{display:flex}}
+/* the wide-screen nav (gmx-nav.js buildHnav): the tab bar's links, minus home, as a slim row beside the logo. same type
+   and colours as the tab bar, hidden at 1024px and under where the tab bar is on (2026-11-09) */
+.gmx-hdr .gmx-hnav{display:none;align-items:center;gap:2px}
+.gmx-hnav a{display:inline-flex;align-items:center;min-height:40px;padding:0 10px;border-radius:999px;color:#A9A9B1;font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.02em;text-transform:lowercase;text-decoration:none;white-space:nowrap}
+.gmx-hnav a:hover{color:#F2F2EF}
+.gmx-hnav a[aria-current="page"]{color:#FF1C02}
+.gmx-hnav a:focus-visible{outline:3px solid #FF1C02;outline-offset:-3px}
+@media (min-width:1025px){.gmx-hdr .gmx-hnav{display:flex}}
 /* the back row: "← groovesmaxxing" first on every page, then the section crumb (all artists, all tracklists, the sets).
    the crumb hides on a phone, where the tab bar already covers it, so the row never wraps beside the chip. */
 .gmx-crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;min-width:0}
@@ -95,6 +104,8 @@ html.gmx-nowon .gmx-fab{bottom:calc(138px + env(safe-area-inset-bottom))}
 .gmx-quick-hit.lit .n{color:#FF1C02}
 .gmx-quick mark{background:none;color:#FF1C02}
 .gmx-quick-none{font-family:'Space Mono',monospace;font-size:.82rem;color:#8A8A93;line-height:1.7;padding:22px 0}
+.gmx-quick-msg{flex:none}
+.gmx-quick-msg:empty{display:none}
 .gmx-quick-count{font-family:'Space Mono',monospace;font-size:.75rem;color:#8A8A93;letter-spacing:.04em;margin:10px 0 0;min-height:1.2em;flex:none}
 .gmx-quick-all{flex:none;align-self:flex-start;font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.06em;color:#c9c9c4;text-decoration:none;border:1px solid #26262b;border-radius:999px;padding:0 16px;min-height:40px;line-height:40px;margin:12px 0 14px}
 .gmx-quick-all:hover,.gmx-quick-all:focus-visible{color:#FF1C02;border-color:#FF1C02;outline:none}

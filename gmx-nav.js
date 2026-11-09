@@ -36,10 +36,11 @@ function tabOf(){
   if(path==='/scan')return 'scan';
   if(under('/sets')||under('/tracklists')||path==='/interviews'||path==='/radio'||path==='/open-ids')return 'tracklists';
   if(under('/artists')||under('/labels')||path==='/roster'||path==='/badges')return 'artists';
-  if(under('/more')||under('/newsletter')||under('/upcoming')||path==='/events'||path==='/calendar'||path==='/moods'||path==='/tours'||path==='/venues'||path==='/friday'||path==='/privacy'||path==='/terms'||path==='/crate'||path==='/search')return 'more';
+  if(under('/more')||under('/newsletter')||under('/upcoming')||path==='/events'||path==='/calendar'||path==='/moods'||path==='/tours'||path==='/venues'||path==='/friday'||path==='/picks'||path==='/dj-support'||path==='/privacy'||path==='/terms'||path==='/crate'||path==='/search')return 'more';
   return null;
 }
 var tab=tabOf();
+function smooth(){try{return window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}catch(e){return 'smooth'}}
 function buildTabs(){
   var old=document.querySelectorAll('.gmx-tabs');for(var i=0;i<old.length;i++)old[i].parentNode.removeChild(old[i]);
   var nav=document.createElement('nav');nav.className='gmx-tabs';nav.setAttribute('aria-label','app tabs');
@@ -49,12 +50,45 @@ function buildTabs(){
     a.href=t[0];if(tab===t[1])a.setAttribute('aria-current','page');
     if(t[1]==='scan'){li.className='gmx-scan';a.innerHTML='<span class="gmx-disc">'+MARK+'</span>scan';a.setAttribute('aria-label','scan what is playing')}
     else a.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true">'+ICON[t[1]]+'</svg>'+t[1];
-    if(t[1]==='scan'&&tab==='scan')a.addEventListener('click',function(e){var go=document.getElementById('go');if(!go)return;e.preventDefault();go.click();try{go.scrollIntoView({block:'center',behavior:'smooth'})}catch(x){}});
+    if(t[1]==='scan'&&tab==='scan')a.addEventListener('click',function(e){var go=document.getElementById('go');if(!go)return;e.preventDefault();go.click();try{go.scrollIntoView({block:'center',behavior:smooth()})}catch(x){}});
     li.appendChild(a);ul.appendChild(li);
   });
   nav.appendChild(ul);document.body.appendChild(nav);
-  /* a skip link for keyboard and screen reader users */
+  /* a skip link for keyboard and screen reader users. the href is the fallback; a click resolves the real target (skipTarget) */
   if(!document.querySelector('.gmx-skip')){var main=document.querySelector('main')||document.querySelector('.wrap');if(main){if(!main.id)main.id='gmx-main';var sk=document.createElement('a');sk.className='gmx-skip';sk.href='#'+main.id;sk.textContent='skip to content';document.body.insertBefore(sk,document.body.firstChild);}}
+}
+/* the skip link lands past the header: the back row (.top or .gmx-top, where gmx-account.js mounts the header row after
+   this runs) sits inside .wrap, so the target is the first visible element after it, resolved at click time */
+function shown(n){return !!n&&!n.hidden&&n.getClientRects().length>0}
+function after(el){var n=el&&el.nextElementSibling;while(n&&!shown(n))n=n.nextElementSibling;return n}
+function skipTarget(){
+  var m=document.querySelector('main,[role="main"]');if(shown(m))return m;
+  /* the homepage has no back row: its header is header.hero, and the first .wrap can be a hidden band (next up) */
+  return after(document.querySelector('.wrap > .top, .wrap > .gmx-top'))||after(document.querySelector('body > header.hero'))||[].filter.call(document.querySelectorAll('.wrap'),shown)[0]||null;
+}
+document.addEventListener('click',function(e){
+  var sk=e.target.closest&&e.target.closest('a.gmx-skip');if(!sk)return;
+  var t=skipTarget();if(!t)return;
+  e.preventDefault();
+  if(!t.hasAttribute('tabindex')){t.setAttribute('tabindex','-1');t.classList.add('gmx-skip-to')}
+  try{t.focus({preventScroll:true})}catch(x){t.focus()}
+  try{t.scrollIntoView({block:'start'})}catch(x){}
+});
+/* the wide-screen nav (over 1024px there is no tab bar): the same tab links, minus home (the header logo is home),
+   as a slim row in the header (.gmx-hdr, painted by gmx-account.js). gmx-nav.css hides it at 1024px and under. */
+function buildHnav(){
+  if(document.querySelector('.gmx-hnav'))return true;
+  var r=document.querySelector('.gmx-hdr');if(!r)return false;
+  var nav=document.createElement('nav');nav.className='gmx-hnav';nav.setAttribute('aria-label','site');
+  TABS.forEach(function(t){if(t[1]==='home')return;var a=document.createElement('a');a.href=t[0];a.textContent=t[1];if(tab===t[1])a.setAttribute('aria-current','page');nav.appendChild(a)});
+  var m=r.querySelector('.gmx-hmark');r.insertBefore(nav,m?m.nextSibling:r.firstChild);
+  return true;
+}
+function watchHdr(){
+  if(buildHnav()||!window.MutationObserver)return;
+  var mo=new MutationObserver(function(){if(buildHnav()){mo.disconnect();clearTimeout(t)}});
+  mo.observe(document.body,{childList:true,subtree:true});
+  var t=setTimeout(function(){mo.disconnect()},10000);
 }
 /* ---- the search sheet ---- */
 var KIND={artist:['artists','🎤'],track:['tracks','🎵'],label:['labels','🏷️'],set:['sets','▶️'],tracklist:['tracklists','🎧'],talk:['talks','🎙️'],issue:['newsletter','📨']};
@@ -62,10 +96,18 @@ var ORDER=['artist','track','label','set','tracklist','talk','issue'],PER=4,MAX=
 /* what each tab narrows the sheet to. the other tabs are everything. */
 var SCOPE={tracklists:{label:'tracklists',kinds:['set','tracklist','track']},artists:{label:'artists',kinds:['artist','label']}};
 var scope=SCOPE[tab]?SCOPE[tab].kinds:null;
-var index=null,loading=null,opener=null,lit=-1,rows=[],timer=null,sheet,box,res,hint,recent,count,chips;
+var index=null,loading=null,opener=null,lit=-1,rows=[],timer=null,sheet,box,res,hint,recent,count,chips,msg;
 function fold(t){return (t||'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/\s+/g,' ').trim()}
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
-function mark(s,terms){var h=esc(s);terms.forEach(function(t){if(t.length<2)return;h=h.replace(new RegExp('('+t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig'),'<mark>$1</mark>')});return h}
+/* the highlighter: one pass over the raw string, longest word first, every piece escaped on its own, so a later word
+   never matches inside an earlier <mark> or an &amp; (search.html keeps a copy of this for its first paint) */
+function hl(s,terms){
+  s=String(s==null?'':s);
+  var ts=(terms||[]).filter(function(t){return t&&t.length>1}).sort(function(a,b){return b.length-a.length}).map(function(t){return t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')});
+  if(!ts.length)return esc(s);
+  return s.split(new RegExp('('+ts.join('|')+')','ig')).map(function(p,i){return i%2?'<mark>'+esc(p)+'</mark>':esc(p)}).join('');
+}
+var mark=hl;
 function score(it,terms){var k=it.k,n=fold(it.n),s=0;for(var i=0;i<terms.length;i++){var t=terms[i];if(k.indexOf(t)<0)return 0;s+=n.indexOf(t)===0?3:n.indexOf(t)>-1?2:1}return s}
 function tracks(j){
   return ((j&&j.rows)||[]).filter(function(r){return r.q&&!/^id\b/.test(r.q)}).map(function(r){return {t:'track',n:r.n,s:(r.set||'')+(r.at?' · '+r.at:''),u:r.u,k:r.q+' '+fold(r.set)}});
@@ -85,16 +127,17 @@ function build(){
   var sc=SCOPE[tab]?'<button type="button" class="gmx-quick-chip" data-scope="tab" aria-pressed="true">'+SCOPE[tab].label+'</button><button type="button" class="gmx-quick-chip" data-scope="all" aria-pressed="false">everything</button>':'<button type="button" class="gmx-quick-chip" data-scope="all" aria-pressed="true">everything</button>';
   sheet.innerHTML='<div class="gmx-quick-back" data-close></div>'+
     '<div class="gmx-quick-panel" role="dialog" aria-modal="true" aria-label="search">'+
-      '<div class="gmx-quick-top"><input type="search" class="gmx-quick-box" placeholder="'+(SCOPE[tab]?'search the '+SCOPE[tab].label+'…':'artist, set, label, sound…')+'" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-label="search the site" aria-controls="gmx-quick-res" aria-autocomplete="list">'+
+      '<div class="gmx-quick-top"><input type="search" class="gmx-quick-box" placeholder="'+(SCOPE[tab]?'search the '+SCOPE[tab].label+'…':'artist, set, label, sound…')+'" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-label="search the site" role="combobox" aria-expanded="false" aria-controls="gmx-quick-res" aria-autocomplete="list">'+
       '<button type="button" class="gmx-quick-x" data-close aria-label="close search">×</button></div>'+
       '<div class="gmx-quick-scope" role="group" aria-label="search in"><span class="gmx-quick-rl">in</span>'+sc+'</div>'+
       '<div class="gmx-quick-recent"></div>'+
-      '<div class="gmx-quick-res" id="gmx-quick-res" role="listbox"></div>'+
+      '<div class="gmx-quick-msg"></div>'+
+      '<div class="gmx-quick-res" id="gmx-quick-res" role="listbox" aria-label="results"></div>'+
       '<p class="gmx-quick-count" aria-live="polite"></p>'+
       '<a class="gmx-quick-all" href="/search">full search →</a>'+
     '</div>';
   document.body.appendChild(sheet);
-  box=sheet.querySelector('.gmx-quick-box');res=sheet.querySelector('.gmx-quick-res');hint=sheet.querySelector('.gmx-quick-all');recent=sheet.querySelector('.gmx-quick-recent');count=sheet.querySelector('.gmx-quick-count');chips=sheet.querySelector('.gmx-quick-scope');
+  box=sheet.querySelector('.gmx-quick-box');res=sheet.querySelector('.gmx-quick-res');hint=sheet.querySelector('.gmx-quick-all');recent=sheet.querySelector('.gmx-quick-recent');count=sheet.querySelector('.gmx-quick-count');chips=sheet.querySelector('.gmx-quick-scope');msg=sheet.querySelector('.gmx-quick-msg');
   sheet.addEventListener('click',function(e){
     if(e.target.closest('[data-close]'))close();
     var s=e.target.closest('[data-scope]');if(s){setScope(s.getAttribute('data-scope'));run();box.focus();return}
@@ -125,22 +168,25 @@ function run(){
   var v=fold(box.value),terms=v.split(' ').filter(Boolean);
   hint.href=terms.length?'/search?q='+encodeURIComponent(box.value.trim()):'/search';
   drawRecent();
-  if(!terms.length){res.innerHTML='';rows=[];lit=-1;count.textContent='';return}
+  if(!terms.length){res.innerHTML='';msg.innerHTML='';rows=[];lit=-1;count.textContent='';box.setAttribute('aria-expanded','false');box.removeAttribute('aria-activedescendant');return}
   load().then(function(j){
-    if(!j){res.innerHTML='<p class="gmx-quick-none">the index did not load. try the full search.</p>';count.textContent='';return}
     if(fold(box.value)!==v)return;
+    if(!j){res.innerHTML='';rows=[];lit=-1;msg.innerHTML='<p class="gmx-quick-none">the index did not load. try the full search.</p>';count.textContent='';box.setAttribute('aria-expanded','false');box.removeAttribute('aria-activedescendant');return}
     var hits={},total=0,outside=0;
     j.items.forEach(function(it){var sc=score(it,terms);if(!sc)return;if(scope&&scope.indexOf(it.t)<0){outside++;return}(hits[it.t]=hits[it.t]||[]).push([sc,it]);total++});
     var out='',n=0;
     ORDER.forEach(function(k){
       var h=hits[k];if(!h||!h.length||n>=MAX)return;
       h.sort(function(a,b){return b[0]-a[0]||a[1].n.localeCompare(b[1].n)});
-      out+='<div class="gmx-quick-grp">'+KIND[k][0]+'<span>'+h.length+'</span></div>';
+      out+='<div role="group" aria-labelledby="gmx-quick-g'+k+'"><div class="gmx-quick-grp" id="gmx-quick-g'+k+'">'+KIND[k][0]+'<span>'+h.length+'</span></div>';
       h.slice(0,PER).forEach(function(p){if(n>=MAX)return;var it=p[1];out+='<a class="gmx-quick-hit" role="option" id="gmx-quick-'+(n++)+'" href="'+esc(it.u)+'"><span class="k" aria-hidden="true">'+KIND[k][1]+'</span><span class="n">'+mark(it.n,terms)+'</span><span class="s">'+mark(it.s,terms)+'</span></a>'});
+      out+='</div>';
     });
-    if(!out)out='<p class="gmx-quick-none">'+(outside?'nothing in the '+SCOPE[tab].label+' for that, but '+outside+' elsewhere. <button type="button" class="gmx-quick-chip" data-scope="all">search everything</button>':'nothing for that. fewer letters, or the full search.')+'</p>';
+    /* the no-result line sits outside the listbox (.gmx-quick-msg), which holds only groups of options */
+    msg.innerHTML=out?'':'<p class="gmx-quick-none">'+(outside?'nothing in the '+SCOPE[tab].label+' for that, but '+outside+' elsewhere. <button type="button" class="gmx-quick-chip" data-scope="all">search everything</button>':'nothing for that. fewer letters, or the full search.')+'</p>';
     res.innerHTML=out;
     rows=[].slice.call(res.querySelectorAll('.gmx-quick-hit'));light(rows.length?0:-1);
+    box.setAttribute('aria-expanded',rows.length?'true':'false');
     count.textContent=total?(total+' result'+(total===1?'':'s')+(total>rows.length?', the first '+rows.length+' here':'')+(scope&&outside?' · '+outside+' more in everything':'')):'';
   });
 }
@@ -164,8 +210,20 @@ document.addEventListener('click',function(e){
   if(!a||a.closest('.gmx-quick')||path==='/search')return;
   e.preventDefault();open(a);
 });
+/* keep Tab inside the open sheet (it is aria-modal): wrap from the last control to the first and back. the list of
+   controls is read again on every press, because the results change while typing */
+function trap(e){
+  var pn=sheet.querySelector('.gmx-quick-panel');if(!pn)return;
+  var f=[].slice.call(pn.querySelectorAll('input,button:not([disabled]),a[href],[tabindex]:not([tabindex="-1"])')).filter(function(x){return x.getClientRects().length>0});
+  if(!f.length)return;
+  var a=document.activeElement,first=f[0],last=f[f.length-1];
+  if(!pn.contains(a)){e.preventDefault();(e.shiftKey?last:first).focus()}
+  else if(e.shiftKey&&a===first){e.preventDefault();last.focus()}
+  else if(!e.shiftKey&&a===last){e.preventDefault();first.focus()}
+}
 document.addEventListener('keydown',function(e){
   if(e.key==='Escape'&&sheet&&!sheet.hidden){e.preventDefault();close();return}
+  if(e.key==='Tab'&&sheet&&!sheet.hidden){trap(e);return}
   if((e.key==='k'||e.key==='K')&&(e.metaKey||e.ctrlKey)){e.preventDefault();if(sheet&&!sheet.hidden)close();else open();return}
   if(e.key==='/'&&!e.metaKey&&!e.ctrlKey&&!e.altKey&&!typing(e.target)&&!(sheet&&!sheet.hidden)){e.preventDefault();open()}
 });
@@ -178,7 +236,7 @@ function buildFab(){
   document.documentElement.classList.add('gmx-fab-on');
   var b=document.createElement('button');b.type='button';b.className='gmx-fab';b.setAttribute('aria-label','search the site');b.setAttribute('data-gmx-quick','');
   b.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true">'+ICON.search+'</svg>';
-  b.addEventListener('click',function(){open(b)});
+  /* no click listener of its own: the document click handler above opens the sheet for [data-gmx-quick] */
   document.body.appendChild(b);
 }
 function watchNow(){
@@ -195,11 +253,28 @@ function loadAccount(){
   if(window.gmxAccount||document.querySelector('script[src^="/gmx-account.js"]'))return;
   var s=document.createElement('script');s.src='/gmx-account.js?v=20';s.defer=true;document.head.appendChild(s);
 }
+/* the service worker on every page that carries the shell (contract C4, 2026-11-09): register /sw.js once, after load
+   and idle, unless this page (one of the inline snippets) or an earlier visit already did. inside the installed app
+   the page also asks the worker for its precache top-up, so a drive-by browser visit does not pay for it. */
+function regSW(){
+  if(!('serviceWorker' in navigator)||window.gmxSWReg)return;
+  window.gmxSWReg=true;
+  function app(){try{return navigator.standalone===true||(window.matchMedia&&matchMedia('(display-mode: standalone)').matches)}catch(e){return false}}
+  function go(){
+    var sw=navigator.serviceWorker;
+    sw.getRegistration().then(function(r){return r||sw.register('/sw.js')}).then(function(r){
+      if(!app()||!r)return;
+      var w=r.active||sw.controller;if(w)try{w.postMessage({gmx:'topup'})}catch(e){}
+    }).catch(function(){});
+  }
+  function idle(){if(window.requestIdleCallback)requestIdleCallback(go,{timeout:5000});else setTimeout(go,1500)}
+  if(document.readyState==='complete')idle();else window.addEventListener('load',idle);
+}
 function mount(){
   if(document.querySelector('meta[http-equiv="refresh"]'))return;
-  buildTabs();buildFab();watchNow();loadAccount();
+  buildTabs();buildFab();watchNow();loadAccount();watchHdr();regSW();
 }
 if(document.body)mount();else document.addEventListener('DOMContentLoaded',mount);
 window.gmxQuick={open:open,close:close};
-window.gmxNav={tab:tab,open:open,close:close,mark:MARK,icon:ICON};
+window.gmxNav={tab:tab,open:open,close:close,mark:MARK,icon:ICON,hl:hl,esc:esc};
 })();

@@ -9,7 +9,9 @@
 var sec=document.getElementById('nextup'),list=document.getElementById('nextup-list');
 if(!sec||!list||!window.fetch||!window.gmxCrate)return;
 var fold=gmxCrate.fold;
-function esc(s){var d=document.createElement('div');d.textContent=s||'';return d.innerHTML}
+/* attribute-safe: quotes too, since the link goes inside href="..." (same esc as gmx-nav.js) */
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function web(u){return typeof u==='string'&&/^https?:\/\//i.test(u)}
 function days(iso){
   if(!iso)return null;var p=iso.split('-'),d=new Date(+p[0],+p[1]-1,+p[2]),t=new Date();t.setHours(0,0,0,0);
   return Math.round((d-t)/86400000);
@@ -36,7 +38,7 @@ fetch('/upcoming.json').then(function(r){if(!r.ok)throw new Error(r.status);retu
   list.innerHTML=show.map(function(r){
     var who=r.artists.join(', ');
     return '<li><span class="d">'+esc(when(r))+'</span><span class="t"><b>'+esc(who||r.title)+'</b>'+(who?' · '+esc(r.title):'')+(r.label?' <span class="w">· '+esc(r.label)+'</span>':'')+'</span>'+
-      (r.link?'<a class="go" href="'+esc(r.link)+'" target="_blank" rel="noopener">'+(days(r.iso)>0?'pre-save':'listen')+' →</a>':'')+'</li>';
+      (web(r.link)?'<a class="go" href="'+esc(r.link)+'" target="_blank" rel="noopener">'+(days(r.iso)>0?'pre-save':'listen')+' →</a>':'')+'</li>';
   }).join('');
   var more=sec.querySelector('[data-count]');if(more)more.textContent=rows.length>show.length?'all '+rows.length+' from my crate →':'every drop from my crate →';
   sec.hidden=false;

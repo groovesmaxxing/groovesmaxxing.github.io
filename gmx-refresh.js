@@ -7,8 +7,25 @@
 'use strict';
 var THRESH=72, MAXPULL=140, startX=null, startY=null, pulling=false, armed=false, dir=null, ui=null, label=null, ring=null, busy=false;
 var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* only inside the installed app (2026-11-09): a browser tab has its own pull to refresh, so two would fight */
+var app=false;try{app=navigator.standalone===true||!!(window.matchMedia&&window.matchMedia('(display-mode: standalone)').matches)}catch(e){}
 function blocked(){try{return !!(window.gmxRefreshBlocked&&window.gmxRefreshBlocked())}catch(e){return false}}
-function tick(ms){try{if(navigator.vibrate)navigator.vibrate(ms||15)}catch(e){}}
+/* never while a sheet is open (search, "...", sign in: each locks the page with overflow hidden, so scrollY stays 0
+   behind it) and never from inside a box that is scrolled down itself (a results list going back up) */
+var SHEETS='.gmx-quick,.gmx-acct,.gmx-sheet,[aria-modal="true"],[role="dialog"]';
+function sheetOpen(){
+  var h=document.documentElement;
+  if(h.classList.contains('gmx-quick-open'))return true;
+  try{if(getComputedStyle(document.body).overflowY==='hidden'||getComputedStyle(h).overflowY==='hidden')return true}catch(e){}
+  return false;
+}
+function scrolledBox(t){
+  for(var el=t;el&&el.nodeType===1&&el!==document.body&&el!==document.documentElement;el=el.parentElement){
+    if(el.scrollTop>0)return true;
+  }
+  return false;
+}
+function tick(ms){try{if(navigator.vibrate&&(!navigator.userActivation||navigator.userActivation.hasBeenActive))navigator.vibrate(ms||15)}catch(e){}}
 function mk(){
   if(ui)return ui;
   var st=document.createElement('style');
@@ -42,8 +59,9 @@ function go(){
   Promise.resolve(reg).then(function(r){if(r)return r.update()}).catch(function(){}).then(function(){location.reload()});
 }
 document.addEventListener('touchstart',function(e){
-  if(busy||e.touches.length!==1||window.scrollY>0||blocked()){startY=null;return}
-  var t=e.target;if(t.closest&&t.closest('input,textarea,select,[contenteditable],.set-viewport,.rail,.jump,[style*="overflow-x"]')){startY=null;return}
+  if(!app||busy||e.touches.length!==1||window.scrollY>0||blocked()||sheetOpen()){startY=null;return}
+  var t=e.target;if(t.closest&&t.closest('input,textarea,select,[contenteditable],.set-viewport,.rail,.jump,[style*="overflow-x"],'+SHEETS)){startY=null;return}
+  if(scrolledBox(t)){startY=null;return}
   startX=e.touches[0].clientX;startY=e.touches[0].clientY;pulling=false;armed=false;dir=null;
 },{passive:true});
 document.addEventListener('touchmove',function(e){
@@ -51,7 +69,7 @@ document.addEventListener('touchmove',function(e){
   var dx=e.touches[0].clientX-startX,dy=e.touches[0].clientY-startY;
   if(!dir&&(Math.abs(dx)>8||Math.abs(dy)>8))dir=Math.abs(dx)>Math.abs(dy)?'x':'y';
   if(dir==='x'){startY=null;hide();return}                     /* a sideways swipe belongs to whatever is under it */
-  if(dy<=0||window.scrollY>0){if(pulling)hide();return}
+  if(dy<=0||window.scrollY>0||scrolledBox(e.target)){if(pulling)hide();return}
   pulling=true;show(dy);
 },{passive:true});
 function end(){if(startY===null)return;startY=null;if(pulling&&armed&&!blocked()){go();return}hide()}

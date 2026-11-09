@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-BSbBf2fPiiss2LsnOW5VQIEZKjGpQuBHGUI6zHFTCg0='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com https://embed.beatport.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-0/0RGNwvbsk1Zup1uhr/RpEGqN3ktog//Sj1e+NxBZo=' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com https://embed.beatport.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <link rel="manifest" href="/manifest.webmanifest">
@@ -122,7 +122,7 @@ details.az .drow:last-child{border-bottom:0}
 .hint{font-family:'Space Mono',monospace;font-size:.8rem;color:var(--steel);line-height:1.7;margin-top:26px}
 .hint a{color:#cfcfc9}
 mark{background:none;color:var(--racing)}
-@media (max-width:640px){.hit{flex-wrap:wrap}.hs{margin-left:34px;max-width:100%;text-align:left}}
+@media (max-width:640px){.hit{flex-wrap:wrap}.hs{margin-left:34px;max-width:calc(100% - 34px);min-width:0;overflow-wrap:anywhere;text-align:left}}
 .sounds{margin-top:10px}.sounds .sl{font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--racing);align-self:center;margin-right:4px}
 </style>
 <link rel="canonical" href="https://groovesmaxxing.com/search">
@@ -171,7 +171,9 @@ var KIND={artist:['artists','🎤'],label:['labels','🏷️'],set:['sets','▶�
 var ORDER=['artist','label','set','talk','tracklist','issue'],LIMIT=8,index=null,only='',expanded={};
 function fold(t){return (t||'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/\s+/g,' ').trim()}
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
-function mark(s,terms){var h=esc(s);terms.forEach(function(t){if(t.length<2)return;h=h.replace(new RegExp('('+t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig'),'<mark>$1</mark>')});return h}
+/* one pass over the raw text, longest word first, each piece escaped (a copy of gmxNav.hl in gmx-nav.js, kept here
+   because this page can paint its first results before the shell script runs) */
+function mark(s,terms){s=String(s==null?'':s);var ts=terms.filter(function(t){return t&&t.length>1}).sort(function(a,b){return b.length-a.length}).map(function(t){return t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')});if(!ts.length)return esc(s);return s.split(new RegExp('('+ts.join('|')+')','ig')).map(function(p,i){return i%2?'<mark>'+esc(p)+'</mark>':esc(p)}).join('')}
 var soundsEl=document.getElementById('sounds');
 /* the sounds the index counted (genres, lanes, moods): one tap fills the box, so a search by feel works
    with no typing. the chip for the current query lights up */

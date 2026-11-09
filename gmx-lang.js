@@ -77,7 +77,7 @@ function watch(){
   mo=new MutationObserver(function(list){
     mo.disconnect();
     list.forEach(function(r){
-      if(r.type==='childList')r.addedNodes.forEach(walk);
+      if(r.type==='childList')r.addedNodes.forEach(function(n){walk(n);if(n.nodeType===1){if(n.matches&&n.matches(EN_BLOCKS)&&!n.hasAttribute('lang')){n.setAttribute('lang','en');n.setAttribute('data-gmx-en','')}markEn(n)}});
       else if(r.type==='characterData'){if(!skipped(r.target.parentElement))text(r.target)}
       else if(!skipped(r.target))attr(r.target,r.attributeName);
     });
@@ -90,14 +90,28 @@ function restore(){
   if(mo){mo.disconnect();mo=null}
   texts.forEach(function(r,n){if(n.data===r[1])n.data=r[0]});texts.clear();
   attrs.forEach(function(m,el){for(var a in m)if(el.getAttribute(a)===m[a][1])el.setAttribute(a,m[a][0])});attrs.clear();
+  unmarkEn();
 }
+/* the blocks the dictionary leaves in english (bios, tracklists, anything marked translate=no) keep lang="en" while the
+   page is in another language, so a screen reader does not read them with spanish sounds. only lang attributes set
+   here (data-gmx-en) are taken off again; an authored lang is left alone */
+var EN_BLOCKS='table.tl,.bio,[translate="no"]:not(.gmx-lang),.notranslate';
+function markEn(root){
+  var r=root&&root.querySelectorAll?root:document;
+  [].slice.call(r.querySelectorAll(EN_BLOCKS)).forEach(function(el){if(!el.hasAttribute('lang')){el.setAttribute('lang','en');el.setAttribute('data-gmx-en','')}});
+}
+function unmarkEn(){[].slice.call(document.querySelectorAll('[data-gmx-en]')).forEach(function(el){el.removeAttribute('lang');el.removeAttribute('data-gmx-en')})}
 
 /* ---- switching ---- */
+/* one load in flight per language; a failed script tag is taken out again, so retries never pile up tags */
+var waiting={};
 function load(c,done){
   if(window.gmxLangDict&&gmxLangDict[c])return done(gmxLangDict[c]);
+  if(waiting[c]){waiting[c].push(done);return}
+  waiting[c]=[done];
   var s=document.createElement('script');s.src=FILES[c];
-  s.onload=function(){done(window.gmxLangDict&&gmxLangDict[c])};
-  s.onerror=function(){done(null)};
+  function fin(){var q=waiting[c]||[],d=(window.gmxLangDict&&gmxLangDict[c])||null;waiting[c]=null;if(!d&&s.parentNode)s.parentNode.removeChild(s);q.forEach(function(f){f(d)})}
+  s.onload=fin;s.onerror=fin;
   document.head.appendChild(s);
 }
 function apply(c){
@@ -106,9 +120,11 @@ function apply(c){
   if(c==='en'){restore();dict=null;return}
   load(c,function(d){
     if(cur!==c)return;
-    if(!d){html.setAttribute('lang',SRC);return}   /* offline or missing: the page stays in english */
+    /* offline or missing: the page stays in english and the circle says so, so the next tap tries again. the stored
+       pick stays, so the next page tries spanish again, which is what the visitor asked for */
+    if(!d){html.setAttribute('lang',SRC);cur='en';paint();return}
     if(dict!==d){restore();dict=d;compile()}
-    walk(html);watch();
+    walk(html);markEn(document);watch();
   });
 }
 function set(c){
@@ -120,6 +136,7 @@ function set(c){
 /* ---- the circle ---- */
 var CSS='.gmx-lang{flex:none;position:relative;z-index:3;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;width:40px;height:40px;padding:0;margin:0;border-radius:50%;border:1px solid rgba(242,242,239,.18);background:rgba(11,11,13,.8);color:#8A8A93;font:600 .74rem/1 "Space Mono",monospace;letter-spacing:.04em;text-transform:lowercase;cursor:pointer;-webkit-tap-highlight-color:transparent}'+
  '.gmx-lang:hover,.gmx-lang:focus-visible{color:#FF1C02;border-color:#FF1C02;outline:none}'+
+ '.gmx-lang:focus-visible{outline:3px solid #FF1C02;outline-offset:3px}'+
  '.gmx-lang.fixed{position:fixed;right:12px;top:calc(12px + env(safe-area-inset-top));z-index:60}'+
  '.hero > .gmx-lang.left{position:absolute;top:calc(16px + env(safe-area-inset-top));left:16px;z-index:2}';
 function paint(){

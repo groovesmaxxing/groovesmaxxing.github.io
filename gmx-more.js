@@ -51,7 +51,14 @@ function apply(el){
   var q=el.getAttribute('data-more-media');
   if(q&&window.matchMedia&&!matchMedia(q).matches){off(el);return}
   var mode=el.getAttribute('data-more')||'text';
-  if(el.__gmxMoreBtn&&el.__gmxMoreBtn.parentNode)return;
+  if(el.__gmxMoreBtn&&el.__gmxMoreBtn.parentNode){
+    /* a clipped text block is measured again (a rotate or a resize can make it fit), an open one is left alone */
+    if(mode!=='text'||el.classList.contains('gmx-more-open'))return;
+    var l2=+el.getAttribute('data-more-lines')||3,h2=parseFloat(getComputedStyle(el).lineHeight)||parseFloat(getComputedStyle(el).fontSize)*1.5;
+    el.classList.remove('gmx-more-clip');
+    if(el.scrollHeight<=h2*(l2+1)+2)off(el);else el.classList.add('gmx-more-clip');
+    return;
+  }
   if(mode==='fold'){btn(el,el.getAttribute('data-more-label')||'more');set(el,false);return}
   if(mode==='items'){
     var n=+el.getAttribute('data-more-items')||6;
