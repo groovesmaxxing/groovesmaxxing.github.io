@@ -186,7 +186,7 @@ Promise.all([fetch('/sets-index.json').then(function(r){return r.json()}),ready]
 }).catch(function(){note.textContent='the library did not load. refresh and try again.'});
 })();
 </script>
-<script src="/gmx-player.js" defer></script>
+<script src="/gmx-player.js?v=1" defer></script>
 
 <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})})}</script>
 <script src="/gmx-motion.js?v=2" defer></script>

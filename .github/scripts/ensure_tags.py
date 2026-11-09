@@ -23,7 +23,7 @@ MOTION_JS = '<script src="/gmx-motion.js?v=2" defer></script>'
 T = {
     'player_css': '<link rel="stylesheet" href="/gmx-player.css?v=3">',
     'nav_css': '<link rel="stylesheet" href="/gmx-nav.css?v=21">',
-    'player_js': '<script src="/gmx-player.js" defer></script>',
+    'player_js': '<script src="/gmx-player.js?v=1" defer></script>',
     'nav_js': '<script src="/gmx-nav.js?v=37" defer></script>',
     'follow_js': '<script src="/gmx-follow.js?v=1" defer></script>',
     'crate_js': '<script src="/gmx-crate.js?v=1" defer></script>',
