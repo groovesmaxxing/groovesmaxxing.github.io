@@ -17,7 +17,9 @@ const fs=require('fs');try{fs.mkdirSync('shots',{recursive:true})}catch(e){}
   const log=(ok,msg)=>{console.log((ok?'  ok  ':'  FAIL')+' '+msg);if(!ok)fails++;};
   for(const vp of [{w:390,h:844,name:'phone'},{w:1280,h:900,name:'desktop'}]){
     console.log(`\n=== ${vp.name} ${vp.w}x${vp.h} ===`);
-    const ctx=await b.newContext({viewport:{width:vp.w,height:vp.h},hasTouch:vp.w<600,isMobile:vp.w<600});
+    /* no service worker here: its own fetches skip the route below, so a page it controls would ask the bare server
+       for clean urls (and the worker is not what this check is about) */
+    const ctx=await b.newContext({viewport:{width:vp.w,height:vp.h},hasTouch:vp.w<600,isMobile:vp.w<600,serviceWorkers:'block'});
     /* outside hosts are blocked. python's http.server has no clean urls, so a same-origin path with no extension
        (fetch('/events'), the worker's '/scan') is asked as its .html, the way cloudflare pages answers it */
     await ctx.route('**/*',r=>{const u=r.request().url();if(!u.startsWith(BASE))return r.abort();const x=new URL(u),last=x.pathname.split('/').pop();
