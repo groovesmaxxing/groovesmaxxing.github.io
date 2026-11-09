@@ -27,7 +27,7 @@ T = {
     'nav_js': '<script src="/gmx-nav.js?v=37" defer></script>',
     'follow_js': '<script src="/gmx-follow.js?v=1" defer></script>',
     'crate_js': '<script src="/gmx-crate.js?v=1" defer></script>',
-    'related_js': '<script src="/gmx-related.js" defer></script>',
+    'related_js': '<script src="/gmx-related.js?v=1" defer></script>',
     'upcoming_js': '<script src="/gmx-upcoming.js?v=5" defer></script>',   # v4: the sample player, v3 monday graduation (2026-11-05), v2 tabs and the show menu
     # gmx-quick.js and gmx-quick.css left T on 2026-11-09 (cr-shell-12): the search sheet lives in gmx-nav.js, and
     # the quick-search pass below now strips both tags. the files stay in the repo for cached old pages.
