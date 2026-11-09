@@ -271,7 +271,7 @@ QUICK_RX = [re.compile(r'[ \t]*<script src="/gmx-quick\.js(?:\?v=\d+)?" defer></
 for f in sorted(files('*.html') + files('artists/*.html') + files('labels/*.html') + files('tracklists/*.html') + files('newsletter/*.html')):
     if f.startswith('google'): continue
     s = open(f, encoding='utf-8', newline='').read(); o = s
-    if '/gmx-nav.js' not in s: continue   # gmx-quick.js loads the shell on a page without the nav tag: keep it there
+    if '/gmx-nav.js?v=' not in s: continue   # gmx-quick.js loads the shell on a page without the nav tag: keep it there (?v= so asset_tags.py does not read a bare reference)
     for rx in QUICK_RX: s = rx.sub('', s)
     if s != o:
         with open(f, 'w', encoding='utf-8', newline='') as fh: fh.write(s)
