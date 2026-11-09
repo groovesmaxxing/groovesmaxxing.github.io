@@ -200,6 +200,8 @@ words:{
 'pick a mood, get 30 tracks from our playlists':'elige un mood y llévate 30 tracks de nuestras playlists',
 /* the picks scoreboard (2026-11-08): the tab title, the home-page link and the songstats credit link */
 'the picks scoreboard':'el marcador de picks','picks scoreboard':'marcador de picks','via songstats':'vía songstats',
+/* the viberate pills (2026-11-09): the credit link, the climbing pill, the /badges streaming section */
+'via viberate':'vía viberate','climbing':'subiendo','streaming':'streaming',
 },
 scoped:[
 /* dropping soon (2026-11-04): the calendar chip beside each date, weekday and month short */
@@ -336,6 +338,13 @@ rules:[
 ['(\\d+) tracks, the long swim','$1 tracks para nadar largo'],['(\\d+) tracks for golden hour','$1 tracks para la hora dorada'],
 ['(\\d+) mixes, front to back','$1 mixes, de principio a fin'],['(\\d+) hours off the airwaves','$1 horas directo de la radio'],
 ['(.+) playlist on (Spotify|SoundCloud)','playlist $1 en $2'],
+/* the viberate pills (2026-11-09): the listeners tier, subgenre and country ranks, the /badges credit line. above the general 'on' rule */
+['(\\d+[KM]\\+) monthly listeners','$1 oyentes mensuales'],
+['#(\\d+) in (.+) on viberate','#$1 en ~2 en viberate'],
+['#(\\d+) (.+) on viberate','#$1 $2 en viberate'],
+['top (\\d+) in (.+) on viberate','top $1 en ~2 en viberate'],
+['top (\\d+) (.+) on viberate','top $1 $2 en viberate'],
+['streaming and social figures via viberate, as of (\\d\\d\\.\\d\\d)','cifras de streaming y redes vía viberate, al $1'],
 ['(.+) on (Spotify|SoundCloud|YouTube)','$1 en $2']
 ],
 terms:{
