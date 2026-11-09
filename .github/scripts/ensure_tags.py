@@ -30,7 +30,7 @@ T = {
     'upcoming_js': '<script src="/gmx-upcoming.js?v=4" defer></script>',   # v4: the sample player, v3 monday graduation (2026-11-05), v2 tabs and the show menu
     'quick_css': '<link rel="stylesheet" href="/gmx-quick.css">',
     'quick_js': '<script src="/gmx-quick.js?v=15" defer></script>',
-    'sheet_css': '<link rel="stylesheet" href="/gmx-sheet.css?v=2">',
+    'sheet_css': '<link rel="stylesheet" href="/gmx-sheet.css?v=3">',
     'sheet_js': '<script src="/gmx-sheet.js?v=3" defer></script>',
     # the account layer (2026-10-12): "this is me" on every artist and label profile
     'account_css': '<link rel="stylesheet" href="/gmx-account.css?v=2">',
