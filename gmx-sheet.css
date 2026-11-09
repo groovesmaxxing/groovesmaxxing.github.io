@@ -29,13 +29,21 @@ td.x .gmx-more{width:36px;height:36px;margin-left:6px}td.x .gmx-more svg{width:1
 .gmx-sheet-act:hover,.gmx-sheet-act:focus-visible{background:#1b1b1f;outline:none}
 .gmx-sheet-act.on,.gmx-sheet-act.on svg{color:#FF1C02}
 .gmx-sheet-act.on svg path{fill:#FF1C02}
-.gmx-sheet-toast{position:absolute;left:50%;bottom:calc(26px + env(safe-area-inset-bottom));transform:translate(-50%,8px);background:#F2F2EF;color:#0B0B0D;font-family:'Space Mono',monospace;font-size:.76rem;letter-spacing:.04em;padding:9px 14px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .15s,transform .15s;z-index:2;max-width:calc(100% - 32px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gmx-sheet-toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom));transform:translate(-50%,8px);background:#F2F2EF;color:#0B0B0D;font-family:'Space Mono',monospace;font-size:.76rem;letter-spacing:.04em;padding:9px 14px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .15s,transform .15s;z-index:86;max-width:calc(100% - 32px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .gmx-sheet-toast.on{opacity:1;transform:translate(-50%,0)}
 .gmx-sheet-open,.gmx-sheet-open body{overflow:hidden}
+/* the page-level buttons: share and copy the list on a tracklist mast, share on a homepage playlist card. the toast sits on the body above the tab bar */
+.gmx-tlact{display:inline-flex;align-items:center;gap:7px;min-height:40px;background:transparent;color:#F2F2EF;cursor:pointer;font:inherit;font-family:'Space Mono',monospace;font-size:.76rem;letter-spacing:.06em;border:1px solid var(--line,#26262b);border-radius:999px;padding:6px 13px;transition:color .15s,border-color .15s}
+.gmx-tlact svg{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.gmx-tlact:hover{color:#FF1C02;border-color:#FF1C02;outline:none}
+.gmx-tlact:focus-visible{color:#FF1C02;border-color:#FF1C02;outline:3px solid #FF1C02;outline-offset:2px}
+.player .gmx-pshare{position:absolute;top:14px;right:14px;margin:0;z-index:1;background:rgba(11,11,13,.45);color:#F2F2EF;border-color:rgba(242,242,239,.22);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.gmx-pshare svg{fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.player .gmx-pshare:hover,.player .gmx-pshare:focus-visible{border-color:#FF1C02}
+.player.has-share h3{padding-right:48px}
 @media (min-width:720px){
   .gmx-sheet{align-items:center}
   .gmx-sheet-panel{width:min(440px,calc(100% - 32px));border-bottom:1px solid #26262b;border-radius:18px;padding:12px 16px 14px;max-height:78vh}
   .gmx-sheet-grip{display:none}
-  .gmx-sheet-toast{bottom:18px}
 }
-@media (prefers-reduced-motion: reduce){.gmx-sheet-panel{animation:none}.gmx-more,.gmx-sheet-toast{transition:none}}
+@media (prefers-reduced-motion: reduce){.gmx-sheet-panel{animation:none}.gmx-more,.gmx-sheet-toast,.gmx-tlact{transition:none}}

@@ -27,15 +27,16 @@ var I={
 function svg(k){return '<svg viewBox="0 0 24 24" aria-hidden="true">'+(I[k]||I.link)+'</svg>'}
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 function text(n){return n?(n.textContent||'').replace(/\s+/g,' ').trim():''}
-var sheet,panel,opener,toastT;
+var sheet,panel,opener,toastT,toastEl;
 function build(){
   sheet=document.createElement('div');sheet.className='gmx-sheet';sheet.hidden=true;
-  sheet.innerHTML='<div class="gmx-sheet-back" data-close></div><div class="gmx-sheet-panel" role="dialog" aria-modal="true" aria-labelledby="gmx-sheet-title"><div class="gmx-sheet-grip" aria-hidden="true"></div><div class="gmx-sheet-head"><div class="gmx-sheet-tx"><p class="gmx-sheet-title" id="gmx-sheet-title"></p><p class="gmx-sheet-sub"></p></div><button type="button" class="gmx-sheet-x" data-close aria-label="close">×</button></div><div class="gmx-sheet-acts"></div></div><div class="gmx-sheet-toast" role="status" aria-live="polite"></div>';
+  sheet.innerHTML='<div class="gmx-sheet-back" data-close></div><div class="gmx-sheet-panel" role="dialog" aria-modal="true" aria-labelledby="gmx-sheet-title"><div class="gmx-sheet-grip" aria-hidden="true"></div><div class="gmx-sheet-head"><div class="gmx-sheet-tx"><p class="gmx-sheet-title" id="gmx-sheet-title"></p><p class="gmx-sheet-sub"></p></div><button type="button" class="gmx-sheet-x" data-close aria-label="close">×</button></div><div class="gmx-sheet-acts"></div></div>';
   document.body.appendChild(sheet);panel=sheet.querySelector('.gmx-sheet-panel');
   sheet.addEventListener('click',function(e){if(e.target.closest('[data-close]'))close()});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&sheet&&!sheet.hidden){e.preventDefault();close()}});
 }
-function toast(msg){var t=sheet.querySelector('.gmx-sheet-toast');t.textContent=msg;t.classList.add('on');clearTimeout(toastT);toastT=setTimeout(function(){t.classList.remove('on')},1800)}
+/* one toast on the body, outside the sheet, so a button on the page (share, copy the list) can speak while the sheet is shut */
+function toast(msg){var t=toastEl;if(!t){t=toastEl=document.createElement('div');t.className='gmx-sheet-toast';t.setAttribute('role','status');t.setAttribute('aria-live','polite');document.body.appendChild(t)}t.textContent=msg;t.classList.add('on');clearTimeout(toastT);toastT=setTimeout(function(){t.classList.remove('on')},1800)}
 function open(model,from){
   if(!sheet)build();
   opener=from||document.activeElement;
@@ -98,12 +99,22 @@ function setModel(s){
   ];
   return {title:title,sub:sub,actions:acts};
 }
+/* a tracklist page: the set's name (h1 + the first piece of the sub line) and a row's bare name */
+function setNameOf(){var h1=text(document.querySelector('h1')),sub=text(document.querySelector('.mast .sub'));return h1+(sub?' · '+sub.split(' · ')[0]:'')}
+function rowName(x){var c=x.cloneNode(true);[].slice.call(c.querySelectorAll('.get,.thx,.gnote,.soft,.sig,.lab,.gmx-heart,.gmx-more')).forEach(function(e){e.remove()});return text(c)}
+function tlRows(){var out=[];[].slice.call(document.querySelectorAll('table.tl tr')).forEach(function(r){var x=r.querySelector('td.x');if(!x)return;var at=text(r.querySelector('td.t'));out.push((at?at+' ':'')+rowName(x))});return out}
+/* the whole list as plain text: the set's name, one line per row, a blank line, the page */
+function listText(rows){rows=rows||tlRows();return [setNameOf()].concat(rows,['',location.origin+location.pathname.replace(/\.html$/,'')]).join('\n')}
+function copyList(){
+  var rows=tlRows(),t=listText(rows);
+  if(!navigator.clipboard||!navigator.clipboard.writeText){toast('copy is not available here');return}
+  navigator.clipboard.writeText(t).then(function(){toast('copied, '+rows.length+' lines')},function(){toast('copy is not available here')});
+}
 /* a tracklist row */
 function rowModel(r){
   var x=r.querySelector('td.x');if(!x)return null;
-  var c=x.cloneNode(true);[].slice.call(c.querySelectorAll('.get,.thx,.gnote,.soft,.sig,.lab,.gmx-heart,.gmx-more')).forEach(function(e){e.remove()});
-  var name=text(c),n=text(r.querySelector('td.n')),ta=r.querySelector('td.t a'),at=text(r.querySelector('td.t')),open=r.classList.contains('open')||/^ID\s*-\s*ID\b/i.test(name);
-  var h1=text(document.querySelector('h1')),sub=text(document.querySelector('.mast .sub')),setName=h1+(sub?' · '+sub.split(' · ')[0]:'');
+  var name=rowName(x),n=text(r.querySelector('td.n')),ta=r.querySelector('td.t a'),at=text(r.querySelector('td.t')),open=r.classList.contains('open')||/^ID\s*-\s*ID\b/i.test(name);
+  var setName=setNameOf();
   var deep=ta?ta.getAttribute('href'):null,here=location.pathname.replace(/\.html$/,'')+(n?'#t'+n:'');
   var acts=[
     at?{icon:'play',label:'play from '+at,onClick:function(){if(ta&&document.querySelector('.embed iframe')){ta.click();return}if(deep)window.open(deep,'_blank','noopener')}}:null,
@@ -151,10 +162,32 @@ function wire(root){
   });
   var sec=root.querySelector?document.querySelector('section.artist[id]'):null;
   if(sec&&!sec.querySelector('.meta .gmx-more')){var pill=sec.querySelector('.meta .gmx-follow');if(pill)pill.parentNode.insertBefore(more(text(sec.querySelector('h1.aname')),function(){return profileModel(sec)}),pill.nextSibling)}
+  /* a tracklist page: share it and copy the list, from the mast, so the installed app needs no address bar */
+  var meta=document.querySelector('.mast .meta');
+  if(meta&&document.querySelector('table.tl')&&!document.querySelector('.gmx-tlact')){
+    var sb=tlAct('share','share','share'),cb=tlAct('copy','list','copy the list');
+    sb.addEventListener('click',function(){share(setNameOf(),location.pathname.replace(/\.html$/,''))()});
+    cb.addEventListener('click',copyList);
+    meta.appendChild(sb);meta.appendChild(cb);
+  }
+  /* a playlist card: share the playlist's own spotify or soundcloud link */
+  [].slice.call(document.querySelectorAll('.player')).forEach(function(p){
+    if(p.querySelector('.gmx-pshare'))return;
+    var f=p.querySelector('iframe'),h=p.querySelector('h3'),src=f?(f.getAttribute('src')||f.getAttribute('data-src')||''):'',url=null,m;
+    if(!h)return;
+    if((m=/open\.spotify\.com\/embed\/(playlist|album|track)\/([A-Za-z0-9]+)/.exec(src)))url='https://open.spotify.com/'+m[1]+'/'+m[2];
+    else if((m=/w\.soundcloud\.com\/player\/\?(?:.*&)?url=([^&]+)/.exec(src)))try{url=decodeURIComponent(m[1])}catch(e){url=null}
+    if(!url)return;
+    var name=text(h).replace(/[^\p{L}\p{N}\p{P}]+$/u,'').trim()||'this playlist';
+    var b=document.createElement('button');b.type='button';b.className='gmx-more gmx-pshare';b.setAttribute('aria-label','share '+name);b.title='share';b.innerHTML=svg('share');
+    b.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();share(name,url)()});
+    h.parentNode.insertBefore(b,h.nextSibling);p.classList.add('has-share');
+  });
 }
+function tlAct(k,icon,label){var b=document.createElement('button');b.type='button';b.className='tag gmx-tlact';b.setAttribute('data-tl',k);b.innerHTML=svg(icon)+'<span>'+esc(label)+'</span>';return b}
 function later(e){setTimeout(function(){wire(e&&e.target&&e.target.querySelectorAll?e.target:document)},0)}
 function start(){wire();setTimeout(wire,400);setTimeout(wire,1500)}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
 document.addEventListener('gmx:stage',later);document.addEventListener('gmx:cards',later);
-window.gmxSheet={open:open,close:close,wire:wire};
+window.gmxSheet={open:open,close:close,wire:wire,listText:function(){return listText()}};
 })();

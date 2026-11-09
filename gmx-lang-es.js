@@ -101,6 +101,7 @@ words:{
 'own site':'sitio propio','starter page, full profile under construction':'página inicial, el perfil completo viene en camino',
 'notable releases':'lanzamientos clave','record label':'disquera',
 /* tracklist pages and the hub */
+'share':'compartir','copy the list':'copiar la lista','link copied':'link copiado','copy is not available here':'copiar no está disponible aquí',
 'watch the set':'mira el set','listen on spotify':'escúchalo en spotify','tracklist by':'tracklist por','not out yet':'aún no sale',
 'every set we have tagged':'cada set que hemos etiquetado','how do we do it?':'¿cómo lo hacemos?','how we do it':'cómo lo hacemos',
 'close':'cerrar','filter by platform':'filtrar por plataforma','all':'todos','email us':'escríbenos','dm us on instagram':'mándanos dm en instagram',
@@ -276,6 +277,8 @@ scoped:[
 'groovesmaxxing picks scoreboard':'marcador de picks de groovesmaxxing','read again at every month end':'se revisa cada cierre de mes'}]
 ],
 rules:[
+/* the share and copy buttons (2026-11-08): the copy toast and the playlist card share label */
+['copied, (\\d+) lines','copiados, $1 renglones'],['share (?!this )(.+)','compartir $1'],
 /* the picks scoreboard (2026-11-08): the legend stamp, the same words /dj-support uses */
 ['numbers as of (\\d{1,2}) (jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec) (\\d{4})','números al $1 ~2 $3'],
 /* dropping soon (2026-11-04): the relative days, the long dates, the counts, the folds, the line and the footer stamp */
