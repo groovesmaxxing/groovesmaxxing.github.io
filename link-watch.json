@@ -1,17 +1,17 @@
 {
- "generated": "2026-11-08T16:46:06Z",
- "pages": 920,
+ "generated": "2026-11-09T21:01:31Z",
+ "pages": 921,
  "links": {
-  "checkable": 9080,
+  "checkable": 9215,
   "by_kind": {
-   "other": 4091,
-   "spotify": 2755,
+   "other": 4221,
+   "spotify": 2760,
    "soundcloud": 923,
    "youtube": 1311
   },
-  "checked_within_recheck": 7690,
+  "checked_within_recheck": 6995,
   "asked_this_run": 700,
-  "unknown": 1022,
+  "unknown": 958,
   "budget": 700,
   "recheck_days": 10
  },
@@ -396,6 +396,21 @@
    "first_seen": "2026-10-30T16:48:35Z"
   },
   {
+   "url": "https://open.spotify.com/track/7KLsZrIzZc4S3sy3dYiX1g",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Bassline",
+   "pages": [
+    "/friday",
+    "/tracklists/layton-giordani-electric-island-toronto-2026",
+    "/upcoming"
+   ],
+   "page_count": 3,
+   "checked": "2026-10-29T17:03:34Z",
+   "first_seen": "2026-10-16T14:58:58Z"
+  },
+  {
    "url": "https://soundcloud.com/anotr/talk-to-you-ft-54-ultra",
    "kind": "soundcloud",
    "code": 200,
@@ -640,7 +655,7 @@
     "/tracklists/disco-lines-club-space-miami-2026"
    ],
    "page_count": 2,
-   "checked": "2026-10-27T16:00:06Z",
+   "checked": "2026-11-09T21:01:31Z",
    "first_seen": "2026-11-02T20:29:27Z"
   },
   {
@@ -1216,20 +1231,6 @@
    "page_count": 2,
    "checked": "2026-10-29T17:03:34Z",
    "first_seen": "2026-11-07T16:36:19Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/7KLsZrIzZc4S3sy3dYiX1g",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Bassline",
-   "pages": [
-    "/friday",
-    "/tracklists/layton-giordani-electric-island-toronto-2026"
-   ],
-   "page_count": 2,
-   "checked": "2026-10-29T17:03:34Z",
-   "first_seen": "2026-10-16T14:58:58Z"
   },
   {
    "url": "https://open.spotify.com/track/7aBOeUzDz8JIhBYYgKZJih",
@@ -2923,5 +2924,5 @@
   }
  ],
  "anchors_broken": [],
- "summary": "8 broken, 4 moved, 827 read differently, 0 broken anchors, 7690 of 9080 links checked in the last 10 days"
+ "summary": "8 broken, 4 moved, 827 read differently, 0 broken anchors, 6995 of 9215 links checked in the last 10 days"
 }
