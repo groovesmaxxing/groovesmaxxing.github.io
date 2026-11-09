@@ -348,7 +348,6 @@ words:{
 'uses your mic for up to 15 seconds after you tap ·':'usa tu micrófono hasta 15 segundos después de tocar ·',
 'tap once near the speaker. we listen for up to 15 seconds and start matching at four, then every couple of seconds. a sure match stops the scan early.':'toca una vez cerca de la bocina. escuchamos hasta 15 segundos y empezamos a buscar a los cuatro, luego cada par de segundos. si la encontramos segura, el escaneo para antes.',
 'we check our own library of sets first, then the big catalogs.':'primero revisamos nuestra biblioteca de sets, luego los catálogos grandes.',
-'your scans stay on this phone, and every result has a button to tell us we got it wrong.':'tus escaneos se quedan en este celular, y cada resultado tiene un botón para decirnos que nos equivocamos.',
 'hearing a set? under the result, tell us which one. we send the clip once more to find the spot in it, then delete it.':'¿estás oyendo un set? abajo del resultado dinos cuál. mandamos el clip una vez más para encontrar el momento exacto y luego lo borramos.',
 'at a set, turn on auto. the phone scans on its own every eight minutes, keeps the screen awake, and builds tonight\'s list as it goes. auto checks our own library only, a tap checks the big catalogs too. tap the rings or the auto button to stop.':'en un set, prende auto. el celular escanea solo cada ocho minutos, deja la pantalla prendida y arma la lista de esta noche sobre la marcha. auto solo revisa nuestra biblioteca, un toque también revisa los catálogos grandes. toca los anillos o el botón auto para parar.',
 'no signal? the clip stays on this phone and gets matched the moment you are back online.':'¿sin señal? el clip se queda en este celular y se busca en cuanto vuelvas a tener conexión.',
@@ -420,7 +419,6 @@ words:{
 'clip waiting for signal':'clip en espera de señal',
 'clips waiting for signal':'clips en espera de señal',
 'the arrows skip, a swipe does too. nothing plays until you tap.':'las flechas saltan, deslizar también. nada suena hasta que tocas.',
-'can\'t name it? you choose whether we keep the clip to keep hunting. our server keeps nothing unless you say so.':'¿no la encontramos? tú decides si guardamos el clip para seguir buscando. nuestro servidor no guarda nada si tú no lo dices.',
 'only youtube and soundcloud set links can be tagged for now.':'por ahora solo se pueden etiquetar sets de youtube y soundcloud.',
 'set link ready. scan, then tag it under the result.':'link del set listo. escanea y luego etiquétalo abajo del resultado.',
 'nothing open matches that. named ones leave this board:':'nada abierto coincide. los que ya tienen nombre salen de este tablero:',
@@ -581,6 +579,14 @@ words:{
 'follow your first ID':'sigue tu primer ID',
 'tap "tell me when it drops" on a scan, in the card or in recent scans, and it lands here.':'toca "avísame cuando salga" en un escaneo, en la tarjeta o en escaneos recientes, y llega aquí.',
 'you are set.':'ya quedaste.',
+/* web review 2026-11-09, fixer pass: the link wait, the start limit, the scan page's how it works box, the share words */
+'stopped waiting here. type the six digits, or tap the link in the mail.':'dejamos de esperar aquí. escribe los seis dígitos o toca el link del correo.',
+'too many sign-in mails right now. try again in a few minutes.':'demasiados correos para iniciar sesión ahorita. inténtalo otra vez en unos minutos.',
+'can\'t name it? you choose whether we keep the clip to keep hunting. no audio is kept unless you say so.':'¿no la encontramos? tú decides si guardamos el clip para seguir buscando. no guardamos audio si tú no lo dices.',
+'your recent scans are listed on this phone, and our server keeps a line for each one (no audio) so they can follow you if you sign in. every result has a button to tell us we got it wrong.':'tus escaneos recientes aparecen en este celular, y nuestro servidor guarda una línea de cada uno (sin audio) para que te sigan si inicias sesión. cada resultado tiene un botón para decirnos que nos equivocamos.',
+'fresh grooves friday: the full weekly drop':'fresh grooves friday: todo el drop de la semana',
+'every badge, every artist':'cada insignia, cada artista',
+'house, techno & indie dance, curated':'house, techno e indie dance, con curaduría',
 },
 scoped:[
 /* web review 2026-11-09: the quick search sheet (A2): short words that are prose fragments elsewhere */
@@ -672,6 +678,9 @@ scoped:[
 'groovesmaxxing picks scoreboard':'marcador de picks de groovesmaxxing','read again at every month end':'se revisa cada cierre de mes'}]
 ],
 rules:[
+/* web review 2026-11-09, fixer pass: the words a share sends (gmx-sheet.js runs them through here), most specific first */
+['an open ID at (\\S+) in (.+), know it\\?','un ID abierto a los $1 en $2, ¿lo conoces?'],['an open ID in (.+), know it\\?','un ID abierto en $1, ¿lo conoces?'],['(.+) · at (\\S+) in (.+)','$1 · a los $2 en $3'],
+['(.+) · the badges on groovesMAXXING','~1 · las insignias en groovesMAXXING'],['(.+) · the tracklist on groovesMAXXING','$1 · el tracklist en groovesMAXXING'],['(.+) · house by mood on groovesMAXXING','~1 · house por mood en groovesMAXXING'],['(.+) on groovesMAXXING','$1 en groovesMAXXING'],
 /* web review 2026-11-09: the account and crate notes, the follow and crate aria-labels (A1, pt-spanish-07). the follow lookahead keeps "follow the issues in a reader:" and "follow your first ID" out */
 ['sign in to keep (.+) on every phone\\. the heart stays on this phone either way\\.','inicia sesión para tener $1 en todos tus celulares. el corazón se queda en este celular de todos modos.'],['sign in to follow (.+): drops and dates land in your alerts\\. the heart stays on this phone either way\\.','inicia sesión para seguir a $1: los lanzamientos y fechas llegan a tus alertas. el corazón se queda en este celular de todos modos.'],['add to your crate: (.+)','agregar a tu crate: $1'],['in your crate: (.+)','en tu crate: $1'],['more for (.+)','más opciones para $1'],['following (.+), tap to stop','siguiendo a $1, toca para dejar de seguir'],['following (.+)','siguiendo a $1'],['follow (?!the |your )(.+)','seguir a $1'],
 /* web review 2026-11-09: the quick search sheet (A2, pt-spanish-05): the scoped no-result line, the count line (split on " · " first) */

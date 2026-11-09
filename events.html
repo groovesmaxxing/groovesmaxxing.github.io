@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-5rOJXZQKkbULn0LZ685Nn3rvj5O3mQO+77OzIfe/hJ8=' 'sha256-sMiZHl83IqX4xdem1GRLbjb+PAmOjkkDe5MQS9Nh9JY='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self'; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com https://embed.beatport.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-RowoieV0UmExonc7eeryMcaG0iF/mRV6DmWulPuYQn0=' 'sha256-sMiZHl83IqX4xdem1GRLbjb+PAmOjkkDe5MQS9Nh9JY='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self'; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com https://embed.beatport.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <link rel="manifest" href="/manifest.webmanifest">
@@ -485,7 +485,8 @@
     var b = ev.target.closest('button.share'); if(!b) return;
     var e = shownRows[+b.getAttribute('data-i')]; if(!e || !/^https?:\/\//i.test(e.url || '')) return;
     var where = [e.city, e.region].filter(Boolean).join(', ');
-    share({ text: [e.artist, fmtDate(e.date), [evName(e), e.venue, where].filter(Boolean).join(', ')].filter(Boolean).join(' · '), url: e.url }, b);
+    /* the ticket link carries no trace of where it came from, so the words say it (2026-11-09) */
+    share({ text: [e.artist, fmtDate(e.date), [evName(e), e.venue, where].filter(Boolean).join(', ')].filter(Boolean).join(' · ') + ' · on groovesMAXXING', url: e.url }, b);
   });
   [].forEach.call(document.querySelectorAll('.ev[id]'), function(card){
     var h = card.querySelector('h3'); if(!h || card.querySelector('button.share')) return;

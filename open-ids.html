@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-NKoymPP961OCyUfP8soashDRSKlgVUga/icmsTvMaFs='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self'; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com https://embed.beatport.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-mrj4i6xVnRJ5515skCzgWuT0neEtWxKQga2QsDa7XVo='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self'; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com https://embed.beatport.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <link rel="manifest" href="/manifest.webmanifest">
@@ -160,7 +160,6 @@ mark{background:none;color:var(--racing)}
 .orow .id{color:var(--steel);letter-spacing:.06em}
 .orow .id i{font-style:normal;color:#c9c9c4;margin-left:6px}
 .orow:target{background:rgba(255,28,2,.08)}.orow{scroll-margin-top:72px}
-.orow .know.oshare{margin-left:0;background:none;cursor:pointer;padding:0;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center}.orow .know.oshare svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.orow .know.oshare:hover,.orow .know.oshare:focus-visible{color:var(--racing);border-color:var(--racing)}
 .orow .know{margin-left:auto;font-size:.7rem;letter-spacing:.04em;text-decoration:none;color:#c9c9c4;border:1px solid var(--line);border-radius:999px;padding:5px 11px;white-space:nowrap}
 .orow .know:hover{color:var(--racing);border-color:var(--racing)}
 .rep{padding:10px 0;border-top:1px solid #1b1b1f}
@@ -296,7 +295,7 @@ function setBlock(e){
   var rows=e.open.map(function(r){
     var at=r.l?'<a href="'+esc(r.l)+'" target="_blank" rel="noopener" aria-label="play '+esc(e.h1)+' from '+esc(r.at)+'">'+esc(r.at)+' ↗</a>':esc(r.at);
     var rid=e.slug+'-t'+r.tn;
-    return '<div class="orow" id="'+esc(rid)+'"><span class="at">'+at+'</span><span class="tn">'+esc(r.tn)+'</span><span class="id">ID'+(r.note?'<i>'+esc(r.note)+'</i>':'')+'</span><a class="know" href="'+tell(e,r)+'">i know this one</a><button type="button" class="know oshare" data-share="'+esc(rid)+'" data-title="'+esc('ID at '+r.at+' in '+e.h1)+'" aria-label="share this ID" title="share this ID"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6h14v-6"/></svg></button></div>';
+    return '<div class="orow" id="'+esc(rid)+'"><span class="at">'+at+'</span><span class="tn">'+esc(r.tn)+'</span><span class="id">ID'+(r.note?'<i>'+esc(r.note)+'</i>':'')+'</span><a class="know" href="'+tell(e,r)+'">i know this one</a></div>';
   }).join('');
   return '<section class="oset" id="'+esc(e.slug)+'"><div class="oh"><a class="nm" href="'+esc(e.u)+'">'+esc(e.h1)+'</a><span class="wh">'+esc(e.where)+(e.when?' · '+esc(e.when):'')+'</span><span class="ct">'+e.open.length+' open <small>of '+e.total+'</small></span></div>'+rows+'</section>';
 }
@@ -317,15 +316,7 @@ fetch('/open-ids.json').then(function(r){return r.json()}).then(function(j){
 }).catch(function(){stat.textContent='the board did not load. refresh and try again.'});
 var t=null;q.addEventListener('input',function(){clearTimeout(t);t=setTimeout(render,80)});
 [bNew,bMost].forEach(function(b){b.addEventListener('click',function(){setSort(b===bMost?'most':'new');render()})});
-/* share one open ID: a link straight to its row */
-board.addEventListener('click',function(ev){
-  var b=ev.target.closest&&ev.target.closest('.oshare');if(!b)return;
-  var u=location.origin+'/open-ids#'+b.getAttribute('data-share'),t=b.getAttribute('data-title')||'an open ID';
-  if(window.gmxSheet&&typeof gmxSheet.share==='function'){gmxSheet.share({title:'groovesMAXXING',text:t,url:u});return}
-  if(navigator.share){navigator.share({title:'groovesMAXXING',text:t,url:u}).catch(function(){});return}
-  var done=function(){stat.textContent='link copied';};
-  var show=function(){stat.textContent=u};if(navigator.clipboard)navigator.clipboard.writeText(t+' '+u).then(done,show);else show();
-});
+/* share one open ID: gmx-sheet.js gives each row its share (the row's line in its tracklist, /tracklists/<set>#tNN) */
 window.addEventListener('hashchange',render);
 
 /* the repeats: named rows whose folded name shows up in more than one tracklist */

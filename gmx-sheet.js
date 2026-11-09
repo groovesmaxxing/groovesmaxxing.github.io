@@ -22,11 +22,14 @@ var MAIL='groovesmaxxing@gmail.com',IG='https://www.instagram.com/groovesmaxxing
 /* what a tracklist row carries besides its name: store links, credits, notes, label, the buttons, and the
    "also in …" line gmx-related.js adds under a row. gmx-crate.js keeps its own copy of this list. */
 var NOISE='.get,.thx,.gnote,.soft,.sig,.lab,.gmx-heart,.gmx-more,.gmx-also,.gmx-ishare';
-/* pages with no page share pill: personal pages, the search and scan tools, legal pages, and moods, which
-   shares the list on screen from its own button */
 /* hubs whose og:title is written for search more than for a friend */
 var PAGE_TEXT={'/friday':'fresh grooves friday: the full weekly drop','/badges':'every badge, every artist'};
-var NOSHARE=/^\/(?:|index|search|more|crate|scan|privacy|terms|moods|404|google[0-9a-f]+)$/;
+/* pages with no page share pill: personal pages, the search and scan tools, legal pages, and moods, which
+   shares the list on screen from its own button. home has one (2026-11-09): in the installed app, with no
+   address bar, it is the only way to share the site itself */
+var NOSHARE=/^\/(?:search|more|crate|scan|privacy|terms|moods|404|google[0-9a-f]+)$/;
+/* every shared link names the live site, whatever host the page was opened on (the github.io mirror, a preview) */
+var SITE='https://groovesmaxxing.com';
 var I={
   play:'<path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/>',
   heart:'<path d="M12 20.3s-7.2-4.6-9.2-9.1C1.4 7.9 3.4 4.8 6.6 4.8c1.9 0 3.4 1.1 4.2 2.4h2.4c.8-1.3 2.3-2.4 4.2-2.4 3.2 0 5.2 3.1 3.8 6.4-2 4.5-9.2 9.1-9.2 9.1z"/>',
@@ -50,7 +53,7 @@ function sitePath(href){if(!href)return null;var u;try{u=new URL(href,location.h
 function canonPath(){var c=document.querySelector('link[rel="canonical"]'),p=c&&sitePath(c.getAttribute('href'));return p||path()}
 function cleanUrl(url){
   var u;try{u=new URL(url||location.href,location.href)}catch(e){return String(url||'')}
-  if(u.origin===location.origin||/(^|\.)groovesmaxxing\.com$/.test(u.hostname))u.pathname=u.pathname.replace(/\.html$/,'');
+  if(u.origin===location.origin||/(^|\.)groovesmaxxing\.com$/.test(u.hostname))return SITE+u.pathname.replace(/\.html$/,'').replace(/\/index$/,'/')+u.search+u.hash;
   return u.href;
 }
 var sheet,panel,opener,toastT,toastEl;
@@ -82,7 +85,9 @@ function open(model,from){
   var acts=sheet.querySelector('.gmx-sheet-acts');acts.innerHTML='';
   var field=null;
   if(model.field!=null){
-    field=document.createElement('input');field.type='text';field.readOnly=true;field.className='gmx-sheet-field';field.value=model.field;field.setAttribute('aria-label',model.title||'link');
+    var many=String(model.field).indexOf('\n')>-1;
+    field=document.createElement(many?'textarea':'input');if(many)field.rows=8;else field.type='text';
+    field.readOnly=true;field.className='gmx-sheet-field';field.value=model.field;field.setAttribute('aria-label',model.title||'link');
     field.addEventListener('focus',function(){try{field.select()}catch(e){}});
     acts.appendChild(field);
   }
@@ -109,10 +114,13 @@ function copySheet(u,from){setTimeout(function(){open({title:'copy this link',su
 function shareNow(o,from){
   o=o||{};
   var u=cleanUrl(o.url||canonPath()),t=String(o.text||'').trim(),ti=o.title||BRAND;
+  if(t&&window.gmxLang&&gmxLang.get&&gmxLang.tr&&gmxLang.get()!=='en')t=gmxLang.tr(t);
   from=from||document.activeElement;
   function viaClipboard(){
     if(navigator.clipboard&&navigator.clipboard.writeText){
-      navigator.clipboard.writeText(t?t+' '+u:u).then(function(){toast('link copied')},function(){copySheet(u,from)});
+      /* no share sheet means no title shown, so the brand rides in the words unless they already name it */
+      var said=(t&&!/groovesMAXXING/i.test(t)?t+' · '+ti:t||ti)+' '+u;
+      navigator.clipboard.writeText(said).then(function(){toast('link copied')},function(){copySheet(u,from)});
     }else copySheet(u,from);
   }
   if(navigator.share){
@@ -164,11 +172,13 @@ function setNameOf(){var h1=words(document.querySelector('h1')),sub=text(documen
 function rowName(x){var c=x.cloneNode(true);[].slice.call(c.querySelectorAll(NOISE)).forEach(function(e){e.remove()});return text(c)}
 function tlRows(){var out=[];[].slice.call(document.querySelectorAll('table.tl tr')).forEach(function(r){var x=r.querySelector('td.x');if(!x||!isSetRow(r))return;var at=text(r.querySelector('td.t'));out.push((at?at+' ':'')+rowName(x))});return out}
 /* the whole list as plain text: the set's name, one line per row, a blank line, the page */
-function listText(rows){rows=rows||tlRows();return [setNameOf()].concat(rows,['',location.origin+canonPath()]).join('\n')}
-function copyList(){
-  var rows=tlRows(),t=listText(rows);
-  if(!navigator.clipboard||!navigator.clipboard.writeText){toast('copy is not available here');return}
-  navigator.clipboard.writeText(t).then(function(){toast('copied, '+rows.length+' lines')},function(){toast('copy is not available here')});
+function listText(rows){rows=rows||tlRows();return [setNameOf()].concat(rows,['',SITE+canonPath()]).join('\n')}
+/* no clipboard, or it said no: the list sits in a sheet of its own, lines kept, to copy by hand (2026-11-09) */
+function copyList(e){
+  var rows=tlRows(),t=listText(rows),from=(e&&e.currentTarget)||document.activeElement;
+  var byHand=function(){setTimeout(function(){open({title:'copy the list',sub:'press and hold, then copy',field:t,actions:[]},from)},0)};
+  if(!navigator.clipboard||!navigator.clipboard.writeText){byHand();return}
+  navigator.clipboard.writeText(t).then(function(){toast('copied, '+rows.length+' lines')},byHand);
 }
 /* a row of a set's tracklist, not a row of the tracklists hub (those link a whole set and carry no number) */
 function isSetRow(r){return !!r.querySelector('td.x')&&!r.querySelector('a.hrow')&&!!r.querySelector('td.n, td.t')}

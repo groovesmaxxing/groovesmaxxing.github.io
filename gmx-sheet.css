@@ -57,6 +57,7 @@ td.x .gmx-more::before{content:"";position:absolute;inset:-4px -3px}td.x .gmx-mo
 /* the copy-by-hand sheet: the link sits selected in a field */
 .gmx-sheet-field{display:block;width:100%;box-sizing:border-box;min-height:48px;margin:4px 0 6px;padding:10px 12px;border:1px solid #26262b;border-radius:10px;background:#0B0B0D;color:#F2F2EF;font-family:'Space Mono',monospace;font-size:.85rem}
 .gmx-sheet-field:focus-visible{outline:3px solid #FF1C02;outline-offset:2px}
+textarea.gmx-sheet-field{resize:vertical;line-height:1.5;font-size:.78rem;white-space:pre;overflow:auto;max-height:50vh}
 /* a #tNN in the address lands on the row, below the sticky header, and marks it */
 table.tl tr[id]{scroll-margin-top:84px;scroll-margin-bottom:120px}
 table.tl tr.gmx-hit td{background:rgba(255,28,2,.10)}
