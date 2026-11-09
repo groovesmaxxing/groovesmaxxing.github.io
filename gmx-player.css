@@ -29,3 +29,4 @@
 .gmx-stage .set-arrow:focus-visible,.gmx-stage .set-dots button:focus-visible,.gmx-stage .set-facade:focus-visible{outline:3px solid var(--racing,#FF1C02);outline-offset:3px}
 @media (max-width:640px){.gmx-stage .set-play{width:60px;height:60px}.gmx-stage .set-play svg{width:22px;height:22px}.gmx-stage .set-meta .t{font-size:.95rem}}
 @media (prefers-reduced-motion: reduce){.gmx-stage .set-rail{transition:none}.gmx-stage .set-arrow:hover{transform:none}}
+.gmx-stage .set-next{font-family:'Space Mono',monospace;font-size:.74rem;letter-spacing:.03em;color:var(--steel,#8A8A93);text-align:center;margin:10px auto 0;max-width:92%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}

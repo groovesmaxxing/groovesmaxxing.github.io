@@ -100,7 +100,7 @@ table.tl td.x>a.hrow{display:flex;align-items:center;gap:14px;padding:6px 0;marg
 .hrow .nm i{font-style:normal;color:var(--steel);font-size:.86rem}
 .hrow:hover .em,.hrow:focus-visible .em{border-color:rgba(255,28,2,.55)}
 .hrow:hover .nm b,.hrow:focus-visible .nm b{color:var(--racing)}
-td.ct .dt{display:block;color:#5d5d66;font-size:.75rem;margin-top:2px}
+td.ct .dt{display:block;color:var(--steel);font-size:.75rem;margin-top:2px}
 .how{margin-top:10px;background:none;border:0;color:var(--steel);font-family:'Space Mono',monospace;font-size:.82rem;letter-spacing:.08em;text-decoration:underline;text-underline-offset:4px;cursor:pointer;padding:8px 0}
 .how:hover,.how:focus-visible{color:var(--day)}
 .howbox{border:1px solid var(--line);border-radius:22px;background:#141417;color:var(--day);padding:24px 22px 20px;max-width:440px;width:calc(100% - 32px);margin:auto}
@@ -119,7 +119,7 @@ td.ct .dt{display:block;color:#5d5d66;font-size:.75rem;margin-top:2px}
 .srcbar button{background:none;border:1px solid var(--line);border-radius:999px;color:var(--steel);font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.06em;padding:8px 15px;cursor:pointer}
 .srcbar button:hover{color:var(--day)}
 .srcbar button[aria-pressed="true"]{color:var(--day);border-color:var(--racing);background:rgba(255,28,2,.08)}
-.srcbar b{font-weight:400;color:#5d5d66;margin-left:6px}
+.srcbar b{font-weight:400;color:var(--steel);margin-left:6px}
 tr.hid{display:none}
 @media (max-width:520px){.hrow .em{width:40px;height:40px;font-size:1.25rem}.hrow .nm b{font-size:.96rem}}
 </style>
@@ -545,6 +545,7 @@ tr.hid{display:none}
 <div class="mast">
 <div class="eyebrow">tracklists</div>
 <h1>sets, track by track</h1>
+<!-- gmx-hub-top --><p class="hub-top mono"><a href="/sets">every set</a> · <a href="/radio">radio</a> · <a href="/open-ids">open IDs</a> · <a href="/interviews">talks</a></p>
 <button class="how" type="button" id="howbtn" aria-haspopup="dialog">how do we do it?</button>
 <dialog class="howbox" id="howbox" aria-labelledby="howtitle">
 <h2 id="howtitle">how we do it</h2>

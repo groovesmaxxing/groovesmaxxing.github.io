@@ -31,7 +31,8 @@ body{background:var(--night);color:var(--day);font-family:'Poppins',sans-serif;-
 a{color:inherit}
 a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--racing);outline-offset:3px}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
-.top{display:flex;justify-content:space-between;align-items:center;padding:calc(18px + env(safe-area-inset-top)) 0 0}
+.top{display:flex;flex-wrap:wrap;gap:6px 12px;justify-content:space-between;align-items:center;padding:calc(18px + env(safe-area-inset-top)) 0 0}
+.top .gmx-hdr{margin-left:auto}
 .back{display:inline-flex;align-items:center;min-height:40px;font-family:'Space Mono',monospace;font-size:.82rem;color:var(--steel);text-decoration:none;letter-spacing:.04em}
 .back:hover{color:var(--racing)}
 .eyebrow{font-family:'Space Mono',monospace;font-size:.8rem;letter-spacing:.06em;color:var(--racing);text-transform:lowercase}
@@ -172,6 +173,9 @@ details.guess[open]>summary::after{content:' \2212'}
 .session .when{color:var(--racing)}
 .session .stools{margin-top:12px}.session .stools .btn{padding:7px 12px;font-size:.75rem}.session .stools .msg{margin:0}
 .recent{margin:10px 0 40px}
+.legal{font-family:'Space Mono',monospace;font-size:.72rem;color:var(--steel);margin:10px 0 0}.legal a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+.micnote{font-family:'Space Mono',monospace;font-size:.72rem;color:var(--steel);text-align:center;margin:6px 0 0}.micnote a{color:inherit;text-decoration:underline;text-underline-offset:2px}.micnote[hidden]{display:none}.stage.listening .micnote,.stage.finding .micnote{visibility:hidden}
+.cratenote{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel);margin:-2px 0 8px}.cratenote a{color:inherit;text-decoration:underline;text-underline-offset:2px}.cratenote a:hover{color:var(--racing)}
 .recent h3{font-family:'Space Mono',monospace;font-weight:400;font-size:.8rem;letter-spacing:.06em;color:var(--steel);text-transform:lowercase;margin:0 0 8px}
 .recent ul{list-style:none;border-top:1px solid var(--line)}
 .recent li{border-bottom:1px solid var(--line);padding:12px 0;display:flex;justify-content:space-between;gap:12px;align-items:baseline}
@@ -255,6 +259,7 @@ details.guess[open]>summary::after{content:' \2212'}
 </svg>
 </button>
 <div class="tap" id="tap">tap to <b>scan</b></div>
+<p class="micnote" id="micnote">uses your mic for up to 15 seconds after you tap · <a href="/privacy">privacy</a></p>
 <div class="rec" id="rec" aria-hidden="true"><i></i><span id="recword">listening</span><span class="n" id="count">15</span></div>
 <canvas class="lvl" id="lvl" width="320" height="36" aria-hidden="true"></canvas>
 <div class="stat" id="stat" role="status" aria-live="polite"></div>
@@ -267,7 +272,7 @@ details.guess[open]>summary::after{content:' \2212'}
 <h2 id="howtitle">how it works</h2>
 <p>tap once near the speaker. we listen for up to 15 seconds and start matching at four, then every couple of seconds. a sure match stops the scan early.</p>
 <p>we check our own library of sets first, then the big catalogs.</p>
-<p>can't name it? you choose whether we keep the clip to keep hunting. nothing is kept unless you say so.</p>
+<p>can't name it? you choose whether we keep the clip to keep hunting. our server keeps nothing unless you say so.</p>
 <p>your scans stay on this phone, and every result has a button to tell us we got it wrong.</p>
 <p>hearing a set? under the result, tell us which one. we send the clip once more to find the spot in it, then delete it.</p>
 <p>at a set, turn on auto. the phone scans on its own every eight minutes, keeps the screen awake, and builds tonight's list as it goes. auto checks our own library only, a tap checks the big catalogs too. tap the rings or the auto button to stop.</p>
@@ -290,6 +295,7 @@ details.guess[open]>summary::after{content:' \2212'}
 
 <section class="recent" id="recent">
 <h3>recent scans</h3>
+<p class="cratenote"><a href="/crate">hearted ones live in my crate →</a></p>
 <ul id="recentlist"></ul>
 </section>
 
@@ -297,7 +303,7 @@ details.guess[open]>summary::after{content:' \2212'}
 <h3>you</h3>
 <div id="youbody"><p class="smeta">sign in to get told by email when an ID you scanned comes out, keep your scans across phones, and put your name on the IDs you help with.</p>
 <form class="form on" id="yform" autocomplete="off"><label for="y-email">email</label><input id="y-email" name="email" type="email" inputmode="email" maxlength="320" required>
-<div class="row"><button class="btn red" type="submit">send me a sign-in link</button><span class="msg" role="status" id="youmsg"></span></div></form></div>
+<div class="row"><button class="btn red" type="submit">send me a sign-in link</button><span class="msg" role="status" id="youmsg"></span></div><p class="legal">your email is only for this. <a href="/privacy">privacy</a> · <a href="/terms">terms</a></p></form></div>
 <ul id="followlist" hidden></ul>
 </section>
 

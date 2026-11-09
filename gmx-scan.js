@@ -42,6 +42,7 @@ var lvlRaf=0, lastChunk=0, lvlMix=1, lvlPrev=0, lvlStale=true, lvlErr=0, lvlGain
    strip, and a slow gain lifts the loudest visible bar to about nine tenths. a quiet room stays near flat. */
 function lvlNorm(v){if(!(v>0))return 0;var db=20*Math.log(v)/Math.LN10;return Math.max(0,Math.min(1,(db+60)/48))}
 var lvlReduce=window.matchMedia?matchMedia('(prefers-reduced-motion: reduce)'):null;
+function SM(){return lvlReduce&&lvlReduce.matches?'auto':'smooth'}   /* script scrolls follow reduced motion (2026-11-09 review) */
 function lvlLive(){return stage.classList.contains('listening')||stage.classList.contains('finding')}
 function drawLevels(now,idleOnly){
   if(!lvl||!lvl.getContext)return;var g=lvl.getContext('2d'),W=lvl.width,H=lvl.height,n=60,w=W/n;g.clearRect(0,0,W,H);
@@ -95,13 +96,13 @@ function headers(extra){
    the session token lives on this phone only and rides every call as X-GMX-Session, so follows, history
    and credit join the account. nothing works worse signed out: a phone follows and gets push on its own. */
 function sessionToken(){return gmxAccount.token()}
-function setSession(t){gmxAccount.set(t)}
+function setSession(t,email){gmxAccount.set(t,email)}
 var meCache=null;
 function tick(ms){try{if(navigator.vibrate)navigator.vibrate(ms||30)}catch(e){}}
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 /* a link or cover is used only when it is https, http or a path on this site. anything with another
    scheme (javascript:, data:) from a store record, a lookup or a server field becomes nothing. */
-function safeUrl(u){u=String(u==null?'':u).trim();if(!u)return '';if(/^https?:\/\//i.test(u))return u;if(/^\/\//.test(u))return '';return u.split(/[\/?#]/)[0].indexOf(':')<0?u:''}
+function safeUrl(u){u=String(u==null?'':u).trim();if(!u||/[\\\u0000-\u001f\u007f]/.test(u))return '';if(/^https?:\/\/[^\/]/i.test(u))return u;if(/^\/\//.test(u))return '';return u.split(/[\/?#]/)[0].indexOf(':')<0?u:''}
 function cleanLinks(o){var r={};Object.keys(o||{}).forEach(function(k){var u=safeUrl(o[k]);if(u)r[k]=u});return r}
 function pct(n){return Math.round(Number(n)||0)+'%'}
 function slug(s){
@@ -361,16 +362,18 @@ function startScan(){
     if(err||!blob||blob.size<2000){
       var name=err&&err.name?err.name:'';
       if(auto&&(name==='NotAllowedError'||name==='SecurityError'))autoStop('auto stopped: this phone wants a tap before each scan');
-      var m= name==='NotAllowedError'||name==='SecurityError' ? (/iPhone|iPad|iPod/.test(navigator.userAgent) ? 'the mic is blocked. open iphone settings, find safari (under apps on newer iphones), set microphone to ask or allow, then try again.' : 'the mic is blocked. allow the microphone for groovesmaxxing.com in your browser settings and try again.')
+      var m= name==='NotAllowedError'||name==='SecurityError' ? (/iPhone|iPad|iPod/.test(navigator.userAgent) ? 'the mic is blocked. open iphone settings, find safari (under apps on newer iphones), set microphone to ask or allow, then try again.' : /Android/.test(navigator.userAgent) ? 'the mic is blocked. tap the icon left of the address, open permissions, allow the microphone, then try again.' : 'the mic is blocked. click the icon left of the address, allow the microphone for groovesmaxxing.com, then try again.')
            : name==='NotFoundError' ? 'no microphone found on this device.'
            : (err&&err.message==='quiet') ? 'the mic barely heard anything. get closer to the speaker and scan again.'
            : 'the clip did not record. try again.';
-      showCard(errCard(m)); reset(); return;
+      /* a blocked or missing mic (2026-11-09 review): say where the rest of the site works without one */
+      var noMic=name==='NotAllowedError'||name==='SecurityError'||name==='NotFoundError';
+      showCard(errCard(m)+(noMic?'<p class="note">no mic? these work without one: <a href="/sets">sets</a> · <a href="/tracklists/">tracklists</a> · <a href="/open-ids">open IDs</a></p>':'')); reset(); return;
     }
     heldBlob=blob; identify(blob);
   }
 }
-function reset(){busy=false;cancelScan=null;stopCapture=null;go.removeAttribute('aria-disabled');go.classList.remove('busy');stage.classList.remove('listening','finding');tap.innerHTML='tap to <b>scan</b>';go.setAttribute('aria-label','scan what is playing');if(!auto)wakeOff();try{onReset()}catch(e){}}
+function reset(){say2('');busy=false;cancelScan=null;stopCapture=null;go.removeAttribute('aria-disabled');go.classList.remove('busy');stage.classList.remove('listening','finding');tap.innerHTML='tap to <b>scan</b>';go.setAttribute('aria-label','scan what is playing');if(!auto)wakeOff();try{onReset()}catch(e){}}
 function dropBlob(){heldBlob=null;heldAt=null;heldLoud=false}
 
 /* identify and poll */
@@ -456,9 +459,10 @@ function identify(blob){
      still run on the full clip, so the likely can still rise to a sure one; only the ACRCloud and AudD spend is
      saved. the header goes on no other path. an api without the matching guard refuses the header, as a 401 or as
      a failed preflight that the browser reports as a network error, and either answer re-posts once without the
-     header so the scan goes on as before. a stalled upload (timeout) is not retried.
+     header so the scan goes on as before. a stalled upload (timeout) is retried once with the same header (2026-11-09).
      auto (2026-11-06): every scan while auto runs is library only too, so a phone left on through a set, or many
      of them, never spends the catalogs. a tap with auto off still checks them. */
+  var retried=false;
   function post(withHeader){
     return fx(cfg.api_base+'/identify',{method:'POST',headers:headers(withHeader?{'X-GMX-Catalog':'off'}:null),body:fd},POST_MS)
     .then(function(r){
@@ -472,6 +476,8 @@ function identify(blob){
       return r.json();
     },function(e){
       if(withHeader&&!(e&&e.message==='timeout'))return post(false);
+      /* a stalled upload on a slow club link (2026-11-09 review): one more try on its own while the phone is online, never filed as no signal */
+      if(e&&e.message==='timeout'&&!retried&&navigator.onLine){retried=true;say2('slow upload, trying once more');return post(withHeader);}
       throw e;
     });
   }
@@ -502,8 +508,8 @@ function identify(blob){
     if(early){current=early;current.loud=heldLoud;showCard(resultCard(current));remember(current,false);reset();return}
     var m=e&&e.message||'';
     if(m==='rate')rateHit=true;
-    var netErr=!/^(rate|slow|key|failed|server|http )/.test(m);
-    if(netErr&&draining){var d=draining;draining=null;drainFailed=true;showCard(errCard('still no signal for the clip from '+when(d.t)+'. it stays on this phone, we try again when you are back online.'));reset();return}
+    var netErr=m==='timeout'?!navigator.onLine:!/^(rate|slow|key|failed|server|http )/.test(m);
+    if((netErr||m==='timeout')&&draining){var d=draining;draining=null;drainFailed=true;showCard(errCard('still no signal for the clip from '+when(d.t)+'. it stays on this phone, we try again on our own in a bit.'));reset();laterDrain();return}
     if(netErr&&heldBlob&&!draining){queueClip(heldBlob);return}
     var text= m==='rate' ? 'too many scans this hour on this phone. try again in a bit.'
             : m==='slow' ? 'took too long. the recognizer did not answer in 30 seconds. try again.'
@@ -526,7 +532,7 @@ function cardSays(){
   var kw=card.querySelector('.kw'),sub=card.querySelector('.sub,.ttl,.note');
   return [kw&&kw.textContent,h.textContent,sub&&sub.textContent].filter(Boolean).join('. ').replace(/\s+/g,' ').trim();
 }
-function showCard(html){card.innerHTML=html;card.classList.add('on');try{var said=cardSays();if(said)announce(said)}catch(e){}card.scrollIntoView({behavior:'smooth',block:'nearest'});if(current&&current.card&&current.card.candidate&&html.indexOf('earlynote')<0||html.indexOf('earlynote')>-1)try{enrich(current)}catch(e){}try{decorate(html.indexOf('earlynote')>-1?early:current)}catch(e){}}
+function showCard(html){card.innerHTML=html;card.classList.add('on');try{var said=cardSays();if(said)announce(said)}catch(e){}card.scrollIntoView({behavior:SM(),block:'nearest'});if(current&&current.card&&current.card.candidate&&html.indexOf('earlynote')<0||html.indexOf('earlynote')>-1)try{enrich(current)}catch(e){}try{decorate(html.indexOf('earlynote')>-1?early:current)}catch(e){}}
 /* the crate heart and the label link (crate loop build, 2026-10-11). the heart saves the match on this phone
    like a tracklist row would, with whatever store links the card has at tap time, so a link that arrives
    later from enrich() still makes it in. the label line links to our label page when there is one. */
@@ -658,7 +664,7 @@ function placedHead(cur){
   out+='<h2'+(ttl.length>42?' class="long"':'')+'>'+esc(ttl)+'</h2>';
   if(who&&!/^id$/i.test(who))out+='<p class="sub">'+esc(who)+'</p>';
   out+='<p class="ttl">the recognizer placed this clip in '+esc(s.set_title)+(s.row_at?' and our tracklist calls '+esc(s.row_at)+' this':'')+'. not a fingerprint match on its own.</p>';
-  out+='<div class="row"><button class="btn red" data-act="listen">listen again</button></div>';
+  out+='<div class="row"><button class="btn red" data-act="listen">listen again</button><button class="btn" data-act="share">share</button></div>';
   if(who&&!/^id$/i.test(who))checkArtistPage(who);
   return out;
 }
@@ -945,11 +951,17 @@ function sendHint(f){
 /* android: "share to groovesMAXXING" from youtube or soundcloud lands here as ?text= or ?url=.
    the link waits on this phone until the next result. iphone can't share into a web app, so
    there it's paste. */
-function showShared(){var p=$('shared');if(!p)return;if(sharedLink){p.textContent='set link ready. scan, then tag it under the result.';p.hidden=false}else{p.hidden=true}}
+var sharedNone=false;
+function showShared(){var p=$('shared');if(!p)return;if(sharedLink){p.textContent='set link ready. scan, then tag it under the result.';p.hidden=false}else if(sharedNone){sharedNone=false;p.textContent='only youtube and soundcloud set links can be tagged for now.';p.hidden=false}else{p.hidden=true}}
 (function(){
   try{
-    var q=new URLSearchParams(location.search), all=[q.get('url'),q.get('text'),q.get('title')].join(' '), m=all.match(/https:\/\/[^\s]+/);
-    if(m&&/(^https:\/\/([a-z0-9-]+\.)?(youtube\.com|youtu\.be|soundcloud\.com)\/)/i.test(m[0])){sharedLink=m[0];history.replaceState(null,'',location.pathname)}
+    /* the share target (2026-11-09 review): every https link in the share is read, the first youtube or soundcloud one
+       wins, trailing punctuation and quotes are cut off. a share with no set link says so instead of going quiet */
+    var q=new URLSearchParams(location.search), all=[q.get('url'),q.get('text'),q.get('title')].join(' ');
+    var links=(all.match(/https:\/\/[^\s"'<>]+/g)||[]).map(function(u){return u.replace(/[)\].,;:!?]+$/,'')});
+    var hit=links.filter(function(u){return /^https:\/\/([a-z0-9-]+\.)?(youtube\.com|youtu\.be|soundcloud\.com)\//i.test(u)})[0];
+    if(hit){sharedLink=hit;history.replaceState(null,'',location.pathname)}
+    else if(all.trim()){sharedNone=true;history.replaceState(null,'',location.pathname)}
   }catch(e){}
   showShared();
 })();
@@ -973,15 +985,15 @@ card.addEventListener('click',function(ev){
   var b=ev.target.closest('[data-act]'); if(!b)return;
   var act=b.getAttribute('data-act');
   if(act==='where'){openWhere();return}
-  if(act==='again'){card.classList.remove('on');card.innerHTML='';dropBlob();current=null;window.scrollTo({top:0,behavior:'smooth'});return}
+  if(act==='again'){card.classList.remove('on');card.innerHTML='';dropBlob();current=null;window.scrollTo({top:0,behavior:SM()});return}
   if(act==='resend'){
     /* the same clip as a new post, the way a kept clip's scan again posts it (recentlist below) */
     if(busy)return; if(!heldBlob){showCard(errCard('the clip is gone. scan again.'));return}
     busy=true; card.classList.remove('on'); current=null;
     scanSeq++; early=null; finalDone=false; rateHit=false; timing={t0:Date.now(),rounds:[],first:null};
-    go.classList.add('busy'); window.scrollTo({top:0,behavior:'smooth'}); identify(heldBlob); return;
+    go.classList.add('busy'); window.scrollTo({top:0,behavior:SM()}); identify(heldBlob); return;
   }
-if(act==='listen'){card.classList.remove('on');card.innerHTML='';dropBlob();current=null;window.scrollTo({top:0,behavior:'smooth'});startScan();return}
+if(act==='listen'){card.classList.remove('on');card.innerHTML='';dropBlob();current=null;window.scrollTo({top:0,behavior:SM()});startScan();return}
   if(act==='share'){share();return}
   if(act==='confirm'){sendCorrection({verdict:'confirm'});return}
   if(act==='follow'){followNow(b);return}
@@ -1057,20 +1069,29 @@ function markRow(id,x,quiet){
   try{localStorage.setItem('gmx_history',JSON.stringify(h))}catch(e){}
   if(!quiet)renderHistory();   /* the row's own buttons pass quiet, so the note they are writing is not wiped */
 }
+/* the share (2026-11-09 review): our own tracklist page leads when the scan found one, then the record's own
+   store page, then /scan. never a store search page. a card led by the tracklist row shares that row. */
+function absUrl(u){u=safeUrl(u);if(!u)return '';return /^https?:\/\//i.test(u)?u:'https://groovesmaxxing.com'+(u.charAt(0)==='/'?'':'/')+u}
 function share(){
-  if(!current||!current.card.candidate)return;
-  var c=current.card.candidate, nm=nameOf(c), l=c.store_links||{};
-  var text=(nm?(nm.artist?nm.artist+' - ':'')+nm.title:'an unreleased ID')+' · found with the groovesmaxxing scan';
-  var url=l.spotify||l.apple||l.beatport_search||'https://groovesmaxxing.com/scan';
+  if(!current||!current.card)return;
+  var k=current.card.kind, c=current.card.candidate||null, s=current.in_set||null, nm=c?nameOf(c):null, l=c?cleanLinks(c.store_links):{};
+  var h0=c?((c.other_sets||[])[0]||(c.heard_in||[])[0]||null):null;
+  var row=s&&s.row&&!/^\s*id\s*-\s*id\s*$/i.test(s.row)?String(s.row):'';
+  var what=(k==='match'&&nm&&(nm.title||nm.artist))?(nm.artist&&nm.title?nm.artist+' - ':(nm.artist||''))+(nm.title||''):(row||'an unreleased ID');
+  var at=(s&&s.set_title)?' · heard in '+s.set_title+(s.at?' at '+s.at:''):(h0&&h0.set_title?' · heard in '+h0.set_title+(h0.at?' at '+h0.at:''):'');
+  var text=what+at+' · found with the groovesMAXXING scan';
+  var url=absUrl(s&&s.page_url)||absUrl(h0&&h0.page_url)||(k==='match'?(l.spotify||l.apple):'')||'https://groovesmaxxing.com/scan';
+  if(window.gmxSheet&&typeof gmxSheet.share==='function'){gmxSheet.share({title:'groovesMAXXING',text:text,url:url});return}
   if(navigator.share){navigator.share({title:'groovesMAXXING',text:text,url:url}).catch(function(){});return}
-  if(navigator.clipboard){navigator.clipboard.writeText(text+' '+url).then(function(){say('copied.',true)}).catch(function(){})}
+  if(navigator.clipboard){navigator.clipboard.writeText(text+' '+url).then(function(){say('copied.',true)},function(){say(url)});return}
+  say(url);
 }
 
 /* history, on the phone only */
 function loadHistory(){try{return JSON.parse(localStorage.getItem('gmx_history')||'[]')}catch(e){return []}}
 function remember(cur,keep){
   var c=cur.card, cand=c.candidate, nm=cand?nameOf(cand):null;
-  var row={t:draining?draining.t:Date.now(),kind:c.kind,artist:nm?nm.artist:'',title:nm?nm.title:'',score:cand?cand.shown_score:0,status:cand?cand.status:'',id:cur.job_id,rid:cur.recognition_id,clip:!!keep,secs:cur.timing&&cur.timing.first?Math.round(cur.timing.first/100)/10:null};
+  var row={t:draining?draining.t:Date.now(),kind:c.kind,artist:nm?nm.artist:'',title:nm?nm.title:'',score:cand&&cand.shown_score!=null?cand.shown_score:null,status:cand?cand.status:'',id:cur.job_id,rid:cur.recognition_id,clip:!!keep,secs:cur.timing&&cur.timing.first?Math.round(cur.timing.first/100)/10:null};
   var h=loadHistory(); h.unshift(row); h=h.slice(0,HISTORY_MAX);
   try{localStorage.setItem('gmx_history',JSON.stringify(h))}catch(e){}
   renderHistory();
@@ -1083,10 +1104,11 @@ function when(t){
 }
 function renderHistory(){
   var h=loadHistory();
+  var mn=$('micnote');if(mn)mn.hidden=!!h.length;   /* the mic line shows until the first scan lands */
   if(!h.length){recentlist.innerHTML='<li class="none">nothing scanned yet.</li>';return}
-  recentlist.innerHTML=h.map(function(r){
+  recentlist.innerHTML=h.map(function(r,i){
     var who;
-    if(r.kind==='match')who='<span data-artist="'+esc(r.artist||'')+'">'+esc(r.artist||'ID')+'</span><small>'+esc(r.title||'unnamed library entry')+' · '+pct(r.score)+(r.secs?' · '+r.secs+' s':'')+'</small>';
+    if(r.kind==='match')who='<span data-artist="'+esc(r.artist||'')+'">'+esc(r.artist||'ID')+'</span><small>'+esc(r.title||'unnamed library entry')+(r.score==null?'':' · '+pct(r.score))+(r.secs?' · '+r.secs+' s':'')+'</small>';
     else if(r.kind==='guess')who='no match<small>closest guess: '+esc((r.artist?r.artist+' - ':'')+r.title)+(r.score==null?' · possible match':' · '+pct(r.score))+'</small>';
     else who='no match<small>nothing yet</small>';
     if(r.sent&&r.sent.status)who+='<small>not kept, the app refused it ('+esc(String(r.sent.status))+(r.sent.detail?': '+esc(r.sent.detail):'')+')</small>';
@@ -1094,10 +1116,22 @@ function renderHistory(){
     if(r.clip&&r.id)btns='<button class="btn" data-clip="again" data-id="'+esc(r.id)+'">scan again</button>'+(r.kind!=='match'?'<button class="btn" data-clip="help" data-id="'+esc(r.id)+'">help us find it</button>':'');
     /* E6c: a no-match row can follow only the clip it kept (r.kept, set by markRow when a keep lands) */
     if(r.rid&&r.status!=='out now'&&(r.kind==='match'||r.kind==='guess'||r.kept))btns+='<button class="btn ghost" data-follow="'+esc(r.rid)+'">tell me when it drops</button>';
-    if(btns)acts='<span class="acts">'+btns+'<span class="msg" role="status"></span></span>';
+    /* a named match finds its way back the next day (2026-11-09 review): a search for it, and the crate heart below */
+    if(r.kind==='match'&&r.title)btns+='<a class="btn ghost" href="/search?q='+encodeURIComponent((r.artist?r.artist+' ':'')+r.title)+'">find it</a>';
+    if(btns||(r.kind==='match'&&r.title))acts='<span class="acts"'+(r.kind==='match'&&r.title?' data-hi="'+i+'"':'')+'>'+btns+'<span class="msg" role="status"></span></span>';
     return '<li><span class="who">'+who+'</span><span class="when">'+when(r.t)+'</span>'+acts+'</li>';
   }).join('');
+  heartHistory(h);
   linkHistoryArtists();
+}
+/* the same crate id the live card's heart uses, so a song hearted at the club shows as hearted here */
+function heartHistory(h){
+  if(!window.gmxCrate||!gmxCrate.heart)return;
+  [].slice.call(recentlist.querySelectorAll('[data-hi]')).forEach(function(a){
+    var r=h[+a.getAttribute('data-hi')];if(!r||!r.title)return;
+    var who=r.artist||'',title=(who?who+' - ':'')+r.title;
+    a.insertBefore(gmxCrate.heart({kind:'track',id:'scan:'+(foldT(who+' '+r.title)||'id'),title:title,sub:[r.status||'','found with the scan'].filter(Boolean).join(' · '),url:'/scan',links:{},artist:who,label:''},title),a.firstChild);
+  });
 }
 function linkHistoryArtists(){
   var spans=[].slice.call(recentlist.querySelectorAll('[data-artist]')).filter(function(x){return x.getAttribute('data-artist')});if(!spans.length)return;
@@ -1118,7 +1152,7 @@ recentlist.addEventListener('click',function(ev){
     if(act==='again'){
       busy=true; card.classList.remove('on'); current=null; heldBlob=rec.blob; heldAt=new Date(rec.t).toISOString(); heldLoud=false;
       scanSeq++; early=null; finalDone=false; rateHit=false; timing={t0:Date.now(),rounds:[],first:null};
-      go.classList.add('busy'); window.scrollTo({top:0,behavior:'smooth'}); identify(rec.blob); return;
+      go.classList.add('busy'); window.scrollTo({top:0,behavior:SM()}); identify(rec.blob); return;
     }
     if(act==='help'){
       if(!rec.recognition_id){note('nothing to attach it to.');return}
@@ -1236,7 +1270,7 @@ function followNow(btn,rid,note){
         note((f.until==='named'?'we will tell you when it gets a name, and when it comes out. ':'we will tell you when it comes out. ')+how+'.',true);
         btn.textContent='following'; if(meCache){meCache.follows++;meCache.followed=(meCache.followed||0)+1;renderSetup()} loadFollows(); pushState();
         /* accounts design, moment 2 (2026-10-13): no push on this phone and nobody signed in means the word has nowhere to go. the email box is right below */
-        if(!pushed&&!sessionToken()){var ye=$('y-email');if(ye){try{ye.scrollIntoView({block:'center',behavior:'smooth'})}catch(e){ye.scrollIntoView()}setTimeout(function(){ye.focus()},400)}}
+        if(!pushed&&!sessionToken()){var ye=$('y-email');if(ye){try{ye.scrollIntoView({block:'center',behavior:SM()})}catch(e){ye.scrollIntoView()}setTimeout(function(){ye.focus()},400)}}
       });
     });
   }).catch(function(){note('did not send. check your signal and try again.');btn.disabled=false});
@@ -1250,7 +1284,18 @@ function onCfg(){
   var q=new URLSearchParams(location.search), tok=q.get('signin');
   if(tok){
     history.replaceState(null,'',location.pathname);
-    gmxAccount.finish(tok).then(function(r){
+    /* contract C1 (2026-11-09): gmx-account.js decides own link, foreign link or another account, no new tap */
+    if(typeof gmxAccount.openLink==='function'){
+      gmxAccount.openLink(tok,function(state){
+        if(state==='gone'){youNote('that link is used up or too old. ask for a new one.');return}
+        if(state==='error'){youNote('could not finish signing in. check your signal and try the link again.');return}
+        if(state==='limited'){youNote('too many sign-in tries from here. wait a few minutes, then tap the link again.');return}
+        meCache=null;
+        if(state==='in'){renderYou();justIn=true;loadFollows();ensurePush();return}
+        if(state==='foreign'||state==='switched'){renderYou();loadFollows();return}
+        renderYou();
+      });
+    }else gmxAccount.finish(tok).then(function(r){
       if(r.status===410){youNote('that link is used up or too old. ask for a new one.');return}
       if(!r.ok)throw new Error(r.status);
       return r.json().then(function(j){setSession(j.session);meCache=null;renderYou();justIn=true;ensurePush()});
@@ -1272,10 +1317,13 @@ function sendCode(f){
   if(code.length!==6){m.textContent='six digits.';return}
   m.textContent='checking';
   gmxAccount.code(f.dataset.email,code).then(function(r){
+    /* the api caps wrong tries per address (sec-auth-v1, 2026-11-09): past the cap every code is spent, the link still works */
+    if(r.status===429){m.textContent='too many tries. tap the link in the mail, or ask for a new code later.';return}
     if(r.status===410){m.textContent='that code is wrong, used or too old. ask for a new one.';return}
+    if(r.status===401||r.status===403){m.textContent='that code did not work. ask for a new one.';return}
     if(!r.ok)throw new Error(r.status);
-    return r.json().then(function(j){setSession(j.session);meCache=null;renderYou();justIn=true;loadFollows();ensurePush()});
-  }).catch(function(){m.textContent='did not send. check your signal.'});
+    return r.json().then(function(j){setSession(j.session,j.email);meCache=null;renderYou();justIn=true;loadFollows();ensurePush()});
+  }).catch(function(e){m.textContent=gmxAccount.failLine?gmxAccount.failLine(e,'did not send. check your signal.'):'did not send. check your signal.'});
 }
 /* the link wait (the ticket, the poll, the reload) lives in gmx-account.js now */
 function signedInByLink(){meCache=null;renderYou();justIn=true;loadFollows();ensurePush()}
@@ -1290,7 +1338,7 @@ function renderYou(){
   if(!sessionToken()){
     box.innerHTML='<p class="smeta">sign in to get told by email when an ID you scanned comes out, keep your scans across phones, and put your name on the IDs you help with.</p>'+
       '<form class="form on" id="yform" autocomplete="off"><label for="y-email">email</label><input id="y-email" name="email" type="email" inputmode="email" maxlength="320" required>'+
-      '<div class="row"><button class="btn red" type="submit">send me a sign-in link</button><span class="msg" role="status" id="youmsg"></span></div></form>';
+      '<div class="row"><button class="btn red" type="submit">send me a sign-in link</button><span class="msg" role="status" id="youmsg"></span></div><p class="legal">your email is only for this. <a href="/privacy">privacy</a> · <a href="/terms">terms</a></p></form>';
     renderAuto();
     return;
   }
@@ -1366,7 +1414,8 @@ function loadFollows(){
     if(!rows.length){ul.innerHTML='<li class="none">waiting on nothing yet. tap "tell me when it drops" on a scan and it lands here.</li>';return}
     ul.innerHTML='<li class="none">waiting on</li>'+rows.slice(0,30).map(function(f){
       var st=f.state==='notified'?'out now':f.named?'named, waiting for the release':f.until==='named'?'waiting for a name':'waiting for the release';
-      var nm=f.url&&f.state==='notified'?'<a href="'+esc(f.url)+'" target="_blank" rel="noopener">'+esc(f.name||'an ID')+'</a>':esc(f.name||'an ID');
+      var fu=safeUrl(f.url);
+      var nm=fu&&f.state==='notified'?'<a href="'+esc(fu)+'" target="_blank" rel="noopener">'+esc(f.name||'an ID')+'</a>':esc(f.name||'an ID');
       return '<li><span class="who">'+nm+'<small>'+st+'</small></span>'+(f.state==='open'?'<span class="acts"><button class="btn ghost" data-unfollow="'+esc(f.follow_id)+'">stop</button></span>':'<span class="when">'+when(new Date(f.released||f.created_at).getTime())+'</span>')+'</li>';
     }).join('');
   }).catch(function(){});
@@ -1433,7 +1482,7 @@ function renderSession(){
   var named=s.rows.filter(function(r){return r.name&&r.kind==='match'}).length;
   sessionmeta.textContent='started '+fmtClock(s.start)+' · '+s.rows.length+(s.rows.length===1?' scan':' scans')+' · '+named+' named';
   sessionlist.innerHTML=s.rows.length?s.rows.map(function(r){
-    var who=r.kind==='pending'?'kept, no signal<small>matched when you are back online</small>':r.name?(r.kind==='guess'?'<span>maybe '+esc(r.name)+'</span>':'<span>'+esc(r.name)+'</span>')+'<small>'+(r.kind==='guess'?'closest guess':pct(r.score))+(r.n>1?' · heard '+r.n+' times':'')+'</small>':'nothing named<small>no match</small>';
+    var who=r.kind==='pending'?'kept, no signal<small>matched when you are back online</small>':r.name?(r.kind==='guess'?'<span>maybe '+esc(r.name)+'</span>':'<span>'+esc(r.name)+'</span>')+'<small>'+(r.kind==='guess'?'closest guess':r.score==null?'match':pct(r.score))+(r.n>1?' · heard '+r.n+' times':'')+'</small>':'nothing named<small>no match</small>';
     return '<li><span class="who">'+who+'</span><span class="when">+'+fmtOffset(r.off)+'</span></li>';
   }).join(''):'<li class="none">listening. the first result lands here.</li>';
 }
@@ -1442,7 +1491,7 @@ $('sessiontools').addEventListener('click',function(e){
   if(b.getAttribute('data-s')==='clear'){if(s.rows.length&&!confirm('clear tonight\'s list on this phone?'))return;saveSession({start:auto?Date.now():0,rows:[]});renderSession();sessionmsg.textContent='cleared.';return}
   var lines=s.rows.filter(function(r){return r.name}).map(function(r){return fmtOffset(r.off)+'  '+(r.kind==='guess'?'? ':'')+r.name});
   if(!lines.length){sessionmsg.textContent='nothing named yet.';return}
-  var txt='tonight with groovesmaxxing · '+fmtClock(s.start)+'\n'+lines.join('\n')+'\nhttps://groovesmaxxing.com/scan';
+  var txt='tonight with groovesMAXXING · '+fmtClock(s.start)+'\n'+lines.join('\n')+'\nhttps://groovesmaxxing.com/scan';
   if(navigator.clipboard)navigator.clipboard.writeText(txt).then(function(){sessionmsg.textContent='copied, '+lines.length+' lines.'},function(){sessionmsg.textContent='could not copy.'});else sessionmsg.textContent='copy is not available here.';
 });
 /* the offline queue */
@@ -1456,8 +1505,11 @@ function queueClip(blob){
   },function(){
     showCard(errCard('could not reach the recognizer, and could not keep the clip on this phone either. try again when you have signal.'));
   });
-  heldBlob=null;reset();
+  heldBlob=null;reset();laterDrain();
 }
+/* a phone that never went offline never fires 'online' (2026-11-09 review): a waiting clip gets a few tries on a timer too */
+var drainTries=0;
+function laterDrain(){if(drainTries>=4)return;drainTries++;setTimeout(function(){if(!navigator.onLine)return;if(current&&card.classList.contains('on')){laterDrain();return}drain()},20000*drainTries)}   /* a result being read is never wiped by a timed try */
 function pendingList(){return window.gmxClips?gmxClips.list().then(function(rows){return rows.filter(function(r){return r.kind==='pending'&&r.blob}).sort(function(a,b){return a.t-b.t})}).catch(function(){return []}):Promise.resolve([])}
 function renderPending(){
   if(!pendingbar)return;
@@ -1479,7 +1531,7 @@ function drain(){
     identify(rec.blob);
   });
 }
-window.addEventListener('online',function(){renderPending();setTimeout(drain,1500)});
+window.addEventListener('online',function(){drainTries=0;renderPending();setTimeout(drain,1500)});
 window.addEventListener('offline',renderPending);
 renderAuto();renderSession();renderPending();
 if(navigator.onLine)setTimeout(drain,2500);

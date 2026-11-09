@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-5kuThrNW07hjWMlqvpuDc5u9gaHj2DvwbROpgQXmnT0='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com https://embed.beatport.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-v+45UHL/JAMn8Z2XPQYsZ4AhKcc3r1I3bcpEzID5dkQ='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com https://embed.beatport.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>dj interviews, in their own words · groovesMAXXING</title>
@@ -118,6 +118,7 @@ footer a:hover{color:var(--racing)}
 .pod .pguests a:hover{color:var(--racing);border-bottom-color:var(--racing)}
 .pod .plabel{color:#5f5f5c}
 .pod .psep{color:#3d3d42}
+.pod .pshare{font:inherit;background:none;border:0;padding:6px 0;margin:-6px 0;cursor:pointer;color:#9a9a95;border-bottom:1px solid #34343a;white-space:nowrap}.pod .pshare:hover,.pod .pshare:focus-visible{color:var(--racing);border-bottom-color:var(--racing)}
 </style>
 <link rel="stylesheet" href="/gmx-motion.css?v=2">
 <link rel="stylesheet" href="/gmx-nav.css?v=20">
@@ -339,6 +340,21 @@ fr.src="https://open.spotify.com/embed/episode/"+this.getAttribute("data-ep")+"?
 fr.title=this.getAttribute("data-title")||"podcast episode";fr.loading="lazy";
 fr.setAttribute("allow","autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture");
 slot.appendChild(fr);slot.hidden=false;});}
+})();
+/* share one show (2026-11-09 review): the show link, or the episode playing in the card */
+(function(){var pods=document.querySelectorAll(".pod");if(!pods.length)return;
+for(var i=0;i<pods.length;i++){var g=pods[i].querySelector(".pguests"),a=pods[i].querySelector(".ptitle");if(!g||!a)continue;
+var sb=document.createElement("button");sb.type="button";sb.className="pshare";sb.textContent="share";sb.setAttribute("aria-label","share this show: "+a.textContent);
+var sp=document.createElement("span");sp.className="psep";sp.textContent=" · ";g.appendChild(sp);g.appendChild(sb);}
+document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest(".pod .pshare");if(!b)return;
+var card=b.closest(".pod"),a=card.querySelector(".ptitle"),ep=card.querySelector(".pep[aria-pressed=\"true\"]");
+var u=ep?"https://open.spotify.com/episode/"+ep.getAttribute("data-ep"):a.href,t=a.textContent+(ep&&ep.getAttribute("data-title")?" · "+ep.getAttribute("data-title"):"")+" · a talk worth your hour, via groovesMAXXING";
+if(window.gmxSheet&&typeof gmxSheet.share==="function"){gmxSheet.share({title:"groovesMAXXING",text:t,url:u});return}
+if(navigator.share){navigator.share({title:"groovesMAXXING",text:t,url:u}).catch(function(){});return}
+var old=b.textContent,said=function(w){b.textContent=w;setTimeout(function(){b.textContent=old},2200)};
+var show=function(){var o=card.querySelector(".purl")||document.createElement("span");o.className="purl";o.textContent=" "+u;o.style.userSelect="all";o.style.wordBreak="break-all";b.parentNode.appendChild(o)};
+if(navigator.clipboard)navigator.clipboard.writeText(t+" "+u).then(function(){said("link copied")},show);else show();
+});
 })();
 </script>
 <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})})}</script>

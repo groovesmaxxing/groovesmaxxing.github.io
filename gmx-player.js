@@ -24,7 +24,7 @@ function ytApi(cb){
 }
 function el(tag,cls,html){var e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e;}
 function text(n){return n?(n.textContent||'').replace(/\s+/g,' ').trim():'';}
-function ytId(src){var m=/\/embed\/([A-Za-z0-9_-]{6,})/.exec(src||'');return m?m[1]:'';}
+function ytId(src){var m=/\/embed\/([A-Za-z0-9_-]{6,})/.exec(src||'');return m&&!/^(videoseries|playlist|artist|album|track|show|episode)$/.test(m[1])?m[1]:'';}
 
 /* the facade: a thumbnail and the play button. the real player loads only on tap */
 function facade(item){
@@ -76,6 +76,8 @@ function run(stage){
   var count=el('span','set-count');count.setAttribute('aria-live','polite');
   ctl.appendChild(prev);ctl.appendChild(count);ctl.appendChild(next);
   stage.insertBefore(ctl,dots);
+  /* radio (2026-11-09 review): the dots hide past 30 slides, so a line says what plays next */
+  var nx=null;if(stage.hasAttribute('data-radio')){nx=el('p','set-next');nx.setAttribute('aria-live','off');stage.insertBefore(nx,dots);}
   dots.innerHTML='';
   var db=[];
   for(var q=0;q<slides.length;q++){var b=el('button');b.type='button';b.setAttribute('aria-label',label+' '+(q+1)+' of '+slides.length);dots.appendChild(b);db.push(b);}
@@ -88,6 +90,7 @@ function run(stage){
     rail.style.transform='translateX('+(-i*100)+'%)';
     for(var k=0;k<db.length;k++)db[k].setAttribute('aria-current',k===i?'true':'false');
     count.textContent=(i+1)+' of '+slides.length;
+    if(nx&&slides.length>1)nx.textContent='up next: '+text(slides[(i+1)%slides.length].querySelector('.t'));
   }
   function pause(){clearInterval(timer);timer=null;}
   function play(){pause();if(!auto||locked||STILL)return;timer=setInterval(function(){go(i+1);},auto);}
@@ -122,10 +125,14 @@ function run(stage){
     fr.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
     var w=el('div','video-frame');w.appendChild(fr);w.__facade=b;
     b.parentNode.replaceChild(w,b);
+    /* radio: when the set ends, the next one starts on its own. the first tap was the user's, the rest ride on it.
+       a removed, private or embed-blocked video never ends, it errors (2026-11-09 review): skip it too, at most 3 in a row
+       so a phone with no youtube at all does not spin through the whole library */
+    function advance(){if(!slides[i].contains(fr))return;lock();go(i+1);var nb=slides[i].querySelector('.set-facade');if(nb)nb.click();}
     if(radio)ytApi(function(){try{new YT.Player(fr,{events:{onStateChange:function(ev){
-      /* radio: when the set ends, the next one starts on its own. the first tap was the user's, the rest ride on it */
-      if(ev.data===YT.PlayerState.ENDED){lock();go(i+1);var nb=slides[i].querySelector('.set-facade');if(nb)nb.click();}
-    }}})}catch(x){}});
+      if(ev.data===YT.PlayerState.PLAYING)stage.__errs=0;
+      if(ev.data===YT.PlayerState.ENDED)advance();
+    },onError:function(){stage.__errs=(stage.__errs||0)+1;if(stage.__errs<=3)setTimeout(advance,1200);}}})}catch(x){}});
   });
   go(0);play();
   try{stage.dispatchEvent(new CustomEvent('gmx:stage',{bubbles:true}))}catch(e){}
@@ -168,8 +175,10 @@ function fromFrames(){
   [].slice.call(document.querySelectorAll('iframe[src*="youtube.com/embed/"],iframe[src*="youtube-nocookie.com/embed/"]')).forEach(function(f){
     if(f.closest('.set-stage'))return;
     var card=f.closest('.setcard')||f.parentElement,c=card.parentElement;
+    /* a lone player sitting straight in the profile: stage the player itself, never the whole section */
+    if(!c||c.matches('section,main,body,article,.wrap')||!(c.classList.contains('sets')||c.querySelector('.setcard')))c=card;
     if(!c||seen.indexOf(c)>-1)return;seen.push(c);
-    var items=[].slice.call(c.querySelectorAll('iframe')).map(function(x){
+    var items=[].slice.call(c.querySelectorAll('iframe[src*="youtube.com/embed/"],iframe[src*="youtube-nocookie.com/embed/"]')).map(function(x){
       var cd=x.closest('.setcard')||x.parentElement,cap=cd.querySelector('.setcap,figcaption,p');
       return {id:ytId(x.getAttribute('src')),title:x.getAttribute('title')||text(cap)||'set',img:'',cap:text(cap)};
     }).filter(function(it){return it.id;});

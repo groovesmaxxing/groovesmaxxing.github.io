@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-RoTAk5VX34ZTGW5mxqfMTQkIX2Ytv2mE8Bca37HyXyU='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com https://embed.beatport.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-EPZOo7AZrcc2Q2lZWWjlko2JSVAjAKWdOtStSYhIHX4='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com https://embed.beatport.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <link rel="manifest" href="/manifest.webmanifest">
@@ -144,7 +144,7 @@ mark{background:none;color:var(--racing)}
 <span class="eyebrow">radio</span>
 <h1>the library,<br><span class="rd">back to back.</span></h1>
 <p class="lede">every set on the site, newest first, back to back. tap play once and let it run.</p>
-<div data-more="fold" data-more-label="more"><p class="lede">the arrows skip, the dots jump. nothing plays until you tap.</p></div>
+<div data-more="fold" data-more-label="more"><p class="lede">the arrows skip, a swipe does too. nothing plays until you tap.</p></div>
 </header>
 
 <div id="stage-wrap"><div class="gmx-skel" style="aspect-ratio:16/9" aria-hidden="true"></div><p class="radio-note" id="radio-note">loading the library…</p></div>
@@ -162,12 +162,15 @@ mark{background:none;color:var(--racing)}
 var wrap=document.getElementById('stage-wrap'),note=document.getElementById('radio-note');
 var M={jan:1,feb:2,mar:3,apr:4,may:5,jun:6,jul:7,aug:8,sep:9,oct:10,nov:11,dec:12};
 function when(html){var m=/\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\s+(20\d\d)\b/i.exec(html||'');return m?(+m[2])*12+M[m[1].toLowerCase()]:0}
-function text(h){var d=document.createElement('div');d.innerHTML=h||'';return (d.textContent||'').replace(/\s+/g,' ').trim()}
+/* parsed in an inert document, so nothing in the meta line loads or runs (2026-11-09 review) */
+var inert=document.implementation.createHTMLDocument('');
+function text(h){var d=inert.createElement('div');d.innerHTML=h||'';return (d.textContent||'').replace(/\s+/g,' ').trim()}
 /* gmx-player.js loads with defer, so wait for it before building the stage. the index can arrive first */
 var ready=new Promise(function(r){if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',r);else r()});
 Promise.all([fetch('/sets-index.json').then(function(r){return r.json()}),ready]).then(function(v){var j=v[0];
-  var items=[];
+  var items=[],seen={};
   Object.keys(j.artists||{}).forEach(function(slug){var a=j.artists[slug];(a.cards||[]).forEach(function(c){
+    if(c.yt&&seen[c.yt])return;if(c.yt)seen[c.yt]=1;   /* a b2b sits under both artists on /sets; radio plays it once */
     var m=/<div class="m">(.*?)<\/div>/.exec(c.html||'');
     items.push({id:c.yt,title:c.title,cap:text(m?m[1]:''),when:when(m?m[1]:''),who:a.name});
   })});

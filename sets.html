@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-jaIn1XJkrxQdqvvTEUV4thX8OjQWPvouIpq1bN/RwVs='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com https://embed.beatport.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-P5NL6PRorvbe8XG6Pk8q3TLUZF9PdK27HTnE0L28K2c='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com https://embed.beatport.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>dj sets worth your hour · groovesMAXXING</title>
@@ -44,7 +44,7 @@ h1 span{color:var(--racing)}
 .tools{margin:26px 0 10px}
 .lanes{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
 .lc{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.06em;color:var(--steel);background:none;border:1px solid var(--line);border-radius:999px;padding:0 13px;min-height:34px;line-height:32px;cursor:pointer;text-decoration:none}
-.lc:hover,.lc:focus-visible{color:var(--racing);border-color:var(--racing);outline:none}
+.lc:hover{color:var(--racing);border-color:var(--racing)}.lc:focus-visible{outline:3px solid var(--racing);outline-offset:3px}
 .lc[aria-pressed="true"]{color:var(--racing);border-color:var(--racing)}
 body.only-tl .card:not(.has-tl){display:none}
 body.only-tl .grid:not(:has(.card.has-tl))::after{content:"no tracklist in this fold yet";font-family:'Space Mono',monospace;font-size:11.5px;color:var(--steel)}
@@ -61,8 +61,8 @@ h2.azh{margin:48px 0 0}
 .card .t{font-weight:600;font-size:14px;line-height:1.35;margin-top:10px}
 .card .w+.t{margin-top:2px}
 .card .m{font-family:'Space Mono',monospace;font-size:11.5px;color:var(--steel);margin-top:4px;letter-spacing:.02em}
-.card .m a.tl{color:var(--racing);text-decoration:none}
-.card .m a.tl:hover{text-decoration:underline}
+.card .m a.tl{color:var(--racing);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.card .m a.tl:hover{text-decoration-thickness:2px}
 .set-facade{position:relative;display:block;width:100%;padding:0;padding-top:56.25%;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#000;cursor:pointer}
 .set-facade img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.88}
 .set-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;background:var(--racing);display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.45);transition:background .2s,transform .2s}
@@ -721,7 +721,7 @@ footer a:hover{color:var(--racing)}
 (function(){var bar=document.getElementById('setfilter');if(!bar)return;
 function markCards(){[].slice.call(document.querySelectorAll('.card')).forEach(function(c){if(c.querySelector('a.tl'))c.classList.add('has-tl')})}
 function pick(k){document.body.classList.toggle('only-tl',k==='tl');[].slice.call(bar.querySelectorAll('[data-f]')).forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-f')===k?'true':'false')})}
-bar.addEventListener('click',function(e){var b=e.target.closest('[data-f]');if(b)pick(b.getAttribute('data-f'))});
+bar.addEventListener('click',function(e){var b=e.target.closest('[data-f]');if(!b)return;var k=b.getAttribute('data-f');pick(k);try{history.replaceState(null,'',k==='tl'?'#tracklists':location.pathname+location.search)}catch(x){}});
 document.addEventListener('gmx:cards',markCards);markCards();
 if(location.hash==='#tracklists')pick('tl');
 })();</script>
