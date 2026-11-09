@@ -9,7 +9,7 @@
    - FILES (gmx-files): other files those pages pulled in (covers, data), newest FILES_MAX kept.
    so a cache-name bump refreshes the shell and keeps every saved page. urls carrying a one-time token
    (signin=, delete=, token=) go to the network only and are never written to the phone. */
-var CACHE = 'gmx-v52';
+var CACHE = 'gmx-v53';
 var PRE = 'gmx-precache', PAGES = 'gmx-pages', FILES = 'gmx-files';
 var PAGES_MAX = 150, FILES_MAX = 250;   // about 30 mb with the precache, inside what an iphone allows
 var SHELL = ['/scan', '/more', '/gmx-clips.js', '/gmx-scan.js?v=8', '/gmx-refresh.js?v=1', '/gmx-nav.js?v=37', '/gmx-lang.js?v=12', '/gmx-nav.css?v=21', '/gmx-account.js?v=21', '/gmx-account.css?v=2', '/gmx-read.css?v=10', '/gmx-more.js?v=3','/gmx-player.js?v=1', '/gmx-player.css?v=3', '/gmx-sets.js', '/search', '/gmx-profile.css?v=4', '/gmx-label.css?v=3', '/gmx-capture-worklet.js', '/gmx-fonts.css?v=2', '/fonts/poppins-400-latin.woff2', '/fonts/poppins-600-latin.woff2', '/fonts/poppins-900-latin.woff2', '/fonts/jetbrainsmono-600-latin.woff2', '/fonts/jetbrainsmono-700-latin.woff2', '/artists-index.json', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png', '/badge-96.png', '/favicon.svg', '/offline', '/gmx-offline.js?v=1', '/gmx-config.json', '/gmx-install.js'];
