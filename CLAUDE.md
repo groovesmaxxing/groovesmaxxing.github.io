@@ -63,7 +63,7 @@ A static website. Every page is a `.html` file in this repo, written by hand or 
 | `gmx-player.js`, `gmx-player.css` | The shared youtube stage that plays sets across pages |
 | `gmx-follow.js` | Follow-along tracklists, synced to the players |
 | `gmx-crate.js`, `gmx-sheet.js`, `gmx-sheet.css` | Hearts on sets and tracklist rows, the "…" bottom sheet, and the one share for the site: `gmxSheet.share()`, a share pill on every page with a canonical, and shares on calendar festivals, badges, open IDs and dj support tracks |
-| `gmx-quick.js`, `gmx-quick.css` | The search sheet behind the floating search button, over `search-index.json`, scoped to the current tab |
+| `gmx-quick.js`, `gmx-quick.css` | Retired stubs (2026-11-09). The search sheet behind the floating search button now lives in `gmx-nav.js`; no page loads these, and `ensure_tags.py` strips any tag that names them |
 | `gmx-nextup.js` | The "next up" strip |
 | `gmx-related.js` | Cross-links everything the site holds on an artist |
 | `gmx-sets.js` | Fills the sets page from `sets-index.json` |
@@ -74,7 +74,7 @@ A static website. Every page is a `.html` file in this repo, written by hand or 
 | `gmx-refresh.js` | Pull to refresh inside the installed app |
 | `gmx-install.js` | "Add to home screen" nudge |
 | `gmx-clips.js`, `gmx-capture-worklet.js` | Scan page clip storage and audio capture |
-| `sw.js` | Service worker. Cache name is a versioned string (read `CACHE` at the top of `sw.js` for the current name), bumped whenever the shell changes. Precaches the list in `precache.json` |
+| `sw.js` | Service worker, network first with a short wait (3.5 s for a page, 4 s for a file) before the phone's copy. Four caches: `gmx-vNN` (the shell list in `sw.js`, the only one replaced when `CACHE` is bumped; read `CACHE` at the top of `sw.js` for the current name), `gmx-precache` (the list in `precache.json`, kept in step with it, topped up at most once an hour and only inside the installed app; entries the list drops move to `gmx-files`), `gmx-pages` (pages opened while browsing, newest 150) and `gmx-files` (other files, newest 250). URLs carrying `signin=`, `delete=` or `token=` are never stored |
 | `manifest.webmanifest` | Installed app settings: name `groovesMAXXING`, home screen name `groovesMAXX`, start page `/scan` |
 | `gmx-config.json` | Recognizer backend address (`api_base`) and the app key `scan.html` sends. Public on the live site by design. Do not change it without the owner |
 | `sitemap.xml`, `robots.txt`, `feed.xml` | Search engine files and the newsletter RSS feed |
@@ -129,7 +129,7 @@ A static website. Every page is a `.html` file in this repo, written by hand or 
 
 ### Versioned shared files
 
-Scripts and styles are served with a four hour browser cache (on groovesmaxxing.com that comes from the Cloudflare zone's browser cache ttl, not from Pages: `groovesmaxxing.pages.dev` sends `max-age=0`, and a `Cache-Control` line in `_headers` is overridden on the custom domain), so a returning visitor can get a fresh page with a stale script. `gmx-nav.js`, `gmx-nav.css` and `gmx-account.js` are loaded with a version query (read the current numbers in `ensure_tags.py`, `bump_asset.py` moves them) on every page. When one of them changes, bump the number in `ensure_tags.py` and `build_precache.py` (and where `gmx-nav.js` and `gmx-quick.js` inject them), and bump the `sw.js` cache name. `gmx-read.css` has its own version (read it from `READ_CSS`), set in `READ_CSS` in `ensure_tags.py`, `build_precache.py` and `sw.js`.
+Scripts and styles are served with a four hour browser cache (on groovesmaxxing.com that comes from the Cloudflare zone's browser cache ttl, not from Pages: `groovesmaxxing.pages.dev` sends `max-age=0`, and a `Cache-Control` line in `_headers` is overridden on the custom domain), so a returning visitor can get a fresh page with a stale script. `gmx-nav.js`, `gmx-nav.css` and `gmx-account.js` are loaded with a version query (read the current numbers in `ensure_tags.py`, `bump_asset.py` moves them) on every page. When one of them changes, bump the number in `ensure_tags.py` and `build_precache.py` (and where `gmx-nav.js` injects them), and bump the `sw.js` cache name. `gmx-read.css` has its own version (read it from `READ_CSS`), set in `READ_CSS` in `ensure_tags.py`, `build_precache.py` and `sw.js`.
 
 ### Security tags (content security policy)
 

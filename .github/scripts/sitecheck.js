@@ -18,7 +18,10 @@ const fs=require('fs');try{fs.mkdirSync('shots',{recursive:true})}catch(e){}
   for(const vp of [{w:390,h:844,name:'phone'},{w:1280,h:900,name:'desktop'}]){
     console.log(`\n=== ${vp.name} ${vp.w}x${vp.h} ===`);
     const ctx=await b.newContext({viewport:{width:vp.w,height:vp.h},hasTouch:vp.w<600,isMobile:vp.w<600});
-    await ctx.route('**/*',r=>r.request().url().startsWith(BASE)?r.continue():r.abort());
+    /* outside hosts are blocked. python's http.server has no clean urls, so a same-origin path with no extension
+       (fetch('/events'), the worker's '/scan') is asked as its .html, the way cloudflare pages answers it */
+    await ctx.route('**/*',r=>{const u=r.request().url();if(!u.startsWith(BASE))return r.abort();const x=new URL(u),last=x.pathname.split('/').pop();
+      if(last&&!last.includes('.'))return r.continue({url:BASE+x.pathname+'.html'+x.search});return r.continue();});
     for(const path of PAGES){
       const p=await ctx.newPage();const errs=[];
       p.on('console',m=>{if(m.type()==='error')errs.push(m.text());});
