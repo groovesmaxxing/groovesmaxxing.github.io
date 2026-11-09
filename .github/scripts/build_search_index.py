@@ -91,6 +91,8 @@ for w in SOUNDS:
     n = sum(1 for i in items if pat.search(i['k']))
     if n >= 3: sounds.append([w, n])
 out = {'generated': date.today().isoformat(), 'count': len(items), 'sounds': sounds, 'items': items}
+from derived_guard import check
+check('search-index.json', len(items))
 with open('search-index.json', 'w', encoding='utf-8') as f:
     json.dump(out, f, ensure_ascii=False, separators=(',', ':'))
 from collections import Counter

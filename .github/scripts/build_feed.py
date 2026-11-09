@@ -26,5 +26,7 @@ feed = ('<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="
         '  <description>the releases that survived the week, an artist worth knowing, where they are playing next. every friday.</description>\n'
         '  <language>en</language>\n  <atom:link href="https://groovesmaxxing.com/feed.xml" rel="self" type="application/rss+xml"/>\n'
         + body + '</channel>\n</rss>\n')
+from derived_guard import check
+check('feed.xml', len(items), xml=True)
 open('feed.xml', 'w', encoding='utf-8').write(feed)
 print('feed.xml:', len(items), 'issues')

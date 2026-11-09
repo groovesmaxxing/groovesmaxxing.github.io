@@ -22,42 +22,63 @@ jobs:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
+      # no token in the checkout's git config: npm, the playwright browser download and node all run before the
+      # commit step, and only that step holds the push credential
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 22
 
-      - name: the derived files
-        run: |
-          python3 .github/scripts/lighten_sets.py
-          python3 .github/scripts/build_search_index.py
-          python3 .github/scripts/build_feed.py
-          python3 .github/scripts/build_precache.py
-          python3 .github/scripts/build_related.py
-          python3 .github/scripts/related_slots.py
-          python3 .github/scripts/build_tracks.py
-          python3 .github/scripts/build_open_ids.py
-          python3 .github/scripts/build_upcoming.py
-          python3 .github/scripts/build_event_schema.py
-          python3 .github/scripts/build_reels.py
-          python3 .github/scripts/ensure_tags.py
-          python3 .github/scripts/copy_pass.py
-          python3 .github/scripts/sync_counts.py
-          python3 .github/scripts/sitemap_lastmod.py
-          python3 .github/scripts/crosslink_audit.py
+      - name: preflight before the rewrite (the baseline the bot's own changes are compared with)
+        env:
+          BANNED_STRINGS: ${{ secrets.BANNED_STRINGS }}
+        run: bash .github/scripts/bot_gate.sh before
 
-      - name: share cards (only the pages whose name or subtitle changed)
+      - name: a browser for the share cards and the page check
         run: |
           npm install --no-save playwright@1.56.1
           npx playwright install --with-deps chromium
-          NODE_PATH=$PWD/node_modules node .github/scripts/share_cards.js
 
-      - name: the security tags (fonts, referrer, content security policy with this push's script hashes)
-        run: python3 .github/scripts/harden_pages.py
+      - name: the derived files, share cards and security tags (site_data_build.sh)
+        run: bash .github/scripts/site_data_build.sh
 
-      - name: commit what changed
+      - name: the rewrite added no preflight failure and the security tags are current
+        env:
+          BANNED_STRINGS: ${{ secrets.BANNED_STRINGS }}
+        run: bash .github/scripts/bot_gate.sh after
+
+      - name: commit what changed (rebase and retry when another push landed first)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BANNED_STRINGS: ${{ secrets.BANNED_STRINGS }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          msg="site data: derived files, tags and share cards"
           git add -A
-          git diff --staged --quiet || (git commit -m "site data: derived files, tags and share cards" && git push)
+          git diff --staged --quiet && exit 0
+          git commit -m "$msg"
+          auth="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)"
+          for i in 1 2 3; do
+            git -c "http.https://github.com/.extraheader=$auth" push origin HEAD:main && exit 0
+            git fetch --no-tags origin main
+            if git rebase origin/main; then continue; fi
+            git rebase --abort
+            git reset --hard origin/main
+            env -u GH_TOKEN bash .github/scripts/site_data_build.sh
+            env -u GH_TOKEN bash .github/scripts/bot_gate.sh after
+            git add -A
+            git diff --staged --quiet && exit 0
+            git commit -m "$msg"
+          done
+          exit 1
+
+      # a push by GITHUB_TOKEN starts no workflow, so site check never sees the bot's tree. this gives it a
+      # red run of its own (after the commit, so a page check flake never holds back the derived files)
+      - name: load the pages the bot just committed
+        run: |
+          python3 -m http.server 8787 --bind 127.0.0.1 >/dev/null 2>&1 &
+          sleep 1
+          NODE_PATH=$PWD/node_modules node .github/scripts/sitecheck.js

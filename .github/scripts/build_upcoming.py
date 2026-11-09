@@ -92,6 +92,8 @@ src = open('upcoming.html', encoding='utf-8').read()
 today = date.today()
 rows = tabs(src, today) if 'class="ur-panel"' in src else legacy(src, today)
 rows = [{k: r[k] for k in ('tier', 'date', 'iso', 'title', 'artists', 'label', 'kind', 'link')} for r in rows]
+from derived_guard import check
+check('upcoming.json', len(rows), zero_only=True)
 json.dump({'generated': today.isoformat(), 'count': len(rows), 'rows': rows}, open('upcoming.json', 'w', encoding='utf-8'),
           ensure_ascii=False, separators=(',', ':'))
 print('upcoming.json: %d rows (%d dated)' % (len(rows), sum(1 for r in rows if r['iso'])))

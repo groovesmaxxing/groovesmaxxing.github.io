@@ -10,6 +10,9 @@ Design rules, decided 2026-08-01:
 - never client side, visitors only ever read the committed static JSON
 - stays under the free tier: 5 requests/second, 5000/day
 - an outage never clobbers good data: on a failed sweep the old file stays
+- an api error is never read as "no match" (2026-11-09): a failed name lookup is not cached, a failed
+  events lookup keeps that artist's previous dates, and too many errors leave both radar files untouched
+  and exit 1 so the workflow goes red and commits nothing
 """
 import json
 import os
@@ -43,6 +46,12 @@ VENUE_BLOCK = {
 }
 
 calls = 0
+errors = 0          # ticketmaster calls that failed after the retry (not budget stops)
+ERR = object()      # resolve_attraction's answer when the lookup itself failed
+
+
+class BudgetReached(RuntimeError):
+    pass
 
 
 DENVER_FILE = "radar-denver.json"
@@ -73,7 +82,7 @@ def write_denver(events):
 def get(path, **params):
     global calls
     if calls >= CALL_BUDGET:
-        raise RuntimeError("call budget reached")
+        raise BudgetReached("call budget reached")
     params["apikey"] = KEY
     url = f"{BASE}/{path}?{urllib.parse.urlencode(params)}"
     calls += 1
@@ -89,11 +98,16 @@ def get(path, **params):
 
 
 def resolve_attraction(name):
-    """Return a Ticketmaster attraction id for an exact-ish name match, else None."""
+    """Return a Ticketmaster attraction id for an exact-ish name match, None when there is no match,
+    ERR when the lookup failed (an outage, a 429, the budget), which must never be cached as no match."""
+    global errors
     try:
         data = get("attractions.json", keyword=name, size=5, classificationName="music")
+    except BudgetReached:
+        return ERR
     except Exception:
-        return None
+        errors += 1
+        return ERR
     items = (data.get("_embedded") or {}).get("attractions") or []
     low = name.lower()
     for a in items:
@@ -107,10 +121,15 @@ def resolve_attraction(name):
 
 
 def events_for(attraction_id):
+    """The attraction's upcoming events, [] when it has none, None when the lookup failed."""
+    global errors
     try:
         data = get("events.json", attractionId=attraction_id, size=50, sort="date,asc")
+    except BudgetReached:
+        return None
     except Exception:
-        return []
+        errors += 1
+        return None
     items = (data.get("_embedded") or {}).get("events") or []
     out = []
     for e in items:
@@ -161,15 +180,28 @@ def main():
                 continue
         if calls >= CALL_BUDGET - len(artists):
             break  # leave room for phase 2
-        cache[name] = {"id": resolve_attraction(name), "checked": today}
+        aid = resolve_attraction(name)
+        if aid is ERR:
+            continue  # a failed lookup is not a "no match": leave the cache row as it was, retry next night
+        cache[name] = {"id": aid, "checked": today}
 
-    # phase 2: events for every resolved artist
+    try:
+        prev_events = json.load(open(OUT_FILE, encoding="utf-8")).get("events") or []
+    except Exception:
+        prev_events = []
+
+    # phase 2: events for every resolved artist. a failed lookup keeps that artist's previous dates
     events = []
+    attempted = failed = 0
     for name in artists:
         aid = (cache.get(name) or {}).get("id")
         if not aid:
             continue
+        attempted += 1
         found = events_for(aid)
+        if found is None:
+            failed += 1
+            found = [dict(e) for e in prev_events if e.get("artist") == name]
         for e in found:
             e["artist"] = name
         events.extend(found)
@@ -197,6 +229,14 @@ def main():
 
     events.sort(key=lambda e: (e.get("date") or "9999", e.get("artist", "")))
 
+    # error guard: a sweep with more than a few failed calls is not trusted. the cache keeps only the
+    # lookups that worked (failed ones never wrote it), the radar files stay as they were, and the run is red
+    if errors > max(3, attempted // 10):
+        print(f"refusing to write {OUT_FILE} and {DENVER_FILE}: {errors} ticketmaster calls failed "
+              f"({failed} of {attempted} event lookups), {calls} api calls", file=sys.stderr)
+        json.dump(cache, open(CACHE_FILE, "w", encoding="utf-8"), ensure_ascii=False, indent=0)
+        return 1
+
     # outage guard: never replace real data with an empty sweep
     if not events:
         try:
@@ -216,7 +256,8 @@ def main():
         "events": events,
     }, open(OUT_FILE, "w", encoding="utf-8"), ensure_ascii=False, indent=0)
     write_denver(events)
-    print(f"done: {calls} api calls, {with_events} artists with events, {len(events)} events")
+    print(f"done: {calls} api calls, {errors} errors ({failed} event lookups kept from the last sweep), "
+          f"{with_events} artists with events, {len(events)} events")
     return 0
 
 

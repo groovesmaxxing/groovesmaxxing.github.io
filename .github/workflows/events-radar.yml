@@ -17,11 +17,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
+      # exits 1 without touching the radar files when too many ticketmaster calls failed, so a bad sweep
+      # turns the run red and nothing below runs
       - name: run the sweep
         env:
           TM_API_KEY: ${{ secrets.TM_API_KEY }}
         run: python3 .github/scripts/fetch_events.py
+
+      - name: preflight before the page rewrite (baseline)
+        run: bash .github/scripts/bot_gate.sh before
 
       - name: the events page's schema (the next dates as MusicEvent rows a crawler can read)
         run: python3 .github/scripts/build_event_schema.py
@@ -29,9 +36,33 @@ jobs:
       - name: the sitemap dates (the events page moved, so its lastmod moves with it)
         run: python3 .github/scripts/sitemap_lastmod.py
 
-      - name: commit refreshed data
+      - name: the rewrite added no preflight failure and left no page with stale security tags
+        run: bash .github/scripts/bot_gate.sh radar
+
+      - name: commit refreshed data (rebase and retry when another push landed first)
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add radar-events.json radar-attractions.json radar-denver.json events.html sitemap.xml .github/sitemap-hashes.json
-          git diff --staged --quiet || (git commit -m "radar: nightly events refresh" && git push)
+          msg="radar: nightly events refresh"
+          paths="radar-events.json radar-attractions.json radar-denver.json events.html sitemap.xml .github/sitemap-hashes.json"
+          git add $paths
+          git diff --staged --quiet && exit 0
+          git commit -m "$msg"
+          mkdir -p /tmp/radar && cp radar-events.json radar-attractions.json radar-denver.json /tmp/radar/
+          auth="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)"
+          for i in 1 2 3; do
+            git -c "http.https://github.com/.extraheader=$auth" push origin HEAD:main && exit 0
+            git fetch --no-tags origin main
+            if git rebase origin/main; then continue; fi
+            git rebase --abort
+            git reset --hard origin/main
+            cp /tmp/radar/*.json .
+            python3 .github/scripts/build_event_schema.py
+            python3 .github/scripts/sitemap_lastmod.py
+            git add $paths
+            git diff --staged --quiet && exit 0
+            git commit -m "$msg"
+          done
+          exit 1

@@ -27,7 +27,8 @@ OUT = os.environ.get("SITEWATCH_OUT", "status-out")
 PROBES = [
     # path, must_contain (all), must_parse_json
     ("/", ["lane-nonspoty", "contratbandgrooves", "groovesMAXXING"], False),
-    ("/scan", ["gmx-config.json"], False),
+    ("/scan", ["/gmx-scan.js?v=", 'id="tap"'], False),   # the config fetch moved into gmx-scan.js on 2026-10-28
+    ("/gmx-config.json", ["api_base"], True),
     ("/sets", ["set-facade"], False),
     ("/artists", ["drow"], False),
     ("/tracklists/", ["tracklist"], False),
@@ -110,7 +111,7 @@ def probe_workflows():
     token, repo = os.environ.get("GITHUB_TOKEN"), os.environ.get("GITHUB_REPOSITORY")
     if not token or not repo:
         return {"state": "unknown", "note": "no GITHUB_TOKEN", "runs": []}
-    code, body, _ = get(f"https://api.github.com/repos/{repo}/actions/runs?per_page=60", token=token, limit=None)
+    code, body, _ = get(f"https://api.github.com/repos/{repo}/actions/runs?branch=main&per_page=60", token=token, limit=None)
     if code != 200:
         return {"state": "unknown", "note": "actions api answered %d" % code, "runs": []}
     try:
@@ -122,6 +123,8 @@ def probe_workflows():
         name = r.get("name") or r.get("path")
         if name == "site watch":
             continue   # this run, always in progress while it looks
+        if r.get("event") == "pull_request":
+            continue   # a pull request run says nothing about the live main
         if name not in latest:
             latest[name] = {"name": name, "status": r.get("status"), "conclusion": r.get("conclusion"), "event": r.get("event"),
                             "branch": r.get("head_branch"), "at": r.get("updated_at"), "url": r.get("html_url"),

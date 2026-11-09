@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """bump_asset.py: move a shared asset to its next ?v= tag everywhere in one pass.
 
-GitHub Pages serves .js and .css with a four-hour cache, so a changed gmx-*.js or gmx-*.css has to move to a
+groovesmaxxing.com serves .js and .css with a four-hour browser cache (the Cloudflare zone's browser cache ttl;
+groovesmaxxing.pages.dev itself sends max-age=0), so a changed gmx-*.js or gmx-*.css has to move to a
 fresh ?v= tag in the same commit (asset_tags.py is the check that fails when it does not). This is the tool
 that does the move, so the number is never hand-typed in 900 places.
 
@@ -12,11 +13,12 @@ that does the move, so the number is never hand-typed in 900 places.
 What it does:
   1. refuses to run unless the git tree is clean (no staged, unstaged or untracked files), so the bump is
      the only change in the commit.
-  2. reads the current N from the asset's own tag in index.html (src="/gmx-nav.js?v=N" or href="...").
+  2. reads the current N as the highest "<asset>?v=<digits>" in any tracked text file (not only index.html,
+     which does not load the profile, label, scan, upcoming or moods assets).
   3. writes N+1 into every tracked text file that carries "<asset>?v=<digits>", whatever number it had, which
-     also heals a page that fell behind. Files are read and written as bytes, so CRLF and LF files keep their
+     also heals a page that fell behind. Taking the highest N means no old tag survives (asset_tags.py checks that). Files are read and written as bytes, so CRLF and LF files keep their
      own line endings and only the digits change.
-  4. bumps the service worker cache name (var CACHE = 'gmx-vNN') by one, because sw.js precaches the shell
+  4. bumps the service worker cache name (var CACHE = 'gmx-vNN', or 'gmx-shell-vNN') by one, because sw.js precaches the shell
      and the installed app only refreshes when that name changes (CLAUDE.md, Versioned shared files).
      --no-sw skips this step.
   5. prints the file count and the new tag.
@@ -53,20 +55,13 @@ def main(argv):
 
     tag = re.compile(rb'(?P<head>/' + re.escape(asset.encode()) + rb'\?v=)(?P<n>\d+)')
 
-    try:
-        index = open('index.html', 'rb').read()
-    except OSError:
-        print('index.html not found: run from the repo root')
+    import os
+    if not os.path.isfile('sw.js') or not os.path.isdir('.github'):
+        print('run from the repo root')
         return 1
-    own = re.search(rb'(?:src|href)="' + tag.pattern + rb'"', index)
-    if not own:
-        print('no versioned tag for %s in index.html, so there is no current number to read' % asset)
-        return 1
-    old = int(own.group('n'))
-    new = old + 1
-
     names = [n for n in git('ls-files', '-z').decode('utf-8').split('\0') if n.lower().endswith(TEXT_EXT)]
-    changed = []
+    carrying = []
+    found = []
     for name in names:
         try:
             data = open(name, 'rb').read()
@@ -74,6 +69,16 @@ def main(argv):
             continue
         if asset.encode() + b'?v=' not in data:
             continue
+        carrying.append((name, data))
+        found += [int(m.group('n')) for m in tag.finditer(data)]
+    if not found:
+        print('no versioned tag for %s in any tracked file, so there is no current number to read' % asset)
+        return 1
+    old = max(found)
+    new = old + 1
+
+    changed = []
+    for name, data in carrying:
         out = tag.sub(lambda m: m.group('head') + str(new).encode(), data)
         if out != data:
             changed.append((name, out))
@@ -91,11 +96,14 @@ def main(argv):
                     sw = out
                     del changed[i]
                     break
-            m = re.search(rb"(var CACHE = 'gmx-v)(\d+)(')", sw)
+            m = re.search(rb"(var CACHE = 'gmx-(?:shell-)?v)(\d+)(')", sw)
             if m:
                 sw = sw[:m.start(2)] + str(int(m.group(2)) + 1).encode() + sw[m.end(2):]
-                sw_note = 'sw.js cache name gmx-v%s -> gmx-v%d' % (m.group(2).decode(), int(m.group(2)) + 1)
-            changed.append(('sw.js', sw))
+                sw_note = 'sw.js cache name %s%s -> %d' % (m.group(1)[13:].decode(), m.group(2).decode(), int(m.group(2)) + 1)
+                changed.append(('sw.js', sw))
+            else:
+                sw_note = 'WARNING: no var CACHE = \'gmx-vNN\' line in sw.js, the cache name was NOT bumped'
+                changed.append(('sw.js', sw))
 
     print('%s?v=%d -> ?v=%d' % (asset, old, new))
     print('%d files %s' % (len(changed), 'would change' if dry else 'changed'))

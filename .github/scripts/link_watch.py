@@ -406,6 +406,13 @@ def main(offline=False):
     return 0
 
 
+def md_safe(t):
+    """third-party text (an uploader's oembed title, a redirect host) as one inline code span, so it cannot
+    @mention anyone, link anywhere or add markdown to the owner's alert issue"""
+    t = (t or "").replace("`", "'").replace("\r", " ").replace("\n", " ")[:200]
+    return "`" + t + "`"
+
+
 def issue(report):
     """one open issue, label link-watch, kept current: opened when something is broken, edited while it stays
     broken, closed when the list is empty. the owner gets github's mail on open, nothing else."""
@@ -437,10 +444,10 @@ def issue(report):
         lines += ["### broken (the thing is gone)", ""] + ["- %s (%s), on %d page%s, since %s: %s" % (
             r["url"], r["code"], r["page_count"], "" if r["page_count"] == 1 else "s", r["first_seen"][:10], ", ".join(r["pages"][:4])) for r in report["broken"][:60]] + [""]
     if report["moved"]:
-        lines += ["### moved (the link lands somewhere else)", ""] + ["- %s: %s, on %s" % (r["url"], r["note"], ", ".join(r["pages"][:3])) for r in report["moved"][:30]] + [""]
+        lines += ["### moved (the link lands somewhere else)", ""] + ["- %s: %s, on %s" % (r["url"], md_safe(r["note"]), ", ".join(r["pages"][:3])) for r in report["moved"][:30]] + [""]
     if report["differs"]:
         lines += ["### reads differently (the title behind the link is not what the page calls it)", ""] + [
-            "- %s is \"%s\", %s" % (r["url"], r["title"], r["note"]) for r in report["differs"][:30]] + [""]
+            "- %s is %s, %s" % (r["url"], md_safe(r["title"]), r["note"]) for r in report["differs"][:30]] + [""]
     if report["anchors_broken"]:
         lines += ["### anchors that name nothing", ""] + ["- %s -> %s" % (r["page"], r["href"]) for r in report["anchors_broken"][:30]] + [""]
     lines += ["full report: `link-watch.json` on the `status` branch."]

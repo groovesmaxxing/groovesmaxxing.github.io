@@ -3,9 +3,10 @@
    without the tab bar, or a youtube rail that did not become the shared player. content counts are not checked,
    so the laptop scripts can keep changing what the pages say. outside hosts are blocked, so thumbnails stay black. */
 const {chromium}=require('playwright');
-const BASE='http://127.0.0.1:8787';
+const BASE=process.env.SITECHECK_BASE||'http://127.0.0.1:8787';
 const PAGES=['/index.html','/artists.html','/sets.html','/interviews.html','/events.html','/more.html','/scan.html','/badges.html','/upcoming.html','/moods.html','/labels.html','/newsletter.html','/friday.html','/404.html','/search.html','/radio.html','/crate.html','/open-ids.html','/tracklists/index.html',
-  '/artists/adam-ten.html','/artists/max-styler.html','/artists/balanka.html','/artists/gkat.html','/artists/solomun.html','/labels/make-the-girls-dance-records.html','/labels/nu-moda.html','/tracklists/cloonee-live-at-red-rocks.html','/newsletter/fgf-001.html'];
+  '/artists/adam-ten.html','/artists/max-styler.html','/artists/balanka.html','/artists/gkat.html','/artists/solomun.html','/labels/make-the-girls-dance-records.html','/labels/nu-moda.html','/tracklists/cloonee-live-at-red-rocks.html','/newsletter/fgf-001.html',
+  '/calendar.html','/picks.html','/dj-support.html','/privacy.html','/terms.html'];
 const NO_TABS=['/sets.html','/interviews.html'];
 /* the render proof: full-page screenshots of the pages a layout change usually touches, saved to shots/ and
    uploaded as a workflow artifact, so a push that moved something can be looked at, not just trusted */
@@ -98,6 +99,13 @@ const fs=require('fs');try{fs.mkdirSync('shots',{recursive:true})}catch(e){}
         const o=await p.evaluate(()=>({sets:document.querySelectorAll('.oset').length,rows:document.querySelectorAll('.orow').length,reps:document.querySelectorAll('.rep').length}));
         log(o.sets>0&&o.rows>0,path+': the board renders from open-ids.json ('+o.sets+' sets, '+o.rows+' rows, '+o.reps+' repeats)');
       }
+      if(path==='/calendar.html'){
+        log(await p.evaluate(()=>document.querySelectorAll('#callist .ev').length>0&&document.querySelectorAll('#pins *').length>0),path+': calendar list and map pins render');
+      }
+      if(path==='/picks.html'){
+        await p.waitForTimeout(600);
+        log(await p.evaluate(()=>document.querySelectorAll('.pks .pk').length>0),path+': picks scoreboard renders');
+      }
       if(path==='/upcoming.html'){
         await p.waitForTimeout(600);
         const u=await p.evaluate(()=>({bar:!!document.querySelector('.gmx-mine'),chips:document.querySelectorAll('.gmx-mine button').length}));
@@ -139,6 +147,7 @@ const fs=require('fs');try{fs.mkdirSync('shots',{recursive:true})}catch(e){}
         await p.fill('#q','adam ten');await p.waitForTimeout(600);
         const r=await p.evaluate(()=>({hits:document.querySelectorAll('.hit').length,groups:[...document.querySelectorAll('.grp')].map(g=>g.firstChild.textContent)}));
         log(r.hits>0,path+': "adam ten" finds results across groups '+JSON.stringify(r.groups));
+        const ov=await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1);log(!ov,path+': no horizontal overflow with results');
       }
       if(path==='/index.html'){
         // next up (ui build 3): hidden with an empty crate; a crate that follows an artist from upcoming.json shows the band

@@ -6,7 +6,7 @@ freshness workflow, so a red run (and the mail github sends for it) is the alert
 tests
   newest_date   a regex with named groups (day, month, year, or end_month_or_start_month for the friday
                 week line) over the page, the newest match is the page's own date
-  generated     an iso timestamp under a key in a json file
+  generated     an iso timestamp under a key in a json file, and with min_count, at least that many rows in its count
   counts_agree  every spot's number equals the expected count (artist_pages = artist profiles that are not
                 redirects)
 """
@@ -62,7 +62,11 @@ def main():
         except OSError:
             bad += 1; print("FAIL %s %s: %s is missing" % (rid, what, row["file"])); continue
         if row["test"] == "generated":
-            stamp = json.loads(text).get(row["key"], "")
+            data = json.loads(text)
+            stamp = data.get(row["key"], "")
+            if "min_count" in row and int(data.get("count") or 0) < row["min_count"]:
+                # a fresh date on an emptied file is not fresh (a builder whose regex stopped matching)
+                bad += 1; print("FAIL %s %s: %s holds %d rows, under %d" % (rid, what, row["file"], int(data.get("count") or 0), row["min_count"])); continue
             d = datetime.date.fromisoformat(stamp[:10]) if stamp else None
         else:
             d = newest_date(row, text)

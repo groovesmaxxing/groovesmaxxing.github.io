@@ -7,11 +7,12 @@ script moves the per-artist cards into sets-index.json and leaves an empty grid 
 Idempotent: a page that is already light is left alone. The laptop keeps writing the full page,
 this script keeps lightening it, and the two never fight because the full page is the input.
 
+title and name are plain text (decoded from the page's attributes); html is markup.
 JSON shape, for the day setslib.py emits it directly and this script becomes a no-op:
   {"generated": "YYYY-MM-DD", "artists": {"<slug>": {"name": "...", "page": "/artists/<slug>",
     "cards": [{"yt": "<id>", "title": "...", "html": "<div class=\\"t\\">...</div><div class=\\"m\\">...</div>"}]}}}
 """
-import json, re, sys
+import html, json, re, sys
 from datetime import date
 
 p = 'sets.html'
@@ -37,9 +38,9 @@ for i, line in enumerate(lines):
         body = c[:-len('</div>')]                                        # drop the card's closing tag
         cm = re.match(r'<button class="set-facade" type="button" data-yt="([^"]+)" data-title="([^"]*)".*?</button>(.*)$', body, re.S)
         if not cm: break
-        cards.append({'yt': cm.group(1), 'title': cm.group(2), 'html': cm.group(3)})
+        cards.append({'yt': cm.group(1), 'title': html.unescape(cm.group(2)), 'html': cm.group(3)})   # plain text: the pages escape on output (C5, 2026-11-09)
     if len(cards) != len(chunks) or not cards: continue
-    artists[slug] = {'name': name.group(1) if name else slug, 'page': page.group(1) if page else '', 'cards': cards}
+    artists[slug] = {'name': html.unescape(name.group(1)) if name else slug, 'page': page.group(1) if page else '', 'cards': cards}
     lines[i] = '<details class="a" id="%s">%s<div class="in">%s<div class="grid" data-slug="%s" data-n="%d"></div></div></details>' % (
         slug, head, ('<a class="pg" href="%s">artist page →</a>' % page.group(1)) if page else '', slug, len(cards))
 out = '\n'.join(lines)

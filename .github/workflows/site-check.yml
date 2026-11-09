@@ -14,14 +14,27 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 2
-      - name: a shared script or stylesheet that changed moved to a fresh ?v= tag (Pages caches them 4 hours)
-        run: python3 .github/scripts/asset_tags.py --range ${{ github.event.before || 'HEAD~1' }}..${{ github.sha }}
+      # the checkout is two commits deep, so a push of several commits would leave its base out of the clone and
+      # asset_tags would only see the last commit. fetch the base tree (depth 1 is enough for diff and grep)
+      - name: the push base, so every commit of a multi-commit push is checked
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: |
+          if [ -n "$BEFORE" ] && [ "$BEFORE" != 0000000000000000000000000000000000000000 ]; then
+            git fetch --no-tags --depth=1 origin "$BEFORE" || echo "::warning::push base $BEFORE could not be fetched (force push?)"
+          fi
+      - name: a shared script or stylesheet that changed moved to a fresh ?v= tag (the zone caches them 4 hours)
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: python3 .github/scripts/asset_tags.py --range "${BEFORE:-HEAD~1}..${{ github.sha }}"
       - name: preflight (tags, links, anchors, embeds, noopener, fonts, json-ld, sitemap, banned strings)
         env:
           BANNED_STRINGS: ${{ secrets.BANNED_STRINGS }}
         run: python3 .github/scripts/preflight.py
       - name: the security tags on every page are current
         run: python3 .github/scripts/harden_pages.py --check
+      - name: the app's offline list holds every page and asset it promises (build_precache.py and the sw.js shell)
+        run: python3 .github/scripts/build_precache.py --check
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 22

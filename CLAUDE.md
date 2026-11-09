@@ -57,12 +57,12 @@ A static website. Every page is a `.html` file in this repo, written by hand or 
 
 | File | Purpose |
 |---|---|
-| `gmx-nav.js`, `gmx-nav.css` | The only tab bar, on every page: home, tracklists, scan (the raised button: the homepage logo on a night disc, with the waveform swelling, the grooves lighting up from the centre and a slow red ripple), artists, more. Also the floating search button. Loaded with `?v=17`, see Versioned shared files |
-| `gmx-read.css` | The readability layer: lighter secondary grey, tighter and bigger Space Mono labels, lowercase small labels, Poppins for long button and link text. `ensure_tags.py` puts it last in every page's head so it wins over the page's own `<style>`. Loaded with `?v=3`. Also holds the keyboard focus ring for the shared account, search and "…" buttons |
-| `gmx-account.js`, `gmx-account.css` | The account layer: sign in by email link or code, the sign in or @handle chip in the header, /me, the synced crate, push, and the "this is me" claim sheet on artist and label pages. Calls the recognizer at `api_base`. `gmx-account.js` is loaded with `?v=17` |
+| `gmx-nav.js`, `gmx-nav.css` | The only tab bar, on every page: home, tracklists, scan (the raised button: the homepage logo on a night disc, with the waveform swelling, the grooves lighting up from the centre and a slow red ripple), artists, more. Also the floating search button. Loaded with a `?v=` tag; the current number lives in `.github/scripts/ensure_tags.py` (bump with `bump_asset.py`), see Versioned shared files |
+| `gmx-read.css` | The readability layer: lighter secondary grey, tighter and bigger Space Mono labels, lowercase small labels, Poppins for long button and link text. `ensure_tags.py` puts it last in every page's head so it wins over the page's own `<style>`. Loaded with a `?v=` tag; the current number lives in `.github/scripts/ensure_tags.py` (bump with `bump_asset.py`). Also holds the keyboard focus ring for the shared account, search and "…" buttons |
+| `gmx-account.js`, `gmx-account.css` | The account layer: sign in by email link or code, the sign in or @handle chip in the header, /me, the synced crate, push, and the "this is me" claim sheet on artist and label pages. Calls the recognizer at `api_base`. `gmx-account.js` is loaded with a `?v=` tag; the current number lives in `.github/scripts/ensure_tags.py` (bump with `bump_asset.py`) |
 | `gmx-player.js`, `gmx-player.css` | The shared youtube stage that plays sets across pages |
 | `gmx-follow.js` | Follow-along tracklists, synced to the players |
-| `gmx-crate.js`, `gmx-sheet.js`, `gmx-sheet.css` | Hearts on sets and tracklist rows, and the "…" bottom sheet |
+| `gmx-crate.js`, `gmx-sheet.js`, `gmx-sheet.css` | Hearts on sets and tracklist rows, the "…" bottom sheet, and the one share for the site: `gmxSheet.share()`, a share pill on every page with a canonical, and shares on calendar festivals, badges, open IDs and dj support tracks |
 | `gmx-quick.js`, `gmx-quick.css` | The search sheet behind the floating search button, over `search-index.json`, scoped to the current tab |
 | `gmx-nextup.js` | The "next up" strip |
 | `gmx-related.js` | Cross-links everything the site holds on an artist |
@@ -89,6 +89,7 @@ A static website. Every page is a `.html` file in this repo, written by hand or 
 - Run the same checks locally: `python3 .github/scripts/preflight.py`, then serve the repo with `python3 -m http.server 8787 --bind 127.0.0.1` and run `npm install --no-save playwright@1.56.1` and `node .github/scripts/sitecheck.js`.
 - Every pull request also gets a Cloudflare Pages check.
 - Cloudflare Pages builds and deploys `main` on every push and serves groovesmaxxing.com. GitHub Pages still runs its own "pages build and deployment" from the same pushes to groovesmaxxing.github.io, which redirects to the domain. Nobody visits it.
+- `_headers` (security headers: HSTS, anti-framing, Permissions-Policy, COOP) and `_redirects` (301s that keep `CLAUDE.md`, `README.md`, the dotfiles, `.github/` and `tracklists/_export/` off the live domain, and the `/t/` short links) sit at the root. Cloudflare Pages reads both at deploy and serves neither; the github.io mirror ignores them. The page content security policy is still the per-page meta written by `harden_pages.py`; the header only adds `frame-ancestors`. Keep `microphone=(self)` in Permissions-Policy, the scan page needs it.
 - DNS is in Cloudflare, not the repo: the apex and www are proxied CNAMEs to `groovesmaxxing.pages.dev`. Two redirect rules live in the dashboard (2026-11-05): www 301s to the apex, and one retired doc path 301s to `/`. A file removed from the repo can keep serving from the Pages edge cache for up to seven days, and the zone purge button does not reach that cache, a redirect rule does.
 
 ### Workflows
@@ -96,8 +97,8 @@ A static website. Every page is a `.html` file in this repo, written by hand or 
 | Workflow | When | What |
 |---|---|---|
 | `site-check.yml` | every push and pull request | preflight, `harden_pages.py --check` and the headless page load check |
-| `site-data.yml` | every push to `main` | runs the `build_*.py` scripts, `lighten_sets.py`, `ensure_tags.py`, `sync_counts.py`, `sitemap_lastmod.py`, `crosslink_audit.py` and `share_cards.js`, then `harden_pages.py` last, then commits as `site data: derived files, tags and share cards` |
-| `events-radar.yml` | daily 09:23 UTC, or by hand | `fetch_events.py` with the `TM_API_KEY` secret, then `build_event_schema.py` and `sitemap_lastmod.py`. Commits as `radar: nightly events refresh` |
+| `site-data.yml` | every push to `main` | runs `.github/scripts/site_data_build.sh` (the `build_*.py` scripts, `lighten_sets.py`, `ensure_tags.py`, `sync_counts.py`, `sitemap_lastmod.py`, `crosslink_audit.py` and `share_cards.js`, then `harden_pages.py` last), fails when the rewrite added a preflight FAIL line (`bot_gate.sh`), commits as `site data: derived files, tags and share cards` with a rebase-and-retry push, then runs `sitecheck.js` on the committed tree. A builder that would write an emptied index or feed refuses (`derived_guard.py`) and the run goes red before the commit |
+| `events-radar.yml` | daily 09:23 UTC, or by hand | `fetch_events.py` with the `TM_API_KEY` secret (exits 1 and leaves the radar files alone when too many Ticketmaster calls fail), then `build_event_schema.py` and `sitemap_lastmod.py`. Commits as `radar: nightly events refresh` |
 | `site-watch.yml` | every 30 minutes | checks the live site's key pages, publishes to the `status` branch |
 | `link-watch.yml` | daily | checks outside links, publishes to the `status` branch |
 | `uptime.yml` | every 4 hours | checks the recognizer at `api_base` from `gmx-config.json` answers |
@@ -124,11 +125,11 @@ A static website. Every page is a `.html` file in this repo, written by hand or 
 - Pages in folders use relative paths like `../favicon.svg`. Shared scripts use root paths like `/gmx-nav.js`.
 - `<title>` ends in `· groovesMAXXING`. Pages carry a meta description, Open Graph tags and a canonical URL without `.html`.
 - Copy on the site is written in lowercase.
-- `ensure_tags.py` adds the shared tags (tab bar, player, follow-along, account layer and so on) to any page missing them, so a fresh laptop-written page still gets them.
+- `ensure_tags.py` adds the shared tags (tab bar, player, follow-along, account layer, the "…" sheet and share on every page, the app metas and viewport-fit=cover, og:url from the canonical, the newsletter issue prev/next line) to any page missing them, and strips the retired gmx-quick tags, so a fresh laptop-written page still gets them.
 
 ### Versioned shared files
 
-Scripts and styles are served with a four hour browser cache, so a returning visitor can get a fresh page with a stale script. `gmx-nav.js`, `gmx-nav.css` and `gmx-account.js` are loaded with a version query (read the current numbers in `ensure_tags.py`, `bump_asset.py` moves them) on every page. When one of them changes, bump the number in `ensure_tags.py` and `build_precache.py` (and where `gmx-nav.js` and `gmx-quick.js` inject them), and bump the `sw.js` cache name. `gmx-read.css` has its own version (read it from `READ_CSS`), set in `READ_CSS` in `ensure_tags.py`, `build_precache.py` and `sw.js`.
+Scripts and styles are served with a four hour browser cache (on groovesmaxxing.com that comes from the Cloudflare zone's browser cache ttl, not from Pages: `groovesmaxxing.pages.dev` sends `max-age=0`, and a `Cache-Control` line in `_headers` is overridden on the custom domain), so a returning visitor can get a fresh page with a stale script. `gmx-nav.js`, `gmx-nav.css` and `gmx-account.js` are loaded with a version query (read the current numbers in `ensure_tags.py`, `bump_asset.py` moves them) on every page. When one of them changes, bump the number in `ensure_tags.py` and `build_precache.py` (and where `gmx-nav.js` and `gmx-quick.js` inject them), and bump the `sw.js` cache name. `gmx-read.css` has its own version (read it from `READ_CSS`), set in `READ_CSS` in `ensure_tags.py`, `build_precache.py` and `sw.js`.
 
 ### Security tags (content security policy)
 
@@ -180,7 +181,7 @@ Short and lowercase, often starting with an area and a colon: `radar:`, `upcomin
 
 ### Overnight runs
 
-Overnight Claude runs work on `overnight/<topic>_<date>` branches, each in a worktree under `C:\Users\guill\develop\gmx-site-wt-*`. No launcher file exists for them: each run is started by hand with a prompt, so this section is where the rule lives, and the prompt should repeat it.
+Overnight Claude runs work on `overnight/<topic>_<date>` branches, each in a worktree beside the develop clone (`gmx-site-wt-*`). No launcher file exists for them: each run is started by hand with a prompt, so this section is where the rule lives, and the prompt should repeat it.
 
 1. Last step of every overnight run, after the final commit and a clean preflight: `git push -u origin <branch>` for every branch the run made. A pushed overnight branch is a backup, not a deploy; only `main` goes live. (2026-11-02: 73 patches on four branches sat only in the develop clone until the 11-04 audit pushed them.)
 2. An overnight run never pushes `main`. Merging waits for the owner's yes.

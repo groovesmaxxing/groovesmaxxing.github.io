@@ -1,0 +1,17 @@
+# security headers for groovesmaxxing.com (cloudflare pages reads this file at deploy and does not serve it).
+# every directive was checked against the code on 2026-11-09:
+# - no page frames a page of this site (all iframes are youtube, spotify, soundcloud, instagram, beatport), so DENY breaks nothing.
+# - the only device api is the scan page microphone (gmx-scan.js getUserMedia), kept with microphone=(self).
+#   autoplay, encrypted-media, fullscreen, picture-in-picture, clipboard-write, accelerometer, gyroscope and
+#   screen-wake-lock are left at their defaults: the embeds' allow= lists and the scan page wake lock use them.
+# - every window.open on the site passes noopener and nothing reads window.opener, so same-origin-allow-popups is safe.
+# - hsts has no includeSubDomains and no preload on purpose. raise max-age to 31536000 after a clean week.
+# the page content security policy stays in each page's meta (harden_pages.py); the header below only adds frame-ancestors.
+/*
+  Strict-Transport-Security: max-age=86400
+  X-Frame-Options: DENY
+  Content-Security-Policy: frame-ancestors 'none'
+  Permissions-Policy: camera=(), microphone=(self), geolocation=(), payment=(), usb=(), serial=(), hid=(), midi=(), display-capture=(), magnetometer=(), xr-spatial-tracking=()
+  Cross-Origin-Opener-Policy: same-origin-allow-popups
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin

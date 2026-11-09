@@ -46,6 +46,8 @@ for f in sorted(glob.glob('tracklists/*.html')):
     sets.append(entry)
 sets.sort(key=lambda e: (rank.get(e['slug'], 10**6), e['slug']))
 count = sum(len(e['open']) for e in sets)
+from derived_guard import check
+check('open-ids.json', count, zero_only=True)   # before open-ids.json and open-ids.html are written
 json.dump({'generated': date.today().isoformat(), 'count': count, 'sets': len(sets), 'tracklists': len([f for f in glob.glob('tracklists/*.html') if not f.endswith('/index.html')]), 'list': sets},
           open('open-ids.json', 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
 print('open-ids.json: %d open rows across %d sets' % (count, len(sets)))
@@ -56,7 +58,10 @@ print('open-ids.json: %d open rows across %d sets' % (count, len(sets)))
 def esc(s): return html.escape(str(s or ''), quote=True)
 
 def block(e):
-    rows = ''.join('<div class="orow"><span class="at">%s</span><span class="tn">%s</span><span class="id">ID%s</span></div>' % (
+    # each row carries the id the page script gives it (<slug>-t<tn>), so a shared /open-ids#<slug>-t12 link
+    # lands on its row before the script runs, or without it
+    rows = ''.join('<div class="orow"%s><span class="at">%s</span><span class="tn">%s</span><span class="id">ID%s</span></div>' % (
+        (' id="%s-t%s"' % (esc(e['slug']), esc(r['tn']))) if r['tn'] and not re.search(r'\s', r['tn']) else '',
         ('<a href="%s" target="_blank" rel="noopener" aria-label="play %s from %s">%s ↗</a>' % (esc(r['l']), esc(e['h1']), esc(r['at']), esc(r['at']))) if r.get('l') else esc(r['at']),
         esc(r['tn']), ('<i>%s</i>' % esc(r['note'])) if r['note'] else '') for r in e['open'])
     return '<section class="oset" id="%s"><div class="oh"><a class="nm" href="%s">%s</a><span class="wh">%s%s</span><span class="ct">%d open <small>of %d</small></span></div>%s</section>' % (

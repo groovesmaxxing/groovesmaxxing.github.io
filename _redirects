@@ -1,0 +1,16 @@
+# cloudflare pages redirects (applied before any file is served, and this file itself is not served).
+# the github.io mirror ignores it.
+# repo internals: the repo is public on github, these only keep build notes and ci code off the brand domain.
+# nothing on the site, in sitecheck.js, site_watch.py or link_watch.py fetches these paths over http.
+/CLAUDE.md / 301
+/README.md / 301
+/.gitignore / 301
+/.gitattributes / 301
+/.github/* / 301
+/tracklists/_export/* /tracklists/ 301
+# short links: chat crawlers do not follow the meta refresh in t/*/index.html, a real 301 lets them unfurl the tracklist card.
+# the stubs stay for the github.io mirror.
+/t/rafael-bm26 /tracklists/rafael-sunrise-set-nova-heaven-x-eden-x-favela-burning-man-2026 301
+/t/rafael-bm26/ /tracklists/rafael-sunrise-set-nova-heaven-x-eden-x-favela-burning-man-2026 301
+/t/bibi-franky-bm26 /tracklists/michael-bibi-b2b-franky-rizardo-maxa-x-robot-heart-burning-man-2026 301
+/t/bibi-franky-bm26/ /tracklists/michael-bibi-b2b-franky-rizardo-maxa-x-robot-heart-burning-man-2026 301

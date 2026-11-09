@@ -33,6 +33,11 @@ AUTO = {"p", "li", "td", "th", "tr", "option", "dd", "dt"}
 FONTS_OK = ("Poppins", "Space+Mono", "Space Mono")
 BAD_SAMEAS = ("/explore", "?q=", "/search", "youtube.com/watch", "open.spotify.com/track", "/release/", "/track/")
 fails, warns = [], []
+hops = []   # local links cloudflare pages answers with a 308 first (an .html path, a folder without its slash)
+# the laptop renderers still write this thumbnail fallback as an inline handler; harden_pages.py turns it into
+# data-fallback on the site-data run, so the push check lets exactly this one through
+THUMB_HANDLER_RE = re.compile(r'\sonerror="this\.onerror=null;this\.src=' + "'[^'\"]+'\"")
+HANDLER_TAG_RE = re.compile(r"""<[a-zA-Z][^>]*?\son[a-z]+\s*=\s*["']""")
 
 
 def fail(f, msg): fails.append("%s: %s" % (f, msg))
@@ -109,6 +114,22 @@ def local_target(href, frm):
     return p
 
 
+def hop(href, frm):
+    """why a local href costs a 308 on cloudflare pages, or None. '/x.html' and 'x.html' always redirect to the
+    clean url; '/folder' redirects to '/folder/' when no folder.html sits beside it"""
+    h = href.split("#")[0].split("?")[0]
+    if not h or local_target(h, frm) is None:
+        return None
+    if h.endswith(".html"):
+        return ".html path"
+    if h.endswith("/"):
+        return None
+    p = h.lstrip("/") if h.startswith("/") else os.path.normpath(os.path.join(os.path.dirname(frm), h))
+    if os.path.isdir(p) and not os.path.exists(p + ".html"):
+        return "folder without its slash"
+    return None
+
+
 def ids_in(text):
     return set(re.findall(r'\sid="([^"]+)"', text)) | set(re.findall(r"\sid='([^']+)'", text))
 
@@ -122,6 +143,14 @@ def check_page(f, text):
     for e in b.errors[:5]:
         fail(f, "tags: " + e)
     redirect = 'http-equiv="refresh"' in text
+    # the profile anchor: follow, the sheet, related and the claim button all find the page by
+    # <section class="artist" id="<slug>"> (labels: class="artist label"). a rebuild that drops it breaks them (pt-artists-1)
+    fu = f.replace(os.sep, "/")
+    if not redirect and re.match(r"(artists|labels)/[^/]+\.html$", fu) and not fu.endswith("/index.html"):
+        cls = "artist label" if fu.startswith("labels/") else "artist"
+        slug = fu.split("/")[1][:-5]
+        if '<section class="%s" id="%s"' % (cls, slug) not in text:
+            fail(f, 'profile without <section class="%s" id="%s"> (follow, sheet and related need it)' % (cls, slug))
     ld = re.findall(r'<script type="application/ld\+json">(.*?)</script>', text, re.S)
     # seo basics on every page a search engine may list: a title, a description, a canonical and an
     # og:title. redirect stubs and noindex pages (crate, scan, more, legal, 404) are not listed.
@@ -132,6 +161,18 @@ def check_page(f, text):
                 fail(f, "indexable page without a %s" % what)
     # the markup checks look at markup, not at the strings inside inline scripts that build markup later
     text = re.sub(r"<script\b[^>]*>.*?</script>", "", text, flags=re.S)
+    # no inline event handlers (the csp rule): harden_pages.py would quietly allow one by hash
+    if HANDLER_TAG_RE.search(THUMB_HANDLER_RE.sub("", text)):
+        fail(f, "inline event handler: use addEventListener or data-fallback")
+    # redirect hops: warn only, so an old page never blocks a push
+    refresh = re.search(r'http-equiv="refresh" content="\d+;\s*url=([^"]+)"', text, re.I)
+    targets = [m.group(1) for m in re.finditer(r'<(?:a|link)\b[^>]*?\shref="([^"]+)"', text)]
+    targets += [refresh.group(1)] if refresh else []
+    targets += [u[len("https://groovesmaxxing.com"):] or "/" for block in ld for u in re.findall(r'https://groovesmaxxing\.com/[^"\s]*\.html\b', block)]
+    for href in targets:
+        why = hop(html.unescape(href), f)
+        if why:
+            hops.append(f); warn(f, "redirect hop (%s): %s" % (why, href))
     for m in re.finditer(r'<(?:a|link|script|img|iframe|source)\b[^>]*?\s(?:href|src)="([^"]+)"', text):
         href = m.group(1)
         t = local_target(html.unescape(href), f)
@@ -286,7 +327,7 @@ def main(argv):
         print("WARN", w)
     for x in fails:
         print("FAIL", x)
-    print("preflight: %d pages, %d warn, %d fail" % (len(page_list), len(warns), len(fails)))
+    print("preflight: %d pages, %d warn, %d fail, %d redirect hop(s)" % (len(page_list), len(warns), len(fails), len(hops)))
     return 1 if fails else 0
 
 

@@ -95,6 +95,9 @@ def policy(path, s):
         scripts.append("'unsafe-inline'")
     scripts += sorted(inline)
     if handlers:
+        # kept so a laptop page with a handler still works, but said out loud: preflight fails a push that adds
+        # one (the no inline handlers rule), so this only fires on a page that slipped past it
+        print('WARN %s: inline handler allowed by hash' % path)
         scripts += ["'unsafe-hashes'"] + sorted(handlers)
     connect = ["'self'"] + api_hosts() + (SCAN_CONNECT if scan else [])
     return '; '.join([
@@ -105,7 +108,7 @@ def policy(path, s):
         "style-src 'self' 'unsafe-inline'",
         "font-src 'self'",
         "img-src 'self' data: blob: https:",
-        "media-src 'self' blob: https:",
+        "media-src 'self'",   # no <audio>/<video> on the site, every player is a frame. add a host here first if that changes
         'connect-src ' + ' '.join(connect),
         'frame-src ' + ' '.join(FRAME_HOSTS),
         "worker-src 'self'",
@@ -170,10 +173,11 @@ changed = [p for p in pages if harden(p)]
 if CHECK:
     if changed:
         print('%d page(s) carry stale security tags (fonts, referrer or the content security policy):' % len(changed))
-        for p in changed[:40]:
+        shown = changed if '--all' in sys.argv else changed[:40]   # --all: bot_gate.sh compares the full list
+        for p in shown:
             print('  ' + p)
-        if len(changed) > 40:
-            print('  ... and %d more' % (len(changed) - 40))
+        if len(changed) > len(shown):
+            print('  ... and %d more' % (len(changed) - len(shown)))
         print('run  python3 .github/scripts/harden_pages.py  and commit what it changes.')
         sys.exit(1)
     print('security tags: every page is current (%d checked)' % len(pages))

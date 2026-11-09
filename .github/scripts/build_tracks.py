@@ -42,5 +42,7 @@ for f in sorted(glob.glob('tracklists/*.html')):
         if lab: row['lab'] = lab
         if links: row['links'] = links
         rows.append(row)
+from derived_guard import check
+check('tracks-index.json', len(rows))
 json.dump({'generated': date.today().isoformat(), 'count': len(rows), 'rows': rows}, open('tracks-index.json', 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
 print('tracks-index.json: %d rows, %d with a spotify link, %d sets' % (len(rows), sum(1 for r in rows if r.get('links', {}).get('sp')), len(set(r['u'] for r in rows))))

@@ -54,6 +54,8 @@ def main():
         rng = sys.argv[sys.argv.index('--range') + 1]
         old, new = rng.split('..', 1)
         if not exists(old):                       # a new branch or a force push: compare with the parent instead
+            if old.strip('0'):                    # an all-zero base is a new branch, nothing to warn about
+                print('::warning::asset tags: %s is not reachable, only the last commit was checked' % old)
             old = new + '~1'
     files = changed(old, new)
     if not files:
