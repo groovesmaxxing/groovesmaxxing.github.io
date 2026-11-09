@@ -23,8 +23,10 @@
 if(window.gmxAccount)return;
 var POST_MS=25000, GET_MS=8000, SESSION='gmx_session', DEVICE='gmx_device', CFGK='gmx_cfg', PENDING='gmx_pending';
 var CRATE='gmx_crate', CRATE_RM='gmx_crate_rm', CRATE_SIG='gmx_crate_sig', ME='gmx_me', NUDGE='gmx_nudge_until', NL='gmx_nl_wanted', WANT_FOLLOW='gmx_follow_wanted';
+/* whose crate is on this phone, and a signed-out crate set aside while a link from elsewhere is signed in (2026-11-09) */
+var OWNER='gmx_crate_owner', AWAY='gmx_crate_away';
 var ME_TTL=10*60000, SYNC_TTL=30*60000, NUDGE_DAYS=30;
-var cfg=null, cfgP=null, me=null, meP=null, pollTimer=null, syncT=null, syncing=false, syncAgain=false;
+var cfg=null, cfgP=null, me=null, meP=null, pollTimer=null, waitGen=0, waitOn=false, syncT=null, syncing=false, syncAgain=false, sheetDone=null, sheetWired=false, signedEmail='', signedTok='';
 var BADGE={verified_artist:'verified artist',verified_label:'verified label',verified_venue:'verified venue',team:'team'};
 var HOST={soundcloud:'soundcloud',instagram:'instagram',email:'mail',spotify:'spotify',bandcamp:'bandcamp',youtube:'youtube',ra:'resident advisor',beatport:'beatport',tiktok:'tiktok',x:'x',site:'site'};
 var path=location.pathname.replace(/\.html$/,''), chip=null, subs=[];
@@ -36,6 +38,16 @@ var CSS='.wrap > .top,.gmx-top{display:flex;align-items:center;justify-content:s
  '.gmx-chip{flex:none;position:relative;z-index:3;background:#0B0B0D;font-family:"Space Mono",monospace;font-size:.7rem;letter-spacing:.08em;color:#8A8A93;text-decoration:none;border:1px solid rgba(242,242,239,.18);border-radius:999px;padding:0 12px;min-height:34px;line-height:32px;max-width:46vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;-webkit-tap-highlight-color:transparent}'+
  '.gmx-chip.in{color:#F2F2EF;border-color:rgba(255,28,2,.5)}'+
  '.gmx-chip:hover,.gmx-chip:focus-visible{color:#FF1C02;border-color:#FF1C02;outline:none}'+
+ '.gmx-acct-line{position:fixed;left:12px;right:12px;bottom:calc(78px + env(safe-area-inset-bottom));z-index:88;display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;background:#141417;color:#c9c9c4;border:1px solid #26262b;border-radius:16px;padding:10px 8px 10px 14px;box-shadow:0 14px 40px rgba(0,0,0,.45);font-family:"Space Mono",monospace;font-size:.75rem;letter-spacing:.03em;line-height:1.6}'+
+ '.gmx-acct-line p{margin:0;flex:1;min-width:0;overflow-wrap:anywhere}.gmx-acct-line b{font-weight:700;color:#F2F2EF}'+
+ '.gmx-acct-line button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}'+
+ '.gmx-acct-line .ln{background:none;border:0;color:#F2F2EF;text-decoration:underline;text-underline-offset:3px;padding:10px 4px;margin:-10px 0}'+
+ '.gmx-acct-line .lx{flex:none;width:40px;height:40px;border-radius:999px;border:1px solid #26262b;background:none;color:#8A8A93;font-size:1.1rem;line-height:1}'+
+ '.gmx-acct-line .lrow{display:flex;flex-wrap:wrap;gap:8px;flex-basis:100%}'+
+ '.gmx-acct-line .lb{border:2px solid #26262b;border-radius:999px;background:none;color:#F2F2EF;padding:10px 16px;min-height:44px;letter-spacing:.06em;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}'+
+ '.gmx-acct-line .lb.red{border-color:#FF1C02;background:#FF1C02;color:#0B0B0D}'+
+ '.gmx-acct-line .ln:focus-visible,.gmx-acct-line .lx:focus-visible,.gmx-acct-line .lb:focus-visible{outline:3px solid #FF1C02;outline-offset:2px}'+
+ '@media (min-width:720px){.gmx-acct-line{left:auto;right:24px;bottom:24px;width:400px}}'+
  '';
 function fire(w){subs.forEach(function(f){try{f(w)}catch(e){}})}
 var NOTIFY=[['email','email alerts at all'],['named','an ID i scanned gets a name'],['released','a track i scanned comes out'],['artist','an artist i follow drops something'],['newsletter','fresh grooves friday']];
@@ -139,11 +151,19 @@ function close(){
 }
 function note(el,t,ok){if(!el)return;el.textContent=t||'';el.className=(el.id==='youmsg'?'msg':'gmx-acct-msg')+(ok?' ok':'')}
 function msgEl(){return document.getElementById('gmx-you-msg')||document.getElementById('youmsg')}
+/* download and delete answer right under their rows on /more (2026-11-09), not in the profile card far above */
+function dataMsg(){return document.getElementById('gmx-data-msg')||msgEl()}
+/* a failed call: a status the server sent says so, only a call that never reached it says check your signal */
+function failLine(e,net){
+  var s=e&&/^\d{3}$/.test(String(e.message||''))?+e.message:0;
+  if(!s)return net;
+  return s>=500?'the sign-in service did not answer. try again in a minute.':'that did not go through. try again in a minute.';
+}
 var toastT;
 function toast(msg){
   var t=document.querySelector('.gmx-acct-toast');
   if(!t){t=document.createElement('div');t.className='gmx-acct-toast';t.setAttribute('role','status');document.body.appendChild(t)}
-  t.textContent=msg;t.classList.add('on');clearTimeout(toastT);toastT=setTimeout(function(){t.classList.remove('on')},2200);
+  t.textContent=msg;t.classList.add('on');clearTimeout(toastT);toastT=setTimeout(function(){t.classList.remove('on')},Math.max(2200,String(msg).length*60));
 }
 
 /* ---- sign in: email link, no password. the same three doors scan.html opens ------------------------- */
@@ -151,7 +171,8 @@ function signinForm(){
   return '<form class="gmx-acct-form" data-form="start" autocomplete="off"><label for="gmx-acct-email">email</label>'+
     '<input id="gmx-acct-email" name="email" type="email" inputmode="email" maxlength="320" required placeholder="you@example.com">'+
     '<label class="gmx-acct-check"><input type="checkbox" name="nl"> fresh grooves friday in my inbox too</label>'+
-    '<div class="gmx-acct-row"><button class="gmx-acct-btn red" type="submit">send me a sign-in link</button><span class="gmx-acct-msg" role="status"></span></div></form>';
+    '<div class="gmx-acct-row"><button class="gmx-acct-btn red" type="submit">send me a sign-in link</button><span class="gmx-acct-msg" role="status"></span></div>'+
+    '<p class="gmx-acct-p small">your email is only for this. <a href="/privacy">privacy</a> · <a href="/terms">terms</a></p></form>';
 }
 function codeForm(email){
   return '<form class="gmx-acct-form on" data-form="code" data-email="'+esc(email)+'" autocomplete="off"><label for="gmx-acct-code">the six digits from the mail</label>'+
@@ -176,52 +197,101 @@ function wireSignin(root,done){
           var c=root.querySelector('#gmx-acct-code');if(c)c.focus();
           if(j.pending)waitForLink(j.pending,j.minutes||20,done);
         });
-      }).catch(function(){note(m,'did not send. check your signal and try again.')});
+      }).catch(function(e){note(m,failLine(e,'did not send. check your signal and try again.'))});
     }else if(f.dataset.form==='code'){
       var code=(f.querySelector('input[name=code]').value||'').replace(/\D/g,'');
       if(code.length!==6){note(m,'six digits.');return}
       note(m,'checking');
       api('/auth/code',{method:'POST',json:{email:f.dataset.email,code:code}}).then(function(r){
+        /* the api caps wrong tries per address (2026-11-09): past the cap every code for it is spent, the link still works */
+        if(r.status===429){note(m,'too many tries. tap the link in the mail, or ask for a new code later.');return}
         if(r.status===410){note(m,'that code is wrong, used or too old. ask for a new one.');return}
+        if(r.status===401||r.status===403){note(m,'that code did not work. ask for a new one.');return}
         if(!r.ok)throw new Error(r.status);
-        return r.json().then(function(j){signedIn(j.session);done&&done()});
-      }).catch(function(){note(m,'did not send. check your signal.')});
+        return r.json().then(function(j){signedIn(j.session,j.email);done&&done()});
+      }).catch(function(e){note(m,failLine(e,'did not send. check your signal.'))});
     }
   });
 }
 /* a session just opened: the crate goes up, the newsletter box is honoured, a follow that waited is made */
-function signedIn(t){
-  if(pollTimer){clearInterval(pollTimer);pollTimer=null}
-  lss(PENDING,'');setToken(t);
-  afterSignIn();
+function signedIn(t,email){
+  stopWait();setToken(t);signedEmail=email||'';signedTok=t;
+  afterSignIn(email);
 }
-function afterSignIn(){
+function afterSignIn(email){
   if(ls(NL)==='1'){lss(NL,'');api('/me/newsletter',{method:'POST'}).catch(function(){})}
-  var w=ls(WANT_FOLLOW);if(w){lss(WANT_FOLLOW,'');api('/follow/artist',{method:'POST',json:{slug:w}}).catch(function(){})}
-  syncCrate('sign-in');
+  var w=ls(WANT_FOLLOW);if(w){lss(WANT_FOLLOW,'');followCall(api('/follow/artist',{method:'POST',json:{slug:w}}))}
+  ownCrate(email,true);
 }
+/* whose crate is on this phone (2026-11-09). gmx_crate_owner names the account the list last synced with. a crate built
+   signed out has no owner and goes up on the first own sign-in, as designed. a list that belongs to another account is
+   already on that account, so it is dropped here, never uploaded into this one. a link this browser did not ask for
+   (push false) never uploads this browser's list: an ownerless one is set aside under gmx_crate_away and comes back on
+   sign out. either way the sync then brings the account's own list down. */
+function ownCrate(email,push){
+  var owner=ls(OWNER);
+  if(owner&&!email){whoami(true).then(function(m){ownCrate((m&&m.email)||'?',push)});return}
+  if(owner&&owner.toLowerCase()!==String(email).toLowerCase())dropCrate();
+  else if(!owner&&!push){
+    var l=crateLocal();
+    if(l.length){var a=lsj(AWAY),seen={};a=Array.isArray(a)?a:[];lss(AWAY,JSON.stringify(l.concat(a).filter(function(x){if(!x||!x.id||seen[x.id])return false;seen[x.id]=1;return true}).slice(0,500)))}
+    dropCrate();
+  }
+  syncCrate('sign-in',true);
+}
+function dropCrate(){lss(CRATE,'');lss(CRATE_RM,'');lss(CRATE_SIG,'');synced('drop',{})}
+function synced(reason,j){try{document.dispatchEvent(new CustomEvent('gmx:crate-synced',{detail:{count:j.count,merged:j.merged,reason:reason}}))}catch(e){}}
+function markOwner(){
+  /* the email a sign-in reported counts only for that session: another tab may have signed in someone else since */
+  var m=snapshot(),em=(m&&m.email)||(signedTok&&signedTok===token()?signedEmail:'');if(em){lss(OWNER,em);return}
+  var t=token();whoami().then(function(x){if(x&&x.email&&token()===t)lss(OWNER,x.email)});
+}
+/* the link wait (2026-11-09): it stops at the ticket's end, backs off on errors (4 s doubling to a minute) and stops on
+   a 429, so a page left open never spends the phone's hourly budget. one wait at a time; the ticket stays stored after
+   an error stop, so a reload picks it up and a link opened here still counts as this browser's own. */
+function stopTimer(){if(pollTimer){clearTimeout(pollTimer);pollTimer=null}waitGen++;waitOn=false}
+function stopWait(){stopTimer();lss(PENDING,'')}
+function forgetWanted(){lss(NL,'');lss(WANT_FOLLOW,'')}
 function waitForLink(ticket,minutes,done){
-  lss(PENDING,JSON.stringify({t:ticket,until:Date.now()+minutes*60000}));
-  if(pollTimer)clearInterval(pollTimer);
+  var until=Date.now()+minutes*60000,gap=4000,bad=0;
+  stopTimer();lss(PENDING,JSON.stringify({t:ticket,until:until}));
+  var gen=waitGen;waitOn=true;
   var ask=function(){
-    if(token()){clearInterval(pollTimer);pollTimer=null;return}
-    api('/auth/poll',{method:'POST',json:{pending:ticket}}).then(function(r){return r.ok?r.json():null}).then(function(j){
-      if(!j)return;
-      if(j.state==='ready'){signedIn(j.session);done&&done()}
-      else if(j.state==='gone'){clearInterval(pollTimer);pollTimer=null;lss(PENDING,'')}
-    }).catch(function(){});
+    pollTimer=null;
+    if(gen!==waitGen)return;
+    if(token()){stopTimer();return}
+    if(Date.now()>until){stopWait();forgetWanted();return}
+    api('/auth/poll',{method:'POST',json:{pending:ticket}}).then(function(r){
+      if(r.status===429)return 'stop';
+      if(!r.ok)throw new Error(r.status);
+      return r.json();
+    }).then(function(j){
+      if(j==='stop')return 'stop';
+      bad=0;gap=4000;
+      if(gen!==waitGen)return 'stop';
+      if(j&&j.state==='ready'){signedIn(j.session,j.email);done&&done();return 'stop'}
+      if(j&&j.state==='gone'){stopWait();return 'stop'}
+    },function(){bad++;gap=Math.min(gap*2,60000);if(bad>=8)return 'stop'}).then(function(s){
+      if(gen!==waitGen)return;
+      if(s==='stop'||token()){stopTimer();return}
+      pollTimer=setTimeout(ask,Math.max(0,Math.min(gap,until-Date.now()+50)));
+    });
   };
-  pollTimer=setInterval(ask,4000);ask();
+  ask();
 }
 function resumeWait(done){
   if(token())return;
+  /* boot's bare call never replaces a wait the page already started with its own callback (/more) */
+  if(waitOn&&!done)return;
   var p=lsj(PENDING);
-  if(p&&p.t&&p.until>Date.now())waitForLink(p.t,Math.ceil((p.until-Date.now())/60000),done);else lss(PENDING,'');
+  if(p&&p.t&&p.until>Date.now())waitForLink(p.t,(p.until-Date.now())/60000,done);
+  else{if(p)forgetWanted();lss(PENDING,'')}
 }
-/* open the sign-in sheet; done runs once a session exists */
+/* open the sign-in sheet; done runs once a session exists. the sheet body lives for the whole page, so it is wired once */
 function signIn(from,done,why){
   open('sign in',why||'email link, no password',signinForm(),from);
-  wireSignin(body,function(){close();done&&done()});
+  sheetDone=done||null;
+  if(!sheetWired){sheetWired=true;wireSignin(body,function(){close();var d=sheetDone;sheetDone=null;d&&d()})}
 }
 
 /* ---- the crate, synced (design section 1) ------------------------------------------------------------ */
@@ -237,7 +307,7 @@ function norm(it){
 function syncCrate(reason,force){
   if(!token())return Promise.resolve(false);
   if(syncing){syncAgain=true;return Promise.resolve(false)}
-  var items=crateLocal().slice(0,500),removed=rmLocal().slice(0,500),s=sig(items,removed),last=lsj(CRATE_SIG);
+  var items=crateLocal().slice(0,500),removed=rmLocal().slice(0,500),s=sig(items,removed),last=lsj(CRATE_SIG),dirty=false,tk=token();
   if(!force&&last&&last.sig===s&&Date.now()-(last.at||0)<SYNC_TTL)return Promise.resolve(false);
   syncing=true;
   return api('/me/crate',{method:'PUT',json:{items:items,removed:removed}}).then(function(r){
@@ -245,15 +315,29 @@ function syncCrate(reason,force){
     if(!r.ok)throw new Error(r.status);
     return r.json();
   }).then(function(j){
-    if(!j)return false;
+    /* signed out or switched while it was out: the answer belongs to nobody on this phone now */
+    if(!j||token()!==tk)return false;
+    /* the phone kept moving while the PUT was out (2026-11-09): a heart or an unheart made in that window is not in the
+       answer, so it is put back on top of it and goes up on the next sync instead of being written over */
+    var sent={},sentR={},gone={},inList={};
+    items.forEach(function(x){sent[x.id]=1});removed.forEach(function(x){if(x)sentR[x.id]=1});
     var list=(j.items||[]).map(norm);
-    lss(CRATE,JSON.stringify(list));lss(CRATE_RM,'');
-    lss(CRATE_SIG,JSON.stringify({sig:sig(list,[]),at:Date.now()}));
-    try{document.dispatchEvent(new CustomEvent('gmx:crate-synced',{detail:{count:j.count,merged:j.merged,reason:reason}}))}catch(e){}
+    var nowL=crateLocal(),nowIds={};nowL.forEach(function(x){if(x&&x.id)nowIds[x.id]=1});
+    var keepR=rmLocal().filter(function(x){return x&&x.id&&!sentR[x.id]&&!nowIds[x.id]});
+    keepR.forEach(function(x){gone[x.id]=1});
+    if(keepR.length)list=list.filter(function(x){return !gone[x.id]});
+    list.forEach(function(x){inList[x.id]=1});
+    var add=nowL.filter(function(x){return x&&x.id&&!sent[x.id]&&!inList[x.id]});
+    if(add.length)list=add.concat(list);
+    dirty=!!(add.length||keepR.length);
+    lss(CRATE,JSON.stringify(list.slice(0,500)));lss(CRATE_RM,keepR.length?JSON.stringify(keepR):'');
+    lss(CRATE_SIG,dirty?'':JSON.stringify({sig:sig(list,[]),at:Date.now()}));
+    markOwner();
+    synced(reason,j);
     return true;
   }).catch(function(){return false}).then(function(ok){
     syncing=false;
-    if(syncAgain){syncAgain=false;syncCrate('again')}
+    if(syncAgain||dirty){syncAgain=false;syncCrate('again',true)}
     return ok;
   });
 }
@@ -265,22 +349,31 @@ function onCrateChange(e){
     clearTimeout(syncT);syncT=setTimeout(function(){syncCrate('heart',true)},1500);
     if(item.kind==='artist'&&item.id){
       var slug=String(item.id).replace(/^artist:/,'');
-      if(d.on)api('/follow/artist',{method:'POST',json:{slug:slug}}).catch(function(){});
-      else api('/follow/artist/'+encodeURIComponent(slug),{method:'DELETE'}).catch(function(){});
+      if(d.on)followCall(api('/follow/artist',{method:'POST',json:{slug:slug}}));
+      else followCall(api('/follow/artist/'+encodeURIComponent(slug),{method:'DELETE'}),true);
     }
     return;
   }
   if(!d.on)return;
   if(item.kind==='artist'||item.kind==='label'){
-    /* moment 4: the follow signs you in first. the heart stays on the phone either way, nothing gets worse */
+    /* moment 4: the follow signs you in first. the heart stays on the phone either way, nothing gets worse.
+       alerts fire on artist follows only (api 2026-11-06), so a label follow promises the crate on every phone, no more */
     if(item.kind==='artist')lss(WANT_FOLLOW,String(item.id).replace(/^artist:/,''));
-    signIn(d.button||null,null,'sign in to follow '+(item.title||'them')+': drops and dates land in your alerts. the heart stays on this phone either way.');
+    signIn(d.button||null,null,item.kind==='artist'?'sign in to follow '+(item.title||'them')+': drops and dates land in your alerts. the heart stays on this phone either way.':'sign in to keep '+(item.title||'it')+' on every phone. the heart stays on this phone either way.');
     return;
   }
   /* moment 1: the third heart */
   var n=crateLocal().filter(function(x){return x.kind==='set'||x.kind==='track'}).length;
   var until=+ls(NUDGE)||0;
   if(n>=3&&until<Date.now())nudge();
+}
+/* a follow or unfollow the account did not take says so (2026-11-09): the pill alone would claim alerts that never come */
+function followCall(p,off){
+  return p.then(function(r){
+    if(r.status===401){setToken('');return}
+    if(off&&r.status===404)return;
+    if(!r.ok)throw new Error(r.status);
+  }).catch(function(){toast(off?'removed on this phone. the alerts did not stop yet, try again in a minute.':'saved on this phone. the alert did not save, tap follow again in a minute.')});
 }
 function nudge(){
   if(document.querySelector('.gmx-nudge'))return;
@@ -334,7 +427,8 @@ function mountChip(){
     if(back){var d=document.createElement('div');d.className='gmx-top';back.parentNode.insertBefore(d,back);d.appendChild(back);d.appendChild(row)}
     else{
       var hero=document.querySelector('header.hero');
-      if(hero){row.className+=' float';hero.appendChild(row)}
+      /* first in the hero, so tab order matches what the eye sees: it sits top right, absolutely placed */
+      if(hero){row.className+=' float';hero.insertBefore(row,hero.firstChild)}
       else{var w=document.querySelector('.wrap')||document.body,d2=document.createElement('div');d2.className='gmx-top';d2.appendChild(row);w.insertBefore(d2,w.firstChild)}
     }
   }
@@ -345,7 +439,7 @@ function mountChip(){
 /* ---- "this is me" on a profile (design section 3) ----------------------------------------------------- */
 function wireProfile(){
   var sec=document.querySelector('section.artist');if(!sec||sec.querySelector('.gmx-claim'))return;
-  var kind=sec.classList.contains('label')?'label':'artist';
+  var kind=(sec.classList.contains('label')||/^\/labels\//.test(location.pathname))?'label':'artist';
   var slug=(sec.id||location.pathname.split('/').pop().replace(/\.html$/,'')||'').toLowerCase();
   if(!/^[a-z0-9][a-z0-9-]*$/.test(slug))return;
   var name=(sec.querySelector('h1.aname')||{}).textContent||slug;name=name.replace(/\s+/g,' ').trim();
@@ -468,7 +562,7 @@ function wireMore(){
     });
   }
   box.addEventListener('click',function(e){
-    var o=e.target.closest('[data-out]');if(o){api('/auth/signout',{method:'POST'}).catch(function(){});setToken('');paintBox();return}
+    var o=e.target.closest('[data-out]');if(o){signout();paintBox();return}
     var x=e.target.closest('[data-export]');if(x){exportData(x);return}
     var d=e.target.closest('[data-delete]');if(d){startDelete(d);return}
   });
@@ -522,14 +616,14 @@ function paintNotify(m){
   }).join('');
 }
 function exportData(btn){
-  var msg=msgEl();btn.disabled=true;note(msg,'packing it up');
+  var msg=dataMsg();btn.disabled=true;note(msg,'packing it up');
   api('/me/export').then(function(r){if(!r.ok)throw new Error(r.status);return r.blob()}).then(function(b){
     var u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='groovesmaxxing-export.json';document.body.appendChild(a);a.click();a.remove();
     setTimeout(function(){URL.revokeObjectURL(u)},4000);note(msg,'downloaded.',true);
   }).catch(function(){note(msg,'could not fetch it. try again in a minute.')}).then(function(){btn.disabled=false});
 }
 function startDelete(btn){
-  var box=document.getElementById('gmx-delete'),msg=msgEl();
+  var box=document.getElementById('gmx-delete'),msg=dataMsg();
   if(!confirm('delete your groovesmaxxing account? we mail you a code first. nothing is deleted until you type it.'))return;
   btn.disabled=true;note(msg,'sending the mail');
   api('/me/delete',{method:'POST'}).then(function(r){
@@ -540,6 +634,7 @@ function startDelete(btn){
       if(!j.mail_sent)return;
       box.innerHTML='<form class="gmx-acct-form on" data-form="delcode" autocomplete="off"><label for="gmx-acct-del">the six digits from the mail</label><input id="gmx-acct-del" inputmode="numeric" maxlength="7" autocomplete="one-time-code" placeholder="000 000">'+
         '<div class="gmx-acct-row"><button class="gmx-acct-btn red" type="submit">delete it all</button><button class="gmx-acct-btn ghost" type="button" data-delcancel>keep my account</button></div></form>';
+      var di=box.querySelector('#gmx-acct-del');if(di)try{di.focus()}catch(e){}
       box.querySelector('[data-delcancel]').addEventListener('click',function(){box.innerHTML='';note(msg,'kept.',true)});
       box.querySelector('form').addEventListener('submit',function(ev){
         ev.preventDefault();var code=(box.querySelector('input').value||'').replace(/\D/g,'');if(code.length!==6){note(msg,'six digits.');return}
@@ -547,7 +642,7 @@ function startDelete(btn){
         api('/me/delete/confirm',{method:'POST',json:{code:code}}).then(function(r){
           if(r.status===410){note(msg,'that code is wrong, used or too old. ask for a new mail.');return}
           if(!r.ok)throw new Error(r.status);
-          return r.json().then(function(){setToken('');lss(CRATE_SIG,'');toast('your account is gone. the crate on this phone stays yours.')});
+          return r.json().then(function(){setToken('');lss(CRATE_SIG,'');lss(OWNER,'');toast('your account is gone. the crate on this phone stays yours.')});
         }).catch(function(){note(msg,'did not go through. try again in a minute.')});
       });
     });
@@ -575,6 +670,8 @@ function paintTeam(owned){
       '<form class="gmx-acct-form on" data-form="invite" autocomplete="off"><div class="gmx-acct-row"><input type="email" inputmode="email" maxlength="320" placeholder="their email" aria-label="their email" required><button class="gmx-acct-btn" type="submit">invite</button><span class="gmx-acct-msg" role="status"></span></div></form></div>';
   }).join('');
   t.querySelectorAll('.gmx-team').forEach(function(box){loadSeats(box)});
+  /* wired once: paintTeam runs on every account event, and a second listener would post every invite twice */
+  if(t.dataset.wired)return;t.dataset.wired='1';
   t.addEventListener('submit',function(ev){
     var f=ev.target.closest('form[data-form=invite]');if(!f)return;ev.preventDefault();
     var box=f.closest('.gmx-team'),m=f.querySelector('.gmx-acct-msg'),em=(f.querySelector('input').value||'').trim();if(!em)return;note(m,'sending');
@@ -625,6 +722,7 @@ function paintTools(owned){
       '<div class="gmx-acct-row"><button class="gmx-acct-btn" type="submit">send it</button><span class="gmx-acct-msg" role="status"></span></div>'+
       '<p class="gmx-acct-p small">this is the sent door: your yes to fingerprinting is logged with the file, we review it, and once accepted it is what the scan finds. nothing is fetched from anywhere.</p></form></div>'}).join('');
   box.querySelectorAll('.gmx-toolset').forEach(function(set){loadTracks(set)});
+  if(box.dataset.wired)return;box.dataset.wired='1';
   box.addEventListener('click',function(ev){
     var b=ev.target.closest('[data-tact]');if(!b)return;
     var li=b.closest('.gmx-track'),form=li.querySelector('.gmx-track-form'),msg=li.querySelector('.gmx-acct-msg'),act=b.dataset.tact;
@@ -674,12 +772,133 @@ function trackAct(li,action,extra){
 
 /* ---- boot ---------------------------------------------------------------------------------------- */
 /* ---- the sign-in calls scan.html and more.html make (shell v2). a Response comes back, as from api() ---------- */
-function setSession(t){if(t)signedIn(t);else setToken('')}
+function setSession(t,email){if(t)signedIn(t,email);else setToken('')}
 function start(email){return api('/auth/start',{method:'POST',json:{email:email}})}
 function code(email,c){return api('/auth/code',{method:'POST',json:{email:email,code:c}})}
 function finish(t){return api('/auth/finish',{method:'POST',json:{token:t}})}
 function poll(ticket){return api('/auth/poll',{method:'POST',json:{pending:ticket}})}
-function signout(){var p=token()?api('/auth/signout',{method:'POST'}).catch(function(){}):Promise.resolve();setToken('');return p}
+/* sign out (2026-11-09). the session header is read before the token is forgotten and sent by hand: api() builds its
+   headers a tick later, when token() is already empty, so the server never knew which session to end. then the phone
+   forgets what a shared phone must not keep: the account's synced crate (the account holds it; a crate set aside by a
+   link from elsewhere comes back), the newsletter tick and the follow that waited for a sign-in, a half-finished sign-in,
+   and this phone's push tie to the account. the browser keeps its push permission, so the next yes is silent. */
+function signout(){
+  var t=token(),dev=t?deviceId():'';
+  var p=t?api('/auth/signout',{method:'POST',headers:{'X-GMX-Session':t}}).catch(function(){}):Promise.resolve();
+  /* the unsubscribe names the session and device it had (api() would read them a tick later, after they are gone) and
+     is part of what the caller waits on: clear this phone drops the device id only once both calls are out */
+  var u=t?unsubPush({'X-GMX-Session':t,'X-GMX-Device':dev}):Promise.resolve();
+  forgetPhone();
+  setToken('');signedEmail='';signedTok='';
+  synced('signout',{});
+  return Promise.all([p,u]).then(function(){});
+}
+/* a crate that never synced with an account (no owner) is the only copy of those hearts, so it stays on the phone */
+function forgetPhone(){
+  stopWait();forgetWanted();lss('gmx_push_skip','');
+  if(ls(OWNER)){lss(CRATE,'');lss(CRATE_RM,'');lss(OWNER,'')}
+  var away=lsj(AWAY);
+  if(Array.isArray(away)&&away.length){var l=crateLocal(),seen={};lss(CRATE,JSON.stringify(l.concat(away).filter(function(x){if(!x||!x.id||seen[x.id])return false;seen[x.id]=1;return true}).slice(0,500)))}
+  lss(AWAY,'');
+}
+function unsubPush(h){
+  try{
+    if(!('serviceWorker' in navigator)||!navigator.serviceWorker.getRegistration)return Promise.resolve();
+    return navigator.serviceWorker.getRegistration().then(function(reg){return reg&&reg.pushManager?reg.pushManager.getSubscription():null})
+      .then(function(sub){if(sub)return api('/push/unsubscribe',{method:'POST',headers:h||{},json:{endpoint:sub.endpoint}})}).catch(function(){});
+  }catch(e){return Promise.resolve()}
+}
+/* ---- a sign-in link opened on this page (contract C1, 2026-11-09). scan.html and more.html hand ?signin= to this.
+   this browser asked for it (a live gmx_pending ticket): finish silently, exactly as before, the ticket goes along.
+   no live ticket (the mail opened in another browser while the app waits, or a link someone sent): sign in, but never
+   upload this browser's crate or apply its newsletter tick or waiting follow; the account's crate comes down instead,
+   and one quiet line says who is signed in, with a sign out. already signed in to another account: one small card asks
+   before replacing it. same account: nothing changes. no new tap on any normal path.
+   done(state,email): 'in', 'foreign', 'switched', 'same', 'kept', 'gone' (used or expired), 'limited' (429), 'error'. */
+function openLink(tok,done){
+  done=done||function(){};
+  var p=lsj(PENDING),live=!!(p&&p.t&&p.until>Date.now()),cur=token(),curMe=snapshot();
+  var json={token:tok};if(live)json.pending=p.t;
+  return api('/auth/finish',{method:'POST',json:json}).then(function(r){
+    if(r.status===410){done('gone');return}
+    /* the api caps sign-in tries per address (sec-auth-v1): say so instead of blaming the signal */
+    if(r.status===429){done('limited');return}
+    if(!r.ok)throw new Error(r.status);
+    return r.json().then(function(j){
+      var em=j.email||'';
+      /* this page's own link wait signed in first with the same ticket: keep that session, end the spare one */
+      if(!cur&&live&&token()){if(j.session&&j.session!==token())endSession(j.session);done('in',em);return}
+      if(cur&&token()===cur){
+        var known=(curMe&&curMe.email)||ls(OWNER);
+        if(known){decide(known);return}
+        whoami().then(function(m){decide((m&&m.email)||'')});
+        return;
+      }
+      /* the api may say the ticket did not match the link (matched:false): then it is a link from elsewhere after all */
+      if(live&&j.matched!==false){signedIn(j.session,em);done('in',em);return}
+      adoptForeign(j.session,em);done('foreign',em);
+      function decide(curEm){
+        if(em&&curEm&&em.toLowerCase()===curEm.toLowerCase()){endSession(j.session);done('same',em);return}
+        askSwitch(j.session,em,curEm,done);
+      }
+    });
+  }).catch(function(){done('error')});
+}
+function endSession(t){if(t)api('/auth/signout',{method:'POST',headers:{'X-GMX-Session':t}}).catch(function(){})}
+function adoptForeign(t,em){
+  stopTimer();setToken(t);signedEmail=em||'';signedTok=t;
+  ownCrate(em,false);
+  if(em)line('<p><span>signed in as</span> <b>'+esc(em)+'</b> <span>· not you?</span> <button type="button" class="ln" data-line="out">sign out</button></p><button type="button" class="lx" data-line="x" aria-label="close">×</button>',
+    function(k){if(k==='out')signout()},20000);
+}
+function askSwitch(t,em,curEm,done){
+  line('<p><span>this link signs in</span> <b>'+esc(em||'another account')+'</b><span>. switch accounts?</span></p><div class="lrow"><button type="button" class="lb red" data-line="switch">switch</button>'+
+    '<button type="button" class="lb" data-line="keep">'+(curEm?'<span>keep</span> '+esc(curEm):'keep this one')+'</button></div>',
+    function(k){
+      if(k==='switch'){signout();adoptForeign(t,em);done('switched',em)}
+      else{endSession(t);done('kept',curEm)}
+    },0);
+}
+/* one line at the bottom of the page, for the two cases above. ms 0 keeps it until a button is tapped */
+function line(html,cb,ms){
+  var old=document.querySelector('.gmx-acct-line');if(old)old.remove();
+  var c=document.createElement('div');c.className='gmx-acct-line';c.setAttribute('role','status');c.innerHTML=html;
+  document.body.appendChild(c);
+  var t=ms?setTimeout(function(){c.remove()},ms):0;
+  c.addEventListener('click',function(e){var b=e.target.closest('[data-line]');if(!b)return;clearTimeout(t);c.remove();cb&&cb(b.getAttribute('data-line'))});
+  if(!ms){var f=c.querySelector('[data-line="keep"]')||c.querySelector('button');if(f)setTimeout(function(){try{f.focus({preventScroll:true})}catch(x){}},30)}
+  return c;
+}
+/* ---- the delete-my-account mail link lands on /more?delete=<token> (2026-11-09). it never fires on load (mail scanners and
+   link previews open links): the page asks once, and the yes finishes it. works signed out too: the mail is the proof. */
+function wireDeleteLink(){
+  if(!onMore())return;
+  var q=new URLSearchParams(location.search),del=q.get('delete');if(!del)return;
+  q.delete('delete');var rest=q.toString();
+  try{history.replaceState(null,'',location.pathname+(rest?'?'+rest:'')+location.hash)}catch(e){}
+  var c=document.createElement('div');c.className='gmx-you gmx-delcard';c.setAttribute('role','region');c.setAttribute('aria-label','delete your account');
+  c.innerHTML='<p class="gmx-acct-p">delete your account for good? your crate, follows, scan history and sign-ins go.</p>'+
+    '<div class="gmx-acct-row"><button type="button" class="gmx-acct-btn red" data-del="yes">delete it</button><button type="button" class="gmx-acct-btn ghost" data-del="no">keep it</button></div><p class="gmx-acct-msg" role="status"></p>';
+  var at=document.querySelector('header.mast');
+  if(at&&at.parentNode)at.parentNode.insertBefore(c,at.nextSibling);else (document.querySelector('.wrap')||document.body).insertBefore(c,(document.querySelector('.wrap')||document.body).firstChild);
+  var msg=c.querySelector('.gmx-acct-msg');
+  try{c.scrollIntoView({block:'center'})}catch(e){}
+  setTimeout(function(){try{c.querySelector('[data-del="no"]').focus({preventScroll:true})}catch(e){}},50);
+  c.addEventListener('click',function(e){
+    var b=e.target.closest('[data-del]');if(!b)return;
+    if(b.dataset.del==='no'){c.innerHTML='<p class="gmx-acct-p">kept. nothing was deleted.</p>';return}
+    c.querySelectorAll('button').forEach(function(x){x.disabled=true});note(msg,'deleting');
+    api('/me/delete/confirm',{method:'POST',json:{token:del}}).then(function(r){
+      if(r.status===410){note(msg,'that confirmation is used, expired or unknown. ask for a new one.');return}
+      if(!r.ok)throw new Error(r.status);
+      return r.json().catch(function(){return null}).then(function(){
+        c.innerHTML='<p class="gmx-acct-p">your account is gone. the crate on this phone stays yours.</p>';
+        /* signed in here: if it was this account, its session now answers 401 and whoami() signs the phone out */
+        if(token())whoami(true).then(function(m){if(!m&&!token())lss(OWNER,'')});
+      });
+    }).catch(function(){c.querySelectorAll('button').forEach(function(x){x.disabled=false});note(msg,'did not go through. try again in a minute.')});
+  });
+}
 function setHandle(h){return api('/me',{method:'POST',json:{handle:h||null}}).then(function(r){if(r.ok)r.clone().json().then(remember).catch(function(){});return r})}
 /* a push subscription for this phone: the browser's permission prompt, the recognizer's public key, the
    subscription posted back. resolves true when the phone can be pushed, false when it cannot. never throws.
@@ -712,7 +931,7 @@ function ensurePush(opts){
         .then(function(sub){
           return api('/push/subscribe',{method:'POST',json:{subscription:sub.toJSON()}}).then(function(r){
             if(!r.ok)return no('save-failed',r.status);
-            if(opts.test)reg.showNotification('groovesmaxxing',{body:'test: this phone gets notified.',icon:'/icon-192.png',badge:'/icon-192.png',tag:'gmx-test',data:{url:'/more'}}).catch(function(e){console.warn('gmx push: test notification',e)});
+            if(opts.test)reg.showNotification('groovesmaxxing',{body:'test: this phone gets notified.',icon:'/icon-192.png',badge:'/badge-96.png',tag:'gmx-test',data:{url:'/more'}}).catch(function(e){console.warn('gmx push: test notification',e)});
             return true;
           });
         });
@@ -733,7 +952,7 @@ var PUSH_LINES={
 /* a test notification from this phone's own service worker, no server call. true when it showed. */
 function testPush(){
   if(!('serviceWorker' in navigator)||!('Notification' in window)||Notification.permission!=='granted')return Promise.resolve(false);
-  return navigator.serviceWorker.ready.then(function(reg){return reg.showNotification('groovesmaxxing',{body:'test: this phone gets notified.',icon:'/icon-192.png',badge:'/icon-192.png',tag:'gmx-test',data:{url:'/more'}})}).then(function(){return true},function(e){console.warn('gmx push: test notification',e);return false});
+  return navigator.serviceWorker.ready.then(function(reg){return reg.showNotification('groovesmaxxing',{body:'test: this phone gets notified.',icon:'/icon-192.png',badge:'/badge-96.png',tag:'gmx-test',data:{url:'/more'}})}).then(function(){return true},function(e){console.warn('gmx push: test notification',e);return false});
 }
 function pushWhy(){return lastWhy}
 function pushLine(why){return PUSH_LINES[why]||PUSH_LINES.failed}
@@ -744,15 +963,32 @@ function pushState(){
   if(Notification.permission!=='granted')return Promise.resolve('off');
   return navigator.serviceWorker.ready.then(function(reg){return reg.pushManager.getSubscription()}).then(function(sub){return sub?'on':'allowed'}).catch(function(){return 'allowed'});
 }
+/* a profile page whose section lost its id (28 upgraded artist pages did) or its label class (labels/nu-moda): put them
+   back before gmx-related.js, gmx-crate.js and gmx-sheet.js look (they load after this file and need section.artist[id]),
+   so a rebuild that drops them again does not take the follow pill, the "..." sheet and the related block with it */
+function fixProfile(){
+  if(!/^\/(artists|labels)\//.test(location.pathname))return;
+  var sec=document.querySelector('section.artist');if(!sec)return;
+  if(!sec.id){var s=(location.pathname.split('/').pop()||'').replace(/\.html$/,'').toLowerCase();if(/^[a-z0-9][a-z0-9-]*$/.test(s)&&!document.getElementById(s))sec.id=s}
+  if(/^\/labels\//.test(location.pathname))sec.classList.add('label');
+}
 function boot(){
-  wireProfile();wireMore();mountChip();wireCratePage();
+  fixProfile();wireProfile();wireMore();mountChip();wireCratePage();wireDeleteLink();
   document.addEventListener('gmx:crate',onCrateChange);
+  /* inside the installed app the more tab does not offer to install it (older iphones miss the display-mode query) */
+  if(onMore()&&installed()){var ir=document.getElementById('installrow');if(ir&&ir.parentNode)ir.parentNode.style.display='none'}
   if(!onScan()){resumeWait();if(token())syncCrate('boot')}
 }
+/* another tab or the installed app signed in or out: drop what this page cached about the old session and repaint */
+window.addEventListener('storage',function(e){
+  if(e.key!==SESSION&&e.key!==null)return;
+  me=null;meP=null;if(token())stopTimer();
+  paint();fire('session');try{document.dispatchEvent(new CustomEvent('gmx-account',{detail:{signedIn:!!token()}}))}catch(x){}
+});
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
 window.gmxAccount={
   ready:loadCfg,config:loadCfg,token:token,set:setSession,device:deviceId,headers:function(x){return cfg?headers(x):null},api:api,call:api,
-  start:start,code:code,finish:finish,poll:poll,waitForLink:waitForLink,resumeWait:resumeWait,signout:signout,
+  start:start,code:code,finish:finish,poll:poll,waitForLink:waitForLink,resumeWait:resumeWait,signout:signout,openLink:openLink,failLine:failLine,
   me:whoami,snapshot:snapshot,setHandle:setHandle,ensurePush:ensurePush,pushState:pushState,pushWhy:pushWhy,pushLine:pushLine,testPush:testPush,on:function(f){subs.push(f)},paint:paint,
   badge:badge,signIn:signIn,open:open,close:close,sync:function(){return syncCrate('asked',true)}
 };

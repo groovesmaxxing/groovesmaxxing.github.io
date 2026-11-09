@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-Sh0A9iV5HHSoOndTE99YbzxjnuQdzRaGnw1h2G8CfBg=' 'sha256-Yzz0W75C/p37Mm2Y7XXlhzFXd7rSoenh66wLjKEiCa8=' 'sha256-v+W/ZvUInA8yV8kX3w9qouAoP6OPSKMlIT4mBf+oIVA='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com https://embed.beatport.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-Yzz0W75C/p37Mm2Y7XXlhzFXd7rSoenh66wLjKEiCa8=' 'sha256-hU8nFXdWRq8XZyR9oZgM5DyBNFgzM2louNP9tvvgUQ0=' 'sha256-gBOvAxkSooucHdsgbb37bboOk7WObs67UBu1wpJ0JDU='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com https://embed.beatport.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>more · groovesMAXXING</title>
@@ -100,6 +100,11 @@ form.nl input[type=submit]:hover{background:var(--deep);border-color:var(--deep)
 .list button.rowbtn[disabled]{opacity:.6;cursor:default}
 .list li.soon .tx{color:var(--steel)}
 .list li.soon{padding:17px 0;display:flex;justify-content:space-between;align-items:baseline;gap:14px;font-weight:600;font-size:1.05rem}
+.list li.soon.acct-only{display:none}
+.signed-in .list li.soon.acct-only{display:flex}
+@media (display-mode: standalone){.list li:has(> #installrow){display:none}}
+.legal{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel);letter-spacing:.03em;line-height:1.7;margin:10px 0 0}
+.legal a{color:inherit;text-underline-offset:3px;display:inline-block;padding:6px 0}
 .badge{display:inline-block;font-family:'Space Mono',monospace;font-size:.8rem;letter-spacing:.06em;text-transform:lowercase;color:var(--racing);border:1px solid rgba(255,28,2,.5);border-radius:999px;padding:3px 8px;margin-left:8px;vertical-align:middle}
 .prof{cursor:pointer}
 .prof .hint{display:block;font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel);letter-spacing:.06em;margin-top:6px}
@@ -145,6 +150,7 @@ form.nl input[type=submit]:hover{background:var(--deep);border-color:var(--deep)
 <p class="note">get told by email when an ID you scanned comes out, keep your scans and follows across phones, and put your name on the IDs you help name. no password: a link and a six-digit code by email, free, leave whenever.</p>
 <form class="aform" id="yform" autocomplete="off"><label for="y-email">email</label><input id="y-email" name="email" type="email" inputmode="email" maxlength="320" required>
 <div class="row"><button class="btn red" type="submit">send me a sign-in link</button><span class="msg" role="status" id="youmsg"></span></div></form>
+<p class="legal">your email is only for this. <a href="/privacy">privacy</a> · <a href="/terms">terms</a></p>
 </div>
 </div>
 </section>
@@ -178,16 +184,17 @@ form.nl input[type=submit]:hover{background:var(--deep);border-color:var(--deep)
 <ul class="list">
 <li><label class="sw" for="keepclips"><span class="tx">keep my clips<small>on this phone only. newest 20, gone after 30 days. off deletes them.</small></span><input type="checkbox" id="keepclips" role="switch"><span class="knob" aria-hidden="true"></span></label></li>
 <li class="acct-only"><button class="rowbtn" type="button" data-acct="export"><span class="tx">download my data<small>your scans, crate, follows and claims as one json file</small></span><span class="go">↓</span></button></li>
-<li><button type="button" class="wipe" id="wipeall"><span class="tx">clear this phone<small>the device id, the recent scans and any kept clips. nothing on our side changes.</small></span><span class="go" id="wipemsg">✕</span></button></li>
+<li><button type="button" class="wipe" id="wipeall"><span class="tx">clear this phone<small>the device id, the recent scans, tonight's list, any kept clips and your sign-in on this phone. nothing on our side changes.</small></span><span class="go" id="wipemsg">✕</span></button></li>
 <li class="acct-only"><button class="rowbtn" type="button" data-acct="delete"><span class="tx">delete my account<small>a confirm by mail, then gone for good</small></span><span class="go">✕</span></button></li>
 </ul>
 <div id="gmx-delete" class="acct-only"></div>
+<p class="gmx-acct-msg" id="gmx-data-msg" role="status"></p>
 
 <h2>app</h2>
 <ul class="list">
 <li><a href="/scan" id="installrow"><span class="tx">add to home screen<small id="install-small">it opens straight to scan. iphone: share, then add to home screen. android: the browser menu, then install app</small></span><span class="go">↗</span></a></li>
 <li><a href="mailto:groovesmaxxing@gmail.com?subject=app%20feedback"><span class="tx">feedback<small>something broke, or a scan got it wrong? tell us.</small></span><span class="go">✉</span></a></li>
-<li><a href="/privacy"><span class="tx">privacy<small>what the scan keeps</small></span><span class="go">↗</span></a></li>
+<li><a href="/privacy"><span class="tx">privacy<small>what the scan and your account keep</small></span><span class="go">↗</span></a></li>
 <li><a href="/terms"><span class="tx">terms<small>short, in plain words</small></span><span class="go">↗</span></a></li>
 <li><a href="#about"><span class="tx">about<small>what this is</small></span><span class="go">↓</span></a></li>
 <li class="acct-only"><button class="rowbtn" type="button" data-acct="out"><span class="tx">sign out<small>on this phone only. your follows and scans stay with the account</small></span><span class="go">✕</span></button></li>
@@ -199,12 +206,16 @@ form.nl input[type=submit]:hover{background:var(--deep);border-color:var(--deep)
 <li><a href="/radio"><span class="tx">radio<small>every set, back to back</small></span><span class="go">↗</span></a></li>
 <li><a href="/crate" class="out-only"><span class="tx">my crate<small>the sets and tracks you liked</small></span><span class="go">↗</span></a></li>
 <li><a href="/search"><span class="tx">search the site<small>the whole site, one box</small></span><span class="go">↗</span></a></li>
-<li><a href="/labels"><span class="tx">the imprint radar<small>the labels that survive the skip test</small></span><span class="go">↗</span></a></li>
+<li><a href="/labels"><span class="tx">the labels<small>the imprint radar: the labels that survive the skip test</small></span><span class="go">↗</span></a></li>
 <li><a href="/upcoming"><span class="tx">dropping soon<small>announced releases, dated as they said it</small></span><span class="go">↗</span></a></li>
+<li><a href="/friday"><span class="tx">fresh grooves friday<small>every release that cleared this week</small></span><span class="go">↗</span></a></li>
+<li><a href="/picks"><span class="tx">the picks scoreboard<small>how our picks did a month on</small></span><span class="go">↗</span></a></li>
+<li><a href="/dj-support"><span class="tx">gaining dj support<small>who the djs are playing</small></span><span class="go">↗</span></a></li>
 <li><a href="/events"><span class="tx">events radar<small>festivals, club rooms, who is on tour</small></span><span class="go">↗</span></a></li>
 <li><a href="/#listen"><span class="tx">press play<small>the playlists, playable here</small></span><span class="go">↗</span></a></li>
 <li><a href="/moods"><span class="tx">the mood picker<small>pick a mood, get 30 tracks from our playlists</small></span><span class="go">↗</span></a></li>
 <li><a href="/sets"><span class="tx">sets and tracklists<small>every set, and every one we tagged</small></span><span class="go">↗</span></a></li>
+<li><a href="/interviews"><span class="tx">talks<small>interviews and podcasts</small></span><span class="go">↗</span></a></li>
 <li><a href="/open-ids"><span class="tx">the open IDs<small>the tracks we could not name yet</small></span><span class="go">↗</span></a></li>
 <li><a href="/"><span class="tx">the whole site<small>the home page</small></span><span class="go">↗</span></a></li>
 </ul>
@@ -217,6 +228,7 @@ form.nl input[type=submit]:hover{background:var(--deep);border-color:var(--deep)
 <input type="hidden" value="1" name="embed">
 <input type="submit" value="subscribe">
 </form>
+<p class="legal">your email is only for this. <a href="/privacy">privacy</a> · <a href="/terms">terms</a></p>
 <p class="note"><a href="/newsletter">past issues →</a> in full, no signup. or the <a href="/feed.xml">rss feed</a>.</p>
 
 <h2 id="about">about</h2>
@@ -231,8 +243,14 @@ form.nl input[type=submit]:hover{background:var(--deep);border-color:var(--deep)
 <script src="/gmx-clips.js"></script>
 <script src="/gmx-account.js?v=20"></script>
 <script>(function(){var b=document.getElementById('wipeall'),m=document.getElementById('wipemsg');if(!b)return;b.addEventListener('click',function(){
-  if(!confirm('clear the device id, the recent scans and any kept clips on this phone?'))return;
-  var done=function(){['gmx_history','gmx_device','gmx_keep_clips','gmx_install_hide_until','gmx_cfg','gmx_me','gmx_me_at'].forEach(function(k){try{localStorage.removeItem(k)}catch(e){}});if(m)m.textContent='done';var k=document.getElementById('keepclips');if(k)k.checked=false;if(window.gmxAccount)gmxAccount.paint()};
+  var A=window.gmxAccount,signed=!!(A&&A.token&&A.token());
+  if(!confirm(signed?'clear this phone? the device id, the recent scans, tonight\'s list, any kept clips and your sign-in here go. nothing on our side changes.':'clear the device id, the recent scans, tonight\'s list and any kept clips on this phone?'))return;
+  /* signed in: sign out first (it ends the session, drops the account's crate, a half-finished sign-in and the push tie).
+     a crate built without an account is the only copy, so it stays. the device id goes once the sign-out call is out */
+  var out=signed?A.signout():Promise.resolve();
+  var rm=function(ks){ks.forEach(function(k){try{localStorage.removeItem(k)}catch(e){}})};
+  var done=function(){rm(['gmx_history','gmx_keep_clips','gmx_install_hide_until','gmx_cfg','gmx_me','gmx_me_at','gmx_pending','gmx_nl_wanted','gmx_follow_wanted','gmx_tonight','gmx_auto','gmx_art','gmx_quick_recent','gmx_push_skip']);if(m)m.textContent='done';var k=document.getElementById('keepclips');if(k)k.checked=false;if(window.gmxAccount)gmxAccount.paint()};
+  Promise.race([out,new Promise(function(r){setTimeout(r,3000)})]).then(function(){rm(['gmx_device'])});
   if(window.gmxClips)gmxClips.clear().then(done,done);else done();
 });})();</script>
 <script>(function(){var k=document.getElementById('keepclips');if(!k||!window.gmxClips)return;k.checked=gmxClips.on();k.addEventListener('change',function(){gmxClips.setOn(k.checked)})})();</script>
@@ -246,11 +264,13 @@ var $=function(id){return document.getElementById(id)};
 var body=$('acctbody'),meNow=null,pushNow='',justIn=false;
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 function note(id,t,ok){var m=$(id);if(m){m.textContent=t;m.className='msg'+(ok?' ok':'')}}
+function fail(e,net){return A.failLine?A.failLine(e,net):net}
 function signupHtml(){
   return '<div class="signup"><p class="big">sign in, and the site remembers you.</p>'+
     '<p class="note">get told by email when an ID you scanned comes out, keep your scans and follows across phones, and put your name on the IDs you help name. no password: a link and a six-digit code by email, free, leave whenever.</p>'+
     '<form class="aform" id="yform" autocomplete="off"><label for="y-email">email</label><input id="y-email" name="email" type="email" inputmode="email" maxlength="320" required>'+
-    '<div class="row"><button class="btn red" type="submit">send me a sign-in link</button><span class="msg" role="status" id="youmsg"></span></div></form></div>';
+    '<div class="row"><button class="btn red" type="submit">send me a sign-in link</button><span class="msg" role="status" id="youmsg"></span></div></form>'+
+    '<p class="legal">your email is only for this. <a href="/privacy">privacy</a> · <a href="/terms">terms</a></p></div>';
 }
 /* the code from the mail, typed here: no browser hand-off, which the gmail app on android cannot do */
 function codeForm(email){
@@ -288,11 +308,16 @@ function paintPush(){
 function render(){
   if(!A.token()){paintOut();return}
   var snap=A.snapshot();if(snap)paintIn(snap);else body.innerHTML='<p class="note">signed in. one moment</p>';
-  A.me(true).then(function(me){if(!me){paintOut();return}paintIn(me)}).catch(function(){
+  /* me() never rejects: null is either signed out (a 401 already cleared the token) or a server that did not answer */
+  A.me(true).then(function(me){
+    if(me){paintIn(me);return}
+    if(!A.token()){paintOut();return}
     if(!snap)body.innerHTML='<p class="note">signed in, but the recognizer did not answer.</p><div class="row"><button class="btn ghost" type="button" data-acct="out">sign out</button></div>';
   });
 }
-function signedIn(){justIn=true;render();A.ensurePush().then(paintPush,paintPush)}
+/* push is only re-registered on its own when the phone already said yes: a prompt outside a tap is dropped on iphone and
+   firefox and counts against the site on chrome. the turn on row asks inside its tap */
+function signedIn(){justIn=true;render();if(window.Notification&&Notification.permission==='granted')A.ensurePush().then(paintPush,paintPush);else paintPush()}
 document.addEventListener('submit',function(ev){
   var f=ev.target;
   if(f.id==='yform'){
@@ -305,16 +330,18 @@ document.addEventListener('submit',function(ev){
         note('youmsg',j.mail_sent?'sent. type the six digits from the mail here, or tap its link anywhere.':'the mail could not go out right now. try again later.',j.mail_sent);
         if(j.mail_sent){codeForm(email);if(j.pending)A.waitForLink(j.pending,j.minutes||20,signedIn)}
       });
-    }).catch(function(){note('youmsg','did not send. check your signal and try again.')});
+    }).catch(function(e){note('youmsg',fail(e,'did not send. check your signal and try again.'))});
   }else if(f.id==='cform2'){
     ev.preventDefault();var code=($('y-code').value||'').replace(/\D/g,'');
     if(code.length!==6){note('codemsg','six digits.');return}
     note('codemsg','checking');
     A.code(f.dataset.email,code).then(function(r){
+      if(r.status===429){note('codemsg','too many tries. tap the link in the mail, or ask for a new code later.');return}
       if(r.status===410){note('codemsg','that code is wrong, used or too old. ask for a new one.');return}
+      if(r.status===401||r.status===403){note('codemsg','that code did not work. ask for a new one.');return}
       if(!r.ok)throw new Error(r.status);
-      return r.json().then(function(j){A.set(j.session);signedIn()});
-    }).catch(function(){note('codemsg','did not send. check your signal.')});
+      return r.json().then(function(j){A.set(j.session,j.email);signedIn()});
+    }).catch(function(e){note('codemsg',fail(e,'did not send. check your signal.'))});
   }else if(f.id==='hform2'){
     ev.preventDefault();var hv=$('y-handle').value.trim();note('hmsg','saving');
     A.setHandle(hv||null).then(function(r){
@@ -347,18 +374,24 @@ document.addEventListener('click',function(ev){
     A.ensurePush({test:true}).then(function(ok){b.disabled=false;pn(ok?'this phone gets notified. a test just went out.':A.pushLine(A.pushWhy()),ok);paintPush()});
   }
 });
-/* a sign-in link that lands here instead of on /scan */
+/* a sign-in link that lands here instead of on /scan. gmx-account.js openLink decides (contract C1): this browser's own
+   ticket finishes silently, a link from elsewhere signs in without taking this phone's crate along, another account asks */
 var q=new URLSearchParams(location.search),tok=q.get('signin');
 if(tok){
-  history.replaceState(null,'',location.pathname+location.hash);
-  A.finish(tok).then(function(r){
-    if(r.status===410){render();note('youmsg','that link is used up or too old. ask for a new one.');return}
-    if(!r.ok)throw new Error(r.status);
-    return r.json().then(function(j){A.set(j.session);signedIn()});
-  }).catch(function(){render();note('youmsg','could not finish signing in. check your signal and try the link again.')});
+  history.replaceState(null,'',location.pathname+(q.get('delete')?'?delete='+encodeURIComponent(q.get('delete')):'')+location.hash);
+  render();
+  A.openLink(tok,function(st){
+    if(st==='gone'){render();note('youmsg','that link is used up or too old. ask for a new one.');return}
+    if(st==='limited'){render();note('youmsg','too many sign-in tries from here. wait a few minutes, then tap the link again.');return}
+    if(st==='error'){render();note('youmsg','could not finish signing in. check your signal and try the link again.');return}
+    if(st==='in'){signedIn();return}
+    if(st==='foreign'||st==='switched'){justIn=true;render();return}
+    render();
+  });
 }else render();
 A.resumeWait(signedIn);
-A.on(function(w){if(w==='session'&&!A.token()&&document.body.classList.contains('signed-in'))paintOut()});
+/* any session that appears or goes (the link poll, another tab's sign out) repaints the card */
+A.on(function(w){if(w!=='session')return;var inNow=document.body.classList.contains('signed-in');if(!A.token()&&inNow)paintOut();else if(A.token()&&!inNow)render()});
 })();
 </script>
 <script src="/gmx-motion.js?v=2" defer></script>

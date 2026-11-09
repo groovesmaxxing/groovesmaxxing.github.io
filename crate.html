@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-IhOievGPfHbA1PMyQ8bvU8LnTCN+hAezVf/VprIMpC4='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com https://embed.beatport.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-GzXsVpwEQennLNp5y4qc5rUW4ZUDImjbd/oUV1RxbXg='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com https://embed.beatport.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <link rel="manifest" href="/manifest.webmanifest">
@@ -138,6 +138,7 @@ mark{background:none;color:var(--racing)}
 .cempty{font-family:'Space Mono',monospace;font-size:.85rem;color:var(--steel);line-height:1.8;padding:30px 0}
 .cempty a{color:#cfcfc9}
 .cmsg{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--steel);margin-top:8px;min-height:1.2em}
+.cmsg a{color:var(--day,#F2F2EF);text-underline-offset:3px;display:inline-block;padding:10px 6px}
 </style>
 <link rel="canonical" href="https://groovesmaxxing.com/crate">
 <meta name="robots" content="noindex">
@@ -185,16 +186,17 @@ mark{background:none;color:var(--racing)}
 var sets=document.getElementById('c-sets'),tracks=document.getElementById('c-tracks'),follow=document.getElementById('c-follow'),empty=document.getElementById('c-empty'),msg=document.getElementById('c-msg');
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 function say(t){msg.textContent=t}
+/* a saved row's links come from this phone or the account: only https:// or a path on this site become a link */
+function ok(u){u=String(u==null?'':u);return (/^https:\/\/[^\/\\]/i.test(u)||/^\/(?![\/\\])/.test(u))&&!/[\\\u0000-\u001f]/.test(u)?u:''}
 function links(it){
-  var l=it.links||{},out='';
-  if(it.kind==='set'){out+='<a href="'+esc(it.url)+'" target="_blank" rel="noopener">youtube ↗</a>';if(it.page&&it.page!=='/')out+='<a href="'+esc(it.page)+'">where you found it →</a>'}
-  if(l.spotify)out+='<a href="'+esc(l.spotify)+'" target="_blank" rel="noopener">spotify ↗</a>';
-  if(l.apple)out+='<a href="'+esc(l.apple)+'" target="_blank" rel="noopener">apple music ↗</a>';
-  if(l.beatport)out+='<a href="'+esc(l.beatport)+'" target="_blank" rel="noopener">beatport ↗</a>';
-  if(l.soundcloud)out+='<a href="'+esc(l.soundcloud)+'" target="_blank" rel="noopener">soundcloud ↗</a>';
-  if(it.kind==='track'&&it.url)out+='<a href="'+esc(it.url)+'">the tracklist →</a>';
-  if(it.kind==='track'&&!l.spotify)out+='<a href="https://open.spotify.com/search/'+encodeURIComponent(it.title)+'" target="_blank" rel="noopener">find on spotify ↗</a>';
-  if(it.kind==='artist'||it.kind==='label'){if(it.url)out+='<a href="'+esc(it.url)+'">the profile →</a>';out+='<a href="/upcoming?mine=1">dropping soon →</a>'}
+  var l=it.links||{},out='',u;
+  function ext(v,t){v=ok(v);if(v)out+='<a href="'+esc(v)+'" target="_blank" rel="noopener">'+t+'</a>';return !!v}
+  if(it.kind==='set'){ext(it.url,'youtube ↗');u=ok(it.page);if(u&&u!=='/')out+='<a href="'+esc(u)+'">where you found it →</a>'}
+  var sp=ext(l.spotify,'spotify ↗');
+  ext(l.apple,'apple music ↗');ext(l.beatport,'beatport ↗');ext(l.soundcloud,'soundcloud ↗');
+  if(it.kind==='track'&&(u=ok(it.url)))out+='<a href="'+esc(u)+'">the tracklist →</a>';
+  if(it.kind==='track'&&!sp)out+='<a href="https://open.spotify.com/search/'+encodeURIComponent(it.title||'')+'" target="_blank" rel="noopener">find on spotify ↗</a>';
+  if(it.kind==='artist'||it.kind==='label'){if(u=ok(it.url))out+='<a href="'+esc(u)+'">the profile →</a>';out+='<a href="/upcoming?mine=1">dropping soon →</a>'}
   return out;
 }
 function row(it){return '<div class="crow" data-id="'+esc(it.id)+'"><span class="ck" aria-hidden="true">'+({set:'▶️',track:'🎧',artist:'🎤',label:'🏷️'}[it.kind]||'🎧')+'</span><div class="cb"><div class="cn">'+esc(it.title)+'</div>'+(it.sub?'<div class="cs">'+esc(it.sub)+'</div>':'')+'<div class="cl">'+links(it)+'</div></div><button type="button" class="rm" data-rm="'+esc(it.id)+'">remove</button></div>'}
@@ -206,18 +208,26 @@ function render(){
   empty.hidden=!!l.length;
 }
 document.addEventListener('gmx:crate-synced',function(){render()});
-document.addEventListener('click',function(e){var b=e.target.closest('[data-rm]');if(!b)return;gmxCrate.toggle({id:b.getAttribute('data-rm')});render();say('removed.')});
+/* remove the stored item itself (it carries its kind, so an artist unfollows on the account too); a row another tab already removed just goes */
+document.addEventListener('click',function(e){var b=e.target.closest('[data-rm]');if(!b)return;var id=b.getAttribute('data-rm'),it=gmxCrate.load().filter(function(x){return x.id===id})[0];if(it)gmxCrate.toggle(it);render();say('removed.')});
 document.getElementById('c-copy').addEventListener('click',function(){
   var l=gmxCrate.load();if(!l.length)return say('nothing to copy.');
   var txt=l.map(function(it){var u=(it.links&&(it.links.spotify||it.links.beatport||it.links.soundcloud))||it.url||'';return it.title+(it.sub?' ('+it.sub+')':'')+(u?' '+(u.charAt(0)==='/'?'https://groovesmaxxing.com'+u:u):'')}).join('\n');
   if(navigator.clipboard)navigator.clipboard.writeText(txt).then(function(){say('copied, '+l.length+' lines.')},function(){say('could not copy.')});else say('copy is not available here.');
 });
+/* a browser lets one tap open one tab: the first opens, the rest are links right here */
 document.getElementById('c-spotify').addEventListener('click',function(){
-  var urls=gmxCrate.load().map(function(it){return it.links&&it.links.spotify}).filter(Boolean);
+  var urls=gmxCrate.load().map(function(it){return it.links&&it.links.spotify}).filter(function(u){return /^https:\/\/open\.spotify\.com\//.test(ok(u))});
   if(!urls.length)return say('no track in the crate has a spotify link yet. the tracklists add them as we verify.');
-  urls.slice(0,8).forEach(function(u){window.open(u,'_blank','noopener')});say('opened '+Math.min(8,urls.length)+' of '+urls.length+(urls.length>8?', the rest are in the list above.':'.'));
+  window.open(urls[0],'_blank','noopener');
+  if(urls.length===1)return say('opened it.');
+  msg.innerHTML='<span>opened the first one. the rest:</span> '+urls.slice(1).map(function(u,i){return '<a href="'+esc(u)+'" target="_blank" rel="noopener">'+(i+2)+'</a>'}).join(' · ');
 });
-document.getElementById('c-clear').addEventListener('click',function(){if(!gmxCrate.load().length)return;if(confirm('clear the whole crate on this phone?')){gmxCrate.save([]);render();say('cleared.')}});
+document.getElementById('c-clear').addEventListener('click',function(){
+  if(!gmxCrate.load().length)return;
+  var acct=window.gmxAccount&&gmxAccount.token&&gmxAccount.token();
+  if(confirm(acct?'clear the whole crate, here and on your account?':'clear the whole crate on this phone?')){(gmxCrate.clear?gmxCrate.clear():gmxCrate.save([]));render();say('cleared.')}
+});
 render();
 })();
 </script>

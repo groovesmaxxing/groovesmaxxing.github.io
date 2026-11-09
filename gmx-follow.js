@@ -26,7 +26,8 @@ function show(i,scroll){
   if(i===cur&&!scroll)return;
   marks.forEach(function(m,k){m.row.classList.toggle('now',k===i)});
   cur=i;var m=marks[i];if(!m)return;
-  var n=m.row.querySelector('td.n');nm.innerHTML='<b>'+(n?n.textContent:'')+'</b>'+m.name.replace(/\s+/g,' ').trim().slice(0,90);bar.classList.add('on');
+  /* built as text nodes: a '<' in a track name stays text */
+  var n=m.row.querySelector('td.n'),nb=document.createElement('b');nb.textContent=n?n.textContent:'';nm.textContent='';nm.appendChild(nb);nm.appendChild(document.createTextNode(m.name.replace(/\s+/g,' ').trim().slice(0,90)));bar.classList.add('on');
   if(follow&&scroll!==false){var r=m.row.getBoundingClientRect();if(r.top<80||r.bottom>innerHeight-120)m.row.scrollIntoView({block:'center',behavior:'smooth'})}
 }
 function tick(t){
