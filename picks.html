@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com https://embed.beatport.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0B0B0D">
+<title>the picks scoreboard · groovesMAXXING</title>
+<meta name="description" content="every record we picked in a month, read again when the month ends: did the djs and the editors catch up? tiers and counts only, hits and misses both, credited to songstats.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:title" content="the picks scoreboard · groovesMAXXING">
+<meta property="og:description" content="every record we picked in a month, read again when the month ends: did the djs and the editors catch up? tiers and counts only, hits and misses both, credited to songstats.">
+<meta property="og:image" content="https://groovesmaxxing.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:url" content="https://groovesmaxxing.com/picks">
+<meta property="og:type" content="website">
+<link rel="preload" as="font" type="font/woff2" href="/fonts/poppins-400-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-400-latin.woff2" crossorigin>
+<link rel="stylesheet" href="/gmx-fonts.css?v=2">
+<style>
+  :root{
+    --night:#0B0B0D; --card:#141417; --card2:#1a1a1f; --line:#2a2a31;
+    --racing:#FF1C02; --deep:#CC1400; --day:#F2F2EF; --steel:#8A8A93;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--night);color:var(--day);font-family:'Poppins',sans-serif;line-height:1.6}
+  a{color:inherit}
+  a:focus-visible{outline:3px solid var(--racing);outline-offset:3px}
+  .wrap{max-width:840px;margin:0 auto;padding:52px 24px 80px}
+  .back{font-family:'Space Mono',monospace;font-size:.8rem;letter-spacing:.12em;text-decoration:none;color:var(--steel);display:inline-block;margin-bottom:34px}
+  .back:hover{color:var(--racing)}
+  .kicker{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--racing);margin-bottom:14px}
+  h1{font-weight:900;font-size:clamp(36px,8vw,60px);letter-spacing:-.02em;line-height:.98;text-transform:lowercase}
+  h1 span{color:var(--racing)}
+  .sub{color:var(--steel);margin:14px 0 6px;max-width:620px}
+  .legend{font-family:'Space Mono',monospace;font-size:12px;color:var(--steel);margin-bottom:34px}
+  .legend a{color:var(--day);text-decoration:none;border-bottom:1px solid var(--line)}
+  .legend a:hover{color:var(--racing);border-color:var(--racing)}
+  .ev{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin-bottom:12px;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:baseline}
+  .ev.hot{border-left:3px solid var(--racing)}
+  .rank{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.1em;color:var(--racing);flex:0 0 34px}
+  .ev h3{font-size:18px;font-weight:900;margin:0;flex:1 1 260px;min-width:0}
+  .ev h3 small{display:block;font-size:14px;font-weight:400;color:var(--day)}
+  .ev h3 a{text-decoration:none}
+  .ev h3 a:hover{color:var(--racing)}
+  .where{font-size:13.5px;color:var(--steel);flex:1 1 180px}
+  .where a{text-decoration:none;border-bottom:1px solid var(--line)}
+  .where a:hover{color:var(--racing);border-color:var(--racing)}
+  .pills{display:flex;flex-wrap:wrap;gap:8px;flex:1 1 100%}
+  .pill{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.06em;color:var(--day);border:1px solid rgba(242,242,239,.34);background:rgba(242,242,239,.05);border-radius:999px;padding:5px 12px}
+  .pill.up{color:var(--racing);border-color:rgba(255,28,2,.42);background:transparent}
+  .ev a.go{font-family:'Space Mono',monospace;font-size:12.5px;color:var(--racing);text-decoration:none;white-space:nowrap}
+  .ev a.go:hover{text-decoration:underline}
+  .empty{color:var(--steel);font-size:14px;margin-bottom:12px}
+  .fix{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-top:36px;font-size:14px}
+  .fix a{color:var(--racing);text-decoration:none}
+  .fix a:hover{text-decoration:underline}
+  .method{background:var(--card2);border:1px dashed var(--line);border-radius:12px;padding:18px 20px;margin-top:16px;font-size:13px;color:var(--steel)}
+  .method b{color:var(--day)}
+  .method a{color:var(--day);text-decoration:none;border-bottom:1px solid var(--line)}
+  .method a:hover{color:var(--racing);border-color:var(--racing)}
+  footer{margin-top:34px;padding-top:18px;border-top:1px solid var(--line);color:var(--steel);font-size:12.5px;font-family:'Space Mono',monospace}
+  footer a{color:var(--day);text-decoration:none}
+  footer a:hover{color:var(--racing)}
+  @media (max-width:520px){.wrap{padding:36px 16px 64px}.ev{padding:14px 16px;gap:4px 12px}.rank{flex-basis:100%}.where{flex-basis:100%}}
+  .wrap.pks{max-width:1040px}
+  .pks .cohort{margin:0 0 40px}
+  .pks h2{font-weight:900;font-size:clamp(24px,5vw,32px);letter-spacing:-.01em;text-transform:lowercase;margin-bottom:6px}
+  .cstat{font-family:'Space Mono',monospace;font-size:12px;color:var(--steel);display:flex;flex-wrap:wrap;gap:4px 8px;align-items:baseline;margin-bottom:10px}
+  .cstat b{color:var(--day);font-weight:400}
+  .st{border-radius:999px;padding:2px 10px;border:1px solid var(--line);color:var(--day);letter-spacing:.06em}
+  .st.open{border-color:rgba(255,28,2,.42);color:var(--racing)}
+  .tally{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+  .tl{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.06em;border:1px solid rgba(242,242,239,.34);background:rgba(242,242,239,.05);border-radius:999px;padding:5px 12px;color:var(--steel)}
+  .tl b{color:var(--day);font-weight:700}
+  .tl.hit{color:var(--racing);border-color:rgba(255,28,2,.42);background:transparent}
+  .tl.hit b{color:var(--racing)}
+  a.vid{display:inline-block;margin:0 0 14px}
+  .tw{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+  .pks table{width:100%;border-collapse:collapse;font-size:14px}
+  .pks th{font-family:'Space Mono',monospace;font-size:11px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:bottom}
+  .pks td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:baseline}
+  .pks tbody tr:last-child td{border-bottom:0}
+  .pks tr.v-hit td:first-child{box-shadow:inset 3px 0 0 var(--racing)}
+  .pks td.ti{font-weight:600;min-width:180px}
+  .pks td.ar-t{min-width:150px}
+  .pks td.la{color:var(--steel)}
+  .pks td.pk,.pks td.dj,.pks td.ed{font-family:'Space Mono',monospace;font-size:12.5px;white-space:nowrap}
+  .pks td.ed{text-align:right}
+  .pks th:nth-child(6){text-align:right}
+  .pks .ar{color:var(--steel)}
+  .pks .up{color:var(--racing)}
+  .pks .na{color:var(--steel)}
+  .pks .lb{display:none}
+  .vp{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.06em;border-radius:999px;padding:3px 10px;border:1px solid rgba(242,242,239,.34);white-space:nowrap}
+  .vp.hit{background:var(--racing);border-color:var(--racing);color:var(--night)}
+  .vp.move{color:var(--racing);border-color:rgba(255,28,2,.42)}
+  .vp.flat{color:var(--steel)}
+  .vp.early,.vp.none{color:var(--steel);border-style:dashed}
+  @media (max-width:640px){
+    .tw{border:0;background:transparent;overflow:visible}
+    .pks thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+    .pks table,.pks tbody,.pks tr,.pks td{display:block;width:100%}
+    .pks tr{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin-bottom:10px}
+    .pks tr.v-hit{border-left:3px solid var(--racing)}
+    .pks tr.v-hit td:first-child{box-shadow:none}
+    .pks td.ti,.pks td.ar-t{min-width:0}
+    .pks td{border:0;padding:3px 0;display:flex;gap:12px;justify-content:space-between;align-items:baseline;text-align:right}
+    .pks td.ed{text-align:right}
+    .pks .lb{display:inline;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);text-align:left;font-weight:400;flex:0 0 auto}
+  }
+</style>
+<link rel="canonical" href="https://groovesmaxxing.com/picks">
+<link rel="stylesheet" href="/gmx-motion.css?v=2">
+<link rel="stylesheet" href="/gmx-sheet.css?v=2">
+<link rel="stylesheet" href="/gmx-quick.css">
+<link rel="stylesheet" href="/gmx-nav.css?v=20">
+<link rel="stylesheet" href="/gmx-account.css?v=2">
+<link rel="stylesheet" href="/gmx-read.css?v=9">
+</head>
+<body>
+<div class="wrap pks">
+  <a class="back" href="/">← groovesmaxxing</a>
+  <div class="kicker">picks · monthly</div>
+  <h1>the picks <span>scoreboard</span></h1>
+  <p class="sub">every record we picked in a month, read again when the month ends. did the djs and the editors catch up? the misses stay on the page next to the hits.</p>
+<!-- picks:start -->
+  <div class="legend"><span><b>18</b> picks</span> · <span><b>1</b> month</span> · <span>numbers as of 8 nov 2026</span> · dj support <a href="https://songstats.com/" target="_blank" rel="noopener">via songstats</a></div>
+
+  <section class="cohort" id="c-2026-11">
+    <h2>november 2026</h2>
+    <div class="cstat"><span class="st open">open</span> <span>read so far</span> <b>11.08</b> <span>final read</span> <b>11.30</b></div>
+    <div class="tally"><span class="tl"><b>18</b> <span>picks</span></span></div>
+    <div class="tw">
+    <table>
+      <thead><tr><th>artist</th><th>title</th><th>label</th><th>picked</th><th>dj support</th><th>editorial adds</th><th>verdict</th></tr></thead>
+      <tbody>
+      <tr>
+        <td class="ar-t"><span class="lb">artist</span><span translate="no">Eric Reyes</span></td>
+        <td class="ti"><span class="lb">title</span><span translate="no">Last Rodeo</span></td>
+        <td class="la"><span class="lb">label</span><span translate="no">PARASOL RECORDS</span></td>
+        <td class="pk"><span class="lb">picked</span>11.01</td>
+        <td class="dj"><span class="lb">dj support</span><span>under 10</span></td>
+        <td class="ed"><span class="lb">editorial adds</span>0</td>
+        <td class="vd"><span class="lb">verdict</span><span class="vp none">read at month end</span></td>
+      </tr>
+      <tr>
+        <td class="ar-t"><span class="lb">artist</span><span translate="no">Moarasiá, Jats (ofc)</span></td>
+        <td class="ti"><span class="lb">title</span><span translate="no">War</span></td>
+        <td class="la"><span class="lb">label</span><span translate="no">Calamar Records</span></td>
+        <td class="pk"><span class="lb">picked</span>11.01</td>
+        <td class="dj"><span class="lb">dj support</span><span>under 10</span></td>
+        <td class="ed"><span class="lb">editorial adds</span>1</td>
+        <td class="vd"><span class="lb">verdict</span><span class="vp none">read at month end</span></td>
+      </tr>
+      <tr>
+        <td class="ar-t"><span class="lb">artist</span><span translate="no">Adria, Perote</span></td>
+        <td class="ti"><span class="lb">title</span><span translate="no">Taste It</span></td>
+        <td class="la"><span class="lb">label</span><span translate="no">Glasgow Underground</span></td>
+        <td class="pk"><span class="lb">picked</span>11.06</td>
+        <td class="dj"><span class="lb">dj support</span><span>under 10</span></td>
+        <td class="ed"><span class="lb">editorial adds</span>1</td>
+        <td class="vd"><span class="lb">verdict</span><span class="vp none">read at month end</span></td>
+      </tr>
+      <tr>
+        <td class="ar-t"><span class="lb">artist</span><span translate="no">Belyi, Kirr, STAY GOLDEN</span></td>
+        <td class="ti"><span class="lb">title</span><span translate="no">Bali Dance</span></td>
+        <td class="la"><span class="lb">label</span><span translate="no">m.MESSIAH</span></td>
+        <td class="pk"><span class="lb">picked</span>11.06</td>
+        <td class="dj"><span class="lb">dj support</span><span>under 10</span></td>
+        <td class="ed"><span class="lb">editorial adds</span>0</td>
+        <td class="vd"><span class="lb">verdict</span><span class="vp none">read at month end</span></td>
+      </tr>
+      <tr>
+        <td class="ar-t"><span class="lb">artist</span><span translate="no">Elvis Guetta, James Brown</span></td>
+        <td class="ti"><span class="lb">title</span><span translate="no">The Boss</span></td>
+        <td class="la"><span class="lb">label</span><span translate="no">Defected</span></td>
+        <td class="pk"><span class="lb">picked</span>11.06</td>
+        <td class="dj"><span class="lb">dj support</span><span>under 10</span></td>
+        <td class="ed"><span class="lb">editorial adds</span>14</td>
+        <td class="vd"><span class="lb">verdict</span><span class="vp none">read at month end</span></td>
+      </tr>
+      <tr>
+        <td class="ar-t"><span class="lb">artist</span><span translate="no">FunkT!de, Futurist (ofc)</span></td>
+        <td class="ti"><span class="lb">title</span><span translate="no">Don't Stop</span></td>
+        <td class="la"><span class="lb">label</span><span translate="no">F2RECORDS</span></td>
+        <td class="pk"><span class="lb">picked</span>11.06</td>
+        <td class="dj"><span class="lb">dj support</span><span>under 10</span></td>
+        <td class="ed"><span class="lb">editorial adds</span>0</td>
+        <td class="vd"><span class="lb">verdict</span><span class="vp none">read at month end</span></td>
+      </tr>
+      <tr>
+        <td class="ar-t"><span class="lb">artist</span><span translate="no">Gurskii</span></td>
+        <td class="ti"><span class="lb">title</span><span translate="no">Feel My Body</span></td>
+        <td class="la"><span class="lb">label</span><span translate="no">HAUS</span></td>
+        <td class="pk"><span class="lb">picked</span>11.06</td>
+        <td class="dj"><span class="lb">dj support</span><span>under 10</span></td>
+        <td class="ed"><span class="lb">editorial adds</span>0</td>
+        <td class="vd"><span class="lb">verdict</span><span class="vp none">read at month end</span></td>
+      </tr>
+      <tr>
+        <td class="ar-t"><span class="lb">artist</span><span translate="no">HUNTER (TN), Yakuza&amp;Goys</span></td>
+        <td class="ti"><span class="lb">title</span><span translate="no">Try Mode</span></td>
+        <td class="la"><span class="lb">label</span><span translate="no">VETRA Records</span></td>
+        <td class="pk"><span class="lb">picked</span>11.06</td>
+        <td class="dj"><span class="lb">dj support</span><span>under 10</span></td>
+        <td class="ed"><span class="lb">editorial adds</span>0</td>
+        <td class="vd"><span class="lb">verdict</span><span class="vp none">read at month end</span></td>
+      </tr>
+      <tr>
+        <td class="ar-t"><span class="lb">artist</span><span translate="no">IVRISH</span></td>
+        <td class="ti"><span class="lb">title</span><span translate="no">Slow Steps</span></td>
+        <td class="la"><span class="lb">label</span><span translate="no">Maccabi House</span></td>
+        <td class="pk"><span class="lb">picked</span>11.06</td>
+        <td class="dj"><span class="lb">dj support</span><span>under 10</span></td>
+        <td class="ed"><span class="lb">editorial adds</span>0</td>
+        <td class="vd"><span class="lb">verdict</span><span class="vp none">read at month end</span></td>
+      </tr>
+      <tr>
+        <td class="ar-t"><span class="lb">artist</span><span translate="no">Julian Sacheli, Snooko</span></td>
+        <td class="ti"><span class="lb">title</span><span translate="no">Hey Y'all</span></td>
+        <td class="la"><span class="lb">label</span><span translate="no">Catch &amp; Release</span></td>
+        <td class="pk"><span class="lb">picked</span>11.06</td>
+        <td class="dj"><span class="lb">dj support</span><span>under 10</span></td>
+        <td class="ed"><span class="lb">editorial adds</span>1</td>
+        <td class="vd"><span class="lb">verdict</span><span class="vp none">read at month end</span></td>
+      </tr>
+      <tr>
+        <td class="ar-t"><span class="lb">artist</span><span translate="no">Lion, Cosmo</span></td>
+        <td class="ti"><span class="lb">title</span><span translate="no">Make It Shake</span></td>
+        <td class="la"><span class="lb">label</span><span translate="no">Nervous Records</span></td>
+        <td class="pk"><span class="lb">picked</span>11.06</td>
+        <td class="dj"><span class="lb">dj support</span><span>10+</span></td>
+        <td class="ed"><span class="lb">editorial adds</span>0</td>
+        <td class="vd"><span class="lb">verdict</span><span class="vp none">read at month end</span></td>
+      </tr>
+      <tr>
+        <td class="ar-t"><span class="lb">artist</span><span translate="no">Luch, Jamek Ortega</span></td>
+        <td class="ti"><span class="lb">title</span><span translate="no">Burn Me Down</span></td>
+        <td class="la"><span class="lb">label</span><span translate="no">Places &amp; Spaces</span></td>
+        <td class="pk"><span class="lb">picked</span>11.06</td>
+        <td class="dj"><span class="lb">dj support</span><span>under 10</span></td>
+        <td class="ed"><span class="lb">editorial adds</span>4</td>
+        <td class="vd"><span class="lb">verdict</span><span class="vp none">read at month end</span></td>
+      </tr>
+      <tr>
+        <td class="ar-t"><span class="lb">artist</span><span translate="no">MAN</span></td>
+        <td class="ti"><span class="lb">title</span><span translate="no">The Duck Is Watching - Radio Edit</span></td>
+        <td class="la"><span class="lb">label</span><span translate="no">Ursul</span></td>
+        <td class="pk"><span class="lb">picked</span>11.06</td>
+        <td class="dj"><span class="lb">dj support</span><span class="na">–</span></td>
+        <td class="ed"><span class="lb">editorial adds</span><span class="na">–</span></td>
+        <td class="vd"><span class="lb">verdict</span><span class="vp none">read at month end</span></td>
+      </tr>
+      <tr>
+        <td class="ar-t"><span class="lb">artist</span><span translate="no">Monolink, CIOZ, OMRI.</span></td>
+        <td class="ti"><span class="lb">title</span><span translate="no">Dont Talk To Me - OMRI. Remix</span></td>
+        <td class="la"><span class="lb">label</span><span translate="no">Crosstown Rebels</span></td>
+        <td class="pk"><span class="lb">picked</span>11.06</td>
+        <td class="dj"><span class="lb">dj support</span><span>under 10</span></td>
+        <td class="ed"><span class="lb">editorial adds</span>0</td>
+        <td class="vd"><span class="lb">verdict</span><span class="vp none">read at month end</span></td>
+      </tr>
+      <tr>
+        <td class="ar-t"><span class="lb">artist</span><span translate="no">Name ME</span></td>
+        <td class="ti"><span class="lb">title</span><span translate="no">Reason</span></td>
+        <td class="la"><span class="lb">label</span><span translate="no">teh g</span></td>
+        <td class="pk"><span class="lb">picked</span>11.06</td>
+        <td class="dj"><span class="lb">dj support</span><span>under 10</span></td>
+        <td class="ed"><span class="lb">editorial adds</span>0</td>
+        <td class="vd"><span class="lb">verdict</span><span class="vp none">read at month end</span></td>
+      </tr>
+      <tr>
+        <td class="ar-t"><span class="lb">artist</span><span translate="no">STAY GOLDEN, Belyi</span></td>
+        <td class="ti"><span class="lb">title</span><span translate="no">4EVER</span></td>
+        <td class="la"><span class="lb">label</span><span translate="no">m.MESSIAH</span></td>
+        <td class="pk"><span class="lb">picked</span>11.06</td>
+        <td class="dj"><span class="lb">dj support</span><span>under 10</span></td>
+        <td class="ed"><span class="lb">editorial adds</span>0</td>
+        <td class="vd"><span class="lb">verdict</span><span class="vp none">read at month end</span></td>
+      </tr>
+      <tr>
+        <td class="ar-t"><span class="lb">artist</span><span translate="no">STEIN (US), Roland Clark</span></td>
+        <td class="ti"><span class="lb">title</span><span translate="no">The World Is Yours</span></td>
+        <td class="la"><span class="lb">label</span><span translate="no">NoType Records</span></td>
+        <td class="pk"><span class="lb">picked</span>11.06</td>
+        <td class="dj"><span class="lb">dj support</span><span>under 10</span></td>
+        <td class="ed"><span class="lb">editorial adds</span>0</td>
+        <td class="vd"><span class="lb">verdict</span><span class="vp none">read at month end</span></td>
+      </tr>
+      <tr>
+        <td class="ar-t"><span class="lb">artist</span><span translate="no">Tiga, Rooléh</span></td>
+        <td class="ti"><span class="lb">title</span><span translate="no">Pleasure From The Bass - Rooléh Remix</span></td>
+        <td class="la"><span class="lb">label</span><span translate="no">Armada Music</span></td>
+        <td class="pk"><span class="lb">picked</span>11.06</td>
+        <td class="dj"><span class="lb">dj support</span><span>under 10</span></td>
+        <td class="ed"><span class="lb">editorial adds</span>8</td>
+        <td class="vd"><span class="lb">verdict</span><span class="vp none">read at month end</span></td>
+      </tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+<!-- picks:end -->
+
+  <div class="fix">spotted a wrong name or a record that shouldn't be here? <a href="https://www.instagram.com/groovesmaxxing/" target="_blank" rel="noopener">tell us on instagram</a> and we'll fix it asap 🤝</div>
+
+  <div class="method"><b>how the scoreboard is read:</b> a pick is a record we added to good vibe juice or bumpy for fresh grooves friday that month, plus five we name by hand. on the day we pick it we note its dj support tier (how many different djs played it in published sets, counted by songstats) and its editorial playlist adds. when the month ends we read it again. a hit moved up a dj support tier, entered a beatport top 20 or got a new spotify editorial add. a move gained 5 or more djs or 2 or more editorial adds. flat means neither, with the record out two weeks or more. too soon means it came out under two weeks before the month ended, so it carries into the next read. dates read month.day. tiers and counts only, never dj names or set lists.</div>
+
+  <footer>groovesmaxxing picks scoreboard · read again at every month end · last refresh 8 nov 2026 · dj support <a href="https://songstats.com/" target="_blank" rel="noopener">via songstats</a></footer>
+</div>
+<script src="/gmx-motion.js?v=2" defer></script>
+<script src="/gmx-more.js?v=2" defer></script>
+<script src="/gmx-quick.js?v=15" defer></script>
+<script src="/gmx-nav.js?v=34" defer></script>
+<script src="/gmx-crate.js" defer></script>
+<script src="/gmx-sheet.js?v=2" defer></script>
+<script src="/gmx-account.js?v=20" defer></script>
+</body>
+</html>

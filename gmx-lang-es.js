@@ -197,6 +197,8 @@ words:{
 /* the moods page tab title (the <title> is outside .mzp) */
 'mood picker':'elige tu mood',
 'pick a mood, get 30 tracks from our playlists':'elige un mood y llévate 30 tracks de nuestras playlists',
+/* the picks scoreboard (2026-11-08): the tab title, the home-page link and the songstats credit link */
+'the picks scoreboard':'el marcador de picks','picks scoreboard':'marcador de picks','via songstats':'vía songstats',
 },
 scoped:[
 /* dropping soon (2026-11-04): the calendar chip beside each date, weekday and month short */
@@ -257,9 +259,25 @@ scoped:[
 ['.k',{'from':'de','based':'base','runs':'dirige','founded':'fundó','genre':'género','status':'estado','latest':'lo último',
  'biggest record':'su track más grande','signature record':'su track insignia','key record':'track clave','broke through':'despegó con',
  'releases on':'saca en','his label':'su disquera','her label':'su disquera','their label':'su disquera','run by':'a cargo de',
- 'released on it':'lanzaron aquí','not the same as':'no confundir con'}]
+ 'released on it':'lanzaron aquí','not the same as':'no confundir con'}],
+/* the picks scoreboard (2026-11-08): every word on /picks, scoped to its .pks wrap. artist, title and label
+   cells carry translate="no", dates stay month.day as written (the method line says so in both languages) */
+['.pks',{
+'the picks':'el marcador','scoreboard':'de picks','monthly':'mensual',
+'every record we picked in a month, read again when the month ends. did the djs and the editors catch up? the misses stay on the page next to the hits.':'cada track que elegimos en un mes, revisado otra vez cuando cierra el mes. ¿los djs y los editores nos alcanzaron? los fallos se quedan en la página junto a los aciertos.',
+'month':'mes','months':'meses','open':'abierto','closed':'cerrado','read so far':'leído hasta','final read':'lectura final','read at month end':'leído al cierre del mes',
+'hit':'acierto','hits':'aciertos','move':'subida','moves':'subidas','flat':'sin cambio','too soon':'muy pronto','no read yet':'sin lectura aún',
+'artist':'artista','title':'título','label':'disquera','picked':'elegido','editorial adds':'playlists editoriales','verdict':'veredicto','under 10':'menos de 10',
+'watch the verdict':'mira el veredicto','no picks on this month yet.':'todavía no hay picks este mes.',
+'no month has been read yet. the first scoreboard lands after the month closes.':'todavía no revisamos ningún mes. el primer marcador sale cuando cierre el mes.',
+"spotted a wrong name or a record that shouldn't be here?":'¿viste un nombre mal o un track que no debería estar aquí?',
+'how the scoreboard is read:':'cómo se lee el marcador:',
+'a pick is a record we added to good vibe juice or bumpy for fresh grooves friday that month, plus five we name by hand. on the day we pick it we note its dj support tier (how many different djs played it in published sets, counted by songstats) and its editorial playlist adds. when the month ends we read it again. a hit moved up a dj support tier, entered a beatport top 20 or got a new spotify editorial add. a move gained 5 or more djs or 2 or more editorial adds. flat means neither, with the record out two weeks or more. too soon means it came out under two weeks before the month ended, so it carries into the next read. dates read month.day. tiers and counts only, never dj names or set lists.':'un pick es un track que agregamos a good vibe juice o bumpy para fresh grooves friday ese mes, más cinco que elegimos a mano. el día que lo elegimos anotamos su nivel de apoyo de djs (cuántos djs distintos lo tocaron en sets publicados, contado por songstats) y sus playlists editoriales. cuando cierra el mes lo revisamos otra vez. un acierto subió un nivel de apoyo de djs, entró a un top 20 de beatport o entró a una nueva playlist editorial de spotify. una subida sumó 5 djs o más, o 2 playlists editoriales o más. sin cambio es ninguna de las dos, con el track afuera hace dos semanas o más. muy pronto es que salió menos de dos semanas antes del cierre del mes, así que pasa a la siguiente revisión. las fechas van mes.día. solo niveles y conteos, nunca nombres de djs ni listas de sets.',
+'groovesmaxxing picks scoreboard':'marcador de picks de groovesmaxxing','read again at every month end':'se revisa cada cierre de mes'}]
 ],
 rules:[
+/* the picks scoreboard (2026-11-08): the legend stamp, the same words /dj-support uses */
+['numbers as of (\\d{1,2}) (jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec) (\\d{4})','números al $1 ~2 $3'],
 /* dropping soon (2026-11-04): the relative days, the long dates, the counts, the folds, the line and the footer stamp */
 ['this (monday|tuesday|wednesday|thursday|friday|saturday|sunday)','este ~1'],
 ['next (monday|tuesday|wednesday|thursday|friday|saturday|sunday)','el próximo ~1'],
