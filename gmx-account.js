@@ -102,7 +102,7 @@ function whoami(force){
   var c=lsj(ME);
   if(c&&c.me&&!force&&Date.now()-(c.at||0)<ME_TTL){me=c.me;return Promise.resolve(me)}
   if(meP&&!force)return meP;
-  meP=api('/me').then(function(r){if(r.status===401){setToken('');return null}if(!r.ok)throw new Error(r.status);return r.json()})
+  meP=api('/me').then(function(r){if(r.status===401){ended();return null}if(!r.ok)throw new Error(r.status);return r.json()})
     .then(function(j){remember(j);return j}).catch(function(){return me||((c&&c.me)||null)});
   return meP;
 }
@@ -154,6 +154,12 @@ function msgEl(){return document.getElementById('gmx-you-msg')||document.getElem
 /* download and delete answer right under their rows on /more (2026-11-09), not in the profile card far above */
 function dataMsg(){return document.getElementById('gmx-data-msg')||msgEl()}
 /* a failed call: a status the server sent says so, only a call that never reached it says check your signal */
+/* /auth/start answers 429 for three limits (2026-11-09): the address cap, the global mail ceiling, the connection bucket.
+   only the first is about the address that was typed */
+function startLimit(r){
+  var own='too many links for that address this hour.',all='too many sign-in mails right now. try again in a few minutes.';
+  return r.json().then(function(j){return /for that address/i.test(String((j&&j.detail)||''))?own:all},function(){return all});
+}
 function failLine(e,net){
   var s=e&&/^\d{3}$/.test(String(e.message||''))?+e.message:0;
   if(!s)return net;
@@ -183,25 +189,30 @@ function codeForm(email){
 function wireSignin(root,done){
   root.addEventListener('submit',function(ev){
     var f=ev.target.closest('form[data-form]');if(!f)return;ev.preventDefault();
-    var m=f.querySelector('.gmx-acct-msg');
+    if(f.dataset.form!=='start'&&f.dataset.form!=='code')return;
+    /* one request per submit: a double tap would send two mails or burn two code tries (2026-11-09) */
+    if(f.dataset.busy)return;
+    var m=f.querySelector('.gmx-acct-msg'),sb=f.querySelector('[type=submit]');
+    var hold=function(){f.dataset.busy='1';if(sb)sb.disabled=true},free=function(){delete f.dataset.busy;if(sb)sb.disabled=false};
     if(f.dataset.form==='start'){
-      var email=(f.querySelector('input[name=email]').value||'').trim();if(!email)return;note(m,'sending');
+      var email=(f.querySelector('input[name=email]').value||'').trim();if(!email)return;note(m,'sending');hold();
       var nl=f.querySelector('input[name=nl]');lss(NL,nl&&nl.checked?'1':'');
       api('/auth/start',{method:'POST',json:{email:email}}).then(function(r){
-        if(r.status===429){note(m,'too many links for that address this hour.');return}
+        if(r.status===429)return startLimit(r).then(function(t){note(m,t)});
         if(r.status===422){note(m,'that does not look like an email address.');return}
         if(!r.ok)throw new Error(r.status);
         return r.json().then(function(j){
           if(!j.mail_sent){note(m,'the mail could not go out right now. try again later.');return}
+          [].forEach.call(root.querySelectorAll('form[data-form=code]'),function(x){x.remove()});
           var box=document.createElement('div');box.innerHTML=codeForm(email);f.parentNode.insertBefore(box.firstChild,f.nextSibling);f.hidden=true;
           var c=root.querySelector('#gmx-acct-code');if(c)c.focus();
           if(j.pending)waitForLink(j.pending,j.minutes||20,done);
         });
-      }).catch(function(e){note(m,failLine(e,'did not send. check your signal and try again.'))});
+      }).catch(function(e){note(m,failLine(e,'did not send. check your signal and try again.'))}).then(free);
     }else if(f.dataset.form==='code'){
       var code=(f.querySelector('input[name=code]').value||'').replace(/\D/g,'');
       if(code.length!==6){note(m,'six digits.');return}
-      note(m,'checking');
+      note(m,'checking');hold();
       api('/auth/code',{method:'POST',json:{email:f.dataset.email,code:code}}).then(function(r){
         /* the api caps wrong tries per address (2026-11-09): past the cap every code for it is spent, the link still works */
         if(r.status===429){note(m,'too many tries. tap the link in the mail, or ask for a new code later.');return}
@@ -209,7 +220,7 @@ function wireSignin(root,done){
         if(r.status===401||r.status===403){note(m,'that code did not work. ask for a new one.');return}
         if(!r.ok)throw new Error(r.status);
         return r.json().then(function(j){signedIn(j.session,j.email);done&&done()});
-      }).catch(function(e){note(m,failLine(e,'did not send. check your signal.'))});
+      }).catch(function(e){note(m,failLine(e,'did not send. check your signal.'))}).then(free);
     }
   });
 }
@@ -246,39 +257,55 @@ function markOwner(){
   var m=snapshot(),em=(m&&m.email)||(signedTok&&signedTok===token()?signedEmail:'');if(em){lss(OWNER,em);return}
   var t=token();whoami().then(function(x){if(x&&x.email&&token()===t)lss(OWNER,x.email)});
 }
-/* the link wait (2026-11-09): it stops at the ticket's end, backs off on errors (4 s doubling to a minute) and stops on
-   a 429, so a page left open never spends the phone's hourly budget. one wait at a time; the ticket stays stored after
-   an error stop, so a reload picks it up and a link opened here still counts as this browser's own. */
-function stopTimer(){if(pollTimer){clearTimeout(pollTimer);pollTimer=null}waitGen++;waitOn=false}
+/* the link wait (2026-11-09). /auth/poll shares the phone's hourly budget with scans, so the polls space out with the
+   ticket's age: 4 s for the first minute, 15 s to five minutes, then 45 s (about 50 calls in 20 minutes, not 300). it
+   pauses while the page is hidden and asks at once when the page comes back or gets focus, so coming back from the mail
+   app signs in as fast as before. errors back off (doubling, a minute at most, eight in a row stop it). a 429 stops the
+   wait and says so in the code form. one wait at a time; the ticket stays stored after an error or 429 stop, so a
+   reload picks it up and a link opened here still counts as this browser's own. */
+var waitAsk=null;
+function stopTimer(){if(pollTimer){clearTimeout(pollTimer);pollTimer=null}waitGen++;waitOn=false;waitAsk=null}
+function codeNote(t){var el=document.querySelector('form[data-form=code] .gmx-acct-msg')||document.getElementById('codemsg');if(el)el.textContent=t}
 function stopWait(){stopTimer();lss(PENDING,'')}
 function forgetWanted(){lss(NL,'');lss(WANT_FOLLOW,'')}
 function waitForLink(ticket,minutes,done){
-  var until=Date.now()+minutes*60000,gap=4000,bad=0;
+  var until=Date.now()+minutes*60000,began=Date.now(),bad=0,busy=false,last=0;
   stopTimer();lss(PENDING,JSON.stringify({t:ticket,until:until}));
   var gen=waitGen;waitOn=true;
+  var pace=function(){var age=Date.now()-began;return age<60000?4000:age<300000?15000:45000};
   var ask=function(){
     pollTimer=null;
-    if(gen!==waitGen)return;
+    if(gen!==waitGen||busy)return;
     if(token()){stopTimer();return}
     if(Date.now()>until){stopWait();forgetWanted();return}
+    /* hidden: no timer. the visibility and focus listeners ask again the moment the page is back */
+    if(document.hidden)return;
+    busy=true;last=Date.now();
     api('/auth/poll',{method:'POST',json:{pending:ticket}}).then(function(r){
-      if(r.status===429)return 'stop';
+      if(r.status===429)return 'limited';
       if(!r.ok)throw new Error(r.status);
       return r.json();
     }).then(function(j){
-      if(j==='stop')return 'stop';
-      bad=0;gap=4000;
-      if(gen!==waitGen)return 'stop';
+      if(j==='limited')return j;
+      bad=0;
+      /* this page signed in another way first (its own link, the code): a session this poll opened anyway is ended */
+      if(gen!==waitGen){if(j&&j.state==='ready'&&j.session&&j.session!==token())endSession(j.session);return 'stop'}
       if(j&&j.state==='ready'){signedIn(j.session,j.email);done&&done();return 'stop'}
       if(j&&j.state==='gone'){stopWait();return 'stop'}
-    },function(){bad++;gap=Math.min(gap*2,60000);if(bad>=8)return 'stop'}).then(function(s){
+    },function(){bad++;if(bad>=8)return 'stop'}).then(function(s){
+      busy=false;
       if(gen!==waitGen)return;
+      if(s==='limited'){stopTimer();codeNote('stopped waiting here. type the six digits, or tap the link in the mail.');return}
       if(s==='stop'||token()){stopTimer();return}
+      var gap=bad?Math.min(pace()*Math.pow(2,bad),60000):pace();
       pollTimer=setTimeout(ask,Math.max(0,Math.min(gap,until-Date.now()+50)));
     });
   };
+  waitAsk=function(){if(gen!==waitGen||busy||Date.now()-last<1500)return;if(pollTimer){clearTimeout(pollTimer);pollTimer=null}ask()};
   ask();
 }
+document.addEventListener('visibilitychange',function(){if(!document.hidden&&waitAsk)waitAsk()});
+window.addEventListener('focus',function(){if(waitAsk)waitAsk()});
 function resumeWait(done){
   if(token())return;
   /* boot's bare call never replaces a wait the page already started with its own callback (/more) */
@@ -311,7 +338,7 @@ function syncCrate(reason,force){
   if(!force&&last&&last.sig===s&&Date.now()-(last.at||0)<SYNC_TTL)return Promise.resolve(false);
   syncing=true;
   return api('/me/crate',{method:'PUT',json:{items:items,removed:removed}}).then(function(r){
-    if(r.status===401){setToken('');return null}
+    if(r.status===401){ended();return null}
     if(!r.ok)throw new Error(r.status);
     return r.json();
   }).then(function(j){
@@ -370,7 +397,7 @@ function onCrateChange(e){
 /* a follow or unfollow the account did not take says so (2026-11-09): the pill alone would claim alerts that never come */
 function followCall(p,off){
   return p.then(function(r){
-    if(r.status===401){setToken('');return}
+    if(r.status===401){ended();return}
     if(off&&r.status===404)return;
     if(!r.ok)throw new Error(r.status);
   }).catch(function(){toast(off?'removed on this phone. the alerts did not stop yet, try again in a minute.':'saved on this phone. the alert did not save, tap follow again in a minute.')});
@@ -793,6 +820,10 @@ function signout(){
   synced('signout',{});
   return Promise.all([p,u]).then(function(){});
 }
+/* the session ended somewhere else (2026-11-09): sign out from your other phones, an expiry, a deleted account. the server
+   already answers 401, so nothing is sent; the phone forgets what signout() forgets, so the next person on a shared phone
+   never reads the old account's crate or hearts into it */
+function ended(){forgetPhone();setToken('');signedEmail='';signedTok='';synced('signout',{})}
 /* a crate that never synced with an account (no owner) is the only copy of those hearts, so it stays on the phone */
 function forgetPhone(){
   stopWait();forgetWanted();lss('gmx_push_skip','');
@@ -893,8 +924,9 @@ function wireDeleteLink(){
       if(!r.ok)throw new Error(r.status);
       return r.json().catch(function(){return null}).then(function(){
         c.innerHTML='<p class="gmx-acct-p">your account is gone. the crate on this phone stays yours.</p>';
-        /* signed in here: if it was this account, its session now answers 401 and whoami() signs the phone out */
-        if(token())whoami(true).then(function(m){if(!m&&!token())lss(OWNER,'')});
+        /* signed in here: if it was this account, its session now answers 401 and whoami() signs the phone out. the owner
+           is cleared first, so that sign out keeps the crate on this phone (it is yours); a live other account gets it back */
+        if(token()){var was=ls(OWNER);lss(OWNER,'');whoami(true).then(function(m){if(m&&token()&&was&&!ls(OWNER))lss(OWNER,was)})}
       });
     }).catch(function(){c.querySelectorAll('button').forEach(function(x){x.disabled=false});note(msg,'did not go through. try again in a minute.')});
   });
@@ -988,7 +1020,7 @@ window.addEventListener('storage',function(e){
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
 window.gmxAccount={
   ready:loadCfg,config:loadCfg,token:token,set:setSession,device:deviceId,headers:function(x){return cfg?headers(x):null},api:api,call:api,
-  start:start,code:code,finish:finish,poll:poll,waitForLink:waitForLink,resumeWait:resumeWait,signout:signout,openLink:openLink,failLine:failLine,
+  start:start,code:code,finish:finish,poll:poll,waitForLink:waitForLink,resumeWait:resumeWait,signout:signout,openLink:openLink,failLine:failLine,startLimit:startLimit,
   me:whoami,snapshot:snapshot,setHandle:setHandle,ensurePush:ensurePush,pushState:pushState,pushWhy:pushWhy,pushLine:pushLine,testPush:testPush,on:function(f){subs.push(f)},paint:paint,
   badge:badge,signIn:signIn,open:open,close:close,sync:function(){return syncCrate('asked',true)}
 };
