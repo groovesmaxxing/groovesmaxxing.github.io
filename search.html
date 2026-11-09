@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-0/0RGNwvbsk1Zup1uhr/RpEGqN3ktog//Sj1e+NxBZo=' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self'; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com https://embed.beatport.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-JZNKGklJgWFweBOGBeUfHMm9fyGbNyHxjQOxUfL8c4s='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self'; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com https://embed.beatport.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <link rel="manifest" href="/manifest.webmanifest">
@@ -169,8 +169,10 @@ mark{background:none;color:var(--racing)}
 <script>
 (function(){
 var q=document.getElementById('q'),res=document.getElementById('res'),nores=document.getElementById('nores'),nEl=document.getElementById('n'),chips=[].slice.call(document.querySelectorAll('#kinds .lc'));
-var KIND={artist:['artists','🎤'],label:['labels','🏷️'],set:['sets','▶️'],talk:['talks','🎙️'],tracklist:['tracklists','🎧'],issue:['newsletter issues','📨']};
-var ORDER=['artist','label','set','talk','tracklist','issue'],LIMIT=8,index=null,only='',expanded={};
+var KIND={artist:['artists','🎤'],label:['labels','🏷️'],set:['sets','▶️'],talk:['talks','🎙️'],tracklist:['tracklists','🎧'],issue:['newsletter issues','📨'],track:['tracks','🎵']};
+/* tracks (2026-11-09): every named tracklist row, from tracks-index.json, so a track name (the scan page's "find it")
+   lands on the second it plays. fetched on the first search only, and listed after the site's own entries */
+var ORDER=['artist','label','set','talk','tracklist','issue','track'],LIMIT=8,index=null,only='',expanded={},tracks=null,tracksP=null;
 function fold(t){return (t||'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/\s+/g,' ').trim()}
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 /* one pass over the raw text, longest word first, each piece escaped (a copy of gmxNav.hl in gmx-nav.js, kept here
@@ -187,14 +189,26 @@ function drawSounds(j){
 function paintSounds(){if(!soundsEl)return;var v=fold(q.value);[].slice.call(soundsEl.querySelectorAll('[data-q]')).forEach(function(b){var on=b.getAttribute('data-q')===v;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on?'true':'false')})}
 if(soundsEl)soundsEl.addEventListener('click',function(e){var b=e.target.closest('[data-q]');if(!b)return;q.value=b.classList.contains('on')?'':b.getAttribute('data-q');expanded={};run();paintSounds();try{var u=new URL(location);if(q.value)u.searchParams.set('q',q.value);else u.searchParams.delete('q');history.replaceState(null,'',u)}catch(x){}});
 function load(){return index?Promise.resolve(index):fetch('/search-index.json').then(function(r){return r.json()}).then(function(j){index=j;nEl.textContent=j.count+' entries';drawSounds(j);return j}).catch(function(){nores.textContent='the index did not load. refresh and try again.';nores.style.display='block';return null})}
+function loadTracks(){
+  if(tracks||tracksP)return tracksP||Promise.resolve(tracks);
+  tracksP=fetch('/tracks-index.json').then(function(r){return r.json()}).then(function(j){
+    tracks=(j.rows||[]).filter(function(r){return r&&r.q&&r.n&&r.u}).map(function(r){return {t:'track',k:fold(r.q),n:r.n,s:[r.set,r.at].filter(Boolean).join(' · '),u:r.u+(r.tn?'#t'+r.tn:'')}});
+    return tracks;
+  }).catch(function(){tracks=[];return tracks});
+  return tracksP;
+}
+/* a track key holds words only, so the terms lose their brackets and dashes before they are looked up */
+function bare(terms){return terms.map(function(t){return t.replace(/[^\p{L}\p{N}]+/gu,'')}).filter(Boolean)}
 function score(it,terms){var k=it.k,n=fold(it.n),s=0;for(var i=0;i<terms.length;i++){var t=terms[i];if(k.indexOf(t)<0)return 0;s+=n.indexOf(t)===0?3:n.indexOf(t)>-1?2:1}return s}
 function run(){
   var v=fold(q.value),terms=v.split(' ').filter(Boolean);
   if(!terms.length){res.innerHTML='';nores.style.display='none';return}
+  if(!tracks)loadTracks().then(function(){if(fold(q.value)===v)run()});
   load().then(function(j){
     if(!j)return;
-    var hits={},total=0;
+    var hits={},total=0,bt=bare(terms);
     j.items.forEach(function(it){if(only&&it.t!==only)return;var sc=score(it,terms);if(!sc)return;(hits[it.t]=hits[it.t]||[]).push([sc,it]);total++});
+    if(tracks&&!only&&bt.length)tracks.forEach(function(it){var sc=score(it,bt);if(!sc)return;(hits.track=hits.track||[]).push([sc,it]);total++});
     var out='';
     ORDER.forEach(function(k){
       var h=hits[k];if(!h||!h.length)return;
@@ -204,7 +218,7 @@ function run(){
       show.forEach(function(p){var it=p[1];out+='<a class="hit" href="'+esc(it.u)+'"><span class="hk" aria-hidden="true">'+KIND[k][1]+'</span><span class="hn">'+mark(it.n,terms)+'</span><span class="hs">'+mark(it.s,terms)+'</span></a>'});
       if(h.length>show.length)out+='<button type="button" class="lc morebtn" data-more="'+k+'">all '+h.length+' '+KIND[k][0]+'</button>';
     });
-    res.innerHTML=out;nores.style.display=total?'none':'block';
+    res.innerHTML=out;nores.style.display=total||!tracks?'none':'block';
   });
 }
 res.addEventListener('click',function(e){var b=e.target.closest('[data-more]');if(b){expanded[b.getAttribute('data-more')]=true;run()}});
