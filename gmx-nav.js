@@ -251,7 +251,7 @@ function watchNow(){
 }
 function loadAccount(){
   if(window.gmxAccount||document.querySelector('script[src^="/gmx-account.js"]'))return;
-  var s=document.createElement('script');s.src='/gmx-account.js?v=20';s.defer=true;document.head.appendChild(s);
+  var s=document.createElement('script');s.src='/gmx-account.js?v=21';s.defer=true;document.head.appendChild(s);
 }
 /* the service worker on every page that carries the shell (contract C4, 2026-11-09): register /sw.js once, after load
    and idle, unless this page (one of the inline snippets) or an earlier visit already did. inside the installed app

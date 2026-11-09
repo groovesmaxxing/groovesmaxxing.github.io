@@ -35,7 +35,7 @@ T = {
     'sheet_js': '<script src="/gmx-sheet.js?v=3" defer></script>',
     # the account layer (2026-10-12): "this is me" on every artist and label profile
     'account_css': '<link rel="stylesheet" href="/gmx-account.css?v=2">',
-    'account_js': '<script src="/gmx-account.js?v=20" defer></script>',
+    'account_js': '<script src="/gmx-account.js?v=21" defer></script>',
     # the "more" expander (2026-10-14): any element with data-more collapses behind one button
     'more_js': '<script src="/gmx-more.js?v=2" defer></script>',
     # the name reels on the home page (2026-10-14)
