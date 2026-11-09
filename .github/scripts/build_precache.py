@@ -18,7 +18,7 @@ urls = ['/', '/scan', '/more', '/search', '/sets', '/artists', '/events', '/radi
         '/gmx-capture-worklet.js', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png', '/favicon.svg',
         '/sets-index.json', '/set-tags.json', '/search-index.json', '/artists-index.json', '/radar-denver.json', '/names-index.json', '/related-index.json', '/gmx-related.js', '/tracks-index.json', '/open-ids.json']
 urls += ['/upcoming.json', '/gmx-nextup.js']   # the home page's next up band (ui build 3)
-urls += ['/gmx-read.css?v=9']   # the readability layer on every page (2026-10-13)
+urls += ['/gmx-read.css?v=10']   # the readability layer on every page (2026-10-13)
 urls += ['/gmx-more.js?v=3', '/gmx-reel.js?v=1']   # the "more" expander on every page (2026-10-14)
 urls += ['/moods', '/moods-index.json', '/gmx-moods.js?v=5']   # the mood picker (2026-11-04), its catalog is written on the laptop by moodindex.py
 urls += ['/' + f.replace(os.sep, '/') for f in sorted(glob.glob('media/covers/moods/*.jpg'))]   # the mood cards' art
