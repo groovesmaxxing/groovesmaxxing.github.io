@@ -31,7 +31,7 @@ T = {
     'quick_css': '<link rel="stylesheet" href="/gmx-quick.css">',
     'quick_js': '<script src="/gmx-quick.js?v=15" defer></script>',
     'sheet_css': '<link rel="stylesheet" href="/gmx-sheet.css?v=2">',
-    'sheet_js': '<script src="/gmx-sheet.js?v=2" defer></script>',
+    'sheet_js': '<script src="/gmx-sheet.js?v=3" defer></script>',
     # the account layer (2026-10-12): "this is me" on every artist and label profile
     'account_css': '<link rel="stylesheet" href="/gmx-account.css?v=2">',
     'account_js': '<script src="/gmx-account.js?v=20" defer></script>',
