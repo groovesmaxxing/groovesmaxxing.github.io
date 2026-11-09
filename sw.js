@@ -163,14 +163,16 @@ function fold(want) {
   }).catch(noop);
 }
 /* a file tagged ?v= never changes under its tag. an untagged one is asked again once a day with its etag
-   (a 304 costs nothing), or fetched again after a week when the server sends no etag. */
-function refresh(c, u, hit) {
+   (a 304 costs nothing), or fetched again after a week when the server sends no etag. now (the first top-up
+   under a new cache name, when a ?v= bump just moved the tags the saved pages load) asks every untagged one
+   again whatever its age, so the precached pages pick up the new tags in the same pass. */
+function refresh(c, u, hit, now) {
   var req = new Request(u, { cache: 'no-cache' });
   if (!hit) return c.add(req).catch(noop);
   if (/[?&]v=\d/.test(u)) return null;
   var age = Date.now() - (Date.parse(hit.headers.get('date') || '') || Date.now());
   var tag = hit.headers.get('etag');
-  if (tag && age > 864e5) {
+  if (tag && (now || age > 864e5)) {
     return fetch(new Request(u, { cache: 'no-store', headers: { 'If-None-Match': tag } })).then(function (r) {
       if (r.status === 304) {
         return hit.blob().then(function (b) {
@@ -181,22 +183,30 @@ function refresh(c, u, hit) {
       if (r.status === 200 && r.type === 'basic') return c.put(u, r);
     }).catch(noop);
   }
-  if (!tag && age > 7 * 864e5) return c.add(req).catch(noop);
+  if (!tag && (now || age > 7 * 864e5)) return c.add(req).catch(noop);
   return null;
 }
 function topUp() {
-  return fetch('/precache.json', { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
+  var now = false;
+  return caches.open(CACHE).then(function (s) { return s.match('/__gmx_topup'); }).then(function (m) { now = !m; }, noop).then(function () {
+    return fetch('/precache.json', { cache: 'no-store' });
+  }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
     if (!j || !j.urls) return;
     var want = {}, list = [];
     j.urls.forEach(function (u) { var a = abs(u); if (!SHELL_SET[a] && !want[a]) { want[a] = 1; list.push(a); } });
     return fold(want).then(function () {
       var cn = self.navigator && self.navigator.connection;
       if (cn && (cn.saveData || /2g/.test(cn.effectiveType || ''))) return;   // try again on a better link
-      return caches.open(PRE).then(function (c) {
-        return c.keys().then(function (ks) {   // drop what the list no longer names (an old ?v= tag, a removed page)
-          return Promise.all(ks.filter(function (k) { return !want[k.url]; }).map(function (k) { return c.delete(k); }));
-        }).then(function () {
-          return pool(list, 4, function (u) { return c.match(u).then(function (hit) { return refresh(c, u, hit); }); });
+      return Promise.all([caches.open(PRE), caches.open(FILES)]).then(function (cs) {
+        var c = cs[0], files = cs[1];
+        /* what the list no longer names (an old ?v= tag, a removed page) moves to FILES instead of going: a page saved
+           before the bump still loads the old tag offline, and the FILES limit retires it later */
+        return c.keys().then(function (ks) {
+          return pool(ks.filter(function (k) { return !want[k.url]; }), 4, function (k) {
+            return c.match(k).then(function (r) { return r && files.put(k, r); }).then(function () { return c.delete(k); });
+          });
+        }).then(trimAll).then(function () {
+          return pool(list, 4, function (u) { return c.match(u).then(function (hit) { return refresh(c, u, hit, now); }); });
         });
       }).then(function () {
         return caches.open(CACHE).then(function (s) { return s.put('/__gmx_topup', new Response(String(Date.now()))); });
@@ -217,9 +227,22 @@ self.addEventListener('install', function (e) {
 
 self.addEventListener('activate', function (e) {
   var np = self.registration.navigationPreload;
-  e.waitUntil(Promise.resolve(np ? np.enable().catch(noop) : null).then(function () { return self.clients.claim(); }));
+  /* the one step activation waits on, with no network: one-time token urls an old worker saved leave the phone now,
+     even when the browser stops this worker before the fold below has run (safari stops idle workers early) */
+  e.waitUntil(Promise.all([dropOnce(), Promise.resolve(np ? np.enable().catch(noop) : null)]).then(function () { return self.clients.claim(); }));
   foldOld();   // not waited on: see the top-up note above
 });
+function dropOnce() {
+  return caches.keys().then(function (names) {
+    return Promise.all(names.filter(function (n) { return /^gmx-v\d+$/.test(n) && n !== CACHE; }).map(function (n) {
+      return caches.open(n).then(function (c) {
+        return c.keys().then(function (ks) {
+          return Promise.all(ks.filter(function (k) { return ONCE.test(new URL(k.url).search); }).map(function (k) { return c.delete(k); }));
+        });
+      });
+    }));
+  }).catch(noop);
+}
 /* fold the old gmx-vNN caches without topping up: one small json read, only when an old cache is there */
 function foldOld() {
   return caches.keys().then(function (names) {
