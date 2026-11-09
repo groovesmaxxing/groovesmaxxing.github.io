@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-Yzz0W75C/p37Mm2Y7XXlhzFXd7rSoenh66wLjKEiCa8=' 'sha256-gBOvAxkSooucHdsgbb37bboOk7WObs67UBu1wpJ0JDU=' 'sha256-hU8nFXdWRq8XZyR9oZgM5DyBNFgzM2louNP9tvvgUQ0='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self'; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com https://embed.beatport.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-Yzz0W75C/p37Mm2Y7XXlhzFXd7rSoenh66wLjKEiCa8=' 'sha256-hU8nFXdWRq8XZyR9oZgM5DyBNFgzM2louNP9tvvgUQ0=' 'sha256-yAM8MAmJYzlnHPGDJkYjHHJ4GyNnez9M/0IBJmBmfCY='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self'; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com https://embed.beatport.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>more · groovesMAXXING</title>
@@ -57,8 +57,8 @@ form.nl{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;max-width:520px}
 form.nl label{position:absolute;left:-9999px}
 form.nl input[type=email]{flex:1;min-width:200px;background:transparent;border:2px solid var(--line);border-radius:999px;color:var(--day);font-family:'Space Mono',monospace;font-size:.9rem;padding:12px 18px}
 form.nl input[type=email]:focus{border-color:var(--racing);outline:none}
-form.nl input[type=submit]{font-family:'Space Mono',monospace;font-size:.8rem;letter-spacing:.1em;border:2px solid var(--racing);background:var(--racing);color:var(--night);padding:12px 22px;border-radius:999px;cursor:pointer}
-form.nl input[type=submit]:hover{background:var(--deep);border-color:var(--deep);color:var(--day)}
+form.nl button[type=submit]{font-family:'Space Mono',monospace;font-size:.8rem;letter-spacing:.1em;border:2px solid var(--racing);background:var(--racing);color:var(--night);padding:12px 22px;border-radius:999px;cursor:pointer}
+form.nl button[type=submit]:hover{background:var(--deep);border-color:var(--deep);color:var(--day)}
 .fine{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);letter-spacing:.04em;line-height:1.8;margin:56px 0 40px}
 .fine a{text-decoration:none}
 .fine a:hover{color:var(--racing)}
@@ -226,7 +226,7 @@ form.nl input[type=submit]:hover{background:var(--deep);border-color:var(--deep)
 <label for="bd-email">email</label>
 <input type="email" name="email" id="bd-email" placeholder="you@example.com" required>
 <input type="hidden" value="1" name="embed">
-<input type="submit" value="subscribe">
+<button type="submit">subscribe</button>
 </form>
 <p class="legal">your email is only for this. <a href="/privacy">privacy</a> · <a href="/terms">terms</a></p>
 <p class="note"><a href="/newsletter">past issues →</a> in full, no signup. or the <a href="/feed.xml">rss feed</a>.</p>
@@ -321,27 +321,32 @@ function signedIn(){justIn=true;render();if(window.Notification&&Notification.pe
 document.addEventListener('submit',function(ev){
   var f=ev.target;
   if(f.id==='yform'){
-    ev.preventDefault();var email=$('y-email').value.trim();if(!email)return;note('youmsg','sending');
+    ev.preventDefault();var email=$('y-email').value.trim();if(!email||f.dataset.busy)return;note('youmsg','sending');
+    /* one request per submit (2026-11-09): a double tap would send two mails */
+    var sb=f.querySelector('[type=submit]');f.dataset.busy='1';if(sb)sb.disabled=true;
+    var free=function(){delete f.dataset.busy;if(sb)sb.disabled=false};
     A.start(email).then(function(r){
-      if(r.status===429){note('youmsg','too many links for that address this hour.');return}
+      if(r.status===429)return A.startLimit?A.startLimit(r).then(function(t){note('youmsg',t)}):note('youmsg','too many links for that address this hour.');
       if(r.status===422){note('youmsg','that does not look like an email address.');return}
       if(!r.ok)throw new Error(r.status);
       return r.json().then(function(j){
         note('youmsg',j.mail_sent?'sent. type the six digits from the mail here, or tap its link anywhere.':'the mail could not go out right now. try again later.',j.mail_sent);
         if(j.mail_sent){codeForm(email);if(j.pending)A.waitForLink(j.pending,j.minutes||20,signedIn)}
       });
-    }).catch(function(e){note('youmsg',fail(e,'did not send. check your signal and try again.'))});
+    }).catch(function(e){note('youmsg',fail(e,'did not send. check your signal and try again.'))}).then(free);
   }else if(f.id==='cform2'){
-    ev.preventDefault();var code=($('y-code').value||'').replace(/\D/g,'');
+    ev.preventDefault();if(f.dataset.busy)return;var code=($('y-code').value||'').replace(/\D/g,'');
     if(code.length!==6){note('codemsg','six digits.');return}
     note('codemsg','checking');
+    /* one request per submit: a double tap would burn two of the address's code tries */
+    var cb=f.querySelector('[type=submit]');f.dataset.busy='1';if(cb)cb.disabled=true;
     A.code(f.dataset.email,code).then(function(r){
       if(r.status===429){note('codemsg','too many tries. tap the link in the mail, or ask for a new code later.');return}
       if(r.status===410){note('codemsg','that code is wrong, used or too old. ask for a new one.');return}
       if(r.status===401||r.status===403){note('codemsg','that code did not work. ask for a new one.');return}
       if(!r.ok)throw new Error(r.status);
       return r.json().then(function(j){A.set(j.session,j.email);signedIn()});
-    }).catch(function(e){note('codemsg',fail(e,'did not send. check your signal.'))});
+    }).catch(function(e){note('codemsg',fail(e,'did not send. check your signal.'))}).then(function(){delete f.dataset.busy;if(cb)cb.disabled=false});
   }else if(f.id==='hform2'){
     ev.preventDefault();var hv=$('y-handle').value.trim();note('hmsg','saving');
     A.setHandle(hv||null).then(function(r){

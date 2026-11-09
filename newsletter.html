@@ -60,9 +60,9 @@ form.nl label{position:absolute;left:-9999px}
 form.nl input[type=email]{flex:1;min-width:200px;min-height:48px;box-sizing:border-box;background:transparent;border:2px solid var(--line);border-radius:999px;color:var(--day);font-family:'Space Mono',monospace;font-size:1rem;padding:12px 18px}
 form.nl input[type=email]:focus{border-color:var(--racing);outline:none}
 form.nl input[type=email]:focus-visible{outline:3px solid var(--racing);outline-offset:2px}
-form.nl input[type=submit]{min-height:48px;font-family:'Space Mono',monospace;font-size:.8rem;letter-spacing:.1em;border:2px solid var(--racing);background:var(--racing);color:var(--night);padding:12px 22px;border-radius:999px;cursor:pointer}
-form.nl input[type=submit]:hover{background:var(--deep);border-color:var(--deep);color:var(--day)}
-form.nl input[type=submit]:focus-visible{outline:3px solid var(--racing);outline-offset:3px}
+form.nl button[type=submit]{min-height:48px;font-family:'Space Mono',monospace;font-size:.8rem;letter-spacing:.1em;border:2px solid var(--racing);background:var(--racing);color:var(--night);padding:12px 22px;border-radius:999px;cursor:pointer}
+form.nl button[type=submit]:hover{background:var(--deep);border-color:var(--deep);color:var(--day)}
+form.nl button[type=submit]:focus-visible{outline:3px solid var(--racing);outline-offset:3px}
 .nlsub .note{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);letter-spacing:.04em;margin:10px 0 0}
 </style>
 <link rel="canonical" href="https://groovesmaxxing.com/newsletter">
@@ -92,7 +92,7 @@ form.nl input[type=submit]:focus-visible{outline:3px solid var(--racing);outline
 <label for="nl-email">email</label>
 <input type="email" name="email" id="nl-email" placeholder="you@example.com" autocomplete="email" required>
 <input type="hidden" value="1" name="embed">
-<input type="submit" value="subscribe">
+<button type="submit">subscribe</button>
 </form>
 <p class="note">free, every friday. leave whenever.</p>
 </div>

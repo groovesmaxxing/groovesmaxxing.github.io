@@ -221,8 +221,8 @@ footer{padding:70px 0 50px;text-align:center}
 #letter label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 #letter input[type=email]{flex:1;min-width:220px;background:#151518;border:1px solid #2c2c31;border-radius:999px;padding:12px 18px;color:var(--day);font-family:'Space Mono',monospace;font-size:.85rem}
 #letter input[type=email]:focus{outline:none;border-color:var(--racing)}
-#letter input[type=submit]{background:var(--racing);color:#fff;border:0;border-radius:999px;padding:12px 26px;font-family:'Poppins',sans-serif;font-weight:600;font-size:.9rem;cursor:pointer;transition:background .18s}
-#letter input[type=submit]:hover{background:var(--deep)}
+#letter button[type=submit]{background:var(--racing);color:#fff;border:0;border-radius:999px;padding:12px 26px;font-family:'Poppins',sans-serif;font-weight:600;font-size:.9rem;cursor:pointer;transition:background .18s}
+#letter button[type=submit]:hover{background:var(--deep)}
 #letter .fine-print{font-size:.78rem;margin-top:14px}#letter .fine-print a{color:inherit;text-decoration:underline;text-underline-offset:3px}
 a:focus-visible,button:focus-visible{outline:2px solid var(--racing);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
@@ -1704,7 +1704,7 @@ body:has(>header.hero)>#calendar-home{order:5}}
 <label for="bd-email">email</label>
 <input type="email" name="email" id="bd-email" placeholder="you@example.com" required>
 <input type="hidden" value="1" name="embed">
-<input type="submit" value="subscribe">
+<button type="submit">subscribe</button>
 </form>
 <p class="note fine-print">your email is only for this. <a href="/privacy">privacy</a> · <a href="/terms">terms</a></p>
 </div>
