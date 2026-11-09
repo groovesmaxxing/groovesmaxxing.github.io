@@ -31,7 +31,7 @@ T = {
     'upcoming_js': '<script src="/gmx-upcoming.js?v=4" defer></script>',   # v4: the sample player, v3 monday graduation (2026-11-05), v2 tabs and the show menu
     # gmx-quick.js and gmx-quick.css left T on 2026-11-09 (cr-shell-12): the search sheet lives in gmx-nav.js, and
     # the quick-search pass below now strips both tags. the files stay in the repo for cached old pages.
-    'sheet_css': '<link rel="stylesheet" href="/gmx-sheet.css?v=3">',
+    'sheet_css': '<link rel="stylesheet" href="/gmx-sheet.css?v=4">',
     'sheet_js': '<script src="/gmx-sheet.js?v=3" defer></script>',
     # the account layer (2026-10-12): "this is me" on every artist and label profile
     'account_css': '<link rel="stylesheet" href="/gmx-account.css?v=2">',

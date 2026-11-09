@@ -13,7 +13,7 @@ import glob, json, os, re, sys
 from datetime import date
 
 urls = ['/', '/scan', '/more', '/search', '/sets', '/artists', '/events', '/radio', '/crate', '/upcoming', '/open-ids', '/tracklists/',
-        '/gmx-nav.js?v=37', '/gmx-lang.js?v=12', '/gmx-nav.css?v=21', '/gmx-quick.js?v=18', '/gmx-quick.css', '/gmx-sheet.js?v=3', '/gmx-sheet.css?v=3','/gmx-player.js', '/gmx-player.css?v=3', '/gmx-motion.js?v=2', '/gmx-motion.css?v=2',
+        '/gmx-nav.js?v=37', '/gmx-lang.js?v=12', '/gmx-nav.css?v=21', '/gmx-quick.js?v=18', '/gmx-quick.css', '/gmx-sheet.js?v=3', '/gmx-sheet.css?v=4','/gmx-player.js', '/gmx-player.css?v=3', '/gmx-motion.js?v=2', '/gmx-motion.css?v=2',
         '/gmx-refresh.js', '/gmx-scan.js?v=8', '/gmx-clips.js', '/gmx-sets.js', '/gmx-follow.js', '/gmx-crate.js', '/gmx-upcoming.js?v=4','/gmx-profile.css?v=4', '/gmx-label.css?v=3',
         '/gmx-capture-worklet.js', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png', '/favicon.svg',
         '/sets-index.json', '/set-tags.json', '/search-index.json', '/artists-index.json', '/radar-denver.json', '/names-index.json', '/related-index.json', '/gmx-related.js', '/tracks-index.json', '/open-ids.json']
