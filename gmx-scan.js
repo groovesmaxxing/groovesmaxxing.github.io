@@ -476,8 +476,10 @@ function identify(blob){
       return r.json();
     },function(e){
       if(withHeader&&!(e&&e.message==='timeout'))return post(false);
-      /* a stalled upload on a slow club link (2026-11-09 review): one more try on its own while the phone is online, never filed as no signal */
-      if(e&&e.message==='timeout'&&!retried&&navigator.onLine){retried=true;say2('slow upload, trying once more');return post(withHeader);}
+      /* a stalled upload on a slow club link (2026-11-09 review): one more try on its own while the phone is online, never filed as no signal.
+         the first post may have reached the api and started a job (a slow 202 on the downlink), and the api has no repeat key yet,
+         so the retry goes library only (X-GMX-Catalog: off): the catalogs are never paid twice for one clip */
+      if(e&&e.message==='timeout'&&!retried&&navigator.onLine){retried=true;say2('slow upload, trying once more');return post(true);}
       throw e;
     });
   }
@@ -1117,7 +1119,7 @@ function renderHistory(){
     /* E6c: a no-match row can follow only the clip it kept (r.kept, set by markRow when a keep lands) */
     if(r.rid&&r.status!=='out now'&&(r.kind==='match'||r.kind==='guess'||r.kept))btns+='<button class="btn ghost" data-follow="'+esc(r.rid)+'">tell me when it drops</button>';
     /* a named match finds its way back the next day (2026-11-09 review): a search for it, and the crate heart below */
-    if(r.kind==='match'&&r.title)btns+='<a class="btn ghost" href="/search?q='+encodeURIComponent((r.artist?r.artist+' ':'')+r.title)+'">find it</a>';
+    if(r.kind==='match'&&r.title)btns+='<a class="btn ghost" href="/search?q='+encodeURIComponent(foldT((r.artist?r.artist+' ':'')+r.title)||r.title)+'">find it</a>';
     if(btns||(r.kind==='match'&&r.title))acts='<span class="acts"'+(r.kind==='match'&&r.title?' data-hi="'+i+'"':'')+'>'+btns+'<span class="msg" role="status"></span></span>';
     return '<li><span class="who">'+who+'</span><span class="when">'+when(r.t)+'</span>'+acts+'</li>';
   }).join('');
@@ -1302,6 +1304,13 @@ function onCfg(){
     }).catch(function(){youNote('could not finish signing in. check your signal and try the link again.')});
   }
   renderYou(); loadFollows(); resumeWait();
+  /* a session that appears or goes outside this page's own flows (the "not you? sign out" line, a switch, another tab
+     signing in or out, the link opened in a new tab while this one waits) repaints the account block and the follows.
+     the flows that already repaint set paintedTok first, so nothing is fetched twice */
+  if(gmxAccount.on)gmxAccount.on(function(w){
+    if(w!=='session')return;
+    setTimeout(function(){if((sessionToken()||'')===paintedTok)return;meCache=null;renderYou();loadFollows()},0);
+  });
 }
 function youNote(t,ok){var m=$('youmsg');if(m){m.textContent=t;m.className='msg'+(ok?' ok':'')}}
 /* the code from the mail, typed here: no browser hand-off, which the gmail app on android cannot do */
@@ -1316,6 +1325,7 @@ function sendCode(f){
   var m=$('codemsg'), code=($('y-code').value||'').replace(/\D/g,'');
   if(code.length!==6){m.textContent='six digits.';return}
   m.textContent='checking';
+  var sb=f.querySelector('[type=submit]'); f.dataset.busy='1'; if(sb)sb.disabled=true;
   gmxAccount.code(f.dataset.email,code).then(function(r){
     /* the api caps wrong tries per address (sec-auth-v1, 2026-11-09): past the cap every code is spent, the link still works */
     if(r.status===429){m.textContent='too many tries. tap the link in the mail, or ask for a new code later.';return}
@@ -1323,7 +1333,7 @@ function sendCode(f){
     if(r.status===401||r.status===403){m.textContent='that code did not work. ask for a new one.';return}
     if(!r.ok)throw new Error(r.status);
     return r.json().then(function(j){setSession(j.session,j.email);meCache=null;renderYou();justIn=true;loadFollows();ensurePush()});
-  }).catch(function(e){m.textContent=gmxAccount.failLine?gmxAccount.failLine(e,'did not send. check your signal.'):'did not send. check your signal.'});
+  }).catch(function(e){m.textContent=gmxAccount.failLine?gmxAccount.failLine(e,'did not send. check your signal.'):'did not send. check your signal.'}).then(function(){delete f.dataset.busy;if(sb)sb.disabled=false});
 }
 /* the link wait (the ticket, the poll, the reload) lives in gmx-account.js now */
 function signedInByLink(){meCache=null;renderYou();justIn=true;loadFollows();ensurePush()}
@@ -1333,8 +1343,10 @@ var justIn=false, pushNow='', setupWas=null;
 /* the chip beside the auto button moved to the header of every page (gmx-account.js, shell v2) */
 /* roles (2026-10-12): the badge word for User.role, the cache of the highest verified row */
 var ROLE_WORD={verified_artist:'verified artist',verified_label:'verified label',verified_venue:'verified venue',team:'team'};
+var paintedTok=null;
 function renderYou(){
   var box=$('youbody'); if(!box||!cfg)return;
+  paintedTok=sessionToken()||'';
   if(!sessionToken()){
     box.innerHTML='<p class="smeta">sign in to get told by email when an ID you scanned comes out, keep your scans across phones, and put your name on the IDs you help with.</p>'+
       '<form class="form on" id="yform" autocomplete="off"><label for="y-email">email</label><input id="y-email" name="email" type="email" inputmode="email" maxlength="320" required>'+
@@ -1423,18 +1435,19 @@ function loadFollows(){
 document.addEventListener('submit',function(ev){
   var f=ev.target;
   if(f.id==='yform'){
-    ev.preventDefault(); var email=$('y-email').value.trim(); if(!email||!cfg)return; youNote('sending');
+    ev.preventDefault(); var email=$('y-email').value.trim(); if(!email||!cfg||f.dataset.busy)return; youNote('sending');
+    var sb=f.querySelector('[type=submit]'); f.dataset.busy='1'; if(sb)sb.disabled=true;
     gmxAccount.start(email).then(function(r){
-      if(r.status===429){youNote('too many links for that address this hour.');return}
+      if(r.status===429)return gmxAccount.startLimit?gmxAccount.startLimit(r).then(function(t){youNote(t)}):youNote('too many links for that address this hour.');
       if(r.status===422){youNote('that does not look like an email address.');return}
       if(!r.ok)throw new Error(r.status);
       return r.json().then(function(j){
         youNote(j.mail_sent?'sent. type the six digits from the mail here, or tap its link anywhere.':'the mail could not go out right now. try again later.',j.mail_sent);
         if(j.mail_sent){showCodeForm(email);if(j.pending)waitForLink(j.pending,j.minutes||20)}
       });
-    }).catch(function(){youNote('did not send. check your signal and try again.')});
+    }).catch(function(){youNote('did not send. check your signal and try again.')}).then(function(){delete f.dataset.busy;if(sb)sb.disabled=false});
   }else if(f.id==='cform2'){
-    ev.preventDefault(); sendCode(f);
+    ev.preventDefault(); if(!f.dataset.busy)sendCode(f);
   }else if(f.id==='hform2'){
     ev.preventDefault(); var hv=$('y-handle').value.trim();
     if(!hv&&f.getAttribute('data-first')){hNote('type a name first');return}
@@ -1509,7 +1522,7 @@ function queueClip(blob){
 }
 /* a phone that never went offline never fires 'online' (2026-11-09 review): a waiting clip gets a few tries on a timer too */
 var drainTries=0;
-function laterDrain(){if(drainTries>=4)return;drainTries++;setTimeout(function(){if(!navigator.onLine)return;if(current&&card.classList.contains('on')){laterDrain();return}drain()},20000*drainTries)}   /* a result being read is never wiped by a timed try */
+function laterDrain(){if(drainTries>=4)return;drainTries++;setTimeout(function(){if(!navigator.onLine)return;if(busy||(card.classList.contains('on')&&(current||card.querySelector('[data-act="resend"]')))){laterDrain();return}drain()},20000*drainTries)}   /* a result being read, a scan under way, or a stalled card that still offers its clip again is never wiped by a timed try */
 function pendingList(){return window.gmxClips?gmxClips.list().then(function(rows){return rows.filter(function(r){return r.kind==='pending'&&r.blob}).sort(function(a,b){return a.t-b.t})}).catch(function(){return []}):Promise.resolve([])}
 function renderPending(){
   if(!pendingbar)return;
