@@ -5,7 +5,9 @@
      the page's own rails do not already carry
    - tracklist pages: the artist in each row becomes a link when a profile exists, label names too, and a
      "more from" box under the table. under a row, the other sets the same record turned up in (from
-     tracks-index.json), and the "n open" count in the meta tag links to that set's section on /open-ids
+     tracks-index.json), and the "n open" count in the meta tag links to that set's section on /open-ids.
+     under the table, "sets that share records with this one": the sets with two or more of this set's
+     records, most shared first (web review 2026-11-09, ia-journeys-11)
    - the radar hub: a bold artist name becomes a link when a profile exists
    - label names in a profile's release list become links */
 (function(){
@@ -26,7 +28,11 @@ var styled=false;function style(){if(styled)return;styled=true;var s=document.cr
 /* the same fold build_tracks.py uses for a row's q, so a lookup in tracks-index.json lands */
 function foldT(t){t=String(t||'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase();t=t.replace(/\((?:extended|original|radio|club|edit|mix|remix|version|feat\.?|ft\.?)[^)]*\)/g,' ').replace(/\b(extended mix|original mix|radio edit|club mix)\b/g,' ');return t.replace(/[^a-z0-9]+/g,' ').trim()}
 function box(title,parts){
-  var d=document.createElement('section');d.className='gmx-rel sec';d.innerHTML='<p class="eyebrow2">'+esc(title)+'</p>'+parts.join('');return d;
+  var d=document.createElement('section');d.className='gmx-rel sec';d.innerHTML='<p class="eyebrow2">'+esc(title)+'</p>'+parts.join('');
+  /* the h3 tag stays (gmx-read.css styles .gmx-rel h3), but on a page whose only heading is the h1 (a tracklist)
+     a screen reader should hear level 2, not a jump from 1 to 3 (web review 2026-11-09, cr-a11y-css-14) */
+  if(!document.querySelector('main h2, .wrap h2, section h2'))[].slice.call(d.querySelectorAll('h3')).forEach(function(h){h.setAttribute('aria-level','2')});
+  return d;
 }
 function chips(items){return '<div class="row">'+items.map(function(i){return '<a href="'+esc(i[0])+'">'+esc(i[1])+(i[2]?'<small>'+esc(i[2])+'</small>':'')+'</a>'}).join('')+'</div>'}
 function stage(items,label){
@@ -39,22 +45,23 @@ function stage(items,label){
 
 /* link whole-token names inside one text node, nothing else */
 function linkTokens(node,map,base){
-  var t=node.nodeValue,parts=t.split(/(\s+(?:b2b|b3b|vs\.?|x|and|with|feat\.?|ft\.?|\+|&|,)\s+|\s+-\s+)/i),out=null,hit=false,i;
+  var t=node.nodeValue,parts=t.split(/(\s+(?:b2b|b3b|vs\.?|x|and|with|feat\.?|ft\.?|\+|&|,)\s+|\s+-\s+)/i),out=null,hit=false,pre=[],i;
   for(i=0;i<parts.length;i++){
     var p=parts[i],slug=i%2===0?map[fold(p)]:null;
     if(i>0&&/\s+-\s+/.test(parts[i-1]))break;                 /* past the artist part of "artist - title" */
-    if(slug){hit=true;if(!out)out=document.createDocumentFragment();var a=document.createElement('a');a.className='gmx-ar';a.href=base+slug;a.textContent=p;out.appendChild(a)}
+    if(slug){hit=true;if(!out){out=document.createDocumentFragment();if(pre.length)out.appendChild(document.createTextNode(pre.join('')))}var a=document.createElement('a');a.className='gmx-ar';a.href=base+slug;a.textContent=p;out.appendChild(a)}
     else if(out)out.appendChild(document.createTextNode(p));
-    else if(hit)out.appendChild(document.createTextNode(p));
+    else pre.push(p);                                         /* "Unknown Guy & " before the first linked name stays */
   }
   if(!hit)return;
   for(;i<parts.length;i++)out.appendChild(document.createTextNode(parts[i]));
   node.parentNode.replaceChild(out,node);
 }
 
+function idle(fn){if(window.requestIdleCallback)requestIdleCallback(fn,{timeout:2500});else setTimeout(fn,600)}
 function profile(sec){
   var slug=sec.id;if(!slug)return;
-  get('/related-index.json').then(function(r){
+  idle(function(){get('/related-index.json').then(function(r){
     var me=r&&r[slug];if(!me)return;
     var page=document.documentElement.innerHTML,parts=[];
     var tl=me.tl.filter(function(x){return page.indexOf(x[0])<0});
@@ -73,7 +80,7 @@ function profile(sec){
     var n=document.createElement('p');n.className='note';n.textContent='gathered from the tracklists, the sets page, the interviews page and the label pages. the profile rails above are the hand-kept ones.';b.appendChild(n);
     var links=sec.querySelector('.links');if(links)sec.insertBefore(b,links);else sec.appendChild(b);
     [].slice.call(b.querySelectorAll('.set-stage')).forEach(function(s){gmxPlayer.run(s)});
-  });
+  })});
   /* label names in the release list */
   var rels=[].slice.call(sec.querySelectorAll('.rel .l'));
   if(rels.length)get('/names-index.json').then(function(n){if(!n)return;rels.forEach(function(l){var t=l.firstChild;if(!t||t.nodeType!==3)return;var s=n.l[fold(t.nodeValue)];if(!s)return;var a=document.createElement('a');a.className='gmx-ar';a.href='/labels/'+s;a.textContent=t.nodeValue;l.replaceChild(a,t)})});
@@ -113,18 +120,32 @@ function alsoIn(){
   get('/tracks-index.json').then(function(j){
     if(!j||!j.rows)return;var here=location.pathname.replace(/\.html$/,''),by={};
     j.rows.forEach(function(r){if(!r.q||r.u===here)return;(by[r.q]=by[r.q]||[]).push(r)});
+    var cnt={},qs={};   /* per other set: how many of this set's records it shares */
     rows.forEach(function(tr){
-      var x=tr.querySelector('td.x');if(!x||x.querySelector('.gmx-also'))return;
-      var c=x.cloneNode(true);[].slice.call(c.querySelectorAll('.get,.thx,.gnote,.soft,.sig,.lab,.gmx-heart,.gmx-also')).forEach(function(e){e.remove()});
-      var q=foldT(text(c));if(!q||q.length<6||/^id\b/.test(q))return;
+      var x=tr.querySelector('td.x');if(!x||tr.querySelector('a.hrow'))return;
+      var c=x.cloneNode(true);[].slice.call(c.querySelectorAll('.get,.thx,.gnote,.soft,.sig,.lab,.gmx-heart,.gmx-more,.gmx-also,.gmx-ishare')).forEach(function(e){e.remove()});
+      var q=foldT(text(c));if(!q||q.length<6||/^id\b/.test(q)||qs[q])return;qs[q]=1;
       var hits=by[q];if(!hits)return;
-      var seen={},items=[];hits.forEach(function(r){if(seen[r.u])return;seen[r.u]=1;items.push(r)});
+      var seen={},items=[];hits.forEach(function(r){if(seen[r.u])return;seen[r.u]=1;items.push(r);(cnt[r.u]=cnt[r.u]||{u:r.u,set:r.set,n:0}).n++});
+      if(x.querySelector('.gmx-also'))return;
       style();
       var sp=document.createElement('span');sp.className='gmx-also';
       sp.innerHTML='also in '+items.slice(0,3).map(function(r){return '<a href="'+esc(r.u)+'">'+esc(r.set)+'</a>'+(r.l?' <a href="'+esc(r.l)+'" target="_blank" rel="noopener" aria-label="play '+esc(r.set)+' from '+esc(r.at)+'">'+esc(r.at)+' ↗</a>':' at '+esc(r.at))}).join(', ')+(items.length>3?' and '+(items.length-3)+' more':'');
       var g=x.querySelector('.get');if(g)x.insertBefore(sp,g);else x.appendChild(sp);
     });
+    likeThis(cnt);
   });
+}
+/* the sets that share two or more records with this one, most first, up to three: "more sets like this one" */
+function likeThis(cnt){
+  if(document.querySelector('.gmx-like'))return;
+  var top=Object.keys(cnt).map(function(k){return cnt[k]}).filter(function(x){return x.n>=2}).sort(function(a,b){return b.n-a.n||String(a.set).localeCompare(String(b.set))}).slice(0,3);
+  var t=document.querySelector('table.tl');if(!top.length||!t)return;
+  style();
+  var b=box('sets that share records with this one',[chips(top.map(function(x){return [x.u,x.set,x.n+' shared']}))]);b.classList.add('gmx-like');
+  /* after the "keep going" box when it is there (it may land later, so it is looked for again then), else under the table */
+  var kg=[].slice.call(document.querySelectorAll('.gmx-rel')).filter(function(e){return e!==b&&!e.classList.contains('gmx-like')})[0];
+  var at=kg||t;at.parentNode.insertBefore(b,at.nextSibling);
 }
 /* the "n open" count in the meta tag links to this set's section on the open IDs board */
 function openLink(){

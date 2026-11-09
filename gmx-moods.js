@@ -49,8 +49,15 @@ function normLabel(s){
 }
 function rng(seed){var a=seed>>>0;return function(){a=(a+0x6D2B79F5)>>>0;var t=a;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return((t^(t>>>14))>>>0)/4294967296}}
 function newSeed(){return 1+Math.floor(Math.random()*99999)}
-/* the day's seed: the local date as YYYYMMDD. moodplaylists.py ports this, keep the two in step */
-function dateSeed(){var d=new Date();return d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate()}
+/* the day's seed: today's date as YYYYMMDD in Denver, the laptop's zone, because moodplaylists.py writes the day's
+   list to the chip's spotify playlist at 00:20 there with its own date (dt.date.today()). a visitor in madrid or
+   tokyo used to seed with their own date and get a list the playlist did not hold. keep the two in step
+   (web review 2026-11-09, cr-pages-3). the visitor's own date is the fallback where Intl has no zone data */
+function dateSeed(){
+  try{var p=new Intl.DateTimeFormat('en-CA',{timeZone:'America/Denver',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date()),o={};
+    p.forEach(function(x){o[x.type]=x.value});if(o.year&&o.month&&o.day)return +o.year*10000+ +o.month*100+ +o.day}catch(e){}
+  var d=new Date();return d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate();
+}
 function today(){var d=new Date();return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2)}
 function daysSince(iso){var p=iso.split('-');return Math.floor((Date.now()-new Date(+p[0],p[1]-1,+p[2]).getTime())/864e5)}
 function chip(id){for(var i=0;i<D.chips.length;i++)if(D.chips[i].id===id)return D.chips[i];return null}
@@ -428,7 +435,7 @@ function go(st,push){
 function byHour(){var h=new Date().getHours();return h>=5&&h<10?'morning':h>=10&&h<17?'vibes':h>=17&&h<20?'at-the-beach':h>=20&&h<23?'get-bumpy':'late-night'}
 function auto(){var id=byHour(),c=chip(id);if(!c||!poolOf(c).length)id='vibes';return {mood:id,q:'',seed:dateSeed(),auto:true}}
 function start(){
-  if(metaEl)metaEl.textContent=D.count.toLocaleString('en-US')+' tracks · built '+D.generated;
+  if(metaEl)metaEl.textContent=(D.count||D.rows.length).toLocaleString('en-US')+' tracks · built '+D.generated;
   render(readHash()||auto());
 }
 var lastLang=lang();
@@ -436,7 +443,9 @@ if(window.MutationObserver)new MutationObserver(function(){var l=lang();if(l===l
   .observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
 function boot(){
   res.innerHTML='<p class="mz-state">loading the catalog…</p>';
-  load().then(start,function(){
+  /* .catch, not a second then() argument: a throw in start() or render() lands here too (web review, cr-pages-8) */
+  load().then(start).catch(function(e){
+    if(e)try{console.error('gmx moods',e)}catch(x){}
     res.innerHTML='<div class="mz-empty"><p>the catalog did not load. check your connection and try again.</p><div class="mz-sug"><button type="button" class="lc" data-act="retry">try again</button></div></div>';
   });
 }
@@ -463,8 +472,12 @@ root.addEventListener('click',function(e){
   if(act==='copy'){var ids=(res.getAttribute('data-list')||'').split(',').filter(Boolean);
     copy(ids.map(function(i){return 'https://open.spotify.com/track/'+D.rows[+i][C.sp]}).join('\n'),'copied. open a playlist in the spotify desktop app and paste them in.');return}
   if(act==='share'){
-    if(navigator.share){navigator.share({title:document.title,url:location.href}).catch(function(){});return}
-    copy(location.href,'link copied.');return}
+    /* the list on screen: its hash even when the visitor landed on the hour's mood (no hash yet), and its own name,
+       not the page title. the shared sheet (gmx-sheet.js) when it is there, else the phone's share or the clipboard */
+    var u=location.origin+'/moods'+hashOf(cur),t=res.querySelector('.mz-t'),txt=(t?t.textContent.trim()+' · ':'')+'house by mood on groovesMAXXING';
+    if(window.gmxSheet&&typeof gmxSheet.share==='function'){gmxSheet.share({text:txt,url:u},b);return}
+    if(navigator.share){navigator.share({title:'groovesMAXXING',text:txt,url:u}).catch(function(e){if(e&&e.name!=='AbortError')copy(u,'link copied.')});return}
+    copy(u,'link copied.');return}
 });
 form.addEventListener('submit',function(e){
   e.preventDefault();var q=input.value.trim().slice(0,120);

@@ -1,7 +1,11 @@
-/* share cards (2026-10-11). one social image per artist and tracklist page, rendered from the page's own
-   data in headless chromium: 1200 by 630, the redline look. only pages whose name or subtitle changed since
-   the last run are rendered again, so a push costs seconds, not minutes. then every page whose og:image still
-   points at the generic image gets its own. run from the repo root: node .github/scripts/share_cards.js */
+/* share cards (2026-10-11). one social image per artist, label, tracklist and newsletter issue page, rendered
+   from the page's own data in headless chromium: 1200 by 630, the redline look. only pages whose name or
+   subtitle changed since the last run are rendered again, so a push costs seconds, not minutes. then every page
+   whose og:image still points at the generic image (or at a card of ours) gets its own; a page that names any
+   other image keeps it. run from the repo root: node .github/scripts/share_cards.js
+   2026-11-09 (web review, share-code-15, pt-releases-3, cr-build-14): newsletter issues get cards too
+   (og/issues/fgf-NNN.jpg: the issue's headline, "issue NNN · date"), and the retag only replaces the generic
+   image or one of our own cards, as the comment above always said. */
 const fs=require('fs'),path=require('path'),crypto=require('crypto');
 const {chromium}=require('playwright');
 const SITE='https://groovesmaxxing.com';
@@ -30,6 +34,14 @@ function artists(){
     const n=(s.match(/<td class="n">/g)||[]).length;
     out.push({kind:'tracklist',slug:f.slice(0,-5),file:path.join('tracklists',f),name:text(name),sub:[sub,n?n+' tracks, timestamped':''].filter(Boolean).join(' · '),eyebrow:'tracklist'});
   }
+  /* newsletter issues: the headline, and "issue NNN · date" from the issue's eyebrow line */
+  for(const f of (fs.existsSync('newsletter')?fs.readdirSync('newsletter'):[])){
+    if(!/^fgf-\d+\.html$/.test(f))continue;const s=fs.readFileSync(path.join('newsletter',f),'utf8');
+    if(s.includes('http-equiv="refresh"'))continue;
+    const name=(s.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)||[])[1];if(!name)continue;
+    const eye=text((s.match(/<(?:div|span) class="eyebrow">([\s\S]*?)<\/(?:div|span)>/)||[])[1]).split(' · ').slice(1).join(' · ');
+    out.push({kind:'issue',slug:f.slice(0,-5),file:path.join('newsletter',f),name:text(name),sub:eye||'issue '+f.slice(4,-5),eyebrow:'fresh grooves friday'});
+  }
   return out;
 }
 const MARK='<svg viewBox="0 0 240 240" width="150" height="150"><defs><filter id="gmx-sc-glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2.8"/></filter><mask id="gmx-sc-cut" maskUnits="userSpaceOnUse" x="0" y="0" width="240" height="240"><rect width="240" height="240" fill="#fff"/><polygon points="6,120 30,120 48,84 68,90 88,96 108,102 120,114 132,102 152,96 172,90 192,84 210,120 234,120 234,120 210,120 192,156 172,150 152,144 132,138 120,126 108,138 88,144 68,150 48,156 30,120 6,120" fill="#000" stroke="#000" stroke-width="11" stroke-linejoin="round"/></mask></defs><g mask="url(#gmx-sc-cut)"><g class="rg" fill="none"><circle cx="120" cy="120" r="104" stroke="#8A8A93" stroke-width="8.4"/><circle cx="120" cy="120" r="104" stroke="#FF1C02" stroke-width="5"/><circle cx="120" cy="120" r="76" stroke="#8A8A93" stroke-width="8.4"/><circle cx="120" cy="120" r="76" stroke="#FF1C02" stroke-width="5"/><circle cx="120" cy="120" r="48" stroke="#8A8A93" stroke-width="8.4"/><circle cx="120" cy="120" r="48" stroke="#FF1C02" stroke-width="5"/></g><circle cx="120" cy="120" r="19.7" fill="#8A8A93"/></g><circle cx="120" cy="120" r="18" fill="#FF1C02"/><g filter="url(#gmx-sc-glow)" opacity=".9"><polyline points="6,120 30,120 48,84 68,150 88,96 108,138 120,114 132,138 152,96 172,150 192,84 210,120 234,120" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></g><polyline points="6,120 30,120 48,156 68,90 88,144 108,102 120,126 132,102 152,144 172,90 192,156 210,120 234,120" fill="none" stroke="#FF1C02" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="6,120 30,120 48,150 68,95 88,140 108,105 120,125 132,105 152,140 172,95 192,150 210,120 234,120" fill="none" stroke="#FF5E4B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/><polyline points="6,120 30,120 48,144 68,100 88,136 108,108 120,124 132,108 152,136 172,100 192,144 210,120 234,120" fill="none" stroke="#FF7969" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/><polyline points="6,120 30,120 48,138 68,105 88,132 108,111 120,123 132,111 152,132 172,105 192,138 210,120 234,120" fill="none" stroke="#FF8E80" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/><polyline points="6,120 30,120 48,132 68,110 88,128 108,114 120,122 132,114 152,128 172,110 192,132 210,120 234,120" fill="none" stroke="#FF9F94" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/><polyline points="6,120 30,120 48,126 68,115 88,124 108,117 120,121 132,117 152,124 172,115 192,126 210,120 234,120" fill="none" stroke="#FFAFA5" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/><polyline points="6,120 30,120 48,120 68,120 88,120 108,120 120,120 132,120 152,120 172,120 192,120 210,120 234,120" fill="none" stroke="#FFBDB5" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/><polyline points="6,120 30,120 48,114 68,125 88,116 108,123 120,119 132,123 152,116 172,125 192,114 210,120 234,120" fill="none" stroke="#FFC9C3" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/><polyline points="6,120 30,120 48,108 68,130 88,112 108,126 120,118 132,126 152,112 172,130 192,108 210,120 234,120" fill="none" stroke="#FFD5D1" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/><polyline points="6,120 30,120 48,102 68,135 88,108 108,129 120,117 132,129 152,108 172,135 192,102 210,120 234,120" fill="none" stroke="#FFE1DD" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/><polyline points="6,120 30,120 48,96 68,140 88,104 108,132 120,116 132,132 152,104 172,140 192,96 210,120 234,120" fill="none" stroke="#FFEBE9" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/><polyline points="6,120 30,120 48,90 68,145 88,100 108,135 120,115 132,135 152,100 172,145 192,90 210,120 234,120" fill="none" stroke="#FFF5F4" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/><polyline points="6,120 30,120 48,84 68,150 88,96 108,138 120,114 132,138 152,96 172,150 192,84 210,120 234,120" fill="none" stroke="#FFFFFF" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
@@ -48,7 +60,7 @@ function html(it){
 }
 (async()=>{
   const items=artists();const manifestPath='og/manifest.json';
-  fs.mkdirSync('og/artists',{recursive:true});fs.mkdirSync('og/labels',{recursive:true});fs.mkdirSync('og/tracklists',{recursive:true});
+  fs.mkdirSync('og/artists',{recursive:true});fs.mkdirSync('og/labels',{recursive:true});fs.mkdirSync('og/tracklists',{recursive:true});fs.mkdirSync('og/issues',{recursive:true});
   let manifest={};try{manifest=JSON.parse(fs.readFileSync(manifestPath,'utf8'))}catch(e){}
   const limit=process.argv[2]?parseInt(process.argv[2],10):Infinity;
   /* the |v2 in each card signature (2026-11-01): logo 10a2 and jetbrains mono labels, so every card redraws once */
@@ -65,14 +77,17 @@ function html(it){
     await b.close();
   }
   fs.writeFileSync(manifestPath,JSON.stringify(manifest));
-  // point each page at its own card when it still carries the generic image
+  // point each page at its own card when it still carries the generic image or one of our cards; a hand-picked
+  // image (anything else) stays, and twitter:image then follows whatever og:image the page kept
+  const OURS=/^https:\/\/groovesmaxxing\.com\/(?:og-image\.png|og\/[^"]*)$/;
   let tagged=0;
   for(const it of items){
     if(!fs.existsSync(`og/${it.key}.jpg`))continue;
     const want=`${SITE}/og/${it.key}.jpg`;let s=fs.readFileSync(it.file,'utf8');const o=s;
-    s=s.replace(/<meta property="og:image" content="[^"]*">/,`<meta property="og:image" content="${want}">`);
-    if(!/name="twitter:image"/.test(s))s=s.replace(/(<meta property="og:image" content="[^"]*">)/,`$1\n<meta name="twitter:image" content="${want}">`);
-    else s=s.replace(/<meta name="twitter:image" content="[^"]*">/,`<meta name="twitter:image" content="${want}">`);
+    s=s.replace(/<meta property="og:image" content="([^"]*)">/,(m,cur)=>OURS.test(cur)?`<meta property="og:image" content="${want}">`:m);
+    const img=(s.match(/<meta property="og:image" content="([^"]*)">/)||[])[1]||want;
+    if(!/name="twitter:image"/.test(s))s=s.replace(/(<meta property="og:image" content="[^"]*">)/,`$1\n<meta name="twitter:image" content="${img}">`);
+    else s=s.replace(/<meta name="twitter:image" content="([^"]*)">/,(m,cur)=>OURS.test(cur)?`<meta name="twitter:image" content="${img}">`:m);
     if(s!==o){fs.writeFileSync(it.file,s);tagged++}
   }
   console.log(`og: ${Object.keys(manifest).length} cards in the manifest, ${tagged} pages retagged`);

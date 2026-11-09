@@ -48,6 +48,17 @@ footer{border-top:1px solid var(--line);margin-top:72px;padding:34px 0 60px}
 .fine{font-family:'Space Mono',monospace;font-size:.78rem;color:var(--steel)}
 .fine a{color:#cfcfc9;border-bottom:1px solid #3a3a40;text-decoration:none}
 .fine a:hover{color:var(--racing);border-bottom-color:var(--racing)}
+/* subscribe here, not off-app (web review 2026-11-09, ia-journeys-18): the more tab's buttondown form */
+#subscribe{scroll-margin-top:24px}
+form.nl{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;max-width:520px}
+form.nl label{position:absolute;left:-9999px}
+form.nl input[type=email]{flex:1;min-width:200px;min-height:48px;box-sizing:border-box;background:transparent;border:2px solid var(--line);border-radius:999px;color:var(--day);font-family:'Space Mono',monospace;font-size:1rem;padding:12px 18px}
+form.nl input[type=email]:focus{border-color:var(--racing);outline:none}
+form.nl input[type=email]:focus-visible{outline:3px solid var(--racing);outline-offset:2px}
+form.nl input[type=submit]{min-height:48px;font-family:'Space Mono',monospace;font-size:.8rem;letter-spacing:.1em;border:2px solid var(--racing);background:var(--racing);color:var(--night);padding:12px 22px;border-radius:999px;cursor:pointer}
+form.nl input[type=submit]:hover{background:var(--deep);border-color:var(--deep);color:var(--day)}
+form.nl input[type=submit]:focus-visible{outline:3px solid var(--racing);outline-offset:3px}
+.nlsub .note{font-family:'Space Mono',monospace;font-size:.76rem;color:var(--steel);letter-spacing:.04em;margin:10px 0 0}
 </style>
 <link rel="canonical" href="https://groovesmaxxing.com/newsletter">
 <link rel="alternate" type="application/rss+xml" title="fresh grooves friday" href="/feed.xml">
@@ -67,8 +78,18 @@ footer{border-top:1px solid var(--line);margin-top:72px;padding:34px 0 60px}
 <h1>fresh grooves<br><span class="rd">friday.</span></h1>
 <p class="lede">every friday: the releases that survived the week, an artist worth knowing, where they're playing next, and whatever else i'm deep in. every issue is here in full, free.</p>
 <div class="sub">
-<p>every pick carries a &#9989;: two independent stores agree, or the label said it themselves. <b>want it in your inbox first?</b> <a href="https://buttondown.com/groovesmaxxed" target="_blank" rel="noopener">subscribe here</a>.</p>
+<p>every pick carries a &#9989;: two independent stores agree, or the label said it themselves. <b>want it in your inbox first?</b> <a href="#subscribe">subscribe here</a>.</p>
+<p>every release that cleared the week, unfiltered: <a href="/friday">the full drop →</a></p>
 <div data-more="fold" data-more-label="more"><p>release dates in dance music are wrong often enough that somebody should be checking.</p></div>
+</div>
+<div id="subscribe" class="nlsub">
+<form action="https://buttondown.com/api/emails/embed-subscribe/groovesmaxxed" method="post" class="nl embeddable-buttondown-form">
+<label for="nl-email">email</label>
+<input type="email" name="email" id="nl-email" placeholder="you@example.com" autocomplete="email" required>
+<input type="hidden" value="1" name="embed">
+<input type="submit" value="subscribe">
+</form>
+<p class="note">free, every friday. leave whenever.</p>
 </div>
 </header>
 

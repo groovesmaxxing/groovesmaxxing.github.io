@@ -7,8 +7,9 @@ artist and label profiles: player css/js, nav css/js, crate js, related js
 tracklist pages:           nav css/js, follow js, crate js, related js
 the radar hub:             related js
 dropping soon:             crate js, upcoming js (the crate filter survives the laptop's next render)
-newsletter issues:         nav css/js
+newsletter issues:         nav css/js, the previous / next issue line and the subscribe line
 root pages with no inline tab bar: nav css/js
+every page but the redirect stubs: the "…" sheet and share (gmx-sheet css/js), the app metas, og:url
 """
 import glob, re
 
@@ -28,8 +29,8 @@ T = {
     'crate_js': '<script src="/gmx-crate.js" defer></script>',
     'related_js': '<script src="/gmx-related.js" defer></script>',
     'upcoming_js': '<script src="/gmx-upcoming.js?v=4" defer></script>',   # v4: the sample player, v3 monday graduation (2026-11-05), v2 tabs and the show menu
-    'quick_css': '<link rel="stylesheet" href="/gmx-quick.css">',
-    'quick_js': '<script src="/gmx-quick.js?v=17" defer></script>',
+    # gmx-quick.js and gmx-quick.css left T on 2026-11-09 (cr-shell-12): the search sheet lives in gmx-nav.js, and
+    # the quick-search pass below now strips both tags. the files stay in the repo for cached old pages.
     'sheet_css': '<link rel="stylesheet" href="/gmx-sheet.css?v=3">',
     'sheet_js': '<script src="/gmx-sheet.js?v=3" defer></script>',
     # the account layer (2026-10-12): "this is me" on every artist and label profile
@@ -179,6 +180,12 @@ def seo(path):
             + ([] if 'property="og:image"' in s else ['<meta property="og:image" content="%s/og-image.png">' % SITE]) \
             + (['<meta property="og:url" content="%s">' % canon.group(1)] if canon and 'property="og:url"' not in s else [])
         s = s.replace(desc.group(0), desc.group(0) + '\n' + '\n'.join(og_block), 1)
+    # og:url (2026-11-09, share-code-15): the canonical, on every page with an open graph block that lacks one, so
+    # a pasted link groups its shares under one address. absolute, like the canonical it copies.
+    canon = re.search(r'<link rel="canonical" href="(https://[^"]+)"', s)
+    ogt = re.search(r'<meta property="og:title" content="[^"]*">', s)
+    if canon and ogt and 'property="og:url"' not in s:
+        s = s.replace(ogt.group(0), ogt.group(0) + '\n<meta property="og:url" content="%s">' % canon.group(1), 1)
     og = re.search(r'<meta property="og:image" content="[^"]+">', s)
     if og and 'name="twitter:card"' not in s:
         s = s.replace(og.group(0), og.group(0) + '\n<meta name="twitter:card" content="summary_large_image">', 1)
@@ -257,20 +264,67 @@ for f in sorted(files('tracklists/*.html')):
     if not block: continue
     open(f, 'w', encoding='utf-8').write(s.replace('</head>', block + '\n</head>', 1)); n += 1
 
-# quick search (ui build 1, 2026-10-11): the sheet that opens from any search link or the "/" key, on
-# every page. the full search page keeps only its own script.
+# quick search (ui build 1, 2026-10-11) moved into gmx-nav.js. since 2026-11-09 (cr-shell-12, cr-a11y-css-15) the
+# two old tags, which loaded an empty script and an unused sheet on ~933 pages, are taken out wherever they sit.
+QUICK_RX = [re.compile(r'[ \t]*<script src="/gmx-quick\.js(?:\?v=\d+)?" defer></script>\r?\n?'),
+            re.compile(r'[ \t]*<link rel="stylesheet" href="/gmx-quick\.css(?:\?v=\d+)?">\r?\n?')]
 for f in sorted(files('*.html') + files('artists/*.html') + files('labels/*.html') + files('tracklists/*.html') + files('newsletter/*.html')):
-    if f.startswith('google') or f == 'search.html': continue
-    n += ensure(f, ['quick_css'], [], ['quick_js'])
-# bottom sheet (ui build 2, 2026-10-11): the "…" beside every heart and follow pill, so it rides on every
-# page that carries the crate, loaded right after it.
-for f in sorted(files('*.html') + files('artists/*.html') + files('labels/*.html') + files('tracklists/*.html')):
-    s = open(f, encoding='utf-8').read()
-    if T['crate_js'] not in s or T['sheet_js'] in s or 'http-equiv="refresh"' in s: continue
-    s = s.replace(T['crate_js'], T['crate_js'] + '\n' + T['sheet_js'], 1)
+    if f.startswith('google'): continue
+    s = open(f, encoding='utf-8', newline='').read(); o = s
+    if '/gmx-nav.js' not in s: continue   # gmx-quick.js loads the shell on a page without the nav tag: keep it there
+    for rx in QUICK_RX: s = rx.sub('', s)
+    if s != o:
+        with open(f, 'w', encoding='utf-8', newline='') as fh: fh.write(s)
+        n += 1
+# bottom sheet (ui build 2, 2026-10-11): the "…" beside every heart and follow pill. since 2026-11-09 (web review,
+# one share for the whole site) it rides on every page but the redirect stubs: gmx-sheet.js places the page's
+# share pill and the card shares, and holds gmxSheet.share() that gmx-scan.js and gmx-moods.js call. it loads
+# right after the crate where the page has one (the "…" models read the crate), else right after the tab bar.
+for f in sorted(files('*.html') + files('artists/*.html') + files('labels/*.html') + files('tracklists/*.html') + files('newsletter/*.html')):
+    if f.split('/')[-1].startswith('google'): continue
+    s = open(f, encoding='utf-8').read(); o = s
+    if 'http-equiv="refresh"' in s or '</body>' not in s or '</head>' not in s: continue
+    s = normalize(s)
+    if T['sheet_js'] not in s:
+        if T['crate_js'] in s: s = s.replace(T['crate_js'], T['crate_js'] + '\n' + T['sheet_js'], 1)
+        elif T['nav_js'] in s: s = s.replace(T['nav_js'], T['nav_js'] + '\n' + T['sheet_js'], 1)
+        else: s = s.replace('</body>', T['sheet_js'] + '\n</body>', 1)
     if T['sheet_css'] not in s:
-        s = s.replace(MOTION_CSS, MOTION_CSS + '\n' + T['sheet_css'], 1) if MOTION_CSS in s else s.replace('</head>', T['sheet_css'] + '\n</head>', 1)
-    open(f, 'w', encoding='utf-8').write(s); n += 1
+        # above the readability layer when there is no motion tag, so gmx-read.css stays the last stylesheet and
+        # the next run has nothing to move (offline.html took two runs to settle)
+        if MOTION_CSS in s: s = s.replace(MOTION_CSS, MOTION_CSS + '\n' + T['sheet_css'], 1)
+        elif READ_CSS in s: s = s.replace(READ_CSS, T['sheet_css'] + '\n' + READ_CSS, 1)
+        else: s = s.replace('</head>', T['sheet_css'] + '\n</head>', 1)
+    if s != o: open(f, 'w', encoding='utf-8').write(s); n += 1
+
+# the installed app on every page (2026-11-09, cr-pwa-4 part 3 and cr-a11y-css-11): the 14 app pages carry the
+# manifest link, the apple metas and viewport-fit=cover; every other page lacked them, so the tab bar's
+# safe-area padding (env(safe-area-inset-bottom), which ios reports as 0 without viewport-fit=cover) changed
+# from page to page in the installed iphone app. copied here onto every page but the redirect stubs. these are
+# app tags, not seo tags. check one artist page in iphone safari in landscape after the first run.
+APP_TAGS = ['<link rel="manifest" href="/manifest.webmanifest">',
+            '<meta name="apple-mobile-web-app-capable" content="yes">',
+            '<meta name="apple-mobile-web-app-status-bar-style" content="black">',
+            '<meta name="apple-mobile-web-app-title" content="groovesMAXX">']
+APP_KEYS = ['rel="manifest"', 'name="apple-mobile-web-app-capable"', 'name="apple-mobile-web-app-status-bar-style"', 'name="apple-mobile-web-app-title"']
+VIEWPORT_RX = re.compile(r'<meta name="viewport" content="([^"]*)">')
+def app_layer(path):
+    s = open(path, encoding='utf-8', newline='').read(); o = s
+    if 'http-equiv="refresh"' in s or path.split('/')[-1].startswith('google') or '</head>' not in s: return False
+    nl = '\r\n' if '\r\n' in s else '\n'
+    vp = VIEWPORT_RX.search(s)
+    if vp and 'viewport-fit' not in vp.group(1):
+        s = s.replace(vp.group(0), '<meta name="viewport" content="%s, viewport-fit=cover">' % vp.group(1).rstrip(', '), 1)
+        vp = VIEWPORT_RX.search(s)
+    add = [t for t, k in zip(APP_TAGS, APP_KEYS) if k not in s]
+    if add:
+        if vp: s = s[:vp.end()] + nl + nl.join(add) + s[vp.end():]
+        else: s = s.replace('</head>', nl.join(add) + nl + '</head>', 1)
+    if s != o:
+        with open(path, 'w', encoding='utf-8', newline='') as fh: fh.write(s)
+    return s != o
+for f in sorted(files('*.html') + files('artists/*.html') + files('labels/*.html') + files('tracklists/*.html') + files('newsletter/*.html')):
+    n += app_layer(f)
 # the tracklists hub (2026-10-14): the tracklists tab opens here, so the list leads, newest first, and the
 # rest of the tracklists area folds under it. tracklistpage.py writes the hub on the laptop, so both are
 # re-applied after every render. rows sort by the tagged date in their .dt span (no year, so a date later
@@ -287,6 +341,11 @@ HUB_MORE = HUB_MARK + """
 <a href="/interviews">interviews and talks</a>
 </nav>
 </div>"""
+# one compact line under the hub's h1 (2026-11-09, ia-journeys-2): the list still leads (owner's 2026-10-14 pick),
+# but the sets, radio, open IDs and talks no longer hide only in the fold under 65 rows. styled in gmx-read.css.
+HUB_TOP_MARK = '<!-- gmx-hub-top -->'
+HUB_TOP = (HUB_TOP_MARK + '<p class="hub-top mono"><a href="/sets">every set</a> · <a href="/radio">radio</a>'
+    ' · <a href="/open-ids">open IDs</a> · <a href="/interviews">talks</a></p>')
 _MON = {m: i for i, m in enumerate('jan feb mar apr may jun jul aug sep oct nov dec'.split(), 1)}
 def hub(path='tracklists/index.html'):
     try: s = open(path, encoding='utf-8').read()
@@ -308,6 +367,9 @@ def hub(path='tracklists/index.html'):
             s = s[:m.start(2)] + ''.join(k[2] for k in keyed) + s[m.end(2):]
     if HUB_MARK not in s and '</table>' in s:
         s = s.replace('</table>', '</table>\n' + HUB_MORE, 1)
+    if HUB_TOP_MARK not in s:
+        mm = re.search(r'<(?:div|header)[^>]*class="[^"]*\bmast\b[^"]*"[^>]*>.*?</h1>', s, re.S)
+        if mm: s = s[:mm.end()] + '\n' + HUB_TOP + s[mm.end():]
     if s != o: open(path, 'w', encoding='utf-8').write(s)
     return s != o
 n += hub()
@@ -367,6 +429,11 @@ def artists_dir(path='artists.html'):
 # put back here after every render. hubs keep their own footers.
 FLINKS = ('groovesMAXXING · <a href="/">home</a> · <a href="/artists">the roster</a> · <a href="/labels">the labels</a>'
     ' · <a href="/tracklists/">the tracklists</a> · <a href="/sets">the sets</a> · <a href="/events">the radar</a>'
+    ' · <a href="/upcoming">dropping soon</a> · <a href="/friday">fresh grooves friday</a> · <a href="/newsletter">the newsletter</a>'
+    ' · <a href="/calendar">the calendar</a> · <a href="/moods">pick a mood</a>')
+# the run as it stood before /friday joined it (2026-11-09, ia-journeys-3): swapped for FLINKS where it sits
+FLINKS_PREV = ('groovesMAXXING · <a href="/">home</a> · <a href="/artists">the roster</a> · <a href="/labels">the labels</a>'
+    ' · <a href="/tracklists/">the tracklists</a> · <a href="/sets">the sets</a> · <a href="/events">the radar</a>'
     ' · <a href="/upcoming">dropping soon</a> · <a href="/newsletter">the newsletter</a>'
     ' · <a href="/calendar">the calendar</a> · <a href="/moods">pick a mood</a>')
 FLINKS_OLD = ['<p class="fine">groovesMAXXING · <a href="/">home</a> · <a href="%s">the roster</a> · <a href="/events">the radar</a> · <a href="/sets">the sets</a></p>' % h
@@ -392,6 +459,11 @@ def footer_links():
         except OSError:
             return False
     new_p = '<p class="fine">' + FLINKS + '</p>'
+    # a page that already carries the previous run gets the current one in its place, nothing else moves
+    for pattern in ('artists/*.html', 'labels/*.html', 'tracklists/*.html', 'newsletter/*.html'):
+        for f, s in pages(pattern):
+            if FLINKS_PREV in s and FLINKS not in s:
+                changed += write(f, s.replace(FLINKS_PREV, FLINKS))
     for f, s in list(pages('artists/*.html')) + list(pages('labels/*.html')):
         if new_p in s: continue
         hits = [o for o in FLINKS_OLD if s.count(o) == 1]
@@ -416,8 +488,43 @@ def footer_links():
     if odd:
         print('ensure_tags: footer links skipped', odd, 'page(s) without the expected footer')
     return changed
+# the newsletter issues (2026-11-09, pt-releases-2, pt-releases-3, ia-journeys-18): one line in each issue's footer,
+# after the issue paragraph, with the previous and next issue and, on issues whose footer has no subscribe link
+# (007 on), "get the next one first" pointing at the subscribe form on /newsletter. rebuilt on every run, so the
+# newest issue gains its "next" link when the following one lands. newsletterarchive.py writes the issues on the
+# laptop; the line sits behind its own class, outside the paragraph that script looks for.
+ISSUE_NAV_RX = re.compile(r'<p class="fine gmx-issue-nav">.*?</p>\r?\n?', re.S)
+def issue_nav_line(k, have, foot, nl):
+    parts = []
+    if k - 1 in have: parts.append('<a href="/newsletter/fgf-%03d" rel="prev">← issue %03d</a>' % (k - 1, k - 1))
+    if k + 1 in have: parts.append('<a href="/newsletter/fgf-%03d" rel="next">issue %03d →</a>' % (k + 1, k + 1))
+    if 'buttondown.com/groovesmaxxed' not in foot:
+        parts.append('<a href="/newsletter#subscribe">get the next one first</a>')
+    return ('<p class="fine gmx-issue-nav">' + ' · '.join(parts) + '</p>' + nl) if parts else ''
+def issue_nav():
+    changed = 0
+    nums = sorted(int(m.group(1)) for m in (re.search(r'fgf-(\d+)\.html$', f) for f in files('newsletter/fgf-*.html')) if m)
+    have = set(nums)
+    for k in nums:
+        f = 'newsletter/fgf-%03d.html' % k
+        try: s = open(f, encoding='utf-8', newline='').read()
+        except OSError: continue
+        if 'http-equiv="refresh"' in s or s.count('</footer>') != 1 or s.count('<footer') != 1: continue
+        nl = '\r\n' if '\r\n' in s else '\n'
+        o = s
+        s = ISSUE_NAV_RX.sub('', s)
+        line = issue_nav_line(k, have, s[s.index('<footer'):s.index('</footer>')], nl)
+        if line:
+            m = re.search(r'<p class="fine gmx-flinks">', s)
+            at = m.start() if m else s.index('</footer>')
+            s = s[:at] + line + s[at:]
+        if s != o:
+            with open(f, 'w', encoding='utf-8', newline='') as fh: fh.write(s)
+            changed += 1
+    return changed
 n += artists_dir()
 n += footer_links()
+n += issue_nav()
 # the "more" expander (2026-10-14): on every page, so a data-more attribute works wherever it lands
 for f in sorted(files('*.html') + files('artists/*.html') + files('labels/*.html') + files('tracklists/*.html') + files('newsletter/*.html')):
     # scan.html stays out: the recognizer page is its own build and carries no data-more blocks
