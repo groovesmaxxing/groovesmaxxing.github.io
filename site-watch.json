@@ -1,73 +1,80 @@
 {
- "generated": "2026-11-09T20:39:15Z",
+ "generated": "2026-11-10T03:27:46Z",
  "site": [
   {
    "path": "/",
    "code": 200,
-   "ms": 309,
+   "ms": 187,
    "state": "ok",
    "note": null
   },
   {
    "path": "/scan",
    "code": 200,
-   "ms": 152,
-   "state": "wrong",
-   "note": "missing gmx-config.json"
+   "ms": 243,
+   "state": "ok",
+   "note": null
+  },
+  {
+   "path": "/gmx-config.json",
+   "code": 200,
+   "ms": 136,
+   "state": "ok",
+   "note": null
   },
   {
    "path": "/sets",
    "code": 200,
-   "ms": 173,
+   "ms": 252,
    "state": "ok",
    "note": null
   },
   {
    "path": "/artists",
    "code": 200,
-   "ms": 177,
+   "ms": 156,
    "state": "ok",
    "note": null
   },
   {
    "path": "/tracklists/",
    "code": 200,
-   "ms": 142,
+   "ms": 197,
    "state": "ok",
    "note": null
   },
   {
    "path": "/search-index.json",
    "code": 200,
-   "ms": 206,
+   "ms": 263,
    "state": "ok",
-   "note": "generated 2026-11-09"
+   "note": "generated 2026-11-10"
   },
   {
    "path": "/upcoming.json",
    "code": 200,
-   "ms": 182,
+   "ms": 268,
    "state": "ok",
-   "note": "generated 2026-11-09"
+   "note": "generated 2026-11-10"
   },
   {
    "path": "/radar-events.json",
    "code": 200,
-   "ms": 137,
+   "ms": 146,
    "state": "ok",
    "note": "generated 2026-11-09T19:54:33"
   },
   {
    "path": "/sitemap.xml",
    "code": 200,
-   "ms": 402,
+   "ms": 261,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sw.js",
    "code": 200,
-   "ms": 137,
+   "ms": 159,
    "state": "ok",
    "note": null
   }
@@ -75,7 +82,7 @@
  "recognizer": {
   "state": "up",
   "code": 200,
-  "ms": 2236,
+  "ms": 444,
   "health": {
    "status": "ok",
    "version": "0.1.2",
@@ -83,8 +90,10 @@
   }
  },
  "workflows": {
-  "state": "ok",
-  "failed": [],
+  "state": "failed",
+  "failed": [
+   "freshness"
+  ],
   "runs": [
    {
     "name": "events radar sweep",
@@ -99,11 +108,21 @@
    {
     "name": "freshness",
     "status": "completed",
-    "conclusion": "success",
+    "conclusion": "failure",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-11-08T18:47:53Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/42511764533",
+    "at": "2026-11-09T23:25:07Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/42720254725",
+    "state": "failed"
+   },
+   {
+    "name": "github_actions in /. - Update #1691848397",
+    "status": "completed",
+    "conclusion": "success",
+    "event": "dynamic",
+    "branch": "main",
+    "at": "2026-11-10T00:44:46Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/42730553836",
     "state": "ok"
    },
    {
@@ -112,8 +131,8 @@
     "conclusion": "success",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-11-08T16:46:57Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/42501547313",
+    "at": "2026-11-09T21:02:20Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/42698491030",
     "state": "ok"
    },
    {
@@ -122,8 +141,8 @@
     "conclusion": "success",
     "event": "dynamic",
     "branch": "main",
-    "at": "2026-11-09T20:02:45Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/42687845599",
+    "at": "2026-11-10T02:22:58Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/42742018640",
     "state": "ok"
    },
    {
@@ -132,8 +151,8 @@
     "conclusion": "success",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-11-09T18:56:50Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/42678580509",
+    "at": "2026-11-10T02:48:45Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/42745265796",
     "state": "ok"
    },
    {
@@ -142,8 +161,8 @@
     "conclusion": "success",
     "event": "push",
     "branch": "main",
-    "at": "2026-11-09T18:41:40Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/42675949989",
+    "at": "2026-11-10T02:20:31Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/42741846721",
     "state": "ok"
    },
    {
@@ -152,8 +171,8 @@
     "conclusion": "success",
     "event": "push",
     "branch": "main",
-    "at": "2026-11-09T18:40:16Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/42675949900",
+    "at": "2026-11-10T02:21:41Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/42741846749",
     "state": "ok"
    }
   ]
@@ -164,42 +183,52 @@
    {
     "state": "fail",
     "id": "F-18",
-    "text": "friday.html carries the newest week: 2026-10-23, 17 days old (limit 16)"
+    "text": "friday.html carries the newest week: 2026-10-23, 18 days old (limit 10)"
    },
    {
     "state": "ok",
     "id": "F-21",
-    "text": "dropping soon says when it was last refreshed: 2026-11-09, 0 days old"
+    "text": "dropping soon says when it was last refreshed: 2026-11-09, 1 days old"
    },
    {
     "state": "ok",
     "id": "F-24",
-    "text": "the newsletter hub carries the newest issue: 2026-11-06, 3 days old"
+    "text": "the newsletter hub carries the newest issue: 2026-11-06, 4 days old"
    },
    {
     "state": "ok",
     "id": "F-30",
-    "text": "the events radar data is refreshed nightly: 2026-11-09, 0 days old"
+    "text": "the events radar data is refreshed nightly: 2026-11-09, 1 days old"
    },
    {
     "state": "ok",
     "id": "F-31",
-    "text": "the denver radar data is refreshed nightly: 2026-11-09, 0 days old"
+    "text": "the denver radar data is refreshed nightly: 2026-11-09, 1 days old"
    },
    {
     "state": "ok",
     "id": "F-32",
-    "text": "the tracks index was rebuilt after the newest tracklist: 2026-11-09, 0 days old"
+    "text": "the tracks index was rebuilt after the newest tracklist: 2026-11-10, 0 days old"
    },
    {
     "state": "ok",
     "id": "F-33",
-    "text": "upcoming.json (the home page's next up band) was rebuilt after the newest dropping soon render: 2026-11-09, 0 days old"
+    "text": "upcoming.json (the home page's next up band) was rebuilt after the newest dropping soon render: 2026-11-10, 0 days old"
+   },
+   {
+    "state": "ok",
+    "id": "F-34",
+    "text": "search-index.json (site search and the quick search sheet) is fresh and not emptied: 2026-11-10, 0 days old"
+   },
+   {
+    "state": "ok",
+    "id": "F-35",
+    "text": "open-ids.json (the open IDs board) is fresh and not emptied: 2026-11-10, 0 days old"
    },
    {
     "state": "ok",
     "id": "F-42",
-    "text": "moods-index.json (the mood picker) was rebuilt from the lane dumps. moodindex.py runs on the laptop, nothing schedules it yet: 2026-11-07, 2 days old"
+    "text": "moods-index.json (the mood picker) was rebuilt from the lane dumps. moodindex.py runs on the laptop, nothing schedules it yet: 2026-11-07, 3 days old"
    },
    {
     "state": "ok",
@@ -209,5 +238,5 @@
   ]
  },
  "state": "wrong",
- "summary": "site pages wrong: /scan; recognizer up; freshness fail"
+ "summary": "recognizer up; failed workflows: freshness; freshness fail"
 }
