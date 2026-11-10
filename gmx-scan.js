@@ -11,14 +11,26 @@ var CAPTURE_MS=15000, ROUNDS_MS=[5000,9000,12000], POLL_MS=350, POLL_CAP_MS=3000
    the cap (2026-10-13): the early rounds count in a window of their own on the api, so the three rounds never eat
    into the full scans, and the full round runs against ninety an hour per phone now, not thirty. */
 
-var POST_MS=25000, GET_MS=8000;   /* every request has a deadline, so a dead cell link never leaves the page spinning */
-/* site review build, 2026-10-11: audio worklet capture, request deadlines, config retry, level checks, one poll loop */
+var POST_MS=25000, GET_MS=8000, INDEX_MS=20000;   /* every request has a deadline, so a dead cell link never leaves the page spinning */
+/* site review build, 2026-10-11: audio worklet capture, request deadlines, config retry, level checks, one poll loop.
+   2026-11-09 (recognizer review F59): the deadline covers the body too. it used to stop at the headers, so a body
+   that stalled after them (a cell handoff with the socket left half open) never settled and the poll loop stopped
+   with the page stuck on finding it. the body readers now clear the timer once the body is in, and an abort while
+   reading throws 'timeout' like one before the headers. a caller that reads only the status leaves the timer to
+   abort a request that is already done, which is harmless. */
 function fx(url,opts,ms){
   opts=opts||{};
   if(!('AbortController' in window))return fetch(url,opts);
   var ac=new AbortController(), t=setTimeout(function(){ac.abort()},ms||GET_MS);
   opts.signal=ac.signal;
-  return fetch(url,opts).then(function(r){clearTimeout(t);return r},function(e){clearTimeout(t);throw (e&&e.name==='AbortError')?new Error('timeout'):e});
+  function fail(e){clearTimeout(t);throw (e&&e.name==='AbortError')?new Error('timeout'):e}
+  return fetch(url,opts).then(function(r){
+    ['json','text','blob','arrayBuffer'].forEach(function(k){
+      var read=r[k]; if(typeof read!=='function')return;
+      try{r[k]=function(){return read.call(r).then(function(v){clearTimeout(t);return v},fail)}}catch(e){}
+    });
+    return r;
+  },fail);
 }
 /* phase 7 DECISION 9: at each of ROUNDS_MS (5, 9 and 12 s since the speed build) the page posts what it has as an
    early, library-only round and keeps listening. a LIKELY or better answer shows at once, the 15 s scan replaces it
@@ -69,6 +81,10 @@ function lvlFrame(now){
 function lvlStart(){lastChunk=0;lvlMix=1;lvlStale=true;lvlPrev=0;if(!lvlRaf&&window.requestAnimationFrame)lvlRaf=requestAnimationFrame(lvlFrame)}
 var rings=go.querySelectorAll('.r'), wave=go.querySelector('.wave');
 var cfg=null, cfgErr=null, busy=false, heldBlob=null, heldAt=null, heldLoud=false, current=null, cancelScan=null;
+/* 2026-11-09 (recognizer review F36, F37, F38): the held clip remembers the job its last post was accepted as
+   (heldJob, and when, heldJobAt) and, for a drained clip, its pending record (heldRec), so a resend or a later
+   drain looks at that job before it posts the same clip again */
+var heldJob=null, heldJobAt=0, heldRec=null;
 /* pull to refresh (gmx-refresh.js) stays off while listening or finding */
 window.gmxRefreshBlocked=function(){return busy};
 
@@ -306,10 +322,12 @@ function startScan(){
   navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false},video:false})
   .then(function(st){
     stream=st;
-    if(cancelled){cleanup();reset();return}
+    /* 2026-11-09 (recognizer review F61): the cancel already cleaned up and reset. a late answer from a cancelled
+       scan only lets its own stream go: cleanup() and reset() act on the page, which may be running a newer scan by now */
+    if(cancelled){st.getTracks().forEach(function(t){t.stop()});return}
     if(!ctx)throw new Error('audio');
     return (ctx.state==='suspended'?ctx.resume():Promise.resolve()).then(function(){
-      if(cancelled){cleanup();reset();return}
+      if(cancelled){st.getTracks().forEach(function(t){t.stop()});return}
       /* an iphone call, a notification sound or a bluetooth switch can pause the graph mid-scan ('interrupted' on
          safari). log it and ask for it back. the strip idles meanwhile and the 15 s deadline below still ends the scan. */
       ctx.onstatechange=function(){if(stopped||!ctx||ctx.state==='running'||ctx.state==='closed')return;console.warn('gmx scan: audio '+ctx.state+' mid-scan');try{ctx.resume().catch(function(e){console.warn('gmx scan: audio resume',e)})}catch(e){}};
@@ -345,7 +363,7 @@ function startScan(){
       wl.catch(function(){if(!stopped)legacy()});
       setTimeout(done,CAPTURE_MS+4000);
     });
-  }).catch(function(e){if(cancelled){cleanup();reset();return}finishCapture(e)});
+  }).catch(function(e){if(cancelled)return;finishCapture(e)});
 
   function cleanup(){
     if(timer)clearInterval(timer);
@@ -367,11 +385,11 @@ function startScan(){
            : 'the clip did not record. try again.';
       showCard(errCard(m)); reset(); return;
     }
-    heldBlob=blob; identify(blob);
+    heldBlob=blob; heldJob=null; heldJobAt=0; heldRec=null; identify(blob,seq);
   }
 }
 function reset(){busy=false;cancelScan=null;stopCapture=null;go.removeAttribute('aria-disabled');go.classList.remove('busy');stage.classList.remove('listening','finding');tap.innerHTML='tap to <b>scan</b>';go.setAttribute('aria-label','scan what is playing');if(!auto)wakeOff();try{onReset()}catch(e){}}
-function dropBlob(){heldBlob=null;heldAt=null;heldLoud=false}
+function dropBlob(){heldBlob=null;heldAt=null;heldLoud=false;heldJob=null;heldJobAt=0;heldRec=null}
 
 /* identify and poll */
 /* the poll cap (2026-10-13): POLL_CAP_MS runs from the moment the POST answered with a job id, not from the start of
@@ -414,7 +432,9 @@ function earlyIdentify(blob,seq,at){
     var nm=nameOf(cand),who=nm?(nm.title||nm.artist):'a library entry';
     var key=candKey(cand), prev=early, same=!!(key&&prev&&prev.key===key), firstAt=same?prev.firstAt:at;
     var agreed=cand.tier==='LIKELY'&&same&&Math.abs(at-firstAt)>=AGREE_GAP_MS;
-    round.answer=(at/1000)+' s: '+(cand.tier==='CONFIRMED'?'sure':(agreed?'close again':'close'))+', '+who;
+    /* esc (2026-11-09, recognizer review F60): the answer goes into the status line as html, and names come from
+       corrections and upload captions */
+    round.answer=(at/1000)+' s: '+(cand.tier==='CONFIRMED'?'sure':(agreed?'close again':'close'))+', '+esc(who);
     early={job_id:j.job_id,recognition_id:r.recognition_id||j.job_id,card:{kind:'match',candidate:cand},seconds:Math.round((Date.now()-timing.t0)/100)/10,timing:timing,key:key,firstAt:firstAt};
     if(!timing.first)timing.first=Date.now()-timing.t0;
     current=early; tick(40);
@@ -442,11 +462,20 @@ function earlyIdentify(blob,seq,at){
 }
 /* the best early card so far is a likely one. a sure one ends the scan before the 15 s round is ever posted */
 function earlyLikely(){var c=early&&early.card&&early.card.candidate;return !!(c&&(c.tier==='LIKELY'||c.tier==='CONFIRMED'))}
-function identify(blob){
-  if(finalDone)return;
-  if(!navigator.onLine&&!draining){queueClip(blob);return}
+/* identify(blob, seq, resumeJob). seq (2026-11-09, recognizer review F34) is the scan the clip belongs to: a final job
+   still polling when the next scan starts is ignored instead of taking that scan over. resumeJob (F36, F37) is a job
+   this clip was already accepted as: the page looks at it first and posts again only when it failed, is gone, or is
+   past the worker's limit. */
+function identify(blob,seq,resumeJob){
+  if(seq==null)seq=scanSeq;
+  if(seq!==scanSeq||finalDone)return;
+  /* library only (2026-11-09, recognizer review F9): a drained clip keeps what it was recorded as. an auto clip
+     kept offline drains library only even after a reload (auto is off then), and a tap clip drained while auto runs
+     still gets its catalog check. records kept before this build have no auto field and check the catalogs. */
+  var libOnly=draining?!!draining.auto:(auto||earlyLikely());
+  if(!navigator.onLine&&!draining){queueClip(blob,heldJob,heldJobAt);return}
   cancelScan=null; go.setAttribute('aria-disabled','true'); go.setAttribute('aria-label','finding it, one moment'); stage.classList.add('finding'); recword.textContent='finding it'; count.textContent=''; announce('finding it');
-  say2(auto?'checking our library':'checking the catalogs');
+  say2(libOnly?'checking our library':'checking the catalogs');
   if(!early)showCard('<div class="skel" aria-hidden="true"><i class="a"></i><i class="b"></i><i class="c"></i><i class="d"></i></div>');
   var sentAt=null,finalRound={at:CAPTURE_MS,post:0,wait:0,answer:'…'};if(timing)timing.rounds.push(finalRound);
   var fd=new FormData(); fd.append('audio',blob,'clip.'+extOf(blob)); fd.append('source','mic');
@@ -454,15 +483,17 @@ function identify(blob){
   /* catalog off after an early likely (2026-10-13): when an early round already came back LIKELY, the 15 s round
      asks the api to skip the paid catalog call (X-GMX-Catalog: off). the library, the hash index and the set match
      still run on the full clip, so the likely can still rise to a sure one; only the ACRCloud and AudD spend is
-     saved. the header goes on no other path. an api without the matching guard refuses the header, as a 401 or as
-     a failed preflight that the browser reports as a network error, and either answer re-posts once without the
-     header so the scan goes on as before. a stalled upload (timeout) is not retried.
+     saved. the header goes on no other path.
      auto (2026-11-06): every scan while auto runs is library only too, so a phone left on through a set, or many
-     of them, never spends the catalogs. a tap with auto off still checks them. */
+     of them, never spends the catalogs. a tap with auto off still checks them.
+     the fallback retired (2026-11-09, recognizer review F8): a library-only post that failed, as a 401 or a network
+     error, used to re-post at once without the header, so a signal blip during auto or after a likely spent a
+     catalog call the page promised not to. it was written on 2026-10-13 for an api that did not yet take the header
+     from a phone; the guard has been live since. now a 401 is a refused key like on any post, and a network error
+     keeps the clip on the phone as pending (the queue below), matched when the signal is back. */
   function post(withHeader){
     return fx(cfg.api_base+'/identify',{method:'POST',headers:headers(withHeader?{'X-GMX-Catalog':'off'}:null),body:fd},POST_MS)
     .then(function(r){
-      if(withHeader&&r.status===401)return post(false);
       sentAt=Date.now();finalRound.post=sentAt-began;
       if(r.status===429)throw new Error('rate');
       if(r.status===401)throw new Error('key');
@@ -470,17 +501,32 @@ function identify(blob){
       if(!r.ok)throw new Error('http '+r.status);
       if(withHeader)finalRound.catalog='off'; /* stamped only once the api took the post, so a refused round never reads catalog off (2026-10-13) */
       return r.json();
-    },function(e){
-      if(withHeader&&!(e&&e.message==='timeout'))return post(false);
-      throw e;
     });
   }
-  post(auto||earlyLikely())
-  .then(function(job){return pollJob(job.job_id)})
+  /* look before posting again (2026-11-09, recognizer review F36, F37): a job that is done renders as it is, one
+     that is still queued or running inside the worker's 120 s limit (150 s here, for the poll and the trip) is
+     polled again, and a failed, gone or older one is posted fresh. a network error on the look fails like a post. */
+  var fresh=true;
+  function lookFirst(id){
+    return fx(cfg.api_base+'/jobs/'+encodeURIComponent(id),{headers:headers()},GET_MS).then(function(r){
+      if(r.status===404){heldJob=null;return post(libOnly)}
+      if(r.status>=500)throw new Error('server');
+      if(!r.ok)throw new Error('http '+r.status);
+      return r.json().then(function(j){
+        if(j.state==='done'||(j.state!=='failed'&&Date.now()-heldJobAt<150000)){fresh=false;return {job_id:id}}
+        heldJob=null;return post(libOnly);
+      });
+    });
+  }
+  (resumeJob?lookFirst(resumeJob):post(libOnly))
+  .then(function(job){
+    if(seq===scanSeq){heldJob=job.job_id;if(fresh)heldJobAt=Date.now()}
+    return pollJob(job.job_id);
+  })
   .then(function(j){
     var r=j.result||{}, c=r.card||{kind:'none'};
     finalRound.wait=Date.now()-(sentAt||began);finalRound.answer='15 s: '+(c.kind==='match'?'match':c.kind==='guess'?'a guess':'nothing');
-    if(finalDone)return;
+    if(seq!==scanSeq||finalDone)return;
     finalDone=true; say2('');
     /* the 15 s scan replaces the early card when it names something, else the early card stays */
     if(c.kind!=='match'&&early)current=early;
@@ -497,14 +543,20 @@ function identify(blob){
     showCard(resultCard(current)); remember(current,keep); reset();
   })
   .catch(function(e){
-    if(finalDone)return;
+    if(seq!==scanSeq||finalDone)return;
     finalDone=true; say2('');
+    /* a drained clip that stays pending keeps the job its post was accepted as (F37), so the next drain looks at
+       that job instead of posting the clip again */
+    var dr=draining;
+    if(dr&&heldJob&&dr.job_id!==heldJob&&window.gmxClips){dr.job_id=heldJob;dr.job_at=heldJobAt;gmxClips.put(dr).catch(function(){})}
     if(early){current=early;current.loud=heldLoud;showCard(resultCard(current));remember(current,false);reset();return}
     var m=e&&e.message||'';
     if(m==='rate')rateHit=true;
     var netErr=!/^(rate|slow|key|failed|server|http )/.test(m);
     if(netErr&&draining){var d=draining;draining=null;drainFailed=true;showCard(errCard('still no signal for the clip from '+when(d.t)+'. it stays on this phone, we try again when you are back online.'));reset();return}
-    if(netErr&&heldBlob&&!draining){queueClip(heldBlob);return}
+    /* heldJob is set when the post was accepted and only the polling lost the signal (F37): the kept clip carries
+       the job, and the drain looks at it before it posts anything */
+    if(netErr&&heldBlob&&!draining){queueClip(heldBlob,heldJob,heldJobAt);return}
     var text= m==='rate' ? 'too many scans this hour on this phone. try again in a bit.'
             : m==='slow' ? 'took too long. the recognizer did not answer in 30 seconds. try again.'
             : m==='key' ? 'the app key was refused. pull down to refresh and try again.'
@@ -531,7 +583,7 @@ function showCard(html){card.innerHTML=html;card.classList.add('on');try{var sai
    like a tracklist row would, with whatever store links the card has at tap time, so a link that arrives
    later from enrich() still makes it in. the label line links to our label page when there is one. */
 var namesIdx=null;
-function namesIndex(){return namesIdx||(namesIdx=fx('/names-index.json',{},GET_MS).then(function(r){return r.ok?r.json():null}).catch(function(){return null}))}
+function namesIndex(){return namesIdx||(namesIdx=fx('/names-index.json',{},INDEX_MS).then(function(r){return r.ok?r.json():null}).catch(function(){return null}))}
 function crateItem(cand){
   var nm=nameOf(cand)||{artist:'',title:''},links={};
   [].slice.call(card.querySelectorAll('#storerow a.btn:not(.find)')).forEach(function(a){var h=a.href||'';if(/open\.spotify\.com/.test(h))links.spotify=h;else if(/music\.apple\.com/.test(h))links.apple=h;else if(/beatport\.com/.test(h)&&!/search/.test(h))links.beatport=h;else if(/soundcloud\.com/.test(h)&&!/search/.test(h))links.soundcloud=h});
@@ -962,7 +1014,7 @@ function checkArtistPage(artist){
     var sub=card.querySelector('.sub');if(sub&&!sub.querySelector('a')){var a=document.createElement('a');a.href='/artists/'+s;a.className='sublink';a.textContent=sub.textContent;sub.innerHTML='';sub.appendChild(a)}
   }
   function probe(){fx('/artists/'+s+'.html',{method:'HEAD'},GET_MS).then(function(r){if(r.ok)show()}).catch(function(){})}
-  var idx=slugIndex||(slugIndex=fx('/artists-index.json',{},GET_MS).then(function(r){return r.ok?r.json():null}).catch(function(){return null}));
+  var idx=slugIndex||(slugIndex=fx('/artists-index.json',{},INDEX_MS).then(function(r){return r.ok?r.json():null}).catch(function(){return null}));
   idx.then(function(j){ if(j&&j.slugs){ if(j.slugs.indexOf(s)>-1)show(); } else probe(); });   /* no index on this build: the old probe */
 }
 function say(text,ok){var m=$('cardmsg');if(!m)return;m.textContent=text;m.className='msg'+(ok?' ok':'')}
@@ -975,11 +1027,15 @@ card.addEventListener('click',function(ev){
   if(act==='where'){openWhere();return}
   if(act==='again'){card.classList.remove('on');card.innerHTML='';dropBlob();current=null;window.scrollTo({top:0,behavior:'smooth'});return}
   if(act==='resend'){
-    /* the same clip as a new post, the way a kept clip's scan again posts it (recentlist below) */
+    /* the same clip again (2026-11-09, recognizer review F36): when its last post was accepted, the page first looks
+       at that job (it may have finished after the page gave up at 30 s) and posts the clip anew only when the job
+       failed, is gone or is past the worker's limit. a post that never got a job id posts fresh, as before.
+       F38: a drained clip's resend is still that drain, so a match deletes its pending record and replaces its row */
     if(busy)return; if(!heldBlob){showCard(errCard('the clip is gone. scan again.'));return}
+    if(heldRec){draining=heldRec;drainDone=false;drainFailed=false}
     busy=true; card.classList.remove('on'); current=null;
     scanSeq++; early=null; finalDone=false; rateHit=false; timing={t0:Date.now(),rounds:[],first:null};
-    go.classList.add('busy'); window.scrollTo({top:0,behavior:'smooth'}); identify(heldBlob); return;
+    go.classList.add('busy'); window.scrollTo({top:0,behavior:'smooth'}); identify(heldBlob,null,heldJob); return;
   }
 if(act==='listen'){card.classList.remove('on');card.innerHTML='';dropBlob();current=null;window.scrollTo({top:0,behavior:'smooth'});startScan();return}
   if(act==='share'){share();return}
@@ -1017,23 +1073,32 @@ function sendCorrection(body){
     var f=$('cform');if(f)f.classList.remove('on');
   }).catch(function(){say('did not send. check your signal and try again.')});
 }
+/* one keep at a time per form (2026-11-09, recognizer review F39): a second tap while the upload is out used to post
+   the clip twice. the form stays locked after a keep lands (a new card brings a new form), and opens again on a
+   refusal or a dead link, where the clip stays held for another try. */
+function helpLock(f,on){if(on)f.setAttribute('data-busy','1');else f.removeAttribute('data-busy');var s=f.querySelector('[type="submit"]');if(s)s.disabled=!!on}
 function sendHelp(f){
+  if(f.getAttribute('data-busy'))return;
   if(!current||!heldBlob){say('the clip is gone, scan again first.');return}
   var ext=extOf(heldBlob);
   var fd=new FormData();
   fd.append('kind','mic_capture_optin'); fd.append('door','user'); fd.append('audio',heldBlob,'clip.'+ext);
   fd.append('recognition_id',current.recognition_id); if(heldAt)fd.append('heard_at',heldAt);
   ['venue_claim','dj_claim','city_claim','note'].forEach(function(k){var v=f[k].value.trim();if(v)fd.append(k,v)});
-  say('keeping it');
+  say('keeping it'); helpLock(f,true);
   var jid=current.job_id;
   fx(cfg.api_base+'/contribute',{method:'POST',headers:headers(),body:fd},POST_MS)
   .then(function(r){
-    if(r.status===429){say('too many this hour, try later.');return}
-    if(r.status>=400&&r.status<500)return refusal(r).then(function(x){say(refusedLine(x));markRow(jid,x)});
+    if(r.status===429){helpLock(f,false);say('too many this hour, try later.');return}
+    if(r.status>=400&&r.status<500)return refusal(r).then(function(x){
+      /* a server that already holds this scan's clip answers 409 (the api half of F39): that is a keep, not a refusal */
+      if(x.status===409&&/already kept/i.test(x.detail)){say('already kept.',true);markRow(jid,null);f.classList.remove('on');dropBlob();followAfterKeep(jid);return}
+      helpLock(f,false);say(refusedLine(x));markRow(jid,x);
+    });
     if(!r.ok)throw new Error(r.status);
     say('kept. we keep hunting. gone the day we find it, or after 12 months.',true);
     markRow(jid,null); f.classList.remove('on'); dropBlob(); followAfterKeep(jid);
-  }).catch(function(){say('did not send. check your signal and try again.')});
+  }).catch(function(){helpLock(f,false);say('did not send. check your signal and try again.')});
 }
 /* a refused keep (2026-10-16, the club space test): every keep came back 422 from 10-11 to 10-16 because the page
    sent no door, and the page said "check your signal", so it read as bad reception and nobody looked. a 4xx is the
@@ -1091,7 +1156,7 @@ function renderHistory(){
     else who='no match<small>nothing yet</small>';
     if(r.sent&&r.sent.status)who+='<small>not kept, the app refused it ('+esc(String(r.sent.status))+(r.sent.detail?': '+esc(r.sent.detail):'')+')</small>';
     var acts='', btns='';
-    if(r.clip&&r.id)btns='<button class="btn" data-clip="again" data-id="'+esc(r.id)+'">scan again</button>'+(r.kind!=='match'?'<button class="btn" data-clip="help" data-id="'+esc(r.id)+'">help us find it</button>':'');
+    if(r.clip&&r.id)btns='<button class="btn" data-clip="again" data-id="'+esc(r.id)+'">scan again</button>'+(r.kind!=='match'&&!r.kept?'<button class="btn" data-clip="help" data-id="'+esc(r.id)+'">help us find it</button>':'');
     /* E6c: a no-match row can follow only the clip it kept (r.kept, set by markRow when a keep lands) */
     if(r.rid&&r.status!=='out now'&&(r.kind==='match'||r.kind==='guess'||r.kept))btns+='<button class="btn ghost" data-follow="'+esc(r.rid)+'">tell me when it drops</button>';
     if(btns)acts='<span class="acts">'+btns+'<span class="msg" role="status"></span></span>';
@@ -1101,7 +1166,7 @@ function renderHistory(){
 }
 function linkHistoryArtists(){
   var spans=[].slice.call(recentlist.querySelectorAll('[data-artist]')).filter(function(x){return x.getAttribute('data-artist')});if(!spans.length)return;
-  var idx=slugIndex||(slugIndex=fx('/artists-index.json',{},GET_MS).then(function(r){return r.ok?r.json():null}).catch(function(){return null}));
+  var idx=slugIndex||(slugIndex=fx('/artists-index.json',{},INDEX_MS).then(function(r){return r.ok?r.json():null}).catch(function(){return null}));
   idx.then(function(j){if(!j||!j.slugs)return;spans.forEach(function(x){var s=slug(x.getAttribute('data-artist'));if(j.slugs.indexOf(s)<0)return;var a=document.createElement('a');a.href='/artists/'+s;a.className='sublink';a.textContent=x.textContent;x.innerHTML='';x.appendChild(a)})});
 }
 renderHistory();
@@ -1114,9 +1179,11 @@ recentlist.addEventListener('click',function(ev){
   var note=function(t,ok){if(m){m.textContent=t;m.className='msg'+(ok?' ok':'')}};
   if(busy){note('one at a time.');return}
   gmxClips.get(id).then(function(rec){
+    /* busy again after the read (2026-11-09, recognizer review F62): a scan may have started while it was out */
+    if(busy){note('one at a time.');return}
     if(!rec||!rec.blob){note('that clip is gone.');return}
     if(act==='again'){
-      busy=true; card.classList.remove('on'); current=null; heldBlob=rec.blob; heldAt=new Date(rec.t).toISOString(); heldLoud=false;
+      busy=true; card.classList.remove('on'); current=null; heldBlob=rec.blob; heldAt=new Date(rec.t).toISOString(); heldLoud=false; heldJob=null; heldJobAt=0; heldRec=null;
       scanSeq++; early=null; finalDone=false; rateHit=false; timing={t0:Date.now(),rounds:[],first:null};
       go.classList.add('busy'); window.scrollTo({top:0,behavior:'smooth'}); identify(rec.blob); return;
     }
@@ -1124,14 +1191,16 @@ recentlist.addEventListener('click',function(ev){
       if(!rec.recognition_id){note('nothing to attach it to.');return}
       var fd=new FormData(); fd.append('kind','mic_capture_optin'); fd.append('door','user'); fd.append('audio',rec.blob,'clip.'+extOf(rec.blob));
       fd.append('recognition_id',rec.recognition_id); fd.append('heard_at',new Date(rec.t).toISOString());
-      note('sending');
+      /* one send per tap (F39): the button stays off while the upload is out, and after a keep the row stops
+         offering it (renderHistory reads r.kept) */
+      note('sending'); b.disabled=true;
       fx(cfg.api_base+'/contribute',{method:'POST',headers:headers(),body:fd},POST_MS).then(function(r){
-        if(r.status===429){note('too many this hour, try later.');return}
-        if(r.status===409){note('already sent.');return}
-        if(r.status>=400&&r.status<500)return refusal(r).then(function(x){markRow(id,x,true);note(refusedLine(x))});
+        if(r.status===429){b.disabled=false;note('too many this hour, try later.');return}
+        if(r.status===409){markRow(id,null,true);note('already kept.',true);return}
+        if(r.status>=400&&r.status<500)return refusal(r).then(function(x){b.disabled=false;markRow(id,x,true);note(refusedLine(x))});
         if(!r.ok)throw new Error(r.status);
         markRow(id,null,true); note('kept. we keep hunting.',true);
-      }).catch(function(){note('did not send. check your signal.')});
+      }).catch(function(){b.disabled=false;note('did not send. check your signal.')});
     }
   }).catch(function(){note('that clip is gone.')});
 });
@@ -1411,7 +1480,7 @@ document.addEventListener('click',function(ev){
 });
 function onScanEnd(cur,row){
   var d=draining;
-  if(d){drainDone=true;gmxClips.del(d.id).catch(function(){});}
+  if(d){drainDone=true;heldRec=null;gmxClips.del(d.id).catch(function(){});}
   var name=(row.artist?row.artist+' - ':'')+(row.title||'');
   if(row.kind!=='match'&&row.kind!=='guess')name='';
   sessionAdd({t:row.t,kind:row.kind,name:name,score:row.score},d?d.t:null);
@@ -1422,7 +1491,13 @@ function sessionAdd(r,replaceT){
   if(Date.now()-s.start>SESSION_MAX_AGE&&!auto)return;
   if(replaceT){for(var i=0;i<s.rows.length;i++){if(s.rows[i].kind==='pending'&&s.rows[i].t===replaceT){s.rows[i]={t:replaceT,off:replaceT-s.start,kind:r.kind,name:r.name,score:r.score,n:1};saveSession(s);renderSession();return}}}
   var last=s.rows[s.rows.length-1];
-  if(r.name&&last&&last.name===r.name){last.n=(last.n||1)+1}
+  /* a repeat of the last name (2026-11-09, recognizer review F63): a match lifts a guess row to a match with its
+     score, a second match counts up and keeps the best score, a guess after a match leaves the match row alone */
+  if(r.name&&last&&last.name===r.name){
+    if(r.kind==='match'&&last.kind!=='match'){last.kind='match';last.score=r.score;last.n=(last.n||1)+1}
+    else if(r.kind==='match'){last.n=(last.n||1)+1;if(r.score>last.score)last.score=r.score}
+    else if(last.kind!=='match'){last.n=(last.n||1)+1}
+  }
   else s.rows.push({t:r.t,off:r.t-s.start,kind:r.kind,name:r.name||'',score:r.score,n:1});
   saveSession(s);renderSession();
 }
@@ -1446,8 +1521,12 @@ $('sessiontools').addEventListener('click',function(e){
   if(navigator.clipboard)navigator.clipboard.writeText(txt).then(function(){sessionmsg.textContent='copied, '+lines.length+' lines.'},function(){sessionmsg.textContent='could not copy.'});else sessionmsg.textContent='copy is not available here.';
 });
 /* the offline queue */
-function queueClip(blob){
-  var rec={id:'q'+Date.now()+Math.floor(Math.random()*1000),t:Date.now(),blob:blob,kind:'pending',heard_at:heldAt||new Date().toISOString()};
+/* queueClip(blob, jobId, jobAt). auto (2026-11-09, recognizer review F9): the record says whether it was an auto
+   scan, so the drain posts it library only even after a reload. jobId (F37): the job its post was accepted as
+   when only the polling lost the signal, so the drain looks at that job before posting the clip again. */
+function queueClip(blob,jobId,jobAt){
+  var rec={id:'q'+Date.now()+Math.floor(Math.random()*1000),t:Date.now(),blob:blob,kind:'pending',heard_at:heldAt||new Date().toISOString(),auto:!!auto};
+  if(jobId){rec.job_id=jobId;rec.job_at=jobAt||0}
   var store=window.gmxClips?gmxClips.put(rec):Promise.reject(new Error('no store'));
   store.then(function(){
     sessionAdd({t:rec.t,kind:'pending',name:''});
@@ -1456,7 +1535,7 @@ function queueClip(blob){
   },function(){
     showCard(errCard('could not reach the recognizer, and could not keep the clip on this phone either. try again when you have signal.'));
   });
-  heldBlob=null;reset();
+  heldBlob=null;heldJob=null;heldJobAt=0;heldRec=null;reset();
 }
 function pendingList(){return window.gmxClips?gmxClips.list().then(function(rows){return rows.filter(function(r){return r.kind==='pending'&&r.blob}).sort(function(a,b){return a.t-b.t})}).catch(function(){return []}):Promise.resolve([])}
 function renderPending(){
@@ -1471,12 +1550,16 @@ function renderPending(){
 function drain(){
   if(busy||draining||!navigator.onLine||!window.gmxClips||!cfg)return;
   pendingList().then(function(p){
+    /* checked again after the read (2026-11-09, recognizer review F62): a tap during the read used to have the
+       drain start on top of the live scan */
+    if(busy||draining||!navigator.onLine)return;
     if(!p.length){renderPending();return}
     var rec=p[0];draining=rec;drainDone=false;drainFailed=false;
     busy=true;card.classList.remove('on');current=null;heldBlob=rec.blob;heldAt=rec.heard_at||new Date(rec.t).toISOString();heldLoud=false;
+    heldJob=rec.job_id||null;heldJobAt=rec.job_at||0;heldRec=rec;
     scanSeq++;early=null;finalDone=false;rateHit=false;timing={t0:Date.now(),rounds:[],first:null};
     go.classList.add('busy');say2('matching a clip from '+when(rec.t));renderPending();
-    identify(rec.blob);
+    identify(rec.blob,null,rec.job_id||null);
   });
 }
 window.addEventListener('online',function(){renderPending();setTimeout(drain,1500)});
