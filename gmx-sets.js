@@ -33,8 +33,15 @@ st.textContent='.card .k{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}.car
 document.head.appendChild(st);
 function card(c){
   return '<div class="card"><button class="set-facade" type="button" data-yt="'+esc(c.yt)+'" data-title="'+esc(c.title)+'" aria-label="play '+esc(c.title)+'">'+
-    '<img src="https://img.youtube.com/vi/'+esc(c.yt)+'/hqdefault.jpg" alt="" loading="lazy" width="480" height="360">'+PLAY+'</button>'+c.html+chips(c.yt)+'</div>';
+    '<img src="https://i.ytimg.com/vi/'+esc(c.yt)+'/maxresdefault.jpg" data-ts="0" alt="" loading="lazy" width="1280" height="720">'+PLAY+'</button>'+c.html+chips(c.yt)+'</div>';
 }
+/* sharpest thumbnail the video has: maxres, hq720, sd, hq. a missing size answers with a 120x90 grey
+   placeholder (or an error), so step down on either until a real picture loads. hqdefault always exists */
+var TS=['maxresdefault','hq720','sddefault','hqdefault'];
+function tstep(e){var i=e.target;if(!i||i.tagName!=='IMG'||!i.hasAttribute('data-ts'))return;
+  if(e.type==='load'&&i.naturalWidth>120)return;var n=+i.getAttribute('data-ts')+1;if(n>=TS.length)return;
+  i.setAttribute('data-ts',n);i.src=i.src.replace(/\/[a-z0-9]+\.jpg$/,'/'+TS[n]+'.jpg');}
+document.addEventListener('load',tstep,true);document.addEventListener('error',tstep,true);
 /* the cards already inline on the page (the just added row) get their chips once the tags are in */
 loadTags().then(function(){
   [].slice.call(document.querySelectorAll('.card .set-facade[data-yt]')).forEach(function(b){

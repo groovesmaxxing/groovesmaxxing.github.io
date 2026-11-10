@@ -51,7 +51,7 @@ if not artists:
 m = re.search(r'<script>\n\(function\(\)\{\nfunction play\(b\)\{.*?\n</script>\n', out, re.S)
 if not m:
     print('the sets script did not match, nothing done'); sys.exit(1)
-out = out[:m.start()] + '<!-- sets:light -->\n<script src="/gmx-sets.js" defer></script>\n' + out[m.end():]
+out = out[:m.start()] + '<!-- sets:light -->\n<script src="/gmx-sets.js?v=1" defer></script>\n' + out[m.end():]
 json.dump({'generated': date.today().isoformat(), 'artists': artists}, open('sets-index.json', 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
 open(p, 'w', encoding='utf-8').write(out)
 print('sets.html: %d artists moved to sets-index.json (%d cards), page %d -> %d KB' % (len(artists), sum(len(a['cards']) for a in artists.values()), len(src) // 1024, len(out) // 1024))
