@@ -260,7 +260,7 @@ function markOwner(){
 /* the link wait (2026-11-09). /auth/poll shares the phone's hourly budget with scans, so the polls space out with the
    ticket's age: 4 s for the first minute, 15 s to five minutes, then 45 s (about 50 calls in 20 minutes, not 300). it
    pauses while the page is hidden and asks at once when the page comes back or gets focus, so coming back from the mail
-   app signs in as fast as before. errors back off (doubling, a minute at most, eight in a row stop it). a 429 stops the
+   app signs in as fast as before. errors back off (doubling, then once a minute until the ticket ends, never a silent stop). a 429 stops the
    wait and says so in the code form. one wait at a time; the ticket stays stored after an error or 429 stop, so a
    reload picks it up and a link opened here still counts as this browser's own. */
 var waitAsk=null;
@@ -292,7 +292,7 @@ function waitForLink(ticket,minutes,done){
       if(gen!==waitGen){if(j&&j.state==='ready'&&j.session&&j.session!==token())endSession(j.session);return 'stop'}
       if(j&&j.state==='ready'){signedIn(j.session,j.email);done&&done();return 'stop'}
       if(j&&j.state==='gone'){stopWait();return 'stop'}
-    },function(){bad++;if(bad>=8)return 'stop'}).then(function(s){
+    },function(){bad++}).then(function(s){
       busy=false;
       if(gen!==waitGen)return;
       if(s==='limited'){stopTimer();codeNote('stopped waiting here. type the six digits, or tap the link in the mail.');return}
