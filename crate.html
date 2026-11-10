@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-GzXsVpwEQennLNp5y4qc5rUW4ZUDImjbd/oUV1RxbXg='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self'; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com https://embed.beatport.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com 'unsafe-inline' 'sha256-23gOmCWSV/db4iFTdxE+fMBZvW3FdSQtdwaK+1+nkAo=' 'sha256-rpS+kDdW16i8MzGogD4aBb6Em9f/IHIntBzsZiRTgLI='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self'; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com https://embed.beatport.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <link rel="manifest" href="/manifest.webmanifest">
@@ -189,14 +189,18 @@ function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){retur
 function say(t){msg.textContent=t}
 /* a saved row's links come from this phone or the account: only https:// or a path on this site become a link */
 function ok(u){u=String(u==null?'':u);return (/^https:\/\/[^\/\\]/i.test(u)||/^\/(?![\/\\])/.test(u))&&!/[\\\u0000-\u001f]/.test(u)?u:''}
+/* an unreleased track never carries a link to the song (G-MO, 2026-09-27): no store link, no store search. the scan marks
+   its hearts unreleased; older hearts and tracklist rows are caught by an unreleased or ID sub, (unreleased) in the title,
+   or a nameless title ("ID - ID", "Artist - ID") */
+function unrel(it){var t=String(it.title||'').trim();return it.kind==='track'&&(!!it.unreleased||String(it.sub||'').split(' · ').some(function(x){x=x.trim();return x==='ID'||x.toLowerCase()==='unreleased'})||/\(unreleased\)/i.test(t)||/(^|\s-\s)ID(\s*\(|$)/.test(t))}
 function links(it){
-  var l=it.links||{},out='',u;
+  var un=unrel(it),l=un?{}:(it.links||{}),out='',u;
   function ext(v,t){v=ok(v);if(v)out+='<a href="'+esc(v)+'" target="_blank" rel="noopener">'+t+'</a>';return !!v}
   if(it.kind==='set'){ext(it.url,'youtube ↗');u=ok(it.page);if(u&&u!=='/')out+='<a href="'+esc(u)+'">where you found it →</a>'}
   var sp=ext(l.spotify,'spotify ↗');
   ext(l.apple,'apple music ↗');ext(l.beatport,'beatport ↗');ext(l.soundcloud,'soundcloud ↗');
   if(it.kind==='track'&&(u=ok(it.url)))out+='<a href="'+esc(u)+'">the tracklist →</a>';
-  if(it.kind==='track'&&!sp)out+='<a href="https://open.spotify.com/search/'+encodeURIComponent(it.title||'')+'" target="_blank" rel="noopener">find on spotify ↗</a>';
+  if(it.kind==='track'&&!sp&&!un)out+='<a href="https://open.spotify.com/search/'+encodeURIComponent(it.title||'')+'" target="_blank" rel="noopener">find on spotify ↗</a>';
   if(it.kind==='artist'||it.kind==='label'){if(u=ok(it.url))out+='<a href="'+esc(u)+'">the profile →</a>';out+='<a href="/upcoming?mine=1">dropping soon →</a>'}
   return out;
 }
@@ -213,12 +217,12 @@ document.addEventListener('gmx:crate-synced',function(){render()});
 document.addEventListener('click',function(e){var b=e.target.closest('[data-rm]');if(!b)return;var id=b.getAttribute('data-rm'),it=gmxCrate.load().filter(function(x){return x.id===id})[0];if(it)gmxCrate.toggle(it);render();say('removed.')});
 document.getElementById('c-copy').addEventListener('click',function(){
   var l=gmxCrate.load();if(!l.length)return say('nothing to copy.');
-  var txt=l.map(function(it){var u=(it.links&&(it.links.spotify||it.links.beatport||it.links.soundcloud))||it.url||'';return it.title+(it.sub?' ('+it.sub+')':'')+(u?' '+(u.charAt(0)==='/'?'https://groovesmaxxing.com'+u:u):'')}).join('\n');
+  var txt=l.map(function(it){var u=(!unrel(it)&&it.links&&(it.links.spotify||it.links.beatport||it.links.soundcloud))||it.url||'';return it.title+(it.sub?' ('+it.sub+')':'')+(u?' '+(u.charAt(0)==='/'?'https://groovesmaxxing.com'+u:u):'')}).join('\n');
   if(navigator.clipboard)navigator.clipboard.writeText(txt).then(function(){say('copied, '+l.length+' lines.')},function(){say('could not copy.')});else say('copy is not available here.');
 });
 /* a browser lets one tap open one tab: the first opens, the rest are links right here */
 document.getElementById('c-spotify').addEventListener('click',function(){
-  var urls=gmxCrate.load().map(function(it){return it.links&&it.links.spotify}).filter(function(u){return /^https:\/\/open\.spotify\.com\//.test(ok(u))});
+  var urls=gmxCrate.load().map(function(it){return !unrel(it)&&it.links&&it.links.spotify}).filter(function(u){return /^https:\/\/open\.spotify\.com\//.test(ok(u))});
   if(!urls.length)return say('no track in the crate has a spotify link yet. the tracklists add them as we verify.');
   window.open(urls[0],'_blank','noopener');
   if(urls.length===1)return say('opened it.');

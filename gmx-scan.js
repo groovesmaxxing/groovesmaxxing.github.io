@@ -547,11 +547,13 @@ var namesIdx=null;
 function namesIndex(){return namesIdx||(namesIdx=fx('/names-index.json',{},GET_MS).then(function(r){return r.ok?r.json():null}).catch(function(){return null}))}
 function crateItem(cand){
   var nm=nameOf(cand)||{artist:'',title:''},links={};
-  [].slice.call(card.querySelectorAll('#storerow a.btn:not(.find)')).forEach(function(a){var h=a.href||'';if(/open\.spotify\.com/.test(h))links.spotify=h;else if(/music\.apple\.com/.test(h))links.apple=h;else if(/beatport\.com/.test(h)&&!/search/.test(h))links.beatport=h;else if(/soundcloud\.com/.test(h)&&!/search/.test(h))links.soundcloud=h});
+  if(!isUnreleased(cand))[].slice.call(card.querySelectorAll('#storerow a.btn:not(.find)')).forEach(function(a){var h=a.href||'';if(/open\.spotify\.com/.test(h))links.spotify=h;else if(/music\.apple\.com/.test(h))links.apple=h;else if(/beatport\.com/.test(h)&&!/search/.test(h))links.beatport=h;else if(/soundcloud\.com/.test(h)&&!/search/.test(h))links.soundcloud=h});
   var who=nm.artist||((card.querySelector('.sub')||{}).textContent||'').trim();
   var shown=nm.lib?((card.querySelector('h2')||{}).textContent||'').trim():'';
   var title=(who?who+' - ':'')+(shown||nm.title||'unnamed library entry');
-  return {kind:'track',id:'scan:'+(foldT(who+' '+nm.title)||cand.library_id||'id'),title:title,sub:[cand.label||'',cand.status||'','found with the scan'].filter(Boolean).join(' · '),url:'/scan',links:links,artist:who,label:cand.label||''};
+  /* the mark rides in sub as well: gmx-account.js norm() drops unknown keys on a signed-in sync, and /crate reads the word */
+  var un=isUnreleased(cand);
+  return {kind:'track',id:'scan:'+(foldT(who+' '+nm.title)||cand.library_id||'id'),title:title,sub:[cand.label||'',cand.status||'',unrelWord(un,cand.status),'found with the scan'].filter(Boolean).join(' · '),url:'/scan',links:links,artist:who,label:cand.label||'',unreleased:un||undefined};
 }
 function decorate(cur){
   var c=cur&&cur.card&&cur.card.candidate; if(!c||cur.card.kind!=='match')return;
@@ -597,9 +599,9 @@ function artBlock(c){
   // the cover comes only from a store record (a released track). an unreleased ID has no cover to show,
   // so it carries the groovesmaxxing mark, the rings and the wave, with the word under it (G-MO, 2026-10-11).
   // a released track with no cover yet draws the plain rings until enrich() finds one.
+  if(isUnreleased(c))return '<div class="art unrel" data-done="1">'+logoMark()+'<span class="ulbl">unreleased</span></div>';
   var a=safeUrl(c.artwork_url);
   if(a)return '<div class="art"><img src="'+esc(a)+'" alt="" loading="lazy" data-rings="1"></div>';
-  if(c.released===false||(c.status&&c.status!=='out now'))return '<div class="art unrel" data-done="1">'+logoMark()+'<span class="ulbl">unreleased</span></div>';
   return '<div class="art">'+ringsMark()+'</div>';
 }
 function logoMark(){
@@ -614,7 +616,14 @@ function statusPill(s){
   var cls=s==='out now'?'out':s==='unreleased'?'unr':'';
   return '<span class="pill '+cls+'">'+esc(s||'ID')+'</span>';
 }
+/* an unreleased track never carries a link to the song (G-MO, 2026-09-27): no store button, no store cover, no
+   store search, no linked title, no song share url. every path that builds one asks this first, whatever the
+   server sent in store_links. links to a set (page_url, deep_link, the hear it in rows) are allowed. */
+function isUnreleased(c){return !!c&&(c.released===false||!!(c.status&&c.status!=='out now'))}
+/* the word a crate heart's sub carries for an unreleased track, unless its status already says unreleased or ID */
+function unrelWord(un,status){return un&&status!=='unreleased'&&status!=='ID'?'unreleased':''}
 function storeRow(c){
+  if(isUnreleased(c))return '';
   var l=cleanLinks(c.store_links), out='';
   if(l.spotify)out+='<a class="btn" href="'+esc(l.spotify)+'" target="_blank" rel="noopener">spotify</a>';
   if(l.apple)out+='<a class="btn" href="'+esc(l.apple)+'" target="_blank" rel="noopener">apple music</a>';
@@ -795,7 +804,7 @@ function resultCard(cur){
    everything is cached on the phone. nothing here identifies audio, it only dresses a result. */
 var ART_KEY='gmx_art', tracksIdx=null;
 function artCache(){try{return JSON.parse(localStorage.getItem(ART_KEY)||'{}')}catch(e){return {}}}
-function artRemember(k,v){try{var c=artCache();c[k]=v;var ks=Object.keys(c);while(ks.length>120){delete c[ks.shift()]}localStorage.setItem(ART_KEY,JSON.stringify(c))}catch(e){}}
+function artRemember(k,v,cand){if(!cand||isUnreleased(cand))return;try{var c=artCache();c[k]=v;var ks=Object.keys(c);while(ks.length>120){delete c[ks.shift()]}localStorage.setItem(ART_KEY,JSON.stringify(c))}catch(e){}}
 function foldT(t){t=String(t||'').normalize('NFKD').replace(/[̀-ͯ]/g,'').toLowerCase();t=t.replace(/\((?:extended|original|radio|club|edit|mix|remix|version|feat\.?|ft\.?)[^)]*\)/g,' ').replace(/\b(extended mix|original mix|radio edit|club mix)\b/g,' ');return t.replace(/[^a-z0-9]+/g,' ').trim()}
 function jsonp(url,ms){return new Promise(function(res,rej){var cb='gmxcb'+Date.now()+Math.floor(Math.random()*1e4),sc=document.createElement('script'),t=setTimeout(function(){done();rej(new Error('timeout'))},ms||6000);
   function done(){clearTimeout(t);delete window[cb];if(sc.parentNode)sc.parentNode.removeChild(sc)}
@@ -806,27 +815,35 @@ function enrich(cur){
   var c=cur&&cur.card&&cur.card.candidate; if(!c)return;
   var nm=nameOf(c); if(!nm||!(nm.title||nm.artist))return;
   var artist=nm.artist||'', title=nm.title||'', q=foldT(artist+' '+title), key=q||foldT(title);
-  var cardEl=card, art=cardEl.querySelector('.art'), store=cardEl.querySelector('#storerow'), hearEl=cardEl.querySelector('#hear');
+  var cardEl=card, art=cardEl.querySelector('.art'), store=cardEl.querySelector('#storerow'), hearEl=cardEl.querySelector('#hear'), h2El=cardEl.querySelector('h2');
   var l=c.store_links||{};
+  /* every late answer works on the card this call started on, never on whatever card shows now: the nodes are taken
+     here, and a callback whose node left the page (a new card replaced it) does nothing. otherwise a released card's
+     slow store answer lands on the unreleased card that followed it and links its title to the old song. */
   /* an unreleased card carries no link to the song, ever (G-MO, 2026-09-27): no store button, no store cover, no store
-     search. the same title on a released original must not leak its links onto an edit that is not out. */
-  var unreleased=c.released===false||(c.status&&c.status!=='out now');
-  function setArt(url){url=safeUrl(url);if(!art||!url||art.getAttribute('data-done'))return;art.setAttribute('data-done','1');var img=document.createElement('img');img.alt='';img.loading='lazy';img.onload=function(){img.classList.add('in');art.classList.add('found')};img.onerror=function(){img.remove()};img.src=url;art.innerHTML='';art.appendChild(img)}
-  function addBtn(href,label,cls){href=safeUrl(href);if(!store||!href||store.querySelector('a[href="'+href+'"]'))return;var a=document.createElement('a');a.className='btn'+(cls?' '+cls:'');a.href=href;a.target='_blank';a.rel='noopener';a.textContent=label;var share=store.querySelector('[data-act="share"]');store.insertBefore(a,share||null);titleLink()}
+     search. the same title on a released original must not leak its links onto an edit that is not out: foldT drops
+     "(extended mix)", so the original and the edit share one gmx_art key. an unreleased card returns before the cache
+     read, any addBtn and any titleLink, and only fills "hear it in" (set links) from our tracklists. */
+  var unreleased=isUnreleased(c);
+  function setArt(url){url=safeUrl(url);if(unreleased||!art||!art.isConnected||!url||art.getAttribute('data-done'))return;art.setAttribute('data-done','1');var img=document.createElement('img');img.alt='';img.loading='lazy';img.onload=function(){img.classList.add('in');art.classList.add('found')};img.onerror=function(){img.remove()};img.src=url;art.innerHTML='';art.appendChild(img)}
+  function addBtn(href,label,cls){if(unreleased||!store||!store.isConnected)return;href=safeUrl(href);if(!store||!href||store.querySelector('a[href="'+href+'"]'))return;var a=document.createElement('a');a.className='btn'+(cls?' '+cls:'');a.href=href;a.target='_blank';a.rel='noopener';a.textContent=label;var share=store.querySelector('[data-act="share"]');store.insertBefore(a,share||null);titleLink()}
   function titleLink(){
-    var h=cardEl.querySelector('h2');if(!h||h.querySelector('a'))return;
+    if(unreleased)return;
+    var h=h2El;if(!h||!h.isConnected||h.querySelector('a'))return;
     var best=['open.spotify.com','music.apple.com','deezer.com','soundcloud.com','beatport.com'].map(function(d){var a=store&&store.querySelector('a.btn:not(.find)[href*="'+d+'"]');return a&&a.href}).filter(Boolean)[0];
     if(!best)return;var a=document.createElement('a');a.className='listen';a.href=best;a.target='_blank';a.rel='noopener';a.setAttribute('aria-label','listen to '+h.textContent);a.textContent=h.textContent;h.innerHTML='';h.appendChild(a);
   }
+  if(unreleased){fromTracklists();return}
   titleLink();
   var cached=artCache()[key];
   if(cached){if(cached.img&&!c.artwork_url)setArt(cached.img);if(cached.ap)addBtn(cached.ap,'apple music');if(cached.dz)addBtn(cached.dz,'deezer');if(cached.sp&&!l.spotify)addBtn(cached.sp,'spotify')}
+  fromTracklists();
   /* 1. our own tracklists: a verified spotify link, and the sets where it was played */
-  tracks().then(function(j){
-    if(!j)return;var hits=j.rows.filter(function(r){return sameTrack(q,r)||(title&&foldT(title).length>8&&r.q.indexOf(foldT(title))>-1&&(!artist||r.q.indexOf(foldT(artist).split(' ')[0])>-1))}).slice(0,6);
+  function fromTracklists(){tracks().then(function(j){
+    if(!j||!h2El||!h2El.isConnected)return;var hits=j.rows.filter(function(r){return sameTrack(q,r)||(title&&foldT(title).length>8&&r.q.indexOf(foldT(title))>-1&&(!artist||r.q.indexOf(foldT(artist).split(' ')[0])>-1))}).slice(0,6);
     if(!hits.length)return;
     var sp=hits.map(function(r){return r.links&&r.links.sp}).filter(Boolean)[0];
-    if(sp&&!l.spotify&&!unreleased){addBtn(sp,'spotify');artRemember(key,Object.assign(artCache()[key]||{},{sp:sp}))}
+    if(sp&&!l.spotify&&!unreleased){addBtn(sp,'spotify');artRemember(key,Object.assign(artCache()[key]||{},{sp:sp}),c)}
     /* no artist on the card, but our tracklists name the record: take their name whole, artist and the full title
        with its edit credit (G-MO, 2026-10-11: "Whisper To Me (Assaf Michael & Reef Kopel Edit)", not just the
        caption), say so, and link the profile when there is one. the most played name across the sets wins. */
@@ -835,7 +852,7 @@ function enrich(cur){
       var full=Object.keys(count).sort(function(a,b){return count[b]-count[a]||b.length-a.length})[0];
       if(full){
         var who=full.split(' - ')[0].trim(),ttlName=full.split(' - ').slice(1).join(' - ').trim();
-        var h2=cardEl.querySelector('h2'),sub=document.createElement('p');sub.className='sub';sub.textContent=who;
+        var h2=h2El,sub=document.createElement('p');sub.className='sub';sub.textContent=who;
         if(h2){if(nm.lib&&ttlName&&foldT(ttlName).indexOf(foldT(title))>-1){h2.textContent=ttlName;h2.classList.toggle('long',ttlName.length>42)}h2.insertAdjacentElement('afterend',sub)}
         var t=cardEl.querySelector('.ttl');if(t&&/no artist named yet/.test(t.textContent))t.textContent=t.textContent.replace('no artist named yet','named in our tracklists');
         checkArtistPage(who);
@@ -844,17 +861,17 @@ function enrich(cur){
     if(hearEl&&!hearEl.children.length){
       hearEl.innerHTML='<h3>hear it in</h3><ul class="heard hear">'+hits.map(function(r){var rl=safeUrl(r.l),ru=safeUrl(r.u);var play=rl?'<a href="'+esc(rl)+'" target="_blank" rel="noopener">play from '+esc(r.at)+' ↗</a>':esc(r.at);return '<li><a href="'+esc(ru)+'">'+esc(r.set)+'<small>'+esc(r.n)+(r.lab?' · '+esc(r.lab):'')+'</small></a><span class="at">'+play+'</span></li>'}).join('')+'</ul>';
     }
-  });
+  });}
   if(unreleased||(c.artwork_url&&l.spotify&&l.apple))return;
   /* 2. spotify's embed service gives the cover for a spotify link, no key needed */
-  var viaSpotify=l.spotify?fx('https://open.spotify.com/oembed?url='+encodeURIComponent(l.spotify),{},GET_MS).then(function(r){return r.ok?r.json():null}).then(function(j){if(j&&j.thumbnail_url&&!c.artwork_url){setArt(j.thumbnail_url);artRemember(key,Object.assign(artCache()[key]||{},{img:j.thumbnail_url}))}}).catch(function(){}):Promise.resolve();
+  var viaSpotify=l.spotify?fx('https://open.spotify.com/oembed?url='+encodeURIComponent(l.spotify),{},GET_MS).then(function(r){return r.ok?r.json():null}).then(function(j){if(j&&j.thumbnail_url&&!c.artwork_url){setArt(j.thumbnail_url);artRemember(key,Object.assign(artCache()[key]||{},{img:j.thumbnail_url}),c)}}).catch(function(){}):Promise.resolve();
   /* 3. apple's public search: the cover at 600px and the apple music link, matched on the folded name */
   if(!(cached&&cached.ap)&&(artist||title)){
     fx('https://itunes.apple.com/search?media=music&entity=song&limit=6&term='+encodeURIComponent((artist+' '+title).trim()),{},GET_MS).then(function(r){return r.ok?r.json():null}).then(function(j){
       var hit=(j&&j.results||[]).filter(function(x){var fq=foldT((x.artistName||'')+' '+(x.trackName||''));return fq===q||(q.length>12&&(fq.indexOf(foldT(title))>-1&&fq.indexOf(foldT(artist).split(' ')[0])>-1))})[0];
       if(!hit)return;var img=(hit.artworkUrl100||'').replace(/100x100bb/,'600x600bb');
       if(img&&!c.artwork_url)setArt(img);if(hit.trackViewUrl&&!l.apple)addBtn(hit.trackViewUrl,'apple music');
-      artRemember(key,Object.assign(artCache()[key]||{},{img:img||undefined,ap:hit.trackViewUrl}));
+      artRemember(key,Object.assign(artCache()[key]||{},{img:img||undefined,ap:hit.trackViewUrl}),c);
     }).catch(function(){});
   }
   /* 4. deezer, through jsonp since its api has no cors */
@@ -862,12 +879,12 @@ function enrich(cur){
     jsonp('https://api.deezer.com/search?limit=5&output=jsonp&q='+encodeURIComponent((artist+' '+title).trim()),6000).then(function(j){
       var hit=(j&&j.data||[]).filter(function(x){var fq=foldT((x.artist&&x.artist.name||'')+' '+(x.title||''));return fq===q||(q.length>12&&fq.indexOf(foldT(title))>-1)})[0];
       if(!hit)return;addBtn(hit.link,'deezer');if(hit.album&&hit.album.cover_big&&!c.artwork_url)setArt(hit.album.cover_big);
-      artRemember(key,Object.assign(artCache()[key]||{},{dz:hit.link}));
+      artRemember(key,Object.assign(artCache()[key]||{},{dz:hit.link}),c);
     }).catch(function(){});
   }
   /* 5. last resort when a released track has no real link: a search on each store */
   viaSpotify.then(function(){setTimeout(function(){
-    if(!store||c.status!=='out now')return;var qs=encodeURIComponent((artist+' '+title).trim());
+    if(!store||!store.isConnected||c.status!=='out now')return;var qs=encodeURIComponent((artist+' '+title).trim());
     if(!store.querySelector('a[href*="open.spotify.com"]'))addBtn('https://open.spotify.com/search/'+qs,'find on spotify','find');
     if(!store.querySelector('a[href*="soundcloud.com"]'))addBtn('https://soundcloud.com/search?q='+qs,'find on soundcloud','find');
     if(!store.querySelector('a[href*="beatport.com"]')&&!l.beatport_search)addBtn('https://www.beatport.com/search?q='+qs,'find on beatport','find');
@@ -1088,6 +1105,7 @@ function share(){
   var at=(s&&s.set_title)?' · heard in '+s.set_title+(s.at?' at '+s.at:''):(h0&&h0.set_title?' · heard in '+h0.set_title+(h0.at?' at '+h0.at:''):'');
   var text=what+at+' · found with the groovesMAXXING scan';
   var url=absUrl(s&&s.page_url)||absUrl(h0&&h0.page_url)||(k==='match'?(l.spotify||l.apple):'')||'https://groovesmaxxing.com/scan';
+  if(isUnreleased(c))url='https://groovesmaxxing.com/scan';   /* an unreleased track shares the scan page only, never the song */
   if(window.gmxSheet&&typeof gmxSheet.share==='function'){gmxSheet.share({title:'groovesMAXXING',text:text,url:url});return}
   if(navigator.share){navigator.share({title:'groovesMAXXING',text:text,url:url}).catch(function(){});return}
   if(navigator.clipboard){navigator.clipboard.writeText(text+' '+url).then(function(){say('copied.',true)},function(){say(url)});return}
@@ -1098,7 +1116,7 @@ function share(){
 function loadHistory(){try{return JSON.parse(localStorage.getItem('gmx_history')||'[]')}catch(e){return []}}
 function remember(cur,keep){
   var c=cur.card, cand=c.candidate, nm=cand?nameOf(cand):null;
-  var row={t:draining?draining.t:Date.now(),kind:c.kind,artist:nm?nm.artist:'',title:nm?nm.title:'',score:cand&&cand.shown_score!=null?cand.shown_score:null,status:cand?cand.status:'',id:cur.job_id,rid:cur.recognition_id,clip:!!keep,secs:cur.timing&&cur.timing.first?Math.round(cur.timing.first/100)/10:null};
+  var row={t:draining?draining.t:Date.now(),kind:c.kind,artist:nm?nm.artist:'',title:nm?nm.title:'',score:cand&&cand.shown_score!=null?cand.shown_score:null,status:cand?cand.status:'',unreleased:isUnreleased(cand)||undefined,id:cur.job_id,rid:cur.recognition_id,clip:!!keep,secs:cur.timing&&cur.timing.first?Math.round(cur.timing.first/100)/10:null};
   var h=loadHistory(); h.unshift(row); h=h.slice(0,HISTORY_MAX);
   try{localStorage.setItem('gmx_history',JSON.stringify(h))}catch(e){}
   renderHistory();
@@ -1136,8 +1154,8 @@ function heartHistory(h){
   if(!window.gmxCrate||!gmxCrate.heart)return;
   [].slice.call(recentlist.querySelectorAll('[data-hi]')).forEach(function(a){
     var r=h[+a.getAttribute('data-hi')];if(!r||!r.title)return;
-    var who=r.artist||'',title=(who?who+' - ':'')+r.title;
-    a.insertBefore(gmxCrate.heart({kind:'track',id:'scan:'+(foldT(who+' '+r.title)||'id'),title:title,sub:[r.status||'','found with the scan'].filter(Boolean).join(' · '),url:'/scan',links:{},artist:who,label:''},title),a.firstChild);
+    var who=r.artist||'',title=(who?who+' - ':'')+r.title,un=!!r.unreleased||!!(r.status&&r.status!=='out now');
+    a.insertBefore(gmxCrate.heart({kind:'track',id:'scan:'+(foldT(who+' '+r.title)||'id'),title:title,sub:[r.status||'',unrelWord(un,r.status),'found with the scan'].filter(Boolean).join(' · '),url:'/scan',links:{},artist:who,label:'',unreleased:un||undefined},title),a.firstChild);
   });
 }
 function linkHistoryArtists(){
