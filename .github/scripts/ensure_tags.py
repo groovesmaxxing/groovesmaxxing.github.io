@@ -19,7 +19,7 @@ def files(pattern):
     return [p.replace('\\', '/') for p in glob.glob(pattern)]
 
 MOTION_CSS = '<link rel="stylesheet" href="/gmx-motion.css?v=2">'
-MOTION_JS = '<script src="/gmx-motion.js?v=2" defer></script>'
+MOTION_JS = '<script src="/gmx-motion.js?v=3" defer></script>'
 T = {
     'player_css': '<link rel="stylesheet" href="/gmx-player.css?v=3">',
     'nav_css': '<link rel="stylesheet" href="/gmx-nav.css?v=22">',
