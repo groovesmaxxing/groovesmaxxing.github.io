@@ -1,7 +1,7 @@
 {
-"generated": "2026-11-09T19:54:33+00:00",
+"generated": "2026-11-10T17:08:32+00:00",
 "artist_count": 704,
-"artists_with_events": 139,
+"artists_with_events": 140,
 "events": [
 {
 "date": "2026-11-12",
@@ -1651,6 +1651,15 @@
 "artist": "Chris Lake"
 },
 {
+"date": "2026-12-26",
+"event": "J.Worra, Will Clarke, Brandon, Kaysin",
+"venue": "Academy LA",
+"city": "Los Angeles",
+"region": "CA",
+"url": "https://www.ticketweb.com/event/jworra-will-clarke-brandon-kaysin-academy-la-tickets/14436674",
+"artist": "J. Worra"
+},
+{
 "date": "2026-12-27",
 "event": "WHP presents: Kaluki",
 "venue": "Depot Mayfield",
@@ -2198,6 +2207,15 @@
 "region": "VIC",
 "url": "https://www.moshtix.com.au/v2/event/tmrw-music-one-hit-pres-brighter-daze-melbourne/201293",
 "artist": "Mousse T."
+},
+{
+"date": "2027-01-28",
+"event": "Infected Mushroom",
+"venue": "Brooklyn Bowl Philadelphia",
+"city": "Philadelphia",
+"region": "PA",
+"url": "https://www.ticketmaster.com/infected-mushroom-philadelphia-pennsylvania-01-28-2027/event/0200655F1EBD8DC6",
+"artist": "Infected Mushroom"
 },
 {
 "date": "2027-01-30",
@@ -3251,6 +3269,15 @@
 "region": "GB",
 "url": "https://www.ticketmaster.co.uk/josh-baker-b2b-kettama-b2b-prospa-london-04-07-2027/event/3700653CA09C1F1E",
 "artist": "Prospa"
+},
+{
+"date": "2027-07-11",
+"event": "Badlands Music Festival With Fisher",
+"venue": "Badland's Tent",
+"city": "Calgary",
+"region": "AB",
+"url": "https://www.ticketweb.ca/event/badlands-music-festival-with-fisher-badlands-tent-tickets/14435964",
+"artist": "FISHER"
 },
 {
 "date": "2027-08-07",
