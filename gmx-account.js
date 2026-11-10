@@ -436,12 +436,42 @@ function paint(){
   chip.href=onScan()?'#you':'/more#account';
   chip.setAttribute('aria-label',t?'your account'+(m&&m.handle?', @'+m.handle:''):'sign in');
 }
+/* the page share circle (2026-11-09, it was a pill under the h1): built here with the row, so it is in the row from its first
+   paint and the row never reflows when gmx-sheet.js loads after this file. it sits after the search circle and before the
+   chip; gmx-lang.js puts the language circle before the chip, so the order is search, share, language, chip whichever
+   lands first. a tap goes to gmxSheet.sharePage (phone share sheet, then clipboard, then the copy sheet). the pages that
+   get one are the ones the pill had: no redirect stubs (mountChip skips those), no data-noshare, a canonical, a title,
+   and not a NOSHARE path: personal pages, the search and scan tools, legal pages, and moods, which shares the list on
+   screen from its own button. home has one: in the installed app, with no address bar, it is the only way to share the site */
+/* gmx-sheet.js has the other copy of canonPath (it builds the shared url) and sharePage: change both together */
+var NOSHARE=/^\/(?:search|more|crate|scan|privacy|terms|moods|404|google[0-9a-f]+)$/;
+function canonPath(){
+  var c=document.querySelector('link[rel="canonical"]'),u;if(!c)return null;
+  try{u=new URL(c.getAttribute('href'),location.href)}catch(e){return path}
+  return u.origin===location.origin||/(^|\.)groovesmaxxing\.com$/.test(u.hostname)?u.pathname.replace(/\.html$/,''):path;
+}
+function pageShareOk(){
+  var cp=canonPath();
+  if(!document.body||document.body.hasAttribute('data-noshare')||!cp||NOSHARE.test(cp)||NOSHARE.test(path))return false;
+  var h1=document.querySelector('main h1, .wrap h1, h1');return !!h1&&!h1.closest('.gmx-sheet, nav, footer');
+}
+function shareBtn(){
+  var b=document.createElement('button');b.type='button';b.className='gmx-hshare';b.setAttribute('aria-label','share this page');b.title='share';
+  b.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V4"/><path d="M8 8l4-4 4 4"/><path d="M5 12v7h14v-7"/></svg>';
+  b.addEventListener('click',function(){
+    if(window.gmxSheet&&gmxSheet.sharePage){gmxSheet.sharePage(b);return}
+    /* gmx-sheet.js not loaded (it rides on every page, so this is a slow network): the phone's own share sheet */
+    if(navigator.share)navigator.share({title:'groovesMAXXING',url:'https://groovesmaxxing.com'+canonPath().replace(/\/index$/,'/')}).catch(function(){});
+  });
+  return b;
+}
 /* the header row: on a wide screen the logo (to /, the way home: there is no tab bar there) and the search button sit
    beside the chip, since there is no tab bar and no floating button there. gmx-nav.css hides both under 1025px. */
 function headerRow(){
   var row=document.createElement('span');row.className='gmx-hdr';
   if(!onScan()){var m=document.createElement('a');m.className='gmx-hmark';m.href='/';m.setAttribute('aria-label','groovesmaxxing home');m.innerHTML=MARK;row.appendChild(m)}
   if(path!=='/search'){var b=document.createElement('button');b.type='button';b.className='gmx-hsearch';b.setAttribute('aria-label','search the site');b.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 20 20"/></svg>';b.addEventListener('click',function(){if(window.gmxQuick)gmxQuick.open(b);else location.href='/search'});row.appendChild(b)}
+  if(pageShareOk())row.appendChild(shareBtn());
   chip=document.createElement('a');row.appendChild(chip);
   return row;
 }
@@ -463,6 +493,42 @@ function mountChip(){
   }
   paint();
   if(token())whoami().then(paint);
+  fitCrumbs();
+}
+/* the back row's section crumb (all artists, all labels, all tracklists; 2026-11-10 G-MO: it always shows on a wide screen).
+   gmx-nav.css keeps the crumbs to one 40px line there, so when the row is full (spanish, a long @handle) the section crumb
+   would be clipped. instead the first crumb gives: gmx-crumbs-tight shows "← groovesmaxxing" as its arrow alone (the words
+   stay its accessible name, the logo beside it goes home too). only if the section crumb is still clipped with the arrow
+   alone does gmx-crumbs-wrap lift the one-line cap: the full first crumb comes back and the section crumb wraps to a second
+   line under it, the way main always did (2026-11-10 G-MO: never hidden). each check measures the full crumbs first, then
+   tight, in one go before paint, so nothing flickers. it reruns when the header row resizes (the chip painting late, the
+   language circle, the fonts), when the window resizes, when the crumbs' words change (the language) and when the fonts
+   land. it never watches the row itself: the wrap makes the row taller, and a size change made inside a ResizeObserver
+   callback on a watched box is an observer loop error */
+function fitCrumbs(){
+  var cr=document.querySelector('.wrap > .top > .gmx-crumbs');if(!cr||cr.children.length<2)return;
+  var top=cr.parentNode,wide=window.matchMedia?window.matchMedia('(min-width:1025px)'):null;
+  function clipped(){
+    var box=cr.getBoundingClientRect(),hit=false;
+    [].slice.call(cr.children).forEach(function(a,i){
+      if(!i)return;var r=a.getBoundingClientRect();
+      if(r.width>0&&(r.bottom>box.bottom+1||r.right>box.right+1))hit=true;
+    });
+    return hit;
+  }
+  function fit(){
+    cr.classList.remove('gmx-crumbs-tight');cr.classList.remove('gmx-crumbs-wrap');
+    if(wide&&!wide.matches)return;
+    if(!clipped())return;
+    cr.classList.add('gmx-crumbs-tight');
+    if(clipped()){cr.classList.remove('gmx-crumbs-tight');cr.classList.add('gmx-crumbs-wrap')}
+  }
+  fit();
+  var hdr=top.querySelector('.gmx-hdr');
+  if(window.ResizeObserver&&hdr)new ResizeObserver(fit).observe(hdr);
+  window.addEventListener('resize',fit);window.addEventListener('load',fit);
+  if(window.MutationObserver)new MutationObserver(fit).observe(cr,{childList:true,characterData:true,subtree:true});
+  if(document.fonts){if(document.fonts.addEventListener)document.fonts.addEventListener('loadingdone',fit);if(document.fonts.ready)document.fonts.ready.then(fit)}
 }
 
 /* ---- "this is me" on a profile (design section 3) ----------------------------------------------------- */

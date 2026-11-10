@@ -22,9 +22,9 @@ MOTION_CSS = '<link rel="stylesheet" href="/gmx-motion.css?v=2">'
 MOTION_JS = '<script src="/gmx-motion.js?v=2" defer></script>'
 T = {
     'player_css': '<link rel="stylesheet" href="/gmx-player.css?v=3">',
-    'nav_css': '<link rel="stylesheet" href="/gmx-nav.css?v=21">',
+    'nav_css': '<link rel="stylesheet" href="/gmx-nav.css?v=22">',
     'player_js': '<script src="/gmx-player.js?v=1" defer></script>',
-    'nav_js': '<script src="/gmx-nav.js?v=37" defer></script>',
+    'nav_js': '<script src="/gmx-nav.js?v=38" defer></script>',
     'follow_js': '<script src="/gmx-follow.js?v=1" defer></script>',
     'crate_js': '<script src="/gmx-crate.js?v=1" defer></script>',
     'related_js': '<script src="/gmx-related.js?v=1" defer></script>',
@@ -32,10 +32,10 @@ T = {
     # gmx-quick.js and gmx-quick.css left T on 2026-11-09 (cr-shell-12): the search sheet lives in gmx-nav.js, and
     # the quick-search pass below now strips both tags. the files stay in the repo for cached old pages.
     'sheet_css': '<link rel="stylesheet" href="/gmx-sheet.css?v=4">',
-    'sheet_js': '<script src="/gmx-sheet.js?v=4" defer></script>',
+    'sheet_js': '<script src="/gmx-sheet.js?v=5" defer></script>',
     # the account layer (2026-10-12): "this is me" on every artist and label profile
     'account_css': '<link rel="stylesheet" href="/gmx-account.css?v=2">',
-    'account_js': '<script src="/gmx-account.js?v=21" defer></script>',
+    'account_js': '<script src="/gmx-account.js?v=22" defer></script>',
     # the "more" expander (2026-10-14): any element with data-more collapses behind one button
     'more_js': '<script src="/gmx-more.js?v=3" defer></script>',
     # the name reels on the home page (2026-10-14)

@@ -57,6 +57,57 @@ html.gmx-nowon .gmx-fab{bottom:calc(138px + env(safe-area-inset-bottom))}
 .gmx-hdr .gmx-hsearch:hover,.gmx-hdr .gmx-hsearch:focus-visible{color:#FF1C02;border-color:#FF1C02;outline:none}
 .gmx-hdr .gmx-hmark:hover,.gmx-hdr .gmx-hmark:focus-visible{background:#141417;box-shadow:0 0 14px rgba(255,28,2,.45);outline:none}
 @media (min-width:1025px){.gmx-hdr .gmx-hmark,.gmx-hdr .gmx-hsearch{display:flex}}
+/* the page share circle (gmx-account.js shareBtn, 2026-11-09): the search circle's size and look, on every width, before the
+   language circle. the dark fill matches the language circle, so it reads over the homepage hero on a phone */
+.gmx-hdr .gmx-hshare{display:flex;flex:none;box-sizing:border-box;width:40px;height:40px;border-radius:50%;align-items:center;justify-content:center;border:1px solid rgba(242,242,239,.18);background:rgba(11,11,13,.8);color:#8A8A93;padding:0;margin:0;cursor:pointer;font:inherit;-webkit-tap-highlight-color:transparent}
+.gmx-hdr .gmx-hshare svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.gmx-hdr .gmx-hshare:hover,.gmx-hdr .gmx-hshare:focus-visible{color:#FF1C02;border-color:#FF1C02;outline:none}
+:root body .gmx-hdr .gmx-hshare:focus-visible{outline:3px solid #FF1C02;outline-offset:3px}
+/* a wide screen: the share circle makes the row 50px longer, so the gaps, the crumb separator and the nav links tighten
+   a little, which keeps "← groovesmaxxing · all tracklists / artists / labels" on the 808px pages signed out in english.
+   when the line is still full (spanish, a long @handle) the crumbs keep one 40px line and gmx-account.js fitCrumbs marks
+   them gmx-crumbs-tight: "← groovesmaxxing" shows its arrow alone (the words stay its accessible name) and the separator
+   goes, so the section crumb stays. when it is still clipped with the arrow alone, gmx-crumbs-wrap lifts the one-line cap:
+   the full first crumb is back and the section crumb wraps to a second line under it, as main does. the section crumb is
+   never hidden on a wide screen (2026-11-10 G-MO) */
+@media (min-width:1025px){
+  :root .gmx-hdr{gap:6px}
+  :root .gmx-hnav a{padding:0 7px}
+  :root body .wrap > .top{gap:10px}
+  :root .wrap > .top > .gmx-crumbs{flex:0 1 auto;min-width:0;max-height:40px;overflow:hidden;column-gap:8px}
+  :root .wrap > .top > .gmx-crumbs .gmx-crumb2::before{margin-right:8px}
+  :root .wrap > .top > .gmx-crumbs.gmx-crumbs-tight > a.back:first-child{font-size:0;letter-spacing:0;display:inline-flex;align-items:center;justify-content:center;min-width:40px;min-height:40px}
+  :root .wrap > .top > .gmx-crumbs.gmx-crumbs-tight > a.back:first-child::before{content:"←";content:"←" / "";font-size:1.1rem;letter-spacing:0;line-height:1}
+  :root .wrap > .top > .gmx-crumbs.gmx-crumbs-tight .gmx-crumb2::before{content:none}
+  :root .wrap > .top > .gmx-crumbs.gmx-crumbs-wrap{max-height:none;overflow:visible}
+}
+/* a phone (480px and under: the share circle adds 50px to the row, so 401 to 478px wrapped too) keeps the back link, share, language and the chip on one line: tighter gaps, a slimmer
+   chip, the back link never wraps, and a chip that still does not fit ends in "…" instead of pushing out the page (the
+   chip is a block there: gmx-read.css makes it inline-flex, where text-overflow never draws).
+   in spanish "iniciar sesión" is too long for that line, and signed in the @handle is, so in both cases the back link
+   shows its arrow alone (40px target, the words stay its accessible name, home is in the tab bar) */
+@media (max-width:480px){
+  :root body .wrap > .top,:root body .gmx-top{gap:8px}
+  :root .gmx-hdr{gap:6px;flex:0 1 auto;min-width:0}
+  :root .gmx-top > a.back,:root .wrap > .top > a.back,:root .wrap > .top > .gmx-crumbs{flex:none}
+  :root .gmx-top > a.back,:root .wrap > .top > a.back,:root .gmx-crumbs a.back{white-space:nowrap}
+  :root .gmx-hdr .gmx-chip{display:block;flex:0 1 auto;min-width:0;padding:0 10px;letter-spacing:.03em;line-height:38px;text-overflow:ellipsis}
+  :root[lang^="es"] .gmx-top > a.back,:root[lang^="es"] .wrap > .top > a.back,:root[lang^="es"] .wrap > .top > .gmx-crumbs > a.back:first-child,
+  :root .gmx-top:has(.gmx-chip.in) > a.back,:root .wrap > .top:has(.gmx-chip.in) > a.back,:root .wrap > .top:has(.gmx-chip.in) > .gmx-crumbs > a.back:first-child{font-size:0;letter-spacing:0;display:inline-flex;align-items:center;justify-content:center;min-width:40px;min-height:40px}
+  :root[lang^="es"] .gmx-top > a.back::before,:root[lang^="es"] .wrap > .top > a.back::before,:root[lang^="es"] .wrap > .top > .gmx-crumbs > a.back:first-child::before,
+  :root .gmx-top:has(.gmx-chip.in) > a.back::before,:root .wrap > .top:has(.gmx-chip.in) > a.back::before,:root .wrap > .top:has(.gmx-chip.in) > .gmx-crumbs > a.back:first-child::before{content:"←";content:"←" / "";font-size:1.1rem;letter-spacing:0;line-height:1}
+}
+/* 370px and under: 8px more, so "sign in" still fits beside the longest back link ("← every tracklist" on /open-ids) */
+@media (max-width:370px){
+  :root .gmx-hdr{gap:4px}
+  :root .gmx-hdr .gmx-chip{padding:0 8px}
+}
+/* under 360px: the back link shows its arrow alone for everyone, so "sign in" fits whole beside the share circle (the
+   480px block above does this only for spanish and signed in; 2026-11-10 G-MO) */
+@media (max-width:359px){
+  :root .gmx-top > a.back,:root .wrap > .top > a.back,:root .wrap > .top > .gmx-crumbs > a.back:first-child{font-size:0;letter-spacing:0;display:inline-flex;align-items:center;justify-content:center;min-width:40px;min-height:40px}
+  :root .gmx-top > a.back::before,:root .wrap > .top > a.back::before,:root .wrap > .top > .gmx-crumbs > a.back:first-child::before{content:"←";content:"←" / "";font-size:1.1rem;letter-spacing:0;line-height:1}
+}
 /* the wide-screen nav (gmx-nav.js buildHnav): the tab bar's links, minus home, as a slim row beside the logo. same type
    and colours as the tab bar, hidden at 1024px and under where the tab bar is on (2026-11-09) */
 .gmx-hdr .gmx-hnav{display:none;align-items:center;gap:2px}

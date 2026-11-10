@@ -11,8 +11,8 @@
      an artist or label profile: follow, share, every verified link the page lists, scan.
    one share for the whole site (web review 2026-11-09, contract C2): gmxSheet.share({title, text, url})
    tries the phone's share sheet, then the clipboard, then a small sheet that holds the link selected so
-   it can be copied by hand. every page with a canonical url gets one "share" pill under its title (or in
-   its mast or profile row), and the cards that have their own address (festivals on /calendar, badges,
+   it can be copied by hand. every page with a canonical url gets one round share icon in the header row
+   (drawn by gmx-account.js, a tap calls sharePage here, 2026-11-09; tracklists keep only "copy the list" in their mast), and the cards that have their own address (festivals on /calendar, badges,
    open IDs) get their own share. escape, the backdrop or the close button shut the sheet and hand focus
    back, and tab stays inside it while it is open. nothing here is stored. */
 (function(){
@@ -24,10 +24,6 @@ var MAIL='groovesmaxxing@gmail.com',IG='https://www.instagram.com/groovesmaxxing
 var NOISE='.get,.thx,.gnote,.soft,.sig,.lab,.gmx-heart,.gmx-more,.gmx-also,.gmx-ishare';
 /* hubs whose og:title is written for search more than for a friend */
 var PAGE_TEXT={'/friday':'fresh grooves friday: the full weekly drop','/badges':'every badge, every artist'};
-/* pages with no page share pill: personal pages, the search and scan tools, legal pages, and moods, which
-   shares the list on screen from its own button. home has one (2026-11-09): in the installed app, with no
-   address bar, it is the only way to share the site itself */
-var NOSHARE=/^\/(?:search|more|crate|scan|privacy|terms|moods|404|google[0-9a-f]+)$/;
 /* every shared link names the live site, whatever host the page was opened on (the github.io mirror, a preview) */
 var SITE='https://groovesmaxxing.com';
 var I={
@@ -246,17 +242,16 @@ function pageText(){
   if(iss&&t.toLowerCase().indexOf(iss.toLowerCase())<0)t=t+': '+iss;
   return t;
 }
-/* one page share pill, the same everywhere: under the page's h1, unless the page has a better home for it */
-function pageShare(){
-  if(document.querySelector('.gmx-pageshare, .gmx-tlact[data-tl="share"]'))return;
-  if(document.body.hasAttribute('data-noshare')||document.querySelector('meta[http-equiv="refresh"]'))return;
-  if(!document.querySelector('link[rel="canonical"]')||NOSHARE.test(canonPath())||NOSHARE.test(path()))return;
-  var h1=document.querySelector('main h1, .wrap h1, h1');if(!h1||h1.closest('.gmx-sheet, nav, footer'))return;
-  var b=tlAct('share','share','share');b.classList.add('gmx-pageshare');b.setAttribute('aria-label','share this page');
-  b.addEventListener('click',function(){shareNow({text:pageText(),url:canonPath()},b)});
-  var row=document.createElement('div');row.className='gmx-pageact';row.appendChild(b);
-  h1.parentNode.insertBefore(row,h1.nextSibling);
+/* the page's share words: a profile says "<name> on groovesMAXXING", a tracklist names the set, the rest read pageText() */
+function headText(){
+  var sec=document.querySelector('section.artist[id]');if(sec&&sec.querySelector('h1.aname'))return text(sec.querySelector('h1.aname'))+' on '+BRAND;
+  if(document.querySelector('.mast .meta')&&[].slice.call(document.querySelectorAll('table.tl tr')).some(isSetRow))return setNameOf();
+  return pageText();
 }
+/* the page share (2026-11-09: it was a pill under the h1, now a round icon in the header row). gmx-account.js builds the
+   icon with the row, so it is there from the row's first paint, and decides which pages get one; a tap lands here */
+function sharePage(from){shareNow({text:headText(),url:canonPath()},from)}
+/* the other copy of canonPath and the NOSHARE list (which pages get the icon) lives in gmx-account.js: change both together */
 /* cards with their own address get their own share */
 function itemShares(){
   /* the festival calendar: each card is /calendar#e-<festival>-<year> */
@@ -334,20 +329,14 @@ function wire(root){
   });
   var sec=document.querySelector('section.artist[id]');
   if(sec&&!sec.querySelector('.meta .gmx-more')){var pill=sec.querySelector('.meta .gmx-follow');if(pill){var mb=more(text(sec.querySelector('h1.aname')),function(){return profileModel(sec)});pill.parentNode.insertBefore(mb,pill.nextSibling)}}
-  /* a profile: the share pill sits in the meta row beside follow and "…", so share is one tap, not row 13 of a sheet */
-  if(sec&&!sec.querySelector('.gmx-tlact[data-tl="share"]')){
-    var after=sec.querySelector('.meta .gmx-more')||sec.querySelector('.meta .gmx-follow');
-    if(after){var ps=tlAct('share','share','share');ps.classList.add('gmx-pshare-pill');ps.setAttribute('aria-label','share this page');
-      ps.addEventListener('click',function(){shareNow({text:text(sec.querySelector('h1.aname'))+' on '+BRAND,url:canonPath()},ps)});
-      after.parentNode.insertBefore(ps,after.nextSibling)}
-  }
-  /* a tracklist page: share it and copy the list, from the mast, so the installed app needs no address bar */
+  /* a profile's page share is the round icon in the header row now (gmx-account.js), so the meta row keeps follow and "…" */
+  /* a tracklist page: copy the list, from the mast, so the installed app needs no address bar. the page share is the round
+     header icon only (G-MO, 2026-11-10): it sends the same words (headText gives setNameOf here) and the same canonical url */
   var meta=document.querySelector('.mast .meta'),setRows=[].slice.call(document.querySelectorAll('table.tl tr')).some(isSetRow);
   if(meta&&setRows&&!document.querySelector('.gmx-tlact')){
-    var sb=tlAct('share','share','share'),cb=tlAct('copy','list','copy the list');sb.setAttribute('aria-label','share this tracklist');
-    sb.addEventListener('click',function(){shareNow({text:setNameOf(),url:canonPath()},sb)});
+    var cb=tlAct('copy','list','copy the list');
     cb.addEventListener('click',copyList);
-    meta.appendChild(sb);meta.appendChild(cb);
+    meta.appendChild(cb);
   }
   /* a playlist card: share the playlist's own spotify or soundcloud link */
   [].slice.call(document.querySelectorAll('.player')).forEach(function(p){
@@ -365,7 +354,6 @@ function wire(root){
   /* an instagram reel on a profile: the same plain way out under it */
   [].slice.call(document.querySelectorAll('.gmxreel-wrap')).forEach(function(w){var f=w.querySelector('iframe');if(f)srcLinkFor(w,f.getAttribute('src')||f.getAttribute('data-src')||'')});
   itemShares();
-  pageShare();
   hit();
 }
 function tlAct(k,icon,label){var b=document.createElement('button');b.type='button';b.className='tag gmx-tlact';b.setAttribute('data-tl',k);b.innerHTML=svg(icon)+'<span>'+esc(label)+'</span>';return b}
@@ -379,5 +367,5 @@ function start(){wire();watch();setTimeout(wire,400);setTimeout(wire,1500)}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
 document.addEventListener('gmx:stage',later);document.addEventListener('gmx:cards',later);
 window.addEventListener('hashchange',function(){jumped='';hit()});
-window.gmxSheet={open:open,close:close,wire:wire,share:shareNow,toast:toast,ROW_NOISE:NOISE,listText:function(){return listText()}};
+window.gmxSheet={open:open,close:close,wire:wire,share:shareNow,sharePage:sharePage,toast:toast,ROW_NOISE:NOISE,listText:function(){return listText()}};
 })();
