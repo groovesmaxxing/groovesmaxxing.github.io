@@ -24,7 +24,7 @@ if(window.gmxAccount)return;
 var POST_MS=25000, GET_MS=8000, SESSION='gmx_session', DEVICE='gmx_device', CFGK='gmx_cfg', PENDING='gmx_pending';
 var CRATE='gmx_crate', CRATE_RM='gmx_crate_rm', CRATE_SIG='gmx_crate_sig', ME='gmx_me', NUDGE='gmx_nudge_until', NL='gmx_nl_wanted', WANT_FOLLOW='gmx_follow_wanted';
 /* whose crate is on this phone, and a signed-out crate set aside while a link from elsewhere is signed in (2026-11-09) */
-var OWNER='gmx_crate_owner', AWAY='gmx_crate_away';
+var OWNER='gmx_crate_owner', AWAY='gmx_crate_away', CRATE_HAS='gmx_crate_has';
 var ME_TTL=10*60000, SYNC_TTL=30*60000, NUDGE_DAYS=30;
 var cfg=null, cfgP=null, me=null, meP=null, pollTimer=null, waitGen=0, waitOn=false, syncT=null, syncing=false, syncAgain=false, sheetDone=null, sheetWired=false, signedEmail='', signedTok='';
 var BADGE={verified_artist:'verified artist',verified_label:'verified label',verified_venue:'verified venue',team:'team'};
@@ -77,7 +77,7 @@ function deviceId(){
   lss(DEVICE,v);return v;
 }
 function token(){return ls(SESSION)}
-function setToken(t){lss(SESSION,t);me=null;meP=null;lss(ME,'');if(!t)lss(CRATE_SIG,'');paint();fire('session');try{document.dispatchEvent(new CustomEvent('gmx-account',{detail:{signedIn:!!t}}))}catch(e){}}
+function setToken(t){lss(SESSION,t);me=null;meP=null;lss(ME,'');if(!t){lss(CRATE_SIG,'');lss(CRATE_HAS,'')}paint();fire('session');try{document.dispatchEvent(new CustomEvent('gmx-account',{detail:{signedIn:!!t}}))}catch(e){}}
 function headers(extra){
   var h={'X-GMX-App-Key':cfg.app_key,'X-GMX-Device':deviceId()};
   var ss=token();if(ss)h['X-GMX-Session']=ss;
@@ -250,7 +250,7 @@ function ownCrate(email,push){
   }
   syncCrate('sign-in',true);
 }
-function dropCrate(){lss(CRATE,'');lss(CRATE_RM,'');lss(CRATE_SIG,'');synced('drop',{})}
+function dropCrate(){lss(CRATE,'');lss(CRATE_RM,'');lss(CRATE_SIG,'');lss(CRATE_HAS,'');synced('drop',{})}
 function synced(reason,j){try{document.dispatchEvent(new CustomEvent('gmx:crate-synced',{detail:{count:j.count,merged:j.merged,reason:reason}}))}catch(e){}}
 function markOwner(){
   /* the email a sign-in reported counts only for that session: another tab may have signed in someone else since */
@@ -359,6 +359,8 @@ function syncCrate(reason,force){
     dirty=!!(add.length||keepR.length);
     lss(CRATE,JSON.stringify(list.slice(0,500)));lss(CRATE_RM,keepR.length?JSON.stringify(keepR):'');
     lss(CRATE_SIG,dirty?'':JSON.stringify({sig:sig(list,[]),at:Date.now()}));
+    /* the ids the account holds, as of this answer: sign out keeps any heart not among them (forgetPhone) */
+    lss(CRATE_HAS,JSON.stringify((j.items||[]).map(function(x){return x&&x.id}).filter(Boolean).slice(0,500)));
     markOwner();
     synced(reason,j);
     return true;
@@ -824,10 +826,17 @@ function signout(){
    already answers 401, so nothing is sent; the phone forgets what signout() forgets, so the next person on a shared phone
    never reads the old account's crate or hearts into it */
 function ended(){forgetPhone();setToken('');signedEmail='';signedTok='';synced('signout',{})}
-/* a crate that never synced with an account (no owner) is the only copy of those hearts, so it stays on the phone */
+/* a crate that never synced with an account (no owner) is the only copy of those hearts, so it stays on the phone.
+   an owned crate goes, except the hearts the account never confirmed (made with no signal, a 5xx or a 429 since the last
+   good sync): they stay as an ownerless crate, so the next sign-in can still take them up */
 function forgetPhone(){
   stopWait();forgetWanted();lss('gmx_push_skip','');
-  if(ls(OWNER)){lss(CRATE,'');lss(CRATE_RM,'');lss(OWNER,'')}
+  if(ls(OWNER)){
+    var has=lsj(CRATE_HAS),last=lsj(CRATE_SIG),l=crateLocal(),keep=[],got={};
+    if(Array.isArray(has)){has.forEach(function(id){got[id]=1});keep=l.filter(function(x){return x&&x.id&&!got[x.id]})}
+    else if(!(last&&last.sig===sig(l,rmLocal())))keep=l;
+    lss(CRATE,keep.length?JSON.stringify(keep):'');lss(CRATE_RM,'');lss(CRATE_HAS,'');lss(OWNER,'');
+  }
   var away=lsj(AWAY);
   if(Array.isArray(away)&&away.length){var l=crateLocal(),seen={};lss(CRATE,JSON.stringify(l.concat(away).filter(function(x){if(!x||!x.id||seen[x.id])return false;seen[x.id]=1;return true}).slice(0,500)))}
   lss(AWAY,'');
