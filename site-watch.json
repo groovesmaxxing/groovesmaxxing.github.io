@@ -1,80 +1,80 @@
 {
- "generated": "2026-11-10T03:27:46Z",
+ "generated": "2026-11-10T11:41:58Z",
  "site": [
   {
    "path": "/",
    "code": 200,
-   "ms": 187,
+   "ms": 149,
    "state": "ok",
    "note": null
   },
   {
    "path": "/scan",
    "code": 200,
-   "ms": 243,
+   "ms": 101,
    "state": "ok",
    "note": null
   },
   {
    "path": "/gmx-config.json",
    "code": 200,
-   "ms": 136,
+   "ms": 75,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sets",
    "code": 200,
-   "ms": 252,
+   "ms": 122,
    "state": "ok",
    "note": null
   },
   {
    "path": "/artists",
    "code": 200,
-   "ms": 156,
+   "ms": 101,
    "state": "ok",
    "note": null
   },
   {
    "path": "/tracklists/",
    "code": 200,
-   "ms": 197,
+   "ms": 87,
    "state": "ok",
    "note": null
   },
   {
    "path": "/search-index.json",
    "code": 200,
-   "ms": 263,
+   "ms": 87,
    "state": "ok",
    "note": "generated 2026-11-10"
   },
   {
    "path": "/upcoming.json",
    "code": 200,
-   "ms": 268,
+   "ms": 82,
    "state": "ok",
    "note": "generated 2026-11-10"
   },
   {
    "path": "/radar-events.json",
    "code": 200,
-   "ms": 146,
+   "ms": 87,
    "state": "ok",
    "note": "generated 2026-11-09T19:54:33"
   },
   {
    "path": "/sitemap.xml",
    "code": 200,
-   "ms": 261,
+   "ms": 59,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sw.js",
    "code": 200,
-   "ms": 159,
+   "ms": 95,
    "state": "ok",
    "note": null
   }
@@ -82,7 +82,7 @@
  "recognizer": {
   "state": "up",
   "code": 200,
-  "ms": 444,
+  "ms": 918,
   "health": {
    "status": "ok",
    "version": "0.1.2",
@@ -141,8 +141,8 @@
     "conclusion": "success",
     "event": "dynamic",
     "branch": "main",
-    "at": "2026-11-10T02:22:58Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/42742018640",
+    "at": "2026-11-10T05:02:56Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/42759551549",
     "state": "ok"
    },
    {
@@ -161,8 +161,8 @@
     "conclusion": "success",
     "event": "push",
     "branch": "main",
-    "at": "2026-11-10T02:20:31Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/42741846721",
+    "at": "2026-11-10T05:04:11Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/42759551752",
     "state": "ok"
    },
    {
@@ -171,8 +171,8 @@
     "conclusion": "success",
     "event": "push",
     "branch": "main",
-    "at": "2026-11-10T02:21:41Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/42741846749",
+    "at": "2026-11-10T05:04:25Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/42759551854",
     "state": "ok"
    }
   ]
