@@ -1,0 +1,593 @@
+/* groovesmaxxing artist profile, the tabs layout (direction B, 2026-11-10). vanilla, no dependencies.
+   reorganises each artist page's own static markup in the browser: a hero (the newest filmed set, or the name
+   set large when there is none), the lane line, the badges folded to four, follow and the link icons on one row,
+   an on tour strip from radar-events.json, then four tabs: sets, music, about, on the site.
+   the static html is never edited and nothing is rebuilt from data the page does not carry. the laptop scripts
+   and the repo builders keep writing the same markers, rails and blocks they always did, and this file only
+   moves those nodes. a node it does not recognise goes to the about tab, never away.
+   invariants (other scripts lean on them, see the maps of 2026-11-10):
+   - everything stays inside section.artist[id]: one .meta, h1.aname, and .links reachable from the section
+   - the hidden rails and the player's own stages are moved to a hidden stash, never deleted (gmx-related.js
+     dedupes on data-yt in the page html, sitecheck counts .gmx-stage hearts)
+   - a .player moves together with the a.gmx-src gmx-sheet.js puts after it
+   - new classes, ids, attributes and events start with gmxa-
+   - any error puts every node back where it was and the old page shows. without js the old page shows as is.
+   load order: after gmx-player.js (its stages exist), before gmx-motion.js (motion measures the new layout).
+   the follow pill (gmx-crate.js), the "…" (gmx-sheet.js), the claim row (gmx-account.js) and the also on the
+   site box (gmx-related.js) land later and are caught as they arrive.
+   known limit: the static soundcloud, spotify and instagram iframes carry a live src and loading=lazy, and the browser
+   asks for the ones near the top before this deferred file runs. tap to load holds in the dom (every embed is parked
+   with no src until it is tapped, spotify until the music tab shows), not on the network: those first requests are
+   thrown away. a real fix needs the tools to write data-src into the static html.
+   ship order: this file moves .links out of section.artist, so gmx-related.js must carry its guard (and a new ?v=) in
+   the same push as the tags that load this file, never after. */
+(function(){
+'use strict';
+if(window.__gmxArtist)return;window.__gmxArtist=1;
+var D=document;
+if(!/^\/artists\//.test(location.pathname)||D.querySelector('meta[http-equiv="refresh"]'))return;
+var any=D.querySelector('section.artist');if(!any)return;
+var sec=D.querySelector('section.artist[id]:not(.label)');
+if(!sec){any.classList.add('gmxa-ready');return;}
+
+var PLAY='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+var ARR='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>';
+var YTI='<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4.2" fill="currentColor"/><path d="M10.2 8.9v6.2L15.6 12z" fill="#0B0B0D"/></svg>';
+var SCI='<svg viewBox="0 0 24 24" aria-hidden="true"><g fill="currentColor"><rect x="1.6" y="11.4" width="1.3" height="5.2" rx=".65"/><rect x="4.1" y="9.6" width="1.3" height="7" rx=".65"/><rect x="6.6" y="8.4" width="1.3" height="8.2" rx=".65"/><rect x="9.1" y="10.2" width="1.3" height="6.4" rx=".65"/><path d="M11.9 6.9c.5-.35 1.1-.55 1.8-.55 1.9 0 3.5 1.45 3.7 3.3.3-.1.6-.15.95-.15 1.6 0 2.9 1.3 2.9 2.9S19.95 15.3 18.35 15.3H11.9a.6.6 0 0 1-.6-.6V7.4c0-.2.1-.4.6-.5z"/></g></svg>';
+var IGI='<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.1"/></svg>';
+var STOP={live:1,at:1,set:1,dj:1,full:1,the:1};
+var KINDS=['filmed','audio','clips','talks'];
+var TABS=[['sets','sets'],['music','music'],['about','about'],['site','on the site']];
+
+/* ---- small helpers ---- */
+function el(tag,cls,html){var e=D.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e;}
+function text(n){return n?(n.textContent||'').replace(/\s+/g,' ').trim():'';}
+function fold(s){return (s||'').normalize('NFKD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/&/g,'and').replace(/\s+/g,' ').trim();}
+function arr(l){return [].slice.call(l||[]);}
+function frame(f){(window.requestAnimationFrame||setTimeout)(function(){try{f();}catch(e){}});}
+function fire(node,name){try{node.dispatchEvent(new CustomEvent(name,{bubbles:true}));}catch(e){}}
+function resize(){try{window.dispatchEvent(new Event('resize'));}catch(e){var ev=D.createEvent('UIEvents');ev.initUIEvent('resize',true,false,window,0);window.dispatchEvent(ev);}}
+function ytOf(h){var m=/(?:youtu\.be\/|[?&]v=|\/shorts\/|\/embed\/)([A-Za-z0-9_-]{11})/.exec(h||'');return m?m[1]:'';}
+function startOf(h){var m=/[?&#](?:t|start)=(\d+)s?\b/.exec(h||'');return m?m[1]:'';}
+function scUrl(src){var m=/[?&]url=([^&]+)/.exec(src||'');if(!m)return '';try{return decodeURIComponent(m[1]);}catch(e){return '';}}
+function yearOf(s){var m=/\b(19|20)\d\d\b/.exec(s||'');return m?+m[0]:0;}
+/* a rail caption keeps its <br> as a line break (textContent glues the two lines), so read it line by line */
+function linesOf(nodes){
+  var s='';nodes.forEach(function(k){var c=k.cloneNode(true);arr(c.querySelectorAll?c.querySelectorAll('br'):[]).forEach(function(b){b.parentNode.replaceChild(D.createTextNode('\n'),b);});s+='\n'+(c.textContent||'');});
+  return s.split(/\n|\s{2,}/).map(function(l){return l.replace(/\s+/g,' ').trim();}).filter(Boolean);
+}
+var REDUCE=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---- the undo log: every move, every class, every wrapper, so an error can put the page back ---- */
+var moved=[],made=[],classed=[],frames=[];
+function move(n,into,before){if(!n)return;if(!n.__gmxaHome){n.__gmxaHome=1;moved.push([n,n.parentNode,n.nextSibling]);}into.insertBefore(n,before||null);}
+function make(tag,cls,html){var e=el(tag,cls,html);made.push(e);return e;}
+function cls(n,c){n.classList.add(c);classed.push([n,c]);}
+/* an iframe that has not been tapped: out of the dom and back with no src, so it stops loading */
+function park(f){
+  var s=f.getAttribute('src');if(!s||f.hasAttribute('data-gmxa-src'))return;
+  var p=f.parentNode,nx=f.nextSibling;p.removeChild(f);
+  f.setAttribute('data-gmxa-src',s);f.setAttribute('data-src',s);f.removeAttribute('src');
+  frames.push(f);p.insertBefore(f,nx);
+}
+function wake(f){var s=f&&f.getAttribute('data-gmxa-src');if(s&&f.getAttribute('src')!==s)f.setAttribute('src',s);}
+function restore(){
+  try{if(mo)mo.disconnect();}catch(e){}
+  for(var i=moved.length-1;i>=0;i--){var m=moved[i];try{if(m[2]&&m[2].parentNode===m[1])m[1].insertBefore(m[0],m[2]);else m[1].appendChild(m[0]);}catch(e){}}
+  made.forEach(function(e){if(e.parentNode)e.parentNode.removeChild(e);});
+  classed.forEach(function(c){c[0].classList.remove(c[1]);});
+  frames.forEach(function(f){var s=f.getAttribute('data-gmxa-src');f.removeAttribute('data-gmxa-src');f.removeAttribute('data-src');if(s)f.setAttribute('src',s);});
+  arr(sec.querySelectorAll('[hidden][data-gmxa-hid]')).forEach(function(n){n.hidden=false;n.removeAttribute('data-gmxa-hid');});
+  D.documentElement.classList.remove('gmxa-page');
+}
+
+var name=text(sec.querySelector('h1.aname')),fname=fold(name);
+var stash,panels={},tabbar=null,tablist=null,mo=null,cur='';
+
+/* ---- 1. harvest the media the page already carries ---- */
+function kindOfRail(rail){
+  var h=rail.innerHTML.slice(0,400);
+  if(/<!--\s*sets-2:start/.test(h))return 'clips';
+  if(/<!--\s*interviews:start/.test(h))return 'talks';
+  if(/<!--\s*sets:start/.test(h))return 'filmed';
+  var lead=rail.previousElementSibling,hint=(rail.id||'')+' '+(lead&&lead.tagName==='P'?text(lead):'');
+  if(/pod|interview|talk|own words/i.test(hint))return 'talks';
+  if(/from the floor|clip/i.test(hint))return 'clips';
+  return 'filmed';
+}
+function leadOf(n){var p=n&&n.previousElementSibling;return p&&p.tagName==='P'&&!p.className&&!p.querySelector('a')&&text(p).length<220?p:null;}
+function noteText(p){return text(p).replace(/\s*slide\s*(→|&rarr;)?\s*$/i,'').replace(/\s*→\s*$/,'');}
+
+function harvest(){
+  var items=[],notes={},seen={};
+  /* the player's stages, each right after its hidden rail */
+  arr(sec.querySelectorAll('.set-stage')).forEach(function(st){
+    if(st.closest('.gmx-rel,.gmxa-stash'))return;
+    var rail=st.previousElementSibling,kind=rail?kindOfRail(rail):'filmed',lead=rail?leadOf(rail):null;
+    if(lead&&!notes[kind])notes[kind]=noteText(lead);
+    var first=rail&&/<!--\s*sets:start/.test(rail.innerHTML.slice(0,400));
+    arr(st.querySelectorAll('.set-slide')).forEach(function(s,i){
+      var f=s.querySelector('.set-facade');if(!f)return;var id=f.getAttribute('data-yt');if(!id||seen[id])return;seen[id]=1;
+      var img=f.querySelector('img'),ob=rail&&rail.querySelector('button[data-yt="'+id+'"]'),w=ob&&ob.parentElement!==rail?ob.parentElement:null;
+      var ln=w?linesOf(arr(w.children).filter(function(k){return k!==ob;})):[];if(!ln.length){var mc=text(s.querySelector('.set-meta .mono'));if(mc)ln=[mc];}
+      items.push({id:id,kind:kind,title:f.getAttribute('data-title')||'set',cap:ln.join(' · '),cap1:ln[0]||'',img:img?img.getAttribute('src'):'',lead:first&&i===0});
+    });
+    if(lead)move(lead,stash);if(rail)move(rail,stash);move(st,stash);
+  });
+  /* a plain list of youtube links (max-styler's "every set we're tracking:"): each one not already on a card */
+  arr(sec.querySelectorAll('div,p')).forEach(function(d){
+    if(d.closest('.bio,.facts,.gmxa-stash,.gmx-rel,.gmx-rel-static,.meta,.links'))return;
+    var as=arr(d.children);if(as.length<2||as.some(function(a){return a.tagName!=='A'||!ytOf(a.getAttribute('href'));}))return;
+    var yr=0;
+    as.forEach(function(a){var h=a.getAttribute('href'),id=ytOf(h),t=text(a);yr=yearOf(t)||yr;if(seen[id])return;seen[id]=1;
+      items.push({id:id,kind:'filmed',title:t,cap:t,img:'',start:startOf(h),yr:yr});});
+    move(d,stash);
+  });
+  /* soundcloud: the bare profile embed, and every set or track embed */
+  var sc=[],prof=null;
+  arr(sec.querySelectorAll('iframe')).forEach(function(f){
+    var src=f.getAttribute('src')||f.getAttribute('data-src')||'';if(!/w\.soundcloud\.com\/player/.test(src))return;
+    var u=scUrl(src),path=u.replace(/^https?:\/\/[^\/]+/,'').replace(/[?#].*$/,'').replace(/\/+$/,'');
+    var box=f.closest('.player,.scwrap')||f;if(!sec.contains(box))return;
+    var ps=box.closest('section.sec');
+    var it={kind:'audio',sc:u,title:f.getAttribute('title')||'soundcloud',box:box,frame:f,lead:leadOf(box),sec:ps&&ps.parentNode===sec?ps:null};
+    if(!prof&&/^\/[^\/]+$/.test(path))prof=it;else sc.push(it);
+  });
+  /* spotify */
+  var sp=[];
+  arr(sec.querySelectorAll('iframe')).forEach(function(f){
+    var src=f.getAttribute('src')||'';if(!/open\.spotify\.com\/embed/.test(src))return;
+    /* the embed travels with its own wrapper (.player, or gkat's .spot inside a section that holds only it), so the page's sizing still applies */
+    var s=f.closest('section.sec');if(s&&s.parentNode===sec&&s.querySelectorAll('iframe').length===1&&!s.querySelector('.rel'))return sp.push(s);
+    sp.push(f.closest('.player,.spot')||f);
+  });
+  return {items:items,notes:notes,sc:sc,prof:prof,sp:sp,seen:seen};
+}
+
+/* ---- 2. twins: a soundcloud set and a filmed set of the same night ---- */
+function toks(t){
+  var s=fold(t);if(fname)s=s.split(fname).join(' ');
+  return s.replace(/[^a-z0-9À-￿]+/g,' ').split(' ').filter(function(w){return w&&!STOP[w];});
+}
+function same(a,b){
+  var A=toks(a),B=toks(b);if(!A.length||!B.length)return false;
+  var ya=A.filter(function(w){return /^(19|20)\d\d$/.test(w);}).sort().join(),yb=B.filter(function(w){return /^(19|20)\d\d$/.test(w);}).sort().join();
+  if(ya!==yb)return false;
+  var u={},n=0,k;A.forEach(function(w){u[w]=1;});B.forEach(function(w){if(u[w]===1){u[w]=2;n++;}else if(!u[w])u[w]=3;});
+  var all=0;for(k in u)all++;
+  return all>0&&n/all>=0.75;
+}
+
+/* ---- 3. cards ---- */
+function stopAll(except){
+  arr(sec.querySelectorAll('.gmxa-on')).forEach(function(c){
+    if(c===except||c.hasAttribute('data-gmxa-keep'))return;c.classList.remove('gmxa-on','gmxa-scon','gmxa-playing');
+    arr(c.querySelectorAll('.video-frame')).forEach(function(v){if(v.__facade&&v.parentNode)v.parentNode.replaceChild(v.__facade,v);});
+    arr(c.querySelectorAll('iframe[data-gmxa-src]')).forEach(function(f){f.removeAttribute('src');});
+    arr(c.querySelectorAll('[aria-pressed="true"]')).forEach(function(b){b.setAttribute('aria-pressed','false');});
+  });
+}
+function ytFrame(b){
+  var fr=D.createElement('iframe'),st=b.getAttribute('data-gmxa-start');
+  fr.src='https://www.youtube-nocookie.com/embed/'+b.getAttribute('data-yt')+'?autoplay=1'+(st?'&start='+st:'');
+  fr.title=b.getAttribute('data-title')||'';fr.allowFullscreen=true;
+  fr.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+  var w=el('div','video-frame');w.appendChild(fr);w.__facade=b;b.parentNode.replaceChild(w,b);
+}
+function ytCard(it){
+  var s=window.gmxPlayer?gmxPlayer.slide({id:it.id,title:it.title,cap:'',img:it.img}):null;
+  if(!s){s=el('div','set-slide');var fb=el('button','set-facade','<img alt="" loading="lazy" src="https://img.youtube.com/vi/'+it.id+'/hqdefault.jpg"><span class="set-play" aria-hidden="true">'+PLAY+'</span>');fb.type='button';fb.setAttribute('data-yt',it.id);fb.setAttribute('data-title',it.title);fb.setAttribute('aria-label','play '+it.title);s.appendChild(fb);var mt=el('div','set-meta');mt.appendChild(el('span','t'));s.appendChild(mt);}
+  s.classList.add('gmxa-card');s.setAttribute('data-gmxa-kind',it.kind);
+  var f=s.querySelector('.set-facade'),meta=s.querySelector('.set-meta'),t=meta.querySelector('.t');
+  if(it.start)f.setAttribute('data-gmxa-start',it.start);
+  var media=el('div','gmxa-media'+(it.kind==='clips'?' gmxa-tall':''));f.parentNode.insertBefore(media,f);media.appendChild(f);
+  media.appendChild(el('span','gmxa-pill',it.kind==='clips'?'clip':it.kind==='talks'?'talk':'yt'));
+  var cap=it.cap||'',c1=it.cap1||cap;
+  t.textContent=cap&&cap.length<140?cap:c1&&c1.length<140?c1:it.title;
+  arr(meta.querySelectorAll('.mono')).forEach(function(m){m.parentNode.removeChild(m);});
+  var sub=el('span','mono',it.kind==='clips'?'clip':it.kind==='talks'?'talk':'filmed');meta.appendChild(sub);
+  var href='https://www.youtube.com/watch?v='+it.id+(it.start?'&t='+it.start+'s':'');
+  if(it.ext){
+    /* a set the uploader will not let embed: the card is a plain link out, the way the page wrote it */
+    var a=el('a','set-facade gmxa-ext',f.innerHTML);a.href=href;a.target='_blank';a.rel='noopener';a.setAttribute('data-yt',it.id);a.setAttribute('aria-label',it.title+', opens on youtube');
+    f.parentNode.replaceChild(a,f);media.querySelector('.gmxa-pill').textContent='yt ↗';return s;
+  }
+  var out=el('a','gmxa-out','youtube ↗');out.href=href;out.target='_blank';out.rel='noopener';meta.appendChild(out);
+  return s;
+}
+function wave(seed){var h='';for(var i=0;i<14;i++){var v=30+((seed*7+i*37)%70);h+='<i style="height:'+v+'%"></i>';}return '<span class="gmxa-wave" aria-hidden="true">'+h+'</span>';}
+/* a soundcloud player, tap to load: the .player box (and the sheet's link after it) moves into the card */
+function scInto(card,it,host){
+  var link=it.box.nextElementSibling&&it.box.nextElementSibling.classList.contains('gmx-src')?it.box.nextElementSibling:null;
+  if(it.lead)move(it.lead,stash);
+  move(it.box,host);if(link){move(link,host);short(link);}
+  cls(it.box,'gmxa-scbox');park(it.frame);
+}
+function scCard(it,n){
+  var c=make('div','gmxa-card gmxa-sc');c.setAttribute('data-gmxa-kind','audio');
+  var media=el('div','gmxa-media'),b=el('button','gmxa-scbtn',wave(n)+'<span class="gmxa-pi" aria-hidden="true">'+PLAY+'</span><span class="gmxa-pill" aria-hidden="true">sc</span>');
+  b.type='button';b.setAttribute('aria-label','listen to '+it.title);b.setAttribute('aria-pressed','false');
+  media.appendChild(b);c.appendChild(media);
+  var meta=el('div','gmxa-cmeta');meta.appendChild(el('span','t',''));meta.firstChild.textContent=it.title.replace(new RegExp('^'+name.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\s*[-:@|]?\\s*','i'),'')||it.title;
+  meta.appendChild(el('span','mono','audio'));c.appendChild(meta);
+  scInto(c,it,c);
+  b.addEventListener('click',function(){playSc(c,b,it.frame);});
+  return c;
+}
+/* the tapped button hides with the facade, so focus goes to the player that replaces it, never to <body> */
+function playSc(card,b,f){stopAll(card);card.classList.add('gmxa-on','gmxa-scon');b.setAttribute('aria-pressed','true');wake(f);focusIn(f);}
+/* the sheet's "open on soundcloud ↗" sits on a card's kind line, where it reads as the mockup's "soundcloud ↗" */
+function short(a){if(a&&a.closest('.gmxa-card,.gmxa-herosc')&&/soundcloud/i.test(a.textContent))a.textContent='soundcloud ↗';}
+function focusIn(f){setTimeout(function(){try{f.focus();}catch(e){}},0);}
+function twin(card,it){
+  card.setAttribute('data-gmxa-kind','filmed audio');
+  var f=card.querySelector('.set-facade'),row=el('div','gmxa-twin');
+  var w=el('button','gmxa-src2',YTI+'<span>watch</span>'),l=el('button','gmxa-src2',SCI+'<span>listen</span>');
+  w.type=l.type='button';w.setAttribute('aria-pressed','false');l.setAttribute('aria-pressed','false');
+  w.setAttribute('aria-label','watch on youtube');l.setAttribute('aria-label','listen on soundcloud');
+  row.appendChild(w);row.appendChild(l);
+  card.querySelector('.gmxa-media').appendChild(el('span','gmxa-duo','yt + sc'));
+  var pill=card.querySelector('.gmxa-media .gmxa-pill');if(pill)pill.parentNode.removeChild(pill);
+  card.insertBefore(row,card.querySelector('.set-meta'));
+  var host=el('div','gmxa-schost');card.appendChild(host);scInto(card,it,host);
+  w.addEventListener('click',function(){var fb=card.querySelector('.set-facade');card.classList.remove('gmxa-scon');if(fb)fb.click();w.setAttribute('aria-pressed','true');l.setAttribute('aria-pressed','false');});
+  l.addEventListener('click',function(){var v=card.querySelector('.video-frame');if(v&&v.__facade)v.parentNode.replaceChild(v.__facade,v);playSc(card,l,it.frame);w.setAttribute('aria-pressed','false');});
+  return f;
+}
+
+/* ---- 4. the hero ---- */
+function hero(lead){
+  var h=make('div','gmxa-hero'+(lead?' gmxa-img':' gmxa-type')),id=make('div','gmxa-id');
+  if(lead&&window.gmxPlayer){
+    var box=el('div','gmxa-stagebox'),st=el('div','set-stage gmxa-hstage'),vp=el('div','set-viewport'),rl=el('div','set-rail');
+    st.setAttribute('data-label','set');
+    var s=gmxPlayer.slide({id:lead.id,title:lead.title,cap:'',img:'https://img.youtube.com/vi/'+lead.id+'/maxresdefault.jpg'});
+    var img=s.querySelector('img');img.loading='eager';img.setAttribute('fetchpriority','high');img.onerror=null;
+    /* maxresdefault, then hqdefault. youtube answers a missing size with a 120 px grey card: hqdefault at 120 px means the
+       video is gone or private, so the hero goes typographic and the set drops to the grid (h.__dead) */
+    var hq='https://img.youtube.com/vi/'+lead.id+'/hqdefault.jpg';
+    /* only a grey card that arrived counts: a network error (offline, a blocker) keeps the hero as it is */
+    img.addEventListener('load',function(){if(!img.naturalWidth||img.naturalWidth>120)return;if(img.src.indexOf('/hqdefault')<0)img.src=hq;else if(h.__dead)h.__dead();});
+    img.addEventListener('error',function(){if(img.src.indexOf('/hqdefault')<0)img.src=hq;});
+    var t=s.querySelector('.set-meta .t');if(t)t.className='t gmxa-vh';
+    rl.appendChild(s);vp.appendChild(rl);st.appendChild(vp);box.appendChild(st);
+    var eye=el('p','gmxa-eye','<b>newest set</b>');var ec=el('span');ec.textContent=' · '+(lead.cap1||lead.title);eye.appendChild(ec);
+    box.appendChild(eye);h.appendChild(box);
+    st.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('.set-facade')){stopAll(null);stopSc(h);h.classList.add('gmxa-playing');}},true);
+    h.__stage=st;
+  }
+  h.appendChild(id);return h;
+}
+function stopSc(c){if(!c.classList.contains('gmxa-scon'))return;c.classList.remove('gmxa-scon','gmxa-on');arr(c.querySelectorAll('iframe[data-gmxa-src]')).forEach(function(f){f.removeAttribute('src');});arr(c.querySelectorAll('[aria-pressed="true"]')).forEach(function(b){b.setAttribute('aria-pressed','false');});}
+/* the newest set has a soundcloud twin: one listen button on the hero, the player opens under it. no second card */
+function heroTwin(h,it){
+  var host=make('div','gmxa-schost gmxa-herosc');h.insertBefore(host,h.querySelector('.gmxa-id'));scInto(null,it,host);
+  var meta=h.__stage.querySelector('.set-meta'),l=el('button','gmxa-hlisten',SCI);l.type='button';
+  l.setAttribute('aria-label','listen on soundcloud');l.setAttribute('aria-pressed','false');meta.insertBefore(l,meta.firstChild);
+  l.addEventListener('click',function(){stopAll(h);arr(h.querySelectorAll('.video-frame')).forEach(function(v){if(v.__facade)v.parentNode.replaceChild(v.__facade,v);});
+    h.classList.add('gmxa-on','gmxa-scon','gmxa-playing');l.setAttribute('aria-pressed','true');wake(it.frame);focusIn(it.frame);});
+}
+/* the lane line, the badges fold, the follow and links row */
+function idBlock(h){
+  var id=h.querySelector('.gmxa-id'),meta=sec.querySelector('.meta'),h1=sec.querySelector('h1.aname'),links=sec.querySelector('.links');
+  move(h1,id);
+  var plain=arr(meta.querySelectorAll('.tag')).filter(function(t){return !t.classList.contains('badge')&&!t.classList.contains('gmx-follow')&&t.parentNode===meta;});
+  if(plain.length){
+    var sub=make('p','gmxa-sub');
+    plain.forEach(function(t,i){if(i)sub.appendChild(D.createTextNode(' · '));var s=el('span',t.classList.contains('lane')?'gmxa-lane':'');s.textContent=text(t);sub.appendChild(s);cls(t,'gmxa-x');});
+    id.appendChild(sub);
+  }
+  move(meta,id);cls(meta,'gmxa-meta');
+  var vb=sec.querySelector('.vb-lines');
+  var badges=arr(meta.children).filter(function(t){return t.classList.contains('tag')&&t.classList.contains('badge')&&!t.classList.contains('gmx-follow');});
+  badges=badges.filter(function(b){return !/\b(ss|vb)\b/.test(b.className);}).concat(badges.filter(function(b){return /\b(ss|vb)\b/.test(b.className);}));
+  if(badges.length){
+    var wrap=make('div','gmxa-badges');wrap.id='gmxa-badges';meta.insertBefore(wrap,meta.firstChild);
+    badges.forEach(function(b,i){move(b,wrap);if(i>=4)cls(b,'gmxa-folded');});
+    if(badges.length>4){
+      var n=badges.length-4,p=el('button','gmxa-plus');p.type='button';
+      /* the name starts with what the button shows (+7 more badges, less badges): no aria-label to drift from it */
+      function lab(open){p.innerHTML='';p.appendChild(D.createTextNode(open?'less':'+'+n));p.appendChild(el('span','gmxa-vh',open?' badges':' more badges'));}
+      p.setAttribute('aria-expanded','false');p.setAttribute('aria-controls','gmxa-badges');lab(false);
+      p.addEventListener('click',function(){var open=p.getAttribute('aria-expanded')!=='true';p.setAttribute('aria-expanded',open?'true':'false');
+        badges.slice(4).forEach(function(b){b.classList.toggle('gmxa-folded',!open);});lab(open);});
+      wrap.appendChild(p);
+    }
+  }
+  var acts=make('div','gmxa-acts');meta.appendChild(acts);
+  if(links)move(links,acts);
+  if(vb)move(vb,id);
+  var f=meta.querySelector('.gmx-follow');if(f)acts.insertBefore(f,acts.firstChild);
+  function edge(){acts.classList.toggle('gmxa-cut',acts.scrollWidth-acts.clientWidth-acts.scrollLeft>4);}
+  acts.addEventListener('scroll',edge,{passive:true});window.addEventListener('resize',function(){frame(edge);});frame(edge);
+  h.__acts=acts;h.__edge=edge;
+}
+
+/* ---- 5. on tour, from the radar: the artist-field rule only, nothing invented ---- */
+var MON=['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+function get(u){return fetch(u).then(function(r){return r.ok?r.json():null;}).catch(function(){return null;});}
+function tour(after){
+  if(!window.fetch||!window.Promise)return;
+  Promise.all([get('/radar-events.json'),get('/names-index.json')]).then(function(r){
+    var ev=r[0],nx=r[1];if(!ev||!ev.events||!nx||!nx.a)return;
+    var d=new Date(),today=d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2),seen={};
+    var rows=ev.events.filter(function(e){if(!e||nx.a[fold(e.artist)]!==sec.id||!(e.date>=today))return false;var k=e.date+'|'+e.venue;if(seen[k])return false;seen[k]=1;return true;});
+    if(!rows.length||!after.parentNode)return;
+    var s=make('section','gmxa-tour');s.setAttribute('aria-labelledby','gmxa-tour-h');
+    var head=el('div','gmxa-rowhead','<p class="gmxa-eyebrow" id="gmxa-tour-h" role="heading" aria-level="2">on tour</p>'),side=el('div','gmxa-side');
+    var rad=el('a','gmxa-eye2','the radar →');rad.href='/events#tours';side.appendChild(rad);
+    var rail=el('div','gmxa-rail');rail.id='gmxa-tourrail';rail.tabIndex=0;rail.setAttribute('role','region');rail.setAttribute('aria-label','upcoming dates');
+    var ar=el('div','gmxa-arrows'),bk=el('button','gmxa-arr',ARR),fw=el('button','gmxa-arr gmxa-fw',ARR);bk.type=fw.type='button';
+    bk.setAttribute('aria-label','scroll dates back');fw.setAttribute('aria-label','scroll dates on');ar.appendChild(bk);ar.appendChild(fw);side.appendChild(ar);
+    head.appendChild(side);s.appendChild(head);
+    rows.forEach(function(e){
+      var p=e.date.split('-'),a=el('a','gmxa-date');a.href=e.url||'/events#tours';if(/^https?:/.test(a.href)){a.target='_blank';a.rel='noopener';}
+      var blk=el('span','gmxa-dblk'),m=el('span','gmxa-dm',MON[+p[1]-1]||'');blk.appendChild(m);
+      if(+p[0]!==d.getFullYear())blk.appendChild(el('span','gmxa-dy',"'"+p[0].slice(2)));
+      blk.appendChild(el('span','gmxa-dd',String(+p[2])));a.appendChild(blk);
+      var tx=el('span','gmxa-dtxt'),b=el('b'),sm=el('span');b.textContent=e.venue||e.event||'';
+      var where=[e.city,e.region].filter(Boolean).join(', '),title=e.event&&fname&&fold(e.event).indexOf(fname)<0&&e.event!==e.venue?e.event:'';
+      sm.textContent=[where,title].filter(Boolean).join(' · ');tx.appendChild(b);tx.appendChild(sm);a.appendChild(tx);rail.appendChild(a);
+    });
+    s.appendChild(rail);after.parentNode.insertBefore(s,after.nextSibling);
+    function st(){bk.disabled=rail.scrollLeft<4;fw.disabled=rail.scrollLeft+rail.clientWidth>=rail.scrollWidth-4;ar.hidden=rail.scrollWidth<=rail.clientWidth+4;}
+    bk.addEventListener('click',function(){rail.scrollBy({left:-rail.clientWidth*0.8,behavior:REDUCE?'auto':'smooth'});});
+    fw.addEventListener('click',function(){rail.scrollBy({left:rail.clientWidth*0.8,behavior:REDUCE?'auto':'smooth'});});
+    rail.addEventListener('scroll',st,{passive:true});window.addEventListener('resize',function(){frame(st);});frame(st);
+  });
+}
+
+/* ---- 6. tabs ---- */
+function panel(k){
+  if(panels[k])return panels[k];
+  var p=make('div','gmxa-panel');p.id='gmxa-p-'+k;p.setAttribute('role','tabpanel');p.setAttribute('aria-labelledby','gmxa-t-'+k);p.tabIndex=0;
+  var h=el('h2','gmxa-vh');h.textContent=TABS.filter(function(t){return t[0]===k;})[0][1];p.appendChild(h);
+  panels[k]=p;return p;
+}
+function sh(p,t){var h=el('h3','gmxa-sh');h.textContent=t;p.appendChild(h);return h;}
+function live(){return TABS.filter(function(t){return panels[t[0]]&&panels[t[0]].__has;}).map(function(t){return t[0];});}
+/* a count in its own span (the translator matches words only), with a hidden comma so it is read "sets, 19" */
+function cnt(n){var s=el('span','gmxa-n');s.appendChild(el('span','gmxa-vh',', '));s.appendChild(D.createTextNode(String(n)));return s;}
+function tabN(k,n){if(panels[k])panels[k].__n=n;var b=D.getElementById('gmxa-t-'+k);if(!b)return;var o=b.querySelector('.gmxa-n');if(o)b.removeChild(o);if(n)b.appendChild(cnt(n));}
+function bar(){
+  var ks=live();
+  /* panels in tab order, whenever they come to life */
+  ks.forEach(function(k,i){var nx=null;for(var j=i+1;j<ks.length&&!nx;j++)if(panels[ks[j]].parentNode===sec)nx=panels[ks[j]];if(panels[k].parentNode!==sec||(nx&&panels[k].compareDocumentPosition(nx)&2))sec.insertBefore(panels[k],nx||stash);});
+  if(ks.length<2){if(tabbar)tabbar.hidden=true;ks.forEach(function(k){var p=panels[k];p.hidden=false;p.removeAttribute('role');p.removeAttribute('aria-labelledby');p.removeAttribute('tabindex');});return;}
+  if(!tabbar){tabbar=make('div','gmxa-tabs');tablist=el('div','gmxa-tablist');tablist.setAttribute('role','tablist');tablist.setAttribute('aria-label',name||'profile');tabbar.appendChild(tablist);
+    /* keys move the selection in place (replaceState): back leaves the page instead of walking every tab */
+    tablist.addEventListener('keydown',function(e){var l=arr(tablist.children),i=l.indexOf(D.activeElement),j=-1;if(i<0)return;
+      if(e.key==='ArrowRight')j=(i+1)%l.length;else if(e.key==='ArrowLeft')j=(i-1+l.length)%l.length;else if(e.key==='Home')j=0;else if(e.key==='End')j=l.length-1;
+      if(j<0)return;e.preventDefault();l[j].focus();pick(l[j].getAttribute('data-gmxa-tab'),true,true);});}
+  if(tabbar.nextSibling!==panels[ks[0]])sec.insertBefore(tabbar,panels[ks[0]]);tabbar.hidden=false;
+  ks.forEach(function(k){var p=panels[k];p.setAttribute('role','tabpanel');p.setAttribute('aria-labelledby','gmxa-t-'+k);p.tabIndex=0;
+    var b=D.getElementById('gmxa-t-'+k);
+    if(!b){b=el('button','gmxa-tab');b.type='button';b.id='gmxa-t-'+k;b.setAttribute('role','tab');b.setAttribute('aria-controls','gmxa-p-'+k);b.setAttribute('data-gmxa-tab',k);
+      var l=el('span');l.textContent=TABS.filter(function(t){return t[0]===k;})[0][1];b.appendChild(l);
+      if(p.__n)b.appendChild(cnt(p.__n));
+      b.addEventListener('click',function(){pick(k,true);});}
+    tablist.appendChild(b);
+  });
+  if(cur)show(cur,false,true);
+}
+function show(k,scroll,quiet){
+  var ks=live();if(ks.indexOf(k)<0)k=ks.indexOf('sets')>-1?'sets':ks.indexOf('about')>-1?'about':ks[0];if(!k)return;cur=k;
+  ks.forEach(function(x){var on=x===k,b=D.getElementById('gmxa-t-'+x);panels[x].hidden=ks.length>1&&!on;
+    if(b){b.setAttribute('aria-selected',on?'true':'false');b.tabIndex=on?0:-1;}});
+  if(k==='music'||ks.length<2)arr(panels.music?panels.music.querySelectorAll('iframe[data-gmxa-src]'):[]).forEach(function(f){if(!f.closest('.gmxa-scbox'))wake(f);});
+  if(window.gmxMore&&gmxMore.refresh)gmxMore.refresh();
+  if(scroll&&tabbar&&!tabbar.hidden){var top=tabbar.getBoundingClientRect().top;if(top<=1)window.scrollTo(0,window.pageYOffset+panels[k].getBoundingClientRect().top-tabbar.offsetHeight);}
+  if(!quiet)resize();
+}
+function pick(k,user,key){
+  show(k,user);
+  if(user&&location.hash!=='#'+k){try{history[key?'replaceState':'pushState']({gmxa:k},'','#'+k);}catch(e){}}
+}
+function fromHash(){var k=(location.hash||'').slice(1);return live().indexOf(k)>-1?k:'';}
+
+/* ---- 7. the reorganise ---- */
+function meaningful(n){
+  if(n.nodeType!==1)return false;
+  if(n.matches('h1,h2,.eyebrow2,.vh'))return false;
+  if(n.querySelector('a,img,iframe,button,.rel,blockquote,[data-tok]'))return true;
+  var t='';arr(n.childNodes).forEach(function(c){if(c.nodeType===3)t+=c.data;else if(c.nodeType===1&&!c.matches('h1,h2,.eyebrow2,.vh,script,style'))t+=c.textContent;});
+  return t.replace(/\s+/g,'').length>0;
+}
+function run(){
+  D.documentElement.classList.add('gmxa-page');cls(sec,'gmxa-on');
+  /* 29 hand-indented pages close the section after the bio: their sections follow it as siblings up to nav.pn */
+  var sib=sec.nextElementSibling;
+  while(sib&&!sib.matches('nav,footer,.pn,p.note')){var nx=sib.nextElementSibling;if(!sib.matches('script,style,.gmxreel'))move(sib,sec);sib=nx;}
+  var kids=arr(sec.childNodes);
+  stash=make('div','gmxa-stash');stash.hidden=true;stash.setAttribute('aria-hidden','true');sec.appendChild(stash);
+  var H=harvest(),items=H.items;
+  var lead=null;items.some(function(it){if(it.kind==='filmed'&&it.lead){lead=it;return true;}return false;});
+  if(!lead)items.some(function(it){if(it.kind==='filmed'){lead=it;return true;}return false;});
+  var filmed=items.filter(function(it){return it.kind==='filmed'&&it!==lead;});
+  var h=hero(lead);sec.insertBefore(h,sec.firstChild);idBlock(h);
+  if(lead)cls(D.documentElement,'gmxa-imgpage');
+  if(h.__stage)gmxPlayer.run(h.__stage);
+  /* sets: the cards list is built once, renderSets() lays chips, notes, grid and fold around it (again when a card arrives late) */
+  var P=panel('sets'),grid=make('div','gmxa-grid'),cards=[],chips=null,notes={},more=null,filter='all',open=false,nMix=0;grid.id='gmxa-grid';
+  var setsTail=make('div','gmxa-tail');
+  var yr=0;filmed.forEach(function(it,i){it.yr=yearOf(it.cap+' '+it.title)||it.yr||yr;yr=it.yr;it.ord=i;});
+  filmed.forEach(function(it){var c=ytCard(it);made.push(c);it.card=c;});
+  var scs=H.sc.slice(),sco=[];
+  if(H.prof){if(scs.length||lead){scInto(null,H.prof,stash);H.gone=1;}else scs.push(H.prof);}
+  scs.forEach(function(it,i){
+    if(lead&&!lead.tw&&h.__stage&&same(it.title,lead.title)){lead.tw=it;heroTwin(h,it);return;}
+    var m=null;filmed.forEach(function(f){if(!m&&!f.tw&&same(it.title,f.title))m=f;});
+    if(m){m.tw=1;twin(m.card,it);return;}
+    it.yr=yearOf(it.title);it.ord=filmed.length+i;sco.push({card:scCard(it,i),yr:it.yr,ord:it.ord});
+    if(it.lead&&!H.notes.audio)H.notes.audio=noteText(it.lead);
+  });
+  var mix=filmed.map(function(it){return {card:it.card,yr:it.yr,ord:it.ord};}).concat(sco);
+  if(mix.some(function(x){return x.yr;}))mix.sort(function(a,b){return (b.yr||0)-(a.yr||0)||a.ord-b.ord;});
+  mix.forEach(function(x){cards.push(x.card);});nMix=cards.length;
+  ['clips','talks'].forEach(function(k){items.forEach(function(it){if(it.kind===k){var c=ytCard(it);made.push(c);cards.push(c);}});});
+  function kinds(c){return c.getAttribute('data-gmxa-kind').split(' ');}
+  /* a late card: filmed ones close the filmed run, clips go after the last clip */
+  function place(c,k){
+    if(k==='filmed'){cards.splice(nMix,0,c);nMix++;return;}
+    var at=nMix;cards.forEach(function(x,i){if(kinds(x).indexOf('clips')>-1)at=i+1;});cards.splice(at,0,c);
+  }
+  function renderSets(){
+    arr(P.children).forEach(function(n){if(n.tagName!=='H2'&&n!==grid&&n!==setsTail)P.removeChild(n);});
+    if(!cards.length)return;
+    P.__has=1;
+    var counts={};cards.forEach(function(c){kinds(c).forEach(function(k){counts[k]=(counts[k]||0)+1;});});
+    var ks=KINDS.filter(function(k){return counts[k];});
+    chips=null;notes={};more=null;if(filter!=='all'&&!counts[filter])filter='all';
+    if(grid.parentNode!==P)P.insertBefore(grid,setsTail.parentNode===P?setsTail:null);
+    if(ks.length>1){
+      chips=el('div','gmxa-chips');chips.setAttribute('role','group');chips.setAttribute('aria-label','filter sets');
+      ['all'].concat(ks).forEach(function(k){var b=el('button','gmxa-chip');b.type='button';b.setAttribute('data-gmxa-f',k);b.setAttribute('aria-pressed',k===filter?'true':'false');
+        var l=el('span');l.textContent=k;b.appendChild(l);b.appendChild(cnt(k==='all'?cards.length:counts[k]));
+        b.addEventListener('click',function(){filter=k;open=false;arr(chips.children).forEach(function(c){c.setAttribute('aria-pressed',c===b?'true':'false');});lay();});
+        chips.appendChild(b);});
+      P.insertBefore(chips,grid);
+    }
+    var allnote=h.__stage?'every set we\'re tracking. the newest filmed one is up top.':'';
+    [['all',allnote]].concat(KINDS.map(function(k){return [k,H.notes[k]||''];})).forEach(function(n){if(!n[1]||(n[0]!=='all'&&!counts[n[0]]))return;var p=el('p','gmxa-note');p.textContent=n[1];p.setAttribute('data-gmxa-for',n[0]);notes[n[0]]=p;P.insertBefore(p,grid);});
+    cards.forEach(function(c,i){if(grid.children[i]!==c)grid.insertBefore(c,grid.children[i]||null);});
+    if(cards.length>8){more=el('button','gmx-more-btn gmxa-gridmore');more.type='button';more.setAttribute('aria-controls','gmxa-grid');more.setAttribute('aria-expanded','false');
+      more.addEventListener('click',function(){open=!open;lay();});P.insertBefore(more,grid.nextSibling);}
+    lay();tabN('sets',cards.length);fire(grid,'gmx:cards');
+  }
+  function lay(){
+    var shown=0,hid=0,n=0;
+    cards.forEach(function(c){var ok=filter==='all'||kinds(c).indexOf(filter)>-1;
+      var fd=ok&&!open&&shown>=8&&!c.classList.contains('gmxa-on');if(ok)n++;if(ok&&!fd)shown++;if(fd)hid++;
+      c.classList.toggle('gmxa-off',!ok||fd);});
+    for(var k in notes)notes[k].hidden=k!==filter;
+    if(more){more.hidden=n<=8;more.setAttribute('aria-expanded',open?'true':'false');more.textContent=open?'less':'more ('+hid+')';}
+  }
+  grid.addEventListener('click',function(e){
+    var b=e.target.closest?e.target.closest('.set-facade'):null;if(!b||!grid.contains(b)||b.tagName==='A')return;
+    var c=b.closest('.gmxa-card');stopAll(c);stopHero();c.classList.add('gmxa-on');c.classList.remove('gmxa-scon');ytFrame(b);
+  });
+  grid.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.gmxa-scbtn');if(b)stopHero();},true);
+  function stopHero(){h.classList.remove('gmxa-playing');stopSc(h);arr(h.querySelectorAll('.video-frame')).forEach(function(v){if(v.__facade)v.parentNode.replaceChild(v.__facade,v);});}
+  /* the hero's thumbnail came back as youtube's grey card: typographic hero, and the set joins the grid as a card */
+  h.__dead=function(){
+    h.__dead=null;var box=h.querySelector('.gmxa-stagebox'),hs=h.querySelector('.gmxa-herosc');
+    if(box)box.parentNode.removeChild(box);
+    h.className='gmxa-hero gmxa-type';D.documentElement.classList.remove('gmxa-imgpage');h.__stage=null;
+    if(window.console&&console.info)console.info('gmx-artist: the newest set ('+lead.id+') has no thumbnail on youtube, it may be gone. it left the hero');
+    var c=ytCard(lead);made.push(c);if(typeof lead.tw==='object'){if(hs)hs.parentNode.removeChild(hs);twin(c,lead.tw);}
+    place(c,'filmed');renderSets();bar();resize();
+  };
+  /* a tiktok teaser (tobehonest's #tbhtok): a clip card around the page's own button, its inline binder still loads it */
+  function tokCard(n){
+    var b=n.querySelector('[data-tok]'),c=make('div','gmxa-card gmxa-tok'),m=el('div','gmxa-media gmxa-tall'),meta=el('div','gmxa-cmeta'),t=el('span','t');
+    c.setAttribute('data-gmxa-kind','clips');move(n,m);m.appendChild(el('span','gmxa-pill','tt'));c.appendChild(m);
+    t.textContent=(b.getAttribute('aria-label')||'tiktok teaser').replace(/^load (the )?/i,'').replace(/ from tiktok$/i,'');
+    meta.appendChild(t);meta.appendChild(el('span','mono','clip · tiktok'));c.appendChild(meta);
+    c.addEventListener('click',function(e){if(!e.target.closest||!e.target.closest('[data-tok]'))return;stopAll(c);stopHero();c.classList.add('gmxa-on');c.setAttribute('data-gmxa-keep','');
+      setTimeout(function(){var f=m.querySelector('iframe');if(f)try{f.focus();}catch(x){}},0);},true);
+    place(c,'clips');
+  }
+  /* a lone youtube link in a sentence ("one more that will not embed, so it opens on youtube: …"): a filmed card. a sentence
+     that says it will not embed makes a card that links out instead of playing */
+  function linkCard(p,a){
+    var hr=a.getAttribute('href'),id=ytOf(hr);if(!id||H.seen[id])return false;H.seen[id]=1;
+    var it={id:id,kind:'filmed',title:text(a),cap:text(a),img:'',start:startOf(hr),ext:/embed/i.test(text(p))},c=ytCard(it);made.push(c);place(c,'filmed');return true;
+  }
+
+  /* music, about, site: everything left in the section, routed by what it is */
+  var M=panel('music'),A=panel('about'),S=panel('site');
+  var colA=make('div','gmxa-col'),colB=make('div','gmxa-col');
+  H.sp.forEach(function(b){var l=b.nextElementSibling&&b.nextElementSibling.classList.contains('gmx-src')?b.nextElementSibling:null;
+    var lp=leadOf(b);if(lp)move(lp,colB);else if(!colB.firstChild&&!b.matches('section'))sh(colB,'on spotify');
+    move(b,colB);if(l)move(l,colB);var f=b.tagName==='IFRAME'?b:b.querySelector('iframe');if(f)park(f);M.__has=1;});
+  var facts=sec.querySelector('.facts'),bio=sec.querySelector('.bio');
+  if(facts&&facts.querySelector('.fact')){sh(A,'at a glance');move(facts,A);cls(facts,'gmxa-glance');A.__has=1;
+    arr(facts.querySelectorAll('.fact')).forEach(function(f){var v=f.querySelector('.v');if(text(v).length>48)cls(f,'gmxa-wide');if(/dropping soon|next|verdict/i.test(text(f.querySelector('.k'))))cls(f,'gmxa-hot');});}
+  var rest=null;
+  if(bio&&text(bio)){sh(A,'the story');move(bio,A);A.__has=1;
+    var first=arr(bio.children).filter(function(c){return c.tagName==='P';})[0],after=arr(bio.childNodes).slice(first?arr(bio.childNodes).indexOf(first)+1:0);
+    if(after.some(function(n){return n.nodeType===1;})){rest=make('div','gmxa-rest');rest.setAttribute('data-more','fold');rest.setAttribute('data-more-label','the full story');bio.appendChild(rest);after.forEach(function(n){move(n,rest);});}}
+  var aboutTail=make('div','gmxa-tail'),dest=[];
+  var tl=false,scSecs=H.sc.concat(H.prof&&!H.gone?[H.prof]:[]).map(function(it){return it.sec;}).filter(Boolean);
+  /* a section's own words once its heading is set aside */
+  function words(n){var c=n.cloneNode(true);arr(c.querySelectorAll('h1,h2,h3,.eyebrow2,.vh,script,style')).forEach(function(x){x.parentNode.removeChild(x);});return text(c);}
+  kids.forEach(function(n){
+    if(n.parentNode!==sec)return;
+    if(n.nodeType===8){var c=n.data.trim();if(/^tracklists:start/.test(c))tl=true;if(/^(tracklists|related):/.test(c))dest.push([n,S]);if(/^tracklists:end/.test(c))tl=false;return;}
+    if(n.nodeType!==1)return;
+    if(tl){dest.push([n,S]);return;}
+    if(n.matches('script,style,template'))return;
+    if(n.matches('.gmx-rel-static')||(n.matches('section.sec')&&/^tagged by us/i.test(text(n.querySelector('.eyebrow2')))))return dest.push([n,S]);
+    if(!meaningful(n))return dest.push([n,stash]);
+    /* the section a soundcloud player came out of: its line becomes the audio note, or it follows the player to sets */
+    if(scSecs.indexOf(n)>-1){var w=words(n);
+      if(w&&w.length<240&&!H.notes.audio&&!n.querySelector('a,iframe,img,button,blockquote')){H.notes.audio=w;return dest.push([n,stash]);}
+      return dest.push([n,setsTail]);}
+    if(n.querySelector('.rel')||n.matches('.rel'))return dest.push([n,colA]);
+    if(n.querySelector('iframe[src*="open.spotify.com"],iframe[data-src*="open.spotify.com"]'))return dest.push([n,colB]);
+    var lp=dest[dest.length-1],yl=n.tagName==='P'?n.querySelectorAll('a'):[];
+    if(n.querySelector('[data-tok]')&&!n.matches('blockquote')){if(lp&&lp[0]===n.previousElementSibling&&lp[0].tagName==='P')lp[1]=stash;return tokCard(n);}
+    if(yl.length===1&&text(n).length<300&&linkCard(n,yl[0]))return dest.push([n,stash]);
+    if(n.querySelector('a[href*="youtu"]')&&!n.matches('blockquote'))return dest.push([n,setsTail]);
+    if(n.matches('blockquote')&&bio){if(!rest){rest=make('div','gmxa-rest');rest.setAttribute('data-more','fold');rest.setAttribute('data-more-label','the full story');bio.appendChild(rest);}return dest.push([n,rest]);}
+    dest.push([n,aboutTail]);
+  });
+  /* a lead-in line goes where the block it introduces goes */
+  for(var i=dest.length-2;i>=0;i--){var a=dest[i][0];if(a.nodeType===1&&a.tagName==='P'&&!a.querySelector('a')&&dest[i][1]===aboutTail){var nx=dest[i+1];if(nx&&nx[0]===a.nextElementSibling)dest[i][1]=nx[1];}}
+  dest.forEach(function(d){move(d[0],d[1]);});
+  if(colA.firstChild)M.__has=1;
+  if(colA.firstChild&&colB.firstChild){var mc=make('div','gmxa-cols');mc.appendChild(colA);mc.appendChild(colB);M.appendChild(mc);}
+  else{if(colA.firstChild)M.appendChild(colA);if(colB.firstChild)M.appendChild(colB);}
+  M.__n=M.querySelectorAll('.rel').length;
+  if(H.gone&&H.notes.audio)H.notes.audio=H.notes.audio.replace(/\b(off|from|on) (the|his|her|their) (soundcloud )?profile above\b/i,'$1 soundcloud');
+  if(setsTail.firstChild){P.appendChild(setsTail);P.__has=1;}
+  renderSets();
+  if(aboutTail.firstChild){A.appendChild(aboutTail);A.__has=1;}
+  var allb=sec.querySelectorAll('.gmxa-badges .tag.badge');
+  if(allb.length>4){sh(A,'badges');var bw=make('div','gmxa-allb');arr(allb).forEach(function(b){var c=b.cloneNode(true);c.classList.remove('gmxa-folded');c.removeAttribute('id');bw.appendChild(c);});A.appendChild(bw);A.__has=1;}
+  if(S.querySelector('a,iframe,.gmxreel'))S.__has=1;
+  /* caught live: the reel section sits after section.artist in the static page */
+  var reel=D.querySelector('section.gmxreel');
+  if(reel&&!reel.closest('section.artist')){
+    move(reel,S);cls(reel,'gmxa-reels');S.__has=1;
+    arr(reel.querySelectorAll('.gmxreel-wrap')).forEach(function(w){var f=w.querySelector('iframe');if(!f)return;park(f);cls(w,'gmxa-shut');
+      var b=make('button','gmxa-reel','<span class="gmxa-sq" aria-hidden="true">'+IGI+'</span><span><b></b><span>instagram reel · tap to load</span></span>');b.type='button';
+      b.querySelector('b').textContent=f.getAttribute('title')||'instagram reel';b.setAttribute('aria-expanded','false');
+      b.addEventListener('click',function(){w.classList.remove('gmxa-shut');wake(f);b.setAttribute('aria-expanded','true');b.hidden=true;focusIn(f);});
+      w.parentNode.insertBefore(b,w);});
+  }
+  /* the soundcloud profile embed as the page's only audio already sits on a card. a stray one with no card is parked */
+  arr(stash.querySelectorAll('iframe')).forEach(park);
+  S.__n=siteN();
+
+  TABS.forEach(function(t){if(panels[t[0]].__has)sec.insertBefore(panels[t[0]],stash);});
+  bar();
+  tour(h);
+  show(fromHash()||'sets',false,true);
+  if(fromHash()&&tabbar)setTimeout(function(){tabbar.scrollIntoView();},0);
+  window.addEventListener('popstate',function(){show(fromHash()||'sets',false);});
+  window.addEventListener('hashchange',function(){var k=fromHash();if(k&&k!==cur)show(k,false);});
+
+  /* the on the site count: the tracklists it links to, the reels, and the sets the also on the site box adds (label chips not counted) */
+  function siteN(){var u={},n=0;arr(S.querySelectorAll('a[href*="/tracklists/"]')).forEach(function(a){if(a.closest('.set-meta,.gmxa-vh'))return;var k=a.getAttribute('href').replace(/[?#].*$/,'');if(!u[k]){u[k]=1;n++;}});
+    return n+S.querySelectorAll('.gmxreel-wrap,.gmx-rel .set-slide').length;}
+  /* late arrivals: the follow pill into the actions row, the also on the site box into its tab */
+  if(window.MutationObserver){
+    mo=new MutationObserver(function(list){
+      list.forEach(function(r){arr(r.addedNodes).forEach(function(n){
+        if(n.nodeType!==1)return;
+        if(n.classList.contains('gmx-follow')&&n.parentNode!==h.__acts){h.__acts.insertBefore(n,h.__acts.firstChild);h.__edge();}
+        else if(n.classList.contains('gmx-src'))short(n);
+        else if(n.classList.contains('gmx-rel')&&n.parentNode!==S){S.appendChild(n);S.__n=siteN();
+          if(!S.__has){S.__has=1;bar();if(location.hash==='#site')show('site',false);}else tabN('site',S.__n);}
+      });});
+    });
+    mo.observe(sec,{childList:true,subtree:true});
+  }
+}
+
+try{run();sec.classList.add('gmxa-ready');}
+catch(e){try{restore();}catch(x){}sec.classList.add('gmxa-ready');if(window.console&&console.warn)console.warn('gmx-artist: kept the old layout',e);}
+/* gmx-motion loads after this file: the resize it measures on is sent once every deferred script has run */
+if(D.readyState==='loading')D.addEventListener('DOMContentLoaded',resize);else resize();
+})();

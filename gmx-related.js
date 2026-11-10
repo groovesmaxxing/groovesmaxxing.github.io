@@ -78,7 +78,8 @@ function profile(sec){
     if(sets.length){var h=document.createElement('h3');h.textContent=sets.length+(sets.length>1?' more sets':' more set');b.appendChild(h);b.appendChild(stage(sets,'set'))}
     if(talks.length){var h2=document.createElement('h3');h2.textContent=talks.length+(talks.length>1?' more talks':' more talk');b.appendChild(h2);b.appendChild(stage(talks,'talk'))}
     var n=document.createElement('p');n.className='note';n.textContent='gathered from the tracklists, the sets page, the interviews page and the label pages. the profile rails above are the hand-kept ones.';b.appendChild(n);
-    var links=sec.querySelector('.links');if(links)sec.insertBefore(b,links);else sec.appendChild(b);
+    /* the tabs layout (gmx-artist.js, 2026-11-10) moves .links into the header row: insert before it only where it is still a child */
+    var links=sec.querySelector('.links');if(links&&links.parentNode===sec)sec.insertBefore(b,links);else sec.appendChild(b);
     [].slice.call(b.querySelectorAll('.set-stage')).forEach(function(s){gmxPlayer.run(s)});
   })});
   /* label names in the release list */

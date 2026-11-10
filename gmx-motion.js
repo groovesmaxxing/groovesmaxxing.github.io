@@ -139,7 +139,8 @@ void main(){
       return;
     }
     const bio = prof && prof.querySelector('.bio');
-    const bioTop = bio ? bio.getBoundingClientRect().top : Infinity;
+    // a .bio inside a hidden tab (gmx-artist.js, 2026-11-10) has no box: its top of 0 would drop every header ink
+    const bioTop = bio && bio.getClientRects().length ? bio.getBoundingClientRect().top : Infinity;
     // the header's real ink: the name, the link icons and the chips, whatever wrapper they sit in
     const inks = prof ? [h1, ...prof.querySelectorAll('.links a, .links > *, .meta > *')].filter(e => e.getBoundingClientRect().top < bioTop) : [h1];
     const txt = rectOf(inks);

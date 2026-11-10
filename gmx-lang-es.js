@@ -99,6 +99,21 @@ words:{
 'tagged by us':'etiquetado por nosotros','tagged by us. full tracklists, timestamped.':'etiquetados por nosotros. tracklists completos, con minuto.',
 'own site':'sitio propio','starter page, full profile under construction':'página inicial, el perfil completo viene en camino',
 'notable releases':'lanzamientos clave','record label':'disquera',
+/* the artist profile tabs layout (gmx-artist.js, 2026-11-10): the tabs, the hero, the tour strip, the folds */
+'music':'música','on the site':'en el sitio','newest set':'set más reciente','at a glance':'de un vistazo','caught live':'en vivo',
+'the full story':'la historia completa','hide the full story':'ocultar la historia completa','filter sets':'filtrar sets',
+"every set we're tracking. the newest filmed one is up top.":'cada set que seguimos. el más reciente en video está hasta arriba.',
+'upcoming dates':'próximas fechas','scroll dates back':'fechas anteriores','scroll dates on':'fechas siguientes',
+'instagram reel':'reel de instagram','tap to load':'toca para cargar','more badges':'insignias más','watch on youtube':'ver en youtube',
+/* the sets tab notes: the rails' lead lines without their trailing "slide →" */
+'the sets, verified.':'los sets, verificados.','the set, verified':'el set, verificado','the full sets.':'los sets completos.','the sets, filmed.':'los sets, en video.',
+'the receipts, filmed.':'las pruebas, en video.','from the floor, filmed by groovesmaxxing.':'desde la pista, grabado por groovesmaxxing.',
+'in his own words.':'en sus propias palabras.','in her own words.':'en sus propias palabras.','in their own words.':'en sus propias palabras.',
+'in his own words. this is where the story on this page comes from.':'en sus propias palabras. de aquí sale la historia de esta página.',
+'in her own words. this is where the story on this page comes from.':'en sus propias palabras. de aquí sale la historia de esta página.',
+'in his own words. both of these are where the story on this page comes from.':'en sus propias palabras. de estas dos sale la historia de esta página.',
+'in her own words. both of these are where the story on this page comes from.':'en sus propias palabras. de estas dos sale la historia de esta página.',
+'in his own words. all three are where the story on this page comes from.':'en sus propias palabras. de estas tres sale la historia de esta página.',
 /* tracklist pages and the hub */
 'share':'compartir','copy the list':'copiar la lista','link copied':'link copiado','copy is not available here':'copiar no está disponible aquí',
 'watch the set':'mira el set','listen on spotify':'escúchalo en spotify','tracklist by':'tracklist por','not out yet':'aún no sale',
@@ -590,6 +605,11 @@ words:{
 'house, techno & indie dance, curated':'house, techno e indie dance, con curaduría',
 },
 scoped:[
+/* the artist profile tabs layout (2026-11-10): the filter chips, card labels and twin buttons are short words used as prose elsewhere */
+['.gmxa-chips',{'filmed':'en video','clips':'clips','talks':'pláticas','audio':'audio'}],
+['.gmxa-card',{'filmed':'en video','clip':'clip','talk':'plática','watch':'ver','listen':'escuchar'}],
+['.gmxa-plus',{'less':'menos'}],
+['.gmxa-dblk',{jan:'ene',feb:'feb',mar:'mar',apr:'abr',may:'may',jun:'jun',jul:'jul',aug:'ago',sep:'sep',oct:'oct',nov:'nov',dec:'dic'}],
 /* web review 2026-11-09: the quick search sheet (A2): short words that are prose fragments elsewhere */
 ['.gmx-quick-rl',{'in':'en','recent':'recientes'}],
 ['.gmx-quick',{'results':'resultados','recent':'recientes'}],
@@ -679,6 +699,8 @@ scoped:[
 'groovesmaxxing picks scoreboard':'marcador de picks de groovesmaxxing','read again at every month end':'se revisa cada cierre de mes'}]
 ],
 rules:[
+/* the artist profile tabs layout (2026-11-10): the sets fold, the badges fold aria-label, the soundcloud card label */
+['more \\((\\d+)\\)','más ($1)'],['listen to (.+)','escuchar $1'],['(.+), opens on youtube','$1, se abre en youtube'],
 /* web review 2026-11-09, fixer pass: the words a share sends (gmx-sheet.js runs them through here), most specific first */
 ['an open ID at (\\S+) in (.+), know it\\?','un ID abierto a los $1 en $2, ¿lo conoces?'],['an open ID in (.+), know it\\?','un ID abierto en $1, ¿lo conoces?'],['(.+) · at (\\S+) in (.+)','$1 · a los $2 en $3'],
 ['(.+) · the badges on groovesMAXXING','~1 · las insignias en groovesMAXXING'],['(.+) · the tracklist on groovesMAXXING','$1 · el tracklist en groovesMAXXING'],['(.+) · house by mood on groovesMAXXING','~1 · house por mood en groovesMAXXING'],['(.+) on groovesMAXXING','$1 en groovesMAXXING'],
@@ -697,7 +719,7 @@ rules:[
 /* web review 2026-11-09: friday, the newsletter and dates (A2, A3, pt-spanish-11, -14) */
 ['week of (jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec) (\\d{1,2}) to (\\d{1,2}), (\\d{4})','semana del $2 al $3 de ~1, $4'],['week of (jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec) (\\d{1,2}) to (jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec) (\\d{1,2}), (\\d{4})','semana del $2 de ~1 al $4 de ~3, $5'],['(\\d+) tracks · (\\d+) labels','$1 tracks · $2 disqueras'],['issue (\\d+)','número $1'],['(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec) (\\d{1,2}) (\\d{2})','$2 ~1 $3'],['(\\d{1,2}) (january|february|march|april|may|june|july|august|september|october|november|december) (\\d{4})','$1 de ~2 de $3'],
 /* web review 2026-11-09: lines the review found with no sidecar: label hub lines, artist pills and the sets lede, tracklist rails, open IDs counts, set-from-time titles */
-['more from (.+)','más de $1'],['founded by (.+)','fundada por $1'],['owned by (.+)','propiedad de $1'],['launched by (.+)','lanzada por $1'],['sub-label of (.+)','sub-disquera de $1'],['sister imprint of (.+)','disquera hermana de $1'],['supported by (\\d+\\+?) djs','apoyado por $1 djs'],['the long ones, straight off the profile above\\. newest first, and the longest runs (.+)\\.','los largos, directo del perfil de arriba. los más nuevos primero, y el más largo dura $1.'],['(\\d+) of these resolved to a record we could link\\. the rest are searches or are not out\\.','$1 de estos se resolvieron a un disco con link. los demás son búsquedas o todavía no salen.'],['all (\\d+)','todos ($1)'],['of (\\d+)','de $1'],['(.+) from (\\d{1,2}(?::\\d\\d){1,2})','$1 desde $2'],
+['more from (.+)','más de $1'],['founded by (.+)','fundada por $1'],['owned by (.+)','propiedad de $1'],['launched by (.+)','lanzada por $1'],['sub-label of (.+)','sub-disquera de $1'],['sister imprint of (.+)','disquera hermana de $1'],['supported by (\\d+\\+?) djs','apoyado por $1 djs'],['the long ones, straight off the profile above\\. newest first, and the longest runs (.+)\\.','los largos, directo del perfil de arriba. los más nuevos primero, y el más largo dura $1.'],['the long ones, straight off soundcloud\\. newest first, and the longest runs (.+)\\.','los largos, directo de soundcloud. los más nuevos primero, y el más largo dura $1.'],['(\\d+) of these resolved to a record we could link\\. the rest are searches or are not out\\.','$1 de estos se resolvieron a un disco con link. los demás son búsquedas o todavía no salen.'],['all (\\d+)','todos ($1)'],['of (\\d+)','de $1'],['(.+) from (\\d{1,2}(?::\\d\\d){1,2})','$1 desde $2'],
 /* web review 2026-11-09: the carousel counter (A3, pt-spanish-08): plain "N of M" only, the longer N of M lines above and below are their own rules */
 ['(\\d+) of (\\d+)','$1 de $2'],
 /* the share and copy buttons (2026-11-08): the copy toast and the playlist card share label */

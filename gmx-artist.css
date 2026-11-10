@@ -1,0 +1,261 @@
+/* groovesmaxxing artist profile, the tabs layout (direction B, 2026-11-10). pairs with gmx-artist.js.
+   every rule is scoped to .gmxa-* or to section.artist.gmxa-on, the class the script sets once it has moved the
+   page's own nodes, so a page without the script (js off, an error, a label page) keeps its old look.
+   the gate below hides the section until the script is done, 2 s at most once this file has loaded. the script runs
+   after the whole parse and gmx-player.js, so on a slow phone that wait is real: a page with filmed sets shows the
+   hero's dark shape meanwhile instead of an empty screen. */
+@media (scripting:enabled){
+  section.artist:not(.gmxa-ready){visibility:hidden;animation:gmxa-show 0s 2s forwards;position:relative}
+  section.artist:not(.gmxa-ready):has(button[data-yt])::before{content:'';visibility:visible;position:absolute;top:6px;left:-26px;right:-26px;aspect-ratio:16/9;background:linear-gradient(180deg,#141417 0%,#0B0B0D 100%);animation:gmxa-hide 0s 2s forwards}
+}
+@media (scripting:enabled) and (min-width:720px){section.artist:not(.gmxa-ready):has(button[data-yt])::before{left:0;right:0;aspect-ratio:21/9;border-radius:14px}}
+@keyframes gmxa-show{to{visibility:visible}}
+@keyframes gmxa-hide{to{visibility:hidden}}
+
+.gmxa-page .wrap{max-width:960px}
+.gmxa-imgpage .gmx-mark{display:none!important}
+section.artist.gmxa-on{display:block;padding:0 0 10px;--gmxa-g:26px}
+section.artist.gmxa-on .gmxa-x,.gmxa-stash,.gmxa-off,.gmxa-folded,.gmxa-shut{display:none!important}
+.gmxa-vh{position:absolute!important;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+section.artist.gmxa-on :focus-visible{outline:3px solid var(--racing,#FF1C02);outline-offset:3px}
+/* inside a clipped box (overflow:hidden) the ring sits inside the edge, or it is cut away */
+section.artist.gmxa-on .gmxa-media :focus-visible,section.artist.gmxa-on .gmxa-stagebox .set-facade:focus-visible{outline-offset:-3px}
+
+/* hero */
+.gmxa-hero{position:relative;margin-top:6px}
+.gmxa-stagebox{position:relative;margin:0 calc(-1 * var(--gmxa-g));aspect-ratio:16/9;background:#000;overflow:hidden}
+.gmxa-stagebox .gmx-stage{margin:0;height:100%}
+.gmxa-stagebox .gmx-stage .set-viewport,.gmxa-stagebox .gmx-stage .set-rail,.gmxa-stagebox .gmx-stage .set-slide{height:100%;border-radius:0}
+.gmxa-stagebox .gmx-stage .set-facade{height:100%;padding-top:0;border-radius:0}
+.gmxa-stagebox .gmx-stage .set-facade img{filter:brightness(.42) saturate(.85)}
+.gmxa-stagebox .gmx-stage .set-facade::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,13,.2) 0%,rgba(11,11,13,0) 40%,rgba(11,11,13,.92) 100%);pointer-events:none}
+.gmxa-stagebox .gmx-stage .set-play{top:44%;width:72px;height:72px;background:rgba(11,11,13,.55);border:2px solid var(--racing,#FF1C02);box-shadow:none;z-index:1}
+.gmxa-stagebox .gmx-stage .set-play svg{width:28px;height:28px;fill:var(--day,#F2F2EF)}
+.gmxa-stagebox .gmx-stage .set-facade:hover .set-play{background:rgba(255,28,2,.18)}
+.gmxa-stagebox .gmx-stage .video-frame{height:100%;padding-top:0;border-radius:0}
+.gmxa-stagebox .gmx-stage .set-meta{position:absolute;top:10px;right:12px;margin:0;gap:6px;z-index:2;flex-wrap:nowrap}
+.gmxa-stagebox .gmx-stage .set-meta .gmx-heart,.gmxa-stagebox .gmx-stage .set-meta .gmx-more,.gmxa-hlisten{width:44px;height:44px;background:rgba(11,11,13,.6);color:var(--day,#F2F2EF);border-color:rgba(242,242,239,.25);margin:0}
+.gmxa-hlisten{display:flex;align-items:center;justify-content:center;padding:0;border:1px solid rgba(242,242,239,.25);border-radius:50%;cursor:pointer}
+.gmxa-hlisten svg{width:20px;height:20px}
+.gmxa-hlisten:hover,.gmxa-hlisten[aria-pressed="true"]{border-color:var(--racing,#FF1C02)}
+.gmxa-herosc{position:relative;z-index:3}
+.gmxa-herosc .gmxa-scbox{margin-top:10px}
+.gmxa-herosc .gmx-src{display:none}
+.gmxa-hero.gmxa-scon .gmxa-herosc .gmx-src{display:inline-block}
+.gmxa-stagebox .gmx-stage .set-ctl,.gmxa-stagebox .gmx-stage .set-dots{display:none}
+.gmxa-eye{position:absolute;left:12px;top:14px;max-width:calc(100% - 120px);z-index:2;margin:0;pointer-events:none;font:400 .66rem 'Space Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--day,#F2F2EF);background:rgba(11,11,13,.78);border-radius:4px;padding:5px 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gmxa-eye b{color:var(--racing,#FF1C02);font-weight:700}
+.gmxa-id{position:relative;z-index:3}
+.gmxa-img .gmxa-id{margin-top:-58px}
+.gmxa-playing .gmxa-id{margin-top:16px}
+.gmxa-playing .gmxa-eye,.gmxa-playing .gmx-stage .set-meta{display:none}
+.gmxa-type{padding-top:34px}
+.gmxa-type::before{content:'';display:block;width:44px;height:3px;border-radius:3px;background:var(--racing,#FF1C02);margin-bottom:18px}
+section.artist.gmxa-on .gmxa-id .aname{font-weight:900;font-size:clamp(2.5rem,11vw,4.4rem);line-height:.98;letter-spacing:-.03em;text-shadow:0 2px 18px rgba(0,0,0,.5);margin:0;overflow-wrap:anywhere}
+.gmxa-sub{margin:10px 0 0;font:400 .78rem/1.6 'Space Mono',monospace;color:var(--steel,#8A8A93);letter-spacing:.04em;text-wrap:balance}
+.gmxa-sub .gmxa-lane{color:var(--racing,#FF1C02)}
+section.artist.gmxa-on .gmxa-meta{display:contents}
+.gmxa-badges{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0}
+.gmxa-badges .tag,.gmxa-allb .tag{display:inline-flex;align-items:center;min-height:32px;font-size:.74rem;letter-spacing:.04em;padding:6px 12px;line-height:1.4;max-width:100%}
+.gmxa-plus{font:700 .74rem 'Space Mono',monospace;color:var(--day,#F2F2EF);background:transparent;border:1px solid rgba(255,28,2,.45);border-radius:999px;padding:0 14px;min-height:32px;min-width:44px;position:relative;cursor:pointer}
+.gmxa-plus::before{content:'';position:absolute;inset:-6px 0}
+.gmxa-plus:hover{border-color:var(--racing,#FF1C02)}
+.gmxa-acts{display:flex;align-items:center;gap:8px;margin:14px calc(-1 * var(--gmxa-g)) 0;padding:2px var(--gmxa-g);min-height:48px;box-sizing:border-box;overflow-x:auto;scrollbar-width:none}
+.gmxa-acts::-webkit-scrollbar{display:none}
+.gmxa-acts.gmxa-cut{-webkit-mask-image:linear-gradient(90deg,#000 82%,transparent);mask-image:linear-gradient(90deg,#000 82%,transparent)}
+.gmxa-acts > *,.gmxa-acts .links > *{flex:none}
+section.artist.gmxa-on .gmxa-acts .links{display:flex;flex-wrap:nowrap;gap:8px;margin:0}
+.gmxa-acts .gmx-follow{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 20px;border-radius:999px;border:0;background:var(--racing,#FF1C02);color:var(--night,#0B0B0D);font:600 .92rem 'Poppins',sans-serif;letter-spacing:0}
+.gmxa-acts .gmx-follow svg{stroke:currentColor}
+.gmxa-acts .gmx-follow:hover{background:var(--deep,#CC1400);color:var(--day,#F2F2EF)}
+.gmxa-acts .gmx-follow[aria-pressed="true"]{background:transparent;color:var(--day,#F2F2EF);box-shadow:inset 0 0 0 1px rgba(255,28,2,.6)}
+.gmxa-acts .gmx-follow[aria-pressed="true"] svg{fill:var(--racing,#FF1C02);stroke:var(--racing,#FF1C02)}
+section.artist.gmxa-on .gmxa-acts .gmx-more{width:44px;height:44px;margin:0}
+section.artist.gmxa-on .gmxa-acts .lk{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border-radius:999px;border:1px solid var(--line,#26262b);color:#c9c9c4;font:700 .72rem 'Space Mono',monospace;letter-spacing:.04em;text-decoration:none;white-space:nowrap}
+section.artist.gmxa-on .gmxa-acts .lk:not(.ico){width:auto;padding:0 14px;font-weight:400;font-size:.76rem}
+section.artist.gmxa-on .gmxa-acts .lk:hover{border-color:var(--racing,#FF1C02);color:var(--racing,#FF1C02)}
+.gmxa-acts .lki{width:18px;height:18px}
+.gmxa-id .gmx-claim-row.mine{margin:12px 0 0}
+
+/* on tour */
+.gmxa-tour{margin:20px 0 0}
+.gmxa-rowhead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+.gmxa-eyebrow{margin:0;font:400 .72rem 'Space Mono',monospace;letter-spacing:.24em;color:var(--racing,#FF1C02);text-transform:uppercase}
+.gmxa-side{display:flex;align-items:center;gap:12px}
+.gmxa-eye2{font:400 .74rem 'Space Mono',monospace;color:var(--steel,#8A8A93);text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
+.gmxa-eye2:hover{color:var(--racing,#FF1C02)}
+.gmxa-arrows{display:flex;gap:6px}
+.gmxa-arrows[hidden]{display:none}
+.gmxa-arr{width:44px;height:44px;border-radius:50%;border:1px solid var(--line,#26262b);background:transparent;color:var(--day,#F2F2EF);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0}
+.gmxa-arr svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.gmxa-fw svg{transform:scaleX(-1)}
+.gmxa-arr:hover:not(:disabled){border-color:var(--racing,#FF1C02)}
+.gmxa-arr:disabled{opacity:.3;cursor:default}
+.gmxa-rail{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:2px;margin:0 -2px}
+.gmxa-rail::-webkit-scrollbar{display:none}
+.gmxa-rail::after{content:'';flex:0 0 52px}
+.gmxa-date{flex:0 0 250px;max-width:82%;scroll-snap-align:start;display:flex;gap:12px;align-items:center;background:var(--card,#141417);border:1px solid var(--line,#26262b);border-radius:10px;padding:10px;text-decoration:none;color:var(--day,#F2F2EF);min-height:72px}
+.gmxa-date:hover{border-color:rgba(255,28,2,.5)}
+.gmxa-dblk{flex:none;width:52px;height:52px;border-radius:8px;background:var(--night,#0B0B0D);display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Space Mono',monospace;line-height:1}
+.gmxa-dblk{display:grid;grid-template-columns:auto auto;justify-content:center;align-content:center;column-gap:3px}
+.gmxa-dm,.gmxa-dy{font-size:.62rem;color:var(--racing,#FF1C02);letter-spacing:.08em;text-transform:lowercase}
+.gmxa-dd{grid-column:1 / -1;text-align:center;font-size:1.25rem;font-weight:700;margin-top:3px}
+.gmxa-dtxt{min-width:0}
+.gmxa-dtxt b{display:block;font-weight:600;font-size:.88rem;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gmxa-dtxt span{display:block;font-size:.76rem;color:var(--steel,#8A8A93);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* the tab bar: sticky at the top, full bleed over the wrap gutter. the site has no fixed header */
+.gmxa-tabs{position:sticky;top:0;top:env(safe-area-inset-top,0px);z-index:50;background:var(--night,#0B0B0D);margin:18px calc(-1 * var(--gmxa-g)) 0;padding:0 var(--gmxa-g);border-bottom:1px solid var(--line,#26262b)}
+.gmxa-tabs[hidden]{display:none}
+.gmxa-tablist{display:flex;max-width:960px;margin:0 auto}
+.gmxa-tab{flex:1;min-height:52px;font:600 .88rem 'Poppins',sans-serif;color:var(--steel,#8A8A93);background:none;border:0;position:relative;text-transform:lowercase;white-space:nowrap;padding:0 4px;cursor:pointer}
+.gmxa-tab .gmxa-n,.gmxa-chip .gmxa-n{font:400 .64rem 'Space Mono',monospace;color:var(--steel,#8A8A93);margin-left:4px;vertical-align:1px}
+.gmxa-tab[aria-selected="true"]{color:var(--day,#F2F2EF)}
+.gmxa-tab[aria-selected="true"]::after{content:'';position:absolute;left:18%;right:18%;bottom:-1px;height:3px;border-radius:3px 3px 0 0;background:var(--racing,#FF1C02)}
+.gmxa-tab:hover{color:var(--day,#F2F2EF)}
+section.artist.gmxa-on .gmxa-tab:focus-visible{outline-offset:-3px}
+.gmxa-panel{padding:22px 0 8px;scroll-margin-top:56px}
+.gmxa-panel[hidden]{display:none}
+.gmxa-panel:focus{outline:none}
+section.artist.gmxa-on .gmxa-panel:focus-visible{outline:2px solid rgba(255,28,2,.4);outline-offset:4px;border-radius:12px}
+.gmxa-sh,section.artist.gmxa-on .gmxa-panel .eyebrow2,.gmxa-reels .gmxreel-eye{font:400 .72rem 'Space Mono',monospace;letter-spacing:.2em;color:var(--racing,#FF1C02);text-transform:uppercase;margin:30px 0 12px}
+.gmxa-panel > h2 + .gmxa-sh,.gmxa-col > .gmxa-sh:first-child,.gmxa-col > .sec:first-child .eyebrow2{margin-top:0}
+.gmxa-note{font-size:.88rem;color:var(--steel,#8A8A93);line-height:1.6;margin:0 0 14px}
+.gmxa-note[hidden]{display:none}
+section.artist.gmxa-on .gmxa-panel .sec{border-top:0;margin-top:0;padding-top:0}
+section.artist.gmxa-on .gmxa-panel .sec + .sec{margin-top:30px}
+
+/* sets: filter chips and the card grid */
+.gmxa-chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 calc(-1 * var(--gmxa-g)) 12px;padding:2px var(--gmxa-g)}
+.gmxa-chips::-webkit-scrollbar{display:none}
+.gmxa-chip{position:relative;flex:none;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--line,#26262b);background:transparent;font:600 .86rem 'Poppins',sans-serif;color:#c9c9c4;cursor:pointer}
+.gmxa-chip[aria-pressed="true"]{border-color:var(--racing,#FF1C02);color:var(--day,#F2F2EF);background:rgba(255,28,2,.08)}
+.gmxa-chip:hover{border-color:rgba(255,28,2,.6)}
+/* dense: a card that opens full width does not leave a hole beside the card before it */
+.gmxa-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-flow:row dense;gap:16px 12px}
+/* a card is a wrapping row: media full width, then the title, then the kind and its links on one line
+   (.set-meta, .gmxa-cmeta and .gmxa-schost dissolve into it, so a paired soundcloud link sits inline) */
+.gmxa-card{min-width:0;display:flex;flex-flow:row wrap;align-items:center;align-content:flex-start;column-gap:8px}
+.gmxa-card > .gmxa-media,.gmxa-card > .gmxa-twin,.gmxa-card .gmxa-scbox{flex:0 0 100%;min-width:0}
+section.artist.gmxa-on .gmxa-card .set-meta,section.artist.gmxa-on .gmxa-card .gmxa-cmeta,section.artist.gmxa-on .gmxa-card .gmxa-schost{display:contents}
+.gmxa-card.gmxa-on{grid-column:1 / -1}
+.gmxa-media{position:relative;border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line,#26262b)}
+.gmxa-card .set-facade{position:relative;display:block;width:100%;aspect-ratio:16/9;padding:0;border:0;background:#000;cursor:pointer;overflow:hidden}
+.gmxa-card .set-facade img{width:100%;height:100%;object-fit:cover;display:block;opacity:.85;transition:opacity .15s}
+.gmxa-card .set-facade:hover img{opacity:1}
+.gmxa-card .set-play,.gmxa-pi{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.gmxa-card .set-play svg,.gmxa-pi svg{width:34px;height:34px;fill:var(--day,#F2F2EF);filter:drop-shadow(0 2px 8px rgba(0,0,0,.6))}
+.gmxa-pill,.gmxa-duo{position:absolute;right:6px;bottom:6px;font:700 .6rem 'Space Mono',monospace;letter-spacing:.06em;text-transform:uppercase;background:rgba(11,11,13,.85);color:var(--day,#F2F2EF);border-radius:4px;padding:3px 6px;pointer-events:none}
+.gmxa-duo{right:auto;bottom:auto;left:6px;top:6px;background:var(--racing,#FF1C02);color:var(--night,#0B0B0D)}
+.gmxa-card .video-frame{position:relative;width:100%;aspect-ratio:16/9}
+.gmxa-card .video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.gmxa-tall .video-frame{aspect-ratio:9/16;max-width:340px;margin:0 auto}
+.gmxa-card.gmxa-on .gmxa-tall{background:transparent;border:0}
+.gmxa-scbtn{position:relative;display:block;width:100%;aspect-ratio:16/9;padding:0;border:0;cursor:pointer;background:radial-gradient(120% 120% at 0% 100%,rgba(255,28,2,.22),transparent 60%),var(--card,#141417)}
+.gmxa-wave{position:absolute;left:10%;right:10%;top:50%;height:44%;transform:translateY(-50%);display:flex;align-items:center;gap:3px}
+.gmxa-wave i{flex:1;background:rgba(242,242,239,.28);border-radius:2px}
+.gmxa-scbtn .gmxa-pi svg{fill:var(--racing,#FF1C02)}
+.gmxa-scbox{display:none;margin:0;border-radius:10px;overflow:hidden}
+.gmxa-scon .gmxa-scbox{display:block}
+.gmxa-sc.gmxa-scon .gmxa-media{display:none}
+section.artist.gmxa-on .gmxa-scbox iframe{width:100%;height:166px;border:0;display:block}
+.gmxa-card .gmxa-media{order:0}
+.gmxa-card .gmxa-scbox,.gmxa-twin{order:1}
+.gmxa-card .t{order:2;flex:1 0 100%;margin-top:8px;font-weight:600;font-size:.86rem;line-height:1.35;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;text-transform:lowercase}
+.gmxa-card.gmxa-on .t{-webkit-line-clamp:unset;font-size:.95rem}
+.gmxa-card .mono{order:3;font:400 .68rem 'Space Mono',monospace;color:var(--steel,#8A8A93);letter-spacing:.03em}
+/* the links on the kind line: 44 px tall targets that do not push the line apart */
+.gmxa-out,section.artist.gmxa-on .gmxa-card .gmx-src{order:4;font:400 .68rem 'Space Mono',monospace;color:var(--steel,#8A8A93);text-decoration:none;display:inline-flex;align-items:center;min-height:44px;margin:-8px 0;padding:0;line-height:1.2}
+section.artist.gmxa-on .gmxa-card .gmx-src{order:5}
+.gmxa-out::before,section.artist.gmxa-on .gmxa-card .gmx-src::before{content:'·';margin-right:8px}
+.gmxa-out:hover,section.artist.gmxa-on .gmxa-card .gmx-src:hover{color:var(--racing,#FF1C02)}
+/* a twin's line is its two sources, "youtube ↗ · soundcloud ↗": the yt + sc pill already says what it is */
+.gmxa-card[data-gmxa-kind="filmed audio"] .mono{display:none}
+.gmxa-card[data-gmxa-kind="filmed audio"] .gmxa-out::before{content:none}
+.gmxa-card{position:relative}
+.gmxa-card .set-meta .gmx-heart,.gmxa-card .set-meta .gmx-more{position:absolute;top:6px;right:6px;width:34px;height:34px;margin:0;background:rgba(11,11,13,.62);color:var(--day,#F2F2EF);border-color:rgba(242,242,239,.22);z-index:2}
+.gmxa-card .set-meta .gmx-heart{right:46px}
+.gmxa-card .set-meta .gmx-heart::before,.gmxa-card .set-meta .gmx-more::before{content:'';position:absolute;inset:-5px}
+.gmxa-card.gmxa-on .set-meta .gmx-heart,.gmxa-card.gmxa-on .set-meta .gmx-more{position:static;margin-top:4px;order:6}
+.gmxa-card.gmxa-on .set-meta .gmx-heart{margin-left:auto}
+.gmxa-card.gmxa-on .set-meta .gmx-more{order:7}
+.gmxa-twin{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.gmxa-src2{display:inline-flex;align-items:center;gap:5px;min-height:44px;padding:0 10px;border-radius:999px;border:1px solid var(--line,#26262b);background:transparent;font:400 .7rem 'Space Mono',monospace;color:#c9c9c4;cursor:pointer}
+.gmxa-src2 svg{width:14px;height:14px}
+.gmxa-src2[aria-pressed="true"]{border-color:var(--racing,#FF1C02);color:var(--day,#F2F2EF)}
+.gmxa-src2:hover{border-color:rgba(255,28,2,.6)}
+.gmxa-schost .gmxa-scbox{margin-top:8px}
+.gmxa-gridmore{margin-top:18px}
+.gmxa-gridmore[hidden]{display:none!important}
+/* the tiktok teaser: the page's own button, cut to the card's 16:9 until it is tapped */
+section.artist.gmxa-on .gmxa-tok .gmxa-media > div{margin:0!important}
+section.artist.gmxa-on .gmxa-tok [data-tok]{max-width:none!important;aspect-ratio:16/9!important;border:0!important;border-radius:0!important;background:radial-gradient(120% 120% at 0% 100%,rgba(255,28,2,.22),transparent 60%),var(--card,#141417)!important}
+section.artist.gmxa-on .gmxa-tok [data-tok] > span > span{display:none}
+.gmxa-tok.gmxa-on .gmxa-media{background:transparent;border:0}
+.gmxa-tok iframe{margin:0 auto}
+.gmxa-tail{margin-top:22px}
+
+/* music */
+.gmxa-col .player{margin:0;border-radius:12px;overflow:hidden;background:var(--card,#141417)}
+.gmxa-col .player iframe,.gmxa-col .spot iframe,.gmxa-col > iframe{width:100%;height:352px;border:0;display:block;border-radius:12px}
+.gmxa-col + .gmxa-col{margin-top:30px}
+section.artist.gmxa-on .gmxa-col .rel .t{min-width:0;overflow-wrap:anywhere}
+section.artist.gmxa-on .gmxa-col .rel .l{flex:0 1 auto;max-width:48%;min-width:0;overflow-wrap:anywhere}
+section.artist.gmxa-on .gmxa-col .rel .l{white-space:normal}
+
+/* about */
+section.artist.gmxa-on .gmxa-glance{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-flow:dense;gap:8px;border-top:0;margin:0;padding:0}
+section.artist.gmxa-on .gmxa-glance .fact{display:block;background:var(--card,#141417);border:1px solid var(--line,#26262b);border-radius:10px;padding:12px;min-width:0}
+section.artist.gmxa-on .gmxa-glance .fact .k{display:block;width:auto;padding:0;font:400 .66rem 'Space Mono',monospace;letter-spacing:.12em;color:var(--steel,#8A8A93);text-transform:uppercase}
+section.artist.gmxa-on .gmxa-glance .fact .v{font-size:.84rem;line-height:1.45;color:#c9c9c4;margin-top:6px;overflow-wrap:anywhere}
+section.artist.gmxa-on .gmxa-glance .gmxa-wide{grid-column:1 / -1}
+section.artist.gmxa-on .gmxa-glance .gmxa-hot .v{color:var(--day,#F2F2EF);font-weight:600}
+section.artist.gmxa-on .gmxa-panel .bio{margin:0}
+.gmxa-rest{padding-top:6px}
+.gmxa-allb{display:flex;flex-wrap:wrap;gap:8px}
+
+/* on the site */
+section.artist.gmxa-on .gmxa-panel .gmx-rel,section.artist.gmxa-on .gmxa-panel .gmx-rel-static{border-top:0;margin-top:30px;padding-top:0}
+.gmxa-reels{border-top:0!important;margin-top:30px!important;padding-top:0!important}
+.gmxa-reel{display:flex;gap:12px;align-items:center;width:100%;max-width:404px;text-align:left;background:var(--card,#141417);border:1px solid var(--line,#26262b);border-radius:10px;padding:10px;min-height:72px;margin:0 0 10px;color:var(--day,#F2F2EF);font:inherit;cursor:pointer}
+.gmxa-reel[hidden]{display:none}
+.gmxa-reel:hover{border-color:rgba(255,28,2,.5)}
+.gmxa-sq{flex:none;width:52px;height:52px;border-radius:8px;background:radial-gradient(100% 100% at 0 100%,rgba(255,28,2,.35),transparent 70%),#1d1d21;display:flex;align-items:center;justify-content:center}
+.gmxa-sq svg{width:22px;height:22px;color:var(--day,#F2F2EF)}
+.gmxa-reel b{display:block;font-weight:600;font-size:.9rem}
+.gmxa-reel b + span{display:block;font:400 .7rem 'Space Mono',monospace;color:var(--steel,#8A8A93);margin-top:3px}
+.gmxa-reels .gmxreel-wrap{margin:0 0 10px}
+
+/* desktop */
+/* phone: tighter pills so two share a row inside the 26 px gutter */
+@media (max-width:719px){.gmxa-badges{gap:6px}.gmxa-badges .tag{font-size:.68rem;padding:4px 10px;letter-spacing:.02em}}
+@media (min-width:720px){
+  section.artist.gmxa-on{--gmxa-g:26px}
+  .gmxa-stagebox{margin:0;border-radius:14px;aspect-ratio:21/9}
+  .gmxa-eye{left:24px;top:20px}
+  .gmxa-stagebox .gmx-stage .set-meta{top:16px;right:20px}
+  .gmxa-stagebox .gmx-stage .set-play{width:88px;height:88px;top:46%}
+  .gmxa-img .gmxa-id{margin-top:-84px;padding:0 24px}
+  .gmxa-id{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:24px;align-items:end}
+  .gmxa-playing .gmxa-id{padding:0}
+  .gmxa-id > *,.gmxa-meta > *{grid-column:1}
+  .gmxa-id .gmxa-acts{grid-column:2;grid-row:1 / span 2;align-self:end;margin:0 0 6px;padding:0;justify-content:flex-end;max-width:320px;flex-wrap:wrap;overflow:visible}
+  section.artist.gmxa-on .gmxa-acts .links{display:contents}
+  .gmxa-acts.gmxa-cut{-webkit-mask-image:none;mask-image:none}
+  .gmxa-tab{flex:0 0 auto;padding:0 22px;font-size:.95rem}
+  .gmxa-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 16px}
+  .gmxa-chips{margin:0 0 14px;padding:2px 0}
+  section.artist.gmxa-on .gmxa-glance{grid-template-columns:repeat(4,minmax(0,1fr))}
+  section.artist.gmxa-on .gmxa-glance .gmxa-wide{grid-column:span 2}
+  .gmxa-rail{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));overflow:visible;margin:0;padding:0}
+  .gmxa-date{max-width:none;min-width:0}
+  .gmxa-dtxt b,.gmxa-dtxt span{white-space:normal}
+  .gmxa-arrows{display:none}
+  .gmxa-cols{display:grid;grid-template-columns:1.1fr 1fr;gap:32px;align-items:start}
+  .gmxa-cols .gmxa-col + .gmxa-col{margin-top:0}
+  .gmxa-rail::after{display:none}
+  .gmxa-reels{display:grid;grid-template-columns:1fr 1fr;gap:0 10px;align-items:start}
+  .gmxa-reels .gmxreel-eye{grid-column:1 / -1}
+}
+@media (min-width:1000px){.gmxa-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (prefers-reduced-motion:reduce){.gmxa-card .set-facade img,.gmxa-stagebox *{transition:none!important}}

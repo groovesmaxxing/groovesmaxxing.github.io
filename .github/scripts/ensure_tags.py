@@ -40,6 +40,10 @@ T = {
     'more_js': '<script src="/gmx-more.js?v=3" defer></script>',
     # the name reels on the home page (2026-10-14)
     'reel_js': '<script src="/gmx-reel.js?v=1" defer></script>',
+    # the artist profile tabs layout (2026-11-10, direction B): artist pages only. the js loads right after the player
+    # and before motion, so the player's stages exist and motion measures the reorganised page
+    'artist_css': '<link rel="stylesheet" href="/gmx-artist.css?v=1">',
+    'artist_js': '<script src="/gmx-artist.js?v=1" defer></script>',
 }
 
 # an older or repeated copy of a tagged shared tag (2026-11-05): a page the laptop wrote with last month's ?v=
@@ -93,7 +97,8 @@ def ensure_read(path):
 
 n = 0
 for f in sorted(files('artists/*.html') + files('labels/*.html')):
-    n += ensure(f, ['player_css', 'nav_css', 'account_css'], ['player_js'], ['nav_js', 'crate_js', 'related_js', 'account_js'])
+    art = f.startswith('artists/')
+    n += ensure(f, ['player_css', 'nav_css', 'account_css'] + (['artist_css'] if art else []), ['player_js'] + (['artist_js'] if art else []), ['nav_js', 'crate_js', 'related_js', 'account_js'])
 for f in sorted(files('tracklists/*.html')):
     if f.endswith('/index.html'): continue
     n += ensure(f, ['nav_css', 'account_css'], [], ['nav_js', 'follow_js', 'crate_js', 'related_js', 'account_js'])
