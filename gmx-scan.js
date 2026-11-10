@@ -1367,10 +1367,17 @@ function renderYou(){
     paintStat(); renderSetup(); renderAuto(); loadServerHistory(); pushState();
   };
   if(meCache){paint(meCache);return}
+  var down=function(){box.innerHTML='<p class="smeta">signed in, but the recognizer did not answer. <button class="btn ghost" type="button" data-you="out">sign out</button></p>'};
   gmxAccount.me(true).then(function(me){
-    if(!me){renderYou();return}
+    /* null with the token still set is a 5xx, a 429 or no signal: say so and ask again once, never loop (each /me spends the scan budget) */
+    if(!me){
+      var tok=sessionToken(); if(!tok){renderYou();return}
+      down();
+      if(renderYou.retryTok!==tok){renderYou.retryTok=tok;setTimeout(function(){if(sessionToken()===tok&&!meCache)renderYou()},6000)}
+      return;
+    }
     meCache=me;paint(me);
-  }).catch(function(){box.innerHTML='<p class="smeta">signed in, but the recognizer did not answer. <button class="btn ghost" type="button" data-you="out">sign out</button></p>'});
+  }).catch(down);
 }
 /* where this phone stands on push: permission, and a live subscription behind it */
 function pushKnown(){return gmxAccount.pushState()}
