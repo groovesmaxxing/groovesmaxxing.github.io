@@ -502,6 +502,7 @@ words:{
 'saved on this phone':'guardado en este celular',
 'nothing saved yet. pages you open with signal stay on your phone for next time.':'todavía no hay nada guardado. las páginas que abras con señal se quedan en tu celular para la próxima.',
 'the scan needs the internet. tracklists, sets and the pages you already opened work without it.':'el escaneo necesita internet. los tracklists, los sets y las páginas que ya abriste funcionan sin él.',
+'the scan needs the internet. the pages you already opened work without it.':'el escaneo necesita internet. las páginas que ya abriste funcionan sin él.',
 'your crate':'tu crate',
 /* web review 2026-11-09: the privacy and terms headings (A7) */
 'what we keep,':'lo que guardamos,',

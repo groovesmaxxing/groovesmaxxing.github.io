@@ -73,6 +73,8 @@
     keysOf('gmx-precache'), keysOf('gmx-pages')
   ]).then(function (got) {
     var hubHas = got[0], pre = got[1], pages = got[2];
+    // only the installed app tops up gmx-precache (every tracklist and /sets), so promise them only when it holds something
+    if (pre.length) { var fa = document.getElementById('off-foot-all'), fo = document.getElementById('off-foot'); if (fa && fo) { fa.hidden = false; fo.hidden = true; } }
     var tl = {};
     pre.concat(pages).forEach(function (k) { var p = new URL(k.url).pathname; if (/^\/tracklists\/[^/]+$/.test(p)) tl[p] = 1; });
     var tlCount = Object.keys(tl).length;

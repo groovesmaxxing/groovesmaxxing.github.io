@@ -25,8 +25,8 @@ var OFFLINE = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">' +
   'h1{font-weight:900;font-size:2rem;margin:0 0 10px}h1 span{color:#FF1C02}p{color:#c9c9c4;font-size:.95rem;line-height:1.7;max-width:330px;margin:0 auto 14px}' +
   'a{color:#FF1C02;text-decoration:none}</style></head><body><div>' +
   '<h1>no signal<span>.</span></h1>' +
-  '<p>this page is not saved on your phone yet. every <a href="/tracklists/">tracklist</a> and the pages you already opened still work. <a href="">try again</a></p>' +
-  '<p lang="es">sin señal. esta página todavía no está guardada en tu celular. los <a href="/tracklists/">tracklists</a> y las páginas que ya abriste siguen funcionando. <a href="">intenta de nuevo</a></p>' +
+  '<p>this page is not saved on your phone yet. the pages you already opened still work. <a href="">try again</a></p>' +
+  '<p lang="es">sin señal. esta página todavía no está guardada en tu celular. las páginas que ya abriste siguen funcionando. <a href="">intenta de nuevo</a></p>' +
   '</div></body></html>';
 
 function noop() {}
