@@ -449,7 +449,9 @@ function identify(blob){
   if(finalDone)return;
   if(!navigator.onLine&&!draining){queueClip(blob);return}
   cancelScan=null; go.setAttribute('aria-disabled','true'); go.setAttribute('aria-label','finding it, one moment'); stage.classList.add('finding'); recword.textContent='finding it'; count.textContent=''; announce('finding it');
-  say2(auto?'checking our library':'checking the catalogs');
+  /* a clip auto kept with no signal stays library only when it drains later, after auto has stopped (2026-11-09 review 2) */
+  var lib=!!(auto||(draining&&draining.auto));
+  say2(lib?'checking our library':'checking the catalogs');
   if(!early)showCard('<div class="skel" aria-hidden="true"><i class="a"></i><i class="b"></i><i class="c"></i><i class="d"></i></div>');
   var sentAt=null,finalRound={at:CAPTURE_MS,post:0,wait:0,answer:'…'};if(timing)timing.rounds.push(finalRound);
   var fd=new FormData(); fd.append('audio',blob,'clip.'+extOf(blob)); fd.append('source','mic');
@@ -466,7 +468,7 @@ function identify(blob){
   function post(withHeader){
     return fx(cfg.api_base+'/identify',{method:'POST',headers:headers(withHeader?{'X-GMX-Catalog':'off'}:null),body:fd},POST_MS)
     .then(function(r){
-      if(withHeader&&r.status===401)return post(false);
+      if(withHeader&&r.status===401&&!lib)return post(false);   /* auto never falls back to the catalogs */
       sentAt=Date.now();finalRound.post=sentAt-began;
       if(r.status===429)throw new Error('rate');
       if(r.status===401)throw new Error('key');
@@ -475,7 +477,10 @@ function identify(blob){
       if(withHeader)finalRound.catalog='off'; /* stamped only once the api took the post, so a refused round never reads catalog off (2026-10-13) */
       return r.json();
     },function(e){
-      if(withHeader&&!(e&&e.message==='timeout'))return post(false);
+      if(withHeader&&!(e&&e.message==='timeout')){
+        if(!lib)return post(false);
+        if(!retried&&navigator.onLine){retried=true;return post(true)}   /* auto: one more try, header kept */
+      }
       /* a stalled upload on a slow club link (2026-11-09 review): one more try on its own while the phone is online, never filed as no signal.
          the first post may have reached the api and started a job (a slow 202 on the downlink), and the api has no repeat key yet,
          so the retry goes library only (X-GMX-Catalog: off): the catalogs are never paid twice for one clip */
@@ -483,7 +488,7 @@ function identify(blob){
       throw e;
     });
   }
-  post(auto||earlyLikely())
+  post(lib||earlyLikely())
   .then(function(job){return pollJob(job.job_id)})
   .then(function(j){
     var r=j.result||{}, c=r.card||{kind:'none'};
@@ -1516,7 +1521,7 @@ $('sessiontools').addEventListener('click',function(e){
 });
 /* the offline queue */
 function queueClip(blob){
-  var rec={id:'q'+Date.now()+Math.floor(Math.random()*1000),t:Date.now(),blob:blob,kind:'pending',heard_at:heldAt||new Date().toISOString()};
+  var rec={id:'q'+Date.now()+Math.floor(Math.random()*1000),t:Date.now(),blob:blob,kind:'pending',heard_at:heldAt||new Date().toISOString(),auto:!!auto};
   var store=window.gmxClips?gmxClips.put(rec):Promise.reject(new Error('no store'));
   store.then(function(){
     sessionAdd({t:rec.t,kind:'pending',name:''});
