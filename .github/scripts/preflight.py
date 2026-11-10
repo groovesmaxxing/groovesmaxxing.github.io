@@ -11,6 +11,9 @@ FAIL blocks the push. WARN prints and passes. the checks:
   external   every target=_blank link carries rel=noopener
   fonts      only Poppins and Space Mono are loaded from Google Fonts
   jsonld     every ld+json block parses, and sameAs entries are profiles, not searches, videos or releases
+  unreleased a tracklist row whose title says "unreleased" (any case, any position) links only to this site's
+             artist, label and tracklist pages, a cross-set timestamp or an artist profile, never to the song, and its
+             ld+json MusicRecording carries no sameAs (2026-11-09)
   mobile     a page with its own inline style and no @media block is flagged
   json       every json file at the root parses
   sitemap    every sitemap url resolves to a file, and every indexable root page is in the sitemap
@@ -221,6 +224,63 @@ def check_page(f, text):
     return redirect
 
 
+TL_TABLE_RE = re.compile(r'<table class="tl[^"]*">(.*?)</table>', re.S)
+TL_ROW_RE = re.compile(r"<tr\b[^>]*>(.*?)</tr>", re.S)
+TL_CELL_RE = re.compile(r'<td class="x">(.*)</td>', re.S)
+TL_NUM_RE = re.compile(r'<td class="n">([^<]*)</td>')
+TL_GET_RE = re.compile(r'<div class="get">.*?</div>', re.S)
+A_HREF_RE = re.compile(r'<a\b[^>]*\bhref="([^"]*)"', re.S)
+UNREL_OK = (
+    re.compile(r"^(?:\.\./|/)(?:artists|labels|tracklists)/[^?#]*(?:#.*)?$"),  # this site's artist, label and tracklist pages
+    re.compile(r"^(?:\./)?[a-z0-9][a-z0-9-]*(?:#.*)?$"),                      # a sibling tracklist page, from tracklists/
+    re.compile(r"^https://(?:www\.)?youtube\.com/watch\?v=[\w-]+&(?:amp;)?t=\d+s?$"),  # a cross-set timestamp
+    re.compile(r"^https://youtu\.be/[\w-]+\?t=\d+s?$"),
+    re.compile(r"^https://open\.spotify\.com/artist/[A-Za-z0-9]+/?$"),         # an artist profile
+    re.compile(r"^https://(?:www\.|m\.)?soundcloud\.com/(?!search\b)[A-Za-z0-9_-]+/?$"),  # an artist's soundcloud root
+)
+
+
+def check_unreleased(f, text):
+    """an unreleased tracklist row never links to the song (2026-11-09, SITE-01). a row is unreleased when its
+    title cell (td.x without the get strip) says "unreleased" in any case and any position. the only links it
+    may carry: this site's artist, label and tracklist pages, a cross-set timestamp, an artist profile on spotify or
+    an artist's soundcloud root. any track, album, store or search link fails."""
+    if '<table class="tl' not in text:
+        return
+    for table in TL_TABLE_RE.findall(text):
+        for row in TL_ROW_RE.findall(table):
+            cell = TL_CELL_RE.search(row)
+            if not cell:
+                continue
+            title = html.unescape(re.sub(r"<[^>]+>", " ", TL_GET_RE.sub("", cell.group(1))))
+            if "unreleased" not in title.lower():
+                continue
+            num = TL_NUM_RE.search(row)
+            for href in A_HREF_RE.findall(cell.group(1)):
+                h = html.unescape(href).strip()
+                if not any(rx.match(h) for rx in UNREL_OK):
+                    fail(f, "unreleased row %s links to the song: %s" % (num.group(1) if num else "?", h[:110]))
+    # the same rule in the structured data: an ld+json MusicRecording named "unreleased" carries no sameAs
+    for block in re.findall(r'<script type="application/ld\+json">(.*?)</script>', text, re.S):
+        try:
+            d = json.loads(block)
+        except ValueError:
+            continue  # the jsonld check already fails an unparsable block
+        stack = [d]
+        while stack:
+            node = stack.pop()
+            if isinstance(node, list):
+                stack.extend(node)
+            elif isinstance(node, dict):
+                if (node.get("@type") == "MusicRecording" and "unreleased" in str(node.get("name", "")).lower()
+                        and node.get("sameAs")):
+                    same = node["sameAs"]
+                    same = same if isinstance(same, str) else ", ".join(map(str, same))
+                    fail(f, "unreleased ld+json recording %s carries sameAs: %s"
+                         % (node.get("position", "?"), same[:110]))
+                stack.extend(node.values())
+
+
 def check_sitemap(page_list, redirects):
     sm = open("sitemap.xml", encoding="utf-8").read()
     locs = re.findall(r"<loc>(.*?)</loc>", sm)
@@ -312,8 +372,10 @@ def main(argv):
         page_list = [f for f in page_list if f in changed]
     redirects = set()
     for f in page_list:
-        if check_page(f, open(f, encoding="utf-8").read()):
+        text = open(f, encoding="utf-8").read()
+        if check_page(f, text):
             redirects.add(f)
+        check_unreleased(f, text)
     for f in glob.glob("*.json"):
         try:
             json.load(open(f, encoding="utf-8"))
