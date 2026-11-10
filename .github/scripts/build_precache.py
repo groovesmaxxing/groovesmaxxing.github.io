@@ -27,7 +27,7 @@ urls += ['/' + f.replace(os.sep, '/') for f in sorted(glob.glob('media/covers/mo
 urls += ['/gmx-fonts.css?v=2']
 # what the precached pages load that was missing (web review 2026-11-09): the events radar's tour list, the
 # october overlay on the home page, the spanish words for a visitor who picked es
-urls += ['/radar-events.json', '/gmx-spooky.js?v=6', '/gmx-lang-es.js?v=12']
+urls += ['/radar-events.json', '/gmx-spooky.js?v=6', '/gmx-lang-es.js?v=13']
 # the hubs the tracklist footer links, the friday list, the newsletter and its two newest issues
 urls += ['/labels', '/interviews', '/picks', '/friday', '/calendar', '/badges', '/newsletter', '/gmx-hubs.js?v=1']
 urls += ['/' + f.replace(os.sep, '/')[:-5] for f in sorted(glob.glob('newsletter/fgf-*.html'))[-2:]]
