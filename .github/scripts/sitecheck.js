@@ -63,7 +63,8 @@ const fs=require('fs');try{fs.mkdirSync('shots',{recursive:true})}catch(e){}
         log(v.rows>0&&v.opacity==='1',path+': the tour list is visible after it renders ('+v.rows+' rows, opacity '+v.opacity+')');
       }
       if(path==='/artists/solomun.html'){
-        await p.waitForTimeout(900);
+        // the box is built after two index fetches, often past 900 ms on a runner: wait for it, up to 5 s
+        await p.waitForSelector('.gmx-rel',{timeout:5000}).catch(()=>{});
         const r=await p.evaluate(()=>({box:!!document.querySelector('.gmx-rel'),chips:document.querySelectorAll('.gmx-rel .row a').length,stages:document.querySelectorAll('.gmx-rel .gmx-stage').length}));
         log(r.box,path+': "also on the site" box present ('+r.chips+' links, '+r.stages+' stages)');
       }
