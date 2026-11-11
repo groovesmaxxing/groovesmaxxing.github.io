@@ -13,7 +13,7 @@ import glob, json, os, re, sys
 from datetime import date
 
 urls = ['/', '/scan', '/more', '/search', '/sets', '/artists', '/events', '/radio', '/crate', '/upcoming', '/open-ids', '/tracklists/',
-        '/gmx-nav.js?v=39', '/gmx-lang.js?v=14', '/gmx-nav.css?v=22', '/gmx-sheet.js?v=5', '/gmx-sheet.css?v=4','/gmx-player.js?v=1', '/gmx-player.css?v=3', '/gmx-motion.js?v=3', '/gmx-motion.css?v=2',
+        '/gmx-nav.js?v=40', '/gmx-lang.js?v=14', '/gmx-nav.css?v=22', '/gmx-sheet.js?v=5', '/gmx-sheet.css?v=4','/gmx-player.js?v=1', '/gmx-player.css?v=3', '/gmx-motion.js?v=3', '/gmx-motion.css?v=2',
         '/gmx-refresh.js?v=1', '/gmx-scan.js?v=9', '/gmx-clips.js', '/gmx-sets.js?v=1', '/gmx-follow.js?v=1', '/gmx-crate.js?v=1', '/gmx-upcoming.js?v=5','/gmx-profile.css?v=4', '/gmx-label.css?v=3',
         '/gmx-capture-worklet.js', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png', '/favicon.svg',
         '/sets-index.json', '/set-tags.json', '/search-index.json', '/artists-index.json', '/radar-denver.json', '/names-index.json', '/related-index.json', '/gmx-related.js?v=3', '/tracks-index.json', '/open-ids.json']
