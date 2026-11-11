@@ -305,7 +305,7 @@
       '<div class="sh-sec sh-heat"><span class="ex-seck">heat</span><span class="hv ' + (t.heat === "heating up" ? "up" : t.heat === "cooling" ? "down" : "flat") + '">' + esc(heat) + "</span>" +
       (t.driver ? '<span class="dv">' + esc(t.driver) + "</span>" : "") +
       ((t.pills || []).length ? '<div class="pl">' + t.pills.map(function (x) { return '<span class="ex-pill">' + esc(x) + "</span>"; }).join("") + "</div>" : "") + "</div>" +
-      '<div class="sh-sec"><div class="ex-seck">what moves it</div><div class="mv">' + esc(moves(t.parts)) + "</div>" +
+      '<div class="sh-sec"><div class="ex-seck">what moves it</div><div class="mv">' + esc(moves(t.parts) + (t.parts && !t.parts.dj ? " · no dj support yet" : "")) + "</div>" +
       (t.parts ? '<div class="bar">' + seg(p.dj, "b-dj") + seg(p.charts, "b-ch") + seg(p.editorial, "b-ed") + "</div>" +
       '<div class="legend"><span><i class="b-dj"></i>dj support ' + tens(p.dj) + '%</span><span><i class="b-ch"></i>charts ' +
       tens(p.charts) + '%</span><span><i class="b-ed"></i>editorial ' + tens(p.editorial) + "%</span></div>" : "") + "</div>" +
