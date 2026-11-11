@@ -1,7 +1,7 @@
 {
-"generated": "2026-11-10T17:08:32+00:00",
+"generated": "2026-11-11T17:15:36+00:00",
 "artist_count": 704,
-"artists_with_events": 140,
+"artists_with_events": 141,
 "events": [
 {
 "date": "2026-11-12",
@@ -110,6 +110,15 @@
 "region": "OH",
 "url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-columbus-ohio-11-13-2026/event/050064B3F56A8E85",
 "artist": "John Summit"
+},
+{
+"date": "2026-11-13",
+"event": "Kaskade",
+"venue": "XS Nightclub at Wynn Las Vegas",
+"city": "Las Vegas",
+"region": "NV",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAv9uY",
+"artist": "Kaskade"
 },
 {
 "date": "2026-11-13",
@@ -389,6 +398,15 @@
 "region": "CA",
 "url": "https://www.ticketmaster.com/rhye-joy-tour-san-diego-california-11-18-2026/event/0B0064C3A2C75233",
 "artist": "Rhye"
+},
+{
+"date": "2026-11-19",
+"event": "Hugel",
+"venue": "XS Nightclub at Wynn Las Vegas",
+"city": "Las Vegas",
+"region": "NV",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAv9uV",
+"artist": "HUGEL"
 },
 {
 "date": "2026-11-19",
@@ -767,6 +785,15 @@
 "region": "NSW",
 "url": "https://www.moshtix.com.au/v2/event/lost-sundays-november-22-ft-omar-the-trip-lewis-taylor/200897",
 "artist": "Omar+"
+},
+{
+"date": "2026-11-22",
+"event": "Rufus Du Sol - Ages 21+",
+"venue": "XS Nightclub at Wynn Las Vegas",
+"city": "Las Vegas",
+"region": "NV",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAv9uy",
+"artist": "RÜFÜS DU SOL"
 },
 {
 "date": "2026-11-24",
@@ -1181,6 +1208,15 @@
 "region": "CA",
 "url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-oakland-california-12-04-2026/event/1C0064B3BCEE6B02",
 "artist": "John Summit"
+},
+{
+"date": "2026-12-04",
+"event": "Kaskade - Ages 21+",
+"venue": "XS Nightclub at Wynn Las Vegas",
+"city": "Las Vegas",
+"region": "NV",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAv9Ck",
+"artist": "Kaskade"
 },
 {
 "date": "2026-12-04",
@@ -2543,6 +2579,15 @@
 },
 {
 "date": "2027-02-27",
+"event": "Devault",
+"venue": "Newspeak",
+"city": "Montreal",
+"region": "QC",
+"url": "https://www.universe.com/events/devault-tickets-BZFQHV?ref=ticketmaster",
+"artist": "Devault"
+},
+{
+"date": "2027-02-27",
 "event": "JOHN SUMMIT - EUROPE CTRL ESCAPE ARENA TOUR",
 "venue": "The O2",
 "city": "London",
@@ -2576,6 +2621,15 @@
 "region": "NSW",
 "url": "https://www.moshtix.com.au/v2/event/glitterbox-sydney-2027/200370",
 "artist": "Horse Meat Disco"
+},
+{
+"date": "2027-03-05",
+"event": "IGLOOFEST - MEDUZA",
+"venue": "Place Jean-Béliveau",
+"city": "Quebec",
+"region": "QC",
+"url": "https://www.ticketmaster.ca/igloofest-meduza-quebec-quebec-03-05-2027/event/3100655D900949B6",
+"artist": "MEDUZA"
 },
 {
 "date": "2027-03-06",
@@ -2657,6 +2711,15 @@
 "region": "GB",
 "url": "https://www.universe.com/events/julian-fijma-tickets-5LV230?ref=ticketmaster",
 "artist": "Julian Fijma"
+},
+{
+"date": "2027-03-20",
+"event": "Elderbrook - Heart On A Wire Tour",
+"venue": "MTELUS",
+"city": "Montreal",
+"region": "QC",
+"url": "https://www.ticketmaster.ca/elderbrook-heart-on-a-wire-tour-montreal-quebec-03-20-2027/event/31006548A41F5699",
+"artist": "Elderbrook"
 },
 {
 "date": "2027-03-24",
