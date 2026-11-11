@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.youtube.com https://w.soundcloud.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https:; media-src 'self'; connect-src 'self' https://envy.tail6da5ec.ts.net wss://envy.tail6da5ec.ts.net; frame-src https://open.spotify.com https://w.soundcloud.com https://www.youtube-nocookie.com https://www.youtube.com https://www.instagram.com https://embed.beatport.com; worker-src 'self'; manifest-src 'self'; form-action 'self' https://buttondown.com https://buttondown.email; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="groovesMAXX">
+<meta name="theme-color" content="#0B0B0D">
+<title>the groove exchange · groovesMAXXING</title>
+<meta name="description" content="every record we track, priced daily by how hard the dance floor is backing it. our own index points and percent moves, three indices, the movers and g-mo's book, with dj support and chart signals via songstats.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:title" content="the groove exchange · groovesMAXXING">
+<meta property="og:description" content="every record we track, priced daily by how hard the dance floor is backing it. our own index points and percent moves, three indices, the movers and g-mo's book, with dj support and chart signals via songstats.">
+<meta property="og:image" content="https://groovesmaxxing.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:url" content="https://groovesmaxxing.com/exchange">
+<meta property="og:type" content="website">
+<link rel="preload" as="font" type="font/woff2" href="/fonts/poppins-400-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/spacemono-400-latin.woff2" crossorigin>
+<link rel="preload" as="fetch" href="/exchange-index.json" crossorigin>
+<link rel="stylesheet" href="/gmx-fonts.css?v=2">
+<link rel="stylesheet" href="/gmx-exchange.css?v=1">
+<link rel="canonical" href="https://groovesmaxxing.com/exchange">
+<link rel="stylesheet" href="/gmx-motion.css?v=2">
+<link rel="stylesheet" href="/gmx-sheet.css?v=4">
+<link rel="stylesheet" href="/gmx-nav.css?v=22">
+<link rel="stylesheet" href="/gmx-account.css?v=2">
+<link rel="stylesheet" href="/gmx-tape.css?v=1">
+<link rel="stylesheet" href="/gmx-read.css?v=10">
+</head>
+<body>
+<main class="ex" id="ex">
+ <div class="top"><a class="back" href="/more">← more</a></div>
+ <header>
+  <div class="kicker">priced daily</div>
+  <h1>the groove exchange</h1>
+  <p class="sub">every record we track, priced daily by how hard the dance floor is backing it.</p>
+  <p class="ex-plain" id="ex-plain" hidden><span id="ex-plain-tx"></span><button class="ex-x" id="ex-plain-x" type="button" aria-label="dismiss">×</button></p>
+  <p class="closed" id="ex-closed">loading the close…</p>
+  <noscript><p class="closed">the groove exchange is drawn in your browser, so it needs javascript.</p></noscript>
+ </header>
+
+ <section aria-labelledby="ex-ix-h">
+  <h2 class="ex-seck" id="ex-ix-h">indices</h2>
+  <div class="ex-tiles" id="ex-tiles"></div>
+ </section>
+
+ <section aria-labelledby="ex-mv-h">
+  <h2 id="ex-mv-h">movers</h2>
+  <div class="ex-railh"><h3>heating up</h3><span class="closed">top 1d gainers</span></div>
+  <div class="ex-rail" id="ex-r-up"></div>
+  <div class="ex-railh"><h3>cooling off</h3><span class="closed">top 1d losers</span></div>
+  <div class="ex-rail" id="ex-r-down"></div>
+  <div class="ex-railh"><h3>new listings</h3><span class="closed">listed in the last 14 days</span></div>
+  <div class="ex-rail" id="ex-r-new"></div>
+ </section>
+
+ <section aria-labelledby="ex-bd-h">
+  <div class="ex-bdh"><h2 id="ex-bd-h">the board</h2><span class="ex-stamp" id="ex-stamp"></span></div>
+  <div class="ex-tools">
+   <label class="ex-vh" for="ex-q">search tracks</label>
+   <input class="ex-search" id="ex-q" type="search" autocomplete="off" spellcheck="false" placeholder="search ticker, title, artist">
+   <span class="ex-seg" role="group" aria-label="change period">
+    <button type="button" data-p="1d" aria-pressed="true">1d</button>
+    <button type="button" data-p="7d" aria-pressed="false">7d</button>
+    <button type="button" data-p="30d" aria-pressed="false">30d</button>
+   </span>
+  </div>
+  <div class="ex-tools">
+   <span class="ex-views" role="group" aria-label="view">
+    <button class="ex-chip" type="button" data-view="all" aria-pressed="true">all</button>
+    <button class="ex-chip" type="button" data-view="heat" aria-pressed="false">heating up</button>
+    <button class="ex-chip" type="button" data-view="cool" aria-pressed="false">cooling off</button>
+    <button class="ex-chip" type="button" data-view="new" aria-pressed="false">new</button>
+   </span>
+   <span class="ex-lanes" role="group" aria-label="lanes">
+    <button class="ex-chip" type="button" data-lane="all" aria-pressed="true">all lanes</button>
+    <button class="ex-chip" type="button" data-lane="vibes" aria-pressed="false">🧃 vibes</button>
+    <button class="ex-chip" type="button" data-lane="bumpy" aria-pressed="false">🚧 bumpy</button>
+   </span>
+  </div>
+  <table class="ex-board" id="ex-board">
+   <thead><tr>
+    <th class="cv"><span class="ex-vh">cover</span></th>
+    <th data-k="ticker"><button type="button">ticker</button></th>
+    <th>30d</th>
+    <th class="r" data-k="price" aria-sort="descending"><button type="button">price</button></th>
+    <th class="r" data-k="chg"><button type="button" id="ex-chg-h">1d</button></th>
+   </tr></thead>
+   <tbody></tbody>
+  </table>
+  <p class="ex-count" id="ex-count" aria-live="polite"></p>
+ </section>
+
+ <section aria-labelledby="ex-bk-h">
+  <h2 id="ex-bk-h">g-mo's book</h2>
+  <div class="ex-bookvs" id="ex-bookvs"></div>
+  <p class="ex-booknote" id="ex-booknote"></p>
+  <table class="ex-board ex-book" id="ex-book">
+   <thead><tr><th>ticker</th><th>title</th><th>picked</th><th>price then</th><th>price now</th><th>return</th></tr></thead>
+   <tbody></tbody>
+  </table>
+ </section>
+
+ <section aria-labelledby="ex-mt-h">
+  <div class="ex-method">
+   <h2 id="ex-mt-h">how the price works</h2>
+   <p>each track gets one closing price a day. three things push it:</p>
+   <ul>
+    <li><b>dj support</b>: how many djs have it in their sets, plus a kick when that number is climbing fast this week.</li>
+    <li><b>charts</b>: its best beatport chart spot in the last two weeks. higher spot, bigger lift.</li>
+    <li><b>editorial</b>: playlist adds in the last four weeks, weighted by how big each list is.</li>
+   </ul>
+   <p>the full formula, version <span id="ex-fv">v1</span>:</p>
+   <code id="ex-formula" translate="no">price = max(5, 28*ln(1+S) + 50*C + 10*E + 15*tanh(d7/5))</code>
+   <p>every price starts at a floor of 5. indices are the average price of their seasoned members, set to 1000 ninety days ago. a track with no close to compare yet shows as new, not as zero. g-mo's book scores each pick from the close on the day it was picked, and a pick too new to score stays on the list, marked.</p>
+   <p>we only show our own points, percent moves and rounded tiers, never raw counts. these are v1 weights and they will change.</p>
+  </div>
+ </section>
+
+ <footer>groovesMAXXING · the groove exchange · dj support and chart signals <a href="https://songstats.com/" target="_blank" rel="noopener">via songstats</a> · <a href="/picks">the picks scoreboard</a> · <a href="/moods">pick a mood</a></footer>
+</main>
+
+<div class="ex-scrim" id="ex-scrim"></div>
+<div class="ex-sheet" id="ex-sheet" role="dialog" aria-modal="true" aria-labelledby="ex-sh-tt" aria-hidden="true" tabindex="-1"></div>
+<script src="/gmx-motion.js?v=3" defer></script>
+<script src="/gmx-hubs.js?v=1" defer></script>
+<script src="/gmx-more.js?v=3" defer></script>
+<script src="/gmx-nav.js?v=40" defer></script>
+<script src="/gmx-crate.js?v=1" defer></script>
+<script src="/gmx-sheet.js?v=5" defer></script>
+<script src="/gmx-exchange.js?v=1" defer></script>
+<script src="/gmx-tape.js?v=1" defer></script>
+<script src="/gmx-account.js?v=22" defer></script>
+</body>
+</html>

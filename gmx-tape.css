@@ -1,0 +1,27 @@
+/* gmx tape: the thin ticker bar (gmx-tape.js). the script adds html.gmx-tape-on as soon as it runs, before the
+   fetch, and that class reserves the height and paints the bar's black in it. a closed bar or a failed fetch
+   never reserves anything (the script drops the class again). */
+:root{--gmx-tape-h:30px}
+html.gmx-tape-on{padding-top:calc(var(--gmx-tape-h) + env(safe-area-inset-top))}
+html.gmx-tape-on::before{content:"";position:absolute;left:0;right:0;top:0;height:calc(var(--gmx-tape-h) + env(safe-area-inset-top));background:#0B0B0D;z-index:56;pointer-events:none}
+.gmx-tape{position:absolute;left:0;right:0;top:env(safe-area-inset-top);height:var(--gmx-tape-h);z-index:57;display:flex;align-items:stretch;background:#0B0B0D;border-bottom:1px solid rgba(242,242,239,.12);color:#F2F2EF;font:400 12px/1 'Space Mono',ui-monospace,Consolas,monospace;overflow:hidden;box-sizing:border-box}
+.gmx-tape .gt-vp{flex:1 1 auto;min-width:0;overflow:hidden}
+.gmx-tape .gt-run{display:flex;width:max-content;height:100%;animation:gt-mq 120s linear infinite}
+.gmx-tape .gt-set{display:flex;align-items:center;gap:22px;padding:0 11px}
+.gmx-tape .gt-i{color:#F2F2EF;text-decoration:none;white-space:nowrap;font-variant-numeric:tabular-nums;line-height:var(--gmx-tape-h)}
+.gmx-tape .gt-i b{font-weight:700;margin-right:2px}
+.gmx-tape .gt-i:hover b{color:#FF1C02}
+.gmx-tape .gt-up{color:#FF1C02}
+.gmx-tape .gt-down{color:#5B8DEF}
+.gmx-tape .gt-flat{color:#8A8A93}
+.gmx-tape .gt-new{color:#8A8A93;border:1px solid rgba(242,242,239,.34);border-radius:999px;padding:0 5px}
+.gmx-tape:hover .gt-run,.gmx-tape:focus-within .gt-run,.gmx-tape.gt-hold .gt-run{animation-play-state:paused}
+.gmx-tape .gt-x{flex:0 0 auto;width:30px;margin:0;padding:0;border:0;border-left:1px solid rgba(242,242,239,.12);background:#0B0B0D;color:#8A8A93;font:700 14px/1 'Space Mono',ui-monospace,monospace;cursor:pointer}
+.gmx-tape .gt-x:hover{color:#F2F2EF}
+.gmx-tape .gt-i:focus-visible,.gmx-tape .gt-x:focus-visible{outline:2px solid #FF1C02;outline-offset:-2px}
+@keyframes gt-mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){
+ .gmx-tape .gt-run{animation:none}
+ .gmx-tape .gt-vp{overflow-x:auto;scrollbar-width:none}
+ .gmx-tape .gt-vp::-webkit-scrollbar{display:none}
+}

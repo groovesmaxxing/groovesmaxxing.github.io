@@ -6,7 +6,7 @@ const {chromium}=require('playwright');
 const BASE=process.env.SITECHECK_BASE||'http://127.0.0.1:8787';
 const PAGES=['/index.html','/artists.html','/sets.html','/interviews.html','/events.html','/more.html','/scan.html','/badges.html','/upcoming.html','/moods.html','/labels.html','/newsletter.html','/friday.html','/404.html','/search.html','/radio.html','/crate.html','/open-ids.html','/tracklists/index.html',
   '/artists/adam-ten.html','/artists/max-styler.html','/artists/balanka.html','/artists/gkat.html','/artists/solomun.html','/labels/make-the-girls-dance-records.html','/labels/nu-moda.html','/tracklists/cloonee-live-at-red-rocks.html','/newsletter/fgf-001.html',
-  '/calendar.html','/picks.html','/dj-support.html','/privacy.html','/terms.html'];
+  '/calendar.html','/picks.html','/exchange.html','/dj-support.html','/privacy.html','/terms.html'];
 const NO_TABS=['/sets.html','/interviews.html'];
 /* the render proof: full-page screenshots of the pages a layout change usually touches, saved to shots/ and
    uploaded as a workflow artifact, so a push that moved something can be looked at, not just trusted */
