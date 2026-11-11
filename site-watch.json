@@ -1,80 +1,80 @@
 {
- "generated": "2026-11-11T07:05:22Z",
+ "generated": "2026-11-11T15:06:58Z",
  "site": [
   {
    "path": "/",
    "code": 200,
-   "ms": 238,
+   "ms": 287,
    "state": "ok",
    "note": null
   },
   {
    "path": "/scan",
    "code": 200,
-   "ms": 190,
+   "ms": 132,
    "state": "ok",
    "note": null
   },
   {
    "path": "/gmx-config.json",
    "code": 200,
-   "ms": 101,
+   "ms": 113,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sets",
    "code": 200,
-   "ms": 182,
+   "ms": 192,
    "state": "ok",
    "note": null
   },
   {
    "path": "/artists",
    "code": 200,
-   "ms": 144,
+   "ms": 188,
    "state": "ok",
    "note": null
   },
   {
    "path": "/tracklists/",
    "code": 200,
-   "ms": 138,
+   "ms": 143,
    "state": "ok",
    "note": null
   },
   {
    "path": "/search-index.json",
    "code": 200,
-   "ms": 176,
+   "ms": 202,
    "state": "ok",
    "note": "generated 2026-11-11"
   },
   {
    "path": "/upcoming.json",
    "code": 200,
-   "ms": 93,
+   "ms": 152,
    "state": "ok",
    "note": "generated 2026-11-11"
   },
   {
    "path": "/radar-events.json",
    "code": 200,
-   "ms": 125,
+   "ms": 189,
    "state": "ok",
    "note": "generated 2026-11-10T17:08:32"
   },
   {
    "path": "/sitemap.xml",
    "code": 200,
-   "ms": 131,
+   "ms": 233,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sw.js",
    "code": 200,
-   "ms": 107,
+   "ms": 116,
    "state": "ok",
    "note": null
   }
@@ -82,7 +82,7 @@
  "recognizer": {
   "state": "up",
   "code": 200,
-  "ms": 738,
+  "ms": 528,
   "health": {
    "status": "ok",
    "version": "0.1.2",
