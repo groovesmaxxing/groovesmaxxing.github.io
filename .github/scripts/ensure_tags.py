@@ -42,7 +42,7 @@ T = {
     'reel_js': '<script src="/gmx-reel.js?v=1" defer></script>',
     # the artist profile tabs layout (2026-11-10, direction B): artist pages only. the js loads right after the player
     # and before motion, so the player's stages exist and motion measures the reorganised page
-    'artist_css': '<link rel="stylesheet" href="/gmx-artist.css?v=1">',
+    'artist_css': '<link rel="stylesheet" href="/gmx-artist.css?v=2">',
     'artist_js': '<script src="/gmx-artist.js?v=2" defer></script>',
 }
 
