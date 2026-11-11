@@ -112,16 +112,16 @@
  <section aria-labelledby="ex-mt-h">
   <div class="ex-method">
    <h2 id="ex-mt-h">how the price works</h2>
-   <p>each track gets one closing price a day. three things push it:</p>
+   <p>each track gets one closing price a day, set by where it ranks against every other track with dj support that day. three things push it:</p>
    <ul>
-    <li><b>dj support</b>: how many djs have it in their sets, plus a kick when that number is climbing fast this week.</li>
-    <li><b>charts</b>: its best beatport chart spot in the last two weeks. higher spot, bigger lift.</li>
-    <li><b>editorial</b>: playlist adds in the last four weeks, weighted by how big each list is.</li>
+    <li><b>dj support</b>: where it ranks for dj support, plus where it ranks for support gained this week.</li>
+    <li><b>charts</b>: its best beatport chart tier in the last two weeks. a higher tier, a bigger lift.</li>
+    <li><b>editorial</b>: spotify editorial playlist adds in the last four weeks.</li>
    </ul>
-   <p>the full formula, version <span id="ex-fv">v1</span>:</p>
-   <code id="ex-formula" translate="no">price = max(5, 28*ln(1+S) + 50*C + 10*E + 15*tanh(d7/5))</code>
+   <p>the method in plain words, version <span id="ex-fv">v2</span>:</p>
+   <code id="ex-formula" translate="no">each day every listed track is ranked against the rest of the market. 55% where it ranks for dj support, 15% where it ranks for support gained this week, 20% its best beatport chart tier in the last two weeks, 10% spotify editorial adds in the last four weeks. smoothed over a few days and scaled to 5-250 points.</code>
    <p>every price starts at a floor of 5. indices are the average price of their seasoned members, set to 1000 ninety days ago. a track with no close to compare yet shows as new, not as zero. g-mo's book scores each pick from the close on the day it was picked, and a pick too new to score stays on the list, marked.</p>
-   <p>we only show our own points, percent moves and rounded tiers, never raw counts. these are v1 weights and they will change.</p>
+   <p>points show where a track stands against the rest of the market, not a count. we only show our own points, percent moves and rounded tiers, never raw counts. these are v2 weights and they can change.</p>
   </div>
  </section>
 

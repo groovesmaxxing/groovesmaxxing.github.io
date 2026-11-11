@@ -116,11 +116,9 @@
     var up = (d.movers && d.movers.up || []).map(function (m) { return byTk[m.ticker]; }).filter(function (t) { return t && has(t.price); });
     var t = up[0] || d.tracks.filter(function (x) { return x.seasoned && has(x.price); }).sort(function (a, b) { return b.price - a.price; })[0];
     if (!t) return;
-    var p = t.parts || {}, big = "dj support", bv = p.dj || 0;
-    if ((p.charts || 0) > bv) { big = "its chart spots"; bv = p.charts; }
-    if ((p.editorial || 0) > bv) { big = "editorial playlist adds"; }
+    var big = moves(t.parts).replace(/^mostly /, "").replace(/^a mix of /, "");
     var move = has(t.chg1d) ? (dir(t.chg1d) === "flat" ? "flat on the day" : (t.chg1d > 0 ? "up " : "down ") + Math.abs(t.chg1d).toFixed(1) + "% on the day") : "its first close";
-    $("#ex-plain-tx").innerHTML = "a point is our own score, not money. today <b translate=\"no\">" + esc(t.ticker) + "</b> (<span translate=\"no\">" + esc(t.title) +
+    $("#ex-plain-tx").innerHTML = "points show where a track stands against the rest of the market, not a count. today <b translate=\"no\">" + esc(t.ticker) + "</b> (<span translate=\"no\">" + esc(t.title) +
       "</span>) closed at " + fmt(t.price) + " points, " + move + ", pushed mostly by " + big + ".";
     el.hidden = false;
     $("#ex-plain-x").addEventListener("click", function () {
@@ -128,6 +126,14 @@
       try { localStorage.setItem(PLAIN_KEY, "1"); } catch (e) { /* private window: gone for this visit only */ }
     });
   }
+  // the rounded parts (steps of 0.1) as one plain label: "mostly dj support" or "a mix of charts and dj support"
+  var PART_NAME = { dj: "dj support", charts: "charts", editorial: "editorial adds" };
+  function moves(p) {
+    if (!p) return "not ranked yet";
+    var k = ["dj", "charts", "editorial"].sort(function (a, b) { return (p[b] || 0) - (p[a] || 0); });
+    return (p[k[0]] || 0) >= 0.5 ? "mostly " + PART_NAME[k[0]] : "a mix of " + PART_NAME[k[0]] + " and " + PART_NAME[k[1]];
+  }
+  function tens(v) { return Math.round((v || 0) * 10) * 10; }
   function method(d) {
     if (d.formula) $("#ex-formula").textContent = d.formula;
     if (d.formula_version) $("#ex-fv").textContent = d.formula_version;
@@ -281,7 +287,7 @@
   function show(t) {
     current = t;
     var sh = $("#ex-sheet"), p = t.parts || { dj: 0, charts: 0, editorial: 0 };
-    var seg = function (v, c) { return '<span class="' + c + '" style="width:' + ((v || 0) * 100).toFixed(1) + '%"></span>'; };
+    var seg = function (v, c) { return '<span class="' + c + '" style="width:' + tens(v) + '%"></span>'; };
     var ar = artistHtml(t);
     var lanes = (t.lanes || []).map(function (l) { return LANE[l] || esc(l); }).join(" ");
     var heat = t.seasoned ? (HEAT[t.heat] || "steady") : "new listing";
@@ -299,9 +305,10 @@
       '<div class="sh-sec sh-heat"><span class="ex-seck">heat</span><span class="hv ' + (t.heat === "heating up" ? "up" : t.heat === "cooling" ? "down" : "flat") + '">' + esc(heat) + "</span>" +
       (t.driver ? '<span class="dv">' + esc(t.driver) + "</span>" : "") +
       ((t.pills || []).length ? '<div class="pl">' + t.pills.map(function (x) { return '<span class="ex-pill">' + esc(x) + "</span>"; }).join("") + "</div>" : "") + "</div>" +
-      '<div class="sh-sec"><div class="ex-seck">what moves it</div><div class="bar">' + seg(p.dj, "b-dj") + seg(p.charts, "b-ch") + seg(p.editorial, "b-ed") + "</div>" +
-      '<div class="legend"><span><i class="b-dj"></i>dj support ' + Math.round((p.dj || 0) * 100) + '%</span><span><i class="b-ch"></i>charts ' +
-      Math.round((p.charts || 0) * 100) + '%</span><span><i class="b-ed"></i>editorial ' + Math.round((p.editorial || 0) * 100) + "%</span></div></div>" +
+      '<div class="sh-sec"><div class="ex-seck">what moves it</div><div class="mv">' + esc(moves(t.parts)) + "</div>" +
+      (t.parts ? '<div class="bar">' + seg(p.dj, "b-dj") + seg(p.charts, "b-ch") + seg(p.editorial, "b-ed") + "</div>" +
+      '<div class="legend"><span><i class="b-dj"></i>dj support ' + tens(p.dj) + '%</span><span><i class="b-ch"></i>charts ' +
+      tens(p.charts) + '%</span><span><i class="b-ed"></i>editorial ' + tens(p.editorial) + "%</span></div>" : "") + "</div>" +
       '<div class="sh-sec"><dl class="facts">' +
       fact("vs debut", chg(t.vs_debut)) +
       fact("peak", fmt(t.peak) + (t.peak_date ? ' <small>' + esc(t.peak_date) + "</small>" : "")) +
