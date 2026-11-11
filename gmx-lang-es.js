@@ -605,8 +605,60 @@ words:{
 'fresh grooves friday: the full weekly drop':'fresh grooves friday: todo el drop de la semana',
 'every badge, every artist':'cada insignia, cada artista',
 'house, techno & indie dance, curated':'house, techno e indie dance, con curaduría',
+/* the groove exchange (2026-11-11): exchange.html, gmx-exchange.js, gmx-tape.js and the driver lines from exchange-index.json.
+   the page name, tickers, titles, artists, lanes (vibes, bumpy), genres and the formula line (<code translate="no">) stay english.
+   short words (book, price, peak, heat, tape, new...) are under scoped: .ex / .ex-sheet / .gmx-tape */
+'priced daily':'precio diario',
+'every record we track, priced daily by how hard the dance floor is backing it.':'cada track que seguimos, con precio diario según qué tanto lo respalda la pista.',
+'loading the close…':'cargando el cierre…',
+'the close did not load. try again in a minute.':'el cierre no cargó. inténtalo otra vez en un minuto.',
+'points show where a track stands against the rest of the market, not a count. today':'los puntos muestran dónde queda un track contra el resto del mercado, no un conteo. hoy',
+'up today':'suben hoy','down today':'bajan hoy',
+'top 1d gainers':'los que más subieron en el día','top 1d losers':'los que más bajaron en el día',
+'new listings':'recién listados','listed in the last 14 days':'listados en los últimos 14 días',
+'search tracks':'buscar tracks','search ticker, title, artist':'busca ticker, título, artista',
+'change period':'periodo del cambio','all lanes':'todos los lanes',
+'heating up':'calentándose','cooling off':'enfriándose',
+'no picks on the board yet':'todavía no hay picks en el tablero','no pick is old enough to score yet':'ningún pick tiene edad para calificarse todavía',
+'nothing here today':'nada por aquí hoy','no price yet':'sin precio aún',
+'how the price works':'cómo funciona el precio',
+'each track gets one closing price a day, set by where it ranks against every other track with dj support that day. three things push it:':'cada track tiene un precio de cierre al día, según dónde queda contra todos los demás tracks con apoyo de djs ese día. tres cosas lo mueven:',
+'where it ranks for dj support, plus where it ranks for support gained this week.':'dónde queda en apoyo de djs, más dónde queda en apoyo ganado esta semana.',
+'its best beatport chart tier in the last two weeks. a higher tier, a bigger lift.':'su mejor nivel en los charts de beatport en las últimas dos semanas. entre más alto el nivel, más lo sube.',
+'spotify editorial playlist adds in the last four weeks.':'entradas a playlists editoriales de spotify en las últimas cuatro semanas.',
+'the method in plain words, version':'el método en palabras simples, versión',
+'every price starts at a floor of 5. indices are the average price of their seasoned members, set to 1000 ninety days ago. a track with no close to compare yet shows as new, not as zero. g-mo\'s book scores each pick from the close on the day it was picked, and a pick too new to score stays on the list, marked.':'todo precio arranca en un piso de 5. los índices son el precio promedio de sus miembros con historial, fijados en 1000 hace noventa días. un track sin cierre para comparar todavía sale como nuevo, no como cero. el portafolio de g-mo califica cada pick desde el cierre del día en que se eligió, y un pick muy nuevo para calificar se queda en la lista, marcado.',
+'points show where a track stands against the rest of the market, not a count. we only show our own points, percent moves and rounded tiers, never raw counts. these are v2 weights and they can change.':'los puntos muestran dónde queda un track contra el resto del mercado, no un conteo. solo mostramos nuestros propios puntos, movimientos en porcentaje y niveles redondeados, nunca conteos crudos. estos son pesos v2 y pueden cambiar.',
+'dj support and chart signals':'señales de apoyo de djs y charts',
+'vs composite':'vs compuesto','both lines start at 100':'las dos líneas arrancan en 100',
+'heating up this week':'calentándose esta semana','cooling off this week':'enfriándose esta semana','steady this week':'estable esta semana',
+'too early to call':'muy pronto para saber','new listing':'recién listado',
+'gaining ground on dj support this week':'ganando terreno en apoyo de djs esta semana','gaining ground on dj support today':'ganando terreno en apoyo de djs hoy',
+'losing ground on dj support this week':'perdiendo terreno en apoyo de djs esta semana','losing ground on dj support today':'perdiendo terreno en apoyo de djs hoy',
+'after a beatport chart entry':'después de entrar a un chart de beatport','climbing the beatport charts':'subiendo en los charts de beatport',
+'chart run fading':'su racha en los charts se está apagando','dropped off the beatport charts':'salió de los charts de beatport',
+'editorial add':'entró a una playlist editorial','editorial add rolling off':'salió de una playlist editorial',
+'editorial playlist add':'entró a una playlist editorial',
+'what moves it':'qué lo mueve','not ranked yet':'aún sin ranking','no dj support yet':'todavía sin apoyo de djs',
+'mostly dj support':'sobre todo apoyo de djs','mostly charts':'sobre todo charts','mostly editorial adds':'sobre todo playlists editoriales',
+'a mix of dj support and charts':'una mezcla de apoyo de djs y charts','a mix of dj support and editorial adds':'una mezcla de apoyo de djs y playlists editoriales',
+'a mix of charts and dj support':'una mezcla de charts y apoyo de djs','a mix of charts and editorial adds':'una mezcla de charts y playlists editoriales',
+'a mix of editorial adds and dj support':'una mezcla de playlists editoriales y apoyo de djs','a mix of editorial adds and charts':'una mezcla de playlists editoriales y charts',
+'vs debut':'vs su debut','90d high / low':'máx / mín 90d','days listed':'días en lista',
+'no events in the last 90 days':'sin eventos en los últimos 90 días','not enough closes to chart yet':'todavía no hay suficientes cierres para graficar',
+'chart range':'rango de la gráfica',
+'ticker tape':'cinta de cotizaciones','hide the ticker tape':'ocultar la cinta de cotizaciones',
 },
 scoped:[
+/* the groove exchange (2026-11-11): short words that are prose fragments or other words elsewhere on the site. the pill
+   reads short, the same string as a driver line reads long (words). the ticker bar is appended to the body on every page */
+['.ex .ex-pill,.ex-sheet .ex-pill',{'editorial add':'playlist editorial'}],
+['.gmx-tape',{'new':'nuevo'}],
+['.ex,.ex-sheet',{
+'indices':'índices','movers':'los que se mueven','the board':'el tablero','view':'vista','new':'nuevo','thin':'poca muestra',
+'cover':'portada','price':'precio','title':'título','picked':'elegido','price then':'precio al elegirlo','price now':'precio hoy','return':'rendimiento',
+'g-mo\'s book':'el portafolio de g-mo','book':'portafolio','equal weight':'mismo peso','composite':'compuesto','same days':'mismos días','difference':'diferencia',
+'too new':'muy nuevo','dismiss':'cerrar aviso','gmx composite':'compuesto gmx','heat':'temperatura','peak':'pico','tape':'cinta'}],
 /* the artist profile tabs layout (2026-11-10): the filter chips, card labels and twin buttons are short words used as prose elsewhere */
 ['.gmxa-chips',{'filmed':'en video','clips':'clips','talks':'pláticas','audio':'audio'}],
 ['.gmxa-card',{'filmed':'en video','clip':'clip','talk':'plática','watch':'ver','listen':'escuchar'}],
@@ -702,6 +754,26 @@ scoped:[
 'groovesmaxxing picks scoreboard':'marcador de picks de groovesmaxxing','read again at every month end':'se revisa cada cierre de mes'}]
 ],
 rules:[
+/* the groove exchange (2026-11-11): stamps, counts, card and board lines, the book note, the sheet's when line, the legend,
+   the pills, tape rows and chart marker labels (genre after "beatport" stays english), all scoped to the page and the sheet.
+   lines joined by " · " are split first, so each part is its own rule. first here so no general rule below catches them */
+['as of (\\d{4}-\\d\\d-\\d\\d)','al $1','.ex,.ex-sheet'],['next close (\\d\\d:\\d\\d)','próximo cierre $1','.ex,.ex-sheet'],
+['(\\d+) of (\\d+) listed','$1 de $2 listados','.ex,.ex-sheet'],['(\\d+) listed','$1 listados','.ex,.ex-sheet'],['listed (\\d\\d-\\d\\d)','listado $1','.ex,.ex-sheet'],
+['peak ([\\d.]+)','pico $1','.ex,.ex-sheet'],['(\\d+)d listed','$1d en lista','.ex,.ex-sheet'],['(.+), open the quote','$1, abrir la cotización','.ex,.ex-sheet'],
+['(\\d+) of (\\d+) picks ahead','$1 de $2 picks van arriba','.ex,.ex-sheet'],['(\\d+) too new to score','$1 muy nuevos para calificar','.ex,.ex-sheet'],
+['picked at ([\\d.]+)','elegido en $1','.ex,.ex-sheet'],['latest close (\\d{4}-\\d\\d-\\d\\d)','último cierre $1','.ex,.ex-sheet'],['since (\\d{4}-\\d\\d-\\d\\d)','desde $1','.ex,.ex-sheet'],
+['dj support (\\d+)%','apoyo de djs $1%','.ex,.ex-sheet'],
+['in (\\d+)\\+ dj sets','en $1+ sets de dj','.ex,.ex-sheet'],['crossed (\\d+)\\+ dj sets','pasó los $1+ sets de dj','.ex,.ex-sheet'],
+['top (\\d+) on beatport overall','top $1 general en beatport','.ex,.ex-sheet'],['top (\\d+) on beatport ([^·]+)','top $1 en beatport $2','.ex,.ex-sheet'],
+['chart: top (\\d+) on beatport overall, (\\d{4}-\\d\\d-\\d\\d)','chart: top $1 general en beatport, $2','.ex,.ex-sheet'],['chart: top (\\d+) on beatport (.+), (\\d{4}-\\d\\d-\\d\\d)','chart: top $1 en beatport $2, $3','.ex,.ex-sheet'],
+['editorial: editorial playlist add, (\\d{4}-\\d\\d-\\d\\d)','editorial: entró a una playlist editorial, $1','.ex,.ex-sheet'],['release: release day, (\\d{4}-\\d\\d-\\d\\d)','salida: día de salida, $1','.ex,.ex-sheet'],
+/* the groove exchange (2026-11-11): the plain-words line's tail, the text after the title span. up/down and the parts come from terms */
+['closed at ([\\d.]+) points, (up|down) ([\\d.]+)% on the day, pushed mostly by (dj support|charts|editorial adds)\\.','cerró en $1 puntos, ~2 $3% en el día, empujado sobre todo por ~4.','#ex-plain'],
+['closed at ([\\d.]+) points, (up|down) ([\\d.]+)% on the day, pushed mostly by (dj support|charts|editorial adds) and (dj support|charts|editorial adds)\\.','cerró en $1 puntos, ~2 $3% en el día, empujado sobre todo por ~4 y ~5.','#ex-plain'],
+['closed at ([\\d.]+) points, flat on the day, pushed mostly by (dj support|charts|editorial adds)\\.','cerró en $1 puntos, sin cambio en el día, empujado sobre todo por ~2.','#ex-plain'],
+['closed at ([\\d.]+) points, flat on the day, pushed mostly by (dj support|charts|editorial adds) and (dj support|charts|editorial adds)\\.','cerró en $1 puntos, sin cambio en el día, empujado sobre todo por ~2 y ~3.','#ex-plain'],
+['closed at ([\\d.]+) points, its first close, pushed mostly by (dj support|charts|editorial adds)\\.','cerró en $1 puntos, su primer cierre, empujado sobre todo por ~2.','#ex-plain'],
+['closed at ([\\d.]+) points, its first close, pushed mostly by (dj support|charts|editorial adds) and (dj support|charts|editorial adds)\\.','cerró en $1 puntos, su primer cierre, empujado sobre todo por ~2 y ~3.','#ex-plain'],
 /* the artist intro sentence (gmx-artist.js, 2026-11-10): built from the page's own place and genre tags, which stay as written.
    the third item scopes a rule to the intro line (gmx-lang.js), so a bio paragraph in the same shape is never touched.
    the "the" the sentence puts before a country goes. most specific first. no gender: es de, hace */
@@ -802,6 +874,8 @@ rules:[
 ['(.+) on (Spotify|SoundCloud|YouTube)','$1 en $2']
 ],
 terms:{
+/* the groove exchange (2026-11-11): the plain-words line's move and parts, read only through ~ in its rules */
+up:'subió',down:'bajó','dj support':'apoyo de djs',charts:'charts','editorial adds':'playlists editoriales',
 mon:'lun',tue:'mar',wed:'mié',thu:'jue',fri:'vie',sat:'sáb',sun:'dom',
 monday:'lunes',tuesday:'martes',wednesday:'miércoles',thursday:'jueves',friday:'viernes',saturday:'sábado',sunday:'domingo',
 jan:'ene',feb:'feb',mar:'mar',apr:'abr',may:'may',jun:'jun',jul:'jul',aug:'ago',sep:'sep',oct:'oct',nov:'nov',dec:'dic',

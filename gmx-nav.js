@@ -36,7 +36,7 @@ function tabOf(){
   if(path==='/scan')return 'scan';
   if(under('/sets')||under('/tracklists')||path==='/interviews'||path==='/radio'||path==='/open-ids')return 'tracklists';
   if(under('/artists')||under('/labels')||path==='/roster'||path==='/badges')return 'artists';
-  if(under('/more')||under('/newsletter')||under('/upcoming')||path==='/events'||path==='/calendar'||path==='/moods'||path==='/tours'||path==='/venues'||path==='/friday'||path==='/picks'||path==='/dj-support'||path==='/privacy'||path==='/terms'||path==='/crate'||path==='/search')return 'more';
+  if(under('/more')||under('/newsletter')||under('/upcoming')||path==='/events'||path==='/calendar'||path==='/moods'||path==='/tours'||path==='/venues'||path==='/friday'||path==='/picks'||path==='/exchange'||path==='/dj-support'||path==='/privacy'||path==='/terms'||path==='/crate'||path==='/search')return 'more';
   return null;
 }
 var tab=tabOf();

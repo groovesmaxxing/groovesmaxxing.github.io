@@ -42,6 +42,7 @@ A static website. Every page is a `.html` file in this repo, written by hand or 
 | `badges.html` | Badges shown on artist pages |
 | `upcoming.html` | Releases dropping soon |
 | `moods.html` | The mood picker: starter chips (vibes, at the beach, morning, late night, get bumpy, chill, fresh, spooky in October) and a free-text box over the four lane playlists. Filled in the browser by `gmx-moods.js` from `moods-index.json`, which `moodindex.py` writes on the owner's laptop from local files (released tracks only, one version per song, mood rules plus a hand overrides file). Rerun it after the lane dumps refresh, then commit the json. The site-data workflow never touches it |
+| `exchange.html` | The groove exchange: every tracked record with a daily closing price, three indices, movers, a sortable board, a quote sheet per track and g-mo's book. Drawn in the browser by `gmx-exchange.js` from `exchange-index.json`. That file and `exchange-tape.json` are written on the owner's laptop by `gmxprice.py export` (rank-based points, tiers and percent moves only, never raw partner numbers). Copy both from the export folder, then commit them. The site-data workflow never touches them |
 | `friday.html` | The weekly Fresh Grooves Friday release list |
 | `newsletter.html` | Index of newsletter issues |
 | `calendar.html` | The festival calendar: the year's big events worldwide on a world map, a year grid and a month by month list, plus the subscribable `calendar.ics`. The cards, map outline and JSON-LD sit between `calendar-land`, `calendar-list` and `calendar-ld` markers written by `GMX_tools\calendarpage.py` from `GMX_tools\calendar_events.json` on the owner's laptop, so change the source and rerun, never the cards. The page script reads the cards, it has no data file of its own |
@@ -71,6 +72,8 @@ A static website. Every page is a `.html` file in this repo, written by hand or 
 | `gmx-moods.js` | The mood picker on `moods.html`: reads `moods-index.json`, parses a typed mood in english or spanish, builds a seeded 30-track list, keeps the pick in the address hash |
 | `gmx-profile.css`, `gmx-label.css` | Shared artist and label profile styles |
 | `gmx-motion.css`, `gmx-motion.js` | Page motion kit. The homepage keeps its own inline copy |
+| `gmx-exchange.js`, `gmx-exchange.css` | The groove exchange page on `exchange.html`: reads `exchange-index.json`, draws the charts as inline svg, keeps the open quote in the address hash (`#t=TICKER`) |
+| `gmx-tape.js`, `gmx-tape.css` | The ticker bar at the top of a page, from `exchange-tape.json`. The script tag sits in the head with no defer on purpose: it reserves the bar's height before the first paint. On `exchange.html` and `index.html` only |
 | `gmx-refresh.js` | Pull to refresh inside the installed app |
 | `gmx-install.js` | "Add to home screen" nudge |
 | `gmx-clips.js`, `gmx-capture-worklet.js` | Scan page clip storage and audio capture |
@@ -80,7 +83,7 @@ A static website. Every page is a `.html` file in this repo, written by hand or 
 | `sitemap.xml`, `robots.txt`, `feed.xml` | Search engine files and the newsletter RSS feed |
 | `radar-artists.json` | Artist names the nightly tour sweep looks up |
 | `radar-attractions.json`, `radar-events.json`, `radar-denver.json` | Written by the nightly sweep. Do not hand-edit |
-| `*-index.json`, `open-ids.json`, `upcoming.json`, `precache.json`, `set-tags.json` | Derived files written by the `site-data` workflow. Do not hand-edit. Except `moods-index.json`, which `moodindex.py` writes on the owner's laptop (see `moods.html` above) |
+| `*-index.json`, `open-ids.json`, `upcoming.json`, `precache.json`, `set-tags.json` | Derived files written by the `site-data` workflow. Do not hand-edit. Except `moods-index.json`, which `moodindex.py` writes on the owner's laptop (see `moods.html` above), and `exchange-index.json` with `exchange-tape.json`, which `gmxprice.py export` writes there (see `exchange.html` above) |
 
 ## Build, deploy and automation
 
