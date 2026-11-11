@@ -1,80 +1,80 @@
 {
- "generated": "2026-11-11T15:06:58Z",
+ "generated": "2026-11-11T21:53:51Z",
  "site": [
   {
    "path": "/",
    "code": 200,
-   "ms": 287,
+   "ms": 283,
    "state": "ok",
    "note": null
   },
   {
    "path": "/scan",
    "code": 200,
-   "ms": 132,
+   "ms": 169,
    "state": "ok",
    "note": null
   },
   {
    "path": "/gmx-config.json",
    "code": 200,
-   "ms": 113,
+   "ms": 142,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sets",
    "code": 200,
-   "ms": 192,
+   "ms": 179,
    "state": "ok",
    "note": null
   },
   {
    "path": "/artists",
    "code": 200,
-   "ms": 188,
+   "ms": 209,
    "state": "ok",
    "note": null
   },
   {
    "path": "/tracklists/",
    "code": 200,
-   "ms": 143,
+   "ms": 131,
    "state": "ok",
    "note": null
   },
   {
    "path": "/search-index.json",
    "code": 200,
-   "ms": 202,
+   "ms": 216,
    "state": "ok",
    "note": "generated 2026-11-11"
   },
   {
    "path": "/upcoming.json",
    "code": 200,
-   "ms": 152,
+   "ms": 150,
    "state": "ok",
    "note": "generated 2026-11-11"
   },
   {
    "path": "/radar-events.json",
    "code": 200,
-   "ms": 189,
+   "ms": 178,
    "state": "ok",
-   "note": "generated 2026-11-10T17:08:32"
+   "note": "generated 2026-11-11T17:15:36"
   },
   {
    "path": "/sitemap.xml",
    "code": 200,
-   "ms": 233,
+   "ms": 291,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sw.js",
    "code": 200,
-   "ms": 116,
+   "ms": 132,
    "state": "ok",
    "note": null
   }
@@ -82,7 +82,7 @@
  "recognizer": {
   "state": "up",
   "code": 200,
-  "ms": 528,
+  "ms": 518,
   "health": {
    "status": "ok",
    "version": "0.1.2",
@@ -92,7 +92,9 @@
  "workflows": {
   "state": "failed",
   "failed": [
-   "freshness"
+   "freshness",
+   "site check",
+   "site data"
   ],
   "runs": [
    {
@@ -101,8 +103,8 @@
     "conclusion": "success",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-11-10T17:08:57Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/42861314511",
+    "at": "2026-11-11T17:16:16Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/43065955929",
     "state": "ok"
    },
    {
@@ -111,8 +113,8 @@
     "conclusion": "failure",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-11-10T20:47:19Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/42898657367",
+    "at": "2026-11-11T21:19:52Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/43102058052",
     "state": "failed"
    },
    {
@@ -121,8 +123,8 @@
     "conclusion": "success",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-11-10T18:12:29Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/42872662940",
+    "at": "2026-11-11T18:02:33Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/43073731109",
     "state": "ok"
    },
    {
@@ -131,8 +133,8 @@
     "conclusion": "success",
     "event": "dynamic",
     "branch": "main",
-    "at": "2026-11-11T04:16:45Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/42958095895",
+    "at": "2026-11-11T17:17:01Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/43066504452",
     "state": "ok"
    },
    {
@@ -141,29 +143,29 @@
     "conclusion": "success",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-11-11T06:49:04Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/42975052979",
+    "at": "2026-11-11T16:21:57Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/43057567012",
     "state": "ok"
    },
    {
     "name": "site check",
     "status": "completed",
-    "conclusion": "success",
+    "conclusion": "failure",
     "event": "push",
     "branch": "main",
-    "at": "2026-11-11T04:17:21Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/42957954486",
-    "state": "ok"
+    "at": "2026-11-11T16:35:32Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/43058086846",
+    "state": "failed"
    },
    {
     "name": "site data",
     "status": "completed",
-    "conclusion": "success",
+    "conclusion": "failure",
     "event": "push",
     "branch": "main",
-    "at": "2026-11-11T04:17:47Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/42957954534",
-    "state": "ok"
+    "at": "2026-11-11T16:35:27Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/43058086437",
+    "state": "failed"
    }
   ]
  },
@@ -188,12 +190,12 @@
    {
     "state": "ok",
     "id": "F-30",
-    "text": "the events radar data is refreshed nightly: 2026-11-10, 1 days old"
+    "text": "the events radar data is refreshed nightly: 2026-11-11, 0 days old"
    },
    {
     "state": "ok",
     "id": "F-31",
-    "text": "the denver radar data is refreshed nightly: 2026-11-10, 1 days old"
+    "text": "the denver radar data is refreshed nightly: 2026-11-11, 0 days old"
    },
    {
     "state": "ok",
@@ -228,5 +230,5 @@
   ]
  },
  "state": "wrong",
- "summary": "recognizer up; failed workflows: freshness; freshness fail"
+ "summary": "recognizer up; failed workflows: freshness, site check, site data; freshness fail"
 }
