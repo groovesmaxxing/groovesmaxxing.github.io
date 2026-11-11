@@ -19,7 +19,9 @@
   };
   var ptsDiff = function (n) { var d = dir(n), r = Math.abs(Math.round(n * 10) / 10).toFixed(1); return '<span class="ex-chg ' + d + '">' + (d === "up" ? "+" : d === "down" ? "-" : "") + r + " pts</span>"; };
   var LANE = { vibes: "🧃 vibes", bumpy: "🚧 bumpy" };
-  var HEAT = { "heating up": "heating up", cooling: "cooling off", steady: "steady" };
+  // the heat compares this week with the weeks before it, so the label says "this week": the driver beside it
+  // can be about today alone and point the other way
+  var HEAT = { "heating up": "heating up this week", cooling: "cooling off this week", steady: "steady this week" };
   var EVN = { c: "chart", e: "editorial", r: "release" };
   var PERIODS = { "1d": "chg1d", "7d": "chg7d", "30d": "chg30d" };
   var NEXT = "06:20";
@@ -290,7 +292,7 @@
     var seg = function (v, c) { return '<span class="' + c + '" style="width:' + tens(v) + '%"></span>'; };
     var ar = artistHtml(t);
     var lanes = (t.lanes || []).map(function (l) { return LANE[l] || esc(l); }).join(" ");
-    var heat = t.seasoned ? (HEAT[t.heat] || "steady") : "new listing";
+    var heat = !t.seasoned ? "new listing" : t.heat ? (HEAT[t.heat] || "steady this week") : "too early to call";
     var sid = t.songstats_id && /^[A-Za-z0-9]+$/.test(t.songstats_id) ? t.songstats_id : "";
     var spid = t.spotify_track_id && /^[A-Za-z0-9]{22}$/.test(t.spotify_track_id) ? t.spotify_track_id : "";
     var fact = function (k, v) { return "<div><dt>" + k + "</dt><dd>" + v + "</dd></div>"; };

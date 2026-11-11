@@ -40,6 +40,9 @@ body{margin:0;background:var(--night);color:var(--day);font-family:var(--sans);l
 .ex-art0{background:radial-gradient(circle,var(--racing) 0 15%,var(--night) 16% 19%,transparent 20%),repeating-radial-gradient(circle,#1c1c21 0 2px,#111114 2px 4px);border:1px solid var(--line)}
 /* index tiles */
 .ex-tiles{display:grid;grid-template-columns:1fr;gap:10px}
+/* hold the space while the close loads, so the page below does not jump when it lands */
+.ex-tiles:empty{min-height:451px}.ex-rail:empty{min-height:192px}
+@media(min-width:640px){.ex-tiles:empty{min-height:150px}}
 @media(min-width:640px){.ex-tiles{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .ex-tile{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;text-align:left;color:var(--day);cursor:pointer;font:inherit;width:100%;min-width:0}
 .ex-tile:hover{border-color:var(--steel)}

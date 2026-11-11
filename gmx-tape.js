@@ -28,8 +28,11 @@
     return r.json();
   }).then(build).catch(shut);
 
+  // the script tag sits in the head with no defer, so the class above lands before the first paint and the
+  // page never jumps. the body may not exist yet when the json arrives, so the build waits for it.
   function build(d) {
-    if (!d || !document.body) { shut(); return; }
+    if (!document.body) { document.addEventListener("DOMContentLoaded", function () { build(d); }); return; }
+    if (!d) { shut(); return; }
     var html = "", n = 0;
     if (d.composite && has(d.composite.level)) { html += item("GMX", "/exchange", d.composite.level, d.composite.chg1d); n++; }
     (d.items || []).forEach(function (x) {
