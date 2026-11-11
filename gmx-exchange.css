@@ -2,7 +2,7 @@
    shared sheet, nav and read layers keep their own classes. colours: the heat scheme, up is racing, down is
    blue. the site ticker bar lives in gmx-tape.css. */
 :root{--night:#0B0B0D;--card:#141417;--card2:#1a1a1f;--line:#2a2a31;--racing:#FF1C02;--deep:#CC1400;--day:#F2F2EF;--steel:#8A8A93;
---up:#FF1C02;--down:#5B8DEF;--mono:'Space Mono',ui-monospace,Consolas,monospace;--sans:'Poppins',system-ui,-apple-system,'Segoe UI',sans-serif}
+--up:#2ECC71;--down:#FF1C02;--mono:'Space Mono',ui-monospace,Consolas,monospace;--sans:'Poppins',system-ui,-apple-system,'Segoe UI',sans-serif}
 *{box-sizing:border-box}
 body{margin:0;background:var(--night);color:var(--day);font-family:var(--sans);line-height:1.5}
 .ex{max-width:880px;margin:0 auto;padding:40px 16px 96px;min-width:0}

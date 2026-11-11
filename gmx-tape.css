@@ -11,8 +11,8 @@ html.gmx-tape-on::before{content:"";position:absolute;left:0;right:0;top:0;heigh
 .gmx-tape .gt-i{color:#F2F2EF;text-decoration:none;white-space:nowrap;font-variant-numeric:tabular-nums;line-height:var(--gmx-tape-h)}
 .gmx-tape .gt-i b{font-weight:700;margin-right:2px}
 .gmx-tape .gt-i:hover b{color:#FF1C02}
-.gmx-tape .gt-up{color:#FF1C02}
-.gmx-tape .gt-down{color:#5B8DEF}
+.gmx-tape .gt-up{color:#2ECC71}
+.gmx-tape .gt-down{color:#FF1C02}
 .gmx-tape .gt-flat{color:#8A8A93}
 .gmx-tape .gt-new{color:#8A8A93;border:1px solid rgba(242,242,239,.34);border-radius:999px;padding:0 5px}
 .gmx-tape:hover .gt-run,.gmx-tape:focus-within .gt-run,.gmx-tape.gt-hold .gt-run{animation-play-state:paused}
