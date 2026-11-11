@@ -102,9 +102,11 @@ words:{
 /* the artist profile tabs layout (gmx-artist.js, 2026-11-10): the tabs, the hero, the tour strip, the folds */
 'music':'música','on the site':'en el sitio','newest set':'set más reciente','at a glance':'de un vistazo','caught live':'en vivo',
 'the full story':'la historia completa','hide the full story':'ocultar la historia completa','filter sets':'filtrar sets',
-"every set we're tracking. the newest filmed one is up top.":'cada set que seguimos. el más reciente en video está hasta arriba.',
 'upcoming dates':'próximas fechas','scroll dates back':'fechas anteriores','scroll dates on':'fechas siguientes',
 'instagram reel':'reel de instagram','tap to load':'toca para cargar','more badges':'insignias más','watch on youtube':'ver en youtube',
+/* the one scroll layout (gmx-artist.js, 2026-11-10, after the tabs): the rail arrows */
+'scroll sets back':'sets anteriores','scroll sets on':'sets siguientes','scroll reels back':'reels anteriores','scroll reels on':'reels siguientes',
+'everything else':'todo lo demás','hide everything else':'ocultar todo lo demás','gathered from the tracklists, the sets page, the interviews page and the label pages.':'reunido de los tracklists, la página de sets, la de entrevistas y las de disqueras.',
 /* the sets tab notes: the rails' lead lines without their trailing "slide →" */
 'the sets, verified.':'los sets, verificados.','the set, verified':'el set, verificado','the full sets.':'los sets completos.','the sets, filmed.':'los sets, en video.',
 'the receipts, filmed.':'las pruebas, en video.','from the floor, filmed by groovesmaxxing.':'desde la pista, grabado por groovesmaxxing.',
@@ -609,6 +611,7 @@ scoped:[
 ['.gmxa-chips',{'filmed':'en video','clips':'clips','talks':'pláticas','audio':'audio'}],
 ['.gmxa-card',{'filmed':'en video','clip':'clip','talk':'plática','watch':'ver','listen':'escuchar'}],
 ['.gmxa-plus',{'less':'menos'}],
+['.gmxa-rail',{'dates':'fechas'}],
 ['.gmxa-dblk',{jan:'ene',feb:'feb',mar:'mar',apr:'abr',may:'may',jun:'jun',jul:'jul',aug:'ago',sep:'sep',oct:'oct',nov:'nov',dec:'dic'}],
 /* web review 2026-11-09: the quick search sheet (A2): short words that are prose fragments elsewhere */
 ['.gmx-quick-rl',{'in':'en','recent':'recientes'}],
@@ -699,6 +702,14 @@ scoped:[
 'groovesmaxxing picks scoreboard':'marcador de picks de groovesmaxxing','read again at every month end':'se revisa cada cierre de mes'}]
 ],
 rules:[
+/* the artist intro sentence (gmx-artist.js, 2026-11-10): built from the page's own place and genre tags, which stay as written.
+   the third item scopes a rule to the intro line (gmx-lang.js), so a bio paragraph in the same shape is never touched.
+   the "the" the sentence puts before a country goes. most specific first. no gender: es de, hace */
+['(.+?) is from (?:the )?(.+) and makes (.+)\\.','$1 es de $2 y hace $3.','.gmxa-lede'],['(.+?) is based in (.+) and makes (.+)\\.','$1 tiene su base en $2 y hace $3.','.gmxa-lede'],
+['(.+?) is an? (.+) artist from (?:the )?(.+), based in (.+)\\.','$1 es de $3, tiene su base en $4 y hace $2.','.gmxa-lede'],
+['(.+?) is an? (.+) artist from (?:the )?(.+)\\.','$1 es de $3 y hace $2.','.gmxa-lede'],['(.+?) is an? (.+) artist based in (.+)\\.','$1 tiene su base en $3 y hace $2.','.gmxa-lede'],
+['(.+?) is an? (.+) from (?:the )?(.+)\\.','$1 es de $3: $2.','.gmxa-lede'],['(.+?) is from (?:the )?(.+)\\.','$1 es de $2.','.gmxa-lede'],
+['(.+?) is based in (.+)\\.','$1 tiene su base en $2.','.gmxa-lede'],['(.+?) makes (.+)\\.','$1 hace $2.','.gmxa-lede'],['(.+?) is an? (.+)\\.','$1: $2.','.gmxa-lede'],
 /* the artist profile tabs layout (2026-11-10): the sets fold, the badges fold aria-label, the soundcloud card label */
 ['more \\((\\d+)\\)','más ($1)'],['listen to (.+)','escuchar $1'],['(.+), opens on youtube','$1, se abre en youtube'],
 /* web review 2026-11-09, fixer pass: the words a share sends (gmx-sheet.js runs them through here), most specific first */

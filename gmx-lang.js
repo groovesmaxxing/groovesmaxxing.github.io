@@ -25,13 +25,14 @@ function has(o,k){return o&&Object.prototype.hasOwnProperty.call(o,k)}
 
 /* ---- the translator ---- */
 var rules=[];
-function compile(){rules=(dict.rules||[]).map(function(r){return [new RegExp('^'+r[0]+'$'),r[1]]})}
+/* a rule may carry a third item, a selector: it then only applies to text inside a matching element */
+function compile(){rules=(dict.rules||[]).map(function(r){return [new RegExp('^'+r[0]+'$'),r[1],r[2]]})}
 /* a rule template takes $1..$9 as matched and ~1..~9 looked up in the terms (months, days) */
 function fill(t,m){return t.replace(/([$~])(\d)/g,function(_,k,n){var g=m[+n]||'';return k==='~'?(has(dict.terms,g)?dict.terms[g]:has(dict.words,g)?dict.words[g]:g):g})}
 function one(s,ctx){
   if(ctx&&dict.scoped)for(var i=0;i<dict.scoped.length;i++){var sc=dict.scoped[i];if(has(sc[1],s)&&ctx.closest(sc[0]))return sc[1][s]}
   if(has(dict.words,s))return dict.words[s];
-  for(var j=0;j<rules.length;j++){var m=rules[j][0].exec(s);if(m)return fill(rules[j][1],m)}
+  for(var j=0;j<rules.length;j++){if(rules[j][2]&&!(ctx&&ctx.closest&&ctx.closest(rules[j][2])))continue;var m=rules[j][0].exec(s);if(m)return fill(rules[j][1],m)}
   return null;
 }
 var EDGE=/^([^\p{L}\p{N}#@&(]*)([\s\S]*?)([^\p{L}\p{N}.!?)'"%…:]*)$/u;
