@@ -99,6 +99,32 @@ n = 0
 for f in sorted(files('artists/*.html') + files('labels/*.html')):
     art = f.startswith('artists/')
     n += ensure(f, ['player_css', 'nav_css', 'account_css'] + (['artist_css'] if art else []), ['player_js'] + (['artist_js'] if art else []), ['nav_js', 'crate_js', 'related_js', 'account_js'])
+
+# the two scripts an artist profile waits on (2026-11-10): asked for from the head, right after the font preloads, so
+# on a slow line they download while the rest of the page is still arriving instead of after its last byte (the
+# profile stays hidden until gmx-artist.js has run). they still run where their tags are, deferred and in order.
+# the hrefs come from T, and bump_asset.py rewrites every ?v= it finds, so the hints move with the tags.
+def _src(k): return re.search(r'src="([^"]+)"', T[k]).group(1)
+PRELOAD_JS = ['<link rel="preload" as="script" href="%s">' % _src(k) for k in ('player_js', 'artist_js')]
+# and the on tour strip's two data files (same day): gmx-artist.js asks for them with a plain fetch(url), which is mode cors
+# with same-origin credentials, and a bare crossorigin attribute is exactly that, so the fetch takes the preloaded answer
+# instead of asking again (any other pairing downloads twice). no ?v=: the data files carry none, so bump_asset.py has
+# nothing to keep in step here. they go after the scripts, so on a slow line they queue behind them
+PRELOAD_JS += ['<link rel="preload" as="fetch" href="/%s" crossorigin>' % u for u in ('radar-events.json', 'names-index.json')]
+PRELOAD_RX = re.compile(r'(?m)^[ \t]*<link rel="preload" as="(?:script" href="/gmx-(?:player|artist)\.js[^"]*"|fetch" href="/(?:radar-events|names-index)\.json" crossorigin)>\n')
+FONT_ANCHOR = re.compile(r'(?m)^([ \t]*)<link rel="preload" as="font" type="font/woff2" href="/fonts/jetbrainsmono-600-latin\.woff2" crossorigin>\n')
+def ensure_preload(path):
+    s = open(path, encoding='utf-8').read(); o = s
+    if 'http-equiv="refresh"' in s or T['artist_js'] not in s: return False
+    s = PRELOAD_RX.sub('', s)
+    m = FONT_ANCHOR.search(s)
+    if m: s = s[:m.end()] + ''.join(m.group(1) + t + '\n' for t in PRELOAD_JS) + s[m.end():]
+    elif MOTION_CSS in s: s = s.replace(MOTION_CSS, '\n'.join(PRELOAD_JS) + '\n' + MOTION_CSS, 1)
+    else: s = s.replace('</head>', '\n'.join(PRELOAD_JS) + '\n</head>', 1)
+    if s != o: open(path, 'w', encoding='utf-8').write(s)
+    return s != o
+for f in sorted(files('artists/*.html')):
+    n += ensure_preload(f)
 for f in sorted(files('tracklists/*.html')):
     if f.endswith('/index.html'): continue
     n += ensure(f, ['nav_css', 'account_css'], [], ['nav_js', 'follow_js', 'crate_js', 'related_js', 'account_js'])

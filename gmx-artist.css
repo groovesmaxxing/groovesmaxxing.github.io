@@ -1,16 +1,36 @@
 /* groovesmaxxing artist profile, the tabs layout (direction B, 2026-11-10). pairs with gmx-artist.js.
    every rule is scoped to .gmxa-* or to section.artist.gmxa-on, the class the script sets once it has moved the
    page's own nodes, so a page without the script (js off, an error, a label page) keeps its old look.
-   the gate below hides the section until the script is done, 2 s at most once this file has loaded. the script runs
-   after the whole parse and gmx-player.js, so on a slow phone that wait is real: a page with filmed sets shows the
-   hero's dark shape meanwhile instead of an empty screen. */
+   the gate below hides the section until the script is done, 3 s at most once this file has loaded (on a script error
+   the script puts the old page back at once). the script runs after the whole parse and gmx-player.js, so on a slow
+   phone that wait is real: a page with filmed sets shows the hero's dark shape meanwhile instead of an empty screen.
+   while the page parses, the hidden section's blocks are also left out of layout (content-visibility), which on a slow
+   phone was the biggest cost before the script could even start: the browser laid the whole old profile out several
+   times while nobody could see it. that covers the sibling sections the 29 hand-indented pages put after the section
+   too (the script pulls them in). only where the browser can also lift it from the failsafe animation (the @supports
+   test), so a blocked script still shows the old page after 3 s.
+   what follows the section (nav.pn, p.note, the footer) is hidden with it, not pushed below the fold: on a profile
+   shorter than a screen, any reserve the section kept and then dropped at ready pulled them up into view (a 0.06 to
+   0.07 layout shift on about a hundred short pages). hidden, they appear in place at ready and nothing moves.
+   .gmxa-wait (set by the script while the on tour answer is still on its way at ready): the hero shows at ready, the
+   tabs and everything under them wait a moment for the strip, so it does not push the open tab down. a moment only:
+   the sets are the page, the strip is extra. the script lifts it 250 ms after ready at the latest, this file 400 ms
+   after (the backstop), and a strip that comes later goes in then (gmx-artist.js keeps the reader's place). */
 @media (scripting:enabled){
-  section.artist:not(.gmxa-ready){visibility:hidden;animation:gmxa-show 0s 2s forwards;position:relative}
-  section.artist:not(.gmxa-ready):has(button[data-yt])::before{content:'';visibility:visible;position:absolute;top:6px;left:-26px;right:-26px;aspect-ratio:16/9;background:linear-gradient(180deg,#141417 0%,#0B0B0D 100%);animation:gmxa-hide 0s 2s forwards}
+  section.artist:not(.gmxa-ready){visibility:hidden;animation:gmxa-show 0s 3s forwards;position:relative}
+  section.artist:not(.gmxa-ready)~*{visibility:hidden;animation:gmxa-show 0s 3s forwards}
+  section.artist:not(.gmxa-ready):has(button[data-yt])::before{content:'';visibility:visible;position:absolute;top:6px;left:-26px;right:-26px;aspect-ratio:16/9;background:linear-gradient(180deg,#141417 0%,#0B0B0D 100%);animation:gmxa-hide 0s 3s forwards}
+  section.artist.gmxa-wait>:not(.gmxa-hero),section.artist.gmxa-wait~*{visibility:hidden;animation:gmxa-unwait 0s .4s forwards}
 }
+@supports (content-visibility:hidden) and (transition-behavior:allow-discrete){@media (scripting:enabled){
+  section.artist:not(.gmxa-ready):not(.gmxa-on)>*{content-visibility:hidden;animation:gmxa-cv 0s 3s forwards}
+  section.artist:not(.gmxa-ready):not(.gmxa-on)~section{content-visibility:hidden;animation:gmxa-cv 0s 3s forwards,gmxa-show 0s 3s forwards}
+}}
 @media (scripting:enabled) and (min-width:720px){section.artist:not(.gmxa-ready):has(button[data-yt])::before{left:0;right:0;aspect-ratio:21/9;border-radius:14px}}
 @keyframes gmxa-show{to{visibility:visible}}
+@keyframes gmxa-unwait{to{visibility:visible}}
 @keyframes gmxa-hide{to{visibility:hidden}}
+@keyframes gmxa-cv{to{content-visibility:visible}}
 
 .gmxa-page .wrap{max-width:960px}
 .gmxa-imgpage .gmx-mark{display:none!important}
@@ -52,6 +72,9 @@ section.artist.gmxa-on .gmxa-media :focus-visible,section.artist.gmxa-on .gmxa-s
 .gmxa-type{padding-top:34px}
 .gmxa-type::before{content:'';display:block;width:44px;height:3px;border-radius:3px;background:var(--racing,#FF1C02);margin-bottom:18px}
 section.artist.gmxa-on .gmxa-id .aname{font-weight:900;font-size:clamp(2.5rem,11vw,4.4rem);line-height:.98;letter-spacing:-.03em;text-shadow:0 2px 18px rgba(0,0,0,.5);margin:0;overflow-wrap:anywhere}
+/* the name's ribbon gets its final box at once: gmx-fonts.css draws it .85em tall, then gmx-motion swaps it to 24 px and
+   30 px as it plays, and each step moved everything under the name (a 0.07 layout shift right after the page showed) */
+section.artist.gmxa-on .gmxa-id .aname::after{height:30px;max-height:none;margin-top:8px}
 .gmxa-sub{margin:10px 0 0;font:400 .78rem/1.6 'Space Mono',monospace;color:var(--steel,#8A8A93);letter-spacing:.04em;text-wrap:balance}
 .gmxa-sub .gmxa-lane{color:var(--racing,#FF1C02)}
 section.artist.gmxa-on .gmxa-meta{display:contents}
@@ -229,6 +252,15 @@ section.artist.gmxa-on .gmxa-panel .gmx-rel,section.artist.gmxa-on .gmxa-panel .
 /* desktop */
 /* phone: tighter pills so two share a row inside the 26 px gutter */
 @media (max-width:719px){.gmxa-badges{gap:6px}.gmxa-badges .tag{font-size:.68rem;padding:4px 10px;letter-spacing:.02em}}
+/* phone: the follow pill (gmx-crate.js) and its "…" (gmx-sheet.js) land after the page shows. their room is kept at the
+   head of the row until they do, so the link icons do not jump right under the reader's thumb. the room goes after 4 s
+   if they never come */
+@media (max-width:719px){
+  section.artist.gmxa-on .gmxa-acts > .links{order:2}
+  section.artist.gmxa-on .gmxa-acts:not(:has(> .gmx-follow))::before{content:'';order:1;flex:0 0 158px;height:44px;animation:gmxa-unslot 0s 4s forwards}
+  section.artist.gmxa-on .gmxa-acts:has(> .gmx-follow):not(:has(> .gmx-more))::before{content:'';order:1;flex:0 0 44px;height:44px;animation:gmxa-unslot 0s 4s forwards}
+}
+@keyframes gmxa-unslot{to{flex-basis:0;margin-right:-8px}}
 @media (min-width:720px){
   section.artist.gmxa-on{--gmxa-g:26px}
   .gmxa-stagebox{margin:0;border-radius:14px;aspect-ratio:21/9}

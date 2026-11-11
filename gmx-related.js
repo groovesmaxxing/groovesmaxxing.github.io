@@ -16,7 +16,10 @@ var SPLIT=/\s+(?:b2b|b3b|vs\.?|x|and|with|feat\.?|ft\.?|\+|&|,)\s+/i;
 function fold(s){return (s||'').normalize('NFKD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/&/g,'and').replace(/\s+/g,' ').trim()}
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 function text(n){return n?(n.textContent||'').replace(/\s+/g,' ').trim():''}
-function get(u){return fetch(u).then(function(r){return r.ok?r.json():null}).catch(function(){return null})}
+/* one request per data file per page: the answers are shared through window.__gmxJSON with gmx-artist.js, which asks for
+   names-index.json first (its head preload is used up by that one fetch) */
+var J=window.__gmxJSON||(window.__gmxJSON={});
+function get(u){return J[u]||(J[u]=fetch(u).then(function(r){return r.ok?r.json():null}).catch(function(){return null}))}
 var css='.gmx-rel{border-top:1px solid var(--line,#26262b);margin-top:44px;padding-top:26px}.gmx-rel .eyebrow2{font-family:"Space Mono",monospace;font-size:.72rem;letter-spacing:.28em;color:var(--racing,#FF1C02);text-transform:uppercase;margin:0 0 14px}'+
  '.gmx-rel h3{font-family:"Space Mono",monospace;font-size:.72rem;letter-spacing:.12em;color:var(--steel,#8A8A93);text-transform:uppercase;font-weight:400;margin:18px 0 8px}.gmx-rel h3:first-of-type{margin-top:0}'+
  '.gmx-rel .row{display:flex;flex-wrap:wrap;gap:8px}.gmx-rel .row a{font-family:"Space Mono",monospace;font-size:.78rem;letter-spacing:.03em;text-decoration:none;color:#c9c9c4;border:1px solid var(--line,#26262b);border-radius:6px;padding:8px 12px;transition:border-color .15s,color .15s;max-width:100%}'+

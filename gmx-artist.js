@@ -15,10 +15,18 @@
    load order: after gmx-player.js (its stages exist), before gmx-motion.js (motion measures the new layout).
    the follow pill (gmx-crate.js), the "…" (gmx-sheet.js), the claim row (gmx-account.js) and the also on the
    site box (gmx-related.js) land later and are caught as they arrive.
-   known limit: the static soundcloud, spotify and instagram iframes carry a live src and loading=lazy, and the browser
-   asks for the ones near the top before this deferred file runs. tap to load holds in the dom (every embed is parked
-   with no src until it is tapped, spotify until the music tab shows), not on the network: those first requests are
-   thrown away. a real fix needs the tools to write data-src into the static html.
+   speed (2026-11-10, measured at 4x and 6x cpu): the section stays hidden until .gmxa-ready, so every ms here is a blank
+   screen on a slow phone. three things keep it short: gmx-artist.css leaves the hidden section's blocks out of layout
+   while the page parses (content-visibility), the head preloads this file and gmx-player.js (ensure_tags.py), and an
+   embed is parked out of the dom before its box moves (park), because moving a live iframe rebuilds its frame. the
+   parked frames go back after the first paint (settle). the on tour strip's data is two fetches the head preloads too
+   (ensure_tags.py), but no fetch answer can run inside this file's own task, so the tabs under the hero wait for the
+   strip 250 ms after ready at most (.gmxa-wait), then show: the sets are the page and must not wait for an extra. a
+   strip that comes later still goes in, and once the reader has scrolled or touched the page their place is kept.
+   known limit: the static soundcloud, spotify and instagram iframes carry a live src and loading=lazy. in a browser
+   with content-visibility the hidden section, and the sibling sections the hand-indented pages put after it, never
+   ask for them before this file parks them. elsewhere the ones near the top load first and are thrown away. a full
+   fix needs the tools to write data-src into the static html.
    ship order: this file moves .links out of section.artist, so gmx-related.js must carry its guard (and a new ?v=) in
    the same push as the tags that load this file, never after. */
 (function(){
@@ -44,6 +52,7 @@ function el(tag,cls,html){var e=D.createElement(tag);if(cls)e.className=cls;if(h
 function text(n){return n?(n.textContent||'').replace(/\s+/g,' ').trim():'';}
 function fold(s){return (s||'').normalize('NFKD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/&/g,'and').replace(/\s+/g,' ').trim();}
 function arr(l){return [].slice.call(l||[]);}
+function now(){return window.performance&&performance.now?performance.now():Date.now();}
 function frame(f){(window.requestAnimationFrame||setTimeout)(function(){try{f();}catch(e){}});}
 function fire(node,name){try{node.dispatchEvent(new CustomEvent(name,{bubbles:true}));}catch(e){}}
 function resize(){try{window.dispatchEvent(new Event('resize'));}catch(e){var ev=D.createEvent('UIEvents');ev.initUIEvent('resize',true,false,window,0);window.dispatchEvent(ev);}}
@@ -63,16 +72,40 @@ var moved=[],made=[],classed=[],frames=[];
 function move(n,into,before){if(!n)return;if(!n.__gmxaHome){n.__gmxaHome=1;moved.push([n,n.parentNode,n.nextSibling]);}into.insertBefore(n,before||null);}
 function make(tag,cls,html){var e=el(tag,cls,html);made.push(e);return e;}
 function cls(n,c){n.classList.add(c);classed.push([n,c]);}
-/* an iframe that has not been tapped: out of the dom and back with no src, so it stops loading */
+/* an iframe that has not been tapped: out of the dom with no src, so it stops loading, and a hidden <i> stand-in keeps its
+   place. every time an iframe that sits in the page is moved, the browser tears its frame down and builds a new one, which
+   was most of this file's cost on a slow phone (about 15 ms a frame at 4x cpu, 7 frames on max-styler). so a frame is parked
+   before the box around it moves, the boxes travel with the stand-in, and the frame goes back in place (no src, as before)
+   once the page has painted (settle) or when it is tapped (wake), whichever comes first */
+var held=[];
 function park(f){
   var s=f.getAttribute('src');if(!s||f.hasAttribute('data-gmxa-src'))return;
-  var p=f.parentNode,nx=f.nextSibling;p.removeChild(f);
-  f.setAttribute('data-gmxa-src',s);f.setAttribute('data-src',s);f.removeAttribute('src');
-  frames.push(f);p.insertBefore(f,nx);
+  var p=f.parentNode;
+  if(p){var ph=D.createElement('i');ph.className='gmxa-ph';ph.hidden=true;p.replaceChild(ph,f);f.__gmxaPh=ph;held.push(f);}
+  hush(f,s);
 }
-function wake(f){var s=f&&f.getAttribute('data-gmxa-src');if(s&&f.getAttribute('src')!==s)f.setAttribute('src',s);}
+/* the src goes, the frame stays where it is (harvest still finds it): for the hand-indented pages' sibling sections, which
+   are moved before harvest, and a lazy frame moved with its src would be asked for on the spot */
+function hush(f,s){s=s||f.getAttribute('src');if(!s||f.hasAttribute('data-gmxa-src'))return;f.setAttribute('data-gmxa-src',s);f.setAttribute('data-src',s);f.removeAttribute('src');frames.push(f);}
+/* a frame that is its own box (no .player around it) moves first and is parked where it lands */
+function carry(box,f,into,before){if(f&&box!==f)park(f);move(box,into,before);if(f&&box===f)park(f);}
+function unhold(f){var ph=f.__gmxaPh;if(!ph)return;f.__gmxaPh=null;var i=held.indexOf(f);if(i>-1)held.splice(i,1);if(ph.parentNode)ph.parentNode.replaceChild(f,ph);}
+function wake(f){if(!f)return;unhold(f);var s=f.getAttribute('data-gmxa-src');if(s&&f.getAttribute('src')!==s)f.setAttribute('src',s);}
+/* the parked frames under a node, the ones still out of the page included */
+function parked(root){return frames.filter(function(f){var at=f.__gmxaPh||f;return root&&root.contains(at);});}
+/* phase two, after the first paint: the parked frames go back in place a few at a time while the phone is idle, then the
+   sheet is told, so its "open on soundcloud" links (it reads the iframe in each .player) arrive with them */
+function settle(){
+  if(!held.length)return;
+  var idle=window.requestIdleCallback||function(f){return setTimeout(function(){f({timeRemaining:function(){return 8;},didTimeout:true});},200);};
+  idle(function step(dl){
+    try{while(held.length&&(dl.didTimeout||dl.timeRemaining()>4))unhold(held[0]);}catch(e){held=[];}
+    if(held.length)idle(step,{timeout:600});else fire(sec,'gmx:cards');
+  },{timeout:1200});
+}
 function restore(){
   try{if(mo)mo.disconnect();}catch(e){}
+  held.slice().forEach(function(f){try{unhold(f);}catch(e){}});
   for(var i=moved.length-1;i>=0;i--){var m=moved[i];try{if(m[2]&&m[2].parentNode===m[1])m[1].insertBefore(m[0],m[2]);else m[1].appendChild(m[0]);}catch(e){}}
   made.forEach(function(e){if(e.parentNode)e.parentNode.removeChild(e);});
   classed.forEach(function(c){c[0].classList.remove(c[1]);});
@@ -112,7 +145,7 @@ function harvest(){
       var ln=w?linesOf(arr(w.children).filter(function(k){return k!==ob;})):[];if(!ln.length){var mc=text(s.querySelector('.set-meta .mono'));if(mc)ln=[mc];}
       items.push({id:id,kind:kind,title:f.getAttribute('data-title')||'set',cap:ln.join(' · '),cap1:ln[0]||'',img:img?img.getAttribute('src'):'',lead:first&&i===0});
     });
-    if(lead)move(lead,stash);if(rail)move(rail,stash);move(st,stash);
+    if(lead)move(lead,stash);if(rail){arr(rail.querySelectorAll('iframe')).forEach(park);move(rail,stash);}move(st,stash);
   });
   /* a plain list of youtube links (max-styler's "every set we're tracking:"): each one not already on a card */
   arr(sec.querySelectorAll('div,p')).forEach(function(d){
@@ -136,7 +169,7 @@ function harvest(){
   /* spotify */
   var sp=[];
   arr(sec.querySelectorAll('iframe')).forEach(function(f){
-    var src=f.getAttribute('src')||'';if(!/open\.spotify\.com\/embed/.test(src))return;
+    var src=f.getAttribute('src')||f.getAttribute('data-src')||'';if(!/open\.spotify\.com\/embed/.test(src))return;
     /* the embed travels with its own wrapper (.player, or gkat's .spot inside a section that holds only it), so the page's sizing still applies */
     var s=f.closest('section.sec');if(s&&s.parentNode===sec&&s.querySelectorAll('iframe').length===1&&!s.querySelector('.rel'))return sp.push(s);
     sp.push(f.closest('.player,.spot')||f);
@@ -200,8 +233,8 @@ function wave(seed){var h='';for(var i=0;i<14;i++){var v=30+((seed*7+i*37)%70);h
 function scInto(card,it,host){
   var link=it.box.nextElementSibling&&it.box.nextElementSibling.classList.contains('gmx-src')?it.box.nextElementSibling:null;
   if(it.lead)move(it.lead,stash);
-  move(it.box,host);if(link){move(link,host);short(link);}
-  cls(it.box,'gmxa-scbox');park(it.frame);
+  carry(it.box,it.frame,host);if(link){move(link,host);short(link);}
+  cls(it.box,'gmxa-scbox');
 }
 function scCard(it,n){
   var c=make('div','gmxa-card gmxa-sc');c.setAttribute('data-gmxa-kind','audio');
@@ -305,10 +338,45 @@ function idBlock(h){
 
 /* ---- 5. on tour, from the radar: the artist-field rule only, nothing invented ---- */
 var MON=['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
-function get(u){return fetch(u).then(function(r){return r.ok?r.json():null;}).catch(function(){return null;});}
+/* one request per data file per page: the answers are shared with gmx-related.js (it reads names-index.json too) through
+   window.__gmxJSON, and this plain fetch (mode cors, same-origin credentials) is what the head's preload with a bare
+   crossorigin asks for, so the first fetch takes the preloaded answer instead of asking again */
+var JSN=window.__gmxJSON||(window.__gmxJSON={});
+function get(u){return JSN[u]||(JSN[u]=fetch(u).then(function(r){return r.ok?r.json():null;}).catch(function(){return null;}));}
+/* asked for as soon as this file runs. tourR is the answer once it is in, tourNo says no strip can come (a file failed) */
+var tourP=null,tourR=null,tourNo=!window.fetch||!window.Promise,waitArm=null;
+if(!tourNo){var miss=function(v){if(!v)tourNo=true;return v;};
+  tourP=Promise.all([get('/radar-events.json').then(miss),get('/names-index.json').then(miss)]);tourP.then(function(r){tourR=r;});}
+/* the answer in hand already: the strip goes in before ready, nothing waits. a file failed: nothing waits either.
+   otherwise .gmxa-wait keeps the tabs and what follows hidden for 250 ms after ready at most (one timer, armed at ready
+   by waitArm; gmx-artist.css lifts it 400 ms after as the backstop), so a strip that lands in that time does not push
+   the open tab down. a strip that lands later goes in anyway: a shift while the reader has not moved, accepted. once
+   they have scrolled or touched the page (pointerdown, keydown, scroll since ready), their place is kept: the browser's
+   scroll anchoring does it where it has it (nothing on this page sets overflow-anchor), and whatever is left (safari has
+   no anchoring, and it does not apply at the very top) is scrolled away by hand, measured on the open panel.
+   no wait at all when ready comes later than 100 ms into the page: the answer can only run after the deferred scripts
+   behind this one, and on a phone or a line that slow they hold the main thread well past the 250 ms (measured at 4x
+   cpu: the first frame after ready came at once, then nothing for half a second, the strip after that), so holding
+   the tabs would only hide them for that half second and the strip would still land after. the wait is for the fast
+   case, where the strip lands about 100 ms after ready and the tabs show with it */
 function tour(after){
-  if(!window.fetch||!window.Promise)return;
-  Promise.all([get('/radar-events.json'),get('/names-index.json')]).then(function(r){
+  if(tourNo)return;
+  if(tourR){strip(tourR,after);return;}
+  var lifted=false,stirred=false,EV=['pointerdown','keydown','scroll'];
+  function stir(){stirred=true;quiet();}
+  function quiet(){EV.forEach(function(t){window.removeEventListener(t,stir,true);});}
+  function unwait(){lifted=true;sec.classList.remove('gmxa-wait');}
+  cls(sec,'gmxa-wait');
+  waitArm=function(){waitArm=null;if(now()>100)unwait();else setTimeout(unwait,250);EV.forEach(function(t){window.addEventListener(t,stir,{capture:true,passive:true});});};
+  tourP.then(function(r){
+    quiet();
+    if(!lifted){try{strip(r,after);}finally{unwait();}return;}
+    var ref=stirred&&panels[cur],y0=ref?ref.getBoundingClientRect().top:0;
+    if(strip(r,after)&&ref){var dy=ref.getBoundingClientRect().top-y0;if(Math.abs(dy)>=1)window.scrollBy(0,dy);}
+  });
+}
+/* the on tour strip under the hero, built from the answer. returns it, or nothing when the artist has no dates */
+function strip(r,after){
     var ev=r[0],nx=r[1];if(!ev||!ev.events||!nx||!nx.a)return;
     var d=new Date(),today=d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2),seen={};
     var rows=ev.events.filter(function(e){if(!e||nx.a[fold(e.artist)]!==sec.id||!(e.date>=today))return false;var k=e.date+'|'+e.venue;if(seen[k])return false;seen[k]=1;return true;});
@@ -334,7 +402,7 @@ function tour(after){
     bk.addEventListener('click',function(){rail.scrollBy({left:-rail.clientWidth*0.8,behavior:REDUCE?'auto':'smooth'});});
     fw.addEventListener('click',function(){rail.scrollBy({left:rail.clientWidth*0.8,behavior:REDUCE?'auto':'smooth'});});
     rail.addEventListener('scroll',st,{passive:true});window.addEventListener('resize',function(){frame(st);});frame(st);
-  });
+    return s;
 }
 
 /* ---- 6. tabs ---- */
@@ -374,7 +442,7 @@ function show(k,scroll,quiet){
   var ks=live();if(ks.indexOf(k)<0)k=ks.indexOf('sets')>-1?'sets':ks.indexOf('about')>-1?'about':ks[0];if(!k)return;cur=k;
   ks.forEach(function(x){var on=x===k,b=D.getElementById('gmxa-t-'+x);panels[x].hidden=ks.length>1&&!on;
     if(b){b.setAttribute('aria-selected',on?'true':'false');b.tabIndex=on?0:-1;}});
-  if(k==='music'||ks.length<2)arr(panels.music?panels.music.querySelectorAll('iframe[data-gmxa-src]'):[]).forEach(function(f){if(!f.closest('.gmxa-scbox'))wake(f);});
+  if(k==='music'||ks.length<2)parked(panels.music).forEach(function(f){if(!(f.__gmxaPh||f).closest('.gmxa-scbox'))wake(f);});
   if(window.gmxMore&&gmxMore.refresh)gmxMore.refresh();
   if(scroll&&tabbar&&!tabbar.hidden){var top=tabbar.getBoundingClientRect().top;if(top<=1)window.scrollTo(0,window.pageYOffset+panels[k].getBoundingClientRect().top-tabbar.offsetHeight);}
   if(!quiet)resize();
@@ -397,7 +465,7 @@ function run(){
   D.documentElement.classList.add('gmxa-page');cls(sec,'gmxa-on');
   /* 29 hand-indented pages close the section after the bio: their sections follow it as siblings up to nav.pn */
   var sib=sec.nextElementSibling;
-  while(sib&&!sib.matches('nav,footer,.pn,p.note')){var nx=sib.nextElementSibling;if(!sib.matches('script,style,.gmxreel'))move(sib,sec);sib=nx;}
+  while(sib&&!sib.matches('nav,footer,.pn,p.note')){var nx=sib.nextElementSibling;if(!sib.matches('script,style,.gmxreel')){arr(sib.querySelectorAll('iframe')).forEach(function(f){hush(f);});move(sib,sec);}sib=nx;}
   var kids=arr(sec.childNodes);
   stash=make('div','gmxa-stash');stash.hidden=true;stash.setAttribute('aria-hidden','true');sec.appendChild(stash);
   var H=harvest(),items=H.items;
@@ -499,7 +567,7 @@ function run(){
   var colA=make('div','gmxa-col'),colB=make('div','gmxa-col');
   H.sp.forEach(function(b){var l=b.nextElementSibling&&b.nextElementSibling.classList.contains('gmx-src')?b.nextElementSibling:null;
     var lp=leadOf(b);if(lp)move(lp,colB);else if(!colB.firstChild&&!b.matches('section'))sh(colB,'on spotify');
-    move(b,colB);if(l)move(l,colB);var f=b.tagName==='IFRAME'?b:b.querySelector('iframe');if(f)park(f);M.__has=1;});
+    carry(b,b.tagName==='IFRAME'?b:b.querySelector('iframe'),colB);if(l)move(l,colB);M.__has=1;});
   var facts=sec.querySelector('.facts'),bio=sec.querySelector('.bio');
   if(facts&&facts.querySelector('.fact')){sh(A,'at a glance');move(facts,A);cls(facts,'gmxa-glance');A.__has=1;
     arr(facts.querySelectorAll('.fact')).forEach(function(f){var v=f.querySelector('.v');if(text(v).length>48)cls(f,'gmxa-wide');if(/dropping soon|next|verdict/i.test(text(f.querySelector('.k'))))cls(f,'gmxa-hot');});}
@@ -534,7 +602,8 @@ function run(){
   });
   /* a lead-in line goes where the block it introduces goes */
   for(var i=dest.length-2;i>=0;i--){var a=dest[i][0];if(a.nodeType===1&&a.tagName==='P'&&!a.querySelector('a')&&dest[i][1]===aboutTail){var nx=dest[i+1];if(nx&&nx[0]===a.nextElementSibling)dest[i][1]=nx[1];}}
-  dest.forEach(function(d){move(d[0],d[1]);});
+  /* what goes to the stash parks its frames first, so they are not rebuilt there only to be parked after */
+  dest.forEach(function(d){if(d[1]===stash&&d[0].nodeType===1&&d[0].tagName!=='IFRAME')arr(d[0].querySelectorAll('iframe')).forEach(park);move(d[0],d[1]);});
   if(colA.firstChild)M.__has=1;
   if(colA.firstChild&&colB.firstChild){var mc=make('div','gmxa-cols');mc.appendChild(colA);mc.appendChild(colB);M.appendChild(mc);}
   else{if(colA.firstChild)M.appendChild(colA);if(colB.firstChild)M.appendChild(colB);}
@@ -549,8 +618,9 @@ function run(){
   /* caught live: the reel section sits after section.artist in the static page */
   var reel=D.querySelector('section.gmxreel');
   if(reel&&!reel.closest('section.artist')){
+    var rw=arr(reel.querySelectorAll('.gmxreel-wrap')).map(function(w){var f=w.querySelector('iframe');if(f)park(f);return [w,f];});
     move(reel,S);cls(reel,'gmxa-reels');S.__has=1;
-    arr(reel.querySelectorAll('.gmxreel-wrap')).forEach(function(w){var f=w.querySelector('iframe');if(!f)return;park(f);cls(w,'gmxa-shut');
+    rw.forEach(function(x){var w=x[0],f=x[1];if(!f)return;cls(w,'gmxa-shut');
       var b=make('button','gmxa-reel','<span class="gmxa-sq" aria-hidden="true">'+IGI+'</span><span><b></b><span>instagram reel · tap to load</span></span>');b.type='button';
       b.querySelector('b').textContent=f.getAttribute('title')||'instagram reel';b.setAttribute('aria-expanded','false');
       b.addEventListener('click',function(){w.classList.remove('gmxa-shut');wake(f);b.setAttribute('aria-expanded','true');b.hidden=true;focusIn(f);});
@@ -586,7 +656,7 @@ function run(){
   }
 }
 
-try{run();sec.classList.add('gmxa-ready');}
+try{run();sec.classList.add('gmxa-ready');if(waitArm)waitArm();settle();}
 catch(e){try{restore();}catch(x){}sec.classList.add('gmxa-ready');if(window.console&&console.warn)console.warn('gmx-artist: kept the old layout',e);}
 /* gmx-motion loads after this file: the resize it measures on is sent once every deferred script has run */
 if(D.readyState==='loading')D.addEventListener('DOMContentLoaded',resize);else resize();
