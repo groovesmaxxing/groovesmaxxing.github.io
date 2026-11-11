@@ -20,7 +20,7 @@ urls = ['/', '/scan', '/more', '/search', '/sets', '/artists', '/events', '/radi
 urls += ['/upcoming.json', '/gmx-nextup.js?v=1']   # the home page's next up band (ui build 3)
 urls += ['/gmx-read.css?v=10']   # the readability layer on every page (2026-10-13)
 urls += ['/gmx-more.js?v=3', '/gmx-reel.js?v=1']   # the "more" expander on every page (2026-10-14)
-urls += ['/gmx-artist.js?v=1', '/gmx-artist.css?v=1']   # the artist profile tabs layout (2026-11-10)
+urls += ['/gmx-artist.js?v=2', '/gmx-artist.css?v=1']   # the artist profile tabs layout (2026-11-10)
 urls += ['/moods', '/moods-index.json', '/gmx-moods.js?v=5']   # the mood picker (2026-11-04), its catalog is written on the laptop by moodindex.py
 urls += ['/' + f.replace(os.sep, '/') for f in sorted(glob.glob('media/covers/moods/*.jpg'))]   # the mood cards' art
 # the font css only: the 5 latin files the site draws are in the sw.js SHELL, other subsets are saved when a page first uses one
