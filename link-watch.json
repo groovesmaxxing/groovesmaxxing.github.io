@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-11T18:01:29Z",
+ "generated": "2026-11-12T18:33:48Z",
  "pages": 930,
  "links": {
   "checkable": 9354,
@@ -9,9 +9,9 @@
    "soundcloud": 934,
    "youtube": 1317
   },
-  "checked_within_recheck": 6991,
+  "checked_within_recheck": 7691,
   "asked_this_run": 700,
-  "unknown": 901,
+  "unknown": 828,
   "budget": 700,
   "recheck_days": 10
  },
@@ -408,23 +408,6 @@
    "first_seen": "2026-11-11T18:01:29Z"
   },
   {
-   "url": "https://open.spotify.com/track/5En5NBj78F8H6KfKYIhvud",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "PWF",
-   "pages": [
-    "/tracklists/jackie-it-messy-sessions-x-norish-fm",
-    "/tracklists/luch-gozar-night-2-polyforum-siqueiros-mexico-city-2026",
-    "/tracklists/luch-solomun-1-pacha-ibiza-2026",
-    "/tracklists/rafael-la-siesta-x-playa-padre-marbella-2026",
-    "/tracklists/rafael-sunrise-set-nova-heaven-x-eden-x-favela-burning-man-2026"
-   ],
-   "page_count": 5,
-   "checked": "2026-10-30T16:48:35Z",
-   "first_seen": "2026-10-17T13:53:46Z"
-  },
-  {
    "url": "https://open.spotify.com/track/6dL7IcJKZsMk2ClvsW65GX",
    "kind": "spotify",
    "code": 200,
@@ -455,7 +438,7 @@
     "/tracklists/rafael-sunrise-set-nova-heaven-x-eden-x-favela-burning-man-2026"
    ],
    "page_count": 5,
-   "checked": "2026-10-30T16:48:35Z",
+   "checked": "2026-11-12T18:33:48Z",
    "first_seen": "2026-10-30T16:48:35Z"
   },
   {
@@ -473,22 +456,6 @@
    "page_count": 4,
    "checked": "2026-11-11T18:01:29Z",
    "first_seen": "2026-11-11T18:01:29Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/6jtVPskUWZSDBtotyrfzzX",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Gotta Be Cool - Luch Remix",
-   "pages": [
-    "/tracklists/luch-gozar-night-2-polyforum-siqueiros-mexico-city-2026",
-    "/tracklists/mahmut-orhan-loveland-ade-theater-amsterdam-2026",
-    "/tracklists/rafael-la-siesta-x-playa-padre-marbella-2026",
-    "/tracklists/rafael-sunrise-set-nova-heaven-x-eden-x-favela-burning-man-2026"
-   ],
-   "page_count": 4,
-   "checked": "2026-10-30T16:48:35Z",
-   "first_seen": "2026-10-30T16:48:35Z"
   },
   {
    "url": "https://soundcloud.com/brunellobeats/ghost-dance",
@@ -535,7 +502,7 @@
     "/tracklists/rafael-sunrise-set-nova-heaven-x-eden-x-favela-burning-man-2026"
    ],
    "page_count": 4,
-   "checked": "2026-10-30T16:48:35Z",
+   "checked": "2026-11-12T18:33:48Z",
    "first_seen": "2026-10-30T16:48:35Z"
   },
   {
@@ -613,21 +580,6 @@
    "page_count": 3,
    "checked": "2026-10-30T16:48:35Z",
    "first_seen": "2026-10-19T17:08:37Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2PfHWYV43Tq5M2PDw2qb0Z",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Shepard's Tone",
-   "pages": [
-    "/tracklists/camelphat-audio-obscura-at-the-loft-amsterdam-2026",
-    "/tracklists/luch-gozar-night-2-polyforum-siqueiros-mexico-city-2026",
-    "/tracklists/luch-solomun-1-pacha-ibiza-2026"
-   ],
-   "page_count": 3,
-   "checked": "2026-10-30T16:48:35Z",
-   "first_seen": "2026-10-17T13:53:46Z"
   },
   {
    "url": "https://open.spotify.com/track/4DbMsA1xfyIJ1aDeoaw0fa",
@@ -898,20 +850,6 @@
    "first_seen": "2026-10-21T15:34:18Z"
   },
   {
-   "url": "https://open.spotify.com/track/0TDns54iwyRgdvfcOEBSzE",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Dicktator - Club Mix",
-   "pages": [
-    "/tracklists/camelphat-audio-obscura-at-the-loft-amsterdam-2026",
-    "/tracklists/luch-solomun-1-pacha-ibiza-2026"
-   ],
-   "page_count": 2,
-   "checked": "2026-10-30T16:48:35Z",
-   "first_seen": "2026-10-17T13:53:46Z"
-  },
-  {
    "url": "https://open.spotify.com/track/0ZnPwJf5MAd4gfLrc4Lztz",
    "kind": "spotify",
    "code": 200,
@@ -1108,20 +1046,6 @@
    "first_seen": "2026-11-11T18:01:29Z"
   },
   {
-   "url": "https://open.spotify.com/track/2Ll6gBvEOvytlQc1d7N6Hu",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Discombobulated",
-   "pages": [
-    "/tracklists/ame-dj-circoloco-dc-10-ibiza-2026",
-    "/tracklists/me-vs-rampa-circoloco-dc-10-ibiza-2026"
-   ],
-   "page_count": 2,
-   "checked": "2026-10-30T16:48:35Z",
-   "first_seen": "2026-11-10T18:11:51Z"
-  },
-  {
    "url": "https://open.spotify.com/track/2PCu3SAbFOR3xf05PIvla4",
    "kind": "spotify",
    "code": 200,
@@ -1218,20 +1142,6 @@
    "page_count": 2,
    "checked": "2026-11-09T21:01:31Z",
    "first_seen": "2026-11-10T18:11:51Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2qYImzePUoEyPryH9fK1GE",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Veamos",
-   "pages": [
-    "/tracklists/luch-gozar-night-2-polyforum-siqueiros-mexico-city-2026",
-    "/tracklists/luch-solomun-1-pacha-ibiza-2026"
-   ],
-   "page_count": 2,
-   "checked": "2026-10-30T16:48:35Z",
-   "first_seen": "2026-10-28T16:48:23Z"
   },
   {
    "url": "https://open.spotify.com/track/2t3nlL9xffoBaPBOzl4jYr",
@@ -1346,20 +1256,6 @@
    "first_seen": "2026-11-06T17:39:48Z"
   },
   {
-   "url": "https://open.spotify.com/track/3kzRcHrVmwOBpYmC5bKjfl",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Placebo",
-   "pages": [
-    "/tracklists/luch-gozar-night-2-polyforum-siqueiros-mexico-city-2026",
-    "/tracklists/luch-solomun-1-pacha-ibiza-2026"
-   ],
-   "page_count": 2,
-   "checked": "2026-10-30T16:48:35Z",
-   "first_seen": "2026-10-31T15:51:03Z"
-  },
-  {
    "url": "https://open.spotify.com/track/3sCdCkVglGCFx5ZtOjS4wC",
    "kind": "spotify",
    "code": 200,
@@ -1442,20 +1338,6 @@
    "page_count": 2,
    "checked": "2026-11-11T18:01:29Z",
    "first_seen": "2026-11-11T18:01:29Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/4oxAOoxxF8yZeG0RkpXs4E",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Perplexity",
-   "pages": [
-    "/tracklists/luch-gozar-night-2-polyforum-siqueiros-mexico-city-2026",
-    "/tracklists/luch-solomun-1-pacha-ibiza-2026"
-   ],
-   "page_count": 2,
-   "checked": "2026-10-30T16:48:35Z",
-   "first_seen": "2026-10-31T15:51:03Z"
   },
   {
    "url": "https://open.spotify.com/track/51ebEtVMk572G7rln7lims",
@@ -1790,7 +1672,7 @@
     "/tracklists/mahmut-orhan-loveland-ade-theater-amsterdam-2026"
    ],
    "page_count": 2,
-   "checked": "2026-10-30T16:48:35Z",
+   "checked": "2026-11-12T18:33:48Z",
    "first_seen": "2026-11-10T18:11:51Z"
   },
   {
@@ -2312,6 +2194,149 @@
    "first_seen": "2026-11-08T16:46:06Z"
   },
   {
+   "url": "https://open.spotify.com/album/0AvMPWqojhPSyjbd9bAnrI",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: whole ep · 2 tracks ↗",
+   "title": "Percolate",
+   "pages": [
+    "/friday"
+   ],
+   "page_count": 1,
+   "checked": "2026-11-12T18:33:48Z",
+   "first_seen": "2026-11-12T18:33:48Z"
+  },
+  {
+   "url": "https://open.spotify.com/album/0j9PKIJhqhgyoy0MyePuSg",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: whole ep · 2 tracks ↗",
+   "title": "IBIZA (Cameron Jack Remix)",
+   "pages": [
+    "/friday"
+   ],
+   "page_count": 1,
+   "checked": "2026-11-12T18:33:48Z",
+   "first_seen": "2026-11-12T18:33:48Z"
+  },
+  {
+   "url": "https://open.spotify.com/album/2tENxRVzu8QejEn6bmcmsc",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: whole ep · 2 tracks ↗",
+   "title": "Talk",
+   "pages": [
+    "/friday"
+   ],
+   "page_count": 1,
+   "checked": "2026-11-12T18:33:48Z",
+   "first_seen": "2026-11-12T18:33:48Z"
+  },
+  {
+   "url": "https://open.spotify.com/album/2xKEWhJr1ZXzw5AR7cKXgk",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: whole ep · 3 tracks ↗",
+   "title": "Out This World EP",
+   "pages": [
+    "/friday"
+   ],
+   "page_count": 1,
+   "checked": "2026-11-12T18:33:48Z",
+   "first_seen": "2026-11-12T18:33:48Z"
+  },
+  {
+   "url": "https://open.spotify.com/album/4h6tmjBOUtmMaULZOeKDK7",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: whole ep · 2 tracks ↗",
+   "title": "Natural Blues (TECIE)",
+   "pages": [
+    "/friday"
+   ],
+   "page_count": 1,
+   "checked": "2026-11-12T18:33:48Z",
+   "first_seen": "2026-11-12T18:33:48Z"
+  },
+  {
+   "url": "https://open.spotify.com/episode/0jmbMX3dhOMBBWRkF6XkLD",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: Off The Record",
+   "title": "Ep 157. James Hype - \"The Secrets To Becoming a Headline DJ\"",
+   "pages": [
+    "/interviews"
+   ],
+   "page_count": 1,
+   "checked": "2026-11-12T18:33:48Z",
+   "first_seen": "2026-11-12T18:33:48Z"
+  },
+  {
+   "url": "https://open.spotify.com/episode/1812AeDb7JWIsyyFM5b17i",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: Sherm In The Booth",
+   "title": "SITB 203 feat. Max Styler (DJ/Producer)",
+   "pages": [
+    "/interviews"
+   ],
+   "page_count": 1,
+   "checked": "2026-11-12T18:33:48Z",
+   "first_seen": "2026-11-12T18:33:48Z"
+  },
+  {
+   "url": "https://open.spotify.com/episode/1EztOvKykCJXD6tJPhY3LD",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: TSL Time",
+   "title": "Chris Lake TALKS 20 Years of Music Week, Producing 'Toxic' & New Album, and Starting Black Book",
+   "pages": [
+    "/interviews"
+   ],
+   "page_count": 1,
+   "checked": "2026-11-12T18:33:48Z",
+   "first_seen": "2026-11-12T18:33:48Z"
+  },
+  {
+   "url": "https://open.spotify.com/episode/2MNvQB7bWHedV0K7MhAZtn",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: Billboard On The Record",
+   "title": "How to Build a Dance Music Empire w/ John Summit",
+   "pages": [
+    "/interviews"
+   ],
+   "page_count": 1,
+   "checked": "2026-11-12T18:33:48Z",
+   "first_seen": "2026-11-12T18:33:48Z"
+  },
+  {
+   "url": "https://open.spotify.com/episode/3MhPF9CGl2FRMDTEtjbJxq",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: The Will Clarke Podcast",
+   "title": "Rossi - Why Success Never Feels Like Enough",
+   "pages": [
+    "/interviews"
+   ],
+   "page_count": 1,
+   "checked": "2026-11-12T18:33:48Z",
+   "first_seen": "2026-11-12T18:33:48Z"
+  },
+  {
+   "url": "https://open.spotify.com/episode/7ePtWrQvOPM0dnqtmjf8A0",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: RA Exchange",
+   "title": "EX.793 Chris Stussy",
+   "pages": [
+    "/interviews"
+   ],
+   "page_count": 1,
+   "checked": "2026-11-12T18:33:48Z",
+   "first_seen": "2026-11-12T18:33:48Z"
+  },
+  {
    "url": "https://open.spotify.com/track/00SsUlSL9CF09zkJvANZrT",
    "kind": "spotify",
    "code": 200,
@@ -2347,7 +2372,7 @@
     "/tracklists/vintage-culture-warung-beach-club-closing-2026"
    ],
    "page_count": 1,
-   "checked": "2026-10-29T17:03:34Z",
+   "checked": "2026-11-12T18:33:48Z",
    "first_seen": "2026-10-15T15:18:47Z"
   },
   {
@@ -2516,7 +2541,7 @@
     "/tracklists/vintage-culture-warung-beach-club-closing-2026"
    ],
    "page_count": 1,
-   "checked": "2026-10-29T17:03:34Z",
+   "checked": "2026-11-12T18:33:48Z",
    "first_seen": "2026-10-15T15:18:47Z"
   },
   {
@@ -2555,7 +2580,7 @@
     "/tracklists/vintage-culture-warung-beach-club-closing-2026"
    ],
    "page_count": 1,
-   "checked": "2026-10-29T17:03:34Z",
+   "checked": "2026-11-12T18:33:48Z",
    "first_seen": "2026-10-15T15:18:47Z"
   },
   {
@@ -2581,7 +2606,7 @@
     "/tracklists/vintage-culture-warung-beach-club-closing-2026"
    ],
    "page_count": 1,
-   "checked": "2026-10-29T17:03:34Z",
+   "checked": "2026-11-12T18:33:48Z",
    "first_seen": "2026-10-15T15:18:47Z"
   },
   {
@@ -2594,7 +2619,7 @@
     "/tracklists/vintage-culture-warung-beach-club-closing-2026"
    ],
    "page_count": 1,
-   "checked": "2026-10-29T17:03:34Z",
+   "checked": "2026-11-12T18:33:48Z",
    "first_seen": "2026-10-15T15:18:47Z"
   },
   {
@@ -2685,7 +2710,7 @@
     "/tracklists/vintage-culture-warung-beach-club-closing-2026"
    ],
    "page_count": 1,
-   "checked": "2026-10-29T17:03:34Z",
+   "checked": "2026-11-12T18:33:48Z",
    "first_seen": "2026-10-15T15:18:47Z"
   },
   {
@@ -2698,7 +2723,7 @@
     "/tracklists/vintage-culture-warung-beach-club-closing-2026"
    ],
    "page_count": 1,
-   "checked": "2026-10-29T17:03:34Z",
+   "checked": "2026-11-12T18:33:48Z",
    "first_seen": "2026-10-15T15:18:47Z"
   },
   {
@@ -2802,7 +2827,7 @@
     "/tracklists/vintage-culture-warung-beach-club-closing-2026"
    ],
    "page_count": 1,
-   "checked": "2026-10-29T17:03:34Z",
+   "checked": "2026-11-12T18:33:48Z",
    "first_seen": "2026-10-15T15:18:47Z"
   },
   {
@@ -2828,7 +2853,7 @@
     "/tracklists/vintage-culture-warung-beach-club-closing-2026"
    ],
    "page_count": 1,
-   "checked": "2026-10-29T17:03:34Z",
+   "checked": "2026-11-12T18:33:48Z",
    "first_seen": "2026-10-15T15:18:47Z"
   },
   {
@@ -2919,7 +2944,7 @@
     "/tracklists/vintage-culture-warung-beach-club-closing-2026"
    ],
    "page_count": 1,
-   "checked": "2026-10-29T17:03:34Z",
+   "checked": "2026-11-12T18:33:48Z",
    "first_seen": "2026-10-15T15:18:47Z"
   },
   {
@@ -2932,8 +2957,21 @@
     "/tracklists/vintage-culture-warung-beach-club-closing-2026"
    ],
    "page_count": 1,
-   "checked": "2026-10-29T17:03:34Z",
+   "checked": "2026-11-12T18:33:48Z",
    "first_seen": "2026-10-15T15:18:47Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/0X950dmhknM8KKac1DCjD0",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "One Touch",
+   "pages": [
+    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-11-12T18:33:48Z",
+   "first_seen": "2026-11-12T18:33:48Z"
   },
   {
    "url": "https://open.spotify.com/track/0XAVYislkXqCpUAVQXsbYw",
@@ -3049,7 +3087,7 @@
     "/tracklists/yamagucci-friends-la-2026-strange-house"
    ],
    "page_count": 1,
-   "checked": "2026-10-29T17:03:34Z",
+   "checked": "2026-11-12T18:33:48Z",
    "first_seen": "2026-10-15T15:18:47Z"
   },
   {
@@ -3114,62 +3152,10 @@
     "/tracklists/vintage-culture-warung-beach-club-closing-2026"
    ],
    "page_count": 1,
-   "checked": "2026-10-29T17:03:34Z",
-   "first_seen": "2026-10-15T15:18:47Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/0gWzN2GodTViME3dP9AVVu",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Lost In Music",
-   "pages": [
-    "/tracklists/lp-giobbi-wollman-rink-we-belong-here-central-park-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-11-03T18:00:35Z",
-   "first_seen": "2026-11-03T18:00:35Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/0gca1p9T3HZK2yVNnV4bmW",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Discoteca Eterna",
-   "pages": [
-    "/tracklists/gudfella-terms-conditions-hacienda-viborillas-queretaro-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-11-10T18:11:51Z",
-   "first_seen": "2026-11-10T18:11:51Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/0hMX0WnzLZrFOxcAzb0GdW",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "I Want Your Soul",
-   "pages": [
-    "/tracklists/reznik-samm-wecandance-beachfestival"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-31T15:51:03Z",
-   "first_seen": "2026-10-31T15:51:03Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/0hf5lrj9XaIMzKCQNlVV6p",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "This Feeling",
-   "pages": [
-    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-10-29T17:03:34Z",
+   "checked": "2026-11-12T18:33:48Z",
    "first_seen": "2026-10-15T15:18:47Z"
   }
  ],
  "anchors_broken": [],
- "summary": "24 broken, 4 moved, 984 read differently, 0 broken anchors, 6991 of 9354 links checked in the last 10 days"
+ "summary": "24 broken, 4 moved, 988 read differently, 0 broken anchors, 7691 of 9354 links checked in the last 10 days"
 }
