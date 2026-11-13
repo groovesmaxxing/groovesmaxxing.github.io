@@ -41,10 +41,17 @@ plays = {}   # headliner slug -> {heard slug: tracks}, summed over the headliner
 for f in sorted(glob.glob('tracklists/*.html')):
     if f.endswith('/index.html'): continue
     s = read(f); url = '/' + f[:-5]
-    h1 = text((re.search(r'<h1>(.*?)</h1>', s, re.S) or [None, ''])[1])
+    h1_html = (re.search(r'<h1>(.*?)</h1>', s, re.S) or [None, ''])[1]
+    h1 = text(h1_html)
     sub = text((re.search(r'<div class="sub">(.*?)</div>', s, re.S) or [None, ''])[1]).split(' · ')[0]
     title = h1 + (' · ' + sub if sub else '')
-    heads = slugs_in(h1)
+    # the h1 links each billed act to its page from the registry (tracklistpage.link_h1), so those links are
+    # the headliners. the name match is only the fallback: it missed 6 of 71 sets on 2026-11-12, a b2b
+    # partner behind "present" (fisher & chris lake) and acts whose h1 wording is not their index name
+    linked = []
+    for a in re.findall(r'href="\.\./artists/([^"]+)"', h1_html):
+        if a in rel and a not in linked: linked.append(a)
+    heads = linked or slugs_in(h1)
     for a in heads: rel[a]['tl'].append([url, title])
     heard = {}
     for row in re.findall(r'<td class="x">(.*?)</td>', s, re.S):

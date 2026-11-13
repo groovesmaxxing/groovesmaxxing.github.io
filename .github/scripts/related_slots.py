@@ -87,12 +87,14 @@ def count(n):
 
 
 def items_for(me, page):
-    """the four parts for one artist, each without what the page outside the block already links. plays is the
-    whole list left after that, the cap is the block's"""
+    """the four parts for one artist. the first three leave out what the page outside the block already links.
+    plays is the whole list, the cap is the block's"""
     tl = [x for x in me.get('tl', []) if x and not has_url(page, x[0])]
     heard = [x for x in me.get('in', []) if x and not has_url(page, x[0])]
     labs = [x for x in me.get('lab', []) if x and ('href="%s"' % x[0]) not in page]
-    plays = [x for x in me.get('plays', []) if x and not has_url(page, x[0])]
+    # plays keeps an artist the page already links elsewhere: the count is the point of the row, and
+    # dropping the most played names because a bio links them made the row read wrong (vintage culture)
+    plays = [x for x in me.get('plays', []) if x]
     return tl, heard, labs, plays
 
 
