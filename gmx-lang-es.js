@@ -151,6 +151,8 @@ words:{
 'the whole site':'todo el sitio','the home page':'la página de inicio',
 /* buttons and headings painted on several pages */
 'tickets':'boletos','follow':'seguir','this is me':'soy yo','also on the site':'también en el sitio','heard in these sets':'sonó en estos sets','on these labels':'en estas disqueras',
+/* the in their sets row on artist pages, its map chip and the tracklists hub link to the support map (2026-11-12) */
+'in their sets':'en sus sets','who plays whom':'quién toca a quién',
 'the scenes':'las escenas','by tier':'por nivel','every set, a to z':'cada set, de la a a la z','every artist, a to z':'cada artista, de la a a la z','interviews and talks':'entrevistas y pláticas',
 "what's":'lo que','dropping':'sale','out now':'ya salió','no date yet':'sin fecha todavía','sets worth':'sets que valen','your hour':'tu hora','just added':'recién agregados',
 /* the festival calendar page (2026-11-01): kicker, headings, chips, badges, buttons and the map's own words.
@@ -751,9 +753,25 @@ scoped:[
 "spotted a wrong name or a record that shouldn't be here?":'¿viste un nombre mal o un track que no debería estar aquí?',
 'how the scoreboard is read:':'cómo se lee el marcador:',
 'a pick is a record we added to good vibe juice or bumpy for fresh grooves friday that month, plus five we name by hand. on the day we pick it we note its dj support tier (how many different djs played it in published sets, counted by songstats) and its editorial playlist adds. when the month ends we read it again. a hit moved up a dj support tier, entered a beatport top 20 or got a new spotify editorial add. a move gained 5 or more djs or 2 or more editorial adds. flat means neither, with the record out two weeks or more. too soon means it came out under two weeks before the month ended, so it carries into the next read. dates read month.day. tiers and counts only, never dj names or set lists.':'un pick es un track que agregamos a good vibe juice o bumpy para fresh grooves friday ese mes, más cinco que elegimos a mano. el día que lo elegimos anotamos su nivel de apoyo de djs (cuántos djs distintos lo tocaron en sets publicados, contado por songstats) y sus playlists editoriales. cuando cierra el mes lo revisamos otra vez. un acierto subió un nivel de apoyo de djs, entró a un top 20 de beatport o entró a una nueva playlist editorial de spotify. una subida sumó 5 djs o más, o 2 playlists editoriales o más. sin cambio es ninguna de las dos, con el track afuera hace dos semanas o más. muy pronto es que salió menos de dos semanas antes del cierre del mes, así que pasa a la siguiente revisión. las fechas van mes.día. solo niveles y conteos, nunca nombres de djs ni listas de sets.',
-'groovesmaxxing picks scoreboard':'marcador de picks de groovesmaxxing','read again at every month end':'se revisa cada cierre de mes'}]
+'groovesmaxxing picks scoreboard':'marcador de picks de groovesmaxxing','read again at every month end':'se revisa cada cierre de mes'}],
+/* the support map page (2026-11-12): the kicker, the split headings (who plays / whom, most / played, by / dj, the / map),
+   the leads, the table heads, the dj folds, the key and the footer. scoped, since most, the and by are fragments elsewhere */
+['.sg',{'support map':'mapa de apoyo','from our tracklists':'de nuestros tracklists','who plays':'quién toca a','whom':'quién',
+'most':'los más','played':'tocados','by':'por','the':'el','map':'mapa',
+'artists with two or more djs playing them, most djs first.':'artistas tocados por dos djs o más, primero los de más djs.',
+'open a dj to see who they played.':'abre un dj para ver a quién tocó.',
+'artists two or more djs played, and the djs who played them. bigger dot, more links.':'artistas tocados por dos djs o más, y los djs que los tocaron. punto más grande, más conexiones.',
+'artist':'artista','plays':'veces','played by':'tocado por','their page':'su página','both':'ambos',
+'no other act with a page in their sets yet.':'todavía no hay otro artista con página en sus sets.','no artist has two djs yet.':'todavía ningún artista tiene dos djs.',
+'groovesmaxxing support map':'mapa de apoyo de groovesmaxxing','our own tracklists only':'solo nuestros propios tracklists'}]
 ],
 rules:[
+/* the support map (2026-11-12): the map chip on artist pages, then the page's counts and stamp, scoped to the page */
+['\\+(\\d+) more on the map','+$1 más en el mapa'],
+['built from (\\d+) sets we tagged\\. each link goes to the set it came from\\.','armado con $1 sets que etiquetamos. cada link lleva al set de donde salió.','.sg'],
+['1 artist','1 artista','.sg'],['(\\d+) artists','$1 artistas','.sg'],['1 play','1 vez','.sg'],['(\\d+) plays','$1 veces','.sg'],
+['plus 1 of their own track','más 1 track suyo','.sg'],['plus (\\d+) of their own tracks','más $1 tracks suyos','.sg'],
+['as of (\\d{4}-\\d\\d-\\d\\d)','al $1','.sg'],
 /* the groove exchange (2026-11-11): stamps, counts, card and board lines, the book note, the sheet's when line, the legend,
    the pills, tape rows and chart marker labels (genre after "beatport" stays english), all scoped to the page and the sheet.
    lines joined by " · " are split first, so each part is its own rule. first here so no general rule below catches them */
