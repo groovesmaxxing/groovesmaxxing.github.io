@@ -10,7 +10,7 @@
 /* halloween skin (2026-10-27 to 2026-11-01): the shell no longer loads /gmx-spooky.js; the file stays in the repo and index.html still carries its own tag for next october. */
 /* language switch (2026-11-01): every page that loads the shell also gets /gmx-lang.js, the en / es circle in the header
    row and the swap of the site's own words. its dictionary file loads only for a visitor who picked another language. */
-if (!document.querySelector('script[src^="/gmx-lang.js"]')) { var gmxLng = document.createElement('script'); gmxLng.src = '/gmx-lang.js?v=15'; document.head.appendChild(gmxLng); }
+if (!document.querySelector('script[src^="/gmx-lang.js"]')) { var gmxLng = document.createElement('script'); gmxLng.src = '/gmx-lang.js?v=16'; document.head.appendChild(gmxLng); }
 
 (function(){
 'use strict';
