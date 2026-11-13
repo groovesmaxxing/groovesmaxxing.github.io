@@ -1,17 +1,17 @@
 {
- "generated": "2026-11-12T18:33:48Z",
- "pages": 930,
+ "generated": "2026-11-13T18:00:21Z",
+ "pages": 931,
  "links": {
-  "checkable": 9354,
+  "checkable": 9319,
   "by_kind": {
-   "other": 4297,
+   "other": 4262,
    "spotify": 2806,
    "soundcloud": 934,
    "youtube": 1317
   },
-  "checked_within_recheck": 7691,
+  "checked_within_recheck": 7648,
   "asked_this_run": 700,
-  "unknown": 828,
+  "unknown": 823,
   "budget": 700,
   "recheck_days": 10
  },
@@ -578,7 +578,7 @@
     "/tracklists/tobehonest-splash-house-2026"
    ],
    "page_count": 3,
-   "checked": "2026-10-30T16:48:35Z",
+   "checked": "2026-11-13T18:00:21Z",
    "first_seen": "2026-10-19T17:08:37Z"
   },
   {
@@ -593,7 +593,7 @@
     "/tracklists/yamagucci-friends-la-2026-strange-house"
    ],
    "page_count": 3,
-   "checked": "2026-10-30T16:48:35Z",
+   "checked": "2026-11-13T18:00:21Z",
    "first_seen": "2026-10-17T13:53:46Z"
   },
   {
@@ -608,7 +608,7 @@
     "/tracklists/solomun-voyager-stage-kappa-futurfestival-parco-dora-turin-2026"
    ],
    "page_count": 3,
-   "checked": "2026-10-31T15:51:03Z",
+   "checked": "2026-11-13T18:00:21Z",
    "first_seen": "2026-11-06T17:39:48Z"
   },
   {
@@ -713,7 +713,7 @@
     "/tracklists/solomun-voyager-stage-kappa-futurfestival-parco-dora-turin-2026"
    ],
    "page_count": 3,
-   "checked": "2026-10-31T15:51:03Z",
+   "checked": "2026-11-13T18:00:21Z",
    "first_seen": "2026-11-06T17:39:48Z"
   },
   {
@@ -860,7 +860,7 @@
     "/tracklists/rafael-sunrise-set-nova-heaven-x-eden-x-favela-burning-man-2026"
    ],
    "page_count": 2,
-   "checked": "2026-10-30T16:48:35Z",
+   "checked": "2026-11-13T18:00:21Z",
    "first_seen": "2026-10-19T17:08:37Z"
   },
   {
@@ -986,7 +986,7 @@
     "/tracklists/rafael-sunrise-set-nova-heaven-x-eden-x-favela-burning-man-2026"
    ],
    "page_count": 2,
-   "checked": "2026-10-30T16:48:35Z",
+   "checked": "2026-11-13T18:00:21Z",
    "first_seen": "2026-10-30T16:48:35Z"
   },
   {
@@ -1200,6 +1200,20 @@
    "first_seen": "2026-11-11T18:01:29Z"
   },
   {
+   "url": "https://open.spotify.com/track/3JzhzyUl00wqzkvB5ruawj",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Brickell",
+   "pages": [
+    "/tracklists/peace-control-la-siesta-x-playa-padre-marbella-2026",
+    "/tracklists/vinter-la-fabrica-cordoba-argentina-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-11-13T18:00:21Z",
+   "first_seen": "2026-11-13T18:00:21Z"
+  },
+  {
    "url": "https://open.spotify.com/track/3LaXHdg0gwPXEICRIQfQSy",
    "kind": "spotify",
    "code": 200,
@@ -1280,7 +1294,7 @@
     "/tracklists/reznik-samm-wecandance-beachfestival"
    ],
    "page_count": 2,
-   "checked": "2026-10-30T16:48:35Z",
+   "checked": "2026-11-13T18:00:21Z",
    "first_seen": "2026-10-31T15:51:03Z"
   },
   {
@@ -1452,6 +1466,20 @@
    "first_seen": "2026-10-21T15:34:18Z"
   },
   {
+   "url": "https://open.spotify.com/track/5mV3SAs5u4pBxVU7dyFoXp",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Kingston Groove - CASSIMM Remix",
+   "pages": [
+    "/tracklists/michael-bibi-b2b-franky-rizardo-maxa-x-robot-heart-burning-man-2026",
+    "/tracklists/peace-control-la-siesta-x-playa-padre-marbella-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-11-13T18:00:21Z",
+   "first_seen": "2026-11-13T18:00:21Z"
+  },
+  {
    "url": "https://open.spotify.com/track/5nPbKG04fhLkIAjcPFaZq7",
    "kind": "spotify",
    "code": 200,
@@ -1476,7 +1504,7 @@
     "/tracklists/tom-collins-pink-mammoth-burning-man-2026"
    ],
    "page_count": 2,
-   "checked": "2026-10-30T16:48:35Z",
+   "checked": "2026-11-13T18:00:21Z",
    "first_seen": "2026-11-01T16:54:37Z"
   },
   {
@@ -2008,7 +2036,7 @@
     "/tracklists/rafael-sunrise-set-nova-heaven-x-eden-x-favela-burning-man-2026"
    ],
    "page_count": 2,
-   "checked": "2026-10-30T16:48:35Z",
+   "checked": "2026-11-13T18:00:21Z",
    "first_seen": "2026-10-31T15:51:03Z"
   },
   {
@@ -2050,7 +2078,7 @@
     "/tracklists/rafael-sunrise-set-nova-heaven-x-eden-x-favela-burning-man-2026"
    ],
    "page_count": 2,
-   "checked": "2026-10-30T16:48:35Z",
+   "checked": "2026-11-13T18:00:21Z",
    "first_seen": "2026-10-30T16:48:35Z"
   },
   {
@@ -2064,7 +2092,7 @@
     "/tracklists/tom-collins-long-feng-burning-man-2026"
    ],
    "page_count": 2,
-   "checked": "2026-10-31T15:51:03Z",
+   "checked": "2026-11-13T18:00:21Z",
    "first_seen": "2026-11-03T18:00:35Z"
   },
   {
@@ -2078,7 +2106,7 @@
     "/tracklists/rafael-la-siesta-x-playa-padre-marbella-2026"
    ],
    "page_count": 2,
-   "checked": "2026-10-30T16:48:35Z",
+   "checked": "2026-11-13T18:00:21Z",
    "first_seen": "2026-10-31T15:51:03Z"
   },
   {
@@ -2502,7 +2530,7 @@
     "/tracklists/rafael-la-siesta-x-playa-padre-marbella-2026"
    ],
    "page_count": 1,
-   "checked": "2026-10-30T16:48:35Z",
+   "checked": "2026-11-13T18:00:21Z",
    "first_seen": "2026-10-19T17:08:37Z"
   },
   {
@@ -2632,7 +2660,7 @@
     "/tracklists/pedroz-the-terrace-club-space-miami"
    ],
    "page_count": 1,
-   "checked": "2026-10-30T16:48:35Z",
+   "checked": "2026-11-13T18:00:21Z",
    "first_seen": "2026-10-19T17:08:37Z"
   },
   {
@@ -2658,7 +2686,7 @@
     "/tracklists/peace-control-la-siesta-x-playa-padre-marbella-2026"
    ],
    "page_count": 1,
-   "checked": "2026-10-30T16:48:35Z",
+   "checked": "2026-11-13T18:00:21Z",
    "first_seen": "2026-10-17T13:53:46Z"
   },
   {
@@ -2788,7 +2816,7 @@
     "/tracklists/rafael-norish-fm"
    ],
    "page_count": 1,
-   "checked": "2026-10-30T16:48:35Z",
+   "checked": "2026-11-13T18:00:21Z",
    "first_seen": "2026-10-30T16:48:35Z"
   },
   {
@@ -2814,7 +2842,7 @@
     "/tracklists/pedroz-the-terrace-club-space-miami"
    ],
    "page_count": 1,
-   "checked": "2026-10-30T16:48:35Z",
+   "checked": "2026-11-13T18:00:21Z",
    "first_seen": "2026-10-19T17:08:37Z"
   },
   {
@@ -2983,7 +3011,7 @@
     "/tracklists/pedroz-the-terrace-club-space-miami"
    ],
    "page_count": 1,
-   "checked": "2026-10-30T16:48:35Z",
+   "checked": "2026-11-13T18:00:21Z",
    "first_seen": "2026-10-19T17:08:37Z"
   },
   {
@@ -3128,34 +3156,8 @@
    "page_count": 1,
    "checked": "2026-10-31T15:51:03Z",
    "first_seen": "2026-10-31T15:51:03Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/0d2KCZVuVRU1s2Y1DEByk7",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Studio Electronic",
-   "pages": [
-    "/tracklists/beave-love-to-be-arts-club-liverpool-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-11-10T18:11:51Z",
-   "first_seen": "2026-11-10T18:11:51Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/0dWmUCTIBA6UOVjCWtbodc",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "What To Do",
-   "pages": [
-    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
-   ],
-   "page_count": 1,
-   "checked": "2026-11-12T18:33:48Z",
-   "first_seen": "2026-10-15T15:18:47Z"
   }
  ],
  "anchors_broken": [],
- "summary": "24 broken, 4 moved, 988 read differently, 0 broken anchors, 7691 of 9354 links checked in the last 10 days"
+ "summary": "24 broken, 4 moved, 991 read differently, 0 broken anchors, 7648 of 9319 links checked in the last 10 days"
 }
