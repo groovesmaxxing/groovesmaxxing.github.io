@@ -8,6 +8,10 @@ related-index.json per artist, everything the site holds on them, so a profile c
                    rails miss and a tracklist can show more from the same people:
                    {"<slug>": {"n": name, "tl": [[url, title]], "in": [[url, title, tracks]],
                                "sets": [[yt, title]], "talks": [[yt, title]], "lab": [[url, name]]}}
+                   an artist who headlines tagged sets also gets "plays": [["/artists/<slug>", name, tracks]],
+                   the artists heard in those sets (the reverse of "in", 2026-11-12). tracks is counted with the
+                   same row rule as "in", so the tracks X has in Y's "plays" are the sum of the tracks X has
+                   across the "in" rows for Y's sets. sorted by tracks, most first, then by name.
 """
 import glob, html, json, re, unicodedata
 from datetime import date
@@ -33,6 +37,7 @@ def slugs_in(name):
     return out
 
 # tracklists: the headliners, and the artists heard in the rows
+plays = {}   # headliner slug -> {heard slug: tracks}, summed over the headliner's sets
 for f in sorted(glob.glob('tracklists/*.html')):
     if f.endswith('/index.html'): continue
     s = read(f); url = '/' + f[:-5]
@@ -50,6 +55,13 @@ for f in sorted(glob.glob('tracklists/*.html')):
             if a not in heads: heard[a] = heard.get(a, 0) + (0 if a in heard else 1)
     for a, n in heard.items():
         if a not in heads: rel[a]['in'].append([url, title, n])
+    # the same counts read the other way: every headliner of the set played them
+    for h in heads:
+        got = plays.setdefault(h, {})
+        for a, n in heard.items():
+            if a not in heads: got[a] = got.get(a, 0) + n
+for h, got in plays.items():
+    rel[h]['plays'] = [['/artists/' + a, rel[a]['n'], n] for a, n in sorted(got.items(), key=lambda kv: (-kv[1], fold(rel[kv[0]]['n']), kv[0]))]
 
 # sets and talks
 try:
@@ -72,5 +84,6 @@ for f in sorted(glob.glob('labels/*.html')):
 json.dump({'generated': date.today().isoformat(), 'a': names_a, 'l': names_l}, open('names-index.json', 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
 json.dump(rel, open('related-index.json', 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
 have = sum(1 for v in rel.values() if v['tl'] or v['in'] or v['sets'] or v['talks'] or v['lab'])
-print('names-index.json: %d artists, %d labels. related-index.json: %d artists with something, %d tracklist headliners, %d heard-in rows, %d label ties' % (
-    len(names_a), len(names_l), have, sum(len(v['tl']) for v in rel.values()), sum(len(v['in']) for v in rel.values()), sum(len(v['lab']) for v in rel.values())))
+print('names-index.json: %d artists, %d labels. related-index.json: %d artists with something, %d tracklist headliners, %d heard-in rows, %d plays rows on %d djs, %d label ties' % (
+    len(names_a), len(names_l), have, sum(len(v['tl']) for v in rel.values()), sum(len(v['in']) for v in rel.values()),
+    sum(len(v.get('plays', [])) for v in rel.values()), sum(1 for v in rel.values() if v.get('plays')), sum(len(v['lab']) for v in rel.values())))

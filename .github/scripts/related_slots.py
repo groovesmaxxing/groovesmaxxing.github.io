@@ -8,6 +8,12 @@ related-index.json that build_related.py has just rebuilt: the tracklists where 
 by us), the sets the artist is heard in (heard in these sets), and the label pages that list them (on these
 labels). sets and talks stay out, they are players and the browser layer keeps them.
 
+a dj who headlines tagged sets also gets a fourth row after heard in these sets (in their sets, 2026-11-12): the
+artists heard in those sets, from the "plays" list build_related.py writes (the reverse of heard in, counted by
+the same row rule), most tracks first, the top 12 with the same small "N tracks" count, then one chip to the
+support map: "+N more on the map" when the list ran past 12, else "who plays whom". gmx-related.js does not read
+"plays", so the browser box never repeats this row.
+
 each part leaves out what the rest of the page already links, so a hand-kept rail is never repeated. the
 browser layer gmx-related.js dedupes on the same hrefs, it skips any url the page html already holds, so once
 this block is on the page nothing shows twice.
@@ -57,8 +63,9 @@ CHIP_STYLE = css("font-family:'Space Mono',monospace", 'font-size:.78rem', 'lett
 # the count after a heard-in title, styled like the small gmx-related.js puts there
 SMALL_STYLE = css('color:var(--steel)', 'margin-left:6px')
 
-# the three eyebrows and the heading are in gmx-lang-es.js already, so the spanish switch covers them
+# the eyebrows, the heading and the map chip words are in gmx-lang-es.js, so the spanish switch covers them
 TAGGED, HEARD, LABELS, HEADING = 'tagged by us', 'heard in these sets', 'on these labels', 'also on the site'
+PLAYS, PLAYS_CAP, MAP_URL, MAP_ALL, MAP_MORE = 'in their sets', 12, '/support-map', 'who plays whom', '+%d more on the map'
 
 
 def esc(s): return html.escape(str(s if s is not None else ''), quote=True)
@@ -75,15 +82,21 @@ def chip(url, title, small=''):
     return '<a href="%s" style="%s">%s%s</a>' % (esc(url), CHIP_STYLE, esc(title), tail)
 
 
+def count(n):
+    return '%d tracks' % int(n) if int(n) > 1 else '1 track'
+
+
 def items_for(me, page):
-    """the three parts for one artist, each without what the page outside the block already links"""
+    """the four parts for one artist, each without what the page outside the block already links. plays is the
+    whole list left after that, the cap is the block's"""
     tl = [x for x in me.get('tl', []) if x and not has_url(page, x[0])]
     heard = [x for x in me.get('in', []) if x and not has_url(page, x[0])]
     labs = [x for x in me.get('lab', []) if x and ('href="%s"' % x[0]) not in page]
-    return tl, heard, labs
+    plays = [x for x in me.get('plays', []) if x and not has_url(page, x[0])]
+    return tl, heard, labs, plays
 
 
-def block(tl, heard, labs, eol):
+def block(tl, heard, labs, eol, plays=()):
     lines = [START, '<section class="sec gmx-rel-static" style="%s">' % SEC_STYLE,
              '<h2 style="%s">%s</h2>' % (H2_STYLE, HEADING)]
     def part(eyebrow, chips):
@@ -94,7 +107,11 @@ def block(tl, heard, labs, eol):
     if tl:
         part(TAGGED, [chip(x[0], x[1]) for x in tl])
     if heard:
-        part(HEARD, [chip(x[0], x[1], '%d tracks' % x[2] if int(x[2]) > 1 else '1 track') for x in heard])
+        part(HEARD, [chip(x[0], x[1], count(x[2])) for x in heard])
+    if plays:
+        top = list(plays)[:PLAYS_CAP]
+        rest = len(plays) - len(top)
+        part(PLAYS, [chip(x[0], x[1], count(x[2])) for x in top] + [chip(MAP_URL, MAP_MORE % rest if rest else MAP_ALL)])
     if labs:
         part(LABELS, [chip(x[0], x[1]) for x in labs])
     lines += ['</section>', END]
@@ -132,7 +149,7 @@ def main(argv):
         print('related slots: %s unreadable (%s), nothing written' % (INDEX, e))
         return 0
     written = unchanged = empty = skipped = before_end = 0
-    n_lab = n_in = n_tl = 0
+    n_lab = n_in = n_tl = n_plays = n_play_pages = 0
     for f in sorted(p.replace('\\', '/') for p in glob.glob('artists/*.html')):
         name = f.split('/')[-1]
         if name.startswith('google'):
@@ -151,8 +168,8 @@ def main(argv):
         if not span:
             skipped += 1
             continue
-        tl, heard, labs = items_for(rel.get(name[:-5]) or {}, base)
-        if not (tl or heard or labs):
+        tl, heard, labs, plays = items_for(rel.get(name[:-5]) or {}, base)
+        if not (tl or heard or labs or plays):
             new = base
             if new == s:
                 empty += 1
@@ -171,10 +188,12 @@ def main(argv):
                 k = base.find('<nav class="pn"', j)
                 at = k if k >= 0 else j
                 before_end += 1
-            new = insert_at(base, at, block(tl, heard, labs, eol), eol)
+            new = insert_at(base, at, block(tl, heard, labs, eol, plays), eol)
             n_tl += len(tl)
             n_in += len(heard)
             n_lab += len(labs)
+            n_plays += min(len(plays), PLAYS_CAP)
+            n_play_pages += 1 if plays else 0
         if new == s:
             unchanged += 1
             continue
@@ -183,9 +202,10 @@ def main(argv):
             with open(f, 'w', encoding='utf-8', newline='') as fh:
                 fh.write(new)
     print('related slots: %d page(s) %s, %d unchanged, %d with no block, %d skipped (no artist section), '
-          'items %d labels, %d heard-in, %d tagged, %d block(s) at the page bottom (no bottom links row)'
+          'items %d labels, %d heard-in, %d tagged, %d in-their-sets on %d page(s), '
+          '%d block(s) at the page bottom (no bottom links row)'
           % (written, 'would change' if check else 'written', unchanged, empty, skipped,
-             n_lab, n_in, n_tl, before_end))
+             n_lab, n_in, n_tl, n_plays, n_play_pages, before_end))
     if check:
         print('related slots: --check, nothing written')
         return 1 if written else 0
