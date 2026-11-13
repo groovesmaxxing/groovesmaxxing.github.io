@@ -1,26 +1,8 @@
 {
-"generated": "2026-11-12T17:40:03+00:00",
+"generated": "2026-11-13T17:17:12+00:00",
 "artist_count": 704,
-"artists_with_events": 142,
+"artists_with_events": 141,
 "events": [
-{
-"date": "2026-11-12",
-"event": "ODESZA [DJ Set]",
-"venue": "Echostage",
-"city": "Washington",
-"region": "DC",
-"url": "https://www.ticketmaster.com/odesza-dj-set-washington-district-of-columbia-11-12-2026/event/15006518B24D63E0",
-"artist": "ODESZA"
-},
-{
-"date": "2026-11-13",
-"event": "ANOTR | Playa Pacha",
-"venue": "FIVE Luxe JBR",
-"city": "Dubai",
-"region": "AE",
-"url": "https://www.ticketmaster.ae/event/anotr-%7C-playa-pacha-tickets/725830588",
-"artist": "ANOTR"
-},
 {
 "date": "2026-11-13",
 "event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
@@ -374,6 +356,15 @@
 },
 {
 "date": "2026-11-16",
+"event": "MEDUZA  | Prague",
+"venue": "SaSaZu",
+"city": "Praha 7",
+"region": "CZ",
+"url": "https://www.ticketmaster.cz/event/meduza-%7C-prague-tickets/1078472599?language=en-us",
+"artist": "MEDUZA"
+},
+{
+"date": "2026-11-16",
 "event": "Rhye",
 "venue": "Vogue Theatre-BC",
 "city": "Vancouver",
@@ -389,6 +380,15 @@
 "region": "WA",
 "url": "https://www.ticketmaster.com/rhye-joy-tour-seattle-washington-11-17-2026/event/0F0064C3EBB54EB8",
 "artist": "Rhye"
+},
+{
+"date": "2026-11-18",
+"event": "Alok presented by Prism United",
+"venue": "Crescent Theater ",
+"city": "Mobile",
+"region": "AL",
+"url": "https://www.ticketweb.com/event/alok-presented-by-prism-united-crescent-theater-tickets/14365334",
+"artist": "Alok"
 },
 {
 "date": "2026-11-18",
@@ -2587,6 +2587,15 @@
 "artist": "Nala"
 },
 {
+"date": "2027-02-20",
+"event": "Satin Jackets",
+"venue": "",
+"city": "Berlin",
+"region": "DE",
+"url": "https://www.ticketmaster.de/event/satin-jackets-tickets/2016176446?language=en-us",
+"artist": "Satin Jackets"
+},
+{
 "date": "2027-02-25",
 "event": "DRAMA",
 "venue": "Melkweg",
@@ -3057,6 +3066,15 @@
 {
 "date": "2027-04-29",
 "event": "Midnight Generation",
+"venue": "Howard Theatre-DC",
+"city": "Washington",
+"region": "DC",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAAvP-",
+"artist": "Midnight Generation"
+},
+{
+"date": "2027-04-29",
+"event": "Midnight Generation",
 "venue": "Howard Theatre",
 "city": "Washington",
 "region": "DC",
@@ -3154,6 +3172,15 @@
 "artist": "Midnight Generation"
 },
 {
+"date": "2027-05-12",
+"event": "Midnight Generation - Rooted Tour 2027",
+"venue": "The Grand at The Complex - UT",
+"city": "Salt Lake City",
+"region": "UT",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAAvPI",
+"artist": "Midnight Generation"
+},
+{
 "date": "2027-05-14",
 "event": "Midnight Generation - Rooted Tour 2027",
 "venue": "Revolution Hall",
@@ -3218,6 +3245,15 @@
 },
 {
 "date": "2027-05-23",
+"event": "Midnight Generation (16+ Event)",
+"venue": "The Crescent Ballroom",
+"city": "Phoenix",
+"region": "AZ",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAAvPz",
+"artist": "Midnight Generation"
+},
+{
+"date": "2027-05-23",
 "event": "MIDNIGHT GENERATION - ​​​​​​​ROOTED TOUR 2027",
 "venue": "Crescent Ballroom",
 "city": "Phoenix",
@@ -3278,6 +3314,15 @@
 "region": "CDMX",
 "url": "https://www.ticketmaster.com.mx/midnight-generation-rooted-tour-ciudad-de-mexico-09-06-2027/event/3D006564C1589B2F",
 "artist": "Midnight Generation"
+},
+{
+"date": "2027-06-12",
+"event": "Mau P",
+"venue": "Woodbine Park",
+"city": "Toronto",
+"region": "ON",
+"url": "https://www.ticketmaster.ca/mau-p-toronto-ontario-06-12-2027/event/1000656ACBC6C026",
+"artist": "Mau P"
 },
 {
 "date": "2027-06-18",
