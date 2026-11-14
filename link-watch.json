@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-13T18:00:21Z",
+ "generated": "2026-11-14T16:42:49Z",
  "pages": 931,
  "links": {
   "checkable": 9319,
@@ -9,9 +9,9 @@
    "soundcloud": 934,
    "youtube": 1317
   },
-  "checked_within_recheck": 7648,
+  "checked_within_recheck": 7649,
   "asked_this_run": 700,
-  "unknown": 823,
+  "unknown": 821,
   "budget": 700,
   "recheck_days": 10
  },
@@ -282,19 +282,6 @@
    "first_seen": "2026-11-02T20:29:27Z"
   },
   {
-   "url": "https://www.fielddayfestivals.com/",
-   "kind": "other",
-   "code": 404,
-   "note": null,
-   "title": null,
-   "pages": [
-    "/calendar"
-   ],
-   "page_count": 1,
-   "checked": "2026-11-01T16:54:37Z",
-   "first_seen": "2026-11-01T16:54:37Z"
-  },
-  {
    "url": "https://www.puntoticket.com/anuncio-fecha-venta-de-entradas",
    "kind": "other",
    "code": 404,
@@ -563,7 +550,7 @@
     "/tracklists/reznik-samm-wecandance-beachfestival"
    ],
    "page_count": 3,
-   "checked": "2026-10-31T15:51:03Z",
+   "checked": "2026-11-14T16:42:49Z",
    "first_seen": "2026-10-31T15:51:03Z"
   },
   {
@@ -788,7 +775,7 @@
     "/tracklists/tobehonest-splash-house-2026"
    ],
    "page_count": 3,
-   "checked": "2026-10-31T15:51:03Z",
+   "checked": "2026-11-14T16:42:49Z",
    "first_seen": "2026-11-06T17:39:48Z"
   },
   {
@@ -1280,7 +1267,7 @@
     "/tracklists/tobehonest-splash-house-2026"
    ],
    "page_count": 2,
-   "checked": "2026-10-31T15:51:03Z",
+   "checked": "2026-11-14T16:42:49Z",
    "first_seen": "2026-11-06T17:39:48Z"
   },
   {
@@ -1420,7 +1407,7 @@
     "/tracklists/seth-troxler-vs-mochakk-circoloco-dc-10-ibiza-2026"
    ],
    "page_count": 2,
-   "checked": "2026-10-31T15:51:03Z",
+   "checked": "2026-11-14T16:42:49Z",
    "first_seen": "2026-10-31T15:51:03Z"
   },
   {
@@ -1910,7 +1897,7 @@
     "/tracklists/peace-control-la-siesta-x-playa-padre-marbella-2026"
    ],
    "page_count": 2,
-   "checked": "2026-10-31T15:51:03Z",
+   "checked": "2026-11-14T16:42:49Z",
    "first_seen": "2026-11-06T17:39:48Z"
   },
   {
@@ -2050,7 +2037,7 @@
     "/tracklists/luch-solomun-1-pacha-ibiza-2026"
    ],
    "page_count": 2,
-   "checked": "2026-10-31T15:51:03Z",
+   "checked": "2026-11-14T16:42:49Z",
    "first_seen": "2026-11-06T17:39:48Z"
   },
   {
@@ -2176,7 +2163,7 @@
     "/tracklists/tobehonest-splash-house-2026"
    ],
    "page_count": 2,
-   "checked": "2026-10-31T15:51:03Z",
+   "checked": "2026-11-14T16:42:49Z",
    "first_seen": "2026-11-06T17:39:48Z"
   },
   {
@@ -2439,7 +2426,7 @@
     "/tracklists/michael-bibi-b2b-franky-rizardo-maxa-x-robot-heart-burning-man-2026"
    ],
    "page_count": 1,
-   "checked": "2026-10-31T15:51:03Z",
+   "checked": "2026-11-14T16:42:49Z",
    "first_seen": "2026-10-31T15:51:03Z"
   },
   {
@@ -2582,7 +2569,7 @@
     "/tracklists/mau-p-xxx-radio-204"
    ],
    "page_count": 1,
-   "checked": "2026-10-31T15:51:03Z",
+   "checked": "2026-11-14T16:42:49Z",
    "first_seen": "2026-10-31T15:51:03Z"
   },
   {
@@ -2595,7 +2582,7 @@
     "/tracklists/patrick-topping-msu-zagreb-panic-room-croatia-2026"
    ],
    "page_count": 1,
-   "checked": "2026-10-31T15:51:03Z",
+   "checked": "2026-11-14T16:42:49Z",
    "first_seen": "2026-10-31T15:51:03Z"
   },
   {
@@ -2673,7 +2660,7 @@
     "/tracklists/mau-p-xxx-radio-204"
    ],
    "page_count": 1,
-   "checked": "2026-10-31T15:51:03Z",
+   "checked": "2026-11-14T16:42:49Z",
    "first_seen": "2026-10-31T15:51:03Z"
   },
   {
@@ -2764,7 +2751,7 @@
     "/tracklists/reznik-samm-wecandance-beachfestival"
    ],
    "page_count": 1,
-   "checked": "2026-10-31T15:51:03Z",
+   "checked": "2026-11-14T16:42:49Z",
    "first_seen": "2026-10-31T15:51:03Z"
   },
   {
@@ -2959,7 +2946,7 @@
     "/tracklists/mau-p-xxx-radio-204"
    ],
    "page_count": 1,
-   "checked": "2026-10-31T15:51:03Z",
+   "checked": "2026-11-14T16:42:49Z",
    "first_seen": "2026-10-31T15:51:03Z"
   },
   {
@@ -3024,7 +3011,7 @@
     "/tracklists/mau-p-xxx-radio-204"
    ],
    "page_count": 1,
-   "checked": "2026-10-31T15:51:03Z",
+   "checked": "2026-11-14T16:42:49Z",
    "first_seen": "2026-10-31T15:51:03Z"
   },
   {
@@ -3063,7 +3050,7 @@
     "/tracklists/luch-gozar-night-2-polyforum-siqueiros-mexico-city-2026"
    ],
    "page_count": 1,
-   "checked": "2026-10-31T15:51:03Z",
+   "checked": "2026-11-14T16:42:49Z",
    "first_seen": "2026-10-31T15:51:03Z"
   },
   {
@@ -3141,7 +3128,7 @@
     "/tracklists/michael-bibi-b2b-franky-rizardo-maxa-x-robot-heart-burning-man-2026"
    ],
    "page_count": 1,
-   "checked": "2026-10-31T15:51:03Z",
+   "checked": "2026-11-14T16:42:49Z",
    "first_seen": "2026-10-31T15:51:03Z"
   },
   {
@@ -3154,10 +3141,10 @@
     "/tracklists/luch-gozar-night-2-polyforum-siqueiros-mexico-city-2026"
    ],
    "page_count": 1,
-   "checked": "2026-10-31T15:51:03Z",
+   "checked": "2026-11-14T16:42:49Z",
    "first_seen": "2026-10-31T15:51:03Z"
   }
  ],
  "anchors_broken": [],
- "summary": "24 broken, 4 moved, 991 read differently, 0 broken anchors, 7648 of 9319 links checked in the last 10 days"
+ "summary": "23 broken, 4 moved, 991 read differently, 0 broken anchors, 7649 of 9319 links checked in the last 10 days"
 }
