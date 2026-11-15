@@ -1,93 +1,89 @@
 {
- "generated": "2026-11-15T07:46:57Z",
+ "generated": "2026-11-15T15:36:04Z",
  "site": [
   {
    "path": "/",
    "code": 200,
-   "ms": 110,
+   "ms": 203,
    "state": "ok",
    "note": null
   },
   {
    "path": "/scan",
    "code": 200,
-   "ms": 76,
+   "ms": 161,
    "state": "ok",
    "note": null
   },
   {
    "path": "/gmx-config.json",
    "code": 200,
-   "ms": 57,
+   "ms": 160,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sets",
    "code": 200,
-   "ms": 77,
+   "ms": 212,
    "state": "ok",
    "note": null
   },
   {
    "path": "/artists",
    "code": 200,
-   "ms": 134,
+   "ms": 147,
    "state": "ok",
    "note": null
   },
   {
    "path": "/tracklists/",
    "code": 200,
-   "ms": 95,
+   "ms": 141,
    "state": "ok",
    "note": null
   },
   {
    "path": "/search-index.json",
    "code": 200,
-   "ms": 116,
+   "ms": 192,
    "state": "ok",
    "note": "generated 2026-11-14"
   },
   {
    "path": "/upcoming.json",
    "code": 200,
-   "ms": 56,
+   "ms": 151,
    "state": "ok",
    "note": "generated 2026-11-14"
   },
   {
    "path": "/radar-events.json",
    "code": 200,
-   "ms": 58,
+   "ms": 138,
    "state": "ok",
    "note": "generated 2026-11-14T15:53:31"
   },
   {
    "path": "/sitemap.xml",
    "code": 200,
-   "ms": 62,
+   "ms": 108,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sw.js",
    "code": 200,
-   "ms": 58,
+   "ms": 166,
    "state": "ok",
    "note": null
   }
  ],
  "recognizer": {
-  "state": "up",
-  "code": 200,
-  "ms": 513,
-  "health": {
-   "status": "ok",
-   "version": "0.1.2",
-   "mail": true
-  }
+  "state": "down",
+  "code": 0,
+  "ms": 128,
+  "note": "no answer: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of "
  },
  "workflows": {
   "state": "failed",
@@ -227,6 +223,6 @@
    }
   ]
  },
- "state": "wrong",
- "summary": "recognizer up; failed workflows: freshness; freshness fail"
+ "state": "down",
+ "summary": "recognizer down; failed workflows: freshness; freshness fail"
 }
