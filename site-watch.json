@@ -1,80 +1,80 @@
 {
- "generated": "2026-11-15T15:36:04Z",
+ "generated": "2026-11-15T20:33:22Z",
  "site": [
   {
    "path": "/",
    "code": 200,
-   "ms": 203,
+   "ms": 142,
    "state": "ok",
    "note": null
   },
   {
    "path": "/scan",
    "code": 200,
-   "ms": 161,
+   "ms": 210,
    "state": "ok",
    "note": null
   },
   {
    "path": "/gmx-config.json",
    "code": 200,
-   "ms": 160,
+   "ms": 65,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sets",
    "code": 200,
-   "ms": 212,
+   "ms": 99,
    "state": "ok",
    "note": null
   },
   {
    "path": "/artists",
    "code": 200,
-   "ms": 147,
+   "ms": 82,
    "state": "ok",
    "note": null
   },
   {
    "path": "/tracklists/",
    "code": 200,
-   "ms": 141,
+   "ms": 90,
    "state": "ok",
    "note": null
   },
   {
    "path": "/search-index.json",
    "code": 200,
-   "ms": 192,
+   "ms": 186,
    "state": "ok",
    "note": "generated 2026-11-14"
   },
   {
    "path": "/upcoming.json",
    "code": 200,
-   "ms": 151,
+   "ms": 80,
    "state": "ok",
    "note": "generated 2026-11-14"
   },
   {
    "path": "/radar-events.json",
    "code": 200,
-   "ms": 138,
+   "ms": 146,
    "state": "ok",
-   "note": "generated 2026-11-14T15:53:31"
+   "note": "generated 2026-11-15T16:27:04"
   },
   {
    "path": "/sitemap.xml",
    "code": 200,
-   "ms": 108,
+   "ms": 318,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sw.js",
    "code": 200,
-   "ms": 166,
+   "ms": 88,
    "state": "ok",
    "note": null
   }
@@ -82,13 +82,14 @@
  "recognizer": {
   "state": "down",
   "code": 0,
-  "ms": 128,
-  "note": "no answer: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of "
+  "ms": 1,
+  "note": "no answer: <urlopen error [Errno -2] Name or service not known>"
  },
  "workflows": {
   "state": "failed",
   "failed": [
-   "freshness"
+   "freshness",
+   "recognizer uptime"
   ],
   "runs": [
    {
@@ -97,8 +98,8 @@
     "conclusion": "success",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-11-14T15:54:02Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/43612406598",
+    "at": "2026-11-15T16:27:26Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/43735306693",
     "state": "ok"
    },
    {
@@ -107,8 +108,8 @@
     "conclusion": "failure",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-11-14T19:05:46Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/43630187468",
+    "at": "2026-11-15T19:44:05Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/43754035731",
     "state": "failed"
    },
    {
@@ -117,8 +118,8 @@
     "conclusion": "success",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-11-14T16:44:14Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/43617082443",
+    "at": "2026-11-15T17:23:23Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/43740746621",
     "state": "ok"
    },
    {
@@ -127,19 +128,19 @@
     "conclusion": "success",
     "event": "dynamic",
     "branch": "main",
-    "at": "2026-11-14T15:54:41Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/43612639526",
+    "at": "2026-11-15T16:28:10Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/43735569899",
     "state": "ok"
    },
    {
     "name": "recognizer uptime",
     "status": "completed",
-    "conclusion": "success",
+    "conclusion": "failure",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-11-15T06:50:50Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/43687270223",
-    "state": "ok"
+    "at": "2026-11-15T15:43:51Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/43731475984",
+    "state": "failed"
    },
    {
     "name": "site check",
@@ -184,12 +185,12 @@
    {
     "state": "ok",
     "id": "F-30",
-    "text": "the events radar data is refreshed nightly: 2026-11-14, 1 days old"
+    "text": "the events radar data is refreshed nightly: 2026-11-15, 0 days old"
    },
    {
     "state": "ok",
     "id": "F-31",
-    "text": "the denver radar data is refreshed nightly: 2026-11-14, 1 days old"
+    "text": "the denver radar data is refreshed nightly: 2026-11-15, 0 days old"
    },
    {
     "state": "ok",
@@ -224,5 +225,5 @@
   ]
  },
  "state": "down",
- "summary": "recognizer down; failed workflows: freshness; freshness fail"
+ "summary": "recognizer down; failed workflows: freshness, recognizer uptime; freshness fail"
 }
