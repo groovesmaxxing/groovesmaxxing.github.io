@@ -1,80 +1,80 @@
 {
- "generated": "2026-11-15T00:58:51Z",
+ "generated": "2026-11-15T07:46:57Z",
  "site": [
   {
    "path": "/",
-   "code": 200,
-   "ms": 208,
-   "state": "ok",
-   "note": null
-  },
-  {
-   "path": "/scan",
    "code": 200,
    "ms": 110,
    "state": "ok",
    "note": null
   },
   {
+   "path": "/scan",
+   "code": 200,
+   "ms": 76,
+   "state": "ok",
+   "note": null
+  },
+  {
    "path": "/gmx-config.json",
    "code": 200,
-   "ms": 120,
+   "ms": 57,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sets",
    "code": 200,
-   "ms": 167,
+   "ms": 77,
    "state": "ok",
    "note": null
   },
   {
    "path": "/artists",
    "code": 200,
-   "ms": 153,
+   "ms": 134,
    "state": "ok",
    "note": null
   },
   {
    "path": "/tracklists/",
    "code": 200,
-   "ms": 105,
+   "ms": 95,
    "state": "ok",
    "note": null
   },
   {
    "path": "/search-index.json",
    "code": 200,
-   "ms": 139,
+   "ms": 116,
    "state": "ok",
    "note": "generated 2026-11-14"
   },
   {
    "path": "/upcoming.json",
    "code": 200,
-   "ms": 107,
+   "ms": 56,
    "state": "ok",
    "note": "generated 2026-11-14"
   },
   {
    "path": "/radar-events.json",
    "code": 200,
-   "ms": 97,
+   "ms": 58,
    "state": "ok",
    "note": "generated 2026-11-14T15:53:31"
   },
   {
    "path": "/sitemap.xml",
    "code": 200,
-   "ms": 134,
+   "ms": 62,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sw.js",
    "code": 200,
-   "ms": 107,
+   "ms": 58,
    "state": "ok",
    "note": null
   }
@@ -82,7 +82,7 @@
  "recognizer": {
   "state": "up",
   "code": 200,
-  "ms": 680,
+  "ms": 513,
   "health": {
    "status": "ok",
    "version": "0.1.2",
@@ -141,8 +141,8 @@
     "conclusion": "success",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-11-14T23:59:18Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/43655904603",
+    "at": "2026-11-15T06:50:50Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/43687270223",
     "state": "ok"
    },
    {
