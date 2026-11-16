@@ -1,44 +1,8 @@
 {
-"generated": "2026-11-15T16:27:04+00:00",
+"generated": "2026-11-16T19:41:53+00:00",
 "artist_count": 704,
-"artists_with_events": 132,
+"artists_with_events": 133,
 "events": [
-{
-"date": "2026-11-15",
-"event": "Tempo Daylife Tampa Bay Presents - Elderbrook",
-"venue": "Seminole Hard Rock Tampa Event Center",
-"city": "Tampa",
-"region": "FL",
-"url": "https://www.ticketmaster.com/tempo-daylife-tampa-bay-presents-elderbrook-tampa-florida-11-15-2026/event/0D00651AAA085EB6",
-"artist": "Elderbrook"
-},
-{
-"date": "2026-11-15",
-"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
-"venue": "State Farm Arena",
-"city": "Atlanta",
-"region": "GA",
-"url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-atlanta-georgia-11-15-2026/event/0E0064B3C4C2EDAC",
-"artist": "Jackie Hollander"
-},
-{
-"date": "2026-11-15",
-"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
-"venue": "State Farm Arena",
-"city": "Atlanta",
-"region": "GA",
-"url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-atlanta-georgia-11-15-2026/event/0E0064B3C4C2EDAC",
-"artist": "John Summit"
-},
-{
-"date": "2026-11-15",
-"event": "Solardo - Ages 21+",
-"venue": "SILO",
-"city": "Dallas",
-"region": "TX",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAvJa8",
-"artist": "Solardo"
-},
 {
 "date": "2026-11-16",
 "event": "MEDUZA  | Prague",
@@ -2380,6 +2344,15 @@
 "artist": "Layton Giordani"
 },
 {
+"date": "2027-03-06",
+"event": "Mau P Presents Generation Rebrand",
+"venue": "Madison Square Garden",
+"city": "New York",
+"region": "NY",
+"url": "https://www.ticketmaster.com/mau-p-presents-generation-rebrand-new-york-new-york-03-06-2027/event/3B00656EEE6E5E03",
+"artist": "Mau P"
+},
+{
 "date": "2027-03-12",
 "event": "D.O.D",
 "venue": "REBEL",
@@ -2981,6 +2954,15 @@
 "region": "NY",
 "url": "https://www.ticketmaster.com/odd-mob-new-york-new-york-05-29-2027/event/00006436DE90D883",
 "artist": "San Pacho"
+},
+{
+"date": "2027-06-04",
+"event": "Outside Days",
+"venue": "Auraria Campus",
+"city": "Denver",
+"region": "CO",
+"url": "https://on.fgtix.com/trk/UPT3b",
+"artist": "Big Wild"
 },
 {
 "date": "2027-06-05",
