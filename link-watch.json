@@ -1,17 +1,17 @@
 {
- "generated": "2026-11-16T20:39:31Z",
+ "generated": "2026-11-17T19:20:39Z",
  "pages": 931,
  "links": {
-  "checkable": 9319,
+  "checkable": 9929,
   "by_kind": {
-   "other": 4262,
-   "spotify": 2806,
-   "soundcloud": 934,
+   "other": 4264,
+   "spotify": 3413,
+   "soundcloud": 935,
    "youtube": 1317
   },
   "checked_within_recheck": 6955,
   "asked_this_run": 700,
-  "unknown": 816,
+  "unknown": 1267,
   "budget": 700,
   "recheck_days": 10
  },
@@ -317,7 +317,7 @@
     "/artists/gabe-cline"
    ],
    "page_count": 1,
-   "checked": "2026-11-03T18:00:35Z",
+   "checked": "2026-11-17T19:20:39Z",
    "first_seen": "2026-10-23T15:25:25Z"
   }
  ],
@@ -1493,20 +1493,6 @@
    "page_count": 2,
    "checked": "2026-11-13T18:00:21Z",
    "first_seen": "2026-11-01T16:54:37Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/67bFYf2med80JPPkf4rPoO",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Takes Me",
-   "pages": [
-    "/dj-support",
-    "/tracklists/beave-love-to-be-arts-club-liverpool-2026"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-10T18:11:51Z",
-   "first_seen": "2026-11-10T18:11:51Z"
   },
   {
    "url": "https://open.spotify.com/track/6AycnLwvC9BZYiN2YBVHU4",
@@ -3143,8 +3129,21 @@
    "page_count": 1,
    "checked": "2026-11-14T16:42:49Z",
    "first_seen": "2026-10-31T15:51:03Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/0d2KCZVuVRU1s2Y1DEByk7",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Studio Electronic",
+   "pages": [
+    "/tracklists/beave-love-to-be-arts-club-liverpool-2026"
+   ],
+   "page_count": 1,
+   "checked": "2026-11-10T18:11:51Z",
+   "first_seen": "2026-11-17T19:20:39Z"
   }
  ],
  "anchors_broken": [],
- "summary": "23 broken, 4 moved, 993 read differently, 0 broken anchors, 6955 of 9319 links checked in the last 10 days"
+ "summary": "23 broken, 4 moved, 992 read differently, 0 broken anchors, 6955 of 9929 links checked in the last 10 days"
 }
