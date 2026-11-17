@@ -9,7 +9,9 @@ permissions:
 
 jobs:
   check:
-    runs-on: ubuntu-latest
+    # pinned, not ubuntu-latest: the label moved to 26.04 on 2026-11-16 and playwright 1.56.1 has no browser
+    # build for it. move this and the playwright version together
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -41,7 +43,12 @@ jobs:
       - name: install a browser
         run: |
           npm install --no-save playwright@1.56.1
-          npx playwright install --with-deps chromium
+          for i in 1 2 3; do
+            npx playwright install --with-deps chromium && exit 0
+            echo "::warning::browser install attempt $i failed, trying again in 20 s"
+            sleep 20
+          done
+          exit 1
       - name: serve the site and load the pages
         run: |
           python3 -m http.server 8787 --bind 127.0.0.1 >/dev/null 2>&1 &

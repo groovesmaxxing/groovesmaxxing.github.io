@@ -20,7 +20,9 @@ concurrency:
 jobs:
   build:
     if: github.actor != 'github-actions[bot]'
-    runs-on: ubuntu-latest
+    # pinned, not ubuntu-latest: the label moved to 26.04 on 2026-11-16 and playwright 1.56.1 has no browser
+    # build for it. move this and the playwright version together
+    runs-on: ubuntu-24.04
     steps:
       # no token in the checkout's git config: npm, the playwright browser download and node all run before the
       # commit step, and only that step holds the push credential
@@ -39,7 +41,12 @@ jobs:
       - name: a browser for the share cards and the page check
         run: |
           npm install --no-save playwright@1.56.1
-          npx playwright install --with-deps chromium
+          for i in 1 2 3; do
+            npx playwright install --with-deps chromium && exit 0
+            echo "::warning::browser install attempt $i failed, trying again in 20 s"
+            sleep 20
+          done
+          exit 1
 
       - name: the derived files, share cards and security tags (site_data_build.sh)
         run: bash .github/scripts/site_data_build.sh
