@@ -446,6 +446,9 @@ words:{
 'with the set and the time.':'con el set y el minuto.',
 'sets, track by track':'sets, track por track',
 'we listen to as many sets as we can, but there are only two ears over here. so every timestamp is measured to five seconds.':'escuchamos todos los sets que podemos, pero aquí solo hay dos orejas. por eso cada minuto está medido a cinco segundos.',
+'a lot of these sets were tagged before we got to them: by the artist, by the channel that posted it, or by the heads in the comments. we find those lists, line them up against the set and say whose work it is.':'muchos de estos sets ya estaban etiquetados antes de que llegáramos: por el artista, por el canal que lo subió, o por la banda en los comentarios. encontramos esas listas, las alineamos con el set y decimos de quién es el trabajo.',
+'the rest we tag ourselves, with fingerprints and the only two ears over here. those timestamps are measured to five seconds.':'el resto lo etiquetamos nosotros, con huellas y las únicas dos orejas que hay aquí. esos minutos están medidos a cinco segundos.',
+'a track nobody could name says ID instead of a guess. a (?) means one source so far.':'un track que nadie pudo nombrar dice ID en vez de adivinar. un (?) significa una sola fuente por ahora.',
 'labels are checked against a catalogue, or left off.':'las disqueras se revisan contra un catálogo, o no se ponen.',
 'a track we couldn\'t name says ID instead of a guess. a (?) means one source so far.':'un track que no pudimos nombrar dice ID en vez de adivinar. un (?) significa una sola fuente por ahora.',
 'audio, crowd, artist and ear after a track say how we know the name: a fingerprint, a listener, the artist, or our own ears.':'audio, público, artista y oído después de un track dicen cómo sabemos el nombre: una huella, alguien que lo escuchó, el artista o nuestros propios oídos.',
@@ -766,6 +769,10 @@ scoped:[
 'groovesmaxxing support map':'mapa de apoyo de groovesmaxxing','our own tracklists only':'solo nuestros propios tracklists'}]
 ],
 rules:[
+/* adopted tracklists (2026-11-17): the page footer of a list somebody else posted */
+['times and names as (.+) posted them in the video description, not checked against the audio yet\\. a \\(\\?\\) means one source and no second confirmation, and ID - ID means nobody has named it\\.','minutos y nombres tal como $1 los publicó en la descripción del video, aún sin cotejar con el audio. un (?) significa una fuente y ninguna segunda confirmación, e ID - ID quiere decir que nadie lo ha nombrado.'],
+['times and names as (.+) posted them in the comments, not checked against the audio yet\\. a \\(\\?\\) means one source and no second confirmation, and ID - ID means nobody has named it\\.','minutos y nombres tal como $1 los publicó en los comentarios, aún sin cotejar con el audio. un (?) significa una fuente y ninguna segunda confirmación, e ID - ID quiere decir que nadie lo ha nombrado.'],
+['tracklist by (.+) · collected by','tracklist por $1 · reunido por'],
 /* the support map (2026-11-12): the map chip on artist pages, then the page's counts and stamp, scoped to the page */
 ['\\+(\\d+) more on the map','+$1 más en el mapa'],
 ['built from (\\d+) sets we tagged\\. each link goes to the set it came from\\.','armado con $1 sets que etiquetamos. cada link lleva al set de donde salió.','.sg'],
