@@ -1,26 +1,8 @@
 {
-"generated": "2026-11-16T19:41:53+00:00",
+"generated": "2026-11-17T18:39:43+00:00",
 "artist_count": 704,
-"artists_with_events": 133,
+"artists_with_events": 135,
 "events": [
-{
-"date": "2026-11-16",
-"event": "MEDUZA  | Prague",
-"venue": "SaSaZu",
-"city": "Praha 7",
-"region": "CZ",
-"url": "https://www.ticketmaster.cz/event/meduza-%7C-prague-tickets/1078472599?language=en-us",
-"artist": "MEDUZA"
-},
-{
-"date": "2026-11-16",
-"event": "Rhye",
-"venue": "Vogue Theatre-BC",
-"city": "Vancouver",
-"region": "BC",
-"url": "https://www.ticketmaster.ca/event/Z7r9jZ1A7PKPb",
-"artist": "Rhye"
-},
 {
 "date": "2026-11-17",
 "event": "Rhye: Joy Tour",
@@ -1301,6 +1283,15 @@
 },
 {
 "date": "2026-12-19",
+"event": "Chinese Laundry Invites CLUB SWEAT FT JACKIE HOLLANDER [USA] + MORE TBA",
+"venue": "Chinese Laundry",
+"city": "Sydney",
+"region": "NSW",
+"url": "https://www.moshtix.com.au/v2/event/chinese-laundry-invites-club-sweat-ft-jackie-hollander-usa-more-tba/202645",
+"artist": "Jackie Hollander"
+},
+{
+"date": "2026-12-19",
 "event": "LOS 40DANCE",
 "venue": "Live Las Ventas",
 "city": "Madrid",
@@ -1544,6 +1535,15 @@
 },
 {
 "date": "2026-12-30",
+"event": "Vandelux",
+"venue": "The Grand (Boston)",
+"city": "Boston",
+"region": "MA",
+"url": "https://www.ticketmaster.com/vandelux-boston-massachusetts-12-30-2026/event/0100657194908493",
+"artist": "Vandelux"
+},
+{
+"date": "2026-12-30",
 "event": "it's murph (NYW)",
 "venue": "Echostage",
 "city": "Washington",
@@ -1613,6 +1613,15 @@
 "region": "DC",
 "url": "https://www.ticketmaster.com/cloonee-nye-washington-district-of-columbia-12-31-2026/event/150065514FA9457A",
 "artist": "GREG 99"
+},
+{
+"date": "2026-12-31",
+"event": "New Years Eve Extravaganza: Crazy P, Horse Meat Disco",
+"venue": "Outernet Live",
+"city": "London",
+"region": "GB",
+"url": "https://www.ticketmaster.co.uk/new-years-eve-extravaganza-crazy-p-london-31-12-2026/event/3700656CB56B9683",
+"artist": "Horse Meat Disco"
 },
 {
 "date": "2026-12-31",
@@ -1930,6 +1939,15 @@
 "artist": "Infected Mushroom"
 },
 {
+"date": "2027-01-29",
+"event": "Infected Mushroom",
+"venue": "House of Blues Chicago",
+"city": "Chicago",
+"region": "IL",
+"url": "https://www.ticketmaster.com/infected-mushroom-chicago-illinois-01-29-2027/event/04006565F5CDC306",
+"artist": "Infected Mushroom"
+},
+{
 "date": "2027-01-30",
 "event": "CAMELPHAT ALL NIGHT LONG",
 "venue": "O2 Victoria Warehouse Manchester",
@@ -1955,6 +1973,15 @@
 "region": "CA",
 "url": "https://www.ticketmaster.com/mau-p-presents-generation-rebrand-18-los-angeles-california-01-30-2027/event/0A006550EE2DDD30",
 "artist": "Mau P"
+},
+{
+"date": "2027-01-30",
+"event": "Oden & Fatzo",
+"venue": "The Limelight 2",
+"city": "Belfast",
+"region": "GB",
+"url": "https://www.ticketmaster.ie/oden-fatzo-belfast-30-01-2027/event/38006571A6C30EBF",
+"artist": "Oden & Fatzo"
 },
 {
 "date": "2027-02-02",
@@ -2254,6 +2281,24 @@
 "artist": "DRAMA"
 },
 {
+"date": "2027-02-26",
+"event": "Beltran",
+"venue": "Echostage",
+"city": "Washington",
+"region": "DC",
+"url": "https://www.ticketmaster.com/beltran-washington-district-of-columbia-02-26-2027/event/150065719561572F",
+"artist": "Beltran"
+},
+{
+"date": "2027-02-26",
+"event": "Beltran",
+"venue": "Echostage",
+"city": "Washington",
+"region": "DC",
+"url": "https://www.ticketmaster.com/beltran-washington-district-of-columbia-02-26-2027/event/150065719561572F",
+"artist": "DJ Tennis"
+},
+{
 "date": "2027-02-27",
 "event": "DRAMA",
 "venue": "Heaven",
@@ -2309,6 +2354,15 @@
 },
 {
 "date": "2027-03-05",
+"event": "Gorgon City - Enter The Realm Tour (Melbourne)",
+"venue": "The Timber Yard",
+"city": "Port Melbourne",
+"region": "VIC",
+"url": "https://www.moshtix.com.au/v2/event/gorgon-city-enter-the-realm-tour-melbourne-/202609",
+"artist": "Gorgon City"
+},
+{
+"date": "2027-03-05",
 "event": "Glitterbox Sydney 2027",
 "venue": "Home the Venue",
 "city": "Darling Harbour",
@@ -2324,6 +2378,15 @@
 "region": "QC",
 "url": "https://www.ticketmaster.ca/igloofest-meduza-quebec-quebec-03-05-2027/event/3100655D900949B6",
 "artist": "MEDUZA"
+},
+{
+"date": "2027-03-06",
+"event": "GORGON CITY",
+"venue": "Greenwood Hotel",
+"city": "North Sydney",
+"region": "NSW",
+"url": "https://www.moshtix.com.au/v2/event/gorgon-city/202595",
+"artist": "Gorgon City"
 },
 {
 "date": "2027-03-06",
@@ -2345,7 +2408,7 @@
 },
 {
 "date": "2027-03-06",
-"event": "Mau P Presents Generation Rebrand",
+"event": "MAU P PRESENTS GENERATION REBRAND",
 "venue": "Madison Square Garden",
 "city": "New York",
 "region": "NY",
@@ -2804,7 +2867,7 @@
 },
 {
 "date": "2027-05-08",
-"event": "Mau P Presents Generation Rebrand",
+"event": "MAU P PRESENTS GENERATION REBRAND",
 "venue": "Navy Pier",
 "city": "Chicago",
 "region": "IL",
