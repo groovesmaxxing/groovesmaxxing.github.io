@@ -1,7 +1,9 @@
 name: recognizer uptime
 
-# every four hours, ask the recognizer's public api for a page. no answer, a timeout or a 5xx turns the run
-# red, and github mails the owner. the containers sat exited for a whole day once with nothing noticing.
+# every four hours, ask the recognizer's public api for a page. no answer, a timeout or a 5xx is a miss.
+# one miss leaves the run green with a warning and an uptime-miss artifact. a second miss in a row turns the
+# run red, and github mails the owner. so a red run means no answer on two probes four hours apart.
+# the containers sat exited for a whole day once with nothing noticing.
 # turn it off from the actions tab if the laptop is going to be away for a while.
 
 on:
@@ -11,6 +13,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
 
 jobs:
   probe:
@@ -18,3 +21,12 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - run: python3 .github/scripts/uptime.py
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+      - name: remember the miss for the next run
+        if: always() && hashFiles('uptime-miss.txt') != ''
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: uptime-miss
+          path: uptime-miss.txt
+          retention-days: 1
