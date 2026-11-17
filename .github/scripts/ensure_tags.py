@@ -388,7 +388,12 @@ def hub(path='tracklists/index.html'):
         if rows and ''.join(rows).strip() == m.group(2).strip():
             today, last, keyed = datetime.date.today(), None, []
             for i, r in enumerate(rows):
-                d = re.search(r'<span class="dt">([a-z]{3}) (\d{1,2})</span>', r)
+                # the laptop now writes the day the set happened on the row itself (data-d, 2026-11-17),
+                # year included, so a 2018 set sorts as 2018. a row without it falls back to the label.
+                iso = re.match(r'<tr\b[^>]*\bdata-d="(\d{4})-(\d{2})-(\d{2})"', r)
+                d = None if iso else re.search(r'<span class="dt">([a-z]{3}) (\d{1,2})</span>', r)
+                if iso:
+                    last = (int(iso.group(1)), int(iso.group(2)), int(iso.group(3)))
                 if d and d.group(1) in _MON:
                     mo, dy = _MON[d.group(1)], int(d.group(2))
                     yr = today.year - 1 if (mo, dy) > (today.month, today.day) else today.year
