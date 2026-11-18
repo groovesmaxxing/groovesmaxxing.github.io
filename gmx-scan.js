@@ -84,8 +84,14 @@ window.gmxRefreshBlocked=function(){return busy};
   });
 })(3);
 
-/* the device id: minted once, kept on the phone. letters, digits, dash, underscore, 32 long. */
-function deviceId(){return gmxAccount.device()}
+/* the device id: minted once, kept on the phone. letters, digits, dash, underscore, 32 long.
+   2026-11-17 (submit flow, slice 1, final read): the page takes the id once and keeps it for as long as it is open.
+   the api now refuses an answer that carries another device id than the scan it answers (403), and
+   gmxAccount.device() mints a new id on every call when the phone cannot keep one (site storage blocked, or full).
+   on such a phone the scan went up under one id and the answer under another, so every answer would have read
+   "that scan was made on another phone". with storage that works this is the stored id, as before. */
+var devOnce='';
+function deviceId(){if(!devOnce)devOnce=gmxAccount.device();return devOnce}
 function headers(extra){
   var h={'X-GMX-App-Key':cfg.app_key,'X-GMX-Device':deviceId()};
   var ss=sessionToken(); if(ss)h['X-GMX-Session']=ss;
@@ -269,13 +275,102 @@ function clearLevel(){lv=0}
   }).observe(stage,{attributes:true,attributeFilter:['class']});
 })();
 
+/* 2026-11-17 (submit flow, slice 1): the answer follows the clip. a new scan used to drop the card before it and
+   with it the only way to answer for it, so a name typed under the next card landed on that card's scan (the
+   welcome to the jungle scan: the library ID was caught first, the name went to the catalog guess 17 s later).
+   when a card leaves for a new scan the page now keeps lastLib, the scan it showed, but only when that card had a
+   library clip behind it (fingerprint_id), at LIKELY or CONFIRMED, with no name (no accepted_name, no named_by).
+   the name form on a later card with no library clip offers it as one chip for LAST_OFFER_MS, pressed by default
+   for LAST_DEFAULT_MS. a named library clip at LIKELY or better clears it: the room moved on to a known record.
+   scanLive is true while the clip under scan came off the mic just now. a kept clip scanned again or a clip
+   drained from the offline queue is another moment's audio, so its card neither offers the chip nor is kept.
+   answeredRids holds the scans this phone answered since the page loaded, so nothing is offered twice. */
+var LAST_OFFER_MS=180000, LAST_DEFAULT_MS=90000, NAME_ROW_MS=86400000;
+var lastLib=null, scanLive=false, answeredRids=Object.create(null), cardSeq=-1, cardKey=null;
+function clipNamed(c){return !!(c&&(c.accepted_name||c.named_by))}
+function unnamedLib(c){return !!(c&&c.fingerprint_id&&!clipNamed(c))}
+function sureTier(c){return !!(c&&(c.tier==='LIKELY'||c.tier==='CONFIRMED'))}
+/* the headline the card showed for this candidate, the same reading resultCard uses */
+function cardHead(c){var nm=nameOf(c),lib=!!(nm&&nm.lib);return (!lib&&c.headline)||(nm?(nm.title||nm.artist):'ID')||'ID'}
+function nextLast(prev,cur,live,now){
+  var c=cur&&cur.card&&cur.card.candidate;
+  if(!c)return prev;
+  if(live&&cur.recognition_id&&unnamedLib(c)&&sureTier(c))return {rid:cur.recognition_id,key:candKey(c),t:cur.at||now,head:cardHead(c),ut:uploadTitle(c)||undefined};   /* ut: see prevFill */
+  if(c.fingerprint_id&&sureTier(c))return null;
+  return prev;
+}
+function keepLast(){lastLib=nextLast(lastLib,current,scanLive,Date.now())}
+/* 2026-11-17 (slice 1 review): a card can also be replaced inside one scan by a card for another recording: a
+   later early round or the 15 s answer names something else (swapsOut). the card leaving is kept like any other,
+   so an unnamed ID the early round caught can still be answered through the chip under the card that took its
+   place. two cards are the same recording only when both have a key and the keys are equal. */
+function sameKey(a,b){return a!=null&&a===b}
+function swapsOut(old,cand){return !!old&&!sameKey(old.key,cand?candKey(cand):null)}
+function keepSwapped(old){lastLib=nextLast(lastLib,old,scanLive,Date.now())}
+/* the chip: only under a card with no library clip of its own, only for a live scan, never for a scan this phone
+   already answered. null means no chip */
+function prevOffer(cand,last,now,live){
+  if(!last||!live||!cand||cand.fingerprint_id||answeredRids[last.rid])return null;
+  var age=now-last.t;
+  if(!(age>=0&&age<LAST_OFFER_MS))return null;
+  return {age:age,pressed:age<LAST_DEFAULT_MS};
+}
+function ageWord(ms){var s=Math.max(1,Math.round(ms/1000));return s<60?s+' s':Math.floor(s/60)+' min'}
+function prevHint(on){return on?'your answer goes to that ID. tap it off to answer this scan.':'tap it if your answer is about that ID, not this scan.'}
+function prevChipHtml(o,last){
+  return '<div class="row"><button class="btn'+(o.pressed?' on':'')+'" type="button" data-prev="1" aria-pressed="'+(o.pressed?'true':'false')+'">about the ID we caught '+ageWord(o.age)+' ago (in our library, unnamed)</button></div>'+
+    (last.head&&last.head!=='ID'?'<p class="note">it showed as <b translate="no">'+esc(last.head)+'</b></p>':'')+
+    '<p class="note" id="cprevhint">'+prevHint(o.pressed)+'</p>';
+}
+function prevPressed(){var b=card.querySelector('#cform [data-prev]');return !!(b&&b.getAttribute('aria-pressed')==='true')}
+function togglePrev(b){
+  var on=b.getAttribute('aria-pressed')!=='true';
+  b.setAttribute('aria-pressed',on?'true':'false');b.classList.toggle('on',on);
+  var h=$('cprevhint');if(h)h.textContent=prevHint(on);
+  prevFill(on);
+}
+/* 2026-11-17 (final read): while the chip is pressed the answer is about the ID caught before, and when that card
+   showed a title that came in with its clip (lastLib.ut, the chip's "it showed as" line) the title box starts
+   with it, the way the form under that card would have: nobody should have to retype "Welcome To The Jungle".
+   only the title, never an artist, and only into an empty box. data-prevpre on the form holds what the chip put
+   there. tapping the chip off takes the title out again when nobody touched it, so a title the person never
+   typed is not sent as this card's own answer. once the person changed or cleared it the chip leaves the box
+   alone for good. */
+function prevFill(on){
+  var f=$('cform'), ti=$('c-title'); if(!f||!ti)return;
+  var had=f.getAttribute('data-prevpre'), ut=(lastLib&&lastLib.ut)||'';
+  if(!on){if(had!=null&&ti.value===had){ti.value='';f.removeAttribute('data-prevpre')}return}
+  if(ut&&!ti.value&&had==null){ti.value=ut;f.setAttribute('data-prevpre',ut)}
+}
+/* 2026-11-17 (submit flow, slice 1): the early round and the 15 s round can be two recognitions of one clip, and
+   the answer used to sit on the early one while the set hint sat on the 15 s one. when the early card stays and
+   the 15 s recognition's own top candidate is the same recording at LIKELY or better, the answer, the follow and
+   the history row bind to the 15 s recognition. never after this phone already answered on the early one. */
+function boundRid(e,r){
+  var top=r&&(r.answer||(r.alternates||[])[0])||null, rid=r&&r.recognition_id;
+  if(!rid||!top||!e.key||answeredRids[e.recognition_id])return e.recognition_id;
+  return candKey(top)===e.key&&sureTier(top)?rid:e.recognition_id;
+}
+/* 2026-11-17 (final read): the answered mark is kept per recognition id, and one scan can draw the same recording
+   under several of them (the 5, 9 and 12 s rounds, then the 15 s one). answeredRid gives the early card's
+   recognition when this phone already answered on it and the card replacing it is the same recording (same
+   candKey), else nothing. the new card keeps that id, so it is drawn as answered (answeredOn), the row in recent
+   scans carries the answer, and a second send meets the api's own "already answered". */
+function answeredRid(e,cand){
+  return e&&cand&&e.recognition_id&&answeredRids[e.recognition_id]&&sameKey(e.key,candKey(cand))?e.recognition_id:'';
+}
+/* the mark this phone left on the scan a card is for, or null */
+function answeredOn(cur){return (cur&&cur.recognition_id&&answeredRids[cur.recognition_id])||null}
+/* where an answer on this card's own scan lands: on a library clip, and on one that already showed a record's name */
+function cardWhere(cand){var clip=!!(cand&&cand.fingerprint_id);return {clip:clip,named:clip&&!noName(cand)}}
+
 function startScan(){
   if(busy)return;
   if(!cfg){showCard(errCard(cfgErr?'the app config did not load. pull down to refresh and try again.':'still loading, one second.'));return}
   if(!canCapture()){
     showCard(errCard("this browser can't record audio. on iphone use safari, on android use chrome, then add the app to your home screen."));return;
   }
-  busy=true; card.classList.remove('on'); current=null; dropBlob(); scanSeq++; early=null; finalDone=false; rateHit=false;
+  busy=true; card.classList.remove('on'); keepLast(); scanLive=true; current=null; dropBlob(); scanSeq++; early=null; finalDone=false; rateHit=false;
   /* the screen stays awake from the tap until the card is final or the scan is cancelled (2026-10-13): a phone that
      dims at ten seconds used to cut the clip short on the lock. reset() lets it go, auto mode keeps its own. */
   wakeOn();
@@ -418,7 +513,14 @@ function earlyIdentify(blob,seq,at){
     var key=candKey(cand), prev=early, same=!!(key&&prev&&prev.key===key), firstAt=same?prev.firstAt:at;
     var agreed=cand.tier==='LIKELY'&&same&&Math.abs(at-firstAt)>=AGREE_GAP_MS;
     round.answer=(at/1000)+' s: '+(cand.tier==='CONFIRMED'?'sure':(agreed?'close again':'close'))+', '+who;
-    early={job_id:j.job_id,recognition_id:r.recognition_id||j.job_id,card:{kind:'match',candidate:cand},seconds:Math.round((Date.now()-timing.t0)/100)/10,timing:timing,key:key,firstAt:firstAt};
+    if(swapsOut(prev,cand))keepSwapped(prev);   /* 2026-11-17: this round named another recording than the early card on screen */
+    /* 2026-11-17 (final read): each round is a recognition of its own, so an answer given on the 5 s card was
+       forgotten when the 9 s round of the same recording redrew it: the buttons were back, the sent line was gone
+       and a second tap filed a second row. when this phone already answered on the early card and this round names
+       the same recording, the card keeps the recognition that was answered (answeredRid, the rule boundRid has
+       for the 15 s round). the set hint still goes to this round's own recognition. */
+    var rid=r.recognition_id||j.job_id;
+    early={job_id:j.job_id,recognition_id:answeredRid(prev,cand)||rid,card:{kind:'match',candidate:cand},seconds:Math.round((Date.now()-timing.t0)/100)/10,timing:timing,key:key,firstAt:firstAt,at:Date.now()};
     if(!timing.first)timing.first=Date.now()-timing.t0;
     current=early; tick(40);
     if(cand.tier==='CONFIRMED'||agreed){
@@ -427,14 +529,14 @@ function earlyIdentify(blob,seq,at){
          a likely) on the same audio; the card keeps the likely word */
       if(agreed)timing.agreed={first:firstAt,again:at};
       finalDone=true; heldBlob=blob; if(stopCapture)stopCapture();
-      current.hint_ref=current.recognition_id; current.in_set=r.in_set||null; current.loud=heldLoud;
+      current.hint_ref=rid; current.in_set=r.in_set||null; current.loud=heldLoud;
       var keep=!!(window.gmxClips&&gmxClips.on()&&heldBlob);
       if(keep)gmxClips.put({id:current.job_id,t:Date.now(),blob:heldBlob,recognition_id:current.recognition_id,kind:'match'}).catch(function(){});
       say2(agreed?'close twice, at <b>'+(Math.min(firstAt,at)/1000)+' s</b> and <b>'+(Math.max(firstAt,at)/1000)+' s</b>':'got it at <b>'+(at/1000)+' s</b>');
-      showCard(resultCard(current)); remember(current,keep); reset(); return;
+      redraw(resultCard(current)); remember(current,keep); reset(); return;
     }
     say2('close at <b>'+(at/1000)+' s</b>, still listening for a sure one');
-    showCard('<p class="kw" id="earlynote">still listening</p>'+resultCard(early));
+    redraw('<p class="kw" id="earlynote">still listening</p>'+resultCard(early));
   }).catch(function(e){
     /* a 429 means this phone spent its early rounds for the hour (their own window on the api, ninety since
        2026-10-13). no more rounds this scan, the final clip still goes. */
@@ -496,8 +598,13 @@ function identify(blob){
     if(finalDone)return;
     finalDone=true; say2('');
     /* the 15 s scan replaces the early card when it names something, else the early card stays */
-    if(c.kind!=='match'&&early)current=early;
-    else current={job_id:j.job_id,recognition_id:r.recognition_id||j.job_id,card:c,seconds:Math.round((Date.now()-timing.t0)/100)/10,timing:timing};
+    if(c.kind!=='match'&&early){current=early;current.recognition_id=boundRid(early,r)}   /* 2026-11-17: see boundRid */
+    else{
+      if(swapsOut(early,c.candidate))keepSwapped(early);   /* 2026-11-17: the 15 s answer is another recording than the early card it replaces */
+      /* 2026-11-17 (final read): the 15 s match of the recording this phone already answered on the early card
+         stays on the answered recognition too (answeredRid). hint_ref below is still the 15 s one */
+      current={job_id:j.job_id,recognition_id:answeredRid(early,c.candidate)||r.recognition_id||j.job_id,card:c,seconds:Math.round((Date.now()-timing.t0)/100)/10,timing:timing,at:Date.now()};
+    }
     if(current.timing&&!current.timing.first&&c.kind==='match')current.timing.first=Date.now()-timing.t0;
     /* the set hint answers for the 15 s scan, the one the set match ran on, even under an early card */
     current.hint_ref=r.recognition_id||j.job_id;
@@ -507,12 +614,12 @@ function identify(blob){
     /* keep my clips (DECISION 12): the switch under more, the clip stays on this phone */
     var keep=!!(window.gmxClips&&gmxClips.on()&&heldBlob);
     if(keep)gmxClips.put({id:current.job_id,t:Date.now(),blob:heldBlob,recognition_id:current.recognition_id,kind:c.kind}).catch(function(){});
-    showCard(resultCard(current)); remember(current,keep); reset();
+    redraw(resultCard(current)); remember(current,keep); reset();
   })
   .catch(function(e){
     if(finalDone)return;
     finalDone=true; say2('');
-    if(early){current=early;current.loud=heldLoud;showCard(resultCard(current));remember(current,false);reset();return}
+    if(early){current=early;current.loud=heldLoud;redraw(resultCard(current));remember(current,false);reset();return}
     var m=e&&e.message||'';
     if(m==='rate')rateHit=true;
     var netErr=m==='timeout'?!navigator.onLine:!/^(rate|slow|key|failed|server|http )/.test(m);
@@ -539,7 +646,65 @@ function cardSays(){
   var kw=card.querySelector('.kw'),sub=card.querySelector('.sub,.ttl,.note');
   return [kw&&kw.textContent,h.textContent,sub&&sub.textContent].filter(Boolean).join('. ').replace(/\s+/g,' ').trim();
 }
-function showCard(html){card.innerHTML=html;card.classList.add('on');try{var said=cardSays();if(said)announce(said)}catch(e){}card.scrollIntoView({behavior:SM(),block:'nearest'});if(current&&current.card&&current.card.candidate&&html.indexOf('earlynote')<0||html.indexOf('earlynote')>-1)try{enrich(current)}catch(e){}try{decorate(html.indexOf('earlynote')>-1?early:current)}catch(e){}}
+/* the recording the card being drawn is for: the early card's while the scan still listens, else the current one's. null for a card with no candidate */
+function shownKey(html){var s=html.indexOf('earlynote')>-1?early:current, c=s&&s.card&&s.card.candidate;return c?candKey(c):null}
+function showCard(html){cardSeq=scanSeq;try{cardKey=shownKey(html)}catch(e){cardKey=null}card.innerHTML=html;card.classList.add('on');try{var said=cardSays();if(said)announce(said)}catch(e){}card.scrollIntoView({behavior:SM(),block:'nearest'});if(current&&current.card&&current.card.candidate&&html.indexOf('earlynote')<0||html.indexOf('earlynote')>-1)try{enrich(current)}catch(e){}try{decorate(html.indexOf('earlynote')>-1?early:current)}catch(e){}}
+/* 2026-11-17 (submit flow, slice 1): a card that redraws inside one scan keeps what was typed. the early card is
+   live while the scan still runs, and the next round or the 15 s answer used to replace the whole card and wipe a
+   half-typed name about nine seconds in. redraw() takes each form's open state and field values before the swap
+   and puts them back after, with the where chip and the cursor. only inside one scan (cardSeq is the scan the
+   card on screen was drawn for): a new scan starts clean. a title the page filled in itself and the person never
+   touched is not carried over, the new card fills its own.
+   2026-11-17 (slice 1 review): the name form is carried only onto a card for the same recording (cardKey, the
+   key of the card on screen, against the key of the card that replaces it). the early card can be an unnamed ID
+   and the 15 s answer a different record; a name typed under the first came back open under the second and the
+   send filed it on the second one's scan as that card's own answer. when the recording changed the name form
+   starts closed and empty, as it did before this build, and the card that left is kept for the chip (swapsOut).
+   the where form and the help form are about the scan, not the recording, and come back as before. */
+function formsState(){
+  if(cardSeq!==scanSeq||!card.classList.contains('on'))return null;
+  var st={forms:{},chip:hintChip,focus:null,key:cardKey}, fs=card.querySelectorAll('form[id]'), i, j;
+  for(i=0;i<fs.length;i++){
+    var f=fs[i], els=f.querySelectorAll('input[name],textarea[name]'), vals={}, pv=f.querySelector('[data-prev]');
+    for(j=0;j<els.length;j++)vals[els[j].name]=els[j].value;
+    st.forms[f.id]={on:f.classList.contains('on'),vals:vals,pre:f.getAttribute('data-pre'),ppre:f.getAttribute('data-prevpre'),prev:pv?pv.getAttribute('aria-pressed'):null};
+  }
+  var ae=document.activeElement;
+  if(ae&&ae.id&&card.contains(ae)){st.focus={id:ae.id};try{st.focus.a=ae.selectionStart;st.focus.b=ae.selectionEnd}catch(e){}}
+  return st;
+}
+function formsRestore(st){
+  if(!st)return;
+  var moved=!sameKey(st.key,cardKey);
+  Object.keys(st.forms).forEach(function(id){
+    var s=st.forms[id], f=$(id); if(!f||!card.contains(f))return;
+    if(id==='cform'&&moved)return;   /* another recording: what was typed was about the card that left */
+    Object.keys(s.vals).forEach(function(k){
+      var el=f.querySelector('[name="'+k+'"]'), v=s.vals[k];
+      if(!el||!v)return;
+      if(k==='title_claim'&&((s.pre!=null&&v===s.pre)||(s.ppre!=null&&v===s.ppre)))return;
+      el.value=v;
+    });
+    /* 2026-11-17 (final read): a title the page filled in and the person then cleared or changed stays theirs.
+       the redraw used to see an empty title box and fill the title in again without a word, and the send posted
+       a title the person had removed. the mark goes onto the new form, and openForm and prevFill fill nothing
+       into a form that carries it. an untouched title carries no mark: the new card fills its own */
+    if(id==='cform'){
+      var tv=s.vals.title_claim||'';
+      if(s.pre!=null&&tv!==s.pre)f.setAttribute('data-pre',s.pre);
+      if(s.ppre!=null&&tv!==s.ppre)f.setAttribute('data-prevpre',s.ppre);
+    }
+    if(!s.on)return;
+    if(id==='cform'){
+      openForm(true);
+      var pv=f.querySelector('[data-prev]');
+      if(pv&&s.prev!=null&&pv.getAttribute('aria-pressed')!==s.prev)togglePrev(pv);
+    }else f.classList.add('on');
+    if(id==='wform'&&st.chip)pickChip(st.chip);
+  });
+  if(st.focus){var el=$(st.focus.id);if(el&&card.contains(el)&&!(moved&&/^c-/.test(st.focus.id))){try{el.focus();if(st.focus.a!=null)el.setSelectionRange(st.focus.a,st.focus.b)}catch(e){}}}
+}
+function redraw(html){var st=null;try{st=formsState()}catch(e){}showCard(html);try{formsRestore(st)}catch(e){}}
 /* the crate heart and the label link (crate loop build, 2026-10-11). the heart saves the match on this phone
    like a tracklist row would, with whatever store links the card has at tap time, so a link that arrives
    later from enrich() still makes it in. the label line links to our label page when there is one. */
@@ -576,10 +741,110 @@ function errCard(text,resend){return '<p class="kw"><b>hm.</b></p><h2>that did n
 /* a refsync library entry (a reference clip the laptop contributed from an id upload) carries its file name and
    notes as the title and "refsync <poster>" as the artist. the card shows the caption as the title, nobody as the
    artist, and where it came from as a note, instead of printing the raw line. */
+/* 2026-11-17 (submit flow, slice 1): the caption is read the way the recognizer reads it (app/core/naming.py,
+   reference_caption and refsync_name, same day), rule for rule. the old reading ran to the end of the line, so a
+   title came out with its ". set_time: 1:16:25" tail and the research note in brackets.
+   the set_time tail goes first. then each outermost round bracket is judged whole: a research note goes (a list
+   with a comma or a semicolon, a label like "G-MO ear: ...", a recognizer's own word in front, or 41 characters
+   and up), a version or a credit stays ("(Maccabi Edit)", "(feat. A, B)", "(unreleased)"), and a square bracket
+   always stays. what is left is a title only up to 120 characters and with no link in it. a literal "ID" artist in
+   front is dropped ("ID - Welcome To The Jungle" reads "Welcome To The Jungle"), and a caption that is only ID
+   words ("ID - ID") is no name. an "Artist - Title" caption stays whole as the title: the page never splits an
+   artist out of it. this is only the fallback for a raw reference line; the recognizer's own title leads.
+   2026-11-17 (final read): brought back in line with the recognizer's reader as it stands after its own fix round.
+   the page had drifted on three families and the recognizer had gained rules of its own since:
+   - no name only when the caption says ID and nothing else (capIdOnly, the recognizer's is_id_only). the page still
+     took any caption made of the placeholder words, or of no letters, for no name, so "1977", "Soon", "Song 2" and
+     "Untitled" read ID here and a title there.
+   - a closing bracket with nothing open stays ("Night Drive :)) later"), except right after a note that was taken
+     out. the page dropped every one.
+   - set_time is read in lower case only and has to start a word ("Reset_time: now" keeps its line).
+   - a long bracket that ends on a version word is a version, not a note.
+   - "ID's" and "I.D." are the word ID, and "ID: Something" loses its ID like "ID - Something" does.
+   - a caption of punctuation alone is no name, and neither is what is left of "ID - (open)".
+   - words, word edges and white space are read the way python reads them (a letter or a digit in any script is
+     part of a word), and lengths count characters, not utf-16 halves. */
+var CAP_SPACE='\\t-\\r\\x1c-\\x20\\x85\\xa0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000';
+/* a pattern written with @W for the characters of a word, @L for letters, @D for digits and @S for white space,
+   each inside a class. a browser too old for \p falls back to plain ascii */
+function capRe(src,flags){
+  src=src.replace(/@S/g,CAP_SPACE);
+  try{return new RegExp(src.replace(/@W/g,'\\p{L}\\p{N}_').replace(/@L/g,'\\p{L}\\p{Nl}\\p{No}').replace(/@D/g,'\\p{Nd}'),(flags||'')+'u')}
+  catch(e){return new RegExp(src.replace(/@W/g,'A-Za-z0-9_').replace(/@L/g,'A-Za-z').replace(/@D/g,'0-9'),flags||'')}
+}
+var CAP_VERSION=capRe('^(?:[^,;]{0,39}[^,;@W])?(?:remix|edit|mix|rework|dub|version|bootleg|flip|vip|cut|refix)[@S]*$','i'),
+  CAP_VERSION_END=capRe('(?:^|[^@W])(?:remix|edit|mix|rework|dub|version|bootleg|flip|vip|cut|refix)[@S]*$','i'),
+  CAP_CREDIT=capRe('^(?:(?:feat|ft|featuring|prod)(?![@W])|w/)','i'),
+  CAP_NOTE_LIST=capRe('[,;]|:[@S]'),
+  CAP_NOTE_WORDS=capRe('^(?:novelty[@S]+[@D]|(?:acr|shazam|1001tl|g-mo)(?![@W]))','i');
+var CAP_JUNK=capRe('https?://|www\\.|^[@S]*(?:dm(?![@W])|out now(?![@W])|link in bio|full (?:file|track|version)(?![@W]))','i');
+var CAP_PLACEHOLDER=' id ids unreleased unknown untitled track tracks tba tbc new song edit mix remix vip dub extended original free download dl premiere vol volume pt part pack snippet preview clip forthcoming soon ';
+/* letters in any script */
+var CAP_WORD=capRe('[@L]+','g');
+/* CAP_MARKS: nothing but punctuation, spaces and maths signs ("???", "()", "-", "|") */
+var CAP_MARKS=(function(){try{return new RegExp('^[\\p{P}\\p{Z}\\p{C}\\p{Sm}\\p{Sk}]*$','u')}catch(e){return /^[\x00-\x23\x25-\x2f\x3a-\x40\x5b-\x60\x7b-\xa1\u2000-\u206f]*$/}})(),
+  CAP_ID_SPELLED=capRe('(^|[^@W])(?:I\\.D\\.?(?![@W])|ID[\'\u2019]s(?![@W]))','gi'),
+  CAP_ID_COLON=capRe('^[@S]*(?:ID|I\\.D\\.?)[@S]*:[@S]+(?=[^@S])','i'),
+  CAP_DASH=capRe('[@S]+[-\u2013\u2014][@S]+'),
+  CAP_SET_TIME=capRe('(?:\\.?[@S]+|\\.|^|([^@W]))set_time:[\\s\\S]*$'),
+  CAP_LINE=capRe('caption:[@S]*([\\s\\S]+?)[@S]*$','i'),
+  CAP_TRIM=capRe('^[@S]+|[@S]+$','g'), CAP_RUN=capRe('[@S]+','g');
+function capTrim(s){return String(s||'').replace(CAP_TRIM,'')}
+/* one space between words, none at the ends */
+function capFlat(s){return capTrim(String(s||'').replace(CAP_RUN,' '))}
+function capLen(s){return s.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g,'_').length}
+/* the text with every bracket taken out, innermost first */
+function capBare(s){s=String(s||'');while(/[(\[][^()\[\]]*[)\]]/.test(s))s=s.replace(/[(\[][^()\[\]]*[)\]]/g,' ');return s}
+function capNote(inner){
+  var b=capFlat(capBare(inner));
+  if(!b||CAP_VERSION.test(b)||CAP_VERSION.test(b.replace(/,/g,' &'))||CAP_CREDIT.test(b))return false;
+  if(CAP_NOTE_LIST.test(b)||CAP_NOTE_WORDS.test(b))return true;
+  if(CAP_VERSION_END.test(b))return false;   /* a long version name, not a note */
+  return capLen(b)>=41;
+}
+/* a note the line cut before its closing bracket runs to the end and is judged the same way. the closing bracket a
+   ":)" inside a note leaves behind goes with the note; any other closing bracket with nothing open stays */
+function capStrip(s){
+  s=String(s||'');
+  var out='', i=0, n=s.length;
+  while(i<n){
+    var ch=s.charAt(i);
+    if(ch!=='('&&ch!=='['){out+=ch;i++;continue}
+    var depth=0, k=i;
+    for(;k<n;k++){var c=s.charAt(k);if(c==='('||c==='[')depth++;else if(c===')'||c===']'){depth--;if(depth===0)break}}
+    var closed=k<n, whole=closed?s.slice(i,k+1):s.slice(i);
+    i=closed?k+1:n;
+    if(ch==='('&&capNote(closed?whole.slice(1,-1):whole.slice(1))){while(i<n&&(s.charAt(i)===')'||s.charAt(i)===']'))i++}
+    else out+=whole;
+  }
+  return out;
+}
+/* "ID's" and "I.D." written as ID, for the tests that look for the word */
+function capIdSpelled(s){return String(s||'').replace(CAP_ID_SPELLED,'$1ID')}
+/* does the text say ID and nothing else? its brackets set aside, it holds the word ID (or IDs) and no word outside
+   the placeholder list: "ID", "ID - ID", "ID (Extended Mix)", "Unreleased ID 3". "1977", "Soon" and "Song 2" are titles */
+function capIdOnly(t){
+  var w=capIdSpelled(capBare(t)).toLowerCase().match(CAP_WORD)||[], id=false;
+  for(var i=0;i<w.length;i++){if(CAP_PLACEHOLDER.indexOf(' '+w[i]+' ')<0)return false;if(w[i]==='id'||w[i]==='ids')id=true}
+  return id;
+}
+function libCaption(t){
+  var m=CAP_LINE.exec(capTrim(t)), raw=m?capTrim(m[1]):'';
+  if(!raw||raw.indexOf('\n')>-1)return '';
+  var cap=capTrim(capFlat(capStrip(raw.replace(CAP_SET_TIME,function(all,keep){return keep||''}))).replace(/^\|+/,''));
+  if(!cap||capLen(cap)>120||CAP_JUNK.test(cap)||CAP_MARKS.test(cap))return '';
+  /* the ID in front goes: "ID: Something", "ID - Something", "I.D. - Something" */
+  var idOff=false, colon=CAP_ID_COLON.exec(cap);
+  if(colon){cap=capTrim(cap.slice(colon[0].length));idOff=true}
+  var dash=CAP_DASH.exec(cap);
+  if(dash&&capTrim(capIdSpelled(cap.slice(0,dash.index))).toLowerCase()==='id'){cap=capTrim(cap.slice(dash.index+dash[0].length));idOff=true}
+  if(idOff&&CAP_MARKS.test(capBare(cap)))return '';   /* "ID - (open)": nothing outside the bracket is left */
+  return !cap||CAP_MARKS.test(cap)||capIdOnly(cap)?'':cap;
+}
 function libName(a,t){
   a=String(a||'');t=String(t||'');
   if(!(/^refsync\b/i.test(a)||/\bcaption:\s*/i.test(t)||/\bposted by\b/i.test(t)))return null;
-  var cap=(t.match(/caption:\s*(.+?)\s*$/i)||[])[1]||'';
+  var cap=libCaption(t);
   var poster=(t.match(/posted by\s+(.+?)\.(?:\s|$)/i)||[])[1]||a.replace(/^refsync\s*/i,'');
   var d=t.match(/\b(20\d{2})(\d{2})(\d{2})\b/),when=d?d[1]+'-'+d[2]+'-'+d[3]:'';
   return {artist:'',title:cap||'ID',lib:true,note:'an id from '+(poster?'a '+poster.trim()+' upload':'an upload')+(when?' ('+when+')':'')+', no artist named yet'};
@@ -715,9 +980,16 @@ function pathBlock(cur){
   if(c.kind==='match'&&cand){
     var lib=!!(nm&&nm.lib),head=(!lib&&cand.headline)||(nm?(nm.title||nm.artist):'ID');
     if(head==='ID'){named='in our library, no name yet';namedState='now'}
+    else if(cand.title_from==='upload'&&!clipNamed(cand)){named='in our library. the title came in with the clip, not a name yet';namedState='now'}   /* 2026-11-17: a title that came in with the clip (the upload's own, or its tracklist row) does not light the step as done */
     else{named=((lib||cand.status!=='out now')?'from our library of sets':'from the catalog')+(cand.status==='unreleased'?' · unreleased':cand.status==='out now'?' · out now':'');namedState='done'}
+    /* 2026-11-17 (submit flow, slice 1): the line says what the ladder does. one phone never names anything, a
+       reviewer checks it. it used to say that phones alone close it */
     if(cand.accepted_name){conf='a person confirmed this name';confState='done'}
-    else{conf='waiting on you: that’s right, or it’s actually… two phones or the artist close it';confState=head==='ID'?'next':'now'}
+    else if(answerKind('match',cand)==='name'){conf='waiting on a name. know it? name it below. a reviewer checks it.';confState=namedState==='now'?'next':'now'}
+    else{conf='waiting on you: that’s right, or it’s actually… a reviewer checks it. one phone alone never names anything.';confState=head==='ID'?'next':'now'}
+    /* 2026-11-17 (final read): a card redrawn for a scan this phone already answered keeps the line markSent wrote */
+    var ans=answeredOn(cur);
+    if(ans){conf=ans.v?sentLine(ans.v,cardWhere(cand)):'you answered this one';confState='done'}
   }else if(c.kind==='guess'&&cand){
     named='a guess at '+pct(cand.shown_score)+', under our bar';namedState='now';
     conf='nothing to confirm until it has a name';confState='next';
@@ -730,10 +1002,50 @@ function pathBlock(cur){
   else{placed='not placed in a set yet. “where are you hearing this?” helps.';placedState='next'}
   return '<h3>what happens next</h3><ol class="path" id="path">'+pathStep('done','heard',esc(heard))+pathStep(namedState,'named',esc(named))+pathStep(placedState,'placed',placed)+pathStep(confState,'confirmed',conf)+'</ol>';
 }
-function markSent(verdict){
+/* 2026-11-17 (submit flow, slice 1): after a send the last step says where the answer stands, read from the
+   candidate it was posted against: on a library clip (fingerprint_id) it sits on that clip and a reviewer checks
+   it, with no clip it is a lead and nothing more. the old lines promised that another phone would close it and
+   that the name would show on the scan after, which no single answer does. where is {clip, named}; a call
+   without it reads as a lead. */
+function sentLine(verdict,where){
+  var clip=!!(where&&where.clip), named=!!(where&&where.named);
+  if(verdict==='confirm')return clip?'your word is in. a reviewer checks it.':'your word is in, as a lead. this scan matched nothing in our library yet.';
+  if(!clip)return 'logged as a lead. this scan matched nothing in our library yet.';
+  return named?'on the record in our library. a reviewer checks it.':'on the ID in our library. a reviewer checks it.';
+}
+function markSent(verdict,where){
   var p=$('path');if(!p)return;var li=p.lastElementChild;if(!li)return;
   li.className='st-done';
-  li.querySelector('.nt').textContent=verdict==='confirm'?'your word is in. a second phone, a tracklist row or the artist closes it.':'your fix is in the queue. a second phone or a reviewer closes it, and the next scan shows it.';
+  li.querySelector('.nt').textContent=sentLine(verdict,where);
+}
+/* 2026-11-17 (submit flow, slice 1): "that's right" shows only where there is a name to agree with. an unnamed
+   library clip (no accepted_name and no named_by, whatever the headline reads: ID, or the upload's own title)
+   gets one button that opens the name form. a NO MATCH guess at a named record keeps "it's actually..." alone.
+   a POSSIBLE or better guess at a named record keeps both, as before.
+   2026-11-17 (slice 1 review): "no accepted_name and no named_by" alone was the wrong test for the button. about
+   a third of the library (546 of 1740 clips that day) shows a real title on the card with neither field: a claim
+   an admin let in, or an engine guess of 70 and up. those cards lost "that's right" under a headline that named
+   a record. so the one button is for a library card with nothing shown to agree with (noName): the headline
+   reads ID, or the title is only the upload's own (title_from, or a raw reference line the page read itself).
+   every other library card that shows a title keeps both buttons, as it had before this build. the chip and the
+   row button still go by unnamedLib. */
+function noName(c){
+  if(!unnamedLib(c))return false;
+  var nm=nameOf(c);
+  return cardHead(c)==='ID'||c.title_from==='upload'||!!(nm&&nm.lib);
+}
+function answerKind(kind,cand){
+  if(!cand)return 'none';
+  var nm=nameOf(cand), shown=!!(nm&&(nm.title||nm.artist)&&!(nm.lib&&nm.title==='ID'));
+  if(cand.fingerprint_id?noName(cand):!shown)return 'name';
+  if(kind==='guess'&&cand.tier==='NO MATCH')return 'fix';
+  return 'both';
+}
+function answerRow(kind,cand){
+  var k=answerKind(kind,cand), m=kind==='match';
+  if(k==='none')return '';
+  if(k==='name')return (m?'<h3>know it?</h3>':'')+'<div class="row"><button class="btn'+(m?' red':'')+'" data-act="correct">'+(m?'name it':'know it? name it')+'</button></div>';
+  return (m?'<h3>right?</h3>':'')+'<div class="row">'+(k==='both'?'<button class="btn'+(m?' red':'')+'" data-act="confirm">that\'s right</button>':'')+'<button class="btn" data-act="correct">it\'s actually...</button></div>';
 }
 function resultCard(cur){
   var c=cur.card, cand=c.candidate, out='';
@@ -745,6 +1057,10 @@ function resultCard(cur){
     out+='<h2'+(head.length>42?' class="long"':'')+'>'+esc(head)+'</h2>';
     if(sub)out+='<p class="sub">'+esc(sub)+'</p>';
     if(lib&&head!=='ID')out+='<p class="ttl">'+esc(nm.note)+'</p>';
+    /* 2026-11-17 (submit flow, slice 1): a title read off the clip's own upload is a lead, not a name. the card says so */
+    /* 2026-11-17 (final read): title_from "upload" also marks a set cut whose caption is its tracklist row, where no
+       upload named the track, so the line no longer says the upload calls it this. it says what is true of both */
+    if(cand.title_from==='upload'&&head!=='ID')out+='<p class="note">the title came in with the clip. not confirmed.</p>';
     if(head==='ID'){
       var h0=(cand.heard_in||[])[0];
       out+='<p class="ttl">'+(h0?'heard in '+esc(h0.set_title)+' at '+esc(h0.at):'in our library, still unnamed')+'</p>';
@@ -760,7 +1076,7 @@ function resultCard(cur){
     out+=(cand.other_sets&&cand.other_sets.length)?'':heardRows(cand);
     out+='<div id="hear"></div>';
     out+=pathBlock(cur);
-    out+='<h3>right?</h3><div class="row"><button class="btn red" data-act="confirm">that\'s right</button><button class="btn" data-act="correct">it\'s actually...</button></div>';
+    out+=answeredOn(cur)?'':answerRow('match',cand);   /* 2026-11-17 (final read): answered already, nothing is offered twice */
     out+=correctionForm();
     out+=followRow(cand);
     if(sub)checkArtistPage(sub);else if(nm&&nm.artist)checkArtistPage(nm.artist);
@@ -771,8 +1087,8 @@ function resultCard(cur){
     var other=!!placed&&!guessMatchesRow(g,cur.in_set.row);
     out+=placed||'<p class="kw"><b>no match</b></p><h2>nothing we\'re sure of.</h2><div class="row"><button class="btn red" data-act="listen">listen again</button></div><p class="note">best on a drop or a vocal.</p>';
     out+=inSetRows(cur);
-    out+=(other?'<details class="guess"><summary class="kw">the catalog heard something else</summary>':'<div class="guess"><p class="kw">closest guess</p>')+'<p class="nm">'+(g?esc(g.artist)+(g.artist&&g.title?' - ':'')+esc(g.title):'an unnamed library entry')+'</p><p class="pc">'+sureLine(cand)+'</p><div id="hear"></div>';
-    out+='<div class="row"><button class="btn" data-act="confirm">that\'s right</button><button class="btn" data-act="correct">it\'s actually...</button></div>'+(other?'</details>':'</div>');
+    out+=(other?'<details class="guess"><summary class="kw">the catalog heard something else</summary>':'<div class="guess"><p class="kw">closest guess</p>')+'<p class="nm">'+(g?esc(g.artist)+(g.artist&&g.title?' - ':'')+esc(g.title):'an unnamed library entry')+'</p>'+(cand.title_from==='upload'&&g&&g.title?'<p class="pc">the title came in with the clip. not confirmed.</p>':'')+'<p class="pc">'+sureLine(cand)+'</p><div id="hear"></div>';
+    out+=answerRow('guess',cand)+(other?'</details>':'</div>');
     out+=correctionForm();
     out+=followRow(cand);
     out+=pathBlock(cur);
@@ -811,6 +1127,18 @@ function jsonp(url,ms){return new Promise(function(res,rej){var cb='gmxcb'+Date.
   window[cb]=function(d){done();res(d)};sc.src=url+(url.indexOf('?')>-1?'&':'?')+'callback='+cb;sc.onerror=function(){done();rej(new Error('jsonp'))};document.head.appendChild(sc)})}
 function tracks(){return tracksIdx?Promise.resolve(tracksIdx):fx('/tracks-index.json',{},GET_MS).then(function(r){return r.ok?r.json():null}).then(function(j){tracksIdx=j;return j}).catch(function(){return null})}
 function sameTrack(q,row){return q&&row.q&&(row.q===q||(q.length>12&&(row.q.indexOf(q)>-1||q.indexOf(row.q)>-1)))}
+/* the artist our tracklists give a title, for a card that has none (2026-11-17, see fromTracklists). a named row
+   from the card's own set wins and is marked own; otherwise the most played name across the sets, as a lead */
+function setPath(u){return String(u||'').replace(/^https?:\/\/[^\/]+/i,'').replace(/[?#].*$/,'').replace(/\.html$/i,'').replace(/\/+$/,'').toLowerCase()}
+function inOwnSet(r,cur){var s=cur&&cur.in_set,a=s?setPath(s.page_url):'',b=r?setPath(r.u):'';return !!(a&&b&&a===b)}
+function tracklistArtist(hits,cur){
+  function named(r){var n=String(r.n||'').trim();return n&&n.indexOf(' - ')>0&&!/^id\s*-/i.test(n)?n:''}
+  var own=(hits||[]).filter(function(r){return named(r)&&inOwnSet(r,cur)})[0], full='';
+  if(own)full=named(own);
+  else{var count={};(hits||[]).forEach(function(r){var n=named(r);if(n)count[n]=(count[n]||0)+1});full=Object.keys(count).sort(function(a,b){return count[b]-count[a]||b.length-a.length})[0]||''}
+  if(!full)return null;
+  return {own:!!own,who:full.split(' - ')[0].trim(),title:full.split(' - ').slice(1).join(' - ').trim()};
+}
 function enrich(cur){
   var c=cur&&cur.card&&cur.card.candidate; if(!c)return;
   var nm=nameOf(c); if(!nm||!(nm.title||nm.artist))return;
@@ -847,15 +1175,26 @@ function enrich(cur){
     /* no artist on the card, but our tracklists name the record: take their name whole, artist and the full title
        with its edit credit (G-MO, 2026-10-11: "Whisper To Me (Assaf Michael & Reef Kopel Edit)", not just the
        caption), say so, and link the profile when there is one. the most played name across the sets wins. */
-    if(!artist&&!cardEl.querySelector('.sub')){
-      var count={};hits.forEach(function(r){var n=String(r.n||'').trim();if(n&&n.indexOf(' - ')>0&&!/^id\s*-/i.test(n))count[n]=(count[n]||0)+1});
-      var full=Object.keys(count).sort(function(a,b){return count[b]-count[a]||b.length-a.length})[0];
-      if(full){
-        var who=full.split(' - ')[0].trim(),ttlName=full.split(' - ').slice(1).join(' - ').trim();
+    /* 2026-11-17 (submit flow, slice 1): with no artist on the card every row here matched on the title alone, and
+       a title is not proof of who made it (two records share a title all the time). so the tracklists' artist is
+       worded as a lead under the headline and never becomes the artist line or a profile link. the one exception
+       is a row from the card's own set, the set this scan was placed in (in_set.page_url against the row's page):
+       there the tracklist is talking about this very spot, and the card takes the name as it did before. only on
+       the match layout: a guess card has no headline of its own to hang an artist on. */
+    if(!artist&&title&&!(nm.lib&&title==='ID')&&cur.card.kind==='match'&&!cardEl.querySelector('.sub')&&!cardEl.querySelector('#tlead')){
+      var lead=tracklistArtist(hits,cur);
+      if(lead&&lead.own){
+        var who=lead.who,ttlName=lead.title;
         var h2=h2El,sub=document.createElement('p');sub.className='sub';sub.textContent=who;
         if(h2){if(nm.lib&&ttlName&&foldT(ttlName).indexOf(foldT(title))>-1){h2.textContent=ttlName;h2.classList.toggle('long',ttlName.length>42)}h2.insertAdjacentElement('afterend',sub)}
         var t=cardEl.querySelector('.ttl');if(t&&/no artist named yet/.test(t.textContent))t.textContent=t.textContent.replace('no artist named yet','named in our tracklists');
         checkArtistPage(who);
+      }else if(lead&&h2El){
+        var lp=document.createElement('p'),lb=document.createElement('b');lp.className='note';lp.id='tlead';
+        lp.appendChild(document.createTextNode('our tracklists list a record with this title by '));
+        lb.setAttribute('translate','no');lb.textContent=lead.who;lp.appendChild(lb);
+        var sure=cardEl.querySelector('.sure');
+        if(sure&&sure.parentNode)sure.parentNode.insertBefore(lp,sure);else h2El.insertAdjacentElement('afterend',lp);
       }
     }
     if(hearEl&&!hearEl.children.length){
@@ -897,15 +1236,41 @@ function timingLine(cur){
   var parts=t.rounds.filter(function(r){return r.post||r.wait}).map(function(r){return (r.at/1000)+' s: up '+secs(r.post)+', match '+secs(r.wait)+(r.catalog==='off'?', catalog off':'')});
   return '<p class="timing">'+found+(parts.length?' · '+parts.join(' · '):'')+'</p>';
 }
+/* the name fields, shared by the card's form (ids c-...) and the form under a row in recent scans (ids n-...) */
+function nameFields(p){
+  return '<label for="'+p+'-artist">artist</label><input id="'+p+'-artist" name="artist_claim" maxlength="255">'+
+    '<label for="'+p+'-title">title</label><input id="'+p+'-title" name="title_claim" maxlength="512">'+
+    '<label for="'+p+'-url">a link that proves it (optional)</label><input id="'+p+'-url" name="source_url" inputmode="url" maxlength="1024" placeholder="https://">'+
+    '<label for="'+p+'-ig">your instagram (optional)</label><input id="'+p+'-ig" name="ig_handle" maxlength="64" placeholder="@">'+
+    '<label for="'+p+'-note">anything else</label><textarea id="'+p+'-note" name="note" maxlength="1000"></textarea>'+
+    '<div class="hp" aria-hidden="true"><label for="'+p+'-web">website</label><input id="'+p+'-web" name="website" tabindex="-1" autocomplete="off"></div>';
+}
 function correctionForm(){
-  return '<form class="form" id="cform" autocomplete="off"><label for="c-artist">artist</label><input id="c-artist" name="artist_claim" maxlength="255">'+
-    '<label for="c-title">title</label><input id="c-title" name="title_claim" maxlength="512">'+
-    '<label for="c-url">a link that proves it (optional)</label><input id="c-url" name="source_url" inputmode="url" maxlength="1024" placeholder="https://">'+
-    '<label for="c-ig">your instagram (optional)</label><input id="c-ig" name="ig_handle" maxlength="64" placeholder="@">'+
-    '<label for="c-note">anything else</label><textarea id="c-note" name="note" maxlength="1000"></textarea>'+
-    '<div class="hp" aria-hidden="true"><label for="c-web">website</label><input id="c-web" name="website" tabindex="-1" autocomplete="off"></div>'+
+  return '<form class="form" id="cform" autocomplete="off"><div id="cprev"></div>'+nameFields('c')+
     '<div class="row"><button class="btn red" type="submit">send the fix</button><button class="btn ghost" type="button" data-act="closeform">never mind</button></div>'+
     (sessionToken()?'':'<p class="smeta">get credit for this: <a href="#you">sign in</a> and your handle goes on the IDs you help name.</p>')+'</form>';
+}
+/* 2026-11-17 (submit flow, slice 1): opening the name form. the chip for the scan before is drawn here, at the
+   tap, so its age and its default are true at that moment (see prevOffer). on a card whose title was read off the
+   upload the title box starts with that title and the cursor waits in the artist box: the title is on the card
+   already, the artist is the part nobody has. the artist is never filled in for anyone. quiet (a redraw putting
+   an open form back) leaves the cursor alone. */
+function uploadTitle(c){var t=String((c&&(c.title_claim||c.headline))||'').trim();return c&&c.title_from==='upload'&&t&&t!=='ID'?t:''}
+function openForm(quiet){
+  var f=$('cform'); if(!f)return;
+  var c=current&&current.card&&current.card.candidate, was=f.classList.contains('on');
+  f.classList.add('on');
+  if(!was){
+    var slot=$('cprev'), o=prevOffer(c,lastLib,Date.now(),scanLive);
+    if(slot)slot.innerHTML=o?prevChipHtml(o,lastLib):'';
+    /* 2026-11-17 (final read): the title is filled in once per card. data-pre already on the form means it was
+       filled before and the person changed or cleared it (formsRestore carries the mark over a redraw), so it
+       is not filled in again */
+    var ti=$('c-title'), ut=uploadTitle(c);
+    if(ti&&ut&&!ti.value&&f.getAttribute('data-pre')==null){ti.value=ut;f.setAttribute('data-pre',ut)}
+    prevFill(!!(o&&o.pressed));
+  }
+  if(!quiet){var a=$('c-artist');if(a)a.focus()}
 }
 function helpForm(){
   return '<form class="form" id="hform" autocomplete="off"><label for="h-venue">venue or event</label><input id="h-venue" name="venue_claim" maxlength="255">'+
@@ -1006,10 +1371,11 @@ function say(text,ok){var m=$('cardmsg');if(!m)return;m.textContent=text;m.class
 /* actions */
 card.addEventListener('click',function(ev){
   var ch=ev.target.closest('[data-chip]'); if(ch){pickChip(ch.getAttribute('data-chip'));return}
+  var pv=ev.target.closest('[data-prev]'); if(pv){togglePrev(pv);return}
   var b=ev.target.closest('[data-act]'); if(!b)return;
   var act=b.getAttribute('data-act');
   if(act==='where'){openWhere();return}
-  if(act==='again'){card.classList.remove('on');card.innerHTML='';dropBlob();current=null;window.scrollTo({top:0,behavior:SM()});return}
+  if(act==='again'){card.classList.remove('on');card.innerHTML='';dropBlob();keepLast();current=null;window.scrollTo({top:0,behavior:SM()});return}
   if(act==='resend'){
     /* the same clip as a new post, the way a kept clip's scan again posts it (recentlist below) */
     if(busy)return; if(!heldBlob){showCard(errCard('the clip is gone. scan again.'));return}
@@ -1017,11 +1383,11 @@ card.addEventListener('click',function(ev){
     scanSeq++; early=null; finalDone=false; rateHit=false; timing={t0:Date.now(),rounds:[],first:null};
     go.classList.add('busy'); window.scrollTo({top:0,behavior:SM()}); identify(heldBlob); return;
   }
-if(act==='listen'){card.classList.remove('on');card.innerHTML='';dropBlob();current=null;window.scrollTo({top:0,behavior:SM()});startScan();return}
+if(act==='listen'){card.classList.remove('on');card.innerHTML='';dropBlob();keepLast();current=null;window.scrollTo({top:0,behavior:SM()});startScan();return}
   if(act==='share'){share();return}
   if(act==='confirm'){sendCorrection({verdict:'confirm'});return}
   if(act==='follow'){followNow(b);return}
-  if(act==='correct'){var f=$('cform');if(f){f.classList.add('on');$('c-artist').focus()}return}
+  if(act==='correct'){openForm();return}
   if(act==='help'){var h=$('hform');if(h){h.classList.add('on');$('h-venue').focus()}return}
   if(act==='closeform'){var fm=b.closest('form');if(fm)fm.classList.remove('on');return}
 });
@@ -1029,29 +1395,105 @@ card.addEventListener('submit',function(ev){
   ev.preventDefault();
   var f=ev.target;
   if(f.id==='cform'){
-    var a=f.artist_claim.value.trim(), t=f.title_claim.value.trim();
-    if(!a&&!t){say('an artist or a title, at least one.');return}
-    sendCorrection({verdict:'correct',artist_claim:a||null,title_claim:t||null,source_url:f.source_url.value.trim()||null,
-      ig_handle:f.ig_handle.value.trim()||null,note:f.note.value.trim()||null,website:f.website.value||''});
+    var body=answerBody(f);
+    if(typeof body==='string'){say(body);return}
+    sendCorrection(body);
   }else if(f.id==='hform'){
     sendHelp(f);
   }else if(f.id==='wform'){
     sendHint(f);
   }
 });
+/* 2026-11-17 (submit flow, slice 1): one reader and one poster for a name, used by the card's form and by the
+   form under a row in recent scans. the reader checks what the phone can check before anything is sent: an artist
+   or a title, and a link that starts with http:// or https:// (the api refuses any other, and that used to come
+   back as "check your signal"). a string back from answerBody is the line to show, an object is the body.
+   the poster turns the api's answer into a code and answerLine into one of the page's own lines: a refusal is the
+   app saying no, never the network, and the page never prints the api's words. only a dead link, a timeout or a
+   5xx keeps the signal line. a 422 is read just far enough to tell a link problem from a handle problem. */
+function answerBody(f){
+  var a=f.artist_claim.value.trim(), t=f.title_claim.value.trim(), link=f.source_url.value.trim();
+  if(!a&&!t)return 'an artist or a title, at least one.';
+  if(link&&!/^https?:\/\//i.test(link))return 'that link needs https://';
+  /* 2026-11-17 (final read): a keyboard that capitalises the first letter writes "Https://". the check above lets
+     it through and the api's does not (it reads the scheme in lower case only), so the scheme goes up in lower case */
+  link=link.replace(/^https?:\/\//i,function(m){return m.toLowerCase()});
+  return {verdict:'correct',artist_claim:a||null,title_claim:t||null,source_url:link||null,
+    ig_handle:f.ig_handle.value.trim()||null,note:f.note.value.trim()||null,website:f.website.value||''};
+}
+var ANSWER_LINES={dup:'this phone already answered for this one.',rate:'too many this hour, try later.',phone:'that scan was made on another phone.',
+  gone:'that scan is gone. scan again.',link:'that link needs https://',handle:'that instagram handle does not look right.',
+  typed:'the app did not take that. check what you typed.',net:'did not send. check your signal and try again.'};
+function answerLine(code){return ANSWER_LINES[code]||ANSWER_LINES.net}
+function refusalCode(r){
+  var s=r.status;
+  if(s===409)return 'dup';
+  if(s===429)return 'rate';
+  if(s===403)return 'phone';
+  if(s===404)return 'gone';
+  if(s!==422)return 'net';
+  return r.json().then(function(j){
+    var d=j&&j.detail, t=typeof d==='string'?d:JSON.stringify(d||'');
+    return /source_url/.test(t)?'link':/ig_handle/.test(t)?'handle':'typed';
+  },function(){return 'typed'});
+}
+function postAnswer(body,done){
+  if(!cfg){done('net');return}
+  fx(cfg.api_base+'/corrections',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify(body)},POST_MS)
+  .then(function(r){return r.ok?'ok':refusalCode(r)})
+  .then(function(code){return code},function(){return 'net'})
+  .then(done);
+}
+/* what the phone said, kept short for the row in recent scans */
+function answerSays(body){var a=body.artist_claim||'',t=body.title_claim||'';return (a&&t?a+' - '+t:(t||a)).slice(0,160)}
+/* the answer's target, worked out before the post (2026-11-17). prev is lastLib when the chip is pressed: the
+   body then carries that scan's id and for_previous_scan, the flag the api reads to keep such an answer from ever
+   being accepted on its own. "that's right" is always about the card on screen. where feeds sentLine. */
+function answerTarget(body,cur,prev){
+  var cand=cur&&cur.card&&cur.card.candidate||null;
+  if(prev&&body.verdict==='correct'){
+    body.recognition_id=prev.rid; body.for_previous_scan=true;
+    return {rid:prev.rid,prev:true,clip:true,named:false};
+  }
+  body.recognition_id=cur.recognition_id;
+  /* named: the card showed a record's name, not ID and not just the upload's title (noName), so the line after
+     the send never says "the ID" about a card that named a record (2026-11-17, slice 1 review) */
+  var w=cardWhere(cand);
+  return {rid:cur.recognition_id,prev:false,clip:w.clip,named:w.named};
+}
 function sendCorrection(body){
   if(!current){say('nothing to answer for.');return}
-  body.recognition_id=current.recognition_id;
+  var cur=current, seq=scanSeq, to=answerTarget(body,cur,prevPressed()?lastLib:null);
   say('sending');
-  fx(cfg.api_base+'/corrections',{method:'POST',headers:headers({'Content-Type':'application/json'}),body:JSON.stringify(body)},POST_MS)
-  .then(function(r){
-    if(r.status===409){say('this phone already answered for this one.');return}
-    if(r.status===429){say('too many this hour, try later.');return}
-    if(!r.ok)throw new Error(r.status);
-    say(body.verdict==='confirm'?'logged. appreciate you.':'logged, we will check it. appreciate you.',true);
-    markSent(body.verdict);
+  postAnswer(body,function(code){
+    if(code==='dup')markAnswered(to.rid,null);
+    else if(code==='ok')markAnswered(to.rid,body);
+    if(current!==cur&&seq!==scanSeq)return;   /* another scan took the card while this was in the air */
+    /* the chip goes once its scan is answered, or the api says that scan cannot be answered from this phone */
+    if(to.prev&&/^(ok|dup|phone|gone)$/.test(code)){if(lastLib&&lastLib.rid===to.rid)lastLib=null;var slot=$('cprev');if(slot)slot.innerHTML='';prevFill(false)}
+    if(code!=='ok'){say(answerLine(code));return}
+    if(to.prev){
+      say('logged on the ID we caught before. a reviewer checks it. appreciate you.',true);
+    }else{
+      say(body.verdict==='confirm'?'logged. appreciate you.':'logged, we will check it. appreciate you.',true);
+      if(current===cur)markSent(body.verdict,to);
+    }
     var f=$('cform');if(f)f.classList.remove('on');
-  }).catch(function(){say('did not send. check your signal and try again.')});
+  });
+}
+/* an answered scan is marked on its row in recent scans and remembered for this visit, so the chip and the row's
+   own button are not offered for it again. body is null for a 409: the phone answered it before, what it said is
+   not known here. a scan answered on its early card has no row yet; remember() picks the mark up from answeredRids. */
+function markAnswered(rid,body){
+  if(!rid)return;
+  var a={at:Date.now()};
+  if(body){a.v=body.verdict;var says=body.verdict==='correct'?answerSays(body):'';if(says)a.says=says}
+  if(!answeredRids[rid]||body)answeredRids[rid]=a;
+  var h=loadHistory(), hit=false;
+  for(var i=0;i<h.length;i++){if(h[i].rid===rid&&(!h[i].answered||body)){h[i].answered=answeredRids[rid];hit=true}}
+  if(!hit)return;
+  try{localStorage.setItem('gmx_history',JSON.stringify(h))}catch(e){}
+  renderHistory();
 }
 function sendHelp(f){
   if(!current||!heldBlob){say('the clip is gone, scan again first.');return}
@@ -1117,6 +1559,11 @@ function loadHistory(){try{return JSON.parse(localStorage.getItem('gmx_history')
 function remember(cur,keep){
   var c=cur.card, cand=c.candidate, nm=cand?nameOf(cand):null;
   var row={t:draining?draining.t:Date.now(),kind:c.kind,artist:nm?nm.artist:'',title:nm?nm.title:'',score:cand&&cand.shown_score!=null?cand.shown_score:null,status:cand?cand.status:'',unreleased:isUnreleased(cand)||undefined,id:cur.job_id,rid:cur.recognition_id,clip:!!keep,secs:cur.timing&&cur.timing.first?Math.round(cur.timing.first/100)/10:null};
+  /* 2026-11-17 (submit flow, slice 1): what the row needs to offer "name it" later: a library clip was behind the
+     scan (fp), at which tier, and it had no name (unnamed). answered is set by markAnswered. a row from before
+     this build has none of them and gets no button. */
+  if(cand){if(cand.fingerprint_id)row.fp=1;if(cand.tier)row.tier=cand.tier;if(unnamedLib(cand))row.unnamed=1}
+  if(cur.recognition_id&&answeredRids[cur.recognition_id])row.answered=answeredRids[cur.recognition_id];
   var h=loadHistory(); h.unshift(row); h=h.slice(0,HISTORY_MAX);
   try{localStorage.setItem('gmx_history',JSON.stringify(h))}catch(e){}
   renderHistory();
@@ -1127,28 +1574,97 @@ function when(t){
   if(s<60)return 'just now'; if(s<3600)return Math.floor(s/60)+' min ago'; if(s<86400)return Math.floor(s/3600)+' h ago';
   return d.toLocaleDateString(undefined,{month:'short',day:'numeric'}).toLowerCase();
 }
+/* 2026-11-17 (submit flow, slice 1): a scan can be answered after its card is gone. a row that was an unnamed
+   library match at LIKELY or CONFIRMED, not answered yet and under a day old, carries a "name it" button that
+   opens the name form under it (openRowForm). an answered row says what this phone answered. the button shows
+   nothing but its own two words: the row above it is what the card already showed. */
+function rowNameable(r,now){
+  return !!(r&&r.rid&&r.fp&&r.unnamed&&(r.tier==='LIKELY'||r.tier==='CONFIRMED')&&!r.answered&&!answeredRids[r.rid]&&now-r.t>=0&&now-r.t<NAME_ROW_MS);
+}
+function answeredLine(a){
+  if(!a)return '';
+  if(a.v==='correct'&&a.says)return '<small>you answered: <span translate="no">'+esc(a.says)+'</span></small>';
+  return '<small>'+(a.v==='confirm'?'you said that’s right':'you answered this one')+'</small>';
+}
+function historyRow(rid){var h=loadHistory();for(var i=0;i<h.length;i++){if(h[i].rid===rid)return h[i]}return null}
 function renderHistory(){
   var h=loadHistory();
   var mn=$('micnote');if(mn)mn.hidden=!!h.length;   /* the mic line shows until the first scan lands */
   if(!h.length){recentlist.innerHTML='<li class="none">nothing scanned yet.</li>';return}
+  var open=null;try{open=rowFormState()}catch(e){}
   recentlist.innerHTML=h.map(function(r,i){
     var who;
     if(r.kind==='match')who='<span data-artist="'+esc(r.artist||'')+'">'+esc(r.artist||'ID')+'</span><small>'+esc(r.title||'unnamed library entry')+(r.score==null?'':' · '+pct(r.score))+(r.secs?' · '+r.secs+' s':'')+'</small>';
     else if(r.kind==='guess')who='no match<small>closest guess: '+esc((r.artist?r.artist+' - ':'')+r.title)+(r.score==null?' · possible match':' · '+pct(r.score))+'</small>';
     else who='no match<small>nothing yet</small>';
     if(r.sent&&r.sent.status)who+='<small>not kept, the app refused it ('+esc(String(r.sent.status))+(r.sent.detail?': '+esc(r.sent.detail):'')+')</small>';
+    who+=answeredLine(r.answered||(r.rid&&answeredRids[r.rid]));
     var acts='', btns='';
-    if(r.clip&&r.id)btns='<button class="btn" data-clip="again" data-id="'+esc(r.id)+'">scan again</button>'+(r.kind!=='match'?'<button class="btn" data-clip="help" data-id="'+esc(r.id)+'">help us find it</button>':'');
+    if(rowNameable(r,Date.now()))btns+='<button class="btn" data-name="'+esc(r.rid)+'">name it</button>';
+    if(r.clip&&r.id)btns+='<button class="btn" data-clip="again" data-id="'+esc(r.id)+'">scan again</button>'+(r.kind!=='match'?'<button class="btn" data-clip="help" data-id="'+esc(r.id)+'">help us find it</button>':'');
     /* E6c: a no-match row can follow only the clip it kept (r.kept, set by markRow when a keep lands) */
     if(r.rid&&r.status!=='out now'&&(r.kind==='match'||r.kind==='guess'||r.kept))btns+='<button class="btn ghost" data-follow="'+esc(r.rid)+'">tell me when it drops</button>';
     /* a named match finds its way back the next day (2026-11-09 review): a search for it, and the crate heart below */
     if(r.kind==='match'&&r.title)btns+='<a class="btn ghost" href="/search?q='+encodeURIComponent(foldT((r.artist?r.artist+' ':'')+r.title)||r.title)+'">find it</a>';
     if(btns||(r.kind==='match'&&r.title))acts='<span class="acts"'+(r.kind==='match'&&r.title?' data-hi="'+i+'"':'')+'>'+btns+'<span class="msg" role="status"></span></span>';
-    return '<li><span class="who">'+who+'</span><span class="when">'+when(r.t)+'</span>'+acts+'</li>';
+    return '<li'+(r.rid?' data-rid="'+esc(r.rid)+'"':'')+'><span class="who">'+who+'</span><span class="when">'+when(r.t)+'</span>'+acts+'</li>';
   }).join('');
   heartHistory(h);
   linkHistoryArtists();
+  try{rowFormRestore(open)}catch(e){}
 }
+/* the name form under a row. one at a time; a second tap on the same button closes it. the list is redrawn
+   whenever a scan lands, so an open form and what was typed in it are put back after each redraw. */
+function rowLi(rid){var ls=recentlist.querySelectorAll('li[data-rid]');for(var i=0;i<ls.length;i++){if(ls[i].getAttribute('data-rid')===rid)return ls[i]}return null}
+function rowNote(rid,text,ok){var li=rowLi(rid),m=li&&li.querySelector('.acts .msg');if(m){m.textContent=text;m.className='msg'+(ok?' ok':'')}}
+function openRowForm(rid,quiet){
+  var old=$('nform');
+  if(old){var same=old.getAttribute('data-rid')===rid;old.parentNode.removeChild(old);if(same&&!quiet)return null}
+  var li=rowLi(rid); if(!li||!rowNameable(historyRow(rid),Date.now()))return null;
+  var f=document.createElement('form');
+  f.className='form on'; f.id='nform'; f.setAttribute('autocomplete','off'); f.setAttribute('data-rid',rid); f.style.flexBasis='100%';
+  f.innerHTML=nameFields('n')+'<div class="row"><button class="btn red" type="submit">send the name</button><button class="btn ghost" type="button" data-nclose="1">never mind</button></div><div class="msg" role="status"></div>';
+  li.appendChild(f);
+  if(!quiet){var a=$('n-artist');if(a)a.focus()}
+  return f;
+}
+function rowFormState(){
+  var f=$('nform'); if(!f)return null;
+  var els=f.querySelectorAll('input[name],textarea[name]'), vals={}, ae=document.activeElement;
+  for(var i=0;i<els.length;i++)vals[els[i].name]=els[i].value;
+  return {rid:f.getAttribute('data-rid'),vals:vals,focus:ae&&ae.id&&f.contains(ae)?ae.id:''};
+}
+function rowFormRestore(st){
+  if(!st||!st.rid)return;
+  var f=openRowForm(st.rid,true); if(!f)return;
+  Object.keys(st.vals).forEach(function(k){var el=f.querySelector('[name="'+k+'"]');if(el&&st.vals[k])el.value=st.vals[k]});
+  if(st.focus){var el=$(st.focus);if(el)try{el.focus()}catch(e){}}
+}
+function sendRowAnswer(f){
+  var rid=f.getAttribute('data-rid'), m=f.querySelector('.msg');
+  var note=function(t,ok){if(m){m.textContent=t;m.className='msg'+(ok?' ok':'')}};
+  if(f.getAttribute('data-busy'))return;
+  var body=answerBody(f);
+  if(typeof body==='string'){note(body);return}
+  /* the row's scan is an earlier one than the card on screen, unless the card on screen is that very scan */
+  body.recognition_id=rid; body.for_previous_scan=!(current&&current.recognition_id===rid);
+  f.setAttribute('data-busy','1'); note('sending');
+  postAnswer(body,function(code){
+    f.removeAttribute('data-busy');
+    if(code==='dup'){markAnswered(rid,null);rowNote(rid,answerLine(code));return}
+    if(code!=='ok'){note(answerLine(code));return}
+    markAnswered(rid,body);   /* redraws the list: the row now reads "you answered: ..." and the form is gone */
+    rowNote(rid,sentLine('correct',{clip:true,named:false}),true);
+  });
+}
+recentlist.addEventListener('click',function(ev){
+  var b=ev.target.closest('[data-name]'); if(b){openRowForm(b.getAttribute('data-name'));return}
+  var x=ev.target.closest('[data-nclose]'); if(x){var f=x.closest('form');if(f&&f.parentNode)f.parentNode.removeChild(f)}
+});
+recentlist.addEventListener('submit',function(ev){
+  var f=ev.target; if(!f||f.id!=='nform')return;
+  ev.preventDefault(); sendRowAnswer(f);
+});
 /* the same crate id the live card's heart uses, so a song hearted at the club shows as hearted here */
 function heartHistory(h){
   if(!window.gmxCrate||!gmxCrate.heart)return;
@@ -1175,7 +1691,7 @@ recentlist.addEventListener('click',function(ev){
   gmxClips.get(id).then(function(rec){
     if(!rec||!rec.blob){note('that clip is gone.');return}
     if(act==='again'){
-      busy=true; card.classList.remove('on'); current=null; heldBlob=rec.blob; heldAt=new Date(rec.t).toISOString(); heldLoud=false;
+      busy=true; card.classList.remove('on'); keepLast(); scanLive=false; current=null; heldBlob=rec.blob; heldAt=new Date(rec.t).toISOString(); heldLoud=false;   /* a kept clip is another moment's audio: see scanLive */
       scanSeq++; early=null; finalDone=false; rateHit=false; timing={t0:Date.now(),rounds:[],first:null};
       go.classList.add('busy'); window.scrollTo({top:0,behavior:SM()}); identify(rec.blob); return;
     }
@@ -1568,7 +2084,7 @@ function drain(){
   pendingList().then(function(p){
     if(!p.length){renderPending();return}
     var rec=p[0];draining=rec;drainDone=false;drainFailed=false;
-    busy=true;card.classList.remove('on');current=null;heldBlob=rec.blob;heldAt=rec.heard_at||new Date(rec.t).toISOString();heldLoud=false;
+    busy=true;card.classList.remove('on');keepLast();scanLive=false;current=null;heldBlob=rec.blob;heldAt=rec.heard_at||new Date(rec.t).toISOString();heldLoud=false;
     scanSeq++;early=null;finalDone=false;rateHit=false;timing={t0:Date.now(),rounds:[],first:null};
     go.classList.add('busy');say2('matching a clip from '+when(rec.t));renderPending();
     identify(rec.blob);
