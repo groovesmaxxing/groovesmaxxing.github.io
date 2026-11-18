@@ -592,6 +592,9 @@ words:{
 'house by mood: beach, morning, late night':'house por mood: playa, mañana, madrugada',
 'open IDs: unnamed tracks in tagged dj sets':'IDs abiertos: tracks sin nombre en sets de dj etiquetados',
 'the open IDs board':'el tablero de IDs abiertos',
+/* tracklist pages, seo p2-1 (2026-11-18): the more tracklists head and the one-ID open head */
+'more tracklists':'más tracklists',
+'still open: 1 ID':'sigue abierto: 1 ID',
 'the full weekly drop. the picks and the stories live in':'el drop semanal completo. los picks y las historias viven en',
 'the letter archive':'el archivo de cartas',
 'want the picks and the story?':'¿quieres los picks y la historia?',
@@ -797,6 +800,8 @@ scoped:[
 'groovesmaxxing support map':'mapa de apoyo de groovesmaxxing','our own tracklists only':'solo nuestros propios tracklists'}]
 ],
 rules:[
+/* tracklist pages, seo p2-1 (2026-11-18): the open rows head */
+['still open: (\\d+) IDs','siguen abiertos: $1 IDs'],
 /* adopted tracklists (2026-11-17): the page footer of a list somebody else posted */
 ['times and names as (.+) posted them in the video description, not checked against the audio yet\\. a \\(\\?\\) means one source and no second confirmation, and ID - ID means nobody has named it\\.','minutos y nombres tal como $1 los publicó en la descripción del video, aún sin cotejar con el audio. un (?) significa una fuente y ninguna segunda confirmación, e ID - ID quiere decir que nadie lo ha nombrado.'],
 ['times and names as (.+) posted them in the comments, not checked against the audio yet\\. a \\(\\?\\) means one source and no second confirmation, and ID - ID means nobody has named it\\.','minutos y nombres tal como $1 los publicó en los comentarios, aún sin cotejar con el audio. un (?) significa una fuente y ninguna segunda confirmación, e ID - ID quiere decir que nadie lo ha nombrado.'],
