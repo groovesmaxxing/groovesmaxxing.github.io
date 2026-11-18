@@ -1,6 +1,7 @@
 /* groovesmaxxing sets page (site speed build, 2026-10-11). the cards for each artist live in sets-index.json
    and render the moment a fold opens, a hash points at it, or a search runs. the "just added" row is inline.
-   vanilla, no dependencies. pairs with .github/scripts/lighten_sets.py, which writes the json. */
+   vanilla, no dependencies. pairs with .github/scripts/lighten_sets.py, which writes the json and the plain title
+   list per fold (seo p2-8, 2026-11-18) that fill() takes out when the cards land. */
 (function(){
 'use strict';
 var PLAY='<span class="set-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>';
@@ -56,6 +57,9 @@ function fill(grid){
     var a=j&&j.artists&&j.artists[grid.getAttribute('data-slug')];
     if(!a){grid.innerHTML='<p class="count">the sets did not load. refresh and try again.</p>';return}
     grid.innerHTML=a.cards.map(card).join('');grid.setAttribute('data-done','1');
+    /* the plain title list lighten_sets.py keeps in the html (seo p2-8) goes once the cards are in, so no title shows twice.
+       it stays when the json fails, so the titles still read */
+    var st=grid.previousElementSibling;if(st&&st.tagName==='UL'&&st.classList.contains('st'))st.parentNode.removeChild(st);
     try{grid.dispatchEvent(new CustomEvent('gmx:cards',{bubbles:true}))}catch(e){}
   });
 }
