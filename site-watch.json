@@ -1,80 +1,80 @@
 {
- "generated": "2026-11-17T18:30:04Z",
+ "generated": "2026-11-18T01:15:35Z",
  "site": [
   {
    "path": "/",
    "code": 200,
-   "ms": 1195,
+   "ms": 732,
    "state": "ok",
    "note": null
   },
   {
    "path": "/scan",
    "code": 200,
-   "ms": 666,
+   "ms": 432,
    "state": "ok",
    "note": null
   },
   {
    "path": "/gmx-config.json",
    "code": 200,
-   "ms": 158,
+   "ms": 304,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sets",
    "code": 200,
-   "ms": 340,
+   "ms": 832,
    "state": "ok",
    "note": null
   },
   {
    "path": "/artists",
    "code": 200,
-   "ms": 235,
+   "ms": 359,
    "state": "ok",
    "note": null
   },
   {
    "path": "/tracklists/",
    "code": 200,
-   "ms": 774,
+   "ms": 679,
    "state": "ok",
    "note": null
   },
   {
    "path": "/search-index.json",
    "code": 200,
-   "ms": 183,
+   "ms": 761,
    "state": "ok",
-   "note": "generated 2026-11-17"
+   "note": "generated 2026-11-18"
   },
   {
    "path": "/upcoming.json",
    "code": 200,
-   "ms": 199,
+   "ms": 244,
    "state": "ok",
-   "note": "generated 2026-11-17"
+   "note": "generated 2026-11-18"
   },
   {
    "path": "/radar-events.json",
    "code": 200,
-   "ms": 1271,
+   "ms": 392,
    "state": "ok",
-   "note": "generated 2026-11-16T19:41:53"
+   "note": "generated 2026-11-17T18:39:43"
   },
   {
    "path": "/sitemap.xml",
    "code": 200,
-   "ms": 268,
+   "ms": 309,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sw.js",
    "code": 200,
-   "ms": 709,
+   "ms": 665,
    "state": "ok",
    "note": null
   }
@@ -82,7 +82,7 @@
  "recognizer": {
   "state": "up",
   "code": 200,
-  "ms": 578,
+  "ms": 597,
   "health": {
    "status": "ok",
    "version": "0.1.2",
@@ -90,10 +90,8 @@
   }
  },
  "workflows": {
-  "state": "failed",
-  "failed": [
-   "freshness"
-  ],
+  "state": "ok",
+  "failed": [],
   "runs": [
    {
     "name": "events radar sweep",
@@ -101,28 +99,18 @@
     "conclusion": "success",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-11-16T19:42:15Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/43941595848",
+    "at": "2026-11-17T18:40:17Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/44149808531",
     "state": "ok"
    },
    {
     "name": "freshness",
     "status": "completed",
-    "conclusion": "failure",
+    "conclusion": "success",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-11-16T23:21:48Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/43978589576",
-    "state": "failed"
-   },
-   {
-    "name": "github_actions in /. - Update #1710759682",
-    "status": "completed",
-    "conclusion": "success",
-    "event": "dynamic",
-    "branch": "main",
-    "at": "2026-11-17T00:44:43Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/43990007327",
+    "at": "2026-11-17T22:15:26Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/44188203813",
     "state": "ok"
    },
    {
@@ -131,8 +119,8 @@
     "conclusion": "success",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-11-16T20:40:30Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/43952008904",
+    "at": "2026-11-17T19:20:58Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/44157533770",
     "state": "ok"
    },
    {
@@ -141,8 +129,8 @@
     "conclusion": "success",
     "event": "dynamic",
     "branch": "main",
-    "at": "2026-11-17T17:44:14Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/44140091700",
+    "at": "2026-11-18T01:15:24Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/44214281802",
     "state": "ok"
    },
    {
@@ -151,92 +139,92 @@
     "conclusion": "success",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-11-17T13:39:34Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/44094900497",
+    "at": "2026-11-17T23:34:37Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/44200550187",
     "state": "ok"
    },
    {
     "name": "site check",
-    "status": "completed",
-    "conclusion": "success",
+    "status": "in_progress",
+    "conclusion": null,
     "event": "push",
     "branch": "main",
-    "at": "2026-11-17T17:43:54Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/44139684526",
-    "state": "ok"
+    "at": "2026-11-18T01:13:10Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/44214078958",
+    "state": "running"
    },
    {
     "name": "site data",
-    "status": "completed",
-    "conclusion": "success",
+    "status": "in_progress",
+    "conclusion": null,
     "event": "push",
     "branch": "main",
-    "at": "2026-11-17T17:45:15Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/44139684613",
-    "state": "ok"
+    "at": "2026-11-18T01:13:09Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/44214079102",
+    "state": "running"
    }
   ]
  },
  "freshness": {
-  "state": "ok",
+  "state": "warn",
   "rows": [
    {
     "state": "ok",
     "id": "F-18",
-    "text": "friday.html carries the newest week: 2026-11-13, 4 days old"
+    "text": "friday.html carries the newest week: 2026-11-13, 5 days old"
    },
    {
     "state": "ok",
     "id": "F-21",
-    "text": "dropping soon says when it was last refreshed: 2026-11-13, 4 days old"
+    "text": "dropping soon says when it was last refreshed: 2026-11-17, 1 days old"
    },
    {
     "state": "ok",
     "id": "F-24",
-    "text": "the newsletter hub carries the newest issue: 2026-11-13, 4 days old"
+    "text": "the newsletter hub carries the newest issue: 2026-11-13, 5 days old"
    },
    {
     "state": "ok",
     "id": "F-30",
-    "text": "the events radar data is refreshed nightly: 2026-11-16, 1 days old"
+    "text": "the events radar data is refreshed nightly: 2026-11-17, 1 days old"
    },
    {
     "state": "ok",
     "id": "F-31",
-    "text": "the denver radar data is refreshed nightly: 2026-11-16, 1 days old"
+    "text": "the denver radar data is refreshed nightly: 2026-11-17, 1 days old"
    },
    {
     "state": "ok",
     "id": "F-32",
-    "text": "the tracks index was rebuilt after the newest tracklist: 2026-11-17, 0 days old"
+    "text": "the tracks index was rebuilt after the newest tracklist: 2026-11-18, 0 days old"
    },
    {
     "state": "ok",
     "id": "F-33",
-    "text": "upcoming.json (the home page's next up band) was rebuilt after the newest dropping soon render: 2026-11-17, 0 days old"
+    "text": "upcoming.json (the home page's next up band) was rebuilt after the newest dropping soon render: 2026-11-18, 0 days old"
    },
    {
     "state": "ok",
     "id": "F-34",
-    "text": "search-index.json (site search and the quick search sheet) is fresh and not emptied: 2026-11-17, 0 days old"
+    "text": "search-index.json (site search and the quick search sheet) is fresh and not emptied: 2026-11-18, 0 days old"
    },
    {
     "state": "ok",
     "id": "F-35",
-    "text": "open-ids.json (the open IDs board) is fresh and not emptied: 2026-11-17, 0 days old"
+    "text": "open-ids.json (the open IDs board) is fresh and not emptied: 2026-11-18, 0 days old"
    },
    {
-    "state": "ok",
+    "state": "warn",
     "id": "F-42",
-    "text": "moods-index.json (the mood picker) was rebuilt from the lane dumps. moodindex.py runs on the laptop, nothing schedules it yet: 2026-11-07, 10 days old"
+    "text": "moods-index.json (the mood picker) was rebuilt from the lane dumps. moodindex.py runs on the laptop, nothing schedules it yet: 2026-11-07, 11 days old"
    },
    {
     "state": "ok",
     "id": "F-40",
-    "text": "the artist count on the home page and in artists-index.json equals the number of profiles: 739 everywhere"
+    "text": "the artist count on the home page and in artists-index.json equals the number of profiles: 773 everywhere"
    }
   ]
  },
- "state": "wrong",
- "summary": "recognizer up; failed workflows: freshness"
+ "state": "warn",
+ "summary": "recognizer up; freshness warn"
 }

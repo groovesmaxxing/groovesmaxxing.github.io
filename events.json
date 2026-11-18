@@ -1,6 +1,27 @@
 {
- "generated": "2026-11-17T18:30:04Z",
+ "generated": "2026-11-18T01:15:35Z",
  "events": [
+  {
+   "at": "2026-11-18T01:15:35Z",
+   "what": "workflow freshness",
+   "from": "failed",
+   "to": "ok",
+   "detail": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/44188203813"
+  },
+  {
+   "at": "2026-11-18T01:15:35Z",
+   "what": "freshness F-42",
+   "from": "ok",
+   "to": "warn",
+   "detail": "moods-index.json (the mood picker) was rebuilt from the lane dumps. moodindex.py runs on the laptop, nothing schedules it yet: 2026-11-07, 11 days old"
+  },
+  {
+   "at": "2026-11-18T01:15:35Z",
+   "what": "site watch",
+   "from": "wrong",
+   "to": "warn",
+   "detail": "recognizer up; freshness warn"
+  },
   {
    "at": "2026-11-17T09:05:58Z",
    "what": "freshness F-18",
