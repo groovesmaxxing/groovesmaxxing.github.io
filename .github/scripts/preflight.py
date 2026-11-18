@@ -16,7 +16,8 @@ FAIL blocks the push. WARN prints and passes. the checks:
              ld+json MusicRecording carries no sameAs (2026-11-09)
   mobile     a page with its own inline style and no @media block is flagged
   json       every json file at the root parses
-  sitemap    every sitemap url resolves to a file, and every indexable root page is in the sitemap
+  sitemap    every sitemap url resolves to a file that is not noindex or a refresh stub, and every indexable
+             root page is in the sitemap
   banned     BANNED_STRINGS (env, comma separated, set as a repo secret) never appear in any tracked text
              file. the string itself is never printed, only the file and line.
   export     tracklists/_export/index.json, when the recognizer's export is there (2026-10-28, packet 10 of the
@@ -291,6 +292,9 @@ def check_sitemap(page_list, redirects):
         listed.add(t)
         if not t or not os.path.exists(t):
             fail("sitemap.xml", "url has no file: %s" % u)
+        # a listed url must be indexable: a noindex page or a refresh stub in the sitemap is a mixed signal (seo p2-9)
+        elif re.search(r'<meta name="robots" content="[^"]*noindex|http-equiv="refresh"', open(t, encoding="utf-8").read(), re.I):
+            fail("sitemap.xml", "url is noindex or a redirect stub, drop it from the sitemap: %s" % u)
     for f in page_list:
         if "/" in f and not f.startswith(("artists/", "labels/", "tracklists/", "newsletter/")):
             continue
