@@ -131,7 +131,7 @@ if not artists:
 m = re.search(r'<script>\n\(function\(\)\{\nfunction play\(b\)\{.*?\n</script>\n', out, re.S)
 if not m:
     print('the sets script did not match, nothing done'); sys.exit(1)
-out = with_css(out[:m.start()] + LIGHT + '\n<script src="/gmx-sets.js?v=1" defer></script>\n' + out[m.end():])
+out = with_css(out[:m.start()] + LIGHT + '\n<script src="/gmx-sets.js?v=2" defer></script>\n' + out[m.end():])
 json.dump({'generated': date.today().isoformat(), 'artists': artists}, open('sets-index.json', 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
 open(p, 'w', encoding='utf-8').write(out)
 print('sets.html: %d artists moved to sets-index.json (%d cards, %d tracklist links kept as titles), page %d -> %d KB' % (
