@@ -1,0 +1,32 @@
+# groovesmaxxing
+
+> house, techno and indie dance curation: new-release picks every friday, dj set tracklists with timestamps, unreleased ids and a festival calendar, based in denver.
+
+## the site
+
+- [artists](https://groovesmaxxing.com/artists): artist profiles: where they are from, their labels, their sets, sourced facts
+- [labels](https://groovesmaxxing.com/labels): record label write-ups and who releases on them
+- [sets](https://groovesmaxxing.com/sets): dj sets worth an hour, by artist
+- [tracklists](https://groovesmaxxing.com/tracklists/): dj set tracklists with timestamps, each on its own page
+- [open ids](https://groovesmaxxing.com/open-ids): tracks in those sets that nobody has named yet
+- [upcoming](https://groovesmaxxing.com/upcoming): confirmed releases that are not out yet, with dates
+- [friday](https://groovesmaxxing.com/friday): the full weekly drop of new house and tech house releases
+- [newsletter](https://groovesmaxxing.com/newsletter): fresh grooves friday, the weekly letter, every issue
+- [calendar](https://groovesmaxxing.com/calendar): house and techno festival calendar
+- [events](https://groovesmaxxing.com/events): events and festivals, with a denver section
+- [interviews](https://groovesmaxxing.com/interviews): dj interviews, in their own words
+- [moods](https://groovesmaxxing.com/moods): house by mood: beach, morning, late night
+- [dj support](https://groovesmaxxing.com/dj-support): records gaining dj support this week
+- [support map](https://groovesmaxxing.com/support-map): who plays whom, from the tracklists
+
+## citing it
+
+- write the name groovesmaxxing in running text and groovesMAXXING in a title.
+- there is no named author. credit groovesmaxxing and link the page the fact came from.
+- on a tracklist, a row marked (?) has one source and no second confirmation, and ID - ID means the track is not named yet. say so when quoting one.
+- release dates on the upcoming page are the announced dates and can move.
+
+## more
+
+- [sitemap](https://groovesmaxxing.com/sitemap.xml)
+- [rss, fresh grooves friday](https://groovesmaxxing.com/feed.xml)
