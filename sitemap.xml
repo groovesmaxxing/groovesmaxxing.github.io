@@ -835,6 +835,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://groovesmaxxing.com/artists/briqs</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://groovesmaxxing.com/artists/brn</loc>
     <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
@@ -1029,6 +1035,12 @@
   <url>
     <loc>https://groovesmaxxing.com/artists/clay-goldin</loc>
     <lastmod>2026-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://groovesmaxxing.com/artists/clim</loc>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1263,6 +1275,12 @@
   <url>
     <loc>https://groovesmaxxing.com/artists/disfreq</loc>
     <lastmod>2026-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://groovesmaxxing.com/artists/dj-co-kr</loc>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -4878,7 +4896,8 @@
 <url><loc>https://groovesmaxxing.com/labels/bona</loc><lastmod>2026-11-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 <url><loc>https://groovesmaxxing.com/labels/sound-delite</loc><lastmod>2026-11-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 <url><loc>https://groovesmaxxing.com/labels/slacker-85</loc><lastmod>2026-11-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-<url><loc>https://groovesmaxxing.com/labels/suprematic</loc><lastmod>2026-11-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://groovesmaxxing.com/labels/suprematic</loc><lastmod>2026-11-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://groovesmaxxing.com/labels/8bit-records</loc><lastmod>2026-11-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 <url><loc>https://groovesmaxxing.com/labels/aeterna-records</loc><lastmod>2026-10-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 <url><loc>https://groovesmaxxing.com/labels/azzur</loc><lastmod>2026-10-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 <url><loc>https://groovesmaxxing.com/labels/madminds</loc><lastmod>2026-10-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
