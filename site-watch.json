@@ -1,116 +1,112 @@
 {
- "generated": "2026-11-18T17:57:55Z",
+ "generated": "2026-11-19T00:15:42Z",
  "site": [
   {
    "path": "/",
    "code": 200,
-   "ms": 636,
+   "ms": 199,
    "state": "ok",
    "note": null
   },
   {
    "path": "/scan",
    "code": 200,
-   "ms": 362,
+   "ms": 300,
    "state": "ok",
    "note": null
   },
   {
    "path": "/gmx-config.json",
    "code": 200,
-   "ms": 329,
+   "ms": 123,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sets",
    "code": 200,
-   "ms": 512,
+   "ms": 266,
    "state": "ok",
    "note": null
   },
   {
    "path": "/artists",
    "code": 200,
-   "ms": 582,
+   "ms": 291,
    "state": "ok",
    "note": null
   },
   {
    "path": "/tracklists/",
    "code": 200,
-   "ms": 482,
+   "ms": 150,
    "state": "ok",
    "note": null
   },
   {
    "path": "/search-index.json",
    "code": 200,
-   "ms": 1285,
+   "ms": 400,
    "state": "ok",
    "note": "generated 2026-11-18"
   },
   {
    "path": "/upcoming.json",
    "code": 200,
-   "ms": 556,
+   "ms": 357,
    "state": "ok",
    "note": "generated 2026-11-18"
   },
   {
    "path": "/radar-events.json",
    "code": 200,
-   "ms": 465,
+   "ms": 171,
    "state": "ok",
-   "note": "generated 2026-11-17T18:39:43"
+   "note": "generated 2026-11-18T18:10:55"
   },
   {
    "path": "/sitemap.xml",
    "code": 200,
-   "ms": 825,
+   "ms": 278,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sw.js",
    "code": 200,
-   "ms": 360,
+   "ms": 95,
    "state": "ok",
    "note": null
   }
  ],
  "recognizer": {
-  "state": "up",
-  "code": 200,
-  "ms": 618,
-  "health": {
-   "status": "ok",
-   "version": "0.1.2",
-   "mail": true
-  }
+  "state": "down",
+  "code": 502,
+  "ms": 462,
+  "note": "answered 502"
  },
  "workflows": {
   "state": "ok",
   "failed": [],
   "runs": [
    {
+    "name": "freshness",
+    "status": "completed",
+    "conclusion": "success",
+    "event": "schedule",
+    "branch": "main",
+    "at": "2026-11-18T21:52:54Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/44405978710",
+    "state": "ok"
+   },
+   {
     "name": "pages build and deployment",
     "status": "completed",
     "conclusion": "success",
     "event": "dynamic",
     "branch": "main",
-    "at": "2026-11-18T17:52:51Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/44363321421",
-    "state": "ok"
-   },
-   {
-    "name": "recognizer uptime",
-    "status": "completed",
-    "conclusion": "success",
-    "event": "schedule",
-    "branch": "main",
-    "at": "2026-11-18T17:22:27Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/44357914230",
+    "at": "2026-11-18T23:45:59Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/44423415968",
     "state": "ok"
    },
    {
@@ -119,19 +115,19 @@
     "conclusion": "success",
     "event": "push",
     "branch": "main",
-    "at": "2026-11-18T17:54:24Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/44363321981",
+    "at": "2026-11-18T23:39:00Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/44422156036",
     "state": "ok"
    },
    {
     "name": "site data",
-    "status": "in_progress",
-    "conclusion": null,
+    "status": "completed",
+    "conclusion": "success",
     "event": "push",
     "branch": "main",
-    "at": "2026-11-18T17:51:46Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/44363322537",
-    "state": "running"
+    "at": "2026-11-18T23:47:03Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/44422156084",
+    "state": "ok"
    }
   ]
  },
@@ -141,60 +137,60 @@
    {
     "state": "ok",
     "id": "F-18",
-    "text": "friday.html carries the newest week: 2026-11-13, 5 days old"
+    "text": "friday.html carries the newest week: 2026-11-13, 6 days old"
    },
    {
     "state": "ok",
     "id": "F-21",
-    "text": "dropping soon says when it was last refreshed: 2026-11-18, 0 days old"
+    "text": "dropping soon says when it was last refreshed: 2026-11-18, 1 days old"
    },
    {
     "state": "ok",
     "id": "F-24",
-    "text": "the newsletter hub carries the newest issue: 2026-11-13, 5 days old"
+    "text": "the newsletter hub carries the newest issue: 2026-11-13, 6 days old"
    },
    {
     "state": "ok",
     "id": "F-30",
-    "text": "the events radar data is refreshed nightly: 2026-11-17, 1 days old"
+    "text": "the events radar data is refreshed nightly: 2026-11-18, 1 days old"
    },
    {
     "state": "ok",
     "id": "F-31",
-    "text": "the denver radar data is refreshed nightly: 2026-11-17, 1 days old"
+    "text": "the denver radar data is refreshed nightly: 2026-11-18, 1 days old"
    },
    {
     "state": "ok",
     "id": "F-32",
-    "text": "the tracks index was rebuilt after the newest tracklist: 2026-11-18, 0 days old"
+    "text": "the tracks index was rebuilt after the newest tracklist: 2026-11-18, 1 days old"
    },
    {
     "state": "ok",
     "id": "F-33",
-    "text": "upcoming.json (the home page's next up band) was rebuilt after the newest dropping soon render: 2026-11-18, 0 days old"
+    "text": "upcoming.json (the home page's next up band) was rebuilt after the newest dropping soon render: 2026-11-18, 1 days old"
    },
    {
     "state": "ok",
     "id": "F-34",
-    "text": "search-index.json (site search and the quick search sheet) is fresh and not emptied: 2026-11-18, 0 days old"
+    "text": "search-index.json (site search and the quick search sheet) is fresh and not emptied: 2026-11-18, 1 days old"
    },
    {
     "state": "ok",
     "id": "F-35",
-    "text": "open-ids.json (the open IDs board) is fresh and not emptied: 2026-11-18, 0 days old"
+    "text": "open-ids.json (the open IDs board) is fresh and not emptied: 2026-11-18, 1 days old"
    },
    {
     "state": "warn",
     "id": "F-42",
-    "text": "moods-index.json (the mood picker) was rebuilt from the lane dumps. moodindex.py runs on the laptop, nothing schedules it yet: 2026-11-07, 11 days old"
+    "text": "moods-index.json (the mood picker) was rebuilt from the lane dumps. moodindex.py runs on the laptop, nothing schedules it yet: 2026-11-07, 12 days old"
    },
    {
     "state": "ok",
     "id": "F-40",
-    "text": "the artist count on the home page and in artists-index.json equals the number of profiles: 784 everywhere"
+    "text": "the artist count on the home page and in artists-index.json equals the number of profiles: 786 everywhere"
    }
   ]
  },
- "state": "warn",
- "summary": "recognizer up; freshness warn"
+ "state": "down",
+ "summary": "recognizer down; freshness warn"
 }
