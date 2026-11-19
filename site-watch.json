@@ -1,80 +1,80 @@
 {
- "generated": "2026-11-19T07:51:35Z",
+ "generated": "2026-11-19T17:18:25Z",
  "site": [
   {
    "path": "/",
    "code": 200,
-   "ms": 263,
+   "ms": 333,
    "state": "ok",
    "note": null
   },
   {
    "path": "/scan",
    "code": 200,
-   "ms": 160,
+   "ms": 142,
    "state": "ok",
    "note": null
   },
   {
    "path": "/gmx-config.json",
    "code": 200,
-   "ms": 155,
+   "ms": 204,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sets",
    "code": 200,
-   "ms": 241,
+   "ms": 284,
    "state": "ok",
    "note": null
   },
   {
    "path": "/artists",
    "code": 200,
-   "ms": 229,
+   "ms": 199,
    "state": "ok",
    "note": null
   },
   {
    "path": "/tracklists/",
    "code": 200,
-   "ms": 217,
+   "ms": 168,
    "state": "ok",
    "note": null
   },
   {
    "path": "/search-index.json",
    "code": 200,
-   "ms": 238,
+   "ms": 409,
    "state": "ok",
-   "note": "generated 2026-11-18"
+   "note": "generated 2026-11-19"
   },
   {
    "path": "/upcoming.json",
    "code": 200,
-   "ms": 164,
+   "ms": 349,
    "state": "ok",
-   "note": "generated 2026-11-18"
+   "note": "generated 2026-11-19"
   },
   {
    "path": "/radar-events.json",
    "code": 200,
-   "ms": 210,
+   "ms": 181,
    "state": "ok",
    "note": "generated 2026-11-18T18:10:55"
   },
   {
    "path": "/sitemap.xml",
    "code": 200,
-   "ms": 307,
+   "ms": 278,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sw.js",
    "code": 200,
-   "ms": 179,
+   "ms": 176,
    "state": "ok",
    "note": null
   }
@@ -82,7 +82,7 @@
  "recognizer": {
   "state": "up",
   "code": 200,
-  "ms": 480,
+  "ms": 682,
   "health": {
    "status": "ok",
    "version": "0.1.2",
@@ -109,8 +109,8 @@
     "conclusion": "success",
     "event": "dynamic",
     "branch": "main",
-    "at": "2026-11-18T23:45:59Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/44423415968",
+    "at": "2026-11-19T13:22:21Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/44532642339",
     "state": "ok"
    },
    {
@@ -119,8 +119,8 @@
     "conclusion": "success",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-11-19T01:54:58Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/44440423539",
+    "at": "2026-11-19T13:34:25Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/44534756306",
     "state": "ok"
    },
    {
@@ -129,8 +129,8 @@
     "conclusion": "success",
     "event": "push",
     "branch": "main",
-    "at": "2026-11-18T23:39:00Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/44422156036",
+    "at": "2026-11-19T13:23:16Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/44532431773",
     "state": "ok"
    },
    {
@@ -139,8 +139,8 @@
     "conclusion": "success",
     "event": "push",
     "branch": "main",
-    "at": "2026-11-18T23:47:03Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/44422156084",
+    "at": "2026-11-19T13:23:14Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/44532431703",
     "state": "ok"
    }
   ]
@@ -176,22 +176,22 @@
    {
     "state": "ok",
     "id": "F-32",
-    "text": "the tracks index was rebuilt after the newest tracklist: 2026-11-18, 1 days old"
+    "text": "the tracks index was rebuilt after the newest tracklist: 2026-11-19, 0 days old"
    },
    {
     "state": "ok",
     "id": "F-33",
-    "text": "upcoming.json (the home page's next up band) was rebuilt after the newest dropping soon render: 2026-11-18, 1 days old"
+    "text": "upcoming.json (the home page's next up band) was rebuilt after the newest dropping soon render: 2026-11-19, 0 days old"
    },
    {
     "state": "ok",
     "id": "F-34",
-    "text": "search-index.json (site search and the quick search sheet) is fresh and not emptied: 2026-11-18, 1 days old"
+    "text": "search-index.json (site search and the quick search sheet) is fresh and not emptied: 2026-11-19, 0 days old"
    },
    {
     "state": "ok",
     "id": "F-35",
-    "text": "open-ids.json (the open IDs board) is fresh and not emptied: 2026-11-18, 1 days old"
+    "text": "open-ids.json (the open IDs board) is fresh and not emptied: 2026-11-19, 0 days old"
    },
    {
     "state": "warn",
