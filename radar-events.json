@@ -1,26 +1,8 @@
 {
-"generated": "2026-11-18T18:10:55+00:00",
+"generated": "2026-11-19T18:22:31+00:00",
 "artist_count": 704,
 "artists_with_events": 137,
 "events": [
-{
-"date": "2026-11-18",
-"event": "Alok presented by Prism United",
-"venue": "Crescent Theater ",
-"city": "Mobile",
-"region": "AL",
-"url": "https://www.ticketweb.com/event/alok-presented-by-prism-united-crescent-theater-tickets/14365334",
-"artist": "Alok"
-},
-{
-"date": "2026-11-18",
-"event": "RHYE - JOY TOUR",
-"venue": "The Observatory North Park",
-"city": "San Diego",
-"region": "CA",
-"url": "https://www.ticketmaster.com/rhye-joy-tour-san-diego-california-11-18-2026/event/0B0064C3A2C75233",
-"artist": "Rhye"
-},
 {
 "date": "2026-11-19",
 "event": "Hugel",
@@ -227,15 +209,6 @@
 "region": "QC",
 "url": "https://www.ticketmaster.ca/festival-zamna-montreal-montreal-quebec-11-21-2026/event/31006524AFF85CC1",
 "artist": "ARTBAT"
-},
-{
-"date": "2026-11-21",
-"event": "Biscits",
-"venue": "Time Nightclub",
-"city": "Costa Mesa",
-"region": "CA",
-"url": "https://www.ticketweb.com/event/biscits-time-nightclub-tickets/14354574",
-"artist": "Biscits"
 },
 {
 "date": "2026-11-21",
@@ -1535,11 +1508,11 @@
 },
 {
 "date": "2026-12-30",
-"event": "Vandelux",
+"event": "Vandelux DJ Set",
 "venue": "The Grand (Boston)",
 "city": "Boston",
 "region": "MA",
-"url": "https://www.ticketmaster.com/vandelux-boston-massachusetts-12-30-2026/event/0100657194908493",
+"url": "https://www.ticketmaster.com/vandelux-dj-set-boston-massachusetts-12-30-2026/event/0100657194908493",
 "artist": "Vandelux"
 },
 {
@@ -1859,12 +1832,30 @@
 },
 {
 "date": "2027-01-22",
+"event": "Drumcode DC: Adam Beyer, GENESI, Charles D",
+"venue": "Echostage",
+"city": "Washington",
+"region": "DC",
+"url": "https://www.ticketmaster.com/drumcode-dc-adam-beyer-genesi-charles-washington-district-of-columbia-01-22-2027/event/15006571A3407648",
+"artist": "Adam Beyer"
+},
+{
+"date": "2027-01-22",
 "event": "CLAPTONE with Torren Foot & LIZA",
 "venue": "The Beach Hotel",
 "city": "Byron Bay",
 "region": "NSW",
 "url": "https://www.moshtix.com.au/v2/event/claptone-with-torren-foot-liza/200903",
 "artist": "CLAPTONE"
+},
+{
+"date": "2027-01-22",
+"event": "Drumcode DC: Adam Beyer, GENESI, Charles D",
+"venue": "Echostage",
+"city": "Washington",
+"region": "DC",
+"url": "https://www.ticketmaster.com/drumcode-dc-adam-beyer-genesi-charles-washington-district-of-columbia-01-22-2027/event/15006571A3407648",
+"artist": "GENESI"
 },
 {
 "date": "2027-01-22",
@@ -1886,30 +1877,12 @@
 },
 {
 "date": "2027-01-23",
-"event": "Drumcode DC: Adam Beyer, GENESI, Charles D",
-"venue": "Echostage",
-"city": "Washington",
-"region": "DC",
-"url": "https://www.ticketmaster.com/drumcode-dc-adam-beyer-genesi-charles-washington-district-of-columbia-01-23-2027/event/15006571A3407648",
-"artist": "Adam Beyer"
-},
-{
-"date": "2027-01-23",
 "event": "FLAMINGO PIER (LIVE). WOVEN TOGETHER ALBUM RELEASE TOUR.",
 "venue": "The Night Cat",
 "city": "Fitzroy",
 "region": "VIC",
 "url": "https://www.moshtix.com.au/v2/event/flamingo-pier-live-woven-together-album-release-tour-/201809",
 "artist": "Flamingo Pier"
-},
-{
-"date": "2027-01-23",
-"event": "Drumcode DC: Adam Beyer, GENESI, Charles D",
-"venue": "Echostage",
-"city": "Washington",
-"region": "DC",
-"url": "https://www.ticketmaster.com/drumcode-dc-adam-beyer-genesi-charles-washington-district-of-columbia-01-23-2027/event/15006571A3407648",
-"artist": "GENESI"
 },
 {
 "date": "2027-01-23",
@@ -3235,6 +3208,33 @@
 "artist": "FISHER"
 },
 {
+"date": "2027-07-30",
+"event": "Veld Music Festival",
+"venue": "Downsview Park Toronto",
+"city": "Toronto",
+"region": "ON",
+"url": "https://on.fgtix.com/trk/B4W4b",
+"artist": "Chris Lake"
+},
+{
+"date": "2027-07-31",
+"event": "Veld Music Festival",
+"venue": "Downsview Park Toronto",
+"city": "Toronto",
+"region": "ON",
+"url": "https://on.fgtix.com/trk/B4W4b",
+"artist": "Chris Lake"
+},
+{
+"date": "2027-08-01",
+"event": "Veld Music Festival",
+"venue": "Downsview Park Toronto",
+"city": "Toronto",
+"region": "ON",
+"url": "https://on.fgtix.com/trk/B4W4b",
+"artist": "Chris Lake"
+},
+{
 "date": "2027-08-07",
 "event": "Franky Rizardo",
 "venue": "Cardiff Castle",
@@ -3368,6 +3368,33 @@
 "region": "ES",
 "url": "https://www.ticketmaster.es/event/midnight-generation-rooted-tour-2027-tickets/329718134?language=en-us",
 "artist": "Midnight Generation"
+},
+{
+"date": "2027-11-13",
+"event": "Purple Disco Machine - Cosmotropia Live Tour 2027",
+"venue": "Forum Karlín",
+"city": "Praha 8",
+"region": "CZ",
+"url": "https://www.ticketmaster.cz/event/purple-disco-machine-cosmotropia-live-tour-2027-tickets/1528628852?language=en-us",
+"artist": "Purple Disco Machine"
+},
+{
+"date": "2027-11-24",
+"event": "Purple Disco Machine – Cosmotropia Tour",
+"venue": "",
+"city": "Amsterdam",
+"region": "NL",
+"url": "https://www.ticketmaster.nl/event/purple-disco-machine--cosmotropia-tour-tickets/875289394?language=en-us",
+"artist": "Purple Disco Machine"
+},
+{
+"date": "2027-11-26",
+"event": "Purple Disco Machine",
+"venue": "Vorst Nationaal/Forest National",
+"city": "Forest (Brussels)",
+"region": "BE",
+"url": "https://www.ticketmaster.be/event/purple-disco-machine-tickets/1341238990",
+"artist": "Purple Disco Machine"
 }
 ]
 }
