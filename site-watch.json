@@ -1,89 +1,93 @@
 {
- "generated": "2026-11-19T00:15:42Z",
+ "generated": "2026-11-19T07:51:35Z",
  "site": [
   {
    "path": "/",
    "code": 200,
-   "ms": 199,
+   "ms": 263,
    "state": "ok",
    "note": null
   },
   {
    "path": "/scan",
    "code": 200,
-   "ms": 300,
+   "ms": 160,
    "state": "ok",
    "note": null
   },
   {
    "path": "/gmx-config.json",
    "code": 200,
-   "ms": 123,
+   "ms": 155,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sets",
    "code": 200,
-   "ms": 266,
+   "ms": 241,
    "state": "ok",
    "note": null
   },
   {
    "path": "/artists",
    "code": 200,
-   "ms": 291,
+   "ms": 229,
    "state": "ok",
    "note": null
   },
   {
    "path": "/tracklists/",
    "code": 200,
-   "ms": 150,
+   "ms": 217,
    "state": "ok",
    "note": null
   },
   {
    "path": "/search-index.json",
    "code": 200,
-   "ms": 400,
+   "ms": 238,
    "state": "ok",
    "note": "generated 2026-11-18"
   },
   {
    "path": "/upcoming.json",
    "code": 200,
-   "ms": 357,
+   "ms": 164,
    "state": "ok",
    "note": "generated 2026-11-18"
   },
   {
    "path": "/radar-events.json",
    "code": 200,
-   "ms": 171,
+   "ms": 210,
    "state": "ok",
    "note": "generated 2026-11-18T18:10:55"
   },
   {
    "path": "/sitemap.xml",
    "code": 200,
-   "ms": 278,
+   "ms": 307,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sw.js",
    "code": 200,
-   "ms": 95,
+   "ms": 179,
    "state": "ok",
    "note": null
   }
  ],
  "recognizer": {
-  "state": "down",
-  "code": 502,
-  "ms": 462,
-  "note": "answered 502"
+  "state": "up",
+  "code": 200,
+  "ms": 480,
+  "health": {
+   "status": "ok",
+   "version": "0.1.2",
+   "mail": true
+  }
  },
  "workflows": {
   "state": "ok",
@@ -107,6 +111,16 @@
     "branch": "main",
     "at": "2026-11-18T23:45:59Z",
     "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/44423415968",
+    "state": "ok"
+   },
+   {
+    "name": "recognizer uptime",
+    "status": "completed",
+    "conclusion": "success",
+    "event": "schedule",
+    "branch": "main",
+    "at": "2026-11-19T01:54:58Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/44440423539",
     "state": "ok"
    },
    {
@@ -191,6 +205,6 @@
    }
   ]
  },
- "state": "down",
- "summary": "recognizer down; freshness warn"
+ "state": "warn",
+ "summary": "recognizer up; freshness warn"
 }
