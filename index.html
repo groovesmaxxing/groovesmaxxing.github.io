@@ -246,6 +246,18 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--racing);outline-off
 .hero .pill:not(.solid){background:rgba(11,11,13,.82)}
 .hero .icon-btn{background:rgba(11,11,13,.85)}
 .hero .icon-btn:hover{background:var(--racing)}
+/* hero pills v2 (2026-11-20, his pick A): one or two words each, half the old padding, twelve in two rows on a laptop */
+.hero nav.hero-links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:780px;width:auto;margin-left:auto;margin-right:auto}
+.hero nav.hero-links a.pill{display:inline-flex;align-items:center;gap:6px;flex:0 0 auto;min-height:0;font-size:.7rem;letter-spacing:.06em;padding:6px 12px;border-width:1.5px;white-space:nowrap}
+.hero nav.hero-links a.pill:not(.solid){box-shadow:0 0 0 1.5px #FF1C02}
+.hero nav.hero-links a.pill.solid{box-shadow:0 0 0 1.5px #FFFFFF}
+.hero nav.hero-links a.pill .e{font-size:1.05em;line-height:1}
+@media (max-width:640px){.hero nav.hero-links{gap:6px;margin-top:18px}.hero nav.hero-links a.pill{font-size:.66rem;padding:5px 10px}}
+/* social circles in their own colours (his pick S1): the glyph takes the brand colour, the circle fills with it on hover */
+.hero .icon-btn[aria-label^="spotify"]{--b:#1DB954}.hero .icon-btn[aria-label="instagram"]{--b:#E1306C}.hero .icon-btn[aria-label="soundcloud"]{--b:#FF5500}.hero .icon-btn[aria-label="bandcamp"]{--b:#1DA0C3}.hero .icon-btn[aria-label="youtube"]{--b:#FF0000}.hero .icon-btn[aria-label="tiktok"]{--b:#25F4EE}.hero .icon-btn[aria-label="x"]{--b:#FFFFFF}
+.hero .icon-btn[aria-label] svg{stroke:var(--b,var(--day))}.hero .icon-btn[aria-label] .fillme{fill:var(--b,var(--day))}
+.hero .icon-btn[aria-label="tiktok"] svg{filter:drop-shadow(1.2px 1.2px 0 #FE2C55)}
+.hero .icon-btn[aria-label]:hover{background:var(--b,var(--racing))}.hero .icon-btn[aria-label]:hover svg{stroke:var(--night);filter:none}.hero .icon-btn[aria-label]:hover .fillme{fill:var(--night)}
 @media (min-width:641px){.hero .area-nav a{background-color:rgba(11,11,13,.82);border-radius:6px;padding-left:6px;padding-right:6px}}
 #gmx-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:1000;background:var(--racing);transform-origin:0 50%;transform:scaleX(0);box-shadow:0 0 12px rgba(255,28,2,.7);pointer-events:none}
 
@@ -440,11 +452,18 @@ footer svg{animation:gmx-beat 6s ease-in-out infinite}
 </a>
 </nav>
 <nav class="hero-links" aria-label="where to start">
-<a class="pill solid" href="tracklists/" data-pv-t="tracklists" data-pv-d="what actually got played. dj sets taken apart track by track, timestamped to five seconds, with the sources shown and the tracks we could not name left honest." data-pv-m="its own page ↗ · updated as new sets go up">🎧 tracklists · what actually got played</a>
-<a class="pill" href="#upcoming" data-pv-t="dropping soon" data-pv-d="what the artists and labels have announced, dated as they said it. pre-save links go straight to their pages." data-pv-m="100 on the list · refreshed as we hear it">📅 dropping soon · dated as they said it</a>
-<a class="pill" href="#library" data-pv-t="sets worth your hour" data-pv-d="sets worth your hour. a fresh seven every week from the newest on the site, the whole library on its own page, and one youtube playlist to match." data-pv-m="7 a week · 49 in rotation · every set on its own page">▶️ sets worth your hour · the library</a>
-<a class="pill" href="#letter" data-pv-t="the newsletter" data-pv-d="fresh grooves friday in your inbox, and every past issue readable in full on the site. the releases that survived the week, an artist worth knowing, where they're playing next." data-pv-m="free · fridays · no spam · every issue on the site">📨 the newsletter · fresh grooves friday</a>
-<a class="pill" href="/moods" data-pv-t="pick a mood" data-pv-d="beach, morning, late night, get bumpy. 30 house tracks from our playlists for whatever the day is doing, one tap from spotify." data-pv-m="its own page ↗ · type a mood, get a crate">🎚️ pick a mood</a>
+<a class="pill solid" href="tracklists/" data-pv-t="tracklists" data-pv-d="what actually got played. dj sets taken apart track by track, timestamped to five seconds, with the sources shown and the tracks we could not name left honest." data-pv-m="its own page ↗ · updated as new sets go up"><span class="e" aria-hidden="true">🎧</span>tracklists</a>
+<a class="pill" href="#upcoming" data-pv-t="dropping soon" data-pv-d="what the artists and labels have announced, dated as they said it. pre-save links go straight to their pages." data-pv-m="100 on the list · refreshed as we hear it"><span class="e" aria-hidden="true">📅</span>dropping soon</a>
+<a class="pill" href="#letter" data-pv-t="the newsletter" data-pv-d="fresh grooves friday in your inbox, and every past issue readable in full on the site. the releases that survived the week, an artist worth knowing, where they're playing next." data-pv-m="free · fridays · no spam · every issue on the site"><span class="e" aria-hidden="true">📨</span>newsletter</a>
+<a class="pill" href="/exchange" data-pv-t="the groove exchange" data-pv-d="every record we track, priced daily by how hard the dance floor is backing it." data-pv-m="its own page ↗ · moves daily"><span class="e" aria-hidden="true">📈</span>groove exchange</a>
+<a class="pill" href="#library" data-pv-t="sets worth your hour" data-pv-d="sets worth your hour. a fresh seven every week from the newest on the site, the whole library on its own page, and one youtube playlist to match." data-pv-m="7 a week · 49 in rotation · every set on its own page"><span class="e" aria-hidden="true">▶️</span>sets</a>
+<a class="pill" href="/moods" data-pv-t="pick a mood" data-pv-d="beach, morning, late night, get bumpy. 30 house tracks from our playlists for whatever the day is doing, one tap from spotify." data-pv-m="its own page ↗ · type a mood, get a crate"><span class="e" aria-hidden="true">🎚️</span>moods</a>
+<a class="pill" href="/friday" data-pv-t="this friday" data-pv-d="every new house, tech house, techno and indie dance release that cleared verification this week, dated and labeled." data-pv-m="its own page ↗ · refreshes every friday"><span class="e" aria-hidden="true">🔥</span>this friday</a>
+<a class="pill" href="/radio" data-pv-t="radio" data-pv-d="every dj set in the library back to back, newest first. open it, put the phone down, let it run." data-pv-m="its own page ↗"><span class="e" aria-hidden="true">📻</span>radio</a>
+<a class="pill" href="/calendar" data-pv-t="the festival calendar" data-pv-d="the dance music year on one page: the house and techno festivals, burns and city weeks worth planning around." data-pv-m="its own page ↗"><span class="e" aria-hidden="true">🎪</span>festivals</a>
+<a class="pill" href="/open-ids" data-pv-t="open IDs" data-pv-d="every track still unnamed across our dj set tracklists, timestamped, with the set it came from. know one? tell us and it goes up with your name on it." data-pv-m="its own page ↗"><span class="e" aria-hidden="true">🕵️</span>open IDs</a>
+<a class="pill" href="/support-map" data-pv-t="support map" data-pv-d="who plays whom, built from the dj sets we tagged. each link goes to the set it came from." data-pv-m="its own page ↗"><span class="e" aria-hidden="true">🗺️</span>support map</a>
+<a class="pill" href="/picks" data-pv-t="the picks scoreboard" data-pv-d="every record we picked in a month, read again when the month ends: did the djs and the editors catch up?" data-pv-m="its own page ↗"><span class="e" aria-hidden="true">🏆</span>picks</a>
 </nav>
 </header>
 
