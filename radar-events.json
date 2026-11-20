@@ -1,26 +1,8 @@
 {
-"generated": "2026-11-19T18:22:31+00:00",
+"generated": "2026-11-20T17:53:59+00:00",
 "artist_count": 704,
-"artists_with_events": 137,
+"artists_with_events": 136,
 "events": [
-{
-"date": "2026-11-19",
-"event": "Hugel",
-"venue": "XS Nightclub at Wynn Las Vegas",
-"city": "Las Vegas",
-"region": "NV",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAv9uV",
-"artist": "HUGEL"
-},
-{
-"date": "2026-11-19",
-"event": "Salmo",
-"venue": "Melkweg",
-"city": "Amsterdam",
-"region": "NL",
-"url": "https://www.ticketmaster.nl/event/salmo-tickets/901417642?language=en-us",
-"artist": "SALMO"
-},
 {
 "date": "2026-11-20",
 "event": "Biscits",
@@ -104,30 +86,12 @@
 },
 {
 "date": "2026-11-20",
-"event": "ALL DAY I DREAM of Australia | Byron Bay",
-"venue": "The Beach Hotel",
-"city": "Byron Bay",
-"region": "NSW",
-"url": "https://www.moshtix.com.au/v2/event/all-day-i-dream-of-australia-byron-bay/197695",
-"artist": "Lee Burridge"
-},
-{
-"date": "2026-11-20",
 "event": "Max Dean B2B Luke Dean - Australia Tour",
 "venue": "",
 "city": "",
 "region": "",
 "url": "https://www.moshtix.com.au/v2/event/max-dean-b2b-luke-dean-australia-tour/200969",
 "artist": "Luke Dean"
-},
-{
-"date": "2026-11-20",
-"event": "MARCO CAROLA PRESENTS MUSIC ON | PACHA ICONS",
-"venue": "FIVE Luxe JBR",
-"city": "Dubai",
-"region": "AE",
-"url": "https://www.ticketmaster.ae/event/marco-carola-presents-music-on-%7C-pacha-icons-tickets/448640469",
-"artist": "Marco Carola"
 },
 {
 "date": "2026-11-20",
@@ -1895,6 +1859,15 @@
 },
 {
 "date": "2027-01-23",
+"event": "Layton Giordani",
+"venue": "LIV Nightclub Miami",
+"city": "Miami Beach",
+"region": "FL",
+"url": "https://www.ticketweb.com/event/layton-giordani-liv-nightclub-miami-tickets/15060123",
+"artist": "Layton Giordani"
+},
+{
+"date": "2027-01-23",
 "event": "LOT33 REUNION presents MOUSSE T. (GERMANY)",
 "venue": "Hopscotch Bar",
 "city": "Braddon",
@@ -2027,6 +2000,15 @@
 "region": "MA",
 "url": "https://www.ticketmaster.com/hills-boston-massachusetts-02-05-2027/event/01006571FF353FC2",
 "artist": "HILLS"
+},
+{
+"date": "2027-02-05",
+"event": "MARCO CAROLA PRESENTS MUSIC ON | PACHA ICONS",
+"venue": "FIVE Luxe JBR",
+"city": "Dubai",
+"region": "AE",
+"url": "https://www.ticketmaster.ae/event/marco-carola-presents-music-on-%7C-pacha-icons-tickets/712951549",
+"artist": "Marco Carola"
 },
 {
 "date": "2027-02-05",
@@ -2306,6 +2288,15 @@
 "region": "DC",
 "url": "https://www.ticketmaster.com/beltran-washington-district-of-columbia-02-26-2027/event/150065719561572F",
 "artist": "DJ Tennis"
+},
+{
+"date": "2027-02-26",
+"event": "Devault - 2.26.27 @ Forum - Columbus, OH",
+"venue": "",
+"city": "",
+"region": "",
+"url": "https://www.universe.com/events/devault-2-26-27-forum-columbus-oh-tickets-9ZLSK7?ref=ticketmaster",
+"artist": "Devault"
 },
 {
 "date": "2027-02-27",
