@@ -1,17 +1,17 @@
 {
- "generated": "2026-11-19T19:08:14Z",
+ "generated": "2026-11-20T18:47:00Z",
  "pages": 1138,
  "links": {
-  "checkable": 15608,
+  "checkable": 15807,
   "by_kind": {
-   "other": 7575,
-   "spotify": 5239,
+   "other": 7533,
+   "spotify": 5480,
    "soundcloud": 1476,
    "youtube": 1318
   },
-  "checked_within_recheck": 7627,
+  "checked_within_recheck": 6977,
   "asked_this_run": 700,
-  "unknown": 1966,
+  "unknown": 2430,
   "budget": 700,
   "recheck_days": 10
  },
@@ -282,19 +282,6 @@
    "first_seen": "2026-11-02T20:29:27Z"
   },
   {
-   "url": "https://www.puntoticket.com/anuncio-fecha-venta-de-entradas",
-   "kind": "other",
-   "code": 404,
-   "note": null,
-   "title": null,
-   "pages": [
-    "/calendar"
-   ],
-   "page_count": 1,
-   "checked": "2026-11-16T20:39:31Z",
-   "first_seen": "2026-11-02T20:29:27Z"
-  },
-  {
    "url": "https://www.youtube.com/@bujalive",
    "kind": "other",
    "code": 404,
@@ -348,19 +335,6 @@
    "page_count": 1,
    "checked": "2026-11-18T19:00:26Z",
    "first_seen": "2026-11-18T19:00:26Z"
-  },
-  {
-   "url": "https://creamfields.cl",
-   "kind": "other",
-   "code": 200,
-   "note": "lands on www.puntoticket.com",
-   "title": null,
-   "pages": [
-    "/calendar"
-   ],
-   "page_count": 1,
-   "checked": "2026-11-16T20:39:31Z",
-   "first_seen": "2026-11-02T20:29:27Z"
   },
   {
    "url": "https://realm-records.com",
@@ -1596,6 +1570,21 @@
    "first_seen": "2026-10-14T15:26:28Z"
   },
   {
+   "url": "https://open.spotify.com/track/6KqM3xmPIDonsTjCSGrrr5",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "TOO COOL TO BE CARELESS",
+   "pages": [
+    "/tracklists/cloonee-b2b-prospa-music-on-destino-five-ibiza-2026",
+    "/tracklists/michael-bibi-one-life-london-2024",
+    "/tracklists/pawsa-pawsa-in-the-park-gunnersbury-park-london-2025"
+   ],
+   "page_count": 3,
+   "checked": "2026-11-20T18:47:00Z",
+   "first_seen": "2026-11-20T18:47:00Z"
+  },
+  {
    "url": "https://open.spotify.com/track/6ZQf1X6JD9TthfUzPWvpyS",
    "kind": "spotify",
    "code": 200,
@@ -1776,6 +1765,51 @@
    "first_seen": "2026-11-06T17:39:48Z"
   },
   {
+   "url": "https://soundcloud.com/chrislake/5-chris-lake-x-amber-mark-in-my-head",
+   "kind": "soundcloud",
+   "code": 200,
+   "note": "page says: listen on soundcloud",
+   "title": "Chris Lake x Amber Mark - In My Head by Chris Lake",
+   "pages": [
+    "/tracklists/chris-lake-chemistry-tour-bill-graham-civic-san-francisco-2025",
+    "/tracklists/chris-lake-los-angeles-historic-park-2026",
+    "/tracklists/chris-lake-sunset-club-sundays-omnia-skybar-las-vegas-2026"
+   ],
+   "page_count": 3,
+   "checked": "2026-11-20T18:47:00Z",
+   "first_seen": "2026-11-20T18:47:00Z"
+  },
+  {
+   "url": "https://soundcloud.com/chrislake/chris-lake-x-abel-balder-ease-my-mind",
+   "kind": "soundcloud",
+   "code": 200,
+   "note": "page says: listen on soundcloud",
+   "title": "Chris Lake x Abel Balder - Ease My Mind by Chris Lake",
+   "pages": [
+    "/tracklists/chris-lake-chemistry-tour-bill-graham-civic-san-francisco-2025",
+    "/tracklists/chris-lake-los-angeles-historic-park-2026",
+    "/tracklists/chris-lake-sunset-club-sundays-omnia-skybar-las-vegas-2026"
+   ],
+   "page_count": 3,
+   "checked": "2026-11-20T18:47:00Z",
+   "first_seen": "2026-11-20T18:47:00Z"
+  },
+  {
+   "url": "https://soundcloud.com/chrislake/make-you-fight",
+   "kind": "soundcloud",
+   "code": 200,
+   "note": "page says: listen on soundcloud",
+   "title": "Make You Fight by Chris Lake",
+   "pages": [
+    "/tracklists/chris-lake-chemistry-tour-bill-graham-civic-san-francisco-2025",
+    "/tracklists/chris-lake-los-angeles-historic-park-2026",
+    "/tracklists/chris-lake-sunset-club-sundays-omnia-skybar-las-vegas-2026"
+   ],
+   "page_count": 3,
+   "checked": "2026-11-20T18:47:00Z",
+   "first_seen": "2026-11-20T18:47:00Z"
+  },
+  {
    "url": "https://soundcloud.com/devaultmusic/cloonee-x-rated-devault-remix",
    "kind": "soundcloud",
    "code": 200,
@@ -1789,6 +1823,21 @@
    "page_count": 3,
    "checked": "2026-11-06T17:39:48Z",
    "first_seen": "2026-11-18T19:00:26Z"
+  },
+  {
+   "url": "https://soundcloud.com/disclosuremusic/one2three-feat-leven-kali",
+   "kind": "soundcloud",
+   "code": 200,
+   "note": "page says: listen on soundcloud",
+   "title": "one2three (ft. Leven Kali) by Disclosure",
+   "pages": [
+    "/tracklists/chris-lake-chemistry-tour-bill-graham-civic-san-francisco-2025",
+    "/tracklists/sammy-virji-asia-tour-zerotokyo-2025",
+    "/tracklists/sammy-virji-tomorrowland-weekend-1-belgium-2025"
+   ],
+   "page_count": 3,
+   "checked": "2026-11-20T18:47:00Z",
+   "first_seen": "2026-11-20T18:47:00Z"
   },
   {
    "url": "https://soundcloud.com/diynamic-music/amour-propre-rock-like-this-2",
@@ -2074,6 +2123,21 @@
    "page_count": 3,
    "checked": "2026-11-06T17:39:48Z",
    "first_seen": "2026-11-18T19:00:26Z"
+  },
+  {
+   "url": "https://soundcloud.com/pawsa/too-cool-to-be-careless",
+   "kind": "soundcloud",
+   "code": 200,
+   "note": "page says: listen on soundcloud",
+   "title": "TOO COOL TO BE CARELESS by PAWSA",
+   "pages": [
+    "/tracklists/cloonee-b2b-prospa-music-on-destino-five-ibiza-2026",
+    "/tracklists/michael-bibi-one-life-london-2024",
+    "/tracklists/pawsa-pawsa-in-the-park-gunnersbury-park-london-2025"
+   ],
+   "page_count": 3,
+   "checked": "2026-11-20T18:47:00Z",
+   "first_seen": "2026-11-20T18:47:00Z"
   },
   {
    "url": "https://soundcloud.com/sanpachomusic/percolate",
@@ -3268,92 +3332,17 @@
    "page_count": 2,
    "checked": "2026-11-12T18:33:48Z",
    "first_seen": "2026-11-18T19:00:26Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/46CTMizfBBExPQ3xEg2msf",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Liquid Rocks",
-   "pages": [
-    "/tracklists/alisha-the-warehouse-project-manchester-2026",
-    "/tracklists/chris-stussy-paradise-city-brussels-2025"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-08T16:46:06Z",
-   "first_seen": "2026-11-18T19:00:26Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/48xRhdgmS5bt1mb4Bb8acy",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Beledna",
-   "pages": [
-    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026",
-    "/tracklists/hugel-reframe-outdoors-los-angeles-2026"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-11T18:01:29Z",
-   "first_seen": "2026-11-11T18:01:29Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/49fqtR2gcZXvJRQNbwrGkU",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "DANGER DANGER (feat. Skepta)",
-   "pages": [
-    "/friday",
-    "/tracklists/solomun-voyager-stage-kappa-futurfestival-parco-dora-turin-2026"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-11T18:01:29Z",
-   "first_seen": "2026-11-07T16:36:19Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/4JCSmjKtzizXVyxj8O0ODE",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Known...Unknown...",
-   "pages": [
-    "/tracklists/brunello-portola-music-festival-2026",
-    "/tracklists/brunello-the-terrace-club-space-miami-2025"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-03T18:00:35Z",
-   "first_seen": "2026-11-18T19:00:26Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/4JIHUrTLmbtmwa98jUUr6t",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "La Sucursal",
-   "pages": [
-    "/tracklists/blond-ish-sunrise-labryinto-jericoacoara-2026",
-    "/tracklists/yamagucci-the-terrace-club-space-miami-2026"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-06T17:39:48Z",
-   "first_seen": "2026-11-07T16:36:19Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/4MFndFLyk7wQ02kfVtOMKc",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Aries",
-   "pages": [
-    "/tracklists/blond-ish-sunrise-labryinto-jericoacoara-2026",
-    "/tracklists/gordo-factory-town-sunrise-set-miami-2025"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-06T17:39:48Z",
-   "first_seen": "2026-11-18T19:00:26Z"
   }
  ],
- "anchors_broken": [],
- "summary": "23 broken, 5 moved, 1439 read differently, 0 broken anchors, 7627 of 15608 links checked in the last 10 days"
+ "anchors_broken": [
+  {
+   "page": "/events.html",
+   "href": "/calendar#e-edc-orlando-2026"
+  },
+  {
+   "page": "/events.html",
+   "href": "/calendar#e-seismic-2026"
+  }
+ ],
+ "summary": "22 broken, 4 moved, 1485 read differently, 2 broken anchors, 6977 of 15807 links checked in the last 10 days"
 }
