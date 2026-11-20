@@ -9,217 +9,6 @@ X-WR-CALDESC:the dance music year\, festivals\, burns and city weeks. groov
 REFRESH-INTERVAL;VALUE=DURATION:P1D
 X-PUBLISHED-TTL:P1D
 BEGIN:VEVENT
-UID:midburn-2026-2026-11-02@groovesmaxxing.com
-DTSTAMP:20261102T000000Z
-DTSTART;VALUE=DATE:20261102
-DTEND;VALUE=DATE:20261108
-SUMMARY:Midburn 2026
-LOCATION:Negev desert\, Sde Boker\, Israel
-URL:https://www.midburn.org/en
-DESCRIPTION:A Burning Man regional in the desert. A city the participants b
- uild themselves\, no headliners.\nhttps://www.midburn.org/en\nvia https://
- groovesmaxxing.com/calendar
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:edc-orlando-2026-2026-11-06@groovesmaxxing.com
-DTSTAMP:20261102T000000Z
-DTSTART;VALUE=DATE:20261106
-DTEND;VALUE=DATE:20261109
-SUMMARY:EDC Orlando 2026
-LOCATION:Tinker Field\, Orlando\, FL\, USA
-URL:https://orlando.edc.com/
-DESCRIPTION:The main stage is not why you go. Plan the weekend around the h
- ouse and techno undercard on the smaller stages.\nhttps://orlando.edc.com/
- \nvia https://groovesmaxxing.com/calendar
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:mutek-mx-2026-2026-11-06@groovesmaxxing.com
-DTSTAMP:20261102T000000Z
-DTSTART;VALUE=DATE:20261106
-DTEND;VALUE=DATE:20261109
-SUMMARY:MUTEK MX 22nd edition\, closing weekend
-LOCATION:Clubs\, cinemas and bars across Roma\, Condesa and the city center
- \, Mexico City\, CDMX\, Mexico
-URL:https://mexico.mutek.org/en
-DESCRIPTION:Closing weekend of the 22nd MUTEK in Mexico City\, with the Noc
- turne club night on the 6th and shows spread over Roma and Condesa venues\
- , leaning electronic and audiovisual more than straight house.\nhttps://me
- xico.mutek.org/en\nvia https://groovesmaxxing.com/calendar
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:soma-festival-2026-2026-11-06@groovesmaxxing.com
-DTSTAMP:20261102T000000Z
-DTSTART;VALUE=DATE:20261106
-DTEND;VALUE=DATE:20261110
-SUMMARY:Soma Festival 3rd
-LOCATION:Nacki Nacki Farm\, Mount Adrah\, NSW\, Australia
-URL:https://soma-festival.com
-DESCRIPTION:A left-field club bill with Simo Cell\, Piezo\, Reptant and HTR
- K on one site in the Riverina\, so more electro and techno than house.\nht
- tps://soma-festival.com\nvia https://groovesmaxxing.com/calendar
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:ultra-mexico-2026-2026-11-07@groovesmaxxing.com
-DTSTAMP:20261102T000000Z
-DTSTART;VALUE=DATE:20261107
-DTEND;VALUE=DATE:20261109
-SUMMARY:Ultra Mexico 2026
-LOCATION:Estadio Banorte\, Mexico City\, CDMX\, Mexico
-URL:https://ultramexico.com
-DESCRIPTION:Mainstage EDM in a stadium\, but the undercard earns it. Eric P
- rydz\, ARTBAT\, Boris Brejcha\, CamelPhat\, Boys Noize and Miss Monique\, 
- with bass acts on the same poster.\nhttps://ultramexico.com\nvia https://g
- roovesmaxxing.com/calendar
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:ondalinda-careyes-2026-2026-11-12@groovesmaxxing.com
-DTSTAMP:20261102T000000Z
-DTSTART;VALUE=DATE:20261112
-DTEND;VALUE=DATE:20261116
-SUMMARY:Ondalinda x Careyes 10th anniversary\, Cosmic Code
-LOCATION:Costa Careyes (Playa Zyanya\, Polo Fields\, Cabeza de Indio)\, Car
- eyes\, Jal.\, Mexico
-URL:https://www.ondalinda.com/festivals/careyes/
-DESCRIPTION:Tenth anniversary of the Careyes beach gathering\, three nights
-  in different spots on a private coastal estate in a burn adjacent setting
- \, lineup not out yet.\nhttps://www.ondalinda.com/festivals/careyes/\nvia 
- https://groovesmaxxing.com/calendar
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:dgtl-bengaluru-2026-2026-11-13@groovesmaxxing.com
-DTSTAMP:20261102T000000Z
-DTSTART;VALUE=DATE:20261113
-DTEND;VALUE=DATE:20261115
-SUMMARY:DGTL Bengaluru 2026
-LOCATION:The LaLiT Ashok\, Bengaluru\, Karnataka\, India
-URL:https://dgtl-festival.com/en/dgtl-bengaluru/
-DESCRIPTION:Nina Kraviz\, Qrion\, Colyn and Vladimir Dubyshkin play DGTL's 
- Bengaluru edition across two afternoons and nights.\nhttps://dgtl-festival
- .com/en/dgtl-bengaluru/\nvia https://groovesmaxxing.com/calendar
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:kappa-futurfestival-mexico-2026-2026-11-13@groovesmaxxing.com
-DTSTAMP:20261102T000000Z
-DTSTART;VALUE=DATE:20261113
-DTEND;VALUE=DATE:20261115
-SUMMARY:Kappa FuturFestival Mexico 2026\, first edition outside Europe
-LOCATION:Parque Fundidora\, Monterrey\, N.L.\, Mexico
-URL:https://futurfestival.mx
-DESCRIPTION:Turin's festival makes its first stop outside Europe with Âme 
- b2b Marcel Dettmann\, Carl Craig b2b Moodymann\, Maceo Plex b2b Tiga\, Dix
- on and Damian Lazarus.\nhttps://futurfestival.mx\nvia https://groovesmaxxi
- ng.com/calendar
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:seismic-2026-2026-11-13@groovesmaxxing.com
-DTSTAMP:20261102T000000Z
-DTSTART;VALUE=DATE:20261113
-DTEND;VALUE=DATE:20261116
-SUMMARY:Seismic Dance Event 2026 · 9.0
-LOCATION:The Concourse Project\, Austin\, TX\, USA
-URL:https://www.seismicdanceevent.com/
-DESCRIPTION:Austin's boutique house and techno weekend. Three days inside o
- ne club complex and no walking between stages.\nhttps://www.seismicdanceev
- ent.com/\nvia https://groovesmaxxing.com/calendar
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:subsonic-music-festival-2026-2026-11-13@groovesmaxxing.com
-DTSTAMP:20261102T000000Z
-DTSTART;VALUE=DATE:20261113
-DTEND;VALUE=DATE:20261116
-SUMMARY:Subsonic Music Festival 17th
-LOCATION:Riverwood Downs Mountain Resort\, Monkerai\, NSW\, Australia
-URL:https://www.subsonicmusic.com.au
-DESCRIPTION:A Guy Called Gerald\, Steve Bug\, Henry Saiz and Peter Van Hoes
- en across four stages in the Barrington Tops foothills\, with numbers capp
- ed this year.\nhttps://www.subsonicmusic.com.au\nvia https://groovesmaxxin
- g.com/calendar
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:caprisono-2026-2026-11-14@groovesmaxxing.com
-DTSTAMP:20261102T000000Z
-DTSTART;VALUE=DATE:20261114
-DTEND;VALUE=DATE:20261116
-SUMMARY:CAPRÍSONO 2026
-LOCATION:La Gran Palapa\, Milpa Alta\, CDMX\, Mexico
-URL:https://mundocapricho.mx
-DESCRIPTION:Small two day party in the hills of Milpa Alta with a mostly ho
- use\, techno and deep minimal bill including Swati\, Yentl and Abxent\, pl
- us some ambient and breaks.\nhttps://mundocapricho.mx\nvia https://grooves
- maxxing.com/calendar
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:creamfields-argentina-2026-2026-11-14@groovesmaxxing.com
-DTSTAMP:20261102T000000Z
-DTSTART;VALUE=DATE:20261114
-DTEND;VALUE=DATE:20261115
-SUMMARY:Creamfields Argentina 2026
-LOCATION:Parque de la Ciudad\, Buenos Aires\, Buenos Aires\, Argentina
-URL:https://www.cronica.com.ar/elcanaldelamusica/noticias/creamfields-2026-
- vuelve-a-buenos-aires-cuando-sera-y-como-conseguir-entradas-para-el-megafe
- stival-electronico-4316/
-DESCRIPTION:Mainstage EDM is on the bill\, but the undercard earns it with 
- Sven Väth\, Kölsch\, Innellea\, Nic Fanciulli and Enrico Sangiuliano beh
- ind Charlotte de Witte and FISHER\nhttps://www.cronica.com.ar/elcanaldelam
- usica/noticias/creamfields-2026-vuelve-a-buenos-aires-cuando-sera-y-como-c
- onseguir-entradas-para-el-megafestival-electronico-4316/\nvia https://groo
- vesmaxxing.com/calendar
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:creamfields-chile-2026-2026-11-14@groovesmaxxing.com
-DTSTAMP:20261102T000000Z
-DTSTART;VALUE=DATE:20261114
-DTEND;VALUE=DATE:20261116
-SUMMARY:Creamfields Chile 2026
-LOCATION:Club Hípico de Santiago\, Santiago\, Región Metropolitana\, Chil
- e
-URL:https://creamfields.cl
-DESCRIPTION:Mainstage EDM names like Calvin Harris and Hardwell\, but the b
- ill earns it with Charlotte de Witte\, Boris Brejcha\, FISHER and Hugel am
- ong 80 plus acts\nhttps://creamfields.cl\nvia https://groovesmaxxing.com/c
- alendar
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:dgtl-goa-2026-2026-11-14@groovesmaxxing.com
-DTSTAMP:20261102T000000Z
-DTSTART;VALUE=DATE:20261114
-DTEND;VALUE=DATE:20261116
-SUMMARY:DGTL Goa 2026
-LOCATION:W Goa\, Vagator\, Goa\, India
-URL:https://dgtl-festival.com/en/dgtl-goa/
-DESCRIPTION:The Mumbai edition now sits on a Goa beachfront with Nina Kravi
- z\, Qrion\, Colyn and Sublime Sound.\nhttps://dgtl-festival.com/en/dgtl-go
- a/\nvia https://groovesmaxxing.com/calendar
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:shi-fu-miz-2026-2026-11-14@groovesmaxxing.com
-DTSTAMP:20261102T000000Z
-DTSTART;VALUE=DATE:20261114
-DTEND;VALUE=DATE:20261115
-SUMMARY:Shi Fu Miz Festival 10th anniversary
-LOCATION:Tai Tong Organic EcoPark\, Yuen Long\, New Territories\, Hong Kong
-URL:https://shifumiz.com
-DESCRIPTION:Chez Damier\, Dr. Rubinstein\, DJ MARIA. and Mr Ho spread over 
- house\, techno and ambient stages for the tenth anniversary in a valley ou
- tside Yuen Long.\nhttps://shifumiz.com\nvia https://groovesmaxxing.com/cal
- endar
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:mutek-japan-2026-2026-11-20@groovesmaxxing.com
 DTSTAMP:20261102T000000Z
 DTSTART;VALUE=DATE:20261120
@@ -1093,6 +882,19 @@ DESCRIPTION:Barcelona's big indie week by the sea. Not a dance festival\, b
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:sonar-2027-2027-06-17@groovesmaxxing.com
+DTSTAMP:20261102T000000Z
+DTSTART;VALUE=DATE:20270617
+DTEND;VALUE=DATE:20270620
+SUMMARY:Sónar 2027 · Barcelona
+LOCATION:Venue to be announced\, Barcelona\, Spain
+URL:https://sonar.es/en
+DESCRIPTION:Barcelona's festival of advanced music. Watch this one before y
+ ou book anything.\nhttps://sonar.es/en\nvia https://groovesmaxxing.com/cal
+ endar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:glastonbury-2027-2027-06-23@groovesmaxxing.com
 DTSTAMP:20261102T000000Z
 DTSTART;VALUE=DATE:20270623
@@ -1196,6 +998,19 @@ DESCRIPTION:The underground weekend in the grounds of a country estate. Lon
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
+UID:neopop-2027-2027-08-05@groovesmaxxing.com
+DTSTAMP:20261102T000000Z
+DTSTART;VALUE=DATE:20270805
+DTEND;VALUE=DATE:20270808
+SUMMARY:NEOPOP 2027
+LOCATION:Forte de Santiago da Barra\, Viana do Castelo\, Portugal
+URL:https://www.neopopfestival.com/
+DESCRIPTION:Techno inside a seaside fort in northern Portugal. Small\, loud
+ \, worth the trip.\nhttps://www.neopopfestival.com/\nvia https://groovesma
+ xxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
 UID:dekmantel-selectors-2027-2027-08-19@groovesmaxxing.com
 DTSTAMP:20261102T000000Z
 DTSTART;VALUE=DATE:20270819
@@ -1271,6 +1086,18 @@ URL:https://www.amsterdam-dance-event.nl/en/
 DESCRIPTION:Five days\, hundreds of parties\, one city. The conference by d
  ay and every club in Amsterdam by night.\nhttps://www.amsterdam-dance-even
  t.nl/en/\nvia https://groovesmaxxing.com/calendar
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:edc-orlando-2027-2027-11-05@groovesmaxxing.com
+DTSTAMP:20261102T000000Z
+DTSTART;VALUE=DATE:20271105
+DTEND;VALUE=DATE:20271108
+SUMMARY:EDC Orlando 2027
+LOCATION:Tinker Field\, Orlando\, FL\, USA
+URL:https://orlando.edc.com/
+DESCRIPTION:Same advice every year. Plan the weekend around the undercard.\
+ nhttps://orlando.edc.com/\nvia https://groovesmaxxing.com/calendar
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
