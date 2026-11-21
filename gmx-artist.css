@@ -106,8 +106,8 @@ section.artist.gmxa-on .gmxa-lede + .bio:not([data-more]){margin-top:14px}
 .gmxa-blk{margin:28px 0 0;scroll-margin-top:16px}
 .gmxa-rowhead{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:24px;margin-bottom:10px}
 .gmxa-b-music > .gmxa-rowhead{min-height:44px;margin-bottom:6px}
-section.artist.gmxa-on .gmxa-eyebrow{margin:0;font:400 .72rem/1.4 'Space Mono',monospace;letter-spacing:.24em;color:var(--racing,#FF1C02);text-transform:uppercase}
-.gmxa-eyebrow .gmxa-n,.gmxa-chip .gmxa-n{font:400 .66rem 'Space Mono',monospace;color:var(--steel,#8A8A93);letter-spacing:.06em;margin-left:8px}
+section.artist.gmxa-on .gmxa-eyebrow{margin:0;font:700 .95rem/1.4 'Space Mono',monospace;letter-spacing:.2em;padding-bottom:10px;position:relative;color:var(--racing,#FF1C02);text-transform:uppercase}
+.gmxa-eyebrow .gmxa-n,.gmxa-chip .gmxa-n{font:400 .75rem 'Space Mono',monospace;color:var(--steel,#8A8A93);letter-spacing:.06em;margin-left:8px}
 .gmxa-side{display:flex;align-items:center;gap:12px}
 .gmxa-eye2{font:400 .74rem 'Space Mono',monospace;color:var(--steel,#8A8A93);text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
 .gmxa-eye2:hover{color:var(--racing,#FF1C02)}
@@ -123,7 +123,7 @@ section.artist.gmxa-on .gmxa-eyebrow{margin:0;font:400 .72rem/1.4 'Space Mono',m
 section.artist.gmxa-on .gmxa-blk .sec{border-top:0;margin-top:0;padding-top:0}
 section.artist.gmxa-on .gmxa-blk .sec + .sec{margin-top:26px}
 section.artist.gmxa-on .gmxa-blk .sec .note,section.artist.gmxa-on .gmxa-blk .gmx-rel .note{margin-top:12px}
-section.artist.gmxa-on .gmxa-blk .eyebrow2,section.artist.gmxa-on .gmxa-b-site h2:not(.gmxa-eyebrow),section.artist.gmxa-on .gmxa-b-site .gmx-rel h3,.gmxa-col > .gmxa-sh{font:400 .7rem 'Space Mono',monospace;letter-spacing:.06em;color:var(--steel,#8A8A93);text-transform:lowercase;margin:0 0 10px}
+section.artist.gmxa-on .gmxa-blk .eyebrow2,section.artist.gmxa-on .gmxa-b-site h2:not(.gmxa-eyebrow),section.artist.gmxa-on .gmxa-b-site .gmx-rel h3,.gmxa-col > .gmxa-sh{font:400 .78rem 'Space Mono',monospace;letter-spacing:.06em;color:var(--steel,#8A8A93);text-transform:lowercase;margin:0 0 10px}
 section.artist.gmxa-on .gmxa-blk h2::after{display:none}
 
 /* rails: the sets, the dates, the reels. sideways, snapping, full bleed on a phone, an edge fade while there is more */
@@ -234,7 +234,7 @@ section.artist.gmxa-on .gmxa-blk .subtle a{border-bottom:0;text-decoration:under
 /* at a glance: tiles, four showing */
 section.artist.gmxa-on .gmxa-glance{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-flow:dense;gap:8px;border-top:0;margin:0;padding:0}
 section.artist.gmxa-on .gmxa-glance .fact{display:block;background:var(--card,#141417);border:1px solid var(--line,#26262b);border-radius:10px;padding:12px;min-width:0}
-section.artist.gmxa-on .gmxa-glance .fact .k{display:block;width:auto;padding:0;font:400 .66rem 'Space Mono',monospace;letter-spacing:.12em;color:var(--steel,#8A8A93);text-transform:uppercase}
+section.artist.gmxa-on .gmxa-glance .fact .k{display:block;width:auto;padding:0;font:400 .75rem 'Space Mono',monospace;letter-spacing:.12em;color:var(--steel,#8A8A93);text-transform:uppercase}
 section.artist.gmxa-on .gmxa-glance .fact .v{font-size:.82rem;line-height:1.45;color:#c9c9c4;margin-top:6px;overflow-wrap:anywhere}
 section.artist.gmxa-on .gmxa-glance .gmxa-wide{grid-column:1 / -1}
 section.artist.gmxa-on .gmxa-glance .gmxa-hot .v{color:var(--day,#F2F2EF);font-weight:600}
@@ -307,3 +307,25 @@ section.artist.gmxa-on .gmxa-b-site > .gmxa-rowhead + .gmx-rel-static,section.ar
   section.artist.gmxa-on .gmxa-two .gmxa-col .sec + .sec{margin-top:0}
 }
 @media (prefers-reduced-motion:reduce){.gmxa-card .set-facade img,.gmxa-stagebox *{transition:none!important}.gmxa-rail,.gmxa-srail{scroll-behavior:auto}}
+
+/* in-between pass (2026-11-20, G-MO's pick after the OpenDesign bake-off): same look, five fixes. The heads, counts,
+   sub-labels and glance labels were raised in their own rules above. These are the rest: the short red rule under each
+   head, a 12px floor on the small labels, the newest-set chip in two lines clear of the buttons, the phone link row
+   wrapping, and a glance grid that never leaves an empty box. html body raises them over the per-page inline styles. */
+section.artist.gmxa-on .gmxa-eyebrow::after{content:"";position:absolute;left:0;bottom:0;width:28px;height:2px;background:var(--racing,#FF1C02)}
+html body .gmxa-pill{font-size:.72rem;font-weight:700}
+html body .gmxa-dm{font-size:.72rem}
+html body .gmxa-out,html body .gmxa-cmeta,html body .gmxa-cmeta .mono{font-size:.75rem}
+html body .tag.badge,html body .tag{font-size:.78rem}
+html body .rel .l,html body .pn .lbl{font-size:.78rem}
+html body .gmxa-eye{max-width:calc(100% - 180px);font-size:.75rem;white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.35;padding-bottom:0;border-bottom:6px solid rgba(11,11,13,.78)}
+@media (max-width:640px){
+  html body .gmxa-acts{flex-wrap:wrap;overflow:visible;row-gap:10px;width:auto;max-width:100%;padding-left:26px;padding-right:26px;box-sizing:border-box;-webkit-mask-image:none;mask-image:none}
+  html body .gmxa-acts .links{flex:1 1 100%;flex-wrap:wrap;row-gap:10px;max-width:100%;min-width:0}
+  html body .gmxa-acts .links>*{flex:0 0 auto}
+  html body .gmxa-cut{-webkit-mask-image:none;mask-image:none}
+  html body .gmxa-glance .fact:last-child:nth-child(odd){grid-column:1/-1}
+}
+@media (min-width:641px){
+  html body .gmxa-glance{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+}
