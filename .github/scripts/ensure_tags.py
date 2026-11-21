@@ -18,7 +18,7 @@ def files(pattern):
     path.endswith('/index.html') and path.split('/') check below missed and the hub got the set page tags."""
     return [p.replace('\\', '/') for p in glob.glob(pattern)]
 
-MOTION_CSS = '<link rel="stylesheet" href="/gmx-motion.css?v=2">'
+MOTION_CSS = '<link rel="stylesheet" href="/gmx-motion.css?v=3">'
 MOTION_JS = '<script src="/gmx-motion.js?v=3" defer></script>'
 T = {
     'player_css': '<link rel="stylesheet" href="/gmx-player.css?v=3">',
