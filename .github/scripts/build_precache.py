@@ -20,7 +20,7 @@ urls = ['/', '/scan', '/more', '/search', '/sets', '/artists', '/events', '/radi
 urls += ['/upcoming.json', '/gmx-nextup.js?v=1']   # the home page's next up band (ui build 3)
 urls += ['/gmx-read.css?v=10']   # the readability layer on every page (2026-10-13)
 urls += ['/gmx-more.js?v=3', '/gmx-reel.js?v=1']   # the "more" expander on every page (2026-10-14)
-urls += ['/gmx-artist.js?v=3', '/gmx-artist.css?v=4']   # the artist profile tabs layout (2026-11-10)
+urls += ['/gmx-artist.js?v=3', '/gmx-artist.css?v=5']   # the artist profile tabs layout (2026-11-10)
 urls += ['/moods', '/moods-index.json', '/gmx-moods.js?v=5']   # the mood picker (2026-11-04), its catalog is written on the laptop by moodindex.py
 urls += ['/exchange', '/exchange-index.json', '/gmx-exchange.js?v=1', '/gmx-exchange.css?v=1']   # the groove exchange, its index is written on the laptop by gmxprice.py
 urls += ['/exchange-tape.json', '/gmx-tape.js?v=2', '/gmx-tape.css?v=1']   # the site ticker bar (preview: exchange + home), its json is written by gmxprice.py export
