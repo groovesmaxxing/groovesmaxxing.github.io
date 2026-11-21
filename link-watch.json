@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-20T18:47:00Z",
+ "generated": "2026-11-21T17:45:35Z",
  "pages": 1138,
  "links": {
   "checkable": 15807,
@@ -9,9 +9,9 @@
    "soundcloud": 1476,
    "youtube": 1318
   },
-  "checked_within_recheck": 6977,
+  "checked_within_recheck": 7677,
   "asked_this_run": 700,
-  "unknown": 2430,
+  "unknown": 2829,
   "budget": 700,
   "recheck_days": 10
  },
@@ -970,6 +970,21 @@
    "first_seen": "2026-10-31T15:51:03Z"
   },
   {
+   "url": "https://open.spotify.com/track/1Ofr85G2VL1z2Ge4g0R6CT",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Liquor Store (feat. Nate Dogg)",
+   "pages": [
+    "/tracklists/discip-the-terrace-club-space-miami-2025",
+    "/tracklists/kolter-thuishaven-amsterdam-2025",
+    "/tracklists/sidepiece-daytrip-la-in-the-park-2025"
+   ],
+   "page_count": 3,
+   "checked": "2026-11-21T17:45:35Z",
+   "first_seen": "2026-11-21T17:45:35Z"
+  },
+  {
    "url": "https://open.spotify.com/track/1RMcfaJ3f4a4vLU7veJU5H",
    "kind": "spotify",
    "code": 200,
@@ -1238,6 +1253,21 @@
    "page_count": 3,
    "checked": "2026-11-14T16:42:49Z",
    "first_seen": "2026-11-18T19:00:26Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/3zPfyVThoCzQ6IB5CSGDTz",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "You've Done Enough",
+   "pages": [
+    "/tracklists/drama-platonic-romance-tour-2026",
+    "/tracklists/gorgon-city-brooklyn-storehouse-2025",
+    "/tracklists/gorgon-city-reframe-studios-outdoors-los-angeles-2026"
+   ],
+   "page_count": 3,
+   "checked": "2026-11-21T17:45:35Z",
+   "first_seen": "2026-11-21T17:45:35Z"
   },
   {
    "url": "https://open.spotify.com/track/4A56h4B9xUuMMXoKuj18HT",
@@ -1615,6 +1645,21 @@
    "first_seen": "2026-11-18T19:00:26Z"
   },
   {
+   "url": "https://open.spotify.com/track/7IJP1vVnqU5mV2hYUbZrlX",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Brighter Days - Marco Lys Remix",
+   "pages": [
+    "/tracklists/fatsync-house-mag-winter-music-green-valley-2025",
+    "/tracklists/green-velvet-defected-malta-the-ditch-valletta-2024",
+    "/tracklists/marco-lys-il-muretto-jesolo-2025"
+   ],
+   "page_count": 3,
+   "checked": "2026-11-21T17:45:35Z",
+   "first_seen": "2026-11-21T17:45:35Z"
+  },
+  {
    "url": "https://open.spotify.com/track/7MMBk3p5G0SyPiNiUDgjPD",
    "kind": "spotify",
    "code": 200,
@@ -1688,6 +1733,21 @@
    "page_count": 3,
    "checked": "2026-11-18T19:00:26Z",
    "first_seen": "2026-11-18T19:00:26Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/7qHSfKzilTsXJuuWcjX1vZ",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Cash Out",
+   "pages": [
+    "/tracklists/discip-the-terrace-club-space-miami-2025",
+    "/tracklists/matroda-day-trip-festival-2025",
+    "/tracklists/sidepiece-daytrip-la-in-the-park-2025"
+   ],
+   "page_count": 3,
+   "checked": "2026-11-21T17:45:35Z",
+   "first_seen": "2026-11-21T17:45:35Z"
   },
   {
    "url": "https://soundcloud.com/anotr/how-you-feel-feat-leven-kali",
@@ -2020,6 +2080,21 @@
    "first_seen": "2026-11-18T19:00:26Z"
   },
   {
+   "url": "https://soundcloud.com/koltercologne/kolter-liquor-store",
+   "kind": "soundcloud",
+   "code": 200,
+   "note": "page says: listen on soundcloud",
+   "title": "Liquor Store (feat. Nate Dogg) by Kolter",
+   "pages": [
+    "/tracklists/discip-the-terrace-club-space-miami-2025",
+    "/tracklists/kolter-thuishaven-amsterdam-2025",
+    "/tracklists/sidepiece-daytrip-la-in-the-park-2025"
+   ],
+   "page_count": 3,
+   "checked": "2026-11-21T17:45:35Z",
+   "first_seen": "2026-11-21T17:45:35Z"
+  },
+  {
    "url": "https://soundcloud.com/laytongiordani/when-it-kicks",
    "kind": "soundcloud",
    "code": 200,
@@ -2298,6 +2373,20 @@
    "first_seen": "2026-11-18T19:00:26Z"
   },
   {
+   "url": "https://open.spotify.com/track/0TrlPb4ESbiuDcJqjOEqM8",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Dance With Ibiza",
+   "pages": [
+    "/tracklists/franc-fala-sunset-afro-house-session-amsterdam-canals-2024",
+    "/tracklists/kevin-mckay-beyond-fire-london-2025"
+   ],
+   "page_count": 2,
+   "checked": "2026-11-21T17:45:35Z",
+   "first_seen": "2026-11-21T17:45:35Z"
+  },
+  {
    "url": "https://open.spotify.com/track/0XP1Nhp81D49371U34enxJ",
    "kind": "spotify",
    "code": 200,
@@ -2394,6 +2483,20 @@
    "page_count": 2,
    "checked": "2026-11-18T19:00:26Z",
    "first_seen": "2026-11-18T19:00:26Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/0oz5HfryxH2aVdGbIwzU9O",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Inferno",
+   "pages": [
+    "/tracklists/dom-dolla-creamfields-steel-yard-2025",
+    "/tracklists/hayden-james-crssd-festival-san-diego-2025"
+   ],
+   "page_count": 2,
+   "checked": "2026-11-21T17:45:35Z",
+   "first_seen": "2026-11-21T17:45:35Z"
   },
   {
    "url": "https://open.spotify.com/track/0zKsNJbYwvNTpePcwra0Qq",
@@ -2536,6 +2639,20 @@
    "first_seen": "2026-10-21T15:34:18Z"
   },
   {
+   "url": "https://open.spotify.com/track/1GjwboGNxJlQ65BQRjtyNm",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Bogeyman",
+   "pages": [
+    "/tracklists/disclosure-kindred-radio-london-2024",
+    "/tracklists/sammy-virji-boiler-room-denver-2024"
+   ],
+   "page_count": 2,
+   "checked": "2026-11-21T17:45:35Z",
+   "first_seen": "2026-11-21T17:45:35Z"
+  },
+  {
    "url": "https://open.spotify.com/track/1HAflwKirsoDsun2cOIBvx",
    "kind": "spotify",
    "code": 200,
@@ -2590,6 +2707,34 @@
    "page_count": 2,
    "checked": "2026-11-14T16:42:49Z",
    "first_seen": "2026-11-18T19:00:26Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/1PjydXKswaCmzLdORc1X29",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Zero Azucar",
+   "pages": [
+    "/tracklists/franky-rizardo-coachella-2026",
+    "/tracklists/franky-rizardo-flow-superclub-peru-2025"
+   ],
+   "page_count": 2,
+   "checked": "2026-11-21T17:45:35Z",
+   "first_seen": "2026-11-21T17:45:35Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/1QH3YI2AsxNFo5T8RUkXb7",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Moving Blind - Gorgon City Remix",
+   "pages": [
+    "/tracklists/dom-dolla-allianz-stadium-sydney-2025",
+    "/tracklists/dom-dolla-creamfields-steel-yard-2025"
+   ],
+   "page_count": 2,
+   "checked": "2026-11-21T17:45:35Z",
+   "first_seen": "2026-11-21T17:45:35Z"
   },
   {
    "url": "https://open.spotify.com/track/1Re64v11j6NhuJG9LAEiGR",
@@ -2774,6 +2919,20 @@
    "first_seen": "2026-11-18T19:00:26Z"
   },
   {
+   "url": "https://open.spotify.com/track/221xQy1IuxxGLu1dWKhRvl",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Pakit Ban",
+   "pages": [
+    "/tracklists/discip-the-terrace-club-space-miami-2025",
+    "/tracklists/sterium-laroc-guaruja-sao-paulo-2025"
+   ],
+   "page_count": 2,
+   "checked": "2026-11-21T17:45:35Z",
+   "first_seen": "2026-11-21T17:45:35Z"
+  },
+  {
    "url": "https://open.spotify.com/track/22pC8m4kzjrMQRJXYg0usw",
    "kind": "spotify",
    "code": 200,
@@ -2786,6 +2945,20 @@
    "page_count": 2,
    "checked": "2026-11-13T18:00:21Z",
    "first_seen": "2026-11-18T19:00:26Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/23PIMIlFx1FeiCmmIf1RgZ",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Tondo",
+   "pages": [
+    "/tracklists/disclosure-b2b-mochakk-cercle-festival-a380-stage-2024",
+    "/tracklists/disclosure-cercle-plitvice-lakes-2020"
+   ],
+   "page_count": 2,
+   "checked": "2026-11-21T17:45:35Z",
+   "first_seen": "2026-11-21T17:45:35Z"
   },
   {
    "url": "https://open.spotify.com/track/25PFZE1QqJieWRIJOCk755",
@@ -2802,6 +2975,20 @@
    "first_seen": "2026-11-18T19:00:26Z"
   },
   {
+   "url": "https://open.spotify.com/track/29I9dv9Nq704w0Oc5yFGsR",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "She’s Gone, Dance On",
+   "pages": [
+    "/tracklists/disclosure-b2b-mochakk-cercle-festival-a380-stage-2024",
+    "/tracklists/disclosure-kindred-radio-london-2024"
+   ],
+   "page_count": 2,
+   "checked": "2026-11-21T17:45:35Z",
+   "first_seen": "2026-11-21T17:45:35Z"
+  },
+  {
    "url": "https://open.spotify.com/track/2FBjIxxC6CQDJxoeSYBIq3",
    "kind": "spotify",
    "code": 200,
@@ -2814,6 +3001,20 @@
    "page_count": 2,
    "checked": "2026-11-19T19:08:14Z",
    "first_seen": "2026-11-19T19:08:14Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/2GwsSbo6IbNDVvcm9rtmal",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Say What",
+   "pages": [
+    "/tracklists/fuego-afro-house-mix-2025",
+    "/tracklists/keinemusik-exit-festival-mts-dance-arena-novi-sad-2023"
+   ],
+   "page_count": 2,
+   "checked": "2026-11-21T17:45:35Z",
+   "first_seen": "2026-11-21T17:45:35Z"
   },
   {
    "url": "https://open.spotify.com/track/2KVAO2OAH6a9Tr2DqYL65g",
@@ -3068,6 +3269,20 @@
    "first_seen": "2026-11-06T17:39:48Z"
   },
   {
+   "url": "https://open.spotify.com/track/2tuwPCMw2Wwv89sHxdmx2R",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Da Fonk (feat. Joni)",
+   "pages": [
+    "/tracklists/disclosure-b2b-mochakk-cercle-festival-a380-stage-2024",
+    "/tracklists/mochakk-coachella-sahara-stage-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-11-21T17:45:35Z",
+   "first_seen": "2026-11-21T17:45:35Z"
+  },
+  {
    "url": "https://open.spotify.com/track/2weibCrIRBDPColZHhL88Y",
    "kind": "spotify",
    "code": 200,
@@ -3110,228 +3325,18 @@
    "first_seen": "2026-11-11T18:01:29Z"
   },
   {
-   "url": "https://open.spotify.com/track/3GiORO0zRwRT3g9CCklzkQ",
+   "url": "https://open.spotify.com/track/38Cn5WXAveelCjMczHaK2P",
    "kind": "spotify",
    "code": 200,
    "note": "page says: listen on spotify",
-   "title": "It's That Time - FISHER Remix",
+   "title": "Call You Back",
    "pages": [
-    "/tracklists/fatsync-house-mag-winter-music-green-valley-2025",
-    "/tracklists/fisher-chris-lake-under-construction-head-trip-indio-2026"
+    "/tracklists/genesi-coachella-yuma-tent-2026",
+    "/tracklists/layton-giordani-space-miami-2025"
    ],
    "page_count": 2,
-   "checked": "2026-11-14T16:42:49Z",
-   "first_seen": "2026-11-18T19:00:26Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/3HP6fuMyiakxcFr5iviDKY",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Mumble",
-   "pages": [
-    "/tracklists/vintage-culture-affairs-pacha-new-york-2026",
-    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-12T18:33:48Z",
-   "first_seen": "2026-11-18T19:00:26Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/3I2KrZaa1IwKtJTibCKsAg",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "The Poem",
-   "pages": [
-    "/tracklists/brunello-the-terrace-club-space-miami-2025",
-    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-12T18:33:48Z",
-   "first_seen": "2026-11-18T19:00:26Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/3JzhzyUl00wqzkvB5ruawj",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Brickell",
-   "pages": [
-    "/tracklists/peace-control-la-siesta-x-playa-padre-marbella-2026",
-    "/tracklists/vinter-la-fabrica-cordoba-argentina-2026"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-13T18:00:21Z",
-   "first_seen": "2026-11-13T18:00:21Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/3LaXHdg0gwPXEICRIQfQSy",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Brrr",
-   "pages": [
-    "/friday",
-    "/tracklists/rafael-sunrise-set-nova-heaven-x-eden-x-favela-burning-man-2026"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-10T18:11:51Z",
-   "first_seen": "2026-11-10T18:11:51Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/3NryqjI9N1mXoCKFCVqcGC",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Libertinaje",
-   "pages": [
-    "/tracklists/anotr-no-art-festival-flevopark-amsterdam-2025",
-    "/tracklists/joseph-capriati-the-terrace-club-space-miami-2025"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-18T19:00:26Z",
-   "first_seen": "2026-11-18T19:00:26Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/3O9BNmxmQ5M02TFGMWptJt",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "In Da Getto - Chris Lorenzo Remix",
-   "pages": [
-    "/tracklists/acraze-ultra-music-festival-2022",
-    "/tracklists/chris-lorenzo-day-trip-festival-2025"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-18T19:00:26Z",
-   "first_seen": "2026-11-18T19:00:26Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/3Tkuw1bnb4Gh2dXeepGolN",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Watch Me",
-   "pages": [
-    "/tracklists/notre-dame-paranormal-la-clairiere-paris-2026",
-    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-11T18:01:29Z",
-   "first_seen": "2026-10-21T15:34:18Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/3aKeZ75NMlUdk75F3N8mix",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "dissolve",
-   "pages": [
-    "/friday",
-    "/tracklists/lp-giobbi-wollman-rink-we-belong-here-central-park-2026"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-11T18:01:29Z",
-   "first_seen": "2026-11-03T18:00:35Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/3cZajhyr8LmtPfHZ9296tj",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "No Broke Boys",
-   "pages": [
-    "/tracklists/disco-lines-club-space-miami-2026",
-    "/tracklists/disco-lines-lollapalooza-chicago-2026"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-16T20:39:31Z",
-   "first_seen": "2026-11-18T19:00:26Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/3kFGYfnYWraDZ8iAWx45QR",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "London's On Fire",
-   "pages": [
-    "/tracklists/adam-sellouk-abstract-festival-2025",
-    "/tracklists/chris-lorenzo-day-trip-festival-2025"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-18T19:00:26Z",
-   "first_seen": "2026-11-18T19:00:26Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/3sCdCkVglGCFx5ZtOjS4wC",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Cardio",
-   "pages": [
-    "/tracklists/fisher-chris-lake-under-construction-head-trip-indio-2026",
-    "/tracklists/tobehonest-splash-house-2026"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-14T16:42:49Z",
-   "first_seen": "2026-11-06T17:39:48Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/3x485UchDgT9jdncu4TMFw",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "My House",
-   "pages": [
-    "/tracklists/james-hype-tomorrowland-weekend-2-2026",
-    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-12T18:33:48Z",
-   "first_seen": "2026-11-18T19:00:26Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/3xZp6ajHw5LLgA2LhA64XZ",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Syren - Adam Sellouk Remix",
-   "pages": [
-    "/tracklists/anyma-atomium-brussels-2025",
-    "/tracklists/anyma-tomorrowland-weekend-two-2025"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-18T19:00:26Z",
-   "first_seen": "2026-11-18T19:00:26Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/40fHcs9WzWosKvLO0dq3O8",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Doin' It All For The Culture",
-   "pages": [
-    "/tracklists/luch-solomun-1-pacha-ibiza-2026",
-    "/tracklists/reznik-samm-wecandance-beachfestival"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-13T18:00:21Z",
-   "first_seen": "2026-10-31T15:51:03Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/44COSTXHkxPVGfeyA038Qq",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Baby Run",
-   "pages": [
-    "/tracklists/black-coffee-mayan-warrior-burning-man-2025",
-    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-12T18:33:48Z",
-   "first_seen": "2026-11-18T19:00:26Z"
+   "checked": "2026-11-21T17:45:35Z",
+   "first_seen": "2026-11-21T17:45:35Z"
   }
  ],
  "anchors_broken": [
@@ -3344,5 +3349,5 @@
    "href": "/calendar#e-seismic-2026"
   }
  ],
- "summary": "22 broken, 4 moved, 1485 read differently, 2 broken anchors, 6977 of 15807 links checked in the last 10 days"
+ "summary": "22 broken, 4 moved, 1777 read differently, 2 broken anchors, 7677 of 15807 links checked in the last 10 days"
 }
