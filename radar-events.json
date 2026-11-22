@@ -1,161 +1,8 @@
 {
-"generated": "2026-11-21T16:51:24+00:00",
+"generated": "2026-11-22T17:14:18+00:00",
 "artist_count": 704,
-"artists_with_events": 133,
+"artists_with_events": 125,
 "events": [
-{
-"date": "2026-11-21",
-"event": "Festival Zamna Montréal",
-"venue": "Hall Est du Stade olympique",
-"city": "Montréal",
-"region": "QC",
-"url": "https://www.ticketmaster.ca/festival-zamna-montreal-montreal-quebec-11-21-2026/event/31006524AFF85CC1",
-"artist": "ARTBAT"
-},
-{
-"date": "2026-11-21",
-"event": "D.O.D",
-"venue": "LIV Nightclub Miami",
-"city": "Miami Beach",
-"region": "FL",
-"url": "https://www.ticketweb.com/event/dod-liv-nightclub-miami-tickets/14363794",
-"artist": "D.O.D"
-},
-{
-"date": "2026-11-21",
-"event": "Danza Presents Kepler, Dennis Quin & more!",
-"venue": "Electric Studios",
-"city": "Sheffield",
-"region": "GB",
-"url": "https://www.universe.com/events/danza-presents-kepler-dennis-quin-more-tickets-N17XWK?ref=ticketmaster",
-"artist": "Dennis Quin"
-},
-{
-"date": "2026-11-21",
-"event": "Dom Dolla ??? Race Week - Ages 21+",
-"venue": "LIV Nightclub Las Vegas",
-"city": "Las Vegas",
-"region": "NV",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1A7P3C3",
-"artist": "Dom Dolla"
-},
-{
-"date": "2026-11-21",
-"event": "Festival Zamna Montréal",
-"venue": "Hall Est du Stade olympique",
-"city": "Montréal",
-"region": "QC",
-"url": "https://www.ticketmaster.ca/festival-zamna-montreal-montreal-quebec-11-21-2026/event/31006524AFF85CC1",
-"artist": "HUGEL"
-},
-{
-"date": "2026-11-21",
-"event": "JOHN SUMMIT - CTRL ESCAPE ARENA TOUR",
-"venue": "Kaseya Center",
-"city": "Miami",
-"region": "FL",
-"url": "https://www.ticketmaster.com/john-summit-ctrl-escape-arena-tour-miami-florida-11-21-2026/event/0D0064B3A9E1800A",
-"artist": "John Summit"
-},
-{
-"date": "2026-11-21",
-"event": "Keinemusik Nairobi",
-"venue": "Uhuru Gardens Memorial Park",
-"city": "Nairobi",
-"region": "KE",
-"url": "https://www.quicket.co.ke/events/390611-keinemusik-nairobi/?ref=external-listing-tm",
-"artist": "Keinemusik"
-},
-{
-"date": "2026-11-21",
-"event": "Max Dean B2B Luke Dean",
-"venue": "ivy Sydney",
-"city": "Sydney",
-"region": "NSW",
-"url": "https://www.moshtix.com.au/v2/event/max-dean-b2b-luke-dean/200951",
-"artist": "Luke Dean"
-},
-{
-"date": "2026-11-21",
-"event": "Max Dean B2B Luke Dean",
-"venue": "ivy Sydney",
-"city": "Sydney",
-"region": "NSW",
-"url": "https://www.moshtix.com.au/v2/event/max-dean-b2b-luke-dean/200951",
-"artist": "Max Dean"
-},
-{
-"date": "2026-11-21",
-"event": "WHP x Eat Your Own Ears",
-"venue": "Depot Mayfield",
-"city": "Manchester",
-"region": "GB",
-"url": "https://www.ticketmaster.co.uk/whp-x-eat-your-own-ears-manchester-21-11-2026/event/3500651421F2D58A",
-"artist": "Peggy Gou"
-},
-{
-"date": "2026-11-21",
-"event": "Sidepiece (18 and Over)",
-"venue": "The Ritz Ybor",
-"city": "Tampa",
-"region": "FL",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAZkjb",
-"artist": "SIDEPIECE"
-},
-{
-"date": "2026-11-21",
-"event": "SOLARDO - Ages 18+",
-"venue": "Decca Live",
-"city": "Jacksonville",
-"region": "FL",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAvpaz",
-"artist": "Solardo"
-},
-{
-"date": "2026-11-21",
-"event": "Tiesto",
-"venue": "Omnia Las Vegas",
-"city": "Las Vegas",
-"region": "NV",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAvVp_",
-"artist": "Tiësto"
-},
-{
-"date": "2026-11-21",
-"event": "Tom & Collins",
-"venue": "The Rooftop at Vinyl",
-"city": "Denver",
-"region": "CO",
-"url": "https://www.ticketweb.com/event/tom-collins-the-rooftop-at-vinyl-tickets/14364334",
-"artist": "Tom & Collins"
-},
-{
-"date": "2026-11-21",
-"event": "Wade Bowen - Ages 18+",
-"venue": "Billy Bob's",
-"city": "Fort Worth",
-"region": "TX",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAv4Fe",
-"artist": "Wade"
-},
-{
-"date": "2026-11-21",
-"event": "Westend",
-"venue": "Ogden Theatre",
-"city": "Denver",
-"region": "CO",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAv4Fd",
-"artist": "Westend"
-},
-{
-"date": "2026-11-21",
-"event": "WUKI - BEATS I CAN'T RELEASE: MIXTAPE VOL. 3 - Ages 21+",
-"venue": "The Midway",
-"city": "San Francisco",
-"region": "CA",
-"url": "https://www.ticketmaster.com/event/Z7r9jZ1AAvak7",
-"artist": "Wuki"
-},
 {
 "date": "2026-11-22",
 "event": "Disco Lines ??? Race Week - Ages 21+",
@@ -167,12 +14,12 @@
 },
 {
 "date": "2026-11-22",
-"event": "Lost Sundays - November 22 ft. Omar+, The Trip & Lewis Taylor",
-"venue": "ivy Sydney",
-"city": "Sydney",
-"region": "NSW",
-"url": "https://www.moshtix.com.au/v2/event/lost-sundays-november-22-ft-omar-the-trip-lewis-taylor/200897",
-"artist": "Omar+"
+"event": "Abono General 3 días Corona Capital 2026",
+"venue": "Autodromo Hnos. Rodriguez",
+"city": "México",
+"region": "CDMX",
+"url": "https://www.ticketmaster.com.mx/abono-general-3-dias-corona-capital-mexico-22-11-2026/event/14006499D700B533",
+"artist": "Fcukers"
 },
 {
 "date": "2026-11-22",
