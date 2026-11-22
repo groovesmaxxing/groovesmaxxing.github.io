@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-21T17:45:35Z",
+ "generated": "2026-11-22T18:00:13Z",
  "pages": 1138,
  "links": {
   "checkable": 15807,
@@ -11,7 +11,7 @@
   },
   "checked_within_recheck": 7677,
   "asked_this_run": 700,
-  "unknown": 2829,
+  "unknown": 3251,
   "budget": 700,
   "recheck_days": 10
  },
@@ -606,6 +606,22 @@
    "page_count": 4,
    "checked": "2026-11-14T16:42:49Z",
    "first_seen": "2026-11-18T19:00:26Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/1BdKECW4nCqwS4hDRt7Yq5",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Incredible Dub",
+   "pages": [
+    "/tracklists/gorgon-city-brooklyn-storehouse-2025",
+    "/tracklists/gorgon-city-reframe-studios-outdoors-los-angeles-2026",
+    "/tracklists/mochakk-coachella-sahara-stage-2026",
+    "/tracklists/sammy-virji-boiler-room-denver-2024"
+   ],
+   "page_count": 4,
+   "checked": "2026-11-22T18:00:13Z",
+   "first_seen": "2026-11-22T18:00:13Z"
   },
   {
    "url": "https://open.spotify.com/track/1J3C8kdqUckBrTtgttm0AA",
@@ -2695,6 +2711,20 @@
    "first_seen": "2026-11-11T18:01:29Z"
   },
   {
+   "url": "https://open.spotify.com/track/1LxrKtCCee1Fie7dlEv0Iw",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Raving - Original Mix",
+   "pages": [
+    "/tracklists/green-velvet-defected-malta-the-ditch-valletta-2024",
+    "/tracklists/marco-lys-il-muretto-jesolo-2025"
+   ],
+   "page_count": 2,
+   "checked": "2026-11-22T18:00:13Z",
+   "first_seen": "2026-11-22T18:00:13Z"
+  },
+  {
    "url": "https://open.spotify.com/track/1NUIuPjVHeH3jsLQAZ58ee",
    "kind": "spotify",
    "code": 200,
@@ -2777,6 +2807,20 @@
    "page_count": 2,
    "checked": "2026-11-15T17:22:35Z",
    "first_seen": "2026-11-18T19:00:26Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/1VhNZmtGQPnJlzZStAYn5j",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Pumpin Jumpin",
+   "pages": [
+    "/tracklists/gorgon-city-reframe-studios-outdoors-los-angeles-2026",
+    "/tracklists/sidepiece-daytrip-la-in-the-park-2025"
+   ],
+   "page_count": 2,
+   "checked": "2026-11-22T18:00:13Z",
+   "first_seen": "2026-11-22T18:00:13Z"
   },
   {
    "url": "https://open.spotify.com/track/1WTwQNFh3pTu3FbYRY5GTk",
@@ -3059,6 +3103,20 @@
    "first_seen": "2026-10-15T15:18:47Z"
   },
   {
+   "url": "https://open.spotify.com/track/2PmT3D5xmvVzZCf11L2ifX",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "I Can't Kick This Feeling When It Hits",
+   "pages": [
+    "/tracklists/green-velvet-defected-malta-the-ditch-valletta-2024",
+    "/tracklists/pawsa-pawsa-in-the-park-gunnersbury-park-london-2025"
+   ],
+   "page_count": 2,
+   "checked": "2026-11-22T18:00:13Z",
+   "first_seen": "2026-11-22T18:00:13Z"
+  },
+  {
    "url": "https://open.spotify.com/track/2QJoGGYG3hUZswfzYI6bBC",
    "kind": "spotify",
    "code": 200,
@@ -3281,62 +3339,6 @@
    "page_count": 2,
    "checked": "2026-11-21T17:45:35Z",
    "first_seen": "2026-11-21T17:45:35Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2weibCrIRBDPColZHhL88Y",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Utopia",
-   "pages": [
-    "/friday",
-    "/tracklists/john-summit-lollapalooza-chicago-2026"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-12T18:33:48Z",
-   "first_seen": "2026-11-18T19:00:26Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2y843ilveQ0tO7er9q8haK",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Next to Me - Vintage Culture Remix",
-   "pages": [
-    "/tracklists/adam-sellouk-abstract-festival-2025",
-    "/tracklists/vintage-culture-warung-beach-club-closing-2026"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-12T18:33:48Z",
-   "first_seen": "2026-11-18T19:00:26Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/36SPvhQxKM4APeG7yo1mDQ",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Blues",
-   "pages": [
-    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026",
-    "/tracklists/yamagucci-friends-la-2026-strange-house"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-11T18:01:29Z",
-   "first_seen": "2026-11-11T18:01:29Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/38Cn5WXAveelCjMczHaK2P",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Call You Back",
-   "pages": [
-    "/tracklists/genesi-coachella-yuma-tent-2026",
-    "/tracklists/layton-giordani-space-miami-2025"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-21T17:45:35Z",
-   "first_seen": "2026-11-21T17:45:35Z"
   }
  ],
  "anchors_broken": [
@@ -3349,5 +3351,5 @@
    "href": "/calendar#e-seismic-2026"
   }
  ],
- "summary": "22 broken, 4 moved, 1777 read differently, 2 broken anchors, 7677 of 15807 links checked in the last 10 days"
+ "summary": "22 broken, 4 moved, 2047 read differently, 2 broken anchors, 7677 of 15807 links checked in the last 10 days"
 }
