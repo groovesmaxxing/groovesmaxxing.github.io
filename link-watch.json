@@ -1,17 +1,17 @@
 {
- "generated": "2026-11-22T18:00:13Z",
+ "generated": "2026-11-23T22:12:25Z",
  "pages": 1138,
  "links": {
-  "checkable": 15807,
+  "checkable": 15809,
   "by_kind": {
    "other": 7533,
-   "spotify": 5480,
+   "spotify": 5482,
    "soundcloud": 1476,
    "youtube": 1318
   },
-  "checked_within_recheck": 7677,
+  "checked_within_recheck": 6980,
   "asked_this_run": 700,
-  "unknown": 3251,
+  "unknown": 3656,
   "budget": 700,
   "recheck_days": 10
  },
@@ -1466,6 +1466,21 @@
    "first_seen": "2026-11-18T19:00:26Z"
   },
   {
+   "url": "https://open.spotify.com/track/5CaUUACiQFEf4zR5WoeIrp",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "If U Need It",
+   "pages": [
+    "/tracklists/mikey-lion-desert-hearts-festival-flagstaff-2024",
+    "/tracklists/sammy-virji-asia-tour-zerotokyo-2025",
+    "/tracklists/sammy-virji-boiler-room-denver-2024"
+   ],
+   "page_count": 3,
+   "checked": "2026-11-23T22:12:25Z",
+   "first_seen": "2026-11-23T22:12:25Z"
+  },
+  {
    "url": "https://open.spotify.com/track/5GF2vx97YyGFJJU5QNVi4U",
    "kind": "spotify",
    "code": 200,
@@ -1569,21 +1584,6 @@
    "page_count": 3,
    "checked": "2026-11-11T18:01:29Z",
    "first_seen": "2026-11-07T16:36:19Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/5v8ITlAsVN6ChPi6oAXoxj",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "LOVE DESIRE - Extended Mix",
-   "pages": [
-    "/tracklists/anotr-no-art-festival-flevopark-amsterdam-2024",
-    "/tracklists/disco-lines-club-space-miami-2026",
-    "/tracklists/hugel-tomorrowland-weekend-two-2026"
-   ],
-   "page_count": 3,
-   "checked": "2026-11-16T20:39:31Z",
-   "first_seen": "2026-11-18T19:00:26Z"
   },
   {
    "url": "https://open.spotify.com/track/6GHZSpAJYNY3uvH7gwYp0j",
@@ -2333,6 +2333,20 @@
    "first_seen": "2026-11-18T19:00:26Z"
   },
   {
+   "url": "https://open.spotify.com/track/06PtUjF9NsdCYLaYag104S",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "My Place",
+   "pages": [
+    "/tracklists/josh-baker-awakenings-festival-hilvarenbeek-2026",
+    "/tracklists/prospa-b2b-josh-baker-you-me-parc-del-forum-barcelona-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-11-23T22:12:25Z",
+   "first_seen": "2026-11-23T22:12:25Z"
+  },
+  {
    "url": "https://open.spotify.com/track/09u9pyJURzsHf2XbtMm03C",
    "kind": "spotify",
    "code": 200,
@@ -2389,6 +2403,20 @@
    "first_seen": "2026-11-18T19:00:26Z"
   },
   {
+   "url": "https://open.spotify.com/track/0T9rD4rU4JICtHGlXe9AGO",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Chula",
+   "pages": [
+    "/tracklists/layton-giordani-space-miami-2025",
+    "/tracklists/solardo-creamfields-halo-stage-2025"
+   ],
+   "page_count": 2,
+   "checked": "2026-11-23T22:12:25Z",
+   "first_seen": "2026-11-23T22:12:25Z"
+  },
+  {
    "url": "https://open.spotify.com/track/0TrlPb4ESbiuDcJqjOEqM8",
    "kind": "spotify",
    "code": 200,
@@ -2401,6 +2429,20 @@
    "page_count": 2,
    "checked": "2026-11-21T17:45:35Z",
    "first_seen": "2026-11-21T17:45:35Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/0Vi6wyVXQLvydtZ32EHHuk",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Plastic Jam - Radio-Edit",
+   "pages": [
+    "/tracklists/kolter-circoloco-dc10-ibiza-2026",
+    "/tracklists/kolter-thuishaven-amsterdam-2025"
+   ],
+   "page_count": 2,
+   "checked": "2026-11-23T22:12:25Z",
+   "first_seen": "2026-11-23T22:12:25Z"
   },
   {
    "url": "https://open.spotify.com/track/0XP1Nhp81D49371U34enxJ",
@@ -2487,6 +2529,34 @@
    "first_seen": "2026-11-18T19:00:26Z"
   },
   {
+   "url": "https://open.spotify.com/track/0ko0sZ5hNieT3LRq2lOGl3",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Les Gout",
+   "pages": [
+    "/tracklists/keinemusik-exit-festival-mts-dance-arena-novi-sad-2023",
+    "/tracklists/keinemusik-giza-pyramids-cairo-2024"
+   ],
+   "page_count": 2,
+   "checked": "2026-11-23T22:12:25Z",
+   "first_seen": "2026-11-23T22:12:25Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/0lhVb3ubfHEWTCGZGceVrX",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "It's So Nice (ft. 3DDY)",
+   "pages": [
+    "/tracklists/josh-baker-awakenings-festival-hilvarenbeek-2026",
+    "/tracklists/prospa-b2b-josh-baker-you-me-parc-del-forum-barcelona-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-11-23T22:12:25Z",
+   "first_seen": "2026-11-23T22:12:25Z"
+  },
+  {
    "url": "https://open.spotify.com/track/0mZ4AZbfdgf4hvOgeHngX6",
    "kind": "spotify",
    "code": 200,
@@ -2499,6 +2569,20 @@
    "page_count": 2,
    "checked": "2026-11-18T19:00:26Z",
    "first_seen": "2026-11-18T19:00:26Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/0ovWLJ2gMOZMg5P2tus8Qx",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Let’s Groove",
+   "pages": [
+    "/tracklists/michael-bibi-one-life-london-2024",
+    "/tracklists/pawsa-pawsa-in-the-park-gunnersbury-park-london-2025"
+   ],
+   "page_count": 2,
+   "checked": "2026-11-23T22:12:25Z",
+   "first_seen": "2026-11-23T22:12:25Z"
   },
   {
    "url": "https://open.spotify.com/track/0oz5HfryxH2aVdGbIwzU9O",
@@ -2907,6 +2991,20 @@
    "first_seen": "2026-11-18T19:00:26Z"
   },
   {
+   "url": "https://open.spotify.com/track/1mWfO6Uc1yMiX1VENDNVRt",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Party All The Time - Tocadisco's Bombenalarm Remix",
+   "pages": [
+    "/tracklists/josh-baker-awakenings-festival-hilvarenbeek-2026",
+    "/tracklists/prospa-b2b-josh-baker-you-me-parc-del-forum-barcelona-2026"
+   ],
+   "page_count": 2,
+   "checked": "2026-11-23T22:12:25Z",
+   "first_seen": "2026-11-23T22:12:25Z"
+  },
+  {
    "url": "https://open.spotify.com/track/1qC3qRlsg8SiG3jhUtApKm",
    "kind": "spotify",
    "code": 200,
@@ -3241,104 +3339,6 @@
    "page_count": 2,
    "checked": "2026-11-18T19:00:26Z",
    "first_seen": "2026-11-18T19:00:26Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2gTdxzXSycGUJVgqbDouIh",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "TECHNO + TEQUILA",
-   "pages": [
-    "/tracklists/disco-lines-club-space-miami-2026",
-    "/tracklists/disco-lines-lollapalooza-chicago-2026"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-16T20:39:31Z",
-   "first_seen": "2026-11-18T19:00:26Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2iamvJ8dFSfapKYEtEYFun",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "una noche con hugel",
-   "pages": [
-    "/tracklists/hugel-b2b-bob-sinclar-hi-ibiza-2025",
-    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-11T18:01:29Z",
-   "first_seen": "2026-11-18T19:00:26Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2lLOemkI9u5eGxsxvwdEib",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Faith",
-   "pages": [
-    "/friday",
-    "/tracklists/ayybo-knockdown-center-nyc-2026"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-11T18:01:29Z",
-   "first_seen": "2026-11-18T19:00:26Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2nHIwvtRJyk8a5zTQ9JdSR",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Gurbet (feat. Shimza)",
-   "pages": [
-    "/friday",
-    "/tracklists/mahmut-orhan-loveland-ade-theater-amsterdam-2026"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-09T21:01:31Z",
-   "first_seen": "2026-11-10T18:11:51Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2pNtIGopqr4wFDhpc9uAMC",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "NYP2",
-   "pages": [
-    "/tracklists/camelphat-mixmag-lab-london",
-    "/tracklists/solardo-creamfields-halo-stage-2025"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-06T17:39:48Z",
-   "first_seen": "2026-11-18T19:00:26Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2t3nlL9xffoBaPBOzl4jYr",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Pipe Down",
-   "pages": [
-    "/tracklists/tobehonest-experts-only-the-gorge-2026",
-    "/tracklists/tobehonest-splash-house-2026"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-06T17:39:48Z",
-   "first_seen": "2026-11-06T17:39:48Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2tuwPCMw2Wwv89sHxdmx2R",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Da Fonk (feat. Joni)",
-   "pages": [
-    "/tracklists/disclosure-b2b-mochakk-cercle-festival-a380-stage-2024",
-    "/tracklists/mochakk-coachella-sahara-stage-2026"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-21T17:45:35Z",
-   "first_seen": "2026-11-21T17:45:35Z"
   }
  ],
  "anchors_broken": [
@@ -3351,5 +3351,5 @@
    "href": "/calendar#e-seismic-2026"
   }
  ],
- "summary": "22 broken, 4 moved, 2047 read differently, 2 broken anchors, 7677 of 15807 links checked in the last 10 days"
+ "summary": "22 broken, 4 moved, 2336 read differently, 2 broken anchors, 6980 of 15809 links checked in the last 10 days"
 }
