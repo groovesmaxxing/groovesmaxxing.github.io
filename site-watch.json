@@ -1,89 +1,93 @@
 {
- "generated": "2026-11-22T21:42:43Z",
+ "generated": "2026-11-23T02:35:10Z",
  "site": [
   {
    "path": "/",
    "code": 200,
-   "ms": 227,
+   "ms": 299,
    "state": "ok",
    "note": null
   },
   {
    "path": "/scan",
    "code": 200,
-   "ms": 135,
+   "ms": 119,
    "state": "ok",
    "note": null
   },
   {
    "path": "/gmx-config.json",
    "code": 200,
-   "ms": 109,
+   "ms": 78,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sets",
    "code": 200,
-   "ms": 146,
+   "ms": 201,
    "state": "ok",
    "note": null
   },
   {
    "path": "/artists",
    "code": 200,
-   "ms": 143,
+   "ms": 205,
    "state": "ok",
    "note": null
   },
   {
    "path": "/tracklists/",
    "code": 200,
-   "ms": 132,
+   "ms": 100,
    "state": "ok",
    "note": null
   },
   {
    "path": "/search-index.json",
    "code": 200,
-   "ms": 109,
+   "ms": 164,
    "state": "ok",
    "note": "generated 2026-11-22"
   },
   {
    "path": "/upcoming.json",
    "code": 200,
-   "ms": 113,
+   "ms": 147,
    "state": "ok",
    "note": "generated 2026-11-22"
   },
   {
    "path": "/radar-events.json",
    "code": 200,
-   "ms": 121,
+   "ms": 104,
    "state": "ok",
    "note": "generated 2026-11-22T17:14:18"
   },
   {
    "path": "/sitemap.xml",
    "code": 200,
-   "ms": 122,
+   "ms": 206,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sw.js",
    "code": 200,
-   "ms": 104,
+   "ms": 80,
    "state": "ok",
    "note": null
   }
  ],
  "recognizer": {
-  "state": "down",
-  "code": 0,
-  "ms": 40,
-  "note": "no answer: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of "
+  "state": "up",
+  "code": 200,
+  "ms": 497,
+  "health": {
+   "status": "ok",
+   "version": "0.1.2",
+   "mail": true
+  }
  },
  "workflows": {
   "state": "ok",
@@ -135,8 +139,8 @@
     "conclusion": "success",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-11-22T16:27:54Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/45043961559",
+    "at": "2026-11-23T00:58:04Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/45091813929",
     "state": "ok"
    },
    {
@@ -167,52 +171,52 @@
    {
     "state": "ok",
     "id": "F-18",
-    "text": "friday.html carries the newest week: 2026-11-20, 2 days old"
+    "text": "friday.html carries the newest week: 2026-11-20, 3 days old"
    },
    {
     "state": "ok",
     "id": "F-21",
-    "text": "dropping soon says when it was last refreshed: 2026-11-20, 2 days old"
+    "text": "dropping soon says when it was last refreshed: 2026-11-20, 3 days old"
    },
    {
     "state": "ok",
     "id": "F-24",
-    "text": "the newsletter hub carries the newest issue: 2026-11-20, 2 days old"
+    "text": "the newsletter hub carries the newest issue: 2026-11-20, 3 days old"
    },
    {
     "state": "ok",
     "id": "F-30",
-    "text": "the events radar data is refreshed nightly: 2026-11-22, 0 days old"
+    "text": "the events radar data is refreshed nightly: 2026-11-22, 1 days old"
    },
    {
     "state": "ok",
     "id": "F-31",
-    "text": "the denver radar data is refreshed nightly: 2026-11-22, 0 days old"
+    "text": "the denver radar data is refreshed nightly: 2026-11-22, 1 days old"
    },
    {
     "state": "ok",
     "id": "F-32",
-    "text": "the tracks index was rebuilt after the newest tracklist: 2026-11-22, 0 days old"
+    "text": "the tracks index was rebuilt after the newest tracklist: 2026-11-22, 1 days old"
    },
    {
     "state": "ok",
     "id": "F-33",
-    "text": "upcoming.json (the home page's next up band) was rebuilt after the newest dropping soon render: 2026-11-22, 0 days old"
+    "text": "upcoming.json (the home page's next up band) was rebuilt after the newest dropping soon render: 2026-11-22, 1 days old"
    },
    {
     "state": "ok",
     "id": "F-34",
-    "text": "search-index.json (site search and the quick search sheet) is fresh and not emptied: 2026-11-22, 0 days old"
+    "text": "search-index.json (site search and the quick search sheet) is fresh and not emptied: 2026-11-22, 1 days old"
    },
    {
     "state": "ok",
     "id": "F-35",
-    "text": "open-ids.json (the open IDs board) is fresh and not emptied: 2026-11-22, 0 days old"
+    "text": "open-ids.json (the open IDs board) is fresh and not emptied: 2026-11-22, 1 days old"
    },
    {
     "state": "warn",
     "id": "F-42",
-    "text": "moods-index.json (the mood picker) was rebuilt from the lane dumps. moodindex.py runs on the laptop, nothing schedules it yet: 2026-11-07, 15 days old"
+    "text": "moods-index.json (the mood picker) was rebuilt from the lane dumps. moodindex.py runs on the laptop, nothing schedules it yet: 2026-11-07, 16 days old"
    },
    {
     "state": "ok",
@@ -221,6 +225,6 @@
    }
   ]
  },
- "state": "down",
- "summary": "recognizer down; freshness warn"
+ "state": "warn",
+ "summary": "recognizer up; freshness warn"
 }
