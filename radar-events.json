@@ -1,7 +1,7 @@
 {
-"generated": "2026-11-23T21:31:25+00:00",
+"generated": "2026-11-24T20:14:03+00:00",
 "artist_count": 704,
-"artists_with_events": 125,
+"artists_with_events": 126,
 "events": [
 {
 "date": "2026-11-24",
@@ -182,6 +182,15 @@
 "region": "TR",
 "url": "https://www.biletix.com/performance/5POL0/001/TURKIYE/tr",
 "artist": "BABA"
+},
+{
+"date": "2026-11-28",
+"event": "Channel Tres (Ages: 18 & Over with Valid Government ID)",
+"venue": "The Novo by Microsoft",
+"city": "Los Angeles",
+"region": "CA",
+"url": "https://www.ticketmaster.com/event/Z7r9jZ1AA798F",
+"artist": "Channel Tres"
 },
 {
 "date": "2026-11-28",
@@ -1460,6 +1469,15 @@
 "region": "FL",
 "url": "https://www.ticketmaster.com/event/Z7r9jZ1A7PbbY",
 "artist": "Infected Mushroom"
+},
+{
+"date": "2027-01-16",
+"event": "One Hit & Gustavo ft. Tobiahs",
+"venue": "ivy Sydney",
+"city": "Sydney",
+"region": "NSW",
+"url": "https://www.moshtix.com.au/v2/event/one-hit-gustavo-ft-tobiahs/200369",
+"artist": "Tobiahs"
 },
 {
 "date": "2027-01-16",
@@ -2963,6 +2981,15 @@
 "region": "",
 "url": "https://www.universe.com/events/hugel-make-the-girls-dance-on-the-thames-tickets-8MV9NZ?ref=ticketmaster",
 "artist": "HUGEL"
+},
+{
+"date": "2027-08-21",
+"event": "Wonderland Festival 2027",
+"venue": "Wollaton Park",
+"city": "Nottingham",
+"region": "GB",
+"url": "https://www.universe.com/events/wonderland-festival-2027-tickets-X7RGVP?ref=ticketmaster",
+"artist": "Horse Meat Disco"
 },
 {
 "date": "2027-08-27",
