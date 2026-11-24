@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-23T22:12:25Z",
+ "generated": "2026-11-24T20:51:04Z",
  "pages": 1138,
  "links": {
   "checkable": 15809,
@@ -9,9 +9,9 @@
    "soundcloud": 1476,
    "youtube": 1318
   },
-  "checked_within_recheck": 6980,
+  "checked_within_recheck": 6982,
   "asked_this_run": 700,
-  "unknown": 3656,
+  "unknown": 4077,
   "budget": 700,
   "recheck_days": 10
  },
@@ -3005,6 +3005,20 @@
    "first_seen": "2026-11-23T22:12:25Z"
   },
   {
+   "url": "https://open.spotify.com/track/1pKYYY0dkg23sQQXi0Q5zN",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Around the World",
+   "pages": [
+    "/tracklists/pawsa-pawsa-in-the-park-gunnersbury-park-london-2025",
+    "/tracklists/spacewalk-hard-summer-afterparty-academy-la-2025"
+   ],
+   "page_count": 2,
+   "checked": "2026-11-24T20:51:04Z",
+   "first_seen": "2026-11-24T20:51:04Z"
+  },
+  {
    "url": "https://open.spotify.com/track/1qC3qRlsg8SiG3jhUtApKm",
    "kind": "spotify",
    "code": 200,
@@ -3325,20 +3339,6 @@
    "page_count": 2,
    "checked": "2026-11-18T19:00:26Z",
    "first_seen": "2026-11-18T19:00:26Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2d231hzKuTrrlvfa6mr524",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Samstag Ist Krieg - Solomun Remix",
-   "pages": [
-    "/tracklists/anyma-b2b-solomun-ultra-music-festival-miami-2025",
-    "/tracklists/solomun-alexandra-palace-london-2026"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-18T19:00:26Z",
-   "first_seen": "2026-11-18T19:00:26Z"
   }
  ],
  "anchors_broken": [
@@ -3351,5 +3351,5 @@
    "href": "/calendar#e-seismic-2026"
   }
  ],
- "summary": "22 broken, 4 moved, 2336 read differently, 2 broken anchors, 6980 of 15809 links checked in the last 10 days"
+ "summary": "22 broken, 4 moved, 2612 read differently, 2 broken anchors, 6982 of 15809 links checked in the last 10 days"
 }
