@@ -1,17 +1,17 @@
 {
- "generated": "2026-11-24T20:51:04Z",
+ "generated": "2026-11-25T20:08:22Z",
  "pages": 1138,
  "links": {
-  "checkable": 15809,
+  "checkable": 15790,
   "by_kind": {
-   "other": 7533,
+   "other": 7514,
    "spotify": 5482,
    "soundcloud": 1476,
    "youtube": 1318
   },
-  "checked_within_recheck": 6982,
+  "checked_within_recheck": 6983,
   "asked_this_run": 700,
-  "unknown": 4077,
+  "unknown": 4520,
   "budget": 700,
   "recheck_days": 10
  },
@@ -911,6 +911,21 @@
    "first_seen": "2026-10-21T15:34:18Z"
   },
   {
+   "url": "https://open.spotify.com/track/0SLedTMdKihqLsR6CGPAfD",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Goodums - Sammy Virji Remix",
+   "pages": [
+    "/tracklists/sammy-virji-asia-tour-zerotokyo-2025",
+    "/tracklists/sammy-virji-boiler-room-denver-2024",
+    "/tracklists/sammy-virji-tomorrowland-weekend-1-belgium-2025"
+   ],
+   "page_count": 3,
+   "checked": "2026-11-25T20:08:22Z",
+   "first_seen": "2026-11-25T20:08:22Z"
+  },
+  {
    "url": "https://open.spotify.com/track/0TaDQnUX1RjbCv3liKFqWP",
    "kind": "spotify",
    "code": 200,
@@ -1031,6 +1046,21 @@
    "first_seen": "2026-10-19T17:08:37Z"
   },
   {
+   "url": "https://open.spotify.com/track/1j1ywfVYnYYHL4d3o8UntN",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Up & Down",
+   "pages": [
+    "/tracklists/sammy-virji-asia-tour-zerotokyo-2025",
+    "/tracklists/sammy-virji-boiler-room-denver-2024",
+    "/tracklists/sammy-virji-tomorrowland-weekend-1-belgium-2025"
+   ],
+   "page_count": 3,
+   "checked": "2026-11-25T20:08:22Z",
+   "first_seen": "2026-11-25T20:08:22Z"
+  },
+  {
    "url": "https://open.spotify.com/track/25DgjoTlKK8KjstM4cZ8L2",
    "kind": "spotify",
    "code": 200,
@@ -1106,6 +1136,21 @@
    "first_seen": "2026-11-18T19:00:26Z"
   },
   {
+   "url": "https://open.spotify.com/track/2aoWvGMW6W40WelevwsOUx",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Shella Verse",
+   "pages": [
+    "/tracklists/sammy-virji-asia-tour-zerotokyo-2025",
+    "/tracklists/sammy-virji-boiler-room-denver-2024",
+    "/tracklists/sammy-virji-tomorrowland-weekend-1-belgium-2025"
+   ],
+   "page_count": 3,
+   "checked": "2026-11-25T20:08:22Z",
+   "first_seen": "2026-11-25T20:08:22Z"
+  },
+  {
    "url": "https://open.spotify.com/track/2gyyB70dNaYPD5yKWCpOlV",
    "kind": "spotify",
    "code": 200,
@@ -1164,6 +1209,21 @@
    "page_count": 3,
    "checked": "2026-11-15T17:22:35Z",
    "first_seen": "2026-11-18T19:00:26Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/36nYS9AwMR06ph6imdjn7J",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "I Guess We're Not The Same",
+   "pages": [
+    "/tracklists/sammy-virji-asia-tour-zerotokyo-2025",
+    "/tracklists/sammy-virji-boiler-room-denver-2024",
+    "/tracklists/sammy-virji-tomorrowland-weekend-1-belgium-2025"
+   ],
+   "page_count": 3,
+   "checked": "2026-11-25T20:08:22Z",
+   "first_seen": "2026-11-25T20:08:22Z"
   },
   {
    "url": "https://open.spotify.com/track/3DqOJ2BoddzZpNdty3okJH",
@@ -1389,6 +1449,21 @@
    "page_count": 3,
    "checked": "2026-11-11T18:01:29Z",
    "first_seen": "2026-11-18T19:00:26Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/4ZLiHdZHDe0hpzElVQEvDT",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Burn The River",
+   "pages": [
+    "/tracklists/sammy-virji-asia-tour-zerotokyo-2025",
+    "/tracklists/sammy-virji-boiler-room-denver-2024",
+    "/tracklists/sammy-virji-tomorrowland-weekend-1-belgium-2025"
+   ],
+   "page_count": 3,
+   "checked": "2026-11-25T20:08:22Z",
+   "first_seen": "2026-11-25T20:08:22Z"
   },
   {
    "url": "https://open.spotify.com/track/4oH7tOwRwU03GweO0gBoP5",
@@ -2977,6 +3052,20 @@
    "first_seen": "2026-11-10T18:11:51Z"
   },
   {
+   "url": "https://open.spotify.com/track/1lbNgoJ5iMrMluCyhI4OQP",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Victory Lap",
+   "pages": [
+    "/tracklists/sammy-virji-asia-tour-zerotokyo-2025",
+    "/tracklists/sammy-virji-tomorrowland-weekend-1-belgium-2025"
+   ],
+   "page_count": 2,
+   "checked": "2026-11-25T20:08:22Z",
+   "first_seen": "2026-11-25T20:08:22Z"
+  },
+  {
    "url": "https://open.spotify.com/track/1m09K9yDGb3HaafQnMkuCG",
    "kind": "spotify",
    "code": 200,
@@ -3031,6 +3120,20 @@
    "page_count": 2,
    "checked": "2026-11-19T19:08:14Z",
    "first_seen": "2026-11-19T19:08:14Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/1yIi7qRdybE4yY1V0YdOKG",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Find My Way Home",
+   "pages": [
+    "/tracklists/sammy-virji-asia-tour-zerotokyo-2025",
+    "/tracklists/sammy-virji-tomorrowland-weekend-1-belgium-2025"
+   ],
+   "page_count": 2,
+   "checked": "2026-11-25T20:08:22Z",
+   "first_seen": "2026-11-25T20:08:22Z"
   },
   {
    "url": "https://open.spotify.com/track/200DiJQhDi69nkGXOrrJgn",
@@ -3241,104 +3344,6 @@
    "page_count": 2,
    "checked": "2026-11-18T19:00:26Z",
    "first_seen": "2026-11-18T19:00:26Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2RfUM4uLhghpQPFSSrETlZ",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Toda La Noche",
-   "pages": [
-    "/tracklists/joseph-capriati-3-5-hour-dj-set-live-from-metamorfosi-at-amnesia-ibiza",
-    "/tracklists/mau-p-xxx-radio-204"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-11T18:01:29Z",
-   "first_seen": "2026-11-11T18:01:29Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2S6Yp0oUifZH2vWkVoRDHJ",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Melted",
-   "pages": [
-    "/tracklists/brunello-lightning-in-a-bottle-2026",
-    "/tracklists/brunello-the-terrace-club-space-miami-2025"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-19T19:08:14Z",
-   "first_seen": "2026-11-19T19:08:14Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2V65y3PX4DkRhy1djlxd9p",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Don't You Worry Child - Radio Edit",
-   "pages": [
-    "/tracklists/alok-tomorrowland-weekend-one-belgium-2019",
-    "/tracklists/axwell-tomorrowland-winter-2026"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-18T19:00:26Z",
-   "first_seen": "2026-11-18T19:00:26Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2W9cgPhvERaeE0BnM3CsKd",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Where She Come From",
-   "pages": [
-    "/tracklists/hugel-brooklyn-army-terminal-new-york-2026",
-    "/tracklists/hugel-reframe-outdoors-los-angeles-2026"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-11T18:01:29Z",
-   "first_seen": "2026-11-11T18:01:29Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2Xk8dzlM8VbMqSp7mQjRJc",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Rock Me - (Original Mix)",
-   "pages": [
-    "/tracklists/anotr-burning-man-mayan-warrior-2025",
-    "/tracklists/pawsa-pawsa-in-the-park-gunnersbury-park-london-2025"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-18T19:00:26Z",
-   "first_seen": "2026-11-18T19:00:26Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2YJUD7E1muMf10UkCjN3lc",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Light Up My Dark",
-   "pages": [
-    "/tracklists/hartmut-kiss-dhfk-fasching-leipzig-2025",
-    "/tracklists/monolink-long-feng-burning-man-2026"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-13T18:00:21Z",
-   "first_seen": "2026-11-18T19:00:26Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/2aCIwWpqYaMyaDrDBhdN9B",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "Nocturnal",
-   "pages": [
-    "/tracklists/adam-sellouk-abstract-festival-2025",
-    "/tracklists/anyma-atomium-brussels-2025"
-   ],
-   "page_count": 2,
-   "checked": "2026-11-18T19:00:26Z",
-   "first_seen": "2026-11-18T19:00:26Z"
   }
  ],
  "anchors_broken": [
@@ -3351,5 +3356,5 @@
    "href": "/calendar#e-seismic-2026"
   }
  ],
- "summary": "22 broken, 4 moved, 2612 read differently, 2 broken anchors, 6982 of 15809 links checked in the last 10 days"
+ "summary": "22 broken, 4 moved, 2866 read differently, 2 broken anchors, 6983 of 15790 links checked in the last 10 days"
 }
