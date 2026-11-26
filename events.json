@@ -1,6 +1,20 @@
 {
- "generated": "2026-11-25T22:26:15Z",
+ "generated": "2026-11-26T14:21:11Z",
  "events": [
+  {
+   "at": "2026-11-26T14:21:11Z",
+   "what": "recognizer",
+   "from": "up",
+   "to": "down",
+   "detail": "no answer: <urlopen error [Errno -2] Name or service not known>"
+  },
+  {
+   "at": "2026-11-26T14:21:11Z",
+   "what": "site watch",
+   "from": "warn",
+   "to": "down",
+   "detail": "recognizer down; freshness warn"
+  },
   {
    "at": "2026-11-23T02:35:10Z",
    "what": "recognizer",
