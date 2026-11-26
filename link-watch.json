@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-25T20:08:22Z",
+ "generated": "2026-11-26T19:47:56Z",
  "pages": 1138,
  "links": {
   "checkable": 15790,
@@ -9,9 +9,9 @@
    "soundcloud": 1476,
    "youtube": 1318
   },
-  "checked_within_recheck": 6983,
+  "checked_within_recheck": 7683,
   "asked_this_run": 700,
-  "unknown": 4520,
+  "unknown": 4858,
   "budget": 700,
   "recheck_days": 10
  },
@@ -3020,7 +3020,7 @@
     "/tracklists/vinter-la-fabrica-cordoba-argentina-2026"
    ],
    "page_count": 2,
-   "checked": "2026-11-03T18:00:35Z",
+   "checked": "2026-11-26T19:47:56Z",
    "first_seen": "2026-11-03T18:00:35Z"
   },
   {
@@ -3356,5 +3356,5 @@
    "href": "/calendar#e-seismic-2026"
   }
  ],
- "summary": "22 broken, 4 moved, 2866 read differently, 2 broken anchors, 6983 of 15790 links checked in the last 10 days"
+ "summary": "22 broken, 4 moved, 3004 read differently, 2 broken anchors, 7683 of 15790 links checked in the last 10 days"
 }
