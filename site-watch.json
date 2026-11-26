@@ -1,93 +1,99 @@
 {
- "generated": "2026-11-26T14:21:11Z",
+ "generated": "2026-11-26T23:14:47Z",
  "site": [
   {
    "path": "/",
    "code": 200,
-   "ms": 192,
+   "ms": 217,
    "state": "ok",
    "note": null
   },
   {
    "path": "/scan",
    "code": 200,
-   "ms": 97,
+   "ms": 148,
    "state": "ok",
    "note": null
   },
   {
    "path": "/gmx-config.json",
    "code": 200,
-   "ms": 96,
+   "ms": 94,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sets",
    "code": 200,
-   "ms": 187,
+   "ms": 198,
    "state": "ok",
    "note": null
   },
   {
    "path": "/artists",
    "code": 200,
-   "ms": 234,
+   "ms": 111,
    "state": "ok",
    "note": null
   },
   {
    "path": "/tracklists/",
    "code": 200,
-   "ms": 181,
+   "ms": 150,
    "state": "ok",
    "note": null
   },
   {
    "path": "/search-index.json",
    "code": 200,
-   "ms": 218,
+   "ms": 288,
    "state": "ok",
    "note": "generated 2026-11-25"
   },
   {
    "path": "/upcoming.json",
    "code": 200,
-   "ms": 132,
+   "ms": 147,
    "state": "ok",
    "note": "generated 2026-11-25"
   },
   {
    "path": "/radar-events.json",
    "code": 200,
-   "ms": 151,
+   "ms": 92,
    "state": "ok",
-   "note": "generated 2026-11-25T19:23:53"
+   "note": "generated 2026-11-26T19:07:08"
   },
   {
    "path": "/sitemap.xml",
    "code": 200,
-   "ms": 168,
+   "ms": 203,
    "state": "ok",
    "note": null
   },
   {
    "path": "/sw.js",
    "code": 200,
-   "ms": 113,
+   "ms": 93,
    "state": "ok",
    "note": null
   }
  ],
  "recognizer": {
-  "state": "down",
-  "code": 0,
-  "ms": 176,
-  "note": "no answer: <urlopen error [Errno -2] Name or service not known>"
+  "state": "up",
+  "code": 200,
+  "ms": 11025,
+  "health": {
+   "status": "ok",
+   "version": "0.1.2",
+   "mail": true
+  }
  },
  "workflows": {
-  "state": "ok",
-  "failed": [],
+  "state": "failed",
+  "failed": [
+   "recognizer uptime"
+  ],
   "runs": [
    {
     "name": "events radar sweep",
@@ -95,8 +101,8 @@
     "conclusion": "success",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-11-25T19:24:35Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/45684406488",
+    "at": "2026-11-26T19:07:43Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/45880897199",
     "state": "ok"
    },
    {
@@ -105,8 +111,8 @@
     "conclusion": "success",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-11-25T23:03:10Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/45718257508",
+    "at": "2026-11-26T22:56:30Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/45907881255",
     "state": "ok"
    },
    {
@@ -125,8 +131,8 @@
     "conclusion": "success",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-11-25T20:08:47Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/45692010382",
+    "at": "2026-11-26T19:48:21Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/45886290776",
     "state": "ok"
    },
    {
@@ -135,19 +141,19 @@
     "conclusion": "success",
     "event": "dynamic",
     "branch": "main",
-    "at": "2026-11-25T20:12:51Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/45692651319",
+    "at": "2026-11-26T19:08:29Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/45881276973",
     "state": "ok"
    },
    {
     "name": "recognizer uptime",
     "status": "completed",
-    "conclusion": "success",
+    "conclusion": "failure",
     "event": "schedule",
     "branch": "main",
-    "at": "2026-11-26T08:54:41Z",
-    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/45787142779",
-    "state": "ok"
+    "at": "2026-11-26T18:51:00Z",
+    "url": "https://github.com/groovesmaxxing/groovesmaxxing.github.io/actions/runs/45879123504",
+    "state": "failed"
    },
    {
     "name": "site check",
@@ -192,12 +198,12 @@
    {
     "state": "ok",
     "id": "F-30",
-    "text": "the events radar data is refreshed nightly: 2026-11-25, 1 days old"
+    "text": "the events radar data is refreshed nightly: 2026-11-26, 0 days old"
    },
    {
     "state": "ok",
     "id": "F-31",
-    "text": "the denver radar data is refreshed nightly: 2026-11-25, 1 days old"
+    "text": "the denver radar data is refreshed nightly: 2026-11-26, 0 days old"
    },
    {
     "state": "ok",
@@ -231,6 +237,6 @@
    }
   ]
  },
- "state": "down",
- "summary": "recognizer down; freshness warn"
+ "state": "wrong",
+ "summary": "recognizer up; failed workflows: recognizer uptime; freshness warn"
 }
