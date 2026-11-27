@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-26T19:47:56Z",
+ "generated": "2026-11-27T19:37:55Z",
  "pages": 1138,
  "links": {
   "checkable": 15790,
@@ -9,9 +9,9 @@
    "soundcloud": 1476,
    "youtube": 1318
   },
-  "checked_within_recheck": 7683,
+  "checked_within_recheck": 6998,
   "asked_this_run": 700,
-  "unknown": 4858,
+  "unknown": 4955,
   "budget": 700,
   "recheck_days": 10
  },
@@ -291,7 +291,7 @@
     "/artists/buja-br"
    ],
    "page_count": 1,
-   "checked": "2026-11-05T18:15:14Z",
+   "checked": "2026-11-27T19:37:55Z",
    "first_seen": "2026-11-05T18:15:14Z"
   },
   {
@@ -537,7 +537,7 @@
     "/tracklists/rafael-la-siesta-x-playa-padre-marbella-2026"
    ],
    "page_count": 5,
-   "checked": "2026-11-04T18:13:08Z",
+   "checked": "2026-11-27T19:37:55Z",
    "first_seen": "2026-10-30T16:48:35Z"
   },
   {
@@ -686,22 +686,6 @@
    "page_count": 4,
    "checked": "2026-11-11T18:01:29Z",
    "first_seen": "2026-11-11T18:01:29Z"
-  },
-  {
-   "url": "https://open.spotify.com/track/4fErrQvOX1LPDIPFDFI4eM",
-   "kind": "spotify",
-   "code": 200,
-   "note": "page says: listen on spotify",
-   "title": "The One (feat. Jocelyn Brown)",
-   "pages": [
-    "/tracklists/chloe-caillet-portola-music-festival-2026",
-    "/tracklists/chris-stussy-bbc-radio-1-essential-mix-2024",
-    "/tracklists/franky-rizardo-flow-superclub-peru-2025",
-    "/tracklists/solardo-creamfields-halo-stage-2025"
-   ],
-   "page_count": 4,
-   "checked": "2026-11-04T18:13:08Z",
-   "first_seen": "2026-11-18T19:00:26Z"
   },
   {
    "url": "https://open.spotify.com/track/59Omhh3MqpuvUXvVoRdiBH",
@@ -1492,7 +1476,7 @@
     "/upcoming"
    ],
    "page_count": 3,
-   "checked": "2026-11-04T18:13:08Z",
+   "checked": "2026-11-27T19:37:55Z",
    "first_seen": "2026-11-10T18:11:51Z"
   },
   {
@@ -3344,6 +3328,20 @@
    "page_count": 2,
    "checked": "2026-11-18T19:00:26Z",
    "first_seen": "2026-11-18T19:00:26Z"
+  },
+  {
+   "url": "https://open.spotify.com/track/2RfUM4uLhghpQPFSSrETlZ",
+   "kind": "spotify",
+   "code": 200,
+   "note": "page says: listen on spotify",
+   "title": "Toda La Noche",
+   "pages": [
+    "/tracklists/joseph-capriati-3-5-hour-dj-set-live-from-metamorfosi-at-amnesia-ibiza",
+    "/tracklists/mau-p-xxx-radio-204"
+   ],
+   "page_count": 2,
+   "checked": "2026-11-11T18:01:29Z",
+   "first_seen": "2026-11-27T19:37:55Z"
   }
  ],
  "anchors_broken": [
@@ -3356,5 +3354,5 @@
    "href": "/calendar#e-seismic-2026"
   }
  ],
- "summary": "22 broken, 4 moved, 3004 read differently, 2 broken anchors, 7683 of 15790 links checked in the last 10 days"
+ "summary": "22 broken, 4 moved, 2991 read differently, 2 broken anchors, 6998 of 15790 links checked in the last 10 days"
 }
