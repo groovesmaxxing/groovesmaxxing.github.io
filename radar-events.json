@@ -1,7 +1,7 @@
 {
-"generated": "2026-11-26T19:07:08+00:00",
+"generated": "2026-11-27T19:04:04+00:00",
 "artist_count": 704,
-"artists_with_events": 130,
+"artists_with_events": 128,
 "events": [
 {
 "date": "2026-11-27",
@@ -11,15 +11,6 @@
 "region": "CA",
 "url": "https://www.ticketmaster.com/insomniac-presents-devault-hollywood-california-11-27-2026/event/090064CD1DD77F50",
 "artist": "Devault"
-},
-{
-"date": "2026-11-27",
-"event": "*CANCELLED* ARK: Goodboys Live",
-"venue": "Niebo",
-"city": "Warsaw",
-"region": "PL",
-"url": "https://www.ticketmaster.pl/event/cancelled-ark-goodboys-live-tickets/2014988157?language=en-us",
-"artist": "Goodboys"
 },
 {
 "date": "2026-11-27",
@@ -245,15 +236,6 @@
 "region": "GB",
 "url": "https://www.universe.com/events/hot-creations-tickets-1QGPSZ?ref=ticketmaster",
 "artist": "Lee Foss"
-},
-{
-"date": "2026-11-28",
-"event": "Bohemia Presents Mita Gami",
-"venue": "Bohemia Beach Club | FIVE Palm",
-"city": "Dubai",
-"region": "AE",
-"url": "https://www.ticketmaster.ae/event/bohemia-presents-mita-gami-tickets/1704519432",
-"artist": "Mita Gami"
 },
 {
 "date": "2026-11-28",
@@ -2273,11 +2255,11 @@
 },
 {
 "date": "2027-03-26",
-"event": "Abono VIP 3 días Tecate Pal Norte 2027",
+"event": "Abono General Plus 3 días Tecate Pal Norte 2027",
 "venue": "Parque Fundidora",
 "city": "Monterrey",
 "region": "NL",
-"url": "https://www.ticketmaster.com.mx/abono-vip-3-dias-tecate-pal-monterrey-26-03-2027/event/1400655798DD4EB0",
+"url": "https://www.ticketmaster.com.mx/abono-general-plus-3-dias-tecate-monterrey-26-03-2027/event/140065579300425C",
 "artist": "Luch"
 },
 {
@@ -2300,11 +2282,11 @@
 },
 {
 "date": "2027-03-26",
-"event": "Abono VIP 3 días Tecate Pal Norte 2027",
+"event": "Abono General Plus 3 días Tecate Pal Norte 2027",
 "venue": "Parque Fundidora",
 "city": "Monterrey",
 "region": "NL",
-"url": "https://www.ticketmaster.com.mx/abono-vip-3-dias-tecate-pal-monterrey-26-03-2027/event/1400655798DD4EB0",
+"url": "https://www.ticketmaster.com.mx/abono-general-plus-3-dias-tecate-monterrey-26-03-2027/event/140065579300425C",
 "artist": "Polo & Pan"
 },
 {
@@ -2327,11 +2309,11 @@
 },
 {
 "date": "2027-03-26",
-"event": "Abono VIP 3 días Tecate Pal Norte 2027",
+"event": "Abono General Plus 3 días Tecate Pal Norte 2027",
 "venue": "Parque Fundidora",
 "city": "Monterrey",
 "region": "NL",
-"url": "https://www.ticketmaster.com.mx/abono-vip-3-dias-tecate-pal-monterrey-26-03-2027/event/1400655798DD4EB0",
+"url": "https://www.ticketmaster.com.mx/abono-general-plus-3-dias-tecate-monterrey-26-03-2027/event/140065579300425C",
 "artist": "SOFI TUKKER"
 },
 {
